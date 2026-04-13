@@ -19,9 +19,7 @@ import type { Policy } from "@distilled.cloud/core/retry";
 /**
  * Context tag for configuring retry behavior of Coinbase API calls.
  */
-export class Retry extends Context.Service<Retry, Policy>()(
-  "CoinbaseRetry",
-) {}
+export class Retry extends Context.Service<Retry, Policy>()("CoinbaseRetry") {}
 
 /**
  * Provides a custom retry policy to all Coinbase API calls.

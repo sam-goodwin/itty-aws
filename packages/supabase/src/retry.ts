@@ -19,9 +19,7 @@ import type { Policy } from "@distilled.cloud/core/retry";
 /**
  * Context tag for configuring retry behavior of Supabase API calls.
  */
-export class Retry extends Context.Service<Retry, Policy>()(
-  "SupabaseRetry",
-) {}
+export class Retry extends Context.Service<Retry, Policy>()("SupabaseRetry") {}
 
 /**
  * Provides a custom retry policy to all Supabase API calls.
