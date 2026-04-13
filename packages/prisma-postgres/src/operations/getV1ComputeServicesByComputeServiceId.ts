@@ -26,6 +26,7 @@ export const GetV1ComputeServicesByComputeServiceIdOutput =
       }),
       projectId: Schema.String,
       latestVersionId: Schema.NullOr(Schema.String),
+      serviceEndpointDomain: Schema.String,
       createdAt: Schema.String,
     }),
   });

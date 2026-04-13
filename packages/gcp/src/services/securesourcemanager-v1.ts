@@ -35,16 +35,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -53,15 +50,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -74,15 +66,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -93,14 +82,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -114,15 +100,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -131,15 +112,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -152,15 +128,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -169,43 +142,30 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -216,16 +176,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -240,16 +197,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -260,30 +214,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface CustomHostConfig {
   /** Required. The custom UI hostname for the instance, e.g., "git.source.internal.mycompany.com" */
@@ -296,17 +245,12 @@ export interface CustomHostConfig {
   gitHttp?: string;
 }
 
-export const CustomHostConfig: Schema.Schema<CustomHostConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      html: Schema.optional(Schema.String),
-      api: Schema.optional(Schema.String),
-      gitSsh: Schema.optional(Schema.String),
-      gitHttp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomHostConfig",
-  }) as any as Schema.Schema<CustomHostConfig>;
+export const CustomHostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  html: Schema.optional(Schema.String),
+  api: Schema.optional(Schema.String),
+  gitSsh: Schema.optional(Schema.String),
+  gitHttp: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomHostConfig" });
 
 export interface PrivateConfig {
   /** Required. Immutable. Indicate if it's private instance. */
@@ -323,19 +267,14 @@ export interface PrivateConfig {
   customHostConfig?: CustomHostConfig;
 }
 
-export const PrivateConfig: Schema.Schema<PrivateConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isPrivate: Schema.optional(Schema.Boolean),
-      caPool: Schema.optional(Schema.String),
-      httpServiceAttachment: Schema.optional(Schema.String),
-      sshServiceAttachment: Schema.optional(Schema.String),
-      pscAllowedProjects: Schema.optional(Schema.Array(Schema.String)),
-      customHostConfig: Schema.optional(CustomHostConfig),
-    }),
-  ).annotate({
-    identifier: "PrivateConfig",
-  }) as any as Schema.Schema<PrivateConfig>;
+export const PrivateConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isPrivate: Schema.optional(Schema.Boolean),
+  caPool: Schema.optional(Schema.String),
+  httpServiceAttachment: Schema.optional(Schema.String),
+  sshServiceAttachment: Schema.optional(Schema.String),
+  pscAllowedProjects: Schema.optional(Schema.Array(Schema.String)),
+  customHostConfig: Schema.optional(CustomHostConfig),
+}).annotate({ identifier: "PrivateConfig" });
 
 export interface HostConfig {
   /** Output only. HTML hostname. */
@@ -348,29 +287,22 @@ export interface HostConfig {
   gitSsh?: string;
 }
 
-export const HostConfig: Schema.Schema<HostConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      html: Schema.optional(Schema.String),
-      api: Schema.optional(Schema.String),
-      gitHttp: Schema.optional(Schema.String),
-      gitSsh: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HostConfig" }) as any as Schema.Schema<HostConfig>;
+export const HostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  html: Schema.optional(Schema.String),
+  api: Schema.optional(Schema.String),
+  gitHttp: Schema.optional(Schema.String),
+  gitSsh: Schema.optional(Schema.String),
+}).annotate({ identifier: "HostConfig" });
 
 export interface WorkforceIdentityFederationConfig {
   /** Optional. Immutable. Whether Workforce Identity Federation is enabled. */
   enabled?: boolean;
 }
 
-export const WorkforceIdentityFederationConfig: Schema.Schema<WorkforceIdentityFederationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WorkforceIdentityFederationConfig",
-  }) as any as Schema.Schema<WorkforceIdentityFederationConfig>;
+export const WorkforceIdentityFederationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "WorkforceIdentityFederationConfig" });
 
 export interface Instance {
   /** Identifier. A unique identifier for an instance. The name should be of the format: `projects/{project_number}/locations/{location_id}/instances/{instance_id}` `project_number`: Maps to a unique int64 id assigned to each project. `location_id`: Refers to the region where the instance will be deployed. Since Secure Source Manager is a regional service, it must be one of the valid GCP regions. `instance_id`: User provided name for the instance, must be unique for a project_number and location_id combination. */
@@ -406,23 +338,20 @@ export interface Instance {
   workforceIdentityFederationConfig?: WorkforceIdentityFederationConfig;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      privateConfig: Schema.optional(PrivateConfig),
-      state: Schema.optional(Schema.String),
-      stateNote: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      hostConfig: Schema.optional(HostConfig),
-      workforceIdentityFederationConfig: Schema.optional(
-        WorkforceIdentityFederationConfig,
-      ),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  privateConfig: Schema.optional(PrivateConfig),
+  state: Schema.optional(Schema.String),
+  stateNote: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+  hostConfig: Schema.optional(HostConfig),
+  workforceIdentityFederationConfig: Schema.optional(
+    WorkforceIdentityFederationConfig,
+  ),
+}).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** The list of instances. */
@@ -433,16 +362,11 @@ export interface ListInstancesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instances: Schema.optional(Schema.Array(Instance)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instances: Schema.optional(Schema.Array(Instance)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface URIs {
   /** Output only. HTML is the URI for user to view the repository in a browser. */
@@ -453,14 +377,11 @@ export interface URIs {
   api?: string;
 }
 
-export const URIs: Schema.Schema<URIs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      html: Schema.optional(Schema.String),
-      gitHttps: Schema.optional(Schema.String),
-      api: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "URIs" }) as any as Schema.Schema<URIs>;
+export const URIs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  html: Schema.optional(Schema.String),
+  gitHttps: Schema.optional(Schema.String),
+  api: Schema.optional(Schema.String),
+}).annotate({ identifier: "URIs" });
 
 export interface InitialConfig {
   /** Default branch name of the repository. */
@@ -473,17 +394,12 @@ export interface InitialConfig {
   readme?: string;
 }
 
-export const InitialConfig: Schema.Schema<InitialConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultBranch: Schema.optional(Schema.String),
-      gitignores: Schema.optional(Schema.Array(Schema.String)),
-      license: Schema.optional(Schema.String),
-      readme: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InitialConfig",
-  }) as any as Schema.Schema<InitialConfig>;
+export const InitialConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultBranch: Schema.optional(Schema.String),
+  gitignores: Schema.optional(Schema.Array(Schema.String)),
+  license: Schema.optional(Schema.String),
+  readme: Schema.optional(Schema.String),
+}).annotate({ identifier: "InitialConfig" });
 
 export interface Repository {
   /** Identifier. A unique identifier for a repository. The name should be of the format: `projects/{project}/locations/{location_id}/repositories/{repository_id}` */
@@ -506,20 +422,17 @@ export interface Repository {
   initialConfig?: InitialConfig;
 }
 
-export const Repository: Schema.Schema<Repository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      instance: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      uris: Schema.optional(URIs),
-      initialConfig: Schema.optional(InitialConfig),
-    }),
-  ).annotate({ identifier: "Repository" }) as any as Schema.Schema<Repository>;
+export const Repository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  instance: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  uris: Schema.optional(URIs),
+  initialConfig: Schema.optional(InitialConfig),
+}).annotate({ identifier: "Repository" });
 
 export interface ListRepositoriesResponse {
   /** The list of repositories. */
@@ -528,27 +441,20 @@ export interface ListRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositories: Schema.optional(Schema.Array(Repository)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRepositoriesResponse",
-  }) as any as Schema.Schema<ListRepositoriesResponse>;
+export const ListRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositories: Schema.optional(Schema.Array(Repository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRepositoriesResponse" });
 
 export interface PushOption {
   /** Optional. Trigger hook for matching branches only. Specified as glob pattern. If empty or *, events for all branches are reported. Examples: main, {main,release*}. See https://pkg.go.dev/github.com/gobwas/glob documentation. */
   branchFilter?: string;
 }
 
-export const PushOption: Schema.Schema<PushOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      branchFilter: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PushOption" }) as any as Schema.Schema<PushOption>;
+export const PushOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  branchFilter: Schema.optional(Schema.String),
+}).annotate({ identifier: "PushOption" });
 
 export interface Hook {
   /** Identifier. A unique identifier for a Hook. The name should be of the format: `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}` */
@@ -571,20 +477,17 @@ export interface Hook {
   sensitiveQueryString?: string;
 }
 
-export const Hook: Schema.Schema<Hook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      targetUri: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      events: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      pushOption: Schema.optional(PushOption),
-      sensitiveQueryString: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Hook" }) as any as Schema.Schema<Hook>;
+export const Hook = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  targetUri: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  events: Schema.optional(Schema.Array(Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  pushOption: Schema.optional(PushOption),
+  sensitiveQueryString: Schema.optional(Schema.String),
+}).annotate({ identifier: "Hook" });
 
 export interface ListHooksResponse {
   /** The list of hooks. */
@@ -593,27 +496,19 @@ export interface ListHooksResponse {
   nextPageToken?: string;
 }
 
-export const ListHooksResponse: Schema.Schema<ListHooksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hooks: Schema.optional(Schema.Array(Hook)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListHooksResponse",
-  }) as any as Schema.Schema<ListHooksResponse>;
+export const ListHooksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hooks: Schema.optional(Schema.Array(Hook)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListHooksResponse" });
 
 export interface Check {
   /** Required. The context of the check. */
   context?: string;
 }
 
-export const Check: Schema.Schema<Check> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      context: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Check" }) as any as Schema.Schema<Check>;
+export const Check = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  context: Schema.optional(Schema.String),
+}).annotate({ identifier: "Check" });
 
 export interface BranchRule {
   /** Identifier. A unique identifier for a BranchRule. The name should be of the format: `projects/{project}/locations/{location}/repositories/{repository}/branchRules/{branch_rule}` */
@@ -650,27 +545,24 @@ export interface BranchRule {
   requiredStatusChecks?: Array<Check>;
 }
 
-export const BranchRule: Schema.Schema<BranchRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      includePattern: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      requirePullRequest: Schema.optional(Schema.Boolean),
-      minimumReviewsCount: Schema.optional(Schema.Number),
-      minimumApprovalsCount: Schema.optional(Schema.Number),
-      requireCodeOwnerApproval: Schema.optional(Schema.Boolean),
-      requireCommentsResolved: Schema.optional(Schema.Boolean),
-      allowStaleReviews: Schema.optional(Schema.Boolean),
-      requireLinearHistory: Schema.optional(Schema.Boolean),
-      requiredStatusChecks: Schema.optional(Schema.Array(Check)),
-    }),
-  ).annotate({ identifier: "BranchRule" }) as any as Schema.Schema<BranchRule>;
+export const BranchRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  includePattern: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  requirePullRequest: Schema.optional(Schema.Boolean),
+  minimumReviewsCount: Schema.optional(Schema.Number),
+  minimumApprovalsCount: Schema.optional(Schema.Number),
+  requireCodeOwnerApproval: Schema.optional(Schema.Boolean),
+  requireCommentsResolved: Schema.optional(Schema.Boolean),
+  allowStaleReviews: Schema.optional(Schema.Boolean),
+  requireLinearHistory: Schema.optional(Schema.Boolean),
+  requiredStatusChecks: Schema.optional(Schema.Array(Check)),
+}).annotate({ identifier: "BranchRule" });
 
 export interface ListBranchRulesResponse {
   /** The list of branch rules. */
@@ -679,15 +571,11 @@ export interface ListBranchRulesResponse {
   nextPageToken?: string;
 }
 
-export const ListBranchRulesResponse: Schema.Schema<ListBranchRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      branchRules: Schema.optional(Schema.Array(BranchRule)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBranchRulesResponse",
-  }) as any as Schema.Schema<ListBranchRulesResponse>;
+export const ListBranchRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    branchRules: Schema.optional(Schema.Array(BranchRule)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListBranchRulesResponse" });
 
 export interface Branch {
   /** Required. Name of the branch. */
@@ -696,13 +584,10 @@ export interface Branch {
   sha?: string;
 }
 
-export const Branch: Schema.Schema<Branch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ref: Schema.optional(Schema.String),
-      sha: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Branch" }) as any as Schema.Schema<Branch>;
+export const Branch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.optional(Schema.String),
+  sha: Schema.optional(Schema.String),
+}).annotate({ identifier: "Branch" });
 
 export interface PullRequest {
   /** Output only. Identifier. A unique identifier for a PullRequest. The number appended at the end is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/pullRequests/{pull_request_id}` */
@@ -725,22 +610,17 @@ export interface PullRequest {
   closeTime?: string;
 }
 
-export const PullRequest: Schema.Schema<PullRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      base: Schema.optional(Branch),
-      head: Schema.optional(Branch),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      closeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PullRequest",
-  }) as any as Schema.Schema<PullRequest>;
+export const PullRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  base: Schema.optional(Branch),
+  head: Schema.optional(Branch),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  closeTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "PullRequest" });
 
 export interface ListPullRequestsResponse {
   /** The list of pull requests. */
@@ -749,36 +629,31 @@ export interface ListPullRequestsResponse {
   nextPageToken?: string;
 }
 
-export const ListPullRequestsResponse: Schema.Schema<ListPullRequestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullRequests: Schema.optional(Schema.Array(PullRequest)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPullRequestsResponse",
-  }) as any as Schema.Schema<ListPullRequestsResponse>;
+export const ListPullRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pullRequests: Schema.optional(Schema.Array(PullRequest)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPullRequestsResponse" });
 
 export interface MergePullRequestRequest {}
 
-export const MergePullRequestRequest: Schema.Schema<MergePullRequestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MergePullRequestRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MergePullRequestRequest",
-  }) as any as Schema.Schema<MergePullRequestRequest>;
+  });
 
 export interface OpenPullRequestRequest {}
 
-export const OpenPullRequestRequest: Schema.Schema<OpenPullRequestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "OpenPullRequestRequest",
-  }) as any as Schema.Schema<OpenPullRequestRequest>;
+export const OpenPullRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "OpenPullRequestRequest" });
 
 export interface ClosePullRequestRequest {}
 
-export const ClosePullRequestRequest: Schema.Schema<ClosePullRequestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ClosePullRequestRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ClosePullRequestRequest",
-  }) as any as Schema.Schema<ClosePullRequestRequest>;
+  });
 
 export interface FileDiff {
   /** Output only. The name of the file. */
@@ -796,15 +671,12 @@ export interface FileDiff {
   patch?: string;
 }
 
-export const FileDiff: Schema.Schema<FileDiff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      sha: Schema.optional(Schema.String),
-      patch: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FileDiff" }) as any as Schema.Schema<FileDiff>;
+export const FileDiff = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  sha: Schema.optional(Schema.String),
+  patch: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileDiff" });
 
 export interface ListPullRequestFileDiffsResponse {
   /** The list of pull request file diffs. */
@@ -813,15 +685,11 @@ export interface ListPullRequestFileDiffsResponse {
   nextPageToken?: string;
 }
 
-export const ListPullRequestFileDiffsResponse: Schema.Schema<ListPullRequestFileDiffsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileDiffs: Schema.optional(Schema.Array(FileDiff)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPullRequestFileDiffsResponse",
-  }) as any as Schema.Schema<ListPullRequestFileDiffsResponse>;
+export const ListPullRequestFileDiffsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileDiffs: Schema.optional(Schema.Array(FileDiff)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPullRequestFileDiffsResponse" });
 
 export interface TreeEntry {
   /** Output only. The type of the object (TREE, BLOB, COMMIT). Output-only. */
@@ -836,16 +704,13 @@ export interface TreeEntry {
   size?: string;
 }
 
-export const TreeEntry: Schema.Schema<TreeEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      sha: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TreeEntry" }) as any as Schema.Schema<TreeEntry>;
+export const TreeEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  sha: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+}).annotate({ identifier: "TreeEntry" });
 
 export interface FetchTreeResponse {
   /** The list of TreeEntry objects. */
@@ -854,15 +719,10 @@ export interface FetchTreeResponse {
   nextPageToken?: string;
 }
 
-export const FetchTreeResponse: Schema.Schema<FetchTreeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      treeEntries: Schema.optional(Schema.Array(TreeEntry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchTreeResponse",
-  }) as any as Schema.Schema<FetchTreeResponse>;
+export const FetchTreeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  treeEntries: Schema.optional(Schema.Array(TreeEntry)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "FetchTreeResponse" });
 
 export interface FetchBlobResponse {
   /** The SHA-1 hash of the blob. */
@@ -871,15 +731,10 @@ export interface FetchBlobResponse {
   content?: string;
 }
 
-export const FetchBlobResponse: Schema.Schema<FetchBlobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sha: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchBlobResponse",
-  }) as any as Schema.Schema<FetchBlobResponse>;
+export const FetchBlobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sha: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+}).annotate({ identifier: "FetchBlobResponse" });
 
 export interface Issue {
   /** Identifier. Unique identifier for an issue. The issue id is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue_id}` */
@@ -900,19 +755,16 @@ export interface Issue {
   etag?: string;
 }
 
-export const Issue: Schema.Schema<Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      closeTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Issue" }) as any as Schema.Schema<Issue>;
+export const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  closeTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Issue" });
 
 export interface ListIssuesResponse {
   /** The list of issues. */
@@ -921,43 +773,28 @@ export interface ListIssuesResponse {
   nextPageToken?: string;
 }
 
-export const ListIssuesResponse: Schema.Schema<ListIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(Schema.Array(Issue)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListIssuesResponse",
-  }) as any as Schema.Schema<ListIssuesResponse>;
+export const ListIssuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issues: Schema.optional(Schema.Array(Issue)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListIssuesResponse" });
 
 export interface OpenIssueRequest {
   /** Optional. The current etag of the issue. If the etag is provided and does not match the current etag of the issue, opening will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
 
-export const OpenIssueRequest: Schema.Schema<OpenIssueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OpenIssueRequest",
-  }) as any as Schema.Schema<OpenIssueRequest>;
+export const OpenIssueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "OpenIssueRequest" });
 
 export interface CloseIssueRequest {
   /** Optional. The current etag of the issue. If the etag is provided and does not match the current etag of the issue, closing will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
 
-export const CloseIssueRequest: Schema.Schema<CloseIssueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloseIssueRequest",
-  }) as any as Schema.Schema<CloseIssueRequest>;
+export const CloseIssueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloseIssueRequest" });
 
 export interface Review {
   /** Required. The review action type. */
@@ -973,26 +810,20 @@ export interface Review {
   effectiveCommitSha?: string;
 }
 
-export const Review: Schema.Schema<Review> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionType: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      effectiveCommitSha: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Review" }) as any as Schema.Schema<Review>;
+export const Review = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionType: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  effectiveCommitSha: Schema.optional(Schema.String),
+}).annotate({ identifier: "Review" });
 
 export interface Comment {
   /** Required. The comment body. */
   body?: string;
 }
 
-export const Comment: Schema.Schema<Comment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Comment" }) as any as Schema.Schema<Comment>;
+export const Comment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(Schema.String),
+}).annotate({ identifier: "Comment" });
 
 export interface Position {
   /** Required. The path of the file. */
@@ -1001,13 +832,10 @@ export interface Position {
   line?: string;
 }
 
-export const Position: Schema.Schema<Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      line: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Position" }) as any as Schema.Schema<Position>;
+export const Position = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  line: Schema.optional(Schema.String),
+}).annotate({ identifier: "Position" });
 
 export interface Code {
   /** Required. The comment body. */
@@ -1024,17 +852,14 @@ export interface Code {
   effectiveCommitSha?: string;
 }
 
-export const Code: Schema.Schema<Code> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(Schema.String),
-      reply: Schema.optional(Schema.String),
-      position: Schema.optional(Position),
-      effectiveRootComment: Schema.optional(Schema.String),
-      resolved: Schema.optional(Schema.Boolean),
-      effectiveCommitSha: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Code" }) as any as Schema.Schema<Code>;
+export const Code = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(Schema.String),
+  reply: Schema.optional(Schema.String),
+  position: Schema.optional(Position),
+  effectiveRootComment: Schema.optional(Schema.String),
+  resolved: Schema.optional(Schema.Boolean),
+  effectiveCommitSha: Schema.optional(Schema.String),
+}).annotate({ identifier: "Code" });
 
 export interface PullRequestComment {
   /** Identifier. Unique identifier for the pull request comment. The comment id is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/pullRequests/{pull_request}/pullRequestComments/{comment_id}` */
@@ -1051,19 +876,14 @@ export interface PullRequestComment {
   code?: Code;
 }
 
-export const PullRequestComment: Schema.Schema<PullRequestComment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      review: Schema.optional(Review),
-      comment: Schema.optional(Comment),
-      code: Schema.optional(Code),
-    }),
-  ).annotate({
-    identifier: "PullRequestComment",
-  }) as any as Schema.Schema<PullRequestComment>;
+export const PullRequestComment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  review: Schema.optional(Review),
+  comment: Schema.optional(Comment),
+  code: Schema.optional(Code),
+}).annotate({ identifier: "PullRequestComment" });
 
 export interface ListPullRequestCommentsResponse {
   /** The list of pull request comments. */
@@ -1072,15 +892,11 @@ export interface ListPullRequestCommentsResponse {
   nextPageToken?: string;
 }
 
-export const ListPullRequestCommentsResponse: Schema.Schema<ListPullRequestCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPullRequestCommentsResponse",
-  }) as any as Schema.Schema<ListPullRequestCommentsResponse>;
+export const ListPullRequestCommentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPullRequestCommentsResponse" });
 
 export interface CreatePullRequestCommentRequest {
   /** Required. The pull request in which to create the pull request comment. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` */
@@ -1089,29 +905,21 @@ export interface CreatePullRequestCommentRequest {
   pullRequestComment?: PullRequestComment;
 }
 
-export const CreatePullRequestCommentRequest: Schema.Schema<CreatePullRequestCommentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      pullRequestComment: Schema.optional(PullRequestComment),
-    }),
-  ).annotate({
-    identifier: "CreatePullRequestCommentRequest",
-  }) as any as Schema.Schema<CreatePullRequestCommentRequest>;
+export const CreatePullRequestCommentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    pullRequestComment: Schema.optional(PullRequestComment),
+  }).annotate({ identifier: "CreatePullRequestCommentRequest" });
 
 export interface BatchCreatePullRequestCommentsRequest {
   /** Required. The request message specifying the resources to create. There should be exactly one CreatePullRequestCommentRequest with CommentDetail being REVIEW in the list, and no more than 100 CreatePullRequestCommentRequests with CommentDetail being CODE in the list */
   requests?: Array<CreatePullRequestCommentRequest>;
 }
 
-export const BatchCreatePullRequestCommentsRequest: Schema.Schema<BatchCreatePullRequestCommentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(Schema.Array(CreatePullRequestCommentRequest)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePullRequestCommentsRequest",
-  }) as any as Schema.Schema<BatchCreatePullRequestCommentsRequest>;
+export const BatchCreatePullRequestCommentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(CreatePullRequestCommentRequest)),
+  }).annotate({ identifier: "BatchCreatePullRequestCommentsRequest" });
 
 export interface ResolvePullRequestCommentsRequest {
   /** Required. The names of the pull request comments to resolve. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}` Only comments from the same threads are allowed in the same request. */
@@ -1120,15 +928,11 @@ export interface ResolvePullRequestCommentsRequest {
   autoFill?: boolean;
 }
 
-export const ResolvePullRequestCommentsRequest: Schema.Schema<ResolvePullRequestCommentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-      autoFill: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ResolvePullRequestCommentsRequest",
-  }) as any as Schema.Schema<ResolvePullRequestCommentsRequest>;
+export const ResolvePullRequestCommentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+    autoFill: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ResolvePullRequestCommentsRequest" });
 
 export interface UnresolvePullRequestCommentsRequest {
   /** Required. The names of the pull request comments to unresolve. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}` Only comments from the same threads are allowed in the same request. */
@@ -1137,15 +941,11 @@ export interface UnresolvePullRequestCommentsRequest {
   autoFill?: boolean;
 }
 
-export const UnresolvePullRequestCommentsRequest: Schema.Schema<UnresolvePullRequestCommentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-      autoFill: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UnresolvePullRequestCommentsRequest",
-  }) as any as Schema.Schema<UnresolvePullRequestCommentsRequest>;
+export const UnresolvePullRequestCommentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+    autoFill: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "UnresolvePullRequestCommentsRequest" });
 
 export interface IssueComment {
   /** Identifier. Unique identifier for an issue comment. The comment id is generated by the server. Format: `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue}/issueComments/{comment_id}` */
@@ -1158,17 +958,12 @@ export interface IssueComment {
   updateTime?: string;
 }
 
-export const IssueComment: Schema.Schema<IssueComment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IssueComment",
-  }) as any as Schema.Schema<IssueComment>;
+export const IssueComment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "IssueComment" });
 
 export interface ListIssueCommentsResponse {
   /** The list of issue comments. */
@@ -1177,15 +972,11 @@ export interface ListIssueCommentsResponse {
   nextPageToken?: string;
 }
 
-export const ListIssueCommentsResponse: Schema.Schema<ListIssueCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueComments: Schema.optional(Schema.Array(IssueComment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListIssueCommentsResponse",
-  }) as any as Schema.Schema<ListIssueCommentsResponse>;
+export const ListIssueCommentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueComments: Schema.optional(Schema.Array(IssueComment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListIssueCommentsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -1204,62 +995,45 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface BatchCreatePullRequestCommentsResponse {
   /** The list of pull request comments created. */
   pullRequestComments?: Array<PullRequestComment>;
 }
 
-export const BatchCreatePullRequestCommentsResponse: Schema.Schema<BatchCreatePullRequestCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePullRequestCommentsResponse",
-  }) as any as Schema.Schema<BatchCreatePullRequestCommentsResponse>;
+export const BatchCreatePullRequestCommentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
+  }).annotate({ identifier: "BatchCreatePullRequestCommentsResponse" });
 
 export interface ResolvePullRequestCommentsResponse {
   /** The list of pull request comments resolved. */
   pullRequestComments?: Array<PullRequestComment>;
 }
 
-export const ResolvePullRequestCommentsResponse: Schema.Schema<ResolvePullRequestCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
-    }),
-  ).annotate({
-    identifier: "ResolvePullRequestCommentsResponse",
-  }) as any as Schema.Schema<ResolvePullRequestCommentsResponse>;
+export const ResolvePullRequestCommentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
+  }).annotate({ identifier: "ResolvePullRequestCommentsResponse" });
 
 export interface UnresolvePullRequestCommentsResponse {
   /** The list of pull request comments unresolved. */
   pullRequestComments?: Array<PullRequestComment>;
 }
 
-export const UnresolvePullRequestCommentsResponse: Schema.Schema<UnresolvePullRequestCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
-    }),
-  ).annotate({
-    identifier: "UnresolvePullRequestCommentsResponse",
-  }) as any as Schema.Schema<UnresolvePullRequestCommentsResponse>;
+export const UnresolvePullRequestCommentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pullRequestComments: Schema.optional(Schema.Array(PullRequestComment)),
+  }).annotate({ identifier: "UnresolvePullRequestCommentsResponse" });
 
 // ==========================================================================
 // Operations
@@ -1298,7 +1072,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,

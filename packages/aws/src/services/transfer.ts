@@ -1899,6 +1899,8 @@ export type ConnectorEgressConfig = {
 export const ConnectorEgressConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ VpcLattice: ConnectorVpcLatticeEgressConfig }),
 ]);
+export type ConnectorsIpAddressType = "IPV4" | "DUALSTACK" | (string & {});
+export const ConnectorsIpAddressType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateConnectorRequest {
   Url?: string;
   As2Config?: As2ConnectorConfig;
@@ -1908,6 +1910,7 @@ export interface CreateConnectorRequest {
   SftpConfig?: SftpConnectorConfig;
   SecurityPolicyName?: string;
   EgressConfig?: ConnectorEgressConfig;
+  IpAddressType?: ConnectorsIpAddressType;
 }
 export const CreateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1920,6 +1923,7 @@ export const CreateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       SftpConfig: S.optional(SftpConnectorConfig),
       SecurityPolicyName: S.optional(S.String),
       EgressConfig: S.optional(ConnectorEgressConfig),
+      IpAddressType: S.optional(ConnectorsIpAddressType),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1990,6 +1994,7 @@ export interface DescribedConnector {
   EgressType: ConnectorEgressType;
   ErrorMessage?: string;
   Status: ConnectorStatus;
+  IpAddressType?: ConnectorsIpAddressType;
 }
 export const DescribedConnector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2009,6 +2014,7 @@ export const DescribedConnector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     EgressType: ConnectorEgressType,
     ErrorMessage: S.optional(S.String),
     Status: ConnectorStatus,
+    IpAddressType: S.optional(ConnectorsIpAddressType),
   }),
 ).annotate({
   identifier: "DescribedConnector",
@@ -2049,6 +2055,7 @@ export interface UpdateConnectorRequest {
   SftpConfig?: SftpConnectorConfig;
   SecurityPolicyName?: string;
   EgressConfig?: UpdateConnectorEgressConfig;
+  IpAddressType?: ConnectorsIpAddressType;
 }
 export const UpdateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2061,6 +2068,7 @@ export const UpdateConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       SftpConfig: S.optional(SftpConnectorConfig),
       SecurityPolicyName: S.optional(S.String),
       EgressConfig: S.optional(UpdateConnectorEgressConfig),
+      IpAddressType: S.optional(ConnectorsIpAddressType),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),

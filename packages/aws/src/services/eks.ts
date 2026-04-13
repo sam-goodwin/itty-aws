@@ -316,6 +316,11 @@ export type UpdateParamType =
   | "NodeRepairConfig"
   | "UpdatedTier"
   | "PreviousTier"
+  | "WarmPoolEnabled"
+  | "WarmPoolMaxGroupPreparedCapacity"
+  | "WarmPoolMinSize"
+  | "WarmPoolState"
+  | "WarmPoolReuseOnScaleIn"
   | (string & {});
 export const UpdateParamType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface UpdateParam {
@@ -1138,6 +1143,7 @@ export type ProvisionedControlPlaneTier =
   | "tier-xl"
   | "tier-2xl"
   | "tier-4xl"
+  | "tier-8xl"
   | (string & {});
 export const ProvisionedControlPlaneTier = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ControlPlaneScalingConfig {
@@ -1886,6 +1892,28 @@ export type CapacityTypes =
   | "CAPACITY_BLOCK"
   | (string & {});
 export const CapacityTypes = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type WarmPoolState =
+  | "STOPPED"
+  | "RUNNING"
+  | "HIBERNATED"
+  | (string & {});
+export const WarmPoolState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface WarmPoolConfig {
+  enabled?: boolean;
+  minSize?: number;
+  maxGroupPreparedCapacity?: number;
+  poolState?: WarmPoolState;
+  reuseOnScaleIn?: boolean;
+}
+export const WarmPoolConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    minSize: S.optional(S.Number),
+    maxGroupPreparedCapacity: S.optional(S.Number),
+    poolState: S.optional(WarmPoolState),
+    reuseOnScaleIn: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "WarmPoolConfig" }) as any as S.Schema<WarmPoolConfig>;
 export interface CreateNodegroupRequest {
   clusterName: string;
   nodegroupName: string;
@@ -1906,6 +1934,7 @@ export interface CreateNodegroupRequest {
   capacityType?: CapacityTypes;
   version?: string;
   releaseVersion?: string;
+  warmPoolConfig?: WarmPoolConfig;
 }
 export const CreateNodegroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1929,6 +1958,7 @@ export const CreateNodegroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       capacityType: S.optional(CapacityTypes),
       version: S.optional(S.String),
       releaseVersion: S.optional(S.String),
+      warmPoolConfig: S.optional(WarmPoolConfig),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/clusters/{clusterName}/node-groups" }),
@@ -2061,6 +2091,7 @@ export interface Nodegroup {
   nodeRepairConfig?: NodeRepairConfig;
   launchTemplate?: LaunchTemplateSpecification;
   tags?: { [key: string]: string | undefined };
+  warmPoolConfig?: WarmPoolConfig;
 }
 export const Nodegroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2088,6 +2119,7 @@ export const Nodegroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     nodeRepairConfig: S.optional(NodeRepairConfig),
     launchTemplate: S.optional(LaunchTemplateSpecification),
     tags: S.optional(TagMap),
+    warmPoolConfig: S.optional(WarmPoolConfig),
   }),
 ).annotate({ identifier: "Nodegroup" }) as any as S.Schema<Nodegroup>;
 export interface CreateNodegroupResponse {
@@ -4514,6 +4546,7 @@ export interface UpdateNodegroupConfigRequest {
   scalingConfig?: NodegroupScalingConfig;
   updateConfig?: NodegroupUpdateConfig;
   nodeRepairConfig?: NodeRepairConfig;
+  warmPoolConfig?: WarmPoolConfig;
   clientRequestToken?: string;
 }
 export const UpdateNodegroupConfigRequest =
@@ -4526,6 +4559,7 @@ export const UpdateNodegroupConfigRequest =
       scalingConfig: S.optional(NodegroupScalingConfig),
       updateConfig: S.optional(NodegroupUpdateConfig),
       nodeRepairConfig: S.optional(NodeRepairConfig),
+      warmPoolConfig: S.optional(WarmPoolConfig),
       clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(

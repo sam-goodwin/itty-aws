@@ -295,6 +295,11 @@ export const GetSubscriptionsSubscriptionExposedIdOutput =
     pending_invoice_item_interval: Schema.Unknown,
     pending_setup_intent: Schema.Unknown,
     pending_update: Schema.Unknown,
+    presentment_details: Schema.optional(
+      Schema.Struct({
+        presentment_currency: Schema.String,
+      }),
+    ),
     schedule: Schema.Unknown,
     start_date: Schema.Number,
     status: Schema.Literals([

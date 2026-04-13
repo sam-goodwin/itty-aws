@@ -10,6 +10,13 @@ export const PostIssuingCardsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   exp_year: Schema.optional(Schema.Number),
   expand: Schema.optional(Schema.Array(Schema.String)),
   financial_account: Schema.optional(Schema.String),
+  lifecycle_controls: Schema.optional(
+    Schema.Struct({
+      cancel_after: Schema.Struct({
+        payment_count: Schema.Number,
+      }),
+    }),
+  ),
   metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   personalization_design: Schema.optional(Schema.String),
   pin: Schema.optional(
@@ -1059,6 +1066,7 @@ export const PostIssuingCardsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.String,
     last4: Schema.String,
     latest_fraud_warning: Schema.Unknown,
+    lifecycle_controls: Schema.Unknown,
     livemode: Schema.Boolean,
     metadata: Schema.Record(Schema.String, Schema.String),
     number: Schema.optional(Schema.String),

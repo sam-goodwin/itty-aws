@@ -111,6 +111,7 @@ export type OwnerId = string;
 export type OutpostArn = string;
 export type LifeCycleStatus = string;
 export type SiteArn = string;
+export type AutoFillIdempotencyToken = string;
 export type SiteName = string;
 export type SiteDescription = string;
 export type SiteNotes = string;
@@ -470,6 +471,49 @@ export const CreateOutpostOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOutpostOutput",
 }) as any as S.Schema<CreateOutpostOutput>;
+export interface CreateRenewalInput {
+  PaymentOption: PaymentOption;
+  PaymentTerm: PaymentTerm;
+  OutpostIdentifier: string;
+  ClientToken?: string;
+}
+export const CreateRenewalInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PaymentOption: PaymentOption,
+    PaymentTerm: PaymentTerm,
+    OutpostIdentifier: S.String,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/renewals" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateRenewalInput",
+}) as any as S.Schema<CreateRenewalInput>;
+export interface CreateRenewalOutput {
+  PaymentOption?: PaymentOption;
+  PaymentTerm?: PaymentTerm;
+  OutpostId?: string;
+  UpfrontPrice?: number;
+  MonthlyRecurringPrice?: number;
+}
+export const CreateRenewalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PaymentOption: S.optional(PaymentOption),
+    PaymentTerm: S.optional(PaymentTerm),
+    OutpostId: S.optional(S.String),
+    UpfrontPrice: S.optional(S.Number),
+    MonthlyRecurringPrice: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateRenewalOutput",
+}) as any as S.Schema<CreateRenewalOutput>;
 export interface Address {
   ContactName: string;
   ContactPhoneNumber: string;
@@ -1040,6 +1084,7 @@ export type SubscriptionType =
 export const SubscriptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type SubscriptionStatus =
   | "ACTIVE"
+  | "PENDING"
   | "INACTIVE"
   | "CANCELLED"
   | (string & {});
@@ -1075,6 +1120,8 @@ export interface GetOutpostBillingInformationOutput {
   NextToken?: string;
   Subscriptions?: Subscription[];
   ContractEndDate?: string;
+  PaymentTerm?: PaymentTerm;
+  PaymentOption?: PaymentOption;
 }
 export const GetOutpostBillingInformationOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1082,6 +1129,8 @@ export const GetOutpostBillingInformationOutput =
       NextToken: S.optional(S.String),
       Subscriptions: S.optional(SubscriptionList),
       ContractEndDate: S.optional(S.String),
+      PaymentTerm: S.optional(PaymentTerm),
+      PaymentOption: S.optional(PaymentOption),
     }),
   ).annotate({
     identifier: "GetOutpostBillingInformationOutput",
@@ -1183,6 +1232,76 @@ export const GetOutpostSupportedInstanceTypesOutput =
   ).annotate({
     identifier: "GetOutpostSupportedInstanceTypesOutput",
   }) as any as S.Schema<GetOutpostSupportedInstanceTypesOutput>;
+export interface GetRenewalPricingInput {
+  OutpostIdentifier: string;
+}
+export const GetRenewalPricingInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      OutpostIdentifier: S.String.pipe(T.HttpLabel("OutpostIdentifier")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/outpost/{OutpostIdentifier}/renewal-pricing",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetRenewalPricingInput",
+}) as any as S.Schema<GetRenewalPricingInput>;
+export type PricingResult = "PRICED" | "UNABLE_TO_PRICE" | (string & {});
+export const PricingResult = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type QuotePricingType = "SUBSCRIPTION" | (string & {});
+export const QuotePricingType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SubscriptionPricingDetails {
+  PaymentOption?: PaymentOption;
+  PaymentTerm?: PaymentTerm;
+  UpfrontPrice?: number;
+  MonthlyRecurringPrice?: number;
+}
+export const SubscriptionPricingDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      PaymentOption: S.optional(PaymentOption),
+      PaymentTerm: S.optional(PaymentTerm),
+      UpfrontPrice: S.optional(S.Number),
+      MonthlyRecurringPrice: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "SubscriptionPricingDetails",
+}) as any as S.Schema<SubscriptionPricingDetails>;
+export interface PricingOption {
+  PricingType?: QuotePricingType;
+  SubscriptionPricingDetails?: SubscriptionPricingDetails;
+}
+export const PricingOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PricingType: S.optional(QuotePricingType),
+    SubscriptionPricingDetails: S.optional(SubscriptionPricingDetails),
+  }),
+).annotate({ identifier: "PricingOption" }) as any as S.Schema<PricingOption>;
+export type PricingOptionList = PricingOption[];
+export const PricingOptionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(PricingOption);
+export interface GetRenewalPricingOutput {
+  PricingResult?: PricingResult;
+  PricingOptions?: PricingOption[];
+}
+export const GetRenewalPricingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      PricingResult: S.optional(PricingResult),
+      PricingOptions: S.optional(PricingOptionList),
+    }),
+).annotate({
+  identifier: "GetRenewalPricingOutput",
+}) as any as S.Schema<GetRenewalPricingOutput>;
 export interface GetSiteInput {
   SiteId: string;
 }
@@ -1325,16 +1444,32 @@ export const ListAssetInstancesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAssetInstancesOutput>;
 export type HostIdList = string[];
 export const HostIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
-export type AssetState = "ACTIVE" | "RETIRING" | "ISOLATED" | (string & {});
+export type AssetState =
+  | "ACTIVE"
+  | "RETIRING"
+  | "ISOLATED"
+  | "INSTALLING"
+  | (string & {});
 export const AssetState = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type StatusList = AssetState[];
 export const StatusList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AssetState);
+export type AssetType =
+  | "COMPUTE"
+  | "STORAGE"
+  | "POWERSHELF"
+  | "SWITCH"
+  | "NETWORKING"
+  | (string & {});
+export const AssetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AssetTypeList = AssetType[];
+export const AssetTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AssetType);
 export interface ListAssetsInput {
   OutpostIdentifier: string;
   HostIdFilter?: string[];
   MaxResults?: number;
   NextToken?: string;
   StatusFilter?: AssetState[];
+  AssetTypeFilter?: AssetType[];
 }
 export const ListAssetsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1343,6 +1478,9 @@ export const ListAssetsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
     StatusFilter: S.optional(StatusList).pipe(T.HttpQuery("StatusFilter")),
+    AssetTypeFilter: S.optional(AssetTypeList).pipe(
+      T.HttpQuery("AssetTypeFilter"),
+    ),
   }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/outposts/{OutpostIdentifier}/assets" }),
@@ -1356,12 +1494,11 @@ export const ListAssetsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetsInput",
 }) as any as S.Schema<ListAssetsInput>;
-export type AssetType = "COMPUTE" | (string & {});
-export const AssetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ComputeAssetState =
   | "ACTIVE"
   | "ISOLATED"
   | "RETIRING"
+  | "INSTALLING"
   | (string & {});
 export const ComputeAssetState = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type InstanceFamilies = string[];
@@ -2352,6 +2489,30 @@ export const createOutpost: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type CreateRenewalError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a renewal contract for the specified Outpost.
+ */
+export const createRenewal: API.OperationMethod<
+  CreateRenewalInput,
+  CreateRenewalOutput,
+  CreateRenewalError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateRenewalInput,
+  output: CreateRenewalOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+}));
 export type CreateSiteError =
   | AccessDeniedException
   | ConflictException
@@ -2681,6 +2842,30 @@ export const getOutpostSupportedInstanceTypes: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
+}));
+export type GetRenewalPricingError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets all available renewal pricing options for the specified Outpost.
+ */
+export const getRenewalPricing: API.OperationMethod<
+  GetRenewalPricingInput,
+  GetRenewalPricingOutput,
+  GetRenewalPricingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRenewalPricingInput,
+  output: GetRenewalPricingOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
 }));
 export type GetSiteError =
   | AccessDeniedException

@@ -23,249 +23,94 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
-export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+export interface CommitCursorResponse {}
+
+export const CommitCursorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CommitCursorResponse" });
+
+export interface Cursor {
+  /** The offset of a message within a topic partition. Must be greater than or equal 0. */
+  offset?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const Cursor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offset: Schema.optional(Schema.String),
+}).annotate({ identifier: "Cursor" });
 
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
-
-export interface Capacity {
-  /** Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16. */
-  publishMibPerSec?: number;
-  /** Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32. */
-  subscribeMibPerSec?: number;
+export interface PartitionCursor {
+  /** The partition this is for. */
+  partition?: string;
+  /** The value of the cursor. */
+  cursor?: Cursor;
 }
 
-export const Capacity: Schema.Schema<Capacity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publishMibPerSec: Schema.optional(Schema.Number),
-      subscribeMibPerSec: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Capacity" }) as any as Schema.Schema<Capacity>;
+export const PartitionCursor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partition: Schema.optional(Schema.String),
+  cursor: Schema.optional(Cursor),
+}).annotate({ identifier: "PartitionCursor" });
 
-export interface PartitionConfig {
-  /** The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity */
-  count?: string;
-  /** DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4]. */
-  scale?: number;
-  /** The capacity configuration. */
-  capacity?: Capacity;
+export interface ComputeMessageStatsRequest {
+  /** The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages. */
+  endCursor?: Cursor;
+  /** Required. The partition for which we should compute message stats. */
+  partition?: string;
+  /** The inclusive start of the range. */
+  startCursor?: Cursor;
 }
 
-export const PartitionConfig: Schema.Schema<PartitionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      scale: Schema.optional(Schema.Number),
-      capacity: Schema.optional(Capacity),
-    }),
-  ).annotate({
-    identifier: "PartitionConfig",
-  }) as any as Schema.Schema<PartitionConfig>;
-
-export interface RetentionConfig {
-  /** The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`. */
-  perPartitionBytes?: string;
-  /** How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`. */
-  period?: string;
-}
-
-export const RetentionConfig: Schema.Schema<RetentionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perPartitionBytes: Schema.optional(Schema.String),
-      period: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetentionConfig",
-  }) as any as Schema.Schema<RetentionConfig>;
-
-export interface ReservationConfig {
-  /** The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
-  throughputReservation?: string;
-}
-
-export const ReservationConfig: Schema.Schema<ReservationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      throughputReservation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReservationConfig",
-  }) as any as Schema.Schema<ReservationConfig>;
-
-export interface Topic {
-  /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
-  name?: string;
-  /** The settings for this topic's partitions. */
-  partitionConfig?: PartitionConfig;
-  /** The settings for this topic's message retention. */
-  retentionConfig?: RetentionConfig;
-  /** The settings for this topic's Reservation usage. */
-  reservationConfig?: ReservationConfig;
-}
-
-export const Topic: Schema.Schema<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      partitionConfig: Schema.optional(PartitionConfig),
-      retentionConfig: Schema.optional(RetentionConfig),
-      reservationConfig: Schema.optional(ReservationConfig),
-    }),
-  ).annotate({ identifier: "Topic" }) as any as Schema.Schema<Topic>;
-
-export interface TopicPartitions {
-  /** The number of partitions in the topic. */
-  partitionCount?: string;
-}
-
-export const TopicPartitions: Schema.Schema<TopicPartitions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TopicPartitions",
-  }) as any as Schema.Schema<TopicPartitions>;
-
-export interface ListTopicsResponse {
-  /** The list of topic in the requested parent. The order of the topics is unspecified. */
-  topics?: Array<Topic>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-}
-
-export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topics: Schema.optional(Schema.Array(Topic)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicsResponse",
-  }) as any as Schema.Schema<ListTopicsResponse>;
-
-export interface ListTopicSubscriptionsResponse {
-  /** The names of subscriptions attached to the topic. The order of the subscriptions is unspecified. */
-  subscriptions?: Array<string>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-}
-
-export const ListTopicSubscriptionsResponse: Schema.Schema<ListTopicSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriptions: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicSubscriptionsResponse",
-  }) as any as Schema.Schema<ListTopicSubscriptionsResponse>;
-
-export interface DeliveryConfig {
-  /** The DeliveryRequirement for this subscription. */
-  deliveryRequirement?:
-    | "DELIVERY_REQUIREMENT_UNSPECIFIED"
-    | "DELIVER_IMMEDIATELY"
-    | "DELIVER_AFTER_STORED"
-    | (string & {});
-}
-
-export const DeliveryConfig: Schema.Schema<DeliveryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deliveryRequirement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeliveryConfig",
-  }) as any as Schema.Schema<DeliveryConfig>;
+export const ComputeMessageStatsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endCursor: Schema.optional(Cursor),
+    partition: Schema.optional(Schema.String),
+    startCursor: Schema.optional(Cursor),
+  }).annotate({ identifier: "ComputeMessageStatsRequest" });
 
 export interface PubSubConfig {
   /** The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed. */
   topic?: string;
 }
 
-export const PubSubConfig: Schema.Schema<PubSubConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubSubConfig",
-  }) as any as Schema.Schema<PubSubConfig>;
+export const PubSubConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.String),
+}).annotate({ identifier: "PubSubConfig" });
 
 export interface ExportConfig {
   /** The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error. */
@@ -276,6 +121,10 @@ export interface ExportConfig {
     | "PERMISSION_DENIED"
     | "NOT_FOUND"
     | (string & {});
+  /** Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed. */
+  deadLetterTopic?: string;
+  /** Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic. */
+  pubsubConfig?: PubSubConfig;
   /** Output only. The current state of the export, which may be different to the desired state due to errors. This field is output only. */
   currentState?:
     | "STATE_UNSPECIFIED"
@@ -284,95 +133,97 @@ export interface ExportConfig {
     | "PERMISSION_DENIED"
     | "NOT_FOUND"
     | (string & {});
-  /** Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed. */
-  deadLetterTopic?: string;
-  /** Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic. */
-  pubsubConfig?: PubSubConfig;
 }
 
-export const ExportConfig: Schema.Schema<ExportConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      desiredState: Schema.optional(Schema.String),
-      currentState: Schema.optional(Schema.String),
-      deadLetterTopic: Schema.optional(Schema.String),
-      pubsubConfig: Schema.optional(PubSubConfig),
-    }),
-  ).annotate({
-    identifier: "ExportConfig",
-  }) as any as Schema.Schema<ExportConfig>;
+export const ExportConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  desiredState: Schema.optional(Schema.String),
+  deadLetterTopic: Schema.optional(Schema.String),
+  pubsubConfig: Schema.optional(PubSubConfig),
+  currentState: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExportConfig" });
 
-export interface Subscription {
-  /** The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} */
+export interface SeekSubscriptionResponse {}
+
+export const SeekSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SeekSubscriptionResponse",
+  });
+
+export interface ComputeTimeCursorResponse {
+  /** If present, the cursor references the first message with time greater than or equal to the specified target time. If such a message cannot be found, the cursor will be unset (i.e. `cursor` is not present). */
+  cursor?: Cursor;
+}
+
+export const ComputeTimeCursorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cursor: Schema.optional(Cursor),
+  }).annotate({ identifier: "ComputeTimeCursorResponse" });
+
+export interface RetentionConfig {
+  /** The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`. */
+  perPartitionBytes?: string;
+  /** How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`. */
+  period?: string;
+}
+
+export const RetentionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  perPartitionBytes: Schema.optional(Schema.String),
+  period: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetentionConfig" });
+
+export interface Capacity {
+  /** Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32. */
+  subscribeMibPerSec?: number;
+  /** Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16. */
+  publishMibPerSec?: number;
+}
+
+export const Capacity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscribeMibPerSec: Schema.optional(Schema.Number),
+  publishMibPerSec: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Capacity" });
+
+export interface PartitionConfig {
+  /** The capacity configuration. */
+  capacity?: Capacity;
+  /** The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity */
+  count?: string;
+  /** DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4]. */
+  scale?: number;
+}
+
+export const PartitionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  capacity: Schema.optional(Capacity),
+  count: Schema.optional(Schema.String),
+  scale: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PartitionConfig" });
+
+export interface ReservationConfig {
+  /** The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
+  throughputReservation?: string;
+}
+
+export const ReservationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  throughputReservation: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReservationConfig" });
+
+export interface Topic {
+  /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
   name?: string;
-  /** The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
-  topic?: string;
-  /** The settings for this subscription's message delivery. */
-  deliveryConfig?: DeliveryConfig;
-  /** If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination. */
-  exportConfig?: ExportConfig;
+  /** The settings for this topic's partitions. */
+  partitionConfig?: PartitionConfig;
+  /** The settings for this topic's Reservation usage. */
+  reservationConfig?: ReservationConfig;
+  /** The settings for this topic's message retention. */
+  retentionConfig?: RetentionConfig;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      deliveryConfig: Schema.optional(DeliveryConfig),
-      exportConfig: Schema.optional(ExportConfig),
-    }),
-  ).annotate({
-    identifier: "Subscription",
-  }) as any as Schema.Schema<Subscription>;
-
-export interface ListSubscriptionsResponse {
-  /** The list of subscriptions in the requested parent. The order of the subscriptions is unspecified. */
-  subscriptions?: Array<Subscription>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
-}
-
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriptions: Schema.optional(Schema.Array(Subscription)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSubscriptionsResponse",
-  }) as any as Schema.Schema<ListSubscriptionsResponse>;
-
-export interface TimeTarget {
-  /** Request the cursor of the first message with publish time greater than or equal to `publish_time`. All messages thereafter are guaranteed to have publish times >= `publish_time`. */
-  publishTime?: string;
-  /** Request the cursor of the first message with event time greater than or equal to `event_time`. If messages are missing an event time, the publish time is used as a fallback. As event times are user supplied, subsequent messages may have event times less than `event_time` and should be filtered by the client, if necessary. */
-  eventTime?: string;
-}
-
-export const TimeTarget: Schema.Schema<TimeTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publishTime: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeTarget" }) as any as Schema.Schema<TimeTarget>;
-
-export interface SeekSubscriptionRequest {
-  /** Seek to a named position with respect to the message backlog. */
-  namedTarget?: "NAMED_TARGET_UNSPECIFIED" | "TAIL" | "HEAD" | (string & {});
-  /** Seek to the first message whose publish or event time is greater than or equal to the specified query time. If no such message can be located, will seek to the end of the message backlog. */
-  timeTarget?: TimeTarget;
-}
-
-export const SeekSubscriptionRequest: Schema.Schema<SeekSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedTarget: Schema.optional(Schema.String),
-      timeTarget: Schema.optional(TimeTarget),
-    }),
-  ).annotate({
-    identifier: "SeekSubscriptionRequest",
-  }) as any as Schema.Schema<SeekSubscriptionRequest>;
+export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  partitionConfig: Schema.optional(PartitionConfig),
+  reservationConfig: Schema.optional(ReservationConfig),
+  retentionConfig: Schema.optional(RetentionConfig),
+}).annotate({ identifier: "Topic" });
 
 export interface Reservation {
   /** The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
@@ -381,102 +232,57 @@ export interface Reservation {
   throughputCapacity?: string;
 }
 
-export const Reservation: Schema.Schema<Reservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      throughputCapacity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Reservation",
-  }) as any as Schema.Schema<Reservation>;
+export const Reservation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  throughputCapacity: Schema.optional(Schema.String),
+}).annotate({ identifier: "Reservation" });
+
+export interface OperationMetadata {
+  /** The time the operation was created. */
+  createTime?: string;
+  /** Resource path for the target of the operation. For example, targets of seeks are subscription resources, structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} */
+  target?: string;
+  /** Name of the verb executed by the operation. */
+  verb?: string;
+  /** The time the operation finished running. Not set if the operation has not completed. */
+  endTime?: string;
+}
+
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListReservationsResponse {
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
   /** The list of reservation in the requested parent. The order of the reservations is unspecified. */
   reservations?: Array<Reservation>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
 }
 
-export const ListReservationsResponse: Schema.Schema<ListReservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reservations: Schema.optional(Schema.Array(Reservation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReservationsResponse",
-  }) as any as Schema.Schema<ListReservationsResponse>;
+export const ListReservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    reservations: Schema.optional(Schema.Array(Reservation)),
+  }).annotate({ identifier: "ListReservationsResponse" });
 
-export interface ListReservationTopicsResponse {
-  /** The names of topics attached to the reservation. The order of the topics is unspecified. */
-  topics?: Array<string>;
-  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
-  nextPageToken?: string;
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
+
+export interface ComputeHeadCursorResponse {
+  /** The head cursor. */
+  headCursor?: Cursor;
 }
 
-export const ListReservationTopicsResponse: Schema.Schema<ListReservationTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topics: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReservationTopicsResponse",
-  }) as any as Schema.Schema<ListReservationTopicsResponse>;
-
-export interface Cursor {
-  /** The offset of a message within a topic partition. Must be greater than or equal 0. */
-  offset?: string;
-}
-
-export const Cursor: Schema.Schema<Cursor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offset: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Cursor" }) as any as Schema.Schema<Cursor>;
-
-export interface CommitCursorRequest {
-  /** The partition for which to update the cursor. Partitions are zero indexed, so `partition` must be in the range [0, topic.num_partitions). */
-  partition?: string;
-  /** The new value for the committed cursor. */
-  cursor?: Cursor;
-}
-
-export const CommitCursorRequest: Schema.Schema<CommitCursorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      cursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "CommitCursorRequest",
-  }) as any as Schema.Schema<CommitCursorRequest>;
-
-export interface CommitCursorResponse {}
-
-export const CommitCursorResponse: Schema.Schema<CommitCursorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CommitCursorResponse",
-  }) as any as Schema.Schema<CommitCursorResponse>;
-
-export interface PartitionCursor {
-  /** The partition this is for. */
-  partition?: string;
-  /** The value of the cursor. */
-  cursor?: Cursor;
-}
-
-export const PartitionCursor: Schema.Schema<PartitionCursor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      cursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "PartitionCursor",
-  }) as any as Schema.Schema<PartitionCursor>;
+export const ComputeHeadCursorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headCursor: Schema.optional(Cursor),
+  }).annotate({ identifier: "ComputeHeadCursorResponse" });
 
 export interface ListPartitionCursorsResponse {
   /** The partition cursors from this request. */
@@ -485,86 +291,53 @@ export interface ListPartitionCursorsResponse {
   nextPageToken?: string;
 }
 
-export const ListPartitionCursorsResponse: Schema.Schema<ListPartitionCursorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionCursors: Schema.optional(Schema.Array(PartitionCursor)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPartitionCursorsResponse",
-  }) as any as Schema.Schema<ListPartitionCursorsResponse>;
+export const ListPartitionCursorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitionCursors: Schema.optional(Schema.Array(PartitionCursor)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPartitionCursorsResponse" });
 
-export interface ComputeMessageStatsRequest {
-  /** Required. The partition for which we should compute message stats. */
-  partition?: string;
-  /** The inclusive start of the range. */
-  startCursor?: Cursor;
-  /** The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages. */
-  endCursor?: Cursor;
+export interface ListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: Array<Operation>;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: Array<string>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 
-export const ComputeMessageStatsRequest: Schema.Schema<ComputeMessageStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      startCursor: Schema.optional(Cursor),
-      endCursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "ComputeMessageStatsRequest",
-  }) as any as Schema.Schema<ComputeMessageStatsRequest>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
-export interface ComputeMessageStatsResponse {
-  /** The count of messages. */
-  messageCount?: string;
-  /** The number of quota bytes accounted to these messages. */
-  messageBytes?: string;
-  /** The minimum publish timestamp across these messages. Note that publish timestamps within a partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no messages. */
-  minimumPublishTime?: string;
-  /** The minimum event timestamp across these messages. For the purposes of this computation, if a message does not have an event time, we use the publish time. The timestamp will be unset if there are no messages. */
-  minimumEventTime?: string;
+export interface ListReservationTopicsResponse {
+  /** The names of topics attached to the reservation. The order of the topics is unspecified. */
+  topics?: Array<string>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
 }
 
-export const ComputeMessageStatsResponse: Schema.Schema<ComputeMessageStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageCount: Schema.optional(Schema.String),
-      messageBytes: Schema.optional(Schema.String),
-      minimumPublishTime: Schema.optional(Schema.String),
-      minimumEventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeMessageStatsResponse",
-  }) as any as Schema.Schema<ComputeMessageStatsResponse>;
+export const ListReservationTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topics: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListReservationTopicsResponse" });
 
-export interface ComputeHeadCursorRequest {
-  /** Required. The partition for which we should compute the head cursor. */
-  partition?: string;
+export interface TimeTarget {
+  /** Request the cursor of the first message with publish time greater than or equal to `publish_time`. All messages thereafter are guaranteed to have publish times >= `publish_time`. */
+  publishTime?: string;
+  /** Request the cursor of the first message with event time greater than or equal to `event_time`. If messages are missing an event time, the publish time is used as a fallback. As event times are user supplied, subsequent messages may have event times less than `event_time` and should be filtered by the client, if necessary. */
+  eventTime?: string;
 }
 
-export const ComputeHeadCursorRequest: Schema.Schema<ComputeHeadCursorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeHeadCursorRequest",
-  }) as any as Schema.Schema<ComputeHeadCursorRequest>;
-
-export interface ComputeHeadCursorResponse {
-  /** The head cursor. */
-  headCursor?: Cursor;
-}
-
-export const ComputeHeadCursorResponse: Schema.Schema<ComputeHeadCursorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headCursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "ComputeHeadCursorResponse",
-  }) as any as Schema.Schema<ComputeHeadCursorResponse>;
+export const TimeTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publishTime: Schema.optional(Schema.String),
+  eventTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeTarget" });
 
 export interface ComputeTimeCursorRequest {
   /** Required. The partition for which we should compute the cursor. */
@@ -573,69 +346,193 @@ export interface ComputeTimeCursorRequest {
   target?: TimeTarget;
 }
 
-export const ComputeTimeCursorRequest: Schema.Schema<ComputeTimeCursorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      target: Schema.optional(TimeTarget),
-    }),
-  ).annotate({
-    identifier: "ComputeTimeCursorRequest",
-  }) as any as Schema.Schema<ComputeTimeCursorRequest>;
+export const ComputeTimeCursorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partition: Schema.optional(Schema.String),
+    target: Schema.optional(TimeTarget),
+  }).annotate({ identifier: "ComputeTimeCursorRequest" });
 
-export interface ComputeTimeCursorResponse {
-  /** If present, the cursor references the first message with time greater than or equal to the specified target time. If such a message cannot be found, the cursor will be unset (i.e. `cursor` is not present). */
+export interface Empty {}
+
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
+
+export interface SeekSubscriptionRequest {
+  /** Seek to a named position with respect to the message backlog. */
+  namedTarget?: "NAMED_TARGET_UNSPECIFIED" | "TAIL" | "HEAD" | (string & {});
+  /** Seek to the first message whose publish or event time is greater than or equal to the specified query time. If no such message can be located, will seek to the end of the message backlog. */
+  timeTarget?: TimeTarget;
+}
+
+export const SeekSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namedTarget: Schema.optional(Schema.String),
+    timeTarget: Schema.optional(TimeTarget),
+  }).annotate({ identifier: "SeekSubscriptionRequest" });
+
+export interface DeliveryConfig {
+  /** The DeliveryRequirement for this subscription. */
+  deliveryRequirement?:
+    | "DELIVERY_REQUIREMENT_UNSPECIFIED"
+    | "DELIVER_IMMEDIATELY"
+    | "DELIVER_AFTER_STORED"
+    | (string & {});
+}
+
+export const DeliveryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deliveryRequirement: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeliveryConfig" });
+
+export interface Subscription {
+  /** The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} */
+  name?: string;
+  /** The settings for this subscription's message delivery. */
+  deliveryConfig?: DeliveryConfig;
+  /** If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination. */
+  exportConfig?: ExportConfig;
+  /** The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
+  topic?: string;
+}
+
+export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  deliveryConfig: Schema.optional(DeliveryConfig),
+  exportConfig: Schema.optional(ExportConfig),
+  topic: Schema.optional(Schema.String),
+}).annotate({ identifier: "Subscription" });
+
+export interface TopicPartitions {
+  /** The number of partitions in the topic. */
+  partitionCount?: string;
+}
+
+export const TopicPartitions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitionCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "TopicPartitions" });
+
+export interface ComputeMessageStatsResponse {
+  /** The minimum publish timestamp across these messages. Note that publish timestamps within a partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no messages. */
+  minimumPublishTime?: string;
+  /** The number of quota bytes accounted to these messages. */
+  messageBytes?: string;
+  /** The count of messages. */
+  messageCount?: string;
+  /** The minimum event timestamp across these messages. For the purposes of this computation, if a message does not have an event time, we use the publish time. The timestamp will be unset if there are no messages. */
+  minimumEventTime?: string;
+}
+
+export const ComputeMessageStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimumPublishTime: Schema.optional(Schema.String),
+    messageBytes: Schema.optional(Schema.String),
+    messageCount: Schema.optional(Schema.String),
+    minimumEventTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeMessageStatsResponse" });
+
+export interface CommitCursorRequest {
+  /** The partition for which to update the cursor. Partitions are zero indexed, so `partition` must be in the range [0, topic.num_partitions). */
+  partition?: string;
+  /** The new value for the committed cursor. */
   cursor?: Cursor;
 }
 
-export const ComputeTimeCursorResponse: Schema.Schema<ComputeTimeCursorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "ComputeTimeCursorResponse",
-  }) as any as Schema.Schema<ComputeTimeCursorResponse>;
+export const CommitCursorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partition: Schema.optional(Schema.String),
+  cursor: Schema.optional(Cursor),
+}).annotate({ identifier: "CommitCursorRequest" });
 
-export interface SeekSubscriptionResponse {}
-
-export const SeekSubscriptionResponse: Schema.Schema<SeekSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SeekSubscriptionResponse",
-  }) as any as Schema.Schema<SeekSubscriptionResponse>;
-
-export interface OperationMetadata {
-  /** The time the operation was created. */
-  createTime?: string;
-  /** The time the operation finished running. Not set if the operation has not completed. */
-  endTime?: string;
-  /** Resource path for the target of the operation. For example, targets of seeks are subscription resources, structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} */
-  target?: string;
-  /** Name of the verb executed by the operation. */
-  verb?: string;
+export interface ComputeHeadCursorRequest {
+  /** Required. The partition for which we should compute the head cursor. */
+  partition?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const ComputeHeadCursorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeHeadCursorRequest" });
+
+export interface ListSubscriptionsResponse {
+  /** The list of subscriptions in the requested parent. The order of the subscriptions is unspecified. */
+  subscriptions?: Array<Subscription>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+}
+
+export const ListSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSubscriptionsResponse" });
+
+export interface ListTopicsResponse {
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+  /** The list of topic in the requested parent. The order of the topics is unspecified. */
+  topics?: Array<Topic>;
+}
+
+export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  topics: Schema.optional(Schema.Array(Topic)),
+}).annotate({ identifier: "ListTopicsResponse" });
+
+export interface ListTopicSubscriptionsResponse {
+  /** The names of subscriptions attached to the topic. The order of the subscriptions is unspecified. */
+  subscriptions?: Array<string>;
+  /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
+  nextPageToken?: string;
+}
+
+export const ListTopicSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTopicSubscriptionsResponse" });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
 
-export interface ListAdminProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
+export interface GetAdminProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
   name: string;
+}
+
+export const GetAdminProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetAdminProjectsLocationsOperationsRequest>;
+
+export type GetAdminProjectsLocationsOperationsResponse = Operation;
+export const GetAdminProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetAdminProjectsLocationsOperationsError = DefaultErrors;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getAdminProjectsLocationsOperations: API.OperationMethod<
+  GetAdminProjectsLocationsOperationsRequest,
+  GetAdminProjectsLocationsOperationsResponse,
+  GetAdminProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAdminProjectsLocationsOperationsRequest,
+  output: GetAdminProjectsLocationsOperationsResponse,
+  errors: [],
+}));
+
+export interface ListAdminProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
@@ -646,8 +543,8 @@ export interface ListAdminProjectsLocationsOperationsRequest {
 
 export const ListAdminProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -682,40 +579,6 @@ export const listAdminProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetAdminProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetAdminProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAdminProjectsLocationsOperationsRequest>;
-
-export type GetAdminProjectsLocationsOperationsResponse = Operation;
-export const GetAdminProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetAdminProjectsLocationsOperationsError = DefaultErrors;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getAdminProjectsLocationsOperations: API.OperationMethod<
-  GetAdminProjectsLocationsOperationsRequest,
-  GetAdminProjectsLocationsOperationsResponse,
-  GetAdminProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAdminProjectsLocationsOperationsRequest,
-  output: GetAdminProjectsLocationsOperationsResponse,
-  errors: [],
 }));
 
 export interface DeleteAdminProjectsLocationsOperationsRequest {
@@ -787,6 +650,47 @@ export const cancelAdminProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelAdminProjectsLocationsOperationsRequest,
   output: CancelAdminProjectsLocationsOperationsResponse,
+  errors: [],
+}));
+
+export interface PatchAdminProjectsLocationsTopicsRequest {
+  /** Required. A mask specifying the topic fields to change. */
+  updateMask?: string;
+  /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
+  name: string;
+  /** Request body */
+  body?: Topic;
+}
+
+export const PatchAdminProjectsLocationsTopicsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Topic).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAdminProjectsLocationsTopicsRequest>;
+
+export type PatchAdminProjectsLocationsTopicsResponse = Topic;
+export const PatchAdminProjectsLocationsTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Topic;
+
+export type PatchAdminProjectsLocationsTopicsError = DefaultErrors;
+
+/** Updates properties of the specified topic. */
+export const patchAdminProjectsLocationsTopics: API.OperationMethod<
+  PatchAdminProjectsLocationsTopicsRequest,
+  PatchAdminProjectsLocationsTopicsResponse,
+  PatchAdminProjectsLocationsTopicsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAdminProjectsLocationsTopicsRequest,
+  output: PatchAdminProjectsLocationsTopicsResponse,
   errors: [],
 }));
 
@@ -943,47 +847,6 @@ export const listAdminProjectsLocationsTopics: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PatchAdminProjectsLocationsTopicsRequest {
-  /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
-  name: string;
-  /** Required. A mask specifying the topic fields to change. */
-  updateMask?: string;
-  /** Request body */
-  body?: Topic;
-}
-
-export const PatchAdminProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Topic).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAdminProjectsLocationsTopicsRequest>;
-
-export type PatchAdminProjectsLocationsTopicsResponse = Topic;
-export const PatchAdminProjectsLocationsTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Topic;
-
-export type PatchAdminProjectsLocationsTopicsError = DefaultErrors;
-
-/** Updates properties of the specified topic. */
-export const patchAdminProjectsLocationsTopics: API.OperationMethod<
-  PatchAdminProjectsLocationsTopicsRequest,
-  PatchAdminProjectsLocationsTopicsResponse,
-  PatchAdminProjectsLocationsTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAdminProjectsLocationsTopicsRequest,
-  output: PatchAdminProjectsLocationsTopicsResponse,
-  errors: [],
-}));
-
 export interface DeleteAdminProjectsLocationsTopicsRequest {
   /** Required. The name of the topic to delete. */
   name: string;
@@ -1019,19 +882,19 @@ export const deleteAdminProjectsLocationsTopics: API.OperationMethod<
 }));
 
 export interface ListAdminProjectsLocationsTopicsSubscriptionsRequest {
-  /** Required. The name of the topic whose subscriptions to list. */
-  name: string;
-  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned. */
-  pageSize?: number;
   /** A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token. */
   pageToken?: string;
+  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned. */
+  pageSize?: number;
+  /** Required. The name of the topic whose subscriptions to list. */
+  name: string;
 }
 
 export const ListAdminProjectsLocationsTopicsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1063,25 +926,183 @@ export const listAdminProjectsLocationsTopicsSubscriptions: API.PaginatedOperati
   },
 }));
 
+export interface SeekAdminProjectsLocationsSubscriptionsRequest {
+  /** Required. The name of the subscription to seek. */
+  name: string;
+  /** Request body */
+  body?: SeekSubscriptionRequest;
+}
+
+export const SeekAdminProjectsLocationsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SeekSubscriptionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:seek",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>;
+
+export type SeekAdminProjectsLocationsSubscriptionsResponse = Operation;
+export const SeekAdminProjectsLocationsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type SeekAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+
+/** Performs an out-of-band seek for a subscription to a specified target, which may be timestamps or named positions within the message backlog. Seek translates these targets to cursors for each partition and orchestrates subscribers to start consuming messages from these seek cursors. If an operation is returned, the seek has been registered and subscribers will eventually receive messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum supported client library version and not a system that tracks cursors independently of Pub/Sub Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients. If clients would like to know when subscribers react to the seek (or not), they can poll the operation. The seek operation will succeed and complete once subscribers are ready to receive messages from the seek cursors for all partitions of the topic. This means that the seek operation will not complete until all subscribers come online. If the previous seek operation has not yet completed, it will be aborted and the new invocation of seek will supersede it. */
+export const seekAdminProjectsLocationsSubscriptions: API.OperationMethod<
+  SeekAdminProjectsLocationsSubscriptionsRequest,
+  SeekAdminProjectsLocationsSubscriptionsResponse,
+  SeekAdminProjectsLocationsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SeekAdminProjectsLocationsSubscriptionsRequest,
+  output: SeekAdminProjectsLocationsSubscriptionsResponse,
+  errors: [],
+}));
+
+export interface PatchAdminProjectsLocationsSubscriptionsRequest {
+  /** The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} */
+  name: string;
+  /** Required. A mask specifying the subscription fields to change. */
+  updateMask?: string;
+  /** Request body */
+  body?: Subscription;
+}
+
+export const PatchAdminProjectsLocationsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Subscription).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>;
+
+export type PatchAdminProjectsLocationsSubscriptionsResponse = Subscription;
+export const PatchAdminProjectsLocationsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+
+export type PatchAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+
+/** Updates properties of the specified subscription. */
+export const patchAdminProjectsLocationsSubscriptions: API.OperationMethod<
+  PatchAdminProjectsLocationsSubscriptionsRequest,
+  PatchAdminProjectsLocationsSubscriptionsResponse,
+  PatchAdminProjectsLocationsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAdminProjectsLocationsSubscriptionsRequest,
+  output: PatchAdminProjectsLocationsSubscriptionsResponse,
+  errors: [],
+}));
+
+export interface ListAdminProjectsLocationsSubscriptionsRequest {
+  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the parent will be returned. */
+  pageSize?: number;
+  /** A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent whose subscriptions are to be listed. Structured like `projects/{project_number}/locations/{location}`. */
+  parent: string;
+}
+
+export const ListAdminProjectsLocationsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
+
+export type ListAdminProjectsLocationsSubscriptionsResponse =
+  ListSubscriptionsResponse;
+export const ListAdminProjectsLocationsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
+
+export type ListAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+
+/** Returns the list of subscriptions for the given project. */
+export const listAdminProjectsLocationsSubscriptions: API.PaginatedOperationMethod<
+  ListAdminProjectsLocationsSubscriptionsRequest,
+  ListAdminProjectsLocationsSubscriptionsResponse,
+  ListAdminProjectsLocationsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAdminProjectsLocationsSubscriptionsRequest,
+  output: ListAdminProjectsLocationsSubscriptionsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteAdminProjectsLocationsSubscriptionsRequest {
+  /** Required. The name of the subscription to delete. */
+  name: string;
+}
+
+export const DeleteAdminProjectsLocationsSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>;
+
+export type DeleteAdminProjectsLocationsSubscriptionsResponse = Empty;
+export const DeleteAdminProjectsLocationsSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+
+/** Deletes the specified subscription. */
+export const deleteAdminProjectsLocationsSubscriptions: API.OperationMethod<
+  DeleteAdminProjectsLocationsSubscriptionsRequest,
+  DeleteAdminProjectsLocationsSubscriptionsResponse,
+  DeleteAdminProjectsLocationsSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAdminProjectsLocationsSubscriptionsRequest,
+  output: DeleteAdminProjectsLocationsSubscriptionsResponse,
+  errors: [],
+}));
+
 export interface CreateAdminProjectsLocationsSubscriptionsRequest {
+  /** If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false. */
+  skipBacklog?: boolean;
   /** Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`. */
   parent: string;
   /** Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`. */
   subscriptionId?: string;
-  /** If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false. */
-  skipBacklog?: boolean;
   /** Request body */
   body?: Subscription;
 }
 
 export const CreateAdminProjectsLocationsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skipBacklog: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("skipBacklog"),
+    ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     subscriptionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("subscriptionId"),
-    ),
-    skipBacklog: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("skipBacklog"),
     ),
     body: Schema.optional(Subscription).pipe(T.HttpBody()),
   }).pipe(
@@ -1142,164 +1163,6 @@ export const getAdminProjectsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdminProjectsLocationsSubscriptionsRequest,
   output: GetAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
-}));
-
-export interface ListAdminProjectsLocationsSubscriptionsRequest {
-  /** Required. The parent whose subscriptions are to be listed. Structured like `projects/{project_number}/locations/{location}`. */
-  parent: string;
-  /** The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the parent will be returned. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
-
-export type ListAdminProjectsLocationsSubscriptionsResponse =
-  ListSubscriptionsResponse;
-export const ListAdminProjectsLocationsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
-
-export type ListAdminProjectsLocationsSubscriptionsError = DefaultErrors;
-
-/** Returns the list of subscriptions for the given project. */
-export const listAdminProjectsLocationsSubscriptions: API.PaginatedOperationMethod<
-  ListAdminProjectsLocationsSubscriptionsRequest,
-  ListAdminProjectsLocationsSubscriptionsResponse,
-  ListAdminProjectsLocationsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAdminProjectsLocationsSubscriptionsRequest,
-  output: ListAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchAdminProjectsLocationsSubscriptionsRequest {
-  /** The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} */
-  name: string;
-  /** Required. A mask specifying the subscription fields to change. */
-  updateMask?: string;
-  /** Request body */
-  body?: Subscription;
-}
-
-export const PatchAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Subscription).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>;
-
-export type PatchAdminProjectsLocationsSubscriptionsResponse = Subscription;
-export const PatchAdminProjectsLocationsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
-
-export type PatchAdminProjectsLocationsSubscriptionsError = DefaultErrors;
-
-/** Updates properties of the specified subscription. */
-export const patchAdminProjectsLocationsSubscriptions: API.OperationMethod<
-  PatchAdminProjectsLocationsSubscriptionsRequest,
-  PatchAdminProjectsLocationsSubscriptionsResponse,
-  PatchAdminProjectsLocationsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAdminProjectsLocationsSubscriptionsRequest,
-  output: PatchAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
-}));
-
-export interface DeleteAdminProjectsLocationsSubscriptionsRequest {
-  /** Required. The name of the subscription to delete. */
-  name: string;
-}
-
-export const DeleteAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>;
-
-export type DeleteAdminProjectsLocationsSubscriptionsResponse = Empty;
-export const DeleteAdminProjectsLocationsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteAdminProjectsLocationsSubscriptionsError = DefaultErrors;
-
-/** Deletes the specified subscription. */
-export const deleteAdminProjectsLocationsSubscriptions: API.OperationMethod<
-  DeleteAdminProjectsLocationsSubscriptionsRequest,
-  DeleteAdminProjectsLocationsSubscriptionsResponse,
-  DeleteAdminProjectsLocationsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAdminProjectsLocationsSubscriptionsRequest,
-  output: DeleteAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
-}));
-
-export interface SeekAdminProjectsLocationsSubscriptionsRequest {
-  /** Required. The name of the subscription to seek. */
-  name: string;
-  /** Request body */
-  body?: SeekSubscriptionRequest;
-}
-
-export const SeekAdminProjectsLocationsSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SeekSubscriptionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:seek",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>;
-
-export type SeekAdminProjectsLocationsSubscriptionsResponse = Operation;
-export const SeekAdminProjectsLocationsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type SeekAdminProjectsLocationsSubscriptionsError = DefaultErrors;
-
-/** Performs an out-of-band seek for a subscription to a specified target, which may be timestamps or named positions within the message backlog. Seek translates these targets to cursors for each partition and orchestrates subscribers to start consuming messages from these seek cursors. If an operation is returned, the seek has been registered and subscribers will eventually receive messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum supported client library version and not a system that tracks cursors independently of Pub/Sub Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients. If clients would like to know when subscribers react to the seek (or not), they can poll the operation. The seek operation will succeed and complete once subscribers are ready to receive messages from the seek cursors for all partitions of the topic. This means that the seek operation will not complete until all subscribers come online. If the previous seek operation has not yet completed, it will be aborted and the new invocation of seek will supersede it. */
-export const seekAdminProjectsLocationsSubscriptions: API.OperationMethod<
-  SeekAdminProjectsLocationsSubscriptionsRequest,
-  SeekAdminProjectsLocationsSubscriptionsResponse,
-  SeekAdminProjectsLocationsSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SeekAdminProjectsLocationsSubscriptionsRequest,
-  output: SeekAdminProjectsLocationsSubscriptionsResponse,
   errors: [],
 }));
 
@@ -1383,17 +1246,17 @@ export const getAdminProjectsLocationsReservations: API.OperationMethod<
 export interface ListAdminProjectsLocationsReservationsRequest {
   /** Required. The parent whose reservations are to be listed. Structured like `projects/{project_number}/locations/{location}`. */
   parent: string;
-  /** The maximum number of reservations to return. The service may return fewer than this value. If unset or zero, all reservations for the parent will be returned. */
-  pageSize?: number;
   /** A page token, received from a previous `ListReservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservations` must match the call that provided the page token. */
   pageToken?: string;
+  /** The maximum number of reservations to return. The service may return fewer than this value. If unset or zero, all reservations for the parent will be returned. */
+  pageSize?: number;
 }
 
 export const ListAdminProjectsLocationsReservationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1423,6 +1286,40 @@ export const listAdminProjectsLocationsReservations: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface DeleteAdminProjectsLocationsReservationsRequest {
+  /** Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
+  name: string;
+}
+
+export const DeleteAdminProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsReservationsRequest>;
+
+export type DeleteAdminProjectsLocationsReservationsResponse = Empty;
+export const DeleteAdminProjectsLocationsReservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteAdminProjectsLocationsReservationsError = DefaultErrors;
+
+/** Deletes the specified reservation. */
+export const deleteAdminProjectsLocationsReservations: API.OperationMethod<
+  DeleteAdminProjectsLocationsReservationsRequest,
+  DeleteAdminProjectsLocationsReservationsResponse,
+  DeleteAdminProjectsLocationsReservationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAdminProjectsLocationsReservationsRequest,
+  output: DeleteAdminProjectsLocationsReservationsResponse,
+  errors: [],
 }));
 
 export interface PatchAdminProjectsLocationsReservationsRequest {
@@ -1463,40 +1360,6 @@ export const patchAdminProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdminProjectsLocationsReservationsRequest,
   output: PatchAdminProjectsLocationsReservationsResponse,
-  errors: [],
-}));
-
-export interface DeleteAdminProjectsLocationsReservationsRequest {
-  /** Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
-  name: string;
-}
-
-export const DeleteAdminProjectsLocationsReservationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsReservationsRequest>;
-
-export type DeleteAdminProjectsLocationsReservationsResponse = Empty;
-export const DeleteAdminProjectsLocationsReservationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteAdminProjectsLocationsReservationsError = DefaultErrors;
-
-/** Deletes the specified reservation. */
-export const deleteAdminProjectsLocationsReservations: API.OperationMethod<
-  DeleteAdminProjectsLocationsReservationsRequest,
-  DeleteAdminProjectsLocationsReservationsResponse,
-  DeleteAdminProjectsLocationsReservationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAdminProjectsLocationsReservationsRequest,
-  output: DeleteAdminProjectsLocationsReservationsResponse,
   errors: [],
 }));
 
@@ -1586,19 +1449,19 @@ export const commitCursorCursorProjectsLocationsSubscriptions: API.OperationMeth
 }));
 
 export interface ListCursorProjectsLocationsSubscriptionsCursorsRequest {
-  /** Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`. */
-  parent: string;
-  /** The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned. */
-  pageSize?: number;
   /** A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token. */
   pageToken?: string;
+  /** The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned. */
+  pageSize?: number;
+  /** Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`. */
+  parent: string;
 }
 
 export const ListCursorProjectsLocationsSubscriptionsCursorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1629,6 +1492,46 @@ export const listCursorProjectsLocationsSubscriptionsCursors: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest {
+  /** Required. The topic for which we should compute the cursor. */
+  topic: string;
+  /** Request body */
+  body?: ComputeTimeCursorRequest;
+}
+
+export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topic: Schema.String.pipe(T.HttpPath("topic")),
+    body: Schema.optional(ComputeTimeCursorRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeTimeCursor",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>;
+
+export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse =
+  ComputeTimeCursorResponse;
+export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ComputeTimeCursorResponse;
+
+export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsError =
+  DefaultErrors;
+
+/** Compute the corresponding cursor for a publish or event time in a topic partition. */
+export const computeTimeCursorTopicStatsProjectsLocationsTopics: API.OperationMethod<
+  ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest,
+  ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse,
+  ComputeTimeCursorTopicStatsProjectsLocationsTopicsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest,
+  output: ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse,
+  errors: [],
 }));
 
 export interface ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest {
@@ -1708,45 +1611,5 @@ export const computeHeadCursorTopicStatsProjectsLocationsTopics: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest,
   output: ComputeHeadCursorTopicStatsProjectsLocationsTopicsResponse,
-  errors: [],
-}));
-
-export interface ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest {
-  /** Required. The topic for which we should compute the cursor. */
-  topic: string;
-  /** Request body */
-  body?: ComputeTimeCursorRequest;
-}
-
-export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    topic: Schema.String.pipe(T.HttpPath("topic")),
-    body: Schema.optional(ComputeTimeCursorRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeTimeCursor",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest>;
-
-export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse =
-  ComputeTimeCursorResponse;
-export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ComputeTimeCursorResponse;
-
-export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsError =
-  DefaultErrors;
-
-/** Compute the corresponding cursor for a publish or event time in a topic partition. */
-export const computeTimeCursorTopicStatsProjectsLocationsTopics: API.OperationMethod<
-  ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest,
-  ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse,
-  ComputeTimeCursorTopicStatsProjectsLocationsTopicsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest,
-  output: ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse,
   errors: [],
 }));

@@ -24,7 +24,7 @@ export type V1PatchAMigrationOutput = typeof V1PatchAMigrationOutput.Type;
 
 // The operation
 /**
- * [Beta] Patch an existing entry in migration history
+ * Patch an existing entry in migration history
  *
  * Only available to selected partner OAuth apps
  *

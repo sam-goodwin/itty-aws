@@ -861,6 +861,7 @@ export type UpstreamRegistry =
   | "github-container-registry"
   | "azure-container-registry"
   | "gitlab-container-registry"
+  | "chainguard"
   | (string & {});
 export const UpstreamRegistry = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreatePullThroughCacheRuleRequest {
@@ -4014,6 +4015,10 @@ export class LifecyclePolicyPreviewNotFoundException extends S.TaggedErrorClass<
   "LifecyclePolicyPreviewNotFoundException",
   { message: S.optional(S.String) },
 ) {}
+export class UnableToListUpstreamImageReferrersException extends S.TaggedErrorClass<UnableToListUpstreamImageReferrersException>()(
+  "UnableToListUpstreamImageReferrersException",
+  { message: S.optional(S.String) },
+) {}
 export class ImageAlreadyExistsException extends S.TaggedErrorClass<ImageAlreadyExistsException>()(
   "ImageAlreadyExistsException",
   { message: S.optional(S.String) },
@@ -5113,6 +5118,7 @@ export type ListImageReferrersError =
   | InvalidParameterException
   | RepositoryNotFoundException
   | ServerException
+  | UnableToListUpstreamImageReferrersException
   | ValidationException
   | CommonErrors;
 /**
@@ -5132,6 +5138,7 @@ export const listImageReferrers: API.OperationMethod<
     InvalidParameterException,
     RepositoryNotFoundException,
     ServerException,
+    UnableToListUpstreamImageReferrersException,
     ValidationException,
   ],
 }));

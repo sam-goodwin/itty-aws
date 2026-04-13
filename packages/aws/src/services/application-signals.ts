@@ -267,12 +267,23 @@ export const DependencyConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DependencyConfig",
 }) as any as S.Schema<DependencyConfig>;
+export interface MetricSource {
+  MetricSourceKeyAttributes: { [key: string]: string | undefined };
+  MetricSourceAttributes?: { [key: string]: string | undefined };
+}
+export const MetricSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MetricSourceKeyAttributes: Attributes,
+    MetricSourceAttributes: S.optional(Attributes),
+  }),
+).annotate({ identifier: "MetricSource" }) as any as S.Schema<MetricSource>;
 export interface ServiceLevelIndicatorMetric {
   KeyAttributes?: { [key: string]: string | undefined };
   OperationName?: string;
   MetricType?: ServiceLevelIndicatorMetricType;
   MetricDataQueries: MetricDataQuery[];
   DependencyConfig?: DependencyConfig;
+  MetricSource?: MetricSource;
 }
 export const ServiceLevelIndicatorMetric =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -282,6 +293,7 @@ export const ServiceLevelIndicatorMetric =
       MetricType: S.optional(ServiceLevelIndicatorMetricType),
       MetricDataQueries: MetricDataQueries,
       DependencyConfig: S.optional(DependencyConfig),
+      MetricSource: S.optional(MetricSource),
     }),
   ).annotate({
     identifier: "ServiceLevelIndicatorMetric",
@@ -323,6 +335,7 @@ export interface RequestBasedServiceLevelIndicatorMetric {
   TotalRequestCountMetric: MetricDataQuery[];
   MonitoredRequestCountMetric: MonitoredRequestCountMetricDataQueries;
   DependencyConfig?: DependencyConfig;
+  MetricSource?: MetricSource;
 }
 export const RequestBasedServiceLevelIndicatorMetric =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -333,6 +346,7 @@ export const RequestBasedServiceLevelIndicatorMetric =
       TotalRequestCountMetric: MetricDataQueries,
       MonitoredRequestCountMetric: MonitoredRequestCountMetricDataQueries,
       DependencyConfig: S.optional(DependencyConfig),
+      MetricSource: S.optional(MetricSource),
     }),
   ).annotate({
     identifier: "RequestBasedServiceLevelIndicatorMetric",
@@ -1602,6 +1616,7 @@ export interface ServiceLevelIndicatorMetricConfig {
   MetricName?: string;
   Statistic?: string;
   PeriodSeconds?: number;
+  MetricSource?: MetricSource;
   MetricDataQueries?: MetricDataQuery[];
   DependencyConfig?: DependencyConfig;
 }
@@ -1614,6 +1629,7 @@ export const ServiceLevelIndicatorMetricConfig =
       MetricName: S.optional(S.String),
       Statistic: S.optional(S.String),
       PeriodSeconds: S.optional(S.Number),
+      MetricSource: S.optional(MetricSource),
       MetricDataQueries: S.optional(MetricDataQueries),
       DependencyConfig: S.optional(DependencyConfig),
     }),
@@ -1642,6 +1658,8 @@ export interface RequestBasedServiceLevelIndicatorMetricConfig {
   TotalRequestCountMetric?: MetricDataQuery[];
   MonitoredRequestCountMetric?: MonitoredRequestCountMetricDataQueries;
   DependencyConfig?: DependencyConfig;
+  MetricSource?: MetricSource;
+  MetricName?: string;
 }
 export const RequestBasedServiceLevelIndicatorMetricConfig =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1654,6 +1672,8 @@ export const RequestBasedServiceLevelIndicatorMetricConfig =
         MonitoredRequestCountMetricDataQueries,
       ),
       DependencyConfig: S.optional(DependencyConfig),
+      MetricSource: S.optional(MetricSource),
+      MetricName: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RequestBasedServiceLevelIndicatorMetricConfig",
@@ -1724,6 +1744,9 @@ export type MetricSourceType =
   | "ServiceOperation"
   | "CloudWatchMetric"
   | "ServiceDependency"
+  | "AppMonitor"
+  | "Canary"
+  | "Service"
   | (string & {});
 export const MetricSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ServiceLevelObjective {
@@ -1865,9 +1888,10 @@ export interface ListServiceLevelObjectivesInput {
   DependencyConfig?: DependencyConfig;
   MaxResults?: number;
   NextToken?: string;
+  MetricSourceTypes?: MetricSourceType[];
   IncludeLinkedAccounts?: boolean;
   SloOwnerAwsAccountId?: string;
-  MetricSourceTypes?: MetricSourceType[];
+  MetricSource?: MetricSource;
 }
 export const ListServiceLevelObjectivesInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1877,13 +1901,14 @@ export const ListServiceLevelObjectivesInput =
       DependencyConfig: S.optional(DependencyConfig),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+      MetricSourceTypes: S.optional(MetricSourceTypes),
       IncludeLinkedAccounts: S.optional(S.Boolean).pipe(
         T.HttpQuery("IncludeLinkedAccounts"),
       ),
       SloOwnerAwsAccountId: S.optional(S.String).pipe(
         T.HttpQuery("SloOwnerAwsAccountId"),
       ),
-      MetricSourceTypes: S.optional(MetricSourceTypes),
+      MetricSource: S.optional(MetricSource),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/slos" }),
@@ -1906,6 +1931,7 @@ export interface ServiceLevelObjectiveSummary {
   CreatedTime?: Date;
   EvaluationType?: EvaluationType;
   MetricSourceType?: MetricSourceType;
+  MetricSource?: MetricSource;
 }
 export const ServiceLevelObjectiveSummary =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1918,6 +1944,7 @@ export const ServiceLevelObjectiveSummary =
       CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       EvaluationType: S.optional(EvaluationType),
       MetricSourceType: S.optional(MetricSourceType),
+      MetricSource: S.optional(MetricSource),
     }),
   ).annotate({
     identifier: "ServiceLevelObjectiveSummary",

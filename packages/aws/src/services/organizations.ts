@@ -243,6 +243,7 @@ export type ParentId = string;
 export type OrganizationalUnitName = string;
 export type OrganizationalUnitId = string;
 export type OrganizationalUnitArn = string;
+export type Path = string;
 export type PolicyContent = string;
 export type PolicyDescription = string;
 export type PolicyName = string;
@@ -263,7 +264,6 @@ export type HandshakeNotes = string | redacted.Redacted<string>;
 export type NextToken = string;
 export type MaxResults = number;
 export type ChildId = string;
-export type Path = string;
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export type PathToError = string;
@@ -845,12 +845,14 @@ export interface OrganizationalUnit {
   Id?: string;
   Arn?: string;
   Name?: string;
+  Path?: string;
 }
 export const OrganizationalUnit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Arn: S.optional(S.String),
     Name: S.optional(S.String),
+    Path: S.optional(S.String),
   }),
 ).annotate({
   identifier: "OrganizationalUnit",
@@ -1106,6 +1108,8 @@ export type AccountState =
   | "CLOSED"
   | (string & {});
 export const AccountState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type Paths = string[];
+export const Paths = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type AccountJoinedMethod = "INVITED" | "CREATED" | (string & {});
 export const AccountJoinedMethod = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Account {
@@ -1115,6 +1119,7 @@ export interface Account {
   Name?: string | redacted.Redacted<string>;
   Status?: AccountStatus;
   State?: AccountState;
+  Paths?: string[];
   JoinedMethod?: AccountJoinedMethod;
   JoinedTimestamp?: Date;
 }
@@ -1126,6 +1131,7 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Name: S.optional(SensitiveString),
     Status: S.optional(AccountStatus),
     State: S.optional(AccountState),
+    Paths: S.optional(Paths),
     JoinedMethod: S.optional(AccountJoinedMethod),
     JoinedTimestamp: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3384,8 +3390,8 @@ export type CloseAccountError =
  * the resources won't be available unless you contact Amazon Web Services Support to reopen the account. After 90 days, you can't reopen an account.
  * You might still receive a bill after account closure.
  *
- * - You can close only 10% of member accounts, between 10 and 1000, within a
- * rolling 30 day period. This quota is not bound by a calendar month, but
+ * - Within a rolling 30 day period you can close the higher of either 250 or 20% of the member accounts in your organization,
+ * up to a maximum of 1,000. This quota is not bound by a calendar month, but
  * starts when you close an account. After you reach this limit, you can't
  * close additional accounts. For more information, see Closing a member
  * account in your organization and Quotas for

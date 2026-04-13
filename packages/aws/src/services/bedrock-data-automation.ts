@@ -97,14 +97,25 @@ export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type S3Uri = string;
 export type S3ObjectVersion = string;
+export type DataAutomationLibraryArn = string;
+export type EntityId = string;
+export type EntityDescription = string | redacted.Redacted<string>;
+export type PhraseText = string | redacted.Redacted<string>;
+export type PhraseDisplayAsText = string | redacted.Redacted<string>;
+export type MaxResults = number;
+export type NextToken = string;
 export type TaggableResourceArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type DataAutomationProfileArn = string;
 export type BlueprintOptimizationInvocationArn = string;
-export type MaxResults = number;
-export type NextToken = string;
 export type DataAutomationProjectArn = string;
+export type DataAutomationLibraryIngestionJobArn = string;
+export type DataAutomationLibraryName = string | redacted.Redacted<string>;
+export type DataAutomationLibraryDescription =
+  | string
+  | redacted.Redacted<string>;
+export type EntityMetadata = string;
 export type DataAutomationProjectName = string | redacted.Redacted<string>;
 export type DataAutomationProjectDescription =
   | string
@@ -249,6 +260,168 @@ export const CreateBlueprintVersionResponse =
   ).annotate({
     identifier: "CreateBlueprintVersionResponse",
   }) as any as S.Schema<CreateBlueprintVersionResponse>;
+export type EntityType = "VOCABULARY" | (string & {});
+export const EntityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetDataAutomationLibraryEntityRequest {
+  libraryArn: string;
+  entityType: EntityType;
+  entityId: string;
+}
+export const GetDataAutomationLibraryEntityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.String.pipe(T.HttpLabel("libraryArn")),
+      entityType: EntityType.pipe(T.HttpLabel("entityType")),
+      entityId: S.String.pipe(T.HttpLabel("entityId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/data-automation-libraries/{libraryArn}/entityType/{entityType}/entities/{entityId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetDataAutomationLibraryEntityRequest",
+  }) as any as S.Schema<GetDataAutomationLibraryEntityRequest>;
+export type Language =
+  | "EN"
+  | "DE"
+  | "ES"
+  | "FR"
+  | "IT"
+  | "PT"
+  | "JA"
+  | "KO"
+  | "CN"
+  | "TW"
+  | "HK"
+  | (string & {});
+export const Language = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface Phrase {
+  text: string | redacted.Redacted<string>;
+  displayAsText?: string | redacted.Redacted<string>;
+}
+export const Phrase = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    text: SensitiveString,
+    displayAsText: S.optional(SensitiveString),
+  }),
+).annotate({ identifier: "Phrase" }) as any as S.Schema<Phrase>;
+export type PhraseList = Phrase[];
+export const PhraseList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Phrase);
+export interface VocabularyEntity {
+  entityId?: string;
+  description?: string | redacted.Redacted<string>;
+  language?: Language;
+  phrases?: Phrase[];
+  lastModifiedTime?: Date;
+}
+export const VocabularyEntity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entityId: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    language: S.optional(Language),
+    phrases: S.optional(PhraseList),
+    lastModifiedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "VocabularyEntity",
+}) as any as S.Schema<VocabularyEntity>;
+export type EntityDetails = { vocabulary: VocabularyEntity };
+export const EntityDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ vocabulary: VocabularyEntity }),
+]);
+export interface GetDataAutomationLibraryEntityResponse {
+  entity?: EntityDetails;
+}
+export const GetDataAutomationLibraryEntityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ entity: S.optional(EntityDetails) }),
+  ).annotate({
+    identifier: "GetDataAutomationLibraryEntityResponse",
+  }) as any as S.Schema<GetDataAutomationLibraryEntityResponse>;
+export interface ListDataAutomationLibraryEntitiesRequest {
+  libraryArn: string;
+  entityType: EntityType;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListDataAutomationLibraryEntitiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.String.pipe(T.HttpLabel("libraryArn")),
+      entityType: EntityType.pipe(T.HttpLabel("entityType")),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/data-automation-libraries/{libraryArn}/entityType/{entityType}/entities/",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListDataAutomationLibraryEntitiesRequest",
+  }) as any as S.Schema<ListDataAutomationLibraryEntitiesRequest>;
+export interface VocabularyEntitySummary {
+  entityId?: string;
+  description?: string | redacted.Redacted<string>;
+  language?: Language;
+  numOfPhrases?: number;
+  lastModifiedTime?: Date;
+}
+export const VocabularyEntitySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      entityId: S.optional(S.String),
+      description: S.optional(SensitiveString),
+      language: S.optional(Language),
+      numOfPhrases: S.optional(S.Number),
+      lastModifiedTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+).annotate({
+  identifier: "VocabularyEntitySummary",
+}) as any as S.Schema<VocabularyEntitySummary>;
+export type DataAutomationLibraryEntitySummary = {
+  vocabulary: VocabularyEntitySummary;
+};
+export const DataAutomationLibraryEntitySummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({ vocabulary: VocabularyEntitySummary }),
+  ]);
+export type DataAutomationLibraryEntitySummaries =
+  DataAutomationLibraryEntitySummary[];
+export const DataAutomationLibraryEntitySummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataAutomationLibraryEntitySummary);
+export interface ListDataAutomationLibraryEntitiesResponse {
+  entities?: DataAutomationLibraryEntitySummary[];
+  nextToken?: string;
+}
+export const ListDataAutomationLibraryEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      entities: S.optional(DataAutomationLibraryEntitySummaries),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListDataAutomationLibraryEntitiesResponse",
+  }) as any as S.Schema<ListDataAutomationLibraryEntitiesResponse>;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
 }
@@ -675,6 +848,507 @@ export const ListBlueprintsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListBlueprintsResponse",
 }) as any as S.Schema<ListBlueprintsResponse>;
+export interface VocabularyEntityInfo {
+  entityId?: string;
+  description?: string | redacted.Redacted<string>;
+  language: Language;
+  phrases: Phrase[];
+}
+export const VocabularyEntityInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entityId: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    language: Language,
+    phrases: PhraseList,
+  }),
+).annotate({
+  identifier: "VocabularyEntityInfo",
+}) as any as S.Schema<VocabularyEntityInfo>;
+export type UpsertEntityInfo = { vocabulary: VocabularyEntityInfo };
+export const UpsertEntityInfo = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ vocabulary: VocabularyEntityInfo }),
+]);
+export type UpsertEntitiesInfo = UpsertEntityInfo[];
+export const UpsertEntitiesInfo =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(UpsertEntityInfo);
+export type EntityIdList = string[];
+export const EntityIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface DeleteEntitiesInfo {
+  entityIds: string[];
+}
+export const DeleteEntitiesInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ entityIds: EntityIdList }),
+).annotate({
+  identifier: "DeleteEntitiesInfo",
+}) as any as S.Schema<DeleteEntitiesInfo>;
+export type InlinePayload =
+  | { upsertEntitiesInfo: UpsertEntityInfo[]; deleteEntitiesInfo?: never }
+  | { upsertEntitiesInfo?: never; deleteEntitiesInfo: DeleteEntitiesInfo };
+export const InlinePayload = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ upsertEntitiesInfo: UpsertEntitiesInfo }),
+  S.Struct({ deleteEntitiesInfo: DeleteEntitiesInfo }),
+]);
+export interface InputConfiguration {
+  s3Object?: S3Object;
+  inlinePayload?: InlinePayload;
+}
+export const InputConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    s3Object: S.optional(S3Object),
+    inlinePayload: S.optional(InlinePayload),
+  }),
+).annotate({
+  identifier: "InputConfiguration",
+}) as any as S.Schema<InputConfiguration>;
+export type LibraryIngestionJobOperationType =
+  | "UPSERT"
+  | "DELETE"
+  | (string & {});
+export const LibraryIngestionJobOperationType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface OutputConfiguration {
+  s3Uri: string;
+}
+export const OutputConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ s3Uri: S.String }),
+).annotate({
+  identifier: "OutputConfiguration",
+}) as any as S.Schema<OutputConfiguration>;
+export interface EventBridgeConfiguration {
+  eventBridgeEnabled: boolean;
+}
+export const EventBridgeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ eventBridgeEnabled: S.Boolean }),
+).annotate({
+  identifier: "EventBridgeConfiguration",
+}) as any as S.Schema<EventBridgeConfiguration>;
+export interface NotificationConfiguration {
+  eventBridgeConfiguration: EventBridgeConfiguration;
+}
+export const NotificationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ eventBridgeConfiguration: EventBridgeConfiguration }),
+).annotate({
+  identifier: "NotificationConfiguration",
+}) as any as S.Schema<NotificationConfiguration>;
+export interface InvokeDataAutomationLibraryIngestionJobRequest {
+  libraryArn: string;
+  clientToken?: string;
+  inputConfiguration: InputConfiguration;
+  entityType: EntityType;
+  operationType: LibraryIngestionJobOperationType;
+  outputConfiguration: OutputConfiguration;
+  notificationConfiguration?: NotificationConfiguration;
+  tags?: Tag[];
+}
+export const InvokeDataAutomationLibraryIngestionJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.String.pipe(T.HttpLabel("libraryArn")),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      inputConfiguration: InputConfiguration,
+      entityType: EntityType,
+      operationType: LibraryIngestionJobOperationType,
+      outputConfiguration: OutputConfiguration,
+      notificationConfiguration: S.optional(NotificationConfiguration),
+      tags: S.optional(TagList),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "InvokeDataAutomationLibraryIngestionJobRequest",
+  }) as any as S.Schema<InvokeDataAutomationLibraryIngestionJobRequest>;
+export interface InvokeDataAutomationLibraryIngestionJobResponse {
+  jobArn?: string;
+}
+export const InvokeDataAutomationLibraryIngestionJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobArn: S.optional(S.String) }),
+  ).annotate({
+    identifier: "InvokeDataAutomationLibraryIngestionJobResponse",
+  }) as any as S.Schema<InvokeDataAutomationLibraryIngestionJobResponse>;
+export interface GetDataAutomationLibraryIngestionJobRequest {
+  libraryArn: string;
+  jobArn: string;
+}
+export const GetDataAutomationLibraryIngestionJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.String.pipe(T.HttpLabel("libraryArn")),
+      jobArn: S.String.pipe(T.HttpLabel("jobArn")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/{jobArn}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetDataAutomationLibraryIngestionJobRequest",
+  }) as any as S.Schema<GetDataAutomationLibraryIngestionJobRequest>;
+export type LibraryIngestionJobStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "COMPLETED_WITH_ERRORS"
+  | "FAILED"
+  | (string & {});
+export const LibraryIngestionJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DataAutomationLibraryIngestionJob {
+  jobArn: string;
+  creationTime: Date;
+  entityType: EntityType;
+  operationType: LibraryIngestionJobOperationType;
+  jobStatus: LibraryIngestionJobStatus;
+  outputConfiguration: OutputConfiguration;
+  completionTime?: Date;
+  errorMessage?: string;
+  errorType?: string;
+}
+export const DataAutomationLibraryIngestionJob =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobArn: S.String,
+      creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      entityType: EntityType,
+      operationType: LibraryIngestionJobOperationType,
+      jobStatus: LibraryIngestionJobStatus,
+      outputConfiguration: OutputConfiguration,
+      completionTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      errorMessage: S.optional(S.String),
+      errorType: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DataAutomationLibraryIngestionJob",
+  }) as any as S.Schema<DataAutomationLibraryIngestionJob>;
+export interface GetDataAutomationLibraryIngestionJobResponse {
+  job?: DataAutomationLibraryIngestionJob;
+}
+export const GetDataAutomationLibraryIngestionJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ job: S.optional(DataAutomationLibraryIngestionJob) }),
+  ).annotate({
+    identifier: "GetDataAutomationLibraryIngestionJobResponse",
+  }) as any as S.Schema<GetDataAutomationLibraryIngestionJobResponse>;
+export interface ListDataAutomationLibraryIngestionJobsRequest {
+  libraryArn: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListDataAutomationLibraryIngestionJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.String.pipe(T.HttpLabel("libraryArn")),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListDataAutomationLibraryIngestionJobsRequest",
+  }) as any as S.Schema<ListDataAutomationLibraryIngestionJobsRequest>;
+export interface DataAutomationLibraryIngestionJobSummary {
+  jobArn: string;
+  jobStatus: LibraryIngestionJobStatus;
+  entityType: EntityType;
+  operationType: LibraryIngestionJobOperationType;
+  creationTime: Date;
+  completionTime?: Date;
+}
+export const DataAutomationLibraryIngestionJobSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobArn: S.String,
+      jobStatus: LibraryIngestionJobStatus,
+      entityType: EntityType,
+      operationType: LibraryIngestionJobOperationType,
+      creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      completionTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "DataAutomationLibraryIngestionJobSummary",
+  }) as any as S.Schema<DataAutomationLibraryIngestionJobSummary>;
+export type DataAutomationLibraryIngestionJobSummaries =
+  DataAutomationLibraryIngestionJobSummary[];
+export const DataAutomationLibraryIngestionJobSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataAutomationLibraryIngestionJobSummary);
+export interface ListDataAutomationLibraryIngestionJobsResponse {
+  jobs?: DataAutomationLibraryIngestionJobSummary[];
+  nextToken?: string;
+}
+export const ListDataAutomationLibraryIngestionJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobs: S.optional(DataAutomationLibraryIngestionJobSummaries),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListDataAutomationLibraryIngestionJobsResponse",
+  }) as any as S.Schema<ListDataAutomationLibraryIngestionJobsResponse>;
+export interface CreateDataAutomationLibraryRequest {
+  libraryName: string | redacted.Redacted<string>;
+  libraryDescription?: string | redacted.Redacted<string>;
+  clientToken?: string;
+  encryptionConfiguration?: EncryptionConfiguration;
+  tags?: Tag[];
+}
+export const CreateDataAutomationLibraryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryName: SensitiveString,
+      libraryDescription: S.optional(SensitiveString),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      encryptionConfiguration: S.optional(EncryptionConfiguration),
+      tags: S.optional(TagList),
+    }).pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/data-automation-libraries/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateDataAutomationLibraryRequest",
+  }) as any as S.Schema<CreateDataAutomationLibraryRequest>;
+export type DataAutomationLibraryStatus = "ACTIVE" | "DELETING" | (string & {});
+export const DataAutomationLibraryStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateDataAutomationLibraryResponse {
+  libraryArn?: string;
+  status?: DataAutomationLibraryStatus;
+}
+export const CreateDataAutomationLibraryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.optional(S.String),
+      status: S.optional(DataAutomationLibraryStatus),
+    }),
+  ).annotate({
+    identifier: "CreateDataAutomationLibraryResponse",
+  }) as any as S.Schema<CreateDataAutomationLibraryResponse>;
+export interface GetDataAutomationLibraryRequest {
+  libraryArn: string;
+}
+export const GetDataAutomationLibraryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ libraryArn: S.String.pipe(T.HttpLabel("libraryArn")) }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/data-automation-libraries/{libraryArn}/",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetDataAutomationLibraryRequest",
+  }) as any as S.Schema<GetDataAutomationLibraryRequest>;
+export interface EntityTypeInfo {
+  entityType: EntityType;
+  entityMetadata?: string;
+}
+export const EntityTypeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ entityType: EntityType, entityMetadata: S.optional(S.String) }),
+).annotate({ identifier: "EntityTypeInfo" }) as any as S.Schema<EntityTypeInfo>;
+export type EntityTypeInfoList = EntityTypeInfo[];
+export const EntityTypeInfoList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EntityTypeInfo);
+export interface DataAutomationLibrary {
+  libraryArn: string;
+  creationTime: Date;
+  libraryName: string | redacted.Redacted<string>;
+  libraryDescription?: string | redacted.Redacted<string>;
+  status: DataAutomationLibraryStatus;
+  entityTypes?: EntityTypeInfo[];
+  kmsKeyId?: string;
+  kmsEncryptionContext?: { [key: string]: string | undefined };
+}
+export const DataAutomationLibrary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    libraryArn: S.String,
+    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    libraryName: SensitiveString,
+    libraryDescription: S.optional(SensitiveString),
+    status: DataAutomationLibraryStatus,
+    entityTypes: S.optional(EntityTypeInfoList),
+    kmsKeyId: S.optional(S.String),
+    kmsEncryptionContext: S.optional(KmsEncryptionContext),
+  }),
+).annotate({
+  identifier: "DataAutomationLibrary",
+}) as any as S.Schema<DataAutomationLibrary>;
+export interface GetDataAutomationLibraryResponse {
+  library?: DataAutomationLibrary;
+}
+export const GetDataAutomationLibraryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ library: S.optional(DataAutomationLibrary) }),
+  ).annotate({
+    identifier: "GetDataAutomationLibraryResponse",
+  }) as any as S.Schema<GetDataAutomationLibraryResponse>;
+export interface UpdateDataAutomationLibraryRequest {
+  libraryArn: string;
+  libraryDescription?: string | redacted.Redacted<string>;
+  clientToken?: string;
+}
+export const UpdateDataAutomationLibraryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.String.pipe(T.HttpLabel("libraryArn")),
+      libraryDescription: S.optional(SensitiveString),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/data-automation-libraries/{libraryArn}/",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateDataAutomationLibraryRequest",
+  }) as any as S.Schema<UpdateDataAutomationLibraryRequest>;
+export interface UpdateDataAutomationLibraryResponse {
+  libraryArn?: string;
+  status?: DataAutomationLibraryStatus;
+}
+export const UpdateDataAutomationLibraryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.optional(S.String),
+      status: S.optional(DataAutomationLibraryStatus),
+    }),
+  ).annotate({
+    identifier: "UpdateDataAutomationLibraryResponse",
+  }) as any as S.Schema<UpdateDataAutomationLibraryResponse>;
+export interface DeleteDataAutomationLibraryRequest {
+  libraryArn: string;
+}
+export const DeleteDataAutomationLibraryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ libraryArn: S.String.pipe(T.HttpLabel("libraryArn")) }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/data-automation-libraries/{libraryArn}/",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteDataAutomationLibraryRequest",
+  }) as any as S.Schema<DeleteDataAutomationLibraryRequest>;
+export interface DeleteDataAutomationLibraryResponse {
+  libraryArn?: string;
+  status?: DataAutomationLibraryStatus;
+}
+export const DeleteDataAutomationLibraryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.optional(S.String),
+      status: S.optional(DataAutomationLibraryStatus),
+    }),
+  ).annotate({
+    identifier: "DeleteDataAutomationLibraryResponse",
+  }) as any as S.Schema<DeleteDataAutomationLibraryResponse>;
+export interface ListDataAutomationLibrariesRequest {
+  maxResults?: number;
+  nextToken?: string;
+  projectFilter?: DataAutomationProjectFilter;
+}
+export const ListDataAutomationLibrariesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+      projectFilter: S.optional(DataAutomationProjectFilter),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/data-automation-libraries/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListDataAutomationLibrariesRequest",
+  }) as any as S.Schema<ListDataAutomationLibrariesRequest>;
+export interface DataAutomationLibrarySummary {
+  libraryArn: string;
+  libraryName?: string | redacted.Redacted<string>;
+  creationTime: Date;
+}
+export const DataAutomationLibrarySummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraryArn: S.String,
+      libraryName: S.optional(SensitiveString),
+      creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+  ).annotate({
+    identifier: "DataAutomationLibrarySummary",
+  }) as any as S.Schema<DataAutomationLibrarySummary>;
+export type DataAutomationLibrarySummaries = DataAutomationLibrarySummary[];
+export const DataAutomationLibrarySummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataAutomationLibrarySummary);
+export interface ListDataAutomationLibrariesResponse {
+  libraries?: DataAutomationLibrarySummary[];
+  nextToken?: string;
+}
+export const ListDataAutomationLibrariesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      libraries: S.optional(DataAutomationLibrarySummaries),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListDataAutomationLibrariesResponse",
+  }) as any as S.Schema<ListDataAutomationLibrariesResponse>;
 export type DataAutomationProjectType = "ASYNC" | "SYNC" | (string & {});
 export const DataAutomationProjectType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type DocumentExtractionGranularityType =
@@ -1233,20 +1907,6 @@ export const VideoOverrideConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "VideoOverrideConfiguration",
 }) as any as S.Schema<VideoOverrideConfiguration>;
-export type Language =
-  | "EN"
-  | "DE"
-  | "ES"
-  | "FR"
-  | "IT"
-  | "PT"
-  | "JA"
-  | "KO"
-  | "CN"
-  | "TW"
-  | "HK"
-  | (string & {});
-export const Language = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type AudioInputLanguages = Language[];
 export const AudioInputLanguages =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(Language);
@@ -1325,6 +1985,27 @@ export const OverrideConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OverrideConfiguration",
 }) as any as S.Schema<OverrideConfiguration>;
+export interface DataAutomationLibraryItem {
+  libraryArn: string;
+}
+export const DataAutomationLibraryItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ libraryArn: S.String }),
+).annotate({
+  identifier: "DataAutomationLibraryItem",
+}) as any as S.Schema<DataAutomationLibraryItem>;
+export type DataAutomationLibraryItems = DataAutomationLibraryItem[];
+export const DataAutomationLibraryItems = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  DataAutomationLibraryItem,
+);
+export interface DataAutomationLibraryConfiguration {
+  libraries?: DataAutomationLibraryItem[];
+}
+export const DataAutomationLibraryConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ libraries: S.optional(DataAutomationLibraryItems) }),
+  ).annotate({
+    identifier: "DataAutomationLibraryConfiguration",
+  }) as any as S.Schema<DataAutomationLibraryConfiguration>;
 export interface CreateDataAutomationProjectRequest {
   projectName: string | redacted.Redacted<string>;
   projectDescription?: string | redacted.Redacted<string>;
@@ -1333,6 +2014,7 @@ export interface CreateDataAutomationProjectRequest {
   standardOutputConfiguration: StandardOutputConfiguration;
   customOutputConfiguration?: CustomOutputConfiguration;
   overrideConfiguration?: OverrideConfiguration;
+  dataAutomationLibraryConfiguration?: DataAutomationLibraryConfiguration;
   clientToken?: string;
   encryptionConfiguration?: EncryptionConfiguration;
   tags?: Tag[];
@@ -1347,6 +2029,9 @@ export const CreateDataAutomationProjectRequest =
       standardOutputConfiguration: StandardOutputConfiguration,
       customOutputConfiguration: S.optional(CustomOutputConfiguration),
       overrideConfiguration: S.optional(OverrideConfiguration),
+      dataAutomationLibraryConfiguration: S.optional(
+        DataAutomationLibraryConfiguration,
+      ),
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       encryptionConfiguration: S.optional(EncryptionConfiguration),
       tags: S.optional(TagList),
@@ -1420,6 +2105,7 @@ export interface DataAutomationProject {
   standardOutputConfiguration?: StandardOutputConfiguration;
   customOutputConfiguration?: CustomOutputConfiguration;
   overrideConfiguration?: OverrideConfiguration;
+  dataAutomationLibraryConfiguration?: DataAutomationLibraryConfiguration;
   status: DataAutomationProjectStatus;
   kmsKeyId?: string;
   kmsEncryptionContext?: { [key: string]: string | undefined };
@@ -1436,6 +2122,9 @@ export const DataAutomationProject = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     standardOutputConfiguration: S.optional(StandardOutputConfiguration),
     customOutputConfiguration: S.optional(CustomOutputConfiguration),
     overrideConfiguration: S.optional(OverrideConfiguration),
+    dataAutomationLibraryConfiguration: S.optional(
+      DataAutomationLibraryConfiguration,
+    ),
     status: DataAutomationProjectStatus,
     kmsKeyId: S.optional(S.String),
     kmsEncryptionContext: S.optional(KmsEncryptionContext),
@@ -1459,6 +2148,7 @@ export interface UpdateDataAutomationProjectRequest {
   standardOutputConfiguration: StandardOutputConfiguration;
   customOutputConfiguration?: CustomOutputConfiguration;
   overrideConfiguration?: OverrideConfiguration;
+  dataAutomationLibraryConfiguration?: DataAutomationLibraryConfiguration;
   encryptionConfiguration?: EncryptionConfiguration;
 }
 export const UpdateDataAutomationProjectRequest =
@@ -1470,6 +2160,9 @@ export const UpdateDataAutomationProjectRequest =
       standardOutputConfiguration: StandardOutputConfiguration,
       customOutputConfiguration: S.optional(CustomOutputConfiguration),
       overrideConfiguration: S.optional(OverrideConfiguration),
+      dataAutomationLibraryConfiguration: S.optional(
+        DataAutomationLibraryConfiguration,
+      ),
       encryptionConfiguration: S.optional(EncryptionConfiguration),
     }).pipe(
       T.all(
@@ -1557,12 +2250,22 @@ export const BlueprintFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BlueprintFilter",
 }) as any as S.Schema<BlueprintFilter>;
+export interface DataAutomationLibraryFilter {
+  libraryArn: string;
+}
+export const DataAutomationLibraryFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ libraryArn: S.String }),
+  ).annotate({
+    identifier: "DataAutomationLibraryFilter",
+  }) as any as S.Schema<DataAutomationLibraryFilter>;
 export interface ListDataAutomationProjectsRequest {
   maxResults?: number;
   nextToken?: string;
   projectStageFilter?: DataAutomationProjectStageFilter;
   blueprintFilter?: BlueprintFilter;
   resourceOwner?: ResourceOwner;
+  libraryFilter?: DataAutomationLibraryFilter;
 }
 export const ListDataAutomationProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1572,6 +2275,7 @@ export const ListDataAutomationProjectsRequest =
       projectStageFilter: S.optional(DataAutomationProjectStageFilter),
       blueprintFilter: S.optional(BlueprintFilter),
       resourceOwner: S.optional(ResourceOwner),
+      libraryFilter: S.optional(DataAutomationLibraryFilter),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/data-automation-projects/" }),
@@ -1708,6 +2412,79 @@ export const createBlueprintVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+}));
+export type GetDataAutomationLibraryEntityError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets an existing entity based on entity type from the library
+ */
+export const getDataAutomationLibraryEntity: API.OperationMethod<
+  GetDataAutomationLibraryEntityRequest,
+  GetDataAutomationLibraryEntityResponse,
+  GetDataAutomationLibraryEntityError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDataAutomationLibraryEntityRequest,
+  output: GetDataAutomationLibraryEntityResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListDataAutomationLibraryEntitiesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all stored entities in the library
+ */
+export const listDataAutomationLibraryEntities: API.OperationMethod<
+  ListDataAutomationLibraryEntitiesRequest,
+  ListDataAutomationLibraryEntitiesResponse,
+  ListDataAutomationLibraryEntitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataAutomationLibraryEntitiesRequest,
+  ) => stream.Stream<
+    ListDataAutomationLibraryEntitiesResponse,
+    ListDataAutomationLibraryEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataAutomationLibraryEntitiesRequest,
+  ) => stream.Stream<
+    DataAutomationLibraryEntitySummary,
+    ListDataAutomationLibraryEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListDataAutomationLibraryEntitiesRequest,
+  output: ListDataAutomationLibraryEntitiesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "entities",
+    pageSize: "maxResults",
+  } as const,
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -1995,6 +2772,264 @@ export const listBlueprints: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "blueprints",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type InvokeDataAutomationLibraryIngestionJobError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Async API: Invoke data automation library ingestion job
+ */
+export const invokeDataAutomationLibraryIngestionJob: API.OperationMethod<
+  InvokeDataAutomationLibraryIngestionJobRequest,
+  InvokeDataAutomationLibraryIngestionJobResponse,
+  InvokeDataAutomationLibraryIngestionJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InvokeDataAutomationLibraryIngestionJobRequest,
+  output: InvokeDataAutomationLibraryIngestionJobResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetDataAutomationLibraryIngestionJobError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * API used to get status of data automation library ingestion job
+ */
+export const getDataAutomationLibraryIngestionJob: API.OperationMethod<
+  GetDataAutomationLibraryIngestionJobRequest,
+  GetDataAutomationLibraryIngestionJobResponse,
+  GetDataAutomationLibraryIngestionJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDataAutomationLibraryIngestionJobRequest,
+  output: GetDataAutomationLibraryIngestionJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListDataAutomationLibraryIngestionJobsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all data automation library ingestion jobs
+ */
+export const listDataAutomationLibraryIngestionJobs: API.OperationMethod<
+  ListDataAutomationLibraryIngestionJobsRequest,
+  ListDataAutomationLibraryIngestionJobsResponse,
+  ListDataAutomationLibraryIngestionJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataAutomationLibraryIngestionJobsRequest,
+  ) => stream.Stream<
+    ListDataAutomationLibraryIngestionJobsResponse,
+    ListDataAutomationLibraryIngestionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataAutomationLibraryIngestionJobsRequest,
+  ) => stream.Stream<
+    DataAutomationLibraryIngestionJobSummary,
+    ListDataAutomationLibraryIngestionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListDataAutomationLibraryIngestionJobsRequest,
+  output: ListDataAutomationLibraryIngestionJobsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "jobs",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type CreateDataAutomationLibraryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates an Amazon Bedrock Data Automation Library
+ */
+export const createDataAutomationLibrary: API.OperationMethod<
+  CreateDataAutomationLibraryRequest,
+  CreateDataAutomationLibraryResponse,
+  CreateDataAutomationLibraryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateDataAutomationLibraryRequest,
+  output: CreateDataAutomationLibraryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetDataAutomationLibraryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets an existing Amazon Bedrock Data Automation Library
+ */
+export const getDataAutomationLibrary: API.OperationMethod<
+  GetDataAutomationLibraryRequest,
+  GetDataAutomationLibraryResponse,
+  GetDataAutomationLibraryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDataAutomationLibraryRequest,
+  output: GetDataAutomationLibraryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateDataAutomationLibraryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing Amazon Bedrock Data Automation Library
+ */
+export const updateDataAutomationLibrary: API.OperationMethod<
+  UpdateDataAutomationLibraryRequest,
+  UpdateDataAutomationLibraryResponse,
+  UpdateDataAutomationLibraryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateDataAutomationLibraryRequest,
+  output: UpdateDataAutomationLibraryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteDataAutomationLibraryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an existing Amazon Bedrock Data Automation Library
+ */
+export const deleteDataAutomationLibrary: API.OperationMethod<
+  DeleteDataAutomationLibraryRequest,
+  DeleteDataAutomationLibraryResponse,
+  DeleteDataAutomationLibraryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteDataAutomationLibraryRequest,
+  output: DeleteDataAutomationLibraryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListDataAutomationLibrariesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all existing Amazon Bedrock Data Automation Libraries
+ */
+export const listDataAutomationLibraries: API.OperationMethod<
+  ListDataAutomationLibrariesRequest,
+  ListDataAutomationLibrariesResponse,
+  ListDataAutomationLibrariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataAutomationLibrariesRequest,
+  ) => stream.Stream<
+    ListDataAutomationLibrariesResponse,
+    ListDataAutomationLibrariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataAutomationLibrariesRequest,
+  ) => stream.Stream<
+    DataAutomationLibrarySummary,
+    ListDataAutomationLibrariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListDataAutomationLibrariesRequest,
+  output: ListDataAutomationLibrariesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "libraries",
     pageSize: "maxResults",
   } as const,
 }));

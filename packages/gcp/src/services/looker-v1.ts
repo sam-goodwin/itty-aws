@@ -22,6 +22,81 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
+
+export interface ImportInstanceRequest {
+  /** Path to the import folder in Google Cloud Storage, in the form `gs://bucketName/folderName`. */
+  gcsUri?: string;
+}
+
+export const ImportInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImportInstanceRequest" });
+
+export interface Location {
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+}
+
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: Array<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
+
+export interface OperationMetadata {
+  /** API version used to start the operation. */
+  apiVersion?: string;
+  /** Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** The time the operation finished running. */
+  endTime?: string;
+  /** Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Name of the verb executed by the operation. */
+  verb?: string;
+  /** The time the operation was created. */
+  createTime?: string;
+}
+
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
+
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
@@ -31,78 +106,126 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: Array<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
+
+export interface Looker_Date {
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+}
+
+export const Looker_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Looker_Date" });
+
+export interface TimeOfDay {
+  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
+  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  minutes?: number;
+  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
+  nanos?: number;
+}
+
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
+
+export interface DenyMaintenancePeriod {
+  /** Required. Start date of the deny maintenance period. */
+  startDate?: Looker_Date;
+  /** Required. Time in UTC when the period starts and ends. */
+  time?: TimeOfDay;
+  /** Required. End date of the deny maintenance period. */
+  endDate?: Looker_Date;
+}
+
+export const DenyMaintenancePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Looker_Date),
+  time: Schema.optional(TimeOfDay),
+  endDate: Schema.optional(Looker_Date),
+}).annotate({ identifier: "DenyMaintenancePeriod" });
+
+export interface ExportMetadataEncryptionKey {
+  /** Name of the CMEK. */
+  cmek?: string;
+  /** Version of the CMEK. */
+  version?: string;
+}
+
+export const ExportMetadataEncryptionKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cmek: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExportMetadataEncryptionKey" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ServiceAttachment {
   /** Optional. Fully qualified domain name that will be used in the private DNS record created for the service attachment. */
   localFqdn?: string;
+  /** Optional. List of fully qualified domain names that will be used in the private DNS record created for the service attachment. */
+  localFqdns?: Array<string>;
+  /** Output only. Reason the service attachment creation failed. This value will only be populated if the service attachment encounters an issue during provisioning. */
+  failureReason?: string;
   /** Required. URI of the service attachment to connect to. Format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment} */
   targetServiceAttachmentUri?: string;
   /** Output only. Connection status. */
@@ -114,65 +237,85 @@ export interface ServiceAttachment {
     | "NEEDS_ATTENTION"
     | "CLOSED"
     | (string & {});
-  /** Optional. List of fully qualified domain names that will be used in the private DNS record created for the service attachment. */
-  localFqdns?: Array<string>;
-  /** Output only. Reason the service attachment creation failed. This value will only be populated if the service attachment encounters an issue during provisioning. */
-  failureReason?: string;
 }
 
-export const ServiceAttachment: Schema.Schema<ServiceAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localFqdn: Schema.optional(Schema.String),
-      targetServiceAttachmentUri: Schema.optional(Schema.String),
-      connectionStatus: Schema.optional(Schema.String),
-      localFqdns: Schema.optional(Schema.Array(Schema.String)),
-      failureReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAttachment",
-  }) as any as Schema.Schema<ServiceAttachment>;
+export const ServiceAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localFqdn: Schema.optional(Schema.String),
+  localFqdns: Schema.optional(Schema.Array(Schema.String)),
+  failureReason: Schema.optional(Schema.String),
+  targetServiceAttachmentUri: Schema.optional(Schema.String),
+  connectionStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceAttachment" });
 
 export interface PscConfig {
-  /** Optional. List of VPCs that are allowed ingress into looker. Format: projects/{project}/global/networks/{network} */
-  allowedVpcs?: Array<string>;
-  /** Optional. List of egress service attachment configurations. */
-  serviceAttachments?: Array<ServiceAttachment>;
   /** Output only. URI of the Looker service attachment. */
   lookerServiceAttachmentUri?: string;
+  /** Optional. List of egress service attachment configurations. */
+  serviceAttachments?: Array<ServiceAttachment>;
+  /** Optional. List of VPCs that are allowed ingress into looker. Format: projects/{project}/global/networks/{network} */
+  allowedVpcs?: Array<string>;
 }
 
-export const PscConfig: Schema.Schema<PscConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedVpcs: Schema.optional(Schema.Array(Schema.String)),
-      serviceAttachments: Schema.optional(Schema.Array(ServiceAttachment)),
-      lookerServiceAttachmentUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PscConfig" }) as any as Schema.Schema<PscConfig>;
+export const PscConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lookerServiceAttachmentUri: Schema.optional(Schema.String),
+  serviceAttachments: Schema.optional(Schema.Array(ServiceAttachment)),
+  allowedVpcs: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PscConfig" });
 
-export interface TimeOfDay {
-  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  minutes?: number;
-  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
-  nanos?: number;
+export interface AdminSettings {
+  /** Email domain allowlist for the instance. */
+  allowedEmailDomains?: Array<string>;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const AdminSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedEmailDomains: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AdminSettings" });
+
+export interface MaintenanceSchedule {
+  /** The scheduled start time for the maintenance. */
+  startTime?: string;
+  /** The scheduled end time for the maintenance. */
+  endTime?: string;
+}
+
+export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceSchedule" });
+
+export interface IngressIpAllowlistRule {
+  /** Optional. The IP range to allow ingress traffic from. */
+  ipRange?: string;
+  /** Optional. Description for the IP range. */
+  description?: string;
+}
+
+export const IngressIpAllowlistRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    ipRange: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "IngressIpAllowlistRule" });
+
+export interface IngressIpAllowlistConfig {
+  /** Optional. Whether ingress IP allowlist functionality is enabled on the Looker instance. */
+  enabled?: boolean;
+  /** Optional. Whether google service connections are enabled for the instance. */
+  googleServicesEnabled?: boolean;
+  /** Optional. List of IP range rules to allow ingress traffic. */
+  allowlistRules?: Array<IngressIpAllowlistRule>;
+}
+
+export const IngressIpAllowlistConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    googleServicesEnabled: Schema.optional(Schema.Boolean),
+    allowlistRules: Schema.optional(Schema.Array(IngressIpAllowlistRule)),
+  }).annotate({ identifier: "IngressIpAllowlistConfig" });
 
 export interface MaintenanceWindow {
+  /** Required. Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes. */
+  startTime?: TimeOfDay;
   /** Required. Day of the week for this MaintenanceWindow (in UTC). */
   dayOfWeek?:
     | "DAY_OF_WEEK_UNSPECIFIED"
@@ -184,76 +327,31 @@ export interface MaintenanceWindow {
     | "SATURDAY"
     | "SUNDAY"
     | (string & {});
-  /** Required. Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes. */
-  startTime?: TimeOfDay;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dayOfWeek: Schema.optional(Schema.String),
-      startTime: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(TimeOfDay),
+  dayOfWeek: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceWindow" });
 
-export interface Looker_Date {
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
+export interface EncryptionConfig {
+  /** Output only. Status of the CMEK key. */
+  kmsKeyState?:
+    | "KMS_KEY_STATE_UNSPECIFIED"
+    | "VALID"
+    | "REVOKED"
+    | (string & {});
+  /** Name of the CMEK key in KMS (input parameter). */
+  kmsKeyName?: string;
+  /** Output only. Full name and version of the CMEK key currently in use to encrypt Looker data. Format: `projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. Empty if CMEK is not configured in this instance. */
+  kmsKeyNameVersion?: string;
 }
 
-export const Looker_Date: Schema.Schema<Looker_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Looker_Date",
-  }) as any as Schema.Schema<Looker_Date>;
-
-export interface DenyMaintenancePeriod {
-  /** Required. Start date of the deny maintenance period. */
-  startDate?: Looker_Date;
-  /** Required. End date of the deny maintenance period. */
-  endDate?: Looker_Date;
-  /** Required. Time in UTC when the period starts and ends. */
-  time?: TimeOfDay;
-}
-
-export const DenyMaintenancePeriod: Schema.Schema<DenyMaintenancePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Looker_Date),
-      endDate: Schema.optional(Looker_Date),
-      time: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "DenyMaintenancePeriod",
-  }) as any as Schema.Schema<DenyMaintenancePeriod>;
-
-export interface MaintenanceSchedule {
-  /** The scheduled start time for the maintenance. */
-  startTime?: string;
-  /** The scheduled end time for the maintenance. */
-  endTime?: string;
-}
-
-export const MaintenanceSchedule: Schema.Schema<MaintenanceSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceSchedule",
-  }) as any as Schema.Schema<MaintenanceSchedule>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyState: Schema.optional(Schema.String),
+  kmsKeyName: Schema.optional(Schema.String),
+  kmsKeyNameVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface UserMetadata {
   /** Optional. The number of additional viewer users the instance owner has purchased. */
@@ -264,20 +362,28 @@ export interface UserMetadata {
   additionalDeveloperUserCount?: number;
 }
 
-export const UserMetadata: Schema.Schema<UserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalViewerUserCount: Schema.optional(Schema.Number),
-      additionalStandardUserCount: Schema.optional(Schema.Number),
-      additionalDeveloperUserCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UserMetadata",
-  }) as any as Schema.Schema<UserMetadata>;
+export const UserMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalViewerUserCount: Schema.optional(Schema.Number),
+  additionalStandardUserCount: Schema.optional(Schema.Number),
+  additionalDeveloperUserCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UserMetadata" });
+
+export interface OAuthConfig {
+  /** Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
+  clientSecret?: string;
+  /** Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
+  clientId?: string;
+  /** Optional. Whether to use the shared OAuth client. Instances specifying this field do not need to provide client_id and client_secret. */
+  sharedOauthClientEnabled?: boolean;
+}
+
+export const OAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientSecret: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  sharedOauthClientEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OAuthConfig" });
 
 export interface CustomDomain {
-  /** Domain name. */
-  domain?: string;
   /** Domain state. */
   state?:
     | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
@@ -288,123 +394,86 @@ export interface CustomDomain {
     | "UNAVAILABLE"
     | "UNKNOWN"
     | (string & {});
+  /** Domain name. */
+  domain?: string;
 }
 
-export const CustomDomain: Schema.Schema<CustomDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomDomain",
-  }) as any as Schema.Schema<CustomDomain>;
-
-export interface EncryptionConfig {
-  /** Name of the CMEK key in KMS (input parameter). */
-  kmsKeyName?: string;
-  /** Output only. Status of the CMEK key. */
-  kmsKeyState?:
-    | "KMS_KEY_STATE_UNSPECIFIED"
-    | "VALID"
-    | "REVOKED"
-    | (string & {});
-  /** Output only. Full name and version of the CMEK key currently in use to encrypt Looker data. Format: `projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. Empty if CMEK is not configured in this instance. */
-  kmsKeyNameVersion?: string;
-}
-
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyState: Schema.optional(Schema.String),
-      kmsKeyNameVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
-
-export interface AdminSettings {
-  /** Email domain allowlist for the instance. */
-  allowedEmailDomains?: Array<string>;
-}
-
-export const AdminSettings: Schema.Schema<AdminSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedEmailDomains: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdminSettings",
-  }) as any as Schema.Schema<AdminSettings>;
-
-export interface OAuthConfig {
-  /** Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
-  clientId?: string;
-  /** Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
-  clientSecret?: string;
-  /** Optional. Whether to use the shared OAuth client. Instances specifying this field do not need to provide client_id and client_secret. */
-  sharedOauthClientEnabled?: boolean;
-}
-
-export const OAuthConfig: Schema.Schema<OAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      sharedOauthClientEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OAuthConfig",
-  }) as any as Schema.Schema<OAuthConfig>;
-
-export interface ControlledEgressConfig {
-  /** Optional. Whether marketplace is enabled. */
-  marketplaceEnabled?: boolean;
-  /** Optional. List of fully qualified domain names to be added to the allowlist for outbound traffic. */
-  egressFqdns?: Array<string>;
-  /** Output only. The list of IP addresses used by Secure Web Proxy for outbound traffic. */
-  webProxyIps?: Array<string>;
-}
-
-export const ControlledEgressConfig: Schema.Schema<ControlledEgressConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marketplaceEnabled: Schema.optional(Schema.Boolean),
-      egressFqdns: Schema.optional(Schema.Array(Schema.String)),
-      webProxyIps: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ControlledEgressConfig",
-  }) as any as Schema.Schema<ControlledEgressConfig>;
+export const CustomDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomDomain" });
 
 export interface PeriodicExportConfig {
-  /** Required. Name of the CMEK key in KMS. Format: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key} */
-  kmsKey?: string;
   /** Required. Cloud Storage bucket URI for periodic export. Format: gs://{bucket_name} */
   gcsUri?: string;
   /** Required. Time in UTC to start the periodic export job. */
   startTime?: TimeOfDay;
+  /** Required. Name of the CMEK key in KMS. Format: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key} */
+  kmsKey?: string;
 }
 
-export const PeriodicExportConfig: Schema.Schema<PeriodicExportConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKey: Schema.optional(Schema.String),
-      gcsUri: Schema.optional(Schema.String),
-      startTime: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "PeriodicExportConfig",
-  }) as any as Schema.Schema<PeriodicExportConfig>;
+export const PeriodicExportConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsUri: Schema.optional(Schema.String),
+  startTime: Schema.optional(TimeOfDay),
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "PeriodicExportConfig" });
+
+export interface ControlledEgressConfig {
+  /** Optional. List of fully qualified domain names to be added to the allowlist for outbound traffic. */
+  egressFqdns?: Array<string>;
+  /** Optional. Whether marketplace is enabled. */
+  marketplaceEnabled?: boolean;
+  /** Output only. The list of IP addresses used by Secure Web Proxy for outbound traffic. */
+  webProxyIps?: Array<string>;
+}
+
+export const ControlledEgressConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    egressFqdns: Schema.optional(Schema.Array(Schema.String)),
+    marketplaceEnabled: Schema.optional(Schema.Boolean),
+    webProxyIps: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ControlledEgressConfig" });
 
 export interface Instance {
-  /** Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
-  name?: string;
+  /** Output only. The Looker version that the instance is using. */
+  lookerVersion?: string;
+  /** Optional. Storage class of the instance. */
+  classType?: "CLASS_TYPE_UNSPECIFIED" | "R1" | "P1" | (string & {});
+  /** Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance. */
+  consumerNetwork?: string;
+  /** Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request. */
+  reservedRange?: string;
+  /** Optional. Indicates whether catalog integration is disabled for the Looker instance. */
+  catalogIntegrationOptOut?: boolean;
+  /** Whether private IP is enabled on the Looker instance. */
+  privateIpEnabled?: boolean;
+  /** Output only. Private Ingress IP (IPv4). */
+  ingressPrivateIp?: string;
+  /** Optional. PSC configuration. Used when `psc_enabled` is true. */
+  pscConfig?: PscConfig;
   /** Output only. The time when the Looker instance provisioning was first requested. */
   createTime?: string;
-  /** Output only. The time when the Looker instance was last updated. */
-  updateTime?: string;
+  /** Output only. Looker instance URI which can be used to access the Looker Instance UI. */
+  lookerUri?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Maintenance denial period for this instance. */
+  denyMaintenancePeriod?: DenyMaintenancePeriod;
+  /** Optional. Whether Gemini feature is enabled on the Looker instance or not. */
+  geminiEnabled?: boolean;
+  /** Optional. Whether to use Private Service Connect (PSC) for private IP connectivity. If true, neither `public_ip_enabled` nor `private_ip_enabled` can be true. */
+  pscEnabled?: boolean;
+  /** Looker Instance Admin settings. */
+  adminSettings?: AdminSettings;
+  /** Optional. Whether FIPS is enabled on the Looker instance. */
+  fipsEnabled?: boolean;
+  /** Optional. Whether controlled egress is enabled on the Looker instance. */
+  controlledEgressEnabled?: boolean;
+  /** Maintenance schedule for this instance. */
+  maintenanceSchedule?: MaintenanceSchedule;
+  /** Optional. Ingress IP allowlist configuration for the Looker instance. */
+  ingressIpAllowlistConfig?: IngressIpAllowlistConfig;
   /** Output only. The state of the instance. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -417,6 +486,30 @@ export interface Instance {
     | "EXPORTING"
     | "IMPORTING"
     | (string & {});
+  /** Output only. The time when the Looker instance was last updated. */
+  updateTime?: string;
+  /** Output only. Public Egress IP (IPv4). */
+  egressPublicIp?: string;
+  /** Maintenance window for this instance. */
+  maintenanceWindow?: MaintenanceWindow;
+  /** Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance. */
+  encryptionConfig?: EncryptionConfig;
+  /** Optional. User metadata. */
+  userMetadata?: UserMetadata;
+  /** Looker instance OAuth login settings. */
+  oauthConfig?: OAuthConfig;
+  /** Output only. Public Ingress IP (IPv4). */
+  ingressPublicIp?: string;
+  /** Custom domain configuration for the instance. */
+  customDomain?: CustomDomain;
+  /** Optional. Linked Google Cloud Project Number for Looker Studio Pro. */
+  linkedLspProjectNumber?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Optional. Configuration for periodic export. */
+  periodicExportConfig?: PeriodicExportConfig;
+  /** Output only. Last computed maintenance denial period for this instance. */
+  lastDenyMaintenancePeriod?: DenyMaintenancePeriod;
   /** Platform edition. */
   platformEdition?:
     | "PLATFORM_EDITION_UNSPECIFIED"
@@ -432,226 +525,78 @@ export interface Instance {
     | "LOOKER_CORE_TRIAL_ENTERPRISE"
     | "LOOKER_CORE_TRIAL_EMBED"
     | (string & {});
-  /** Whether public IP is enabled on the Looker instance. */
-  publicIpEnabled?: boolean;
-  /** Whether private IP is enabled on the Looker instance. */
-  privateIpEnabled?: boolean;
-  /** Output only. The Looker version that the instance is using. */
-  lookerVersion?: string;
-  /** Output only. Public Egress IP (IPv4). */
-  egressPublicIp?: string;
-  /** Output only. Private Ingress IP (IPv4). */
-  ingressPrivateIp?: string;
-  /** Output only. Public Ingress IP (IPv4). */
-  ingressPublicIp?: string;
-  /** Output only. Looker instance URI which can be used to access the Looker Instance UI. */
-  lookerUri?: string;
-  /** Optional. Whether to use Private Service Connect (PSC) for private IP connectivity. If true, neither `public_ip_enabled` nor `private_ip_enabled` can be true. */
-  pscEnabled?: boolean;
-  /** Optional. PSC configuration. Used when `psc_enabled` is true. */
-  pscConfig?: PscConfig;
-  /** Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance. */
-  consumerNetwork?: string;
-  /** Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request. */
-  reservedRange?: string;
-  /** Maintenance window for this instance. */
-  maintenanceWindow?: MaintenanceWindow;
-  /** Maintenance denial period for this instance. */
-  denyMaintenancePeriod?: DenyMaintenancePeriod;
-  /** Output only. Last computed maintenance denial period for this instance. */
-  lastDenyMaintenancePeriod?: DenyMaintenancePeriod;
-  /** Maintenance schedule for this instance. */
-  maintenanceSchedule?: MaintenanceSchedule;
-  /** Optional. User metadata. */
-  userMetadata?: UserMetadata;
-  /** Custom domain configuration for the instance. */
-  customDomain?: CustomDomain;
-  /** Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance. */
-  encryptionConfig?: EncryptionConfig;
-  /** Looker Instance Admin settings. */
-  adminSettings?: AdminSettings;
-  /** Looker instance OAuth login settings. */
-  oauthConfig?: OAuthConfig;
-  /** Optional. Linked Google Cloud Project Number for Looker Studio Pro. */
-  linkedLspProjectNumber?: string;
-  /** Optional. Whether FIPS is enabled on the Looker instance. */
-  fipsEnabled?: boolean;
-  /** Optional. Whether Gemini feature is enabled on the Looker instance or not. */
-  geminiEnabled?: boolean;
-  /** Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Optional. Storage class of the instance. */
-  classType?: "CLASS_TYPE_UNSPECIFIED" | "R1" | "P1" | (string & {});
   /** Optional. Controlled egress configuration. */
   controlledEgressConfig?: ControlledEgressConfig;
-  /** Optional. Whether controlled egress is enabled on the Looker instance. */
-  controlledEgressEnabled?: boolean;
-  /** Optional. Configuration for periodic export. */
-  periodicExportConfig?: PeriodicExportConfig;
+  /** Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
+  name?: string;
+  /** Whether public IP is enabled on the Looker instance. */
+  publicIpEnabled?: boolean;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      platformEdition: Schema.optional(Schema.String),
-      publicIpEnabled: Schema.optional(Schema.Boolean),
-      privateIpEnabled: Schema.optional(Schema.Boolean),
-      lookerVersion: Schema.optional(Schema.String),
-      egressPublicIp: Schema.optional(Schema.String),
-      ingressPrivateIp: Schema.optional(Schema.String),
-      ingressPublicIp: Schema.optional(Schema.String),
-      lookerUri: Schema.optional(Schema.String),
-      pscEnabled: Schema.optional(Schema.Boolean),
-      pscConfig: Schema.optional(PscConfig),
-      consumerNetwork: Schema.optional(Schema.String),
-      reservedRange: Schema.optional(Schema.String),
-      maintenanceWindow: Schema.optional(MaintenanceWindow),
-      denyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
-      lastDenyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
-      maintenanceSchedule: Schema.optional(MaintenanceSchedule),
-      userMetadata: Schema.optional(UserMetadata),
-      customDomain: Schema.optional(CustomDomain),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      adminSettings: Schema.optional(AdminSettings),
-      oauthConfig: Schema.optional(OAuthConfig),
-      linkedLspProjectNumber: Schema.optional(Schema.String),
-      fipsEnabled: Schema.optional(Schema.Boolean),
-      geminiEnabled: Schema.optional(Schema.Boolean),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      classType: Schema.optional(Schema.String),
-      controlledEgressConfig: Schema.optional(ControlledEgressConfig),
-      controlledEgressEnabled: Schema.optional(Schema.Boolean),
-      periodicExportConfig: Schema.optional(PeriodicExportConfig),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lookerVersion: Schema.optional(Schema.String),
+  classType: Schema.optional(Schema.String),
+  consumerNetwork: Schema.optional(Schema.String),
+  reservedRange: Schema.optional(Schema.String),
+  catalogIntegrationOptOut: Schema.optional(Schema.Boolean),
+  privateIpEnabled: Schema.optional(Schema.Boolean),
+  ingressPrivateIp: Schema.optional(Schema.String),
+  pscConfig: Schema.optional(PscConfig),
+  createTime: Schema.optional(Schema.String),
+  lookerUri: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  denyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
+  geminiEnabled: Schema.optional(Schema.Boolean),
+  pscEnabled: Schema.optional(Schema.Boolean),
+  adminSettings: Schema.optional(AdminSettings),
+  fipsEnabled: Schema.optional(Schema.Boolean),
+  controlledEgressEnabled: Schema.optional(Schema.Boolean),
+  maintenanceSchedule: Schema.optional(MaintenanceSchedule),
+  ingressIpAllowlistConfig: Schema.optional(IngressIpAllowlistConfig),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  egressPublicIp: Schema.optional(Schema.String),
+  maintenanceWindow: Schema.optional(MaintenanceWindow),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  userMetadata: Schema.optional(UserMetadata),
+  oauthConfig: Schema.optional(OAuthConfig),
+  ingressPublicIp: Schema.optional(Schema.String),
+  customDomain: Schema.optional(CustomDomain),
+  linkedLspProjectNumber: Schema.optional(Schema.String),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  periodicExportConfig: Schema.optional(PeriodicExportConfig),
+  lastDenyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
+  platformEdition: Schema.optional(Schema.String),
+  controlledEgressConfig: Schema.optional(ControlledEgressConfig),
+  name: Schema.optional(Schema.String),
+  publicIpEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
-  /** The list of instances matching the request filters, up to the requested ListInstancesRequest.pageSize. */
-  instances?: Array<Instance>;
   /** If provided, a page token that can look up the next ListInstancesRequest.pageSize results. If empty, the results list is exhausted. */
   nextPageToken?: string;
+  /** The list of instances matching the request filters, up to the requested ListInstancesRequest.pageSize. */
+  instances?: Array<Instance>;
   /** Locations that could not be reached. */
   unreachable?: Array<string>;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instances: Schema.optional(Schema.Array(Instance)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
-
-export interface RestartInstanceRequest {}
-
-export const RestartInstanceRequest: Schema.Schema<RestartInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RestartInstanceRequest",
-  }) as any as Schema.Schema<RestartInstanceRequest>;
-
-export interface InstanceBackup {
-  /** Immutable. The relative resource name of the backup, in the following form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}/backups/{backup}` */
-  name?: string;
-  /** Output only. The time when the backup was started. */
-  createTime?: string;
-  /** Output only. The time when the backup will be deleted. */
-  expireTime?: string;
-  /** Output only. The current state of the backup. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "DELETING"
-    | "ACTIVE"
-    | "FAILED"
-    | (string & {});
-  /** Output only. Current status of the CMEK encryption */
-  encryptionConfig?: EncryptionConfig;
-}
-
-export const InstanceBackup: Schema.Schema<InstanceBackup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-    }),
-  ).annotate({
-    identifier: "InstanceBackup",
-  }) as any as Schema.Schema<InstanceBackup>;
-
-export interface ListInstanceBackupsResponse {
-  /** The list of instances matching the request filters, up to the requested `page_size`. */
-  instanceBackups?: Array<InstanceBackup>;
-  /** If provided, a page token that can look up the next `page_size` results. If empty, the results list is exhausted. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: Array<string>;
-}
-
-export const ListInstanceBackupsResponse: Schema.Schema<ListInstanceBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceBackups: Schema.optional(Schema.Array(InstanceBackup)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInstanceBackupsResponse",
-  }) as any as Schema.Schema<ListInstanceBackupsResponse>;
-
-export interface RestoreInstanceRequest {
-  /** Required. Backup being used to restore the instance Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
-  backup?: string;
-}
-
-export const RestoreInstanceRequest: Schema.Schema<RestoreInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestoreInstanceRequest",
-  }) as any as Schema.Schema<RestoreInstanceRequest>;
-
-export interface ImportInstanceRequest {
-  /** Path to the import folder in Google Cloud Storage, in the form `gs://bucketName/folderName`. */
-  gcsUri?: string;
-}
-
-export const ImportInstanceRequest: Schema.Schema<ImportInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportInstanceRequest",
-  }) as any as Schema.Schema<ImportInstanceRequest>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  instances: Schema.optional(Schema.Array(Instance)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface ExportEncryptionConfig {
   /** Required. Name of the CMEK key in KMS. */
   kmsKeyName?: string;
 }
 
-export const ExportEncryptionConfig: Schema.Schema<ExportEncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportEncryptionConfig",
-  }) as any as Schema.Schema<ExportEncryptionConfig>;
+export const ExportEncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    kmsKeyName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ExportEncryptionConfig" });
 
 export interface ExportInstanceRequest {
   /** The path to the folder in Google Cloud Storage where the export will be stored. The URI is in the form `gs://bucketName/folderName`. */
@@ -660,168 +605,128 @@ export interface ExportInstanceRequest {
   encryptionConfig?: ExportEncryptionConfig;
 }
 
-export const ExportInstanceRequest: Schema.Schema<ExportInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(ExportEncryptionConfig),
-    }),
-  ).annotate({
-    identifier: "ExportInstanceRequest",
-  }) as any as Schema.Schema<ExportInstanceRequest>;
-
-export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
-
-export interface OperationMetadata {
-  /** The time the operation was created. */
-  createTime?: string;
-  /** The time the operation finished running. */
-  endTime?: string;
-  /** Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Name of the verb executed by the operation. */
-  verb?: string;
-  /** Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
-
-export interface ExportMetadataEncryptionKey {
-  /** Name of the CMEK. */
-  cmek?: string;
-  /** Version of the CMEK. */
-  version?: string;
-}
-
-export const ExportMetadataEncryptionKey: Schema.Schema<ExportMetadataEncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cmek: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportMetadataEncryptionKey",
-  }) as any as Schema.Schema<ExportMetadataEncryptionKey>;
+export const ExportInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsUri: Schema.optional(Schema.String),
+  encryptionConfig: Schema.optional(ExportEncryptionConfig),
+}).annotate({ identifier: "ExportInstanceRequest" });
 
 export interface ExportMetadata {
-  /** Name of the exported instance. Format: projects/{project}/locations/{location}/instances/{instance} */
-  lookerInstance?: string;
-  /** Version of instance when the export was created. */
-  lookerVersion?: string;
-  /** Platform edition of the exported instance. */
-  lookerPlatformEdition?: string;
-  /** Encryption key that was used to encrypt the export artifacts. */
-  exportEncryptionKey?: ExportMetadataEncryptionKey;
-  /** Looker encryption key, encrypted with the provided export encryption key. This value will only be populated if the looker instance uses Looker managed encryption instead of CMEK. */
-  lookerEncryptionKey?: string;
-  /** List of files created as part of export artifact (excluding the metadata). The paths are relative to the folder containing the metadata. */
-  filePaths?: Array<string>;
   /** The source type of the migration. */
   source?:
     | "SOURCE_UNSPECIFIED"
     | "LOOKER_CORE"
     | "LOOKER_ORIGINAL"
     | (string & {});
+  /** Platform edition of the exported instance. */
+  lookerPlatformEdition?: string;
+  /** Name of the exported instance. Format: projects/{project}/locations/{location}/instances/{instance} */
+  lookerInstance?: string;
+  /** Version of instance when the export was created. */
+  lookerVersion?: string;
+  /** List of files created as part of export artifact (excluding the metadata). The paths are relative to the folder containing the metadata. */
+  filePaths?: Array<string>;
+  /** Looker encryption key, encrypted with the provided export encryption key. This value will only be populated if the looker instance uses Looker managed encryption instead of CMEK. */
+  lookerEncryptionKey?: string;
+  /** Encryption key that was used to encrypt the export artifacts. */
+  exportEncryptionKey?: ExportMetadataEncryptionKey;
 }
 
-export const ExportMetadata: Schema.Schema<ExportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lookerInstance: Schema.optional(Schema.String),
-      lookerVersion: Schema.optional(Schema.String),
-      lookerPlatformEdition: Schema.optional(Schema.String),
-      exportEncryptionKey: Schema.optional(ExportMetadataEncryptionKey),
-      lookerEncryptionKey: Schema.optional(Schema.String),
-      filePaths: Schema.optional(Schema.Array(Schema.String)),
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportMetadata",
-  }) as any as Schema.Schema<ExportMetadata>;
+export const ExportMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Schema.String),
+  lookerPlatformEdition: Schema.optional(Schema.String),
+  lookerInstance: Schema.optional(Schema.String),
+  lookerVersion: Schema.optional(Schema.String),
+  filePaths: Schema.optional(Schema.Array(Schema.String)),
+  lookerEncryptionKey: Schema.optional(Schema.String),
+  exportEncryptionKey: Schema.optional(ExportMetadataEncryptionKey),
+}).annotate({ identifier: "ExportMetadata" });
+
+export interface InstanceBackup {
+  /** Output only. The time when the backup will be deleted. */
+  expireTime?: string;
+  /** Output only. The time when the backup was started. */
+  createTime?: string;
+  /** Output only. Current status of the CMEK encryption */
+  encryptionConfig?: EncryptionConfig;
+  /** Immutable. The relative resource name of the backup, in the following form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}/backups/{backup}` */
+  name?: string;
+  /** Output only. The current state of the backup. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "DELETING"
+    | "ACTIVE"
+    | "FAILED"
+    | (string & {});
+}
+
+export const InstanceBackup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstanceBackup" });
+
+export interface RestartInstanceRequest {}
+
+export const RestartInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RestartInstanceRequest" });
+
+export interface ListInstanceBackupsResponse {
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+  /** The list of instances matching the request filters, up to the requested `page_size`. */
+  instanceBackups?: Array<InstanceBackup>;
+  /** If provided, a page token that can look up the next `page_size` results. If empty, the results list is exhausted. */
+  nextPageToken?: string;
+}
+
+export const ListInstanceBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    instanceBackups: Schema.optional(Schema.Array(InstanceBackup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInstanceBackupsResponse" });
+
+export interface RestoreInstanceRequest {
+  /** Required. Backup being used to restore the instance Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
+  backup?: string;
+}
+
+export const RestoreInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    backup: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RestoreInstanceRequest" });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
+  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
     svc,
@@ -833,7 +738,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -883,28 +788,66 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [],
 }));
 
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: CancelOperationRequest;
+}
+
+export const CancelProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelProjectsLocationsOperationsError = DefaultErrors;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
+  errors: [],
+}));
+
 export interface ListProjectsLocationsOperationsRequest {
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
   /** The name of the operation's parent resource. */
   name: string;
-  /** The standard list filter. */
-  filter?: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
+  /** The standard list filter. */
+  filter?: string;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
     ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1003,122 +946,6 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   errors: [],
 }));
 
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: CancelOperationRequest;
-}
-
-export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
-
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
-
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
-}));
-
-export interface ListProjectsLocationsInstancesRequest {
-  /** Required. Format: `projects/{project}/locations/{location}`. */
-  parent: string;
-  /** The maximum number of instances to return. If unspecified at most 256 will be returned. The maximum possible value is 2048. */
-  pageSize?: number;
-  /** A page token received from a previous ListInstancesRequest. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
-
-export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
-export const ListProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
-
-export type ListProjectsLocationsInstancesError = DefaultErrors;
-
-/** Lists Instances in a given project and location. */
-export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
-  ListProjectsLocationsInstancesRequest,
-  ListProjectsLocationsInstancesResponse,
-  ListProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInstancesRequest,
-  output: ListProjectsLocationsInstancesResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsInstancesRequest {
-  /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
-  name: string;
-}
-
-export const GetProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
-
-export type GetProjectsLocationsInstancesResponse = Instance;
-export const GetProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Instance;
-
-export type GetProjectsLocationsInstancesError = DefaultErrors;
-
-/** Gets details of a single Instance. */
-export const getProjectsLocationsInstances: API.OperationMethod<
-  GetProjectsLocationsInstancesRequest,
-  GetProjectsLocationsInstancesResponse,
-  GetProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: GetProjectsLocationsInstancesResponse,
-  errors: [],
-}));
-
 export interface CreateProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -1161,16 +988,16 @@ export const createProjectsLocationsInstances: API.OperationMethod<
 }));
 
 export interface DeleteProjectsLocationsInstancesRequest {
-  /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
-  name: string;
   /** Whether to force cascading delete. */
   force?: boolean;
+  /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
+  name: string;
 }
 
 export const DeleteProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1194,47 +1021,6 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsInstancesRequest,
   output: DeleteProjectsLocationsInstancesResponse,
-  errors: [],
-}));
-
-export interface PatchProjectsLocationsInstancesRequest {
-  /** Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
-  name: string;
-  /** Required. Field mask used to specify the fields to be overwritten in the Instance resource by the update. The fields specified in the mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. */
-  updateMask?: string;
-  /** Request body */
-  body?: Instance;
-}
-
-export const PatchProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Instance).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsInstancesRequest>;
-
-export type PatchProjectsLocationsInstancesResponse = Operation;
-export const PatchProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsInstancesError = DefaultErrors;
-
-/** Update Instance. */
-export const patchProjectsLocationsInstances: API.OperationMethod<
-  PatchProjectsLocationsInstancesRequest,
-  PatchProjectsLocationsInstancesResponse,
-  PatchProjectsLocationsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInstancesRequest,
-  output: PatchProjectsLocationsInstancesResponse,
   errors: [],
 }));
 
@@ -1314,41 +1100,37 @@ export const restoreProjectsLocationsInstances: API.OperationMethod<
   errors: [],
 }));
 
-export interface ImportProjectsLocationsInstancesRequest {
+export interface GetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
-  /** Request body */
-  body?: ImportInstanceRequest;
 }
 
-export const ImportProjectsLocationsInstancesRequest =
+export const GetProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ImportInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:import",
-      hasBody: true,
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsInstancesRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
-export type ImportProjectsLocationsInstancesResponse = Operation;
-export const ImportProjectsLocationsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type GetProjectsLocationsInstancesResponse = Instance;
+export const GetProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type ImportProjectsLocationsInstancesError = DefaultErrors;
+export type GetProjectsLocationsInstancesError = DefaultErrors;
 
-/** Import instance. */
-export const importProjectsLocationsInstances: API.OperationMethod<
-  ImportProjectsLocationsInstancesRequest,
-  ImportProjectsLocationsInstancesResponse,
-  ImportProjectsLocationsInstancesError,
+/** Gets details of a single Instance. */
+export const getProjectsLocationsInstances: API.OperationMethod<
+  GetProjectsLocationsInstancesRequest,
+  GetProjectsLocationsInstancesResponse,
+  GetProjectsLocationsInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ImportProjectsLocationsInstancesRequest,
-  output: ImportProjectsLocationsInstancesResponse,
+  input: GetProjectsLocationsInstancesRequest,
+  output: GetProjectsLocationsInstancesResponse,
   errors: [],
 }));
 
@@ -1390,23 +1172,146 @@ export const exportProjectsLocationsInstances: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListProjectsLocationsInstancesBackupsRequest {
-  /** Required. Format: projects/{project}/locations/{location}/instances/{instance}. */
+export interface ImportProjectsLocationsInstancesRequest {
+  /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
+  name: string;
+  /** Request body */
+  body?: ImportInstanceRequest;
+}
+
+export const ImportProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ImportInstanceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:import",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ImportProjectsLocationsInstancesRequest>;
+
+export type ImportProjectsLocationsInstancesResponse = Operation;
+export const ImportProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ImportProjectsLocationsInstancesError = DefaultErrors;
+
+/** Import instance. */
+export const importProjectsLocationsInstances: API.OperationMethod<
+  ImportProjectsLocationsInstancesRequest,
+  ImportProjectsLocationsInstancesResponse,
+  ImportProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ImportProjectsLocationsInstancesRequest,
+  output: ImportProjectsLocationsInstancesResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsInstancesRequest {
+  /** The maximum number of instances to return. If unspecified at most 256 will be returned. The maximum possible value is 2048. */
+  pageSize?: number;
+  /** A page token received from a previous ListInstancesRequest. */
+  pageToken?: string;
+  /** Required. Format: `projects/{project}/locations/{location}`. */
   parent: string;
+}
+
+export const ListProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/instances",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
+
+export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
+export const ListProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
+
+export type ListProjectsLocationsInstancesError = DefaultErrors;
+
+/** Lists Instances in a given project and location. */
+export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
+  ListProjectsLocationsInstancesRequest,
+  ListProjectsLocationsInstancesResponse,
+  ListProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsInstancesRequest,
+  output: ListProjectsLocationsInstancesResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchProjectsLocationsInstancesRequest {
+  /** Required. Field mask used to specify the fields to be overwritten in the Instance resource by the update. The fields specified in the mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. */
+  updateMask?: string;
+  /** Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
+  name: string;
+  /** Request body */
+  body?: Instance;
+}
+
+export const PatchProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Instance).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsInstancesRequest>;
+
+export type PatchProjectsLocationsInstancesResponse = Operation;
+export const PatchProjectsLocationsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsInstancesError = DefaultErrors;
+
+/** Update Instance. */
+export const patchProjectsLocationsInstances: API.OperationMethod<
+  PatchProjectsLocationsInstancesRequest,
+  PatchProjectsLocationsInstancesResponse,
+  PatchProjectsLocationsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsInstancesRequest,
+  output: PatchProjectsLocationsInstancesResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsInstancesBackupsRequest {
   /** The maximum number of instances to return. */
   pageSize?: number;
   /** A page token received from a previous ListInstances request. */
   pageToken?: string;
   /** Sort results. Default order is "create_time desc". Other supported fields are "state" and "expire_time". https://google.aip.dev/132#ordering */
   orderBy?: string;
+  /** Required. Format: projects/{project}/locations/{location}/instances/{instance}. */
+  parent: string;
 }
 
 export const ListProjectsLocationsInstancesBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({
       method: "GET",

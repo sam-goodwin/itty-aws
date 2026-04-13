@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface TeamFolder {
   /** Identifier. The TeamFolder's name. */
@@ -115,17 +104,24 @@ export interface TeamFolder {
   creatorIamPrincipal?: string;
 }
 
-export const TeamFolder: Schema.Schema<TeamFolder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      internalMetadata: Schema.optional(Schema.String),
-      creatorIamPrincipal: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TeamFolder" }) as any as Schema.Schema<TeamFolder>;
+export const TeamFolder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  internalMetadata: Schema.optional(Schema.String),
+  creatorIamPrincipal: Schema.optional(Schema.String),
+}).annotate({ identifier: "TeamFolder" });
+
+export interface DeleteTeamFolderTreeRequest {
+  /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
+  force?: boolean;
+}
+
+export const DeleteTeamFolderTreeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DeleteTeamFolderTreeRequest" });
 
 export interface Folder {
   /** Identifier. The Folder's name. */
@@ -146,19 +142,16 @@ export interface Folder {
   creatorIamPrincipal?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      containingFolder: Schema.optional(Schema.String),
-      teamFolderName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      internalMetadata: Schema.optional(Schema.String),
-      creatorIamPrincipal: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Folder" }) as any as Schema.Schema<Folder>;
+export const Folder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  containingFolder: Schema.optional(Schema.String),
+  teamFolderName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  internalMetadata: Schema.optional(Schema.String),
+  creatorIamPrincipal: Schema.optional(Schema.String),
+}).annotate({ identifier: "Folder" });
 
 export interface SshAuthenticationConfig {
   /** Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/* /secrets/* /versions/*`. */
@@ -167,15 +160,11 @@ export interface SshAuthenticationConfig {
   hostPublicKey?: string;
 }
 
-export const SshAuthenticationConfig: Schema.Schema<SshAuthenticationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userPrivateKeySecretVersion: Schema.optional(Schema.String),
-      hostPublicKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SshAuthenticationConfig",
-  }) as any as Schema.Schema<SshAuthenticationConfig>;
+export const SshAuthenticationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userPrivateKeySecretVersion: Schema.optional(Schema.String),
+    hostPublicKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SshAuthenticationConfig" });
 
 export interface GitRemoteSettings {
   /** Required. The Git remote's URL. */
@@ -195,18 +184,13 @@ export interface GitRemoteSettings {
     | (string & {});
 }
 
-export const GitRemoteSettings: Schema.Schema<GitRemoteSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      defaultBranch: Schema.optional(Schema.String),
-      authenticationTokenSecretVersion: Schema.optional(Schema.String),
-      sshAuthenticationConfig: Schema.optional(SshAuthenticationConfig),
-      tokenStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitRemoteSettings",
-  }) as any as Schema.Schema<GitRemoteSettings>;
+export const GitRemoteSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  defaultBranch: Schema.optional(Schema.String),
+  authenticationTokenSecretVersion: Schema.optional(Schema.String),
+  sshAuthenticationConfig: Schema.optional(SshAuthenticationConfig),
+  tokenStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitRemoteSettings" });
 
 export interface WorkspaceCompilationOverrides {
   /** Optional. The default database (Google Cloud project ID). */
@@ -217,30 +201,21 @@ export interface WorkspaceCompilationOverrides {
   tablePrefix?: string;
 }
 
-export const WorkspaceCompilationOverrides: Schema.Schema<WorkspaceCompilationOverrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultDatabase: Schema.optional(Schema.String),
-      schemaSuffix: Schema.optional(Schema.String),
-      tablePrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkspaceCompilationOverrides",
-  }) as any as Schema.Schema<WorkspaceCompilationOverrides>;
+export const WorkspaceCompilationOverrides =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultDatabase: Schema.optional(Schema.String),
+    schemaSuffix: Schema.optional(Schema.String),
+    tablePrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkspaceCompilationOverrides" });
 
 export interface DataEncryptionState {
   /** Required. The KMS key version name with which data of a resource is encrypted. */
   kmsKeyVersionName?: string;
 }
 
-export const DataEncryptionState: Schema.Schema<DataEncryptionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataEncryptionState",
-  }) as any as Schema.Schema<DataEncryptionState>;
+export const DataEncryptionState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyVersionName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataEncryptionState" });
 
 export interface Repository {
   /** Identifier. The repository's name. */
@@ -273,27 +248,22 @@ export interface Repository {
   internalMetadata?: string;
 }
 
-export const Repository: Schema.Schema<Repository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      containingFolder: Schema.optional(Schema.String),
-      teamFolderName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      gitRemoteSettings: Schema.optional(GitRemoteSettings),
-      npmrcEnvironmentVariablesSecretVersion: Schema.optional(Schema.String),
-      workspaceCompilationOverrides: Schema.optional(
-        WorkspaceCompilationOverrides,
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      setAuthenticatedUserAdmin: Schema.optional(Schema.Boolean),
-      serviceAccount: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      dataEncryptionState: Schema.optional(DataEncryptionState),
-      internalMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Repository" }) as any as Schema.Schema<Repository>;
+export const Repository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  containingFolder: Schema.optional(Schema.String),
+  teamFolderName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  gitRemoteSettings: Schema.optional(GitRemoteSettings),
+  npmrcEnvironmentVariablesSecretVersion: Schema.optional(Schema.String),
+  workspaceCompilationOverrides: Schema.optional(WorkspaceCompilationOverrides),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  setAuthenticatedUserAdmin: Schema.optional(Schema.Boolean),
+  serviceAccount: Schema.optional(Schema.String),
+  kmsKeyName: Schema.optional(Schema.String),
+  dataEncryptionState: Schema.optional(DataEncryptionState),
+  internalMetadata: Schema.optional(Schema.String),
+}).annotate({ identifier: "Repository" });
 
 export interface TeamFolderContentsEntry {
   /** A subfolder. */
@@ -302,15 +272,11 @@ export interface TeamFolderContentsEntry {
   repository?: Repository;
 }
 
-export const TeamFolderContentsEntry: Schema.Schema<TeamFolderContentsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folder: Schema.optional(Folder),
-      repository: Schema.optional(Repository),
-    }),
-  ).annotate({
-    identifier: "TeamFolderContentsEntry",
-  }) as any as Schema.Schema<TeamFolderContentsEntry>;
+export const TeamFolderContentsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    folder: Schema.optional(Folder),
+    repository: Schema.optional(Repository),
+  }).annotate({ identifier: "TeamFolderContentsEntry" });
 
 export interface QueryTeamFolderContentsResponse {
   /** List of entries in the TeamFolder. */
@@ -319,29 +285,22 @@ export interface QueryTeamFolderContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryTeamFolderContentsResponse: Schema.Schema<QueryTeamFolderContentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(TeamFolderContentsEntry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryTeamFolderContentsResponse",
-  }) as any as Schema.Schema<QueryTeamFolderContentsResponse>;
+export const QueryTeamFolderContentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(TeamFolderContentsEntry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryTeamFolderContentsResponse" });
 
 export interface TeamFolderSearchResult {
   /** A TeamFolder resource that is in the project / location. */
   teamFolder?: TeamFolder;
 }
 
-export const TeamFolderSearchResult: Schema.Schema<TeamFolderSearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      teamFolder: Schema.optional(TeamFolder),
-    }),
-  ).annotate({
-    identifier: "TeamFolderSearchResult",
-  }) as any as Schema.Schema<TeamFolderSearchResult>;
+export const TeamFolderSearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    teamFolder: Schema.optional(TeamFolder),
+  },
+).annotate({ identifier: "TeamFolderSearchResult" });
 
 export interface SearchTeamFoldersResponse {
   /** List of TeamFolders that match the search query. */
@@ -350,15 +309,21 @@ export interface SearchTeamFoldersResponse {
   nextPageToken?: string;
 }
 
-export const SearchTeamFoldersResponse: Schema.Schema<SearchTeamFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Array(TeamFolderSearchResult)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchTeamFoldersResponse",
-  }) as any as Schema.Schema<SearchTeamFoldersResponse>;
+export const SearchTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(Schema.Array(TeamFolderSearchResult)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchTeamFoldersResponse" });
+
+export interface DeleteFolderTreeRequest {
+  /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
+  force?: boolean;
+}
+
+export const DeleteFolderTreeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DeleteFolderTreeRequest" });
 
 export interface FolderContentsEntry {
   /** A subfolder. */
@@ -367,15 +332,10 @@ export interface FolderContentsEntry {
   repository?: Repository;
 }
 
-export const FolderContentsEntry: Schema.Schema<FolderContentsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folder: Schema.optional(Folder),
-      repository: Schema.optional(Repository),
-    }),
-  ).annotate({
-    identifier: "FolderContentsEntry",
-  }) as any as Schema.Schema<FolderContentsEntry>;
+export const FolderContentsEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folder: Schema.optional(Folder),
+  repository: Schema.optional(Repository),
+}).annotate({ identifier: "FolderContentsEntry" });
 
 export interface QueryFolderContentsResponse {
   /** List of entries in the folder. */
@@ -384,15 +344,11 @@ export interface QueryFolderContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryFolderContentsResponse: Schema.Schema<QueryFolderContentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(FolderContentsEntry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryFolderContentsResponse",
-  }) as any as Schema.Schema<QueryFolderContentsResponse>;
+export const QueryFolderContentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(FolderContentsEntry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryFolderContentsResponse" });
 
 export interface RootContentsEntry {
   /** A subfolder. */
@@ -401,15 +357,10 @@ export interface RootContentsEntry {
   repository?: Repository;
 }
 
-export const RootContentsEntry: Schema.Schema<RootContentsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folder: Schema.optional(Folder),
-      repository: Schema.optional(Repository),
-    }),
-  ).annotate({
-    identifier: "RootContentsEntry",
-  }) as any as Schema.Schema<RootContentsEntry>;
+export const RootContentsEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folder: Schema.optional(Folder),
+  repository: Schema.optional(Repository),
+}).annotate({ identifier: "RootContentsEntry" });
 
 export interface QueryUserRootContentsResponse {
   /** List of entries in the folder. */
@@ -418,29 +369,20 @@ export interface QueryUserRootContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryUserRootContentsResponse: Schema.Schema<QueryUserRootContentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(RootContentsEntry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryUserRootContentsResponse",
-  }) as any as Schema.Schema<QueryUserRootContentsResponse>;
+export const QueryUserRootContentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(RootContentsEntry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryUserRootContentsResponse" });
 
 export interface MoveFolderRequest {
   /** Optional. The name of the Folder, TeamFolder, or root location to move the Folder to. Can be in the format of: "" to move into the root User folder, `projects/* /locations/* /folders/*`, `projects/* /locations/* /teamFolders/*` */
   destinationContainingFolder?: string;
 }
 
-export const MoveFolderRequest: Schema.Schema<MoveFolderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationContainingFolder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveFolderRequest",
-  }) as any as Schema.Schema<MoveFolderRequest>;
+export const MoveFolderRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationContainingFolder: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveFolderRequest" });
 
 export interface ListRepositoriesResponse {
   /** List of repositories. */
@@ -451,30 +393,21 @@ export interface ListRepositoriesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositories: Schema.optional(Schema.Array(Repository)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListRepositoriesResponse",
-  }) as any as Schema.Schema<ListRepositoriesResponse>;
+export const ListRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositories: Schema.optional(Schema.Array(Repository)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListRepositoriesResponse" });
 
 export interface MoveRepositoryRequest {
   /** Optional. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the format of: "" to move into the root User folder, `projects/* /locations/* /folders/*`, `projects/* /locations/* /teamFolders/*` */
   destinationContainingFolder?: string;
 }
 
-export const MoveRepositoryRequest: Schema.Schema<MoveRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationContainingFolder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveRepositoryRequest",
-  }) as any as Schema.Schema<MoveRepositoryRequest>;
+export const MoveRepositoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationContainingFolder: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveRepositoryRequest" });
 
 export interface CommitAuthor {
   /** Required. The commit author's name. */
@@ -483,15 +416,10 @@ export interface CommitAuthor {
   emailAddress?: string;
 }
 
-export const CommitAuthor: Schema.Schema<CommitAuthor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      emailAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommitAuthor",
-  }) as any as Schema.Schema<CommitAuthor>;
+export const CommitAuthor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommitAuthor" });
 
 export interface CommitMetadata {
   /** Required. The commit's author. */
@@ -500,34 +428,25 @@ export interface CommitMetadata {
   commitMessage?: string;
 }
 
-export const CommitMetadata: Schema.Schema<CommitMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      author: Schema.optional(CommitAuthor),
-      commitMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommitMetadata",
-  }) as any as Schema.Schema<CommitMetadata>;
+export const CommitMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  author: Schema.optional(CommitAuthor),
+  commitMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommitMetadata" });
 
 export interface WriteFile {
   /** The file's contents. */
   contents?: string;
 }
 
-export const WriteFile: Schema.Schema<WriteFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WriteFile" }) as any as Schema.Schema<WriteFile>;
+export const WriteFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contents: Schema.optional(Schema.String),
+}).annotate({ identifier: "WriteFile" });
 
 export interface DeleteFile {}
 
-export const DeleteFile: Schema.Schema<DeleteFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteFile",
-  }) as any as Schema.Schema<DeleteFile>;
+export const DeleteFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteFile" });
 
 export interface FileOperation {
   /** Represents the write operation. */
@@ -536,15 +455,10 @@ export interface FileOperation {
   deleteFile?: DeleteFile;
 }
 
-export const FileOperation: Schema.Schema<FileOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeFile: Schema.optional(WriteFile),
-      deleteFile: Schema.optional(DeleteFile),
-    }),
-  ).annotate({
-    identifier: "FileOperation",
-  }) as any as Schema.Schema<FileOperation>;
+export const FileOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  writeFile: Schema.optional(WriteFile),
+  deleteFile: Schema.optional(DeleteFile),
+}).annotate({ identifier: "FileOperation" });
 
 export interface CommitRepositoryChangesRequest {
   /** Required. The changes to commit to the repository. */
@@ -555,63 +469,62 @@ export interface CommitRepositoryChangesRequest {
   fileOperations?: Record<string, FileOperation>;
 }
 
-export const CommitRepositoryChangesRequest: Schema.Schema<CommitRepositoryChangesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commitMetadata: Schema.optional(CommitMetadata),
-      requiredHeadCommitSha: Schema.optional(Schema.String),
-      fileOperations: Schema.optional(
-        Schema.Record(Schema.String, FileOperation),
-      ),
-    }),
-  ).annotate({
-    identifier: "CommitRepositoryChangesRequest",
-  }) as any as Schema.Schema<CommitRepositoryChangesRequest>;
+export const CommitRepositoryChangesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commitMetadata: Schema.optional(CommitMetadata),
+    requiredHeadCommitSha: Schema.optional(Schema.String),
+    fileOperations: Schema.optional(
+      Schema.Record(Schema.String, FileOperation),
+    ),
+  }).annotate({ identifier: "CommitRepositoryChangesRequest" });
 
 export interface CommitRepositoryChangesResponse {
   /** The commit SHA of the current commit. */
   commitSha?: string;
 }
 
-export const CommitRepositoryChangesResponse: Schema.Schema<CommitRepositoryChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commitSha: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommitRepositoryChangesResponse",
-  }) as any as Schema.Schema<CommitRepositoryChangesResponse>;
+export const CommitRepositoryChangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commitSha: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CommitRepositoryChangesResponse" });
 
 export interface ReadRepositoryFileResponse {
   /** The file's contents. */
   contents?: string;
 }
 
-export const ReadRepositoryFileResponse: Schema.Schema<ReadRepositoryFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReadRepositoryFileResponse",
-  }) as any as Schema.Schema<ReadRepositoryFileResponse>;
+export const ReadRepositoryFileResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contents: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReadRepositoryFileResponse" });
+
+export interface FilesystemEntryMetadata {
+  /** Output only. Provides the size of the entry in bytes. For directories, this will be 0. */
+  sizeBytes?: string;
+  /** Output only. Represents the time of the last modification of the entry. */
+  updateTime?: string;
+}
+
+export const FilesystemEntryMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sizeBytes: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FilesystemEntryMetadata" });
 
 export interface DirectoryEntry {
   /** A file in the directory. */
   file?: string;
   /** A child directory in the directory. */
   directory?: string;
+  /** Entry with metadata. */
+  metadata?: FilesystemEntryMetadata;
 }
 
-export const DirectoryEntry: Schema.Schema<DirectoryEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      file: Schema.optional(Schema.String),
-      directory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryEntry",
-  }) as any as Schema.Schema<DirectoryEntry>;
+export const DirectoryEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  file: Schema.optional(Schema.String),
+  directory: Schema.optional(Schema.String),
+  metadata: Schema.optional(FilesystemEntryMetadata),
+}).annotate({ identifier: "DirectoryEntry" });
 
 export interface QueryRepositoryDirectoryContentsResponse {
   /** List of entries in the directory. */
@@ -620,15 +533,11 @@ export interface QueryRepositoryDirectoryContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryRepositoryDirectoryContentsResponse: Schema.Schema<QueryRepositoryDirectoryContentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      directoryEntries: Schema.optional(Schema.Array(DirectoryEntry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryRepositoryDirectoryContentsResponse",
-  }) as any as Schema.Schema<QueryRepositoryDirectoryContentsResponse>;
+export const QueryRepositoryDirectoryContentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directoryEntries: Schema.optional(Schema.Array(DirectoryEntry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryRepositoryDirectoryContentsResponse" });
 
 export interface CommitLogEntry {
   /** Commit timestamp. */
@@ -641,17 +550,12 @@ export interface CommitLogEntry {
   commitMessage?: string;
 }
 
-export const CommitLogEntry: Schema.Schema<CommitLogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commitTime: Schema.optional(Schema.String),
-      commitSha: Schema.optional(Schema.String),
-      author: Schema.optional(CommitAuthor),
-      commitMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommitLogEntry",
-  }) as any as Schema.Schema<CommitLogEntry>;
+export const CommitLogEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commitTime: Schema.optional(Schema.String),
+  commitSha: Schema.optional(Schema.String),
+  author: Schema.optional(CommitAuthor),
+  commitMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommitLogEntry" });
 
 export interface FetchRepositoryHistoryResponse {
   /** A list of commit logs, ordered by 'git log' default order. */
@@ -660,15 +564,11 @@ export interface FetchRepositoryHistoryResponse {
   nextPageToken?: string;
 }
 
-export const FetchRepositoryHistoryResponse: Schema.Schema<FetchRepositoryHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commits: Schema.optional(Schema.Array(CommitLogEntry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchRepositoryHistoryResponse",
-  }) as any as Schema.Schema<FetchRepositoryHistoryResponse>;
+export const FetchRepositoryHistoryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commits: Schema.optional(Schema.Array(CommitLogEntry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchRepositoryHistoryResponse" });
 
 export interface ComputeRepositoryAccessTokenStatusResponse {
   /** Indicates the status of the Git access token. */
@@ -677,45 +577,34 @@ export interface ComputeRepositoryAccessTokenStatusResponse {
     | "NOT_FOUND"
     | "INVALID"
     | "VALID"
+    | "PERMISSION_DENIED"
     | (string & {});
 }
 
-export const ComputeRepositoryAccessTokenStatusResponse: Schema.Schema<ComputeRepositoryAccessTokenStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeRepositoryAccessTokenStatusResponse",
-  }) as any as Schema.Schema<ComputeRepositoryAccessTokenStatusResponse>;
+export const ComputeRepositoryAccessTokenStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeRepositoryAccessTokenStatusResponse" });
 
 export interface FetchRemoteBranchesResponse {
   /** The remote repository's branch names. */
   branches?: Array<string>;
 }
 
-export const FetchRemoteBranchesResponse: Schema.Schema<FetchRemoteBranchesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      branches: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "FetchRemoteBranchesResponse",
-  }) as any as Schema.Schema<FetchRemoteBranchesResponse>;
+export const FetchRemoteBranchesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    branches: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "FetchRemoteBranchesResponse" });
 
 export interface PrivateResourceMetadata {
   /** Output only. If true, this resource is user-scoped, meaning it is either a workspace or sourced from a workspace. */
   userScoped?: boolean;
 }
 
-export const PrivateResourceMetadata: Schema.Schema<PrivateResourceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userScoped: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PrivateResourceMetadata",
-  }) as any as Schema.Schema<PrivateResourceMetadata>;
+export const PrivateResourceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userScoped: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PrivateResourceMetadata" });
 
 export interface Workspace {
   /** Identifier. The workspace's name. */
@@ -732,17 +621,14 @@ export interface Workspace {
   privateResourceMetadata?: PrivateResourceMetadata;
 }
 
-export const Workspace: Schema.Schema<Workspace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      dataEncryptionState: Schema.optional(DataEncryptionState),
-      internalMetadata: Schema.optional(Schema.String),
-      disableMoves: Schema.optional(Schema.Boolean),
-      privateResourceMetadata: Schema.optional(PrivateResourceMetadata),
-    }),
-  ).annotate({ identifier: "Workspace" }) as any as Schema.Schema<Workspace>;
+export const Workspace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  dataEncryptionState: Schema.optional(DataEncryptionState),
+  internalMetadata: Schema.optional(Schema.String),
+  disableMoves: Schema.optional(Schema.Boolean),
+  privateResourceMetadata: Schema.optional(PrivateResourceMetadata),
+}).annotate({ identifier: "Workspace" });
 
 export interface ListWorkspacesResponse {
   /** List of workspaces. */
@@ -753,30 +639,27 @@ export interface ListWorkspacesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListWorkspacesResponse: Schema.Schema<ListWorkspacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workspaces: Schema.optional(Schema.Array(Workspace)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListWorkspacesResponse",
-  }) as any as Schema.Schema<ListWorkspacesResponse>;
+export const ListWorkspacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    workspaces: Schema.optional(Schema.Array(Workspace)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListWorkspacesResponse" });
 
 export interface InstallNpmPackagesRequest {}
 
-export const InstallNpmPackagesRequest: Schema.Schema<InstallNpmPackagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InstallNpmPackagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InstallNpmPackagesRequest",
-  }) as any as Schema.Schema<InstallNpmPackagesRequest>;
+  });
 
 export interface InstallNpmPackagesResponse {}
 
-export const InstallNpmPackagesResponse: Schema.Schema<InstallNpmPackagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InstallNpmPackagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InstallNpmPackagesResponse",
-  }) as any as Schema.Schema<InstallNpmPackagesResponse>;
+  });
 
 export interface PullGitCommitsRequest {
   /** Optional. The name of the branch in the Git remote from which to pull commits. If left unset, the repository's default branch name will be used. */
@@ -785,43 +668,31 @@ export interface PullGitCommitsRequest {
   author?: CommitAuthor;
 }
 
-export const PullGitCommitsRequest: Schema.Schema<PullGitCommitsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remoteBranch: Schema.optional(Schema.String),
-      author: Schema.optional(CommitAuthor),
-    }),
-  ).annotate({
-    identifier: "PullGitCommitsRequest",
-  }) as any as Schema.Schema<PullGitCommitsRequest>;
+export const PullGitCommitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remoteBranch: Schema.optional(Schema.String),
+  author: Schema.optional(CommitAuthor),
+}).annotate({ identifier: "PullGitCommitsRequest" });
 
 export interface PullGitCommitsResponse {}
 
-export const PullGitCommitsResponse: Schema.Schema<PullGitCommitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PullGitCommitsResponse",
-  }) as any as Schema.Schema<PullGitCommitsResponse>;
+export const PullGitCommitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PullGitCommitsResponse" });
 
 export interface PushGitCommitsRequest {
   /** Optional. The name of the branch in the Git remote to which commits should be pushed. If left unset, the repository's default branch name will be used. */
   remoteBranch?: string;
 }
 
-export const PushGitCommitsRequest: Schema.Schema<PushGitCommitsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remoteBranch: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PushGitCommitsRequest",
-  }) as any as Schema.Schema<PushGitCommitsRequest>;
+export const PushGitCommitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remoteBranch: Schema.optional(Schema.String),
+}).annotate({ identifier: "PushGitCommitsRequest" });
 
 export interface PushGitCommitsResponse {}
 
-export const PushGitCommitsResponse: Schema.Schema<PushGitCommitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PushGitCommitsResponse",
-  }) as any as Schema.Schema<PushGitCommitsResponse>;
+export const PushGitCommitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PushGitCommitsResponse" });
 
 export interface UncommittedFileChange {
   /** The file's full path including filename, relative to the workspace root. */
@@ -836,31 +707,22 @@ export interface UncommittedFileChange {
     | (string & {});
 }
 
-export const UncommittedFileChange: Schema.Schema<UncommittedFileChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UncommittedFileChange",
-  }) as any as Schema.Schema<UncommittedFileChange>;
+export const UncommittedFileChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "UncommittedFileChange" });
 
 export interface FetchFileGitStatusesResponse {
   /** A list of all files which have uncommitted Git changes. There will only be a single entry for any given file. */
   uncommittedFileChanges?: Array<UncommittedFileChange>;
 }
 
-export const FetchFileGitStatusesResponse: Schema.Schema<FetchFileGitStatusesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uncommittedFileChanges: Schema.optional(
-        Schema.Array(UncommittedFileChange),
-      ),
-    }),
-  ).annotate({
-    identifier: "FetchFileGitStatusesResponse",
-  }) as any as Schema.Schema<FetchFileGitStatusesResponse>;
+export const FetchFileGitStatusesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uncommittedFileChanges: Schema.optional(
+      Schema.Array(UncommittedFileChange),
+    ),
+  }).annotate({ identifier: "FetchFileGitStatusesResponse" });
 
 export interface FetchGitAheadBehindResponse {
   /** The number of commits in the remote branch that are not in the workspace. */
@@ -869,15 +731,11 @@ export interface FetchGitAheadBehindResponse {
   commitsBehind?: number;
 }
 
-export const FetchGitAheadBehindResponse: Schema.Schema<FetchGitAheadBehindResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commitsAhead: Schema.optional(Schema.Number),
-      commitsBehind: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FetchGitAheadBehindResponse",
-  }) as any as Schema.Schema<FetchGitAheadBehindResponse>;
+export const FetchGitAheadBehindResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commitsAhead: Schema.optional(Schema.Number),
+    commitsBehind: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "FetchGitAheadBehindResponse" });
 
 export interface CommitWorkspaceChangesRequest {
   /** Required. The commit's author. */
@@ -888,23 +746,19 @@ export interface CommitWorkspaceChangesRequest {
   paths?: Array<string>;
 }
 
-export const CommitWorkspaceChangesRequest: Schema.Schema<CommitWorkspaceChangesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      author: Schema.optional(CommitAuthor),
-      commitMessage: Schema.optional(Schema.String),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CommitWorkspaceChangesRequest",
-  }) as any as Schema.Schema<CommitWorkspaceChangesRequest>;
+export const CommitWorkspaceChangesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    author: Schema.optional(CommitAuthor),
+    commitMessage: Schema.optional(Schema.String),
+    paths: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CommitWorkspaceChangesRequest" });
 
 export interface CommitWorkspaceChangesResponse {}
 
-export const CommitWorkspaceChangesResponse: Schema.Schema<CommitWorkspaceChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CommitWorkspaceChangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CommitWorkspaceChangesResponse",
-  }) as any as Schema.Schema<CommitWorkspaceChangesResponse>;
+  });
 
 export interface ResetWorkspaceChangesRequest {
   /** Optional. Full file paths to reset back to their committed state including filename, rooted at workspace root. If left empty, all files will be reset. */
@@ -913,36 +767,27 @@ export interface ResetWorkspaceChangesRequest {
   clean?: boolean;
 }
 
-export const ResetWorkspaceChangesRequest: Schema.Schema<ResetWorkspaceChangesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      clean: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ResetWorkspaceChangesRequest",
-  }) as any as Schema.Schema<ResetWorkspaceChangesRequest>;
+export const ResetWorkspaceChangesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paths: Schema.optional(Schema.Array(Schema.String)),
+    clean: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ResetWorkspaceChangesRequest" });
 
 export interface ResetWorkspaceChangesResponse {}
 
-export const ResetWorkspaceChangesResponse: Schema.Schema<ResetWorkspaceChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResetWorkspaceChangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetWorkspaceChangesResponse",
-  }) as any as Schema.Schema<ResetWorkspaceChangesResponse>;
+  });
 
 export interface FetchFileDiffResponse {
   /** The raw formatted Git diff for the file. */
   formattedDiff?: string;
 }
 
-export const FetchFileDiffResponse: Schema.Schema<FetchFileDiffResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formattedDiff: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchFileDiffResponse",
-  }) as any as Schema.Schema<FetchFileDiffResponse>;
+export const FetchFileDiffResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formattedDiff: Schema.optional(Schema.String),
+}).annotate({ identifier: "FetchFileDiffResponse" });
 
 export interface QueryDirectoryContentsResponse {
   /** List of entries in the directory. */
@@ -951,43 +796,29 @@ export interface QueryDirectoryContentsResponse {
   nextPageToken?: string;
 }
 
-export const QueryDirectoryContentsResponse: Schema.Schema<QueryDirectoryContentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      directoryEntries: Schema.optional(Schema.Array(DirectoryEntry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryDirectoryContentsResponse",
-  }) as any as Schema.Schema<QueryDirectoryContentsResponse>;
+export const QueryDirectoryContentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directoryEntries: Schema.optional(Schema.Array(DirectoryEntry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryDirectoryContentsResponse" });
 
 export interface FileSearchResult {
   /** File system path relative to the workspace root. */
   path?: string;
 }
 
-export const FileSearchResult: Schema.Schema<FileSearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FileSearchResult",
-  }) as any as Schema.Schema<FileSearchResult>;
+export const FileSearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileSearchResult" });
 
 export interface DirectorySearchResult {
   /** File system path relative to the workspace root. */
   path?: string;
 }
 
-export const DirectorySearchResult: Schema.Schema<DirectorySearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectorySearchResult",
-  }) as any as Schema.Schema<DirectorySearchResult>;
+export const DirectorySearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "DirectorySearchResult" });
 
 export interface SearchResult {
   /** Details when search result is a file. */
@@ -996,15 +827,10 @@ export interface SearchResult {
   directory?: DirectorySearchResult;
 }
 
-export const SearchResult: Schema.Schema<SearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      file: Schema.optional(FileSearchResult),
-      directory: Schema.optional(DirectorySearchResult),
-    }),
-  ).annotate({
-    identifier: "SearchResult",
-  }) as any as Schema.Schema<SearchResult>;
+export const SearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  file: Schema.optional(FileSearchResult),
+  directory: Schema.optional(DirectorySearchResult),
+}).annotate({ identifier: "SearchResult" });
 
 export interface SearchFilesResponse {
   /** List of matched results. */
@@ -1013,57 +839,43 @@ export interface SearchFilesResponse {
   nextPageToken?: string;
 }
 
-export const SearchFilesResponse: Schema.Schema<SearchFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchResults: Schema.optional(Schema.Array(SearchResult)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchFilesResponse",
-  }) as any as Schema.Schema<SearchFilesResponse>;
+export const SearchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  searchResults: Schema.optional(Schema.Array(SearchResult)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchFilesResponse" });
 
 export interface MakeDirectoryRequest {
   /** Required. The directory's full path including directory name, relative to the workspace root. */
   path?: string;
 }
 
-export const MakeDirectoryRequest: Schema.Schema<MakeDirectoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MakeDirectoryRequest",
-  }) as any as Schema.Schema<MakeDirectoryRequest>;
+export const MakeDirectoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "MakeDirectoryRequest" });
 
 export interface MakeDirectoryResponse {}
 
-export const MakeDirectoryResponse: Schema.Schema<MakeDirectoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MakeDirectoryResponse",
-  }) as any as Schema.Schema<MakeDirectoryResponse>;
+export const MakeDirectoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MakeDirectoryResponse" });
 
 export interface RemoveDirectoryRequest {
   /** Required. The directory's full path including directory name, relative to the workspace root. */
   path?: string;
 }
 
-export const RemoveDirectoryRequest: Schema.Schema<RemoveDirectoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveDirectoryRequest",
-  }) as any as Schema.Schema<RemoveDirectoryRequest>;
+export const RemoveDirectoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    path: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RemoveDirectoryRequest" });
 
 export interface RemoveDirectoryResponse {}
 
-export const RemoveDirectoryResponse: Schema.Schema<RemoveDirectoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RemoveDirectoryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveDirectoryResponse",
-  }) as any as Schema.Schema<RemoveDirectoryResponse>;
+  });
 
 export interface MoveDirectoryRequest {
   /** Required. The directory's full path including directory name, relative to the workspace root. */
@@ -1072,57 +884,40 @@ export interface MoveDirectoryRequest {
   newPath?: string;
 }
 
-export const MoveDirectoryRequest: Schema.Schema<MoveDirectoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      newPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveDirectoryRequest",
-  }) as any as Schema.Schema<MoveDirectoryRequest>;
+export const MoveDirectoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  newPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveDirectoryRequest" });
 
 export interface MoveDirectoryResponse {}
 
-export const MoveDirectoryResponse: Schema.Schema<MoveDirectoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MoveDirectoryResponse",
-  }) as any as Schema.Schema<MoveDirectoryResponse>;
+export const MoveDirectoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MoveDirectoryResponse" });
 
 export interface ReadFileResponse {
   /** The file's contents. */
   fileContents?: string;
 }
 
-export const ReadFileResponse: Schema.Schema<ReadFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileContents: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReadFileResponse",
-  }) as any as Schema.Schema<ReadFileResponse>;
+export const ReadFileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileContents: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReadFileResponse" });
 
 export interface RemoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
 
-export const RemoveFileRequest: Schema.Schema<RemoveFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveFileRequest",
-  }) as any as Schema.Schema<RemoveFileRequest>;
+export const RemoveFileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "RemoveFileRequest" });
 
 export interface RemoveFileResponse {}
 
-export const RemoveFileResponse: Schema.Schema<RemoveFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RemoveFileResponse",
-  }) as any as Schema.Schema<RemoveFileResponse>;
+export const RemoveFileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RemoveFileResponse" });
 
 export interface MoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
@@ -1131,22 +926,16 @@ export interface MoveFileRequest {
   newPath?: string;
 }
 
-export const MoveFileRequest: Schema.Schema<MoveFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      newPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveFileRequest",
-  }) as any as Schema.Schema<MoveFileRequest>;
+export const MoveFileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  newPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveFileRequest" });
 
 export interface MoveFileResponse {}
 
-export const MoveFileResponse: Schema.Schema<MoveFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MoveFileResponse",
-  }) as any as Schema.Schema<MoveFileResponse>;
+export const MoveFileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MoveFileResponse" });
 
 export interface WriteFileRequest {
   /** Required. The file. */
@@ -1155,22 +944,16 @@ export interface WriteFileRequest {
   contents?: string;
 }
 
-export const WriteFileRequest: Schema.Schema<WriteFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      contents: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WriteFileRequest",
-  }) as any as Schema.Schema<WriteFileRequest>;
+export const WriteFileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  contents: Schema.optional(Schema.String),
+}).annotate({ identifier: "WriteFileRequest" });
 
 export interface WriteFileResponse {}
 
-export const WriteFileResponse: Schema.Schema<WriteFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "WriteFileResponse",
-  }) as any as Schema.Schema<WriteFileResponse>;
+export const WriteFileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "WriteFileResponse" });
 
 export interface NotebookRuntimeOptions {
   /** Optional. The Google Cloud Storage location to upload the result to. Format: `gs://bucket-name`. */
@@ -1179,15 +962,12 @@ export interface NotebookRuntimeOptions {
   aiPlatformNotebookRuntimeTemplate?: string;
 }
 
-export const NotebookRuntimeOptions: Schema.Schema<NotebookRuntimeOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsOutputBucket: Schema.optional(Schema.String),
-      aiPlatformNotebookRuntimeTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotebookRuntimeOptions",
-  }) as any as Schema.Schema<NotebookRuntimeOptions>;
+export const NotebookRuntimeOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    gcsOutputBucket: Schema.optional(Schema.String),
+    aiPlatformNotebookRuntimeTemplate: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "NotebookRuntimeOptions" });
 
 export interface CodeCompilationConfig {
   /** Optional. The default database (Google Cloud project ID). */
@@ -1212,23 +992,18 @@ export interface CodeCompilationConfig {
   defaultNotebookRuntimeOptions?: NotebookRuntimeOptions;
 }
 
-export const CodeCompilationConfig: Schema.Schema<CodeCompilationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultDatabase: Schema.optional(Schema.String),
-      defaultSchema: Schema.optional(Schema.String),
-      defaultLocation: Schema.optional(Schema.String),
-      assertionSchema: Schema.optional(Schema.String),
-      vars: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      databaseSuffix: Schema.optional(Schema.String),
-      schemaSuffix: Schema.optional(Schema.String),
-      tablePrefix: Schema.optional(Schema.String),
-      builtinAssertionNamePrefix: Schema.optional(Schema.String),
-      defaultNotebookRuntimeOptions: Schema.optional(NotebookRuntimeOptions),
-    }),
-  ).annotate({
-    identifier: "CodeCompilationConfig",
-  }) as any as Schema.Schema<CodeCompilationConfig>;
+export const CodeCompilationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultDatabase: Schema.optional(Schema.String),
+  defaultSchema: Schema.optional(Schema.String),
+  defaultLocation: Schema.optional(Schema.String),
+  assertionSchema: Schema.optional(Schema.String),
+  vars: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  databaseSuffix: Schema.optional(Schema.String),
+  schemaSuffix: Schema.optional(Schema.String),
+  tablePrefix: Schema.optional(Schema.String),
+  builtinAssertionNamePrefix: Schema.optional(Schema.String),
+  defaultNotebookRuntimeOptions: Schema.optional(NotebookRuntimeOptions),
+}).annotate({ identifier: "CodeCompilationConfig" });
 
 export interface ScheduledReleaseRecord {
   /** The name of the created compilation result, if one was successfully created. Must be in the format `projects/* /locations/* /repositories/* /compilationResults/*`. */
@@ -1239,16 +1014,13 @@ export interface ScheduledReleaseRecord {
   releaseTime?: string;
 }
 
-export const ScheduledReleaseRecord: Schema.Schema<ScheduledReleaseRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compilationResult: Schema.optional(Schema.String),
-      errorStatus: Schema.optional(Status),
-      releaseTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScheduledReleaseRecord",
-  }) as any as Schema.Schema<ScheduledReleaseRecord>;
+export const ScheduledReleaseRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    compilationResult: Schema.optional(Schema.String),
+    errorStatus: Schema.optional(Status),
+    releaseTime: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ScheduledReleaseRecord" });
 
 export interface ReleaseConfig {
   /** Identifier. The release config's name. */
@@ -1271,24 +1043,19 @@ export interface ReleaseConfig {
   internalMetadata?: string;
 }
 
-export const ReleaseConfig: Schema.Schema<ReleaseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      gitCommitish: Schema.optional(Schema.String),
-      codeCompilationConfig: Schema.optional(CodeCompilationConfig),
-      cronSchedule: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      recentScheduledReleaseRecords: Schema.optional(
-        Schema.Array(ScheduledReleaseRecord),
-      ),
-      releaseCompilationResult: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      internalMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReleaseConfig",
-  }) as any as Schema.Schema<ReleaseConfig>;
+export const ReleaseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  gitCommitish: Schema.optional(Schema.String),
+  codeCompilationConfig: Schema.optional(CodeCompilationConfig),
+  cronSchedule: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  recentScheduledReleaseRecords: Schema.optional(
+    Schema.Array(ScheduledReleaseRecord),
+  ),
+  releaseCompilationResult: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  internalMetadata: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReleaseConfig" });
 
 export interface ListReleaseConfigsResponse {
   /** List of release configs. */
@@ -1299,16 +1066,12 @@ export interface ListReleaseConfigsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListReleaseConfigsResponse: Schema.Schema<ListReleaseConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseConfigs: Schema.optional(Schema.Array(ReleaseConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListReleaseConfigsResponse",
-  }) as any as Schema.Schema<ListReleaseConfigsResponse>;
+export const ListReleaseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releaseConfigs: Schema.optional(Schema.Array(ReleaseConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListReleaseConfigsResponse" });
 
 export interface Target {
   /** Optional. The action's database (Google Cloud project ID) . */
@@ -1319,14 +1082,11 @@ export interface Target {
   name?: string;
 }
 
-export const Target: Schema.Schema<Target> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      database: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Target" }) as any as Schema.Schema<Target>;
+export const Target = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  database: Schema.optional(Schema.String),
+  schema: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Target" });
 
 export interface CompilationError {
   /** Output only. The error's top level message. */
@@ -1339,17 +1099,12 @@ export interface CompilationError {
   actionTarget?: Target;
 }
 
-export const CompilationError: Schema.Schema<CompilationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      stack: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      actionTarget: Schema.optional(Target),
-    }),
-  ).annotate({
-    identifier: "CompilationError",
-  }) as any as Schema.Schema<CompilationError>;
+export const CompilationError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  stack: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  actionTarget: Schema.optional(Target),
+}).annotate({ identifier: "CompilationError" });
 
 export interface CompilationResult {
   /** Immutable. Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1` */
@@ -1378,25 +1133,20 @@ export interface CompilationResult {
   privateResourceMetadata?: PrivateResourceMetadata;
 }
 
-export const CompilationResult: Schema.Schema<CompilationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitCommitish: Schema.optional(Schema.String),
-      workspace: Schema.optional(Schema.String),
-      releaseConfig: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      codeCompilationConfig: Schema.optional(CodeCompilationConfig),
-      resolvedGitCommitSha: Schema.optional(Schema.String),
-      dataformCoreVersion: Schema.optional(Schema.String),
-      compilationErrors: Schema.optional(Schema.Array(CompilationError)),
-      dataEncryptionState: Schema.optional(DataEncryptionState),
-      createTime: Schema.optional(Schema.String),
-      internalMetadata: Schema.optional(Schema.String),
-      privateResourceMetadata: Schema.optional(PrivateResourceMetadata),
-    }),
-  ).annotate({
-    identifier: "CompilationResult",
-  }) as any as Schema.Schema<CompilationResult>;
+export const CompilationResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gitCommitish: Schema.optional(Schema.String),
+  workspace: Schema.optional(Schema.String),
+  releaseConfig: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  codeCompilationConfig: Schema.optional(CodeCompilationConfig),
+  resolvedGitCommitSha: Schema.optional(Schema.String),
+  dataformCoreVersion: Schema.optional(Schema.String),
+  compilationErrors: Schema.optional(Schema.Array(CompilationError)),
+  dataEncryptionState: Schema.optional(DataEncryptionState),
+  createTime: Schema.optional(Schema.String),
+  internalMetadata: Schema.optional(Schema.String),
+  privateResourceMetadata: Schema.optional(PrivateResourceMetadata),
+}).annotate({ identifier: "CompilationResult" });
 
 export interface ListCompilationResultsResponse {
   /** List of compilation results. */
@@ -1407,16 +1157,12 @@ export interface ListCompilationResultsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListCompilationResultsResponse: Schema.Schema<ListCompilationResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compilationResults: Schema.optional(Schema.Array(CompilationResult)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListCompilationResultsResponse",
-  }) as any as Schema.Schema<ListCompilationResultsResponse>;
+export const ListCompilationResultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compilationResults: Schema.optional(Schema.Array(CompilationResult)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListCompilationResultsResponse" });
 
 export interface ColumnDescriptor {
   /** The identifier for the column. Each entry in `path` represents one level of nesting. */
@@ -1427,16 +1173,11 @@ export interface ColumnDescriptor {
   bigqueryPolicyTags?: Array<string>;
 }
 
-export const ColumnDescriptor: Schema.Schema<ColumnDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      bigqueryPolicyTags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ColumnDescriptor",
-  }) as any as Schema.Schema<ColumnDescriptor>;
+export const ColumnDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  bigqueryPolicyTags: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ColumnDescriptor" });
 
 export interface RelationDescriptor {
   /** A text description of the relation. */
@@ -1447,18 +1188,11 @@ export interface RelationDescriptor {
   bigqueryLabels?: Record<string, string>;
 }
 
-export const RelationDescriptor: Schema.Schema<RelationDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      columns: Schema.optional(Schema.Array(ColumnDescriptor)),
-      bigqueryLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "RelationDescriptor",
-  }) as any as Schema.Schema<RelationDescriptor>;
+export const RelationDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  columns: Schema.optional(Schema.Array(ColumnDescriptor)),
+  bigqueryLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "RelationDescriptor" });
 
 export interface IncrementalTableConfig {
   /** The SELECT query which returns rows which should be inserted into the relation if it already exists and is not being refreshed. */
@@ -1475,19 +1209,16 @@ export interface IncrementalTableConfig {
   incrementalPostOperations?: Array<string>;
 }
 
-export const IncrementalTableConfig: Schema.Schema<IncrementalTableConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      incrementalSelectQuery: Schema.optional(Schema.String),
-      refreshDisabled: Schema.optional(Schema.Boolean),
-      uniqueKeyParts: Schema.optional(Schema.Array(Schema.String)),
-      updatePartitionFilter: Schema.optional(Schema.String),
-      incrementalPreOperations: Schema.optional(Schema.Array(Schema.String)),
-      incrementalPostOperations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "IncrementalTableConfig",
-  }) as any as Schema.Schema<IncrementalTableConfig>;
+export const IncrementalTableConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    incrementalSelectQuery: Schema.optional(Schema.String),
+    refreshDisabled: Schema.optional(Schema.Boolean),
+    uniqueKeyParts: Schema.optional(Schema.Array(Schema.String)),
+    updatePartitionFilter: Schema.optional(Schema.String),
+    incrementalPreOperations: Schema.optional(Schema.Array(Schema.String)),
+    incrementalPostOperations: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "IncrementalTableConfig" });
 
 export interface Relation {
   /** A list of actions that this action depends on. */
@@ -1534,31 +1265,28 @@ export interface Relation {
   storageUri?: string;
 }
 
-export const Relation: Schema.Schema<Relation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dependencyTargets: Schema.optional(Schema.Array(Target)),
-      disabled: Schema.optional(Schema.Boolean),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      relationDescriptor: Schema.optional(RelationDescriptor),
-      relationType: Schema.optional(Schema.String),
-      selectQuery: Schema.optional(Schema.String),
-      preOperations: Schema.optional(Schema.Array(Schema.String)),
-      postOperations: Schema.optional(Schema.Array(Schema.String)),
-      incrementalTableConfig: Schema.optional(IncrementalTableConfig),
-      partitionExpression: Schema.optional(Schema.String),
-      clusterExpressions: Schema.optional(Schema.Array(Schema.String)),
-      partitionExpirationDays: Schema.optional(Schema.Number),
-      requirePartitionFilter: Schema.optional(Schema.Boolean),
-      additionalOptions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      connection: Schema.optional(Schema.String),
-      tableFormat: Schema.optional(Schema.String),
-      fileFormat: Schema.optional(Schema.String),
-      storageUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Relation" }) as any as Schema.Schema<Relation>;
+export const Relation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dependencyTargets: Schema.optional(Schema.Array(Target)),
+  disabled: Schema.optional(Schema.Boolean),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  relationDescriptor: Schema.optional(RelationDescriptor),
+  relationType: Schema.optional(Schema.String),
+  selectQuery: Schema.optional(Schema.String),
+  preOperations: Schema.optional(Schema.Array(Schema.String)),
+  postOperations: Schema.optional(Schema.Array(Schema.String)),
+  incrementalTableConfig: Schema.optional(IncrementalTableConfig),
+  partitionExpression: Schema.optional(Schema.String),
+  clusterExpressions: Schema.optional(Schema.Array(Schema.String)),
+  partitionExpirationDays: Schema.optional(Schema.Number),
+  requirePartitionFilter: Schema.optional(Schema.Boolean),
+  additionalOptions: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  connection: Schema.optional(Schema.String),
+  tableFormat: Schema.optional(Schema.String),
+  fileFormat: Schema.optional(Schema.String),
+  storageUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Relation" });
 
 export interface Operations {
   /** A list of actions that this action depends on. */
@@ -1575,17 +1303,14 @@ export interface Operations {
   hasOutput?: boolean;
 }
 
-export const Operations: Schema.Schema<Operations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dependencyTargets: Schema.optional(Schema.Array(Target)),
-      disabled: Schema.optional(Schema.Boolean),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      relationDescriptor: Schema.optional(RelationDescriptor),
-      queries: Schema.optional(Schema.Array(Schema.String)),
-      hasOutput: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operations" }) as any as Schema.Schema<Operations>;
+export const Operations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dependencyTargets: Schema.optional(Schema.Array(Target)),
+  disabled: Schema.optional(Schema.Boolean),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  relationDescriptor: Schema.optional(RelationDescriptor),
+  queries: Schema.optional(Schema.Array(Schema.String)),
+  hasOutput: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operations" });
 
 export interface Assertion {
   /** A list of actions that this action depends on. */
@@ -1602,31 +1327,23 @@ export interface Assertion {
   relationDescriptor?: RelationDescriptor;
 }
 
-export const Assertion: Schema.Schema<Assertion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dependencyTargets: Schema.optional(Schema.Array(Target)),
-      parentAction: Schema.optional(Target),
-      disabled: Schema.optional(Schema.Boolean),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      selectQuery: Schema.optional(Schema.String),
-      relationDescriptor: Schema.optional(RelationDescriptor),
-    }),
-  ).annotate({ identifier: "Assertion" }) as any as Schema.Schema<Assertion>;
+export const Assertion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dependencyTargets: Schema.optional(Schema.Array(Target)),
+  parentAction: Schema.optional(Target),
+  disabled: Schema.optional(Schema.Boolean),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  selectQuery: Schema.optional(Schema.String),
+  relationDescriptor: Schema.optional(RelationDescriptor),
+}).annotate({ identifier: "Assertion" });
 
 export interface Declaration {
   /** Descriptor for the relation and its columns. Used as documentation only, i.e. values here will result in no changes to the relation's metadata. */
   relationDescriptor?: RelationDescriptor;
 }
 
-export const Declaration: Schema.Schema<Declaration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relationDescriptor: Schema.optional(RelationDescriptor),
-    }),
-  ).annotate({
-    identifier: "Declaration",
-  }) as any as Schema.Schema<Declaration>;
+export const Declaration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  relationDescriptor: Schema.optional(RelationDescriptor),
+}).annotate({ identifier: "Declaration" });
 
 export interface Notebook {
   /** A list of actions that this action depends on. */
@@ -1639,15 +1356,12 @@ export interface Notebook {
   tags?: Array<string>;
 }
 
-export const Notebook: Schema.Schema<Notebook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dependencyTargets: Schema.optional(Schema.Array(Target)),
-      disabled: Schema.optional(Schema.Boolean),
-      contents: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Notebook" }) as any as Schema.Schema<Notebook>;
+export const Notebook = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dependencyTargets: Schema.optional(Schema.Array(Target)),
+  disabled: Schema.optional(Schema.Boolean),
+  contents: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Notebook" });
 
 export interface ErrorTable {
   /** Error Table target. */
@@ -1656,34 +1370,25 @@ export interface ErrorTable {
   retentionDays?: number;
 }
 
-export const ErrorTable: Schema.Schema<ErrorTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Target),
-      retentionDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "ErrorTable" }) as any as Schema.Schema<ErrorTable>;
+export const ErrorTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(Target),
+  retentionDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ErrorTable" });
 
 export interface SimpleLoadMode {}
 
-export const SimpleLoadMode: Schema.Schema<SimpleLoadMode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SimpleLoadMode",
-  }) as any as Schema.Schema<SimpleLoadMode>;
+export const SimpleLoadMode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SimpleLoadMode" });
 
 export interface IncrementalLoadMode {
   /** Column name for incremental load modes */
   column?: string;
 }
 
-export const IncrementalLoadMode: Schema.Schema<IncrementalLoadMode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      column: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IncrementalLoadMode",
-  }) as any as Schema.Schema<IncrementalLoadMode>;
+export const IncrementalLoadMode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  column: Schema.optional(Schema.String),
+}).annotate({ identifier: "IncrementalLoadMode" });
 
 export interface LoadConfig {
   /** Replace destination table */
@@ -1696,15 +1401,12 @@ export interface LoadConfig {
   unique?: IncrementalLoadMode;
 }
 
-export const LoadConfig: Schema.Schema<LoadConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replace: Schema.optional(SimpleLoadMode),
-      append: Schema.optional(SimpleLoadMode),
-      maximum: Schema.optional(IncrementalLoadMode),
-      unique: Schema.optional(IncrementalLoadMode),
-    }),
-  ).annotate({ identifier: "LoadConfig" }) as any as Schema.Schema<LoadConfig>;
+export const LoadConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  replace: Schema.optional(SimpleLoadMode),
+  append: Schema.optional(SimpleLoadMode),
+  maximum: Schema.optional(IncrementalLoadMode),
+  unique: Schema.optional(IncrementalLoadMode),
+}).annotate({ identifier: "LoadConfig" });
 
 export interface SqlDefinition {
   /** The SQL query representing the data preparation steps. Formatted as a Pipe SQL query statement. */
@@ -1715,16 +1417,11 @@ export interface SqlDefinition {
   load?: LoadConfig;
 }
 
-export const SqlDefinition: Schema.Schema<SqlDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      errorTable: Schema.optional(ErrorTable),
-      load: Schema.optional(LoadConfig),
-    }),
-  ).annotate({
-    identifier: "SqlDefinition",
-  }) as any as Schema.Schema<SqlDefinition>;
+export const SqlDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  errorTable: Schema.optional(ErrorTable),
+  load: Schema.optional(LoadConfig),
+}).annotate({ identifier: "SqlDefinition" });
 
 export interface DataPreparation {
   /** The data preparation definition, stored as a YAML string. */
@@ -1739,18 +1436,13 @@ export interface DataPreparation {
   tags?: Array<string>;
 }
 
-export const DataPreparation: Schema.Schema<DataPreparation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentsYaml: Schema.optional(Schema.String),
-      contentsSql: Schema.optional(SqlDefinition),
-      dependencyTargets: Schema.optional(Schema.Array(Target)),
-      disabled: Schema.optional(Schema.Boolean),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DataPreparation",
-  }) as any as Schema.Schema<DataPreparation>;
+export const DataPreparation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentsYaml: Schema.optional(Schema.String),
+  contentsSql: Schema.optional(SqlDefinition),
+  dependencyTargets: Schema.optional(Schema.Array(Target)),
+  disabled: Schema.optional(Schema.Boolean),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DataPreparation" });
 
 export interface CompilationResultAction {
   /** The database relation created/updated by this action. */
@@ -1775,23 +1467,19 @@ export interface CompilationResultAction {
   internalMetadata?: string;
 }
 
-export const CompilationResultAction: Schema.Schema<CompilationResultAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relation: Schema.optional(Relation),
-      operations: Schema.optional(Operations),
-      assertion: Schema.optional(Assertion),
-      declaration: Schema.optional(Declaration),
-      notebook: Schema.optional(Notebook),
-      dataPreparation: Schema.optional(DataPreparation),
-      target: Schema.optional(Target),
-      canonicalTarget: Schema.optional(Target),
-      filePath: Schema.optional(Schema.String),
-      internalMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompilationResultAction",
-  }) as any as Schema.Schema<CompilationResultAction>;
+export const CompilationResultAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relation: Schema.optional(Relation),
+    operations: Schema.optional(Operations),
+    assertion: Schema.optional(Assertion),
+    declaration: Schema.optional(Declaration),
+    notebook: Schema.optional(Notebook),
+    dataPreparation: Schema.optional(DataPreparation),
+    target: Schema.optional(Target),
+    canonicalTarget: Schema.optional(Target),
+    filePath: Schema.optional(Schema.String),
+    internalMetadata: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompilationResultAction" });
 
 export interface QueryCompilationResultActionsResponse {
   /** List of compilation result actions. */
@@ -1800,17 +1488,13 @@ export interface QueryCompilationResultActionsResponse {
   nextPageToken?: string;
 }
 
-export const QueryCompilationResultActionsResponse: Schema.Schema<QueryCompilationResultActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compilationResultActions: Schema.optional(
-        Schema.Array(CompilationResultAction),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryCompilationResultActionsResponse",
-  }) as any as Schema.Schema<QueryCompilationResultActionsResponse>;
+export const QueryCompilationResultActionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compilationResultActions: Schema.optional(
+      Schema.Array(CompilationResultAction),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryCompilationResultActionsResponse" });
 
 export interface InvocationConfig {
   /** Optional. The set of action identifiers to include. */
@@ -1833,20 +1517,15 @@ export interface InvocationConfig {
     | (string & {});
 }
 
-export const InvocationConfig: Schema.Schema<InvocationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedTargets: Schema.optional(Schema.Array(Target)),
-      includedTags: Schema.optional(Schema.Array(Schema.String)),
-      transitiveDependenciesIncluded: Schema.optional(Schema.Boolean),
-      transitiveDependentsIncluded: Schema.optional(Schema.Boolean),
-      fullyRefreshIncrementalTablesEnabled: Schema.optional(Schema.Boolean),
-      serviceAccount: Schema.optional(Schema.String),
-      queryPriority: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InvocationConfig",
-  }) as any as Schema.Schema<InvocationConfig>;
+export const InvocationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includedTargets: Schema.optional(Schema.Array(Target)),
+  includedTags: Schema.optional(Schema.Array(Schema.String)),
+  transitiveDependenciesIncluded: Schema.optional(Schema.Boolean),
+  transitiveDependentsIncluded: Schema.optional(Schema.Boolean),
+  fullyRefreshIncrementalTablesEnabled: Schema.optional(Schema.Boolean),
+  serviceAccount: Schema.optional(Schema.String),
+  queryPriority: Schema.optional(Schema.String),
+}).annotate({ identifier: "InvocationConfig" });
 
 export interface ScheduledExecutionRecord {
   /** The name of the created workflow invocation, if one was successfully created. Must be in the format `projects/* /locations/* /repositories/* /workflowInvocations/*`. */
@@ -1857,16 +1536,12 @@ export interface ScheduledExecutionRecord {
   executionTime?: string;
 }
 
-export const ScheduledExecutionRecord: Schema.Schema<ScheduledExecutionRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflowInvocation: Schema.optional(Schema.String),
-      errorStatus: Schema.optional(Status),
-      executionTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScheduledExecutionRecord",
-  }) as any as Schema.Schema<ScheduledExecutionRecord>;
+export const ScheduledExecutionRecord =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflowInvocation: Schema.optional(Schema.String),
+    errorStatus: Schema.optional(Status),
+    executionTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScheduledExecutionRecord" });
 
 export interface WorkflowConfig {
   /** Identifier. The workflow config's name. */
@@ -1891,25 +1566,20 @@ export interface WorkflowConfig {
   internalMetadata?: string;
 }
 
-export const WorkflowConfig: Schema.Schema<WorkflowConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      releaseConfig: Schema.optional(Schema.String),
-      invocationConfig: Schema.optional(InvocationConfig),
-      cronSchedule: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      recentScheduledExecutionRecords: Schema.optional(
-        Schema.Array(ScheduledExecutionRecord),
-      ),
-      disabled: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      internalMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkflowConfig",
-  }) as any as Schema.Schema<WorkflowConfig>;
+export const WorkflowConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  releaseConfig: Schema.optional(Schema.String),
+  invocationConfig: Schema.optional(InvocationConfig),
+  cronSchedule: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  recentScheduledExecutionRecords: Schema.optional(
+    Schema.Array(ScheduledExecutionRecord),
+  ),
+  disabled: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  internalMetadata: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkflowConfig" });
 
 export interface ListWorkflowConfigsResponse {
   /** List of workflow configs. */
@@ -1920,16 +1590,12 @@ export interface ListWorkflowConfigsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListWorkflowConfigsResponse: Schema.Schema<ListWorkflowConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflowConfigs: Schema.optional(Schema.Array(WorkflowConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListWorkflowConfigsResponse",
-  }) as any as Schema.Schema<ListWorkflowConfigsResponse>;
+export const ListWorkflowConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflowConfigs: Schema.optional(Schema.Array(WorkflowConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListWorkflowConfigsResponse" });
 
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -1938,13 +1604,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface WorkflowInvocation {
   /** Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/* /locations/* /repositories/* /compilationResults/*`. */
@@ -1976,23 +1639,18 @@ export interface WorkflowInvocation {
   privateResourceMetadata?: PrivateResourceMetadata;
 }
 
-export const WorkflowInvocation: Schema.Schema<WorkflowInvocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compilationResult: Schema.optional(Schema.String),
-      workflowConfig: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      invocationConfig: Schema.optional(InvocationConfig),
-      state: Schema.optional(Schema.String),
-      invocationTiming: Schema.optional(Interval),
-      resolvedCompilationResult: Schema.optional(Schema.String),
-      dataEncryptionState: Schema.optional(DataEncryptionState),
-      internalMetadata: Schema.optional(Schema.String),
-      privateResourceMetadata: Schema.optional(PrivateResourceMetadata),
-    }),
-  ).annotate({
-    identifier: "WorkflowInvocation",
-  }) as any as Schema.Schema<WorkflowInvocation>;
+export const WorkflowInvocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compilationResult: Schema.optional(Schema.String),
+  workflowConfig: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  invocationConfig: Schema.optional(InvocationConfig),
+  state: Schema.optional(Schema.String),
+  invocationTiming: Schema.optional(Interval),
+  resolvedCompilationResult: Schema.optional(Schema.String),
+  dataEncryptionState: Schema.optional(DataEncryptionState),
+  internalMetadata: Schema.optional(Schema.String),
+  privateResourceMetadata: Schema.optional(PrivateResourceMetadata),
+}).annotate({ identifier: "WorkflowInvocation" });
 
 export interface ListWorkflowInvocationsResponse {
   /** List of workflow invocations. */
@@ -2003,30 +1661,26 @@ export interface ListWorkflowInvocationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListWorkflowInvocationsResponse: Schema.Schema<ListWorkflowInvocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflowInvocations: Schema.optional(Schema.Array(WorkflowInvocation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListWorkflowInvocationsResponse",
-  }) as any as Schema.Schema<ListWorkflowInvocationsResponse>;
+export const ListWorkflowInvocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflowInvocations: Schema.optional(Schema.Array(WorkflowInvocation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListWorkflowInvocationsResponse" });
 
 export interface CancelWorkflowInvocationRequest {}
 
-export const CancelWorkflowInvocationRequest: Schema.Schema<CancelWorkflowInvocationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelWorkflowInvocationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelWorkflowInvocationRequest",
-  }) as any as Schema.Schema<CancelWorkflowInvocationRequest>;
+  });
 
 export interface CancelWorkflowInvocationResponse {}
 
-export const CancelWorkflowInvocationResponse: Schema.Schema<CancelWorkflowInvocationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelWorkflowInvocationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelWorkflowInvocationResponse",
-  }) as any as Schema.Schema<CancelWorkflowInvocationResponse>;
+  });
 
 export interface BigQueryAction {
   /** Output only. The generated BigQuery SQL script that will be executed. */
@@ -2035,15 +1689,10 @@ export interface BigQueryAction {
   jobId?: string;
 }
 
-export const BigQueryAction: Schema.Schema<BigQueryAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlScript: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BigQueryAction",
-  }) as any as Schema.Schema<BigQueryAction>;
+export const BigQueryAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sqlScript: Schema.optional(Schema.String),
+  jobId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BigQueryAction" });
 
 export interface NotebookAction {
   /** Output only. The code contents of a Notebook to be run. */
@@ -2052,15 +1701,10 @@ export interface NotebookAction {
   jobId?: string;
 }
 
-export const NotebookAction: Schema.Schema<NotebookAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotebookAction",
-  }) as any as Schema.Schema<NotebookAction>;
+export const NotebookAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contents: Schema.optional(Schema.String),
+  jobId: Schema.optional(Schema.String),
+}).annotate({ identifier: "NotebookAction" });
 
 export interface ActionErrorTable {
   /** Error Table target. */
@@ -2069,36 +1713,26 @@ export interface ActionErrorTable {
   retentionDays?: number;
 }
 
-export const ActionErrorTable: Schema.Schema<ActionErrorTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Target),
-      retentionDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ActionErrorTable",
-  }) as any as Schema.Schema<ActionErrorTable>;
+export const ActionErrorTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(Target),
+  retentionDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ActionErrorTable" });
 
 export interface ActionSimpleLoadMode {}
 
-export const ActionSimpleLoadMode: Schema.Schema<ActionSimpleLoadMode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ActionSimpleLoadMode",
-  }) as any as Schema.Schema<ActionSimpleLoadMode>;
+export const ActionSimpleLoadMode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ActionSimpleLoadMode" });
 
 export interface ActionIncrementalLoadMode {
   /** Column name for incremental load modes */
   column?: string;
 }
 
-export const ActionIncrementalLoadMode: Schema.Schema<ActionIncrementalLoadMode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      column: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActionIncrementalLoadMode",
-  }) as any as Schema.Schema<ActionIncrementalLoadMode>;
+export const ActionIncrementalLoadMode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    column: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActionIncrementalLoadMode" });
 
 export interface ActionLoadConfig {
   /** Replace destination table */
@@ -2111,17 +1745,12 @@ export interface ActionLoadConfig {
   unique?: ActionIncrementalLoadMode;
 }
 
-export const ActionLoadConfig: Schema.Schema<ActionLoadConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replace: Schema.optional(ActionSimpleLoadMode),
-      append: Schema.optional(ActionSimpleLoadMode),
-      maximum: Schema.optional(ActionIncrementalLoadMode),
-      unique: Schema.optional(ActionIncrementalLoadMode),
-    }),
-  ).annotate({
-    identifier: "ActionLoadConfig",
-  }) as any as Schema.Schema<ActionLoadConfig>;
+export const ActionLoadConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  replace: Schema.optional(ActionSimpleLoadMode),
+  append: Schema.optional(ActionSimpleLoadMode),
+  maximum: Schema.optional(ActionIncrementalLoadMode),
+  unique: Schema.optional(ActionIncrementalLoadMode),
+}).annotate({ identifier: "ActionLoadConfig" });
 
 export interface ActionSqlDefinition {
   /** The SQL query representing the data preparation steps. Formatted as a Pipe SQL query statement. */
@@ -2132,16 +1761,11 @@ export interface ActionSqlDefinition {
   loadConfig?: ActionLoadConfig;
 }
 
-export const ActionSqlDefinition: Schema.Schema<ActionSqlDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      errorTable: Schema.optional(ActionErrorTable),
-      loadConfig: Schema.optional(ActionLoadConfig),
-    }),
-  ).annotate({
-    identifier: "ActionSqlDefinition",
-  }) as any as Schema.Schema<ActionSqlDefinition>;
+export const ActionSqlDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  errorTable: Schema.optional(ActionErrorTable),
+  loadConfig: Schema.optional(ActionLoadConfig),
+}).annotate({ identifier: "ActionSqlDefinition" });
 
 export interface DataPreparationAction {
   /** Output only. YAML representing the contents of the data preparation. Can be used to show the customer what the input was to their workflow. */
@@ -2154,17 +1778,12 @@ export interface DataPreparationAction {
   jobId?: string;
 }
 
-export const DataPreparationAction: Schema.Schema<DataPreparationAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentsYaml: Schema.optional(Schema.String),
-      contentsSql: Schema.optional(ActionSqlDefinition),
-      generatedSql: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataPreparationAction",
-  }) as any as Schema.Schema<DataPreparationAction>;
+export const DataPreparationAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentsYaml: Schema.optional(Schema.String),
+  contentsSql: Schema.optional(ActionSqlDefinition),
+  generatedSql: Schema.optional(Schema.String),
+  jobId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataPreparationAction" });
 
 export interface WorkflowInvocationAction {
   /** Output only. The workflow action's bigquery action details. */
@@ -2195,22 +1814,18 @@ export interface WorkflowInvocationAction {
   internalMetadata?: string;
 }
 
-export const WorkflowInvocationAction: Schema.Schema<WorkflowInvocationAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryAction: Schema.optional(BigQueryAction),
-      notebookAction: Schema.optional(NotebookAction),
-      dataPreparationAction: Schema.optional(DataPreparationAction),
-      target: Schema.optional(Target),
-      canonicalTarget: Schema.optional(Target),
-      state: Schema.optional(Schema.String),
-      failureReason: Schema.optional(Schema.String),
-      invocationTiming: Schema.optional(Interval),
-      internalMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkflowInvocationAction",
-  }) as any as Schema.Schema<WorkflowInvocationAction>;
+export const WorkflowInvocationAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryAction: Schema.optional(BigQueryAction),
+    notebookAction: Schema.optional(NotebookAction),
+    dataPreparationAction: Schema.optional(DataPreparationAction),
+    target: Schema.optional(Target),
+    canonicalTarget: Schema.optional(Target),
+    state: Schema.optional(Schema.String),
+    failureReason: Schema.optional(Schema.String),
+    invocationTiming: Schema.optional(Interval),
+    internalMetadata: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkflowInvocationAction" });
 
 export interface QueryWorkflowInvocationActionsResponse {
   /** List of workflow invocation actions. */
@@ -2219,17 +1834,13 @@ export interface QueryWorkflowInvocationActionsResponse {
   nextPageToken?: string;
 }
 
-export const QueryWorkflowInvocationActionsResponse: Schema.Schema<QueryWorkflowInvocationActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflowInvocationActions: Schema.optional(
-        Schema.Array(WorkflowInvocationAction),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryWorkflowInvocationActionsResponse",
-  }) as any as Schema.Schema<QueryWorkflowInvocationActionsResponse>;
+export const QueryWorkflowInvocationActionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflowInvocationActions: Schema.optional(
+      Schema.Array(WorkflowInvocationAction),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryWorkflowInvocationActionsResponse" });
 
 export interface Config {
   /** Identifier. The config name. */
@@ -2240,14 +1851,11 @@ export interface Config {
   internalMetadata?: string;
 }
 
-export const Config: Schema.Schema<Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      defaultKmsKeyName: Schema.optional(Schema.String),
-      internalMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Config" }) as any as Schema.Schema<Config>;
+export const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  defaultKmsKeyName: Schema.optional(Schema.String),
+  internalMetadata: Schema.optional(Schema.String),
+}).annotate({ identifier: "Config" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -2260,15 +1868,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -2279,14 +1884,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -2297,56 +1899,40 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -2361,16 +1947,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -2379,15 +1962,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2406,20 +1984,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface PolicyName {
   /** Resource type. Types are defined in IAM's .service files. Valid values for type might be 'storage_buckets', 'compute_instances', 'resourcemanager_customers', 'billing_accounts', etc. */
@@ -2430,14 +2003,11 @@ export interface PolicyName {
   region?: string;
 }
 
-export const PolicyName: Schema.Schema<PolicyName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PolicyName" }) as any as Schema.Schema<PolicyName>;
+export const PolicyName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyName" });
 
 export interface IamPolicyOverrideView {
   /** The IAM policy name for the resource. */
@@ -2446,15 +2016,10 @@ export interface IamPolicyOverrideView {
   isActive?: boolean;
 }
 
-export const IamPolicyOverrideView: Schema.Schema<IamPolicyOverrideView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iamPolicyName: Schema.optional(PolicyName),
-      isActive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IamPolicyOverrideView",
-  }) as any as Schema.Schema<IamPolicyOverrideView>;
+export const IamPolicyOverrideView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iamPolicyName: Schema.optional(PolicyName),
+  isActive: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "IamPolicyOverrideView" });
 
 // ==========================================================================
 // Operations
@@ -2619,7 +2184,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2864,7 +2429,7 @@ export const getProjectsLocationsTeamFolders: API.OperationMethod<
 export interface CreateProjectsLocationsTeamFoldersRequest {
   /** Required. The location in which to create the TeamFolder. Must be in the format `projects/* /locations/*`. */
   parent: string;
-  /** The ID to use for the TeamFolder, which will become the final component of the TeamFolder's resource name. */
+  /** Deprecated: This field is not used. The resource name is generated automatically. The ID to use for the TeamFolder, which will become the final component of the TeamFolder's resource name. */
   teamFolderId?: string;
   /** Request body */
   body?: TeamFolder;
@@ -2976,6 +2541,44 @@ export const deleteProjectsLocationsTeamFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTeamFoldersRequest,
   output: DeleteProjectsLocationsTeamFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
+  /** Required. The TeamFolder's name. Format: projects/{project}/locations/{location}/teamFolders/{team_folder} */
+  name: string;
+  /** Request body */
+  body?: DeleteTeamFolderTreeRequest;
+}
+
+export const DeleteTreeProjectsLocationsTeamFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeleteTeamFolderTreeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/teamFolders/{teamFoldersId}:deleteTree",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>;
+
+export type DeleteTreeProjectsLocationsTeamFoldersResponse = Operation;
+export const DeleteTreeProjectsLocationsTeamFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteTreeProjectsLocationsTeamFoldersError = DefaultErrors;
+
+/** Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
+export const deleteTreeProjectsLocationsTeamFolders: API.OperationMethod<
+  DeleteTreeProjectsLocationsTeamFoldersRequest,
+  DeleteTreeProjectsLocationsTeamFoldersResponse,
+  DeleteTreeProjectsLocationsTeamFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTreeProjectsLocationsTeamFoldersRequest,
+  output: DeleteTreeProjectsLocationsTeamFoldersResponse,
   errors: [],
 }));
 
@@ -3234,7 +2837,7 @@ export const getProjectsLocationsFolders: API.OperationMethod<
 export interface CreateProjectsLocationsFoldersRequest {
   /** Required. The location in which to create the Folder. Must be in the format `projects/* /locations/*`. */
   parent: string;
-  /** The ID to use for the Folder, which will become the final component of the Folder's resource name. */
+  /** Deprecated: This field is not used. The resource name is generated automatically. The ID to use for the Folder, which will become the final component of the Folder's resource name. */
   folderId?: string;
   /** Request body */
   body?: Folder;
@@ -3344,6 +2947,44 @@ export const deleteProjectsLocationsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsFoldersRequest,
   output: DeleteProjectsLocationsFoldersResponse,
+  errors: [],
+}));
+
+export interface DeleteTreeProjectsLocationsFoldersRequest {
+  /** Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder} */
+  name: string;
+  /** Request body */
+  body?: DeleteFolderTreeRequest;
+}
+
+export const DeleteTreeProjectsLocationsFoldersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeleteFolderTreeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/folders/{foldersId}:deleteTree",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteTreeProjectsLocationsFoldersRequest>;
+
+export type DeleteTreeProjectsLocationsFoldersResponse = Operation;
+export const DeleteTreeProjectsLocationsFoldersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteTreeProjectsLocationsFoldersError = DefaultErrors;
+
+/** Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs). */
+export const deleteTreeProjectsLocationsFolders: API.OperationMethod<
+  DeleteTreeProjectsLocationsFoldersRequest,
+  DeleteTreeProjectsLocationsFoldersResponse,
+  DeleteTreeProjectsLocationsFoldersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTreeProjectsLocationsFoldersRequest,
+  output: DeleteTreeProjectsLocationsFoldersResponse,
   errors: [],
 }));
 
@@ -4645,6 +4286,12 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRe
   pageSize?: number;
   /** Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. Specifies the metadata to return for each directory entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected workspaces. */
+  view?:
+    | "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED"
+    | "DIRECTORY_CONTENTS_VIEW_BASIC"
+    | "DIRECTORY_CONTENTS_VIEW_METADATA"
+    | (string & {});
 }
 
 export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest =
@@ -4653,6 +4300,7 @@ export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesReques
     path: Schema.optional(Schema.String).pipe(T.HttpQuery("path")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
     T.Http({
       method: "GET",

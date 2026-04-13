@@ -164,6 +164,7 @@ export const GetPaymentIntentsOutput =
               "sofort",
               "swish",
               "twint",
+              "upi",
               "us_bank_account",
               "wechat_pay",
               "zip",

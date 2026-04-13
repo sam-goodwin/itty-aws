@@ -9103,6 +9103,7 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateAnycastIpListRequest {
   Id: string;
   IpAddressType?: IpAddressType;
+  IpamCidrConfigs?: IpamCidrConfig[];
   IfMatch: string;
 }
 export const UpdateAnycastIpListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -9110,6 +9111,7 @@ export const UpdateAnycastIpListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       Id: S.String.pipe(T.HttpLabel("Id")),
       IpAddressType: S.optional(IpAddressType),
+      IpamCidrConfigs: S.optional(IpamCidrConfigList),
       IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
     }).pipe(
       T.all(

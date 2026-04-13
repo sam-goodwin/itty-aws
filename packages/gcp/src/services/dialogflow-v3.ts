@@ -27,28 +27,22 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageText {
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessageText: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ResponseMessageText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageText>;
+export const GoogleCloudDialogflowCxV3ResponseMessageText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ResponseMessageText" });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
   text?: string;
@@ -56,51 +50,45 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      ssml: Schema.optional(Schema.String),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    ssml: Schema.optional(Schema.String),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageEndInteraction {}
 
-export const GoogleCloudDialogflowCxV3ResponseMessageEndInteraction: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageEndInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageEndInteraction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageEndInteraction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageEndInteraction>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessagePlayAudio {
   audioUri?: string;
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessagePlayAudio: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessagePlayAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioUri: Schema.optional(Schema.String),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessagePlayAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioUri: Schema.optional(Schema.String),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessagePlayAudio",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessagePlayAudio>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment {
   audio?: string;
@@ -108,51 +96,45 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment {
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audio: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audio: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
   segments?: Array<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudio: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageMixedAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      segments: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    segments: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageMixedAudio",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageMixedAudio>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
   phoneNumber?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard {}
 
-export const GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolCall {
   tool?: string;
@@ -160,18 +142,14 @@ export interface GoogleCloudDialogflowCxV3ToolCall {
   inputParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3ToolCall: Schema.Schema<GoogleCloudDialogflowCxV3ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolCall>;
+export const GoogleCloudDialogflowCxV3ToolCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolCall" });
 
 export interface GoogleCloudDialogflowCxV3ResponseMessage {
   text?: GoogleCloudDialogflowCxV3ResponseMessageText;
@@ -194,57 +172,51 @@ export interface GoogleCloudDialogflowCxV3ResponseMessage {
   channel?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ResponseMessage: Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudDialogflowCxV3ResponseMessageText),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      conversationSuccess: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess,
-      ),
-      outputAudioText: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText,
-      ),
-      liveAgentHandoff: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff,
-      ),
-      endInteraction: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessageEndInteraction,
-      ),
-      playAudio: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessagePlayAudio,
-      ),
-      mixedAudio: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessageMixedAudio,
-      ),
-      telephonyTransferCall: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall,
-      ),
-      knowledgeInfoCard: Schema.optional(
-        GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard,
-      ),
-      toolCall: Schema.optional(GoogleCloudDialogflowCxV3ToolCall),
-      responseType: Schema.optional(Schema.String),
-      channel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ResponseMessage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResponseMessage>;
+export const GoogleCloudDialogflowCxV3ResponseMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudDialogflowCxV3ResponseMessageText),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    conversationSuccess: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess,
+    ),
+    outputAudioText: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText,
+    ),
+    liveAgentHandoff: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff,
+    ),
+    endInteraction: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessageEndInteraction,
+    ),
+    playAudio: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessagePlayAudio,
+    ),
+    mixedAudio: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessageMixedAudio,
+    ),
+    telephonyTransferCall: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall,
+    ),
+    knowledgeInfoCard: Schema.optional(
+      GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard,
+    ),
+    toolCall: Schema.optional(GoogleCloudDialogflowCxV3ToolCall),
+    responseType: Schema.optional(Schema.String),
+    channel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ResponseMessage" });
 
 export interface GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
   parameter?: string;
   value?: unknown;
 }
 
-export const GoogleCloudDialogflowCxV3FulfillmentSetParameterAction: Schema.Schema<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3FulfillmentSetParameterAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameter: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3FulfillmentSetParameterAction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>;
+  });
 
 export interface GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
   message?: GoogleCloudDialogflowCxV3ResponseMessage;
@@ -302,14 +274,10 @@ export interface GoogleCloudDialogflowCxV3GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudDialogflowCxV3GcsDestination: Schema.Schema<GoogleCloudDialogflowCxV3GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3GcsDestination",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3GcsDestination>;
+export const GoogleCloudDialogflowCxV3GcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3GcsDestination" });
 
 export interface GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings {
   endpointerSensitivity?: number;
@@ -318,17 +286,15 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings {
   models?: Record<string, string>;
 }
 
-export const GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings: Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpointerSensitivity: Schema.optional(Schema.Number),
-      noSpeechTimeout: Schema.optional(Schema.String),
-      useTimeoutBasedEndpointing: Schema.optional(Schema.Boolean),
-      models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointerSensitivity: Schema.optional(Schema.Number),
+    noSpeechTimeout: Schema.optional(Schema.String),
+    useTimeoutBasedEndpointing: Schema.optional(Schema.Boolean),
+    models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
   enabled?: boolean;
@@ -338,18 +304,16 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
   endpointingTimeoutDuration?: string;
 }
 
-export const GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings: Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      maxDigits: Schema.optional(Schema.Number),
-      finishDigit: Schema.optional(Schema.String),
-      interdigitTimeoutDuration: Schema.optional(Schema.String),
-      endpointingTimeoutDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    maxDigits: Schema.optional(Schema.Number),
+    finishDigit: Schema.optional(Schema.String),
+    interdigitTimeoutDuration: Schema.optional(Schema.String),
+    endpointingTimeoutDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
   enableStackdriverLogging?: boolean;
@@ -357,16 +321,14 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
   enableConsentBasedRedaction?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings: Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableStackdriverLogging: Schema.optional(Schema.Boolean),
-      enableInteractionLogging: Schema.optional(Schema.Boolean),
-      enableConsentBasedRedaction: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableStackdriverLogging: Schema.optional(Schema.Boolean),
+    enableInteractionLogging: Schema.optional(Schema.Boolean),
+    enableConsentBasedRedaction: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AdvancedSettings {
   audioExportGcsDestination?: GoogleCloudDialogflowCxV3GcsDestination;
@@ -375,25 +337,21 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettings {
   loggingSettings?: GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings;
 }
 
-export const GoogleCloudDialogflowCxV3AdvancedSettings: Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioExportGcsDestination: Schema.optional(
-        GoogleCloudDialogflowCxV3GcsDestination,
-      ),
-      speechSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings,
-      ),
-      dtmfSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings,
-      ),
-      loggingSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3AdvancedSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AdvancedSettings>;
+export const GoogleCloudDialogflowCxV3AdvancedSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioExportGcsDestination: Schema.optional(
+      GoogleCloudDialogflowCxV3GcsDestination,
+    ),
+    speechSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings,
+    ),
+    dtmfSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings,
+    ),
+    loggingSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3AdvancedSettings" });
 
 export interface GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings {
   generator?: string;
@@ -401,18 +359,16 @@ export interface GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings {
   outputParameter?: string;
 }
 
-export const GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings: Schema.Schema<GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generator: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      outputParameter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generator: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    outputParameter: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Fulfillment {
   messages?: Array<GoogleCloudDialogflowCxV3ResponseMessage>;
@@ -426,32 +382,28 @@ export interface GoogleCloudDialogflowCxV3Fulfillment {
   generators?: Array<GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings>;
 }
 
-export const GoogleCloudDialogflowCxV3Fulfillment: Schema.Schema<GoogleCloudDialogflowCxV3Fulfillment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
-      ),
-      webhook: Schema.optional(Schema.String),
-      returnPartialResponses: Schema.optional(Schema.Boolean),
-      tag: Schema.optional(Schema.String),
-      setParameterActions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3FulfillmentSetParameterAction),
-      ),
-      conditionalCases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3FulfillmentConditionalCases),
-      ),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettings,
-      ),
-      enableGenerativeFallback: Schema.optional(Schema.Boolean),
-      generators: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Fulfillment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Fulfillment>;
+export const GoogleCloudDialogflowCxV3Fulfillment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
+    ),
+    webhook: Schema.optional(Schema.String),
+    returnPartialResponses: Schema.optional(Schema.Boolean),
+    tag: Schema.optional(Schema.String),
+    setParameterActions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3FulfillmentSetParameterAction),
+    ),
+    conditionalCases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3FulfillmentConditionalCases),
+    ),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettings,
+    ),
+    enableGenerativeFallback: Schema.optional(Schema.Boolean),
+    generators: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Fulfillment" });
 
 export interface GoogleCloudDialogflowCxV3EventHandler {
   name?: string;
@@ -462,38 +414,32 @@ export interface GoogleCloudDialogflowCxV3EventHandler {
   targetPlaybook?: string;
 }
 
-export const GoogleCloudDialogflowCxV3EventHandler: Schema.Schema<GoogleCloudDialogflowCxV3EventHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      event: Schema.optional(Schema.String),
-      triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-      targetPlaybook: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3EventHandler",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EventHandler>;
+export const GoogleCloudDialogflowCxV3EventHandler =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    event: Schema.optional(Schema.String),
+    triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+    targetPlaybook: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3EventHandler" });
 
 export interface GoogleCloudDialogflowCxV3FormParameterFillBehavior {
   initialPromptFulfillment?: GoogleCloudDialogflowCxV3Fulfillment;
   repromptEventHandlers?: Array<GoogleCloudDialogflowCxV3EventHandler>;
 }
 
-export const GoogleCloudDialogflowCxV3FormParameterFillBehavior: Schema.Schema<GoogleCloudDialogflowCxV3FormParameterFillBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialPromptFulfillment: Schema.optional(
-        GoogleCloudDialogflowCxV3Fulfillment,
-      ),
-      repromptEventHandlers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EventHandler),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3FormParameterFillBehavior =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    initialPromptFulfillment: Schema.optional(
+      GoogleCloudDialogflowCxV3Fulfillment,
+    ),
+    repromptEventHandlers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EventHandler),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3FormParameterFillBehavior",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FormParameterFillBehavior>;
+  });
 
 export interface GoogleCloudDialogflowCxV3FormParameter {
   displayName?: string;
@@ -506,40 +452,32 @@ export interface GoogleCloudDialogflowCxV3FormParameter {
   advancedSettings?: GoogleCloudDialogflowCxV3AdvancedSettings;
 }
 
-export const GoogleCloudDialogflowCxV3FormParameter: Schema.Schema<GoogleCloudDialogflowCxV3FormParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      required: Schema.optional(Schema.Boolean),
-      entityType: Schema.optional(Schema.String),
-      isList: Schema.optional(Schema.Boolean),
-      fillBehavior: Schema.optional(
-        GoogleCloudDialogflowCxV3FormParameterFillBehavior,
-      ),
-      defaultValue: Schema.optional(Schema.Unknown),
-      redact: Schema.optional(Schema.Boolean),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FormParameter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FormParameter>;
+export const GoogleCloudDialogflowCxV3FormParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+    entityType: Schema.optional(Schema.String),
+    isList: Schema.optional(Schema.Boolean),
+    fillBehavior: Schema.optional(
+      GoogleCloudDialogflowCxV3FormParameterFillBehavior,
+    ),
+    defaultValue: Schema.optional(Schema.Unknown),
+    redact: Schema.optional(Schema.Boolean),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FormParameter" });
 
 export interface GoogleCloudDialogflowCxV3Form {
   parameters?: Array<GoogleCloudDialogflowCxV3FormParameter>;
 }
 
-export const GoogleCloudDialogflowCxV3Form: Schema.Schema<GoogleCloudDialogflowCxV3Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3FormParameter),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Form",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Form>;
+export const GoogleCloudDialogflowCxV3Form =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3FormParameter),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Form" });
 
 export interface GoogleCloudDialogflowCxV3TransitionRoute {
   name?: string;
@@ -551,20 +489,16 @@ export interface GoogleCloudDialogflowCxV3TransitionRoute {
   targetFlow?: string;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionRoute: Schema.Schema<GoogleCloudDialogflowCxV3TransitionRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      intent: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TransitionRoute",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionRoute>;
+export const GoogleCloudDialogflowCxV3TransitionRoute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    intent: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TransitionRoute" });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnection {
   dataStoreType?:
@@ -581,16 +515,12 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnection {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnection: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStoreType: Schema.optional(Schema.String),
-      dataStore: Schema.optional(Schema.String),
-      documentProcessingMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DataStoreConnection",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnection>;
+export const GoogleCloudDialogflowCxV3DataStoreConnection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataStoreType: Schema.optional(Schema.String),
+    dataStore: Schema.optional(Schema.String),
+    documentProcessingMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DataStoreConnection" });
 
 export interface GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
   enabled?: boolean;
@@ -600,20 +530,18 @@ export interface GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
   dataStoreConnections?: Array<GoogleCloudDialogflowCxV3DataStoreConnection>;
 }
 
-export const GoogleCloudDialogflowCxV3KnowledgeConnectorSettings: Schema.Schema<GoogleCloudDialogflowCxV3KnowledgeConnectorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-      dataStoreConnections: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3DataStoreConnection),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3KnowledgeConnectorSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+    dataStoreConnections: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3DataStoreConnection),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3KnowledgeConnectorSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3KnowledgeConnectorSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Page {
   name?: string;
@@ -628,53 +556,44 @@ export interface GoogleCloudDialogflowCxV3Page {
   knowledgeConnectorSettings?: GoogleCloudDialogflowCxV3KnowledgeConnectorSettings;
 }
 
-export const GoogleCloudDialogflowCxV3Page: Schema.Schema<GoogleCloudDialogflowCxV3Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      entryFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
-      form: Schema.optional(GoogleCloudDialogflowCxV3Form),
-      transitionRouteGroups: Schema.optional(Schema.Array(Schema.String)),
-      transitionRoutes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TransitionRoute),
-      ),
-      eventHandlers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EventHandler),
-      ),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettings,
-      ),
-      knowledgeConnectorSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3KnowledgeConnectorSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Page",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Page>;
+export const GoogleCloudDialogflowCxV3Page =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    entryFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
+    form: Schema.optional(GoogleCloudDialogflowCxV3Form),
+    transitionRouteGroups: Schema.optional(Schema.Array(Schema.String)),
+    transitionRoutes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TransitionRoute),
+    ),
+    eventHandlers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EventHandler),
+    ),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettings,
+    ),
+    knowledgeConnectorSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3KnowledgeConnectorSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Page" });
 
 export interface GoogleCloudDialogflowCxV3ListPagesResponse {
   pages?: Array<GoogleCloudDialogflowCxV3Page>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListPagesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListPagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pages: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Page)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListPagesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListPagesResponse>;
+export const GoogleCloudDialogflowCxV3ListPagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pages: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Page)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListPagesResponse" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleRpcStatus {
   code?: number;
@@ -682,18 +601,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   name?: string;
@@ -703,18 +617,14 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   operations?: Array<GoogleLongrunningOperation>;
@@ -722,16 +632,12 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudDialogflowCxV3NluSettings {
   modelType?:
@@ -747,16 +653,12 @@ export interface GoogleCloudDialogflowCxV3NluSettings {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3NluSettings: Schema.Schema<GoogleCloudDialogflowCxV3NluSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelType: Schema.optional(Schema.String),
-      classificationThreshold: Schema.optional(Schema.Number),
-      modelTrainingMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3NluSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3NluSettings>;
+export const GoogleCloudDialogflowCxV3NluSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelType: Schema.optional(Schema.String),
+    classificationThreshold: Schema.optional(Schema.Number),
+    modelTrainingMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3NluSettings" });
 
 export interface GoogleCloudDialogflowCxV3InlineSchema {
   type?:
@@ -784,15 +686,13 @@ export interface GoogleCloudDialogflowCxV3TypeSchemaSchemaReference {
   schema?: string;
 }
 
-export const GoogleCloudDialogflowCxV3TypeSchemaSchemaReference: Schema.Schema<GoogleCloudDialogflowCxV3TypeSchemaSchemaReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3TypeSchemaSchemaReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    schema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3TypeSchemaSchemaReference",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TypeSchemaSchemaReference>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TypeSchema {
   inlineSchema?: GoogleCloudDialogflowCxV3InlineSchema;
@@ -826,34 +726,28 @@ export interface GoogleCloudDialogflowCxV3ParameterDefinition {
   description?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ParameterDefinition: Schema.Schema<GoogleCloudDialogflowCxV3ParameterDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      typeSchema: Schema.optional(GoogleCloudDialogflowCxV3TypeSchema),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ParameterDefinition",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ParameterDefinition>;
+export const GoogleCloudDialogflowCxV3ParameterDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    typeSchema: Schema.optional(GoogleCloudDialogflowCxV3TypeSchema),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ParameterDefinition" });
 
 export interface GoogleCloudDialogflowCxV3FlowMultiLanguageSettings {
   enableMultiLanguageDetection?: boolean;
   supportedResponseLanguageCodes?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3FlowMultiLanguageSettings: Schema.Schema<GoogleCloudDialogflowCxV3FlowMultiLanguageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableMultiLanguageDetection: Schema.optional(Schema.Boolean),
-      supportedResponseLanguageCodes: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3FlowMultiLanguageSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableMultiLanguageDetection: Schema.optional(Schema.Boolean),
+    supportedResponseLanguageCodes: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3FlowMultiLanguageSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FlowMultiLanguageSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Flow {
   name?: string;
@@ -871,90 +765,74 @@ export interface GoogleCloudDialogflowCxV3Flow {
   locked?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3Flow: Schema.Schema<GoogleCloudDialogflowCxV3Flow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      transitionRoutes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TransitionRoute),
-      ),
-      eventHandlers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EventHandler),
-      ),
-      transitionRouteGroups: Schema.optional(Schema.Array(Schema.String)),
-      nluSettings: Schema.optional(GoogleCloudDialogflowCxV3NluSettings),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettings,
-      ),
-      knowledgeConnectorSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3KnowledgeConnectorSettings,
-      ),
-      inputParameterDefinitions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
-      ),
-      outputParameterDefinitions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
-      ),
-      multiLanguageSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3FlowMultiLanguageSettings,
-      ),
-      locked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Flow",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Flow>;
+export const GoogleCloudDialogflowCxV3Flow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    transitionRoutes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TransitionRoute),
+    ),
+    eventHandlers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EventHandler),
+    ),
+    transitionRouteGroups: Schema.optional(Schema.Array(Schema.String)),
+    nluSettings: Schema.optional(GoogleCloudDialogflowCxV3NluSettings),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettings,
+    ),
+    knowledgeConnectorSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3KnowledgeConnectorSettings,
+    ),
+    inputParameterDefinitions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
+    ),
+    outputParameterDefinitions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
+    ),
+    multiLanguageSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3FlowMultiLanguageSettings,
+    ),
+    locked: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Flow" });
 
 export interface GoogleCloudDialogflowCxV3ListFlowsResponse {
   flows?: Array<GoogleCloudDialogflowCxV3Flow>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListFlowsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListFlowsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flows: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Flow)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListFlowsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListFlowsResponse>;
+export const GoogleCloudDialogflowCxV3ListFlowsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flows: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Flow)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListFlowsResponse" });
 
 export interface GoogleCloudDialogflowCxV3TrainFlowRequest {}
 
-export const GoogleCloudDialogflowCxV3TrainFlowRequest: Schema.Schema<GoogleCloudDialogflowCxV3TrainFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3TrainFlowRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3TrainFlowRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TrainFlowRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ValidateFlowRequest {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ValidateFlowRequest: Schema.Schema<GoogleCloudDialogflowCxV3ValidateFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ValidateFlowRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ValidateFlowRequest>;
+export const GoogleCloudDialogflowCxV3ValidateFlowRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ValidateFlowRequest" });
 
 export interface GoogleCloudDialogflowCxV3ResourceName {
   name?: string;
   displayName?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ResourceName: Schema.Schema<GoogleCloudDialogflowCxV3ResourceName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ResourceName",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ResourceName>;
+export const GoogleCloudDialogflowCxV3ResourceName =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ResourceName" });
 
 export interface GoogleCloudDialogflowCxV3ValidationMessage {
   resourceType?:
@@ -985,20 +863,16 @@ export interface GoogleCloudDialogflowCxV3ValidationMessage {
   detail?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ValidationMessage: Schema.Schema<GoogleCloudDialogflowCxV3ValidationMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      resourceNames: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ResourceName),
-      ),
-      severity: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ValidationMessage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ValidationMessage>;
+export const GoogleCloudDialogflowCxV3ValidationMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(Schema.String)),
+    resourceNames: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ResourceName),
+    ),
+    severity: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ValidationMessage" });
 
 export interface GoogleCloudDialogflowCxV3FlowValidationResult {
   name?: string;
@@ -1006,18 +880,14 @@ export interface GoogleCloudDialogflowCxV3FlowValidationResult {
   updateTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3FlowValidationResult: Schema.Schema<GoogleCloudDialogflowCxV3FlowValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      validationMessages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ValidationMessage),
-      ),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FlowValidationResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FlowValidationResult>;
+export const GoogleCloudDialogflowCxV3FlowValidationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    validationMessages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ValidationMessage),
+    ),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FlowValidationResult" });
 
 export interface GoogleCloudDialogflowCxV3FlowImportStrategy {
   globalImportStrategy?:
@@ -1030,14 +900,10 @@ export interface GoogleCloudDialogflowCxV3FlowImportStrategy {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3FlowImportStrategy: Schema.Schema<GoogleCloudDialogflowCxV3FlowImportStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      globalImportStrategy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FlowImportStrategy",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FlowImportStrategy>;
+export const GoogleCloudDialogflowCxV3FlowImportStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    globalImportStrategy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FlowImportStrategy" });
 
 export interface GoogleCloudDialogflowCxV3ImportFlowRequest {
   flowUri?: string;
@@ -1050,34 +916,26 @@ export interface GoogleCloudDialogflowCxV3ImportFlowRequest {
   flowImportStrategy?: GoogleCloudDialogflowCxV3FlowImportStrategy;
 }
 
-export const GoogleCloudDialogflowCxV3ImportFlowRequest: Schema.Schema<GoogleCloudDialogflowCxV3ImportFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flowUri: Schema.optional(Schema.String),
-      flowContent: Schema.optional(Schema.String),
-      importOption: Schema.optional(Schema.String),
-      flowImportStrategy: Schema.optional(
-        GoogleCloudDialogflowCxV3FlowImportStrategy,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ImportFlowRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportFlowRequest>;
+export const GoogleCloudDialogflowCxV3ImportFlowRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flowUri: Schema.optional(Schema.String),
+    flowContent: Schema.optional(Schema.String),
+    importOption: Schema.optional(Schema.String),
+    flowImportStrategy: Schema.optional(
+      GoogleCloudDialogflowCxV3FlowImportStrategy,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ImportFlowRequest" });
 
 export interface GoogleCloudDialogflowCxV3ExportFlowRequest {
   flowUri?: string;
   includeReferencedFlows?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3ExportFlowRequest: Schema.Schema<GoogleCloudDialogflowCxV3ExportFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flowUri: Schema.optional(Schema.String),
-      includeReferencedFlows: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExportFlowRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportFlowRequest>;
+export const GoogleCloudDialogflowCxV3ExportFlowRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flowUri: Schema.optional(Schema.String),
+    includeReferencedFlows: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportFlowRequest" });
 
 export interface GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
   gcsBucket?: string;
@@ -1092,32 +950,28 @@ export interface GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
   storeTtsAudio?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings: Schema.Schema<GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsBucket: Schema.optional(Schema.String),
-      audioExportPattern: Schema.optional(Schema.String),
-      enableAudioRedaction: Schema.optional(Schema.Boolean),
-      audioFormat: Schema.optional(Schema.String),
-      storeTtsAudio: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsBucket: Schema.optional(Schema.String),
+    audioExportPattern: Schema.optional(Schema.String),
+    enableAudioRedaction: Schema.optional(Schema.Boolean),
+    audioFormat: Schema.optional(Schema.String),
+    storeTtsAudio: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
   enableInsightsExport?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings: Schema.Schema<GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableInsightsExport: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableInsightsExport: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3SecuritySettings {
   name?: string;
@@ -1144,58 +998,48 @@ export interface GoogleCloudDialogflowCxV3SecuritySettings {
   insightsExportSettings?: GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings;
 }
 
-export const GoogleCloudDialogflowCxV3SecuritySettings: Schema.Schema<GoogleCloudDialogflowCxV3SecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      redactionStrategy: Schema.optional(Schema.String),
-      redactionScope: Schema.optional(Schema.String),
-      inspectTemplate: Schema.optional(Schema.String),
-      deidentifyTemplate: Schema.optional(Schema.String),
-      retentionWindowDays: Schema.optional(Schema.Number),
-      retentionStrategy: Schema.optional(Schema.String),
-      purgeDataTypes: Schema.optional(Schema.Array(Schema.String)),
-      audioExportSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings,
-      ),
-      insightsExportSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3SecuritySettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SecuritySettings>;
+export const GoogleCloudDialogflowCxV3SecuritySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    redactionStrategy: Schema.optional(Schema.String),
+    redactionScope: Schema.optional(Schema.String),
+    inspectTemplate: Schema.optional(Schema.String),
+    deidentifyTemplate: Schema.optional(Schema.String),
+    retentionWindowDays: Schema.optional(Schema.Number),
+    retentionStrategy: Schema.optional(Schema.String),
+    purgeDataTypes: Schema.optional(Schema.Array(Schema.String)),
+    audioExportSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings,
+    ),
+    insightsExportSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3SecuritySettings" });
 
 export interface GoogleCloudDialogflowCxV3ListSecuritySettingsResponse {
   securitySettings?: Array<GoogleCloudDialogflowCxV3SecuritySettings>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListSecuritySettingsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListSecuritySettingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securitySettings: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3SecuritySettings),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListSecuritySettingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securitySettings: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3SecuritySettings),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListSecuritySettingsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListSecuritySettingsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3SpeechToTextSettings {
   enableSpeechAdaptation?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3SpeechToTextSettings: Schema.Schema<GoogleCloudDialogflowCxV3SpeechToTextSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableSpeechAdaptation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3SpeechToTextSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SpeechToTextSettings>;
+export const GoogleCloudDialogflowCxV3SpeechToTextSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableSpeechAdaptation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3SpeechToTextSettings" });
 
 export interface GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings {
   displayName?: string;
@@ -1205,34 +1049,30 @@ export interface GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSetti
   branches?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings: Schema.Schema<GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      repositoryUri: Schema.optional(Schema.String),
-      trackingBranch: Schema.optional(Schema.String),
-      accessToken: Schema.optional(Schema.String),
-      branches: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    repositoryUri: Schema.optional(Schema.String),
+    trackingBranch: Schema.optional(Schema.String),
+    accessToken: Schema.optional(Schema.String),
+    branches: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AgentGitIntegrationSettings {
   githubSettings?: GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings;
 }
 
-export const GoogleCloudDialogflowCxV3AgentGitIntegrationSettings: Schema.Schema<GoogleCloudDialogflowCxV3AgentGitIntegrationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AgentGitIntegrationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    githubSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AgentGitIntegrationSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentGitIntegrationSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3VoiceSelectionParams {
   name?: string;
@@ -1244,15 +1084,11 @@ export interface GoogleCloudDialogflowCxV3VoiceSelectionParams {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3VoiceSelectionParams: Schema.Schema<GoogleCloudDialogflowCxV3VoiceSelectionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      ssmlGender: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3VoiceSelectionParams",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3VoiceSelectionParams>;
+export const GoogleCloudDialogflowCxV3VoiceSelectionParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    ssmlGender: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3VoiceSelectionParams" });
 
 export interface GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
   speakingRate?: number;
@@ -1262,18 +1098,16 @@ export interface GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
   voice?: GoogleCloudDialogflowCxV3VoiceSelectionParams;
 }
 
-export const GoogleCloudDialogflowCxV3SynthesizeSpeechConfig: Schema.Schema<GoogleCloudDialogflowCxV3SynthesizeSpeechConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speakingRate: Schema.optional(Schema.Number),
-      pitch: Schema.optional(Schema.Number),
-      volumeGainDb: Schema.optional(Schema.Number),
-      effectsProfileId: Schema.optional(Schema.Array(Schema.String)),
-      voice: Schema.optional(GoogleCloudDialogflowCxV3VoiceSelectionParams),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3SynthesizeSpeechConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speakingRate: Schema.optional(Schema.Number),
+    pitch: Schema.optional(Schema.Number),
+    volumeGainDb: Schema.optional(Schema.Number),
+    effectsProfileId: Schema.optional(Schema.Array(Schema.String)),
+    voice: Schema.optional(GoogleCloudDialogflowCxV3VoiceSelectionParams),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3SynthesizeSpeechConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TextToSpeechSettings {
   synthesizeSpeechConfigs?: Record<
@@ -1282,60 +1116,50 @@ export interface GoogleCloudDialogflowCxV3TextToSpeechSettings {
   >;
 }
 
-export const GoogleCloudDialogflowCxV3TextToSpeechSettings: Schema.Schema<GoogleCloudDialogflowCxV3TextToSpeechSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      synthesizeSpeechConfigs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDialogflowCxV3SynthesizeSpeechConfig,
-        ),
+export const GoogleCloudDialogflowCxV3TextToSpeechSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    synthesizeSpeechConfigs: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDialogflowCxV3SynthesizeSpeechConfig,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TextToSpeechSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TextToSpeechSettings>;
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TextToSpeechSettings" });
 
 export interface GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings {
   engine?: string;
 }
 
-export const GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings: Schema.Schema<GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      engine: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    engine: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
   enableAnswerFeedback?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings: Schema.Schema<GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableAnswerFeedback: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableAnswerFeedback: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AgentPersonalizationSettings {
   defaultEndUserMetadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3AgentPersonalizationSettings: Schema.Schema<GoogleCloudDialogflowCxV3AgentPersonalizationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultEndUserMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AgentPersonalizationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultEndUserMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AgentPersonalizationSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentPersonalizationSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AgentClientCertificateSettings {
   sslCertificate?: string;
@@ -1343,16 +1167,14 @@ export interface GoogleCloudDialogflowCxV3AgentClientCertificateSettings {
   passphrase?: string;
 }
 
-export const GoogleCloudDialogflowCxV3AgentClientCertificateSettings: Schema.Schema<GoogleCloudDialogflowCxV3AgentClientCertificateSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sslCertificate: Schema.optional(Schema.String),
-      privateKey: Schema.optional(Schema.String),
-      passphrase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AgentClientCertificateSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sslCertificate: Schema.optional(Schema.String),
+    privateKey: Schema.optional(Schema.String),
+    passphrase: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AgentClientCertificateSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentClientCertificateSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Agent {
   name?: string;
@@ -1381,83 +1203,73 @@ export interface GoogleCloudDialogflowCxV3Agent {
   satisfiesPzi?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3Agent: Schema.Schema<GoogleCloudDialogflowCxV3Agent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      defaultLanguageCode: Schema.optional(Schema.String),
-      supportedLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
-      timeZone: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      avatarUri: Schema.optional(Schema.String),
-      speechToTextSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3SpeechToTextSettings,
-      ),
-      startFlow: Schema.optional(Schema.String),
-      startPlaybook: Schema.optional(Schema.String),
-      securitySettings: Schema.optional(Schema.String),
-      enableStackdriverLogging: Schema.optional(Schema.Boolean),
-      enableSpellCorrection: Schema.optional(Schema.Boolean),
-      enableMultiLanguageTraining: Schema.optional(Schema.Boolean),
-      locked: Schema.optional(Schema.Boolean),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettings,
-      ),
-      gitIntegrationSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AgentGitIntegrationSettings,
-      ),
-      textToSpeechSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3TextToSpeechSettings,
-      ),
-      genAppBuilderSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings,
-      ),
-      answerFeedbackSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings,
-      ),
-      personalizationSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AgentPersonalizationSettings,
-      ),
-      clientCertificateSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AgentClientCertificateSettings,
-      ),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Agent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Agent>;
+export const GoogleCloudDialogflowCxV3Agent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    defaultLanguageCode: Schema.optional(Schema.String),
+    supportedLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
+    timeZone: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    avatarUri: Schema.optional(Schema.String),
+    speechToTextSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3SpeechToTextSettings,
+    ),
+    startFlow: Schema.optional(Schema.String),
+    startPlaybook: Schema.optional(Schema.String),
+    securitySettings: Schema.optional(Schema.String),
+    enableStackdriverLogging: Schema.optional(Schema.Boolean),
+    enableSpellCorrection: Schema.optional(Schema.Boolean),
+    enableMultiLanguageTraining: Schema.optional(Schema.Boolean),
+    locked: Schema.optional(Schema.Boolean),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettings,
+    ),
+    gitIntegrationSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AgentGitIntegrationSettings,
+    ),
+    textToSpeechSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3TextToSpeechSettings,
+    ),
+    genAppBuilderSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings,
+    ),
+    answerFeedbackSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings,
+    ),
+    personalizationSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AgentPersonalizationSettings,
+    ),
+    clientCertificateSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AgentClientCertificateSettings,
+    ),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Agent" });
 
 export interface GoogleCloudDialogflowCxV3ListAgentsResponse {
   agents?: Array<GoogleCloudDialogflowCxV3Agent>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListAgentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListAgentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agents: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Agent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListAgentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListAgentsResponse>;
+export const GoogleCloudDialogflowCxV3ListAgentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agents: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Agent)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListAgentsResponse" });
 
 export interface GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination {
   trackingBranch?: string;
   commitMessage?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination: Schema.Schema<GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingBranch: Schema.optional(Schema.String),
-      commitMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trackingBranch: Schema.optional(Schema.String),
+    commitMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExportAgentRequest {
   agentUri?: string;
@@ -1471,33 +1283,27 @@ export interface GoogleCloudDialogflowCxV3ExportAgentRequest {
   includeBigqueryExportSettings?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3ExportAgentRequest: Schema.Schema<GoogleCloudDialogflowCxV3ExportAgentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUri: Schema.optional(Schema.String),
-      dataFormat: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-      gitDestination: Schema.optional(
-        GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination,
-      ),
-      includeBigqueryExportSettings: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExportAgentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportAgentRequest>;
+export const GoogleCloudDialogflowCxV3ExportAgentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentUri: Schema.optional(Schema.String),
+    dataFormat: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    gitDestination: Schema.optional(
+      GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination,
+    ),
+    includeBigqueryExportSettings: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportAgentRequest" });
 
 export interface GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource {
   trackingBranch?: string;
 }
 
-export const GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource: Schema.Schema<GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingBranch: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trackingBranch: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RestoreAgentRequest {
   agentUri?: string;
@@ -1510,49 +1316,37 @@ export interface GoogleCloudDialogflowCxV3RestoreAgentRequest {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3RestoreAgentRequest: Schema.Schema<GoogleCloudDialogflowCxV3RestoreAgentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUri: Schema.optional(Schema.String),
-      agentContent: Schema.optional(Schema.String),
-      gitSource: Schema.optional(
-        GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource,
-      ),
-      restoreOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3RestoreAgentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RestoreAgentRequest>;
+export const GoogleCloudDialogflowCxV3RestoreAgentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentUri: Schema.optional(Schema.String),
+    agentContent: Schema.optional(Schema.String),
+    gitSource: Schema.optional(
+      GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource,
+    ),
+    restoreOption: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3RestoreAgentRequest" });
 
 export interface GoogleCloudDialogflowCxV3ValidateAgentRequest {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ValidateAgentRequest: Schema.Schema<GoogleCloudDialogflowCxV3ValidateAgentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ValidateAgentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ValidateAgentRequest>;
+export const GoogleCloudDialogflowCxV3ValidateAgentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ValidateAgentRequest" });
 
 export interface GoogleCloudDialogflowCxV3AgentValidationResult {
   name?: string;
   flowValidationResults?: Array<GoogleCloudDialogflowCxV3FlowValidationResult>;
 }
 
-export const GoogleCloudDialogflowCxV3AgentValidationResult: Schema.Schema<GoogleCloudDialogflowCxV3AgentValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      flowValidationResults: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3FlowValidationResult),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3AgentValidationResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentValidationResult>;
+export const GoogleCloudDialogflowCxV3AgentValidationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    flowValidationResults: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3FlowValidationResult),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3AgentValidationResult" });
 
 export interface GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate {
   displayName?: string;
@@ -1560,51 +1354,43 @@ export interface GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsProm
   frozen?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate: Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      promptText: Schema.optional(Schema.String),
-      frozen: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    promptText: Schema.optional(Schema.String),
+    frozen: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate>;
+  });
 
 export interface GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings {
   selectedPrompt?: string;
   promptTemplates?: Array<GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate>;
 }
 
-export const GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings: Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selectedPrompt: Schema.optional(Schema.String),
-      promptTemplates: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate,
-        ),
+export const GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    selectedPrompt: Schema.optional(Schema.String),
+    promptTemplates: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3SafetySettingsPhrase {
   text?: string;
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3SafetySettingsPhrase: Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3SafetySettingsPhrase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsPhrase>;
+export const GoogleCloudDialogflowCxV3SafetySettingsPhrase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3SafetySettingsPhrase" });
 
 export interface GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter {
   category?:
@@ -1623,46 +1409,40 @@ export interface GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilte
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter: Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      filterLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    filterLevel: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter>;
+  });
 
 export interface GoogleCloudDialogflowCxV3SafetySettingsRaiSettings {
   categoryFilters?: Array<GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter>;
 }
 
-export const GoogleCloudDialogflowCxV3SafetySettingsRaiSettings: Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsRaiSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categoryFilters: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter,
-        ),
+export const GoogleCloudDialogflowCxV3SafetySettingsRaiSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categoryFilters: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3SafetySettingsRaiSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsRaiSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings {
   enablePromptSecurity?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings: Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enablePromptSecurity: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enablePromptSecurity: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3SafetySettings {
   defaultBannedPhraseMatchStrategy?:
@@ -1676,26 +1456,22 @@ export interface GoogleCloudDialogflowCxV3SafetySettings {
   promptSecuritySettings?: GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings;
 }
 
-export const GoogleCloudDialogflowCxV3SafetySettings: Schema.Schema<GoogleCloudDialogflowCxV3SafetySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultBannedPhraseMatchStrategy: Schema.optional(Schema.String),
-      bannedPhrases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3SafetySettingsPhrase),
-      ),
-      raiSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3SafetySettingsRaiSettings,
-      ),
-      defaultRaiSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3SafetySettingsRaiSettings,
-      ),
-      promptSecuritySettings: Schema.optional(
-        GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3SafetySettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SafetySettings>;
+export const GoogleCloudDialogflowCxV3SafetySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultBannedPhraseMatchStrategy: Schema.optional(Schema.String),
+    bannedPhrases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3SafetySettingsPhrase),
+    ),
+    raiSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3SafetySettingsRaiSettings,
+    ),
+    defaultRaiSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3SafetySettingsRaiSettings,
+    ),
+    promptSecuritySettings: Schema.optional(
+      GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3SafetySettings" });
 
 export interface GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings {
   business?: string;
@@ -1706,35 +1482,29 @@ export interface GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSe
   disableDataStoreFallback?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings: Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      business: Schema.optional(Schema.String),
-      agent: Schema.optional(Schema.String),
-      agentIdentity: Schema.optional(Schema.String),
-      businessDescription: Schema.optional(Schema.String),
-      agentScope: Schema.optional(Schema.String),
-      disableDataStoreFallback: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    business: Schema.optional(Schema.String),
+    agent: Schema.optional(Schema.String),
+    agentIdentity: Schema.optional(Schema.String),
+    businessDescription: Schema.optional(Schema.String),
+    agentScope: Schema.optional(Schema.String),
+    disableDataStoreFallback: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3LlmModelSettings {
   model?: string;
   promptText?: string;
 }
 
-export const GoogleCloudDialogflowCxV3LlmModelSettings: Schema.Schema<GoogleCloudDialogflowCxV3LlmModelSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      model: Schema.optional(Schema.String),
-      promptText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3LlmModelSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3LlmModelSettings>;
+export const GoogleCloudDialogflowCxV3LlmModelSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    model: Schema.optional(Schema.String),
+    promptText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3LlmModelSettings" });
 
 export interface GoogleCloudDialogflowCxV3GenerativeSettings {
   name?: string;
@@ -1745,27 +1515,23 @@ export interface GoogleCloudDialogflowCxV3GenerativeSettings {
   llmModelSettings?: GoogleCloudDialogflowCxV3LlmModelSettings;
 }
 
-export const GoogleCloudDialogflowCxV3GenerativeSettings: Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fallbackSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings,
-      ),
-      generativeSafetySettings: Schema.optional(
-        GoogleCloudDialogflowCxV3SafetySettings,
-      ),
-      knowledgeConnectorSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings,
-      ),
-      languageCode: Schema.optional(Schema.String),
-      llmModelSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3LlmModelSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3GenerativeSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3GenerativeSettings>;
+export const GoogleCloudDialogflowCxV3GenerativeSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    fallbackSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings,
+    ),
+    generativeSafetySettings: Schema.optional(
+      GoogleCloudDialogflowCxV3SafetySettings,
+    ),
+    knowledgeConnectorSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings,
+    ),
+    languageCode: Schema.optional(Schema.String),
+    llmModelSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3LlmModelSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3GenerativeSettings" });
 
 export interface GoogleCloudDialogflowCxV3Changelog {
   name?: string;
@@ -1778,53 +1544,43 @@ export interface GoogleCloudDialogflowCxV3Changelog {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3Changelog: Schema.Schema<GoogleCloudDialogflowCxV3Changelog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Changelog",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Changelog>;
+export const GoogleCloudDialogflowCxV3Changelog =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    userEmail: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Changelog" });
 
 export interface GoogleCloudDialogflowCxV3ListChangelogsResponse {
   changelogs?: Array<GoogleCloudDialogflowCxV3Changelog>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListChangelogsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListChangelogsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changelogs: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Changelog),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListChangelogsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changelogs: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3Changelog),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListChangelogsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListChangelogsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DeploymentResult {
   deploymentTestResults?: Array<string>;
   experiment?: string;
 }
 
-export const GoogleCloudDialogflowCxV3DeploymentResult: Schema.Schema<GoogleCloudDialogflowCxV3DeploymentResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentTestResults: Schema.optional(Schema.Array(Schema.String)),
-      experiment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DeploymentResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DeploymentResult>;
+export const GoogleCloudDialogflowCxV3DeploymentResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentTestResults: Schema.optional(Schema.Array(Schema.String)),
+    experiment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DeploymentResult" });
 
 export interface GoogleCloudDialogflowCxV3Deployment {
   name?: string;
@@ -1840,64 +1596,52 @@ export interface GoogleCloudDialogflowCxV3Deployment {
   endTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3Deployment: Schema.Schema<GoogleCloudDialogflowCxV3Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      flowVersion: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      result: Schema.optional(GoogleCloudDialogflowCxV3DeploymentResult),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Deployment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Deployment>;
+export const GoogleCloudDialogflowCxV3Deployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    flowVersion: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    result: Schema.optional(GoogleCloudDialogflowCxV3DeploymentResult),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Deployment" });
 
 export interface GoogleCloudDialogflowCxV3ListDeploymentsResponse {
   deployments?: Array<GoogleCloudDialogflowCxV3Deployment>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListDeploymentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Deployment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3Deployment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListDeploymentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListDeploymentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3EntityTypeEntity {
   value?: string;
   synonyms?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3EntityTypeEntity: Schema.Schema<GoogleCloudDialogflowCxV3EntityTypeEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      synonyms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3EntityTypeEntity",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EntityTypeEntity>;
+export const GoogleCloudDialogflowCxV3EntityTypeEntity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    synonyms: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3EntityTypeEntity" });
 
 export interface GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase {
   value?: string;
 }
 
-export const GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase: Schema.Schema<GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase>;
+  });
 
 export interface GoogleCloudDialogflowCxV3EntityType {
   name?: string;
@@ -1918,42 +1662,36 @@ export interface GoogleCloudDialogflowCxV3EntityType {
   redact?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3EntityType: Schema.Schema<GoogleCloudDialogflowCxV3EntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      autoExpansionMode: Schema.optional(Schema.String),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EntityTypeEntity),
-      ),
-      excludedPhrases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase),
-      ),
-      enableFuzzyExtraction: Schema.optional(Schema.Boolean),
-      redact: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3EntityType",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EntityType>;
+export const GoogleCloudDialogflowCxV3EntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    autoExpansionMode: Schema.optional(Schema.String),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EntityTypeEntity),
+    ),
+    excludedPhrases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase),
+    ),
+    enableFuzzyExtraction: Schema.optional(Schema.Boolean),
+    redact: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3EntityType" });
 
 export interface GoogleCloudDialogflowCxV3ListEntityTypesResponse {
   entityTypes?: Array<GoogleCloudDialogflowCxV3EntityType>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EntityType),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EntityType),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListEntityTypesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExportEntityTypesRequest {
   entityTypes?: Array<string>;
@@ -1967,31 +1705,25 @@ export interface GoogleCloudDialogflowCxV3ExportEntityTypesRequest {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ExportEntityTypesRequest: Schema.Schema<GoogleCloudDialogflowCxV3ExportEntityTypesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypes: Schema.optional(Schema.Array(Schema.String)),
-      entityTypesUri: Schema.optional(Schema.String),
-      entityTypesContentInline: Schema.optional(Schema.Boolean),
-      dataFormat: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExportEntityTypesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypes: Schema.optional(Schema.Array(Schema.String)),
+    entityTypesUri: Schema.optional(Schema.String),
+    entityTypesContentInline: Schema.optional(Schema.Boolean),
+    dataFormat: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportEntityTypesRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportEntityTypesRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3InlineSource {
   content?: string;
 }
 
-export const GoogleCloudDialogflowCxV3InlineSource: Schema.Schema<GoogleCloudDialogflowCxV3InlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3InlineSource",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3InlineSource>;
+export const GoogleCloudDialogflowCxV3InlineSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3InlineSource" });
 
 export interface GoogleCloudDialogflowCxV3ImportEntityTypesRequest {
   entityTypesUri?: string;
@@ -2007,34 +1739,28 @@ export interface GoogleCloudDialogflowCxV3ImportEntityTypesRequest {
   targetEntityType?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ImportEntityTypesRequest: Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypesUri: Schema.optional(Schema.String),
-      entityTypesContent: Schema.optional(
-        GoogleCloudDialogflowCxV3InlineSource,
-      ),
-      mergeOption: Schema.optional(Schema.String),
-      targetEntityType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ImportEntityTypesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypesUri: Schema.optional(Schema.String),
+    entityTypesContent: Schema.optional(GoogleCloudDialogflowCxV3InlineSource),
+    mergeOption: Schema.optional(Schema.String),
+    targetEntityType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportEntityTypesRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3IntentTrainingPhrasePart {
   text?: string;
   parameterId?: string;
 }
 
-export const GoogleCloudDialogflowCxV3IntentTrainingPhrasePart: Schema.Schema<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      parameterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3IntentTrainingPhrasePart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    parameterId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3IntentTrainingPhrasePart",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart>;
+  });
 
 export interface GoogleCloudDialogflowCxV3IntentTrainingPhrase {
   id?: string;
@@ -2042,18 +1768,14 @@ export interface GoogleCloudDialogflowCxV3IntentTrainingPhrase {
   repeatCount?: number;
 }
 
-export const GoogleCloudDialogflowCxV3IntentTrainingPhrase: Schema.Schema<GoogleCloudDialogflowCxV3IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      parts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3IntentTrainingPhrasePart),
-      ),
-      repeatCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3IntentTrainingPhrase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3IntentTrainingPhrase>;
+export const GoogleCloudDialogflowCxV3IntentTrainingPhrase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    parts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3IntentTrainingPhrasePart),
+    ),
+    repeatCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3IntentTrainingPhrase" });
 
 export interface GoogleCloudDialogflowCxV3IntentParameter {
   id?: string;
@@ -2062,17 +1784,13 @@ export interface GoogleCloudDialogflowCxV3IntentParameter {
   redact?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3IntentParameter: Schema.Schema<GoogleCloudDialogflowCxV3IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-      isList: Schema.optional(Schema.Boolean),
-      redact: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3IntentParameter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3IntentParameter>;
+export const GoogleCloudDialogflowCxV3IntentParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    entityType: Schema.optional(Schema.String),
+    isList: Schema.optional(Schema.Boolean),
+    redact: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3IntentParameter" });
 
 export interface GoogleCloudDialogflowCxV3Intent {
   name?: string;
@@ -2083,42 +1801,36 @@ export interface GoogleCloudDialogflowCxV3Intent {
   isFallback?: boolean;
   labels?: Record<string, string>;
   description?: string;
+  dtmfPattern?: string;
 }
 
-export const GoogleCloudDialogflowCxV3Intent: Schema.Schema<GoogleCloudDialogflowCxV3Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      trainingPhrases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3IntentTrainingPhrase),
-      ),
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3IntentParameter),
-      ),
-      priority: Schema.optional(Schema.Number),
-      isFallback: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Intent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Intent>;
+export const GoogleCloudDialogflowCxV3Intent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    trainingPhrases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3IntentTrainingPhrase),
+    ),
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3IntentParameter),
+    ),
+    priority: Schema.optional(Schema.Number),
+    isFallback: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    dtmfPattern: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Intent" });
 
 export interface GoogleCloudDialogflowCxV3ListIntentsResponse {
   intents?: Array<GoogleCloudDialogflowCxV3Intent>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListIntentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intents: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Intent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListIntentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListIntentsResponse>;
+export const GoogleCloudDialogflowCxV3ListIntentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intents: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Intent)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListIntentsResponse" });
 
 export interface GoogleCloudDialogflowCxV3ImportIntentsRequest {
   intentsUri?: string;
@@ -2134,16 +1846,12 @@ export interface GoogleCloudDialogflowCxV3ImportIntentsRequest {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3ImportIntentsRequest: Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentsUri: Schema.optional(Schema.String),
-      intentsContent: Schema.optional(GoogleCloudDialogflowCxV3InlineSource),
-      mergeOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ImportIntentsRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsRequest>;
+export const GoogleCloudDialogflowCxV3ImportIntentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentsUri: Schema.optional(Schema.String),
+    intentsContent: Schema.optional(GoogleCloudDialogflowCxV3InlineSource),
+    mergeOption: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ImportIntentsRequest" });
 
 export interface GoogleCloudDialogflowCxV3ExportIntentsRequest {
   intents?: Array<string>;
@@ -2157,17 +1865,13 @@ export interface GoogleCloudDialogflowCxV3ExportIntentsRequest {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3ExportIntentsRequest: Schema.Schema<GoogleCloudDialogflowCxV3ExportIntentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intents: Schema.optional(Schema.Array(Schema.String)),
-      intentsUri: Schema.optional(Schema.String),
-      intentsContentInline: Schema.optional(Schema.Boolean),
-      dataFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExportIntentsRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportIntentsRequest>;
+export const GoogleCloudDialogflowCxV3ExportIntentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intents: Schema.optional(Schema.Array(Schema.String)),
+    intentsUri: Schema.optional(Schema.String),
+    intentsContentInline: Schema.optional(Schema.Boolean),
+    dataFormat: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportIntentsRequest" });
 
 export interface GoogleCloudDialogflowCxV3SessionEntityType {
   name?: string;
@@ -2179,66 +1883,53 @@ export interface GoogleCloudDialogflowCxV3SessionEntityType {
   entities?: Array<GoogleCloudDialogflowCxV3EntityTypeEntity>;
 }
 
-export const GoogleCloudDialogflowCxV3SessionEntityType: Schema.Schema<GoogleCloudDialogflowCxV3SessionEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      entityOverrideMode: Schema.optional(Schema.String),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EntityTypeEntity),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3SessionEntityType",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SessionEntityType>;
+export const GoogleCloudDialogflowCxV3SessionEntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    entityOverrideMode: Schema.optional(Schema.String),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EntityTypeEntity),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3SessionEntityType" });
 
 export interface GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse {
   sessionEntityTypes?: Array<GoogleCloudDialogflowCxV3SessionEntityType>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionEntityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3SessionEntityType),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionEntityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3SessionEntityType),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse>;
+  });
 
 export interface GoogleTypeLatLng {
   latitude?: number;
   longitude?: number;
 }
 
-export const GoogleTypeLatLng: Schema.Schema<GoogleTypeLatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeLatLng",
-  }) as any as Schema.Schema<GoogleTypeLatLng>;
+export const GoogleTypeLatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeLatLng" });
 
 export interface GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
   attributeValue?: string;
   boostAmount?: number;
 }
 
-export const GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeValue: Schema.optional(Schema.String),
-      boostAmount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributeValue: Schema.optional(Schema.String),
+    boostAmount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  });
 
 export interface GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec {
   fieldName?: string;
@@ -2254,22 +1945,20 @@ export interface GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostContro
   controlPoints?: Array<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 }
 
-export const GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec: Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldName: Schema.optional(Schema.String),
-      attributeType: Schema.optional(Schema.String),
-      interpolationType: Schema.optional(Schema.String),
-      controlPoints: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint,
-        ),
+export const GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldName: Schema.optional(Schema.String),
+    attributeType: Schema.optional(Schema.String),
+    interpolationType: Schema.optional(Schema.String),
+    controlPoints: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec>;
+  });
 
 export interface GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec {
   condition?: string;
@@ -2277,82 +1966,64 @@ export interface GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec {
   boostControlSpec?: GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec;
 }
 
-export const GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec: Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Schema.String),
-      boost: Schema.optional(Schema.Number),
-      boostControlSpec: Schema.optional(
-        GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(Schema.String),
+    boost: Schema.optional(Schema.Number),
+    boostControlSpec: Schema.optional(
+      GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec>;
+  });
 
 export interface GoogleCloudDialogflowCxV3BoostSpec {
   conditionBoostSpecs?: Array<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec>;
 }
 
-export const GoogleCloudDialogflowCxV3BoostSpec: Schema.Schema<GoogleCloudDialogflowCxV3BoostSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditionBoostSpecs: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3BoostSpec",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BoostSpec>;
+export const GoogleCloudDialogflowCxV3BoostSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conditionBoostSpecs: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3BoostSpec" });
 
 export interface GoogleCloudDialogflowCxV3BoostSpecs {
   dataStores?: Array<string>;
   spec?: Array<GoogleCloudDialogflowCxV3BoostSpec>;
 }
 
-export const GoogleCloudDialogflowCxV3BoostSpecs: Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStores: Schema.optional(Schema.Array(Schema.String)),
-      spec: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3BoostSpec)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3BoostSpecs",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BoostSpecs>;
+export const GoogleCloudDialogflowCxV3BoostSpecs =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataStores: Schema.optional(Schema.Array(Schema.String)),
+    spec: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3BoostSpec)),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3BoostSpecs" });
 
 export interface GoogleCloudDialogflowCxV3FilterSpecs {
   dataStores?: Array<string>;
   filter?: string;
 }
 
-export const GoogleCloudDialogflowCxV3FilterSpecs: Schema.Schema<GoogleCloudDialogflowCxV3FilterSpecs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStores: Schema.optional(Schema.Array(Schema.String)),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FilterSpecs",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FilterSpecs>;
+export const GoogleCloudDialogflowCxV3FilterSpecs =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataStores: Schema.optional(Schema.Array(Schema.String)),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FilterSpecs" });
 
 export interface GoogleCloudDialogflowCxV3SearchConfig {
   boostSpecs?: Array<GoogleCloudDialogflowCxV3BoostSpecs>;
   filterSpecs?: Array<GoogleCloudDialogflowCxV3FilterSpecs>;
 }
 
-export const GoogleCloudDialogflowCxV3SearchConfig: Schema.Schema<GoogleCloudDialogflowCxV3SearchConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boostSpecs: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3BoostSpecs),
-      ),
-      filterSpecs: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3FilterSpecs),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3SearchConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SearchConfig>;
+export const GoogleCloudDialogflowCxV3SearchConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boostSpecs: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3BoostSpecs),
+    ),
+    filterSpecs: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3FilterSpecs),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3SearchConfig" });
 
 export interface GoogleCloudDialogflowCxV3QueryParameters {
   timeZone?: string;
@@ -2375,80 +2046,64 @@ export interface GoogleCloudDialogflowCxV3QueryParameters {
   populateDataStoreConnectionSignals?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3QueryParameters: Schema.Schema<GoogleCloudDialogflowCxV3QueryParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(Schema.String),
-      geoLocation: Schema.optional(GoogleTypeLatLng),
-      sessionEntityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3SessionEntityType),
-      ),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      parameterScope: Schema.optional(Schema.String),
-      currentPage: Schema.optional(Schema.String),
-      disableWebhook: Schema.optional(Schema.Boolean),
-      analyzeQueryTextSentiment: Schema.optional(Schema.Boolean),
-      webhookHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      flowVersions: Schema.optional(Schema.Array(Schema.String)),
-      currentPlaybook: Schema.optional(Schema.String),
-      llmModelSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3LlmModelSettings,
-      ),
-      channel: Schema.optional(Schema.String),
-      sessionTtl: Schema.optional(Schema.String),
-      endUserMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      searchConfig: Schema.optional(GoogleCloudDialogflowCxV3SearchConfig),
-      populateDataStoreConnectionSignals: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3QueryParameters",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3QueryParameters>;
+export const GoogleCloudDialogflowCxV3QueryParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeZone: Schema.optional(Schema.String),
+    geoLocation: Schema.optional(GoogleTypeLatLng),
+    sessionEntityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3SessionEntityType),
+    ),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    parameterScope: Schema.optional(Schema.String),
+    currentPage: Schema.optional(Schema.String),
+    disableWebhook: Schema.optional(Schema.Boolean),
+    analyzeQueryTextSentiment: Schema.optional(Schema.Boolean),
+    webhookHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    flowVersions: Schema.optional(Schema.Array(Schema.String)),
+    currentPlaybook: Schema.optional(Schema.String),
+    llmModelSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3LlmModelSettings,
+    ),
+    channel: Schema.optional(Schema.String),
+    sessionTtl: Schema.optional(Schema.String),
+    endUserMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    searchConfig: Schema.optional(GoogleCloudDialogflowCxV3SearchConfig),
+    populateDataStoreConnectionSignals: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3QueryParameters" });
 
 export interface GoogleCloudDialogflowCxV3TextInput {
   text?: string;
 }
 
-export const GoogleCloudDialogflowCxV3TextInput: Schema.Schema<GoogleCloudDialogflowCxV3TextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TextInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TextInput>;
+export const GoogleCloudDialogflowCxV3TextInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TextInput" });
 
 export interface GoogleCloudDialogflowCxV3IntentInput {
   intent?: string;
 }
 
-export const GoogleCloudDialogflowCxV3IntentInput: Schema.Schema<GoogleCloudDialogflowCxV3IntentInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3IntentInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3IntentInput>;
+export const GoogleCloudDialogflowCxV3IntentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3IntentInput" });
 
 export interface GoogleCloudDialogflowCxV3BargeInConfig {
   noBargeInDuration?: string;
   totalDuration?: string;
 }
 
-export const GoogleCloudDialogflowCxV3BargeInConfig: Schema.Schema<GoogleCloudDialogflowCxV3BargeInConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noBargeInDuration: Schema.optional(Schema.String),
-      totalDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3BargeInConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BargeInConfig>;
+export const GoogleCloudDialogflowCxV3BargeInConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    noBargeInDuration: Schema.optional(Schema.String),
+    totalDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3BargeInConfig" });
 
 export interface GoogleCloudDialogflowCxV3InputAudioConfig {
   audioEncoding?:
@@ -2477,78 +2132,58 @@ export interface GoogleCloudDialogflowCxV3InputAudioConfig {
   optOutConformerModelMigration?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3InputAudioConfig: Schema.Schema<GoogleCloudDialogflowCxV3InputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioEncoding: Schema.optional(Schema.String),
-      sampleRateHertz: Schema.optional(Schema.Number),
-      enableWordInfo: Schema.optional(Schema.Boolean),
-      phraseHints: Schema.optional(Schema.Array(Schema.String)),
-      model: Schema.optional(Schema.String),
-      modelVariant: Schema.optional(Schema.String),
-      singleUtterance: Schema.optional(Schema.Boolean),
-      bargeInConfig: Schema.optional(GoogleCloudDialogflowCxV3BargeInConfig),
-      optOutConformerModelMigration: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3InputAudioConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3InputAudioConfig>;
+export const GoogleCloudDialogflowCxV3InputAudioConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioEncoding: Schema.optional(Schema.String),
+    sampleRateHertz: Schema.optional(Schema.Number),
+    enableWordInfo: Schema.optional(Schema.Boolean),
+    phraseHints: Schema.optional(Schema.Array(Schema.String)),
+    model: Schema.optional(Schema.String),
+    modelVariant: Schema.optional(Schema.String),
+    singleUtterance: Schema.optional(Schema.Boolean),
+    bargeInConfig: Schema.optional(GoogleCloudDialogflowCxV3BargeInConfig),
+    optOutConformerModelMigration: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3InputAudioConfig" });
 
 export interface GoogleCloudDialogflowCxV3AudioInput {
   config?: GoogleCloudDialogflowCxV3InputAudioConfig;
   audio?: string;
 }
 
-export const GoogleCloudDialogflowCxV3AudioInput: Schema.Schema<GoogleCloudDialogflowCxV3AudioInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(GoogleCloudDialogflowCxV3InputAudioConfig),
-      audio: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3AudioInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AudioInput>;
+export const GoogleCloudDialogflowCxV3AudioInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(GoogleCloudDialogflowCxV3InputAudioConfig),
+    audio: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3AudioInput" });
 
 export interface GoogleCloudDialogflowCxV3EventInput {
   event?: string;
 }
 
-export const GoogleCloudDialogflowCxV3EventInput: Schema.Schema<GoogleCloudDialogflowCxV3EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      event: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3EventInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EventInput>;
+export const GoogleCloudDialogflowCxV3EventInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    event: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3EventInput" });
 
 export interface GoogleCloudDialogflowCxV3DtmfInput {
   digits?: string;
   finishDigit?: string;
 }
 
-export const GoogleCloudDialogflowCxV3DtmfInput: Schema.Schema<GoogleCloudDialogflowCxV3DtmfInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      digits: Schema.optional(Schema.String),
-      finishDigit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DtmfInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DtmfInput>;
+export const GoogleCloudDialogflowCxV3DtmfInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    digits: Schema.optional(Schema.String),
+    finishDigit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DtmfInput" });
 
 export interface GoogleCloudDialogflowCxV3ToolCallResultError {
   message?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ToolCallResultError: Schema.Schema<GoogleCloudDialogflowCxV3ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolCallResultError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolCallResultError>;
+export const GoogleCloudDialogflowCxV3ToolCallResultError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolCallResultError" });
 
 export interface GoogleCloudDialogflowCxV3ToolCallResult {
   tool?: string;
@@ -2557,19 +2192,15 @@ export interface GoogleCloudDialogflowCxV3ToolCallResult {
   outputParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3ToolCallResult: Schema.Schema<GoogleCloudDialogflowCxV3ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleCloudDialogflowCxV3ToolCallResultError),
-      outputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolCallResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolCallResult>;
+export const GoogleCloudDialogflowCxV3ToolCallResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleCloudDialogflowCxV3ToolCallResultError),
+    outputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolCallResult" });
 
 export interface GoogleCloudDialogflowCxV3QueryInput {
   text?: GoogleCloudDialogflowCxV3TextInput;
@@ -2581,20 +2212,16 @@ export interface GoogleCloudDialogflowCxV3QueryInput {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3QueryInput: Schema.Schema<GoogleCloudDialogflowCxV3QueryInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudDialogflowCxV3TextInput),
-      intent: Schema.optional(GoogleCloudDialogflowCxV3IntentInput),
-      audio: Schema.optional(GoogleCloudDialogflowCxV3AudioInput),
-      event: Schema.optional(GoogleCloudDialogflowCxV3EventInput),
-      dtmf: Schema.optional(GoogleCloudDialogflowCxV3DtmfInput),
-      toolCallResult: Schema.optional(GoogleCloudDialogflowCxV3ToolCallResult),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3QueryInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3QueryInput>;
+export const GoogleCloudDialogflowCxV3QueryInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudDialogflowCxV3TextInput),
+    intent: Schema.optional(GoogleCloudDialogflowCxV3IntentInput),
+    audio: Schema.optional(GoogleCloudDialogflowCxV3AudioInput),
+    event: Schema.optional(GoogleCloudDialogflowCxV3EventInput),
+    dtmf: Schema.optional(GoogleCloudDialogflowCxV3DtmfInput),
+    toolCallResult: Schema.optional(GoogleCloudDialogflowCxV3ToolCallResult),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3QueryInput" });
 
 export interface GoogleCloudDialogflowCxV3OutputAudioConfig {
   audioEncoding?:
@@ -2610,18 +2237,14 @@ export interface GoogleCloudDialogflowCxV3OutputAudioConfig {
   synthesizeSpeechConfig?: GoogleCloudDialogflowCxV3SynthesizeSpeechConfig;
 }
 
-export const GoogleCloudDialogflowCxV3OutputAudioConfig: Schema.Schema<GoogleCloudDialogflowCxV3OutputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioEncoding: Schema.optional(Schema.String),
-      sampleRateHertz: Schema.optional(Schema.Number),
-      synthesizeSpeechConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3SynthesizeSpeechConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3OutputAudioConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3OutputAudioConfig>;
+export const GoogleCloudDialogflowCxV3OutputAudioConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioEncoding: Schema.optional(Schema.String),
+    sampleRateHertz: Schema.optional(Schema.Number),
+    synthesizeSpeechConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3SynthesizeSpeechConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3OutputAudioConfig" });
 
 export interface GoogleCloudDialogflowCxV3DetectIntentRequest {
   queryParams?: GoogleCloudDialogflowCxV3QueryParameters;
@@ -2635,19 +2258,15 @@ export interface GoogleCloudDialogflowCxV3DetectIntentRequest {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3DetectIntentRequest: Schema.Schema<GoogleCloudDialogflowCxV3DetectIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryParams: Schema.optional(GoogleCloudDialogflowCxV3QueryParameters),
-      queryInput: Schema.optional(GoogleCloudDialogflowCxV3QueryInput),
-      outputAudioConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3OutputAudioConfig,
-      ),
-      responseView: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DetectIntentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DetectIntentRequest>;
+export const GoogleCloudDialogflowCxV3DetectIntentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryParams: Schema.optional(GoogleCloudDialogflowCxV3QueryParameters),
+    queryInput: Schema.optional(GoogleCloudDialogflowCxV3QueryInput),
+    outputAudioConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3OutputAudioConfig,
+    ),
+    responseView: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DetectIntentRequest" });
 
 export interface GoogleCloudDialogflowCxV3Match {
   intent?: GoogleCloudDialogflowCxV3Intent;
@@ -2668,34 +2287,28 @@ export interface GoogleCloudDialogflowCxV3Match {
   confidence?: number;
 }
 
-export const GoogleCloudDialogflowCxV3Match: Schema.Schema<GoogleCloudDialogflowCxV3Match> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intent: Schema.optional(GoogleCloudDialogflowCxV3Intent),
-      event: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      resolvedInput: Schema.optional(Schema.String),
-      matchType: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Match",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Match>;
+export const GoogleCloudDialogflowCxV3Match =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intent: Schema.optional(GoogleCloudDialogflowCxV3Intent),
+    event: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    resolvedInput: Schema.optional(Schema.String),
+    matchType: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Match" });
 
 export interface GoogleCloudDialogflowCxV3SentimentAnalysisResult {
   score?: number;
   magnitude?: number;
 }
 
-export const GoogleCloudDialogflowCxV3SentimentAnalysisResult: Schema.Schema<GoogleCloudDialogflowCxV3SentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3SentimentAnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    magnitude: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3SentimentAnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SentimentAnalysisResult>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals {
   renderedPrompt?: string;
@@ -2703,17 +2316,15 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterMode
   model?: string;
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renderedPrompt: Schema.optional(Schema.String),
-      modelOutput: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renderedPrompt: Schema.optional(Schema.String),
+    modelOutput: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet {
   documentTitle?: string;
@@ -2722,18 +2333,16 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippe
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentTitle: Schema.optional(Schema.String),
-      documentUri: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentTitle: Schema.optional(Schema.String),
+    documentUri: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals {
   renderedPrompt?: string;
@@ -2741,50 +2350,44 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenera
   model?: string;
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renderedPrompt: Schema.optional(Schema.String),
-      modelOutput: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renderedPrompt: Schema.optional(Schema.String),
+    modelOutput: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart {
   text?: string;
   supportingIndices?: Array<number>;
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      supportingIndices: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    supportingIndices: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet {
   searchSnippet?: GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet;
   snippetIndex?: number;
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchSnippet: Schema.optional(
-        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet,
-      ),
-      snippetIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchSnippet: Schema.optional(
+      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet,
+    ),
+    snippetIndex: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals {
   decision?:
@@ -2802,16 +2405,14 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSig
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      decision: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    decision: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals {
   decision?:
@@ -2828,17 +2429,15 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignal
   matchedBannedPhrase?: string;
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      decision: Schema.optional(Schema.String),
-      bannedPhraseMatch: Schema.optional(Schema.String),
-      matchedBannedPhrase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    decision: Schema.optional(Schema.String),
+    bannedPhraseMatch: Schema.optional(Schema.String),
+    matchedBannedPhrase: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignals {
   rewriterModelCallSignals?: GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals;
@@ -2852,42 +2451,263 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnectionSignals {
   safetySignals?: GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals;
 }
 
-export const GoogleCloudDialogflowCxV3DataStoreConnectionSignals: Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rewriterModelCallSignals: Schema.optional(
-        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals,
+export const GoogleCloudDialogflowCxV3DataStoreConnectionSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rewriterModelCallSignals: Schema.optional(
+      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals,
+    ),
+    rewrittenQuery: Schema.optional(Schema.String),
+    searchSnippets: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet,
       ),
-      rewrittenQuery: Schema.optional(Schema.String),
-      searchSnippets: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet,
-        ),
+    ),
+    answerGenerationModelCallSignals: Schema.optional(
+      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals,
+    ),
+    answer: Schema.optional(Schema.String),
+    answerParts: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart,
       ),
-      answerGenerationModelCallSignals: Schema.optional(
-        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals,
+    ),
+    citedSnippets: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet,
       ),
-      answer: Schema.optional(Schema.String),
-      answerParts: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart,
-        ),
-      ),
-      citedSnippets: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet,
-        ),
-      ),
-      groundingSignals: Schema.optional(
-        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals,
-      ),
-      safetySignals: Schema.optional(
-        GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals,
-      ),
-    }),
-  ).annotate({
+    ),
+    groundingSignals: Schema.optional(
+      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals,
+    ),
+    safetySignals: Schema.optional(
+      GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3DataStoreConnectionSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DataStoreConnectionSignals>;
+  });
+
+export interface GoogleCloudDialogflowCxV3PlaybookTraceMetadata {
+  playbook?: string;
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3PlaybookTraceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbook: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PlaybookTraceMetadata" });
+
+export interface GoogleCloudDialogflowCxV3FlowTraceMetadata {
+  flow?: string;
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3FlowTraceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flow: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FlowTraceMetadata" });
+
+export interface GoogleCloudDialogflowCxV3SpeechProcessingMetadata {
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3SpeechProcessingMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudDialogflowCxV3SpeechProcessingMetadata",
+  });
+
+export interface GoogleCloudDialogflowCxV3UserUtterance {
+  text?: string;
+}
+
+export const GoogleCloudDialogflowCxV3UserUtterance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3UserUtterance" });
+
+export interface GoogleCloudDialogflowCxV3AgentUtterance {
+  text?: string;
+}
+
+export const GoogleCloudDialogflowCxV3AgentUtterance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3AgentUtterance" });
+
+export interface GoogleCloudDialogflowCxV3ToolUse {
+  tool?: string;
+  displayName?: string;
+  action?: string;
+  inputActionParameters?: Record<string, unknown>;
+  outputActionParameters?: Record<string, unknown>;
+}
+
+export const GoogleCloudDialogflowCxV3ToolUse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    inputActionParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    outputActionParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolUse" });
+
+export interface GoogleCloudDialogflowCxV3PlaybookInput {
+  precedingConversationSummary?: string;
+}
+
+export const GoogleCloudDialogflowCxV3PlaybookInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    precedingConversationSummary: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PlaybookInput" });
+
+export interface GoogleCloudDialogflowCxV3PlaybookOutput {
+  executionSummary?: string;
+}
+
+export const GoogleCloudDialogflowCxV3PlaybookOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionSummary: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PlaybookOutput" });
+
+export interface GoogleCloudDialogflowCxV3PlaybookInvocation {
+  playbook?: string;
+  displayName?: string;
+  playbookInput?: GoogleCloudDialogflowCxV3PlaybookInput;
+  playbookOutput?: GoogleCloudDialogflowCxV3PlaybookOutput;
+  playbookState?:
+    | "OUTPUT_STATE_UNSPECIFIED"
+    | "OUTPUT_STATE_OK"
+    | "OUTPUT_STATE_CANCELLED"
+    | "OUTPUT_STATE_FAILED"
+    | "OUTPUT_STATE_ESCALATED"
+    | "OUTPUT_STATE_PENDING"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowCxV3PlaybookInvocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbook: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    playbookInput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookInput),
+    playbookOutput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookOutput),
+    playbookState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PlaybookInvocation" });
+
+export interface GoogleCloudDialogflowCxV3FlowInvocation {
+  flow?: string;
+  displayName?: string;
+  flowState?:
+    | "OUTPUT_STATE_UNSPECIFIED"
+    | "OUTPUT_STATE_OK"
+    | "OUTPUT_STATE_CANCELLED"
+    | "OUTPUT_STATE_FAILED"
+    | "OUTPUT_STATE_ESCALATED"
+    | "OUTPUT_STATE_PENDING"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowCxV3FlowInvocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flow: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    flowState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FlowInvocation" });
+
+export interface GoogleCloudDialogflowCxV3PlaybookTransition {
+  playbook?: string;
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3PlaybookTransition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbook: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PlaybookTransition" });
+
+export interface GoogleCloudDialogflowCxV3FlowTransition {
+  flow?: string;
+  displayName?: string;
+}
+
+export const GoogleCloudDialogflowCxV3FlowTransition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flow: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FlowTransition" });
+
+export interface GoogleCloudDialogflowCxV3Action {
+  userUtterance?: GoogleCloudDialogflowCxV3UserUtterance;
+  agentUtterance?: GoogleCloudDialogflowCxV3AgentUtterance;
+  toolUse?: GoogleCloudDialogflowCxV3ToolUse;
+  playbookInvocation?: GoogleCloudDialogflowCxV3PlaybookInvocation;
+  flowInvocation?: GoogleCloudDialogflowCxV3FlowInvocation;
+  playbookTransition?: GoogleCloudDialogflowCxV3PlaybookTransition;
+  flowTransition?: GoogleCloudDialogflowCxV3FlowTransition;
+}
+
+export const GoogleCloudDialogflowCxV3Action =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userUtterance: Schema.optional(GoogleCloudDialogflowCxV3UserUtterance),
+    agentUtterance: Schema.optional(GoogleCloudDialogflowCxV3AgentUtterance),
+    toolUse: Schema.optional(GoogleCloudDialogflowCxV3ToolUse),
+    playbookInvocation: Schema.optional(
+      GoogleCloudDialogflowCxV3PlaybookInvocation,
+    ),
+    flowInvocation: Schema.optional(GoogleCloudDialogflowCxV3FlowInvocation),
+    playbookTransition: Schema.optional(
+      GoogleCloudDialogflowCxV3PlaybookTransition,
+    ),
+    flowTransition: Schema.optional(GoogleCloudDialogflowCxV3FlowTransition),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Action" });
+
+export interface GoogleCloudDialogflowCxV3TraceBlock {
+  playbookTraceMetadata?: GoogleCloudDialogflowCxV3PlaybookTraceMetadata;
+  flowTraceMetadata?: GoogleCloudDialogflowCxV3FlowTraceMetadata;
+  speechProcessingMetadata?: GoogleCloudDialogflowCxV3SpeechProcessingMetadata;
+  actions?: Array<GoogleCloudDialogflowCxV3Action>;
+  startTime?: string;
+  completeTime?: string;
+  inputParameters?: Record<string, unknown>;
+  outputParameters?: Record<string, unknown>;
+  endState?:
+    | "OUTPUT_STATE_UNSPECIFIED"
+    | "OUTPUT_STATE_OK"
+    | "OUTPUT_STATE_CANCELLED"
+    | "OUTPUT_STATE_FAILED"
+    | "OUTPUT_STATE_ESCALATED"
+    | "OUTPUT_STATE_PENDING"
+    | (string & {});
+}
+
+export const GoogleCloudDialogflowCxV3TraceBlock =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbookTraceMetadata: Schema.optional(
+      GoogleCloudDialogflowCxV3PlaybookTraceMetadata,
+    ),
+    flowTraceMetadata: Schema.optional(
+      GoogleCloudDialogflowCxV3FlowTraceMetadata,
+    ),
+    speechProcessingMetadata: Schema.optional(
+      GoogleCloudDialogflowCxV3SpeechProcessingMetadata,
+    ),
+    actions: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Action)),
+    startTime: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    outputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    endState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TraceBlock" });
 
 export interface GoogleCloudDialogflowCxV3QueryResult {
   text?: string;
@@ -2910,47 +2730,47 @@ export interface GoogleCloudDialogflowCxV3QueryResult {
   advancedSettings?: GoogleCloudDialogflowCxV3AdvancedSettings;
   allowAnswerFeedback?: boolean;
   dataStoreConnectionSignals?: GoogleCloudDialogflowCxV3DataStoreConnectionSignals;
+  traceBlocks?: Array<GoogleCloudDialogflowCxV3TraceBlock>;
 }
 
-export const GoogleCloudDialogflowCxV3QueryResult: Schema.Schema<GoogleCloudDialogflowCxV3QueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      triggerIntent: Schema.optional(Schema.String),
-      transcript: Schema.optional(Schema.String),
-      triggerEvent: Schema.optional(Schema.String),
-      dtmf: Schema.optional(GoogleCloudDialogflowCxV3DtmfInput),
-      languageCode: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      responseMessages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
-      ),
-      webhookStatuses: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      webhookPayloads: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      currentPage: Schema.optional(GoogleCloudDialogflowCxV3Page),
-      currentFlow: Schema.optional(GoogleCloudDialogflowCxV3Flow),
-      intent: Schema.optional(GoogleCloudDialogflowCxV3Intent),
-      intentDetectionConfidence: Schema.optional(Schema.Number),
-      match: Schema.optional(GoogleCloudDialogflowCxV3Match),
-      diagnosticInfo: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      sentimentAnalysisResult: Schema.optional(
-        GoogleCloudDialogflowCxV3SentimentAnalysisResult,
-      ),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3AdvancedSettings,
-      ),
-      allowAnswerFeedback: Schema.optional(Schema.Boolean),
-      dataStoreConnectionSignals: Schema.optional(
-        GoogleCloudDialogflowCxV3DataStoreConnectionSignals,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3QueryResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3QueryResult>;
+export const GoogleCloudDialogflowCxV3QueryResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    triggerIntent: Schema.optional(Schema.String),
+    transcript: Schema.optional(Schema.String),
+    triggerEvent: Schema.optional(Schema.String),
+    dtmf: Schema.optional(GoogleCloudDialogflowCxV3DtmfInput),
+    languageCode: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    responseMessages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
+    ),
+    webhookStatuses: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    webhookPayloads: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    currentPage: Schema.optional(GoogleCloudDialogflowCxV3Page),
+    currentFlow: Schema.optional(GoogleCloudDialogflowCxV3Flow),
+    intent: Schema.optional(GoogleCloudDialogflowCxV3Intent),
+    intentDetectionConfidence: Schema.optional(Schema.Number),
+    match: Schema.optional(GoogleCloudDialogflowCxV3Match),
+    diagnosticInfo: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    sentimentAnalysisResult: Schema.optional(
+      GoogleCloudDialogflowCxV3SentimentAnalysisResult,
+    ),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3AdvancedSettings,
+    ),
+    allowAnswerFeedback: Schema.optional(Schema.Boolean),
+    dataStoreConnectionSignals: Schema.optional(
+      GoogleCloudDialogflowCxV3DataStoreConnectionSignals,
+    ),
+    traceBlocks: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TraceBlock),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3QueryResult" });
 
 export interface GoogleCloudDialogflowCxV3DetectIntentResponse {
   responseId?: string;
@@ -2965,21 +2785,17 @@ export interface GoogleCloudDialogflowCxV3DetectIntentResponse {
   allowCancellation?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3DetectIntentResponse: Schema.Schema<GoogleCloudDialogflowCxV3DetectIntentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseId: Schema.optional(Schema.String),
-      queryResult: Schema.optional(GoogleCloudDialogflowCxV3QueryResult),
-      outputAudio: Schema.optional(Schema.String),
-      outputAudioConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3OutputAudioConfig,
-      ),
-      responseType: Schema.optional(Schema.String),
-      allowCancellation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DetectIntentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DetectIntentResponse>;
+export const GoogleCloudDialogflowCxV3DetectIntentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseId: Schema.optional(Schema.String),
+    queryResult: Schema.optional(GoogleCloudDialogflowCxV3QueryResult),
+    outputAudio: Schema.optional(Schema.String),
+    outputAudioConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3OutputAudioConfig,
+    ),
+    responseType: Schema.optional(Schema.String),
+    allowCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DetectIntentResponse" });
 
 export interface GoogleCloudDialogflowCxV3MatchIntentRequest {
   queryParams?: GoogleCloudDialogflowCxV3QueryParameters;
@@ -2987,16 +2803,12 @@ export interface GoogleCloudDialogflowCxV3MatchIntentRequest {
   persistParameterChanges?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3MatchIntentRequest: Schema.Schema<GoogleCloudDialogflowCxV3MatchIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryParams: Schema.optional(GoogleCloudDialogflowCxV3QueryParameters),
-      queryInput: Schema.optional(GoogleCloudDialogflowCxV3QueryInput),
-      persistParameterChanges: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3MatchIntentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3MatchIntentRequest>;
+export const GoogleCloudDialogflowCxV3MatchIntentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryParams: Schema.optional(GoogleCloudDialogflowCxV3QueryParameters),
+    queryInput: Schema.optional(GoogleCloudDialogflowCxV3QueryInput),
+    persistParameterChanges: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3MatchIntentRequest" });
 
 export interface GoogleCloudDialogflowCxV3MatchIntentResponse {
   text?: string;
@@ -3007,19 +2819,15 @@ export interface GoogleCloudDialogflowCxV3MatchIntentResponse {
   currentPage?: GoogleCloudDialogflowCxV3Page;
 }
 
-export const GoogleCloudDialogflowCxV3MatchIntentResponse: Schema.Schema<GoogleCloudDialogflowCxV3MatchIntentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      triggerIntent: Schema.optional(Schema.String),
-      transcript: Schema.optional(Schema.String),
-      triggerEvent: Schema.optional(Schema.String),
-      matches: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Match)),
-      currentPage: Schema.optional(GoogleCloudDialogflowCxV3Page),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3MatchIntentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3MatchIntentResponse>;
+export const GoogleCloudDialogflowCxV3MatchIntentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    triggerIntent: Schema.optional(Schema.String),
+    transcript: Schema.optional(Schema.String),
+    triggerEvent: Schema.optional(Schema.String),
+    matches: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Match)),
+    currentPage: Schema.optional(GoogleCloudDialogflowCxV3Page),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3MatchIntentResponse" });
 
 export interface GoogleCloudDialogflowCxV3FulfillIntentRequest {
   matchIntentRequest?: GoogleCloudDialogflowCxV3MatchIntentRequest;
@@ -3027,20 +2835,16 @@ export interface GoogleCloudDialogflowCxV3FulfillIntentRequest {
   outputAudioConfig?: GoogleCloudDialogflowCxV3OutputAudioConfig;
 }
 
-export const GoogleCloudDialogflowCxV3FulfillIntentRequest: Schema.Schema<GoogleCloudDialogflowCxV3FulfillIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchIntentRequest: Schema.optional(
-        GoogleCloudDialogflowCxV3MatchIntentRequest,
-      ),
-      match: Schema.optional(GoogleCloudDialogflowCxV3Match),
-      outputAudioConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3OutputAudioConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FulfillIntentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FulfillIntentRequest>;
+export const GoogleCloudDialogflowCxV3FulfillIntentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchIntentRequest: Schema.optional(
+      GoogleCloudDialogflowCxV3MatchIntentRequest,
+    ),
+    match: Schema.optional(GoogleCloudDialogflowCxV3Match),
+    outputAudioConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3OutputAudioConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FulfillIntentRequest" });
 
 export interface GoogleCloudDialogflowCxV3FulfillIntentResponse {
   responseId?: string;
@@ -3049,34 +2853,28 @@ export interface GoogleCloudDialogflowCxV3FulfillIntentResponse {
   outputAudioConfig?: GoogleCloudDialogflowCxV3OutputAudioConfig;
 }
 
-export const GoogleCloudDialogflowCxV3FulfillIntentResponse: Schema.Schema<GoogleCloudDialogflowCxV3FulfillIntentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseId: Schema.optional(Schema.String),
-      queryResult: Schema.optional(GoogleCloudDialogflowCxV3QueryResult),
-      outputAudio: Schema.optional(Schema.String),
-      outputAudioConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3OutputAudioConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FulfillIntentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FulfillIntentResponse>;
+export const GoogleCloudDialogflowCxV3FulfillIntentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseId: Schema.optional(Schema.String),
+    queryResult: Schema.optional(GoogleCloudDialogflowCxV3QueryResult),
+    outputAudio: Schema.optional(Schema.String),
+    outputAudioConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3OutputAudioConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3FulfillIntentResponse" });
 
 export interface GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason {
   reasonLabels?: Array<string>;
   feedback?: string;
 }
 
-export const GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason: Schema.Schema<GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reasonLabels: Schema.optional(Schema.Array(Schema.String)),
-      feedback: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reasonLabels: Schema.optional(Schema.Array(Schema.String)),
+    feedback: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason>;
+  });
 
 export interface GoogleCloudDialogflowCxV3AnswerFeedback {
   rating?: "RATING_UNSPECIFIED" | "THUMBS_UP" | "THUMBS_DOWN" | (string & {});
@@ -3084,18 +2882,14 @@ export interface GoogleCloudDialogflowCxV3AnswerFeedback {
   customRating?: string;
 }
 
-export const GoogleCloudDialogflowCxV3AnswerFeedback: Schema.Schema<GoogleCloudDialogflowCxV3AnswerFeedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rating: Schema.optional(Schema.String),
-      ratingReason: Schema.optional(
-        GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason,
-      ),
-      customRating: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3AnswerFeedback",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AnswerFeedback>;
+export const GoogleCloudDialogflowCxV3AnswerFeedback =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rating: Schema.optional(Schema.String),
+    ratingReason: Schema.optional(
+      GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason,
+    ),
+    customRating: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3AnswerFeedback" });
 
 export interface GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest {
   responseId?: string;
@@ -3103,16 +2897,14 @@ export interface GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest: Schema.Schema<GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseId: Schema.optional(Schema.String),
-      answerFeedback: Schema.optional(GoogleCloudDialogflowCxV3AnswerFeedback),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseId: Schema.optional(Schema.String),
+    answerFeedback: Schema.optional(GoogleCloudDialogflowCxV3AnswerFeedback),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TransitionRouteGroup {
   name?: string;
@@ -3120,35 +2912,29 @@ export interface GoogleCloudDialogflowCxV3TransitionRouteGroup {
   transitionRoutes?: Array<GoogleCloudDialogflowCxV3TransitionRoute>;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionRouteGroup: Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      transitionRoutes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TransitionRoute),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TransitionRouteGroup",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroup>;
+export const GoogleCloudDialogflowCxV3TransitionRouteGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    transitionRoutes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TransitionRoute),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TransitionRouteGroup" });
 
 export interface GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse {
   transitionRouteGroups?: Array<GoogleCloudDialogflowCxV3TransitionRouteGroup>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transitionRouteGroups: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TransitionRouteGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transitionRouteGroups: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TransitionRouteGroup),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TestConfig {
   trackingParameters?: Array<string>;
@@ -3156,16 +2942,12 @@ export interface GoogleCloudDialogflowCxV3TestConfig {
   page?: string;
 }
 
-export const GoogleCloudDialogflowCxV3TestConfig: Schema.Schema<GoogleCloudDialogflowCxV3TestConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingParameters: Schema.optional(Schema.Array(Schema.String)),
-      flow: Schema.optional(Schema.String),
-      page: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TestConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TestConfig>;
+export const GoogleCloudDialogflowCxV3TestConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trackingParameters: Schema.optional(Schema.Array(Schema.String)),
+    flow: Schema.optional(Schema.String),
+    page: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestConfig" });
 
 export interface GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   input?: GoogleCloudDialogflowCxV3QueryInput;
@@ -3174,19 +2956,17 @@ export interface GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   enableSentimentAnalysis?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3ConversationTurnUserInput: Schema.Schema<GoogleCloudDialogflowCxV3ConversationTurnUserInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      input: Schema.optional(GoogleCloudDialogflowCxV3QueryInput),
-      injectedParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      isWebhookEnabled: Schema.optional(Schema.Boolean),
-      enableSentimentAnalysis: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ConversationTurnUserInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    input: Schema.optional(GoogleCloudDialogflowCxV3QueryInput),
+    injectedParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    isWebhookEnabled: Schema.optional(Schema.Boolean),
+    enableSentimentAnalysis: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ConversationTurnUserInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ConversationTurnUserInput>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TestRunDifference {
   type?:
@@ -3200,15 +2980,11 @@ export interface GoogleCloudDialogflowCxV3TestRunDifference {
   description?: string;
 }
 
-export const GoogleCloudDialogflowCxV3TestRunDifference: Schema.Schema<GoogleCloudDialogflowCxV3TestRunDifference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TestRunDifference",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TestRunDifference>;
+export const GoogleCloudDialogflowCxV3TestRunDifference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestRunDifference" });
 
 export interface GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   sessionParameters?: Record<string, unknown>;
@@ -3220,47 +2996,41 @@ export interface GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput: Schema.Schema<GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      differences: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TestRunDifference),
-      ),
-      diagnosticInfo: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      triggeredIntent: Schema.optional(GoogleCloudDialogflowCxV3Intent),
-      currentPage: Schema.optional(GoogleCloudDialogflowCxV3Page),
-      textResponses: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ResponseMessageText),
-      ),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    differences: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TestRunDifference),
+    ),
+    diagnosticInfo: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    triggeredIntent: Schema.optional(GoogleCloudDialogflowCxV3Intent),
+    currentPage: Schema.optional(GoogleCloudDialogflowCxV3Page),
+    textResponses: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ResponseMessageText),
+    ),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ConversationTurn {
   userInput?: GoogleCloudDialogflowCxV3ConversationTurnUserInput;
   virtualAgentOutput?: GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput;
 }
 
-export const GoogleCloudDialogflowCxV3ConversationTurn: Schema.Schema<GoogleCloudDialogflowCxV3ConversationTurn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userInput: Schema.optional(
-        GoogleCloudDialogflowCxV3ConversationTurnUserInput,
-      ),
-      virtualAgentOutput: Schema.optional(
-        GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ConversationTurn",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ConversationTurn>;
+export const GoogleCloudDialogflowCxV3ConversationTurn =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userInput: Schema.optional(
+      GoogleCloudDialogflowCxV3ConversationTurnUserInput,
+    ),
+    virtualAgentOutput: Schema.optional(
+      GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ConversationTurn" });
 
 export interface GoogleCloudDialogflowCxV3TestCaseResult {
   name?: string;
@@ -3270,20 +3040,16 @@ export interface GoogleCloudDialogflowCxV3TestCaseResult {
   testTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3TestCaseResult: Schema.Schema<GoogleCloudDialogflowCxV3TestCaseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-      conversationTurns: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ConversationTurn),
-      ),
-      testResult: Schema.optional(Schema.String),
-      testTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TestCaseResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TestCaseResult>;
+export const GoogleCloudDialogflowCxV3TestCaseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    conversationTurns: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ConversationTurn),
+    ),
+    testResult: Schema.optional(Schema.String),
+    testTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestCaseResult" });
 
 export interface GoogleCloudDialogflowCxV3TestCase {
   name?: string;
@@ -3296,128 +3062,100 @@ export interface GoogleCloudDialogflowCxV3TestCase {
   lastTestResult?: GoogleCloudDialogflowCxV3TestCaseResult;
 }
 
-export const GoogleCloudDialogflowCxV3TestCase: Schema.Schema<GoogleCloudDialogflowCxV3TestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      testConfig: Schema.optional(GoogleCloudDialogflowCxV3TestConfig),
-      testCaseConversationTurns: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ConversationTurn),
-      ),
-      creationTime: Schema.optional(Schema.String),
-      lastTestResult: Schema.optional(GoogleCloudDialogflowCxV3TestCaseResult),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TestCase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TestCase>;
+export const GoogleCloudDialogflowCxV3TestCase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.String),
+    testConfig: Schema.optional(GoogleCloudDialogflowCxV3TestConfig),
+    testCaseConversationTurns: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ConversationTurn),
+    ),
+    creationTime: Schema.optional(Schema.String),
+    lastTestResult: Schema.optional(GoogleCloudDialogflowCxV3TestCaseResult),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestCase" });
 
 export interface GoogleCloudDialogflowCxV3ListTestCasesResponse {
   testCases?: Array<GoogleCloudDialogflowCxV3TestCase>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListTestCasesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TestCase),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListTestCasesResponse>;
+export const GoogleCloudDialogflowCxV3ListTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCases: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3TestCase)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListTestCasesResponse" });
 
 export interface GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest {
   names?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest: Schema.Schema<GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RunTestCaseRequest {
   environment?: string;
 }
 
-export const GoogleCloudDialogflowCxV3RunTestCaseRequest: Schema.Schema<GoogleCloudDialogflowCxV3RunTestCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3RunTestCaseRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RunTestCaseRequest>;
+export const GoogleCloudDialogflowCxV3RunTestCaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3RunTestCaseRequest" });
 
 export interface GoogleCloudDialogflowCxV3BatchRunTestCasesRequest {
   environment?: string;
   testCases?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3BatchRunTestCasesRequest: Schema.Schema<GoogleCloudDialogflowCxV3BatchRunTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(Schema.String),
-      testCases: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3BatchRunTestCasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+    testCases: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3BatchRunTestCasesRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BatchRunTestCasesRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3IntentCoverageIntent {
   intent?: string;
   covered?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3IntentCoverageIntent: Schema.Schema<GoogleCloudDialogflowCxV3IntentCoverageIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intent: Schema.optional(Schema.String),
-      covered: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3IntentCoverageIntent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3IntentCoverageIntent>;
+export const GoogleCloudDialogflowCxV3IntentCoverageIntent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intent: Schema.optional(Schema.String),
+    covered: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3IntentCoverageIntent" });
 
 export interface GoogleCloudDialogflowCxV3IntentCoverage {
   intents?: Array<GoogleCloudDialogflowCxV3IntentCoverageIntent>;
   coverageScore?: number;
 }
 
-export const GoogleCloudDialogflowCxV3IntentCoverage: Schema.Schema<GoogleCloudDialogflowCxV3IntentCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intents: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3IntentCoverageIntent),
-      ),
-      coverageScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3IntentCoverage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3IntentCoverage>;
+export const GoogleCloudDialogflowCxV3IntentCoverage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intents: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3IntentCoverageIntent),
+    ),
+    coverageScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3IntentCoverage" });
 
 export interface GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode {
   page?: GoogleCloudDialogflowCxV3Page;
   flow?: GoogleCloudDialogflowCxV3Flow;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode: Schema.Schema<GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      page: Schema.optional(GoogleCloudDialogflowCxV3Page),
-      flow: Schema.optional(GoogleCloudDialogflowCxV3Flow),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    page: Schema.optional(GoogleCloudDialogflowCxV3Page),
+    flow: Schema.optional(GoogleCloudDialogflowCxV3Flow),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TransitionCoverageTransition {
   source?: GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode;
@@ -3428,60 +3166,48 @@ export interface GoogleCloudDialogflowCxV3TransitionCoverageTransition {
   eventHandler?: GoogleCloudDialogflowCxV3EventHandler;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionCoverageTransition: Schema.Schema<GoogleCloudDialogflowCxV3TransitionCoverageTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(
-        GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode,
-      ),
-      index: Schema.optional(Schema.Number),
-      target: Schema.optional(
-        GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode,
-      ),
-      covered: Schema.optional(Schema.Boolean),
-      transitionRoute: Schema.optional(
-        GoogleCloudDialogflowCxV3TransitionRoute,
-      ),
-      eventHandler: Schema.optional(GoogleCloudDialogflowCxV3EventHandler),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3TransitionCoverageTransition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(
+      GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode,
+    ),
+    index: Schema.optional(Schema.Number),
+    target: Schema.optional(
+      GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode,
+    ),
+    covered: Schema.optional(Schema.Boolean),
+    transitionRoute: Schema.optional(GoogleCloudDialogflowCxV3TransitionRoute),
+    eventHandler: Schema.optional(GoogleCloudDialogflowCxV3EventHandler),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3TransitionCoverageTransition",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionCoverageTransition>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TransitionCoverage {
   transitions?: Array<GoogleCloudDialogflowCxV3TransitionCoverageTransition>;
   coverageScore?: number;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionCoverage: Schema.Schema<GoogleCloudDialogflowCxV3TransitionCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transitions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TransitionCoverageTransition),
-      ),
-      coverageScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TransitionCoverage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionCoverage>;
+export const GoogleCloudDialogflowCxV3TransitionCoverage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transitions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TransitionCoverageTransition),
+    ),
+    coverageScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TransitionCoverage" });
 
 export interface GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
   transitionRoute?: GoogleCloudDialogflowCxV3TransitionRoute;
   covered?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition: Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transitionRoute: Schema.optional(
-        GoogleCloudDialogflowCxV3TransitionRoute,
-      ),
-      covered: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transitionRoute: Schema.optional(GoogleCloudDialogflowCxV3TransitionRoute),
+    covered: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
   routeGroup?: GoogleCloudDialogflowCxV3TransitionRouteGroup;
@@ -3489,41 +3215,35 @@ export interface GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
   coverageScore?: number;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage: Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routeGroup: Schema.optional(
-        GoogleCloudDialogflowCxV3TransitionRouteGroup,
+export const GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routeGroup: Schema.optional(GoogleCloudDialogflowCxV3TransitionRouteGroup),
+    transitions: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition,
       ),
-      transitions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition,
-        ),
-      ),
-      coverageScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    coverageScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage {
   coverages?: Array<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage>;
   coverageScore?: number;
 }
 
-export const GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage: Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      coverages: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage,
-        ),
+export const GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    coverages: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage,
       ),
-      coverageScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    coverageScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage>;
+  });
 
 export interface GoogleCloudDialogflowCxV3CalculateCoverageResponse {
   agent?: string;
@@ -3532,36 +3252,32 @@ export interface GoogleCloudDialogflowCxV3CalculateCoverageResponse {
   routeGroupCoverage?: GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage;
 }
 
-export const GoogleCloudDialogflowCxV3CalculateCoverageResponse: Schema.Schema<GoogleCloudDialogflowCxV3CalculateCoverageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agent: Schema.optional(Schema.String),
-      intentCoverage: Schema.optional(GoogleCloudDialogflowCxV3IntentCoverage),
-      transitionCoverage: Schema.optional(
-        GoogleCloudDialogflowCxV3TransitionCoverage,
-      ),
-      routeGroupCoverage: Schema.optional(
-        GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3CalculateCoverageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agent: Schema.optional(Schema.String),
+    intentCoverage: Schema.optional(GoogleCloudDialogflowCxV3IntentCoverage),
+    transitionCoverage: Schema.optional(
+      GoogleCloudDialogflowCxV3TransitionCoverage,
+    ),
+    routeGroupCoverage: Schema.optional(
+      GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3CalculateCoverageResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3CalculateCoverageResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportTestCasesRequest {
   gcsUri?: string;
   content?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ImportTestCasesRequest: Schema.Schema<GoogleCloudDialogflowCxV3ImportTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ImportTestCasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportTestCasesRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportTestCasesRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExportTestCasesRequest {
   gcsUri?: string;
@@ -3569,47 +3285,41 @@ export interface GoogleCloudDialogflowCxV3ExportTestCasesRequest {
   filter?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ExportTestCasesRequest: Schema.Schema<GoogleCloudDialogflowCxV3ExportTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      dataFormat: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExportTestCasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    dataFormat: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportTestCasesRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportTestCasesRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ListTestCaseResultsResponse {
   testCaseResults?: Array<GoogleCloudDialogflowCxV3TestCaseResult>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListTestCaseResultsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListTestCaseResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCaseResults: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TestCaseResult),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListTestCaseResultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCaseResults: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TestCaseResult),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListTestCaseResultsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListTestCaseResultsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue {
   secretVersion?: string;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue: Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
   clientId?: string;
@@ -3619,32 +3329,28 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
   scopes?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig: Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      secretVersionForClientSecret: Schema.optional(Schema.String),
-      tokenEndpoint: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    secretVersionForClientSecret: Schema.optional(Schema.String),
+    tokenEndpoint: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig {
   serviceAccount?: string;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig: Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookGenericWebService {
   uri?: string;
@@ -3684,57 +3390,53 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebService {
   parameterMapping?: Record<string, string>;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookGenericWebService: Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      secretVersionForUsernamePassword: Schema.optional(Schema.String),
-      requestHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+export const GoogleCloudDialogflowCxV3WebhookGenericWebService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    secretVersionForUsernamePassword: Schema.optional(Schema.String),
+    requestHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    secretVersionsForRequestHeaders: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue,
       ),
-      secretVersionsForRequestHeaders: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue,
-        ),
-      ),
-      allowedCaCerts: Schema.optional(Schema.Array(Schema.String)),
-      oauthConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig,
-      ),
-      serviceAgentAuth: Schema.optional(Schema.String),
-      serviceAccountAuthConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig,
-      ),
-      webhookType: Schema.optional(Schema.String),
-      httpMethod: Schema.optional(Schema.String),
-      requestBody: Schema.optional(Schema.String),
-      parameterMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
+    ),
+    allowedCaCerts: Schema.optional(Schema.Array(Schema.String)),
+    oauthConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig,
+    ),
+    serviceAgentAuth: Schema.optional(Schema.String),
+    serviceAccountAuthConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig,
+    ),
+    webhookType: Schema.optional(Schema.String),
+    httpMethod: Schema.optional(Schema.String),
+    requestBody: Schema.optional(Schema.String),
+    parameterMapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3WebhookGenericWebService",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookGenericWebService>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
   service?: string;
   genericWebService?: GoogleCloudDialogflowCxV3WebhookGenericWebService;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig: Schema.Schema<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      genericWebService: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookGenericWebService,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    genericWebService: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookGenericWebService,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Webhook {
   name?: string;
@@ -3745,51 +3447,41 @@ export interface GoogleCloudDialogflowCxV3Webhook {
   disabled?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3Webhook: Schema.Schema<GoogleCloudDialogflowCxV3Webhook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      genericWebService: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookGenericWebService,
-      ),
-      serviceDirectory: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig,
-      ),
-      timeout: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Webhook",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Webhook>;
+export const GoogleCloudDialogflowCxV3Webhook =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    genericWebService: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookGenericWebService,
+    ),
+    serviceDirectory: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig,
+    ),
+    timeout: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Webhook" });
 
 export interface GoogleCloudDialogflowCxV3ListWebhooksResponse {
   webhooks?: Array<GoogleCloudDialogflowCxV3Webhook>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListWebhooksResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListWebhooksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhooks: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Webhook)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListWebhooksResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListWebhooksResponse>;
+export const GoogleCloudDialogflowCxV3ListWebhooksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhooks: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Webhook)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListWebhooksResponse" });
 
 export interface GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
   version?: string;
 }
 
-export const GoogleCloudDialogflowCxV3EnvironmentVersionConfig: Schema.Schema<GoogleCloudDialogflowCxV3EnvironmentVersionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3EnvironmentVersionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3EnvironmentVersionConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EnvironmentVersionConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
   testCases?: Array<string>;
@@ -3797,31 +3489,27 @@ export interface GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
   enablePredeploymentRun?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig: Schema.Schema<GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(Schema.Array(Schema.String)),
-      enableContinuousRun: Schema.optional(Schema.Boolean),
-      enablePredeploymentRun: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCases: Schema.optional(Schema.Array(Schema.String)),
+    enableContinuousRun: Schema.optional(Schema.Boolean),
+    enablePredeploymentRun: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
   webhookOverrides?: Array<GoogleCloudDialogflowCxV3Webhook>;
 }
 
-export const GoogleCloudDialogflowCxV3EnvironmentWebhookConfig: Schema.Schema<GoogleCloudDialogflowCxV3EnvironmentWebhookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookOverrides: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Webhook),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3EnvironmentWebhookConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhookOverrides: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3Webhook),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3EnvironmentWebhookConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3EnvironmentWebhookConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Environment {
   name?: string;
@@ -3833,67 +3521,59 @@ export interface GoogleCloudDialogflowCxV3Environment {
   webhookConfig?: GoogleCloudDialogflowCxV3EnvironmentWebhookConfig;
 }
 
-export const GoogleCloudDialogflowCxV3Environment: Schema.Schema<GoogleCloudDialogflowCxV3Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      versionConfigs: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3EnvironmentVersionConfig),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      testCasesConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig,
-      ),
-      webhookConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3EnvironmentWebhookConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Environment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Environment>;
+export const GoogleCloudDialogflowCxV3Environment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    versionConfigs: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3EnvironmentVersionConfig),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    testCasesConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig,
+    ),
+    webhookConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3EnvironmentWebhookConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Environment" });
 
 export interface GoogleCloudDialogflowCxV3ListEnvironmentsResponse {
   environments?: Array<GoogleCloudDialogflowCxV3Environment>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListEnvironmentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environments: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Environment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3Environment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListEnvironmentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListEnvironmentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse {
   environments?: Array<GoogleCloudDialogflowCxV3Environment>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse: Schema.Schema<GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environments: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Environment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3Environment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RunContinuousTestRequest {}
 
-export const GoogleCloudDialogflowCxV3RunContinuousTestRequest: Schema.Schema<GoogleCloudDialogflowCxV3RunContinuousTestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3RunContinuousTestRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3RunContinuousTestRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RunContinuousTestRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ContinuousTestResult {
   name?: string;
@@ -3906,235 +3586,37 @@ export interface GoogleCloudDialogflowCxV3ContinuousTestResult {
   runTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ContinuousTestResult: Schema.Schema<GoogleCloudDialogflowCxV3ContinuousTestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      result: Schema.optional(Schema.String),
-      testCaseResults: Schema.optional(Schema.Array(Schema.String)),
-      runTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ContinuousTestResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ContinuousTestResult>;
+export const GoogleCloudDialogflowCxV3ContinuousTestResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    result: Schema.optional(Schema.String),
+    testCaseResults: Schema.optional(Schema.Array(Schema.String)),
+    runTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ContinuousTestResult" });
 
 export interface GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse {
   continuousTestResults?: Array<GoogleCloudDialogflowCxV3ContinuousTestResult>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      continuousTestResults: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ContinuousTestResult),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    continuousTestResults: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ContinuousTestResult),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DeployFlowRequest {
   flowVersion?: string;
 }
 
-export const GoogleCloudDialogflowCxV3DeployFlowRequest: Schema.Schema<GoogleCloudDialogflowCxV3DeployFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flowVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DeployFlowRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DeployFlowRequest>;
-
-export interface GoogleCloudDialogflowCxV3PlaybookInput {
-  precedingConversationSummary?: string;
-}
-
-export const GoogleCloudDialogflowCxV3PlaybookInput: Schema.Schema<GoogleCloudDialogflowCxV3PlaybookInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      precedingConversationSummary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PlaybookInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PlaybookInput>;
-
-export interface GoogleCloudDialogflowCxV3PlaybookOutput {
-  executionSummary?: string;
-}
-
-export const GoogleCloudDialogflowCxV3PlaybookOutput: Schema.Schema<GoogleCloudDialogflowCxV3PlaybookOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionSummary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PlaybookOutput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PlaybookOutput>;
-
-export interface GoogleCloudDialogflowCxV3UserUtterance {
-  text?: string;
-}
-
-export const GoogleCloudDialogflowCxV3UserUtterance: Schema.Schema<GoogleCloudDialogflowCxV3UserUtterance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3UserUtterance",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3UserUtterance>;
-
-export interface GoogleCloudDialogflowCxV3AgentUtterance {
-  text?: string;
-}
-
-export const GoogleCloudDialogflowCxV3AgentUtterance: Schema.Schema<GoogleCloudDialogflowCxV3AgentUtterance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3AgentUtterance",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3AgentUtterance>;
-
-export interface GoogleCloudDialogflowCxV3ToolUse {
-  tool?: string;
-  displayName?: string;
-  action?: string;
-  inputActionParameters?: Record<string, unknown>;
-  outputActionParameters?: Record<string, unknown>;
-}
-
-export const GoogleCloudDialogflowCxV3ToolUse: Schema.Schema<GoogleCloudDialogflowCxV3ToolUse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      inputActionParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      outputActionParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolUse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolUse>;
-
-export interface GoogleCloudDialogflowCxV3PlaybookInvocation {
-  playbook?: string;
-  displayName?: string;
-  playbookInput?: GoogleCloudDialogflowCxV3PlaybookInput;
-  playbookOutput?: GoogleCloudDialogflowCxV3PlaybookOutput;
-  playbookState?:
-    | "OUTPUT_STATE_UNSPECIFIED"
-    | "OUTPUT_STATE_OK"
-    | "OUTPUT_STATE_CANCELLED"
-    | "OUTPUT_STATE_FAILED"
-    | "OUTPUT_STATE_ESCALATED"
-    | "OUTPUT_STATE_PENDING"
-    | (string & {});
-}
-
-export const GoogleCloudDialogflowCxV3PlaybookInvocation: Schema.Schema<GoogleCloudDialogflowCxV3PlaybookInvocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbook: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      playbookInput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookInput),
-      playbookOutput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookOutput),
-      playbookState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PlaybookInvocation",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PlaybookInvocation>;
-
-export interface GoogleCloudDialogflowCxV3FlowInvocation {
-  flow?: string;
-  displayName?: string;
-  flowState?:
-    | "OUTPUT_STATE_UNSPECIFIED"
-    | "OUTPUT_STATE_OK"
-    | "OUTPUT_STATE_CANCELLED"
-    | "OUTPUT_STATE_FAILED"
-    | "OUTPUT_STATE_ESCALATED"
-    | "OUTPUT_STATE_PENDING"
-    | (string & {});
-}
-
-export const GoogleCloudDialogflowCxV3FlowInvocation: Schema.Schema<GoogleCloudDialogflowCxV3FlowInvocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flow: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      flowState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FlowInvocation",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FlowInvocation>;
-
-export interface GoogleCloudDialogflowCxV3PlaybookTransition {
-  playbook?: string;
-  displayName?: string;
-}
-
-export const GoogleCloudDialogflowCxV3PlaybookTransition: Schema.Schema<GoogleCloudDialogflowCxV3PlaybookTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbook: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PlaybookTransition",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PlaybookTransition>;
-
-export interface GoogleCloudDialogflowCxV3FlowTransition {
-  flow?: string;
-  displayName?: string;
-}
-
-export const GoogleCloudDialogflowCxV3FlowTransition: Schema.Schema<GoogleCloudDialogflowCxV3FlowTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flow: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3FlowTransition",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3FlowTransition>;
-
-export interface GoogleCloudDialogflowCxV3Action {
-  userUtterance?: GoogleCloudDialogflowCxV3UserUtterance;
-  agentUtterance?: GoogleCloudDialogflowCxV3AgentUtterance;
-  toolUse?: GoogleCloudDialogflowCxV3ToolUse;
-  playbookInvocation?: GoogleCloudDialogflowCxV3PlaybookInvocation;
-  flowInvocation?: GoogleCloudDialogflowCxV3FlowInvocation;
-  playbookTransition?: GoogleCloudDialogflowCxV3PlaybookTransition;
-  flowTransition?: GoogleCloudDialogflowCxV3FlowTransition;
-}
-
-export const GoogleCloudDialogflowCxV3Action: Schema.Schema<GoogleCloudDialogflowCxV3Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userUtterance: Schema.optional(GoogleCloudDialogflowCxV3UserUtterance),
-      agentUtterance: Schema.optional(GoogleCloudDialogflowCxV3AgentUtterance),
-      toolUse: Schema.optional(GoogleCloudDialogflowCxV3ToolUse),
-      playbookInvocation: Schema.optional(
-        GoogleCloudDialogflowCxV3PlaybookInvocation,
-      ),
-      flowInvocation: Schema.optional(GoogleCloudDialogflowCxV3FlowInvocation),
-      playbookTransition: Schema.optional(
-        GoogleCloudDialogflowCxV3PlaybookTransition,
-      ),
-      flowTransition: Schema.optional(GoogleCloudDialogflowCxV3FlowTransition),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Action",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Action>;
+export const GoogleCloudDialogflowCxV3DeployFlowRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flowVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DeployFlowRequest" });
 
 export interface GoogleCloudDialogflowCxV3Example {
   name?: string;
@@ -4157,39 +3639,31 @@ export interface GoogleCloudDialogflowCxV3Example {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3Example: Schema.Schema<GoogleCloudDialogflowCxV3Example> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      playbookInput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookInput),
-      playbookOutput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookOutput),
-      actions: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Action)),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      tokenCount: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      conversationState: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Example",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Example>;
+export const GoogleCloudDialogflowCxV3Example =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    playbookInput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookInput),
+    playbookOutput: Schema.optional(GoogleCloudDialogflowCxV3PlaybookOutput),
+    actions: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Action)),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    tokenCount: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    conversationState: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Example" });
 
 export interface GoogleCloudDialogflowCxV3ListExamplesResponse {
   examples?: Array<GoogleCloudDialogflowCxV3Example>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListExamplesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListExamplesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      examples: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Example)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListExamplesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListExamplesResponse>;
+export const GoogleCloudDialogflowCxV3ListExamplesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    examples: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Example)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListExamplesResponse" });
 
 export interface GoogleCloudDialogflowCxV3VersionVariantsVariant {
   version?: string;
@@ -4197,48 +3671,36 @@ export interface GoogleCloudDialogflowCxV3VersionVariantsVariant {
   isControlGroup?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3VersionVariantsVariant: Schema.Schema<GoogleCloudDialogflowCxV3VersionVariantsVariant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      trafficAllocation: Schema.optional(Schema.Number),
-      isControlGroup: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3VersionVariantsVariant =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    trafficAllocation: Schema.optional(Schema.Number),
+    isControlGroup: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3VersionVariantsVariant",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3VersionVariantsVariant>;
+  });
 
 export interface GoogleCloudDialogflowCxV3VersionVariants {
   variants?: Array<GoogleCloudDialogflowCxV3VersionVariantsVariant>;
 }
 
-export const GoogleCloudDialogflowCxV3VersionVariants: Schema.Schema<GoogleCloudDialogflowCxV3VersionVariants> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variants: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3VersionVariantsVariant),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3VersionVariants",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3VersionVariants>;
+export const GoogleCloudDialogflowCxV3VersionVariants =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variants: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3VersionVariantsVariant),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3VersionVariants" });
 
 export interface GoogleCloudDialogflowCxV3ExperimentDefinition {
   condition?: string;
   versionVariants?: GoogleCloudDialogflowCxV3VersionVariants;
 }
 
-export const GoogleCloudDialogflowCxV3ExperimentDefinition: Schema.Schema<GoogleCloudDialogflowCxV3ExperimentDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Schema.String),
-      versionVariants: Schema.optional(
-        GoogleCloudDialogflowCxV3VersionVariants,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExperimentDefinition",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExperimentDefinition>;
+export const GoogleCloudDialogflowCxV3ExperimentDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(Schema.String),
+    versionVariants: Schema.optional(GoogleCloudDialogflowCxV3VersionVariants),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExperimentDefinition" });
 
 export interface GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
   displayName?: string;
@@ -4246,16 +3708,14 @@ export interface GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
   minDuration?: string;
 }
 
-export const GoogleCloudDialogflowCxV3RolloutConfigRolloutStep: Schema.Schema<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      trafficPercent: Schema.optional(Schema.Number),
-      minDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3RolloutConfigRolloutStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    trafficPercent: Schema.optional(Schema.Number),
+    minDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3RolloutConfigRolloutStep",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RolloutConfig {
   rolloutSteps?: Array<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>;
@@ -4263,18 +3723,14 @@ export interface GoogleCloudDialogflowCxV3RolloutConfig {
   failureCondition?: string;
 }
 
-export const GoogleCloudDialogflowCxV3RolloutConfig: Schema.Schema<GoogleCloudDialogflowCxV3RolloutConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolloutSteps: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3RolloutConfigRolloutStep),
-      ),
-      rolloutCondition: Schema.optional(Schema.String),
-      failureCondition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3RolloutConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RolloutConfig>;
+export const GoogleCloudDialogflowCxV3RolloutConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rolloutSteps: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3RolloutConfigRolloutStep),
+    ),
+    rolloutCondition: Schema.optional(Schema.String),
+    failureCondition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3RolloutConfig" });
 
 export interface GoogleCloudDialogflowCxV3RolloutState {
   step?: string;
@@ -4282,16 +3738,12 @@ export interface GoogleCloudDialogflowCxV3RolloutState {
   startTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3RolloutState: Schema.Schema<GoogleCloudDialogflowCxV3RolloutState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      stepIndex: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3RolloutState",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RolloutState>;
+export const GoogleCloudDialogflowCxV3RolloutState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    stepIndex: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3RolloutState" });
 
 export interface GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
   confidenceLevel?: number;
@@ -4300,17 +3752,15 @@ export interface GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
   upperBound?: number;
 }
 
-export const GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval: Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceLevel: Schema.optional(Schema.Number),
-      ratio: Schema.optional(Schema.Number),
-      lowerBound: Schema.optional(Schema.Number),
-      upperBound: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceLevel: Schema.optional(Schema.Number),
+    ratio: Schema.optional(Schema.Number),
+    lowerBound: Schema.optional(Schema.Number),
+    upperBound: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExperimentResultMetric {
   type?:
@@ -4332,20 +3782,18 @@ export interface GoogleCloudDialogflowCxV3ExperimentResultMetric {
   confidenceInterval?: GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval;
 }
 
-export const GoogleCloudDialogflowCxV3ExperimentResultMetric: Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResultMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      countType: Schema.optional(Schema.String),
-      ratio: Schema.optional(Schema.Number),
-      count: Schema.optional(Schema.Number),
-      confidenceInterval: Schema.optional(
-        GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExperimentResultMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    countType: Schema.optional(Schema.String),
+    ratio: Schema.optional(Schema.Number),
+    count: Schema.optional(Schema.Number),
+    confidenceInterval: Schema.optional(
+      GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExperimentResultMetric",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResultMetric>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics {
   version?: string;
@@ -4353,52 +3801,40 @@ export interface GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics {
   sessionCount?: number;
 }
 
-export const GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics: Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      metrics: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ExperimentResultMetric),
-      ),
-      sessionCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    metrics: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ExperimentResultMetric),
+    ),
+    sessionCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExperimentResult {
   versionMetrics?: Array<GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics>;
   lastUpdateTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ExperimentResult: Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionMetrics: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics),
-      ),
-      lastUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExperimentResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExperimentResult>;
+export const GoogleCloudDialogflowCxV3ExperimentResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionMetrics: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics),
+    ),
+    lastUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExperimentResult" });
 
 export interface GoogleCloudDialogflowCxV3VariantsHistory {
   versionVariants?: GoogleCloudDialogflowCxV3VersionVariants;
   updateTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3VariantsHistory: Schema.Schema<GoogleCloudDialogflowCxV3VariantsHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionVariants: Schema.optional(
-        GoogleCloudDialogflowCxV3VersionVariants,
-      ),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3VariantsHistory",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3VariantsHistory>;
+export const GoogleCloudDialogflowCxV3VariantsHistory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionVariants: Schema.optional(GoogleCloudDialogflowCxV3VersionVariants),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3VariantsHistory" });
 
 export interface GoogleCloudDialogflowCxV3Experiment {
   name?: string;
@@ -4424,91 +3860,75 @@ export interface GoogleCloudDialogflowCxV3Experiment {
   variantsHistory?: Array<GoogleCloudDialogflowCxV3VariantsHistory>;
 }
 
-export const GoogleCloudDialogflowCxV3Experiment: Schema.Schema<GoogleCloudDialogflowCxV3Experiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      definition: Schema.optional(
-        GoogleCloudDialogflowCxV3ExperimentDefinition,
-      ),
-      rolloutConfig: Schema.optional(GoogleCloudDialogflowCxV3RolloutConfig),
-      rolloutState: Schema.optional(GoogleCloudDialogflowCxV3RolloutState),
-      rolloutFailureReason: Schema.optional(Schema.String),
-      result: Schema.optional(GoogleCloudDialogflowCxV3ExperimentResult),
-      createTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-      experimentLength: Schema.optional(Schema.String),
-      variantsHistory: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3VariantsHistory),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Experiment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Experiment>;
+export const GoogleCloudDialogflowCxV3Experiment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    definition: Schema.optional(GoogleCloudDialogflowCxV3ExperimentDefinition),
+    rolloutConfig: Schema.optional(GoogleCloudDialogflowCxV3RolloutConfig),
+    rolloutState: Schema.optional(GoogleCloudDialogflowCxV3RolloutState),
+    rolloutFailureReason: Schema.optional(Schema.String),
+    result: Schema.optional(GoogleCloudDialogflowCxV3ExperimentResult),
+    createTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+    experimentLength: Schema.optional(Schema.String),
+    variantsHistory: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3VariantsHistory),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Experiment" });
 
 export interface GoogleCloudDialogflowCxV3ListExperimentsResponse {
   experiments?: Array<GoogleCloudDialogflowCxV3Experiment>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListExperimentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListExperimentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      experiments: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Experiment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListExperimentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    experiments: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3Experiment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListExperimentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListExperimentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3StartExperimentRequest {}
 
-export const GoogleCloudDialogflowCxV3StartExperimentRequest: Schema.Schema<GoogleCloudDialogflowCxV3StartExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3StartExperimentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3StartExperimentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3StartExperimentRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3StopExperimentRequest {}
 
-export const GoogleCloudDialogflowCxV3StopExperimentRequest: Schema.Schema<GoogleCloudDialogflowCxV3StopExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3StopExperimentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3StopExperimentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3StopExperimentRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Phrase {
   text?: string;
 }
 
-export const GoogleCloudDialogflowCxV3Phrase: Schema.Schema<GoogleCloudDialogflowCxV3Phrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Phrase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Phrase>;
+export const GoogleCloudDialogflowCxV3Phrase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Phrase" });
 
 export interface GoogleCloudDialogflowCxV3GeneratorPlaceholder {
   id?: string;
   name?: string;
 }
 
-export const GoogleCloudDialogflowCxV3GeneratorPlaceholder: Schema.Schema<GoogleCloudDialogflowCxV3GeneratorPlaceholder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3GeneratorPlaceholder",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3GeneratorPlaceholder>;
+export const GoogleCloudDialogflowCxV3GeneratorPlaceholder =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3GeneratorPlaceholder" });
 
 export interface GoogleCloudDialogflowCxV3GeneratorModelParameter {
   temperature?: number;
@@ -4517,17 +3937,15 @@ export interface GoogleCloudDialogflowCxV3GeneratorModelParameter {
   topK?: number;
 }
 
-export const GoogleCloudDialogflowCxV3GeneratorModelParameter: Schema.Schema<GoogleCloudDialogflowCxV3GeneratorModelParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      temperature: Schema.optional(Schema.Number),
-      maxDecodeSteps: Schema.optional(Schema.Number),
-      topP: Schema.optional(Schema.Number),
-      topK: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3GeneratorModelParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    temperature: Schema.optional(Schema.Number),
+    maxDecodeSteps: Schema.optional(Schema.Number),
+    topP: Schema.optional(Schema.Number),
+    topK: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3GeneratorModelParameter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3GeneratorModelParameter>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Generator {
   name?: string;
@@ -4538,42 +3956,36 @@ export interface GoogleCloudDialogflowCxV3Generator {
   modelParameter?: GoogleCloudDialogflowCxV3GeneratorModelParameter;
 }
 
-export const GoogleCloudDialogflowCxV3Generator: Schema.Schema<GoogleCloudDialogflowCxV3Generator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      promptText: Schema.optional(GoogleCloudDialogflowCxV3Phrase),
-      placeholders: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3GeneratorPlaceholder),
-      ),
-      llmModelSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3LlmModelSettings,
-      ),
-      modelParameter: Schema.optional(
-        GoogleCloudDialogflowCxV3GeneratorModelParameter,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Generator",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Generator>;
+export const GoogleCloudDialogflowCxV3Generator =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    promptText: Schema.optional(GoogleCloudDialogflowCxV3Phrase),
+    placeholders: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3GeneratorPlaceholder),
+    ),
+    llmModelSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3LlmModelSettings,
+    ),
+    modelParameter: Schema.optional(
+      GoogleCloudDialogflowCxV3GeneratorModelParameter,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Generator" });
 
 export interface GoogleCloudDialogflowCxV3ListGeneratorsResponse {
   generators?: Array<GoogleCloudDialogflowCxV3Generator>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListGeneratorsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListGeneratorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generators: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Generator),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListGeneratorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generators: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3Generator),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListGeneratorsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListGeneratorsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3PlaybookStep {
   text?: string;
@@ -4597,30 +4009,20 @@ export interface GoogleCloudDialogflowCxV3PlaybookInstruction {
   steps?: Array<GoogleCloudDialogflowCxV3PlaybookStep>;
 }
 
-export const GoogleCloudDialogflowCxV3PlaybookInstruction: Schema.Schema<GoogleCloudDialogflowCxV3PlaybookInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guidelines: Schema.optional(Schema.String),
-      steps: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3PlaybookStep),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PlaybookInstruction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PlaybookInstruction>;
+export const GoogleCloudDialogflowCxV3PlaybookInstruction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guidelines: Schema.optional(Schema.String),
+    steps: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3PlaybookStep)),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PlaybookInstruction" });
 
 export interface GoogleCloudDialogflowCxV3CodeBlock {
   code?: string;
 }
 
-export const GoogleCloudDialogflowCxV3CodeBlock: Schema.Schema<GoogleCloudDialogflowCxV3CodeBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3CodeBlock",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3CodeBlock>;
+export const GoogleCloudDialogflowCxV3CodeBlock =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3CodeBlock" });
 
 export interface GoogleCloudDialogflowCxV3HandlerEventHandler {
   event?: string;
@@ -4628,16 +4030,12 @@ export interface GoogleCloudDialogflowCxV3HandlerEventHandler {
   fulfillment?: GoogleCloudDialogflowCxV3Fulfillment;
 }
 
-export const GoogleCloudDialogflowCxV3HandlerEventHandler: Schema.Schema<GoogleCloudDialogflowCxV3HandlerEventHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      event: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      fulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3HandlerEventHandler",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3HandlerEventHandler>;
+export const GoogleCloudDialogflowCxV3HandlerEventHandler =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    event: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    fulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3HandlerEventHandler" });
 
 export interface GoogleCloudDialogflowCxV3HandlerLifecycleHandler {
   lifecycleStage?: string;
@@ -4645,35 +4043,27 @@ export interface GoogleCloudDialogflowCxV3HandlerLifecycleHandler {
   fulfillment?: GoogleCloudDialogflowCxV3Fulfillment;
 }
 
-export const GoogleCloudDialogflowCxV3HandlerLifecycleHandler: Schema.Schema<GoogleCloudDialogflowCxV3HandlerLifecycleHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lifecycleStage: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      fulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3HandlerLifecycleHandler =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lifecycleStage: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    fulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3HandlerLifecycleHandler",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3HandlerLifecycleHandler>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Handler {
   eventHandler?: GoogleCloudDialogflowCxV3HandlerEventHandler;
   lifecycleHandler?: GoogleCloudDialogflowCxV3HandlerLifecycleHandler;
 }
 
-export const GoogleCloudDialogflowCxV3Handler: Schema.Schema<GoogleCloudDialogflowCxV3Handler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventHandler: Schema.optional(
-        GoogleCloudDialogflowCxV3HandlerEventHandler,
-      ),
-      lifecycleHandler: Schema.optional(
-        GoogleCloudDialogflowCxV3HandlerLifecycleHandler,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Handler",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Handler>;
+export const GoogleCloudDialogflowCxV3Handler =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventHandler: Schema.optional(GoogleCloudDialogflowCxV3HandlerEventHandler),
+    lifecycleHandler: Schema.optional(
+      GoogleCloudDialogflowCxV3HandlerLifecycleHandler,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Handler" });
 
 export interface GoogleCloudDialogflowCxV3Playbook {
   name?: string;
@@ -4699,70 +4089,54 @@ export interface GoogleCloudDialogflowCxV3Playbook {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3Playbook: Schema.Schema<GoogleCloudDialogflowCxV3Playbook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      goal: Schema.optional(Schema.String),
-      inputParameterDefinitions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
-      ),
-      outputParameterDefinitions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
-      ),
-      instruction: Schema.optional(
-        GoogleCloudDialogflowCxV3PlaybookInstruction,
-      ),
-      tokenCount: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      referencedPlaybooks: Schema.optional(Schema.Array(Schema.String)),
-      referencedFlows: Schema.optional(Schema.Array(Schema.String)),
-      referencedTools: Schema.optional(Schema.Array(Schema.String)),
-      inlineActions: Schema.optional(Schema.Array(Schema.String)),
-      codeBlock: Schema.optional(GoogleCloudDialogflowCxV3CodeBlock),
-      llmModelSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3LlmModelSettings,
-      ),
-      handlers: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Handler)),
-      playbookType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Playbook",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Playbook>;
+export const GoogleCloudDialogflowCxV3Playbook =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    goal: Schema.optional(Schema.String),
+    inputParameterDefinitions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
+    ),
+    outputParameterDefinitions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ParameterDefinition),
+    ),
+    instruction: Schema.optional(GoogleCloudDialogflowCxV3PlaybookInstruction),
+    tokenCount: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    referencedPlaybooks: Schema.optional(Schema.Array(Schema.String)),
+    referencedFlows: Schema.optional(Schema.Array(Schema.String)),
+    referencedTools: Schema.optional(Schema.Array(Schema.String)),
+    inlineActions: Schema.optional(Schema.Array(Schema.String)),
+    codeBlock: Schema.optional(GoogleCloudDialogflowCxV3CodeBlock),
+    llmModelSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3LlmModelSettings,
+    ),
+    handlers: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Handler)),
+    playbookType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Playbook" });
 
 export interface GoogleCloudDialogflowCxV3ListPlaybooksResponse {
   playbooks?: Array<GoogleCloudDialogflowCxV3Playbook>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListPlaybooksResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListPlaybooksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbooks: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3Playbook),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListPlaybooksResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListPlaybooksResponse>;
+export const GoogleCloudDialogflowCxV3ListPlaybooksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbooks: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Playbook)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListPlaybooksResponse" });
 
 export interface GoogleCloudDialogflowCxV3ExportPlaybookRequest {
   playbookUri?: string;
   dataFormat?: "DATA_FORMAT_UNSPECIFIED" | "BLOB" | "JSON" | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3ExportPlaybookRequest: Schema.Schema<GoogleCloudDialogflowCxV3ExportPlaybookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbookUri: Schema.optional(Schema.String),
-      dataFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExportPlaybookRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportPlaybookRequest>;
+export const GoogleCloudDialogflowCxV3ExportPlaybookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbookUri: Schema.optional(Schema.String),
+    dataFormat: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportPlaybookRequest" });
 
 export interface GoogleCloudDialogflowCxV3PlaybookImportStrategy {
   mainPlaybookImportStrategy?:
@@ -4791,16 +4165,14 @@ export interface GoogleCloudDialogflowCxV3PlaybookImportStrategy {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3PlaybookImportStrategy: Schema.Schema<GoogleCloudDialogflowCxV3PlaybookImportStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainPlaybookImportStrategy: Schema.optional(Schema.String),
-      nestedResourceImportStrategy: Schema.optional(Schema.String),
-      toolImportStrategy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3PlaybookImportStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mainPlaybookImportStrategy: Schema.optional(Schema.String),
+    nestedResourceImportStrategy: Schema.optional(Schema.String),
+    toolImportStrategy: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3PlaybookImportStrategy",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PlaybookImportStrategy>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportPlaybookRequest {
   playbookUri?: string;
@@ -4808,18 +4180,14 @@ export interface GoogleCloudDialogflowCxV3ImportPlaybookRequest {
   importStrategy?: GoogleCloudDialogflowCxV3PlaybookImportStrategy;
 }
 
-export const GoogleCloudDialogflowCxV3ImportPlaybookRequest: Schema.Schema<GoogleCloudDialogflowCxV3ImportPlaybookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbookUri: Schema.optional(Schema.String),
-      playbookContent: Schema.optional(Schema.String),
-      importStrategy: Schema.optional(
-        GoogleCloudDialogflowCxV3PlaybookImportStrategy,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ImportPlaybookRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportPlaybookRequest>;
+export const GoogleCloudDialogflowCxV3ImportPlaybookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbookUri: Schema.optional(Schema.String),
+    playbookContent: Schema.optional(Schema.String),
+    importStrategy: Schema.optional(
+      GoogleCloudDialogflowCxV3PlaybookImportStrategy,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ImportPlaybookRequest" });
 
 export interface GoogleCloudDialogflowCxV3PlaybookVersion {
   name?: string;
@@ -4829,55 +4197,47 @@ export interface GoogleCloudDialogflowCxV3PlaybookVersion {
   updateTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3PlaybookVersion: Schema.Schema<GoogleCloudDialogflowCxV3PlaybookVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      playbook: Schema.optional(GoogleCloudDialogflowCxV3Playbook),
-      examples: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Example)),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PlaybookVersion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PlaybookVersion>;
+export const GoogleCloudDialogflowCxV3PlaybookVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    playbook: Schema.optional(GoogleCloudDialogflowCxV3Playbook),
+    examples: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Example)),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PlaybookVersion" });
 
 export interface GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest {}
 
-export const GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest: Schema.Schema<GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse {
   playbook?: GoogleCloudDialogflowCxV3Playbook;
 }
 
-export const GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse: Schema.Schema<GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbook: Schema.optional(GoogleCloudDialogflowCxV3Playbook),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbook: Schema.optional(GoogleCloudDialogflowCxV3Playbook),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse {
   playbookVersions?: Array<GoogleCloudDialogflowCxV3PlaybookVersion>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbookVersions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3PlaybookVersion),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbookVersions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3PlaybookVersion),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig {
   keyName?: string;
@@ -4890,17 +4250,15 @@ export interface GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig: Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyName: Schema.optional(Schema.String),
-      apiKey: Schema.optional(Schema.String),
-      secretVersionForApiKey: Schema.optional(Schema.String),
-      requestLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyName: Schema.optional(Schema.String),
+    apiKey: Schema.optional(Schema.String),
+    secretVersionForApiKey: Schema.optional(Schema.String),
+    requestLocation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig {
   oauthGrantType?:
@@ -4914,19 +4272,17 @@ export interface GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig {
   scopes?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig: Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthGrantType: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      secretVersionForClientSecret: Schema.optional(Schema.String),
-      tokenEndpoint: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauthGrantType: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    secretVersionForClientSecret: Schema.optional(Schema.String),
+    tokenEndpoint: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig {
   serviceAgentAuth?:
@@ -4936,44 +4292,38 @@ export interface GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConf
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig: Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAgentAuth: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAgentAuth: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig {
   token?: string;
   secretVersionForToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig: Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-      secretVersionForToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token: Schema.optional(Schema.String),
+    secretVersionForToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig {
   serviceAccount?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig: Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolAuthentication {
   apiKeyConfig?: GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig;
@@ -4983,71 +4333,57 @@ export interface GoogleCloudDialogflowCxV3ToolAuthentication {
   serviceAccountAuthConfig?: GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig;
 }
 
-export const GoogleCloudDialogflowCxV3ToolAuthentication: Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiKeyConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig,
-      ),
-      oauthConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig,
-      ),
-      serviceAgentAuthConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig,
-      ),
-      bearerTokenConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig,
-      ),
-      serviceAccountAuthConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolAuthentication",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolAuthentication>;
+export const GoogleCloudDialogflowCxV3ToolAuthentication =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiKeyConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig,
+    ),
+    oauthConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig,
+    ),
+    serviceAgentAuthConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig,
+    ),
+    bearerTokenConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig,
+    ),
+    serviceAccountAuthConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolAuthenticationServiceAccountAuthConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolAuthentication" });
 
 export interface GoogleCloudDialogflowCxV3ToolTLSConfigCACert {
   displayName?: string;
   cert?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ToolTLSConfigCACert: Schema.Schema<GoogleCloudDialogflowCxV3ToolTLSConfigCACert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      cert: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolTLSConfigCACert",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolTLSConfigCACert>;
+export const GoogleCloudDialogflowCxV3ToolTLSConfigCACert =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    cert: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolTLSConfigCACert" });
 
 export interface GoogleCloudDialogflowCxV3ToolTLSConfig {
   caCerts?: Array<GoogleCloudDialogflowCxV3ToolTLSConfigCACert>;
 }
 
-export const GoogleCloudDialogflowCxV3ToolTLSConfig: Schema.Schema<GoogleCloudDialogflowCxV3ToolTLSConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caCerts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ToolTLSConfigCACert),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolTLSConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolTLSConfig>;
+export const GoogleCloudDialogflowCxV3ToolTLSConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caCerts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ToolTLSConfigCACert),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolTLSConfig" });
 
 export interface GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig {
   service?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig: Schema.Schema<GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolOpenApiTool {
   textSchema?: string;
@@ -5056,66 +4392,50 @@ export interface GoogleCloudDialogflowCxV3ToolOpenApiTool {
   serviceDirectoryConfig?: GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig;
 }
 
-export const GoogleCloudDialogflowCxV3ToolOpenApiTool: Schema.Schema<GoogleCloudDialogflowCxV3ToolOpenApiTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textSchema: Schema.optional(Schema.String),
-      authentication: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolAuthentication,
-      ),
-      tlsConfig: Schema.optional(GoogleCloudDialogflowCxV3ToolTLSConfig),
-      serviceDirectoryConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolOpenApiTool",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolOpenApiTool>;
+export const GoogleCloudDialogflowCxV3ToolOpenApiTool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textSchema: Schema.optional(Schema.String),
+    authentication: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolAuthentication,
+    ),
+    tlsConfig: Schema.optional(GoogleCloudDialogflowCxV3ToolTLSConfig),
+    serviceDirectoryConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolOpenApiTool" });
 
 export interface GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt {}
 
-export const GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt: Schema.Schema<GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ToolDataStoreTool {
   dataStoreConnections?: Array<GoogleCloudDialogflowCxV3DataStoreConnection>;
   fallbackPrompt?: GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt;
 }
 
-export const GoogleCloudDialogflowCxV3ToolDataStoreTool: Schema.Schema<GoogleCloudDialogflowCxV3ToolDataStoreTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStoreConnections: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3DataStoreConnection),
-      ),
-      fallbackPrompt: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolDataStoreTool",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolDataStoreTool>;
+export const GoogleCloudDialogflowCxV3ToolDataStoreTool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataStoreConnections: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3DataStoreConnection),
+    ),
+    fallbackPrompt: Schema.optional(
+      GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolDataStoreTool" });
 
 export interface GoogleCloudDialogflowCxV3ToolFunctionTool {
   inputSchema?: Record<string, unknown>;
   outputSchema?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3ToolFunctionTool: Schema.Schema<GoogleCloudDialogflowCxV3ToolFunctionTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputSchema: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      outputSchema: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolFunctionTool",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolFunctionTool>;
+export const GoogleCloudDialogflowCxV3ToolFunctionTool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    outputSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolFunctionTool" });
 
 export interface GoogleCloudDialogflowCxV3Tool {
   name?: string;
@@ -5131,37 +4451,27 @@ export interface GoogleCloudDialogflowCxV3Tool {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3Tool: Schema.Schema<GoogleCloudDialogflowCxV3Tool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      openApiSpec: Schema.optional(GoogleCloudDialogflowCxV3ToolOpenApiTool),
-      dataStoreSpec: Schema.optional(
-        GoogleCloudDialogflowCxV3ToolDataStoreTool,
-      ),
-      functionSpec: Schema.optional(GoogleCloudDialogflowCxV3ToolFunctionTool),
-      toolType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Tool",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Tool>;
+export const GoogleCloudDialogflowCxV3Tool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    openApiSpec: Schema.optional(GoogleCloudDialogflowCxV3ToolOpenApiTool),
+    dataStoreSpec: Schema.optional(GoogleCloudDialogflowCxV3ToolDataStoreTool),
+    functionSpec: Schema.optional(GoogleCloudDialogflowCxV3ToolFunctionTool),
+    toolType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Tool" });
 
 export interface GoogleCloudDialogflowCxV3ListToolsResponse {
   tools?: Array<GoogleCloudDialogflowCxV3Tool>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListToolsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListToolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tools: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Tool)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListToolsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListToolsResponse>;
+export const GoogleCloudDialogflowCxV3ListToolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tools: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Tool)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListToolsResponse" });
 
 export interface GoogleCloudDialogflowCxV3ToolVersion {
   name?: string;
@@ -5171,55 +4481,47 @@ export interface GoogleCloudDialogflowCxV3ToolVersion {
   updateTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ToolVersion: Schema.Schema<GoogleCloudDialogflowCxV3ToolVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      tool: Schema.optional(GoogleCloudDialogflowCxV3Tool),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ToolVersion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ToolVersion>;
+export const GoogleCloudDialogflowCxV3ToolVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    tool: Schema.optional(GoogleCloudDialogflowCxV3Tool),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolVersion" });
 
 export interface GoogleCloudDialogflowCxV3ListToolVersionsResponse {
   toolVersions?: Array<GoogleCloudDialogflowCxV3ToolVersion>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListToolVersionsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListToolVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolVersions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ToolVersion),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ListToolVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolVersions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ToolVersion),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ListToolVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListToolVersionsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RestoreToolVersionRequest {}
 
-export const GoogleCloudDialogflowCxV3RestoreToolVersionRequest: Schema.Schema<GoogleCloudDialogflowCxV3RestoreToolVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3RestoreToolVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3RestoreToolVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RestoreToolVersionRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RestoreToolVersionResponse {
   tool?: GoogleCloudDialogflowCxV3Tool;
 }
 
-export const GoogleCloudDialogflowCxV3RestoreToolVersionResponse: Schema.Schema<GoogleCloudDialogflowCxV3RestoreToolVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(GoogleCloudDialogflowCxV3Tool),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3RestoreToolVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(GoogleCloudDialogflowCxV3Tool),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3RestoreToolVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RestoreToolVersionResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3Version {
   name?: string;
@@ -5235,62 +4537,48 @@ export interface GoogleCloudDialogflowCxV3Version {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3Version: Schema.Schema<GoogleCloudDialogflowCxV3Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      nluSettings: Schema.optional(GoogleCloudDialogflowCxV3NluSettings),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3Version",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3Version>;
+export const GoogleCloudDialogflowCxV3Version =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    nluSettings: Schema.optional(GoogleCloudDialogflowCxV3NluSettings),
+    createTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3Version" });
 
 export interface GoogleCloudDialogflowCxV3ListVersionsResponse {
   versions?: Array<GoogleCloudDialogflowCxV3Version>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ListVersionsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Version)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ListVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ListVersionsResponse>;
+export const GoogleCloudDialogflowCxV3ListVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versions: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3Version)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ListVersionsResponse" });
 
 export interface GoogleCloudDialogflowCxV3LoadVersionRequest {
   allowOverrideAgentResources?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3LoadVersionRequest: Schema.Schema<GoogleCloudDialogflowCxV3LoadVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowOverrideAgentResources: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3LoadVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3LoadVersionRequest>;
+export const GoogleCloudDialogflowCxV3LoadVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowOverrideAgentResources: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3LoadVersionRequest" });
 
 export interface GoogleCloudDialogflowCxV3CompareVersionsRequest {
   targetVersion?: string;
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3CompareVersionsRequest: Schema.Schema<GoogleCloudDialogflowCxV3CompareVersionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetVersion: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3CompareVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetVersion: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3CompareVersionsRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3CompareVersionsRequest>;
+  });
 
 export interface GoogleCloudDialogflowCxV3CompareVersionsResponse {
   baseVersionContentJson?: string;
@@ -5298,16 +4586,14 @@ export interface GoogleCloudDialogflowCxV3CompareVersionsResponse {
   compareTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3CompareVersionsResponse: Schema.Schema<GoogleCloudDialogflowCxV3CompareVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseVersionContentJson: Schema.optional(Schema.String),
-      targetVersionContentJson: Schema.optional(Schema.String),
-      compareTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3CompareVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseVersionContentJson: Schema.optional(Schema.String),
+    targetVersionContentJson: Schema.optional(Schema.String),
+    compareTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3CompareVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3CompareVersionsResponse>;
+  });
 
 export interface GoogleCloudLocationLocation {
   name?: string;
@@ -5317,46 +4603,36 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationLocation",
-  }) as any as Schema.Schema<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface GoogleCloudLocationListLocationsResponse {
   locations?: Array<GoogleCloudLocationLocation>;
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationListLocationsResponse",
-  }) as any as Schema.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
 
 export interface GoogleCloudDialogflowCxV3CreateVersionOperationMetadata {
   version?: string;
 }
 
-export const GoogleCloudDialogflowCxV3CreateVersionOperationMetadata: Schema.Schema<GoogleCloudDialogflowCxV3CreateVersionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3CreateVersionOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3CreateVersionOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3CreateVersionOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExportAgentResponse {
   agentUri?: string;
@@ -5364,214 +4640,176 @@ export interface GoogleCloudDialogflowCxV3ExportAgentResponse {
   commitSha?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ExportAgentResponse: Schema.Schema<GoogleCloudDialogflowCxV3ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUri: Schema.optional(Schema.String),
-      agentContent: Schema.optional(Schema.String),
-      commitSha: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExportAgentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportAgentResponse>;
+export const GoogleCloudDialogflowCxV3ExportAgentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentUri: Schema.optional(Schema.String),
+    agentContent: Schema.optional(Schema.String),
+    commitSha: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportAgentResponse" });
 
 export interface GoogleCloudDialogflowCxV3ExportFlowResponse {
   flowUri?: string;
   flowContent?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ExportFlowResponse: Schema.Schema<GoogleCloudDialogflowCxV3ExportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flowUri: Schema.optional(Schema.String),
-      flowContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExportFlowResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportFlowResponse>;
+export const GoogleCloudDialogflowCxV3ExportFlowResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flowUri: Schema.optional(Schema.String),
+    flowContent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportFlowResponse" });
 
 export interface GoogleCloudDialogflowCxV3ExportIntentsMetadata {}
 
-export const GoogleCloudDialogflowCxV3ExportIntentsMetadata: Schema.Schema<GoogleCloudDialogflowCxV3ExportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ExportIntentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportIntentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportIntentsMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3InlineDestination {
   content?: string;
 }
 
-export const GoogleCloudDialogflowCxV3InlineDestination: Schema.Schema<GoogleCloudDialogflowCxV3InlineDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3InlineDestination",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3InlineDestination>;
+export const GoogleCloudDialogflowCxV3InlineDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3InlineDestination" });
 
 export interface GoogleCloudDialogflowCxV3ExportIntentsResponse {
   intentsUri?: string;
   intentsContent?: GoogleCloudDialogflowCxV3InlineDestination;
 }
 
-export const GoogleCloudDialogflowCxV3ExportIntentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ExportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentsUri: Schema.optional(Schema.String),
-      intentsContent: Schema.optional(
-        GoogleCloudDialogflowCxV3InlineDestination,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ExportIntentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportIntentsResponse>;
+export const GoogleCloudDialogflowCxV3ExportIntentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentsUri: Schema.optional(Schema.String),
+    intentsContent: Schema.optional(GoogleCloudDialogflowCxV3InlineDestination),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportIntentsResponse" });
 
 export interface GoogleCloudDialogflowCxV3ImportFlowResponse {
   flow?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ImportFlowResponse: Schema.Schema<GoogleCloudDialogflowCxV3ImportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ImportFlowResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportFlowResponse>;
+export const GoogleCloudDialogflowCxV3ImportFlowResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ImportFlowResponse" });
 
 export interface GoogleCloudDialogflowCxV3ImportEntityTypesMetadata {}
 
-export const GoogleCloudDialogflowCxV3ImportEntityTypesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ImportEntityTypesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportEntityTypesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources {
   entityTypeDisplayNames?: Array<string>;
   entityDisplayNames?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources: Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypeDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-      entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypeDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+    entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportEntityTypesResponse {
   entityTypes?: Array<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources;
 }
 
-export const GoogleCloudDialogflowCxV3ImportEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypes: Schema.optional(Schema.Array(Schema.String)),
-      conflictingResources: Schema.optional(
-        GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ImportEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypes: Schema.optional(Schema.Array(Schema.String)),
+    conflictingResources: Schema.optional(
+      GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportEntityTypesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExportEntityTypesMetadata {}
 
-export const GoogleCloudDialogflowCxV3ExportEntityTypesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3ExportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ExportEntityTypesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportEntityTypesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportEntityTypesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExportEntityTypesResponse {
   entityTypesUri?: string;
   entityTypesContent?: GoogleCloudDialogflowCxV3InlineDestination;
 }
 
-export const GoogleCloudDialogflowCxV3ExportEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ExportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypesUri: Schema.optional(Schema.String),
-      entityTypesContent: Schema.optional(
-        GoogleCloudDialogflowCxV3InlineDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExportEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypesUri: Schema.optional(Schema.String),
+    entityTypesContent: Schema.optional(
+      GoogleCloudDialogflowCxV3InlineDestination,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportEntityTypesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportIntentsMetadata {}
 
-export const GoogleCloudDialogflowCxV3ImportIntentsMetadata: Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ImportIntentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportIntentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources {
   intentDisplayNames?: Array<string>;
   entityDisplayNames?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources: Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-      entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+    entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportIntentsResponse {
   intents?: Array<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources;
 }
 
-export const GoogleCloudDialogflowCxV3ImportIntentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intents: Schema.optional(Schema.Array(Schema.String)),
-      conflictingResources: Schema.optional(
-        GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ImportIntentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportIntentsResponse>;
+export const GoogleCloudDialogflowCxV3ImportIntentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intents: Schema.optional(Schema.Array(Schema.String)),
+    conflictingResources: Schema.optional(
+      GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ImportIntentsResponse" });
 
 export interface GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo {
   tag?: string;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo: Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue {
   originalValue?: string;
   resolvedValue?: unknown;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue: Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalValue: Schema.optional(Schema.String),
-      resolvedValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalValue: Schema.optional(Schema.String),
+    resolvedValue: Schema.optional(Schema.Unknown),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookRequestIntentInfo {
   lastMatchedIntent?: string;
@@ -5583,22 +4821,20 @@ export interface GoogleCloudDialogflowCxV3WebhookRequestIntentInfo {
   confidence?: number;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookRequestIntentInfo: Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastMatchedIntent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      parameters: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue,
-        ),
+export const GoogleCloudDialogflowCxV3WebhookRequestIntentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastMatchedIntent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue,
       ),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3WebhookRequestIntentInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestIntentInfo>;
+  });
 
 export interface GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo {
   displayName?: string;
@@ -5613,33 +4849,27 @@ export interface GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo {
   justCollected?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo: Schema.Schema<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      required: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Unknown),
-      justCollected: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+    state: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
+    justCollected: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo>;
+  });
 
 export interface GoogleCloudDialogflowCxV3PageInfoFormInfo {
   parameterInfo?: Array<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo>;
 }
 
-export const GoogleCloudDialogflowCxV3PageInfoFormInfo: Schema.Schema<GoogleCloudDialogflowCxV3PageInfoFormInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameterInfo: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PageInfoFormInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PageInfoFormInfo>;
+export const GoogleCloudDialogflowCxV3PageInfoFormInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameterInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PageInfoFormInfo" });
 
 export interface GoogleCloudDialogflowCxV3PageInfo {
   currentPage?: string;
@@ -5647,47 +4877,37 @@ export interface GoogleCloudDialogflowCxV3PageInfo {
   formInfo?: GoogleCloudDialogflowCxV3PageInfoFormInfo;
 }
 
-export const GoogleCloudDialogflowCxV3PageInfo: Schema.Schema<GoogleCloudDialogflowCxV3PageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentPage: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      formInfo: Schema.optional(GoogleCloudDialogflowCxV3PageInfoFormInfo),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3PageInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3PageInfo>;
+export const GoogleCloudDialogflowCxV3PageInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentPage: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    formInfo: Schema.optional(GoogleCloudDialogflowCxV3PageInfoFormInfo),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3PageInfo" });
 
 export interface GoogleCloudDialogflowCxV3SessionInfo {
   session?: string;
   parameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3SessionInfo: Schema.Schema<GoogleCloudDialogflowCxV3SessionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      session: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3SessionInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3SessionInfo>;
+export const GoogleCloudDialogflowCxV3SessionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    session: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3SessionInfo" });
 
 export interface GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult {
   score?: number;
   magnitude?: number;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult: Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    magnitude: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult>;
+  });
 
 export interface GoogleCloudDialogflowCxV3LanguageInfo {
   inputLanguageCode?: string;
@@ -5695,16 +4915,12 @@ export interface GoogleCloudDialogflowCxV3LanguageInfo {
   confidenceScore?: number;
 }
 
-export const GoogleCloudDialogflowCxV3LanguageInfo: Schema.Schema<GoogleCloudDialogflowCxV3LanguageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputLanguageCode: Schema.optional(Schema.String),
-      resolvedLanguageCode: Schema.optional(Schema.String),
-      confidenceScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3LanguageInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3LanguageInfo>;
+export const GoogleCloudDialogflowCxV3LanguageInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputLanguageCode: Schema.optional(Schema.String),
+    resolvedLanguageCode: Schema.optional(Schema.String),
+    confidenceScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3LanguageInfo" });
 
 export interface GoogleCloudDialogflowCxV3WebhookRequest {
   detectIntentResponseId?: string;
@@ -5724,36 +4940,32 @@ export interface GoogleCloudDialogflowCxV3WebhookRequest {
   languageInfo?: GoogleCloudDialogflowCxV3LanguageInfo;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookRequest: Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detectIntentResponseId: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      triggerIntent: Schema.optional(Schema.String),
-      transcript: Schema.optional(Schema.String),
-      triggerEvent: Schema.optional(Schema.String),
-      dtmfDigits: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      fulfillmentInfo: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo,
-      ),
-      intentInfo: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookRequestIntentInfo,
-      ),
-      pageInfo: Schema.optional(GoogleCloudDialogflowCxV3PageInfo),
-      sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3SessionInfo),
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
-      ),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      sentimentAnalysisResult: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult,
-      ),
-      languageInfo: Schema.optional(GoogleCloudDialogflowCxV3LanguageInfo),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3WebhookRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookRequest>;
+export const GoogleCloudDialogflowCxV3WebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detectIntentResponseId: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    triggerIntent: Schema.optional(Schema.String),
+    transcript: Schema.optional(Schema.String),
+    triggerEvent: Schema.optional(Schema.String),
+    dtmfDigits: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    fulfillmentInfo: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo,
+    ),
+    intentInfo: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookRequestIntentInfo,
+    ),
+    pageInfo: Schema.optional(GoogleCloudDialogflowCxV3PageInfo),
+    sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3SessionInfo),
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
+    ),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    sentimentAnalysisResult: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult,
+    ),
+    languageInfo: Schema.optional(GoogleCloudDialogflowCxV3LanguageInfo),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3WebhookRequest" });
 
 export interface GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
   messages?: Array<GoogleCloudDialogflowCxV3ResponseMessage>;
@@ -5764,17 +4976,15 @@ export interface GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse: Schema.Schema<GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
-      ),
-      mergeBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
+    ),
+    mergeBehavior: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3WebhookResponse {
   fulfillmentResponse?: GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse;
@@ -5785,21 +4995,17 @@ export interface GoogleCloudDialogflowCxV3WebhookResponse {
   targetFlow?: string;
 }
 
-export const GoogleCloudDialogflowCxV3WebhookResponse: Schema.Schema<GoogleCloudDialogflowCxV3WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fulfillmentResponse: Schema.optional(
-        GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse,
-      ),
-      pageInfo: Schema.optional(GoogleCloudDialogflowCxV3PageInfo),
-      sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3SessionInfo),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3WebhookResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3WebhookResponse>;
+export const GoogleCloudDialogflowCxV3WebhookResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fulfillmentResponse: Schema.optional(
+      GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse,
+    ),
+    pageInfo: Schema.optional(GoogleCloudDialogflowCxV3PageInfo),
+    sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3SessionInfo),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3WebhookResponse" });
 
 export interface GoogleCloudDialogflowCxV3TestError {
   testCase?: string;
@@ -5807,187 +5013,153 @@ export interface GoogleCloudDialogflowCxV3TestError {
   testTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3TestError: Schema.Schema<GoogleCloudDialogflowCxV3TestError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCase: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-      testTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TestError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TestError>;
+export const GoogleCloudDialogflowCxV3TestError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCase: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+    testTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestError" });
 
 export interface GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata {
   errors?: Array<GoogleCloudDialogflowCxV3TestError>;
 }
 
-export const GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3TestError)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3TestError)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
   results?: Array<GoogleCloudDialogflowCxV3TestCaseResult>;
 }
 
-export const GoogleCloudDialogflowCxV3BatchRunTestCasesResponse: Schema.Schema<GoogleCloudDialogflowCxV3BatchRunTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TestCaseResult),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3BatchRunTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TestCaseResult),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3BatchRunTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3BatchRunTestCasesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RunTestCaseMetadata {}
 
-export const GoogleCloudDialogflowCxV3RunTestCaseMetadata: Schema.Schema<GoogleCloudDialogflowCxV3RunTestCaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3RunTestCaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3RunTestCaseMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RunTestCaseMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RunTestCaseResponse {
   result?: GoogleCloudDialogflowCxV3TestCaseResult;
 }
 
-export const GoogleCloudDialogflowCxV3RunTestCaseResponse: Schema.Schema<GoogleCloudDialogflowCxV3RunTestCaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(GoogleCloudDialogflowCxV3TestCaseResult),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3RunTestCaseResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RunTestCaseResponse>;
+export const GoogleCloudDialogflowCxV3RunTestCaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(GoogleCloudDialogflowCxV3TestCaseResult),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3RunTestCaseResponse" });
 
 export interface GoogleCloudDialogflowCxV3ExportTestCasesMetadata {}
 
-export const GoogleCloudDialogflowCxV3ExportTestCasesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3ExportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3ExportTestCasesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportTestCasesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportTestCasesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ExportTestCasesResponse {
   gcsUri?: string;
   content?: string;
 }
 
-export const GoogleCloudDialogflowCxV3ExportTestCasesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ExportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ExportTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ExportTestCasesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3TestCaseError {
   testCase?: GoogleCloudDialogflowCxV3TestCase;
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDialogflowCxV3TestCaseError: Schema.Schema<GoogleCloudDialogflowCxV3TestCaseError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCase: Schema.optional(GoogleCloudDialogflowCxV3TestCase),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TestCaseError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TestCaseError>;
+export const GoogleCloudDialogflowCxV3TestCaseError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCase: Schema.optional(GoogleCloudDialogflowCxV3TestCase),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestCaseError" });
 
 export interface GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
   errors?: Array<GoogleCloudDialogflowCxV3TestCaseError>;
 }
 
-export const GoogleCloudDialogflowCxV3ImportTestCasesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3ImportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TestCaseError),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ImportTestCasesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TestCaseError),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportTestCasesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportTestCasesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3ImportTestCasesResponse {
   names?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3ImportTestCasesResponse: Schema.Schema<GoogleCloudDialogflowCxV3ImportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3ImportTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ImportTestCasesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RunContinuousTestMetadata {
   errors?: Array<GoogleCloudDialogflowCxV3TestError>;
 }
 
-export const GoogleCloudDialogflowCxV3RunContinuousTestMetadata: Schema.Schema<GoogleCloudDialogflowCxV3RunContinuousTestMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3TestError)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3RunContinuousTestMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3TestError)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3RunContinuousTestMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RunContinuousTestMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3RunContinuousTestResponse {
   continuousTestResult?: GoogleCloudDialogflowCxV3ContinuousTestResult;
 }
 
-export const GoogleCloudDialogflowCxV3RunContinuousTestResponse: Schema.Schema<GoogleCloudDialogflowCxV3RunContinuousTestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      continuousTestResult: Schema.optional(
-        GoogleCloudDialogflowCxV3ContinuousTestResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3RunContinuousTestResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    continuousTestResult: Schema.optional(
+      GoogleCloudDialogflowCxV3ContinuousTestResult,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3RunContinuousTestResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3RunContinuousTestResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3DeployFlowMetadata {
   testErrors?: Array<GoogleCloudDialogflowCxV3TestError>;
 }
 
-export const GoogleCloudDialogflowCxV3DeployFlowMetadata: Schema.Schema<GoogleCloudDialogflowCxV3DeployFlowMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testErrors: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3TestError),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DeployFlowMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DeployFlowMetadata>;
+export const GoogleCloudDialogflowCxV3DeployFlowMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testErrors: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3TestError),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DeployFlowMetadata" });
 
 export interface GoogleCloudDialogflowCxV3DeployFlowResponse {
   environment?: GoogleCloudDialogflowCxV3Environment;
   deployment?: string;
 }
 
-export const GoogleCloudDialogflowCxV3DeployFlowResponse: Schema.Schema<GoogleCloudDialogflowCxV3DeployFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(GoogleCloudDialogflowCxV3Environment),
-      deployment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3DeployFlowResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3DeployFlowResponse>;
+export const GoogleCloudDialogflowCxV3DeployFlowResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(GoogleCloudDialogflowCxV3Environment),
+    deployment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3DeployFlowResponse" });
 
 export interface GoogleCloudDialogflowCxV3TurnSignals {
   noMatch?: boolean;
@@ -6007,49 +5179,39 @@ export interface GoogleCloudDialogflowCxV3TurnSignals {
   sentimentMagnitude?: number;
 }
 
-export const GoogleCloudDialogflowCxV3TurnSignals: Schema.Schema<GoogleCloudDialogflowCxV3TurnSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noMatch: Schema.optional(Schema.Boolean),
-      noUserInput: Schema.optional(Schema.Boolean),
-      dtmfUsed: Schema.optional(Schema.Boolean),
-      userEscalated: Schema.optional(Schema.Boolean),
-      agentEscalated: Schema.optional(Schema.Boolean),
-      reachedEndPage: Schema.optional(Schema.Boolean),
-      webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
-      failureReasons: Schema.optional(Schema.Array(Schema.String)),
-      sentimentScore: Schema.optional(Schema.Number),
-      sentimentMagnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3TurnSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3TurnSignals>;
+export const GoogleCloudDialogflowCxV3TurnSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    noMatch: Schema.optional(Schema.Boolean),
+    noUserInput: Schema.optional(Schema.Boolean),
+    dtmfUsed: Schema.optional(Schema.Boolean),
+    userEscalated: Schema.optional(Schema.Boolean),
+    agentEscalated: Schema.optional(Schema.Boolean),
+    reachedEndPage: Schema.optional(Schema.Boolean),
+    webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
+    failureReasons: Schema.optional(Schema.Array(Schema.String)),
+    sentimentScore: Schema.optional(Schema.Number),
+    sentimentMagnitude: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3TurnSignals" });
 
 export interface GoogleCloudDialogflowCxV3ConversationSignals {
   turnSignals?: GoogleCloudDialogflowCxV3TurnSignals;
 }
 
-export const GoogleCloudDialogflowCxV3ConversationSignals: Schema.Schema<GoogleCloudDialogflowCxV3ConversationSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turnSignals: Schema.optional(GoogleCloudDialogflowCxV3TurnSignals),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3ConversationSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3ConversationSignals>;
+export const GoogleCloudDialogflowCxV3ConversationSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    turnSignals: Schema.optional(GoogleCloudDialogflowCxV3TurnSignals),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3ConversationSignals" });
 
 export interface GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata {
   version?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
   agentUri?: string;
@@ -6057,214 +5219,190 @@ export interface GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
   commitSha?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ExportAgentResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUri: Schema.optional(Schema.String),
-      agentContent: Schema.optional(Schema.String),
-      commitSha: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportAgentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentUri: Schema.optional(Schema.String),
+    agentContent: Schema.optional(Schema.String),
+    commitSha: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportAgentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportAgentResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportFlowResponse {
   flowUri?: string;
   flowContent?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ExportFlowResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flowUri: Schema.optional(Schema.String),
-      flowContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportFlowResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flowUri: Schema.optional(Schema.String),
+    flowContent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportFlowResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportFlowResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata {}
 
-export const GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1InlineDestination {
   content?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1InlineDestination: Schema.Schema<GoogleCloudDialogflowCxV3beta1InlineDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1InlineDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1InlineDestination",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1InlineDestination>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportIntentsResponse {
   intentsUri?: string;
   intentsContent?: GoogleCloudDialogflowCxV3beta1InlineDestination;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ExportIntentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentsUri: Schema.optional(Schema.String),
-      intentsContent: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1InlineDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportIntentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentsUri: Schema.optional(Schema.String),
+    intentsContent: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1InlineDestination,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportIntentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportIntentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportFlowResponse {
   flow?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ImportFlowResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportFlowResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flow: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportFlowResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportFlowResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata {}
 
-export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources {
   entityTypeDisplayNames?: Array<string>;
   entityDisplayNames?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypeDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-      entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypeDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+    entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse {
   entityTypes?: Array<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypes: Schema.optional(Schema.Array(Schema.String)),
-      conflictingResources: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypes: Schema.optional(Schema.Array(Schema.String)),
+    conflictingResources: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata {}
 
-export const GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse {
   entityTypesUri?: string;
   entityTypesContent?: GoogleCloudDialogflowCxV3beta1InlineDestination;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypesUri: Schema.optional(Schema.String),
-      entityTypesContent: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1InlineDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypesUri: Schema.optional(Schema.String),
+    entityTypesContent: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1InlineDestination,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata {}
 
-export const GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources {
   intentDisplayNames?: Array<string>;
   entityDisplayNames?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-      entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+    entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportIntentsResponse {
   intents?: Array<string>;
   conflictingResources?: GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intents: Schema.optional(Schema.Array(Schema.String)),
-      conflictingResources: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intents: Schema.optional(Schema.Array(Schema.String)),
+    conflictingResources: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportIntentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportIntentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo {
   tag?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue {
   originalValue?: string;
   resolvedValue?: unknown;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalValue: Schema.optional(Schema.String),
-      resolvedValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalValue: Schema.optional(Schema.String),
+    resolvedValue: Schema.optional(Schema.Unknown),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
   lastMatchedIntent?: string;
@@ -6276,22 +5414,20 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
   confidence?: number;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastMatchedIntent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      parameters: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue,
-        ),
+export const GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastMatchedIntent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue,
       ),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
   displayName?: string;
@@ -6306,35 +5442,27 @@ export interface GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
   justCollected?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo: Schema.Schema<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      required: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Unknown),
-      justCollected: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+    state: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
+    justCollected: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
   parameterInfo?: Array<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfo: Schema.Schema<GoogleCloudDialogflowCxV3beta1PageInfoFormInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameterInfo: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1PageInfoFormInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1PageInfoFormInfo>;
+export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameterInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1PageInfoFormInfo" });
 
 export interface GoogleCloudDialogflowCxV3beta1PageInfo {
   currentPage?: string;
@@ -6342,60 +5470,48 @@ export interface GoogleCloudDialogflowCxV3beta1PageInfo {
   formInfo?: GoogleCloudDialogflowCxV3beta1PageInfoFormInfo;
 }
 
-export const GoogleCloudDialogflowCxV3beta1PageInfo: Schema.Schema<GoogleCloudDialogflowCxV3beta1PageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentPage: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      formInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1PageInfoFormInfo),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1PageInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1PageInfo>;
+export const GoogleCloudDialogflowCxV3beta1PageInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentPage: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    formInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1PageInfoFormInfo),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1PageInfo" });
 
 export interface GoogleCloudDialogflowCxV3beta1SessionInfo {
   session?: string;
   parameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1SessionInfo: Schema.Schema<GoogleCloudDialogflowCxV3beta1SessionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      session: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1SessionInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1SessionInfo>;
+export const GoogleCloudDialogflowCxV3beta1SessionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    session: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1SessionInfo" });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageText {
   text?: Array<string>;
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageText: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessageText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageText>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
   text?: string;
@@ -6403,51 +5519,45 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      ssml: Schema.optional(Schema.String),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    ssml: Schema.optional(Schema.String),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {}
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
   audioUri?: string;
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioUri: Schema.optional(Schema.String),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioUri: Schema.optional(Schema.String),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment {
   audio?: string;
@@ -6455,56 +5565,50 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment 
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audio: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audio: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
   segments?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      segments: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment,
-        ),
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    segments: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall {
   phoneNumber?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard {}
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ToolCall {
   tool?: string;
@@ -6512,18 +5616,14 @@ export interface GoogleCloudDialogflowCxV3beta1ToolCall {
   inputParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ToolCall: Schema.Schema<GoogleCloudDialogflowCxV3beta1ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1ToolCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ToolCall>;
+export const GoogleCloudDialogflowCxV3beta1ToolCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1ToolCall" });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessage {
   text?: GoogleCloudDialogflowCxV3beta1ResponseMessageText;
@@ -6540,57 +5640,51 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessage {
   channel?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ResponseMessage: Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudDialogflowCxV3beta1ResponseMessageText),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      conversationSuccess: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess,
-      ),
-      outputAudioText: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText,
-      ),
-      liveAgentHandoff: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff,
-      ),
-      endInteraction: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction,
-      ),
-      playAudio: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio,
-      ),
-      mixedAudio: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio,
-      ),
-      telephonyTransferCall: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall,
-      ),
-      knowledgeInfoCard: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard,
-      ),
-      toolCall: Schema.optional(GoogleCloudDialogflowCxV3beta1ToolCall),
-      channel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
+export const GoogleCloudDialogflowCxV3beta1ResponseMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudDialogflowCxV3beta1ResponseMessageText),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    conversationSuccess: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess,
+    ),
+    outputAudioText: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText,
+    ),
+    liveAgentHandoff: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff,
+    ),
+    endInteraction: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction,
+    ),
+    playAudio: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio,
+    ),
+    mixedAudio: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio,
+    ),
+    telephonyTransferCall: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall,
+    ),
+    knowledgeInfoCard: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard,
+    ),
+    toolCall: Schema.optional(GoogleCloudDialogflowCxV3beta1ToolCall),
+    channel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessage" });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult {
   score?: number;
   magnitude?: number;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    magnitude: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1LanguageInfo {
   inputLanguageCode?: string;
@@ -6598,16 +5692,12 @@ export interface GoogleCloudDialogflowCxV3beta1LanguageInfo {
   confidenceScore?: number;
 }
 
-export const GoogleCloudDialogflowCxV3beta1LanguageInfo: Schema.Schema<GoogleCloudDialogflowCxV3beta1LanguageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputLanguageCode: Schema.optional(Schema.String),
-      resolvedLanguageCode: Schema.optional(Schema.String),
-      confidenceScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1LanguageInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1LanguageInfo>;
+export const GoogleCloudDialogflowCxV3beta1LanguageInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputLanguageCode: Schema.optional(Schema.String),
+    resolvedLanguageCode: Schema.optional(Schema.String),
+    confidenceScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1LanguageInfo" });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookRequest {
   detectIntentResponseId?: string;
@@ -6627,36 +5717,32 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequest {
   languageInfo?: GoogleCloudDialogflowCxV3beta1LanguageInfo;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookRequest: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detectIntentResponseId: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      triggerIntent: Schema.optional(Schema.String),
-      transcript: Schema.optional(Schema.String),
-      triggerEvent: Schema.optional(Schema.String),
-      dtmfDigits: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      fulfillmentInfo: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo,
-      ),
-      intentInfo: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo,
-      ),
-      pageInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1PageInfo),
-      sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionInfo),
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
-      ),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      sentimentAnalysisResult: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult,
-      ),
-      languageInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1LanguageInfo),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1WebhookRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookRequest>;
+export const GoogleCloudDialogflowCxV3beta1WebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detectIntentResponseId: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    triggerIntent: Schema.optional(Schema.String),
+    transcript: Schema.optional(Schema.String),
+    triggerEvent: Schema.optional(Schema.String),
+    dtmfDigits: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    fulfillmentInfo: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo,
+    ),
+    intentInfo: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo,
+    ),
+    pageInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1PageInfo),
+    sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionInfo),
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
+    ),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    sentimentAnalysisResult: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult,
+    ),
+    languageInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1LanguageInfo),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1WebhookRequest" });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
   messages?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
@@ -6667,18 +5753,16 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentRespons
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
-      ),
-      mergeBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
+    ),
+    mergeBehavior: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookResponse {
   fulfillmentResponse?: GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse;
@@ -6689,21 +5773,17 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookResponse {
   targetFlow?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fulfillmentResponse: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse,
-      ),
-      pageInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1PageInfo),
-      sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionInfo),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1WebhookResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookResponse>;
+export const GoogleCloudDialogflowCxV3beta1WebhookResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fulfillmentResponse: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse,
+    ),
+    pageInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1PageInfo),
+    sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionInfo),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1WebhookResponse" });
 
 export interface GoogleCloudDialogflowCxV3beta1TestError {
   testCase?: string;
@@ -6711,72 +5791,54 @@ export interface GoogleCloudDialogflowCxV3beta1TestError {
   testTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TestError: Schema.Schema<GoogleCloudDialogflowCxV3beta1TestError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCase: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-      testTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TestError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TestError>;
+export const GoogleCloudDialogflowCxV3beta1TestError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCase: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+    testTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestError" });
 
 export interface GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata {
   errors?: Array<GoogleCloudDialogflowCxV3beta1TestError>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1TextInput {
   text?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TextInput: Schema.Schema<GoogleCloudDialogflowCxV3beta1TextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TextInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TextInput>;
+export const GoogleCloudDialogflowCxV3beta1TextInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TextInput" });
 
 export interface GoogleCloudDialogflowCxV3beta1IntentInput {
   intent?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1IntentInput: Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1IntentInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentInput>;
+export const GoogleCloudDialogflowCxV3beta1IntentInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1IntentInput" });
 
 export interface GoogleCloudDialogflowCxV3beta1BargeInConfig {
   noBargeInDuration?: string;
   totalDuration?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1BargeInConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1BargeInConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noBargeInDuration: Schema.optional(Schema.String),
-      totalDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1BargeInConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1BargeInConfig>;
+export const GoogleCloudDialogflowCxV3beta1BargeInConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    noBargeInDuration: Schema.optional(Schema.String),
+    totalDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1BargeInConfig" });
 
 export interface GoogleCloudDialogflowCxV3beta1InputAudioConfig {
   audioEncoding?:
@@ -6805,80 +5867,60 @@ export interface GoogleCloudDialogflowCxV3beta1InputAudioConfig {
   optOutConformerModelMigration?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1InputAudioConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1InputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioEncoding: Schema.optional(Schema.String),
-      sampleRateHertz: Schema.optional(Schema.Number),
-      enableWordInfo: Schema.optional(Schema.Boolean),
-      phraseHints: Schema.optional(Schema.Array(Schema.String)),
-      model: Schema.optional(Schema.String),
-      modelVariant: Schema.optional(Schema.String),
-      singleUtterance: Schema.optional(Schema.Boolean),
-      bargeInConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1BargeInConfig,
-      ),
-      optOutConformerModelMigration: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1InputAudioConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1InputAudioConfig>;
+export const GoogleCloudDialogflowCxV3beta1InputAudioConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioEncoding: Schema.optional(Schema.String),
+    sampleRateHertz: Schema.optional(Schema.Number),
+    enableWordInfo: Schema.optional(Schema.Boolean),
+    phraseHints: Schema.optional(Schema.Array(Schema.String)),
+    model: Schema.optional(Schema.String),
+    modelVariant: Schema.optional(Schema.String),
+    singleUtterance: Schema.optional(Schema.Boolean),
+    bargeInConfig: Schema.optional(GoogleCloudDialogflowCxV3beta1BargeInConfig),
+    optOutConformerModelMigration: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1InputAudioConfig" });
 
 export interface GoogleCloudDialogflowCxV3beta1AudioInput {
   config?: GoogleCloudDialogflowCxV3beta1InputAudioConfig;
   audio?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1AudioInput: Schema.Schema<GoogleCloudDialogflowCxV3beta1AudioInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(GoogleCloudDialogflowCxV3beta1InputAudioConfig),
-      audio: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1AudioInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1AudioInput>;
+export const GoogleCloudDialogflowCxV3beta1AudioInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(GoogleCloudDialogflowCxV3beta1InputAudioConfig),
+    audio: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1AudioInput" });
 
 export interface GoogleCloudDialogflowCxV3beta1EventInput {
   event?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1EventInput: Schema.Schema<GoogleCloudDialogflowCxV3beta1EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      event: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1EventInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1EventInput>;
+export const GoogleCloudDialogflowCxV3beta1EventInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    event: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1EventInput" });
 
 export interface GoogleCloudDialogflowCxV3beta1DtmfInput {
   digits?: string;
   finishDigit?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1DtmfInput: Schema.Schema<GoogleCloudDialogflowCxV3beta1DtmfInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      digits: Schema.optional(Schema.String),
-      finishDigit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1DtmfInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1DtmfInput>;
+export const GoogleCloudDialogflowCxV3beta1DtmfInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    digits: Schema.optional(Schema.String),
+    finishDigit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1DtmfInput" });
 
 export interface GoogleCloudDialogflowCxV3beta1ToolCallResultError {
   message?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ToolCallResultError: Schema.Schema<GoogleCloudDialogflowCxV3beta1ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ToolCallResultError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ToolCallResultError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ToolCallResultError>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ToolCallResult {
   tool?: string;
@@ -6887,19 +5929,15 @@ export interface GoogleCloudDialogflowCxV3beta1ToolCallResult {
   outputParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ToolCallResult: Schema.Schema<GoogleCloudDialogflowCxV3beta1ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleCloudDialogflowCxV3beta1ToolCallResultError),
-      outputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1ToolCallResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ToolCallResult>;
+export const GoogleCloudDialogflowCxV3beta1ToolCallResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleCloudDialogflowCxV3beta1ToolCallResultError),
+    outputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1ToolCallResult" });
 
 export interface GoogleCloudDialogflowCxV3beta1QueryInput {
   text?: GoogleCloudDialogflowCxV3beta1TextInput;
@@ -6911,22 +5949,18 @@ export interface GoogleCloudDialogflowCxV3beta1QueryInput {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1QueryInput: Schema.Schema<GoogleCloudDialogflowCxV3beta1QueryInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudDialogflowCxV3beta1TextInput),
-      intent: Schema.optional(GoogleCloudDialogflowCxV3beta1IntentInput),
-      audio: Schema.optional(GoogleCloudDialogflowCxV3beta1AudioInput),
-      event: Schema.optional(GoogleCloudDialogflowCxV3beta1EventInput),
-      dtmf: Schema.optional(GoogleCloudDialogflowCxV3beta1DtmfInput),
-      toolCallResult: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ToolCallResult,
-      ),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1QueryInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1QueryInput>;
+export const GoogleCloudDialogflowCxV3beta1QueryInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudDialogflowCxV3beta1TextInput),
+    intent: Schema.optional(GoogleCloudDialogflowCxV3beta1IntentInput),
+    audio: Schema.optional(GoogleCloudDialogflowCxV3beta1AudioInput),
+    event: Schema.optional(GoogleCloudDialogflowCxV3beta1EventInput),
+    dtmf: Schema.optional(GoogleCloudDialogflowCxV3beta1DtmfInput),
+    toolCallResult: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ToolCallResult,
+    ),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1QueryInput" });
 
 export interface GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
   input?: GoogleCloudDialogflowCxV3beta1QueryInput;
@@ -6935,19 +5969,17 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
   enableSentimentAnalysis?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput: Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      input: Schema.optional(GoogleCloudDialogflowCxV3beta1QueryInput),
-      injectedParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      isWebhookEnabled: Schema.optional(Schema.Boolean),
-      enableSentimentAnalysis: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    input: Schema.optional(GoogleCloudDialogflowCxV3beta1QueryInput),
+    injectedParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    isWebhookEnabled: Schema.optional(Schema.Boolean),
+    enableSentimentAnalysis: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1TestRunDifference {
   type?:
@@ -6961,30 +5993,26 @@ export interface GoogleCloudDialogflowCxV3beta1TestRunDifference {
   description?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TestRunDifference: Schema.Schema<GoogleCloudDialogflowCxV3beta1TestRunDifference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1TestRunDifference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1TestRunDifference",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TestRunDifference>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart {
   text?: string;
   parameterId?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart: Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      parameterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    parameterId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
   id?: string;
@@ -6992,18 +6020,16 @@ export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
   repeatCount?: number;
 }
 
-export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase: Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      parts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart),
-      ),
-      repeatCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    parts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart),
+    ),
+    repeatCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1IntentParameter {
   id?: string;
@@ -7012,17 +6038,13 @@ export interface GoogleCloudDialogflowCxV3beta1IntentParameter {
   redact?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1IntentParameter: Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-      isList: Schema.optional(Schema.Boolean),
-      redact: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1IntentParameter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1IntentParameter>;
+export const GoogleCloudDialogflowCxV3beta1IntentParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    entityType: Schema.optional(Schema.String),
+    isList: Schema.optional(Schema.Boolean),
+    redact: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1IntentParameter" });
 
 export interface GoogleCloudDialogflowCxV3beta1Intent {
   name?: string;
@@ -7033,42 +6055,38 @@ export interface GoogleCloudDialogflowCxV3beta1Intent {
   isFallback?: boolean;
   labels?: Record<string, string>;
   description?: string;
+  dtmfPattern?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1Intent: Schema.Schema<GoogleCloudDialogflowCxV3beta1Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      trainingPhrases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase),
-      ),
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1IntentParameter),
-      ),
-      priority: Schema.optional(Schema.Number),
-      isFallback: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1Intent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1Intent>;
+export const GoogleCloudDialogflowCxV3beta1Intent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    trainingPhrases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase),
+    ),
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1IntentParameter),
+    ),
+    priority: Schema.optional(Schema.Number),
+    isFallback: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    dtmfPattern: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Intent" });
 
 export interface GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
   parameter?: string;
   value?: unknown;
 }
 
-export const GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction: Schema.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameter: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent {
   message?: GoogleCloudDialogflowCxV3beta1ResponseMessage;
@@ -7128,14 +6146,10 @@ export interface GoogleCloudDialogflowCxV3beta1GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1GcsDestination: Schema.Schema<GoogleCloudDialogflowCxV3beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1GcsDestination",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1GcsDestination>;
+export const GoogleCloudDialogflowCxV3beta1GcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1GcsDestination" });
 
 export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings {
   endpointerSensitivity?: number;
@@ -7144,17 +6158,15 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings {
   models?: Record<string, string>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings: Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpointerSensitivity: Schema.optional(Schema.Number),
-      noSpeechTimeout: Schema.optional(Schema.String),
-      useTimeoutBasedEndpointing: Schema.optional(Schema.Boolean),
-      models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointerSensitivity: Schema.optional(Schema.Number),
+    noSpeechTimeout: Schema.optional(Schema.String),
+    useTimeoutBasedEndpointing: Schema.optional(Schema.Boolean),
+    models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings {
   enabled?: boolean;
@@ -7164,18 +6176,16 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings {
   endpointingTimeoutDuration?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings: Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      maxDigits: Schema.optional(Schema.Number),
-      finishDigit: Schema.optional(Schema.String),
-      interdigitTimeoutDuration: Schema.optional(Schema.String),
-      endpointingTimeoutDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    maxDigits: Schema.optional(Schema.Number),
+    finishDigit: Schema.optional(Schema.String),
+    interdigitTimeoutDuration: Schema.optional(Schema.String),
+    endpointingTimeoutDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings {
   enableStackdriverLogging?: boolean;
@@ -7183,16 +6193,14 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings {
   enableConsentBasedRedaction?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings: Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableStackdriverLogging: Schema.optional(Schema.Boolean),
-      enableInteractionLogging: Schema.optional(Schema.Boolean),
-      enableConsentBasedRedaction: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableStackdriverLogging: Schema.optional(Schema.Boolean),
+    enableInteractionLogging: Schema.optional(Schema.Boolean),
+    enableConsentBasedRedaction: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1AdvancedSettings {
   audioExportGcsDestination?: GoogleCloudDialogflowCxV3beta1GcsDestination;
@@ -7201,25 +6209,21 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettings {
   loggingSettings?: GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings;
 }
 
-export const GoogleCloudDialogflowCxV3beta1AdvancedSettings: Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioExportGcsDestination: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1GcsDestination,
-      ),
-      speechSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings,
-      ),
-      dtmfSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings,
-      ),
-      loggingSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1AdvancedSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1AdvancedSettings>;
+export const GoogleCloudDialogflowCxV3beta1AdvancedSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioExportGcsDestination: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1GcsDestination,
+    ),
+    speechSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings,
+    ),
+    dtmfSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings,
+    ),
+    loggingSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1AdvancedSettings" });
 
 export interface GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings {
   generator?: string;
@@ -7227,18 +6231,16 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings {
   outputParameter?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings: Schema.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generator: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      outputParameter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generator: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    outputParameter: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1Fulfillment {
   messages?: Array<GoogleCloudDialogflowCxV3beta1ResponseMessage>;
@@ -7252,36 +6254,28 @@ export interface GoogleCloudDialogflowCxV3beta1Fulfillment {
   generators?: Array<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1Fulfillment: Schema.Schema<GoogleCloudDialogflowCxV3beta1Fulfillment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
-      ),
-      webhook: Schema.optional(Schema.String),
-      returnPartialResponses: Schema.optional(Schema.Boolean),
-      tag: Schema.optional(Schema.String),
-      setParameterActions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction,
-        ),
-      ),
-      conditionalCases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases),
-      ),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1AdvancedSettings,
-      ),
-      enableGenerativeFallback: Schema.optional(Schema.Boolean),
-      generators: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1Fulfillment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1Fulfillment>;
+export const GoogleCloudDialogflowCxV3beta1Fulfillment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
+    ),
+    webhook: Schema.optional(Schema.String),
+    returnPartialResponses: Schema.optional(Schema.Boolean),
+    tag: Schema.optional(Schema.String),
+    setParameterActions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction),
+    ),
+    conditionalCases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases),
+    ),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1AdvancedSettings,
+    ),
+    enableGenerativeFallback: Schema.optional(Schema.Boolean),
+    generators: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Fulfillment" });
 
 export interface GoogleCloudDialogflowCxV3beta1EventHandler {
   name?: string;
@@ -7292,40 +6286,34 @@ export interface GoogleCloudDialogflowCxV3beta1EventHandler {
   targetPlaybook?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1EventHandler: Schema.Schema<GoogleCloudDialogflowCxV3beta1EventHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      event: Schema.optional(Schema.String),
-      triggerFulfillment: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1Fulfillment,
-      ),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-      targetPlaybook: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1EventHandler",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1EventHandler>;
+export const GoogleCloudDialogflowCxV3beta1EventHandler =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    event: Schema.optional(Schema.String),
+    triggerFulfillment: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1Fulfillment,
+    ),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+    targetPlaybook: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1EventHandler" });
 
 export interface GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
   initialPromptFulfillment?: GoogleCloudDialogflowCxV3beta1Fulfillment;
   repromptEventHandlers?: Array<GoogleCloudDialogflowCxV3beta1EventHandler>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior: Schema.Schema<GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialPromptFulfillment: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1Fulfillment,
-      ),
-      repromptEventHandlers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1EventHandler),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    initialPromptFulfillment: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1Fulfillment,
+    ),
+    repromptEventHandlers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1EventHandler),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1FormParameter {
   displayName?: string;
@@ -7338,40 +6326,32 @@ export interface GoogleCloudDialogflowCxV3beta1FormParameter {
   advancedSettings?: GoogleCloudDialogflowCxV3beta1AdvancedSettings;
 }
 
-export const GoogleCloudDialogflowCxV3beta1FormParameter: Schema.Schema<GoogleCloudDialogflowCxV3beta1FormParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      required: Schema.optional(Schema.Boolean),
-      entityType: Schema.optional(Schema.String),
-      isList: Schema.optional(Schema.Boolean),
-      fillBehavior: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior,
-      ),
-      defaultValue: Schema.optional(Schema.Unknown),
-      redact: Schema.optional(Schema.Boolean),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1AdvancedSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1FormParameter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1FormParameter>;
+export const GoogleCloudDialogflowCxV3beta1FormParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+    entityType: Schema.optional(Schema.String),
+    isList: Schema.optional(Schema.Boolean),
+    fillBehavior: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior,
+    ),
+    defaultValue: Schema.optional(Schema.Unknown),
+    redact: Schema.optional(Schema.Boolean),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1AdvancedSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1FormParameter" });
 
 export interface GoogleCloudDialogflowCxV3beta1Form {
   parameters?: Array<GoogleCloudDialogflowCxV3beta1FormParameter>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1Form: Schema.Schema<GoogleCloudDialogflowCxV3beta1Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1FormParameter),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1Form",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1Form>;
+export const GoogleCloudDialogflowCxV3beta1Form =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1FormParameter),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Form" });
 
 export interface GoogleCloudDialogflowCxV3beta1TransitionRoute {
   name?: string;
@@ -7383,22 +6363,18 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionRoute {
   targetFlow?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TransitionRoute: Schema.Schema<GoogleCloudDialogflowCxV3beta1TransitionRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      intent: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      triggerFulfillment: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1Fulfillment,
-      ),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TransitionRoute",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TransitionRoute>;
+export const GoogleCloudDialogflowCxV3beta1TransitionRoute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    intent: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    triggerFulfillment: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1Fulfillment,
+    ),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TransitionRoute" });
 
 export interface GoogleCloudDialogflowCxV3beta1DataStoreConnection {
   dataStoreType?:
@@ -7415,16 +6391,14 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnection {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowCxV3beta1DataStoreConnection: Schema.Schema<GoogleCloudDialogflowCxV3beta1DataStoreConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStoreType: Schema.optional(Schema.String),
-      dataStore: Schema.optional(Schema.String),
-      documentProcessingMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1DataStoreConnection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataStoreType: Schema.optional(Schema.String),
+    dataStore: Schema.optional(Schema.String),
+    documentProcessingMode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1DataStoreConnection",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1DataStoreConnection>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
   enabled?: boolean;
@@ -7434,22 +6408,20 @@ export interface GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
   dataStoreConnections?: Array<GoogleCloudDialogflowCxV3beta1DataStoreConnection>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings: Schema.Schema<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      triggerFulfillment: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1Fulfillment,
-      ),
-      targetPage: Schema.optional(Schema.String),
-      targetFlow: Schema.optional(Schema.String),
-      dataStoreConnections: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1DataStoreConnection),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    triggerFulfillment: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1Fulfillment,
+    ),
+    targetPage: Schema.optional(Schema.String),
+    targetFlow: Schema.optional(Schema.String),
+    dataStoreConnections: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1DataStoreConnection),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1Page {
   name?: string;
@@ -7464,33 +6436,29 @@ export interface GoogleCloudDialogflowCxV3beta1Page {
   knowledgeConnectorSettings?: GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings;
 }
 
-export const GoogleCloudDialogflowCxV3beta1Page: Schema.Schema<GoogleCloudDialogflowCxV3beta1Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      entryFulfillment: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1Fulfillment,
-      ),
-      form: Schema.optional(GoogleCloudDialogflowCxV3beta1Form),
-      transitionRouteGroups: Schema.optional(Schema.Array(Schema.String)),
-      transitionRoutes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1TransitionRoute),
-      ),
-      eventHandlers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1EventHandler),
-      ),
-      advancedSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1AdvancedSettings,
-      ),
-      knowledgeConnectorSettings: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1Page",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1Page>;
+export const GoogleCloudDialogflowCxV3beta1Page =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    entryFulfillment: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1Fulfillment,
+    ),
+    form: Schema.optional(GoogleCloudDialogflowCxV3beta1Form),
+    transitionRouteGroups: Schema.optional(Schema.Array(Schema.String)),
+    transitionRoutes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1TransitionRoute),
+    ),
+    eventHandlers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1EventHandler),
+    ),
+    advancedSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1AdvancedSettings,
+    ),
+    knowledgeConnectorSettings: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Page" });
 
 export interface GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   sessionParameters?: Record<string, unknown>;
@@ -7502,48 +6470,42 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutpu
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput: Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      differences: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1TestRunDifference),
-      ),
-      diagnosticInfo: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      triggeredIntent: Schema.optional(GoogleCloudDialogflowCxV3beta1Intent),
-      currentPage: Schema.optional(GoogleCloudDialogflowCxV3beta1Page),
-      textResponses: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessageText),
-      ),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    differences: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1TestRunDifference),
+    ),
+    diagnosticInfo: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    triggeredIntent: Schema.optional(GoogleCloudDialogflowCxV3beta1Intent),
+    currentPage: Schema.optional(GoogleCloudDialogflowCxV3beta1Page),
+    textResponses: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessageText),
+    ),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ConversationTurn {
   userInput?: GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput;
   virtualAgentOutput?: GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ConversationTurn: Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationTurn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userInput: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput,
-      ),
-      virtualAgentOutput: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1ConversationTurn",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationTurn>;
+export const GoogleCloudDialogflowCxV3beta1ConversationTurn =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userInput: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput,
+    ),
+    virtualAgentOutput: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1ConversationTurn" });
 
 export interface GoogleCloudDialogflowCxV3beta1TestCaseResult {
   name?: string;
@@ -7553,77 +6515,67 @@ export interface GoogleCloudDialogflowCxV3beta1TestCaseResult {
   testTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TestCaseResult: Schema.Schema<GoogleCloudDialogflowCxV3beta1TestCaseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-      conversationTurns: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1ConversationTurn),
-      ),
-      testResult: Schema.optional(Schema.String),
-      testTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TestCaseResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TestCaseResult>;
+export const GoogleCloudDialogflowCxV3beta1TestCaseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    conversationTurns: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1ConversationTurn),
+    ),
+    testResult: Schema.optional(Schema.String),
+    testTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestCaseResult" });
 
 export interface GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
   results?: Array<GoogleCloudDialogflowCxV3beta1TestCaseResult>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1TestCaseResult),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1TestCaseResult),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata {}
 
-export const GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1RunTestCaseResponse {
   result?: GoogleCloudDialogflowCxV3beta1TestCaseResult;
 }
 
-export const GoogleCloudDialogflowCxV3beta1RunTestCaseResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1RunTestCaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCaseResult),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1RunTestCaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCaseResult),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunTestCaseResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1RunTestCaseResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata {}
 
-export const GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse {
   gcsUri?: string;
   content?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1TestConfig {
   trackingParameters?: Array<string>;
@@ -7631,16 +6583,12 @@ export interface GoogleCloudDialogflowCxV3beta1TestConfig {
   page?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TestConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1TestConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingParameters: Schema.optional(Schema.Array(Schema.String)),
-      flow: Schema.optional(Schema.String),
-      page: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TestConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TestConfig>;
+export const GoogleCloudDialogflowCxV3beta1TestConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trackingParameters: Schema.optional(Schema.Array(Schema.String)),
+    flow: Schema.optional(Schema.String),
+    page: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestConfig" });
 
 export interface GoogleCloudDialogflowCxV3beta1TestCase {
   name?: string;
@@ -7653,83 +6601,69 @@ export interface GoogleCloudDialogflowCxV3beta1TestCase {
   lastTestResult?: GoogleCloudDialogflowCxV3beta1TestCaseResult;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TestCase: Schema.Schema<GoogleCloudDialogflowCxV3beta1TestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      testConfig: Schema.optional(GoogleCloudDialogflowCxV3beta1TestConfig),
-      testCaseConversationTurns: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1ConversationTurn),
-      ),
-      creationTime: Schema.optional(Schema.String),
-      lastTestResult: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1TestCaseResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TestCase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TestCase>;
+export const GoogleCloudDialogflowCxV3beta1TestCase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.String),
+    testConfig: Schema.optional(GoogleCloudDialogflowCxV3beta1TestConfig),
+    testCaseConversationTurns: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1ConversationTurn),
+    ),
+    creationTime: Schema.optional(Schema.String),
+    lastTestResult: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1TestCaseResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestCase" });
 
 export interface GoogleCloudDialogflowCxV3beta1TestCaseError {
   testCase?: GoogleCloudDialogflowCxV3beta1TestCase;
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TestCaseError: Schema.Schema<GoogleCloudDialogflowCxV3beta1TestCaseError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCase: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCase),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TestCaseError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TestCaseError>;
+export const GoogleCloudDialogflowCxV3beta1TestCaseError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCase: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCase),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestCaseError" });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
   errors?: Array<GoogleCloudDialogflowCxV3beta1TestCaseError>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1TestCaseError),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1TestCaseError),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse {
   names?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata {
   errors?: Array<GoogleCloudDialogflowCxV3beta1TestError>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1ContinuousTestResult {
   name?: string;
@@ -7742,60 +6676,52 @@ export interface GoogleCloudDialogflowCxV3beta1ContinuousTestResult {
   runTime?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ContinuousTestResult: Schema.Schema<GoogleCloudDialogflowCxV3beta1ContinuousTestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      result: Schema.optional(Schema.String),
-      testCaseResults: Schema.optional(Schema.Array(Schema.String)),
-      runTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ContinuousTestResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    result: Schema.optional(Schema.String),
+    testCaseResults: Schema.optional(Schema.Array(Schema.String)),
+    runTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ContinuousTestResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ContinuousTestResult>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse {
   continuousTestResult?: GoogleCloudDialogflowCxV3beta1ContinuousTestResult;
 }
 
-export const GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      continuousTestResult: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1ContinuousTestResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    continuousTestResult: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1ContinuousTestResult,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1DeployFlowMetadata {
   testErrors?: Array<GoogleCloudDialogflowCxV3beta1TestError>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1DeployFlowMetadata: Schema.Schema<GoogleCloudDialogflowCxV3beta1DeployFlowMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testErrors: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1DeployFlowMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testErrors: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1DeployFlowMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1DeployFlowMetadata>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig {
   version?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
   testCases?: Array<string>;
@@ -7803,30 +6729,26 @@ export interface GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
   enablePredeploymentRun?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(Schema.Array(Schema.String)),
-      enableContinuousRun: Schema.optional(Schema.Boolean),
-      enablePredeploymentRun: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCases: Schema.optional(Schema.Array(Schema.String)),
+    enableContinuousRun: Schema.optional(Schema.Boolean),
+    enablePredeploymentRun: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue {
   secretVersion?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig {
   clientId?: string;
@@ -7836,33 +6758,29 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConf
   scopes?: Array<string>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      secretVersionForClientSecret: Schema.optional(Schema.String),
-      tokenEndpoint: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    secretVersionForClientSecret: Schema.optional(Schema.String),
+    tokenEndpoint: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig {
   serviceAccount?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
   uri?: string;
@@ -7902,57 +6820,53 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
   parameterMapping?: Record<string, string>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebService: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      secretVersionForUsernamePassword: Schema.optional(Schema.String),
-      requestHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    secretVersionForUsernamePassword: Schema.optional(Schema.String),
+    requestHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    secretVersionsForRequestHeaders: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue,
       ),
-      secretVersionsForRequestHeaders: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue,
-        ),
-      ),
-      allowedCaCerts: Schema.optional(Schema.Array(Schema.String)),
-      oauthConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig,
-      ),
-      serviceAgentAuth: Schema.optional(Schema.String),
-      serviceAccountAuthConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig,
-      ),
-      webhookType: Schema.optional(Schema.String),
-      httpMethod: Schema.optional(Schema.String),
-      requestBody: Schema.optional(Schema.String),
-      parameterMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
+    ),
+    allowedCaCerts: Schema.optional(Schema.Array(Schema.String)),
+    oauthConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig,
+    ),
+    serviceAgentAuth: Schema.optional(Schema.String),
+    serviceAccountAuthConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig,
+    ),
+    webhookType: Schema.optional(Schema.String),
+    httpMethod: Schema.optional(Schema.String),
+    requestBody: Schema.optional(Schema.String),
+    parameterMapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1WebhookGenericWebService",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig {
   service?: string;
   genericWebService?: GoogleCloudDialogflowCxV3beta1WebhookGenericWebService;
 }
 
-export const GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      genericWebService: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookGenericWebService,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    genericWebService: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookGenericWebService,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1Webhook {
   name?: string;
@@ -7963,38 +6877,32 @@ export interface GoogleCloudDialogflowCxV3beta1Webhook {
   disabled?: boolean;
 }
 
-export const GoogleCloudDialogflowCxV3beta1Webhook: Schema.Schema<GoogleCloudDialogflowCxV3beta1Webhook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      genericWebService: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookGenericWebService,
-      ),
-      serviceDirectory: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig,
-      ),
-      timeout: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1Webhook",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1Webhook>;
+export const GoogleCloudDialogflowCxV3beta1Webhook =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    genericWebService: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookGenericWebService,
+    ),
+    serviceDirectory: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig,
+    ),
+    timeout: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Webhook" });
 
 export interface GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig {
   webhookOverrides?: Array<GoogleCloudDialogflowCxV3beta1Webhook>;
 }
 
-export const GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig: Schema.Schema<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookOverrides: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1Webhook),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhookOverrides: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1Webhook),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1Environment {
   name?: string;
@@ -8006,41 +6914,35 @@ export interface GoogleCloudDialogflowCxV3beta1Environment {
   webhookConfig?: GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig;
 }
 
-export const GoogleCloudDialogflowCxV3beta1Environment: Schema.Schema<GoogleCloudDialogflowCxV3beta1Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      versionConfigs: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      testCasesConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig,
-      ),
-      webhookConfig: Schema.optional(
-        GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1Environment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1Environment>;
+export const GoogleCloudDialogflowCxV3beta1Environment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    versionConfigs: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    testCasesConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig,
+    ),
+    webhookConfig: Schema.optional(
+      GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Environment" });
 
 export interface GoogleCloudDialogflowCxV3beta1DeployFlowResponse {
   environment?: GoogleCloudDialogflowCxV3beta1Environment;
   deployment?: string;
 }
 
-export const GoogleCloudDialogflowCxV3beta1DeployFlowResponse: Schema.Schema<GoogleCloudDialogflowCxV3beta1DeployFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(GoogleCloudDialogflowCxV3beta1Environment),
-      deployment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1DeployFlowResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(GoogleCloudDialogflowCxV3beta1Environment),
+    deployment: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1DeployFlowResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1DeployFlowResponse>;
+  });
 
 export interface GoogleCloudDialogflowCxV3beta1TurnSignals {
   noMatch?: boolean;
@@ -8060,51 +6962,41 @@ export interface GoogleCloudDialogflowCxV3beta1TurnSignals {
   sentimentMagnitude?: number;
 }
 
-export const GoogleCloudDialogflowCxV3beta1TurnSignals: Schema.Schema<GoogleCloudDialogflowCxV3beta1TurnSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noMatch: Schema.optional(Schema.Boolean),
-      noUserInput: Schema.optional(Schema.Boolean),
-      dtmfUsed: Schema.optional(Schema.Boolean),
-      userEscalated: Schema.optional(Schema.Boolean),
-      agentEscalated: Schema.optional(Schema.Boolean),
-      reachedEndPage: Schema.optional(Schema.Boolean),
-      webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
-      failureReasons: Schema.optional(Schema.Array(Schema.String)),
-      sentimentScore: Schema.optional(Schema.Number),
-      sentimentMagnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowCxV3beta1TurnSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1TurnSignals>;
+export const GoogleCloudDialogflowCxV3beta1TurnSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    noMatch: Schema.optional(Schema.Boolean),
+    noUserInput: Schema.optional(Schema.Boolean),
+    dtmfUsed: Schema.optional(Schema.Boolean),
+    userEscalated: Schema.optional(Schema.Boolean),
+    agentEscalated: Schema.optional(Schema.Boolean),
+    reachedEndPage: Schema.optional(Schema.Boolean),
+    webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
+    failureReasons: Schema.optional(Schema.Array(Schema.String)),
+    sentimentScore: Schema.optional(Schema.Number),
+    sentimentMagnitude: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TurnSignals" });
 
 export interface GoogleCloudDialogflowCxV3beta1ConversationSignals {
   turnSignals?: GoogleCloudDialogflowCxV3beta1TurnSignals;
 }
 
-export const GoogleCloudDialogflowCxV3beta1ConversationSignals: Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turnSignals: Schema.optional(GoogleCloudDialogflowCxV3beta1TurnSignals),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowCxV3beta1ConversationSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    turnSignals: Schema.optional(GoogleCloudDialogflowCxV3beta1TurnSignals),
+  }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ConversationSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowCxV3beta1ConversationSignals>;
+  });
 
 export interface GoogleCloudDialogflowV2EntityTypeEntity {
   value?: string;
   synonyms?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2EntityTypeEntity: Schema.Schema<GoogleCloudDialogflowV2EntityTypeEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      synonyms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2EntityTypeEntity",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2EntityTypeEntity>;
+export const GoogleCloudDialogflowV2EntityTypeEntity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    synonyms: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2EntityTypeEntity" });
 
 export interface GoogleCloudDialogflowV2EntityType {
   name?: string;
@@ -8123,36 +7015,30 @@ export interface GoogleCloudDialogflowV2EntityType {
   enableFuzzyExtraction?: boolean;
 }
 
-export const GoogleCloudDialogflowV2EntityType: Schema.Schema<GoogleCloudDialogflowV2EntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      autoExpansionMode: Schema.optional(Schema.String),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2EntityTypeEntity),
-      ),
-      enableFuzzyExtraction: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2EntityType",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2EntityType>;
+export const GoogleCloudDialogflowV2EntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    autoExpansionMode: Schema.optional(Schema.String),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2EntityTypeEntity),
+    ),
+    enableFuzzyExtraction: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2EntityType" });
 
 export interface GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
   entityTypes?: Array<GoogleCloudDialogflowV2EntityType>;
 }
 
-export const GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2EntityType),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2EntityType),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentTrainingPhrasePart {
   text?: string;
@@ -8161,17 +7047,15 @@ export interface GoogleCloudDialogflowV2IntentTrainingPhrasePart {
   userDefined?: boolean;
 }
 
-export const GoogleCloudDialogflowV2IntentTrainingPhrasePart: Schema.Schema<GoogleCloudDialogflowV2IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-      userDefined: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentTrainingPhrasePart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    entityType: Schema.optional(Schema.String),
+    alias: Schema.optional(Schema.String),
+    userDefined: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentTrainingPhrasePart",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentTrainingPhrasePart>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentTrainingPhrase {
   name?: string;
@@ -8180,19 +7064,15 @@ export interface GoogleCloudDialogflowV2IntentTrainingPhrase {
   timesAddedCount?: number;
 }
 
-export const GoogleCloudDialogflowV2IntentTrainingPhrase: Schema.Schema<GoogleCloudDialogflowV2IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      parts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentTrainingPhrasePart),
-      ),
-      timesAddedCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentTrainingPhrase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentTrainingPhrase>;
+export const GoogleCloudDialogflowV2IntentTrainingPhrase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    parts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentTrainingPhrasePart),
+    ),
+    timesAddedCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentTrainingPhrase" });
 
 export interface GoogleCloudDialogflowV2Context {
   name?: string;
@@ -8200,16 +7080,12 @@ export interface GoogleCloudDialogflowV2Context {
   parameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowV2Context: Schema.Schema<GoogleCloudDialogflowV2Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      lifespanCount: Schema.optional(Schema.Number),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2Context",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2Context>;
+export const GoogleCloudDialogflowV2Context =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    lifespanCount: Schema.optional(Schema.Number),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2Context" });
 
 export interface GoogleCloudDialogflowV2IntentParameter {
   name?: string;
@@ -8222,79 +7098,61 @@ export interface GoogleCloudDialogflowV2IntentParameter {
   isList?: boolean;
 }
 
-export const GoogleCloudDialogflowV2IntentParameter: Schema.Schema<GoogleCloudDialogflowV2IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(Schema.String),
-      entityTypeDisplayName: Schema.optional(Schema.String),
-      mandatory: Schema.optional(Schema.Boolean),
-      prompts: Schema.optional(Schema.Array(Schema.String)),
-      isList: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentParameter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentParameter>;
+export const GoogleCloudDialogflowV2IntentParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    defaultValue: Schema.optional(Schema.String),
+    entityTypeDisplayName: Schema.optional(Schema.String),
+    mandatory: Schema.optional(Schema.Boolean),
+    prompts: Schema.optional(Schema.Array(Schema.String)),
+    isList: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentParameter" });
 
 export interface GoogleCloudDialogflowV2IntentMessageText {
   text?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageText: Schema.Schema<GoogleCloudDialogflowV2IntentMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageText>;
+export const GoogleCloudDialogflowV2IntentMessageText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageText" });
 
 export interface GoogleCloudDialogflowV2IntentMessageImage {
   imageUri?: string;
   accessibilityText?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageImage: Schema.Schema<GoogleCloudDialogflowV2IntentMessageImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageUri: Schema.optional(Schema.String),
-      accessibilityText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageImage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageImage>;
+export const GoogleCloudDialogflowV2IntentMessageImage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageUri: Schema.optional(Schema.String),
+    accessibilityText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageImage" });
 
 export interface GoogleCloudDialogflowV2IntentMessageQuickReplies {
   title?: string;
   quickReplies?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageQuickReplies: Schema.Schema<GoogleCloudDialogflowV2IntentMessageQuickReplies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      quickReplies: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageQuickReplies =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    quickReplies: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageQuickReplies",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageQuickReplies>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageCardButton {
   text?: string;
   postback?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageCardButton: Schema.Schema<GoogleCloudDialogflowV2IntentMessageCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      postback: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageCardButton",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageCardButton>;
+export const GoogleCloudDialogflowV2IntentMessageCardButton =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    postback: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageCardButton" });
 
 export interface GoogleCloudDialogflowV2IntentMessageCard {
   title?: string;
@@ -8303,19 +7161,15 @@ export interface GoogleCloudDialogflowV2IntentMessageCard {
   buttons?: Array<GoogleCloudDialogflowV2IntentMessageCardButton>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageCard: Schema.Schema<GoogleCloudDialogflowV2IntentMessageCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      subtitle: Schema.optional(Schema.String),
-      imageUri: Schema.optional(Schema.String),
-      buttons: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageCardButton),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageCard>;
+export const GoogleCloudDialogflowV2IntentMessageCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    subtitle: Schema.optional(Schema.String),
+    imageUri: Schema.optional(Schema.String),
+    buttons: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageCardButton),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageCard" });
 
 export interface GoogleCloudDialogflowV2IntentMessageSimpleResponse {
   textToSpeech?: string;
@@ -8323,62 +7177,54 @@ export interface GoogleCloudDialogflowV2IntentMessageSimpleResponse {
   displayText?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageSimpleResponse: Schema.Schema<GoogleCloudDialogflowV2IntentMessageSimpleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textToSpeech: Schema.optional(Schema.String),
-      ssml: Schema.optional(Schema.String),
-      displayText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageSimpleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textToSpeech: Schema.optional(Schema.String),
+    ssml: Schema.optional(Schema.String),
+    displayText: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageSimpleResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageSimpleResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageSimpleResponses {
   simpleResponses?: Array<GoogleCloudDialogflowV2IntentMessageSimpleResponse>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageSimpleResponses: Schema.Schema<GoogleCloudDialogflowV2IntentMessageSimpleResponses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      simpleResponses: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageSimpleResponse),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageSimpleResponses =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    simpleResponses: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageSimpleResponse),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageSimpleResponses",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageSimpleResponses>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
   uri?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction: Schema.Schema<GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageBasicCardButton {
   title?: string;
   openUriAction?: GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageBasicCardButton: Schema.Schema<GoogleCloudDialogflowV2IntentMessageBasicCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      openUriAction: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageBasicCardButton =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    openUriAction: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageBasicCardButton",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageBasicCardButton>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageBasicCard {
   title?: string;
@@ -8388,78 +7234,64 @@ export interface GoogleCloudDialogflowV2IntentMessageBasicCard {
   buttons?: Array<GoogleCloudDialogflowV2IntentMessageBasicCardButton>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageBasicCard: Schema.Schema<GoogleCloudDialogflowV2IntentMessageBasicCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      subtitle: Schema.optional(Schema.String),
-      formattedText: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-      buttons: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageBasicCardButton),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageBasicCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageBasicCard>;
+export const GoogleCloudDialogflowV2IntentMessageBasicCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    subtitle: Schema.optional(Schema.String),
+    formattedText: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+    buttons: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageBasicCardButton),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageBasicCard" });
 
 export interface GoogleCloudDialogflowV2IntentMessageSuggestion {
   title?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageSuggestion: Schema.Schema<GoogleCloudDialogflowV2IntentMessageSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageSuggestion>;
+export const GoogleCloudDialogflowV2IntentMessageSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageSuggestion" });
 
 export interface GoogleCloudDialogflowV2IntentMessageSuggestions {
   suggestions?: Array<GoogleCloudDialogflowV2IntentMessageSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageSuggestions: Schema.Schema<GoogleCloudDialogflowV2IntentMessageSuggestions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageSuggestion),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageSuggestions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageSuggestion),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageSuggestions",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageSuggestions>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
   destinationName?: string;
   uri?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion: Schema.Schema<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationName: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
   key?: string;
   synonyms?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageSelectItemInfo: Schema.Schema<GoogleCloudDialogflowV2IntentMessageSelectItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      synonyms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageSelectItemInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    synonyms: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageSelectItemInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageSelectItemInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageListSelectItem {
   info?: GoogleCloudDialogflowV2IntentMessageSelectItemInfo;
@@ -8468,17 +7300,15 @@ export interface GoogleCloudDialogflowV2IntentMessageListSelectItem {
   image?: GoogleCloudDialogflowV2IntentMessageImage;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageListSelectItem: Schema.Schema<GoogleCloudDialogflowV2IntentMessageListSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      info: Schema.optional(GoogleCloudDialogflowV2IntentMessageSelectItemInfo),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageListSelectItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    info: Schema.optional(GoogleCloudDialogflowV2IntentMessageSelectItemInfo),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageListSelectItem",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageListSelectItem>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageListSelect {
   title?: string;
@@ -8486,18 +7316,14 @@ export interface GoogleCloudDialogflowV2IntentMessageListSelect {
   subtitle?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageListSelect: Schema.Schema<GoogleCloudDialogflowV2IntentMessageListSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      items: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageListSelectItem),
-      ),
-      subtitle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageListSelect",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageListSelect>;
+export const GoogleCloudDialogflowV2IntentMessageListSelect =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    items: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageListSelectItem),
+    ),
+    subtitle: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageListSelect" });
 
 export interface GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
   info?: GoogleCloudDialogflowV2IntentMessageSelectItemInfo;
@@ -8506,32 +7332,28 @@ export interface GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
   image?: GoogleCloudDialogflowV2IntentMessageImage;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageCarouselSelectItem: Schema.Schema<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      info: Schema.optional(GoogleCloudDialogflowV2IntentMessageSelectItemInfo),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageCarouselSelectItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    info: Schema.optional(GoogleCloudDialogflowV2IntentMessageSelectItemInfo),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageCarouselSelectItem",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageCarouselSelect {
   items?: Array<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageCarouselSelect: Schema.Schema<GoogleCloudDialogflowV2IntentMessageCarouselSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageCarouselSelectItem),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageCarouselSelect =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageCarouselSelectItem),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageCarouselSelect",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageCarouselSelect>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
   url?: string;
@@ -8542,16 +7364,14 @@ export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCar
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction: Schema.Schema<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      urlTypeHint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    urlTypeHint: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
   openUriAction?: GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction;
@@ -8561,21 +7381,19 @@ export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCar
   footer?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem: Schema.Schema<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openUriAction: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction,
-      ),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-      footer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    openUriAction: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction,
+    ),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+    footer: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   items?: Array<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
@@ -8588,19 +7406,17 @@ export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard: Schema.Schema<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem,
-        ),
+export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem,
       ),
-      imageDisplayOptions: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    imageDisplayOptions: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageColumnProperties {
   header?: string;
@@ -8612,45 +7428,39 @@ export interface GoogleCloudDialogflowV2IntentMessageColumnProperties {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2IntentMessageColumnProperties: Schema.Schema<GoogleCloudDialogflowV2IntentMessageColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      header: Schema.optional(Schema.String),
-      horizontalAlignment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageColumnProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    header: Schema.optional(Schema.String),
+    horizontalAlignment: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageColumnProperties",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageColumnProperties>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageTableCardCell {
   text?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageTableCardCell: Schema.Schema<GoogleCloudDialogflowV2IntentMessageTableCardCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageTableCardCell =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageTableCardCell",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageTableCardCell>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageTableCardRow {
   cells?: Array<GoogleCloudDialogflowV2IntentMessageTableCardCell>;
   dividerAfter?: boolean;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageTableCardRow: Schema.Schema<GoogleCloudDialogflowV2IntentMessageTableCardRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cells: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageTableCardCell),
-      ),
-      dividerAfter: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageTableCardRow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cells: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageTableCardCell),
+    ),
+    dividerAfter: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageTableCardRow",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageTableCardRow>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageTableCard {
   title?: string;
@@ -8661,25 +7471,21 @@ export interface GoogleCloudDialogflowV2IntentMessageTableCard {
   buttons?: Array<GoogleCloudDialogflowV2IntentMessageBasicCardButton>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageTableCard: Schema.Schema<GoogleCloudDialogflowV2IntentMessageTableCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      subtitle: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-      columnProperties: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageColumnProperties),
-      ),
-      rows: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageTableCardRow),
-      ),
-      buttons: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessageBasicCardButton),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessageTableCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageTableCard>;
+export const GoogleCloudDialogflowV2IntentMessageTableCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    subtitle: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+    columnProperties: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageColumnProperties),
+    ),
+    rows: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageTableCardRow),
+    ),
+    buttons: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessageBasicCardButton),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageTableCard" });
 
 export interface GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   name?: string;
@@ -8689,38 +7495,34 @@ export interface GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaOb
   contentUrl?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject: Schema.Schema<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      largeImage: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-      icon: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-      contentUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    largeImage: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+    icon: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+    contentUrl: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessageMediaContent {
   mediaType?: "RESPONSE_MEDIA_TYPE_UNSPECIFIED" | "AUDIO" | (string & {});
   mediaObjects?: Array<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>;
 }
 
-export const GoogleCloudDialogflowV2IntentMessageMediaContent: Schema.Schema<GoogleCloudDialogflowV2IntentMessageMediaContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mediaType: Schema.optional(Schema.String),
-      mediaObjects: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject,
-        ),
+export const GoogleCloudDialogflowV2IntentMessageMediaContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mediaType: Schema.optional(Schema.String),
+    mediaObjects: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageMediaContent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessageMediaContent>;
+  });
 
 export interface GoogleCloudDialogflowV2IntentMessage {
   text?: GoogleCloudDialogflowV2IntentMessageText;
@@ -8751,59 +7553,51 @@ export interface GoogleCloudDialogflowV2IntentMessage {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2IntentMessage: Schema.Schema<GoogleCloudDialogflowV2IntentMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudDialogflowV2IntentMessageText),
-      image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
-      quickReplies: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageQuickReplies,
-      ),
-      card: Schema.optional(GoogleCloudDialogflowV2IntentMessageCard),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      simpleResponses: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageSimpleResponses,
-      ),
-      basicCard: Schema.optional(GoogleCloudDialogflowV2IntentMessageBasicCard),
-      suggestions: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageSuggestions,
-      ),
-      linkOutSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion,
-      ),
-      listSelect: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageListSelect,
-      ),
-      carouselSelect: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageCarouselSelect,
-      ),
-      browseCarouselCard: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard,
-      ),
-      tableCard: Schema.optional(GoogleCloudDialogflowV2IntentMessageTableCard),
-      mediaContent: Schema.optional(
-        GoogleCloudDialogflowV2IntentMessageMediaContent,
-      ),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2IntentMessage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentMessage>;
+export const GoogleCloudDialogflowV2IntentMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudDialogflowV2IntentMessageText),
+    image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
+    quickReplies: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageQuickReplies,
+    ),
+    card: Schema.optional(GoogleCloudDialogflowV2IntentMessageCard),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    simpleResponses: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageSimpleResponses,
+    ),
+    basicCard: Schema.optional(GoogleCloudDialogflowV2IntentMessageBasicCard),
+    suggestions: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageSuggestions,
+    ),
+    linkOutSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion,
+    ),
+    listSelect: Schema.optional(GoogleCloudDialogflowV2IntentMessageListSelect),
+    carouselSelect: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageCarouselSelect,
+    ),
+    browseCarouselCard: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard,
+    ),
+    tableCard: Schema.optional(GoogleCloudDialogflowV2IntentMessageTableCard),
+    mediaContent: Schema.optional(
+      GoogleCloudDialogflowV2IntentMessageMediaContent,
+    ),
+    platform: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessage" });
 
 export interface GoogleCloudDialogflowV2IntentFollowupIntentInfo {
   followupIntentName?: string;
   parentFollowupIntentName?: string;
 }
 
-export const GoogleCloudDialogflowV2IntentFollowupIntentInfo: Schema.Schema<GoogleCloudDialogflowV2IntentFollowupIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      followupIntentName: Schema.optional(Schema.String),
-      parentFollowupIntentName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IntentFollowupIntentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    followupIntentName: Schema.optional(Schema.String),
+    parentFollowupIntentName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentFollowupIntentInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IntentFollowupIntentInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2Intent {
   name?: string;
@@ -8844,56 +7638,50 @@ export interface GoogleCloudDialogflowV2Intent {
   followupIntentInfo?: Array<GoogleCloudDialogflowV2IntentFollowupIntentInfo>;
 }
 
-export const GoogleCloudDialogflowV2Intent: Schema.Schema<GoogleCloudDialogflowV2Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      webhookState: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.Number),
-      isFallback: Schema.optional(Schema.Boolean),
-      mlDisabled: Schema.optional(Schema.Boolean),
-      liveAgentHandoff: Schema.optional(Schema.Boolean),
-      endInteraction: Schema.optional(Schema.Boolean),
-      inputContextNames: Schema.optional(Schema.Array(Schema.String)),
-      events: Schema.optional(Schema.Array(Schema.String)),
-      trainingPhrases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentTrainingPhrase),
-      ),
-      action: Schema.optional(Schema.String),
-      outputContexts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2Context),
-      ),
-      resetContexts: Schema.optional(Schema.Boolean),
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentParameter),
-      ),
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessage),
-      ),
-      defaultResponsePlatforms: Schema.optional(Schema.Array(Schema.String)),
-      rootFollowupIntentName: Schema.optional(Schema.String),
-      parentFollowupIntentName: Schema.optional(Schema.String),
-      followupIntentInfo: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentFollowupIntentInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2Intent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2Intent>;
+export const GoogleCloudDialogflowV2Intent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    webhookState: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.Number),
+    isFallback: Schema.optional(Schema.Boolean),
+    mlDisabled: Schema.optional(Schema.Boolean),
+    liveAgentHandoff: Schema.optional(Schema.Boolean),
+    endInteraction: Schema.optional(Schema.Boolean),
+    inputContextNames: Schema.optional(Schema.Array(Schema.String)),
+    events: Schema.optional(Schema.Array(Schema.String)),
+    trainingPhrases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentTrainingPhrase),
+    ),
+    action: Schema.optional(Schema.String),
+    outputContexts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2Context),
+    ),
+    resetContexts: Schema.optional(Schema.Boolean),
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentParameter),
+    ),
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessage),
+    ),
+    defaultResponsePlatforms: Schema.optional(Schema.Array(Schema.String)),
+    rootFollowupIntentName: Schema.optional(Schema.String),
+    parentFollowupIntentName: Schema.optional(Schema.String),
+    followupIntentInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentFollowupIntentInfo),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2Intent" });
 
 export interface GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
   intents?: Array<GoogleCloudDialogflowV2Intent>;
 }
 
-export const GoogleCloudDialogflowV2BatchUpdateIntentsResponse: Schema.Schema<GoogleCloudDialogflowV2BatchUpdateIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intents: Schema.optional(Schema.Array(GoogleCloudDialogflowV2Intent)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2BatchUpdateIntentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intents: Schema.optional(Schema.Array(GoogleCloudDialogflowV2Intent)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2BatchUpdateIntentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2BatchUpdateIntentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata {
   conversationProfile?: string;
@@ -8915,18 +7703,16 @@ export interface GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMet
   createTime?: string;
 }
 
-export const GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationProfile: Schema.optional(Schema.String),
-      participantRole: Schema.optional(Schema.String),
-      suggestionFeatureType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationProfile: Schema.optional(Schema.String),
+    participantRole: Schema.optional(Schema.String),
+    suggestionFeatureType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2AnnotatedMessagePart {
   text?: string;
@@ -8934,61 +7720,45 @@ export interface GoogleCloudDialogflowV2AnnotatedMessagePart {
   formattedValue?: unknown;
 }
 
-export const GoogleCloudDialogflowV2AnnotatedMessagePart: Schema.Schema<GoogleCloudDialogflowV2AnnotatedMessagePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-      formattedValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2AnnotatedMessagePart",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AnnotatedMessagePart>;
+export const GoogleCloudDialogflowV2AnnotatedMessagePart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    entityType: Schema.optional(Schema.String),
+    formattedValue: Schema.optional(Schema.Unknown),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2AnnotatedMessagePart" });
 
 export interface GoogleCloudDialogflowV2MessageAnnotation {
   parts?: Array<GoogleCloudDialogflowV2AnnotatedMessagePart>;
   containEntities?: boolean;
 }
 
-export const GoogleCloudDialogflowV2MessageAnnotation: Schema.Schema<GoogleCloudDialogflowV2MessageAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2AnnotatedMessagePart),
-      ),
-      containEntities: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2MessageAnnotation",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2MessageAnnotation>;
+export const GoogleCloudDialogflowV2MessageAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2AnnotatedMessagePart),
+    ),
+    containEntities: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2MessageAnnotation" });
 
 export interface GoogleCloudDialogflowV2Sentiment {
   score?: number;
   magnitude?: number;
 }
 
-export const GoogleCloudDialogflowV2Sentiment: Schema.Schema<GoogleCloudDialogflowV2Sentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2Sentiment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2Sentiment>;
+export const GoogleCloudDialogflowV2Sentiment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    magnitude: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2Sentiment" });
 
 export interface GoogleCloudDialogflowV2SentimentAnalysisResult {
   queryTextSentiment?: GoogleCloudDialogflowV2Sentiment;
 }
 
-export const GoogleCloudDialogflowV2SentimentAnalysisResult: Schema.Schema<GoogleCloudDialogflowV2SentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryTextSentiment: Schema.optional(GoogleCloudDialogflowV2Sentiment),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SentimentAnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SentimentAnalysisResult>;
+export const GoogleCloudDialogflowV2SentimentAnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryTextSentiment: Schema.optional(GoogleCloudDialogflowV2Sentiment),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SentimentAnalysisResult" });
 
 export interface GoogleCloudDialogflowV2Message {
   name?: string;
@@ -9007,26 +7777,22 @@ export interface GoogleCloudDialogflowV2Message {
   sentimentAnalysis?: GoogleCloudDialogflowV2SentimentAnalysisResult;
 }
 
-export const GoogleCloudDialogflowV2Message: Schema.Schema<GoogleCloudDialogflowV2Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      participant: Schema.optional(Schema.String),
-      participantRole: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      sendTime: Schema.optional(Schema.String),
-      messageAnnotation: Schema.optional(
-        GoogleCloudDialogflowV2MessageAnnotation,
-      ),
-      sentimentAnalysis: Schema.optional(
-        GoogleCloudDialogflowV2SentimentAnalysisResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2Message",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2Message>;
+export const GoogleCloudDialogflowV2Message =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    participant: Schema.optional(Schema.String),
+    participantRole: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    sendTime: Schema.optional(Schema.String),
+    messageAnnotation: Schema.optional(
+      GoogleCloudDialogflowV2MessageAnnotation,
+    ),
+    sentimentAnalysis: Schema.optional(
+      GoogleCloudDialogflowV2SentimentAnalysisResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2Message" });
 
 export interface GoogleCloudDialogflowV2SpeechWordInfo {
   word?: string;
@@ -9035,17 +7801,13 @@ export interface GoogleCloudDialogflowV2SpeechWordInfo {
   confidence?: number;
 }
 
-export const GoogleCloudDialogflowV2SpeechWordInfo: Schema.Schema<GoogleCloudDialogflowV2SpeechWordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      word: Schema.optional(Schema.String),
-      startOffset: Schema.optional(Schema.String),
-      endOffset: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SpeechWordInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SpeechWordInfo>;
+export const GoogleCloudDialogflowV2SpeechWordInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    word: Schema.optional(Schema.String),
+    startOffset: Schema.optional(Schema.String),
+    endOffset: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SpeechWordInfo" });
 
 export interface GoogleCloudDialogflowV2StreamingRecognitionResult {
   messageType?:
@@ -9061,22 +7823,20 @@ export interface GoogleCloudDialogflowV2StreamingRecognitionResult {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowV2StreamingRecognitionResult: Schema.Schema<GoogleCloudDialogflowV2StreamingRecognitionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageType: Schema.optional(Schema.String),
-      transcript: Schema.optional(Schema.String),
-      isFinal: Schema.optional(Schema.Boolean),
-      confidence: Schema.optional(Schema.Number),
-      speechWordInfo: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2SpeechWordInfo),
-      ),
-      speechEndOffset: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2StreamingRecognitionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageType: Schema.optional(Schema.String),
+    transcript: Schema.optional(Schema.String),
+    isFinal: Schema.optional(Schema.Boolean),
+    confidence: Schema.optional(Schema.Number),
+    speechWordInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2SpeechWordInfo),
+    ),
+    speechEndOffset: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2StreamingRecognitionResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2StreamingRecognitionResult>;
+  });
 
 export interface GoogleCloudDialogflowV2ConversationEvent {
   conversation?: string;
@@ -9094,35 +7854,27 @@ export interface GoogleCloudDialogflowV2ConversationEvent {
   newRecognitionResultPayload?: GoogleCloudDialogflowV2StreamingRecognitionResult;
 }
 
-export const GoogleCloudDialogflowV2ConversationEvent: Schema.Schema<GoogleCloudDialogflowV2ConversationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      errorStatus: Schema.optional(GoogleRpcStatus),
-      newMessagePayload: Schema.optional(GoogleCloudDialogflowV2Message),
-      newRecognitionResultPayload: Schema.optional(
-        GoogleCloudDialogflowV2StreamingRecognitionResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ConversationEvent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ConversationEvent>;
+export const GoogleCloudDialogflowV2ConversationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    errorStatus: Schema.optional(GoogleRpcStatus),
+    newMessagePayload: Schema.optional(GoogleCloudDialogflowV2Message),
+    newRecognitionResultPayload: Schema.optional(
+      GoogleCloudDialogflowV2StreamingRecognitionResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ConversationEvent" });
 
 export interface GoogleCloudDialogflowV2ExportAgentResponse {
   agentUri?: string;
   agentContent?: string;
 }
 
-export const GoogleCloudDialogflowV2ExportAgentResponse: Schema.Schema<GoogleCloudDialogflowV2ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUri: Schema.optional(Schema.String),
-      agentContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ExportAgentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ExportAgentResponse>;
+export const GoogleCloudDialogflowV2ExportAgentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentUri: Schema.optional(Schema.String),
+    agentContent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ExportAgentResponse" });
 
 export interface GoogleCloudDialogflowV2ArticleAnswer {
   title?: string;
@@ -9133,19 +7885,15 @@ export interface GoogleCloudDialogflowV2ArticleAnswer {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2ArticleAnswer: Schema.Schema<GoogleCloudDialogflowV2ArticleAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      snippets: Schema.optional(Schema.Array(Schema.String)),
-      confidence: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ArticleAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ArticleAnswer>;
+export const GoogleCloudDialogflowV2ArticleAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    snippets: Schema.optional(Schema.Array(Schema.String)),
+    confidence: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ArticleAnswer" });
 
 export interface GoogleCloudDialogflowV2SuggestArticlesResponse {
   articleAnswers?: Array<GoogleCloudDialogflowV2ArticleAnswer>;
@@ -9153,45 +7901,37 @@ export interface GoogleCloudDialogflowV2SuggestArticlesResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2SuggestArticlesResponse: Schema.Schema<GoogleCloudDialogflowV2SuggestArticlesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      articleAnswers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2ArticleAnswer),
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SuggestArticlesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SuggestArticlesResponse>;
+export const GoogleCloudDialogflowV2SuggestArticlesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    articleAnswers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2ArticleAnswer),
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SuggestArticlesResponse" });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
   queryText?: string;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryText: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery>;
+  });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
   question?: string;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      question: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    question: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource>;
+  });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet {
   uri?: string;
@@ -9200,36 +7940,32 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGene
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
+  });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource {
   snippets?: Array<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippets: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet,
-        ),
+export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snippets: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource>;
+  });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
   answerText?: string;
@@ -9237,20 +7973,18 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
   generativeSource?: GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerText: Schema.optional(Schema.String),
-      faqSource: Schema.optional(
-        GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource,
-      ),
-      generativeSource: Schema.optional(
-        GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerText: Schema.optional(Schema.String),
+    faqSource: Schema.optional(
+      GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource,
+    ),
+    generativeSource: Schema.optional(
+      GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer>;
+  });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior {
   answerGenerationRewriterOn?: boolean;
@@ -9272,31 +8006,29 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistB
   appendedSearchContextCount?: number;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerGenerationRewriterOn: Schema.optional(Schema.Boolean),
-      endUserMetadataIncluded: Schema.optional(Schema.Boolean),
-      returnQueryOnly: Schema.optional(Schema.Boolean),
-      usePubsubDelivery: Schema.optional(Schema.Boolean),
-      disableSyncDelivery: Schema.optional(Schema.Boolean),
-      previousQueriesIncluded: Schema.optional(Schema.Boolean),
-      useTranslatedMessage: Schema.optional(Schema.Boolean),
-      useCustomSafetyFilterLevel: Schema.optional(Schema.Boolean),
-      conversationTranscriptHasMixedLanguages: Schema.optional(Schema.Boolean),
-      queryGenerationAgentLanguageMismatch: Schema.optional(Schema.Boolean),
-      queryGenerationEndUserLanguageMismatch: Schema.optional(Schema.Boolean),
-      thirdPartyConnectorAllowed: Schema.optional(Schema.Boolean),
-      multipleQueriesGenerated: Schema.optional(Schema.Boolean),
-      queryContainedSearchContext: Schema.optional(Schema.Boolean),
-      invalidItemsQuerySuggestionSkipped: Schema.optional(Schema.Boolean),
-      primaryQueryRedactedAndReplaced: Schema.optional(Schema.Boolean),
-      appendedSearchContextCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerGenerationRewriterOn: Schema.optional(Schema.Boolean),
+    endUserMetadataIncluded: Schema.optional(Schema.Boolean),
+    returnQueryOnly: Schema.optional(Schema.Boolean),
+    usePubsubDelivery: Schema.optional(Schema.Boolean),
+    disableSyncDelivery: Schema.optional(Schema.Boolean),
+    previousQueriesIncluded: Schema.optional(Schema.Boolean),
+    useTranslatedMessage: Schema.optional(Schema.Boolean),
+    useCustomSafetyFilterLevel: Schema.optional(Schema.Boolean),
+    conversationTranscriptHasMixedLanguages: Schema.optional(Schema.Boolean),
+    queryGenerationAgentLanguageMismatch: Schema.optional(Schema.Boolean),
+    queryGenerationEndUserLanguageMismatch: Schema.optional(Schema.Boolean),
+    thirdPartyConnectorAllowed: Schema.optional(Schema.Boolean),
+    multipleQueriesGenerated: Schema.optional(Schema.Boolean),
+    queryContainedSearchContext: Schema.optional(Schema.Boolean),
+    invalidItemsQuerySuggestionSkipped: Schema.optional(Schema.Boolean),
+    primaryQueryRedactedAndReplaced: Schema.optional(Schema.Boolean),
+    appendedSearchContextCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior>;
+  });
 
 export interface GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo {
   parameter?: string;
@@ -9311,16 +8043,14 @@ export interface GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngeste
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo: Schema.Schema<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(Schema.String),
-      ingestionStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameter: Schema.optional(Schema.String),
+    ingestionStatus: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo {
   projectNotAllowlisted?: boolean;
@@ -9328,20 +8058,18 @@ export interface GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo {
   ingestedParametersDebugInfo?: Array<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
 }
 
-export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo: Schema.Schema<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectNotAllowlisted: Schema.optional(Schema.Boolean),
-      contextReferenceRetrieved: Schema.optional(Schema.Boolean),
-      ingestedParametersDebugInfo: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo,
-        ),
+export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectNotAllowlisted: Schema.optional(Schema.Boolean),
+    contextReferenceRetrieved: Schema.optional(Schema.Boolean),
+    ingestedParametersDebugInfo: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency {
   step?: string;
@@ -9350,34 +8078,26 @@ export interface GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency {
   completeTime?: string;
 }
 
-export const GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency: Schema.Schema<GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      latencyMs: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    latencyMs: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency>;
+  });
 
 export interface GoogleCloudDialogflowV2ServiceLatency {
   internalServiceLatencies?: Array<GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency>;
 }
 
-export const GoogleCloudDialogflowV2ServiceLatency: Schema.Schema<GoogleCloudDialogflowV2ServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      internalServiceLatencies: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ServiceLatency",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ServiceLatency>;
+export const GoogleCloudDialogflowV2ServiceLatency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internalServiceLatencies: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ServiceLatency" });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
   queryGenerationFailureReason?:
@@ -9416,23 +8136,21 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
   serviceLatency?: GoogleCloudDialogflowV2ServiceLatency;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistDebugInfo: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryGenerationFailureReason: Schema.optional(Schema.String),
-      queryCategorizationFailureReason: Schema.optional(Schema.String),
-      datastoreResponseReason: Schema.optional(Schema.String),
-      knowledgeAssistBehavior: Schema.optional(
-        GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior,
-      ),
-      ingestedContextReferenceDebugInfo: Schema.optional(
-        GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo,
-      ),
-      serviceLatency: Schema.optional(GoogleCloudDialogflowV2ServiceLatency),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2KnowledgeAssistDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryGenerationFailureReason: Schema.optional(Schema.String),
+    queryCategorizationFailureReason: Schema.optional(Schema.String),
+    datastoreResponseReason: Schema.optional(Schema.String),
+    knowledgeAssistBehavior: Schema.optional(
+      GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior,
+    ),
+    ingestedContextReferenceDebugInfo: Schema.optional(
+      GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo,
+    ),
+    serviceLatency: Schema.optional(GoogleCloudDialogflowV2ServiceLatency),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2KnowledgeAssistDebugInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistDebugInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2KnowledgeAssistAnswer {
   suggestedQuery?: GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery;
@@ -9441,23 +8159,19 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswer {
   knowledgeAssistDebugInfo?: GoogleCloudDialogflowV2KnowledgeAssistDebugInfo;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeAssistAnswer: Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedQuery: Schema.optional(
-        GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery,
-      ),
-      suggestedQueryAnswer: Schema.optional(
-        GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer,
-      ),
-      answerRecord: Schema.optional(Schema.String),
-      knowledgeAssistDebugInfo: Schema.optional(
-        GoogleCloudDialogflowV2KnowledgeAssistDebugInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2KnowledgeAssistAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeAssistAnswer>;
+export const GoogleCloudDialogflowV2KnowledgeAssistAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestedQuery: Schema.optional(
+      GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery,
+    ),
+    suggestedQueryAnswer: Schema.optional(
+      GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer,
+    ),
+    answerRecord: Schema.optional(Schema.String),
+    knowledgeAssistDebugInfo: Schema.optional(
+      GoogleCloudDialogflowV2KnowledgeAssistDebugInfo,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2KnowledgeAssistAnswer" });
 
 export interface GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
   knowledgeAssistAnswer?: GoogleCloudDialogflowV2KnowledgeAssistAnswer;
@@ -9465,18 +8179,16 @@ export interface GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse: Schema.Schema<GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      knowledgeAssistAnswer: Schema.optional(
-        GoogleCloudDialogflowV2KnowledgeAssistAnswer,
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    knowledgeAssistAnswer: Schema.optional(
+      GoogleCloudDialogflowV2KnowledgeAssistAnswer,
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2FaqAnswer {
   answer?: string;
@@ -9487,19 +8199,15 @@ export interface GoogleCloudDialogflowV2FaqAnswer {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2FaqAnswer: Schema.Schema<GoogleCloudDialogflowV2FaqAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answer: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-      question: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2FaqAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2FaqAnswer>;
+export const GoogleCloudDialogflowV2FaqAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answer: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+    question: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2FaqAnswer" });
 
 export interface GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
   faqAnswers?: Array<GoogleCloudDialogflowV2FaqAnswer>;
@@ -9507,18 +8215,14 @@ export interface GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2SuggestFaqAnswersResponse: Schema.Schema<GoogleCloudDialogflowV2SuggestFaqAnswersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      faqAnswers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2FaqAnswer),
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2SuggestFaqAnswersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    faqAnswers: Schema.optional(Schema.Array(GoogleCloudDialogflowV2FaqAnswer)),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2SuggestFaqAnswersResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SuggestFaqAnswersResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2SmartReplyAnswer {
   reply?: string;
@@ -9526,16 +8230,12 @@ export interface GoogleCloudDialogflowV2SmartReplyAnswer {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2SmartReplyAnswer: Schema.Schema<GoogleCloudDialogflowV2SmartReplyAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reply: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SmartReplyAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SmartReplyAnswer>;
+export const GoogleCloudDialogflowV2SmartReplyAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reply: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SmartReplyAnswer" });
 
 export interface GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
   smartReplyAnswers?: Array<GoogleCloudDialogflowV2SmartReplyAnswer>;
@@ -9543,61 +8243,49 @@ export interface GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2SuggestSmartRepliesResponse: Schema.Schema<GoogleCloudDialogflowV2SuggestSmartRepliesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smartReplyAnswers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2SmartReplyAnswer),
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2SuggestSmartRepliesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    smartReplyAnswers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2SmartReplyAnswer),
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2SuggestSmartRepliesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SuggestSmartRepliesResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2FreeFormSuggestion {
   response?: string;
 }
 
-export const GoogleCloudDialogflowV2FreeFormSuggestion: Schema.Schema<GoogleCloudDialogflowV2FreeFormSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2FreeFormSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2FreeFormSuggestion>;
+export const GoogleCloudDialogflowV2FreeFormSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2FreeFormSuggestion" });
 
 export interface GoogleCloudDialogflowV2SummarySuggestionSummarySection {
   section?: string;
   summary?: string;
 }
 
-export const GoogleCloudDialogflowV2SummarySuggestionSummarySection: Schema.Schema<GoogleCloudDialogflowV2SummarySuggestionSummarySection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      section: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2SummarySuggestionSummarySection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    section: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2SummarySuggestionSummarySection",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SummarySuggestionSummarySection>;
+  });
 
 export interface GoogleCloudDialogflowV2SummarySuggestion {
   summarySections?: Array<GoogleCloudDialogflowV2SummarySuggestionSummarySection>;
 }
 
-export const GoogleCloudDialogflowV2SummarySuggestion: Schema.Schema<GoogleCloudDialogflowV2SummarySuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summarySections: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2SummarySuggestionSummarySection),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SummarySuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SummarySuggestion>;
+export const GoogleCloudDialogflowV2SummarySuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summarySections: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2SummarySuggestionSummarySection),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SummarySuggestion" });
 
 export interface GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion {
   answerRecord?: string;
@@ -9605,35 +8293,31 @@ export interface GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckRe
   similarityScore?: number;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerRecord: Schema.optional(Schema.String),
-      suggestionIndex: Schema.optional(Schema.Number),
-      similarityScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerRecord: Schema.optional(Schema.String),
+    suggestionIndex: Schema.optional(Schema.Number),
+    similarityScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult {
   duplicateSuggestions?: Array<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicateSuggestions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion,
-        ),
+export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicateSuggestions: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingInstruction {
   displayName?: string;
@@ -9652,35 +8336,31 @@ export interface GoogleCloudDialogflowV2AgentCoachingInstruction {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingInstruction: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      displayDetails: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      agentAction: Schema.optional(Schema.String),
-      systemAction: Schema.optional(Schema.String),
-      duplicateCheckResult: Schema.optional(
-        GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult,
-      ),
-      triggeringEvent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2AgentCoachingInstruction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    displayDetails: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    agentAction: Schema.optional(Schema.String),
+    systemAction: Schema.optional(Schema.String),
+    duplicateCheckResult: Schema.optional(
+      GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult,
+    ),
+    triggeringEvent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2AgentCoachingInstruction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingInstruction>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestionSources {
   instructionIndexes?: Array<number>;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingSuggestionSources: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionSources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instructionIndexes: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2AgentCoachingSuggestionSources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instructionIndexes: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2AgentCoachingSuggestionSources",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionSources>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion {
   answerRecord?: string;
@@ -9689,38 +8369,34 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckRes
   similarityScore?: number;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerRecord: Schema.optional(Schema.String),
-      sources: Schema.optional(
-        GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
-      ),
-      suggestionIndex: Schema.optional(Schema.Number),
-      similarityScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerRecord: Schema.optional(Schema.String),
+    sources: Schema.optional(
+      GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
+    ),
+    suggestionIndex: Schema.optional(Schema.Number),
+    similarityScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult {
   duplicateSuggestions?: Array<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicateSuggestions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion,
-        ),
+export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicateSuggestions: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion {
   agentAction?: string;
@@ -9728,21 +8404,19 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSugges
   duplicateCheckResult?: GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentAction: Schema.optional(Schema.String),
-      sources: Schema.optional(
-        GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
-      ),
-      duplicateCheckResult: Schema.optional(
-        GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentAction: Schema.optional(Schema.String),
+    sources: Schema.optional(
+      GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
+    ),
+    duplicateCheckResult: Schema.optional(
+      GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse {
   responseText?: string;
@@ -9750,20 +8424,18 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse {
   duplicateCheckResult?: GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseText: Schema.optional(Schema.String),
-      sources: Schema.optional(
-        GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
-      ),
-      duplicateCheckResult: Schema.optional(
-        GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseText: Schema.optional(Schema.String),
+    sources: Schema.optional(
+      GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
+    ),
+    duplicateCheckResult: Schema.optional(
+      GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2AgentCoachingSuggestion {
   applicableInstructions?: Array<GoogleCloudDialogflowV2AgentCoachingInstruction>;
@@ -9771,29 +8443,28 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestion {
   sampleResponses?: Array<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse>;
 }
 
-export const GoogleCloudDialogflowV2AgentCoachingSuggestion: Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicableInstructions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2AgentCoachingInstruction),
+export const GoogleCloudDialogflowV2AgentCoachingSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicableInstructions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2AgentCoachingInstruction),
+    ),
+    agentActionSuggestions: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion,
       ),
-      agentActionSuggestions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion,
-        ),
+    ),
+    sampleResponses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse,
       ),
-      sampleResponses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2AgentCoachingSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2AgentCoachingSuggestion>;
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2AgentCoachingSuggestion" });
 
 export interface GoogleCloudDialogflowV2ToolCall {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   toolDisplayName?: string;
   toolDisplayDetails?: string;
   action?: string;
@@ -9807,39 +8478,37 @@ export interface GoogleCloudDialogflowV2ToolCall {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2ToolCall: Schema.Schema<GoogleCloudDialogflowV2ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolDisplayName: Schema.optional(Schema.String),
-      toolDisplayDetails: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      createTime: Schema.optional(Schema.String),
-      answerRecord: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ToolCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ToolCall>;
+export const GoogleCloudDialogflowV2ToolCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    cesTool: Schema.optional(Schema.String),
+    cesToolset: Schema.optional(Schema.String),
+    cesApp: Schema.optional(Schema.String),
+    toolDisplayName: Schema.optional(Schema.String),
+    toolDisplayDetails: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    createTime: Schema.optional(Schema.String),
+    answerRecord: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ToolCall" });
 
 export interface GoogleCloudDialogflowV2ToolCallResultError {
   message?: string;
 }
 
-export const GoogleCloudDialogflowV2ToolCallResultError: Schema.Schema<GoogleCloudDialogflowV2ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ToolCallResultError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ToolCallResultError>;
+export const GoogleCloudDialogflowV2ToolCallResultError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ToolCallResultError" });
 
 export interface GoogleCloudDialogflowV2ToolCallResult {
   tool?: string;
+  cesToolset?: string;
+  cesTool?: string;
+  cesApp?: string;
   action?: string;
   error?: GoogleCloudDialogflowV2ToolCallResultError;
   rawContent?: string;
@@ -9848,35 +8517,32 @@ export interface GoogleCloudDialogflowV2ToolCallResult {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2ToolCallResult: Schema.Schema<GoogleCloudDialogflowV2ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleCloudDialogflowV2ToolCallResultError),
-      rawContent: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ToolCallResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ToolCallResult>;
+export const GoogleCloudDialogflowV2ToolCallResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    cesToolset: Schema.optional(Schema.String),
+    cesTool: Schema.optional(Schema.String),
+    cesApp: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleCloudDialogflowV2ToolCallResultError),
+    rawContent: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ToolCallResult" });
 
 export interface GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
   toolCall?: GoogleCloudDialogflowV2ToolCall;
   toolCallResult?: GoogleCloudDialogflowV2ToolCallResult;
 }
 
-export const GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo: Schema.Schema<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolCall: Schema.optional(GoogleCloudDialogflowV2ToolCall),
-      toolCallResult: Schema.optional(GoogleCloudDialogflowV2ToolCallResult),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolCall: Schema.optional(GoogleCloudDialogflowV2ToolCall),
+    toolCallResult: Schema.optional(GoogleCloudDialogflowV2ToolCallResult),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2GeneratorSuggestion {
   freeFormSuggestion?: GoogleCloudDialogflowV2FreeFormSuggestion;
@@ -9885,25 +8551,21 @@ export interface GoogleCloudDialogflowV2GeneratorSuggestion {
   toolCallInfo?: Array<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo>;
 }
 
-export const GoogleCloudDialogflowV2GeneratorSuggestion: Schema.Schema<GoogleCloudDialogflowV2GeneratorSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      freeFormSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2FreeFormSuggestion,
-      ),
-      summarySuggestion: Schema.optional(
-        GoogleCloudDialogflowV2SummarySuggestion,
-      ),
-      agentCoachingSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2AgentCoachingSuggestion,
-      ),
-      toolCallInfo: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2GeneratorSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2GeneratorSuggestion>;
+export const GoogleCloudDialogflowV2GeneratorSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    freeFormSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2FreeFormSuggestion,
+    ),
+    summarySuggestion: Schema.optional(
+      GoogleCloudDialogflowV2SummarySuggestion,
+    ),
+    agentCoachingSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2AgentCoachingSuggestion,
+    ),
+    toolCallInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2GeneratorSuggestion" });
 
 export interface GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer {
   generatorSuggestion?: GoogleCloudDialogflowV2GeneratorSuggestion;
@@ -9911,38 +8573,34 @@ export interface GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSugg
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer: Schema.Schema<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatorSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2GeneratorSuggestion,
-      ),
-      sourceGenerator: Schema.optional(Schema.String),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatorSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2GeneratorSuggestion,
+    ),
+    sourceGenerator: Schema.optional(Schema.String),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
+  });
 
 export interface GoogleCloudDialogflowV2GenerateSuggestionsResponse {
   generatorSuggestionAnswers?: Array<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
   latestMessage?: string;
 }
 
-export const GoogleCloudDialogflowV2GenerateSuggestionsResponse: Schema.Schema<GoogleCloudDialogflowV2GenerateSuggestionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatorSuggestionAnswers: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer,
-        ),
+export const GoogleCloudDialogflowV2GenerateSuggestionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatorSuggestionAnswers: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer,
       ),
-      latestMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    latestMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2GenerateSuggestionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2GenerateSuggestionsResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2SuggestionResult {
   error?: GoogleRpcStatus;
@@ -9953,29 +8611,25 @@ export interface GoogleCloudDialogflowV2SuggestionResult {
   generateSuggestionsResponse?: GoogleCloudDialogflowV2GenerateSuggestionsResponse;
 }
 
-export const GoogleCloudDialogflowV2SuggestionResult: Schema.Schema<GoogleCloudDialogflowV2SuggestionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      suggestArticlesResponse: Schema.optional(
-        GoogleCloudDialogflowV2SuggestArticlesResponse,
-      ),
-      suggestKnowledgeAssistResponse: Schema.optional(
-        GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse,
-      ),
-      suggestFaqAnswersResponse: Schema.optional(
-        GoogleCloudDialogflowV2SuggestFaqAnswersResponse,
-      ),
-      suggestSmartRepliesResponse: Schema.optional(
-        GoogleCloudDialogflowV2SuggestSmartRepliesResponse,
-      ),
-      generateSuggestionsResponse: Schema.optional(
-        GoogleCloudDialogflowV2GenerateSuggestionsResponse,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SuggestionResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SuggestionResult>;
+export const GoogleCloudDialogflowV2SuggestionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    suggestArticlesResponse: Schema.optional(
+      GoogleCloudDialogflowV2SuggestArticlesResponse,
+    ),
+    suggestKnowledgeAssistResponse: Schema.optional(
+      GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse,
+    ),
+    suggestFaqAnswersResponse: Schema.optional(
+      GoogleCloudDialogflowV2SuggestFaqAnswersResponse,
+    ),
+    suggestSmartRepliesResponse: Schema.optional(
+      GoogleCloudDialogflowV2SuggestSmartRepliesResponse,
+    ),
+    generateSuggestionsResponse: Schema.optional(
+      GoogleCloudDialogflowV2GenerateSuggestionsResponse,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SuggestionResult" });
 
 export interface GoogleCloudDialogflowV2HumanAgentAssistantEvent {
   conversation?: string;
@@ -9983,59 +8637,45 @@ export interface GoogleCloudDialogflowV2HumanAgentAssistantEvent {
   suggestionResults?: Array<GoogleCloudDialogflowV2SuggestionResult>;
 }
 
-export const GoogleCloudDialogflowV2HumanAgentAssistantEvent: Schema.Schema<GoogleCloudDialogflowV2HumanAgentAssistantEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      participant: Schema.optional(Schema.String),
-      suggestionResults: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2SuggestionResult),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2HumanAgentAssistantEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    participant: Schema.optional(Schema.String),
+    suggestionResults: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2SuggestionResult),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2HumanAgentAssistantEvent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2HumanAgentAssistantEvent>;
+  });
 
 export interface GoogleCloudDialogflowV2ImportDocumentsResponse {
   warnings?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDialogflowV2ImportDocumentsResponse: Schema.Schema<GoogleCloudDialogflowV2ImportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ImportDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ImportDocumentsResponse>;
+export const GoogleCloudDialogflowV2ImportDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    warnings: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ImportDocumentsResponse" });
 
 export interface GoogleCloudDialogflowV2GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudDialogflowV2GcsDestination: Schema.Schema<GoogleCloudDialogflowV2GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2GcsDestination",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2GcsDestination>;
+export const GoogleCloudDialogflowV2GcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2GcsDestination" });
 
 export interface GoogleCloudDialogflowV2ExportOperationMetadata {
   exportedGcsDestination?: GoogleCloudDialogflowV2GcsDestination;
 }
 
-export const GoogleCloudDialogflowV2ExportOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2ExportOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportedGcsDestination: Schema.optional(
-        GoogleCloudDialogflowV2GcsDestination,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ExportOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ExportOperationMetadata>;
+export const GoogleCloudDialogflowV2ExportOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportedGcsDestination: Schema.optional(
+      GoogleCloudDialogflowV2GcsDestination,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ExportOperationMetadata" });
 
 export interface GoogleCloudDialogflowV2KnowledgeOperationMetadata {
   state?: "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "DONE" | (string & {});
@@ -10044,19 +8684,17 @@ export interface GoogleCloudDialogflowV2KnowledgeOperationMetadata {
   doneTime?: string;
 }
 
-export const GoogleCloudDialogflowV2KnowledgeOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2KnowledgeOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      knowledgeBase: Schema.optional(Schema.String),
-      exportOperationMetadata: Schema.optional(
-        GoogleCloudDialogflowV2ExportOperationMetadata,
-      ),
-      doneTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2KnowledgeOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    knowledgeBase: Schema.optional(Schema.String),
+    exportOperationMetadata: Schema.optional(
+      GoogleCloudDialogflowV2ExportOperationMetadata,
+    ),
+    doneTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2KnowledgeOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2KnowledgeOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2OriginalDetectIntentRequest {
   source?: string;
@@ -10064,16 +8702,14 @@ export interface GoogleCloudDialogflowV2OriginalDetectIntentRequest {
   payload?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowV2OriginalDetectIntentRequest: Schema.Schema<GoogleCloudDialogflowV2OriginalDetectIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2OriginalDetectIntentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2OriginalDetectIntentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2OriginalDetectIntentRequest>;
+  });
 
 export interface GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata {
   conversationProfile?: string;
@@ -10095,18 +8731,16 @@ export interface GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetad
   createTime?: string;
 }
 
-export const GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationProfile: Schema.optional(Schema.String),
-      participantRole: Schema.optional(Schema.String),
-      suggestionFeatureType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationProfile: Schema.optional(Schema.String),
+    participantRole: Schema.optional(Schema.String),
+    suggestionFeatureType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2QueryResult {
   queryText?: string;
@@ -10127,39 +8761,35 @@ export interface GoogleCloudDialogflowV2QueryResult {
   sentimentAnalysisResult?: GoogleCloudDialogflowV2SentimentAnalysisResult;
 }
 
-export const GoogleCloudDialogflowV2QueryResult: Schema.Schema<GoogleCloudDialogflowV2QueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryText: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      speechRecognitionConfidence: Schema.optional(Schema.Number),
-      action: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      allRequiredParamsPresent: Schema.optional(Schema.Boolean),
-      cancelsSlotFilling: Schema.optional(Schema.Boolean),
-      fulfillmentText: Schema.optional(Schema.String),
-      fulfillmentMessages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessage),
-      ),
-      webhookSource: Schema.optional(Schema.String),
-      webhookPayload: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      outputContexts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2Context),
-      ),
-      intent: Schema.optional(GoogleCloudDialogflowV2Intent),
-      intentDetectionConfidence: Schema.optional(Schema.Number),
-      diagnosticInfo: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      sentimentAnalysisResult: Schema.optional(
-        GoogleCloudDialogflowV2SentimentAnalysisResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2QueryResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2QueryResult>;
+export const GoogleCloudDialogflowV2QueryResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryText: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    speechRecognitionConfidence: Schema.optional(Schema.Number),
+    action: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    allRequiredParamsPresent: Schema.optional(Schema.Boolean),
+    cancelsSlotFilling: Schema.optional(Schema.Boolean),
+    fulfillmentText: Schema.optional(Schema.String),
+    fulfillmentMessages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessage),
+    ),
+    webhookSource: Schema.optional(Schema.String),
+    webhookPayload: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    outputContexts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2Context),
+    ),
+    intent: Schema.optional(GoogleCloudDialogflowV2Intent),
+    intentDetectionConfidence: Schema.optional(Schema.Number),
+    diagnosticInfo: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    sentimentAnalysisResult: Schema.optional(
+      GoogleCloudDialogflowV2SentimentAnalysisResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2QueryResult" });
 
 export interface GoogleCloudDialogflowV2WebhookRequest {
   session?: string;
@@ -10168,19 +8798,15 @@ export interface GoogleCloudDialogflowV2WebhookRequest {
   originalDetectIntentRequest?: GoogleCloudDialogflowV2OriginalDetectIntentRequest;
 }
 
-export const GoogleCloudDialogflowV2WebhookRequest: Schema.Schema<GoogleCloudDialogflowV2WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      session: Schema.optional(Schema.String),
-      responseId: Schema.optional(Schema.String),
-      queryResult: Schema.optional(GoogleCloudDialogflowV2QueryResult),
-      originalDetectIntentRequest: Schema.optional(
-        GoogleCloudDialogflowV2OriginalDetectIntentRequest,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2WebhookRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2WebhookRequest>;
+export const GoogleCloudDialogflowV2WebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    session: Schema.optional(Schema.String),
+    responseId: Schema.optional(Schema.String),
+    queryResult: Schema.optional(GoogleCloudDialogflowV2QueryResult),
+    originalDetectIntentRequest: Schema.optional(
+      GoogleCloudDialogflowV2OriginalDetectIntentRequest,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2WebhookRequest" });
 
 export interface GoogleCloudDialogflowV2EventInput {
   name?: string;
@@ -10188,16 +8814,12 @@ export interface GoogleCloudDialogflowV2EventInput {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowV2EventInput: Schema.Schema<GoogleCloudDialogflowV2EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2EventInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2EventInput>;
+export const GoogleCloudDialogflowV2EventInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2EventInput" });
 
 export interface GoogleCloudDialogflowV2SessionEntityType {
   name?: string;
@@ -10209,18 +8831,14 @@ export interface GoogleCloudDialogflowV2SessionEntityType {
   entities?: Array<GoogleCloudDialogflowV2EntityTypeEntity>;
 }
 
-export const GoogleCloudDialogflowV2SessionEntityType: Schema.Schema<GoogleCloudDialogflowV2SessionEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      entityOverrideMode: Schema.optional(Schema.String),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2EntityTypeEntity),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SessionEntityType",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SessionEntityType>;
+export const GoogleCloudDialogflowV2SessionEntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    entityOverrideMode: Schema.optional(Schema.String),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2EntityTypeEntity),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SessionEntityType" });
 
 export interface GoogleCloudDialogflowV2WebhookResponse {
   fulfillmentText?: string;
@@ -10232,50 +8850,44 @@ export interface GoogleCloudDialogflowV2WebhookResponse {
   sessionEntityTypes?: Array<GoogleCloudDialogflowV2SessionEntityType>;
 }
 
-export const GoogleCloudDialogflowV2WebhookResponse: Schema.Schema<GoogleCloudDialogflowV2WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fulfillmentText: Schema.optional(Schema.String),
-      fulfillmentMessages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2IntentMessage),
-      ),
-      source: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      outputContexts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2Context),
-      ),
-      followupEventInput: Schema.optional(GoogleCloudDialogflowV2EventInput),
-      sessionEntityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2SessionEntityType),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2WebhookResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2WebhookResponse>;
+export const GoogleCloudDialogflowV2WebhookResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fulfillmentText: Schema.optional(Schema.String),
+    fulfillmentMessages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2IntentMessage),
+    ),
+    source: Schema.optional(Schema.String),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    outputContexts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2Context),
+    ),
+    followupEventInput: Schema.optional(GoogleCloudDialogflowV2EventInput),
+    sessionEntityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2SessionEntityType),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2WebhookResponse" });
 
 export interface GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata {}
 
-export const GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2ImportConversationDataOperationResponse {
   conversationDataset?: string;
   importCount?: number;
 }
 
-export const GoogleCloudDialogflowV2ImportConversationDataOperationResponse: Schema.Schema<GoogleCloudDialogflowV2ImportConversationDataOperationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationDataset: Schema.optional(Schema.String),
-      importCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2ImportConversationDataOperationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationDataset: Schema.optional(Schema.String),
+    importCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2ImportConversationDataOperationResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ImportConversationDataOperationResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2ImportConversationDataOperationMetadata {
   conversationDataset?: string;
@@ -10283,87 +8895,71 @@ export interface GoogleCloudDialogflowV2ImportConversationDataOperationMetadata 
   createTime?: string;
 }
 
-export const GoogleCloudDialogflowV2ImportConversationDataOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2ImportConversationDataOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationDataset: Schema.optional(Schema.String),
-      partialFailures: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2ImportConversationDataOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationDataset: Schema.optional(Schema.String),
+    partialFailures: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2ImportConversationDataOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ImportConversationDataOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2EncryptionSpec {
   name?: string;
   kmsKey?: string;
 }
 
-export const GoogleCloudDialogflowV2EncryptionSpec: Schema.Schema<GoogleCloudDialogflowV2EncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2EncryptionSpec",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2EncryptionSpec>;
+export const GoogleCloudDialogflowV2EncryptionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2EncryptionSpec" });
 
 export interface GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
   encryptionSpec?: GoogleCloudDialogflowV2EncryptionSpec;
 }
 
-export const GoogleCloudDialogflowV2InitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudDialogflowV2InitializeEncryptionSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionSpec: Schema.optional(GoogleCloudDialogflowV2EncryptionSpec),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2InitializeEncryptionSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionSpec: Schema.optional(GoogleCloudDialogflowV2EncryptionSpec),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2InitializeEncryptionSpecRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2InitializeEncryptionSpecRequest>;
+  });
 
 export interface GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata {
   request?: GoogleCloudDialogflowV2InitializeEncryptionSpecRequest;
 }
 
-export const GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudDialogflowV2InitializeEncryptionSpecRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudDialogflowV2InitializeEncryptionSpecRequest,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata {
   conversationDataset?: string;
 }
 
-export const GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationDataset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationDataset: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2InputDataset {
   dataset?: string;
 }
 
-export const GoogleCloudDialogflowV2InputDataset: Schema.Schema<GoogleCloudDialogflowV2InputDataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2InputDataset",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2InputDataset>;
+export const GoogleCloudDialogflowV2InputDataset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2InputDataset" });
 
 export interface GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
   trainingModelType?:
@@ -10373,14 +8969,12 @@ export interface GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2ArticleSuggestionModelMetadata: Schema.Schema<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trainingModelType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2ArticleSuggestionModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trainingModelType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2ArticleSuggestionModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2SmartReplyModelMetadata {
   trainingModelType?:
@@ -10390,14 +8984,10 @@ export interface GoogleCloudDialogflowV2SmartReplyModelMetadata {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2SmartReplyModelMetadata: Schema.Schema<GoogleCloudDialogflowV2SmartReplyModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trainingModelType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2SmartReplyModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2SmartReplyModelMetadata>;
+export const GoogleCloudDialogflowV2SmartReplyModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trainingModelType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2SmartReplyModelMetadata" });
 
 export interface GoogleCloudDialogflowV2ConversationModel {
   name?: string;
@@ -10422,29 +9012,25 @@ export interface GoogleCloudDialogflowV2ConversationModel {
   satisfiesPzi?: boolean;
 }
 
-export const GoogleCloudDialogflowV2ConversationModel: Schema.Schema<GoogleCloudDialogflowV2ConversationModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      datasets: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2InputDataset),
-      ),
-      state: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      articleSuggestionModelMetadata: Schema.optional(
-        GoogleCloudDialogflowV2ArticleSuggestionModelMetadata,
-      ),
-      smartReplyModelMetadata: Schema.optional(
-        GoogleCloudDialogflowV2SmartReplyModelMetadata,
-      ),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2ConversationModel",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2ConversationModel>;
+export const GoogleCloudDialogflowV2ConversationModel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    datasets: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2InputDataset),
+    ),
+    state: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    articleSuggestionModelMetadata: Schema.optional(
+      GoogleCloudDialogflowV2ArticleSuggestionModelMetadata,
+    ),
+    smartReplyModelMetadata: Schema.optional(
+      GoogleCloudDialogflowV2SmartReplyModelMetadata,
+    ),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2ConversationModel" });
 
 export interface GoogleCloudDialogflowV2CreateConversationModelOperationMetadata {
   conversationModel?: string;
@@ -10461,18 +9047,16 @@ export interface GoogleCloudDialogflowV2CreateConversationModelOperationMetadata
   doneTime?: string;
 }
 
-export const GoogleCloudDialogflowV2CreateConversationModelOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2CreateConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationModel: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      doneTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2CreateConversationModelOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationModel: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    doneTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2CreateConversationModelOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2CreateConversationModelOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata {
   conversationModel?: string;
@@ -10480,17 +9064,15 @@ export interface GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata
   doneTime?: string;
 }
 
-export const GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationModel: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      doneTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationModel: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    doneTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2DeployConversationModelOperationMetadata {
   conversationModel?: string;
@@ -10498,17 +9080,15 @@ export interface GoogleCloudDialogflowV2DeployConversationModelOperationMetadata
   doneTime?: string;
 }
 
-export const GoogleCloudDialogflowV2DeployConversationModelOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2DeployConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationModel: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      doneTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2DeployConversationModelOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationModel: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    doneTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2DeployConversationModelOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2DeployConversationModelOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata {
   conversationModel?: string;
@@ -10516,17 +9096,15 @@ export interface GoogleCloudDialogflowV2UndeployConversationModelOperationMetada
   doneTime?: string;
 }
 
-export const GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationModel: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      doneTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationModel: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    doneTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata {
   conversationModelEvaluation?: string;
@@ -10542,33 +9120,27 @@ export interface GoogleCloudDialogflowV2CreateConversationModelEvaluationOperati
   createTime?: string;
 }
 
-export const GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationModelEvaluation: Schema.optional(Schema.String),
-      conversationModel: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationModelEvaluation: Schema.optional(Schema.String),
+    conversationModel: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1EntityTypeEntity {
   value?: string;
   synonyms?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2beta1EntityTypeEntity: Schema.Schema<GoogleCloudDialogflowV2beta1EntityTypeEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      synonyms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1EntityTypeEntity",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
+export const GoogleCloudDialogflowV2beta1EntityTypeEntity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    synonyms: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EntityTypeEntity" });
 
 export interface GoogleCloudDialogflowV2beta1EntityType {
   name?: string;
@@ -10587,36 +9159,30 @@ export interface GoogleCloudDialogflowV2beta1EntityType {
   enableFuzzyExtraction?: boolean;
 }
 
-export const GoogleCloudDialogflowV2beta1EntityType: Schema.Schema<GoogleCloudDialogflowV2beta1EntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      autoExpansionMode: Schema.optional(Schema.String),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1EntityTypeEntity),
-      ),
-      enableFuzzyExtraction: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1EntityType",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1EntityType>;
+export const GoogleCloudDialogflowV2beta1EntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    autoExpansionMode: Schema.optional(Schema.String),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1EntityTypeEntity),
+    ),
+    enableFuzzyExtraction: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EntityType" });
 
 export interface GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
   entityTypes?: Array<GoogleCloudDialogflowV2beta1EntityType>;
 }
 
-export const GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse: Schema.Schema<GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1EntityType),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1EntityType),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
   text?: string;
@@ -10625,17 +9191,15 @@ export interface GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
   userDefined?: boolean;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart: Schema.Schema<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-      userDefined: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    entityType: Schema.optional(Schema.String),
+    alias: Schema.optional(Schema.String),
+    userDefined: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
   name?: string;
@@ -10644,19 +9208,17 @@ export interface GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
   timesAddedCount?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentTrainingPhrase: Schema.Schema<GoogleCloudDialogflowV2beta1IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      parts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart),
-      ),
-      timesAddedCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentTrainingPhrase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    parts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart),
+    ),
+    timesAddedCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentTrainingPhrase",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentTrainingPhrase>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1Context {
   name?: string;
@@ -10664,16 +9226,12 @@ export interface GoogleCloudDialogflowV2beta1Context {
   parameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowV2beta1Context: Schema.Schema<GoogleCloudDialogflowV2beta1Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      lifespanCount: Schema.optional(Schema.Number),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1Context",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1Context>;
+export const GoogleCloudDialogflowV2beta1Context =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    lifespanCount: Schema.optional(Schema.Number),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Context" });
 
 export interface GoogleCloudDialogflowV2beta1IntentParameter {
   name?: string;
@@ -10686,79 +9244,63 @@ export interface GoogleCloudDialogflowV2beta1IntentParameter {
   isList?: boolean;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentParameter: Schema.Schema<GoogleCloudDialogflowV2beta1IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(Schema.String),
-      entityTypeDisplayName: Schema.optional(Schema.String),
-      mandatory: Schema.optional(Schema.Boolean),
-      prompts: Schema.optional(Schema.Array(Schema.String)),
-      isList: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1IntentParameter",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentParameter>;
+export const GoogleCloudDialogflowV2beta1IntentParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    defaultValue: Schema.optional(Schema.String),
+    entityTypeDisplayName: Schema.optional(Schema.String),
+    mandatory: Schema.optional(Schema.Boolean),
+    prompts: Schema.optional(Schema.Array(Schema.String)),
+    isList: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentParameter" });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageText {
   text?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageText: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1IntentMessageText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageText>;
+export const GoogleCloudDialogflowV2beta1IntentMessageText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentMessageText" });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageImage {
   imageUri?: string;
   accessibilityText?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageImage: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageUri: Schema.optional(Schema.String),
-      accessibilityText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1IntentMessageImage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageImage>;
+export const GoogleCloudDialogflowV2beta1IntentMessageImage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageUri: Schema.optional(Schema.String),
+    accessibilityText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentMessageImage" });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
   title?: string;
   quickReplies?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageQuickReplies: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageQuickReplies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      quickReplies: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageQuickReplies =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    quickReplies: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageQuickReplies",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageQuickReplies>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageCardButton {
   text?: string;
   postback?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageCardButton: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      postback: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageCardButton =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    postback: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageCardButton",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCardButton>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageCard {
   title?: string;
@@ -10767,19 +9309,15 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageCard {
   buttons?: Array<GoogleCloudDialogflowV2beta1IntentMessageCardButton>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageCard: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      subtitle: Schema.optional(Schema.String),
-      imageUri: Schema.optional(Schema.String),
-      buttons: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageCardButton),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1IntentMessageCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCard>;
+export const GoogleCloudDialogflowV2beta1IntentMessageCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    subtitle: Schema.optional(Schema.String),
+    imageUri: Schema.optional(Schema.String),
+    buttons: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageCardButton),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentMessageCard" });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
   textToSpeech?: string;
@@ -10787,62 +9325,54 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
   displayText?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textToSpeech: Schema.optional(Schema.String),
-      ssml: Schema.optional(Schema.String),
-      displayText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textToSpeech: Schema.optional(Schema.String),
+    ssml: Schema.optional(Schema.String),
+    displayText: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
   simpleResponses?: Array<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      simpleResponses: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    simpleResponses: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction {
   uri?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
   title?: string;
   openUriAction?: GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      openUriAction: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    openUriAction: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
   title?: string;
@@ -10852,78 +9382,68 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
   buttons?: Array<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageBasicCard: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBasicCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      subtitle: Schema.optional(Schema.String),
-      formattedText: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
-      buttons: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageBasicCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    subtitle: Schema.optional(Schema.String),
+    formattedText: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+    buttons: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageBasicCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBasicCard>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestion {
   title?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
   suggestions?: Array<GoogleCloudDialogflowV2beta1IntentMessageSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageSuggestions: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSuggestions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageSuggestion),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageSuggestions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageSuggestion),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageSuggestions",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSuggestions>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
   destinationName?: string;
   uri?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationName: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
   key?: string;
   synonyms?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      synonyms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    synonyms: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
   info?: GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo;
@@ -10932,19 +9452,17 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
   image?: GoogleCloudDialogflowV2beta1IntentMessageImage;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageListSelectItem: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      info: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo,
-      ),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageListSelectItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    info: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo,
+    ),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageListSelectItem",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageListSelect {
   title?: string;
@@ -10952,18 +9470,16 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageListSelect {
   subtitle?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageListSelect: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageListSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      items: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageListSelectItem),
-      ),
-      subtitle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageListSelect =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    items: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageListSelectItem),
+    ),
+    subtitle: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageListSelect",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageListSelect>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
   info?: GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo;
@@ -10972,130 +9488,112 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
   image?: GoogleCloudDialogflowV2beta1IntentMessageImage;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      info: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo,
-      ),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    info: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo,
+    ),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
   items?: Array<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem,
-        ),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
   audioUri?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
   text?: string;
   ssml?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      ssml: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    ssml: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
   phoneNumber?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   text?: string;
   postbackData?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      postbackData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    postbackData: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial {
   phoneNumber?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri {
   uri?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation {}
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
   text?: string;
@@ -11105,60 +9603,54 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
   shareLocation?: GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      postbackData: Schema.optional(Schema.String),
-      dial: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial,
-      ),
-      openUrl: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri,
-      ),
-      shareLocation: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    postbackData: Schema.optional(Schema.String),
+    dial: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial,
+    ),
+    openUrl: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri,
+    ),
+    shareLocation: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
   reply?: GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply;
   action?: GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reply: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply,
-      ),
-      action: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reply: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply,
+    ),
+    action: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmText {
   text?: string;
   rbmSuggestion?: Array<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmText: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      rbmSuggestion: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    rbmSuggestion: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmText>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   fileUri?: string;
@@ -11166,17 +9658,15 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
   height?: "HEIGHT_UNSPECIFIED" | "SHORT" | "MEDIUM" | "TALL" | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileUri: Schema.optional(Schema.String),
-      thumbnailUri: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileUri: Schema.optional(Schema.String),
+    thumbnailUri: Schema.optional(Schema.String),
+    height: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
   title?: string;
@@ -11185,21 +9675,19 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
   suggestions?: Array<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      media: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia,
-      ),
-      suggestions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    media: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia,
+    ),
+    suggestions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
   cardOrientation?:
@@ -11215,35 +9703,31 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
   cardContent?: GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cardOrientation: Schema.optional(Schema.String),
-      thumbnailImageAlignment: Schema.optional(Schema.String),
-      cardContent: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cardOrientation: Schema.optional(Schema.String),
+    thumbnailImageAlignment: Schema.optional(Schema.String),
+    cardContent: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
   cardWidth?: "CARD_WIDTH_UNSPECIFIED" | "SMALL" | "MEDIUM" | (string & {});
   cardContents?: Array<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cardWidth: Schema.optional(Schema.String),
-      cardContents: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cardWidth: Schema.optional(Schema.String),
+    cardContents: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
   url?: string;
@@ -11254,16 +9738,14 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrow
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      urlTypeHint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    urlTypeHint: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
   openUriAction?: GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction;
@@ -11273,21 +9755,19 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrow
   footer?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openUriAction: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction,
-      ),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
-      footer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    openUriAction: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction,
+    ),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+    footer: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
   items?: Array<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>;
@@ -11300,19 +9780,17 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem,
-        ),
+export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem,
       ),
-      imageDisplayOptions: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    imageDisplayOptions: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
   header?: string;
@@ -11324,45 +9802,39 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageColumnProperties: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      header: Schema.optional(Schema.String),
-      horizontalAlignment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageColumnProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    header: Schema.optional(Schema.String),
+    horizontalAlignment: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageColumnProperties",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
   text?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageTableCardCell: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageTableCardCell =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCardCell",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
   cells?: Array<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>;
   dividerAfter?: boolean;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageTableCardRow: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cells: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageTableCardCell),
-      ),
-      dividerAfter: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageTableCardRow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cells: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageTableCardCell),
+    ),
+    dividerAfter: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCardRow",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageTableCard {
   title?: string;
@@ -11373,25 +9845,23 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTableCard {
   buttons?: Array<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageTableCard: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTableCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      subtitle: Schema.optional(Schema.String),
-      image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
-      columnProperties: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageColumnProperties),
-      ),
-      rows: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageTableCardRow),
-      ),
-      buttons: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageTableCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    subtitle: Schema.optional(Schema.String),
+    image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+    columnProperties: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageColumnProperties),
+    ),
+    rows: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageTableCardRow),
+    ),
+    buttons: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCard",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageTableCard>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
   name?: string;
@@ -11401,40 +9871,34 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMe
   contentUrl?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      largeImage: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageImage,
-      ),
-      icon: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
-      contentUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    largeImage: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+    icon: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+    contentUrl: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
   mediaType?: "RESPONSE_MEDIA_TYPE_UNSPECIFIED" | "AUDIO" | (string & {});
   mediaObjects?: Array<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessageMediaContent: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageMediaContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mediaType: Schema.optional(Schema.String),
-      mediaObjects: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject,
-        ),
+export const GoogleCloudDialogflowV2beta1IntentMessageMediaContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mediaType: Schema.optional(Schema.String),
+    mediaObjects: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageMediaContent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessageMediaContent>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IntentMessage {
   text?: GoogleCloudDialogflowV2beta1IntentMessageText;
@@ -11472,81 +9936,73 @@ export interface GoogleCloudDialogflowV2beta1IntentMessage {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1IntentMessage: Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageText),
-      image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
-      quickReplies: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageQuickReplies,
-      ),
-      card: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageCard),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      simpleResponses: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses,
-      ),
-      basicCard: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageBasicCard,
-      ),
-      suggestions: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageSuggestions,
-      ),
-      linkOutSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion,
-      ),
-      listSelect: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageListSelect,
-      ),
-      carouselSelect: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect,
-      ),
-      telephonyPlayAudio: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio,
-      ),
-      telephonySynthesizeSpeech: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech,
-      ),
-      telephonyTransferCall: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall,
-      ),
-      rbmText: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmText,
-      ),
-      rbmStandaloneRichCard: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard,
-      ),
-      rbmCarouselRichCard: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard,
-      ),
-      browseCarouselCard: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard,
-      ),
-      tableCard: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageTableCard,
-      ),
-      mediaContent: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentMessageMediaContent,
-      ),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1IntentMessage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentMessage>;
+export const GoogleCloudDialogflowV2beta1IntentMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageText),
+    image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
+    quickReplies: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageQuickReplies,
+    ),
+    card: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageCard),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    simpleResponses: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses,
+    ),
+    basicCard: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageBasicCard,
+    ),
+    suggestions: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageSuggestions,
+    ),
+    linkOutSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion,
+    ),
+    listSelect: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageListSelect,
+    ),
+    carouselSelect: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect,
+    ),
+    telephonyPlayAudio: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio,
+    ),
+    telephonySynthesizeSpeech: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech,
+    ),
+    telephonyTransferCall: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall,
+    ),
+    rbmText: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageRbmText),
+    rbmStandaloneRichCard: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard,
+    ),
+    rbmCarouselRichCard: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard,
+    ),
+    browseCarouselCard: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard,
+    ),
+    tableCard: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageTableCard,
+    ),
+    mediaContent: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentMessageMediaContent,
+    ),
+    platform: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentMessage" });
 
 export interface GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo {
   followupIntentName?: string;
   parentFollowupIntentName?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo: Schema.Schema<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      followupIntentName: Schema.optional(Schema.String),
-      parentFollowupIntentName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    followupIntentName: Schema.optional(Schema.String),
+    parentFollowupIntentName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1Intent {
   name?: string;
@@ -11589,59 +10045,51 @@ export interface GoogleCloudDialogflowV2beta1Intent {
   followupIntentInfo?: Array<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>;
 }
 
-export const GoogleCloudDialogflowV2beta1Intent: Schema.Schema<GoogleCloudDialogflowV2beta1Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      webhookState: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.Number),
-      isFallback: Schema.optional(Schema.Boolean),
-      mlEnabled: Schema.optional(Schema.Boolean),
-      mlDisabled: Schema.optional(Schema.Boolean),
-      liveAgentHandoff: Schema.optional(Schema.Boolean),
-      endInteraction: Schema.optional(Schema.Boolean),
-      inputContextNames: Schema.optional(Schema.Array(Schema.String)),
-      events: Schema.optional(Schema.Array(Schema.String)),
-      trainingPhrases: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentTrainingPhrase),
-      ),
-      action: Schema.optional(Schema.String),
-      outputContexts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1Context),
-      ),
-      resetContexts: Schema.optional(Schema.Boolean),
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentParameter),
-      ),
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessage),
-      ),
-      defaultResponsePlatforms: Schema.optional(Schema.Array(Schema.String)),
-      rootFollowupIntentName: Schema.optional(Schema.String),
-      parentFollowupIntentName: Schema.optional(Schema.String),
-      followupIntentInfo: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1Intent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1Intent>;
+export const GoogleCloudDialogflowV2beta1Intent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    webhookState: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.Number),
+    isFallback: Schema.optional(Schema.Boolean),
+    mlEnabled: Schema.optional(Schema.Boolean),
+    mlDisabled: Schema.optional(Schema.Boolean),
+    liveAgentHandoff: Schema.optional(Schema.Boolean),
+    endInteraction: Schema.optional(Schema.Boolean),
+    inputContextNames: Schema.optional(Schema.Array(Schema.String)),
+    events: Schema.optional(Schema.Array(Schema.String)),
+    trainingPhrases: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentTrainingPhrase),
+    ),
+    action: Schema.optional(Schema.String),
+    outputContexts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1Context),
+    ),
+    resetContexts: Schema.optional(Schema.Boolean),
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentParameter),
+    ),
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessage),
+    ),
+    defaultResponsePlatforms: Schema.optional(Schema.Array(Schema.String)),
+    rootFollowupIntentName: Schema.optional(Schema.String),
+    parentFollowupIntentName: Schema.optional(Schema.String),
+    followupIntentInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Intent" });
 
 export interface GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
   intents?: Array<GoogleCloudDialogflowV2beta1Intent>;
 }
 
-export const GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse: Schema.Schema<GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intents: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1Intent),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intents: Schema.optional(Schema.Array(GoogleCloudDialogflowV2beta1Intent)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata {
   conversationProfile?: string;
@@ -11664,51 +10112,45 @@ export interface GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperati
   createTime?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationProfile: Schema.optional(Schema.String),
-      participantRole: Schema.optional(Schema.String),
-      suggestionFeatureType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationProfile: Schema.optional(Schema.String),
+    participantRole: Schema.optional(Schema.String),
+    suggestionFeatureType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageText {
   text?: Array<string>;
 }
 
-export const GoogleCloudDialogflowV2beta1ResponseMessageText: Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ResponseMessageText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageText",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageText>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff: Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction {}
 
-export const GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction: Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment {
   audio?: string;
@@ -11716,49 +10158,43 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment {
   allowPlaybackInterruption?: boolean;
 }
 
-export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment: Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audio: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      allowPlaybackInterruption: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audio: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    allowPlaybackInterruption: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio {
   segments?: Array<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment>;
 }
 
-export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio: Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      segments: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment,
-        ),
+export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    segments: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall {
   phoneNumber?: string;
   sipUri?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall: Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-      sipUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+    sipUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ResponseMessage {
   text?: GoogleCloudDialogflowV2beta1ResponseMessageText;
@@ -11769,27 +10205,23 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessage {
   telephonyTransferCall?: GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall;
 }
 
-export const GoogleCloudDialogflowV2beta1ResponseMessage: Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudDialogflowV2beta1ResponseMessageText),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      liveAgentHandoff: Schema.optional(
-        GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff,
-      ),
-      endInteraction: Schema.optional(
-        GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction,
-      ),
-      mixedAudio: Schema.optional(
-        GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio,
-      ),
-      telephonyTransferCall: Schema.optional(
-        GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1ResponseMessage",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ResponseMessage>;
+export const GoogleCloudDialogflowV2beta1ResponseMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudDialogflowV2beta1ResponseMessageText),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    liveAgentHandoff: Schema.optional(
+      GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff,
+    ),
+    endInteraction: Schema.optional(
+      GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction,
+    ),
+    mixedAudio: Schema.optional(
+      GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio,
+    ),
+    telephonyTransferCall: Schema.optional(
+      GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ResponseMessage" });
 
 export interface GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
   text?: string;
@@ -11797,63 +10229,49 @@ export interface GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
   formattedValue?: unknown;
 }
 
-export const GoogleCloudDialogflowV2beta1AnnotatedMessagePart: Schema.Schema<GoogleCloudDialogflowV2beta1AnnotatedMessagePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-      formattedValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1AnnotatedMessagePart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    entityType: Schema.optional(Schema.String),
+    formattedValue: Schema.optional(Schema.Unknown),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1AnnotatedMessagePart",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1MessageAnnotation {
   parts?: Array<GoogleCloudDialogflowV2beta1AnnotatedMessagePart>;
   containEntities?: boolean;
 }
 
-export const GoogleCloudDialogflowV2beta1MessageAnnotation: Schema.Schema<GoogleCloudDialogflowV2beta1MessageAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1AnnotatedMessagePart),
-      ),
-      containEntities: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1MessageAnnotation",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1MessageAnnotation>;
+export const GoogleCloudDialogflowV2beta1MessageAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1AnnotatedMessagePart),
+    ),
+    containEntities: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1MessageAnnotation" });
 
 export interface GoogleCloudDialogflowV2beta1Sentiment {
   score?: number;
   magnitude?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1Sentiment: Schema.Schema<GoogleCloudDialogflowV2beta1Sentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1Sentiment",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1Sentiment>;
+export const GoogleCloudDialogflowV2beta1Sentiment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    magnitude: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Sentiment" });
 
 export interface GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
   queryTextSentiment?: GoogleCloudDialogflowV2beta1Sentiment;
 }
 
-export const GoogleCloudDialogflowV2beta1SentimentAnalysisResult: Schema.Schema<GoogleCloudDialogflowV2beta1SentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryTextSentiment: Schema.optional(
-        GoogleCloudDialogflowV2beta1Sentiment,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SentimentAnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryTextSentiment: Schema.optional(GoogleCloudDialogflowV2beta1Sentiment),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SentimentAnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SentimentAnalysisResult>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1Message {
   name?: string;
@@ -11873,29 +10291,25 @@ export interface GoogleCloudDialogflowV2beta1Message {
   sentimentAnalysis?: GoogleCloudDialogflowV2beta1SentimentAnalysisResult;
 }
 
-export const GoogleCloudDialogflowV2beta1Message: Schema.Schema<GoogleCloudDialogflowV2beta1Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      responseMessages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1ResponseMessage),
-      ),
-      languageCode: Schema.optional(Schema.String),
-      participant: Schema.optional(Schema.String),
-      participantRole: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      sendTime: Schema.optional(Schema.String),
-      messageAnnotation: Schema.optional(
-        GoogleCloudDialogflowV2beta1MessageAnnotation,
-      ),
-      sentimentAnalysis: Schema.optional(
-        GoogleCloudDialogflowV2beta1SentimentAnalysisResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1Message",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1Message>;
+export const GoogleCloudDialogflowV2beta1Message =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    responseMessages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1ResponseMessage),
+    ),
+    languageCode: Schema.optional(Schema.String),
+    participant: Schema.optional(Schema.String),
+    participantRole: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    sendTime: Schema.optional(Schema.String),
+    messageAnnotation: Schema.optional(
+      GoogleCloudDialogflowV2beta1MessageAnnotation,
+    ),
+    sentimentAnalysis: Schema.optional(
+      GoogleCloudDialogflowV2beta1SentimentAnalysisResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Message" });
 
 export interface GoogleCloudDialogflowV2beta1SpeechWordInfo {
   word?: string;
@@ -11904,17 +10318,13 @@ export interface GoogleCloudDialogflowV2beta1SpeechWordInfo {
   confidence?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1SpeechWordInfo: Schema.Schema<GoogleCloudDialogflowV2beta1SpeechWordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      word: Schema.optional(Schema.String),
-      startOffset: Schema.optional(Schema.String),
-      endOffset: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1SpeechWordInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SpeechWordInfo>;
+export const GoogleCloudDialogflowV2beta1SpeechWordInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    word: Schema.optional(Schema.String),
+    startOffset: Schema.optional(Schema.String),
+    endOffset: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SpeechWordInfo" });
 
 export interface GoogleCloudDialogflowV2beta1TelephonyDtmfEvents {
   dtmfEvents?: Array<
@@ -11939,14 +10349,12 @@ export interface GoogleCloudDialogflowV2beta1TelephonyDtmfEvents {
   >;
 }
 
-export const GoogleCloudDialogflowV2beta1TelephonyDtmfEvents: Schema.Schema<GoogleCloudDialogflowV2beta1TelephonyDtmfEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dtmfEvents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1TelephonyDtmfEvents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dtmfEvents: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1TelephonyDtmfEvents",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1TelephonyDtmfEvents>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1StreamingRecognitionResult {
   messageType?:
@@ -11966,26 +10374,24 @@ export interface GoogleCloudDialogflowV2beta1StreamingRecognitionResult {
   dtmfDigits?: GoogleCloudDialogflowV2beta1TelephonyDtmfEvents;
 }
 
-export const GoogleCloudDialogflowV2beta1StreamingRecognitionResult: Schema.Schema<GoogleCloudDialogflowV2beta1StreamingRecognitionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageType: Schema.optional(Schema.String),
-      transcript: Schema.optional(Schema.String),
-      isFinal: Schema.optional(Schema.Boolean),
-      confidence: Schema.optional(Schema.Number),
-      stability: Schema.optional(Schema.Number),
-      speechWordInfo: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1SpeechWordInfo),
-      ),
-      speechEndOffset: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      dtmfDigits: Schema.optional(
-        GoogleCloudDialogflowV2beta1TelephonyDtmfEvents,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1StreamingRecognitionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageType: Schema.optional(Schema.String),
+    transcript: Schema.optional(Schema.String),
+    isFinal: Schema.optional(Schema.Boolean),
+    confidence: Schema.optional(Schema.Number),
+    stability: Schema.optional(Schema.Number),
+    speechWordInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1SpeechWordInfo),
+    ),
+    speechEndOffset: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    dtmfDigits: Schema.optional(
+      GoogleCloudDialogflowV2beta1TelephonyDtmfEvents,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1StreamingRecognitionResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1StreamingRecognitionResult>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ConversationEvent {
   conversation?: string;
@@ -12003,35 +10409,29 @@ export interface GoogleCloudDialogflowV2beta1ConversationEvent {
   newRecognitionResultPayload?: GoogleCloudDialogflowV2beta1StreamingRecognitionResult;
 }
 
-export const GoogleCloudDialogflowV2beta1ConversationEvent: Schema.Schema<GoogleCloudDialogflowV2beta1ConversationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      errorStatus: Schema.optional(GoogleRpcStatus),
-      newMessagePayload: Schema.optional(GoogleCloudDialogflowV2beta1Message),
-      newRecognitionResultPayload: Schema.optional(
-        GoogleCloudDialogflowV2beta1StreamingRecognitionResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1ConversationEvent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ConversationEvent>;
+export const GoogleCloudDialogflowV2beta1ConversationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    errorStatus: Schema.optional(GoogleRpcStatus),
+    newMessagePayload: Schema.optional(GoogleCloudDialogflowV2beta1Message),
+    newRecognitionResultPayload: Schema.optional(
+      GoogleCloudDialogflowV2beta1StreamingRecognitionResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ConversationEvent" });
 
 export interface GoogleCloudDialogflowV2beta1ExportAgentResponse {
   agentUri?: string;
   agentContent?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1ExportAgentResponse: Schema.Schema<GoogleCloudDialogflowV2beta1ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUri: Schema.optional(Schema.String),
-      agentContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ExportAgentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentUri: Schema.optional(Schema.String),
+    agentContent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ExportAgentResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ExportAgentResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ArticleAnswer {
   title?: string;
@@ -12041,18 +10441,14 @@ export interface GoogleCloudDialogflowV2beta1ArticleAnswer {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1ArticleAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1ArticleAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      snippets: Schema.optional(Schema.Array(Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1ArticleAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ArticleAnswer>;
+export const GoogleCloudDialogflowV2beta1ArticleAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    snippets: Schema.optional(Schema.Array(Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ArticleAnswer" });
 
 export interface GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
   articleAnswers?: Array<GoogleCloudDialogflowV2beta1ArticleAnswer>;
@@ -12060,46 +10456,40 @@ export interface GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1SuggestArticlesResponse: Schema.Schema<GoogleCloudDialogflowV2beta1SuggestArticlesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      articleAnswers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1ArticleAnswer),
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SuggestArticlesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    articleAnswers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1ArticleAnswer),
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SuggestArticlesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SuggestArticlesResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery {
   queryText?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryText: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
   question?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      question: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    question: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet {
   uri?: string;
@@ -12108,36 +10498,32 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswe
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource {
   snippets?: Array<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet>;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippets: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet,
-        ),
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snippets: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer {
   answerText?: string;
@@ -12145,21 +10531,19 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswe
   generativeSource?: GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerText: Schema.optional(Schema.String),
-      faqSource: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource,
-      ),
-      generativeSource: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerText: Schema.optional(Schema.String),
+    faqSource: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource,
+    ),
+    generativeSource: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior {
   answerGenerationRewriterOn?: boolean;
@@ -12181,31 +10565,29 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAs
   appendedSearchContextCount?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerGenerationRewriterOn: Schema.optional(Schema.Boolean),
-      endUserMetadataIncluded: Schema.optional(Schema.Boolean),
-      returnQueryOnly: Schema.optional(Schema.Boolean),
-      usePubsubDelivery: Schema.optional(Schema.Boolean),
-      disableSyncDelivery: Schema.optional(Schema.Boolean),
-      previousQueriesIncluded: Schema.optional(Schema.Boolean),
-      useTranslatedMessage: Schema.optional(Schema.Boolean),
-      useCustomSafetyFilterLevel: Schema.optional(Schema.Boolean),
-      conversationTranscriptHasMixedLanguages: Schema.optional(Schema.Boolean),
-      queryGenerationAgentLanguageMismatch: Schema.optional(Schema.Boolean),
-      queryGenerationEndUserLanguageMismatch: Schema.optional(Schema.Boolean),
-      thirdPartyConnectorAllowed: Schema.optional(Schema.Boolean),
-      multipleQueriesGenerated: Schema.optional(Schema.Boolean),
-      queryContainedSearchContext: Schema.optional(Schema.Boolean),
-      invalidItemsQuerySuggestionSkipped: Schema.optional(Schema.Boolean),
-      primaryQueryRedactedAndReplaced: Schema.optional(Schema.Boolean),
-      appendedSearchContextCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerGenerationRewriterOn: Schema.optional(Schema.Boolean),
+    endUserMetadataIncluded: Schema.optional(Schema.Boolean),
+    returnQueryOnly: Schema.optional(Schema.Boolean),
+    usePubsubDelivery: Schema.optional(Schema.Boolean),
+    disableSyncDelivery: Schema.optional(Schema.Boolean),
+    previousQueriesIncluded: Schema.optional(Schema.Boolean),
+    useTranslatedMessage: Schema.optional(Schema.Boolean),
+    useCustomSafetyFilterLevel: Schema.optional(Schema.Boolean),
+    conversationTranscriptHasMixedLanguages: Schema.optional(Schema.Boolean),
+    queryGenerationAgentLanguageMismatch: Schema.optional(Schema.Boolean),
+    queryGenerationEndUserLanguageMismatch: Schema.optional(Schema.Boolean),
+    thirdPartyConnectorAllowed: Schema.optional(Schema.Boolean),
+    multipleQueriesGenerated: Schema.optional(Schema.Boolean),
+    queryContainedSearchContext: Schema.optional(Schema.Boolean),
+    invalidItemsQuerySuggestionSkipped: Schema.optional(Schema.Boolean),
+    primaryQueryRedactedAndReplaced: Schema.optional(Schema.Boolean),
+    appendedSearchContextCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo {
   parameter?: string;
@@ -12220,16 +10602,14 @@ export interface GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIn
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo: Schema.Schema<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(Schema.String),
-      ingestionStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameter: Schema.optional(Schema.String),
+    ingestionStatus: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo {
   projectNotAllowlisted?: boolean;
@@ -12237,20 +10617,18 @@ export interface GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo {
   ingestedParametersDebugInfo?: Array<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo>;
 }
 
-export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo: Schema.Schema<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectNotAllowlisted: Schema.optional(Schema.Boolean),
-      contextReferenceRetrieved: Schema.optional(Schema.Boolean),
-      ingestedParametersDebugInfo: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo,
-        ),
+export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectNotAllowlisted: Schema.optional(Schema.Boolean),
+    contextReferenceRetrieved: Schema.optional(Schema.Boolean),
+    ingestedParametersDebugInfo: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency {
   step?: string;
@@ -12259,35 +10637,29 @@ export interface GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatenc
   completeTime?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency: Schema.Schema<GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      latencyMs: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    latencyMs: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ServiceLatency {
   internalServiceLatencies?: Array<GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency>;
 }
 
-export const GoogleCloudDialogflowV2beta1ServiceLatency: Schema.Schema<GoogleCloudDialogflowV2beta1ServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      internalServiceLatencies: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency,
-        ),
+export const GoogleCloudDialogflowV2beta1ServiceLatency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internalServiceLatencies: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1ServiceLatency",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ServiceLatency>;
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ServiceLatency" });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo {
   queryGenerationFailureReason?:
@@ -12326,25 +10698,21 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo {
   serviceLatency?: GoogleCloudDialogflowV2beta1ServiceLatency;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryGenerationFailureReason: Schema.optional(Schema.String),
-      queryCategorizationFailureReason: Schema.optional(Schema.String),
-      datastoreResponseReason: Schema.optional(Schema.String),
-      knowledgeAssistBehavior: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior,
-      ),
-      ingestedContextReferenceDebugInfo: Schema.optional(
-        GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo,
-      ),
-      serviceLatency: Schema.optional(
-        GoogleCloudDialogflowV2beta1ServiceLatency,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryGenerationFailureReason: Schema.optional(Schema.String),
+    queryCategorizationFailureReason: Schema.optional(Schema.String),
+    datastoreResponseReason: Schema.optional(Schema.String),
+    knowledgeAssistBehavior: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior,
+    ),
+    ingestedContextReferenceDebugInfo: Schema.optional(
+      GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo,
+    ),
+    serviceLatency: Schema.optional(GoogleCloudDialogflowV2beta1ServiceLatency),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer {
   suggestedQuery?: GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery;
@@ -12353,23 +10721,21 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer {
   knowledgeAssistDebugInfo?: GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedQuery: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery,
-      ),
-      suggestedQueryAnswer: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer,
-      ),
-      answerRecord: Schema.optional(Schema.String),
-      knowledgeAssistDebugInfo: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestedQuery: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery,
+    ),
+    suggestedQueryAnswer: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer,
+    ),
+    answerRecord: Schema.optional(Schema.String),
+    knowledgeAssistDebugInfo: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse {
   knowledgeAssistAnswer?: GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer;
@@ -12377,18 +10743,16 @@ export interface GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse: Schema.Schema<GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      knowledgeAssistAnswer: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer,
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    knowledgeAssistAnswer: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer,
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1FaqAnswer {
   answer?: string;
@@ -12399,19 +10763,15 @@ export interface GoogleCloudDialogflowV2beta1FaqAnswer {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1FaqAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1FaqAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answer: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-      question: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1FaqAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1FaqAnswer>;
+export const GoogleCloudDialogflowV2beta1FaqAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answer: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+    question: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1FaqAnswer" });
 
 export interface GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
   faqAnswers?: Array<GoogleCloudDialogflowV2beta1FaqAnswer>;
@@ -12419,18 +10779,16 @@ export interface GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse: Schema.Schema<GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      faqAnswers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1FaqAnswer),
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    faqAnswers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1FaqAnswer),
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1SmartReplyAnswer {
   reply?: string;
@@ -12438,16 +10796,12 @@ export interface GoogleCloudDialogflowV2beta1SmartReplyAnswer {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1SmartReplyAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1SmartReplyAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reply: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1SmartReplyAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SmartReplyAnswer>;
+export const GoogleCloudDialogflowV2beta1SmartReplyAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reply: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SmartReplyAnswer" });
 
 export interface GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
   smartReplyAnswers?: Array<GoogleCloudDialogflowV2beta1SmartReplyAnswer>;
@@ -12455,18 +10809,16 @@ export interface GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse: Schema.Schema<GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smartReplyAnswers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1SmartReplyAnswer),
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    smartReplyAnswers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1SmartReplyAnswer),
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
   source?: string;
@@ -12481,33 +10833,27 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
   matchConfidence?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      faqQuestion: Schema.optional(Schema.String),
-      answer: Schema.optional(Schema.String),
-      matchConfidenceLevel: Schema.optional(Schema.String),
-      matchConfidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    faqQuestion: Schema.optional(Schema.String),
+    answer: Schema.optional(Schema.String),
+    matchConfidenceLevel: Schema.optional(Schema.String),
+    matchConfidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeAnswers {
   answers?: Array<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeAnswers: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAnswers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1KnowledgeAnswers",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeAnswers>;
+export const GoogleCloudDialogflowV2beta1KnowledgeAnswers =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1KnowledgeAnswers" });
 
 export interface GoogleCloudDialogflowV2beta1QueryResult {
   queryText?: string;
@@ -12529,42 +10875,38 @@ export interface GoogleCloudDialogflowV2beta1QueryResult {
   knowledgeAnswers?: GoogleCloudDialogflowV2beta1KnowledgeAnswers;
 }
 
-export const GoogleCloudDialogflowV2beta1QueryResult: Schema.Schema<GoogleCloudDialogflowV2beta1QueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryText: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      speechRecognitionConfidence: Schema.optional(Schema.Number),
-      action: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      allRequiredParamsPresent: Schema.optional(Schema.Boolean),
-      cancelsSlotFilling: Schema.optional(Schema.Boolean),
-      fulfillmentText: Schema.optional(Schema.String),
-      fulfillmentMessages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessage),
-      ),
-      webhookSource: Schema.optional(Schema.String),
-      webhookPayload: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      outputContexts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1Context),
-      ),
-      intent: Schema.optional(GoogleCloudDialogflowV2beta1Intent),
-      intentDetectionConfidence: Schema.optional(Schema.Number),
-      diagnosticInfo: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      sentimentAnalysisResult: Schema.optional(
-        GoogleCloudDialogflowV2beta1SentimentAnalysisResult,
-      ),
-      knowledgeAnswers: Schema.optional(
-        GoogleCloudDialogflowV2beta1KnowledgeAnswers,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1QueryResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1QueryResult>;
+export const GoogleCloudDialogflowV2beta1QueryResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryText: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    speechRecognitionConfidence: Schema.optional(Schema.Number),
+    action: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    allRequiredParamsPresent: Schema.optional(Schema.Boolean),
+    cancelsSlotFilling: Schema.optional(Schema.Boolean),
+    fulfillmentText: Schema.optional(Schema.String),
+    fulfillmentMessages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessage),
+    ),
+    webhookSource: Schema.optional(Schema.String),
+    webhookPayload: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    outputContexts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1Context),
+    ),
+    intent: Schema.optional(GoogleCloudDialogflowV2beta1Intent),
+    intentDetectionConfidence: Schema.optional(Schema.Number),
+    diagnosticInfo: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    sentimentAnalysisResult: Schema.optional(
+      GoogleCloudDialogflowV2beta1SentimentAnalysisResult,
+    ),
+    knowledgeAnswers: Schema.optional(
+      GoogleCloudDialogflowV2beta1KnowledgeAnswers,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1QueryResult" });
 
 export interface GoogleCloudDialogflowV2beta1IntentSuggestion {
   displayName?: string;
@@ -12572,16 +10914,12 @@ export interface GoogleCloudDialogflowV2beta1IntentSuggestion {
   description?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1IntentSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1IntentSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      intentV2: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1IntentSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1IntentSuggestion>;
+export const GoogleCloudDialogflowV2beta1IntentSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    intentV2: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentSuggestion" });
 
 export interface GoogleCloudDialogflowV2beta1DialogflowAssistAnswer {
   queryResult?: GoogleCloudDialogflowV2beta1QueryResult;
@@ -12589,18 +10927,16 @@ export interface GoogleCloudDialogflowV2beta1DialogflowAssistAnswer {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1DialogflowAssistAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1DialogflowAssistAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryResult: Schema.optional(GoogleCloudDialogflowV2beta1QueryResult),
-      intentSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2beta1IntentSuggestion,
-      ),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1DialogflowAssistAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryResult: Schema.optional(GoogleCloudDialogflowV2beta1QueryResult),
+    intentSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2beta1IntentSuggestion,
+    ),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1DialogflowAssistAnswer>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse {
   dialogflowAssistAnswers?: Array<GoogleCloudDialogflowV2beta1DialogflowAssistAnswer>;
@@ -12608,63 +10944,49 @@ export interface GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse {
   contextSize?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse: Schema.Schema<GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowAssistAnswers: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1DialogflowAssistAnswer),
-      ),
-      latestMessage: Schema.optional(Schema.String),
-      contextSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowAssistAnswers: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1DialogflowAssistAnswer),
+    ),
+    latestMessage: Schema.optional(Schema.String),
+    contextSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1FreeFormSuggestion {
   response?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1FreeFormSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1FreeFormSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1FreeFormSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1FreeFormSuggestion>;
+export const GoogleCloudDialogflowV2beta1FreeFormSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1FreeFormSuggestion" });
 
 export interface GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection {
   section?: string;
   summary?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection: Schema.Schema<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      section: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    section: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1SummarySuggestion {
   summarySections?: Array<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>;
 }
 
-export const GoogleCloudDialogflowV2beta1SummarySuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1SummarySuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summarySections: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1SummarySuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SummarySuggestion>;
+export const GoogleCloudDialogflowV2beta1SummarySuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summarySections: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SummarySuggestion" });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion {
   answerRecord?: string;
@@ -12672,35 +10994,31 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCh
   similarityScore?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerRecord: Schema.optional(Schema.String),
-      suggestionIndex: Schema.optional(Schema.Number),
-      similarityScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerRecord: Schema.optional(Schema.String),
+    suggestionIndex: Schema.optional(Schema.Number),
+    similarityScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult {
   duplicateSuggestions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicateSuggestions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion,
-        ),
+export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicateSuggestions: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingInstruction {
   displayName?: string;
@@ -12719,35 +11037,31 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingInstruction {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingInstruction: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      displayDetails: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      agentAction: Schema.optional(Schema.String),
-      systemAction: Schema.optional(Schema.String),
-      duplicateCheckResult: Schema.optional(
-        GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult,
-      ),
-      triggeringEvent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1AgentCoachingInstruction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    displayDetails: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    agentAction: Schema.optional(Schema.String),
+    systemAction: Schema.optional(Schema.String),
+    duplicateCheckResult: Schema.optional(
+      GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult,
+    ),
+    triggeringEvent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1AgentCoachingInstruction",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingInstruction>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources {
   instructionIndexes?: Array<number>;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instructionIndexes: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instructionIndexes: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion {
   answerRecord?: string;
@@ -12756,38 +11070,34 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateChe
   similarityScore?: number;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerRecord: Schema.optional(Schema.String),
-      sources: Schema.optional(
-        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
-      ),
-      suggestionIndex: Schema.optional(Schema.Number),
-      similarityScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerRecord: Schema.optional(Schema.String),
+    sources: Schema.optional(
+      GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
+    ),
+    suggestionIndex: Schema.optional(Schema.Number),
+    similarityScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult {
   duplicateSuggestions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicateSuggestions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion,
-        ),
+export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicateSuggestions: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion {
   agentAction?: string;
@@ -12795,21 +11105,19 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionS
   duplicateCheckResult?: GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentAction: Schema.optional(Schema.String),
-      sources: Schema.optional(
-        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
-      ),
-      duplicateCheckResult: Schema.optional(
-        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentAction: Schema.optional(Schema.String),
+    sources: Schema.optional(
+      GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
+    ),
+    duplicateCheckResult: Schema.optional(
+      GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse {
   responseText?: string;
@@ -12817,21 +11125,19 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleRespon
   duplicateCheckResult?: GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseText: Schema.optional(Schema.String),
-      sources: Schema.optional(
-        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
-      ),
-      duplicateCheckResult: Schema.optional(
-        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseText: Schema.optional(Schema.String),
+    sources: Schema.optional(
+      GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
+    ),
+    duplicateCheckResult: Schema.optional(
+      GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestion {
   applicableInstructions?: Array<GoogleCloudDialogflowV2beta1AgentCoachingInstruction>;
@@ -12839,29 +11145,30 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestion {
   sampleResponses?: Array<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse>;
 }
 
-export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicableInstructions: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1AgentCoachingInstruction),
+export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicableInstructions: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1AgentCoachingInstruction),
+    ),
+    agentActionSuggestions: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion,
       ),
-      agentActionSuggestions: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion,
-        ),
+    ),
+    sampleResponses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse,
       ),
-      sampleResponses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1AgentCoachingSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ToolCall {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   toolDisplayName?: string;
   toolDisplayDetails?: string;
   action?: string;
@@ -12875,39 +11182,39 @@ export interface GoogleCloudDialogflowV2beta1ToolCall {
     | (string & {});
 }
 
-export const GoogleCloudDialogflowV2beta1ToolCall: Schema.Schema<GoogleCloudDialogflowV2beta1ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolDisplayName: Schema.optional(Schema.String),
-      toolDisplayDetails: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      createTime: Schema.optional(Schema.String),
-      answerRecord: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1ToolCall",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ToolCall>;
+export const GoogleCloudDialogflowV2beta1ToolCall =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    cesTool: Schema.optional(Schema.String),
+    cesToolset: Schema.optional(Schema.String),
+    cesApp: Schema.optional(Schema.String),
+    toolDisplayName: Schema.optional(Schema.String),
+    toolDisplayDetails: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    createTime: Schema.optional(Schema.String),
+    answerRecord: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ToolCall" });
 
 export interface GoogleCloudDialogflowV2beta1ToolCallResultError {
   message?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1ToolCallResultError: Schema.Schema<GoogleCloudDialogflowV2beta1ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ToolCallResultError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ToolCallResultError",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ToolCallResultError>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ToolCallResult {
   tool?: string;
+  cesTool?: string;
+  cesToolset?: string;
+  cesApp?: string;
   action?: string;
   error?: GoogleCloudDialogflowV2beta1ToolCallResultError;
   rawContent?: string;
@@ -12916,37 +11223,32 @@ export interface GoogleCloudDialogflowV2beta1ToolCallResult {
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1ToolCallResult: Schema.Schema<GoogleCloudDialogflowV2beta1ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleCloudDialogflowV2beta1ToolCallResultError),
-      rawContent: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1ToolCallResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ToolCallResult>;
+export const GoogleCloudDialogflowV2beta1ToolCallResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    cesTool: Schema.optional(Schema.String),
+    cesToolset: Schema.optional(Schema.String),
+    cesApp: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleCloudDialogflowV2beta1ToolCallResultError),
+    rawContent: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1ToolCallResult" });
 
 export interface GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo {
   toolCall?: GoogleCloudDialogflowV2beta1ToolCall;
   toolCallResult?: GoogleCloudDialogflowV2beta1ToolCallResult;
 }
 
-export const GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo: Schema.Schema<GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolCall: Schema.optional(GoogleCloudDialogflowV2beta1ToolCall),
-      toolCallResult: Schema.optional(
-        GoogleCloudDialogflowV2beta1ToolCallResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolCall: Schema.optional(GoogleCloudDialogflowV2beta1ToolCall),
+    toolCallResult: Schema.optional(GoogleCloudDialogflowV2beta1ToolCallResult),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1GeneratorSuggestion {
   freeFormSuggestion?: GoogleCloudDialogflowV2beta1FreeFormSuggestion;
@@ -12955,27 +11257,23 @@ export interface GoogleCloudDialogflowV2beta1GeneratorSuggestion {
   toolCallInfo?: Array<GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo>;
 }
 
-export const GoogleCloudDialogflowV2beta1GeneratorSuggestion: Schema.Schema<GoogleCloudDialogflowV2beta1GeneratorSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      freeFormSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2beta1FreeFormSuggestion,
-      ),
-      summarySuggestion: Schema.optional(
-        GoogleCloudDialogflowV2beta1SummarySuggestion,
-      ),
-      agentCoachingSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2beta1AgentCoachingSuggestion,
-      ),
-      toolCallInfo: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo,
-        ),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1GeneratorSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    freeFormSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2beta1FreeFormSuggestion,
+    ),
+    summarySuggestion: Schema.optional(
+      GoogleCloudDialogflowV2beta1SummarySuggestion,
+    ),
+    agentCoachingSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2beta1AgentCoachingSuggestion,
+    ),
+    toolCallInfo: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1GeneratorSuggestion",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1GeneratorSuggestion>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer {
   generatorSuggestion?: GoogleCloudDialogflowV2beta1GeneratorSuggestion;
@@ -12983,38 +11281,34 @@ export interface GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGenerato
   answerRecord?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer: Schema.Schema<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatorSuggestion: Schema.optional(
-        GoogleCloudDialogflowV2beta1GeneratorSuggestion,
-      ),
-      sourceGenerator: Schema.optional(Schema.String),
-      answerRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatorSuggestion: Schema.optional(
+      GoogleCloudDialogflowV2beta1GeneratorSuggestion,
+    ),
+    sourceGenerator: Schema.optional(Schema.String),
+    answerRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse {
   generatorSuggestionAnswers?: Array<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer>;
   latestMessage?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse: Schema.Schema<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatorSuggestionAnswers: Schema.optional(
-        Schema.Array(
-          GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer,
-        ),
+export const GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatorSuggestionAnswers: Schema.optional(
+      Schema.Array(
+        GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer,
       ),
-      latestMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    latestMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1SuggestionResult {
   error?: GoogleRpcStatus;
@@ -13027,35 +11321,31 @@ export interface GoogleCloudDialogflowV2beta1SuggestionResult {
   generateSuggestionsResponse?: GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse;
 }
 
-export const GoogleCloudDialogflowV2beta1SuggestionResult: Schema.Schema<GoogleCloudDialogflowV2beta1SuggestionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      suggestArticlesResponse: Schema.optional(
-        GoogleCloudDialogflowV2beta1SuggestArticlesResponse,
-      ),
-      suggestKnowledgeAssistResponse: Schema.optional(
-        GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse,
-      ),
-      suggestFaqAnswersResponse: Schema.optional(
-        GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse,
-      ),
-      suggestSmartRepliesResponse: Schema.optional(
-        GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse,
-      ),
-      suggestDialogflowAssistsResponse: Schema.optional(
-        GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse,
-      ),
-      suggestEntityExtractionResponse: Schema.optional(
-        GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse,
-      ),
-      generateSuggestionsResponse: Schema.optional(
-        GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1SuggestionResult",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SuggestionResult>;
+export const GoogleCloudDialogflowV2beta1SuggestionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    suggestArticlesResponse: Schema.optional(
+      GoogleCloudDialogflowV2beta1SuggestArticlesResponse,
+    ),
+    suggestKnowledgeAssistResponse: Schema.optional(
+      GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse,
+    ),
+    suggestFaqAnswersResponse: Schema.optional(
+      GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse,
+    ),
+    suggestSmartRepliesResponse: Schema.optional(
+      GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse,
+    ),
+    suggestDialogflowAssistsResponse: Schema.optional(
+      GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse,
+    ),
+    suggestEntityExtractionResponse: Schema.optional(
+      GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse,
+    ),
+    generateSuggestionsResponse: Schema.optional(
+      GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SuggestionResult" });
 
 export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
   conversation?: string;
@@ -13063,104 +11353,84 @@ export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
   suggestionResults?: Array<GoogleCloudDialogflowV2beta1SuggestionResult>;
 }
 
-export const GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent: Schema.Schema<GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      participant: Schema.optional(Schema.String),
-      suggestionResults: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1SuggestionResult),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    participant: Schema.optional(Schema.String),
+    suggestionResults: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1SuggestionResult),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
   warnings?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDialogflowV2beta1ImportDocumentsResponse: Schema.Schema<GoogleCloudDialogflowV2beta1ImportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ImportDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    warnings: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ImportDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ImportDocumentsResponse>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1EncryptionSpec {
   name?: string;
   kmsKey?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1EncryptionSpec: Schema.Schema<GoogleCloudDialogflowV2beta1EncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1EncryptionSpec",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1EncryptionSpec>;
+export const GoogleCloudDialogflowV2beta1EncryptionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EncryptionSpec" });
 
 export interface GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest {
   encryptionSpec?: GoogleCloudDialogflowV2beta1EncryptionSpec;
 }
 
-export const GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionSpec: Schema.optional(
-        GoogleCloudDialogflowV2beta1EncryptionSpec,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionSpec: Schema.optional(GoogleCloudDialogflowV2beta1EncryptionSpec),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata {
   request?: GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest;
 }
 
-export const GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1GcsDestination {
   uri?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1GcsDestination: Schema.Schema<GoogleCloudDialogflowV2beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1GcsDestination",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1GcsDestination>;
+export const GoogleCloudDialogflowV2beta1GcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1GcsDestination" });
 
 export interface GoogleCloudDialogflowV2beta1ExportOperationMetadata {
   exportedGcsDestination?: GoogleCloudDialogflowV2beta1GcsDestination;
 }
 
-export const GoogleCloudDialogflowV2beta1ExportOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2beta1ExportOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportedGcsDestination: Schema.optional(
-        GoogleCloudDialogflowV2beta1GcsDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1ExportOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportedGcsDestination: Schema.optional(
+      GoogleCloudDialogflowV2beta1GcsDestination,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ExportOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1ExportOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
   state?: "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "DONE" | (string & {});
@@ -13169,19 +11439,17 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
   doneTime?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      knowledgeBase: Schema.optional(Schema.String),
-      exportOperationMetadata: Schema.optional(
-        GoogleCloudDialogflowV2beta1ExportOperationMetadata,
-      ),
-      doneTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    knowledgeBase: Schema.optional(Schema.String),
+    exportOperationMetadata: Schema.optional(
+      GoogleCloudDialogflowV2beta1ExportOperationMetadata,
+    ),
+    doneTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
   source?: string;
@@ -13189,16 +11457,14 @@ export interface GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
   payload?: Record<string, unknown>;
 }
 
-export const GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest: Schema.Schema<GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata {
   conversationProfile?: string;
@@ -13221,18 +11487,16 @@ export interface GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperation
   createTime?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata: Schema.Schema<GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationProfile: Schema.optional(Schema.String),
-      participantRole: Schema.optional(Schema.String),
-      suggestionFeatureType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationProfile: Schema.optional(Schema.String),
+    participantRole: Schema.optional(Schema.String),
+    suggestionFeatureType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata>;
+  });
 
 export interface GoogleCloudDialogflowV2beta1WebhookRequest {
   session?: string;
@@ -13242,22 +11506,18 @@ export interface GoogleCloudDialogflowV2beta1WebhookRequest {
   originalDetectIntentRequest?: GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest;
 }
 
-export const GoogleCloudDialogflowV2beta1WebhookRequest: Schema.Schema<GoogleCloudDialogflowV2beta1WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      session: Schema.optional(Schema.String),
-      responseId: Schema.optional(Schema.String),
-      queryResult: Schema.optional(GoogleCloudDialogflowV2beta1QueryResult),
-      alternativeQueryResults: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1QueryResult),
-      ),
-      originalDetectIntentRequest: Schema.optional(
-        GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1WebhookRequest",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1WebhookRequest>;
+export const GoogleCloudDialogflowV2beta1WebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    session: Schema.optional(Schema.String),
+    responseId: Schema.optional(Schema.String),
+    queryResult: Schema.optional(GoogleCloudDialogflowV2beta1QueryResult),
+    alternativeQueryResults: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1QueryResult),
+    ),
+    originalDetectIntentRequest: Schema.optional(
+      GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest,
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1WebhookRequest" });
 
 export interface GoogleCloudDialogflowV2beta1EventInput {
   name?: string;
@@ -13265,16 +11525,12 @@ export interface GoogleCloudDialogflowV2beta1EventInput {
   languageCode?: string;
 }
 
-export const GoogleCloudDialogflowV2beta1EventInput: Schema.Schema<GoogleCloudDialogflowV2beta1EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1EventInput",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1EventInput>;
+export const GoogleCloudDialogflowV2beta1EventInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EventInput" });
 
 export interface GoogleCloudDialogflowV2beta1SessionEntityType {
   name?: string;
@@ -13286,18 +11542,14 @@ export interface GoogleCloudDialogflowV2beta1SessionEntityType {
   entities?: Array<GoogleCloudDialogflowV2beta1EntityTypeEntity>;
 }
 
-export const GoogleCloudDialogflowV2beta1SessionEntityType: Schema.Schema<GoogleCloudDialogflowV2beta1SessionEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      entityOverrideMode: Schema.optional(Schema.String),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1EntityTypeEntity),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1SessionEntityType",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1SessionEntityType>;
+export const GoogleCloudDialogflowV2beta1SessionEntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    entityOverrideMode: Schema.optional(Schema.String),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1EntityTypeEntity),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1SessionEntityType" });
 
 export interface GoogleCloudDialogflowV2beta1WebhookResponse {
   fulfillmentText?: string;
@@ -13311,30 +11563,24 @@ export interface GoogleCloudDialogflowV2beta1WebhookResponse {
   sessionEntityTypes?: Array<GoogleCloudDialogflowV2beta1SessionEntityType>;
 }
 
-export const GoogleCloudDialogflowV2beta1WebhookResponse: Schema.Schema<GoogleCloudDialogflowV2beta1WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fulfillmentText: Schema.optional(Schema.String),
-      fulfillmentMessages: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1IntentMessage),
-      ),
-      source: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      outputContexts: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1Context),
-      ),
-      followupEventInput: Schema.optional(
-        GoogleCloudDialogflowV2beta1EventInput,
-      ),
-      liveAgentHandoff: Schema.optional(Schema.Boolean),
-      endInteraction: Schema.optional(Schema.Boolean),
-      sessionEntityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDialogflowV2beta1SessionEntityType),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV2beta1WebhookResponse",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV2beta1WebhookResponse>;
+export const GoogleCloudDialogflowV2beta1WebhookResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fulfillmentText: Schema.optional(Schema.String),
+    fulfillmentMessages: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1IntentMessage),
+    ),
+    source: Schema.optional(Schema.String),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    outputContexts: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1Context),
+    ),
+    followupEventInput: Schema.optional(GoogleCloudDialogflowV2beta1EventInput),
+    liveAgentHandoff: Schema.optional(Schema.Boolean),
+    endInteraction: Schema.optional(Schema.Boolean),
+    sessionEntityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDialogflowV2beta1SessionEntityType),
+    ),
+  }).annotate({ identifier: "GoogleCloudDialogflowV2beta1WebhookResponse" });
 
 export interface GoogleCloudDialogflowV3alpha1TurnSignals {
   noMatch?: boolean;
@@ -13355,37 +11601,31 @@ export interface GoogleCloudDialogflowV3alpha1TurnSignals {
   sentimentMagnitude?: number;
 }
 
-export const GoogleCloudDialogflowV3alpha1TurnSignals: Schema.Schema<GoogleCloudDialogflowV3alpha1TurnSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noMatch: Schema.optional(Schema.Boolean),
-      noUserInput: Schema.optional(Schema.Boolean),
-      dtmfUsed: Schema.optional(Schema.Boolean),
-      userEscalated: Schema.optional(Schema.Boolean),
-      agentEscalated: Schema.optional(Schema.Boolean),
-      triggeredAbandonmentEvent: Schema.optional(Schema.Boolean),
-      reachedEndPage: Schema.optional(Schema.Boolean),
-      webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
-      failureReasons: Schema.optional(Schema.Array(Schema.String)),
-      sentimentScore: Schema.optional(Schema.Number),
-      sentimentMagnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDialogflowV3alpha1TurnSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV3alpha1TurnSignals>;
+export const GoogleCloudDialogflowV3alpha1TurnSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    noMatch: Schema.optional(Schema.Boolean),
+    noUserInput: Schema.optional(Schema.Boolean),
+    dtmfUsed: Schema.optional(Schema.Boolean),
+    userEscalated: Schema.optional(Schema.Boolean),
+    agentEscalated: Schema.optional(Schema.Boolean),
+    triggeredAbandonmentEvent: Schema.optional(Schema.Boolean),
+    reachedEndPage: Schema.optional(Schema.Boolean),
+    webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
+    failureReasons: Schema.optional(Schema.Array(Schema.String)),
+    sentimentScore: Schema.optional(Schema.Number),
+    sentimentMagnitude: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDialogflowV3alpha1TurnSignals" });
 
 export interface GoogleCloudDialogflowV3alpha1ConversationSignals {
   turnSignals?: GoogleCloudDialogflowV3alpha1TurnSignals;
 }
 
-export const GoogleCloudDialogflowV3alpha1ConversationSignals: Schema.Schema<GoogleCloudDialogflowV3alpha1ConversationSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turnSignals: Schema.optional(GoogleCloudDialogflowV3alpha1TurnSignals),
-    }),
-  ).annotate({
+export const GoogleCloudDialogflowV3alpha1ConversationSignals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    turnSignals: Schema.optional(GoogleCloudDialogflowV3alpha1TurnSignals),
+  }).annotate({
     identifier: "GoogleCloudDialogflowV3alpha1ConversationSignals",
-  }) as any as Schema.Schema<GoogleCloudDialogflowV3alpha1ConversationSignals>;
+  });
 
 // ==========================================================================
 // Operations

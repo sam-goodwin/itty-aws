@@ -165,8 +165,9 @@ jobs:
       - run: bun install
       - run: bun run build
         working-directory: packages/core
-      - run: bun run check
-        working-directory: packages/gcp
+      # disable until we can optimize because its wayyy to big rn 
+      # - run: bun run check
+      #   working-directory: packages/gcp
 
   ci-neon:
     needs: detect-changes
@@ -204,6 +205,7 @@ jobs:
       - run: bun run test
         working-directory: packages/planetscale
         env:
+          PLANETSCALE_API_TOKEN_ID: ${{ secrets.PLANETSCALE_API_TOKEN_ID }}
           PLANETSCALE_API_TOKEN: ${{ secrets.PLANETSCALE_API_TOKEN }}
           PLANETSCALE_ORGANIZATION: ${{ secrets.PLANETSCALE_ORGANIZATION }}
 

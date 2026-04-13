@@ -27,7 +27,7 @@ export type V1GetAMigrationOutput = typeof V1GetAMigrationOutput.Type;
 
 // The operation
 /**
- * [Beta] Fetch an existing entry from migration history
+ * Fetch an existing entry from migration history
  *
  * Only available to selected partner OAuth apps
  *

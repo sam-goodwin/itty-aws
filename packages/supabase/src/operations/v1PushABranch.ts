@@ -24,7 +24,7 @@ export type V1PushABranchOutput = typeof V1PushABranchOutput.Type;
  *
  * Pushes the specified database branch
  *
- * @param branch_id_or_ref - Branch ID
+ * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
 export const v1PushABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1PushABranchInput,

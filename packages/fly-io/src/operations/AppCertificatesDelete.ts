@@ -4,7 +4,10 @@ import * as T from "../traits";
 
 // Input Schema
 export const AppCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    app_name: Schema.String.pipe(T.PathParam()),
+    hostname: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/apps/{app_name}/certificates/{hostname}",
@@ -21,6 +24,9 @@ export type AppCertificatesDeleteOutput =
 // The operation
 /**
  * Remove certificate
+ *
+ * @param app_name - Fly App Name
+ * @param hostname - Certificate Hostname
  */
 export const AppCertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

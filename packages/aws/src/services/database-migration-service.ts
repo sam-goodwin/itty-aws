@@ -933,6 +933,8 @@ export interface IbmDb2LuwDataProviderSettings {
   DatabaseName?: string;
   SslMode?: DmsSslModeValue;
   CertificateArn?: string;
+  EncryptionAlgorithm?: number;
+  SecurityMechanism?: number;
   S3Path?: string;
   S3AccessRoleArn?: string;
 }
@@ -944,6 +946,8 @@ export const IbmDb2LuwDataProviderSettings =
       DatabaseName: S.optional(S.String),
       SslMode: S.optional(DmsSslModeValue),
       CertificateArn: S.optional(S.String),
+      EncryptionAlgorithm: S.optional(S.Number),
+      SecurityMechanism: S.optional(S.Number),
       S3Path: S.optional(S.String),
       S3AccessRoleArn: S.optional(S.String),
     }),

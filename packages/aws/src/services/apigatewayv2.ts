@@ -1262,6 +1262,8 @@ export type PublishStatus =
   | "PUBLISHED"
   | "PUBLISH_IN_PROGRESS"
   | "PUBLISH_FAILED"
+  | "DISABLE_IN_PROGRESS"
+  | "DISABLE_FAILED"
   | "DISABLED"
   | (string & {});
 export const PublishStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;

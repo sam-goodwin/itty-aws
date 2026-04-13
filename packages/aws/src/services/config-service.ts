@@ -147,7 +147,6 @@ export type StackArn = string;
 export type ConformancePackStatusReason = string;
 export type CosmosPageLimit = number;
 export type StringWithCharLimit256Min0 = string;
-export type StringWithCharLimit2048 = string;
 export type StringWithCharLimit768 = string;
 export type DescribePendingAggregationRequestsLimit = number;
 export type Percentage = number;
@@ -7785,7 +7784,7 @@ export const describeConformancePackCompliance: API.OperationMethod<
   items: (
     input: DescribeConformancePackComplianceRequest,
   ) => stream.Stream<
-    unknown,
+    ConformancePackRuleCompliance,
     DescribeConformancePackComplianceError,
     Credentials | Region | HttpClient.HttpClient
   >;
@@ -7802,6 +7801,7 @@ export const describeConformancePackCompliance: API.OperationMethod<
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
+    items: "ConformancePackRuleComplianceList",
     pageSize: "Limit",
   } as const,
 }));

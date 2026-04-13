@@ -144,6 +144,7 @@ export type EbsSnapshot = string;
 export type ProductCodeId = string;
 export type ProductCodeMode = string;
 export type VpcID = string;
+export type JobEventAttemptCount = number;
 export type LaunchDisposition = string;
 export type TargetInstanceTypeRightSizingMethod = string;
 export type LaunchConfigurationTemplateID = string;
@@ -156,6 +157,7 @@ export type RecoveryInstanceDataReplicationInitiationStepStatus = string;
 export type FailbackReplicationError = string;
 export type EbsVolumeID = string;
 export type OriginEnvironment = string;
+export type InternetProtocol = string;
 export type SubnetID = string;
 export type SecurityGroupID = string;
 export type ReplicationConfigurationDefaultLargeStagingDiskType = string;
@@ -1171,6 +1173,8 @@ export interface JobLogEventData {
   rawError?: string;
   conversionProperties?: ConversionProperties;
   eventResourceData?: EventResourceData;
+  attemptCount?: number;
+  maxAttemptsCount?: number;
 }
 export const JobLogEventData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1180,6 +1184,8 @@ export const JobLogEventData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     rawError: S.optional(S.String),
     conversionProperties: S.optional(ConversionProperties),
     eventResourceData: S.optional(EventResourceData),
+    attemptCount: S.optional(S.Number),
+    maxAttemptsCount: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "JobLogEventData",
@@ -1741,6 +1747,7 @@ export interface GetFailbackReplicationConfigurationResponse {
   name?: string;
   bandwidthThrottling?: number;
   usePrivateIP?: boolean;
+  internetProtocol?: string;
 }
 export const GetFailbackReplicationConfigurationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1749,6 +1756,7 @@ export const GetFailbackReplicationConfigurationResponse =
       name: S.optional(S.String),
       bandwidthThrottling: S.optional(S.Number),
       usePrivateIP: S.optional(S.Boolean),
+      internetProtocol: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GetFailbackReplicationConfigurationResponse",
@@ -1807,6 +1815,7 @@ export interface UpdateFailbackReplicationConfigurationRequest {
   name?: string;
   bandwidthThrottling?: number;
   usePrivateIP?: boolean;
+  internetProtocol?: string;
 }
 export const UpdateFailbackReplicationConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1815,6 +1824,7 @@ export const UpdateFailbackReplicationConfigurationRequest =
       name: S.optional(S.String),
       bandwidthThrottling: S.optional(S.Number),
       usePrivateIP: S.optional(S.Boolean),
+      internetProtocol: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -1925,39 +1935,41 @@ export type PITPolicy = PITPolicyRule[];
 export const PITPolicy = /*@__PURE__*/ /*#__PURE__*/ S.Array(PITPolicyRule);
 export interface CreateReplicationConfigurationTemplateRequest {
   stagingAreaSubnetId: string;
-  associateDefaultSecurityGroup: boolean;
+  associateDefaultSecurityGroup?: boolean;
   replicationServersSecurityGroupsIDs: string[];
-  replicationServerInstanceType: string;
-  useDedicatedReplicationServer: boolean;
-  defaultLargeStagingDiskType: string;
+  replicationServerInstanceType?: string;
+  useDedicatedReplicationServer?: boolean;
+  defaultLargeStagingDiskType?: string;
   ebsEncryption: string;
   ebsEncryptionKeyArn?: string;
   bandwidthThrottling: number;
-  dataPlaneRouting: string;
-  createPublicIP: boolean;
+  dataPlaneRouting?: string;
+  createPublicIP?: boolean;
   stagingAreaTags: { [key: string]: string | undefined };
   pitPolicy: PITPolicyRule[];
   tags?: { [key: string]: string | undefined };
   autoReplicateNewDisks?: boolean;
+  internetProtocol?: string;
 }
 export const CreateReplicationConfigurationTemplateRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       stagingAreaSubnetId: S.String,
-      associateDefaultSecurityGroup: S.Boolean,
+      associateDefaultSecurityGroup: S.optional(S.Boolean),
       replicationServersSecurityGroupsIDs: ReplicationServersSecurityGroupsIDs,
-      replicationServerInstanceType: S.String,
-      useDedicatedReplicationServer: S.Boolean,
-      defaultLargeStagingDiskType: S.String,
+      replicationServerInstanceType: S.optional(S.String),
+      useDedicatedReplicationServer: S.optional(S.Boolean),
+      defaultLargeStagingDiskType: S.optional(S.String),
       ebsEncryption: S.String,
       ebsEncryptionKeyArn: S.optional(S.String),
       bandwidthThrottling: S.Number,
-      dataPlaneRouting: S.String,
-      createPublicIP: S.Boolean,
+      dataPlaneRouting: S.optional(S.String),
+      createPublicIP: S.optional(S.Boolean),
       stagingAreaTags: TagsMap,
       pitPolicy: PITPolicy,
       tags: S.optional(TagsMap),
       autoReplicateNewDisks: S.optional(S.Boolean),
+      internetProtocol: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -1992,6 +2004,7 @@ export interface ReplicationConfigurationTemplate {
   tags?: { [key: string]: string | undefined };
   pitPolicy?: PITPolicyRule[];
   autoReplicateNewDisks?: boolean;
+  internetProtocol?: string;
 }
 export const ReplicationConfigurationTemplate =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2015,6 +2028,7 @@ export const ReplicationConfigurationTemplate =
       tags: S.optional(TagsMap),
       pitPolicy: S.optional(PITPolicy),
       autoReplicateNewDisks: S.optional(S.Boolean),
+      internetProtocol: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ReplicationConfigurationTemplate",
@@ -2036,6 +2050,7 @@ export interface UpdateReplicationConfigurationTemplateRequest {
   stagingAreaTags?: { [key: string]: string | undefined };
   pitPolicy?: PITPolicyRule[];
   autoReplicateNewDisks?: boolean;
+  internetProtocol?: string;
 }
 export const UpdateReplicationConfigurationTemplateRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2058,6 +2073,7 @@ export const UpdateReplicationConfigurationTemplateRequest =
       stagingAreaTags: S.optional(TagsMap),
       pitPolicy: S.optional(PITPolicy),
       autoReplicateNewDisks: S.optional(S.Boolean),
+      internetProtocol: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -2765,6 +2781,7 @@ export interface ReplicationConfiguration {
   stagingAreaTags?: { [key: string]: string | undefined };
   pitPolicy?: PITPolicyRule[];
   autoReplicateNewDisks?: boolean;
+  internetProtocol?: string;
 }
 export const ReplicationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2788,6 +2805,7 @@ export const ReplicationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       stagingAreaTags: S.optional(TagsMap),
       pitPolicy: S.optional(PITPolicy),
       autoReplicateNewDisks: S.optional(S.Boolean),
+      internetProtocol: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ReplicationConfiguration",
@@ -2916,6 +2934,7 @@ export interface UpdateReplicationConfigurationRequest {
   stagingAreaTags?: { [key: string]: string | undefined };
   pitPolicy?: PITPolicyRule[];
   autoReplicateNewDisks?: boolean;
+  internetProtocol?: string;
 }
 export const UpdateReplicationConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2939,6 +2958,7 @@ export const UpdateReplicationConfigurationRequest =
       stagingAreaTags: S.optional(TagsMap),
       pitPolicy: S.optional(PITPolicy),
       autoReplicateNewDisks: S.optional(S.Boolean),
+      internetProtocol: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/UpdateReplicationConfiguration" }),
@@ -3154,9 +3174,7 @@ export type ListExtensibleSourceServersError =
   | ValidationException
   | CommonErrors;
 /**
- * Returns a list of source servers on a staging account that are extensible, which means that:
- * a. The source server is not already extended into this Account.
- * b. The source server on the Account we’re reading from is not an extension of another source server.
+ * Returns a list of source servers on a staging account that are extensible, which means that: a. The source server is not already extended into this Account. b. The source server on the Account we’re reading from is not an extension of another source server.
  */
 export const listExtensibleSourceServers: API.OperationMethod<
   ListExtensibleSourceServersRequest,
@@ -3773,9 +3791,7 @@ export type ReverseReplicationError =
   | ValidationException
   | CommonErrors;
 /**
- * Start replication to origin / target region - applies only to protected instances that originated in EC2.
- * For recovery instances on target region - starts replication back to origin region.
- * For failback instances on origin region - starts replication to target region to re-protect them.
+ * Start replication to origin / target region - applies only to protected instances that originated in EC2. For recovery instances on target region - starts replication back to origin region. For failback instances on origin region - starts replication to target region to re-protect them.
  */
 export const reverseReplication: API.OperationMethod<
   ReverseReplicationRequest,
@@ -4471,8 +4487,7 @@ export type RetryDataReplicationError =
   | ValidationException
   | CommonErrors;
 /**
- * WARNING: RetryDataReplication is deprecated.
- * Causes the data replication initiation sequence to begin immediately upon next Handshake for the specified Source Server ID, regardless of when the previous initiation started. This command will work only if the Source Server is stalled or is in a DISCONNECTED or STOPPED state.
+ * WARNING: RetryDataReplication is deprecated. Causes the data replication initiation sequence to begin immediately upon next Handshake for the specified Source Server ID, regardless of when the previous initiation started. This command will work only if the Source Server is stalled or is in a DISCONNECTED or STOPPED state.
  */
 export const retryDataReplication: API.OperationMethod<
   RetryDataReplicationRequest,

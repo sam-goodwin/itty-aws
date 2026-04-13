@@ -3895,7 +3895,7 @@ export type PostV2CoreAccountsOutput = typeof PostV2CoreAccountsOutput.Type;
 
 // The operation
 /**
- * Create an Account
+ * Create an account
  *
  * An Account is a representation of a company, individual or other entity that a user interacts with. Accounts contain identifying information about the entity, and configurations that store the features an account has access to. An account can be configured as any or all of the following configurations: Customer, Merchant and/or Recipient.
  */

@@ -406,10 +406,12 @@ test(
         const config = yield* getDistributionConfig({ Id: id });
         expect(config.DistributionConfig?.Enabled).toBe(false);
 
-        // List distributions
-        const listResult = yield* listDistributions({});
-        const foundDist = listResult.DistributionList?.Items?.find(
-          (d) => d.Id === id,
+        // List distributions (paginate to find ours)
+        const allDists = yield* listDistributions.items({}).pipe(
+          Stream.runCollect,
+        );
+        const foundDist = allDists.find(
+          (d: any) => d.Id === id,
         );
         expect(foundDist).toBeDefined();
       }),

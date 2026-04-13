@@ -9,15 +9,16 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.optional(
     Schema.Struct({
       auto_destroy: Schema.optional(Schema.Boolean),
+      cache_drive: Schema.optional(
+        Schema.Struct({
+          size_mb: Schema.optional(Schema.Number),
+        }),
+      ),
       checks: Schema.optional(
         Schema.Record(
           Schema.String,
           Schema.Struct({
-            grace_period: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            grace_period: Schema.optional(Schema.String),
             headers: Schema.optional(
               Schema.Array(
                 Schema.Struct({
@@ -26,11 +27,7 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 }),
               ),
             ),
-            interval: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            interval: Schema.optional(Schema.String),
             kind: Schema.optional(
               Schema.Literals(["informational", "readiness"]),
             ),
@@ -38,11 +35,7 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             path: Schema.optional(Schema.String),
             port: Schema.optional(Schema.Number),
             protocol: Schema.optional(Schema.String),
-            timeout: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            timeout: Schema.optional(Schema.String),
             tls_server_name: Schema.optional(Schema.String),
             tls_skip_verify: Schema.optional(Schema.Boolean),
             type: Schema.optional(Schema.String),
@@ -157,12 +150,18 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             stop: Schema.optional(
               Schema.Struct({
-                signal: Schema.optional(Schema.String),
-                timeout: Schema.optional(
-                  Schema.Struct({
-                    "time.Duration": Schema.optional(Schema.Number),
-                  }),
+                signal: Schema.optional(
+                  Schema.Literals([
+                    "SIGHUP",
+                    "SIGINT",
+                    "SIGQUIT",
+                    "SIGKILL",
+                    "SIGUSR1",
+                    "SIGUSR2",
+                    "SIGTERM",
+                  ]),
                 ),
+                timeout: Schema.optional(Schema.String),
               }),
             ),
             user: Schema.optional(Schema.String),
@@ -215,6 +214,7 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           gpus: Schema.optional(Schema.Number),
           host_dedication_id: Schema.optional(Schema.String),
           kernel_args: Schema.optional(Schema.Array(Schema.String)),
+          max_memory_mb: Schema.optional(Schema.Number),
           memory_mb: Schema.optional(Schema.Number),
           persist_rootfs: Schema.optional(
             Schema.Literals(["never", "always", "restart"]),
@@ -302,7 +302,6 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       rootfs: Schema.optional(
         Schema.Struct({
-          fs_size_gb: Schema.optional(Schema.Number),
           persist: Schema.optional(
             Schema.Literals(["never", "always", "restart"]),
           ),
@@ -320,11 +319,7 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             checks: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  grace_period: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  grace_period: Schema.optional(Schema.String),
                   headers: Schema.optional(
                     Schema.Array(
                       Schema.Struct({
@@ -333,20 +328,12 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       }),
                     ),
                   ),
-                  interval: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  interval: Schema.optional(Schema.String),
                   method: Schema.optional(Schema.String),
                   path: Schema.optional(Schema.String),
                   port: Schema.optional(Schema.Number),
                   protocol: Schema.optional(Schema.String),
-                  timeout: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  timeout: Schema.optional(Schema.String),
                   tls_server_name: Schema.optional(Schema.String),
                   tls_skip_verify: Schema.optional(Schema.Boolean),
                   type: Schema.optional(Schema.String),
@@ -434,12 +421,18 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       stop_config: Schema.optional(
         Schema.Struct({
-          signal: Schema.optional(Schema.String),
-          timeout: Schema.optional(
-            Schema.Struct({
-              "time.Duration": Schema.optional(Schema.Number),
-            }),
+          signal: Schema.optional(
+            Schema.Literals([
+              "SIGHUP",
+              "SIGINT",
+              "SIGQUIT",
+              "SIGKILL",
+              "SIGUSR1",
+              "SIGUSR2",
+              "SIGTERM",
+            ]),
           ),
+          timeout: Schema.optional(Schema.String),
         }),
       ),
     }),
@@ -473,15 +466,16 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.optional(
     Schema.Struct({
       auto_destroy: Schema.optional(Schema.Boolean),
+      cache_drive: Schema.optional(
+        Schema.Struct({
+          size_mb: Schema.optional(Schema.Number),
+        }),
+      ),
       checks: Schema.optional(
         Schema.Record(
           Schema.String,
           Schema.Struct({
-            grace_period: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            grace_period: Schema.optional(Schema.String),
             headers: Schema.optional(
               Schema.Array(
                 Schema.Struct({
@@ -490,11 +484,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 }),
               ),
             ),
-            interval: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            interval: Schema.optional(Schema.String),
             kind: Schema.optional(
               Schema.Literals(["informational", "readiness"]),
             ),
@@ -502,11 +492,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             path: Schema.optional(Schema.String),
             port: Schema.optional(Schema.Number),
             protocol: Schema.optional(Schema.String),
-            timeout: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            timeout: Schema.optional(Schema.String),
             tls_server_name: Schema.optional(Schema.String),
             tls_skip_verify: Schema.optional(Schema.Boolean),
             type: Schema.optional(Schema.String),
@@ -621,12 +607,18 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             stop: Schema.optional(
               Schema.Struct({
-                signal: Schema.optional(Schema.String),
-                timeout: Schema.optional(
-                  Schema.Struct({
-                    "time.Duration": Schema.optional(Schema.Number),
-                  }),
+                signal: Schema.optional(
+                  Schema.Literals([
+                    "SIGHUP",
+                    "SIGINT",
+                    "SIGQUIT",
+                    "SIGKILL",
+                    "SIGUSR1",
+                    "SIGUSR2",
+                    "SIGTERM",
+                  ]),
                 ),
+                timeout: Schema.optional(Schema.String),
               }),
             ),
             user: Schema.optional(Schema.String),
@@ -679,6 +671,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           gpus: Schema.optional(Schema.Number),
           host_dedication_id: Schema.optional(Schema.String),
           kernel_args: Schema.optional(Schema.Array(Schema.String)),
+          max_memory_mb: Schema.optional(Schema.Number),
           memory_mb: Schema.optional(Schema.Number),
           persist_rootfs: Schema.optional(
             Schema.Literals(["never", "always", "restart"]),
@@ -766,7 +759,6 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       rootfs: Schema.optional(
         Schema.Struct({
-          fs_size_gb: Schema.optional(Schema.Number),
           persist: Schema.optional(
             Schema.Literals(["never", "always", "restart"]),
           ),
@@ -784,11 +776,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             checks: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  grace_period: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  grace_period: Schema.optional(Schema.String),
                   headers: Schema.optional(
                     Schema.Array(
                       Schema.Struct({
@@ -797,20 +785,12 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       }),
                     ),
                   ),
-                  interval: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  interval: Schema.optional(Schema.String),
                   method: Schema.optional(Schema.String),
                   path: Schema.optional(Schema.String),
                   port: Schema.optional(Schema.Number),
                   protocol: Schema.optional(Schema.String),
-                  timeout: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  timeout: Schema.optional(Schema.String),
                   tls_server_name: Schema.optional(Schema.String),
                   tls_skip_verify: Schema.optional(Schema.Boolean),
                   type: Schema.optional(Schema.String),
@@ -898,12 +878,18 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       stop_config: Schema.optional(
         Schema.Struct({
-          signal: Schema.optional(Schema.String),
-          timeout: Schema.optional(
-            Schema.Struct({
-              "time.Duration": Schema.optional(Schema.Number),
-            }),
+          signal: Schema.optional(
+            Schema.Literals([
+              "SIGHUP",
+              "SIGINT",
+              "SIGQUIT",
+              "SIGKILL",
+              "SIGUSR1",
+              "SIGUSR2",
+              "SIGTERM",
+            ]),
           ),
+          timeout: Schema.optional(Schema.String),
         }),
       ),
     }),
@@ -937,15 +923,16 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   incomplete_config: Schema.optional(
     Schema.Struct({
       auto_destroy: Schema.optional(Schema.Boolean),
+      cache_drive: Schema.optional(
+        Schema.Struct({
+          size_mb: Schema.optional(Schema.Number),
+        }),
+      ),
       checks: Schema.optional(
         Schema.Record(
           Schema.String,
           Schema.Struct({
-            grace_period: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            grace_period: Schema.optional(Schema.String),
             headers: Schema.optional(
               Schema.Array(
                 Schema.Struct({
@@ -954,11 +941,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 }),
               ),
             ),
-            interval: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            interval: Schema.optional(Schema.String),
             kind: Schema.optional(
               Schema.Literals(["informational", "readiness"]),
             ),
@@ -966,11 +949,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             path: Schema.optional(Schema.String),
             port: Schema.optional(Schema.Number),
             protocol: Schema.optional(Schema.String),
-            timeout: Schema.optional(
-              Schema.Struct({
-                "time.Duration": Schema.optional(Schema.Number),
-              }),
-            ),
+            timeout: Schema.optional(Schema.String),
             tls_server_name: Schema.optional(Schema.String),
             tls_skip_verify: Schema.optional(Schema.Boolean),
             type: Schema.optional(Schema.String),
@@ -1085,12 +1064,18 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             stop: Schema.optional(
               Schema.Struct({
-                signal: Schema.optional(Schema.String),
-                timeout: Schema.optional(
-                  Schema.Struct({
-                    "time.Duration": Schema.optional(Schema.Number),
-                  }),
+                signal: Schema.optional(
+                  Schema.Literals([
+                    "SIGHUP",
+                    "SIGINT",
+                    "SIGQUIT",
+                    "SIGKILL",
+                    "SIGUSR1",
+                    "SIGUSR2",
+                    "SIGTERM",
+                  ]),
                 ),
+                timeout: Schema.optional(Schema.String),
               }),
             ),
             user: Schema.optional(Schema.String),
@@ -1143,6 +1128,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           gpus: Schema.optional(Schema.Number),
           host_dedication_id: Schema.optional(Schema.String),
           kernel_args: Schema.optional(Schema.Array(Schema.String)),
+          max_memory_mb: Schema.optional(Schema.Number),
           memory_mb: Schema.optional(Schema.Number),
           persist_rootfs: Schema.optional(
             Schema.Literals(["never", "always", "restart"]),
@@ -1230,7 +1216,6 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       rootfs: Schema.optional(
         Schema.Struct({
-          fs_size_gb: Schema.optional(Schema.Number),
           persist: Schema.optional(
             Schema.Literals(["never", "always", "restart"]),
           ),
@@ -1248,11 +1233,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             checks: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  grace_period: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  grace_period: Schema.optional(Schema.String),
                   headers: Schema.optional(
                     Schema.Array(
                       Schema.Struct({
@@ -1261,20 +1242,12 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       }),
                     ),
                   ),
-                  interval: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  interval: Schema.optional(Schema.String),
                   method: Schema.optional(Schema.String),
                   path: Schema.optional(Schema.String),
                   port: Schema.optional(Schema.Number),
                   protocol: Schema.optional(Schema.String),
-                  timeout: Schema.optional(
-                    Schema.Struct({
-                      "time.Duration": Schema.optional(Schema.Number),
-                    }),
-                  ),
+                  timeout: Schema.optional(Schema.String),
                   tls_server_name: Schema.optional(Schema.String),
                   tls_skip_verify: Schema.optional(Schema.Boolean),
                   type: Schema.optional(Schema.String),
@@ -1362,12 +1335,18 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       stop_config: Schema.optional(
         Schema.Struct({
-          signal: Schema.optional(Schema.String),
-          timeout: Schema.optional(
-            Schema.Struct({
-              "time.Duration": Schema.optional(Schema.Number),
-            }),
+          signal: Schema.optional(
+            Schema.Literals([
+              "SIGHUP",
+              "SIGINT",
+              "SIGQUIT",
+              "SIGKILL",
+              "SIGUSR1",
+              "SIGUSR2",
+              "SIGTERM",
+            ]),
           ),
+          timeout: Schema.optional(Schema.String),
         }),
       ),
     }),

@@ -22,14 +22,24 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Empty {}
+export interface MultispeakerPrebuiltVoice {
+  /** Required. The speaker alias of the voice. This is the user-chosen speaker name that is used in the multispeaker text input, such as "Speaker1". */
+  speakerAlias?: string;
+  /** Required. The speaker ID of the voice. See https://cloud.google.com/text-to-speech/docs/gemini-tts#voice_options for available values. */
+  speakerId?: string;
+}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const MultispeakerPrebuiltVoice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speakerAlias: Schema.optional(Schema.String),
+    speakerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MultispeakerPrebuiltVoice" });
 
 export interface CustomPronunciationParams {
+  /** The pronunciation of the phrase. This must be in the phonetic encoding specified above. */
+  pronunciation?: string;
+  /** The phrase to which the customization is applied. The phrase can be multiple words, such as proper nouns, but shouldn't span the length of the sentence. */
+  phrase?: string;
   /** The phonetic encoding of the phrase. */
   phoneticEncoding?:
     | "PHONETIC_ENCODING_UNSPECIFIED"
@@ -38,36 +48,120 @@ export interface CustomPronunciationParams {
     | "PHONETIC_ENCODING_JAPANESE_YOMIGANA"
     | "PHONETIC_ENCODING_PINYIN"
     | (string & {});
-  /** The pronunciation of the phrase. This must be in the phonetic encoding specified above. */
-  pronunciation?: string;
-  /** The phrase to which the customization is applied. The phrase can be multiple words, such as proper nouns, but shouldn't span the length of the sentence. */
-  phrase?: string;
 }
 
-export const CustomPronunciationParams: Schema.Schema<CustomPronunciationParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneticEncoding: Schema.optional(Schema.String),
-      pronunciation: Schema.optional(Schema.String),
-      phrase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomPronunciationParams",
-  }) as any as Schema.Schema<CustomPronunciationParams>;
+export const CustomPronunciationParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pronunciation: Schema.optional(Schema.String),
+    phrase: Schema.optional(Schema.String),
+    phoneticEncoding: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomPronunciationParams" });
 
 export interface CustomPronunciations {
   /** The pronunciation customizations are applied. */
   pronunciations?: Array<CustomPronunciationParams>;
 }
 
-export const CustomPronunciations: Schema.Schema<CustomPronunciations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pronunciations: Schema.optional(Schema.Array(CustomPronunciationParams)),
-    }),
-  ).annotate({
-    identifier: "CustomPronunciations",
-  }) as any as Schema.Schema<CustomPronunciations>;
+export const CustomPronunciations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pronunciations: Schema.optional(Schema.Array(CustomPronunciationParams)),
+}).annotate({ identifier: "CustomPronunciations" });
+
+export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: Array<Record<string, unknown>>;
+}
+
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
+
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+}
+
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
+
+export interface SafetySetting {
+  /** The harm block threshold for the safety setting. */
+  threshold?:
+    | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
+    | "BLOCK_LOW_AND_ABOVE"
+    | "BLOCK_MEDIUM_AND_ABOVE"
+    | "BLOCK_ONLY_HIGH"
+    | "BLOCK_NONE"
+    | "OFF"
+    | (string & {});
+  /** The harm category to apply the safety setting to. */
+  category?:
+    | "HARM_CATEGORY_UNSPECIFIED"
+    | "HARM_CATEGORY_HATE_SPEECH"
+    | "HARM_CATEGORY_DANGEROUS_CONTENT"
+    | "HARM_CATEGORY_HARASSMENT"
+    | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+    | (string & {});
+}
+
+export const SafetySetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  threshold: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+}).annotate({ identifier: "SafetySetting" });
+
+export interface SynthesizeSpeechResponse {
+  /** The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64. */
+  audioContent?: string;
+}
+
+export const SynthesizeSpeechResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioContent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SynthesizeSpeechResponse" });
+
+export interface GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata {
+  /** The progress of the most recent processing update in percentage, ie. 70.0%. */
+  progressPercentage?: number;
+  /** Time when the request was received. */
+  startTime?: string;
+  /** Deprecated. Do not use. */
+  lastUpdateTime?: string;
+}
+
+export const GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressPercentage: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata",
+  });
 
 export interface Turn {
   /** Required. The text to speak. */
@@ -76,126 +170,84 @@ export interface Turn {
   speaker?: string;
 }
 
-export const Turn: Schema.Schema<Turn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      speaker: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Turn" }) as any as Schema.Schema<Turn>;
+export const Turn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  speaker: Schema.optional(Schema.String),
+}).annotate({ identifier: "Turn" });
 
 export interface MultiSpeakerMarkup {
   /** Required. Speaker turns. */
   turns?: Array<Turn>;
 }
 
-export const MultiSpeakerMarkup: Schema.Schema<MultiSpeakerMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turns: Schema.optional(Schema.Array(Turn)),
-    }),
-  ).annotate({
-    identifier: "MultiSpeakerMarkup",
-  }) as any as Schema.Schema<MultiSpeakerMarkup>;
+export const MultiSpeakerMarkup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  turns: Schema.optional(Schema.Array(Turn)),
+}).annotate({ identifier: "MultiSpeakerMarkup" });
 
 export interface SynthesisInput {
-  /** Optional. The pronunciation customizations are applied to the input. If this is set, the input is synthesized using the given pronunciation customizations. The initial support is for en-us, with plans to expand to other locales in the future. Instant Clone voices aren't supported. In order to customize the pronunciation of a phrase, there must be an exact match of the phrase in the input types. If using SSML, the phrase must not be inside a phoneme tag. */
-  customPronunciations?: CustomPronunciations;
   /** Markup for Chirp 3: HD voices specifically. This field may not be used with any other voices. */
   markup?: string;
-  /** The multi-speaker input to be synthesized. Only applicable for multi-speaker synthesis. */
-  multiSpeakerMarkup?: MultiSpeakerMarkup;
   /** This system instruction is supported only for controllable/promptable voice models. If this system instruction is used, we pass the unedited text to Gemini-TTS. Otherwise, a default system instruction is used. AI Studio calls this system instruction, Style Instructions. */
   prompt?: string;
-  /** The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/text-to-speech/docs/ssml). */
-  ssml?: string;
+  /** Optional. The pronunciation customizations are applied to the input. If this is set, the input is synthesized using the given pronunciation customizations. The initial support is for en-us, with plans to expand to other locales in the future. Instant Clone voices aren't supported. In order to customize the pronunciation of a phrase, there must be an exact match of the phrase in the input types. If using SSML, the phrase must not be inside a phoneme tag. */
+  customPronunciations?: CustomPronunciations;
   /** The raw text to be synthesized. */
   text?: string;
+  /** The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/text-to-speech/docs/ssml). */
+  ssml?: string;
+  /** The multi-speaker input to be synthesized. Only applicable for multi-speaker synthesis. */
+  multiSpeakerMarkup?: MultiSpeakerMarkup;
 }
 
-export const SynthesisInput: Schema.Schema<SynthesisInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customPronunciations: Schema.optional(CustomPronunciations),
-      markup: Schema.optional(Schema.String),
-      multiSpeakerMarkup: Schema.optional(MultiSpeakerMarkup),
-      prompt: Schema.optional(Schema.String),
-      ssml: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SynthesisInput",
-  }) as any as Schema.Schema<SynthesisInput>;
-
-export interface CustomVoiceParams {
-  /** Optional. Deprecated. The usage of the synthesized audio to be reported. */
-  reportedUsage?:
-    | "REPORTED_USAGE_UNSPECIFIED"
-    | "REALTIME"
-    | "OFFLINE"
-    | (string & {});
-  /** Required. The name of the AutoML model that synthesizes the custom voice. */
-  model?: string;
-}
-
-export const CustomVoiceParams: Schema.Schema<CustomVoiceParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportedUsage: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomVoiceParams",
-  }) as any as Schema.Schema<CustomVoiceParams>;
-
-export interface MultispeakerPrebuiltVoice {
-  /** Required. The speaker ID of the voice. See https://cloud.google.com/text-to-speech/docs/gemini-tts#voice_options for available values. */
-  speakerId?: string;
-  /** Required. The speaker alias of the voice. This is the user-chosen speaker name that is used in the multispeaker text input, such as "Speaker1". */
-  speakerAlias?: string;
-}
-
-export const MultispeakerPrebuiltVoice: Schema.Schema<MultispeakerPrebuiltVoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speakerId: Schema.optional(Schema.String),
-      speakerAlias: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MultispeakerPrebuiltVoice",
-  }) as any as Schema.Schema<MultispeakerPrebuiltVoice>;
-
-export interface MultiSpeakerVoiceConfig {
-  /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
-  speakerVoiceConfigs?: Array<MultispeakerPrebuiltVoice>;
-}
-
-export const MultiSpeakerVoiceConfig: Schema.Schema<MultiSpeakerVoiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speakerVoiceConfigs: Schema.optional(
-        Schema.Array(MultispeakerPrebuiltVoice),
-      ),
-    }),
-  ).annotate({
-    identifier: "MultiSpeakerVoiceConfig",
-  }) as any as Schema.Schema<MultiSpeakerVoiceConfig>;
+export const SynthesisInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  markup: Schema.optional(Schema.String),
+  prompt: Schema.optional(Schema.String),
+  customPronunciations: Schema.optional(CustomPronunciations),
+  text: Schema.optional(Schema.String),
+  ssml: Schema.optional(Schema.String),
+  multiSpeakerMarkup: Schema.optional(MultiSpeakerMarkup),
+}).annotate({ identifier: "SynthesisInput" });
 
 export interface VoiceCloneParams {
   /** Required. Created by GenerateVoiceCloningKey. */
   voiceCloningKey?: string;
 }
 
-export const VoiceCloneParams: Schema.Schema<VoiceCloneParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      voiceCloningKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VoiceCloneParams",
-  }) as any as Schema.Schema<VoiceCloneParams>;
+export const VoiceCloneParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  voiceCloningKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "VoiceCloneParams" });
+
+export interface CustomVoiceParams {
+  /** Required. The name of the AutoML model that synthesizes the custom voice. */
+  model?: string;
+  /** Optional. Deprecated. The usage of the synthesized audio to be reported. */
+  reportedUsage?:
+    | "REPORTED_USAGE_UNSPECIFIED"
+    | "REALTIME"
+    | "OFFLINE"
+    | (string & {});
+}
+
+export const CustomVoiceParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  model: Schema.optional(Schema.String),
+  reportedUsage: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomVoiceParams" });
+
+export interface MultiSpeakerVoiceConfig {
+  /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
+  speakerVoiceConfigs?: Array<MultispeakerPrebuiltVoice>;
+}
+
+export const MultiSpeakerVoiceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speakerVoiceConfigs: Schema.optional(
+      Schema.Array(MultispeakerPrebuiltVoice),
+    ),
+  }).annotate({ identifier: "MultiSpeakerVoiceConfig" });
 
 export interface VoiceSelectionParams {
+  /** Optional. The configuration for a voice clone. If [VoiceCloneParams.voice_clone_key] is set, the service chooses the voice clone matching the specified configuration. */
+  voiceClone?: VoiceCloneParams;
   /** The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement; if a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request. */
   ssmlGender?:
     | "SSML_VOICE_GENDER_UNSPECIFIED"
@@ -203,36 +255,74 @@ export interface VoiceSelectionParams {
     | "FEMALE"
     | "NEUTRAL"
     | (string & {});
-  /** The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration. */
-  customVoice?: CustomVoiceParams;
   /** Required. The language (and potentially also the region) of the voice expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. "en-US". This should not include a script tag (e.g. use "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred from the input provided in the SynthesisInput. The TTS service will use this parameter to help choose an appropriate voice. Note that the TTS service may choose a voice with a slightly different language code than the one selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice available), or even a different language, e.g. using "nb" (Norwegian Bokmal) instead of "no" (Norwegian)". */
   languageCode?: string;
+  /** The name of the voice. If both the name and the gender are not set, the service will choose a voice based on the other parameters such as language_code. */
+  name?: string;
+  /** The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration. */
+  customVoice?: CustomVoiceParams;
   /** Optional. The name of the model. If set, the service will choose the model matching the specified configuration. */
   modelName?: string;
   /** Optional. The configuration for a Gemini multi-speaker text-to-speech setup. Enables the use of two distinct voices in a single synthesis request. */
   multiSpeakerVoiceConfig?: MultiSpeakerVoiceConfig;
-  /** Optional. The configuration for a voice clone. If [VoiceCloneParams.voice_clone_key] is set, the service chooses the voice clone matching the specified configuration. */
-  voiceClone?: VoiceCloneParams;
-  /** The name of the voice. If both the name and the gender are not set, the service will choose a voice based on the other parameters such as language_code. */
-  name?: string;
 }
 
-export const VoiceSelectionParams: Schema.Schema<VoiceSelectionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ssmlGender: Schema.optional(Schema.String),
-      customVoice: Schema.optional(CustomVoiceParams),
-      languageCode: Schema.optional(Schema.String),
-      modelName: Schema.optional(Schema.String),
-      multiSpeakerVoiceConfig: Schema.optional(MultiSpeakerVoiceConfig),
-      voiceClone: Schema.optional(VoiceCloneParams),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VoiceSelectionParams",
-  }) as any as Schema.Schema<VoiceSelectionParams>;
+export const VoiceSelectionParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  voiceClone: Schema.optional(VoiceCloneParams),
+  ssmlGender: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  customVoice: Schema.optional(CustomVoiceParams),
+  modelName: Schema.optional(Schema.String),
+  multiSpeakerVoiceConfig: Schema.optional(MultiSpeakerVoiceConfig),
+}).annotate({ identifier: "VoiceSelectionParams" });
+
+export interface SynthesizeLongAudioMetadata {
+  /** The progress of the most recent processing update in percentage, ie. 70.0%. */
+  progressPercentage?: number;
+  /** Time when the request was received. */
+  startTime?: string;
+  /** Deprecated. Do not use. */
+  lastUpdateTime?: string;
+}
+
+export const SynthesizeLongAudioMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressPercentage: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SynthesizeLongAudioMetadata" });
+
+export interface SafetySettings {
+  /** The safety settings for the request. */
+  settings?: Array<SafetySetting>;
+}
+
+export const SafetySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  settings: Schema.optional(Schema.Array(SafetySetting)),
+}).annotate({ identifier: "SafetySettings" });
+
+export interface AdvancedVoiceOptions {
+  /** Optional. If true, textnorm will be applied to text input. This feature is enabled by default. Only applies for Gemini TTS. */
+  enableTextnorm?: boolean;
+  /** Only for Journey voices. If false, the synthesis is context aware and has a higher latency. */
+  lowLatencyJourneySynthesis?: boolean;
+  /** Optional. Input only. Deprecated, use safety_settings instead. If true, relaxes safety filters for Gemini TTS. */
+  relaxSafetyFilters?: boolean;
+  /** Optional. Input only. This applies to Gemini TTS only. If set, the category specified in the safety setting will be blocked if the harm probability is above the threshold. Otherwise, the safety filter will be disabled by default. */
+  safetySettings?: SafetySettings;
+}
+
+export const AdvancedVoiceOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableTextnorm: Schema.optional(Schema.Boolean),
+  lowLatencyJourneySynthesis: Schema.optional(Schema.Boolean),
+  relaxSafetyFilters: Schema.optional(Schema.Boolean),
+  safetySettings: Schema.optional(SafetySettings),
+}).annotate({ identifier: "AdvancedVoiceOptions" });
 
 export interface AudioConfig {
+  /** Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that. */
+  volumeGainDb?: number;
   /** Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile ids. */
   effectsProfileId?: Array<string>;
   /** Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT. */
@@ -252,220 +342,24 @@ export interface AudioConfig {
   speakingRate?: number;
   /** Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch. */
   pitch?: number;
-  /** Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that. */
-  volumeGainDb?: number;
 }
 
-export const AudioConfig: Schema.Schema<AudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectsProfileId: Schema.optional(Schema.Array(Schema.String)),
-      sampleRateHertz: Schema.optional(Schema.Number),
-      audioEncoding: Schema.optional(Schema.String),
-      speakingRate: Schema.optional(Schema.Number),
-      pitch: Schema.optional(Schema.Number),
-      volumeGainDb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AudioConfig",
-  }) as any as Schema.Schema<AudioConfig>;
-
-export interface SynthesizeLongAudioRequest {
-  /** Required. The Synthesizer requires either plain text or SSML as input. */
-  input?: SynthesisInput;
-  /** Required. Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist. */
-  outputGcsUri?: string;
-  /** Required. The desired voice of the synthesized audio. */
-  voice?: VoiceSelectionParams;
-  /** Required. The configuration of the synthesized audio. */
-  audioConfig?: AudioConfig;
-}
-
-export const SynthesizeLongAudioRequest: Schema.Schema<SynthesizeLongAudioRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      input: Schema.optional(SynthesisInput),
-      outputGcsUri: Schema.optional(Schema.String),
-      voice: Schema.optional(VoiceSelectionParams),
-      audioConfig: Schema.optional(AudioConfig),
-    }),
-  ).annotate({
-    identifier: "SynthesizeLongAudioRequest",
-  }) as any as Schema.Schema<SynthesizeLongAudioRequest>;
-
-export interface SynthesizeSpeechResponse {
-  /** The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64. */
-  audioContent?: string;
-}
-
-export const SynthesizeSpeechResponse: Schema.Schema<SynthesizeSpeechResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SynthesizeSpeechResponse",
-  }) as any as Schema.Schema<SynthesizeSpeechResponse>;
-
-export interface SynthesizeLongAudioMetadata {
-  /** Time when the request was received. */
-  startTime?: string;
-  /** Deprecated. Do not use. */
-  lastUpdateTime?: string;
-  /** The progress of the most recent processing update in percentage, ie. 70.0%. */
-  progressPercentage?: number;
-}
-
-export const SynthesizeLongAudioMetadata: Schema.Schema<SynthesizeLongAudioMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-      progressPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SynthesizeLongAudioMetadata",
-  }) as any as Schema.Schema<SynthesizeLongAudioMetadata>;
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
-
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
-
-export interface AdvancedVoiceOptions {
-  /** Only for Journey voices. If false, the synthesis is context aware and has a higher latency. */
-  lowLatencyJourneySynthesis?: boolean;
-  /** Optional. If true, textnorm will be applied to text input. This feature is enabled by default. Only applies for Gemini TTS. */
-  enableTextnorm?: boolean;
-  /** Optional. Input only. If true, relaxes safety filters for Gemini TTS. Only supported for accounts linked to Invoiced (Offline) Cloud billing accounts. Otherwise, will return result google.rpc.Code.INVALID_ARGUMENT. */
-  relaxSafetyFilters?: boolean;
-}
-
-export const AdvancedVoiceOptions: Schema.Schema<AdvancedVoiceOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lowLatencyJourneySynthesis: Schema.optional(Schema.Boolean),
-      enableTextnorm: Schema.optional(Schema.Boolean),
-      relaxSafetyFilters: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdvancedVoiceOptions",
-  }) as any as Schema.Schema<AdvancedVoiceOptions>;
-
-export interface SynthesizeSpeechRequest {
-  /** Required. The configuration of the synthesized audio. */
-  audioConfig?: AudioConfig;
-  /** Required. The desired voice of the synthesized audio. */
-  voice?: VoiceSelectionParams;
-  /** Required. The Synthesizer requires either plain text or SSML as input. */
-  input?: SynthesisInput;
-  /** Optional. Advanced voice options. */
-  advancedVoiceOptions?: AdvancedVoiceOptions;
-}
-
-export const SynthesizeSpeechRequest: Schema.Schema<SynthesizeSpeechRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioConfig: Schema.optional(AudioConfig),
-      voice: Schema.optional(VoiceSelectionParams),
-      input: Schema.optional(SynthesisInput),
-      advancedVoiceOptions: Schema.optional(AdvancedVoiceOptions),
-    }),
-  ).annotate({
-    identifier: "SynthesizeSpeechRequest",
-  }) as any as Schema.Schema<SynthesizeSpeechRequest>;
-
-export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
-
-export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
-
-export interface GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata {
-  /** The progress of the most recent processing update in percentage, ie. 70.0%. */
-  progressPercentage?: number;
-  /** Time when the request was received. */
-  startTime?: string;
-  /** Deprecated. Do not use. */
-  lastUpdateTime?: string;
-}
-
-export const GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata: Schema.Schema<GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressPercentage: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata",
-  }) as any as Schema.Schema<GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata>;
+export const AudioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  volumeGainDb: Schema.optional(Schema.Number),
+  effectsProfileId: Schema.optional(Schema.Array(Schema.String)),
+  sampleRateHertz: Schema.optional(Schema.Number),
+  audioEncoding: Schema.optional(Schema.String),
+  speakingRate: Schema.optional(Schema.Number),
+  pitch: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AudioConfig" });
 
 export interface Voice {
-  /** The name of this voice. Each distinct voice has a unique name. */
-  name?: string;
   /** The languages that this voice supports, expressed as [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g. "en-US", "es-419", "cmn-tw"). */
   languageCodes?: Array<string>;
+  /** The name of this voice. Each distinct voice has a unique name. */
+  name?: string;
+  /** The natural sample rate (in hertz) for this voice. */
+  naturalSampleRateHertz?: number;
   /** The gender of this voice. */
   ssmlGender?:
     | "SSML_VOICE_GENDER_UNSPECIFIED"
@@ -473,33 +367,84 @@ export interface Voice {
     | "FEMALE"
     | "NEUTRAL"
     | (string & {});
-  /** The natural sample rate (in hertz) for this voice. */
-  naturalSampleRateHertz?: number;
 }
 
-export const Voice: Schema.Schema<Voice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      languageCodes: Schema.optional(Schema.Array(Schema.String)),
-      ssmlGender: Schema.optional(Schema.String),
-      naturalSampleRateHertz: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Voice" }) as any as Schema.Schema<Voice>;
+export const Voice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCodes: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  naturalSampleRateHertz: Schema.optional(Schema.Number),
+  ssmlGender: Schema.optional(Schema.String),
+}).annotate({ identifier: "Voice" });
 
 export interface ListVoicesResponse {
   /** The list of voices. */
   voices?: Array<Voice>;
 }
 
-export const ListVoicesResponse: Schema.Schema<ListVoicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      voices: Schema.optional(Schema.Array(Voice)),
-    }),
-  ).annotate({
-    identifier: "ListVoicesResponse",
-  }) as any as Schema.Schema<ListVoicesResponse>;
+export const ListVoicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  voices: Schema.optional(Schema.Array(Voice)),
+}).annotate({ identifier: "ListVoicesResponse" });
+
+export interface SynthesizeSpeechRequest {
+  /** Optional. Advanced voice options. */
+  advancedVoiceOptions?: AdvancedVoiceOptions;
+  /** Required. The desired voice of the synthesized audio. */
+  voice?: VoiceSelectionParams;
+  /** Required. The Synthesizer requires either plain text or SSML as input. */
+  input?: SynthesisInput;
+  /** Required. The configuration of the synthesized audio. */
+  audioConfig?: AudioConfig;
+}
+
+export const SynthesizeSpeechRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advancedVoiceOptions: Schema.optional(AdvancedVoiceOptions),
+    voice: Schema.optional(VoiceSelectionParams),
+    input: Schema.optional(SynthesisInput),
+    audioConfig: Schema.optional(AudioConfig),
+  }).annotate({ identifier: "SynthesizeSpeechRequest" });
+
+export interface Empty {}
+
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
+
+export interface SynthesizeLongAudioRequest {
+  /** Required. Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist. */
+  outputGcsUri?: string;
+  /** Required. The desired voice of the synthesized audio. */
+  voice?: VoiceSelectionParams;
+  /** Required. The Synthesizer requires either plain text or SSML as input. */
+  input?: SynthesisInput;
+  /** Required. The configuration of the synthesized audio. */
+  audioConfig?: AudioConfig;
+}
+
+export const SynthesizeLongAudioRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputGcsUri: Schema.optional(Schema.String),
+    voice: Schema.optional(VoiceSelectionParams),
+    input: Schema.optional(SynthesisInput),
+    audioConfig: Schema.optional(AudioConfig),
+  }).annotate({ identifier: "SynthesizeLongAudioRequest" });
+
+export interface ListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: Array<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: Array<string>;
+}
+
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Operations
@@ -532,6 +477,130 @@ export const synthesizeText: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SynthesizeTextRequest,
   output: SynthesizeTextResponse,
+  errors: [],
+}));
+
+export interface SynthesizeLongAudioProjectsLocationsRequest {
+  /** The resource states of the request in the form of `projects/* /locations/*`. */
+  parent: string;
+  /** Request body */
+  body?: SynthesizeLongAudioRequest;
+}
+
+export const SynthesizeLongAudioProjectsLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SynthesizeLongAudioRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}:synthesizeLongAudio",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SynthesizeLongAudioProjectsLocationsRequest>;
+
+export type SynthesizeLongAudioProjectsLocationsResponse = Operation;
+export const SynthesizeLongAudioProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type SynthesizeLongAudioProjectsLocationsError = DefaultErrors;
+
+/** Synthesizes long form text asynchronously. */
+export const synthesizeLongAudioProjectsLocations: API.OperationMethod<
+  SynthesizeLongAudioProjectsLocationsRequest,
+  SynthesizeLongAudioProjectsLocationsResponse,
+  SynthesizeLongAudioProjectsLocationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SynthesizeLongAudioProjectsLocationsRequest,
+  output: SynthesizeLongAudioProjectsLocationsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list filter. */
+  filter?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError = DefaultErrors;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError = DefaultErrors;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
   errors: [],
 }));
 
@@ -631,129 +700,5 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
-}));
-
-export interface SynthesizeLongAudioProjectsLocationsRequest {
-  /** The resource states of the request in the form of `projects/* /locations/*`. */
-  parent: string;
-  /** Request body */
-  body?: SynthesizeLongAudioRequest;
-}
-
-export const SynthesizeLongAudioProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SynthesizeLongAudioRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:synthesizeLongAudio",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SynthesizeLongAudioProjectsLocationsRequest>;
-
-export type SynthesizeLongAudioProjectsLocationsResponse = Operation;
-export const SynthesizeLongAudioProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type SynthesizeLongAudioProjectsLocationsError = DefaultErrors;
-
-/** Synthesizes long form text asynchronously. */
-export const synthesizeLongAudioProjectsLocations: API.OperationMethod<
-  SynthesizeLongAudioProjectsLocationsRequest,
-  SynthesizeLongAudioProjectsLocationsResponse,
-  SynthesizeLongAudioProjectsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SynthesizeLongAudioProjectsLocationsRequest,
-  output: SynthesizeLongAudioProjectsLocationsResponse,
-  errors: [],
-}));
-
-export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The name of the operation's parent resource. */
-  name: string;
-}
-
-export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
-
-export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
-
-export type ListProjectsLocationsOperationsError = DefaultErrors;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
-
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsLocationsOperationsError = DefaultErrors;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
   errors: [],
 }));

@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,23 +69,19 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface BaseImage {
   /** The name of the base image. */
@@ -104,15 +94,12 @@ export interface BaseImage {
   registry?: string;
 }
 
-export const BaseImage: Schema.Schema<BaseImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      layerCount: Schema.optional(Schema.Number),
-      registry: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BaseImage" }) as any as Schema.Schema<BaseImage>;
+export const BaseImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  layerCount: Schema.optional(Schema.Number),
+  registry: Schema.optional(Schema.String),
+}).annotate({ identifier: "BaseImage" });
 
 export interface LayerDetails {
   /** The index of the layer in the container image. */
@@ -127,18 +114,13 @@ export interface LayerDetails {
   baseImages?: Array<BaseImage>;
 }
 
-export const LayerDetails: Schema.Schema<LayerDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      diffId: Schema.optional(Schema.String),
-      chainId: Schema.optional(Schema.String),
-      command: Schema.optional(Schema.String),
-      baseImages: Schema.optional(Schema.Array(BaseImage)),
-    }),
-  ).annotate({
-    identifier: "LayerDetails",
-  }) as any as Schema.Schema<LayerDetails>;
+export const LayerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  index: Schema.optional(Schema.Number),
+  diffId: Schema.optional(Schema.String),
+  chainId: Schema.optional(Schema.String),
+  command: Schema.optional(Schema.String),
+  baseImages: Schema.optional(Schema.Array(BaseImage)),
+}).annotate({ identifier: "LayerDetails" });
 
 export interface FileLocation {
   /** For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file. */
@@ -146,30 +128,21 @@ export interface FileLocation {
   layerDetails?: LayerDetails;
 }
 
-export const FileLocation: Schema.Schema<FileLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePath: Schema.optional(Schema.String),
-      layerDetails: Schema.optional(LayerDetails),
-    }),
-  ).annotate({
-    identifier: "FileLocation",
-  }) as any as Schema.Schema<FileLocation>;
+export const FileLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filePath: Schema.optional(Schema.String),
+  layerDetails: Schema.optional(LayerDetails),
+}).annotate({ identifier: "FileLocation" });
 
 export interface LanguagePackageDependency {
   package?: string;
   version?: string;
 }
 
-export const LanguagePackageDependency: Schema.Schema<LanguagePackageDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      package: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LanguagePackageDependency",
-  }) as any as Schema.Schema<LanguagePackageDependency>;
+export const LanguagePackageDependency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    package: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LanguagePackageDependency" });
 
 export interface Maintainer {
   name?: string;
@@ -178,15 +151,12 @@ export interface Maintainer {
   url?: string;
 }
 
-export const Maintainer: Schema.Schema<Maintainer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Maintainer" }) as any as Schema.Schema<Maintainer>;
+export const Maintainer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "Maintainer" });
 
 export interface PackageVersion {
   name?: string;
@@ -195,16 +165,11 @@ export interface PackageVersion {
   licenses?: Array<string>;
 }
 
-export const PackageVersion: Schema.Schema<PackageVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      licenses: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PackageVersion",
-  }) as any as Schema.Schema<PackageVersion>;
+export const PackageVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  licenses: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PackageVersion" });
 
 export interface BinarySourceInfo {
   /** The binary package. This is significant when the source is different than the binary itself. Historically if they've differed, we've stored the name of the source and its version in the package/version fields, but we should also store the binary package info, as that's what's actually installed. */
@@ -213,15 +178,10 @@ export interface BinarySourceInfo {
   sourceVersion?: PackageVersion;
 }
 
-export const BinarySourceInfo: Schema.Schema<BinarySourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      binaryVersion: Schema.optional(PackageVersion),
-      sourceVersion: Schema.optional(PackageVersion),
-    }),
-  ).annotate({
-    identifier: "BinarySourceInfo",
-  }) as any as Schema.Schema<BinarySourceInfo>;
+export const BinarySourceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  binaryVersion: Schema.optional(PackageVersion),
+  sourceVersion: Schema.optional(PackageVersion),
+}).annotate({ identifier: "BinarySourceInfo" });
 
 export interface PackageData {
   /** The package being analysed for vulnerabilities */
@@ -273,31 +233,26 @@ export interface PackageData {
   layerDetails?: LayerDetails;
 }
 
-export const PackageData: Schema.Schema<PackageData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      package: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      os: Schema.optional(Schema.String),
-      osVersion: Schema.optional(Schema.String),
-      cpeUri: Schema.optional(Schema.String),
-      unused: Schema.optional(Schema.String),
-      packageType: Schema.optional(Schema.String),
-      hashDigest: Schema.optional(Schema.String),
-      fileLocation: Schema.optional(Schema.Array(FileLocation)),
-      patchedCve: Schema.optional(Schema.Array(Schema.String)),
-      dependencyChain: Schema.optional(Schema.Array(LanguagePackageDependency)),
-      maintainer: Schema.optional(Maintainer),
-      architecture: Schema.optional(Schema.String),
-      binaryVersion: Schema.optional(PackageVersion),
-      sourceVersion: Schema.optional(PackageVersion),
-      binarySourceInfo: Schema.optional(Schema.Array(BinarySourceInfo)),
-      licenses: Schema.optional(Schema.Array(Schema.String)),
-      layerDetails: Schema.optional(LayerDetails),
-    }),
-  ).annotate({
-    identifier: "PackageData",
-  }) as any as Schema.Schema<PackageData>;
+export const PackageData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  package: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  os: Schema.optional(Schema.String),
+  osVersion: Schema.optional(Schema.String),
+  cpeUri: Schema.optional(Schema.String),
+  unused: Schema.optional(Schema.String),
+  packageType: Schema.optional(Schema.String),
+  hashDigest: Schema.optional(Schema.String),
+  fileLocation: Schema.optional(Schema.Array(FileLocation)),
+  patchedCve: Schema.optional(Schema.Array(Schema.String)),
+  dependencyChain: Schema.optional(Schema.Array(LanguagePackageDependency)),
+  maintainer: Schema.optional(Maintainer),
+  architecture: Schema.optional(Schema.String),
+  binaryVersion: Schema.optional(PackageVersion),
+  sourceVersion: Schema.optional(PackageVersion),
+  binarySourceInfo: Schema.optional(Schema.Array(BinarySourceInfo)),
+  licenses: Schema.optional(Schema.Array(Schema.String)),
+  layerDetails: Schema.optional(LayerDetails),
+}).annotate({ identifier: "PackageData" });
 
 export interface AnalyzePackagesRequest {
   /** Required. The resource URI of the container image being scanned. */
@@ -306,15 +261,12 @@ export interface AnalyzePackagesRequest {
   packages?: Array<PackageData>;
 }
 
-export const AnalyzePackagesRequest: Schema.Schema<AnalyzePackagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceUri: Schema.optional(Schema.String),
-      packages: Schema.optional(Schema.Array(PackageData)),
-    }),
-  ).annotate({
-    identifier: "AnalyzePackagesRequest",
-  }) as any as Schema.Schema<AnalyzePackagesRequest>;
+export const AnalyzePackagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    resourceUri: Schema.optional(Schema.String),
+    packages: Schema.optional(Schema.Array(PackageData)),
+  },
+).annotate({ identifier: "AnalyzePackagesRequest" });
 
 export interface CVSS {
   /** The base score is a function of the base metric scores. */
@@ -383,23 +335,20 @@ export interface CVSS {
     | (string & {});
 }
 
-export const CVSS: Schema.Schema<CVSS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseScore: Schema.optional(Schema.Number),
-      exploitabilityScore: Schema.optional(Schema.Number),
-      impactScore: Schema.optional(Schema.Number),
-      attackVector: Schema.optional(Schema.String),
-      attackComplexity: Schema.optional(Schema.String),
-      authentication: Schema.optional(Schema.String),
-      privilegesRequired: Schema.optional(Schema.String),
-      userInteraction: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      confidentialityImpact: Schema.optional(Schema.String),
-      integrityImpact: Schema.optional(Schema.String),
-      availabilityImpact: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CVSS" }) as any as Schema.Schema<CVSS>;
+export const CVSS = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  baseScore: Schema.optional(Schema.Number),
+  exploitabilityScore: Schema.optional(Schema.Number),
+  impactScore: Schema.optional(Schema.Number),
+  attackVector: Schema.optional(Schema.String),
+  attackComplexity: Schema.optional(Schema.String),
+  authentication: Schema.optional(Schema.String),
+  privilegesRequired: Schema.optional(Schema.String),
+  userInteraction: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  confidentialityImpact: Schema.optional(Schema.String),
+  integrityImpact: Schema.optional(Schema.String),
+  availabilityImpact: Schema.optional(Schema.String),
+}).annotate({ identifier: "CVSS" });
 
 export interface Version {
   /** Used to correct mistakes in the version numbering scheme. */
@@ -421,17 +370,14 @@ export interface Version {
   fullName?: string;
 }
 
-export const Version: Schema.Schema<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      epoch: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      inclusive: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      fullName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Version" }) as any as Schema.Schema<Version>;
+export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  epoch: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.String),
+  inclusive: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  fullName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Version" });
 
 export interface GrafeasV1BaseImage {
   /** The name of the base image. */
@@ -444,17 +390,12 @@ export interface GrafeasV1BaseImage {
   registry?: string;
 }
 
-export const GrafeasV1BaseImage: Schema.Schema<GrafeasV1BaseImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      layerCount: Schema.optional(Schema.Number),
-      registry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1BaseImage",
-  }) as any as Schema.Schema<GrafeasV1BaseImage>;
+export const GrafeasV1BaseImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  layerCount: Schema.optional(Schema.Number),
+  registry: Schema.optional(Schema.String),
+}).annotate({ identifier: "GrafeasV1BaseImage" });
 
 export interface GrafeasV1LayerDetails {
   /** The index of the layer in the container image. */
@@ -469,35 +410,28 @@ export interface GrafeasV1LayerDetails {
   baseImages?: Array<GrafeasV1BaseImage>;
 }
 
-export const GrafeasV1LayerDetails: Schema.Schema<GrafeasV1LayerDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      diffId: Schema.optional(Schema.String),
-      chainId: Schema.optional(Schema.String),
-      command: Schema.optional(Schema.String),
-      baseImages: Schema.optional(Schema.Array(GrafeasV1BaseImage)),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1LayerDetails",
-  }) as any as Schema.Schema<GrafeasV1LayerDetails>;
+export const GrafeasV1LayerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  index: Schema.optional(Schema.Number),
+  diffId: Schema.optional(Schema.String),
+  chainId: Schema.optional(Schema.String),
+  command: Schema.optional(Schema.String),
+  baseImages: Schema.optional(Schema.Array(GrafeasV1BaseImage)),
+}).annotate({ identifier: "GrafeasV1LayerDetails" });
 
 export interface GrafeasV1FileLocation {
   /** For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file. */
   filePath?: string;
   /** Each package found in a file should have its own layer metadata (that is, information from the origin layer of the package). */
   layerDetails?: GrafeasV1LayerDetails;
+  /** Line number in the file where the package was found. Optional field that only applies to source repository scanning. */
+  lineNumber?: number;
 }
 
-export const GrafeasV1FileLocation: Schema.Schema<GrafeasV1FileLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePath: Schema.optional(Schema.String),
-      layerDetails: Schema.optional(GrafeasV1LayerDetails),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1FileLocation",
-  }) as any as Schema.Schema<GrafeasV1FileLocation>;
+export const GrafeasV1FileLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filePath: Schema.optional(Schema.String),
+  layerDetails: Schema.optional(GrafeasV1LayerDetails),
+  lineNumber: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GrafeasV1FileLocation" });
 
 export interface PackageIssue {
   /** Required. The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in. */
@@ -529,23 +463,18 @@ export interface PackageIssue {
   fileLocation?: Array<GrafeasV1FileLocation>;
 }
 
-export const PackageIssue: Schema.Schema<PackageIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      affectedCpeUri: Schema.optional(Schema.String),
-      affectedPackage: Schema.optional(Schema.String),
-      affectedVersion: Schema.optional(Version),
-      fixedCpeUri: Schema.optional(Schema.String),
-      fixedPackage: Schema.optional(Schema.String),
-      fixedVersion: Schema.optional(Version),
-      fixAvailable: Schema.optional(Schema.Boolean),
-      packageType: Schema.optional(Schema.String),
-      effectiveSeverity: Schema.optional(Schema.String),
-      fileLocation: Schema.optional(Schema.Array(GrafeasV1FileLocation)),
-    }),
-  ).annotate({
-    identifier: "PackageIssue",
-  }) as any as Schema.Schema<PackageIssue>;
+export const PackageIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  affectedCpeUri: Schema.optional(Schema.String),
+  affectedPackage: Schema.optional(Schema.String),
+  affectedVersion: Schema.optional(Version),
+  fixedCpeUri: Schema.optional(Schema.String),
+  fixedPackage: Schema.optional(Schema.String),
+  fixedVersion: Schema.optional(Version),
+  fixAvailable: Schema.optional(Schema.Boolean),
+  packageType: Schema.optional(Schema.String),
+  effectiveSeverity: Schema.optional(Schema.String),
+  fileLocation: Schema.optional(Schema.Array(GrafeasV1FileLocation)),
+}).annotate({ identifier: "PackageIssue" });
 
 export interface RelatedUrl {
   /** Specific URL associated with the resource. */
@@ -554,13 +483,10 @@ export interface RelatedUrl {
   label?: string;
 }
 
-export const RelatedUrl: Schema.Schema<RelatedUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "RelatedUrl" }) as any as Schema.Schema<RelatedUrl>;
+export const RelatedUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  label: Schema.optional(Schema.String),
+}).annotate({ identifier: "RelatedUrl" });
 
 export interface Remediation {
   /** The type of remediation that can be applied. */
@@ -578,16 +504,11 @@ export interface Remediation {
   remediationUri?: RelatedUrl;
 }
 
-export const Remediation: Schema.Schema<Remediation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remediationType: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-      remediationUri: Schema.optional(RelatedUrl),
-    }),
-  ).annotate({
-    identifier: "Remediation",
-  }) as any as Schema.Schema<Remediation>;
+export const Remediation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remediationType: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+  remediationUri: Schema.optional(RelatedUrl),
+}).annotate({ identifier: "Remediation" });
 
 export interface Justification {
   /** The justification type for this vulnerability. */
@@ -603,15 +524,10 @@ export interface Justification {
   details?: string;
 }
 
-export const Justification: Schema.Schema<Justification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      justificationType: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Justification",
-  }) as any as Schema.Schema<Justification>;
+export const Justification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  justificationType: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+}).annotate({ identifier: "Justification" });
 
 export interface VexAssessment {
   /** Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs. */
@@ -638,35 +554,26 @@ export interface VexAssessment {
   justification?: Justification;
 }
 
-export const VexAssessment: Schema.Schema<VexAssessment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cve: Schema.optional(Schema.String),
-      vulnerabilityId: Schema.optional(Schema.String),
-      relatedUris: Schema.optional(Schema.Array(RelatedUrl)),
-      noteName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      impacts: Schema.optional(Schema.Array(Schema.String)),
-      remediations: Schema.optional(Schema.Array(Remediation)),
-      justification: Schema.optional(Justification),
-    }),
-  ).annotate({
-    identifier: "VexAssessment",
-  }) as any as Schema.Schema<VexAssessment>;
+export const VexAssessment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cve: Schema.optional(Schema.String),
+  vulnerabilityId: Schema.optional(Schema.String),
+  relatedUris: Schema.optional(Schema.Array(RelatedUrl)),
+  noteName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  impacts: Schema.optional(Schema.Array(Schema.String)),
+  remediations: Schema.optional(Schema.Array(Remediation)),
+  justification: Schema.optional(Justification),
+}).annotate({ identifier: "VexAssessment" });
 
 export interface CISAKnownExploitedVulnerabilities {
   /** Whether the vulnerability is known to have been leveraged as part of a ransomware campaign. */
   knownRansomwareCampaignUse?: string;
 }
 
-export const CISAKnownExploitedVulnerabilities: Schema.Schema<CISAKnownExploitedVulnerabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      knownRansomwareCampaignUse: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CISAKnownExploitedVulnerabilities",
-  }) as any as Schema.Schema<CISAKnownExploitedVulnerabilities>;
+export const CISAKnownExploitedVulnerabilities =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    knownRansomwareCampaignUse: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CISAKnownExploitedVulnerabilities" });
 
 export interface ExploitPredictionScoringSystem {
   /** The percentile of the current score, the proportion of all scored vulnerabilities with the same or a lower EPSS score */
@@ -675,15 +582,11 @@ export interface ExploitPredictionScoringSystem {
   score?: number;
 }
 
-export const ExploitPredictionScoringSystem: Schema.Schema<ExploitPredictionScoringSystem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentile: Schema.optional(Schema.Number),
-      score: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ExploitPredictionScoringSystem",
-  }) as any as Schema.Schema<ExploitPredictionScoringSystem>;
+export const ExploitPredictionScoringSystem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percentile: Schema.optional(Schema.Number),
+    score: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ExploitPredictionScoringSystem" });
 
 export interface Risk {
   /** CISA maintains the authoritative source of vulnerabilities that have been exploited in the wild. */
@@ -692,13 +595,10 @@ export interface Risk {
   epss?: ExploitPredictionScoringSystem;
 }
 
-export const Risk: Schema.Schema<Risk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cisaKev: Schema.optional(CISAKnownExploitedVulnerabilities),
-      epss: Schema.optional(ExploitPredictionScoringSystem),
-    }),
-  ).annotate({ identifier: "Risk" }) as any as Schema.Schema<Risk>;
+export const Risk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cisaKev: Schema.optional(CISAKnownExploitedVulnerabilities),
+  epss: Schema.optional(ExploitPredictionScoringSystem),
+}).annotate({ identifier: "Risk" });
 
 export interface VulnerabilityOccurrence {
   /** The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.). */
@@ -750,28 +650,24 @@ export interface VulnerabilityOccurrence {
   risk?: Risk;
 }
 
-export const VulnerabilityOccurrence: Schema.Schema<VulnerabilityOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      cvssScore: Schema.optional(Schema.Number),
-      cvssv3: Schema.optional(CVSS),
-      packageIssue: Schema.optional(Schema.Array(PackageIssue)),
-      shortDescription: Schema.optional(Schema.String),
-      longDescription: Schema.optional(Schema.String),
-      relatedUrls: Schema.optional(Schema.Array(RelatedUrl)),
-      effectiveSeverity: Schema.optional(Schema.String),
-      fixAvailable: Schema.optional(Schema.Boolean),
-      cvssVersion: Schema.optional(Schema.String),
-      cvssV2: Schema.optional(CVSS),
-      vexAssessment: Schema.optional(VexAssessment),
-      extraDetails: Schema.optional(Schema.String),
-      risk: Schema.optional(Risk),
-    }),
-  ).annotate({
-    identifier: "VulnerabilityOccurrence",
-  }) as any as Schema.Schema<VulnerabilityOccurrence>;
+export const VulnerabilityOccurrence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    cvssScore: Schema.optional(Schema.Number),
+    cvssv3: Schema.optional(CVSS),
+    packageIssue: Schema.optional(Schema.Array(PackageIssue)),
+    shortDescription: Schema.optional(Schema.String),
+    longDescription: Schema.optional(Schema.String),
+    relatedUrls: Schema.optional(Schema.Array(RelatedUrl)),
+    effectiveSeverity: Schema.optional(Schema.String),
+    fixAvailable: Schema.optional(Schema.Boolean),
+    cvssVersion: Schema.optional(Schema.String),
+    cvssV2: Schema.optional(CVSS),
+    vexAssessment: Schema.optional(VexAssessment),
+    extraDetails: Schema.optional(Schema.String),
+    risk: Schema.optional(Risk),
+  }).annotate({ identifier: "VulnerabilityOccurrence" });
 
 export interface Command {
   /** Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`. */
@@ -788,17 +684,14 @@ export interface Command {
   waitFor?: Array<string>;
 }
 
-export const Command: Schema.Schema<Command> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.Array(Schema.String)),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      dir: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      waitFor: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Command" }) as any as Schema.Schema<Command>;
+export const Command = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  env: Schema.optional(Schema.Array(Schema.String)),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  dir: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  waitFor: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Command" });
 
 export interface Artifact {
   /** Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container. */
@@ -809,14 +702,11 @@ export interface Artifact {
   names?: Array<string>;
 }
 
-export const Artifact: Schema.Schema<Artifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      checksum: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Artifact" }) as any as Schema.Schema<Artifact>;
+export const Artifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  checksum: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  names: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Artifact" });
 
 export interface Hash {
   /** Required. The type of hash that was performed, e.g. "SHA-256". */
@@ -825,25 +715,19 @@ export interface Hash {
   value?: string;
 }
 
-export const Hash: Schema.Schema<Hash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Hash" }) as any as Schema.Schema<Hash>;
+export const Hash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Hash" });
 
 export interface FileHashes {
   /** Required. Collection of file hashes. */
   fileHash?: Array<Hash>;
 }
 
-export const FileHashes: Schema.Schema<FileHashes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileHash: Schema.optional(Schema.Array(Hash)),
-    }),
-  ).annotate({ identifier: "FileHashes" }) as any as Schema.Schema<FileHashes>;
+export const FileHashes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileHash: Schema.optional(Schema.Array(Hash)),
+}).annotate({ identifier: "FileHashes" });
 
 export interface ProjectRepoId {
   /** The ID of the project. */
@@ -852,15 +736,10 @@ export interface ProjectRepoId {
   repoName?: string;
 }
 
-export const ProjectRepoId: Schema.Schema<ProjectRepoId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      repoName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProjectRepoId",
-  }) as any as Schema.Schema<ProjectRepoId>;
+export const ProjectRepoId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  repoName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProjectRepoId" });
 
 export interface RepoId {
   /** A combination of a project ID and a repo name. */
@@ -869,13 +748,10 @@ export interface RepoId {
   uid?: string;
 }
 
-export const RepoId: Schema.Schema<RepoId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectRepoId: Schema.optional(ProjectRepoId),
-      uid: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "RepoId" }) as any as Schema.Schema<RepoId>;
+export const RepoId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectRepoId: Schema.optional(ProjectRepoId),
+  uid: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepoId" });
 
 export interface AliasContext {
   /** The alias kind. */
@@ -884,15 +760,10 @@ export interface AliasContext {
   name?: string;
 }
 
-export const AliasContext: Schema.Schema<AliasContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AliasContext",
-  }) as any as Schema.Schema<AliasContext>;
+export const AliasContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AliasContext" });
 
 export interface CloudRepoSourceContext {
   /** The ID of the repo. */
@@ -903,16 +774,13 @@ export interface CloudRepoSourceContext {
   aliasContext?: AliasContext;
 }
 
-export const CloudRepoSourceContext: Schema.Schema<CloudRepoSourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repoId: Schema.optional(RepoId),
-      revisionId: Schema.optional(Schema.String),
-      aliasContext: Schema.optional(AliasContext),
-    }),
-  ).annotate({
-    identifier: "CloudRepoSourceContext",
-  }) as any as Schema.Schema<CloudRepoSourceContext>;
+export const CloudRepoSourceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    repoId: Schema.optional(RepoId),
+    revisionId: Schema.optional(Schema.String),
+    aliasContext: Schema.optional(AliasContext),
+  },
+).annotate({ identifier: "CloudRepoSourceContext" });
 
 export interface GerritSourceContext {
   /** The URI of a running Gerrit instance. */
@@ -925,17 +793,12 @@ export interface GerritSourceContext {
   aliasContext?: AliasContext;
 }
 
-export const GerritSourceContext: Schema.Schema<GerritSourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostUri: Schema.optional(Schema.String),
-      gerritProject: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      aliasContext: Schema.optional(AliasContext),
-    }),
-  ).annotate({
-    identifier: "GerritSourceContext",
-  }) as any as Schema.Schema<GerritSourceContext>;
+export const GerritSourceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostUri: Schema.optional(Schema.String),
+  gerritProject: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+  aliasContext: Schema.optional(AliasContext),
+}).annotate({ identifier: "GerritSourceContext" });
 
 export interface GitSourceContext {
   /** Git repository URL. */
@@ -944,15 +807,10 @@ export interface GitSourceContext {
   revisionId?: string;
 }
 
-export const GitSourceContext: Schema.Schema<GitSourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitSourceContext",
-  }) as any as Schema.Schema<GitSourceContext>;
+export const GitSourceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitSourceContext" });
 
 export interface SourceContext {
   /** A SourceContext referring to a revision in a Google Cloud Source Repo. */
@@ -965,17 +823,12 @@ export interface SourceContext {
   labels?: Record<string, string>;
 }
 
-export const SourceContext: Schema.Schema<SourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudRepo: Schema.optional(CloudRepoSourceContext),
-      gerrit: Schema.optional(GerritSourceContext),
-      git: Schema.optional(GitSourceContext),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SourceContext",
-  }) as any as Schema.Schema<SourceContext>;
+export const SourceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cloudRepo: Schema.optional(CloudRepoSourceContext),
+  gerrit: Schema.optional(GerritSourceContext),
+  git: Schema.optional(GitSourceContext),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "SourceContext" });
 
 export interface Source {
   /** If provided, the input binary artifacts for the build came from this location. */
@@ -988,15 +841,12 @@ export interface Source {
   additionalContexts?: Array<SourceContext>;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifactStorageSourceUri: Schema.optional(Schema.String),
-      fileHashes: Schema.optional(Schema.Record(Schema.String, FileHashes)),
-      context: Schema.optional(SourceContext),
-      additionalContexts: Schema.optional(Schema.Array(SourceContext)),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  artifactStorageSourceUri: Schema.optional(Schema.String),
+  fileHashes: Schema.optional(Schema.Record(Schema.String, FileHashes)),
+  context: Schema.optional(SourceContext),
+  additionalContexts: Schema.optional(Schema.Array(SourceContext)),
+}).annotate({ identifier: "Source" });
 
 export interface BuildProvenance {
   /** Required. Unique identifier of the build. */
@@ -1027,41 +877,29 @@ export interface BuildProvenance {
   builderVersion?: string;
 }
 
-export const BuildProvenance: Schema.Schema<BuildProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      commands: Schema.optional(Schema.Array(Command)),
-      builtArtifacts: Schema.optional(Schema.Array(Artifact)),
-      createTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      creator: Schema.optional(Schema.String),
-      logsUri: Schema.optional(Schema.String),
-      sourceProvenance: Schema.optional(Source),
-      triggerId: Schema.optional(Schema.String),
-      buildOptions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      builderVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildProvenance",
-  }) as any as Schema.Schema<BuildProvenance>;
+export const BuildProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  commands: Schema.optional(Schema.Array(Command)),
+  builtArtifacts: Schema.optional(Schema.Array(Artifact)),
+  createTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  creator: Schema.optional(Schema.String),
+  logsUri: Schema.optional(Schema.String),
+  sourceProvenance: Schema.optional(Source),
+  triggerId: Schema.optional(Schema.String),
+  buildOptions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  builderVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildProvenance" });
 
 export interface BuilderConfig {
   id?: string;
 }
 
-export const BuilderConfig: Schema.Schema<BuilderConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuilderConfig",
-  }) as any as Schema.Schema<BuilderConfig>;
+export const BuilderConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuilderConfig" });
 
 export interface Recipe {
   /** URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials. */
@@ -1076,20 +914,17 @@ export interface Recipe {
   environment?: Array<Record<string, unknown>>;
 }
 
-export const Recipe: Schema.Schema<Recipe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      definedInMaterial: Schema.optional(Schema.String),
-      entryPoint: Schema.optional(Schema.String),
-      arguments: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      environment: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Recipe" }) as any as Schema.Schema<Recipe>;
+export const Recipe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  definedInMaterial: Schema.optional(Schema.String),
+  entryPoint: Schema.optional(Schema.String),
+  arguments: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  environment: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Recipe" });
 
 export interface Completeness {
   /** If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe. */
@@ -1100,16 +935,11 @@ export interface Completeness {
   materials?: boolean;
 }
 
-export const Completeness: Schema.Schema<Completeness> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      arguments: Schema.optional(Schema.Boolean),
-      environment: Schema.optional(Schema.Boolean),
-      materials: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "Completeness",
-  }) as any as Schema.Schema<Completeness>;
+export const Completeness = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  arguments: Schema.optional(Schema.Boolean),
+  environment: Schema.optional(Schema.Boolean),
+  materials: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Completeness" });
 
 export interface Metadata {
   /** Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec. */
@@ -1124,16 +954,13 @@ export interface Metadata {
   reproducible?: boolean;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildInvocationId: Schema.optional(Schema.String),
-      buildStartedOn: Schema.optional(Schema.String),
-      buildFinishedOn: Schema.optional(Schema.String),
-      completeness: Schema.optional(Completeness),
-      reproducible: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildInvocationId: Schema.optional(Schema.String),
+  buildStartedOn: Schema.optional(Schema.String),
+  buildFinishedOn: Schema.optional(Schema.String),
+  completeness: Schema.optional(Completeness),
+  reproducible: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Metadata" });
 
 export interface InTotoProvenance {
   /** required */
@@ -1145,17 +972,12 @@ export interface InTotoProvenance {
   materials?: Array<string>;
 }
 
-export const InTotoProvenance: Schema.Schema<InTotoProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builderConfig: Schema.optional(BuilderConfig),
-      recipe: Schema.optional(Recipe),
-      metadata: Schema.optional(Metadata),
-      materials: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InTotoProvenance",
-  }) as any as Schema.Schema<InTotoProvenance>;
+export const InTotoProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  builderConfig: Schema.optional(BuilderConfig),
+  recipe: Schema.optional(Recipe),
+  metadata: Schema.optional(Metadata),
+  materials: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "InTotoProvenance" });
 
 export interface Subject {
   name?: string;
@@ -1163,26 +985,18 @@ export interface Subject {
   digest?: Record<string, string>;
 }
 
-export const Subject: Schema.Schema<Subject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Subject" }) as any as Schema.Schema<Subject>;
+export const Subject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Subject" });
 
 export interface SlsaBuilder {
   id?: string;
 }
 
-export const SlsaBuilder: Schema.Schema<SlsaBuilder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SlsaBuilder",
-  }) as any as Schema.Schema<SlsaBuilder>;
+export const SlsaBuilder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "SlsaBuilder" });
 
 export interface SlsaRecipe {
   /** URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials. */
@@ -1197,18 +1011,13 @@ export interface SlsaRecipe {
   environment?: Record<string, unknown>;
 }
 
-export const SlsaRecipe: Schema.Schema<SlsaRecipe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      definedInMaterial: Schema.optional(Schema.String),
-      entryPoint: Schema.optional(Schema.String),
-      arguments: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      environment: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({ identifier: "SlsaRecipe" }) as any as Schema.Schema<SlsaRecipe>;
+export const SlsaRecipe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  definedInMaterial: Schema.optional(Schema.String),
+  entryPoint: Schema.optional(Schema.String),
+  arguments: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  environment: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "SlsaRecipe" });
 
 export interface SlsaCompleteness {
   /** If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe. */
@@ -1219,16 +1028,11 @@ export interface SlsaCompleteness {
   materials?: boolean;
 }
 
-export const SlsaCompleteness: Schema.Schema<SlsaCompleteness> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      arguments: Schema.optional(Schema.Boolean),
-      environment: Schema.optional(Schema.Boolean),
-      materials: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SlsaCompleteness",
-  }) as any as Schema.Schema<SlsaCompleteness>;
+export const SlsaCompleteness = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  arguments: Schema.optional(Schema.Boolean),
+  environment: Schema.optional(Schema.Boolean),
+  materials: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SlsaCompleteness" });
 
 export interface SlsaMetadata {
   /** Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec. */
@@ -1243,31 +1047,23 @@ export interface SlsaMetadata {
   reproducible?: boolean;
 }
 
-export const SlsaMetadata: Schema.Schema<SlsaMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildInvocationId: Schema.optional(Schema.String),
-      buildStartedOn: Schema.optional(Schema.String),
-      buildFinishedOn: Schema.optional(Schema.String),
-      completeness: Schema.optional(SlsaCompleteness),
-      reproducible: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SlsaMetadata",
-  }) as any as Schema.Schema<SlsaMetadata>;
+export const SlsaMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildInvocationId: Schema.optional(Schema.String),
+  buildStartedOn: Schema.optional(Schema.String),
+  buildFinishedOn: Schema.optional(Schema.String),
+  completeness: Schema.optional(SlsaCompleteness),
+  reproducible: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SlsaMetadata" });
 
 export interface Material {
   uri?: string;
   digest?: Record<string, string>;
 }
 
-export const Material: Schema.Schema<Material> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Material" }) as any as Schema.Schema<Material>;
+export const Material = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Material" });
 
 export interface SlsaProvenance {
   /** required */
@@ -1279,30 +1075,21 @@ export interface SlsaProvenance {
   materials?: Array<Material>;
 }
 
-export const SlsaProvenance: Schema.Schema<SlsaProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builder: Schema.optional(SlsaBuilder),
-      recipe: Schema.optional(SlsaRecipe),
-      metadata: Schema.optional(SlsaMetadata),
-      materials: Schema.optional(Schema.Array(Material)),
-    }),
-  ).annotate({
-    identifier: "SlsaProvenance",
-  }) as any as Schema.Schema<SlsaProvenance>;
+export const SlsaProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  builder: Schema.optional(SlsaBuilder),
+  recipe: Schema.optional(SlsaRecipe),
+  metadata: Schema.optional(SlsaMetadata),
+  materials: Schema.optional(Schema.Array(Material)),
+}).annotate({ identifier: "SlsaProvenance" });
 
 export interface GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder {
   id?: string;
 }
 
-export const GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder: Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder",
-  }) as any as Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder>;
+export const GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder" });
 
 export interface GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
   uri?: string;
@@ -1310,16 +1097,12 @@ export interface GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
   entryPoint?: string;
 }
 
-export const GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource: Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      entryPoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource",
-  }) as any as Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource>;
+export const GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    entryPoint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource" });
 
 export interface GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
   configSource?: GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource;
@@ -1327,20 +1110,14 @@ export interface GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
   environment?: Record<string, unknown>;
 }
 
-export const GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation: Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configSource: Schema.optional(
-        GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource,
-      ),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      environment: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation",
-  }) as any as Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation>;
+export const GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configSource: Schema.optional(
+      GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource,
+    ),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    environment: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation" });
 
 export interface GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
   parameters?: boolean;
@@ -1348,16 +1125,12 @@ export interface GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
   materials?: boolean;
 }
 
-export const GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness: Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Boolean),
-      environment: Schema.optional(Schema.Boolean),
-      materials: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness",
-  }) as any as Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness>;
+export const GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(Schema.Boolean),
+    environment: Schema.optional(Schema.Boolean),
+    materials: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness" });
 
 export interface GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
   buildInvocationId?: string;
@@ -1367,35 +1140,27 @@ export interface GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
   reproducible?: boolean;
 }
 
-export const GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata: Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildInvocationId: Schema.optional(Schema.String),
-      buildStartedOn: Schema.optional(Schema.String),
-      buildFinishedOn: Schema.optional(Schema.String),
-      completeness: Schema.optional(
-        GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness,
-      ),
-      reproducible: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata",
-  }) as any as Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata>;
+export const GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buildInvocationId: Schema.optional(Schema.String),
+    buildStartedOn: Schema.optional(Schema.String),
+    buildFinishedOn: Schema.optional(Schema.String),
+    completeness: Schema.optional(
+      GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness,
+    ),
+    reproducible: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata" });
 
 export interface GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
   uri?: string;
   digest?: Record<string, string>;
 }
 
-export const GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial: Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial",
-  }) as any as Schema.Schema<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
+export const GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial" });
 
 export interface SlsaProvenanceZeroTwo {
   builder?: GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder;
@@ -1406,23 +1171,16 @@ export interface SlsaProvenanceZeroTwo {
   materials?: Array<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
 }
 
-export const SlsaProvenanceZeroTwo: Schema.Schema<SlsaProvenanceZeroTwo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builder: Schema.optional(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder),
-      buildType: Schema.optional(Schema.String),
-      invocation: Schema.optional(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation),
-      buildConfig: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      metadata: Schema.optional(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata),
-      materials: Schema.optional(
-        Schema.Array(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial),
-      ),
-    }),
-  ).annotate({
-    identifier: "SlsaProvenanceZeroTwo",
-  }) as any as Schema.Schema<SlsaProvenanceZeroTwo>;
+export const SlsaProvenanceZeroTwo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  builder: Schema.optional(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder),
+  buildType: Schema.optional(Schema.String),
+  invocation: Schema.optional(GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation),
+  buildConfig: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata),
+  materials: Schema.optional(
+    Schema.Array(GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial),
+  ),
+}).annotate({ identifier: "SlsaProvenanceZeroTwo" });
 
 export interface InTotoStatement {
   /** Always `https://in-toto.io/Statement/v0.1`. */
@@ -1435,19 +1193,14 @@ export interface InTotoStatement {
   slsaProvenanceZeroTwo?: SlsaProvenanceZeroTwo;
 }
 
-export const InTotoStatement: Schema.Schema<InTotoStatement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      _type: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.Array(Subject)),
-      predicateType: Schema.optional(Schema.String),
-      provenance: Schema.optional(InTotoProvenance),
-      slsaProvenance: Schema.optional(SlsaProvenance),
-      slsaProvenanceZeroTwo: Schema.optional(SlsaProvenanceZeroTwo),
-    }),
-  ).annotate({
-    identifier: "InTotoStatement",
-  }) as any as Schema.Schema<InTotoStatement>;
+export const InTotoStatement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  _type: Schema.optional(Schema.String),
+  subject: Schema.optional(Schema.Array(Subject)),
+  predicateType: Schema.optional(Schema.String),
+  provenance: Schema.optional(InTotoProvenance),
+  slsaProvenance: Schema.optional(SlsaProvenance),
+  slsaProvenanceZeroTwo: Schema.optional(SlsaProvenanceZeroTwo),
+}).annotate({ identifier: "InTotoStatement" });
 
 export interface ResourceDescriptor {
   name?: string;
@@ -1459,22 +1212,15 @@ export interface ResourceDescriptor {
   annotations?: Record<string, unknown>;
 }
 
-export const ResourceDescriptor: Schema.Schema<ResourceDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      content: Schema.optional(Schema.String),
-      downloadLocation: Schema.optional(Schema.String),
-      mediaType: Schema.optional(Schema.String),
-      annotations: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourceDescriptor",
-  }) as any as Schema.Schema<ResourceDescriptor>;
+export const ResourceDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  content: Schema.optional(Schema.String),
+  downloadLocation: Schema.optional(Schema.String),
+  mediaType: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ResourceDescriptor" });
 
 export interface BuildDefinition {
   buildType?: string;
@@ -1483,21 +1229,16 @@ export interface BuildDefinition {
   resolvedDependencies?: Array<ResourceDescriptor>;
 }
 
-export const BuildDefinition: Schema.Schema<BuildDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildType: Schema.optional(Schema.String),
-      externalParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      internalParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      resolvedDependencies: Schema.optional(Schema.Array(ResourceDescriptor)),
-    }),
-  ).annotate({
-    identifier: "BuildDefinition",
-  }) as any as Schema.Schema<BuildDefinition>;
+export const BuildDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildType: Schema.optional(Schema.String),
+  externalParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  internalParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  resolvedDependencies: Schema.optional(Schema.Array(ResourceDescriptor)),
+}).annotate({ identifier: "BuildDefinition" });
 
 export interface ProvenanceBuilder {
   id?: string;
@@ -1505,16 +1246,11 @@ export interface ProvenanceBuilder {
   builderDependencies?: Array<ResourceDescriptor>;
 }
 
-export const ProvenanceBuilder: Schema.Schema<ProvenanceBuilder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      builderDependencies: Schema.optional(Schema.Array(ResourceDescriptor)),
-    }),
-  ).annotate({
-    identifier: "ProvenanceBuilder",
-  }) as any as Schema.Schema<ProvenanceBuilder>;
+export const ProvenanceBuilder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  builderDependencies: Schema.optional(Schema.Array(ResourceDescriptor)),
+}).annotate({ identifier: "ProvenanceBuilder" });
 
 export interface BuildMetadata {
   invocationId?: string;
@@ -1522,16 +1258,11 @@ export interface BuildMetadata {
   finishedOn?: string;
 }
 
-export const BuildMetadata: Schema.Schema<BuildMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invocationId: Schema.optional(Schema.String),
-      startedOn: Schema.optional(Schema.String),
-      finishedOn: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildMetadata",
-  }) as any as Schema.Schema<BuildMetadata>;
+export const BuildMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  invocationId: Schema.optional(Schema.String),
+  startedOn: Schema.optional(Schema.String),
+  finishedOn: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildMetadata" });
 
 export interface RunDetails {
   builder?: ProvenanceBuilder;
@@ -1539,29 +1270,21 @@ export interface RunDetails {
   byproducts?: Array<ResourceDescriptor>;
 }
 
-export const RunDetails: Schema.Schema<RunDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builder: Schema.optional(ProvenanceBuilder),
-      metadata: Schema.optional(BuildMetadata),
-      byproducts: Schema.optional(Schema.Array(ResourceDescriptor)),
-    }),
-  ).annotate({ identifier: "RunDetails" }) as any as Schema.Schema<RunDetails>;
+export const RunDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  builder: Schema.optional(ProvenanceBuilder),
+  metadata: Schema.optional(BuildMetadata),
+  byproducts: Schema.optional(Schema.Array(ResourceDescriptor)),
+}).annotate({ identifier: "RunDetails" });
 
 export interface SlsaProvenanceV1 {
   buildDefinition?: BuildDefinition;
   runDetails?: RunDetails;
 }
 
-export const SlsaProvenanceV1: Schema.Schema<SlsaProvenanceV1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildDefinition: Schema.optional(BuildDefinition),
-      runDetails: Schema.optional(RunDetails),
-    }),
-  ).annotate({
-    identifier: "SlsaProvenanceV1",
-  }) as any as Schema.Schema<SlsaProvenanceV1>;
+export const SlsaProvenanceV1 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildDefinition: Schema.optional(BuildDefinition),
+  runDetails: Schema.optional(RunDetails),
+}).annotate({ identifier: "SlsaProvenanceV1" });
 
 export interface InTotoSlsaProvenanceV1 {
   /** InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement */
@@ -1571,17 +1294,14 @@ export interface InTotoSlsaProvenanceV1 {
   predicate?: SlsaProvenanceV1;
 }
 
-export const InTotoSlsaProvenanceV1: Schema.Schema<InTotoSlsaProvenanceV1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      _type: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.Array(Subject)),
-      predicateType: Schema.optional(Schema.String),
-      predicate: Schema.optional(SlsaProvenanceV1),
-    }),
-  ).annotate({
-    identifier: "InTotoSlsaProvenanceV1",
-  }) as any as Schema.Schema<InTotoSlsaProvenanceV1>;
+export const InTotoSlsaProvenanceV1 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    _type: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.Array(Subject)),
+    predicateType: Schema.optional(Schema.String),
+    predicate: Schema.optional(SlsaProvenanceV1),
+  },
+).annotate({ identifier: "InTotoSlsaProvenanceV1" });
 
 export interface BuildOccurrence {
   /** The actual provenance for the build. */
@@ -1596,18 +1316,13 @@ export interface BuildOccurrence {
   inTotoSlsaProvenanceV1?: InTotoSlsaProvenanceV1;
 }
 
-export const BuildOccurrence: Schema.Schema<BuildOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provenance: Schema.optional(BuildProvenance),
-      provenanceBytes: Schema.optional(Schema.String),
-      intotoProvenance: Schema.optional(InTotoProvenance),
-      intotoStatement: Schema.optional(InTotoStatement),
-      inTotoSlsaProvenanceV1: Schema.optional(InTotoSlsaProvenanceV1),
-    }),
-  ).annotate({
-    identifier: "BuildOccurrence",
-  }) as any as Schema.Schema<BuildOccurrence>;
+export const BuildOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provenance: Schema.optional(BuildProvenance),
+  provenanceBytes: Schema.optional(Schema.String),
+  intotoProvenance: Schema.optional(InTotoProvenance),
+  intotoStatement: Schema.optional(InTotoStatement),
+  inTotoSlsaProvenanceV1: Schema.optional(InTotoSlsaProvenanceV1),
+}).annotate({ identifier: "BuildOccurrence" });
 
 export interface Fingerprint {
   /** Required. The layer ID of the final layer in the Docker image's v1 representation. */
@@ -1618,16 +1333,11 @@ export interface Fingerprint {
   v2Name?: string;
 }
 
-export const Fingerprint: Schema.Schema<Fingerprint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      v1Name: Schema.optional(Schema.String),
-      v2Blob: Schema.optional(Schema.Array(Schema.String)),
-      v2Name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Fingerprint",
-  }) as any as Schema.Schema<Fingerprint>;
+export const Fingerprint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  v1Name: Schema.optional(Schema.String),
+  v2Blob: Schema.optional(Schema.Array(Schema.String)),
+  v2Name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Fingerprint" });
 
 export interface Layer {
   /** Required. The recovered Dockerfile directive used to construct this layer. See https://docs.docker.com/engine/reference/builder/ for more information. */
@@ -1636,13 +1346,10 @@ export interface Layer {
   arguments?: string;
 }
 
-export const Layer: Schema.Schema<Layer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      directive: Schema.optional(Schema.String),
-      arguments: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Layer" }) as any as Schema.Schema<Layer>;
+export const Layer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  directive: Schema.optional(Schema.String),
+  arguments: Schema.optional(Schema.String),
+}).annotate({ identifier: "Layer" });
 
 export interface ImageOccurrence {
   /** Required. The fingerprint of the derived image. */
@@ -1655,17 +1362,12 @@ export interface ImageOccurrence {
   baseResourceUrl?: string;
 }
 
-export const ImageOccurrence: Schema.Schema<ImageOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fingerprint: Schema.optional(Fingerprint),
-      distance: Schema.optional(Schema.Number),
-      layerInfo: Schema.optional(Schema.Array(Layer)),
-      baseResourceUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImageOccurrence",
-  }) as any as Schema.Schema<ImageOccurrence>;
+export const ImageOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fingerprint: Schema.optional(Fingerprint),
+  distance: Schema.optional(Schema.Number),
+  layerInfo: Schema.optional(Schema.Array(Layer)),
+  baseResourceUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImageOccurrence" });
 
 export interface Location {
   /** Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) */
@@ -1676,14 +1378,11 @@ export interface Location {
   path?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpeUri: Schema.optional(Schema.String),
-      version: Schema.optional(Version),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpeUri: Schema.optional(Schema.String),
+  version: Schema.optional(Version),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface License {
   /** Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2". */
@@ -1692,13 +1391,10 @@ export interface License {
   comments?: string;
 }
 
-export const License: Schema.Schema<License> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      comments: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "License" }) as any as Schema.Schema<License>;
+export const License = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  comments: Schema.optional(Schema.String),
+}).annotate({ identifier: "License" });
 
 export interface PackageOccurrence {
   /** Required. Output only. The name of the installed package. */
@@ -1717,20 +1413,15 @@ export interface PackageOccurrence {
   version?: Version;
 }
 
-export const PackageOccurrence: Schema.Schema<PackageOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.Array(Location)),
-      packageType: Schema.optional(Schema.String),
-      cpeUri: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-      license: Schema.optional(License),
-      version: Schema.optional(Version),
-    }),
-  ).annotate({
-    identifier: "PackageOccurrence",
-  }) as any as Schema.Schema<PackageOccurrence>;
+export const PackageOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.Array(Location)),
+  packageType: Schema.optional(Schema.String),
+  cpeUri: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+  license: Schema.optional(License),
+  version: Schema.optional(Version),
+}).annotate({ identifier: "PackageOccurrence" });
 
 export interface DeploymentOccurrence {
   /** Identity of the user that triggered this deployment. */
@@ -1749,33 +1440,23 @@ export interface DeploymentOccurrence {
   platform?: "PLATFORM_UNSPECIFIED" | "GKE" | "FLEX" | "CUSTOM" | (string & {});
 }
 
-export const DeploymentOccurrence: Schema.Schema<DeploymentOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEmail: Schema.optional(Schema.String),
-      deployTime: Schema.optional(Schema.String),
-      undeployTime: Schema.optional(Schema.String),
-      config: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      resourceUri: Schema.optional(Schema.Array(Schema.String)),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeploymentOccurrence",
-  }) as any as Schema.Schema<DeploymentOccurrence>;
+export const DeploymentOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userEmail: Schema.optional(Schema.String),
+  deployTime: Schema.optional(Schema.String),
+  undeployTime: Schema.optional(Schema.String),
+  config: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.Array(Schema.String)),
+  platform: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeploymentOccurrence" });
 
 export interface AnalysisCompleted {
   analysisType?: Array<string>;
 }
 
-export const AnalysisCompleted: Schema.Schema<AnalysisCompleted> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analysisType: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AnalysisCompleted",
-  }) as any as Schema.Schema<AnalysisCompleted>;
+export const AnalysisCompleted = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  analysisType: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AnalysisCompleted" });
 
 export interface SBOMStatus {
   /** The progress of the SBOM generation. */
@@ -1784,26 +1465,20 @@ export interface SBOMStatus {
   error?: string;
 }
 
-export const SBOMStatus: Schema.Schema<SBOMStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sbomState: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SBOMStatus" }) as any as Schema.Schema<SBOMStatus>;
+export const SBOMStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sbomState: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.String),
+}).annotate({ identifier: "SBOMStatus" });
 
 export interface File {
   name?: string;
   digest?: Record<string, string>;
 }
 
-export const File: Schema.Schema<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "File" }) as any as Schema.Schema<File>;
+export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "File" });
 
 export interface DiscoveryOccurrence {
   /** Whether the resource is continuously analyzed. */
@@ -1841,24 +1516,19 @@ export interface DiscoveryOccurrence {
   lastVulnerabilityUpdateTime?: string;
 }
 
-export const DiscoveryOccurrence: Schema.Schema<DiscoveryOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      continuousAnalysis: Schema.optional(Schema.String),
-      analysisStatus: Schema.optional(Schema.String),
-      analysisCompleted: Schema.optional(AnalysisCompleted),
-      analysisError: Schema.optional(Schema.Array(Status)),
-      analysisStatusError: Schema.optional(Status),
-      cpe: Schema.optional(Schema.String),
-      lastScanTime: Schema.optional(Schema.String),
-      archiveTime: Schema.optional(Schema.String),
-      sbomStatus: Schema.optional(SBOMStatus),
-      files: Schema.optional(Schema.Array(File)),
-      lastVulnerabilityUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiscoveryOccurrence",
-  }) as any as Schema.Schema<DiscoveryOccurrence>;
+export const DiscoveryOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  continuousAnalysis: Schema.optional(Schema.String),
+  analysisStatus: Schema.optional(Schema.String),
+  analysisCompleted: Schema.optional(AnalysisCompleted),
+  analysisError: Schema.optional(Schema.Array(Status)),
+  analysisStatusError: Schema.optional(Status),
+  cpe: Schema.optional(Schema.String),
+  lastScanTime: Schema.optional(Schema.String),
+  archiveTime: Schema.optional(Schema.String),
+  sbomStatus: Schema.optional(SBOMStatus),
+  files: Schema.optional(Schema.Array(File)),
+  lastVulnerabilityUpdateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiscoveryOccurrence" });
 
 export interface Signature {
   /** The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be unambiguously provided with the Signature during verification. A wrapper message might provide the payload explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously computed to derive the payload. */
@@ -1867,25 +1537,19 @@ export interface Signature {
   publicKeyId?: string;
 }
 
-export const Signature: Schema.Schema<Signature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signature: Schema.optional(Schema.String),
-      publicKeyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Signature" }) as any as Schema.Schema<Signature>;
+export const Signature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signature: Schema.optional(Schema.String),
+  publicKeyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Signature" });
 
 export interface Jwt {
   /** The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1 */
   compactJwt?: string;
 }
 
-export const Jwt: Schema.Schema<Jwt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compactJwt: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Jwt" }) as any as Schema.Schema<Jwt>;
+export const Jwt = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compactJwt: Schema.optional(Schema.String),
+}).annotate({ identifier: "Jwt" });
 
 export interface AttestationOccurrence {
   /** Required. The serialized payload that is verified by one or more `signatures`. */
@@ -1896,16 +1560,11 @@ export interface AttestationOccurrence {
   jwts?: Array<Jwt>;
 }
 
-export const AttestationOccurrence: Schema.Schema<AttestationOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serializedPayload: Schema.optional(Schema.String),
-      signatures: Schema.optional(Schema.Array(Signature)),
-      jwts: Schema.optional(Schema.Array(Jwt)),
-    }),
-  ).annotate({
-    identifier: "AttestationOccurrence",
-  }) as any as Schema.Schema<AttestationOccurrence>;
+export const AttestationOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serializedPayload: Schema.optional(Schema.String),
+  signatures: Schema.optional(Schema.Array(Signature)),
+  jwts: Schema.optional(Schema.Array(Jwt)),
+}).annotate({ identifier: "AttestationOccurrence" });
 
 export interface UpgradeDistribution {
   /** Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/. */
@@ -1918,17 +1577,12 @@ export interface UpgradeDistribution {
   cve?: Array<string>;
 }
 
-export const UpgradeDistribution: Schema.Schema<UpgradeDistribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpeUri: Schema.optional(Schema.String),
-      classification: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      cve: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UpgradeDistribution",
-  }) as any as Schema.Schema<UpgradeDistribution>;
+export const UpgradeDistribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpeUri: Schema.optional(Schema.String),
+  classification: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  cve: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "UpgradeDistribution" });
 
 export interface Identity {
   /** The revision independent identifier of the update. */
@@ -1937,13 +1591,10 @@ export interface Identity {
   revision?: number;
 }
 
-export const Identity: Schema.Schema<Identity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateId: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Identity" }) as any as Schema.Schema<Identity>;
+export const Identity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateId: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Identity" });
 
 export interface Category {
   /** The identifier of the category. */
@@ -1952,13 +1603,10 @@ export interface Category {
   name?: string;
 }
 
-export const Category: Schema.Schema<Category> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categoryId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Category" }) as any as Schema.Schema<Category>;
+export const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  categoryId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Category" });
 
 export interface WindowsUpdate {
   /** Required - The unique identifier for the update. */
@@ -1977,20 +1625,15 @@ export interface WindowsUpdate {
   lastPublishedTimestamp?: string;
 }
 
-export const WindowsUpdate: Schema.Schema<WindowsUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identity: Schema.optional(Identity),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      categories: Schema.optional(Schema.Array(Category)),
-      kbArticleIds: Schema.optional(Schema.Array(Schema.String)),
-      supportUrl: Schema.optional(Schema.String),
-      lastPublishedTimestamp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WindowsUpdate",
-  }) as any as Schema.Schema<WindowsUpdate>;
+export const WindowsUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identity: Schema.optional(Identity),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  categories: Schema.optional(Schema.Array(Category)),
+  kbArticleIds: Schema.optional(Schema.Array(Schema.String)),
+  supportUrl: Schema.optional(Schema.String),
+  lastPublishedTimestamp: Schema.optional(Schema.String),
+}).annotate({ identifier: "WindowsUpdate" });
 
 export interface UpgradeOccurrence {
   /** Required for non-Windows OS. The package this Upgrade is for. */
@@ -2003,17 +1646,12 @@ export interface UpgradeOccurrence {
   windowsUpdate?: WindowsUpdate;
 }
 
-export const UpgradeOccurrence: Schema.Schema<UpgradeOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      package: Schema.optional(Schema.String),
-      parsedVersion: Schema.optional(Version),
-      distribution: Schema.optional(UpgradeDistribution),
-      windowsUpdate: Schema.optional(WindowsUpdate),
-    }),
-  ).annotate({
-    identifier: "UpgradeOccurrence",
-  }) as any as Schema.Schema<UpgradeOccurrence>;
+export const UpgradeOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  package: Schema.optional(Schema.String),
+  parsedVersion: Schema.optional(Version),
+  distribution: Schema.optional(UpgradeDistribution),
+  windowsUpdate: Schema.optional(WindowsUpdate),
+}).annotate({ identifier: "UpgradeOccurrence" });
 
 export interface NonCompliantFile {
   /** Empty if `display_command` is set. */
@@ -2024,16 +1662,11 @@ export interface NonCompliantFile {
   reason?: string;
 }
 
-export const NonCompliantFile: Schema.Schema<NonCompliantFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      displayCommand: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NonCompliantFile",
-  }) as any as Schema.Schema<NonCompliantFile>;
+export const NonCompliantFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  displayCommand: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "NonCompliantFile" });
 
 export interface ComplianceVersion {
   /** The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to. */
@@ -2044,16 +1677,11 @@ export interface ComplianceVersion {
   version?: string;
 }
 
-export const ComplianceVersion: Schema.Schema<ComplianceVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpeUri: Schema.optional(Schema.String),
-      benchmarkDocument: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComplianceVersion",
-  }) as any as Schema.Schema<ComplianceVersion>;
+export const ComplianceVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpeUri: Schema.optional(Schema.String),
+  benchmarkDocument: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "ComplianceVersion" });
 
 export interface ComplianceOccurrence {
   nonCompliantFiles?: Array<NonCompliantFile>;
@@ -2062,31 +1690,21 @@ export interface ComplianceOccurrence {
   version?: ComplianceVersion;
 }
 
-export const ComplianceOccurrence: Schema.Schema<ComplianceOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nonCompliantFiles: Schema.optional(Schema.Array(NonCompliantFile)),
-      nonComplianceReason: Schema.optional(Schema.String),
-      version: Schema.optional(ComplianceVersion),
-    }),
-  ).annotate({
-    identifier: "ComplianceOccurrence",
-  }) as any as Schema.Schema<ComplianceOccurrence>;
+export const ComplianceOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nonCompliantFiles: Schema.optional(Schema.Array(NonCompliantFile)),
+  nonComplianceReason: Schema.optional(Schema.String),
+  version: Schema.optional(ComplianceVersion),
+}).annotate({ identifier: "ComplianceOccurrence" });
 
 export interface EnvelopeSignature {
   sig?: string;
   keyid?: string;
 }
 
-export const EnvelopeSignature: Schema.Schema<EnvelopeSignature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sig: Schema.optional(Schema.String),
-      keyid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnvelopeSignature",
-  }) as any as Schema.Schema<EnvelopeSignature>;
+export const EnvelopeSignature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sig: Schema.optional(Schema.String),
+  keyid: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnvelopeSignature" });
 
 export interface Envelope {
   payload?: string;
@@ -2094,14 +1712,11 @@ export interface Envelope {
   signatures?: Array<EnvelopeSignature>;
 }
 
-export const Envelope: Schema.Schema<Envelope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(Schema.String),
-      payloadType: Schema.optional(Schema.String),
-      signatures: Schema.optional(Schema.Array(EnvelopeSignature)),
-    }),
-  ).annotate({ identifier: "Envelope" }) as any as Schema.Schema<Envelope>;
+export const Envelope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payload: Schema.optional(Schema.String),
+  payloadType: Schema.optional(Schema.String),
+  signatures: Schema.optional(Schema.Array(EnvelopeSignature)),
+}).annotate({ identifier: "Envelope" });
 
 export interface DSSEAttestationOccurrence {
   /** If doing something security critical, make sure to verify the signatures in this metadata. */
@@ -2109,15 +1724,11 @@ export interface DSSEAttestationOccurrence {
   statement?: InTotoStatement;
 }
 
-export const DSSEAttestationOccurrence: Schema.Schema<DSSEAttestationOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      envelope: Schema.optional(Envelope),
-      statement: Schema.optional(InTotoStatement),
-    }),
-  ).annotate({
-    identifier: "DSSEAttestationOccurrence",
-  }) as any as Schema.Schema<DSSEAttestationOccurrence>;
+export const DSSEAttestationOccurrence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    envelope: Schema.optional(Envelope),
+    statement: Schema.optional(InTotoStatement),
+  }).annotate({ identifier: "DSSEAttestationOccurrence" });
 
 export interface SbomReferenceIntotoPredicate {
   /** The person or system referring this predicate to the consumer. */
@@ -2130,17 +1741,13 @@ export interface SbomReferenceIntotoPredicate {
   digest?: Record<string, string>;
 }
 
-export const SbomReferenceIntotoPredicate: Schema.Schema<SbomReferenceIntotoPredicate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referrerId: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SbomReferenceIntotoPredicate",
-  }) as any as Schema.Schema<SbomReferenceIntotoPredicate>;
+export const SbomReferenceIntotoPredicate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referrerId: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    digest: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "SbomReferenceIntotoPredicate" });
 
 export interface SbomReferenceIntotoPayload {
   /** Identifier for the schema of the Statement. */
@@ -2153,17 +1760,13 @@ export interface SbomReferenceIntotoPayload {
   predicate?: SbomReferenceIntotoPredicate;
 }
 
-export const SbomReferenceIntotoPayload: Schema.Schema<SbomReferenceIntotoPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      _type: Schema.optional(Schema.String),
-      predicateType: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.Array(Subject)),
-      predicate: Schema.optional(SbomReferenceIntotoPredicate),
-    }),
-  ).annotate({
-    identifier: "SbomReferenceIntotoPayload",
-  }) as any as Schema.Schema<SbomReferenceIntotoPayload>;
+export const SbomReferenceIntotoPayload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    _type: Schema.optional(Schema.String),
+    predicateType: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.Array(Subject)),
+    predicate: Schema.optional(SbomReferenceIntotoPredicate),
+  }).annotate({ identifier: "SbomReferenceIntotoPayload" });
 
 export interface SBOMReferenceOccurrence {
   /** The actual payload that contains the SBOM reference data. */
@@ -2174,30 +1777,21 @@ export interface SBOMReferenceOccurrence {
   signatures?: Array<EnvelopeSignature>;
 }
 
-export const SBOMReferenceOccurrence: Schema.Schema<SBOMReferenceOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(SbomReferenceIntotoPayload),
-      payloadType: Schema.optional(Schema.String),
-      signatures: Schema.optional(Schema.Array(EnvelopeSignature)),
-    }),
-  ).annotate({
-    identifier: "SBOMReferenceOccurrence",
-  }) as any as Schema.Schema<SBOMReferenceOccurrence>;
+export const SBOMReferenceOccurrence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    payload: Schema.optional(SbomReferenceIntotoPayload),
+    payloadType: Schema.optional(Schema.String),
+    signatures: Schema.optional(Schema.Array(EnvelopeSignature)),
+  }).annotate({ identifier: "SBOMReferenceOccurrence" });
 
 export interface SecretLocation {
   /** The secret is found from a file. */
   fileLocation?: GrafeasV1FileLocation;
 }
 
-export const SecretLocation: Schema.Schema<SecretLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileLocation: Schema.optional(GrafeasV1FileLocation),
-    }),
-  ).annotate({
-    identifier: "SecretLocation",
-  }) as any as Schema.Schema<SecretLocation>;
+export const SecretLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileLocation: Schema.optional(GrafeasV1FileLocation),
+}).annotate({ identifier: "SecretLocation" });
 
 export interface SecretStatus {
   /** Optional. The status of the secret. */
@@ -2213,16 +1807,11 @@ export interface SecretStatus {
   message?: string;
 }
 
-export const SecretStatus: Schema.Schema<SecretStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretStatus",
-  }) as any as Schema.Schema<SecretStatus>;
+export const SecretStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretStatus" });
 
 export interface SecretOccurrence {
   /** Required. Type of secret. */
@@ -2257,16 +1846,11 @@ export interface SecretOccurrence {
   statuses?: Array<SecretStatus>;
 }
 
-export const SecretOccurrence: Schema.Schema<SecretOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(SecretLocation)),
-      statuses: Schema.optional(Schema.Array(SecretStatus)),
-    }),
-  ).annotate({
-    identifier: "SecretOccurrence",
-  }) as any as Schema.Schema<SecretOccurrence>;
+export const SecretOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(SecretLocation)),
+  statuses: Schema.optional(Schema.Array(SecretStatus)),
+}).annotate({ identifier: "SecretOccurrence" });
 
 export interface Occurrence {
   /** Output only. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. */
@@ -2324,33 +1908,33 @@ export interface Occurrence {
   secret?: SecretOccurrence;
   /** https://github.com/secure-systems-lab/dsse */
   envelope?: Envelope;
+  /** The time this advisory was published by the source. */
+  advisoryPublishTime?: string;
 }
 
-export const Occurrence: Schema.Schema<Occurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      resourceUri: Schema.optional(Schema.String),
-      noteName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      remediation: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      vulnerability: Schema.optional(VulnerabilityOccurrence),
-      build: Schema.optional(BuildOccurrence),
-      image: Schema.optional(ImageOccurrence),
-      package: Schema.optional(PackageOccurrence),
-      deployment: Schema.optional(DeploymentOccurrence),
-      discovery: Schema.optional(DiscoveryOccurrence),
-      attestation: Schema.optional(AttestationOccurrence),
-      upgrade: Schema.optional(UpgradeOccurrence),
-      compliance: Schema.optional(ComplianceOccurrence),
-      dsseAttestation: Schema.optional(DSSEAttestationOccurrence),
-      sbomReference: Schema.optional(SBOMReferenceOccurrence),
-      secret: Schema.optional(SecretOccurrence),
-      envelope: Schema.optional(Envelope),
-    }),
-  ).annotate({ identifier: "Occurrence" }) as any as Schema.Schema<Occurrence>;
+export const Occurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  noteName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  remediation: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  vulnerability: Schema.optional(VulnerabilityOccurrence),
+  build: Schema.optional(BuildOccurrence),
+  image: Schema.optional(ImageOccurrence),
+  package: Schema.optional(PackageOccurrence),
+  deployment: Schema.optional(DeploymentOccurrence),
+  discovery: Schema.optional(DiscoveryOccurrence),
+  attestation: Schema.optional(AttestationOccurrence),
+  upgrade: Schema.optional(UpgradeOccurrence),
+  compliance: Schema.optional(ComplianceOccurrence),
+  dsseAttestation: Schema.optional(DSSEAttestationOccurrence),
+  sbomReference: Schema.optional(SBOMReferenceOccurrence),
+  secret: Schema.optional(SecretOccurrence),
+  envelope: Schema.optional(Envelope),
+  advisoryPublishTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Occurrence" });
 
 export interface ListVulnerabilitiesResponse {
   /** The list of Vulnerability Occurrences resulting from a scan. */
@@ -2359,15 +1943,11 @@ export interface ListVulnerabilitiesResponse {
   nextPageToken?: string;
 }
 
-export const ListVulnerabilitiesResponse: Schema.Schema<ListVulnerabilitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      occurrences: Schema.optional(Schema.Array(Occurrence)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVulnerabilitiesResponse",
-  }) as any as Schema.Schema<ListVulnerabilitiesResponse>;
+export const ListVulnerabilitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    occurrences: Schema.optional(Schema.Array(Occurrence)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVulnerabilitiesResponse" });
 
 export interface AnalyzePackagesMetadataV1 {
   /** The resource URI of the container image being scanned. */
@@ -2376,29 +1956,21 @@ export interface AnalyzePackagesMetadataV1 {
   createTime?: string;
 }
 
-export const AnalyzePackagesMetadataV1: Schema.Schema<AnalyzePackagesMetadataV1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzePackagesMetadataV1",
-  }) as any as Schema.Schema<AnalyzePackagesMetadataV1>;
+export const AnalyzePackagesMetadataV1 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnalyzePackagesMetadataV1" });
 
 export interface AnalyzePackagesResponseV1 {
   /** The name of the scan resource created by this successful scan. */
   scan?: string;
 }
 
-export const AnalyzePackagesResponseV1: Schema.Schema<AnalyzePackagesResponseV1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scan: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzePackagesResponseV1",
-  }) as any as Schema.Schema<AnalyzePackagesResponseV1>;
+export const AnalyzePackagesResponseV1 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scan: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnalyzePackagesResponseV1" });
 
 export interface AnalyzePackagesMetadata {
   /** The resource URI of the container image being scanned. */
@@ -2407,29 +1979,21 @@ export interface AnalyzePackagesMetadata {
   createTime?: string;
 }
 
-export const AnalyzePackagesMetadata: Schema.Schema<AnalyzePackagesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzePackagesMetadata",
-  }) as any as Schema.Schema<AnalyzePackagesMetadata>;
+export const AnalyzePackagesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnalyzePackagesMetadata" });
 
 export interface AnalyzePackagesResponse {
   /** The name of the scan resource created by this successful scan. */
   scan?: string;
 }
 
-export const AnalyzePackagesResponse: Schema.Schema<AnalyzePackagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scan: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzePackagesResponse",
-  }) as any as Schema.Schema<AnalyzePackagesResponse>;
+export const AnalyzePackagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scan: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnalyzePackagesResponse" });
 
 // ==========================================================================
 // Operations

@@ -7,13 +7,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const AmlFilesystemsArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -33,9 +33,10 @@ export type AmlFilesystemsArchiveOutput =
 /**
  * Archive data from the AML file system.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const amlFilesystemsArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -46,8 +47,9 @@ export const amlFilesystemsArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AmlFilesystemsCancelArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -68,9 +70,10 @@ export type AmlFilesystemsCancelArchiveOutput =
 /**
  * Cancel archiving data from the AML file system.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const amlFilesystemsCancelArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -81,8 +84,9 @@ export const amlFilesystemsCancelArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AmlFilesystemsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -106,9 +110,10 @@ export type AmlFilesystemsCreateOrUpdateOutput =
 /**
  * Create or update an AML file system.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const amlFilesystemsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -118,8 +123,9 @@ export const amlFilesystemsCreateOrUpdate =
 // Input Schema
 export const AmlFilesystemsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -138,9 +144,10 @@ export type AmlFilesystemsDeleteOutput = typeof AmlFilesystemsDeleteOutput.Type;
 /**
  * Schedules an AML file system for deletion.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const amlFilesystemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -151,8 +158,9 @@ export const amlFilesystemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AmlFilesystemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -175,9 +183,10 @@ export type AmlFilesystemsGetOutput = typeof AmlFilesystemsGetOutput.Type;
 /**
  * Returns an AML file system.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const amlFilesystemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AmlFilesystemsGetInput,
@@ -199,7 +208,6 @@ export type AmlFilesystemsListInput = typeof AmlFilesystemsListInput.Type;
 // Output Schema
 export const AmlFilesystemsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -208,6 +216,7 @@ export const AmlFilesystemsListOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type AmlFilesystemsListOutput = typeof AmlFilesystemsListOutput.Type;
 
@@ -225,8 +234,8 @@ export const amlFilesystemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AmlFilesystemsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -240,7 +249,6 @@ export type AmlFilesystemsListByResourceGroupInput =
 // Output Schema
 export const AmlFilesystemsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -249,6 +257,7 @@ export const AmlFilesystemsListByResourceGroupOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type AmlFilesystemsListByResourceGroupOutput =
   typeof AmlFilesystemsListByResourceGroupOutput.Type;
@@ -257,9 +266,9 @@ export type AmlFilesystemsListByResourceGroupOutput =
 /**
  * Returns all AML file systems the user has access to under a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const amlFilesystemsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -269,8 +278,9 @@ export const amlFilesystemsListByResourceGroup =
 // Input Schema
 export const AmlFilesystemsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -292,9 +302,10 @@ export type AmlFilesystemsUpdateOutput = typeof AmlFilesystemsUpdateOutput.Type;
 /**
  * Update an AML file system instance.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const amlFilesystemsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -367,7 +378,6 @@ export type AscUsagesListInput = typeof AscUsagesListInput.Type;
 
 // Output Schema
 export const AscUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -383,6 +393,7 @@ export const AscUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type AscUsagesListOutput = typeof AscUsagesListOutput.Type;
 
@@ -392,7 +403,7 @@ export type AscUsagesListOutput = typeof AscUsagesListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
- * @param location - The name of the region to query for usage information.
+ * @param location - The name of Azure region.
  */
 export const AscUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AscUsagesListInput,
@@ -401,8 +412,10 @@ export const AscUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AutoExportJobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoExportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -426,9 +439,11 @@ export type AutoExportJobsCreateOrUpdateOutput =
 /**
  * Create or update an auto export job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoExportJobsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -438,8 +453,10 @@ export const autoExportJobsCreateOrUpdate =
 // Input Schema
 export const AutoExportJobsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoExportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -458,9 +475,11 @@ export type AutoExportJobsDeleteOutput = typeof AutoExportJobsDeleteOutput.Type;
 /**
  * Schedules an auto export job for deletion.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoExportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -471,8 +490,10 @@ export const autoExportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AutoExportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoExportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -495,9 +516,11 @@ export type AutoExportJobsGetOutput = typeof AutoExportJobsGetOutput.Type;
 /**
  * Returns an auto export job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoExportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AutoExportJobsGetInput,
@@ -506,8 +529,9 @@ export const autoExportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AutoExportJobsListByAmlFilesystemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -521,7 +545,6 @@ export type AutoExportJobsListByAmlFilesystemInput =
 // Output Schema
 export const AutoExportJobsListByAmlFilesystemOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -530,6 +553,7 @@ export const AutoExportJobsListByAmlFilesystemOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type AutoExportJobsListByAmlFilesystemOutput =
   typeof AutoExportJobsListByAmlFilesystemOutput.Type;
@@ -538,9 +562,10 @@ export type AutoExportJobsListByAmlFilesystemOutput =
 /**
  * Returns all the auto export jobs the user has access to under an AML File System.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoExportJobsListByAmlFilesystem =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -550,8 +575,10 @@ export const autoExportJobsListByAmlFilesystem =
 // Input Schema
 export const AutoExportJobsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoExportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -573,9 +600,11 @@ export type AutoExportJobsUpdateOutput = typeof AutoExportJobsUpdateOutput.Type;
 /**
  * Update an auto export job instance.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoExportJobName - Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoExportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -586,8 +615,10 @@ export const autoExportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AutoImportJobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoImportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -611,9 +642,11 @@ export type AutoImportJobsCreateOrUpdateOutput =
 /**
  * Create or update an auto import job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoImportJobsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -623,8 +656,10 @@ export const autoImportJobsCreateOrUpdate =
 // Input Schema
 export const AutoImportJobsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoImportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -643,9 +678,11 @@ export type AutoImportJobsDeleteOutput = typeof AutoImportJobsDeleteOutput.Type;
 /**
  * Schedules an auto import job for deletion.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoImportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -656,8 +693,10 @@ export const autoImportJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AutoImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoImportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -680,9 +719,11 @@ export type AutoImportJobsGetOutput = typeof AutoImportJobsGetOutput.Type;
 /**
  * Returns an auto import job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoImportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AutoImportJobsGetInput,
@@ -691,8 +732,9 @@ export const autoImportJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AutoImportJobsListByAmlFilesystemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -723,9 +765,10 @@ export type AutoImportJobsListByAmlFilesystemOutput =
 /**
  * Returns all the auto import jobs the user has access to under an AML File System.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoImportJobsListByAmlFilesystem =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -735,8 +778,10 @@ export const autoImportJobsListByAmlFilesystem =
 // Input Schema
 export const AutoImportJobsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    autoImportJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -758,9 +803,11 @@ export type AutoImportJobsUpdateOutput = typeof AutoImportJobsUpdateOutput.Type;
 /**
  * Update an auto import job instance.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param autoImportJobName - Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const autoImportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -771,13 +818,14 @@ export const autoImportJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CachesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
     }),
   );
 export type CachesCreateOrUpdateInput = typeof CachesCreateOrUpdateInput.Type;
@@ -785,34 +833,9 @@ export type CachesCreateOrUpdateInput = typeof CachesCreateOrUpdateInput.Type;
 // Output Schema
 export const CachesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals([
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned, UserAssigned",
-            "None",
-          ]),
-        ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -827,190 +850,6 @@ export const CachesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.optional(
-      Schema.Struct({
-        cacheSizeGB: Schema.optional(Schema.Number),
-        health: Schema.optional(
-          Schema.Struct({
-            state: Schema.optional(
-              Schema.Literals([
-                "Unknown",
-                "Healthy",
-                "Degraded",
-                "Down",
-                "Transitioning",
-                "Stopping",
-                "Stopped",
-                "Upgrading",
-                "Flushing",
-                "WaitingForKey",
-                "StartFailed",
-                "UpgradeFailed",
-              ]),
-            ),
-            statusDescription: Schema.optional(Schema.String),
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  timestamp: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mountAddresses: Schema.optional(Schema.Array(Schema.String)),
-        provisioningState: Schema.optional(
-          Schema.Literals([
-            "Succeeded",
-            "Failed",
-            "Canceled",
-            "Creating",
-            "Deleting",
-            "Updating",
-          ]),
-        ),
-        subnet: Schema.optional(Schema.String),
-        upgradeStatus: Schema.optional(
-          Schema.Struct({
-            currentFirmwareVersion: Schema.optional(Schema.String),
-            firmwareUpdateStatus: Schema.optional(
-              Schema.Literals(["available", "unavailable"]),
-            ),
-            firmwareUpdateDeadline: Schema.optional(Schema.String),
-            lastFirmwareUpdate: Schema.optional(Schema.String),
-            pendingFirmwareVersion: Schema.optional(Schema.String),
-          }),
-        ),
-        upgradeSettings: Schema.optional(
-          Schema.Struct({
-            upgradeScheduleEnabled: Schema.optional(Schema.Boolean),
-            scheduledTime: Schema.optional(Schema.String),
-          }),
-        ),
-        networkSettings: Schema.optional(
-          Schema.Struct({
-            mtu: Schema.optional(Schema.Number),
-            utilityAddresses: Schema.optional(Schema.Array(Schema.String)),
-            dnsServers: Schema.optional(Schema.Array(Schema.String)),
-            dnsSearchDomain: Schema.optional(Schema.String),
-            ntpServer: Schema.optional(Schema.String),
-          }),
-        ),
-        encryptionSettings: Schema.optional(
-          Schema.Struct({
-            keyEncryptionKey: Schema.optional(
-              Schema.Struct({
-                keyUrl: Schema.String,
-                sourceVault: Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            rotationToLatestKeyVersionEnabled: Schema.optional(Schema.Boolean),
-          }),
-        ),
-        securitySettings: Schema.optional(
-          Schema.Struct({
-            accessPolicies: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  accessRules: Schema.Array(
-                    Schema.Struct({
-                      scope: Schema.Literals(["default", "network", "host"]),
-                      filter: Schema.optional(Schema.String),
-                      access: Schema.Literals(["no", "ro", "rw"]),
-                      suid: Schema.optional(Schema.Boolean),
-                      submountAccess: Schema.optional(Schema.Boolean),
-                      rootSquash: Schema.optional(Schema.Boolean),
-                      anonymousUID: Schema.optional(Schema.String),
-                      anonymousGID: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        directoryServicesSettings: Schema.optional(
-          Schema.Struct({
-            activeDirectory: Schema.optional(
-              Schema.Struct({
-                primaryDnsIpAddress: Schema.String,
-                secondaryDnsIpAddress: Schema.optional(Schema.String),
-                domainName: Schema.String,
-                domainNetBiosName: Schema.String,
-                cacheNetBiosName: Schema.String,
-                domainJoined: Schema.optional(
-                  Schema.Literals(["Yes", "No", "Error"]),
-                ),
-                credentials: Schema.optional(
-                  Schema.Struct({
-                    username: Schema.String,
-                    password: Schema.optional(SensitiveString),
-                  }),
-                ),
-              }),
-            ),
-            usernameDownload: Schema.optional(
-              Schema.Struct({
-                extendedGroups: Schema.optional(Schema.Boolean),
-                usernameSource: Schema.optional(
-                  Schema.Literals(["AD", "LDAP", "File", "None"]),
-                ),
-                groupFileURI: Schema.optional(Schema.String),
-                userFileURI: Schema.optional(Schema.String),
-                ldapServer: Schema.optional(Schema.String),
-                ldapBaseDN: Schema.optional(Schema.String),
-                encryptLdapConnection: Schema.optional(Schema.Boolean),
-                requireValidCertificate: Schema.optional(Schema.Boolean),
-                autoDownloadCertificate: Schema.optional(Schema.Boolean),
-                caCertificateURI: Schema.optional(Schema.String),
-                usernameDownloaded: Schema.optional(
-                  Schema.Literals(["Yes", "No", "Error"]),
-                ),
-                credentials: Schema.optional(
-                  Schema.Struct({
-                    bindDn: Schema.optional(Schema.String),
-                    bindPassword: Schema.optional(SensitiveString),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        zones: Schema.optional(Schema.Array(Schema.String)),
-        primingJobs: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              primingJobName: Schema.String,
-              primingManifestUrl: Schema.String,
-              primingJobId: Schema.optional(Schema.String),
-              primingJobState: Schema.optional(
-                Schema.Literals(["Queued", "Running", "Paused", "Complete"]),
-              ),
-              primingJobStatus: Schema.optional(Schema.String),
-              primingJobDetails: Schema.optional(Schema.String),
-              primingJobPercentComplete: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-        spaceAllocation: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              allocationPercentage: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
-    ),
-    sku: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-    ),
   });
 export type CachesCreateOrUpdateOutput = typeof CachesCreateOrUpdateOutput.Type;
 
@@ -1018,9 +857,10 @@ export type CachesCreateOrUpdateOutput = typeof CachesCreateOrUpdateOutput.Type;
 /**
  * Create or update a cache.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1030,13 +870,14 @@ export const CachesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CachesDebugInfoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/debugInfo",
   }),
 );
 export type CachesDebugInfoInput = typeof CachesDebugInfoInput.Type;
@@ -1049,9 +890,10 @@ export type CachesDebugInfoOutput = typeof CachesDebugInfoOutput.Type;
 /**
  * Tells a cache to write generate debug info for support to process.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesDebugInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CachesDebugInfoInput,
@@ -1059,13 +901,14 @@ export const CachesDebugInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CachesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
   }),
 );
 export type CachesDeleteInput = typeof CachesDeleteInput.Type;
@@ -1078,9 +921,10 @@ export type CachesDeleteOutput = typeof CachesDeleteOutput.Type;
 /**
  * Schedules a cache for deletion.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CachesDeleteInput,
@@ -1088,13 +932,14 @@ export const CachesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CachesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/flush",
   }),
 );
 export type CachesFlushInput = typeof CachesFlushInput.Type;
@@ -1107,9 +952,10 @@ export type CachesFlushOutput = typeof CachesFlushOutput.Type;
 /**
  * Tells a cache to write all dirty data to the Storage Target(s). During the flush, clients will see errors returned until the flush is complete.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CachesFlushInput,
@@ -1117,47 +963,23 @@ export const CachesFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CachesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
   }),
 );
 export type CachesGetInput = typeof CachesGetInput.Type;
 
 // Output Schema
 export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Literals([
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-          "None",
-        ]),
-      ),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
   systemData: Schema.optional(
     Schema.Struct({
       createdBy: Schema.optional(Schema.String),
@@ -1172,190 +994,6 @@ export const CachesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-  properties: Schema.optional(
-    Schema.Struct({
-      cacheSizeGB: Schema.optional(Schema.Number),
-      health: Schema.optional(
-        Schema.Struct({
-          state: Schema.optional(
-            Schema.Literals([
-              "Unknown",
-              "Healthy",
-              "Degraded",
-              "Down",
-              "Transitioning",
-              "Stopping",
-              "Stopped",
-              "Upgrading",
-              "Flushing",
-              "WaitingForKey",
-              "StartFailed",
-              "UpgradeFailed",
-            ]),
-          ),
-          statusDescription: Schema.optional(Schema.String),
-          conditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                timestamp: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      mountAddresses: Schema.optional(Schema.Array(Schema.String)),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Updating",
-        ]),
-      ),
-      subnet: Schema.optional(Schema.String),
-      upgradeStatus: Schema.optional(
-        Schema.Struct({
-          currentFirmwareVersion: Schema.optional(Schema.String),
-          firmwareUpdateStatus: Schema.optional(
-            Schema.Literals(["available", "unavailable"]),
-          ),
-          firmwareUpdateDeadline: Schema.optional(Schema.String),
-          lastFirmwareUpdate: Schema.optional(Schema.String),
-          pendingFirmwareVersion: Schema.optional(Schema.String),
-        }),
-      ),
-      upgradeSettings: Schema.optional(
-        Schema.Struct({
-          upgradeScheduleEnabled: Schema.optional(Schema.Boolean),
-          scheduledTime: Schema.optional(Schema.String),
-        }),
-      ),
-      networkSettings: Schema.optional(
-        Schema.Struct({
-          mtu: Schema.optional(Schema.Number),
-          utilityAddresses: Schema.optional(Schema.Array(Schema.String)),
-          dnsServers: Schema.optional(Schema.Array(Schema.String)),
-          dnsSearchDomain: Schema.optional(Schema.String),
-          ntpServer: Schema.optional(Schema.String),
-        }),
-      ),
-      encryptionSettings: Schema.optional(
-        Schema.Struct({
-          keyEncryptionKey: Schema.optional(
-            Schema.Struct({
-              keyUrl: Schema.String,
-              sourceVault: Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            }),
-          ),
-          rotationToLatestKeyVersionEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      securitySettings: Schema.optional(
-        Schema.Struct({
-          accessPolicies: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                accessRules: Schema.Array(
-                  Schema.Struct({
-                    scope: Schema.Literals(["default", "network", "host"]),
-                    filter: Schema.optional(Schema.String),
-                    access: Schema.Literals(["no", "ro", "rw"]),
-                    suid: Schema.optional(Schema.Boolean),
-                    submountAccess: Schema.optional(Schema.Boolean),
-                    rootSquash: Schema.optional(Schema.Boolean),
-                    anonymousUID: Schema.optional(Schema.String),
-                    anonymousGID: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      directoryServicesSettings: Schema.optional(
-        Schema.Struct({
-          activeDirectory: Schema.optional(
-            Schema.Struct({
-              primaryDnsIpAddress: Schema.String,
-              secondaryDnsIpAddress: Schema.optional(Schema.String),
-              domainName: Schema.String,
-              domainNetBiosName: Schema.String,
-              cacheNetBiosName: Schema.String,
-              domainJoined: Schema.optional(
-                Schema.Literals(["Yes", "No", "Error"]),
-              ),
-              credentials: Schema.optional(
-                Schema.Struct({
-                  username: Schema.String,
-                  password: Schema.optional(SensitiveString),
-                }),
-              ),
-            }),
-          ),
-          usernameDownload: Schema.optional(
-            Schema.Struct({
-              extendedGroups: Schema.optional(Schema.Boolean),
-              usernameSource: Schema.optional(
-                Schema.Literals(["AD", "LDAP", "File", "None"]),
-              ),
-              groupFileURI: Schema.optional(Schema.String),
-              userFileURI: Schema.optional(Schema.String),
-              ldapServer: Schema.optional(Schema.String),
-              ldapBaseDN: Schema.optional(Schema.String),
-              encryptLdapConnection: Schema.optional(Schema.Boolean),
-              requireValidCertificate: Schema.optional(Schema.Boolean),
-              autoDownloadCertificate: Schema.optional(Schema.Boolean),
-              caCertificateURI: Schema.optional(Schema.String),
-              usernameDownloaded: Schema.optional(
-                Schema.Literals(["Yes", "No", "Error"]),
-              ),
-              credentials: Schema.optional(
-                Schema.Struct({
-                  bindDn: Schema.optional(Schema.String),
-                  bindPassword: Schema.optional(SensitiveString),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      zones: Schema.optional(Schema.Array(Schema.String)),
-      primingJobs: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            primingJobName: Schema.String,
-            primingManifestUrl: Schema.String,
-            primingJobId: Schema.optional(Schema.String),
-            primingJobState: Schema.optional(
-              Schema.Literals(["Queued", "Running", "Paused", "Complete"]),
-            ),
-            primingJobStatus: Schema.optional(Schema.String),
-            primingJobDetails: Schema.optional(Schema.String),
-            primingJobPercentComplete: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      spaceAllocation: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            allocationPercentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ),
 });
 export type CachesGetOutput = typeof CachesGetOutput.Type;
 
@@ -1363,9 +1001,10 @@ export type CachesGetOutput = typeof CachesGetOutput.Type;
 /**
  * Returns a cache.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CachesGetInput,
@@ -1385,38 +1024,12 @@ export type CachesListInput = typeof CachesListInput.Type;
 
 // Output Schema
 export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
         id: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
-        identity: Schema.optional(
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            tenantId: Schema.optional(Schema.String),
-            type: Schema.optional(
-              Schema.Literals([
-                "SystemAssigned",
-                "UserAssigned",
-                "SystemAssigned, UserAssigned",
-                "None",
-              ]),
-            ),
-            userAssignedIdentities: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  principalId: Schema.optional(Schema.String),
-                  clientId: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
         systemData: Schema.optional(
           Schema.Struct({
             createdBy: Schema.optional(Schema.String),
@@ -1441,204 +1054,10 @@ export const CachesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             lastModifiedAt: Schema.optional(Schema.String),
           }),
         ),
-        properties: Schema.optional(
-          Schema.Struct({
-            cacheSizeGB: Schema.optional(Schema.Number),
-            health: Schema.optional(
-              Schema.Struct({
-                state: Schema.optional(
-                  Schema.Literals([
-                    "Unknown",
-                    "Healthy",
-                    "Degraded",
-                    "Down",
-                    "Transitioning",
-                    "Stopping",
-                    "Stopped",
-                    "Upgrading",
-                    "Flushing",
-                    "WaitingForKey",
-                    "StartFailed",
-                    "UpgradeFailed",
-                  ]),
-                ),
-                statusDescription: Schema.optional(Schema.String),
-                conditions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      timestamp: Schema.optional(Schema.String),
-                      message: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            mountAddresses: Schema.optional(Schema.Array(Schema.String)),
-            provisioningState: Schema.optional(
-              Schema.Literals([
-                "Succeeded",
-                "Failed",
-                "Canceled",
-                "Creating",
-                "Deleting",
-                "Updating",
-              ]),
-            ),
-            subnet: Schema.optional(Schema.String),
-            upgradeStatus: Schema.optional(
-              Schema.Struct({
-                currentFirmwareVersion: Schema.optional(Schema.String),
-                firmwareUpdateStatus: Schema.optional(
-                  Schema.Literals(["available", "unavailable"]),
-                ),
-                firmwareUpdateDeadline: Schema.optional(Schema.String),
-                lastFirmwareUpdate: Schema.optional(Schema.String),
-                pendingFirmwareVersion: Schema.optional(Schema.String),
-              }),
-            ),
-            upgradeSettings: Schema.optional(
-              Schema.Struct({
-                upgradeScheduleEnabled: Schema.optional(Schema.Boolean),
-                scheduledTime: Schema.optional(Schema.String),
-              }),
-            ),
-            networkSettings: Schema.optional(
-              Schema.Struct({
-                mtu: Schema.optional(Schema.Number),
-                utilityAddresses: Schema.optional(Schema.Array(Schema.String)),
-                dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                dnsSearchDomain: Schema.optional(Schema.String),
-                ntpServer: Schema.optional(Schema.String),
-              }),
-            ),
-            encryptionSettings: Schema.optional(
-              Schema.Struct({
-                keyEncryptionKey: Schema.optional(
-                  Schema.Struct({
-                    keyUrl: Schema.String,
-                    sourceVault: Schema.Struct({
-                      id: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                rotationToLatestKeyVersionEnabled: Schema.optional(
-                  Schema.Boolean,
-                ),
-              }),
-            ),
-            securitySettings: Schema.optional(
-              Schema.Struct({
-                accessPolicies: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      accessRules: Schema.Array(
-                        Schema.Struct({
-                          scope: Schema.Literals([
-                            "default",
-                            "network",
-                            "host",
-                          ]),
-                          filter: Schema.optional(Schema.String),
-                          access: Schema.Literals(["no", "ro", "rw"]),
-                          suid: Schema.optional(Schema.Boolean),
-                          submountAccess: Schema.optional(Schema.Boolean),
-                          rootSquash: Schema.optional(Schema.Boolean),
-                          anonymousUID: Schema.optional(Schema.String),
-                          anonymousGID: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            directoryServicesSettings: Schema.optional(
-              Schema.Struct({
-                activeDirectory: Schema.optional(
-                  Schema.Struct({
-                    primaryDnsIpAddress: Schema.String,
-                    secondaryDnsIpAddress: Schema.optional(Schema.String),
-                    domainName: Schema.String,
-                    domainNetBiosName: Schema.String,
-                    cacheNetBiosName: Schema.String,
-                    domainJoined: Schema.optional(
-                      Schema.Literals(["Yes", "No", "Error"]),
-                    ),
-                    credentials: Schema.optional(
-                      Schema.Struct({
-                        username: Schema.String,
-                        password: Schema.optional(SensitiveString),
-                      }),
-                    ),
-                  }),
-                ),
-                usernameDownload: Schema.optional(
-                  Schema.Struct({
-                    extendedGroups: Schema.optional(Schema.Boolean),
-                    usernameSource: Schema.optional(
-                      Schema.Literals(["AD", "LDAP", "File", "None"]),
-                    ),
-                    groupFileURI: Schema.optional(Schema.String),
-                    userFileURI: Schema.optional(Schema.String),
-                    ldapServer: Schema.optional(Schema.String),
-                    ldapBaseDN: Schema.optional(Schema.String),
-                    encryptLdapConnection: Schema.optional(Schema.Boolean),
-                    requireValidCertificate: Schema.optional(Schema.Boolean),
-                    autoDownloadCertificate: Schema.optional(Schema.Boolean),
-                    caCertificateURI: Schema.optional(Schema.String),
-                    usernameDownloaded: Schema.optional(
-                      Schema.Literals(["Yes", "No", "Error"]),
-                    ),
-                    credentials: Schema.optional(
-                      Schema.Struct({
-                        bindDn: Schema.optional(Schema.String),
-                        bindPassword: Schema.optional(SensitiveString),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            zones: Schema.optional(Schema.Array(Schema.String)),
-            primingJobs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  primingJobName: Schema.String,
-                  primingManifestUrl: Schema.String,
-                  primingJobId: Schema.optional(Schema.String),
-                  primingJobState: Schema.optional(
-                    Schema.Literals([
-                      "Queued",
-                      "Running",
-                      "Paused",
-                      "Complete",
-                    ]),
-                  ),
-                  primingJobStatus: Schema.optional(Schema.String),
-                  primingJobDetails: Schema.optional(Schema.String),
-                  primingJobPercentComplete: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-            spaceAllocation: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  allocationPercentage: Schema.optional(Schema.Number),
-                }),
-              ),
-            ),
-          }),
-        ),
-        sku: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-          }),
-        ),
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type CachesListOutput = typeof CachesListOutput.Type;
 
@@ -1656,13 +1075,13 @@ export const CachesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CachesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
     }),
   );
 export type CachesListByResourceGroupInput =
@@ -1671,38 +1090,12 @@ export type CachesListByResourceGroupInput =
 // Output Schema
 export const CachesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
           id: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           type: Schema.optional(Schema.String),
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals([
-                  "SystemAssigned",
-                  "UserAssigned",
-                  "SystemAssigned, UserAssigned",
-                  "None",
-                ]),
-              ),
-              userAssignedIdentities: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    principalId: Schema.optional(Schema.String),
-                    clientId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
           systemData: Schema.optional(
             Schema.Struct({
               createdBy: Schema.optional(Schema.String),
@@ -1727,206 +1120,10 @@ export const CachesListByResourceGroupOutput =
               lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
-          properties: Schema.optional(
-            Schema.Struct({
-              cacheSizeGB: Schema.optional(Schema.Number),
-              health: Schema.optional(
-                Schema.Struct({
-                  state: Schema.optional(
-                    Schema.Literals([
-                      "Unknown",
-                      "Healthy",
-                      "Degraded",
-                      "Down",
-                      "Transitioning",
-                      "Stopping",
-                      "Stopped",
-                      "Upgrading",
-                      "Flushing",
-                      "WaitingForKey",
-                      "StartFailed",
-                      "UpgradeFailed",
-                    ]),
-                  ),
-                  statusDescription: Schema.optional(Schema.String),
-                  conditions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        timestamp: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              mountAddresses: Schema.optional(Schema.Array(Schema.String)),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Failed",
-                  "Canceled",
-                  "Creating",
-                  "Deleting",
-                  "Updating",
-                ]),
-              ),
-              subnet: Schema.optional(Schema.String),
-              upgradeStatus: Schema.optional(
-                Schema.Struct({
-                  currentFirmwareVersion: Schema.optional(Schema.String),
-                  firmwareUpdateStatus: Schema.optional(
-                    Schema.Literals(["available", "unavailable"]),
-                  ),
-                  firmwareUpdateDeadline: Schema.optional(Schema.String),
-                  lastFirmwareUpdate: Schema.optional(Schema.String),
-                  pendingFirmwareVersion: Schema.optional(Schema.String),
-                }),
-              ),
-              upgradeSettings: Schema.optional(
-                Schema.Struct({
-                  upgradeScheduleEnabled: Schema.optional(Schema.Boolean),
-                  scheduledTime: Schema.optional(Schema.String),
-                }),
-              ),
-              networkSettings: Schema.optional(
-                Schema.Struct({
-                  mtu: Schema.optional(Schema.Number),
-                  utilityAddresses: Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  dnsServers: Schema.optional(Schema.Array(Schema.String)),
-                  dnsSearchDomain: Schema.optional(Schema.String),
-                  ntpServer: Schema.optional(Schema.String),
-                }),
-              ),
-              encryptionSettings: Schema.optional(
-                Schema.Struct({
-                  keyEncryptionKey: Schema.optional(
-                    Schema.Struct({
-                      keyUrl: Schema.String,
-                      sourceVault: Schema.Struct({
-                        id: Schema.optional(Schema.String),
-                      }),
-                    }),
-                  ),
-                  rotationToLatestKeyVersionEnabled: Schema.optional(
-                    Schema.Boolean,
-                  ),
-                }),
-              ),
-              securitySettings: Schema.optional(
-                Schema.Struct({
-                  accessPolicies: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                        accessRules: Schema.Array(
-                          Schema.Struct({
-                            scope: Schema.Literals([
-                              "default",
-                              "network",
-                              "host",
-                            ]),
-                            filter: Schema.optional(Schema.String),
-                            access: Schema.Literals(["no", "ro", "rw"]),
-                            suid: Schema.optional(Schema.Boolean),
-                            submountAccess: Schema.optional(Schema.Boolean),
-                            rootSquash: Schema.optional(Schema.Boolean),
-                            anonymousUID: Schema.optional(Schema.String),
-                            anonymousGID: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              directoryServicesSettings: Schema.optional(
-                Schema.Struct({
-                  activeDirectory: Schema.optional(
-                    Schema.Struct({
-                      primaryDnsIpAddress: Schema.String,
-                      secondaryDnsIpAddress: Schema.optional(Schema.String),
-                      domainName: Schema.String,
-                      domainNetBiosName: Schema.String,
-                      cacheNetBiosName: Schema.String,
-                      domainJoined: Schema.optional(
-                        Schema.Literals(["Yes", "No", "Error"]),
-                      ),
-                      credentials: Schema.optional(
-                        Schema.Struct({
-                          username: Schema.String,
-                          password: Schema.optional(SensitiveString),
-                        }),
-                      ),
-                    }),
-                  ),
-                  usernameDownload: Schema.optional(
-                    Schema.Struct({
-                      extendedGroups: Schema.optional(Schema.Boolean),
-                      usernameSource: Schema.optional(
-                        Schema.Literals(["AD", "LDAP", "File", "None"]),
-                      ),
-                      groupFileURI: Schema.optional(Schema.String),
-                      userFileURI: Schema.optional(Schema.String),
-                      ldapServer: Schema.optional(Schema.String),
-                      ldapBaseDN: Schema.optional(Schema.String),
-                      encryptLdapConnection: Schema.optional(Schema.Boolean),
-                      requireValidCertificate: Schema.optional(Schema.Boolean),
-                      autoDownloadCertificate: Schema.optional(Schema.Boolean),
-                      caCertificateURI: Schema.optional(Schema.String),
-                      usernameDownloaded: Schema.optional(
-                        Schema.Literals(["Yes", "No", "Error"]),
-                      ),
-                      credentials: Schema.optional(
-                        Schema.Struct({
-                          bindDn: Schema.optional(Schema.String),
-                          bindPassword: Schema.optional(SensitiveString),
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              zones: Schema.optional(Schema.Array(Schema.String)),
-              primingJobs: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    primingJobName: Schema.String,
-                    primingManifestUrl: Schema.String,
-                    primingJobId: Schema.optional(Schema.String),
-                    primingJobState: Schema.optional(
-                      Schema.Literals([
-                        "Queued",
-                        "Running",
-                        "Paused",
-                        "Complete",
-                      ]),
-                    ),
-                    primingJobStatus: Schema.optional(Schema.String),
-                    primingJobDetails: Schema.optional(Schema.String),
-                    primingJobPercentComplete: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-              spaceAllocation: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    allocationPercentage: Schema.optional(Schema.Number),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          sku: Schema.optional(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-            }),
-          ),
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type CachesListByResourceGroupOutput =
   typeof CachesListByResourceGroupOutput.Type;
@@ -1935,9 +1132,9 @@ export type CachesListByResourceGroupOutput =
 /**
  * Returns all caches the user has access to under a resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CachesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1948,13 +1145,14 @@ export const CachesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CachesPausePrimingJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/pausePrimingJob",
     }),
   );
 export type CachesPausePrimingJobInput = typeof CachesPausePrimingJobInput.Type;
@@ -1969,9 +1167,10 @@ export type CachesPausePrimingJobOutput =
 /**
  * Schedule a priming job to be paused.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesPausePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1982,13 +1181,14 @@ export const CachesPausePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CachesResumePrimingJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/resumePrimingJob",
     }),
   );
 export type CachesResumePrimingJobInput =
@@ -2004,9 +1204,10 @@ export type CachesResumePrimingJobOutput =
 /**
  * Resumes a paused priming job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesResumePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2017,13 +1218,14 @@ export const CachesResumePrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CachesSpaceAllocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/spaceAllocation",
     }),
   );
 export type CachesSpaceAllocationInput = typeof CachesSpaceAllocationInput.Type;
@@ -2038,9 +1240,10 @@ export type CachesSpaceAllocationOutput =
 /**
  * Update cache space allocation.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesSpaceAllocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2050,13 +1253,14 @@ export const CachesSpaceAllocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CachesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/start",
   }),
 );
 export type CachesStartInput = typeof CachesStartInput.Type;
@@ -2069,9 +1273,10 @@ export type CachesStartOutput = typeof CachesStartOutput.Type;
 /**
  * Tells a Stopped state cache to transition to Active state.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CachesStartInput,
@@ -2080,13 +1285,14 @@ export const CachesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CachesStartPrimingJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/startPrimingJob",
     }),
   );
 export type CachesStartPrimingJobInput = typeof CachesStartPrimingJobInput.Type;
@@ -2101,9 +1307,10 @@ export type CachesStartPrimingJobOutput =
 /**
  * Create a priming job. This operation is only allowed when the cache is healthy.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesStartPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2113,13 +1320,14 @@ export const CachesStartPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CachesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stop",
   }),
 );
 export type CachesStopInput = typeof CachesStopInput.Type;
@@ -2132,9 +1340,10 @@ export type CachesStopOutput = typeof CachesStopOutput.Type;
 /**
  * Tells an Active cache to transition to Stopped state.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CachesStopInput,
@@ -2143,13 +1352,14 @@ export const CachesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CachesStopPrimingJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/stopPrimingJob",
     }),
   );
 export type CachesStopPrimingJobInput = typeof CachesStopPrimingJobInput.Type;
@@ -2163,9 +1373,10 @@ export type CachesStopPrimingJobOutput = typeof CachesStopPrimingJobOutput.Type;
 /**
  * Schedule a priming job for deletion.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesStopPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2175,47 +1386,23 @@ export const CachesStopPrimingJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CachesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
   }),
 );
 export type CachesUpdateInput = typeof CachesUpdateInput.Type;
 
 // Output Schema
 export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   id: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.optional(
-        Schema.Literals([
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned, UserAssigned",
-          "None",
-        ]),
-      ),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
   systemData: Schema.optional(
     Schema.Struct({
       createdBy: Schema.optional(Schema.String),
@@ -2230,190 +1417,6 @@ export const CachesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-  properties: Schema.optional(
-    Schema.Struct({
-      cacheSizeGB: Schema.optional(Schema.Number),
-      health: Schema.optional(
-        Schema.Struct({
-          state: Schema.optional(
-            Schema.Literals([
-              "Unknown",
-              "Healthy",
-              "Degraded",
-              "Down",
-              "Transitioning",
-              "Stopping",
-              "Stopped",
-              "Upgrading",
-              "Flushing",
-              "WaitingForKey",
-              "StartFailed",
-              "UpgradeFailed",
-            ]),
-          ),
-          statusDescription: Schema.optional(Schema.String),
-          conditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                timestamp: Schema.optional(Schema.String),
-                message: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      mountAddresses: Schema.optional(Schema.Array(Schema.String)),
-      provisioningState: Schema.optional(
-        Schema.Literals([
-          "Succeeded",
-          "Failed",
-          "Canceled",
-          "Creating",
-          "Deleting",
-          "Updating",
-        ]),
-      ),
-      subnet: Schema.optional(Schema.String),
-      upgradeStatus: Schema.optional(
-        Schema.Struct({
-          currentFirmwareVersion: Schema.optional(Schema.String),
-          firmwareUpdateStatus: Schema.optional(
-            Schema.Literals(["available", "unavailable"]),
-          ),
-          firmwareUpdateDeadline: Schema.optional(Schema.String),
-          lastFirmwareUpdate: Schema.optional(Schema.String),
-          pendingFirmwareVersion: Schema.optional(Schema.String),
-        }),
-      ),
-      upgradeSettings: Schema.optional(
-        Schema.Struct({
-          upgradeScheduleEnabled: Schema.optional(Schema.Boolean),
-          scheduledTime: Schema.optional(Schema.String),
-        }),
-      ),
-      networkSettings: Schema.optional(
-        Schema.Struct({
-          mtu: Schema.optional(Schema.Number),
-          utilityAddresses: Schema.optional(Schema.Array(Schema.String)),
-          dnsServers: Schema.optional(Schema.Array(Schema.String)),
-          dnsSearchDomain: Schema.optional(Schema.String),
-          ntpServer: Schema.optional(Schema.String),
-        }),
-      ),
-      encryptionSettings: Schema.optional(
-        Schema.Struct({
-          keyEncryptionKey: Schema.optional(
-            Schema.Struct({
-              keyUrl: Schema.String,
-              sourceVault: Schema.Struct({
-                id: Schema.optional(Schema.String),
-              }),
-            }),
-          ),
-          rotationToLatestKeyVersionEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      securitySettings: Schema.optional(
-        Schema.Struct({
-          accessPolicies: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                accessRules: Schema.Array(
-                  Schema.Struct({
-                    scope: Schema.Literals(["default", "network", "host"]),
-                    filter: Schema.optional(Schema.String),
-                    access: Schema.Literals(["no", "ro", "rw"]),
-                    suid: Schema.optional(Schema.Boolean),
-                    submountAccess: Schema.optional(Schema.Boolean),
-                    rootSquash: Schema.optional(Schema.Boolean),
-                    anonymousUID: Schema.optional(Schema.String),
-                    anonymousGID: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      directoryServicesSettings: Schema.optional(
-        Schema.Struct({
-          activeDirectory: Schema.optional(
-            Schema.Struct({
-              primaryDnsIpAddress: Schema.String,
-              secondaryDnsIpAddress: Schema.optional(Schema.String),
-              domainName: Schema.String,
-              domainNetBiosName: Schema.String,
-              cacheNetBiosName: Schema.String,
-              domainJoined: Schema.optional(
-                Schema.Literals(["Yes", "No", "Error"]),
-              ),
-              credentials: Schema.optional(
-                Schema.Struct({
-                  username: Schema.String,
-                  password: Schema.optional(SensitiveString),
-                }),
-              ),
-            }),
-          ),
-          usernameDownload: Schema.optional(
-            Schema.Struct({
-              extendedGroups: Schema.optional(Schema.Boolean),
-              usernameSource: Schema.optional(
-                Schema.Literals(["AD", "LDAP", "File", "None"]),
-              ),
-              groupFileURI: Schema.optional(Schema.String),
-              userFileURI: Schema.optional(Schema.String),
-              ldapServer: Schema.optional(Schema.String),
-              ldapBaseDN: Schema.optional(Schema.String),
-              encryptLdapConnection: Schema.optional(Schema.Boolean),
-              requireValidCertificate: Schema.optional(Schema.Boolean),
-              autoDownloadCertificate: Schema.optional(Schema.Boolean),
-              caCertificateURI: Schema.optional(Schema.String),
-              usernameDownloaded: Schema.optional(
-                Schema.Literals(["Yes", "No", "Error"]),
-              ),
-              credentials: Schema.optional(
-                Schema.Struct({
-                  bindDn: Schema.optional(Schema.String),
-                  bindPassword: Schema.optional(SensitiveString),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
-      zones: Schema.optional(Schema.Array(Schema.String)),
-      primingJobs: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            primingJobName: Schema.String,
-            primingManifestUrl: Schema.String,
-            primingJobId: Schema.optional(Schema.String),
-            primingJobState: Schema.optional(
-              Schema.Literals(["Queued", "Running", "Paused", "Complete"]),
-            ),
-            primingJobStatus: Schema.optional(Schema.String),
-            primingJobDetails: Schema.optional(Schema.String),
-            primingJobPercentComplete: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      spaceAllocation: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            allocationPercentage: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-    }),
-  ),
-  sku: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ),
 });
 export type CachesUpdateOutput = typeof CachesUpdateOutput.Type;
 
@@ -2421,9 +1424,10 @@ export type CachesUpdateOutput = typeof CachesUpdateOutput.Type;
 /**
  * Update a cache instance.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CachesUpdateInput,
@@ -2432,13 +1436,14 @@ export const CachesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CachesUpgradeFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/upgrade",
     }),
   );
 export type CachesUpgradeFirmwareInput = typeof CachesUpgradeFirmwareInput.Type;
@@ -2453,9 +1458,10 @@ export type CachesUpgradeFirmwareOutput =
 /**
  * Upgrade a cache's firmware if a new version is available. Otherwise, this operation has no effect.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const CachesUpgradeFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2495,8 +1501,10 @@ export const checkAmlFSSubnets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ExpansionJobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    expansionJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2520,9 +1528,11 @@ export type ExpansionJobsCreateOrUpdateOutput =
 /**
  * Create or update an expansion job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const expansionJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2533,8 +1543,10 @@ export const expansionJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ExpansionJobsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    expansionJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2553,9 +1565,11 @@ export type ExpansionJobsDeleteOutput = typeof ExpansionJobsDeleteOutput.Type;
 /**
  * Schedules an expansion job for deletion.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const expansionJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsDeleteInput,
@@ -2563,8 +1577,10 @@ export const expansionJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ExpansionJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  expansionJobName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2587,9 +1603,11 @@ export type ExpansionJobsGetOutput = typeof ExpansionJobsGetOutput.Type;
 /**
  * Returns an expansion job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const expansionJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsGetInput,
@@ -2598,8 +1616,9 @@ export const expansionJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ExpansionJobsListByAmlFilesystemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2630,9 +1649,10 @@ export type ExpansionJobsListByAmlFilesystemOutput =
 /**
  * Returns all the expansion jobs the user has access to under an AML File System.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const expansionJobsListByAmlFilesystem =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2642,8 +1662,10 @@ export const expansionJobsListByAmlFilesystem =
 // Input Schema
 export const ExpansionJobsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    expansionJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2665,9 +1687,11 @@ export type ExpansionJobsUpdateOutput = typeof ExpansionJobsUpdateOutput.Type;
 /**
  * Update an expansion job instance.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param expansionJobName - Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const expansionJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExpansionJobsUpdateInput,
@@ -2711,8 +1735,10 @@ export const getRequiredAmlFSSubnetsSize = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ImportJobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
+    importJobName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2736,9 +1762,11 @@ export type ImportJobsCreateOrUpdateOutput =
 /**
  * Create or update an import job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const importJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2748,8 +1776,10 @@ export const importJobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ImportJobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  importJobName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2767,9 +1797,11 @@ export type ImportJobsDeleteOutput = typeof ImportJobsDeleteOutput.Type;
 /**
  * Schedules an import job for deletion.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const importJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsDeleteInput,
@@ -2777,8 +1809,10 @@ export const importJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ImportJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  importJobName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2799,9 +1833,11 @@ export type ImportJobsGetOutput = typeof ImportJobsGetOutput.Type;
 /**
  * Returns an import job.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const importJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsGetInput,
@@ -2810,8 +1846,9 @@ export const importJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ImportJobsListByAmlFilesystemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    amlFilesystemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2825,7 +1862,6 @@ export type ImportJobsListByAmlFilesystemInput =
 // Output Schema
 export const ImportJobsListByAmlFilesystemOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2834,6 +1870,7 @@ export const ImportJobsListByAmlFilesystemOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ImportJobsListByAmlFilesystemOutput =
   typeof ImportJobsListByAmlFilesystemOutput.Type;
@@ -2842,9 +1879,10 @@ export type ImportJobsListByAmlFilesystemOutput =
 /**
  * Returns all import jobs the user has access to under an AML File System.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const importJobsListByAmlFilesystem =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2853,8 +1891,10 @@ export const importJobsListByAmlFilesystem =
   }));
 // Input Schema
 export const ImportJobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  amlFilesystemName: Schema.String.pipe(T.PathParam()),
+  importJobName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2877,9 +1917,11 @@ export type ImportJobsUpdateOutput = typeof ImportJobsUpdateOutput.Type;
 /**
  * Update an import job instance.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param amlFilesystemName - Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+ * @param importJobName - Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
  */
 export const importJobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ImportJobsUpdateInput,
@@ -2898,7 +1940,6 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2969,6 +2010,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -2996,7 +2038,6 @@ export type SkusListInput = typeof SkusListInput.Type;
 
 // Output Schema
 export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3033,6 +2074,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type SkusListOutput = typeof SkusListOutput.Type;
 
@@ -3050,13 +2092,15 @@ export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageTargetFlushInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/flush",
     }),
   );
 export type StorageTargetFlushInput = typeof StorageTargetFlushInput.Type;
@@ -3069,9 +2113,11 @@ export type StorageTargetFlushOutput = typeof StorageTargetFlushOutput.Type;
 /**
  * Tells the cache to write all dirty data to the Storage Target's backend storage. Client requests to this storage target's namespace will return errors until the flush operation completes.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetFlushInput,
@@ -3080,13 +2126,15 @@ export const StorageTargetFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageTargetInvalidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/invalidate",
     }),
   );
 export type StorageTargetInvalidateInput =
@@ -3102,9 +2150,11 @@ export type StorageTargetInvalidateOutput =
 /**
  * Invalidate all cached data for a storage target. Cached files are discarded and fetched from the back end on the next request.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetInvalidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3115,13 +2165,15 @@ export const StorageTargetInvalidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageTargetResumeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/resume",
     }),
   );
 export type StorageTargetResumeInput = typeof StorageTargetResumeInput.Type;
@@ -3135,9 +2187,11 @@ export type StorageTargetResumeOutput = typeof StorageTargetResumeOutput.Type;
 /**
  * Resumes client access to a previously suspended storage target.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetResumeInput,
@@ -3146,13 +2200,15 @@ export const StorageTargetResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageTargetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
     }),
   );
 export type StorageTargetsCreateOrUpdateInput =
@@ -3160,26 +2216,7 @@ export type StorageTargetsCreateOrUpdateInput =
 
 // Output Schema
 export const StorageTargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type StorageTargetsCreateOrUpdateOutput =
   typeof StorageTargetsCreateOrUpdateOutput.Type;
 
@@ -3187,9 +2224,11 @@ export type StorageTargetsCreateOrUpdateOutput =
 /**
  * Create or update a Storage Target. This operation is allowed at any time, but if the cache is down or unhealthy, the actual creation/modification of the Storage Target may be delayed until the cache is healthy again.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3199,14 +2238,16 @@ export const StorageTargetsCreateOrUpdate =
 // Input Schema
 export const StorageTargetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     force: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
     }),
   );
 export type StorageTargetsDeleteInput = typeof StorageTargetsDeleteInput.Type;
@@ -3220,9 +2261,11 @@ export type StorageTargetsDeleteOutput = typeof StorageTargetsDeleteOutput.Type;
 /**
  * Removes a Storage Target from a cache. This operation is allowed at any time, but if the cache is down or unhealthy, the actual removal of the Storage Target may be delayed until the cache is healthy again. Note that if the cache has data to flush to the Storage Target, the data will be flushed before the Storage Target will be deleted.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  * @param force - Boolean value requesting the force delete operation for a storage target. Force delete discards unwritten-data in the cache instead of flushing it to back-end storage.
  */
 export const StorageTargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3234,13 +2277,15 @@ export const StorageTargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageTargetsDnsRefreshInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/dnsRefresh",
     }),
   );
 export type StorageTargetsDnsRefreshInput =
@@ -3256,9 +2301,11 @@ export type StorageTargetsDnsRefreshOutput =
 /**
  * Tells a storage target to refresh its DNS information.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetsDnsRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3269,49 +2316,34 @@ export const StorageTargetsDnsRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
   }),
 );
 export type StorageTargetsGetInput = typeof StorageTargetsGetInput.Type;
 
 // Output Schema
 export const StorageTargetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type StorageTargetsGetOutput = typeof StorageTargetsGetOutput.Type;
 
 // The operation
 /**
  * Returns a Storage Target from a cache.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StorageTargetsGetInput,
@@ -3320,13 +2352,14 @@ export const StorageTargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StorageTargetsListByCacheInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
     }),
   );
 export type StorageTargetsListByCacheInput =
@@ -3335,41 +2368,8 @@ export type StorageTargetsListByCacheInput =
 // Output Schema
 export const StorageTargetsListByCacheOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
   });
 export type StorageTargetsListByCacheOutput =
   typeof StorageTargetsListByCacheOutput.Type;
@@ -3378,9 +2378,10 @@ export type StorageTargetsListByCacheOutput =
 /**
  * Returns a list of Storage Targets for the specified cache.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
  */
 export const StorageTargetsListByCache = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3391,8 +2392,10 @@ export const StorageTargetsListByCache = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const StorageTargetsRestoreDefaultsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3413,9 +2416,11 @@ export type StorageTargetsRestoreDefaultsOutput =
 /**
  * Tells a storage target to restore its settings to their default values.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetsRestoreDefaults =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3425,13 +2430,15 @@ export const StorageTargetsRestoreDefaults =
 // Input Schema
 export const StorageTargetSuspendInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    storageTargetName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}/suspend",
     }),
   );
 export type StorageTargetSuspendInput = typeof StorageTargetSuspendInput.Type;
@@ -3445,9 +2452,11 @@ export type StorageTargetSuspendOutput = typeof StorageTargetSuspendOutput.Type;
 /**
  * Suspends client access to a storage target.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+ * @param storageTargetName - Name of Storage Target.
  */
 export const StorageTargetSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3469,7 +2478,6 @@ export type UsageModelsListInput = typeof UsageModelsListInput.Type;
 
 // Output Schema
 export const UsageModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3483,6 +2491,7 @@ export const UsageModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type UsageModelsListOutput = typeof UsageModelsListOutput.Type;
 

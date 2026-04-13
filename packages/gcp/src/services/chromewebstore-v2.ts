@@ -22,12 +22,87 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface SetPublishedDeployPercentageResponse {}
+
+export const SetPublishedDeployPercentageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SetPublishedDeployPercentageResponse",
+  });
+
+export interface SetPublishedDeployPercentageRequest {
+  /** Required. Unscaled percentage value for the publised revision (nonnegative number between 0 and 100). It must be larger than the existing target percentage. */
+  deployPercentage?: number;
+}
+
+export const SetPublishedDeployPercentageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployPercentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SetPublishedDeployPercentageRequest" });
+
+export interface PublishItemResponse {
+  /** The name of the item that was submitted */
+  name?: string;
+  /** Output only. The ID of the item. */
+  itemId?: string;
+  /** Output only. The current state of the submission. */
+  state?:
+    | "ITEM_STATE_UNSPECIFIED"
+    | "PENDING_REVIEW"
+    | "STAGED"
+    | "PUBLISHED"
+    | "PUBLISHED_TO_TESTERS"
+    | "REJECTED"
+    | "CANCELLED"
+    | (string & {});
+}
+
+export const PublishItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublishItemResponse" });
+
+export interface CancelSubmissionResponse {}
+
+export const CancelSubmissionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelSubmissionResponse",
+  });
+
+export interface DeployInfo {
+  /** Required. The current deploy percentage for the release channel (nonnegative number between 0 and 100). */
+  deployPercentage?: number;
+}
+
+export const DeployInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deployPercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeployInfo" });
+
+export interface PublishItemRequest {
+  /** Optional. Use this to control if the item is published immediately on approval or staged for publishing in the future. Defaults to `DEFAULT_PUBLISH` if unset. */
+  publishType?:
+    | "PUBLISH_TYPE_UNSPECIFIED"
+    | "DEFAULT_PUBLISH"
+    | "STAGED_PUBLISH"
+    | (string & {});
+  /** Optional. Additional deploy information including the desired initial percentage rollout. Defaults to the current value saved in the developer dashboard if unset. */
+  deployInfos?: Array<DeployInfo>;
+  /** Optional. Whether to attempt to skip item review. The API will validate if the item qualifies and return a validation error if the item requires review. Defaults to `false` if unset. */
+  skipReview?: boolean;
+}
+
+export const PublishItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publishType: Schema.optional(Schema.String),
+  deployInfos: Schema.optional(Schema.Array(DeployInfo)),
+  skipReview: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PublishItemRequest" });
+
 export interface CancelSubmissionRequest {}
 
-export const CancelSubmissionRequest: Schema.Schema<CancelSubmissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelSubmissionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubmissionRequest",
-  }) as any as Schema.Schema<CancelSubmissionRequest>;
+  });
 
 export interface DistributionChannel {
   /** The extension version provided in the manifest of the uploaded package. */
@@ -36,15 +111,35 @@ export interface DistributionChannel {
   deployPercentage?: number;
 }
 
-export const DistributionChannel: Schema.Schema<DistributionChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      crxVersion: Schema.optional(Schema.String),
-      deployPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DistributionChannel",
-  }) as any as Schema.Schema<DistributionChannel>;
+export const DistributionChannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  crxVersion: Schema.optional(Schema.String),
+  deployPercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DistributionChannel" });
+
+export interface UploadItemPackageResponse {
+  /** The name of the item the package was uploaded to. */
+  name?: string;
+  /** Output only. The state of the upload. If `upload_state` is `UPLOAD_IN_PROGRESS`, you can poll for updates using the fetchStatus method. */
+  uploadState?:
+    | "UPLOAD_STATE_UNSPECIFIED"
+    | "SUCCEEDED"
+    | "IN_PROGRESS"
+    | "FAILED"
+    | "NOT_FOUND"
+    | (string & {});
+  /** Output only. The ID of the item the package was uploaded to. */
+  itemId?: string;
+  /** The extension version provided in the manifest of the uploaded package. This will not be set if the upload is still in progress (`upload_state` is `UPLOAD_IN_PROGRESS`). */
+  crxVersion?: string;
+}
+
+export const UploadItemPackageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    uploadState: Schema.optional(Schema.String),
+    itemId: Schema.optional(Schema.String),
+    crxVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UploadItemPackageResponse" });
 
 export interface ItemRevisionStatus {
   /** Output only. Current state of the item */
@@ -61,75 +156,12 @@ export interface ItemRevisionStatus {
   distributionChannels?: Array<DistributionChannel>;
 }
 
-export const ItemRevisionStatus: Schema.Schema<ItemRevisionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      distributionChannels: Schema.optional(Schema.Array(DistributionChannel)),
-    }),
-  ).annotate({
-    identifier: "ItemRevisionStatus",
-  }) as any as Schema.Schema<ItemRevisionStatus>;
-
-export interface DeployInfo {
-  /** Required. The current deploy percentage for the release channel (nonnegative number between 0 and 100). */
-  deployPercentage?: number;
-}
-
-export const DeployInfo: Schema.Schema<DeployInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "DeployInfo" }) as any as Schema.Schema<DeployInfo>;
-
-export interface SetPublishedDeployPercentageResponse {}
-
-export const SetPublishedDeployPercentageResponse: Schema.Schema<SetPublishedDeployPercentageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SetPublishedDeployPercentageResponse",
-  }) as any as Schema.Schema<SetPublishedDeployPercentageResponse>;
-
-export interface CancelSubmissionResponse {}
-
-export const CancelSubmissionResponse: Schema.Schema<CancelSubmissionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelSubmissionResponse",
-  }) as any as Schema.Schema<CancelSubmissionResponse>;
-
-export interface PublishItemResponse {
-  /** Output only. The current state of the submission. */
-  state?:
-    | "ITEM_STATE_UNSPECIFIED"
-    | "PENDING_REVIEW"
-    | "STAGED"
-    | "PUBLISHED"
-    | "PUBLISHED_TO_TESTERS"
-    | "REJECTED"
-    | "CANCELLED"
-    | (string & {});
-  /** The name of the item that was submitted */
-  name?: string;
-  /** Output only. The ID of the item. */
-  itemId?: string;
-}
-
-export const PublishItemResponse: Schema.Schema<PublishItemResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PublishItemResponse",
-  }) as any as Schema.Schema<PublishItemResponse>;
+export const ItemRevisionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  distributionChannels: Schema.optional(Schema.Array(DistributionChannel)),
+}).annotate({ identifier: "ItemRevisionStatus" });
 
 export interface FetchItemStatusResponse {
-  /** The name of the requested item. */
-  name?: string;
-  /** Output only. The ID of the item. */
-  itemId?: string;
   /** Output only. The state of the last async upload for an item. Only set when there has been an async upload for the item in the past 24 hours. */
   lastAsyncUploadState?:
     | "UPLOAD_STATE_UNSPECIFIED"
@@ -138,152 +170,44 @@ export interface FetchItemStatusResponse {
     | "FAILED"
     | "NOT_FOUND"
     | (string & {});
-  /** If true, the item has been warned for a policy violation and will be taken down if not resolved. Check the developer dashboard for details. */
-  warned?: boolean;
+  /** The name of the requested item. */
+  name?: string;
+  /** Output only. The ID of the item. */
+  itemId?: string;
+  /** Status of the item revision submitted to be published. Will be unset if the item has not been submitted for publishing since the last successful publish. */
+  submittedItemRevisionStatus?: ItemRevisionStatus;
   /** The public key of the item, which may be generated by the store. */
   publicKey?: string;
   /** Output only. Status of the current published revision of the item. Will be unset if the item is not published. */
   publishedItemRevisionStatus?: ItemRevisionStatus;
-  /** Status of the item revision submitted to be published. Will be unset if the item has not been submitted for publishing since the last successful publish. */
-  submittedItemRevisionStatus?: ItemRevisionStatus;
+  /** If true, the item has been warned for a policy violation and will be taken down if not resolved. Check the developer dashboard for details. */
+  warned?: boolean;
   /** If true, the item has been taken down for a policy violation. Check the developer dashboard for details. */
   takenDown?: boolean;
 }
 
-export const FetchItemStatusResponse: Schema.Schema<FetchItemStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      lastAsyncUploadState: Schema.optional(Schema.String),
-      warned: Schema.optional(Schema.Boolean),
-      publicKey: Schema.optional(Schema.String),
-      publishedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
-      submittedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
-      takenDown: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FetchItemStatusResponse",
-  }) as any as Schema.Schema<FetchItemStatusResponse>;
+export const FetchItemStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastAsyncUploadState: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    itemId: Schema.optional(Schema.String),
+    submittedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
+    publicKey: Schema.optional(Schema.String),
+    publishedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
+    warned: Schema.optional(Schema.Boolean),
+    takenDown: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FetchItemStatusResponse" });
 
 export interface UploadItemPackageRequest {}
 
-export const UploadItemPackageRequest: Schema.Schema<UploadItemPackageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadItemPackageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadItemPackageRequest",
-  }) as any as Schema.Schema<UploadItemPackageRequest>;
-
-export interface UploadItemPackageResponse {
-  /** Output only. The state of the upload. If `upload_state` is `UPLOAD_IN_PROGRESS`, you can poll for updates using the fetchStatus method. */
-  uploadState?:
-    | "UPLOAD_STATE_UNSPECIFIED"
-    | "SUCCEEDED"
-    | "IN_PROGRESS"
-    | "FAILED"
-    | "NOT_FOUND"
-    | (string & {});
-  /** The extension version provided in the manifest of the uploaded package. This will not be set if the upload is still in progress (`upload_state` is `UPLOAD_IN_PROGRESS`). */
-  crxVersion?: string;
-  /** The name of the item the package was uploaded to. */
-  name?: string;
-  /** Output only. The ID of the item the package was uploaded to. */
-  itemId?: string;
-}
-
-export const UploadItemPackageResponse: Schema.Schema<UploadItemPackageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadState: Schema.optional(Schema.String),
-      crxVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadItemPackageResponse",
-  }) as any as Schema.Schema<UploadItemPackageResponse>;
-
-export interface SetPublishedDeployPercentageRequest {
-  /** Required. Unscaled percentage value for the publised revision (nonnegative number between 0 and 100). It must be larger than the existing target percentage. */
-  deployPercentage?: number;
-}
-
-export const SetPublishedDeployPercentageRequest: Schema.Schema<SetPublishedDeployPercentageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SetPublishedDeployPercentageRequest",
-  }) as any as Schema.Schema<SetPublishedDeployPercentageRequest>;
-
-export interface PublishItemRequest {
-  /** Optional. Use this to control if the item is published immediately on approval or staged for publishing in the future. Defaults to `DEFAULT_PUBLISH` if unset. */
-  publishType?:
-    | "PUBLISH_TYPE_UNSPECIFIED"
-    | "DEFAULT_PUBLISH"
-    | "STAGED_PUBLISH"
-    | (string & {});
-  /** Optional. Whether to attempt to skip item review. The API will validate if the item qualifies and return a validation error if the item requires review. Defaults to `false` if unset. */
-  skipReview?: boolean;
-  /** Optional. Additional deploy information including the desired initial percentage rollout. Defaults to the current value saved in the developer dashboard if unset. */
-  deployInfos?: Array<DeployInfo>;
-}
-
-export const PublishItemRequest: Schema.Schema<PublishItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publishType: Schema.optional(Schema.String),
-      skipReview: Schema.optional(Schema.Boolean),
-      deployInfos: Schema.optional(Schema.Array(DeployInfo)),
-    }),
-  ).annotate({
-    identifier: "PublishItemRequest",
-  }) as any as Schema.Schema<PublishItemRequest>;
+  });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
-
-export interface SetPublishedDeployPercentagePublishersItemsRequest {
-  /** Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}` */
-  name: string;
-  /** Request body */
-  body?: SetPublishedDeployPercentageRequest;
-}
-
-export const SetPublishedDeployPercentagePublishersItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SetPublishedDeployPercentageRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/publishers/{publishersId}/items/{itemsId}:setPublishedDeployPercentage",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetPublishedDeployPercentagePublishersItemsRequest>;
-
-export type SetPublishedDeployPercentagePublishersItemsResponse =
-  SetPublishedDeployPercentageResponse;
-export const SetPublishedDeployPercentagePublishersItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetPublishedDeployPercentageResponse;
-
-export type SetPublishedDeployPercentagePublishersItemsError = DefaultErrors;
-
-/** Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users. */
-export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
-  SetPublishedDeployPercentagePublishersItemsRequest,
-  SetPublishedDeployPercentagePublishersItemsResponse,
-  SetPublishedDeployPercentagePublishersItemsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetPublishedDeployPercentagePublishersItemsRequest,
-  output: SetPublishedDeployPercentagePublishersItemsResponse,
-  errors: [],
-}));
 
 export interface PublishPublishersItemsRequest {
   /** Required. Name of the item in the form `publishers/{publisherId}/items/{itemId}` */
@@ -320,6 +244,40 @@ export const publishPublishersItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishPublishersItemsRequest,
   output: PublishPublishersItemsResponse,
+  errors: [],
+}));
+
+export interface FetchStatusPublishersItemsRequest {
+  /** Required. Name of the item to retrieve the status of in the form `publishers/{publisherId}/items/{itemId}` */
+  name: string;
+}
+
+export const FetchStatusPublishersItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v2/publishers/{publishersId}/items/{itemsId}:fetchStatus",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<FetchStatusPublishersItemsRequest>;
+
+export type FetchStatusPublishersItemsResponse = FetchItemStatusResponse;
+export const FetchStatusPublishersItemsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchItemStatusResponse;
+
+export type FetchStatusPublishersItemsError = DefaultErrors;
+
+/** Fetch the status of an item. */
+export const fetchStatusPublishersItems: API.OperationMethod<
+  FetchStatusPublishersItemsRequest,
+  FetchStatusPublishersItemsResponse,
+  FetchStatusPublishersItemsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FetchStatusPublishersItemsRequest,
+  output: FetchStatusPublishersItemsResponse,
   errors: [],
 }));
 
@@ -361,37 +319,44 @@ export const cancelSubmissionPublishersItems: API.OperationMethod<
   errors: [],
 }));
 
-export interface FetchStatusPublishersItemsRequest {
-  /** Required. Name of the item to retrieve the status of in the form `publishers/{publisherId}/items/{itemId}` */
+export interface SetPublishedDeployPercentagePublishersItemsRequest {
+  /** Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
+  /** Request body */
+  body?: SetPublishedDeployPercentageRequest;
 }
 
-export const FetchStatusPublishersItemsRequest =
+export const SetPublishedDeployPercentagePublishersItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SetPublishedDeployPercentageRequest).pipe(
+      T.HttpBody(),
+    ),
   }).pipe(
     T.Http({
-      method: "GET",
-      path: "v2/publishers/{publishersId}/items/{itemsId}:fetchStatus",
+      method: "POST",
+      path: "v2/publishers/{publishersId}/items/{itemsId}:setPublishedDeployPercentage",
+      hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchStatusPublishersItemsRequest>;
+  ) as unknown as Schema.Schema<SetPublishedDeployPercentagePublishersItemsRequest>;
 
-export type FetchStatusPublishersItemsResponse = FetchItemStatusResponse;
-export const FetchStatusPublishersItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchItemStatusResponse;
+export type SetPublishedDeployPercentagePublishersItemsResponse =
+  SetPublishedDeployPercentageResponse;
+export const SetPublishedDeployPercentagePublishersItemsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SetPublishedDeployPercentageResponse;
 
-export type FetchStatusPublishersItemsError = DefaultErrors;
+export type SetPublishedDeployPercentagePublishersItemsError = DefaultErrors;
 
-/** Fetch the status of an item. */
-export const fetchStatusPublishersItems: API.OperationMethod<
-  FetchStatusPublishersItemsRequest,
-  FetchStatusPublishersItemsResponse,
-  FetchStatusPublishersItemsError,
+/** Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users. */
+export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
+  SetPublishedDeployPercentagePublishersItemsRequest,
+  SetPublishedDeployPercentagePublishersItemsResponse,
+  SetPublishedDeployPercentagePublishersItemsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FetchStatusPublishersItemsRequest,
-  output: FetchStatusPublishersItemsResponse,
+  input: SetPublishedDeployPercentagePublishersItemsRequest,
+  output: SetPublishedDeployPercentagePublishersItemsResponse,
   errors: [],
 }));
 

@@ -9,9 +9,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.VirtualMachineImages/operations",
@@ -46,6 +46,8 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 // The operation
 /**
  * Lists available operations for the Microsoft.VirtualMachineImages provider
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -53,7 +55,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TriggersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
@@ -71,6 +77,10 @@ export type TriggersCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update a trigger for the specified virtual machine image template
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -79,9 +89,11 @@ export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
@@ -96,15 +108,21 @@ export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
 // The operation
 /**
  * Delete a trigger for the specified virtual machine image template
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
 // Input Schema
-export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
@@ -119,6 +137,10 @@ export type TriggersGetOutput = typeof TriggersGetOutput.Type;
 // The operation
 /**
  * Get the specified trigger for the specified image template resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
@@ -126,7 +148,11 @@ export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const TriggersListByImageTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers",
@@ -147,6 +173,10 @@ export type TriggersListByImageTemplateOutput =
 // The operation
 /**
  * List all triggers for the specified Image Template resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const TriggersListByImageTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -156,7 +186,11 @@ export const TriggersListByImageTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VirtualMachineImageTemplatesCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/cancel",
@@ -174,6 +208,10 @@ export type VirtualMachineImageTemplatesCancelOutput =
 // The operation
 /**
  * Cancel the long running image build based on the image template
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesCancel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -182,7 +220,11 @@ export const VirtualMachineImageTemplatesCancel =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
@@ -203,6 +245,10 @@ export type VirtualMachineImageTemplatesCreateOrUpdateOutput =
 // The operation
 /**
  * Create or update a virtual machine image template
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -211,7 +257,11 @@ export const VirtualMachineImageTemplatesCreateOrUpdate =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
@@ -229,6 +279,10 @@ export type VirtualMachineImageTemplatesDeleteOutput =
 // The operation
 /**
  * Delete a virtual machine image template
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -237,7 +291,11 @@ export const VirtualMachineImageTemplatesDelete =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
@@ -258,6 +316,10 @@ export type VirtualMachineImageTemplatesGetOutput =
 // The operation
 /**
  * Get information about a virtual machine image template
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -266,7 +328,11 @@ export const VirtualMachineImageTemplatesGet =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesGetRunOutputInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/runOutputs/{runOutputName}",
@@ -284,6 +350,10 @@ export type VirtualMachineImageTemplatesGetRunOutputOutput =
 // The operation
 /**
  * Get the specified run output for the specified image template resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesGetRunOutput =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -292,7 +362,10 @@ export const VirtualMachineImageTemplatesGetRunOutput =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.VirtualMachineImages/imageTemplates",
@@ -320,6 +393,9 @@ export type VirtualMachineImageTemplatesListOutput =
 // The operation
 /**
  * Gets information about the VM image templates associated with the subscription.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineImageTemplatesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -328,7 +404,11 @@ export const VirtualMachineImageTemplatesList =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates",
@@ -356,6 +436,10 @@ export type VirtualMachineImageTemplatesListByResourceGroupOutput =
 // The operation
 /**
  * Gets information about the VM image templates associated with the specified resource group.
+ *
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineImageTemplatesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -364,7 +448,11 @@ export const VirtualMachineImageTemplatesListByResourceGroup =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesListRunOutputsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/runOutputs",
@@ -385,6 +473,10 @@ export type VirtualMachineImageTemplatesListRunOutputsOutput =
 // The operation
 /**
  * List all run outputs for the specified Image Template resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesListRunOutputs =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -393,7 +485,11 @@ export const VirtualMachineImageTemplatesListRunOutputs =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
@@ -411,6 +507,10 @@ export type VirtualMachineImageTemplatesRunOutput =
 // The operation
 /**
  * Create artifacts from a existing image template
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualMachineImageTemplatesRun =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -419,7 +519,11 @@ export const VirtualMachineImageTemplatesRun =
   }));
 // Input Schema
 export const VirtualMachineImageTemplatesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
@@ -440,6 +544,10 @@ export type VirtualMachineImageTemplatesUpdateOutput =
 // The operation
 /**
  * Update the tags for this Virtual Machine Image Template
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineImageTemplatesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

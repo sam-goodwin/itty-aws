@@ -22,30 +22,126 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface ResourcePolicyMember {
-  /** Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource. Example: `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter` */
-  iamPolicyNamePrincipal?: string;
-  /** Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resource Example: `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5` */
-  iamPolicyUidPrincipal?: string;
+export interface ParameterVersionPayload {
+  /** Required. bytes data for storing payload. */
+  data?: string;
 }
 
-export const ResourcePolicyMember: Schema.Schema<ResourcePolicyMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iamPolicyNamePrincipal: Schema.optional(Schema.String),
-      iamPolicyUidPrincipal: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourcePolicyMember",
-  }) as any as Schema.Schema<ResourcePolicyMember>;
+export const ParameterVersionPayload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ParameterVersionPayload" });
+
+export interface ParameterVersion {
+  /** Optional. Disabled boolean to determine if a ParameterVersion acts as a metadata only resource (payload is never returned if disabled is true). If true any calls will always default to BASIC view even if the user explicitly passes FULL view as part of the request. A render call on a disabled resource fails with an error. Default value is False. */
+  disabled?: boolean;
+  /** Required. Immutable. Payload content of a ParameterVersion resource. This is only returned when the request provides the View value of FULL (default for GET request). */
+  payload?: ParameterVersionPayload;
+  /** Output only. [Output only] Create time stamp */
+  createTime?: string;
+  /** Identifier. [Output only] The resource name of the ParameterVersion in the format `projects/* /locations/* /parameters/* /versions/*`. */
+  name?: string;
+  /** Optional. Output only. [Output only] The resource name of the KMS key version used to encrypt the ParameterVersion payload. This field is populated only if the Parameter resource has customer managed encryption key (CMEK) configured. */
+  kmsKeyVersion?: string;
+  /** Output only. [Output only] Update time stamp */
+  updateTime?: string;
+}
+
+export const ParameterVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+  payload: Schema.optional(ParameterVersionPayload),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kmsKeyVersion: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParameterVersion" });
+
+export interface ListParameterVersionsResponse {
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+  /** The list of ParameterVersions */
+  parameterVersions?: Array<ParameterVersion>;
+  /** Unordered list. Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListParameterVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    parameterVersions: Schema.optional(Schema.Array(ParameterVersion)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListParameterVersionsResponse" });
+
+export interface RenderParameterVersionResponse {
+  /** Output only. Server generated rendered version of the user provided payload data (ParameterVersionPayload) which has substitutions of all (if any) references to a SecretManager SecretVersion resources. This substitution only works for a Parameter which is in JSON or YAML format. */
+  renderedPayload?: string;
+  /** Output only. Resource identifier of a ParameterVersion in the format `projects/* /locations/* /parameters/* /versions/*`. */
+  parameterVersion?: string;
+  /** Payload content of a ParameterVersion resource. */
+  payload?: ParameterVersionPayload;
+}
+
+export const RenderParameterVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renderedPayload: Schema.optional(Schema.String),
+    parameterVersion: Schema.optional(Schema.String),
+    payload: Schema.optional(ParameterVersionPayload),
+  }).annotate({ identifier: "RenderParameterVersionResponse" });
+
+export interface Location {
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+}
+
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: Array<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
+
+export interface ResourcePolicyMember {
+  /** Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resource Example: `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5` */
+  iamPolicyUidPrincipal?: string;
+  /** Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource. Example: `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter` */
+  iamPolicyNamePrincipal?: string;
+}
+
+export const ResourcePolicyMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iamPolicyUidPrincipal: Schema.optional(Schema.String),
+  iamPolicyNamePrincipal: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourcePolicyMember" });
 
 export interface Parameter {
+  /** Output only. [Output only] Update time stamp */
+  updateTime?: string;
   /** Identifier. [Output only] The resource name of the Parameter in the format `projects/* /locations/* /parameters/*`. */
   name?: string;
   /** Output only. [Output only] Create time stamp */
   createTime?: string;
-  /** Output only. [Output only] Update time stamp */
-  updateTime?: string;
+  /** Optional. Customer managed encryption key (CMEK) to use for encrypting the Parameter Versions. If not set, the default Google-managed encryption key will be used. Cloud KMS CryptoKeys must reside in the same location as the Parameter. The expected format is `projects/* /locations/* /keyRings/* /cryptoKeys/*`. */
+  kmsKey?: string;
   /** Optional. Labels as key value pairs */
   labels?: Record<string, string>;
   /** Optional. Specifies the format of a Parameter. */
@@ -57,173 +153,40 @@ export interface Parameter {
     | (string & {});
   /** Output only. [Output-only] policy member strings of a Google Cloud resource. */
   policyMember?: ResourcePolicyMember;
-  /** Optional. Customer managed encryption key (CMEK) to use for encrypting the Parameter Versions. If not set, the default Google-managed encryption key will be used. Cloud KMS CryptoKeys must reside in the same location as the Parameter. The expected format is `projects/* /locations/* /keyRings/* /cryptoKeys/*`. */
-  kmsKey?: string;
 }
 
-export const Parameter: Schema.Schema<Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      format: Schema.optional(Schema.String),
-      policyMember: Schema.optional(ResourcePolicyMember),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Parameter" }) as any as Schema.Schema<Parameter>;
+export const Parameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  format: Schema.optional(Schema.String),
+  policyMember: Schema.optional(ResourcePolicyMember),
+}).annotate({ identifier: "Parameter" });
 
 export interface ListParametersResponse {
+  /** Unordered list. Locations that could not be reached. */
+  unreachable?: Array<string>;
   /** The list of Parameters */
   parameters?: Array<Parameter>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
-  /** Unordered list. Locations that could not be reached. */
-  unreachable?: Array<string>;
 }
 
-export const ListParametersResponse: Schema.Schema<ListParametersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Array(Parameter)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListParametersResponse",
-  }) as any as Schema.Schema<ListParametersResponse>;
+export const ListParametersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    parameters: Schema.optional(Schema.Array(Parameter)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListParametersResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
-
-export interface ParameterVersionPayload {
-  /** Required. bytes data for storing payload. */
-  data?: string;
-}
-
-export const ParameterVersionPayload: Schema.Schema<ParameterVersionPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParameterVersionPayload",
-  }) as any as Schema.Schema<ParameterVersionPayload>;
-
-export interface ParameterVersion {
-  /** Identifier. [Output only] The resource name of the ParameterVersion in the format `projects/* /locations/* /parameters/* /versions/*`. */
-  name?: string;
-  /** Output only. [Output only] Create time stamp */
-  createTime?: string;
-  /** Output only. [Output only] Update time stamp */
-  updateTime?: string;
-  /** Optional. Disabled boolean to determine if a ParameterVersion acts as a metadata only resource (payload is never returned if disabled is true). If true any calls will always default to BASIC view even if the user explicitly passes FULL view as part of the request. A render call on a disabled resource fails with an error. Default value is False. */
-  disabled?: boolean;
-  /** Required. Immutable. Payload content of a ParameterVersion resource. This is only returned when the request provides the View value of FULL (default for GET request). */
-  payload?: ParameterVersionPayload;
-  /** Optional. Output only. [Output only] The resource name of the KMS key version used to encrypt the ParameterVersion payload. This field is populated only if the Parameter resource has customer managed encryption key (CMEK) configured. */
-  kmsKeyVersion?: string;
-}
-
-export const ParameterVersion: Schema.Schema<ParameterVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      payload: Schema.optional(ParameterVersionPayload),
-      kmsKeyVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParameterVersion",
-  }) as any as Schema.Schema<ParameterVersion>;
-
-export interface ListParameterVersionsResponse {
-  /** The list of ParameterVersions */
-  parameterVersions?: Array<ParameterVersion>;
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
-  /** Unordered list. Locations that could not be reached. */
-  unreachable?: Array<string>;
-}
-
-export const ListParameterVersionsResponse: Schema.Schema<ListParameterVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameterVersions: Schema.optional(Schema.Array(ParameterVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListParameterVersionsResponse",
-  }) as any as Schema.Schema<ListParameterVersionsResponse>;
-
-export interface RenderParameterVersionResponse {
-  /** Output only. Resource identifier of a ParameterVersion in the format `projects/* /locations/* /parameters/* /versions/*`. */
-  parameterVersion?: string;
-  /** Payload content of a ParameterVersion resource. */
-  payload?: ParameterVersionPayload;
-  /** Output only. Server generated rendered version of the user provided payload data (ParameterVersionPayload) which has substitutions of all (if any) references to a SecretManager SecretVersion resources. This substitution only works for a Parameter which is in JSON or YAML format. */
-  renderedPayload?: string;
-}
-
-export const RenderParameterVersionResponse: Schema.Schema<RenderParameterVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameterVersion: Schema.optional(Schema.String),
-      payload: Schema.optional(ParameterVersionPayload),
-      renderedPayload: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RenderParameterVersionResponse",
-  }) as any as Schema.Schema<RenderParameterVersionResponse>;
-
-export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations
@@ -234,23 +197,23 @@ export interface ListProjectsLocationsRequest {
   name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
     svc,
@@ -262,7 +225,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -312,56 +275,6 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListProjectsLocationsParametersRequest {
-  /** Required. Parent value for ListParametersRequest in the format `projects/* /locations/*`. */
-  parent: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListParameters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListParameters` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsParametersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsParametersRequest>;
-
-export type ListProjectsLocationsParametersResponse = ListParametersResponse;
-export const ListProjectsLocationsParametersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListParametersResponse;
-
-export type ListProjectsLocationsParametersError = DefaultErrors;
-
-/** Lists Parameters in a given project and location. */
-export const listProjectsLocationsParameters: API.PaginatedOperationMethod<
-  ListProjectsLocationsParametersRequest,
-  ListProjectsLocationsParametersResponse,
-  ListProjectsLocationsParametersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsParametersRequest,
-  output: ListProjectsLocationsParametersResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetProjectsLocationsParametersRequest {
   /** Required. Name of the resource in the format `projects/* /locations/* /parameters/*`. */
   name: string;
@@ -394,6 +307,93 @@ export const getProjectsLocationsParameters: API.OperationMethod<
   input: GetProjectsLocationsParametersRequest,
   output: GetProjectsLocationsParametersResponse,
   errors: [],
+}));
+
+export interface DeleteProjectsLocationsParametersRequest {
+  /** Required. Name of the resource in the format `projects/* /locations/* /parameters/*`. */
+  name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsParametersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsParametersRequest>;
+
+export type DeleteProjectsLocationsParametersResponse = Empty;
+export const DeleteProjectsLocationsParametersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsParametersError = DefaultErrors;
+
+/** Deletes a single Parameter. */
+export const deleteProjectsLocationsParameters: API.OperationMethod<
+  DeleteProjectsLocationsParametersRequest,
+  DeleteProjectsLocationsParametersResponse,
+  DeleteProjectsLocationsParametersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsParametersRequest,
+  output: DeleteProjectsLocationsParametersResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsParametersRequest {
+  /** Optional. Filtering results */
+  filter?: string;
+  /** Required. Parent value for ListParametersRequest in the format `projects/* /locations/*`. */
+  parent: string;
+  /** Optional. A page token, received from a previous `ListParameters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListParameters` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsParametersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsParametersRequest>;
+
+export type ListProjectsLocationsParametersResponse = ListParametersResponse;
+export const ListProjectsLocationsParametersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListParametersResponse;
+
+export type ListProjectsLocationsParametersError = DefaultErrors;
+
+/** Lists Parameters in a given project and location. */
+export const listProjectsLocationsParameters: API.PaginatedOperationMethod<
+  ListProjectsLocationsParametersRequest,
+  ListProjectsLocationsParametersResponse,
+  ListProjectsLocationsParametersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsParametersRequest,
+  output: ListProjectsLocationsParametersResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface CreateProjectsLocationsParametersRequest {
@@ -486,63 +486,26 @@ export const patchProjectsLocationsParameters: API.OperationMethod<
   errors: [],
 }));
 
-export interface DeleteProjectsLocationsParametersRequest {
-  /** Required. Name of the resource in the format `projects/* /locations/* /parameters/*`. */
-  name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-}
-
-export const DeleteProjectsLocationsParametersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsParametersRequest>;
-
-export type DeleteProjectsLocationsParametersResponse = Empty;
-export const DeleteProjectsLocationsParametersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsParametersError = DefaultErrors;
-
-/** Deletes a single Parameter. */
-export const deleteProjectsLocationsParameters: API.OperationMethod<
-  DeleteProjectsLocationsParametersRequest,
-  DeleteProjectsLocationsParametersResponse,
-  DeleteProjectsLocationsParametersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsParametersRequest,
-  output: DeleteProjectsLocationsParametersResponse,
-  errors: [],
-}));
-
 export interface ListProjectsLocationsParametersVersionsRequest {
   /** Required. Parent value for ListParameterVersionsRequest in the format `projects/* /locations/* /parameters/*`. */
   parent: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** Optional. A page token, received from a previous `ListParameterVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListParameterVersions` must match the call that provided the page token. */
   pageToken?: string;
-  /** Optional. Filtering results */
-  filter?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Optional. Hint for how to order the results */
   orderBy?: string;
+  /** Optional. Filtering results */
+  filter?: string;
 }
 
 export const ListProjectsLocationsParametersVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -574,96 +537,24 @@ export const listProjectsLocationsParametersVersions: API.PaginatedOperationMeth
   },
 }));
 
-export interface GetProjectsLocationsParametersVersionsRequest {
-  /** Required. Name of the resource in the format `projects/* /locations/* /parameters/* /versions/*`. */
-  name: string;
-  /** Optional. View of the ParameterVersion. In the default FULL view, all metadata & payload associated with the ParameterVersion will be returned. */
-  view?: "VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
-}
-
-export const GetProjectsLocationsParametersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsParametersVersionsRequest>;
-
-export type GetProjectsLocationsParametersVersionsResponse = ParameterVersion;
-export const GetProjectsLocationsParametersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ParameterVersion;
-
-export type GetProjectsLocationsParametersVersionsError = DefaultErrors;
-
-/** Gets details of a single ParameterVersion. */
-export const getProjectsLocationsParametersVersions: API.OperationMethod<
-  GetProjectsLocationsParametersVersionsRequest,
-  GetProjectsLocationsParametersVersionsResponse,
-  GetProjectsLocationsParametersVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsParametersVersionsRequest,
-  output: GetProjectsLocationsParametersVersionsResponse,
-  errors: [],
-}));
-
-export interface RenderProjectsLocationsParametersVersionsRequest {
-  /** Required. Name of the resource */
-  name: string;
-}
-
-export const RenderProjectsLocationsParametersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}:render",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RenderProjectsLocationsParametersVersionsRequest>;
-
-export type RenderProjectsLocationsParametersVersionsResponse =
-  RenderParameterVersionResponse;
-export const RenderProjectsLocationsParametersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RenderParameterVersionResponse;
-
-export type RenderProjectsLocationsParametersVersionsError = DefaultErrors;
-
-/** Gets rendered version of a ParameterVersion. */
-export const renderProjectsLocationsParametersVersions: API.OperationMethod<
-  RenderProjectsLocationsParametersVersionsRequest,
-  RenderProjectsLocationsParametersVersionsResponse,
-  RenderProjectsLocationsParametersVersionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RenderProjectsLocationsParametersVersionsRequest,
-  output: RenderProjectsLocationsParametersVersionsResponse,
-  errors: [],
-}));
-
 export interface CreateProjectsLocationsParametersVersionsRequest {
-  /** Required. Value for parent in the format `projects/* /locations/* /parameters/*`. */
-  parent: string;
   /** Required. Id of the ParameterVersion resource */
   parameterVersionId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Value for parent in the format `projects/* /locations/* /parameters/*`. */
+  parent: string;
   /** Request body */
   body?: ParameterVersion;
 }
 
 export const CreateProjectsLocationsParametersVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     parameterVersionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("parameterVersionId"),
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ParameterVersion).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -737,6 +628,43 @@ export const patchProjectsLocationsParametersVersions: API.OperationMethod<
   errors: [],
 }));
 
+export interface GetProjectsLocationsParametersVersionsRequest {
+  /** Optional. View of the ParameterVersion. In the default FULL view, all metadata & payload associated with the ParameterVersion will be returned. */
+  view?: "VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
+  /** Required. Name of the resource in the format `projects/* /locations/* /parameters/* /versions/*`. */
+  name: string;
+}
+
+export const GetProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsParametersVersionsRequest>;
+
+export type GetProjectsLocationsParametersVersionsResponse = ParameterVersion;
+export const GetProjectsLocationsParametersVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ParameterVersion;
+
+export type GetProjectsLocationsParametersVersionsError = DefaultErrors;
+
+/** Gets details of a single ParameterVersion. */
+export const getProjectsLocationsParametersVersions: API.OperationMethod<
+  GetProjectsLocationsParametersVersionsRequest,
+  GetProjectsLocationsParametersVersionsResponse,
+  GetProjectsLocationsParametersVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsParametersVersionsRequest,
+  output: GetProjectsLocationsParametersVersionsResponse,
+  errors: [],
+}));
+
 export interface DeleteProjectsLocationsParametersVersionsRequest {
   /** Required. Name of the resource in the format `projects/* /locations/* /parameters/* /versions/*`. */
   name: string;
@@ -771,5 +699,40 @@ export const deleteProjectsLocationsParametersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsParametersVersionsRequest,
   output: DeleteProjectsLocationsParametersVersionsResponse,
+  errors: [],
+}));
+
+export interface RenderProjectsLocationsParametersVersionsRequest {
+  /** Required. Name of the resource */
+  name: string;
+}
+
+export const RenderProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}:render",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RenderProjectsLocationsParametersVersionsRequest>;
+
+export type RenderProjectsLocationsParametersVersionsResponse =
+  RenderParameterVersionResponse;
+export const RenderProjectsLocationsParametersVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RenderParameterVersionResponse;
+
+export type RenderProjectsLocationsParametersVersionsError = DefaultErrors;
+
+/** Gets rendered version of a ParameterVersion. */
+export const renderProjectsLocationsParametersVersions: API.OperationMethod<
+  RenderProjectsLocationsParametersVersionsRequest,
+  RenderProjectsLocationsParametersVersionsResponse,
+  RenderProjectsLocationsParametersVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RenderProjectsLocationsParametersVersionsRequest,
+  output: RenderProjectsLocationsParametersVersionsResponse,
   errors: [],
 }));

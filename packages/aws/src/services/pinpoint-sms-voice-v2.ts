@@ -112,10 +112,21 @@ export type IamRoleArn = string;
 export type LogGroupArn = string;
 export type DeliveryStreamArn = string;
 export type SnsTopicArn = string;
+export type NotifyConfigurationDisplayName = string;
+export type NotifyConfigurationUseCase = string;
+export type NotifyTemplateId = string;
+export type NumberCapability = string;
+export type NotifyConfigurationArn = string;
+export type NotifyConfigurationId = string;
+export type NotifyConfigurationTier = string;
+export type TierUpgradeStatus = string;
+export type NotifyConfigurationStatus = string;
 export type OptOutListName = string;
 export type MessageType = string;
 export type PoolStatus = string;
 export type TwoWayChannelArn = string;
+export type OptOutListNameOrArn = string;
+export type RcsAgentStatus = string;
 export type RegistrationType = string;
 export type RegistrationStatus = string;
 export type RegistrationVersionNumber = number;
@@ -126,6 +137,7 @@ export type AttachmentBody = Uint8Array;
 export type AttachmentUrl = string;
 export type AttachmentStatus = string;
 export type RegistrationVersionStatus = string;
+export type RcsAgentIdOrArn = string;
 export type VerificationStatus = string;
 export type SenderId = string;
 export type PhoneOrPoolIdOrArn = string;
@@ -133,7 +145,7 @@ export type Keyword = string;
 export type KeywordMessage = string;
 export type KeywordAction = string;
 export type MonthlyLimit = number;
-export type OptOutListNameOrArn = string;
+export type NotifyConfigurationIdOrArn = string;
 export type ProtectConfigurationRuleOverrideAction = string;
 export type RegistrationAttachmentIdOrArn = string;
 export type AttachmentUploadErrorReason = string;
@@ -150,15 +162,29 @@ export type AccountLimitName = string;
 export type ConfigurationSetFilterName = string;
 export type FilterValue = string;
 export type KeywordFilterName = string;
+export type NotifyConfigurationFilterName = string;
+export type NotifyTemplateFilterName = string;
+export type NotifyTemplateVersion = number;
+export type NotifyTemplateType = string;
+export type NotifyTemplateStatus = string;
+export type NotifyLanguageCode = string;
+export type TemplateContent = string;
+export type TemplateVariableType = string;
+export type TemplateVariableSource = string;
+export type VoiceId = string;
 export type OptedOutFilterName = string;
 export type Owner = string;
 export type PhoneNumberIdOrArn = string;
 export type PhoneNumberFilterName = string;
 export type NumberStatus = string;
-export type NumberCapability = string;
 export type NumberType = string;
 export type PoolFilterName = string;
 export type ProtectConfigurationFilterName = string;
+export type CountryLaunchStatusFilterName = string;
+export type CountryLaunchStatus = string;
+export type CarrierStatus = string;
+export type RcsAgentFilterName = string;
+export type TestingAgentStatus = string;
 export type RegistrationAttachmentFilterName = string;
 export type SectionPath = string;
 export type FieldType = string;
@@ -191,18 +217,20 @@ export type TextMessageBody = string;
 export type MediaUrlValue = string;
 export type MaxPrice = string;
 export type TimeToLive = number;
+export type TemplateVariableName = string;
+export type TemplateVariableValue = string;
 export type TextMessageOriginationIdentity = string;
 export type VoiceMessageOriginationIdentity = string;
 export type VoiceMessageBody = string;
 export type VoiceMessageBodyTextType = string;
-export type VoiceId = string;
+export type NotifyPoolIdOrUnset = string;
 export type VerificationCode = string;
 
 //# Schemas
 export interface AssociateOriginationIdentityRequest {
   PoolId: string;
   OriginationIdentity: string;
-  IsoCountryCode: string;
+  IsoCountryCode?: string;
   ClientToken?: string;
 }
 export const AssociateOriginationIdentityRequest =
@@ -210,7 +238,7 @@ export const AssociateOriginationIdentityRequest =
     S.Struct({
       PoolId: S.String,
       OriginationIdentity: S.String,
-      IsoCountryCode: S.String,
+      IsoCountryCode: S.optional(S.String),
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -447,6 +475,80 @@ export const CreateEventDestinationResult =
   ).annotate({
     identifier: "CreateEventDestinationResult",
   }) as any as S.Schema<CreateEventDestinationResult>;
+export type IsoCountryCodeList = string[];
+export const IsoCountryCodeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type NotifyEnabledChannelsList = string[];
+export const NotifyEnabledChannelsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface CreateNotifyConfigurationRequest {
+  DisplayName: string;
+  UseCase: string;
+  DefaultTemplateId?: string;
+  PoolId?: string;
+  EnabledCountries?: string[];
+  EnabledChannels: string[];
+  DeletionProtectionEnabled?: boolean;
+  ClientToken?: string;
+  Tags?: Tag[];
+}
+export const CreateNotifyConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DisplayName: S.String,
+      UseCase: S.String,
+      DefaultTemplateId: S.optional(S.String),
+      PoolId: S.optional(S.String),
+      EnabledCountries: S.optional(IsoCountryCodeList),
+      EnabledChannels: NotifyEnabledChannelsList,
+      DeletionProtectionEnabled: S.optional(S.Boolean),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      Tags: S.optional(TagList),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "CreateNotifyConfigurationRequest",
+  }) as any as S.Schema<CreateNotifyConfigurationRequest>;
+export interface CreateNotifyConfigurationResult {
+  NotifyConfigurationArn: string;
+  NotifyConfigurationId: string;
+  DisplayName: string;
+  UseCase: string;
+  DefaultTemplateId?: string;
+  PoolId?: string;
+  EnabledCountries?: string[];
+  EnabledChannels: string[];
+  Tier: string;
+  TierUpgradeStatus: string;
+  Status: string;
+  RejectionReason?: string;
+  DeletionProtectionEnabled: boolean;
+  Tags?: Tag[];
+  CreatedTimestamp: Date;
+}
+export const CreateNotifyConfigurationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationArn: S.String,
+      NotifyConfigurationId: S.String,
+      DisplayName: S.String,
+      UseCase: S.String,
+      DefaultTemplateId: S.optional(S.String),
+      PoolId: S.optional(S.String),
+      EnabledCountries: S.optional(IsoCountryCodeList),
+      EnabledChannels: NotifyEnabledChannelsList,
+      Tier: S.String,
+      TierUpgradeStatus: S.String,
+      Status: S.String,
+      RejectionReason: S.optional(S.String),
+      DeletionProtectionEnabled: S.Boolean,
+      Tags: S.optional(TagList),
+      CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }),
+  ).annotate({
+    identifier: "CreateNotifyConfigurationResult",
+  }) as any as S.Schema<CreateNotifyConfigurationResult>;
 export interface CreateOptOutListRequest {
   OptOutListName: string;
   Tags?: Tag[];
@@ -485,7 +587,7 @@ export const CreateOptOutListResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateOptOutListResult>;
 export interface CreatePoolRequest {
   OriginationIdentity: string;
-  IsoCountryCode: string;
+  IsoCountryCode?: string;
   MessageType: string;
   DeletionProtectionEnabled?: boolean;
   Tags?: Tag[];
@@ -494,7 +596,7 @@ export interface CreatePoolRequest {
 export const CreatePoolRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     OriginationIdentity: S.String,
-    IsoCountryCode: S.String,
+    IsoCountryCode: S.optional(S.String),
     MessageType: S.String,
     DeletionProtectionEnabled: S.optional(S.Boolean),
     Tags: S.optional(TagList),
@@ -579,6 +681,54 @@ export const CreateProtectConfigurationResult =
   ).annotate({
     identifier: "CreateProtectConfigurationResult",
   }) as any as S.Schema<CreateProtectConfigurationResult>;
+export interface CreateRcsAgentRequest {
+  DeletionProtectionEnabled?: boolean;
+  OptOutListName?: string;
+  Tags?: Tag[];
+  ClientToken?: string;
+}
+export const CreateRcsAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DeletionProtectionEnabled: S.optional(S.Boolean),
+    OptOutListName: S.optional(S.String),
+    Tags: S.optional(TagList),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateRcsAgentRequest",
+}) as any as S.Schema<CreateRcsAgentRequest>;
+export interface CreateRcsAgentResult {
+  RcsAgentArn: string;
+  RcsAgentId: string;
+  Status: string;
+  DeletionProtectionEnabled: boolean;
+  OptOutListName?: string;
+  CreatedTimestamp: Date;
+  SelfManagedOptOutsEnabled: boolean;
+  TwoWayChannelArn?: string;
+  TwoWayChannelRole?: string;
+  TwoWayEnabled: boolean;
+  Tags?: Tag[];
+}
+export const CreateRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RcsAgentArn: S.String,
+    RcsAgentId: S.String,
+    Status: S.String,
+    DeletionProtectionEnabled: S.Boolean,
+    OptOutListName: S.optional(S.String),
+    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    SelfManagedOptOutsEnabled: S.Boolean,
+    TwoWayChannelArn: S.optional(S.String),
+    TwoWayChannelRole: S.optional(S.String),
+    TwoWayEnabled: S.Boolean,
+    Tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "CreateRcsAgentResult",
+}) as any as S.Schema<CreateRcsAgentResult>;
 export interface CreateRegistrationRequest {
   RegistrationType: string;
   Tags?: Tag[];
@@ -780,6 +930,7 @@ export const CreateRegistrationVersionResult =
   }) as any as S.Schema<CreateRegistrationVersionResult>;
 export interface CreateVerifiedDestinationNumberRequest {
   DestinationPhoneNumber: string;
+  RcsAgentId?: string;
   Tags?: Tag[];
   ClientToken?: string;
 }
@@ -787,6 +938,7 @@ export const CreateVerifiedDestinationNumberRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       DestinationPhoneNumber: S.String,
+      RcsAgentId: S.optional(S.String),
       Tags: S.optional(TagList),
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
@@ -800,6 +952,7 @@ export interface CreateVerifiedDestinationNumberResult {
   VerifiedDestinationNumberId: string;
   DestinationPhoneNumber: string;
   Status: string;
+  RcsAgentId?: string;
   Tags?: Tag[];
   CreatedTimestamp: Date;
 }
@@ -810,6 +963,7 @@ export const CreateVerifiedDestinationNumberResult =
       VerifiedDestinationNumberId: S.String,
       DestinationPhoneNumber: S.String,
       Status: S.String,
+      RcsAgentId: S.optional(S.String),
       Tags: S.optional(TagList),
       CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     }),
@@ -1006,6 +1160,72 @@ export const DeleteMediaMessageSpendLimitOverrideResult =
   ).annotate({
     identifier: "DeleteMediaMessageSpendLimitOverrideResult",
   }) as any as S.Schema<DeleteMediaMessageSpendLimitOverrideResult>;
+export interface DeleteNotifyConfigurationRequest {
+  NotifyConfigurationId: string;
+}
+export const DeleteNotifyConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ NotifyConfigurationId: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteNotifyConfigurationRequest",
+  }) as any as S.Schema<DeleteNotifyConfigurationRequest>;
+export interface DeleteNotifyConfigurationResult {
+  NotifyConfigurationArn: string;
+  NotifyConfigurationId: string;
+  DisplayName: string;
+  UseCase: string;
+  DefaultTemplateId?: string;
+  PoolId?: string;
+  EnabledCountries?: string[];
+  EnabledChannels: string[];
+  Tier: string;
+  TierUpgradeStatus: string;
+  Status: string;
+  RejectionReason?: string;
+  DeletionProtectionEnabled: boolean;
+  CreatedTimestamp: Date;
+}
+export const DeleteNotifyConfigurationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationArn: S.String,
+      NotifyConfigurationId: S.String,
+      DisplayName: S.String,
+      UseCase: S.String,
+      DefaultTemplateId: S.optional(S.String),
+      PoolId: S.optional(S.String),
+      EnabledCountries: S.optional(IsoCountryCodeList),
+      EnabledChannels: NotifyEnabledChannelsList,
+      Tier: S.String,
+      TierUpgradeStatus: S.String,
+      Status: S.String,
+      RejectionReason: S.optional(S.String),
+      DeletionProtectionEnabled: S.Boolean,
+      CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }),
+  ).annotate({
+    identifier: "DeleteNotifyConfigurationResult",
+  }) as any as S.Schema<DeleteNotifyConfigurationResult>;
+export interface DeleteNotifyMessageSpendLimitOverrideRequest {}
+export const DeleteNotifyMessageSpendLimitOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteNotifyMessageSpendLimitOverrideRequest",
+  }) as any as S.Schema<DeleteNotifyMessageSpendLimitOverrideRequest>;
+export interface DeleteNotifyMessageSpendLimitOverrideResult {
+  MonthlyLimit?: number;
+}
+export const DeleteNotifyMessageSpendLimitOverrideResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MonthlyLimit: S.optional(S.Number) }),
+  ).annotate({
+    identifier: "DeleteNotifyMessageSpendLimitOverrideResult",
+  }) as any as S.Schema<DeleteNotifyMessageSpendLimitOverrideResult>;
 export interface DeleteOptedOutNumberRequest {
   OptOutListName: string;
   OptedOutNumber: string;
@@ -1179,6 +1399,44 @@ export const DeleteProtectConfigurationRuleSetNumberOverrideResult =
   ).annotate({
     identifier: "DeleteProtectConfigurationRuleSetNumberOverrideResult",
   }) as any as S.Schema<DeleteProtectConfigurationRuleSetNumberOverrideResult>;
+export interface DeleteRcsAgentRequest {
+  RcsAgentId: string;
+}
+export const DeleteRcsAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ RcsAgentId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteRcsAgentRequest",
+}) as any as S.Schema<DeleteRcsAgentRequest>;
+export interface DeleteRcsAgentResult {
+  RcsAgentArn: string;
+  RcsAgentId: string;
+  Status: string;
+  CreatedTimestamp: Date;
+  DeletionProtectionEnabled: boolean;
+  OptOutListName?: string;
+  SelfManagedOptOutsEnabled: boolean;
+  TwoWayChannelArn?: string;
+  TwoWayChannelRole?: string;
+  TwoWayEnabled: boolean;
+}
+export const DeleteRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RcsAgentArn: S.String,
+    RcsAgentId: S.String,
+    Status: S.String,
+    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    DeletionProtectionEnabled: S.Boolean,
+    OptOutListName: S.optional(S.String),
+    SelfManagedOptOutsEnabled: S.Boolean,
+    TwoWayChannelArn: S.optional(S.String),
+    TwoWayChannelRole: S.optional(S.String),
+    TwoWayEnabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "DeleteRcsAgentResult",
+}) as any as S.Schema<DeleteRcsAgentResult>;
 export interface DeleteRegistrationRequest {
   RegistrationId: string;
 }
@@ -1601,6 +1859,225 @@ export const DescribeKeywordsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeKeywordsResult",
 }) as any as S.Schema<DescribeKeywordsResult>;
+export type NotifyConfigurationIdList = string[];
+export const NotifyConfigurationIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface NotifyConfigurationFilter {
+  Name: string;
+  Values: string[];
+}
+export const NotifyConfigurationFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Name: S.String, Values: FilterValueList }),
+).annotate({
+  identifier: "NotifyConfigurationFilter",
+}) as any as S.Schema<NotifyConfigurationFilter>;
+export type NotifyConfigurationFilterList = NotifyConfigurationFilter[];
+export const NotifyConfigurationFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NotifyConfigurationFilter);
+export interface DescribeNotifyConfigurationsRequest {
+  NotifyConfigurationIds?: string[];
+  Filters?: NotifyConfigurationFilter[];
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const DescribeNotifyConfigurationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationIds: S.optional(NotifyConfigurationIdList),
+      Filters: S.optional(NotifyConfigurationFilterList),
+      NextToken: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DescribeNotifyConfigurationsRequest",
+  }) as any as S.Schema<DescribeNotifyConfigurationsRequest>;
+export interface NotifyConfigurationInformation {
+  NotifyConfigurationArn: string;
+  NotifyConfigurationId: string;
+  DisplayName: string;
+  UseCase: string;
+  DefaultTemplateId?: string;
+  PoolId?: string;
+  EnabledCountries?: string[];
+  EnabledChannels: string[];
+  Tier: string;
+  TierUpgradeStatus: string;
+  Status: string;
+  RejectionReason?: string;
+  DeletionProtectionEnabled: boolean;
+  CreatedTimestamp: Date;
+}
+export const NotifyConfigurationInformation =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationArn: S.String,
+      NotifyConfigurationId: S.String,
+      DisplayName: S.String,
+      UseCase: S.String,
+      DefaultTemplateId: S.optional(S.String),
+      PoolId: S.optional(S.String),
+      EnabledCountries: S.optional(IsoCountryCodeList),
+      EnabledChannels: NotifyEnabledChannelsList,
+      Tier: S.String,
+      TierUpgradeStatus: S.String,
+      Status: S.String,
+      RejectionReason: S.optional(S.String),
+      DeletionProtectionEnabled: S.Boolean,
+      CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }),
+  ).annotate({
+    identifier: "NotifyConfigurationInformation",
+  }) as any as S.Schema<NotifyConfigurationInformation>;
+export type NotifyConfigurationInformationList =
+  NotifyConfigurationInformation[];
+export const NotifyConfigurationInformationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NotifyConfigurationInformation);
+export interface DescribeNotifyConfigurationsResult {
+  NotifyConfigurations?: NotifyConfigurationInformation[];
+  NextToken?: string;
+}
+export const DescribeNotifyConfigurationsResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurations: S.optional(NotifyConfigurationInformationList),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DescribeNotifyConfigurationsResult",
+  }) as any as S.Schema<DescribeNotifyConfigurationsResult>;
+export type NotifyTemplateIdList = string[];
+export const NotifyTemplateIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface NotifyTemplateFilter {
+  Name: string;
+  Values: string[];
+}
+export const NotifyTemplateFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Values: FilterValueList }),
+).annotate({
+  identifier: "NotifyTemplateFilter",
+}) as any as S.Schema<NotifyTemplateFilter>;
+export type NotifyTemplateFilterList = NotifyTemplateFilter[];
+export const NotifyTemplateFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NotifyTemplateFilter);
+export interface DescribeNotifyTemplatesRequest {
+  TemplateIds?: string[];
+  Filters?: NotifyTemplateFilter[];
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const DescribeNotifyTemplatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TemplateIds: S.optional(NotifyTemplateIdList),
+      Filters: S.optional(NotifyTemplateFilterList),
+      NextToken: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DescribeNotifyTemplatesRequest",
+  }) as any as S.Schema<DescribeNotifyTemplatesRequest>;
+export type NumberCapabilityList = string[];
+export const NumberCapabilityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export type NotifyConfigurationTierList = string[];
+export const NotifyConfigurationTierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface TemplateVariableMetadata {
+  Type: string;
+  Required: boolean;
+  Description?: string;
+  MaxLength?: number;
+  MinValue?: number;
+  MaxValue?: number;
+  DefaultValue?: string;
+  Pattern?: string;
+  Sample?: string;
+  Source?: string;
+}
+export const TemplateVariableMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Type: S.String,
+      Required: S.Boolean,
+      Description: S.optional(S.String),
+      MaxLength: S.optional(S.Number),
+      MinValue: S.optional(S.Number),
+      MaxValue: S.optional(S.Number),
+      DefaultValue: S.optional(S.String),
+      Pattern: S.optional(S.String),
+      Sample: S.optional(S.String),
+      Source: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "TemplateVariableMetadata",
+}) as any as S.Schema<TemplateVariableMetadata>;
+export type TemplateVariablesMap = {
+  [key: string]: TemplateVariableMetadata | undefined;
+};
+export const TemplateVariablesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  TemplateVariableMetadata.pipe(S.optional),
+);
+export type VoiceIdList = string[];
+export const VoiceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface NotifyTemplateInformation {
+  TemplateId: string;
+  Version: number;
+  TemplateType: string;
+  Channels: string[];
+  TierAccess?: string[];
+  Status?: string;
+  SupportedCountries?: string[];
+  LanguageCode?: string;
+  Content?: string;
+  Variables?: { [key: string]: TemplateVariableMetadata | undefined };
+  SupportedVoiceIds?: string[];
+  CreatedTimestamp: Date;
+}
+export const NotifyTemplateInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      TemplateId: S.String,
+      Version: S.Number,
+      TemplateType: S.String,
+      Channels: NumberCapabilityList,
+      TierAccess: S.optional(NotifyConfigurationTierList),
+      Status: S.optional(S.String),
+      SupportedCountries: S.optional(IsoCountryCodeList),
+      LanguageCode: S.optional(S.String),
+      Content: S.optional(S.String),
+      Variables: S.optional(TemplateVariablesMap),
+      SupportedVoiceIds: S.optional(VoiceIdList),
+      CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }),
+).annotate({
+  identifier: "NotifyTemplateInformation",
+}) as any as S.Schema<NotifyTemplateInformation>;
+export type NotifyTemplateInformationList = NotifyTemplateInformation[];
+export const NotifyTemplateInformationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NotifyTemplateInformation);
+export interface DescribeNotifyTemplatesResult {
+  NotifyTemplates?: NotifyTemplateInformation[];
+  NextToken?: string;
+}
+export const DescribeNotifyTemplatesResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyTemplates: S.optional(NotifyTemplateInformationList),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DescribeNotifyTemplatesResult",
+  }) as any as S.Schema<DescribeNotifyTemplatesResult>;
 export type OptedOutNumberList = string[];
 export const OptedOutNumberList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface OptedOutFilter {
@@ -1756,10 +2233,6 @@ export const DescribePhoneNumbersRequest =
   ).annotate({
     identifier: "DescribePhoneNumbersRequest",
   }) as any as S.Schema<DescribePhoneNumbersRequest>;
-export type NumberCapabilityList = string[];
-export const NumberCapabilityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
 export interface PhoneNumberInformation {
   PhoneNumberArn: string;
   PhoneNumberId?: string;
@@ -1973,6 +2446,188 @@ export const DescribeProtectConfigurationsResult =
   ).annotate({
     identifier: "DescribeProtectConfigurationsResult",
   }) as any as S.Schema<DescribeProtectConfigurationsResult>;
+export interface CountryLaunchStatusFilter {
+  Name: string;
+  Values: string[];
+}
+export const CountryLaunchStatusFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Name: S.String, Values: FilterValueList }),
+).annotate({
+  identifier: "CountryLaunchStatusFilter",
+}) as any as S.Schema<CountryLaunchStatusFilter>;
+export type CountryLaunchStatusFilterList = CountryLaunchStatusFilter[];
+export const CountryLaunchStatusFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CountryLaunchStatusFilter);
+export interface DescribeRcsAgentCountryLaunchStatusRequest {
+  RcsAgentId: string;
+  IsoCountryCodes?: string[];
+  Filters?: CountryLaunchStatusFilter[];
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const DescribeRcsAgentCountryLaunchStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RcsAgentId: S.String,
+      IsoCountryCodes: S.optional(IsoCountryCodeList),
+      Filters: S.optional(CountryLaunchStatusFilterList),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DescribeRcsAgentCountryLaunchStatusRequest",
+  }) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusRequest>;
+export interface CarrierStatusInformation {
+  CarrierName: string;
+  Status: string;
+}
+export const CarrierStatusInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ CarrierName: S.String, Status: S.String }),
+).annotate({
+  identifier: "CarrierStatusInformation",
+}) as any as S.Schema<CarrierStatusInformation>;
+export type CarrierStatusInformationList = CarrierStatusInformation[];
+export const CarrierStatusInformationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  CarrierStatusInformation,
+);
+export interface CountryLaunchStatusInformation {
+  IsoCountryCode: string;
+  Status: string;
+  RcsPlatformId?: string;
+  RegistrationId: string;
+  CarrierStatus: CarrierStatusInformation[];
+}
+export const CountryLaunchStatusInformation =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IsoCountryCode: S.String,
+      Status: S.String,
+      RcsPlatformId: S.optional(S.String),
+      RegistrationId: S.String,
+      CarrierStatus: CarrierStatusInformationList,
+    }),
+  ).annotate({
+    identifier: "CountryLaunchStatusInformation",
+  }) as any as S.Schema<CountryLaunchStatusInformation>;
+export type CountryLaunchStatusInformationList =
+  CountryLaunchStatusInformation[];
+export const CountryLaunchStatusInformationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CountryLaunchStatusInformation);
+export interface DescribeRcsAgentCountryLaunchStatusResult {
+  RcsAgentId: string;
+  RcsAgentArn: string;
+  CountryLaunchStatus?: CountryLaunchStatusInformation[];
+  NextToken?: string;
+}
+export const DescribeRcsAgentCountryLaunchStatusResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RcsAgentId: S.String,
+      RcsAgentArn: S.String,
+      CountryLaunchStatus: S.optional(CountryLaunchStatusInformationList),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DescribeRcsAgentCountryLaunchStatusResult",
+  }) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusResult>;
+export type RcsAgentIdList = string[];
+export const RcsAgentIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface RcsAgentFilter {
+  Name: string;
+  Values: string[];
+}
+export const RcsAgentFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Values: FilterValueList }),
+).annotate({ identifier: "RcsAgentFilter" }) as any as S.Schema<RcsAgentFilter>;
+export type RcsAgentFilterList = RcsAgentFilter[];
+export const RcsAgentFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RcsAgentFilter);
+export interface DescribeRcsAgentsRequest {
+  RcsAgentIds?: string[];
+  Owner?: string;
+  Filters?: RcsAgentFilter[];
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const DescribeRcsAgentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RcsAgentIds: S.optional(RcsAgentIdList),
+      Owner: S.optional(S.String),
+      Filters: S.optional(RcsAgentFilterList),
+      NextToken: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "DescribeRcsAgentsRequest",
+}) as any as S.Schema<DescribeRcsAgentsRequest>;
+export interface TestingAgentInformation {
+  Status: string;
+  TestingAgentId?: string;
+  RegistrationId: string;
+}
+export const TestingAgentInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Status: S.String,
+      TestingAgentId: S.optional(S.String),
+      RegistrationId: S.String,
+    }),
+).annotate({
+  identifier: "TestingAgentInformation",
+}) as any as S.Schema<TestingAgentInformation>;
+export interface RcsAgentInformation {
+  RcsAgentArn: string;
+  RcsAgentId: string;
+  Status: string;
+  CreatedTimestamp: Date;
+  DeletionProtectionEnabled: boolean;
+  OptOutListName?: string;
+  SelfManagedOptOutsEnabled: boolean;
+  TwoWayChannelArn?: string;
+  TwoWayChannelRole?: string;
+  TwoWayEnabled: boolean;
+  PoolId?: string;
+  TestingAgent?: TestingAgentInformation;
+}
+export const RcsAgentInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RcsAgentArn: S.String,
+    RcsAgentId: S.String,
+    Status: S.String,
+    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    DeletionProtectionEnabled: S.Boolean,
+    OptOutListName: S.optional(S.String),
+    SelfManagedOptOutsEnabled: S.Boolean,
+    TwoWayChannelArn: S.optional(S.String),
+    TwoWayChannelRole: S.optional(S.String),
+    TwoWayEnabled: S.Boolean,
+    PoolId: S.optional(S.String),
+    TestingAgent: S.optional(TestingAgentInformation),
+  }),
+).annotate({
+  identifier: "RcsAgentInformation",
+}) as any as S.Schema<RcsAgentInformation>;
+export type RcsAgentInformationList = RcsAgentInformation[];
+export const RcsAgentInformationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RcsAgentInformation);
+export interface DescribeRcsAgentsResult {
+  RcsAgents?: RcsAgentInformation[];
+  NextToken?: string;
+}
+export const DescribeRcsAgentsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RcsAgents: S.optional(RcsAgentInformationList),
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DescribeRcsAgentsResult",
+}) as any as S.Schema<DescribeRcsAgentsResult>;
 export type RegistrationAttachmentIdList = string[];
 export const RegistrationAttachmentIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
@@ -2015,6 +2670,7 @@ export interface RegistrationAttachmentsInformation {
   AttachmentStatus: string;
   AttachmentUploadErrorReason?: string;
   CreatedTimestamp: Date;
+  AttachmentUrl?: string;
 }
 export const RegistrationAttachmentsInformation =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2024,6 +2680,7 @@ export const RegistrationAttachmentsInformation =
       AttachmentStatus: S.String,
       AttachmentUploadErrorReason: S.optional(S.String),
       CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      AttachmentUrl: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RegistrationAttachmentsInformation",
@@ -2768,6 +3425,7 @@ export interface VerifiedDestinationNumberInformation {
   VerifiedDestinationNumberId: string;
   DestinationPhoneNumber: string;
   Status: string;
+  RcsAgentId?: string;
   CreatedTimestamp: Date;
 }
 export const VerifiedDestinationNumberInformation =
@@ -2777,6 +3435,7 @@ export const VerifiedDestinationNumberInformation =
       VerifiedDestinationNumberId: S.String,
       DestinationPhoneNumber: S.String,
       Status: S.String,
+      RcsAgentId: S.optional(S.String),
       CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     }),
   ).annotate({
@@ -2802,7 +3461,7 @@ export const DescribeVerifiedDestinationNumbersResult =
 export interface DisassociateOriginationIdentityRequest {
   PoolId: string;
   OriginationIdentity: string;
-  IsoCountryCode: string;
+  IsoCountryCode?: string;
   ClientToken?: string;
 }
 export const DisassociateOriginationIdentityRequest =
@@ -2810,7 +3469,7 @@ export const DisassociateOriginationIdentityRequest =
     S.Struct({
       PoolId: S.String,
       OriginationIdentity: S.String,
-      IsoCountryCode: S.String,
+      IsoCountryCode: S.optional(S.String),
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2978,6 +3637,69 @@ export const GetResourcePolicyResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetResourcePolicyResult",
 }) as any as S.Schema<GetResourcePolicyResult>;
+export type NotifyUseCaseList = string[];
+export const NotifyUseCaseList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNotifyCountriesRequest {
+  Channels?: string[];
+  UseCases?: string[];
+  Tier?: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListNotifyCountriesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Channels: S.optional(NotifyEnabledChannelsList),
+      UseCases: S.optional(NotifyUseCaseList),
+      Tier: S.optional(S.String),
+      NextToken: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "ListNotifyCountriesRequest",
+}) as any as S.Schema<ListNotifyCountriesRequest>;
+export type NotifyTierList = string[];
+export const NotifyTierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface NotifyCountryInformation {
+  IsoCountryCode: string;
+  CountryName: string;
+  SupportedChannels: string[];
+  SupportedUseCases: string[];
+  SupportedTiers: string[];
+  CustomerOwnedIdentityRequired: boolean;
+}
+export const NotifyCountryInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      IsoCountryCode: S.String,
+      CountryName: S.String,
+      SupportedChannels: NotifyEnabledChannelsList,
+      SupportedUseCases: NotifyUseCaseList,
+      SupportedTiers: NotifyTierList,
+      CustomerOwnedIdentityRequired: S.Boolean,
+    }),
+).annotate({
+  identifier: "NotifyCountryInformation",
+}) as any as S.Schema<NotifyCountryInformation>;
+export type NotifyCountryInformationList = NotifyCountryInformation[];
+export const NotifyCountryInformationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  NotifyCountryInformation,
+);
+export interface ListNotifyCountriesResult {
+  NotifyCountries?: NotifyCountryInformation[];
+  NextToken?: string;
+}
+export const ListNotifyCountriesResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      NotifyCountries: S.optional(NotifyCountryInformationList),
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListNotifyCountriesResult",
+}) as any as S.Schema<ListNotifyCountriesResult>;
 export interface PoolOriginationIdentitiesFilter {
   Name: string;
   Values: string[];
@@ -3743,6 +4465,101 @@ export const SendMediaMessageResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "SendMediaMessageResult",
 }) as any as S.Schema<SendMediaMessageResult>;
+export type TemplateVariableSubstitutionMap = {
+  [key: string]: string | undefined;
+};
+export const TemplateVariableSubstitutionMap =
+  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export interface SendNotifyTextMessageRequest {
+  NotifyConfigurationId: string;
+  DestinationPhoneNumber: string;
+  TemplateId?: string;
+  TemplateVariables: { [key: string]: string | undefined };
+  TimeToLive?: number;
+  Context?: { [key: string]: string | undefined };
+  ConfigurationSetName?: string;
+  DryRun?: boolean;
+  MessageFeedbackEnabled?: boolean;
+}
+export const SendNotifyTextMessageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationId: S.String,
+      DestinationPhoneNumber: S.String,
+      TemplateId: S.optional(S.String),
+      TemplateVariables: TemplateVariableSubstitutionMap,
+      TimeToLive: S.optional(S.Number),
+      Context: S.optional(ContextMap),
+      ConfigurationSetName: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+      MessageFeedbackEnabled: S.optional(S.Boolean),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "SendNotifyTextMessageRequest",
+  }) as any as S.Schema<SendNotifyTextMessageRequest>;
+export interface SendNotifyTextMessageResult {
+  MessageId?: string;
+  TemplateId?: string;
+  ResolvedMessageBody?: string;
+}
+export const SendNotifyTextMessageResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MessageId: S.optional(S.String),
+      TemplateId: S.optional(S.String),
+      ResolvedMessageBody: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SendNotifyTextMessageResult",
+  }) as any as S.Schema<SendNotifyTextMessageResult>;
+export interface SendNotifyVoiceMessageRequest {
+  NotifyConfigurationId: string;
+  DestinationPhoneNumber: string;
+  TemplateId?: string;
+  TemplateVariables: { [key: string]: string | undefined };
+  VoiceId?: string;
+  TimeToLive?: number;
+  Context?: { [key: string]: string | undefined };
+  ConfigurationSetName?: string;
+  DryRun?: boolean;
+  MessageFeedbackEnabled?: boolean;
+}
+export const SendNotifyVoiceMessageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationId: S.String,
+      DestinationPhoneNumber: S.String,
+      TemplateId: S.optional(S.String),
+      TemplateVariables: TemplateVariableSubstitutionMap,
+      VoiceId: S.optional(S.String),
+      TimeToLive: S.optional(S.Number),
+      Context: S.optional(ContextMap),
+      ConfigurationSetName: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+      MessageFeedbackEnabled: S.optional(S.Boolean),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "SendNotifyVoiceMessageRequest",
+  }) as any as S.Schema<SendNotifyVoiceMessageRequest>;
+export interface SendNotifyVoiceMessageResult {
+  MessageId?: string;
+  TemplateId?: string;
+  ResolvedMessageBody?: string;
+}
+export const SendNotifyVoiceMessageResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MessageId: S.optional(S.String),
+      TemplateId: S.optional(S.String),
+      ResolvedMessageBody: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SendNotifyVoiceMessageResult",
+  }) as any as S.Schema<SendNotifyVoiceMessageResult>;
 export interface SendTextMessageRequest {
   DestinationPhoneNumber: string;
   OriginationIdentity?: string;
@@ -3959,6 +4776,26 @@ export const SetMediaMessageSpendLimitOverrideResult =
   ).annotate({
     identifier: "SetMediaMessageSpendLimitOverrideResult",
   }) as any as S.Schema<SetMediaMessageSpendLimitOverrideResult>;
+export interface SetNotifyMessageSpendLimitOverrideRequest {
+  MonthlyLimit: number;
+}
+export const SetNotifyMessageSpendLimitOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MonthlyLimit: S.Number }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "SetNotifyMessageSpendLimitOverrideRequest",
+  }) as any as S.Schema<SetNotifyMessageSpendLimitOverrideRequest>;
+export interface SetNotifyMessageSpendLimitOverrideResult {
+  MonthlyLimit?: number;
+}
+export const SetNotifyMessageSpendLimitOverrideResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MonthlyLimit: S.optional(S.Number) }),
+  ).annotate({
+    identifier: "SetNotifyMessageSpendLimitOverrideResult",
+  }) as any as S.Schema<SetNotifyMessageSpendLimitOverrideResult>;
 export interface SetTextMessageSpendLimitOverrideRequest {
   MonthlyLimit: number;
 }
@@ -4113,6 +4950,66 @@ export const UpdateEventDestinationResult =
   ).annotate({
     identifier: "UpdateEventDestinationResult",
   }) as any as S.Schema<UpdateEventDestinationResult>;
+export interface UpdateNotifyConfigurationRequest {
+  NotifyConfigurationId: string;
+  DefaultTemplateId?: string;
+  PoolId?: string;
+  EnabledCountries?: string[];
+  EnabledChannels?: string[];
+  DeletionProtectionEnabled?: boolean;
+}
+export const UpdateNotifyConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationId: S.String,
+      DefaultTemplateId: S.optional(S.String),
+      PoolId: S.optional(S.String),
+      EnabledCountries: S.optional(IsoCountryCodeList),
+      EnabledChannels: S.optional(NotifyEnabledChannelsList),
+      DeletionProtectionEnabled: S.optional(S.Boolean),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "UpdateNotifyConfigurationRequest",
+  }) as any as S.Schema<UpdateNotifyConfigurationRequest>;
+export interface UpdateNotifyConfigurationResult {
+  NotifyConfigurationArn: string;
+  NotifyConfigurationId: string;
+  DisplayName: string;
+  UseCase: string;
+  DefaultTemplateId?: string;
+  PoolId?: string;
+  EnabledCountries?: string[];
+  EnabledChannels: string[];
+  Tier: string;
+  TierUpgradeStatus: string;
+  Status: string;
+  RejectionReason?: string;
+  DeletionProtectionEnabled: boolean;
+  CreatedTimestamp: Date;
+}
+export const UpdateNotifyConfigurationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NotifyConfigurationArn: S.String,
+      NotifyConfigurationId: S.String,
+      DisplayName: S.String,
+      UseCase: S.String,
+      DefaultTemplateId: S.optional(S.String),
+      PoolId: S.optional(S.String),
+      EnabledCountries: S.optional(IsoCountryCodeList),
+      EnabledChannels: NotifyEnabledChannelsList,
+      Tier: S.String,
+      TierUpgradeStatus: S.String,
+      Status: S.String,
+      RejectionReason: S.optional(S.String),
+      DeletionProtectionEnabled: S.Boolean,
+      CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }),
+  ).annotate({
+    identifier: "UpdateNotifyConfigurationResult",
+  }) as any as S.Schema<UpdateNotifyConfigurationResult>;
 export interface UpdatePhoneNumberRequest {
   PhoneNumberId: string;
   TwoWayEnabled?: boolean;
@@ -4319,6 +5216,58 @@ export const UpdateProtectConfigurationCountryRuleSetResult =
   ).annotate({
     identifier: "UpdateProtectConfigurationCountryRuleSetResult",
   }) as any as S.Schema<UpdateProtectConfigurationCountryRuleSetResult>;
+export interface UpdateRcsAgentRequest {
+  RcsAgentId: string;
+  DeletionProtectionEnabled?: boolean;
+  OptOutListName?: string;
+  SelfManagedOptOutsEnabled?: boolean;
+  TwoWayChannelArn?: string;
+  TwoWayChannelRole?: string;
+  TwoWayEnabled?: boolean;
+}
+export const UpdateRcsAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RcsAgentId: S.String,
+    DeletionProtectionEnabled: S.optional(S.Boolean),
+    OptOutListName: S.optional(S.String),
+    SelfManagedOptOutsEnabled: S.optional(S.Boolean),
+    TwoWayChannelArn: S.optional(S.String),
+    TwoWayChannelRole: S.optional(S.String),
+    TwoWayEnabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateRcsAgentRequest",
+}) as any as S.Schema<UpdateRcsAgentRequest>;
+export interface UpdateRcsAgentResult {
+  RcsAgentArn: string;
+  RcsAgentId: string;
+  Status: string;
+  CreatedTimestamp: Date;
+  DeletionProtectionEnabled: boolean;
+  OptOutListName?: string;
+  SelfManagedOptOutsEnabled: boolean;
+  TwoWayChannelArn?: string;
+  TwoWayChannelRole?: string;
+  TwoWayEnabled: boolean;
+}
+export const UpdateRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RcsAgentArn: S.String,
+    RcsAgentId: S.String,
+    Status: S.String,
+    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    DeletionProtectionEnabled: S.Boolean,
+    OptOutListName: S.optional(S.String),
+    SelfManagedOptOutsEnabled: S.Boolean,
+    TwoWayChannelArn: S.optional(S.String),
+    TwoWayChannelRole: S.optional(S.String),
+    TwoWayEnabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "UpdateRcsAgentResult",
+}) as any as S.Schema<UpdateRcsAgentResult>;
 export interface UpdateSenderIdRequest {
   SenderId: string;
   IsoCountryCode: string;
@@ -4596,6 +5545,36 @@ export const createEventDestination: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type CreateNotifyConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new notify configuration for managed messaging. A notify configuration defines the settings for sending templated messages, including the display name, use case, enabled channels, and enabled countries.
+ */
+export const createNotifyConfiguration: API.OperationMethod<
+  CreateNotifyConfigurationRequest,
+  CreateNotifyConfigurationResult,
+  CreateNotifyConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateNotifyConfigurationRequest,
+  output: CreateNotifyConfigurationResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type CreateOptOutListError =
   | AccessDeniedException
   | ConflictException
@@ -4685,6 +5664,36 @@ export const createProtectConfiguration: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type CreateRcsAgentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new RCS agent for sending rich messages through the RCS channel. The RCS agent serves as an origination identity for sending RCS messages to your recipients.
+ */
+export const createRcsAgent: API.OperationMethod<
+  CreateRcsAgentRequest,
+  CreateRcsAgentResult,
+  CreateRcsAgentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateRcsAgentRequest,
+  output: CreateRcsAgentResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
@@ -4812,6 +5821,7 @@ export type CreateVerifiedDestinationNumberError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
@@ -4831,6 +5841,7 @@ export const createVerifiedDestinationNumber: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ResourceNotFoundException,
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
@@ -5030,6 +6041,60 @@ export const deleteMediaMessageSpendLimitOverride: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type DeleteNotifyConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an existing notify configuration.
+ *
+ * If deletion protection is enabled, an error is returned.
+ */
+export const deleteNotifyConfiguration: API.OperationMethod<
+  DeleteNotifyConfigurationRequest,
+  DeleteNotifyConfigurationResult,
+  DeleteNotifyConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteNotifyConfigurationRequest,
+  output: DeleteNotifyConfigurationResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteNotifyMessageSpendLimitOverrideError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an account-level monthly spending limit override for sending notify messages. Deleting a spend limit override will set the `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spend limits (quotas) see Quotas in the *End User Messaging SMS User Guide*.
+ */
+export const deleteNotifyMessageSpendLimitOverride: API.OperationMethod<
+  DeleteNotifyMessageSpendLimitOverrideRequest,
+  DeleteNotifyMessageSpendLimitOverrideResult,
+  DeleteNotifyMessageSpendLimitOverrideError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteNotifyMessageSpendLimitOverrideRequest,
+  output: DeleteNotifyMessageSpendLimitOverrideResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type DeleteOptedOutNumberError =
   | AccessDeniedException
   | ConflictException
@@ -5172,6 +6237,34 @@ export const deleteProtectConfigurationRuleSetNumberOverride: API.OperationMetho
   output: DeleteProtectConfigurationRuleSetNumberOverrideResult,
   errors: [
     AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteRcsAgentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an existing RCS agent. If deletion protection is enabled, an error is returned.
+ */
+export const deleteRcsAgent: API.OperationMethod<
+  DeleteRcsAgentRequest,
+  DeleteRcsAgentResult,
+  DeleteRcsAgentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRcsAgentRequest,
+  output: DeleteRcsAgentResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
@@ -5560,6 +6653,108 @@ export const describeKeywords: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type DescribeNotifyConfigurationsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Describes the specified notify configurations or all notify configurations in your account.
+ *
+ * If you specify notify configuration IDs, the output includes information for only the specified notify configurations. If you specify filters, the output includes information for only those notify configurations that meet the filter criteria. If you don't specify notify configuration IDs or filters, the output includes information for all notify configurations.
+ *
+ * If you specify a notify configuration ID that isn't valid, an error is returned.
+ */
+export const describeNotifyConfigurations: API.OperationMethod<
+  DescribeNotifyConfigurationsRequest,
+  DescribeNotifyConfigurationsResult,
+  DescribeNotifyConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNotifyConfigurationsRequest,
+  ) => stream.Stream<
+    DescribeNotifyConfigurationsResult,
+    DescribeNotifyConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNotifyConfigurationsRequest,
+  ) => stream.Stream<
+    NotifyConfigurationInformation,
+    DescribeNotifyConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeNotifyConfigurationsRequest,
+  output: DescribeNotifyConfigurationsResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "NotifyConfigurations",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type DescribeNotifyTemplatesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Describes the specified notify templates or all notify templates in your account.
+ *
+ * If you specify template IDs, the output includes information for only the specified notify templates. If you specify filters, the output includes information for only those notify templates that meet the filter criteria. If you don't specify template IDs or filters, the output includes information for all notify templates.
+ *
+ * If you specify a template ID that isn't valid, an error is returned.
+ */
+export const describeNotifyTemplates: API.OperationMethod<
+  DescribeNotifyTemplatesRequest,
+  DescribeNotifyTemplatesResult,
+  DescribeNotifyTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNotifyTemplatesRequest,
+  ) => stream.Stream<
+    DescribeNotifyTemplatesResult,
+    DescribeNotifyTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNotifyTemplatesRequest,
+  ) => stream.Stream<
+    NotifyTemplateInformation,
+    DescribeNotifyTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeNotifyTemplatesRequest,
+  output: DescribeNotifyTemplatesResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "NotifyTemplates",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type DescribeOptedOutNumbersError =
   | AccessDeniedException
   | InternalServerException
@@ -5810,6 +7005,102 @@ export const describeProtectConfigurations: API.OperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     items: "ProtectConfigurations",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type DescribeRcsAgentCountryLaunchStatusError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the per-country launch status of an RCS agent, including carrier-level details for each country.
+ */
+export const describeRcsAgentCountryLaunchStatus: API.OperationMethod<
+  DescribeRcsAgentCountryLaunchStatusRequest,
+  DescribeRcsAgentCountryLaunchStatusResult,
+  DescribeRcsAgentCountryLaunchStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRcsAgentCountryLaunchStatusRequest,
+  ) => stream.Stream<
+    DescribeRcsAgentCountryLaunchStatusResult,
+    DescribeRcsAgentCountryLaunchStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRcsAgentCountryLaunchStatusRequest,
+  ) => stream.Stream<
+    CountryLaunchStatusInformation,
+    DescribeRcsAgentCountryLaunchStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeRcsAgentCountryLaunchStatusRequest,
+  output: DescribeRcsAgentCountryLaunchStatusResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "CountryLaunchStatus",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type DescribeRcsAgentsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the specified RCS agents or all RCS agents associated with your Amazon Web Services account.
+ *
+ * If you specify RCS agent IDs, the output includes information for only the specified RCS agents. If you specify filters, the output includes information for only those RCS agents that meet the filter criteria. If you don't specify RCS agent IDs or filters, the output includes information for all RCS agents.
+ */
+export const describeRcsAgents: API.OperationMethod<
+  DescribeRcsAgentsRequest,
+  DescribeRcsAgentsResult,
+  DescribeRcsAgentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRcsAgentsRequest,
+  ) => stream.Stream<
+    DescribeRcsAgentsResult,
+    DescribeRcsAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRcsAgentsRequest,
+  ) => stream.Stream<
+    RcsAgentInformation,
+    DescribeRcsAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeRcsAgentsRequest,
+  output: DescribeRcsAgentsResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "RcsAgents",
     pageSize: "MaxResults",
   } as const,
 }));
@@ -6419,6 +7710,51 @@ export const getResourcePolicy: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type ListNotifyCountriesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists countries that support notify messaging. You can optionally filter by channel, use case, or tier.
+ */
+export const listNotifyCountries: API.OperationMethod<
+  ListNotifyCountriesRequest,
+  ListNotifyCountriesResult,
+  ListNotifyCountriesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNotifyCountriesRequest,
+  ) => stream.Stream<
+    ListNotifyCountriesResult,
+    ListNotifyCountriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNotifyCountriesRequest,
+  ) => stream.Stream<
+    NotifyCountryInformation,
+    ListNotifyCountriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNotifyCountriesRequest,
+  output: ListNotifyCountriesResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "NotifyCountries",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type ListPoolOriginationIdentitiesError =
   | AccessDeniedException
   | InternalServerException
@@ -6682,6 +8018,7 @@ export type PutProtectConfigurationRuleSetNumberOverrideError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
@@ -6701,6 +8038,7 @@ export const putProtectConfigurationRuleSetNumberOverride: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    ResourceNotFoundException,
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
@@ -6936,6 +8274,66 @@ export const sendMediaMessage: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type SendNotifyTextMessageError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sends a templated text message through a notify configuration to a recipient's phone number.
+ */
+export const sendNotifyTextMessage: API.OperationMethod<
+  SendNotifyTextMessageRequest,
+  SendNotifyTextMessageResult,
+  SendNotifyTextMessageError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SendNotifyTextMessageRequest,
+  output: SendNotifyTextMessageResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type SendNotifyVoiceMessageError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sends a templated voice message through a notify configuration to a recipient's phone number.
+ */
+export const sendNotifyVoiceMessage: API.OperationMethod<
+  SendNotifyVoiceMessageRequest,
+  SendNotifyVoiceMessageResult,
+  SendNotifyVoiceMessageError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SendNotifyVoiceMessageRequest,
+  output: SendNotifyVoiceMessageResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type SendTextMessageError =
   | AccessDeniedException
   | ConflictException
@@ -7130,6 +8528,30 @@ export const setMediaMessageSpendLimitOverride: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type SetNotifyMessageSpendLimitOverrideError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sets an account level monthly spend limit override for sending notify messages. The requested spend limit must be less than or equal to the `MaxLimit`, which is set by Amazon Web Services.
+ */
+export const setNotifyMessageSpendLimitOverride: API.OperationMethod<
+  SetNotifyMessageSpendLimitOverrideRequest,
+  SetNotifyMessageSpendLimitOverrideResult,
+  SetNotifyMessageSpendLimitOverrideError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetNotifyMessageSpendLimitOverrideRequest,
+  output: SetNotifyMessageSpendLimitOverrideResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type SetTextMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -7290,6 +8712,34 @@ export const updateEventDestination: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type UpdateNotifyConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing notify configuration. You can update the default template, pool association, enabled channels, enabled countries, and deletion protection settings.
+ */
+export const updateNotifyConfiguration: API.OperationMethod<
+  UpdateNotifyConfigurationRequest,
+  UpdateNotifyConfigurationResult,
+  UpdateNotifyConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateNotifyConfigurationRequest,
+  output: UpdateNotifyConfigurationResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type UpdatePhoneNumberError =
   | AccessDeniedException
   | ConflictException
@@ -7394,6 +8844,34 @@ export const updateProtectConfigurationCountryRuleSet: API.OperationMethod<
   output: UpdateProtectConfigurationCountryRuleSetResult,
   errors: [
     AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateRcsAgentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the configuration of an existing RCS agent. You can update the opt-out list, deletion protection, two-way messaging settings, and self-managed opt-outs configuration.
+ */
+export const updateRcsAgent: API.OperationMethod<
+  UpdateRcsAgentRequest,
+  UpdateRcsAgentResult,
+  UpdateRcsAgentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateRcsAgentRequest,
+  output: UpdateRcsAgentResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,

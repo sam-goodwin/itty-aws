@@ -222,7 +222,7 @@ export type RouteSteeringDirection = string | redacted.Redacted<string>;
 export type TurnAngle = number;
 export type RouteTurnIntensity = string | redacted.Redacted<string>;
 export type RoundaboutAngle = number;
-export type RoutePedestrianTravelStepType = string | redacted.Redacted<string>;
+export type RoutePedestrianTravelStepType = string;
 export type RouteLegTravelMode = string | redacted.Redacted<string>;
 export type RouteLegType = string | redacted.Redacted<string>;
 export type RouteVehicleIncidentSeverity = string | redacted.Redacted<string>;
@@ -1141,7 +1141,7 @@ export interface CalculateRouteMatrixRequest {
   Key?: string | redacted.Redacted<string>;
   OptimizeRoutingFor?: string;
   Origins: RouteMatrixOrigin[];
-  RoutingBoundary: RouteMatrixBoundary;
+  RoutingBoundary?: RouteMatrixBoundary;
   Traffic?: RouteMatrixTrafficOptions;
   TravelMode?: string;
   TravelModeOptions?: RouteMatrixTravelModeOptions;
@@ -1158,7 +1158,7 @@ export const CalculateRouteMatrixRequest =
       Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
       OptimizeRoutingFor: S.optional(S.String),
       Origins: RouteMatrixOriginList,
-      RoutingBoundary: RouteMatrixBoundary,
+      RoutingBoundary: S.optional(RouteMatrixBoundary),
       Traffic: S.optional(RouteMatrixTrafficOptions),
       TravelMode: S.optional(S.String),
       TravelModeOptions: S.optional(RouteMatrixTravelModeOptions),
@@ -2238,7 +2238,7 @@ export interface RoutePedestrianTravelStep {
   RoundaboutPassStepDetails?: RouteRoundaboutPassStepDetails;
   Signpost?: RouteSignpost;
   TurnStepDetails?: RouteTurnStepDetails;
-  Type: string | redacted.Redacted<string>;
+  Type: string;
 }
 export const RoutePedestrianTravelStep = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2257,7 +2257,7 @@ export const RoutePedestrianTravelStep = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       RoundaboutPassStepDetails: S.optional(RouteRoundaboutPassStepDetails),
       Signpost: S.optional(RouteSignpost),
       TurnStepDetails: S.optional(RouteTurnStepDetails),
-      Type: SensitiveString,
+      Type: S.String,
     }),
 ).annotate({
   identifier: "RoutePedestrianTravelStep",
@@ -3637,7 +3637,19 @@ export type CalculateIsolinesError =
   | ValidationException
   | CommonErrors;
 /**
- * Use the `CalculateIsolines` action to find service areas that can be reached in a given threshold of time, distance.
+ * Calculates areas that can be reached within specified time or distance thresholds from a given point. For example, you can use this operation to determine the area within a 30-minute drive of a store location, find neighborhoods within walking distance of a school, or identify delivery zones based on drive time.
+ *
+ * Isolines (also known as isochrones for time-based calculations) are useful for various applications including:
+ *
+ * - Service area visualization - Show customers the area you can serve within promised delivery times
+ *
+ * - Site selection - Analyze potential business locations based on population within travel distance
+ *
+ * - Site selection - Determine areas that can be reached within specified response times
+ *
+ * Route preferences such as avoiding toll roads or ferries are treated as preferences rather than absolute restrictions. If a viable route cannot be calculated while honoring all preferences, some may be ignored.
+ *
+ * For more information, see Calculate isolines in the *Amazon Location Service Developer Guide*.
  */
 export const calculateIsolines: API.OperationMethod<
   CalculateIsolinesRequest,
@@ -3662,6 +3674,8 @@ export type CalculateRouteMatrixError =
   | CommonErrors;
 /**
  * Use `CalculateRouteMatrix` to compute results for all pairs of Origins to Destinations. Each row corresponds to one entry in Origins. Each entry in the row corresponds to the route from that entry in Origins to an entry in Destinations positions.
+ *
+ * For more information, see Calculate route matrix in the *Amazon Location Service Developer Guide*.
  */
 export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixRequest,
@@ -3686,6 +3700,8 @@ export type CalculateRoutesError =
   | CommonErrors;
 /**
  * `CalculateRoutes` computes routes given the following required parameters: `Origin` and `Destination`.
+ *
+ * For more information, see Calculate routes in the *Amazon Location Service Developer Guide*.
  */
 export const calculateRoutes: API.OperationMethod<
   CalculateRoutesRequest,
@@ -3710,6 +3726,8 @@ export type OptimizeWaypointsError =
   | CommonErrors;
 /**
  * `OptimizeWaypoints` calculates the optimal order to travel between a set of waypoints to minimize either the travel time or the distance travelled during the journey, based on road network restrictions and the traffic pattern data.
+ *
+ * For more information, see Optimize waypoints in the *Amazon Location Service Developer Guide*.
  */
 export const optimizeWaypoints: API.OperationMethod<
   OptimizeWaypointsRequest,
@@ -3734,6 +3752,8 @@ export type SnapToRoadsError =
   | CommonErrors;
 /**
  * `SnapToRoads` matches GPS trace to roads most likely traveled on.
+ *
+ * For more information, see Snap to Roads in the *Amazon Location Service Developer Guide*.
  */
 export const snapToRoads: API.OperationMethod<
   SnapToRoadsRequest,

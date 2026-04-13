@@ -99,6 +99,7 @@ export type IngestConfigurationName = string;
 export type IngestConfigurationStageArn = string;
 export type UserId = string;
 export type InsecureIngest = boolean;
+export type RedundantIngest = boolean;
 export type IngestConfigurationArn = string;
 export type StreamKey = string | redacted.Redacted<string>;
 export type ParticipantId = string;
@@ -248,6 +249,7 @@ export interface CreateIngestConfigurationRequest {
   attributes?: { [key: string]: string | undefined };
   ingestProtocol: IngestProtocol;
   insecureIngest?: boolean;
+  redundantIngest?: boolean;
   tags?: { [key: string]: string | undefined };
 }
 export const CreateIngestConfigurationRequest =
@@ -259,6 +261,7 @@ export const CreateIngestConfigurationRequest =
       attributes: S.optional(ParticipantAttributes),
       ingestProtocol: IngestProtocol,
       insecureIngest: S.optional(S.Boolean),
+      redundantIngest: S.optional(S.Boolean),
       tags: S.optional(Tags),
     }).pipe(
       T.all(
@@ -273,6 +276,23 @@ export const CreateIngestConfigurationRequest =
   ).annotate({
     identifier: "CreateIngestConfigurationRequest",
   }) as any as S.Schema<CreateIngestConfigurationRequest>;
+export interface RedundantIngestCredential {
+  participantId?: string;
+  streamKey?: string | redacted.Redacted<string>;
+}
+export const RedundantIngestCredential = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      participantId: S.optional(S.String),
+      streamKey: S.optional(SensitiveString),
+    }),
+).annotate({
+  identifier: "RedundantIngestCredential",
+}) as any as S.Schema<RedundantIngestCredential>;
+export type RedundantIngestCredentials = RedundantIngestCredential[];
+export const RedundantIngestCredentials = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RedundantIngestCredential,
+);
 export interface IngestConfiguration {
   name?: string;
   arn: string;
@@ -282,6 +302,8 @@ export interface IngestConfiguration {
   participantId: string;
   state: string;
   userId?: string;
+  redundantIngest?: boolean;
+  redundantIngestCredentials?: RedundantIngestCredential[];
   attributes?: { [key: string]: string | undefined };
   tags?: { [key: string]: string | undefined };
 }
@@ -295,6 +317,8 @@ export const IngestConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     participantId: S.String,
     state: S.String,
     userId: S.optional(S.String),
+    redundantIngest: S.optional(S.Boolean),
+    redundantIngestCredentials: S.optional(RedundantIngestCredentials),
     attributes: S.optional(ParticipantAttributes),
     tags: S.optional(Tags),
   }),
@@ -1101,6 +1125,8 @@ export interface Participant {
   replicationState?: string;
   sourceStageArn?: string;
   sourceSessionId?: string;
+  redundantIngest?: boolean;
+  ingestConfigurationArn?: string;
 }
 export const Participant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1126,6 +1152,8 @@ export const Participant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     replicationState: S.optional(S.String),
     sourceStageArn: S.optional(S.String),
     sourceSessionId: S.optional(S.String),
+    redundantIngest: S.optional(S.Boolean),
+    ingestConfigurationArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
 export interface GetParticipantResponse {
@@ -1476,6 +1504,7 @@ export interface IngestConfigurationSummary {
   participantId: string;
   state: string;
   userId?: string;
+  redundantIngest?: boolean;
 }
 export const IngestConfigurationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1487,6 +1516,7 @@ export const IngestConfigurationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       participantId: S.String,
       state: S.String,
       userId: S.optional(S.String),
+      redundantIngest: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "IngestConfigurationSummary",
@@ -1719,6 +1749,8 @@ export interface ParticipantSummary {
   replicationState?: string;
   sourceStageArn?: string;
   sourceSessionId?: string;
+  redundantIngest?: boolean;
+  ingestConfigurationArn?: string;
 }
 export const ParticipantSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1734,6 +1766,8 @@ export const ParticipantSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     replicationState: S.optional(S.String),
     sourceStageArn: S.optional(S.String),
     sourceSessionId: S.optional(S.String),
+    redundantIngest: S.optional(S.Boolean),
+    ingestConfigurationArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ParticipantSummary",
@@ -2228,10 +2262,15 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateIngestConfigurationRequest {
   arn: string;
   stageArn?: string;
+  redundantIngest?: boolean;
 }
 export const UpdateIngestConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.String, stageArn: S.optional(S.String) }).pipe(
+    S.Struct({
+      arn: S.String,
+      stageArn: S.optional(S.String),
+      redundantIngest: S.optional(S.Boolean),
+    }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/UpdateIngestConfiguration" }),
         svc,

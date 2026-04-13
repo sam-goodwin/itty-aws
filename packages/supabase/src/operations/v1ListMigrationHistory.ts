@@ -25,7 +25,7 @@ export type V1ListMigrationHistoryOutput =
 
 // The operation
 /**
- * [Beta] List applied migration versions
+ * List applied migration versions
  *
  * Only available to selected partner OAuth apps
  *

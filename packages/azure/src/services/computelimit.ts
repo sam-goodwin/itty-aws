@@ -9,6 +9,244 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export const FeaturesDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  featureName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/disable",
+  }),
+);
+export type FeaturesDisableInput = typeof FeaturesDisableInput.Type;
+
+// Output Schema
+export const FeaturesDisableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
+export type FeaturesDisableOutput = typeof FeaturesDisableOutput.Type;
+
+// The operation
+/**
+ * Disables a compute limit feature for the subscription at the specified location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param featureName - The name of the Feature
+ */
+export const FeaturesDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FeaturesDisableInput,
+  outputSchema: FeaturesDisableOutput,
+}));
+// Input Schema
+export const FeaturesEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  featureName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/enable",
+  }),
+);
+export type FeaturesEnableInput = typeof FeaturesEnableInput.Type;
+
+// Output Schema
+export const FeaturesEnableOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
+export type FeaturesEnableOutput = typeof FeaturesEnableOutput.Type;
+
+// The operation
+/**
+ * Enables a compute limit feature for the subscription at the specified location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param featureName - The name of the Feature
+ */
+export const FeaturesEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FeaturesEnableInput,
+  outputSchema: FeaturesEnableOutput,
+}));
+// Input Schema
+export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  featureName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}",
+  }),
+);
+export type FeaturesGetInput = typeof FeaturesGetInput.Type;
+
+// Output Schema
+export const FeaturesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type FeaturesGetOutput = typeof FeaturesGetOutput.Type;
+
+// The operation
+/**
+ * Gets the properties of a compute limit feature.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param featureName - The name of the Feature
+ */
+export const FeaturesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FeaturesGetInput,
+  outputSchema: FeaturesGetOutput,
+}));
+// Input Schema
+export const FeaturesListBySubscriptionLocationResourceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features",
+    }),
+  );
+export type FeaturesListBySubscriptionLocationResourceInput =
+  typeof FeaturesListBySubscriptionLocationResourceInput.Type;
+
+// Output Schema
+export const FeaturesListBySubscriptionLocationResourceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type FeaturesListBySubscriptionLocationResourceOutput =
+  typeof FeaturesListBySubscriptionLocationResourceOutput.Type;
+
+// The operation
+/**
+ * Lists all compute limit features for the subscription at the specified location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ */
+export const FeaturesListBySubscriptionLocationResource =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: FeaturesListBySubscriptionLocationResourceInput,
+    outputSchema: FeaturesListBySubscriptionLocationResourceOutput,
+  }));
+// Input Schema
 export const GuestSubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -336,4 +574,76 @@ export const SharedLimitsListBySubscriptionLocationResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: SharedLimitsListBySubscriptionLocationResourceInput,
     outputSchema: SharedLimitsListBySubscriptionLocationResourceOutput,
+  }));
+// Input Schema
+export const VmFamiliesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+  vmFamilyName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies/{vmFamilyName}",
+  }),
+);
+export type VmFamiliesGetInput = typeof VmFamiliesGetInput.Type;
+
+// Output Schema
+export const VmFamiliesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+);
+export type VmFamiliesGetOutput = typeof VmFamiliesGetOutput.Type;
+
+// The operation
+/**
+ * Gets the properties of a VM family.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param vmFamilyName - The name of the VmFamily
+ */
+export const VmFamiliesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: VmFamiliesGetInput,
+  outputSchema: VmFamiliesGetOutput,
+}));
+// Input Schema
+export const VmFamiliesListBySubscriptionLocationResourceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies",
+    }),
+  );
+export type VmFamiliesListBySubscriptionLocationResourceInput =
+  typeof VmFamiliesListBySubscriptionLocationResourceInput.Type;
+
+// Output Schema
+export const VmFamiliesListBySubscriptionLocationResourceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type VmFamiliesListBySubscriptionLocationResourceOutput =
+  typeof VmFamiliesListBySubscriptionLocationResourceOutput.Type;
+
+// The operation
+/**
+ * Lists all VM families for the subscription at the specified location.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param $filter - The filter to apply to the list operation. Filter can be applied to the 'category' property. Example: $filter=category eq 'generalPurposeCategory'.
+ */
+export const VmFamiliesListBySubscriptionLocationResource =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: VmFamiliesListBySubscriptionLocationResourceInput,
+    outputSchema: VmFamiliesListBySubscriptionLocationResourceOutput,
   }));

@@ -1663,6 +1663,7 @@ export interface CreateDBClusterMessage {
   EngineLifecycleSupport?: string;
   TagSpecifications?: TagSpecification[];
   MasterUserAuthenticationType?: MasterUserAuthenticationType;
+  WithExpressConfiguration?: boolean;
 }
 export const CreateDBClusterMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1727,6 +1728,7 @@ export const CreateDBClusterMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       EngineLifecycleSupport: S.optional(S.String),
       TagSpecifications: S.optional(TagSpecificationList),
       MasterUserAuthenticationType: S.optional(MasterUserAuthenticationType),
+      WithExpressConfiguration: S.optional(S.Boolean),
     }).pipe(
       T.all(
         ns,
@@ -2100,6 +2102,8 @@ export interface DBCluster {
   ClusterScalabilityType?: ClusterScalabilityType;
   CertificateDetails?: CertificateDetails;
   EngineLifecycleSupport?: string;
+  VPCNetworkingEnabled?: boolean;
+  InternetAccessGatewayEnabled?: boolean;
 }
 export const DBCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2205,6 +2209,8 @@ export const DBCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ClusterScalabilityType: S.optional(ClusterScalabilityType),
     CertificateDetails: S.optional(CertificateDetails),
     EngineLifecycleSupport: S.optional(S.String),
+    VPCNetworkingEnabled: S.optional(S.Boolean),
+    InternetAccessGatewayEnabled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "DBCluster" }) as any as S.Schema<DBCluster>;
 export interface CreateDBClusterResult {
@@ -9946,6 +9952,8 @@ export interface RestoreDBClusterFromSnapshotMessage {
   PreferredBackupWindow?: string;
   EngineLifecycleSupport?: string;
   TagSpecifications?: TagSpecification[];
+  EnableVPCNetworking?: boolean;
+  EnableInternetAccessGateway?: boolean;
 }
 export const RestoreDBClusterFromSnapshotMessage =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -9990,6 +9998,8 @@ export const RestoreDBClusterFromSnapshotMessage =
       PreferredBackupWindow: S.optional(S.String),
       EngineLifecycleSupport: S.optional(S.String),
       TagSpecifications: S.optional(TagSpecificationList),
+      EnableVPCNetworking: S.optional(S.Boolean),
+      EnableInternetAccessGateway: S.optional(S.Boolean),
     }).pipe(
       T.all(
         ns,
@@ -10052,6 +10062,8 @@ export interface RestoreDBClusterToPointInTimeMessage {
   PreferredBackupWindow?: string;
   EngineLifecycleSupport?: string;
   TagSpecifications?: TagSpecification[];
+  EnableVPCNetworking?: boolean;
+  EnableInternetAccessGateway?: boolean;
 }
 export const RestoreDBClusterToPointInTimeMessage =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -10098,6 +10110,8 @@ export const RestoreDBClusterToPointInTimeMessage =
       PreferredBackupWindow: S.optional(S.String),
       EngineLifecycleSupport: S.optional(S.String),
       TagSpecifications: S.optional(TagSpecificationList),
+      EnableVPCNetworking: S.optional(S.Boolean),
+      EnableInternetAccessGateway: S.optional(S.Boolean),
     }).pipe(
       T.all(
         ns,
@@ -12467,6 +12481,8 @@ export type CreateDBClusterError =
  * You can use the `ReplicationSourceIdentifier` parameter to create an Amazon Aurora DB cluster as a read replica of another DB cluster or Amazon RDS for MySQL or PostgreSQL DB instance. For more information about Amazon Aurora, see What is Amazon Aurora? in the *Amazon Aurora User Guide*.
  *
  * You can also use the `ReplicationSourceIdentifier` parameter to create a Multi-AZ DB cluster read replica with an RDS for MySQL or PostgreSQL DB instance as the source. For more information about Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the *Amazon RDS User Guide*.
+ *
+ * You can use the `WithExpressConfiguration` parameter to create an Aurora DB Cluster with express configuration and create cluster in seconds. Express configuration provides a cluster with a writer instance and feature specific values set to all other input parameters of this API.
  */
 export const createDBCluster: API.OperationMethod<
   CreateDBClusterMessage,
@@ -16466,6 +16482,8 @@ export type RestoreDBClusterFromSnapshotError =
  *
  * The target DB cluster is created from the source snapshot with a default configuration. If you don't specify a security group, the new DB cluster is associated with the default security group.
  *
+ * You can use the `EnableVPCNetworking` and `EnableInternetAccessGateway` parameters together to restore an Aurora PostgreSQL cluster without VPC networking and with internet-based connectivity. These two parameters must always be specified together. Set `EnableVPCNetworking` to `false` to disable the VPC network interface (ENI) for the cluster. `EnableInternetAccessGateway` enables internet-based connectivity through an internet access gateway. IAM database authentication is required and must be enabled using `EnableIAMDatabaseAuthentication`. Once the cluster is restored, you need to modify the DB cluster to update `MasterUserAuthenticationType` to `iam-db-auth`.
+ *
  * This operation only restores the DB cluster, not the DB instances for that DB cluster. You must invoke the `CreateDBInstance` operation to create DB instances for the restored DB cluster, specifying the identifier of the restored DB cluster in `DBClusterIdentifier`. You can create DB instances only after the `RestoreDBClusterFromSnapshot` operation has completed and the DB cluster is available.
  *
  * For more information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the *Amazon Aurora User Guide*.
@@ -16533,6 +16551,8 @@ export type RestoreDBClusterToPointInTimeError =
   | CommonErrors;
 /**
  * Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before `LatestRestorableTime` for up to `BackupRetentionPeriod` days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group. Unless the `RestoreType` is set to `copy-on-write`, the restore may occur in a different Availability Zone (AZ) from the original DB cluster. The AZ where RDS restores the DB cluster depends on the AZs in the specified subnet group.
+ *
+ * You can use the `EnableVPCNetworking` and `EnableInternetAccessGateway` parameters together to restore an Aurora PostgreSQL cluster without VPC networking and with internet-based connectivity. These two parameters must always be specified together. Set `EnableVPCNetworking` to `false` to disable the VPC network interface (ENI) for the cluster. `EnableInternetAccessGateway` enables internet-based connectivity through an internet access gateway. IAM database authentication is required and must be enabled using `EnableIAMDatabaseAuthentication`. Once the cluster is restored, you need to modify the DB cluster to update `MasterUserAuthenticationType` to `iam-db-auth`.
  *
  * For Aurora, this operation only restores the DB cluster, not the DB instances for that DB cluster. You must invoke the `CreateDBInstance` operation to create DB instances for the restored DB cluster, specifying the identifier of the restored DB cluster in `DBClusterIdentifier`. You can create DB instances only after the `RestoreDBClusterToPointInTime` operation has completed and the DB cluster is available.
  *

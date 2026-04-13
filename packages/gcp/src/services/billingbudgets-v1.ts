@@ -31,16 +31,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleCloudBillingBudgetsV1CustomPeriod {
   /** Required. The start date must be after January 1, 2017. */
@@ -49,15 +44,11 @@ export interface GoogleCloudBillingBudgetsV1CustomPeriod {
   endDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudBillingBudgetsV1CustomPeriod: Schema.Schema<GoogleCloudBillingBudgetsV1CustomPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(GoogleTypeDate),
-      endDate: Schema.optional(GoogleTypeDate),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBudgetsV1CustomPeriod",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1CustomPeriod>;
+export const GoogleCloudBillingBudgetsV1CustomPeriod =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startDate: Schema.optional(GoogleTypeDate),
+    endDate: Schema.optional(GoogleTypeDate),
+  }).annotate({ identifier: "GoogleCloudBillingBudgetsV1CustomPeriod" });
 
 export interface GoogleCloudBillingBudgetsV1Filter {
   /** Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on. */
@@ -90,24 +81,20 @@ export interface GoogleCloudBillingBudgetsV1Filter {
   customPeriod?: GoogleCloudBillingBudgetsV1CustomPeriod;
 }
 
-export const GoogleCloudBillingBudgetsV1Filter: Schema.Schema<GoogleCloudBillingBudgetsV1Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projects: Schema.optional(Schema.Array(Schema.String)),
-      resourceAncestors: Schema.optional(Schema.Array(Schema.String)),
-      creditTypes: Schema.optional(Schema.Array(Schema.String)),
-      creditTypesTreatment: Schema.optional(Schema.String),
-      services: Schema.optional(Schema.Array(Schema.String)),
-      subaccounts: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(
-        Schema.Record(Schema.String, Schema.Array(Schema.Unknown)),
-      ),
-      calendarPeriod: Schema.optional(Schema.String),
-      customPeriod: Schema.optional(GoogleCloudBillingBudgetsV1CustomPeriod),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBudgetsV1Filter",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1Filter>;
+export const GoogleCloudBillingBudgetsV1Filter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projects: Schema.optional(Schema.Array(Schema.String)),
+    resourceAncestors: Schema.optional(Schema.Array(Schema.String)),
+    creditTypes: Schema.optional(Schema.Array(Schema.String)),
+    creditTypesTreatment: Schema.optional(Schema.String),
+    services: Schema.optional(Schema.Array(Schema.String)),
+    subaccounts: Schema.optional(Schema.Array(Schema.String)),
+    labels: Schema.optional(
+      Schema.Record(Schema.String, Schema.Array(Schema.Unknown)),
+    ),
+    calendarPeriod: Schema.optional(Schema.String),
+    customPeriod: Schema.optional(GoogleCloudBillingBudgetsV1CustomPeriod),
+  }).annotate({ identifier: "GoogleCloudBillingBudgetsV1Filter" });
 
 export interface GoogleTypeMoney {
   /** The three-letter currency code defined in ISO 4217. */
@@ -118,23 +105,18 @@ export interface GoogleTypeMoney {
   nanos?: number;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeMoney",
-  }) as any as Schema.Schema<GoogleTypeMoney>;
+export const GoogleTypeMoney = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeMoney" });
 
 export interface GoogleCloudBillingBudgetsV1LastPeriodAmount {}
 
-export const GoogleCloudBillingBudgetsV1LastPeriodAmount: Schema.Schema<GoogleCloudBillingBudgetsV1LastPeriodAmount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudBillingBudgetsV1LastPeriodAmount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBillingBudgetsV1LastPeriodAmount",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1LastPeriodAmount>;
+  });
 
 export interface GoogleCloudBillingBudgetsV1BudgetAmount {
   /** A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output. */
@@ -143,17 +125,13 @@ export interface GoogleCloudBillingBudgetsV1BudgetAmount {
   lastPeriodAmount?: GoogleCloudBillingBudgetsV1LastPeriodAmount;
 }
 
-export const GoogleCloudBillingBudgetsV1BudgetAmount: Schema.Schema<GoogleCloudBillingBudgetsV1BudgetAmount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      specifiedAmount: Schema.optional(GoogleTypeMoney),
-      lastPeriodAmount: Schema.optional(
-        GoogleCloudBillingBudgetsV1LastPeriodAmount,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBudgetsV1BudgetAmount",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1BudgetAmount>;
+export const GoogleCloudBillingBudgetsV1BudgetAmount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    specifiedAmount: Schema.optional(GoogleTypeMoney),
+    lastPeriodAmount: Schema.optional(
+      GoogleCloudBillingBudgetsV1LastPeriodAmount,
+    ),
+  }).annotate({ identifier: "GoogleCloudBillingBudgetsV1BudgetAmount" });
 
 export interface GoogleCloudBillingBudgetsV1ThresholdRule {
   /** Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number. */
@@ -166,15 +144,11 @@ export interface GoogleCloudBillingBudgetsV1ThresholdRule {
     | (string & {});
 }
 
-export const GoogleCloudBillingBudgetsV1ThresholdRule: Schema.Schema<GoogleCloudBillingBudgetsV1ThresholdRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thresholdPercent: Schema.optional(Schema.Number),
-      spendBasis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBudgetsV1ThresholdRule",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1ThresholdRule>;
+export const GoogleCloudBillingBudgetsV1ThresholdRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    thresholdPercent: Schema.optional(Schema.Number),
+    spendBasis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudBillingBudgetsV1ThresholdRule" });
 
 export interface GoogleCloudBillingBudgetsV1NotificationsRule {
   /** Optional. The name of the Pub/Sub topic where budget-related messages are published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent to the topic at regular intervals; the timing of the updates is not dependent on the [threshold rules](#thresholdrule) you've set. Note that if you want your [Pub/Sub JSON object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format) to contain data for `alertThresholdExceeded`, you need at least one [alert threshold rule](#thresholdrule). When you set threshold rules, you must also enable at least one of the email notification options, either using the default IAM recipients or Cloud Monitoring email notification channels. To use Pub/Sub topics with budgets, you must do the following: 1. Create the Pub/Sub topic before connecting it to your budget. For guidance, see [Manage programmatic budget alert notifications](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications). 2. Grant the API caller the `pubsub.topics.setIamPolicy` permission on the Pub/Sub topic. If not set, the API call fails with PERMISSION_DENIED. For additional details on Pub/Sub roles and permissions, see [Permissions required for this task](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task). */
@@ -189,20 +163,16 @@ export interface GoogleCloudBillingBudgetsV1NotificationsRule {
   enableProjectLevelRecipients?: boolean;
 }
 
-export const GoogleCloudBillingBudgetsV1NotificationsRule: Schema.Schema<GoogleCloudBillingBudgetsV1NotificationsRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-      schemaVersion: Schema.optional(Schema.String),
-      monitoringNotificationChannels: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      disableDefaultIamRecipients: Schema.optional(Schema.Boolean),
-      enableProjectLevelRecipients: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBudgetsV1NotificationsRule",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1NotificationsRule>;
+export const GoogleCloudBillingBudgetsV1NotificationsRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pubsubTopic: Schema.optional(Schema.String),
+    schemaVersion: Schema.optional(Schema.String),
+    monitoringNotificationChannels: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    disableDefaultIamRecipients: Schema.optional(Schema.Boolean),
+    enableProjectLevelRecipients: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudBillingBudgetsV1NotificationsRule" });
 
 export interface GoogleCloudBillingBudgetsV1Budget {
   /** Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`. */
@@ -226,25 +196,21 @@ export interface GoogleCloudBillingBudgetsV1Budget {
     | (string & {});
 }
 
-export const GoogleCloudBillingBudgetsV1Budget: Schema.Schema<GoogleCloudBillingBudgetsV1Budget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      budgetFilter: Schema.optional(GoogleCloudBillingBudgetsV1Filter),
-      amount: Schema.optional(GoogleCloudBillingBudgetsV1BudgetAmount),
-      thresholdRules: Schema.optional(
-        Schema.Array(GoogleCloudBillingBudgetsV1ThresholdRule),
-      ),
-      notificationsRule: Schema.optional(
-        GoogleCloudBillingBudgetsV1NotificationsRule,
-      ),
-      etag: Schema.optional(Schema.String),
-      ownershipScope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBudgetsV1Budget",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1Budget>;
+export const GoogleCloudBillingBudgetsV1Budget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    budgetFilter: Schema.optional(GoogleCloudBillingBudgetsV1Filter),
+    amount: Schema.optional(GoogleCloudBillingBudgetsV1BudgetAmount),
+    thresholdRules: Schema.optional(
+      Schema.Array(GoogleCloudBillingBudgetsV1ThresholdRule),
+    ),
+    notificationsRule: Schema.optional(
+      GoogleCloudBillingBudgetsV1NotificationsRule,
+    ),
+    etag: Schema.optional(Schema.String),
+    ownershipScope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudBillingBudgetsV1Budget" });
 
 export interface GoogleCloudBillingBudgetsV1ListBudgetsResponse {
   /** List of the budgets owned by the requested billing account. */
@@ -253,22 +219,17 @@ export interface GoogleCloudBillingBudgetsV1ListBudgetsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudBillingBudgetsV1ListBudgetsResponse: Schema.Schema<GoogleCloudBillingBudgetsV1ListBudgetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      budgets: Schema.optional(Schema.Array(GoogleCloudBillingBudgetsV1Budget)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBudgetsV1ListBudgetsResponse",
-  }) as any as Schema.Schema<GoogleCloudBillingBudgetsV1ListBudgetsResponse>;
+export const GoogleCloudBillingBudgetsV1ListBudgetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    budgets: Schema.optional(Schema.Array(GoogleCloudBillingBudgetsV1Budget)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudBillingBudgetsV1ListBudgetsResponse" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 // ==========================================================================
 // Operations

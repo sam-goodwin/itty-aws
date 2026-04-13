@@ -48,6 +48,7 @@ export const PostInvoicesInvoiceLinesLineItemIdInput =
       }),
     ),
     quantity: Schema.optional(Schema.Number),
+    quantity_decimal: Schema.optional(Schema.String),
     tax_amounts: Schema.optional(Schema.Unknown),
     tax_rates: Schema.optional(Schema.Unknown),
   }).pipe(
@@ -98,6 +99,7 @@ export const PostInvoicesInvoiceLinesLineItemIdOutput =
     ),
     pricing: Schema.Unknown,
     quantity: Schema.NullOr(Schema.Number),
+    quantity_decimal: Schema.NullOr(Schema.String),
     subscription: Schema.Unknown,
     subtotal: Schema.Number,
     taxes: Schema.NullOr(

@@ -175,6 +175,11 @@ export type DatabrewCondition = string;
 export type DatabrewConditionValue = string;
 export type TargetColumn = string;
 export type MaintenanceWindow = string;
+export type AuditContextString = string;
+export type ColumnNameString = string;
+export type NullableString = string;
+export type ContextKey = string;
+export type ContextValue = string;
 export type DatabaseNameString = string;
 export type TableNameString = string;
 export type ArnString = string;
@@ -244,7 +249,6 @@ export type IntegrationString = string;
 export type ContinuousSync = boolean;
 export type IntegrationTimestamp = Date;
 export type IntegrationErrorMessage = string;
-export type ColumnNameString = string;
 export type SchemaCheckpointNumber = number;
 export type CodeGenIdentifier = string;
 export type CodeGenNodeType = string;
@@ -264,7 +268,6 @@ export type TableVersionId = number;
 export type RefreshSeconds = number;
 export type IcebergDocument = unknown;
 export type IcebergTransformString = string;
-export type NullableString = string;
 export type ConfigValueString = string;
 export type WorkflowDescriptionString = string;
 export type VersionsString = string;
@@ -328,10 +331,7 @@ export type PolicyJsonString = string;
 export type LatestSchemaVersionBoolean = boolean;
 export type SchemaDefinitionDiff = string;
 export type LongValue = number;
-export type AuditContextString = string;
 export type FilterString = string;
-export type ContextKey = string;
-export type ContextValue = string;
 export type OrchestrationPageSize25 = number;
 export type MaxResults = number;
 export type DisplayName = string;
@@ -4313,11 +4313,52 @@ export const BatchGetJobsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type BatchGetPartitionValueList = PartitionValueList[];
 export const BatchGetPartitionValueList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(PartitionValueList);
+export type AuditColumnNamesList = string[];
+export const AuditColumnNamesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface AuditContext {
+  AdditionalAuditContext?: string;
+  RequestedColumns?: string[];
+  AllColumnsRequested?: boolean;
+}
+export const AuditContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AdditionalAuditContext: S.optional(S.String),
+    RequestedColumns: S.optional(AuditColumnNamesList),
+    AllColumnsRequested: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "AuditContext" }) as any as S.Schema<AuditContext>;
+export type AdditionalContextMap = { [key: string]: string | undefined };
+export const AdditionalContextMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface QuerySessionContext {
+  QueryId?: string;
+  QueryStartTime?: Date;
+  ClusterId?: string;
+  QueryAuthorizationId?: string;
+  AdditionalContext?: { [key: string]: string | undefined };
+}
+export const QuerySessionContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QueryId: S.optional(S.String),
+    QueryStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ClusterId: S.optional(S.String),
+    QueryAuthorizationId: S.optional(S.String),
+    AdditionalContext: S.optional(AdditionalContextMap),
+  }),
+).annotate({
+  identifier: "QuerySessionContext",
+}) as any as S.Schema<QuerySessionContext>;
 export interface BatchGetPartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
   TableName: string;
   PartitionsToGet: PartitionValueList[];
+  AuditContext?: AuditContext;
+  QuerySessionContext?: QuerySessionContext;
 }
 export const BatchGetPartitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4326,6 +4367,8 @@ export const BatchGetPartitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DatabaseName: S.String,
       TableName: S.String,
       PartitionsToGet: BatchGetPartitionValueList,
+      AuditContext: S.optional(AuditContext),
+      QuerySessionContext: S.optional(QuerySessionContext),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -5649,6 +5692,12 @@ export type AllowFullTableExternalDataAccessEnum =
   | (string & {});
 export const AllowFullTableExternalDataAccessEnum =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type OverwriteChildResourcePermissionsWithDefaultEnum =
+  | "Accept"
+  | "Deny"
+  | (string & {});
+export const OverwriteChildResourcePermissionsWithDefaultEnum =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CatalogInput {
   Description?: string;
   FederatedCatalog?: FederatedCatalog;
@@ -5658,6 +5707,7 @@ export interface CatalogInput {
   CreateTableDefaultPermissions?: PrincipalPermissions[];
   CreateDatabaseDefaultPermissions?: PrincipalPermissions[];
   AllowFullTableExternalDataAccess?: AllowFullTableExternalDataAccessEnum;
+  OverwriteChildResourcePermissionsWithDefault?: OverwriteChildResourcePermissionsWithDefaultEnum;
 }
 export const CatalogInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5670,6 +5720,9 @@ export const CatalogInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     CreateDatabaseDefaultPermissions: S.optional(PrincipalPermissionsList),
     AllowFullTableExternalDataAccess: S.optional(
       AllowFullTableExternalDataAccessEnum,
+    ),
+    OverwriteChildResourcePermissionsWithDefault: S.optional(
+      OverwriteChildResourcePermissionsWithDefaultEnum,
     ),
   }),
 ).annotate({ identifier: "CatalogInput" }) as any as S.Schema<CatalogInput>;
@@ -12500,22 +12553,6 @@ export const GetStatementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStatementResponse",
 }) as any as S.Schema<GetStatementResponse>;
-export type AuditColumnNamesList = string[];
-export const AuditColumnNamesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
-export interface AuditContext {
-  AdditionalAuditContext?: string;
-  RequestedColumns?: string[];
-  AllColumnsRequested?: boolean;
-}
-export const AuditContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdditionalAuditContext: S.optional(S.String),
-    RequestedColumns: S.optional(AuditColumnNamesList),
-    AllColumnsRequested: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AuditContext" }) as any as S.Schema<AuditContext>;
 export interface GetTableRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -12970,29 +13007,6 @@ export const PermissionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type PermissionTypeList = PermissionType[];
 export const PermissionTypeList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(PermissionType);
-export type AdditionalContextMap = { [key: string]: string | undefined };
-export const AdditionalContextMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface QuerySessionContext {
-  QueryId?: string;
-  QueryStartTime?: Date;
-  ClusterId?: string;
-  QueryAuthorizationId?: string;
-  AdditionalContext?: { [key: string]: string | undefined };
-}
-export const QuerySessionContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    QueryId: S.optional(S.String),
-    QueryStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ClusterId: S.optional(S.String),
-    QueryAuthorizationId: S.optional(S.String),
-    AdditionalContext: S.optional(AdditionalContextMap),
-  }),
-).annotate({
-  identifier: "QuerySessionContext",
-}) as any as S.Schema<QuerySessionContext>;
 export interface GetUnfilteredPartitionMetadataRequest {
   Region?: string;
   CatalogId: string;

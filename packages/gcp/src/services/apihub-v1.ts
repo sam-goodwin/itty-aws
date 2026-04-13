@@ -31,18 +31,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -57,18 +52,14 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -79,30 +70,25 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleCloudApihubV1EnvironmentFilter {
   /** Optional. Indicates if this filter should match all environments or only a subset of environments. If set to true, all environments are matched. */
@@ -111,57 +97,41 @@ export interface GoogleCloudApihubV1EnvironmentFilter {
   environments?: Array<string>;
 }
 
-export const GoogleCloudApihubV1EnvironmentFilter: Schema.Schema<GoogleCloudApihubV1EnvironmentFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allEnvironments: Schema.optional(Schema.Boolean),
-      environments: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1EnvironmentFilter",
-  }) as any as Schema.Schema<GoogleCloudApihubV1EnvironmentFilter>;
+export const GoogleCloudApihubV1EnvironmentFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allEnvironments: Schema.optional(Schema.Boolean),
+    environments: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApihubV1EnvironmentFilter" });
 
 export interface GoogleCloudApihubV1ApigeeXHybridConfig {
   /** Optional. The filter to apply on the resources managed by the gateway plugin instance. If provided this filter applies environment specific filtering. */
   environmentFilter?: GoogleCloudApihubV1EnvironmentFilter;
 }
 
-export const GoogleCloudApihubV1ApigeeXHybridConfig: Schema.Schema<GoogleCloudApihubV1ApigeeXHybridConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApigeeXHybridConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApigeeXHybridConfig>;
+export const GoogleCloudApihubV1ApigeeXHybridConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApigeeXHybridConfig" });
 
 export interface GoogleCloudApihubV1ApigeeEdgeConfig {
   /** Optional. The filter to apply on the resources managed by the gateway plugin instance. If provided this filter applies environment specific filtering. */
   environmentFilter?: GoogleCloudApihubV1EnvironmentFilter;
 }
 
-export const GoogleCloudApihubV1ApigeeEdgeConfig: Schema.Schema<GoogleCloudApihubV1ApigeeEdgeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApigeeEdgeConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApigeeEdgeConfig>;
+export const GoogleCloudApihubV1ApigeeEdgeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApigeeEdgeConfig" });
 
 export interface GoogleCloudApihubV1ApigeeOPDKConfig {
   /** Optional. The filter to apply on the resources managed by the gateway plugin instance. If provided this filter applies environment specific filtering. */
   environmentFilter?: GoogleCloudApihubV1EnvironmentFilter;
 }
 
-export const GoogleCloudApihubV1ApigeeOPDKConfig: Schema.Schema<GoogleCloudApihubV1ApigeeOPDKConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApigeeOPDKConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApigeeOPDKConfig>;
+export const GoogleCloudApihubV1ApigeeOPDKConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentFilter: Schema.optional(GoogleCloudApihubV1EnvironmentFilter),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApigeeOPDKConfig" });
 
 export interface GoogleCloudApihubV1GatewayPluginConfig {
   /** Configuration for Apigee X and Apigee Hybrid gateways. */
@@ -174,49 +144,37 @@ export interface GoogleCloudApihubV1GatewayPluginConfig {
   pluginInstance?: string;
 }
 
-export const GoogleCloudApihubV1GatewayPluginConfig: Schema.Schema<GoogleCloudApihubV1GatewayPluginConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apigeeXHybridConfig: Schema.optional(
-        GoogleCloudApihubV1ApigeeXHybridConfig,
-      ),
-      apigeeEdgeConfig: Schema.optional(GoogleCloudApihubV1ApigeeEdgeConfig),
-      apigeeOpdkConfig: Schema.optional(GoogleCloudApihubV1ApigeeOPDKConfig),
-      pluginInstance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1GatewayPluginConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1GatewayPluginConfig>;
+export const GoogleCloudApihubV1GatewayPluginConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apigeeXHybridConfig: Schema.optional(
+      GoogleCloudApihubV1ApigeeXHybridConfig,
+    ),
+    apigeeEdgeConfig: Schema.optional(GoogleCloudApihubV1ApigeeEdgeConfig),
+    apigeeOpdkConfig: Schema.optional(GoogleCloudApihubV1ApigeeOPDKConfig),
+    pluginInstance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1GatewayPluginConfig" });
 
 export interface GoogleCloudApihubV1GatewayPluginAddonConfig {
   /** Required. The list of gateway plugin configs for which the addon is enabled. Each gateway plugin config should have a unique plugin instance. */
   gatewayPluginConfigs?: Array<GoogleCloudApihubV1GatewayPluginConfig>;
 }
 
-export const GoogleCloudApihubV1GatewayPluginAddonConfig: Schema.Schema<GoogleCloudApihubV1GatewayPluginAddonConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gatewayPluginConfigs: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1GatewayPluginConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1GatewayPluginAddonConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1GatewayPluginAddonConfig>;
+export const GoogleCloudApihubV1GatewayPluginAddonConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gatewayPluginConfigs: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1GatewayPluginConfig),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1GatewayPluginAddonConfig" });
 
 export interface GoogleCloudApihubV1AllDataAddonConfig {
   /** Required. If true, the addon is enabled for all data in the API hub. */
   enabled?: boolean;
 }
 
-export const GoogleCloudApihubV1AllDataAddonConfig: Schema.Schema<GoogleCloudApihubV1AllDataAddonConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1AllDataAddonConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1AllDataAddonConfig>;
+export const GoogleCloudApihubV1AllDataAddonConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApihubV1AllDataAddonConfig" });
 
 export interface GoogleCloudApihubV1AddonConfig {
   /** Configuration for gateway plugin addons. */
@@ -225,19 +183,13 @@ export interface GoogleCloudApihubV1AddonConfig {
   allDataAddonConfig?: GoogleCloudApihubV1AllDataAddonConfig;
 }
 
-export const GoogleCloudApihubV1AddonConfig: Schema.Schema<GoogleCloudApihubV1AddonConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gatewayPluginAddonConfig: Schema.optional(
-        GoogleCloudApihubV1GatewayPluginAddonConfig,
-      ),
-      allDataAddonConfig: Schema.optional(
-        GoogleCloudApihubV1AllDataAddonConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1AddonConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1AddonConfig>;
+export const GoogleCloudApihubV1AddonConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gatewayPluginAddonConfig: Schema.optional(
+      GoogleCloudApihubV1GatewayPluginAddonConfig,
+    ),
+    allDataAddonConfig: Schema.optional(GoogleCloudApihubV1AllDataAddonConfig),
+  }).annotate({ identifier: "GoogleCloudApihubV1AddonConfig" });
 
 export interface GoogleCloudApihubV1Addon {
   /** Identifier. The name of the addon to enable. Format: `projects/{project}/locations/{location}/addons/{addon}`. */
@@ -268,35 +220,27 @@ export interface GoogleCloudApihubV1Addon {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1Addon: Schema.Schema<GoogleCloudApihubV1Addon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      dataSource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      config: Schema.optional(GoogleCloudApihubV1AddonConfig),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Addon",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Addon>;
+export const GoogleCloudApihubV1Addon =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    dataSource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    config: Schema.optional(GoogleCloudApihubV1AddonConfig),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Addon" });
 
 export interface GoogleCloudApihubV1ManageAddonConfigRequest {
   /** Required. The config of the addon to be managed. This config will replace the config present in the addon. The type of the config should match the config type already present in the addon. */
   config?: GoogleCloudApihubV1AddonConfig;
 }
 
-export const GoogleCloudApihubV1ManageAddonConfigRequest: Schema.Schema<GoogleCloudApihubV1ManageAddonConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(GoogleCloudApihubV1AddonConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ManageAddonConfigRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ManageAddonConfigRequest>;
+export const GoogleCloudApihubV1ManageAddonConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(GoogleCloudApihubV1AddonConfig),
+  }).annotate({ identifier: "GoogleCloudApihubV1ManageAddonConfigRequest" });
 
 export interface GoogleCloudApihubV1ListAddonsResponse {
   /** The list of addons. */
@@ -305,15 +249,11 @@ export interface GoogleCloudApihubV1ListAddonsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListAddonsResponse: Schema.Schema<GoogleCloudApihubV1ListAddonsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addons: Schema.optional(Schema.Array(GoogleCloudApihubV1Addon)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListAddonsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListAddonsResponse>;
+export const GoogleCloudApihubV1ListAddonsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addons: Schema.optional(Schema.Array(GoogleCloudApihubV1Addon)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListAddonsResponse" });
 
 export interface GoogleCloudApihubV1AllowedValue {
   /** Required. The ID of the allowed value. * If provided, the same will be used. The service will throw an error if the specified id is already used by another allowed value in the same attribute resource. * If not provided, a system generated id derived from the display name will be used. In this case, the service will handle conflict resolution by adding a system generated suffix in case of duplicates. This value should be 4-63 characters, and valid characters are /a-z-/. */
@@ -326,45 +266,33 @@ export interface GoogleCloudApihubV1AllowedValue {
   immutable?: boolean;
 }
 
-export const GoogleCloudApihubV1AllowedValue: Schema.Schema<GoogleCloudApihubV1AllowedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      immutable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1AllowedValue",
-  }) as any as Schema.Schema<GoogleCloudApihubV1AllowedValue>;
+export const GoogleCloudApihubV1AllowedValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    immutable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApihubV1AllowedValue" });
 
 export interface GoogleCloudApihubV1EnumAttributeValues {
   /** Required. The attribute values in case attribute data type is enum. */
   values?: Array<GoogleCloudApihubV1AllowedValue>;
 }
 
-export const GoogleCloudApihubV1EnumAttributeValues: Schema.Schema<GoogleCloudApihubV1EnumAttributeValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(GoogleCloudApihubV1AllowedValue)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1EnumAttributeValues",
-  }) as any as Schema.Schema<GoogleCloudApihubV1EnumAttributeValues>;
+export const GoogleCloudApihubV1EnumAttributeValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(GoogleCloudApihubV1AllowedValue)),
+  }).annotate({ identifier: "GoogleCloudApihubV1EnumAttributeValues" });
 
 export interface GoogleCloudApihubV1StringAttributeValues {
   /** Required. The attribute values in case attribute data type is string or JSON. */
   values?: Array<string>;
 }
 
-export const GoogleCloudApihubV1StringAttributeValues: Schema.Schema<GoogleCloudApihubV1StringAttributeValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1StringAttributeValues",
-  }) as any as Schema.Schema<GoogleCloudApihubV1StringAttributeValues>;
+export const GoogleCloudApihubV1StringAttributeValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApihubV1StringAttributeValues" });
 
 export interface GoogleCloudApihubV1AttributeValues {
   /** The attribute values associated with a resource in case attribute data type is enum. */
@@ -379,32 +307,24 @@ export interface GoogleCloudApihubV1AttributeValues {
   attribute?: string;
 }
 
-export const GoogleCloudApihubV1AttributeValues: Schema.Schema<GoogleCloudApihubV1AttributeValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enumValues: Schema.optional(GoogleCloudApihubV1EnumAttributeValues),
-      stringValues: Schema.optional(GoogleCloudApihubV1StringAttributeValues),
-      jsonValues: Schema.optional(GoogleCloudApihubV1StringAttributeValues),
-      uriValues: Schema.optional(GoogleCloudApihubV1StringAttributeValues),
-      attribute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1AttributeValues",
-  }) as any as Schema.Schema<GoogleCloudApihubV1AttributeValues>;
+export const GoogleCloudApihubV1AttributeValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enumValues: Schema.optional(GoogleCloudApihubV1EnumAttributeValues),
+    stringValues: Schema.optional(GoogleCloudApihubV1StringAttributeValues),
+    jsonValues: Schema.optional(GoogleCloudApihubV1StringAttributeValues),
+    uriValues: Schema.optional(GoogleCloudApihubV1StringAttributeValues),
+    attribute: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1AttributeValues" });
 
 export interface GoogleCloudApihubV1HostingService {
   /** Optional. The URI of the service implemented by the plugin developer, used to invoke the plugin's functionality. This information is only required for user defined plugins. */
   serviceUri?: string;
 }
 
-export const GoogleCloudApihubV1HostingService: Schema.Schema<GoogleCloudApihubV1HostingService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1HostingService",
-  }) as any as Schema.Schema<GoogleCloudApihubV1HostingService>;
+export const GoogleCloudApihubV1HostingService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1HostingService" });
 
 export interface GoogleCloudApihubV1PluginActionConfig {
   /** Required. The id of the action. */
@@ -422,45 +342,33 @@ export interface GoogleCloudApihubV1PluginActionConfig {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1PluginActionConfig: Schema.Schema<GoogleCloudApihubV1PluginActionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      triggerMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1PluginActionConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1PluginActionConfig>;
+export const GoogleCloudApihubV1PluginActionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    triggerMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1PluginActionConfig" });
 
 export interface GoogleCloudApihubV1Documentation {
   /** Optional. The uri of the externally hosted documentation. */
   externalUri?: string;
 }
 
-export const GoogleCloudApihubV1Documentation: Schema.Schema<GoogleCloudApihubV1Documentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Documentation",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Documentation>;
+export const GoogleCloudApihubV1Documentation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Documentation" });
 
 export interface GoogleCloudApihubV1GoogleServiceAccountConfig {
   /** Required. The service account to be used for authenticating request. The `iam.serviceAccounts.getAccessToken` permission should be granted on this service account to the impersonator service account. */
   serviceAccount?: string;
 }
 
-export const GoogleCloudApihubV1GoogleServiceAccountConfig: Schema.Schema<GoogleCloudApihubV1GoogleServiceAccountConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1GoogleServiceAccountConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1GoogleServiceAccountConfig>;
+export const GoogleCloudApihubV1GoogleServiceAccountConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1GoogleServiceAccountConfig" });
 
 export interface GoogleCloudApihubV1AuthConfigTemplate {
   /** Required. The list of authentication types supported by the plugin. */
@@ -477,17 +385,13 @@ export interface GoogleCloudApihubV1AuthConfigTemplate {
   serviceAccount?: GoogleCloudApihubV1GoogleServiceAccountConfig;
 }
 
-export const GoogleCloudApihubV1AuthConfigTemplate: Schema.Schema<GoogleCloudApihubV1AuthConfigTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportedAuthTypes: Schema.optional(Schema.Array(Schema.String)),
-      serviceAccount: Schema.optional(
-        GoogleCloudApihubV1GoogleServiceAccountConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1AuthConfigTemplate",
-  }) as any as Schema.Schema<GoogleCloudApihubV1AuthConfigTemplate>;
+export const GoogleCloudApihubV1AuthConfigTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportedAuthTypes: Schema.optional(Schema.Array(Schema.String)),
+    serviceAccount: Schema.optional(
+      GoogleCloudApihubV1GoogleServiceAccountConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1AuthConfigTemplate" });
 
 export interface GoogleCloudApihubV1ConfigValueOption {
   /** Required. Id of the option. */
@@ -498,16 +402,12 @@ export interface GoogleCloudApihubV1ConfigValueOption {
   description?: string;
 }
 
-export const GoogleCloudApihubV1ConfigValueOption: Schema.Schema<GoogleCloudApihubV1ConfigValueOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ConfigValueOption",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ConfigValueOption>;
+export const GoogleCloudApihubV1ConfigValueOption =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ConfigValueOption" });
 
 export interface GoogleCloudApihubV1ConfigVariableTemplate {
   /** Required. ID of the config variable. Must be unique within the configuration. */
@@ -536,24 +436,20 @@ export interface GoogleCloudApihubV1ConfigVariableTemplate {
   multiSelectOptions?: Array<GoogleCloudApihubV1ConfigValueOption>;
 }
 
-export const GoogleCloudApihubV1ConfigVariableTemplate: Schema.Schema<GoogleCloudApihubV1ConfigVariableTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      validationRegex: Schema.optional(Schema.String),
-      required: Schema.optional(Schema.Boolean),
-      enumOptions: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1ConfigValueOption),
-      ),
-      multiSelectOptions: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1ConfigValueOption),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ConfigVariableTemplate",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ConfigVariableTemplate>;
+export const GoogleCloudApihubV1ConfigVariableTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    valueType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    validationRegex: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+    enumOptions: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1ConfigValueOption),
+    ),
+    multiSelectOptions: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1ConfigValueOption),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1ConfigVariableTemplate" });
 
 export interface GoogleCloudApihubV1ConfigTemplate {
   /** Optional. The authentication template for the plugin. */
@@ -562,19 +458,13 @@ export interface GoogleCloudApihubV1ConfigTemplate {
   additionalConfigTemplate?: Array<GoogleCloudApihubV1ConfigVariableTemplate>;
 }
 
-export const GoogleCloudApihubV1ConfigTemplate: Schema.Schema<GoogleCloudApihubV1ConfigTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authConfigTemplate: Schema.optional(
-        GoogleCloudApihubV1AuthConfigTemplate,
-      ),
-      additionalConfigTemplate: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1ConfigVariableTemplate),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ConfigTemplate",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ConfigTemplate>;
+export const GoogleCloudApihubV1ConfigTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authConfigTemplate: Schema.optional(GoogleCloudApihubV1AuthConfigTemplate),
+    additionalConfigTemplate: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1ConfigVariableTemplate),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1ConfigTemplate" });
 
 export interface GoogleCloudApihubV1Plugin {
   /** Identifier. The name of the plugin. Format: `projects/{project}/locations/{location}/plugins/{plugin}` */
@@ -624,43 +514,39 @@ export interface GoogleCloudApihubV1Plugin {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1Plugin: Schema.Schema<GoogleCloudApihubV1Plugin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      description: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      ownershipType: Schema.optional(Schema.String),
-      hostingService: Schema.optional(GoogleCloudApihubV1HostingService),
-      actionsConfig: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1PluginActionConfig),
-      ),
-      documentation: Schema.optional(GoogleCloudApihubV1Documentation),
-      pluginCategory: Schema.optional(Schema.String),
-      configTemplate: Schema.optional(GoogleCloudApihubV1ConfigTemplate),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      gatewayType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Plugin",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Plugin>;
+export const GoogleCloudApihubV1Plugin =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    ownershipType: Schema.optional(Schema.String),
+    hostingService: Schema.optional(GoogleCloudApihubV1HostingService),
+    actionsConfig: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1PluginActionConfig),
+    ),
+    documentation: Schema.optional(GoogleCloudApihubV1Documentation),
+    pluginCategory: Schema.optional(Schema.String),
+    configTemplate: Schema.optional(GoogleCloudApihubV1ConfigTemplate),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    gatewayType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Plugin" });
 
 export interface GoogleCloudApihubV1EnablePluginRequest {}
 
-export const GoogleCloudApihubV1EnablePluginRequest: Schema.Schema<GoogleCloudApihubV1EnablePluginRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApihubV1EnablePluginRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1EnablePluginRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1EnablePluginRequest>;
+  });
 
 export interface GoogleCloudApihubV1DisablePluginRequest {}
 
-export const GoogleCloudApihubV1DisablePluginRequest: Schema.Schema<GoogleCloudApihubV1DisablePluginRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApihubV1DisablePluginRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1DisablePluginRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1DisablePluginRequest>;
+  });
 
 export interface GoogleCloudApihubV1ListPluginsResponse {
   /** The plugins from the specified parent resource. */
@@ -669,29 +555,21 @@ export interface GoogleCloudApihubV1ListPluginsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListPluginsResponse: Schema.Schema<GoogleCloudApihubV1ListPluginsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      plugins: Schema.optional(Schema.Array(GoogleCloudApihubV1Plugin)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListPluginsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListPluginsResponse>;
+export const GoogleCloudApihubV1ListPluginsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    plugins: Schema.optional(Schema.Array(GoogleCloudApihubV1Plugin)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListPluginsResponse" });
 
 export interface GoogleCloudApihubV1Secret {
   /** Required. The resource name of the secret version in the format, format as: `projects/* /secrets/* /versions/*`. */
   secretVersion?: string;
 }
 
-export const GoogleCloudApihubV1Secret: Schema.Schema<GoogleCloudApihubV1Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Secret",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Secret>;
+export const GoogleCloudApihubV1Secret =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Secret" });
 
 export interface GoogleCloudApihubV1UserPasswordConfig {
   /** Required. Username. */
@@ -700,15 +578,11 @@ export interface GoogleCloudApihubV1UserPasswordConfig {
   password?: GoogleCloudApihubV1Secret;
 }
 
-export const GoogleCloudApihubV1UserPasswordConfig: Schema.Schema<GoogleCloudApihubV1UserPasswordConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(GoogleCloudApihubV1Secret),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1UserPasswordConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1UserPasswordConfig>;
+export const GoogleCloudApihubV1UserPasswordConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(GoogleCloudApihubV1Secret),
+  }).annotate({ identifier: "GoogleCloudApihubV1UserPasswordConfig" });
 
 export interface GoogleCloudApihubV1ApiKeyConfig {
   /** Required. The parameter name of the API key. E.g. If the API request is "https://example.com/act?api_key=", "api_key" would be the parameter name. */
@@ -726,16 +600,12 @@ export interface GoogleCloudApihubV1ApiKeyConfig {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1ApiKeyConfig: Schema.Schema<GoogleCloudApihubV1ApiKeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      apiKey: Schema.optional(GoogleCloudApihubV1Secret),
-      httpElementLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApiKeyConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApiKeyConfig>;
+export const GoogleCloudApihubV1ApiKeyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    apiKey: Schema.optional(GoogleCloudApihubV1Secret),
+    httpElementLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApiKeyConfig" });
 
 export interface GoogleCloudApihubV1Oauth2ClientCredentialsConfig {
   /** Required. The client identifier. */
@@ -744,15 +614,13 @@ export interface GoogleCloudApihubV1Oauth2ClientCredentialsConfig {
   clientSecret?: GoogleCloudApihubV1Secret;
 }
 
-export const GoogleCloudApihubV1Oauth2ClientCredentialsConfig: Schema.Schema<GoogleCloudApihubV1Oauth2ClientCredentialsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(GoogleCloudApihubV1Secret),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1Oauth2ClientCredentialsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(GoogleCloudApihubV1Secret),
+  }).annotate({
     identifier: "GoogleCloudApihubV1Oauth2ClientCredentialsConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Oauth2ClientCredentialsConfig>;
+  });
 
 export interface GoogleCloudApihubV1AuthConfig {
   /** Google Service Account. */
@@ -774,68 +642,48 @@ export interface GoogleCloudApihubV1AuthConfig {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1AuthConfig: Schema.Schema<GoogleCloudApihubV1AuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleServiceAccountConfig: Schema.optional(
-        GoogleCloudApihubV1GoogleServiceAccountConfig,
-      ),
-      userPasswordConfig: Schema.optional(
-        GoogleCloudApihubV1UserPasswordConfig,
-      ),
-      apiKeyConfig: Schema.optional(GoogleCloudApihubV1ApiKeyConfig),
-      oauth2ClientCredentialsConfig: Schema.optional(
-        GoogleCloudApihubV1Oauth2ClientCredentialsConfig,
-      ),
-      authType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1AuthConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1AuthConfig>;
+export const GoogleCloudApihubV1AuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleServiceAccountConfig: Schema.optional(
+      GoogleCloudApihubV1GoogleServiceAccountConfig,
+    ),
+    userPasswordConfig: Schema.optional(GoogleCloudApihubV1UserPasswordConfig),
+    apiKeyConfig: Schema.optional(GoogleCloudApihubV1ApiKeyConfig),
+    oauth2ClientCredentialsConfig: Schema.optional(
+      GoogleCloudApihubV1Oauth2ClientCredentialsConfig,
+    ),
+    authType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1AuthConfig" });
 
 export interface GoogleCloudApihubV1MultiSelectValues {
   /** Optional. The config variable value of data type multi select. */
   values?: Array<GoogleCloudApihubV1ConfigValueOption>;
 }
 
-export const GoogleCloudApihubV1MultiSelectValues: Schema.Schema<GoogleCloudApihubV1MultiSelectValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1ConfigValueOption),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1MultiSelectValues",
-  }) as any as Schema.Schema<GoogleCloudApihubV1MultiSelectValues>;
+export const GoogleCloudApihubV1MultiSelectValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(GoogleCloudApihubV1ConfigValueOption)),
+  }).annotate({ identifier: "GoogleCloudApihubV1MultiSelectValues" });
 
 export interface GoogleCloudApihubV1MultiStringValues {
   /** Optional. The config variable value of data type multi string. */
   values?: Array<string>;
 }
 
-export const GoogleCloudApihubV1MultiStringValues: Schema.Schema<GoogleCloudApihubV1MultiStringValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1MultiStringValues",
-  }) as any as Schema.Schema<GoogleCloudApihubV1MultiStringValues>;
+export const GoogleCloudApihubV1MultiStringValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApihubV1MultiStringValues" });
 
 export interface GoogleCloudApihubV1MultiIntValues {
   /** Optional. The config variable value of data type multi int. */
   values?: Array<number>;
 }
 
-export const GoogleCloudApihubV1MultiIntValues: Schema.Schema<GoogleCloudApihubV1MultiIntValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1MultiIntValues",
-  }) as any as Schema.Schema<GoogleCloudApihubV1MultiIntValues>;
+export const GoogleCloudApihubV1MultiIntValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "GoogleCloudApihubV1MultiIntValues" });
 
 export interface GoogleCloudApihubV1ConfigVariable {
   /** Optional. The config variable value in case of config variable of type string. */
@@ -858,22 +706,18 @@ export interface GoogleCloudApihubV1ConfigVariable {
   key?: string;
 }
 
-export const GoogleCloudApihubV1ConfigVariable: Schema.Schema<GoogleCloudApihubV1ConfigVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      intValue: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      secretValue: Schema.optional(GoogleCloudApihubV1Secret),
-      enumValue: Schema.optional(GoogleCloudApihubV1ConfigValueOption),
-      multiSelectValues: Schema.optional(GoogleCloudApihubV1MultiSelectValues),
-      multiStringValues: Schema.optional(GoogleCloudApihubV1MultiStringValues),
-      multiIntValues: Schema.optional(GoogleCloudApihubV1MultiIntValues),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ConfigVariable",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ConfigVariable>;
+export const GoogleCloudApihubV1ConfigVariable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValue: Schema.optional(Schema.String),
+    intValue: Schema.optional(Schema.String),
+    boolValue: Schema.optional(Schema.Boolean),
+    secretValue: Schema.optional(GoogleCloudApihubV1Secret),
+    enumValue: Schema.optional(GoogleCloudApihubV1ConfigValueOption),
+    multiSelectValues: Schema.optional(GoogleCloudApihubV1MultiSelectValues),
+    multiStringValues: Schema.optional(GoogleCloudApihubV1MultiStringValues),
+    multiIntValues: Schema.optional(GoogleCloudApihubV1MultiIntValues),
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ConfigVariable" });
 
 export interface GoogleCloudApihubV1LastExecution {
   /** Output only. The result of the last execution of the plugin instance. */
@@ -888,18 +732,14 @@ export interface GoogleCloudApihubV1LastExecution {
   resultMetadata?: string;
 }
 
-export const GoogleCloudApihubV1LastExecution: Schema.Schema<GoogleCloudApihubV1LastExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      resultMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1LastExecution",
-  }) as any as Schema.Schema<GoogleCloudApihubV1LastExecution>;
+export const GoogleCloudApihubV1LastExecution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    resultMetadata: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1LastExecution" });
 
 export interface GoogleCloudApihubV1ExecutionStatus {
   /** Output only. The current state of the execution. */
@@ -912,29 +752,21 @@ export interface GoogleCloudApihubV1ExecutionStatus {
   lastExecution?: GoogleCloudApihubV1LastExecution;
 }
 
-export const GoogleCloudApihubV1ExecutionStatus: Schema.Schema<GoogleCloudApihubV1ExecutionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentExecutionState: Schema.optional(Schema.String),
-      lastExecution: Schema.optional(GoogleCloudApihubV1LastExecution),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ExecutionStatus",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ExecutionStatus>;
+export const GoogleCloudApihubV1ExecutionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentExecutionState: Schema.optional(Schema.String),
+    lastExecution: Schema.optional(GoogleCloudApihubV1LastExecution),
+  }).annotate({ identifier: "GoogleCloudApihubV1ExecutionStatus" });
 
 export interface GoogleCloudApihubV1CustomCuration {
   /** Required. The unique name of the curation resource. This will be the name of the curation resource in the format: `projects/{project}/locations/{location}/curations/{curation}` */
   curation?: string;
 }
 
-export const GoogleCloudApihubV1CustomCuration: Schema.Schema<GoogleCloudApihubV1CustomCuration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      curation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1CustomCuration",
-  }) as any as Schema.Schema<GoogleCloudApihubV1CustomCuration>;
+export const GoogleCloudApihubV1CustomCuration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    curation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1CustomCuration" });
 
 export interface GoogleCloudApihubV1CurationConfig {
   /** Optional. Custom curation information for this plugin instance. */
@@ -947,15 +779,11 @@ export interface GoogleCloudApihubV1CurationConfig {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1CurationConfig: Schema.Schema<GoogleCloudApihubV1CurationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customCuration: Schema.optional(GoogleCloudApihubV1CustomCuration),
-      curationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1CurationConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1CurationConfig>;
+export const GoogleCloudApihubV1CurationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customCuration: Schema.optional(GoogleCloudApihubV1CustomCuration),
+    curationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1CurationConfig" });
 
 export interface GoogleCloudApihubV1ResourceConfig {
   /** Output only. The type of the action. */
@@ -968,15 +796,11 @@ export interface GoogleCloudApihubV1ResourceConfig {
   pubsubTopic?: string;
 }
 
-export const GoogleCloudApihubV1ResourceConfig: Schema.Schema<GoogleCloudApihubV1ResourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionType: Schema.optional(Schema.String),
-      pubsubTopic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ResourceConfig",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ResourceConfig>;
+export const GoogleCloudApihubV1ResourceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionType: Schema.optional(Schema.String),
+    pubsubTopic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ResourceConfig" });
 
 export interface GoogleCloudApihubV1PluginInstanceAction {
   /** Optional. The execution information for the plugin instance action done corresponding to an API hub instance. */
@@ -1004,21 +828,17 @@ export interface GoogleCloudApihubV1PluginInstanceAction {
   resourceConfig?: GoogleCloudApihubV1ResourceConfig;
 }
 
-export const GoogleCloudApihubV1PluginInstanceAction: Schema.Schema<GoogleCloudApihubV1PluginInstanceAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hubInstanceAction: Schema.optional(GoogleCloudApihubV1ExecutionStatus),
-      actionId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      scheduleCronExpression: Schema.optional(Schema.String),
-      curationConfig: Schema.optional(GoogleCloudApihubV1CurationConfig),
-      scheduleTimeZone: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      resourceConfig: Schema.optional(GoogleCloudApihubV1ResourceConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1PluginInstanceAction",
-  }) as any as Schema.Schema<GoogleCloudApihubV1PluginInstanceAction>;
+export const GoogleCloudApihubV1PluginInstanceAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hubInstanceAction: Schema.optional(GoogleCloudApihubV1ExecutionStatus),
+    actionId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    scheduleCronExpression: Schema.optional(Schema.String),
+    curationConfig: Schema.optional(GoogleCloudApihubV1CurationConfig),
+    scheduleTimeZone: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    resourceConfig: Schema.optional(GoogleCloudApihubV1ResourceConfig),
+  }).annotate({ identifier: "GoogleCloudApihubV1PluginInstanceAction" });
 
 export interface GoogleCloudApihubV1SourceEnvironment {
   /** Required. The name of the environment at the source. This should map to Deployment. */
@@ -1031,17 +851,13 @@ export interface GoogleCloudApihubV1SourceEnvironment {
   updateTime?: string;
 }
 
-export const GoogleCloudApihubV1SourceEnvironment: Schema.Schema<GoogleCloudApihubV1SourceEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceEnvironment: Schema.optional(Schema.String),
-      sourceEnvironmentUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SourceEnvironment",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SourceEnvironment>;
+export const GoogleCloudApihubV1SourceEnvironment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceEnvironment: Schema.optional(Schema.String),
+    sourceEnvironmentUri: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1SourceEnvironment" });
 
 export interface GoogleCloudApihubV1PluginInstance {
   /** Identifier. The unique name of the plugin instance resource. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
@@ -1079,60 +895,50 @@ export interface GoogleCloudApihubV1PluginInstance {
   >;
 }
 
-export const GoogleCloudApihubV1PluginInstance: Schema.Schema<GoogleCloudApihubV1PluginInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      authConfig: Schema.optional(GoogleCloudApihubV1AuthConfig),
-      additionalConfig: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1ConfigVariable),
-      ),
-      state: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      actions: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1PluginInstanceAction),
-      ),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      sourceProjectId: Schema.optional(Schema.String),
-      sourceEnvironmentsConfig: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1SourceEnvironment),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1PluginInstance",
-  }) as any as Schema.Schema<GoogleCloudApihubV1PluginInstance>;
+export const GoogleCloudApihubV1PluginInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    authConfig: Schema.optional(GoogleCloudApihubV1AuthConfig),
+    additionalConfig: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1ConfigVariable),
+    ),
+    state: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    actions: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1PluginInstanceAction),
+    ),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    sourceProjectId: Schema.optional(Schema.String),
+    sourceEnvironmentsConfig: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1SourceEnvironment),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1PluginInstance" });
 
 export interface GoogleCloudApihubV1ActionExecutionDetail {
   /** Required. The action id of the plugin to execute. */
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1ActionExecutionDetail: Schema.Schema<GoogleCloudApihubV1ActionExecutionDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ActionExecutionDetail",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ActionExecutionDetail>;
+export const GoogleCloudApihubV1ActionExecutionDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ActionExecutionDetail" });
 
 export interface GoogleCloudApihubV1ExecutePluginInstanceActionRequest {
   /** Required. The execution details for the action to execute. */
   actionExecutionDetail?: GoogleCloudApihubV1ActionExecutionDetail;
 }
 
-export const GoogleCloudApihubV1ExecutePluginInstanceActionRequest: Schema.Schema<GoogleCloudApihubV1ExecutePluginInstanceActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionExecutionDetail: Schema.optional(
-        GoogleCloudApihubV1ActionExecutionDetail,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1ExecutePluginInstanceActionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionExecutionDetail: Schema.optional(
+      GoogleCloudApihubV1ActionExecutionDetail,
+    ),
+  }).annotate({
     identifier: "GoogleCloudApihubV1ExecutePluginInstanceActionRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ExecutePluginInstanceActionRequest>;
+  });
 
 export interface GoogleCloudApihubV1ListPluginInstancesResponse {
   /** The plugin instances from the specified parent resource. */
@@ -1141,45 +947,37 @@ export interface GoogleCloudApihubV1ListPluginInstancesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListPluginInstancesResponse: Schema.Schema<GoogleCloudApihubV1ListPluginInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pluginInstances: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1PluginInstance),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListPluginInstancesResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListPluginInstancesResponse>;
+export const GoogleCloudApihubV1ListPluginInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pluginInstances: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1PluginInstance),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListPluginInstancesResponse" });
 
 export interface GoogleCloudApihubV1EnablePluginInstanceActionRequest {
   /** Required. The action id to enable. */
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1EnablePluginInstanceActionRequest: Schema.Schema<GoogleCloudApihubV1EnablePluginInstanceActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1EnablePluginInstanceActionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1EnablePluginInstanceActionRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1EnablePluginInstanceActionRequest>;
+  });
 
 export interface GoogleCloudApihubV1DisablePluginInstanceActionRequest {
   /** Required. The action id to disable. */
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1DisablePluginInstanceActionRequest: Schema.Schema<GoogleCloudApihubV1DisablePluginInstanceActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1DisablePluginInstanceActionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1DisablePluginInstanceActionRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1DisablePluginInstanceActionRequest>;
+  });
 
 export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest {
   /** Required. Type of data to be managed. */
@@ -1198,24 +996,22 @@ export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest {
   data?: string;
 }
 
-export const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest: Schema.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataType: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      relativePath: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataType: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    relativePath: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest>;
+  });
 
 export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse {}
 
-export const GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse: Schema.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse>;
+  });
 
 export interface GoogleCloudApihubV1Owner {
   /** Optional. The name of the owner. */
@@ -1224,15 +1020,11 @@ export interface GoogleCloudApihubV1Owner {
   email?: string;
 }
 
-export const GoogleCloudApihubV1Owner: Schema.Schema<GoogleCloudApihubV1Owner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Owner",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Owner>;
+export const GoogleCloudApihubV1Owner =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Owner" });
 
 export interface GoogleCloudApihubV1PluginInstanceActionSource {
   /** Output only. The resource name of the source plugin instance. Format is `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
@@ -1241,15 +1033,11 @@ export interface GoogleCloudApihubV1PluginInstanceActionSource {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1PluginInstanceActionSource: Schema.Schema<GoogleCloudApihubV1PluginInstanceActionSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pluginInstance: Schema.optional(Schema.String),
-      actionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1PluginInstanceActionSource",
-  }) as any as Schema.Schema<GoogleCloudApihubV1PluginInstanceActionSource>;
+export const GoogleCloudApihubV1PluginInstanceActionSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pluginInstance: Schema.optional(Schema.String),
+    actionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1PluginInstanceActionSource" });
 
 export interface GoogleCloudApihubV1SourceMetadata {
   /** Output only. The source of the resource is a plugin instance action. */
@@ -1264,20 +1052,16 @@ export interface GoogleCloudApihubV1SourceMetadata {
   originalResourceUpdateTime?: string;
 }
 
-export const GoogleCloudApihubV1SourceMetadata: Schema.Schema<GoogleCloudApihubV1SourceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pluginInstanceActionSource: Schema.optional(
-        GoogleCloudApihubV1PluginInstanceActionSource,
-      ),
-      sourceType: Schema.optional(Schema.String),
-      originalResourceId: Schema.optional(Schema.String),
-      originalResourceCreateTime: Schema.optional(Schema.String),
-      originalResourceUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SourceMetadata",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SourceMetadata>;
+export const GoogleCloudApihubV1SourceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pluginInstanceActionSource: Schema.optional(
+      GoogleCloudApihubV1PluginInstanceActionSource,
+    ),
+    sourceType: Schema.optional(Schema.String),
+    originalResourceId: Schema.optional(Schema.String),
+    originalResourceCreateTime: Schema.optional(Schema.String),
+    originalResourceUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1SourceMetadata" });
 
 export interface GoogleCloudApihubV1Api {
   /** Identifier. The name of the API resource in the API Hub. Format: `projects/{project}/locations/{location}/apis/{api}` */
@@ -1322,41 +1106,38 @@ export interface GoogleCloudApihubV1Api {
   apiTechnicalRequirements?: GoogleCloudApihubV1AttributeValues;
 }
 
-export const GoogleCloudApihubV1Api: Schema.Schema<GoogleCloudApihubV1Api> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      documentation: Schema.optional(GoogleCloudApihubV1Documentation),
-      owner: Schema.optional(GoogleCloudApihubV1Owner),
-      versions: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      targetUser: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      team: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      businessUnit: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      maturityLevel: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-      apiStyle: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      selectedVersion: Schema.optional(Schema.String),
-      apiRequirements: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      fingerprint: Schema.optional(Schema.String),
-      sourceMetadata: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1SourceMetadata),
-      ),
-      apiFunctionalRequirements: Schema.optional(
-        GoogleCloudApihubV1AttributeValues,
-      ),
-      apiTechnicalRequirements: Schema.optional(
-        GoogleCloudApihubV1AttributeValues,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Api",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Api>;
+export const GoogleCloudApihubV1Api = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    documentation: Schema.optional(GoogleCloudApihubV1Documentation),
+    owner: Schema.optional(GoogleCloudApihubV1Owner),
+    versions: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    targetUser: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    team: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    businessUnit: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    maturityLevel: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+    apiStyle: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    selectedVersion: Schema.optional(Schema.String),
+    apiRequirements: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    fingerprint: Schema.optional(Schema.String),
+    sourceMetadata: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1SourceMetadata),
+    ),
+    apiFunctionalRequirements: Schema.optional(
+      GoogleCloudApihubV1AttributeValues,
+    ),
+    apiTechnicalRequirements: Schema.optional(
+      GoogleCloudApihubV1AttributeValues,
+    ),
+  },
+).annotate({ identifier: "GoogleCloudApihubV1Api" });
 
 export interface GoogleCloudApihubV1ListApisResponse {
   /** The API resources present in the API hub. */
@@ -1365,15 +1146,11 @@ export interface GoogleCloudApihubV1ListApisResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListApisResponse: Schema.Schema<GoogleCloudApihubV1ListApisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apis: Schema.optional(Schema.Array(GoogleCloudApihubV1Api)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListApisResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListApisResponse>;
+export const GoogleCloudApihubV1ListApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apis: Schema.optional(Schema.Array(GoogleCloudApihubV1Api)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListApisResponse" });
 
 export interface GoogleCloudApihubV1Version {
   /** Identifier. The name of the version. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
@@ -1410,33 +1187,29 @@ export interface GoogleCloudApihubV1Version {
   sourceMetadata?: Array<GoogleCloudApihubV1SourceMetadata>;
 }
 
-export const GoogleCloudApihubV1Version: Schema.Schema<GoogleCloudApihubV1Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      documentation: Schema.optional(GoogleCloudApihubV1Documentation),
-      specs: Schema.optional(Schema.Array(Schema.String)),
-      apiOperations: Schema.optional(Schema.Array(Schema.String)),
-      definitions: Schema.optional(Schema.Array(Schema.String)),
-      deployments: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      lifecycle: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      compliance: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      accreditation: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-      selectedDeployment: Schema.optional(Schema.String),
-      sourceMetadata: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1SourceMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Version",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Version>;
+export const GoogleCloudApihubV1Version =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    documentation: Schema.optional(GoogleCloudApihubV1Documentation),
+    specs: Schema.optional(Schema.Array(Schema.String)),
+    apiOperations: Schema.optional(Schema.Array(Schema.String)),
+    definitions: Schema.optional(Schema.Array(Schema.String)),
+    deployments: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    lifecycle: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    compliance: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    accreditation: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+    selectedDeployment: Schema.optional(Schema.String),
+    sourceMetadata: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1SourceMetadata),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1Version" });
 
 export interface GoogleCloudApihubV1ListVersionsResponse {
   /** The versions corresponding to an API. */
@@ -1445,15 +1218,11 @@ export interface GoogleCloudApihubV1ListVersionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListVersionsResponse: Schema.Schema<GoogleCloudApihubV1ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(GoogleCloudApihubV1Version)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListVersionsResponse>;
+export const GoogleCloudApihubV1ListVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versions: Schema.optional(Schema.Array(GoogleCloudApihubV1Version)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListVersionsResponse" });
 
 export interface GoogleCloudApihubV1SpecContents {
   /** Required. The contents of the spec. */
@@ -1462,15 +1231,11 @@ export interface GoogleCloudApihubV1SpecContents {
   mimeType?: string;
 }
 
-export const GoogleCloudApihubV1SpecContents: Schema.Schema<GoogleCloudApihubV1SpecContents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SpecContents",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SpecContents>;
+export const GoogleCloudApihubV1SpecContents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contents: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1SpecContents" });
 
 export interface GoogleCloudApihubV1OpenApiSpecDetails {
   /** Output only. The format of the spec. */
@@ -1486,16 +1251,12 @@ export interface GoogleCloudApihubV1OpenApiSpecDetails {
   owner?: GoogleCloudApihubV1Owner;
 }
 
-export const GoogleCloudApihubV1OpenApiSpecDetails: Schema.Schema<GoogleCloudApihubV1OpenApiSpecDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      owner: Schema.optional(GoogleCloudApihubV1Owner),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1OpenApiSpecDetails",
-  }) as any as Schema.Schema<GoogleCloudApihubV1OpenApiSpecDetails>;
+export const GoogleCloudApihubV1OpenApiSpecDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    format: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    owner: Schema.optional(GoogleCloudApihubV1Owner),
+  }).annotate({ identifier: "GoogleCloudApihubV1OpenApiSpecDetails" });
 
 export interface GoogleCloudApihubV1SpecDetails {
   /** Output only. Additional details apart from `OperationDetails` parsed from an OpenAPI spec. The OperationDetails parsed from the spec can be obtained by using ListAPIOperations method. */
@@ -1504,17 +1265,11 @@ export interface GoogleCloudApihubV1SpecDetails {
   description?: string;
 }
 
-export const GoogleCloudApihubV1SpecDetails: Schema.Schema<GoogleCloudApihubV1SpecDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openApiSpecDetails: Schema.optional(
-        GoogleCloudApihubV1OpenApiSpecDetails,
-      ),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SpecDetails",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SpecDetails>;
+export const GoogleCloudApihubV1SpecDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    openApiSpecDetails: Schema.optional(GoogleCloudApihubV1OpenApiSpecDetails),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1SpecDetails" });
 
 export interface GoogleCloudApihubV1Point {
   /** Required. Line number (zero-indexed). */
@@ -1523,15 +1278,11 @@ export interface GoogleCloudApihubV1Point {
   character?: number;
 }
 
-export const GoogleCloudApihubV1Point: Schema.Schema<GoogleCloudApihubV1Point> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      line: Schema.optional(Schema.Number),
-      character: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Point",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Point>;
+export const GoogleCloudApihubV1Point =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    line: Schema.optional(Schema.Number),
+    character: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApihubV1Point" });
 
 export interface GoogleCloudApihubV1Range {
   /** Required. Start of the issue. */
@@ -1540,15 +1291,11 @@ export interface GoogleCloudApihubV1Range {
   end?: GoogleCloudApihubV1Point;
 }
 
-export const GoogleCloudApihubV1Range: Schema.Schema<GoogleCloudApihubV1Range> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(GoogleCloudApihubV1Point),
-      end: Schema.optional(GoogleCloudApihubV1Point),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Range",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Range>;
+export const GoogleCloudApihubV1Range =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    start: Schema.optional(GoogleCloudApihubV1Point),
+    end: Schema.optional(GoogleCloudApihubV1Point),
+  }).annotate({ identifier: "GoogleCloudApihubV1Range" });
 
 export interface GoogleCloudApihubV1Issue {
   /** Required. Rule code unique to each rule defined in linter. */
@@ -1569,18 +1316,14 @@ export interface GoogleCloudApihubV1Issue {
   range?: GoogleCloudApihubV1Range;
 }
 
-export const GoogleCloudApihubV1Issue: Schema.Schema<GoogleCloudApihubV1Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.Array(Schema.String)),
-      message: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      range: Schema.optional(GoogleCloudApihubV1Range),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Issue",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Issue>;
+export const GoogleCloudApihubV1Issue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.Array(Schema.String)),
+    message: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    range: Schema.optional(GoogleCloudApihubV1Range),
+  }).annotate({ identifier: "GoogleCloudApihubV1Issue" });
 
 export interface GoogleCloudApihubV1SummaryEntry {
   /** Required. Severity of the issue. */
@@ -1595,15 +1338,11 @@ export interface GoogleCloudApihubV1SummaryEntry {
   count?: number;
 }
 
-export const GoogleCloudApihubV1SummaryEntry: Schema.Schema<GoogleCloudApihubV1SummaryEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SummaryEntry",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SummaryEntry>;
+export const GoogleCloudApihubV1SummaryEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severity: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApihubV1SummaryEntry" });
 
 export interface GoogleCloudApihubV1LintResponse {
   /** Optional. Array of issues found in the analyzed document. */
@@ -1624,19 +1363,15 @@ export interface GoogleCloudApihubV1LintResponse {
   createTime?: string;
 }
 
-export const GoogleCloudApihubV1LintResponse: Schema.Schema<GoogleCloudApihubV1LintResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(Schema.Array(GoogleCloudApihubV1Issue)),
-      summary: Schema.optional(Schema.Array(GoogleCloudApihubV1SummaryEntry)),
-      state: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      linter: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1LintResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1LintResponse>;
+export const GoogleCloudApihubV1LintResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issues: Schema.optional(Schema.Array(GoogleCloudApihubV1Issue)),
+    summary: Schema.optional(Schema.Array(GoogleCloudApihubV1SummaryEntry)),
+    state: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    linter: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1LintResponse" });
 
 export interface GoogleCloudApihubV1AdditionalSpecContent {
   /** Required. The type of the spec content. */
@@ -1655,18 +1390,14 @@ export interface GoogleCloudApihubV1AdditionalSpecContent {
   labels?: Record<string, string>;
 }
 
-export const GoogleCloudApihubV1AdditionalSpecContent: Schema.Schema<GoogleCloudApihubV1AdditionalSpecContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      specContentType: Schema.optional(Schema.String),
-      specContents: Schema.optional(GoogleCloudApihubV1SpecContents),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1AdditionalSpecContent",
-  }) as any as Schema.Schema<GoogleCloudApihubV1AdditionalSpecContent>;
+export const GoogleCloudApihubV1AdditionalSpecContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    specContentType: Schema.optional(Schema.String),
+    specContents: Schema.optional(GoogleCloudApihubV1SpecContents),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApihubV1AdditionalSpecContent" });
 
 export interface GoogleCloudApihubV1Spec {
   /** Identifier. The name of the spec. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` */
@@ -1703,49 +1434,43 @@ export interface GoogleCloudApihubV1Spec {
   additionalSpecContents?: Array<GoogleCloudApihubV1AdditionalSpecContent>;
 }
 
-export const GoogleCloudApihubV1Spec: Schema.Schema<GoogleCloudApihubV1Spec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      specType: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      contents: Schema.optional(GoogleCloudApihubV1SpecContents),
-      details: Schema.optional(GoogleCloudApihubV1SpecDetails),
-      sourceUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      lintResponse: Schema.optional(GoogleCloudApihubV1LintResponse),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-      documentation: Schema.optional(GoogleCloudApihubV1Documentation),
-      parsingMode: Schema.optional(Schema.String),
-      sourceMetadata: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1SourceMetadata),
-      ),
-      additionalSpecContents: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1AdditionalSpecContent),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Spec",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Spec>;
+export const GoogleCloudApihubV1Spec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    specType: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    contents: Schema.optional(GoogleCloudApihubV1SpecContents),
+    details: Schema.optional(GoogleCloudApihubV1SpecDetails),
+    sourceUri: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    lintResponse: Schema.optional(GoogleCloudApihubV1LintResponse),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+    documentation: Schema.optional(GoogleCloudApihubV1Documentation),
+    parsingMode: Schema.optional(Schema.String),
+    sourceMetadata: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1SourceMetadata),
+    ),
+    additionalSpecContents: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1AdditionalSpecContent),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1Spec" });
 
 export interface GoogleCloudApihubV1FetchAdditionalSpecContentResponse {
   /** The additional spec content. */
   additionalSpecContent?: GoogleCloudApihubV1AdditionalSpecContent;
 }
 
-export const GoogleCloudApihubV1FetchAdditionalSpecContentResponse: Schema.Schema<GoogleCloudApihubV1FetchAdditionalSpecContentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalSpecContent: Schema.optional(
-        GoogleCloudApihubV1AdditionalSpecContent,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1FetchAdditionalSpecContentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    additionalSpecContent: Schema.optional(
+      GoogleCloudApihubV1AdditionalSpecContent,
+    ),
+  }).annotate({
     identifier: "GoogleCloudApihubV1FetchAdditionalSpecContentResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1FetchAdditionalSpecContentResponse>;
+  });
 
 export interface GoogleCloudApihubV1ListSpecsResponse {
   /** The specs corresponding to an API Version. */
@@ -1754,15 +1479,11 @@ export interface GoogleCloudApihubV1ListSpecsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListSpecsResponse: Schema.Schema<GoogleCloudApihubV1ListSpecsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      specs: Schema.optional(Schema.Array(GoogleCloudApihubV1Spec)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListSpecsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListSpecsResponse>;
+export const GoogleCloudApihubV1ListSpecsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    specs: Schema.optional(Schema.Array(GoogleCloudApihubV1Spec)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListSpecsResponse" });
 
 export interface GoogleCloudApihubV1Path {
   /** Optional. Complete path relative to server endpoint. Note: Even though this field is optional, it is required for CreateApiOperation API and we will fail the request if not provided. */
@@ -1771,15 +1492,11 @@ export interface GoogleCloudApihubV1Path {
   description?: string;
 }
 
-export const GoogleCloudApihubV1Path: Schema.Schema<GoogleCloudApihubV1Path> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Path",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Path>;
+export const GoogleCloudApihubV1Path =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Path" });
 
 export interface GoogleCloudApihubV1HttpOperation {
   /** Optional. The path details for the Operation. Note: Even though this field is optional, it is required for CreateApiOperation API and we will fail the request if not provided. */
@@ -1798,15 +1515,11 @@ export interface GoogleCloudApihubV1HttpOperation {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1HttpOperation: Schema.Schema<GoogleCloudApihubV1HttpOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(GoogleCloudApihubV1Path),
-      method: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1HttpOperation",
-  }) as any as Schema.Schema<GoogleCloudApihubV1HttpOperation>;
+export const GoogleCloudApihubV1HttpOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(GoogleCloudApihubV1Path),
+    method: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1HttpOperation" });
 
 export interface GoogleCloudApihubV1ToolAnnotations {
   /** Optional. A human-readable title for the tool (if different from Tool.title). */
@@ -1823,35 +1536,27 @@ export interface GoogleCloudApihubV1ToolAnnotations {
   additionalHints?: Record<string, string>;
 }
 
-export const GoogleCloudApihubV1ToolAnnotations: Schema.Schema<GoogleCloudApihubV1ToolAnnotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      readOnlyHint: Schema.optional(Schema.Boolean),
-      destructiveHint: Schema.optional(Schema.Boolean),
-      idempotentHint: Schema.optional(Schema.Boolean),
-      openWorldHint: Schema.optional(Schema.Boolean),
-      additionalHints: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ToolAnnotations",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ToolAnnotations>;
+export const GoogleCloudApihubV1ToolAnnotations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    readOnlyHint: Schema.optional(Schema.Boolean),
+    destructiveHint: Schema.optional(Schema.Boolean),
+    idempotentHint: Schema.optional(Schema.Boolean),
+    openWorldHint: Schema.optional(Schema.Boolean),
+    additionalHints: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1ToolAnnotations" });
 
 export interface GoogleCloudApihubV1OperationSchema {
   /** The JSON schema. Only valid JSON is accepted but semantic validation of schema is not supported right now. */
   jsonSchema?: Record<string, unknown>;
 }
 
-export const GoogleCloudApihubV1OperationSchema: Schema.Schema<GoogleCloudApihubV1OperationSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jsonSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1OperationSchema",
-  }) as any as Schema.Schema<GoogleCloudApihubV1OperationSchema>;
+export const GoogleCloudApihubV1OperationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jsonSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudApihubV1OperationSchema" });
 
 export interface GoogleCloudApihubV1McpTool {
   /** Required. The name of the tool, unique within its parent scope (version). */
@@ -1868,19 +1573,15 @@ export interface GoogleCloudApihubV1McpTool {
   outputSchema?: GoogleCloudApihubV1OperationSchema;
 }
 
-export const GoogleCloudApihubV1McpTool: Schema.Schema<GoogleCloudApihubV1McpTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      annotations: Schema.optional(GoogleCloudApihubV1ToolAnnotations),
-      inputSchema: Schema.optional(GoogleCloudApihubV1OperationSchema),
-      outputSchema: Schema.optional(GoogleCloudApihubV1OperationSchema),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1McpTool",
-  }) as any as Schema.Schema<GoogleCloudApihubV1McpTool>;
+export const GoogleCloudApihubV1McpTool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    annotations: Schema.optional(GoogleCloudApihubV1ToolAnnotations),
+    inputSchema: Schema.optional(GoogleCloudApihubV1OperationSchema),
+    outputSchema: Schema.optional(GoogleCloudApihubV1OperationSchema),
+  }).annotate({ identifier: "GoogleCloudApihubV1McpTool" });
 
 export interface GoogleCloudApihubV1OperationDetails {
   /** The HTTP Operation. */
@@ -1895,18 +1596,14 @@ export interface GoogleCloudApihubV1OperationDetails {
   deprecated?: boolean;
 }
 
-export const GoogleCloudApihubV1OperationDetails: Schema.Schema<GoogleCloudApihubV1OperationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpOperation: Schema.optional(GoogleCloudApihubV1HttpOperation),
-      mcpTool: Schema.optional(GoogleCloudApihubV1McpTool),
-      description: Schema.optional(Schema.String),
-      documentation: Schema.optional(GoogleCloudApihubV1Documentation),
-      deprecated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1OperationDetails",
-  }) as any as Schema.Schema<GoogleCloudApihubV1OperationDetails>;
+export const GoogleCloudApihubV1OperationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpOperation: Schema.optional(GoogleCloudApihubV1HttpOperation),
+    mcpTool: Schema.optional(GoogleCloudApihubV1McpTool),
+    description: Schema.optional(Schema.String),
+    documentation: Schema.optional(GoogleCloudApihubV1Documentation),
+    deprecated: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApihubV1OperationDetails" });
 
 export interface GoogleCloudApihubV1ApiOperation {
   /** Identifier. The name of the operation. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
@@ -1925,24 +1622,20 @@ export interface GoogleCloudApihubV1ApiOperation {
   sourceMetadata?: Array<GoogleCloudApihubV1SourceMetadata>;
 }
 
-export const GoogleCloudApihubV1ApiOperation: Schema.Schema<GoogleCloudApihubV1ApiOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      spec: Schema.optional(Schema.String),
-      details: Schema.optional(GoogleCloudApihubV1OperationDetails),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-      sourceMetadata: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1SourceMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApiOperation",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApiOperation>;
+export const GoogleCloudApihubV1ApiOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    spec: Schema.optional(Schema.String),
+    details: Schema.optional(GoogleCloudApihubV1OperationDetails),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+    sourceMetadata: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1SourceMetadata),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApiOperation" });
 
 export interface GoogleCloudApihubV1ListApiOperationsResponse {
   /** The operations corresponding to an API version. */
@@ -1951,17 +1644,13 @@ export interface GoogleCloudApihubV1ListApiOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListApiOperationsResponse: Schema.Schema<GoogleCloudApihubV1ListApiOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiOperations: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1ApiOperation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListApiOperationsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListApiOperationsResponse>;
+export const GoogleCloudApihubV1ListApiOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiOperations: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1ApiOperation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListApiOperationsResponse" });
 
 export interface GoogleCloudApihubV1Schema {
   /** Output only. The display name of the schema. This will map to the name of the schema in the spec. */
@@ -1970,15 +1659,11 @@ export interface GoogleCloudApihubV1Schema {
   rawValue?: string;
 }
 
-export const GoogleCloudApihubV1Schema: Schema.Schema<GoogleCloudApihubV1Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      rawValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Schema",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Schema>;
+export const GoogleCloudApihubV1Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    rawValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Schema" });
 
 export interface GoogleCloudApihubV1Definition {
   /** Output only. The value of a schema definition. */
@@ -1997,22 +1682,18 @@ export interface GoogleCloudApihubV1Definition {
   attributes?: Record<string, GoogleCloudApihubV1AttributeValues>;
 }
 
-export const GoogleCloudApihubV1Definition: Schema.Schema<GoogleCloudApihubV1Definition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schema: Schema.optional(GoogleCloudApihubV1Schema),
-      name: Schema.optional(Schema.String),
-      spec: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Definition",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Definition>;
+export const GoogleCloudApihubV1Definition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schema: Schema.optional(GoogleCloudApihubV1Schema),
+    name: Schema.optional(Schema.String),
+    spec: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1Definition" });
 
 export interface GoogleCloudApihubV1Deployment {
   /** Identifier. The name of the deployment. Format: `projects/{project}/locations/{location}/deployments/{deployment}` */
@@ -2053,35 +1734,31 @@ export interface GoogleCloudApihubV1Deployment {
   sourceEnvironment?: string;
 }
 
-export const GoogleCloudApihubV1Deployment: Schema.Schema<GoogleCloudApihubV1Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      documentation: Schema.optional(GoogleCloudApihubV1Documentation),
-      deploymentType: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      resourceUri: Schema.optional(Schema.String),
-      endpoints: Schema.optional(Schema.Array(Schema.String)),
-      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      slo: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      environment: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-      sourceMetadata: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1SourceMetadata),
-      ),
-      managementUrl: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      sourceUri: Schema.optional(GoogleCloudApihubV1AttributeValues),
-      sourceProject: Schema.optional(Schema.String),
-      sourceEnvironment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Deployment",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Deployment>;
+export const GoogleCloudApihubV1Deployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    documentation: Schema.optional(GoogleCloudApihubV1Documentation),
+    deploymentType: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    resourceUri: Schema.optional(Schema.String),
+    endpoints: Schema.optional(Schema.Array(Schema.String)),
+    apiVersions: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    slo: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    environment: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+    sourceMetadata: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1SourceMetadata),
+    ),
+    managementUrl: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    sourceUri: Schema.optional(GoogleCloudApihubV1AttributeValues),
+    sourceProject: Schema.optional(Schema.String),
+    sourceEnvironment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Deployment" });
 
 export interface GoogleCloudApihubV1ListDeploymentsResponse {
   /** The deployment resources present in the API hub. */
@@ -2090,15 +1767,11 @@ export interface GoogleCloudApihubV1ListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDeploymentsResponse: Schema.Schema<GoogleCloudApihubV1ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(Schema.Array(GoogleCloudApihubV1Deployment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListDeploymentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListDeploymentsResponse>;
+export const GoogleCloudApihubV1ListDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(GoogleCloudApihubV1Deployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListDeploymentsResponse" });
 
 export interface GoogleCloudApihubV1Attribute {
   /** Identifier. The name of the attribute in the API Hub. Format: `projects/{project}/locations/{location}/attributes/{attribute}` */
@@ -2146,26 +1819,22 @@ export interface GoogleCloudApihubV1Attribute {
   updateTime?: string;
 }
 
-export const GoogleCloudApihubV1Attribute: Schema.Schema<GoogleCloudApihubV1Attribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      definitionType: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      allowedValues: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1AllowedValue),
-      ),
-      cardinality: Schema.optional(Schema.Number),
-      mandatory: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Attribute",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Attribute>;
+export const GoogleCloudApihubV1Attribute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    definitionType: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+    allowedValues: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1AllowedValue),
+    ),
+    cardinality: Schema.optional(Schema.Number),
+    mandatory: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Attribute" });
 
 export interface GoogleCloudApihubV1ListAttributesResponse {
   /** The list of all attributes. */
@@ -2174,15 +1843,11 @@ export interface GoogleCloudApihubV1ListAttributesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListAttributesResponse: Schema.Schema<GoogleCloudApihubV1ListAttributesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributes: Schema.optional(Schema.Array(GoogleCloudApihubV1Attribute)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListAttributesResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListAttributesResponse>;
+export const GoogleCloudApihubV1ListAttributesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributes: Schema.optional(Schema.Array(GoogleCloudApihubV1Attribute)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListAttributesResponse" });
 
 export interface GoogleCloudApihubV1SearchResourcesRequest {
   /** Required. The free text search query. This query can contain keywords which could be related to any detail of the API-Hub resources such display names, descriptions, attributes etc. */
@@ -2195,17 +1860,13 @@ export interface GoogleCloudApihubV1SearchResourcesRequest {
   pageToken?: string;
 }
 
-export const GoogleCloudApihubV1SearchResourcesRequest: Schema.Schema<GoogleCloudApihubV1SearchResourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SearchResourcesRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SearchResourcesRequest>;
+export const GoogleCloudApihubV1SearchResourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    query: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1SearchResourcesRequest" });
 
 export interface GoogleCloudApihubV1ApiHubResource {
   /** This represents Api resource in search results. Only name, display_name, description and owner fields are populated in search results. */
@@ -2222,33 +1883,25 @@ export interface GoogleCloudApihubV1ApiHubResource {
   version?: GoogleCloudApihubV1Version;
 }
 
-export const GoogleCloudApihubV1ApiHubResource: Schema.Schema<GoogleCloudApihubV1ApiHubResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      api: Schema.optional(GoogleCloudApihubV1Api),
-      operation: Schema.optional(GoogleCloudApihubV1ApiOperation),
-      deployment: Schema.optional(GoogleCloudApihubV1Deployment),
-      spec: Schema.optional(GoogleCloudApihubV1Spec),
-      definition: Schema.optional(GoogleCloudApihubV1Definition),
-      version: Schema.optional(GoogleCloudApihubV1Version),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApiHubResource",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApiHubResource>;
+export const GoogleCloudApihubV1ApiHubResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    api: Schema.optional(GoogleCloudApihubV1Api),
+    operation: Schema.optional(GoogleCloudApihubV1ApiOperation),
+    deployment: Schema.optional(GoogleCloudApihubV1Deployment),
+    spec: Schema.optional(GoogleCloudApihubV1Spec),
+    definition: Schema.optional(GoogleCloudApihubV1Definition),
+    version: Schema.optional(GoogleCloudApihubV1Version),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApiHubResource" });
 
 export interface GoogleCloudApihubV1SearchResult {
   /** This represents the ApiHubResource. Note: Only selected fields of the resources are populated in response. */
   resource?: GoogleCloudApihubV1ApiHubResource;
 }
 
-export const GoogleCloudApihubV1SearchResult: Schema.Schema<GoogleCloudApihubV1SearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(GoogleCloudApihubV1ApiHubResource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SearchResult",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SearchResult>;
+export const GoogleCloudApihubV1SearchResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(GoogleCloudApihubV1ApiHubResource),
+  }).annotate({ identifier: "GoogleCloudApihubV1SearchResult" });
 
 export interface GoogleCloudApihubV1SearchResourcesResponse {
   /** List of search results according to the filter and search query specified. The order of search results represents the ranking. */
@@ -2257,17 +1910,13 @@ export interface GoogleCloudApihubV1SearchResourcesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1SearchResourcesResponse: Schema.Schema<GoogleCloudApihubV1SearchResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchResults: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1SearchResult),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SearchResourcesResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SearchResourcesResponse>;
+export const GoogleCloudApihubV1SearchResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchResults: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1SearchResult),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1SearchResourcesResponse" });
 
 export interface GoogleCloudApihubV1ExternalApi {
   /** Identifier. Format: `projects/{project}/locations/{location}/externalApi/{externalApi}`. */
@@ -2290,24 +1939,20 @@ export interface GoogleCloudApihubV1ExternalApi {
   updateTime?: string;
 }
 
-export const GoogleCloudApihubV1ExternalApi: Schema.Schema<GoogleCloudApihubV1ExternalApi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      endpoints: Schema.optional(Schema.Array(Schema.String)),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      documentation: Schema.optional(GoogleCloudApihubV1Documentation),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ExternalApi",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ExternalApi>;
+export const GoogleCloudApihubV1ExternalApi =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    endpoints: Schema.optional(Schema.Array(Schema.String)),
+    paths: Schema.optional(Schema.Array(Schema.String)),
+    documentation: Schema.optional(GoogleCloudApihubV1Documentation),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ExternalApi" });
 
 export interface GoogleCloudApihubV1ListExternalApisResponse {
   /** The External API resources present in the API hub. */
@@ -2316,98 +1961,80 @@ export interface GoogleCloudApihubV1ListExternalApisResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListExternalApisResponse: Schema.Schema<GoogleCloudApihubV1ListExternalApisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalApis: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1ExternalApi),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListExternalApisResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListExternalApisResponse>;
+export const GoogleCloudApihubV1ListExternalApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalApis: Schema.optional(Schema.Array(GoogleCloudApihubV1ExternalApi)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListExternalApisResponse" });
 
 export interface GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
-  /** The API. */
+  /** Optional. The API. */
   api?: GoogleCloudApihubV1Api;
-  /** The version. */
+  /** Optional. The version. */
   version?: GoogleCloudApihubV1Version;
-  /** The deployment. */
+  /** Optional. The deployment. */
   deployment?: GoogleCloudApihubV1Deployment;
 }
 
-export const GoogleCloudApihubV1FlattenedApiVersionDeploymentView: Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionDeploymentView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      api: Schema.optional(GoogleCloudApihubV1Api),
-      version: Schema.optional(GoogleCloudApihubV1Version),
-      deployment: Schema.optional(GoogleCloudApihubV1Deployment),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1FlattenedApiVersionDeploymentView =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    api: Schema.optional(GoogleCloudApihubV1Api),
+    version: Schema.optional(GoogleCloudApihubV1Version),
+    deployment: Schema.optional(GoogleCloudApihubV1Deployment),
+  }).annotate({
     identifier: "GoogleCloudApihubV1FlattenedApiVersionDeploymentView",
-  }) as any as Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionDeploymentView>;
+  });
 
 export interface GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView {
-  /** The API. */
+  /** Optional. The API. */
   api?: GoogleCloudApihubV1Api;
-  /** The version. */
+  /** Optional. The version. */
   version?: GoogleCloudApihubV1Version;
-  /** The API operation. */
+  /** Optional. The API operation. */
   apiOperation?: GoogleCloudApihubV1ApiOperation;
-  /** The deployment. */
+  /** Optional. The deployment. */
   deployment?: GoogleCloudApihubV1Deployment;
 }
 
-export const GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView: Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      api: Schema.optional(GoogleCloudApihubV1Api),
-      version: Schema.optional(GoogleCloudApihubV1Version),
-      apiOperation: Schema.optional(GoogleCloudApihubV1ApiOperation),
-      deployment: Schema.optional(GoogleCloudApihubV1Deployment),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    api: Schema.optional(GoogleCloudApihubV1Api),
+    version: Schema.optional(GoogleCloudApihubV1Version),
+    apiOperation: Schema.optional(GoogleCloudApihubV1ApiOperation),
+    deployment: Schema.optional(GoogleCloudApihubV1Deployment),
+  }).annotate({
     identifier: "GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView",
-  }) as any as Schema.Schema<GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView>;
+  });
 
 export interface GoogleCloudApihubV1ApiView {
-  /** Output only. MCP server view. */
+  /** MCP server view. */
   mcpServerView?: GoogleCloudApihubV1FlattenedApiVersionDeploymentView;
-  /** Output only. MCP tools view. */
+  /** MCP tools view. */
   mcpToolView?: GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView;
 }
 
-export const GoogleCloudApihubV1ApiView: Schema.Schema<GoogleCloudApihubV1ApiView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mcpServerView: Schema.optional(
-        GoogleCloudApihubV1FlattenedApiVersionDeploymentView,
-      ),
-      mcpToolView: Schema.optional(
-        GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApiView",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApiView>;
+export const GoogleCloudApihubV1ApiView =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mcpServerView: Schema.optional(
+      GoogleCloudApihubV1FlattenedApiVersionDeploymentView,
+    ),
+    mcpToolView: Schema.optional(
+      GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView,
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApiView" });
 
 export interface GoogleCloudApihubV1RetrieveApiViewsResponse {
-  /** The list of API views. */
+  /** Output only. The list of API views. */
   apiViews?: Array<GoogleCloudApihubV1ApiView>;
   /** Next page token. */
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1RetrieveApiViewsResponse: Schema.Schema<GoogleCloudApihubV1RetrieveApiViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiViews: Schema.optional(Schema.Array(GoogleCloudApihubV1ApiView)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1RetrieveApiViewsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1RetrieveApiViewsResponse>;
+export const GoogleCloudApihubV1RetrieveApiViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiViews: Schema.optional(Schema.Array(GoogleCloudApihubV1ApiView)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1RetrieveApiViewsResponse" });
 
 export interface GoogleCloudApihubV1DependencyEntityReference {
   /** The resource name of an operation in the API Hub. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
@@ -2418,16 +2045,12 @@ export interface GoogleCloudApihubV1DependencyEntityReference {
   displayName?: string;
 }
 
-export const GoogleCloudApihubV1DependencyEntityReference: Schema.Schema<GoogleCloudApihubV1DependencyEntityReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationResourceName: Schema.optional(Schema.String),
-      externalApiResourceName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1DependencyEntityReference",
-  }) as any as Schema.Schema<GoogleCloudApihubV1DependencyEntityReference>;
+export const GoogleCloudApihubV1DependencyEntityReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationResourceName: Schema.optional(Schema.String),
+    externalApiResourceName: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1DependencyEntityReference" });
 
 export interface GoogleCloudApihubV1DependencyErrorDetail {
   /** Optional. Error in the dependency. */
@@ -2440,15 +2063,11 @@ export interface GoogleCloudApihubV1DependencyErrorDetail {
   errorTime?: string;
 }
 
-export const GoogleCloudApihubV1DependencyErrorDetail: Schema.Schema<GoogleCloudApihubV1DependencyErrorDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Schema.String),
-      errorTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1DependencyErrorDetail",
-  }) as any as Schema.Schema<GoogleCloudApihubV1DependencyErrorDetail>;
+export const GoogleCloudApihubV1DependencyErrorDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Schema.String),
+    errorTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1DependencyErrorDetail" });
 
 export interface GoogleCloudApihubV1Dependency {
   /** Identifier. The name of the dependency in the API Hub. Format: `projects/{project}/locations/{location}/dependencies/{dependency}` */
@@ -2473,25 +2092,21 @@ export interface GoogleCloudApihubV1Dependency {
   attributes?: Record<string, GoogleCloudApihubV1AttributeValues>;
 }
 
-export const GoogleCloudApihubV1Dependency: Schema.Schema<GoogleCloudApihubV1Dependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      consumer: Schema.optional(GoogleCloudApihubV1DependencyEntityReference),
-      supplier: Schema.optional(GoogleCloudApihubV1DependencyEntityReference),
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      discoveryMode: Schema.optional(Schema.String),
-      errorDetail: Schema.optional(GoogleCloudApihubV1DependencyErrorDetail),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Dependency",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Dependency>;
+export const GoogleCloudApihubV1Dependency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    consumer: Schema.optional(GoogleCloudApihubV1DependencyEntityReference),
+    supplier: Schema.optional(GoogleCloudApihubV1DependencyEntityReference),
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    discoveryMode: Schema.optional(Schema.String),
+    errorDetail: Schema.optional(GoogleCloudApihubV1DependencyErrorDetail),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    attributes: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1AttributeValues),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1Dependency" });
 
 export interface GoogleCloudApihubV1ListDependenciesResponse {
   /** The dependency resources present in the API hub. */
@@ -2500,17 +2115,11 @@ export interface GoogleCloudApihubV1ListDependenciesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDependenciesResponse: Schema.Schema<GoogleCloudApihubV1ListDependenciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dependencies: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1Dependency),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListDependenciesResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListDependenciesResponse>;
+export const GoogleCloudApihubV1ListDependenciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dependencies: Schema.optional(Schema.Array(GoogleCloudApihubV1Dependency)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListDependenciesResponse" });
 
 export interface GoogleCloudApihubV1SpecMetadata {
   /** Required. The spec resource to be pushed to Hub's collect layer. The ID of the spec will be generated by Hub. */
@@ -2523,17 +2132,13 @@ export interface GoogleCloudApihubV1SpecMetadata {
   originalUpdateTime?: string;
 }
 
-export const GoogleCloudApihubV1SpecMetadata: Schema.Schema<GoogleCloudApihubV1SpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spec: Schema.optional(GoogleCloudApihubV1Spec),
-      originalId: Schema.optional(Schema.String),
-      originalCreateTime: Schema.optional(Schema.String),
-      originalUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1SpecMetadata",
-  }) as any as Schema.Schema<GoogleCloudApihubV1SpecMetadata>;
+export const GoogleCloudApihubV1SpecMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spec: Schema.optional(GoogleCloudApihubV1Spec),
+    originalId: Schema.optional(Schema.String),
+    originalCreateTime: Schema.optional(Schema.String),
+    originalUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1SpecMetadata" });
 
 export interface GoogleCloudApihubV1DeploymentMetadata {
   /** Required. The deployment resource to be pushed to Hub's collect layer. The ID of the deployment will be generated by Hub. */
@@ -2546,17 +2151,13 @@ export interface GoogleCloudApihubV1DeploymentMetadata {
   originalUpdateTime?: string;
 }
 
-export const GoogleCloudApihubV1DeploymentMetadata: Schema.Schema<GoogleCloudApihubV1DeploymentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployment: Schema.optional(GoogleCloudApihubV1Deployment),
-      originalId: Schema.optional(Schema.String),
-      originalCreateTime: Schema.optional(Schema.String),
-      originalUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1DeploymentMetadata",
-  }) as any as Schema.Schema<GoogleCloudApihubV1DeploymentMetadata>;
+export const GoogleCloudApihubV1DeploymentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployment: Schema.optional(GoogleCloudApihubV1Deployment),
+    originalId: Schema.optional(Schema.String),
+    originalCreateTime: Schema.optional(Schema.String),
+    originalUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1DeploymentMetadata" });
 
 export interface GoogleCloudApihubV1VersionMetadata {
   /** Required. Represents a version of the API resource in API hub. The ID of the version will be generated by Hub. */
@@ -2573,21 +2174,17 @@ export interface GoogleCloudApihubV1VersionMetadata {
   originalUpdateTime?: string;
 }
 
-export const GoogleCloudApihubV1VersionMetadata: Schema.Schema<GoogleCloudApihubV1VersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(GoogleCloudApihubV1Version),
-      specs: Schema.optional(Schema.Array(GoogleCloudApihubV1SpecMetadata)),
-      deployments: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1DeploymentMetadata),
-      ),
-      originalId: Schema.optional(Schema.String),
-      originalCreateTime: Schema.optional(Schema.String),
-      originalUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1VersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudApihubV1VersionMetadata>;
+export const GoogleCloudApihubV1VersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(GoogleCloudApihubV1Version),
+    specs: Schema.optional(Schema.Array(GoogleCloudApihubV1SpecMetadata)),
+    deployments: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1DeploymentMetadata),
+    ),
+    originalId: Schema.optional(Schema.String),
+    originalCreateTime: Schema.optional(Schema.String),
+    originalUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1VersionMetadata" });
 
 export interface GoogleCloudApihubV1APIMetadata {
   /** Required. The API resource to be pushed to Hub's collect layer. The ID of the API resource will be generated by Hub to ensure uniqueness across all APIs across systems. */
@@ -2602,50 +2199,34 @@ export interface GoogleCloudApihubV1APIMetadata {
   originalUpdateTime?: string;
 }
 
-export const GoogleCloudApihubV1APIMetadata: Schema.Schema<GoogleCloudApihubV1APIMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      api: Schema.optional(GoogleCloudApihubV1Api),
-      versions: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1VersionMetadata),
-      ),
-      originalId: Schema.optional(Schema.String),
-      originalCreateTime: Schema.optional(Schema.String),
-      originalUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1APIMetadata",
-  }) as any as Schema.Schema<GoogleCloudApihubV1APIMetadata>;
+export const GoogleCloudApihubV1APIMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    api: Schema.optional(GoogleCloudApihubV1Api),
+    versions: Schema.optional(Schema.Array(GoogleCloudApihubV1VersionMetadata)),
+    originalId: Schema.optional(Schema.String),
+    originalCreateTime: Schema.optional(Schema.String),
+    originalUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1APIMetadata" });
 
 export interface GoogleCloudApihubV1ApiMetadataList {
   /** Required. The list of API metadata. */
   apiMetadata?: Array<GoogleCloudApihubV1APIMetadata>;
 }
 
-export const GoogleCloudApihubV1ApiMetadataList: Schema.Schema<GoogleCloudApihubV1ApiMetadataList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiMetadata: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1APIMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApiMetadataList",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApiMetadataList>;
+export const GoogleCloudApihubV1ApiMetadataList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiMetadata: Schema.optional(Schema.Array(GoogleCloudApihubV1APIMetadata)),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApiMetadataList" });
 
 export interface GoogleCloudApihubV1ApiData {
   /** Optional. The list of API metadata. */
   apiMetadataList?: GoogleCloudApihubV1ApiMetadataList;
 }
 
-export const GoogleCloudApihubV1ApiData: Schema.Schema<GoogleCloudApihubV1ApiData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiMetadataList: Schema.optional(GoogleCloudApihubV1ApiMetadataList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApiData",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApiData>;
+export const GoogleCloudApihubV1ApiData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiMetadataList: Schema.optional(GoogleCloudApihubV1ApiMetadataList),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApiData" });
 
 export interface GoogleCloudApihubV1CollectApiDataRequest {
   /** Required. The type of collection. Applies to all entries in api_data. */
@@ -2662,17 +2243,13 @@ export interface GoogleCloudApihubV1CollectApiDataRequest {
   apiData?: GoogleCloudApihubV1ApiData;
 }
 
-export const GoogleCloudApihubV1CollectApiDataRequest: Schema.Schema<GoogleCloudApihubV1CollectApiDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionType: Schema.optional(Schema.String),
-      pluginInstance: Schema.optional(Schema.String),
-      actionId: Schema.optional(Schema.String),
-      apiData: Schema.optional(GoogleCloudApihubV1ApiData),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1CollectApiDataRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1CollectApiDataRequest>;
+export const GoogleCloudApihubV1CollectApiDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectionType: Schema.optional(Schema.String),
+    pluginInstance: Schema.optional(Schema.String),
+    actionId: Schema.optional(Schema.String),
+    apiData: Schema.optional(GoogleCloudApihubV1ApiData),
+  }).annotate({ identifier: "GoogleCloudApihubV1CollectApiDataRequest" });
 
 export interface GoogleCloudApihubV1ApplicationIntegrationEndpointDetails {
   /** Required. The endpoint URI should be a valid REST URI for triggering an Application Integration. Format: `https://integrations.googleapis.com/v1/{name=projects/* /locations/* /integrations/*}:execute` or `https://{location}-integrations.googleapis.com/v1/{name=projects/* /locations/* /integrations/*}:execute` */
@@ -2681,31 +2258,25 @@ export interface GoogleCloudApihubV1ApplicationIntegrationEndpointDetails {
   triggerId?: string;
 }
 
-export const GoogleCloudApihubV1ApplicationIntegrationEndpointDetails: Schema.Schema<GoogleCloudApihubV1ApplicationIntegrationEndpointDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      triggerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1ApplicationIntegrationEndpointDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    triggerId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1ApplicationIntegrationEndpointDetails",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApplicationIntegrationEndpointDetails>;
+  });
 
 export interface GoogleCloudApihubV1Endpoint {
   /** Required. The details of the Application Integration endpoint to be triggered for curation. */
   applicationIntegrationEndpointDetails?: GoogleCloudApihubV1ApplicationIntegrationEndpointDetails;
 }
 
-export const GoogleCloudApihubV1Endpoint: Schema.Schema<GoogleCloudApihubV1Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationIntegrationEndpointDetails: Schema.optional(
-        GoogleCloudApihubV1ApplicationIntegrationEndpointDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Endpoint",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Endpoint>;
+export const GoogleCloudApihubV1Endpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationIntegrationEndpointDetails: Schema.optional(
+      GoogleCloudApihubV1ApplicationIntegrationEndpointDetails,
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1Endpoint" });
 
 export interface GoogleCloudApihubV1PluginInstanceActionID {
   /** Output only. Plugin instance that is using the curation. Format is `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
@@ -2714,15 +2285,11 @@ export interface GoogleCloudApihubV1PluginInstanceActionID {
   actionId?: string;
 }
 
-export const GoogleCloudApihubV1PluginInstanceActionID: Schema.Schema<GoogleCloudApihubV1PluginInstanceActionID> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pluginInstance: Schema.optional(Schema.String),
-      actionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1PluginInstanceActionID",
-  }) as any as Schema.Schema<GoogleCloudApihubV1PluginInstanceActionID>;
+export const GoogleCloudApihubV1PluginInstanceActionID =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pluginInstance: Schema.optional(Schema.String),
+    actionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1PluginInstanceActionID" });
 
 export interface GoogleCloudApihubV1Curation {
   /** Identifier. The name of the curation. Format: `projects/{project}/locations/{location}/curations/{curation}` */
@@ -2755,25 +2322,21 @@ export interface GoogleCloudApihubV1Curation {
   updateTime?: string;
 }
 
-export const GoogleCloudApihubV1Curation: Schema.Schema<GoogleCloudApihubV1Curation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      endpoint: Schema.optional(GoogleCloudApihubV1Endpoint),
-      pluginInstanceActions: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1PluginInstanceActionID),
-      ),
-      lastExecutionState: Schema.optional(Schema.String),
-      lastExecutionErrorCode: Schema.optional(Schema.String),
-      lastExecutionErrorMessage: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Curation",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Curation>;
+export const GoogleCloudApihubV1Curation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    endpoint: Schema.optional(GoogleCloudApihubV1Endpoint),
+    pluginInstanceActions: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1PluginInstanceActionID),
+    ),
+    lastExecutionState: Schema.optional(Schema.String),
+    lastExecutionErrorCode: Schema.optional(Schema.String),
+    lastExecutionErrorMessage: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Curation" });
 
 export interface GoogleCloudApihubV1ListCurationsResponse {
   /** The curation resources present in the API hub. */
@@ -2782,15 +2345,11 @@ export interface GoogleCloudApihubV1ListCurationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListCurationsResponse: Schema.Schema<GoogleCloudApihubV1ListCurationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      curations: Schema.optional(Schema.Array(GoogleCloudApihubV1Curation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ListCurationsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListCurationsResponse>;
+export const GoogleCloudApihubV1ListCurationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    curations: Schema.optional(Schema.Array(GoogleCloudApihubV1Curation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ListCurationsResponse" });
 
 export interface GoogleCloudApihubV1DiscoveredApiObservation {
   /** Identifier. The name of the discovered API Observation. Format: `projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}` */
@@ -2825,27 +2384,23 @@ export interface GoogleCloudApihubV1DiscoveredApiObservation {
   sourceMetadata?: GoogleCloudApihubV1SourceMetadata;
 }
 
-export const GoogleCloudApihubV1DiscoveredApiObservation: Schema.Schema<GoogleCloudApihubV1DiscoveredApiObservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      style: Schema.optional(Schema.String),
-      serverIps: Schema.optional(Schema.Array(Schema.String)),
-      hostname: Schema.optional(Schema.String),
-      lastEventDetectedTime: Schema.optional(Schema.String),
-      sourceLocations: Schema.optional(Schema.Array(Schema.String)),
-      apiOperationCount: Schema.optional(Schema.String),
-      origin: Schema.optional(Schema.String),
-      sourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      knownOperationsCount: Schema.optional(Schema.String),
-      unknownOperationsCount: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      sourceMetadata: Schema.optional(GoogleCloudApihubV1SourceMetadata),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1DiscoveredApiObservation",
-  }) as any as Schema.Schema<GoogleCloudApihubV1DiscoveredApiObservation>;
+export const GoogleCloudApihubV1DiscoveredApiObservation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    style: Schema.optional(Schema.String),
+    serverIps: Schema.optional(Schema.Array(Schema.String)),
+    hostname: Schema.optional(Schema.String),
+    lastEventDetectedTime: Schema.optional(Schema.String),
+    sourceLocations: Schema.optional(Schema.Array(Schema.String)),
+    apiOperationCount: Schema.optional(Schema.String),
+    origin: Schema.optional(Schema.String),
+    sourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    knownOperationsCount: Schema.optional(Schema.String),
+    unknownOperationsCount: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    sourceMetadata: Schema.optional(GoogleCloudApihubV1SourceMetadata),
+  }).annotate({ identifier: "GoogleCloudApihubV1DiscoveredApiObservation" });
 
 export interface GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   /** The DiscoveredApiObservation from the specified project and location. */
@@ -2854,17 +2409,15 @@ export interface GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDiscoveredApiObservationsResponse: Schema.Schema<GoogleCloudApihubV1ListDiscoveredApiObservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveredApiObservations: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1DiscoveredApiObservation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1ListDiscoveredApiObservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveredApiObservations: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1DiscoveredApiObservation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1ListDiscoveredApiObservationsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListDiscoveredApiObservationsResponse>;
+  });
 
 export interface GoogleCloudApihubV1PathParam {
   /** Optional. Segment location in the path, 1-indexed */
@@ -2880,15 +2433,11 @@ export interface GoogleCloudApihubV1PathParam {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1PathParam: Schema.Schema<GoogleCloudApihubV1PathParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      position: Schema.optional(Schema.Number),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1PathParam",
-  }) as any as Schema.Schema<GoogleCloudApihubV1PathParam>;
+export const GoogleCloudApihubV1PathParam =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    position: Schema.optional(Schema.Number),
+    dataType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1PathParam" });
 
 export interface GoogleCloudApihubV1QueryParam {
   /** Required. Name of query param */
@@ -2906,16 +2455,12 @@ export interface GoogleCloudApihubV1QueryParam {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1QueryParam: Schema.Schema<GoogleCloudApihubV1QueryParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1QueryParam",
-  }) as any as Schema.Schema<GoogleCloudApihubV1QueryParam>;
+export const GoogleCloudApihubV1QueryParam =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1QueryParam" });
 
 export interface GoogleCloudApihubV1Header {
   /** Header name. */
@@ -2933,32 +2478,24 @@ export interface GoogleCloudApihubV1Header {
     | (string & {});
 }
 
-export const GoogleCloudApihubV1Header: Schema.Schema<GoogleCloudApihubV1Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Header",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Header>;
+export const GoogleCloudApihubV1Header =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1Header" });
 
 export interface GoogleCloudApihubV1HttpRequest {
   /** Optional. Unordered map from header name to header metadata */
   headers?: Record<string, GoogleCloudApihubV1Header>;
 }
 
-export const GoogleCloudApihubV1HttpRequest: Schema.Schema<GoogleCloudApihubV1HttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1Header),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1HttpRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1HttpRequest>;
+export const GoogleCloudApihubV1HttpRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headers: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1Header),
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1HttpRequest" });
 
 export interface GoogleCloudApihubV1HttpResponse {
   /** Optional. Unordered map from header name to header metadata */
@@ -2967,19 +2504,13 @@ export interface GoogleCloudApihubV1HttpResponse {
   responseCodes?: Record<string, string>;
 }
 
-export const GoogleCloudApihubV1HttpResponse: Schema.Schema<GoogleCloudApihubV1HttpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1Header),
-      ),
-      responseCodes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1HttpResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1HttpResponse>;
+export const GoogleCloudApihubV1HttpResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headers: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1Header),
+    ),
+    responseCodes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApihubV1HttpResponse" });
 
 export interface GoogleCloudApihubV1HttpOperationDetails {
   /** Required. An HTTP Operation. */
@@ -2994,34 +2525,26 @@ export interface GoogleCloudApihubV1HttpOperationDetails {
   response?: GoogleCloudApihubV1HttpResponse;
 }
 
-export const GoogleCloudApihubV1HttpOperationDetails: Schema.Schema<GoogleCloudApihubV1HttpOperationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpOperation: Schema.optional(GoogleCloudApihubV1HttpOperation),
-      pathParams: Schema.optional(Schema.Array(GoogleCloudApihubV1PathParam)),
-      queryParams: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudApihubV1QueryParam),
-      ),
-      request: Schema.optional(GoogleCloudApihubV1HttpRequest),
-      response: Schema.optional(GoogleCloudApihubV1HttpResponse),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1HttpOperationDetails",
-  }) as any as Schema.Schema<GoogleCloudApihubV1HttpOperationDetails>;
+export const GoogleCloudApihubV1HttpOperationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpOperation: Schema.optional(GoogleCloudApihubV1HttpOperation),
+    pathParams: Schema.optional(Schema.Array(GoogleCloudApihubV1PathParam)),
+    queryParams: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudApihubV1QueryParam),
+    ),
+    request: Schema.optional(GoogleCloudApihubV1HttpRequest),
+    response: Schema.optional(GoogleCloudApihubV1HttpResponse),
+  }).annotate({ identifier: "GoogleCloudApihubV1HttpOperationDetails" });
 
 export interface GoogleCloudApihubV1MatchResult {
   /** Output only. The name of the matched API Operation. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
   name?: string;
 }
 
-export const GoogleCloudApihubV1MatchResult: Schema.Schema<GoogleCloudApihubV1MatchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1MatchResult",
-  }) as any as Schema.Schema<GoogleCloudApihubV1MatchResult>;
+export const GoogleCloudApihubV1MatchResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1MatchResult" });
 
 export interface GoogleCloudApihubV1DiscoveredApiOperation {
   /** Optional. An HTTP Operation. */
@@ -3050,25 +2573,19 @@ export interface GoogleCloudApihubV1DiscoveredApiOperation {
   updateTime?: string;
 }
 
-export const GoogleCloudApihubV1DiscoveredApiOperation: Schema.Schema<GoogleCloudApihubV1DiscoveredApiOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpOperation: Schema.optional(GoogleCloudApihubV1HttpOperationDetails),
-      name: Schema.optional(Schema.String),
-      firstSeenTime: Schema.optional(Schema.String),
-      lastSeenTime: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      classification: Schema.optional(Schema.String),
-      matchResults: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1MatchResult),
-      ),
-      sourceMetadata: Schema.optional(GoogleCloudApihubV1SourceMetadata),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1DiscoveredApiOperation",
-  }) as any as Schema.Schema<GoogleCloudApihubV1DiscoveredApiOperation>;
+export const GoogleCloudApihubV1DiscoveredApiOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpOperation: Schema.optional(GoogleCloudApihubV1HttpOperationDetails),
+    name: Schema.optional(Schema.String),
+    firstSeenTime: Schema.optional(Schema.String),
+    lastSeenTime: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+    classification: Schema.optional(Schema.String),
+    matchResults: Schema.optional(Schema.Array(GoogleCloudApihubV1MatchResult)),
+    sourceMetadata: Schema.optional(GoogleCloudApihubV1SourceMetadata),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1DiscoveredApiOperation" });
 
 export interface GoogleCloudApihubV1ListDiscoveredApiOperationsResponse {
   /** The DiscoveredApiOperations from the specified project, location and DiscoveredApiObservation. */
@@ -3077,17 +2594,15 @@ export interface GoogleCloudApihubV1ListDiscoveredApiOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListDiscoveredApiOperationsResponse: Schema.Schema<GoogleCloudApihubV1ListDiscoveredApiOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveredApiOperations: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1DiscoveredApiOperation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1ListDiscoveredApiOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveredApiOperations: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1DiscoveredApiOperation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1ListDiscoveredApiOperationsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListDiscoveredApiOperationsResponse>;
+  });
 
 export interface GoogleCloudApihubV1HostProjectRegistration {
   /** Identifier. The name of the host project registration. Format: "projects/{project}/locations/{location}/hostProjectRegistrations/{host_project_registration}". */
@@ -3098,16 +2613,12 @@ export interface GoogleCloudApihubV1HostProjectRegistration {
   createTime?: string;
 }
 
-export const GoogleCloudApihubV1HostProjectRegistration: Schema.Schema<GoogleCloudApihubV1HostProjectRegistration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      gcpProject: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1HostProjectRegistration",
-  }) as any as Schema.Schema<GoogleCloudApihubV1HostProjectRegistration>;
+export const GoogleCloudApihubV1HostProjectRegistration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    gcpProject: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1HostProjectRegistration" });
 
 export interface GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   /** The list of host project registrations. */
@@ -3116,17 +2627,15 @@ export interface GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListHostProjectRegistrationsResponse: Schema.Schema<GoogleCloudApihubV1ListHostProjectRegistrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostProjectRegistrations: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1HostProjectRegistration),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1ListHostProjectRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostProjectRegistrations: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1HostProjectRegistration),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1ListHostProjectRegistrationsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListHostProjectRegistrationsResponse>;
+  });
 
 export interface GoogleCloudApihubV1StyleGuideContents {
   /** Required. The contents of the style guide. */
@@ -3135,15 +2644,11 @@ export interface GoogleCloudApihubV1StyleGuideContents {
   mimeType?: string;
 }
 
-export const GoogleCloudApihubV1StyleGuideContents: Schema.Schema<GoogleCloudApihubV1StyleGuideContents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1StyleGuideContents",
-  }) as any as Schema.Schema<GoogleCloudApihubV1StyleGuideContents>;
+export const GoogleCloudApihubV1StyleGuideContents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contents: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1StyleGuideContents" });
 
 export interface GoogleCloudApihubV1StyleGuide {
   /** Identifier. The name of the style guide. Format: `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide` */
@@ -3154,23 +2659,29 @@ export interface GoogleCloudApihubV1StyleGuide {
   contents?: GoogleCloudApihubV1StyleGuideContents;
 }
 
-export const GoogleCloudApihubV1StyleGuide: Schema.Schema<GoogleCloudApihubV1StyleGuide> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      linter: Schema.optional(Schema.String),
-      contents: Schema.optional(GoogleCloudApihubV1StyleGuideContents),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1StyleGuide",
-  }) as any as Schema.Schema<GoogleCloudApihubV1StyleGuide>;
+export const GoogleCloudApihubV1StyleGuide =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    linter: Schema.optional(Schema.String),
+    contents: Schema.optional(GoogleCloudApihubV1StyleGuideContents),
+  }).annotate({ identifier: "GoogleCloudApihubV1StyleGuide" });
 
 export interface GoogleCloudApihubV1LintSpecRequest {}
 
-export const GoogleCloudApihubV1LintSpecRequest: Schema.Schema<GoogleCloudApihubV1LintSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApihubV1LintSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApihubV1LintSpecRequest",
-  }) as any as Schema.Schema<GoogleCloudApihubV1LintSpecRequest>;
+  });
+
+export interface GoogleCloudApihubV1AgentRegistrySyncConfig {
+  /** Optional. If true, the MCP data sync to the Agent Registry will be disabled. The default value is false. */
+  disabled?: boolean;
+}
+
+export const GoogleCloudApihubV1AgentRegistrySyncConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApihubV1AgentRegistrySyncConfig" });
 
 export interface GoogleCloudApihubV1Config {
   /** Optional. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the location must match the instance location. If the CMEK is not provided, a GMEK will be created for the instance. */
@@ -3185,19 +2696,20 @@ export interface GoogleCloudApihubV1Config {
     | "GMEK"
     | "CMEK"
     | (string & {});
+  /** Optional. The configuration for syncing MCP data in the API Hub instance to the Agent Registry. */
+  agentRegistrySyncConfig?: GoogleCloudApihubV1AgentRegistrySyncConfig;
 }
 
-export const GoogleCloudApihubV1Config: Schema.Schema<GoogleCloudApihubV1Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cmekKeyName: Schema.optional(Schema.String),
-      disableSearch: Schema.optional(Schema.Boolean),
-      vertexLocation: Schema.optional(Schema.String),
-      encryptionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1Config",
-  }) as any as Schema.Schema<GoogleCloudApihubV1Config>;
+export const GoogleCloudApihubV1Config =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cmekKeyName: Schema.optional(Schema.String),
+    disableSearch: Schema.optional(Schema.Boolean),
+    vertexLocation: Schema.optional(Schema.String),
+    encryptionType: Schema.optional(Schema.String),
+    agentRegistrySyncConfig: Schema.optional(
+      GoogleCloudApihubV1AgentRegistrySyncConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudApihubV1Config" });
 
 export interface GoogleCloudApihubV1ApiHubInstance {
   /** Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`. */
@@ -3226,35 +2738,29 @@ export interface GoogleCloudApihubV1ApiHubInstance {
   description?: string;
 }
 
-export const GoogleCloudApihubV1ApiHubInstance: Schema.Schema<GoogleCloudApihubV1ApiHubInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      config: Schema.optional(GoogleCloudApihubV1Config),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1ApiHubInstance",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ApiHubInstance>;
+export const GoogleCloudApihubV1ApiHubInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    config: Schema.optional(GoogleCloudApihubV1Config),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1ApiHubInstance" });
 
 export interface GoogleCloudApihubV1LookupApiHubInstanceResponse {
   /** API Hub instance for a project if it exists, empty otherwise. */
   apiHubInstance?: GoogleCloudApihubV1ApiHubInstance;
 }
 
-export const GoogleCloudApihubV1LookupApiHubInstanceResponse: Schema.Schema<GoogleCloudApihubV1LookupApiHubInstanceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiHubInstance: Schema.optional(GoogleCloudApihubV1ApiHubInstance),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1LookupApiHubInstanceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiHubInstance: Schema.optional(GoogleCloudApihubV1ApiHubInstance),
+  }).annotate({
     identifier: "GoogleCloudApihubV1LookupApiHubInstanceResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1LookupApiHubInstanceResponse>;
+  });
 
 export interface GoogleCloudApihubV1RuntimeProjectAttachment {
   /** Identifier. The resource name of a runtime project attachment. Format: "projects/{project}/locations/{location}/runtimeProjectAttachments/{runtime_project_attachment}". */
@@ -3265,16 +2771,12 @@ export interface GoogleCloudApihubV1RuntimeProjectAttachment {
   createTime?: string;
 }
 
-export const GoogleCloudApihubV1RuntimeProjectAttachment: Schema.Schema<GoogleCloudApihubV1RuntimeProjectAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      runtimeProject: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1RuntimeProjectAttachment",
-  }) as any as Schema.Schema<GoogleCloudApihubV1RuntimeProjectAttachment>;
+export const GoogleCloudApihubV1RuntimeProjectAttachment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    runtimeProject: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1RuntimeProjectAttachment" });
 
 export interface GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
   /** List of runtime project attachments. */
@@ -3283,33 +2785,29 @@ export interface GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse: Schema.Schema<GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimeProjectAttachments: Schema.optional(
-        Schema.Array(GoogleCloudApihubV1RuntimeProjectAttachment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runtimeProjectAttachments: Schema.optional(
+      Schema.Array(GoogleCloudApihubV1RuntimeProjectAttachment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse>;
+  });
 
 export interface GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse {
   /** Runtime project attachment for a project if exists, empty otherwise. */
   runtimeProjectAttachment?: GoogleCloudApihubV1RuntimeProjectAttachment;
 }
 
-export const GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse: Schema.Schema<GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimeProjectAttachment: Schema.optional(
-        GoogleCloudApihubV1RuntimeProjectAttachment,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runtimeProjectAttachment: Schema.optional(
+      GoogleCloudApihubV1RuntimeProjectAttachment,
+    ),
+  }).annotate({
     identifier: "GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse",
-  }) as any as Schema.Schema<GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse>;
+  });
 
 export interface GoogleCloudLocationLocation {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -3324,18 +2822,14 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationLocation",
-  }) as any as Schema.Schema<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -3344,15 +2838,11 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationListLocationsResponse",
-  }) as any as Schema.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
 
 export interface GoogleCloudCommonOperationMetadata {
   /** Output only. The time the operation was created. */
@@ -3371,20 +2861,16 @@ export interface GoogleCloudCommonOperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudCommonOperationMetadata: Schema.Schema<GoogleCloudCommonOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudCommonOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudCommonOperationMetadata>;
+export const GoogleCloudCommonOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudCommonOperationMetadata" });
 
 export interface GoogleCloudApihubV1OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -3403,20 +2889,16 @@ export interface GoogleCloudApihubV1OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudApihubV1OperationMetadata: Schema.Schema<GoogleCloudApihubV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApihubV1OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudApihubV1OperationMetadata>;
+export const GoogleCloudApihubV1OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApihubV1OperationMetadata" });
 
 // ==========================================================================
 // Operations
@@ -3629,7 +3111,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -7064,6 +6546,48 @@ export const getProjectsLocationsApiHubInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApiHubInstancesRequest,
   output: GetProjectsLocationsApiHubInstancesResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsApiHubInstancesRequest {
+  /** Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`. */
+  name: string;
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+  /** Request body */
+  body?: GoogleCloudApihubV1ApiHubInstance;
+}
+
+export const PatchProjectsLocationsApiHubInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(GoogleCloudApihubV1ApiHubInstance).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances/{apiHubInstancesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsApiHubInstancesRequest>;
+
+export type PatchProjectsLocationsApiHubInstancesResponse =
+  GoogleLongrunningOperation;
+export const PatchProjectsLocationsApiHubInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+
+export type PatchProjectsLocationsApiHubInstancesError = DefaultErrors;
+
+/** Update an Api Hub instance. The following fields in the ApiHubInstance can be updated: * disable_search * vertex_location * agent_registry_sync_config The update_mask should be used to specify the fields being updated. */
+export const patchProjectsLocationsApiHubInstances: API.OperationMethod<
+  PatchProjectsLocationsApiHubInstancesRequest,
+  PatchProjectsLocationsApiHubInstancesResponse,
+  PatchProjectsLocationsApiHubInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsApiHubInstancesRequest,
+  output: PatchProjectsLocationsApiHubInstancesResponse,
   errors: [],
 }));
 

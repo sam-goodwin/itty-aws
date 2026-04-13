@@ -1051,7 +1051,7 @@ export type NetworkSecurityPerimeterListConfigurationsInput =
 // Output Schema
 export const NetworkSecurityPerimeterListConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterListConfigurationsOutput =

@@ -50,6 +50,7 @@ export const GetCreditNotesIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           id: Schema.String,
           invoice_line_item: Schema.optional(Schema.String),
           livemode: Schema.Boolean,
+          metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
           object: Schema.Literals(["credit_note_line_item"]),
           pretax_credit_amounts: Schema.Array(
             Schema.Struct({

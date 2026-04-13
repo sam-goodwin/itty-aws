@@ -63,6 +63,7 @@ export const GetCustomersCustomerPaymentMethodsInput =
         "sofort",
         "swish",
         "twint",
+        "upi",
         "us_bank_account",
         "wechat_pay",
         "zip",
@@ -553,10 +554,16 @@ export const GetCustomersCustomerPaymentMethodsOutput =
           "sofort",
           "swish",
           "twint",
+          "upi",
           "us_bank_account",
           "wechat_pay",
           "zip",
         ]),
+        upi: Schema.optional(
+          Schema.Struct({
+            vpa: Schema.NullOr(Schema.String),
+          }),
+        ),
         us_bank_account: Schema.optional(
           Schema.Struct({
             account_holder_type: Schema.NullOr(

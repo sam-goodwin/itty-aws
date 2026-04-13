@@ -20,6 +20,7 @@ export type GetWebhookSubscriptionInput =
 export const GetWebhookSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
+    updatedAt: Schema.optional(Schema.String),
     description: Schema.optional(Schema.Struct({})),
     eventTypes: Schema.Array(Schema.String),
     isEnabled: Schema.Boolean,

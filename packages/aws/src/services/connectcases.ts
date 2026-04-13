@@ -117,11 +117,11 @@ export type TargetSlaMinutes = number;
 export type RelatedItemId = string;
 export type RelatedItemArn = string;
 export type Channel = string;
-export type SlaStatus = string;
-export type AssociationTime = Date;
 export type ConnectedToSystemTime = Date;
+export type SlaStatus = string;
 export type SlaTargetTime = Date;
 export type SlaCompletionTime = Date;
+export type AssociationTime = Date;
 export type CaseRuleName = string;
 export type CaseRuleDescription = string;
 export type ParentChildFieldOptionValue = string;
@@ -991,6 +991,201 @@ export const CreateRelatedItemResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateRelatedItemResponse",
 }) as any as S.Schema<CreateRelatedItemResponse>;
+export interface CommentUpdateContent {
+  body: string;
+  contentType: string;
+}
+export const CommentUpdateContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ body: S.String, contentType: S.String }),
+).annotate({
+  identifier: "CommentUpdateContent",
+}) as any as S.Schema<CommentUpdateContent>;
+export interface CustomUpdateContent {
+  fields: FieldValue[];
+}
+export const CustomUpdateContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ fields: FieldValueList }),
+).annotate({
+  identifier: "CustomUpdateContent",
+}) as any as S.Schema<CustomUpdateContent>;
+export type RelatedItemUpdateContent =
+  | { comment: CommentUpdateContent; custom?: never }
+  | { comment?: never; custom: CustomUpdateContent };
+export const RelatedItemUpdateContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ comment: CommentUpdateContent }),
+  S.Struct({ custom: CustomUpdateContent }),
+]);
+export interface UpdateRelatedItemRequest {
+  domainId: string;
+  caseId: string;
+  relatedItemId: string;
+  content: RelatedItemUpdateContent;
+  performedBy?: UserUnion;
+}
+export const UpdateRelatedItemRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      domainId: S.String.pipe(T.HttpLabel("domainId")),
+      caseId: S.String.pipe(T.HttpLabel("caseId")),
+      relatedItemId: S.String.pipe(T.HttpLabel("relatedItemId")),
+      content: RelatedItemUpdateContent,
+      performedBy: S.optional(UserUnion),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/domains/{domainId}/cases/{caseId}/related-items/{relatedItemId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateRelatedItemRequest",
+}) as any as S.Schema<UpdateRelatedItemRequest>;
+export interface ContactContent {
+  contactArn: string;
+  channel: string;
+  connectedToSystemTime: Date;
+}
+export const ContactContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contactArn: S.String,
+    channel: S.String,
+    connectedToSystemTime: T.DateFromString.pipe(
+      T.TimestampFormat("date-time"),
+    ),
+  }),
+).annotate({ identifier: "ContactContent" }) as any as S.Schema<ContactContent>;
+export interface SlaConfiguration {
+  name: string | redacted.Redacted<string>;
+  type: string;
+  status: string;
+  fieldId?: string;
+  targetFieldValues?: FieldValueUnion[];
+  targetTime: Date;
+  completionTime?: Date;
+}
+export const SlaConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SensitiveString,
+    type: S.String,
+    status: S.String,
+    fieldId: S.optional(S.String),
+    targetFieldValues: S.optional(SlaFieldValueUnionList),
+    targetTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    completionTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "SlaConfiguration",
+}) as any as S.Schema<SlaConfiguration>;
+export interface SlaContent {
+  slaConfiguration: SlaConfiguration;
+}
+export const SlaContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ slaConfiguration: SlaConfiguration }),
+).annotate({ identifier: "SlaContent" }) as any as S.Schema<SlaContent>;
+export interface ConnectCaseContent {
+  caseId: string;
+}
+export const ConnectCaseContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ caseId: S.String }),
+).annotate({
+  identifier: "ConnectCaseContent",
+}) as any as S.Schema<ConnectCaseContent>;
+export interface CustomContent {
+  fields: FieldValue[];
+}
+export const CustomContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ fields: FieldValueList }),
+).annotate({ identifier: "CustomContent" }) as any as S.Schema<CustomContent>;
+export type RelatedItemContent =
+  | {
+      contact: ContactContent;
+      comment?: never;
+      file?: never;
+      sla?: never;
+      connectCase?: never;
+      custom?: never;
+    }
+  | {
+      contact?: never;
+      comment: CommentContent;
+      file?: never;
+      sla?: never;
+      connectCase?: never;
+      custom?: never;
+    }
+  | {
+      contact?: never;
+      comment?: never;
+      file: FileContent;
+      sla?: never;
+      connectCase?: never;
+      custom?: never;
+    }
+  | {
+      contact?: never;
+      comment?: never;
+      file?: never;
+      sla: SlaContent;
+      connectCase?: never;
+      custom?: never;
+    }
+  | {
+      contact?: never;
+      comment?: never;
+      file?: never;
+      sla?: never;
+      connectCase: ConnectCaseContent;
+      custom?: never;
+    }
+  | {
+      contact?: never;
+      comment?: never;
+      file?: never;
+      sla?: never;
+      connectCase?: never;
+      custom: CustomContent;
+    };
+export const RelatedItemContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ contact: ContactContent }),
+  S.Struct({ comment: CommentContent }),
+  S.Struct({ file: FileContent }),
+  S.Struct({ sla: SlaContent }),
+  S.Struct({ connectCase: ConnectCaseContent }),
+  S.Struct({ custom: CustomContent }),
+]);
+export interface UpdateRelatedItemResponse {
+  relatedItemId: string;
+  relatedItemArn: string;
+  type: string;
+  content: RelatedItemContent;
+  associationTime: Date;
+  tags?: { [key: string]: string | undefined };
+  lastUpdatedUser?: UserUnion;
+  createdBy?: UserUnion;
+}
+export const UpdateRelatedItemResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      relatedItemId: S.String,
+      relatedItemArn: S.String,
+      type: S.String,
+      content: RelatedItemContent,
+      associationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      tags: S.optional(Tags),
+      lastUpdatedUser: S.optional(UserUnion),
+      createdBy: S.optional(UserUnion),
+    }),
+).annotate({
+  identifier: "UpdateRelatedItemResponse",
+}) as any as S.Schema<UpdateRelatedItemResponse>;
 export interface DeleteRelatedItemRequest {
   domainId: string;
   caseId: string;
@@ -1188,121 +1383,6 @@ export const SearchRelatedItemsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "SearchRelatedItemsRequest",
 }) as any as S.Schema<SearchRelatedItemsRequest>;
-export interface ContactContent {
-  contactArn: string;
-  channel: string;
-  connectedToSystemTime: Date;
-}
-export const ContactContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contactArn: S.String,
-    channel: S.String,
-    connectedToSystemTime: T.DateFromString.pipe(
-      T.TimestampFormat("date-time"),
-    ),
-  }),
-).annotate({ identifier: "ContactContent" }) as any as S.Schema<ContactContent>;
-export interface SlaConfiguration {
-  name: string | redacted.Redacted<string>;
-  type: string;
-  status: string;
-  fieldId?: string;
-  targetFieldValues?: FieldValueUnion[];
-  targetTime: Date;
-  completionTime?: Date;
-}
-export const SlaConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    type: S.String,
-    status: S.String,
-    fieldId: S.optional(S.String),
-    targetFieldValues: S.optional(SlaFieldValueUnionList),
-    targetTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    completionTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "SlaConfiguration",
-}) as any as S.Schema<SlaConfiguration>;
-export interface SlaContent {
-  slaConfiguration: SlaConfiguration;
-}
-export const SlaContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ slaConfiguration: SlaConfiguration }),
-).annotate({ identifier: "SlaContent" }) as any as S.Schema<SlaContent>;
-export interface ConnectCaseContent {
-  caseId: string;
-}
-export const ConnectCaseContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ caseId: S.String }),
-).annotate({
-  identifier: "ConnectCaseContent",
-}) as any as S.Schema<ConnectCaseContent>;
-export interface CustomContent {
-  fields: FieldValue[];
-}
-export const CustomContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ fields: FieldValueList }),
-).annotate({ identifier: "CustomContent" }) as any as S.Schema<CustomContent>;
-export type RelatedItemContent =
-  | {
-      contact: ContactContent;
-      comment?: never;
-      file?: never;
-      sla?: never;
-      connectCase?: never;
-      custom?: never;
-    }
-  | {
-      contact?: never;
-      comment: CommentContent;
-      file?: never;
-      sla?: never;
-      connectCase?: never;
-      custom?: never;
-    }
-  | {
-      contact?: never;
-      comment?: never;
-      file: FileContent;
-      sla?: never;
-      connectCase?: never;
-      custom?: never;
-    }
-  | {
-      contact?: never;
-      comment?: never;
-      file?: never;
-      sla: SlaContent;
-      connectCase?: never;
-      custom?: never;
-    }
-  | {
-      contact?: never;
-      comment?: never;
-      file?: never;
-      sla?: never;
-      connectCase: ConnectCaseContent;
-      custom?: never;
-    }
-  | {
-      contact?: never;
-      comment?: never;
-      file?: never;
-      sla?: never;
-      connectCase?: never;
-      custom: CustomContent;
-    };
-export const RelatedItemContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
-  S.Struct({ contact: ContactContent }),
-  S.Struct({ comment: CommentContent }),
-  S.Struct({ file: FileContent }),
-  S.Struct({ sla: SlaContent }),
-  S.Struct({ connectCase: ConnectCaseContent }),
-  S.Struct({ custom: CustomContent }),
-]);
 export interface SearchRelatedItemsResponseItem {
   relatedItemId: string;
   type: string;
@@ -1398,16 +1478,63 @@ export const BooleanOperands = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BooleanOperands",
 }) as any as S.Schema<BooleanOperands>;
+export interface CompoundCondition {
+  conditions: BooleanCondition[];
+}
+export const CompoundCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conditions: S.suspend(() => BooleanConditionList).annotate({
+      identifier: "BooleanConditionList",
+    }),
+  }),
+).annotate({
+  identifier: "CompoundCondition",
+}) as any as S.Schema<CompoundCondition>;
 export type BooleanCondition =
-  | { equalTo: BooleanOperands; notEqualTo?: never }
-  | { equalTo?: never; notEqualTo: BooleanOperands };
+  | {
+      equalTo: BooleanOperands;
+      notEqualTo?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equalTo?: never;
+      notEqualTo: BooleanOperands;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equalTo?: never;
+      notEqualTo?: never;
+      andAll: CompoundCondition;
+      orAll?: never;
+    }
+  | {
+      equalTo?: never;
+      notEqualTo?: never;
+      andAll?: never;
+      orAll: CompoundCondition;
+    };
 export const BooleanCondition = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ equalTo: BooleanOperands }),
   S.Struct({ notEqualTo: BooleanOperands }),
-]);
+  S.Struct({
+    andAll: S.suspend(
+      (): S.Schema<CompoundCondition> => CompoundCondition,
+    ).annotate({ identifier: "CompoundCondition" }),
+  }),
+  S.Struct({
+    orAll: S.suspend(
+      (): S.Schema<CompoundCondition> => CompoundCondition,
+    ).annotate({ identifier: "CompoundCondition" }),
+  }),
+]) as any as S.Schema<BooleanCondition>;
 export type BooleanConditionList = BooleanCondition[];
-export const BooleanConditionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BooleanCondition);
+export const BooleanConditionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.suspend(() => BooleanCondition).annotate({
+    identifier: "BooleanCondition",
+  }),
+) as any as S.Schema<BooleanConditionList>;
 export interface RequiredCaseRule {
   defaultValue: boolean;
   conditions: BooleanCondition[];
@@ -3338,6 +3465,46 @@ export const createRelatedItem: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateRelatedItemError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the content of a related item associated with a case. The following related item types are supported:
+ *
+ * - **Comment** - Update the text content of an existing comment
+ *
+ * - **Custom** - Update the fields of a custom related item. You can add, modify, and remove fields from a custom related item. There's a quota for the number of fields allowed in a Custom type related item. See Amazon Connect Cases quotas.
+ *
+ * **Important things to know**
+ *
+ * - When updating a Custom related item, all existing and new fields, and their associated values should be included in the request. Fields not included as part of this request will be removed.
+ *
+ * - If you provide a value for `performedBy.userArn` you must also have DescribeUser permission on the ARN of the user that you provide.
+ *
+ * - System case fields cannot be used in a custom related item.
+ *
+ * **Endpoints**: See Amazon Connect endpoints and quotas.
+ */
+export const updateRelatedItem: API.OperationMethod<
+  UpdateRelatedItemRequest,
+  UpdateRelatedItemResponse,
+  UpdateRelatedItemError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateRelatedItemRequest,
+  output: UpdateRelatedItemResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],

@@ -13,7 +13,9 @@ export const WorkbooksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    sourceId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -26,29 +28,8 @@ export type WorkbooksCreateOrUpdateInput =
 // Output Schema
 export const WorkbooksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    kind: Schema.optional(Schema.Literals(["shared"])),
-    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type WorkbooksCreateOrUpdateOutput =
   typeof WorkbooksCreateOrUpdateOutput.Type;
@@ -57,9 +38,11 @@ export type WorkbooksCreateOrUpdateOutput =
 /**
  * Create a new workbook.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param resourceName - The name of the workbook resource. The value must be an UUID.
+ * @param sourceId - Azure Resource Id that will fetch all linked workbooks.
  */
 export const WorkbooksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -71,6 +54,7 @@ export const WorkbooksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkbooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -88,9 +72,10 @@ export type WorkbooksDeleteOutput = typeof WorkbooksDeleteOutput.Type;
 /**
  * Delete a workbook.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param resourceName - The name of the workbook resource. The value must be an UUID.
  */
 export const WorkbooksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkbooksDeleteInput,
@@ -100,7 +85,9 @@ export const WorkbooksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const WorkbooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
+  canFetchContent: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
     method: "GET",
@@ -111,29 +98,8 @@ export type WorkbooksGetInput = typeof WorkbooksGetInput.Type;
 
 // Output Schema
 export const WorkbooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned,UserAssigned",
-      ]),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
-  kind: Schema.optional(Schema.Literals(["shared"])),
-  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type WorkbooksGetOutput = typeof WorkbooksGetOutput.Type;
 
@@ -141,9 +107,11 @@ export type WorkbooksGetOutput = typeof WorkbooksGetOutput.Type;
 /**
  * Get a single workbook by its resourceName.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param resourceName - The name of the workbook resource. The value must be an UUID.
+ * @param canFetchContent - Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
  */
 export const WorkbooksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkbooksGetInput,
@@ -155,6 +123,10 @@ export const WorkbooksListByResourceGroupInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    category: Schema.Literals(["workbook", "TSG", "performance", "retention"]),
+    tags: Schema.optional(Schema.String),
+    sourceId: Schema.optional(Schema.String),
+    canFetchContent: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "GET",
@@ -170,29 +142,8 @@ export const WorkbooksListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.Literals([
-                "None",
-                "SystemAssigned",
-                "UserAssigned",
-                "SystemAssigned,UserAssigned",
-              ]),
-              userAssignedIdentities: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    principalId: Schema.optional(Schema.String),
-                    clientId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          kind: Schema.optional(Schema.Literals(["shared"])),
-          etag: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -205,9 +156,13 @@ export type WorkbooksListByResourceGroupOutput =
 /**
  * Get all Workbooks defined within a specified resource group and category.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param category - Category of workbook to return.
+ * @param tags - Tags presents on each workbook returned.
+ * @param sourceId - Azure Resource Id that will fetch all linked workbooks.
+ * @param canFetchContent - Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
  */
 export const WorkbooksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -219,6 +174,9 @@ export const WorkbooksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    category: Schema.Literals(["workbook", "TSG", "performance", "retention"]),
+    tags: Schema.optional(Schema.String),
+    canFetchContent: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "GET",
@@ -234,29 +192,8 @@ export const WorkbooksListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.Literals([
-                "None",
-                "SystemAssigned",
-                "UserAssigned",
-                "SystemAssigned,UserAssigned",
-              ]),
-              userAssignedIdentities: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    principalId: Schema.optional(Schema.String),
-                    clientId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          kind: Schema.optional(Schema.Literals(["shared"])),
-          etag: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -269,8 +206,11 @@ export type WorkbooksListBySubscriptionOutput =
 /**
  * Get all Workbooks defined within a specified subscription and category.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param category - Category of workbook to return.
+ * @param tags - Tags presents on each workbook returned.
+ * @param canFetchContent - Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
  */
 export const WorkbooksListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -283,6 +223,8 @@ export const WorkbooksRevisionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    revisionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -295,29 +237,8 @@ export type WorkbooksRevisionGetInput = typeof WorkbooksRevisionGetInput.Type;
 // Output Schema
 export const WorkbooksRevisionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    kind: Schema.optional(Schema.Literals(["shared"])),
-    etag: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type WorkbooksRevisionGetOutput = typeof WorkbooksRevisionGetOutput.Type;
 
@@ -325,9 +246,11 @@ export type WorkbooksRevisionGetOutput = typeof WorkbooksRevisionGetOutput.Type;
 /**
  * Get a single workbook revision defined by its revisionId.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param resourceName - The name of the workbook resource. The value must be an UUID.
+ * @param revisionId - The id of the workbook's revision.
  */
 export const WorkbooksRevisionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -340,6 +263,7 @@ export const WorkbooksRevisionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -356,29 +280,8 @@ export const WorkbooksRevisionsListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          identity: Schema.optional(
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              tenantId: Schema.optional(Schema.String),
-              type: Schema.Literals([
-                "None",
-                "SystemAssigned",
-                "UserAssigned",
-                "SystemAssigned,UserAssigned",
-              ]),
-              userAssignedIdentities: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    principalId: Schema.optional(Schema.String),
-                    clientId: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          kind: Schema.optional(Schema.Literals(["shared"])),
-          etag: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
         }),
       ),
     ),
@@ -391,9 +294,10 @@ export type WorkbooksRevisionsListOutput =
 /**
  * Get the revisions for the workbook defined by its resourceName.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param resourceName - The name of the workbook resource. The value must be an UUID.
  */
 export const WorkbooksRevisionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -405,7 +309,9 @@ export const WorkbooksRevisionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const WorkbooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
+  sourceId: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -416,29 +322,8 @@ export type WorkbooksUpdateInput = typeof WorkbooksUpdateInput.Type;
 
 // Output Schema
 export const WorkbooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  identity: Schema.optional(
-    Schema.Struct({
-      principalId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      type: Schema.Literals([
-        "None",
-        "SystemAssigned",
-        "UserAssigned",
-        "SystemAssigned,UserAssigned",
-      ]),
-      userAssignedIdentities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            principalId: Schema.optional(Schema.String),
-            clientId: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ),
-  kind: Schema.optional(Schema.Literals(["shared"])),
-  etag: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type WorkbooksUpdateOutput = typeof WorkbooksUpdateOutput.Type;
 
@@ -446,9 +331,11 @@ export type WorkbooksUpdateOutput = typeof WorkbooksUpdateOutput.Type;
 /**
  * Updates a workbook that has already been added.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param resourceName - The name of the workbook resource. The value must be an UUID.
+ * @param sourceId - Azure Resource Id that will fetch all linked workbooks.
  */
 export const WorkbooksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkbooksUpdateInput,

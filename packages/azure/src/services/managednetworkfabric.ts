@@ -13,6 +13,7 @@ export const AccessControlListsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessControlListName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -34,13 +35,12 @@ export type AccessControlListsCreateOutput =
 
 // The operation
 /**
- * Creates Access Control List.
- *
  * Implements Access Control List PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -53,6 +53,7 @@ export const AccessControlListsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessControlListName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -71,13 +72,12 @@ export type AccessControlListsDeleteOutput =
 
 // The operation
 /**
- * Deletes a Access Control List.
- *
  * Implements Access Control List DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -90,6 +90,7 @@ export const AccessControlListsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessControlListName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -110,13 +111,12 @@ export type AccessControlListsGetOutput =
 
 // The operation
 /**
- * Gets a Access Control List.
- *
  * Implements Access Control List GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -142,13 +142,11 @@ export type AccessControlListsListByResourceGroupInput =
 // Output Schema
 export const AccessControlListsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -157,13 +155,11 @@ export type AccessControlListsListByResourceGroupOutput =
 
 // The operation
 /**
- * List AccessControlLists by resource group.
- *
  * Implements AccessControlLists list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const AccessControlListsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -187,13 +183,11 @@ export type AccessControlListsListBySubscriptionInput =
 // Output Schema
 export const AccessControlListsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -202,12 +196,10 @@ export type AccessControlListsListBySubscriptionOutput =
 
 // The operation
 /**
- * List AccessControlLists by subscription.
- *
  * Implements AccessControlLists list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AccessControlListsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -219,6 +211,7 @@ export const AccessControlListsResyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessControlListName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -254,13 +247,12 @@ export type AccessControlListsResyncOutput =
 
 // The operation
 /**
- * Resync operation on the Access Control Lists.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -273,6 +265,7 @@ export const AccessControlListsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessControlListName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -294,13 +287,12 @@ export type AccessControlListsUpdateOutput =
 
 // The operation
 /**
- * Updates the Access Control List.
- *
  * API to update certain properties of the Access Control List resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -313,8 +305,8 @@ export const AccessControlListsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessControlListName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -327,12 +319,94 @@ export type AccessControlListsUpdateAdministrativeStateInput =
 // Output Schema
 export const AccessControlListsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -343,20 +417,25 @@ export const AccessControlListsUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type AccessControlListsUpdateAdministrativeStateOutput =
   typeof AccessControlListsUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Updates administrative state of Access Control Lists.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -368,6 +447,7 @@ export const AccessControlListsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessControlListName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -403,13 +483,12 @@ export type AccessControlListsValidateConfigurationOutput =
 
 // The operation
 /**
- * Validates the configuration of the Access Control Lists.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsValidateConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -421,6 +500,8 @@ export const ExternalNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    externalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -439,13 +520,13 @@ export type ExternalNetworksCreateOutput =
 
 // The operation
 /**
- * Creates ExternalNetwork for Layer3 Isolation Domain for communication of computes with external services
- *
  * Creates ExternalNetwork PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -458,6 +539,8 @@ export const ExternalNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    externalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -476,13 +559,13 @@ export type ExternalNetworksDeleteOutput =
 
 // The operation
 /**
- * Deletes a ExternalNetworks.
- *
  * Implements ExternalNetworks DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -495,6 +578,8 @@ export const ExternalNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    externalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -511,13 +596,13 @@ export type ExternalNetworksGetOutput = typeof ExternalNetworksGetOutput.Type;
 
 // The operation
 /**
- * Retrieves details of ExternalNetwork.
- *
  * Implements ExternalNetworks GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExternalNetworksGetInput,
@@ -528,6 +613,7 @@ export const ExternalNetworksListByL3IsolationDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -541,7 +627,7 @@ export type ExternalNetworksListByL3IsolationDomainInput =
 // Output Schema
 export const ExternalNetworksListByL3IsolationDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ExternalNetworksListByL3IsolationDomainOutput =
@@ -549,13 +635,12 @@ export type ExternalNetworksListByL3IsolationDomainOutput =
 
 // The operation
 /**
- * Executes list operation to display External Networks within an isolation domain.
- *
  * Implements External Networks list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const ExternalNetworksListByL3IsolationDomain =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -567,6 +652,8 @@ export const ExternalNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    externalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -585,13 +672,13 @@ export type ExternalNetworksUpdateOutput =
 
 // The operation
 /**
- * Updates a External Networks.
- *
  * API to update certain properties of the ExternalNetworks resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -604,8 +691,9 @@ export const ExternalNetworksUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    externalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -618,12 +706,94 @@ export type ExternalNetworksUpdateAdministrativeStateInput =
 // Output Schema
 export const ExternalNetworksUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -634,20 +804,26 @@ export const ExternalNetworksUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type ExternalNetworksUpdateAdministrativeStateOutput =
   typeof ExternalNetworksUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Executes update operation to enable or disable administrative State for externalNetwork.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -655,12 +831,159 @@ export const ExternalNetworksUpdateAdministrativeState =
     outputSchema: ExternalNetworksUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export const ExternalNetworksUpdateBfdAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    externalNetworkName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateBfdAdministrativeState",
+    }),
+  );
+export type ExternalNetworksUpdateBfdAdministrativeStateInput =
+  typeof ExternalNetworksUpdateBfdAdministrativeStateInput.Type;
+
+// Output Schema
+export const ExternalNetworksUpdateBfdAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        routeType: Schema.optional(Schema.Literals(["Static", "OptionA"])),
+        administrativeState: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
+        ),
+      }),
+    ),
+  });
+export type ExternalNetworksUpdateBfdAdministrativeStateOutput =
+  typeof ExternalNetworksUpdateBfdAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * BFD administrative state for either static or bgp for internalNetwork.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param externalNetworkName - Name of the External Network.
+ */
+export const ExternalNetworksUpdateBfdAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExternalNetworksUpdateBfdAdministrativeStateInput,
+    outputSchema: ExternalNetworksUpdateBfdAdministrativeStateOutput,
+  }));
+// Input Schema
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    externalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -673,12 +996,94 @@ export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
 // Output Schema
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -689,20 +1094,26 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
   typeof ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Executes Static Route BFD state update operation to the underlying resources.
- *
  * Update Static Route BFD for external Network.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -714,6 +1125,8 @@ export const InternalNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -732,13 +1145,13 @@ export type InternalNetworksCreateOutput =
 
 // The operation
 /**
- * Creates InternalNetwork for Layer3 Isolation Domain for communication of compute within and across racks.
- *
  * Creates InternalNetwork PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -751,6 +1164,8 @@ export const InternalNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -769,13 +1184,13 @@ export type InternalNetworksDeleteOutput =
 
 // The operation
 /**
- * Deletes a InternalNetworks.
- *
  * Implements InternalNetworks DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -788,6 +1203,8 @@ export const InternalNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -804,13 +1221,13 @@ export type InternalNetworksGetOutput = typeof InternalNetworksGetOutput.Type;
 
 // The operation
 /**
- * Retrieves details of InternalNetworks using GET method.
- *
  * Gets a InternalNetworks.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InternalNetworksGetInput,
@@ -821,6 +1238,7 @@ export const InternalNetworksListByL3IsolationDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -834,7 +1252,7 @@ export type InternalNetworksListByL3IsolationDomainInput =
 // Output Schema
 export const InternalNetworksListByL3IsolationDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type InternalNetworksListByL3IsolationDomainOutput =
@@ -842,13 +1260,12 @@ export type InternalNetworksListByL3IsolationDomainOutput =
 
 // The operation
 /**
- * Executes list operation to display list of all internal networks
- *
  * Displays InternalNetworks list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const InternalNetworksListByL3IsolationDomain =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -860,6 +1277,8 @@ export const InternalNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -878,13 +1297,13 @@ export type InternalNetworksUpdateOutput =
 
 // The operation
 /**
- * API to update certain properties of the InternalNetworks resources.
- *
  * Updates a InternalNetworks.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -897,8 +1316,9 @@ export const InternalNetworksUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -911,12 +1331,94 @@ export type InternalNetworksUpdateAdministrativeStateInput =
 // Output Schema
 export const InternalNetworksUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -927,20 +1429,26 @@ export const InternalNetworksUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type InternalNetworksUpdateAdministrativeStateOutput =
   typeof InternalNetworksUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Executes the operation to the underlying resources.
+ * Executes update operation to enable or disable administrative State for InternalNetwork.
  *
- * Update Administrative state of  InternalNetworks on resources referred by their resource ids.
- *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -948,12 +1456,166 @@ export const InternalNetworksUpdateAdministrativeState =
     outputSchema: InternalNetworksUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export const InternalNetworksUpdateBfdAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBfdAdministrativeState",
+    }),
+  );
+export type InternalNetworksUpdateBfdAdministrativeStateInput =
+  typeof InternalNetworksUpdateBfdAdministrativeStateInput.Type;
+
+// Output Schema
+export const InternalNetworksUpdateBfdAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        neighborAddressAdministrativeStatus: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              neighborAddress: Schema.optional(Schema.String),
+              administrativeState: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
+              ),
+              error: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type InternalNetworksUpdateBfdAdministrativeStateOutput =
+  typeof InternalNetworksUpdateBfdAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * BFD administrative state for either static or bgp for internalNetwork.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
+ */
+export const InternalNetworksUpdateBfdAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InternalNetworksUpdateBfdAdministrativeStateInput,
+    outputSchema: InternalNetworksUpdateBfdAdministrativeStateOutput,
+  }));
+// Input Schema
 export const InternalNetworksUpdateBgpAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -966,17 +1628,115 @@ export type InternalNetworksUpdateBgpAdministrativeStateInput =
 // Output Schema
 export const InternalNetworksUpdateBgpAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
               type: Schema.optional(Schema.String),
               info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        neighborAddressAdministrativeStatus: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              neighborAddress: Schema.optional(Schema.String),
+              administrativeState: Schema.optional(
+                Schema.Literals(["Enabled", "Disabled"]),
+              ),
+              error: Schema.optional(Schema.String),
             }),
           ),
         ),
@@ -988,14 +1748,13 @@ export type InternalNetworksUpdateBgpAdministrativeStateOutput =
 
 // The operation
 /**
- * Executes the operation to the underlying resources for updating BGP state on edge devices.
- *
  * Update BGP state for internalNetwork. Allowed only on edge devices.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdateBgpAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1007,8 +1766,9 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
+    internalNetworkName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1021,12 +1781,94 @@ export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
 // Output Schema
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -1037,20 +1879,26 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
   typeof InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Update Static Route BFD administrative state for internalNetwork.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
+ * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1062,6 +1910,7 @@ export const InternetGatewayRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1083,13 +1932,12 @@ export type InternetGatewayRulesCreateOutput =
 
 // The operation
 /**
- * Creates an Internet Gateway rule.
- *
  * Creates an Internet Gateway rule resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
 export const InternetGatewayRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1102,6 +1950,7 @@ export const InternetGatewayRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1120,13 +1969,12 @@ export type InternetGatewayRulesDeleteOutput =
 
 // The operation
 /**
- * Deletes an Internet Gateway Rule.
- *
  * Implements Internet Gateway Rules DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
 export const InternetGatewayRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1139,6 +1987,7 @@ export const InternetGatewayRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1160,13 +2009,12 @@ export type InternetGatewayRulesGetOutput =
 
 // The operation
 /**
- * Gets an Internet Gateway Rule.
- *
  * Gets an Internet Gateway Rule resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
 export const InternetGatewayRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1192,13 +2040,11 @@ export type InternetGatewayRulesListByResourceGroupInput =
 // Output Schema
 export const InternetGatewayRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1207,13 +2053,11 @@ export type InternetGatewayRulesListByResourceGroupOutput =
 
 // The operation
 /**
- * List Internet Gateway Rules by resource group.
- *
  * Implements Internet Gateway Rules list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const InternetGatewayRulesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1237,13 +2081,11 @@ export type InternetGatewayRulesListBySubscriptionInput =
 // Output Schema
 export const InternetGatewayRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1252,12 +2094,10 @@ export type InternetGatewayRulesListBySubscriptionOutput =
 
 // The operation
 /**
- * List Internet Gateway Rules by subscription.
- *
  * List all Internet Gateway rules in the given subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const InternetGatewayRulesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1269,6 +2109,7 @@ export const InternetGatewayRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1290,13 +2131,12 @@ export type InternetGatewayRulesUpdateOutput =
 
 // The operation
 /**
- * Updates an Internet Gateway Rule.
- *
  * API to update certain properties of the Internet Gateway Rule resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
 export const InternetGatewayRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1309,6 +2149,7 @@ export const InternetGatewaysCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1330,13 +2171,12 @@ export type InternetGatewaysCreateOutput =
 
 // The operation
 /**
- * Create a Network Fabric Service Internet Gateway.
- *
  * Creates a Network Fabric Service Internet Gateway resource instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayName - Name of the Internet Gateway.
  */
 export const InternetGatewaysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1349,6 +2189,7 @@ export const InternetGatewaysDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1367,13 +2208,12 @@ export type InternetGatewaysDeleteOutput =
 
 // The operation
 /**
- * Deletes a Network Fabric Service Internet Gateway.
- *
  * Execute a delete on Network Fabric Service Internet Gateway.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayName - Name of the Internet Gateway.
  */
 export const InternetGatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1386,6 +2226,7 @@ export const InternetGatewaysGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1405,13 +2246,12 @@ export type InternetGatewaysGetOutput = typeof InternetGatewaysGetOutput.Type;
 
 // The operation
 /**
- * Retrieves details of Network Fabric Service Internet Gateway.
- *
  * Implements Gateway GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayName - Name of the Internet Gateway.
  */
 export const InternetGatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InternetGatewaysGetInput,
@@ -1435,13 +2275,11 @@ export type InternetGatewaysListByResourceGroupInput =
 // Output Schema
 export const InternetGatewaysListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1450,13 +2288,11 @@ export type InternetGatewaysListByResourceGroupOutput =
 
 // The operation
 /**
- * List Internet Gateways by resource group.
- *
  * Displays Internet Gateways list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const InternetGatewaysListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1480,13 +2316,11 @@ export type InternetGatewaysListBySubscriptionInput =
 // Output Schema
 export const InternetGatewaysListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1495,12 +2329,10 @@ export type InternetGatewaysListBySubscriptionOutput =
 
 // The operation
 /**
- * List Internet Gateways by subscription.
- *
  * Displays Internet Gateways list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const InternetGatewaysListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1512,6 +2344,7 @@ export const InternetGatewaysUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    internetGatewayName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1533,13 +2366,12 @@ export type InternetGatewaysUpdateOutput =
 
 // The operation
 /**
- * Updates a Network Fabric Service Internet Gateway.
- *
  * Execute patch on Network Fabric Service Internet Gateway.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param internetGatewayName - Name of the Internet Gateway.
  */
 export const InternetGatewaysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1552,6 +2384,7 @@ export const IpCommunitiesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    ipCommunityName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1571,13 +2404,12 @@ export type IpCommunitiesCreateOutput = typeof IpCommunitiesCreateOutput.Type;
 
 // The operation
 /**
- * Create an IP Community.
- *
  * Implements an IP Community PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipCommunityName - Name of the IP Community.
  */
 export const IpCommunitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesCreateInput,
@@ -1588,6 +2420,7 @@ export const IpCommunitiesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    ipCommunityName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1604,13 +2437,12 @@ export type IpCommunitiesDeleteOutput = typeof IpCommunitiesDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes an IP Community.
- *
  * Implements IP Community DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipCommunityName - Name of the IP Community.
  */
 export const IpCommunitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesDeleteInput,
@@ -1620,6 +2452,7 @@ export const IpCommunitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const IpCommunitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  ipCommunityName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1640,13 +2473,12 @@ export type IpCommunitiesGetOutput = typeof IpCommunitiesGetOutput.Type;
 
 // The operation
 /**
- * Gets an IP Community.
- *
  * Implements an IP Community GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipCommunityName - Name of the IP Community.
  */
 export const IpCommunitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesGetInput,
@@ -1670,13 +2502,11 @@ export type IpCommunitiesListByResourceGroupInput =
 // Output Schema
 export const IpCommunitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1685,13 +2515,11 @@ export type IpCommunitiesListByResourceGroupOutput =
 
 // The operation
 /**
- * List IP Communities by resource group.
- *
  * Implements IP Communities list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const IpCommunitiesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1715,13 +2543,11 @@ export type IpCommunitiesListBySubscriptionInput =
 // Output Schema
 export const IpCommunitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1730,12 +2556,10 @@ export type IpCommunitiesListBySubscriptionOutput =
 
 // The operation
 /**
- * List IP Communities by subscription.
- *
  * Implements IP Communities list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const IpCommunitiesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1747,6 +2571,7 @@ export const IpCommunitiesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    ipCommunityName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1766,13 +2591,12 @@ export type IpCommunitiesUpdateOutput = typeof IpCommunitiesUpdateOutput.Type;
 
 // The operation
 /**
- * Updates an IP Community.
- *
  * API to update certain properties of the IP Community resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipCommunityName - Name of the IP Community.
  */
 export const IpCommunitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesUpdateInput,
@@ -1783,6 +2607,7 @@ export const IpExtendedCommunitiesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1804,13 +2629,12 @@ export type IpExtendedCommunitiesCreateOutput =
 
 // The operation
 /**
- * Create an IP Extended Community.
- *
  * Implements IP Extended Community PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
 export const IpExtendedCommunitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1823,6 +2647,7 @@ export const IpExtendedCommunitiesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1841,13 +2666,12 @@ export type IpExtendedCommunitiesDeleteOutput =
 
 // The operation
 /**
- * Deletes the IP Extended Community.
- *
  * Implements IP Extended Community DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
 export const IpExtendedCommunitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1860,6 +2684,7 @@ export const IpExtendedCommunitiesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1881,13 +2706,12 @@ export type IpExtendedCommunitiesGetOutput =
 
 // The operation
 /**
- * Gets an IP Extended Community.
- *
  * Implements IP Extended Community GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
 export const IpExtendedCommunitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1913,13 +2737,11 @@ export type IpExtendedCommunitiesListByResourceGroupInput =
 // Output Schema
 export const IpExtendedCommunitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1928,13 +2750,11 @@ export type IpExtendedCommunitiesListByResourceGroupOutput =
 
 // The operation
 /**
- * List IpExtendedCommunities by resource group.
- *
  * Implements IpExtendedCommunities list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const IpExtendedCommunitiesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1958,13 +2778,11 @@ export type IpExtendedCommunitiesListBySubscriptionInput =
 // Output Schema
 export const IpExtendedCommunitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1973,12 +2791,10 @@ export type IpExtendedCommunitiesListBySubscriptionOutput =
 
 // The operation
 /**
- * List IpExtendedCommunities by subscription.
- *
  * Implements IpExtendedCommunities list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const IpExtendedCommunitiesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1990,6 +2806,7 @@ export const IpExtendedCommunitiesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2011,13 +2828,12 @@ export type IpExtendedCommunitiesUpdateOutput =
 
 // The operation
 /**
- * Updates the IP Extended Community.
- *
  * API to update certain properties of the IP Extended Community resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
 export const IpExtendedCommunitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2029,6 +2845,7 @@ export const IpExtendedCommunitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const IpPrefixesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  ipPrefixName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2049,13 +2866,12 @@ export type IpPrefixesCreateOutput = typeof IpPrefixesCreateOutput.Type;
 
 // The operation
 /**
- * Create an IP Prefix.
- *
  * Implements IP Prefix PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipPrefixName - Name of the IP Prefix.
  */
 export const IpPrefixesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesCreateInput,
@@ -2065,6 +2881,7 @@ export const IpPrefixesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const IpPrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  ipPrefixName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2080,13 +2897,12 @@ export type IpPrefixesDeleteOutput = typeof IpPrefixesDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes the IP Prefix.
- *
  * Implements IP Prefix DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipPrefixName - Name of the IP Prefix.
  */
 export const IpPrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesDeleteInput,
@@ -2096,6 +2912,7 @@ export const IpPrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const IpPrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  ipPrefixName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2114,13 +2931,12 @@ export type IpPrefixesGetOutput = typeof IpPrefixesGetOutput.Type;
 
 // The operation
 /**
- * Gets an IP Prefix.
- *
  * Implements IP Prefix GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipPrefixName - Name of the IP Prefix.
  */
 export const IpPrefixesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesGetInput,
@@ -2144,13 +2960,11 @@ export type IpPrefixesListByResourceGroupInput =
 // Output Schema
 export const IpPrefixesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2159,13 +2973,11 @@ export type IpPrefixesListByResourceGroupOutput =
 
 // The operation
 /**
- * List IpPrefixes by resource group.
- *
  * Implements IpPrefixes list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const IpPrefixesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2189,13 +3001,11 @@ export type IpPrefixesListBySubscriptionInput =
 // Output Schema
 export const IpPrefixesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2204,12 +3014,10 @@ export type IpPrefixesListBySubscriptionOutput =
 
 // The operation
 /**
- * List IpPrefixes by subscription.
- *
  * Implements IpPrefixes list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const IpPrefixesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2220,6 +3028,7 @@ export const IpPrefixesListBySubscription =
 export const IpPrefixesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  ipPrefixName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2240,13 +3049,12 @@ export type IpPrefixesUpdateOutput = typeof IpPrefixesUpdateOutput.Type;
 
 // The operation
 /**
- * Updates the IP Prefix.
- *
  * API to update certain properties of the IP Prefix resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param ipPrefixName - Name of the IP Prefix.
  */
 export const IpPrefixesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesUpdateInput,
@@ -2257,6 +3065,7 @@ export const L2IsolationDomainsCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2292,13 +3101,12 @@ export type L2IsolationDomainsCommitConfigurationOutput =
 
 // The operation
 /**
- * Execute the commit on the resources.
- *
  * Commits the configuration of the given resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsCommitConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2310,6 +3118,7 @@ export const L2IsolationDomainsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2331,13 +3140,12 @@ export type L2IsolationDomainsCreateOutput =
 
 // The operation
 /**
- * Create L2 Isolation Domain.
- *
  * Creates layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2350,6 +3158,7 @@ export const L2IsolationDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2368,13 +3177,12 @@ export type L2IsolationDomainsDeleteOutput =
 
 // The operation
 /**
- * Deletes the L2 Isolation Domain.
- *
  * Deletes layer 2 connectivity between compute nodes by managed by named L2 Isolation name.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2387,6 +3195,7 @@ export const L2IsolationDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2407,13 +3216,12 @@ export type L2IsolationDomainsGetOutput =
 
 // The operation
 /**
- * Retrieves details of this L2 Isolation Domain.
- *
  * Implements L2 Isolation Domain GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2439,13 +3247,11 @@ export type L2IsolationDomainsListByResourceGroupInput =
 // Output Schema
 export const L2IsolationDomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2454,13 +3260,11 @@ export type L2IsolationDomainsListByResourceGroupOutput =
 
 // The operation
 /**
- * List L2IsolationDomains by resource group.
- *
  * Displays L2IsolationDomains list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const L2IsolationDomainsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2484,13 +3288,11 @@ export type L2IsolationDomainsListBySubscriptionInput =
 // Output Schema
 export const L2IsolationDomainsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2499,12 +3301,10 @@ export type L2IsolationDomainsListBySubscriptionOutput =
 
 // The operation
 /**
- * List L2IsolationDomains by subscription.
- *
  * Displays L2IsolationDomains list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const L2IsolationDomainsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2516,6 +3316,7 @@ export const L2IsolationDomainsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2537,13 +3338,12 @@ export type L2IsolationDomainsUpdateOutput =
 
 // The operation
 /**
- * Updates the L2 Isolation Domain.
- *
  * API to update certain properties of the L2 Isolation Domain resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2556,8 +3356,8 @@ export const L2IsolationDomainsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2570,12 +3370,94 @@ export type L2IsolationDomainsUpdateAdministrativeStateInput =
 // Output Schema
 export const L2IsolationDomainsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -2586,20 +3468,25 @@ export const L2IsolationDomainsUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type L2IsolationDomainsUpdateAdministrativeStateOutput =
   typeof L2IsolationDomainsUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Enables isolation domain across the fabric or on specified racks.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2611,6 +3498,7 @@ export const L2IsolationDomainsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2648,9 +3536,10 @@ export type L2IsolationDomainsValidateConfigurationOutput =
 /**
  * Validates the configuration of the resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsValidateConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2662,6 +3551,7 @@ export const L3IsolationDomainsCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2697,13 +3587,12 @@ export type L3IsolationDomainsCommitConfigurationOutput =
 
 // The operation
 /**
- * Execute the commit on the resources.
- *
  * Commits the configuration of the given resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsCommitConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2715,6 +3604,7 @@ export const L3IsolationDomainsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2736,13 +3626,12 @@ export type L3IsolationDomainsCreateOutput =
 
 // The operation
 /**
- * Create L3 Isolation Domain.
- *
  * Create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2755,6 +3644,7 @@ export const L3IsolationDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2773,13 +3663,12 @@ export type L3IsolationDomainsDeleteOutput =
 
 // The operation
 /**
- * Deletes a L3 Isolation Domain.
- *
  * Deletes layer 3 connectivity between compute nodes by managed by named L3 Isolation name.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2792,6 +3681,7 @@ export const L3IsolationDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2812,13 +3702,12 @@ export type L3IsolationDomainsGetOutput =
 
 // The operation
 /**
- * Gets a L3 Isolation Domain.
- *
  * Retrieves details of this L3 Isolation Domain.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2844,13 +3733,11 @@ export type L3IsolationDomainsListByResourceGroupInput =
 // Output Schema
 export const L3IsolationDomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2859,13 +3746,11 @@ export type L3IsolationDomainsListByResourceGroupOutput =
 
 // The operation
 /**
- * List L3IsolationDomains by resource group.
- *
  * Displays L3IsolationDomains list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const L3IsolationDomainsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2889,13 +3774,11 @@ export type L3IsolationDomainsListBySubscriptionInput =
 // Output Schema
 export const L3IsolationDomainsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2904,12 +3787,10 @@ export type L3IsolationDomainsListBySubscriptionOutput =
 
 // The operation
 /**
- * List L3IsolationDomains by subscription.
- *
  * Displays L3IsolationDomains list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const L3IsolationDomainsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2921,6 +3802,7 @@ export const L3IsolationDomainsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2942,13 +3824,12 @@ export type L3IsolationDomainsUpdateOutput =
 
 // The operation
 /**
- * Updates a L3 Isolation Domain.
- *
  * API to update certain properties of the L3 Isolation Domain resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2961,8 +3842,8 @@ export const L3IsolationDomainsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2975,12 +3856,94 @@ export type L3IsolationDomainsUpdateAdministrativeStateInput =
 // Output Schema
 export const L3IsolationDomainsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -2991,20 +3954,25 @@ export const L3IsolationDomainsUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type L3IsolationDomainsUpdateAdministrativeStateOutput =
   typeof L3IsolationDomainsUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * executes enable operation to the underlying resources.
+ * Updates the administrative state of the L3 Isolation Domain resource.
  *
- * Enables racks for this Isolation Domain.
- *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3016,6 +3984,7 @@ export const L3IsolationDomainsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3053,9 +4022,10 @@ export type L3IsolationDomainsValidateConfigurationOutput =
 /**
  * Validates the configuration of the resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsValidateConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3067,6 +4037,7 @@ export const NeighborGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    neighborGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3086,13 +4057,12 @@ export type NeighborGroupsCreateOutput = typeof NeighborGroupsCreateOutput.Type;
 
 // The operation
 /**
- * Creates the Neighbor Group.
- *
  * Implements the Neighbor Group PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param neighborGroupName - Name of the Neighbor Group.
  */
 export const NeighborGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3105,6 +4075,7 @@ export const NeighborGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    neighborGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3121,13 +4092,12 @@ export type NeighborGroupsDeleteOutput = typeof NeighborGroupsDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes a Neighbor Group.
- *
  * Implements Neighbor Group DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param neighborGroupName - Name of the Neighbor Group.
  */
 export const NeighborGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3140,6 +4110,7 @@ export const NeighborGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    neighborGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -3160,13 +4131,12 @@ export type NeighborGroupsGetOutput = typeof NeighborGroupsGetOutput.Type;
 
 // The operation
 /**
- * Retrieves details of neighbor Group using GET method.
- *
  * Gets the Neighbor Group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param neighborGroupName - Name of the Neighbor Group.
  */
 export const NeighborGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NeighborGroupsGetInput,
@@ -3190,13 +4160,11 @@ export type NeighborGroupsListByResourceGroupInput =
 // Output Schema
 export const NeighborGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3205,13 +4173,11 @@ export type NeighborGroupsListByResourceGroupOutput =
 
 // The operation
 /**
- * List Neighbor Groups by resource group.
- *
  * Displays NeighborGroups list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NeighborGroupsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3235,13 +4201,11 @@ export type NeighborGroupsListBySubscriptionInput =
 // Output Schema
 export const NeighborGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3250,12 +4214,10 @@ export type NeighborGroupsListBySubscriptionOutput =
 
 // The operation
 /**
- * List Neighbor Groups by subscription.
- *
  * Displays NeighborGroups list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NeighborGroupsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3263,10 +4225,146 @@ export const NeighborGroupsListBySubscription =
     outputSchema: NeighborGroupsListBySubscriptionOutput,
   }));
 // Input Schema
+export const NeighborGroupsResyncInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    neighborGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}/resync",
+    }),
+  );
+export type NeighborGroupsResyncInput = typeof NeighborGroupsResyncInput.Type;
+
+// Output Schema
+export const NeighborGroupsResyncOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NeighborGroupsResyncOutput = typeof NeighborGroupsResyncOutput.Type;
+
+// The operation
+/**
+ * Resync the Neighbor Group after a configuration change.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param neighborGroupName - Name of the Neighbor Group.
+ */
+export const NeighborGroupsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NeighborGroupsResyncInput,
+    outputSchema: NeighborGroupsResyncOutput,
+  }),
+);
+// Input Schema
 export const NeighborGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    neighborGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3286,13 +4384,12 @@ export type NeighborGroupsUpdateOutput = typeof NeighborGroupsUpdateOutput.Type;
 
 // The operation
 /**
- * API to update certain properties of the Neighbor Group Resources.
- *
  * Updates the Neighbor Group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param neighborGroupName - Name of the Neighbor Group.
  */
 export const NeighborGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3301,10 +4398,1175 @@ export const NeighborGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const NetworkBootstrapDevicesCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
+    }),
+  );
+export type NetworkBootstrapDevicesCreateInput =
+  typeof NetworkBootstrapDevicesCreateInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type NetworkBootstrapDevicesCreateOutput =
+  typeof NetworkBootstrapDevicesCreateOutput.Type;
+
+// The operation
+/**
+ * Creates a Network Bootstrap Device resource
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesCreate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesCreateInput,
+    outputSchema: NetworkBootstrapDevicesCreateOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
+    }),
+  );
+export type NetworkBootstrapDevicesDeleteInput =
+  typeof NetworkBootstrapDevicesDeleteInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type NetworkBootstrapDevicesDeleteOutput =
+  typeof NetworkBootstrapDevicesDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes a Network Bootstrap Device resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesDeleteInput,
+    outputSchema: NetworkBootstrapDevicesDeleteOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
+    }),
+  );
+export type NetworkBootstrapDevicesGetInput =
+  typeof NetworkBootstrapDevicesGetInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type NetworkBootstrapDevicesGetOutput =
+  typeof NetworkBootstrapDevicesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a Network Bootstrap Device resource details.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkBootstrapDevicesGetInput,
+    outputSchema: NetworkBootstrapDevicesGetOutput,
+  }),
+);
+// Input Schema
+export const NetworkBootstrapDevicesListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
+    }),
+  );
+export type NetworkBootstrapDevicesListByResourceGroupInput =
+  typeof NetworkBootstrapDevicesListByResourceGroupInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapDevicesListByResourceGroupOutput =
+  typeof NetworkBootstrapDevicesListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Lists all the Network Bootstrap Device resources in a given resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const NetworkBootstrapDevicesListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesListByResourceGroupInput,
+    outputSchema: NetworkBootstrapDevicesListByResourceGroupOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
+    }),
+  );
+export type NetworkBootstrapDevicesListBySubscriptionInput =
+  typeof NetworkBootstrapDevicesListBySubscriptionInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapDevicesListBySubscriptionOutput =
+  typeof NetworkBootstrapDevicesListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * List all the Network Bootstrap Device resources in a given subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const NetworkBootstrapDevicesListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesListBySubscriptionInput,
+    outputSchema: NetworkBootstrapDevicesListBySubscriptionOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesRebootInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/reboot",
+    }),
+  );
+export type NetworkBootstrapDevicesRebootInput =
+  typeof NetworkBootstrapDevicesRebootInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesRebootOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapDevicesRebootOutput =
+  typeof NetworkBootstrapDevicesRebootOutput.Type;
+
+// The operation
+/**
+ * Reboot the Network Bootstrap Device.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesReboot =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesRebootInput,
+    outputSchema: NetworkBootstrapDevicesRebootOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesRefreshConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration",
+    }),
+  );
+export type NetworkBootstrapDevicesRefreshConfigurationInput =
+  typeof NetworkBootstrapDevicesRefreshConfigurationInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesRefreshConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapDevicesRefreshConfigurationOutput =
+  typeof NetworkBootstrapDevicesRefreshConfigurationOutput.Type;
+
+// The operation
+/**
+ * Refreshes the configuration of Network Bootstrap Device.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesRefreshConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesRefreshConfigurationInput,
+    outputSchema: NetworkBootstrapDevicesRefreshConfigurationOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesResyncPasswordsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/resyncPasswords",
+    }),
+  );
+export type NetworkBootstrapDevicesResyncPasswordsInput =
+  typeof NetworkBootstrapDevicesResyncPasswordsInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesResyncPasswordsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapDevicesResyncPasswordsOutput =
+  typeof NetworkBootstrapDevicesResyncPasswordsOutput.Type;
+
+// The operation
+/**
+ * Resync the latest passwords to the Network Bootstrap Device.
+ *
+ * Updates the Network Bootstrap Device to use the latest passwords. Does not generate new passwords. Allows network bootstrap devices missed during a previous password rotation to be brought back into sync.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesResyncPasswords =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesResyncPasswordsInput,
+    outputSchema: NetworkBootstrapDevicesResyncPasswordsOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
+    }),
+  );
+export type NetworkBootstrapDevicesUpdateInput =
+  typeof NetworkBootstrapDevicesUpdateInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type NetworkBootstrapDevicesUpdateOutput =
+  typeof NetworkBootstrapDevicesUpdateOutput.Type;
+
+// The operation
+/**
+ * Update certain properties of the Network Bootstrap Device resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesUpdateInput,
+    outputSchema: NetworkBootstrapDevicesUpdateOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkBootstrapDevicesUpdateAdministrativeStateInput =
+  typeof NetworkBootstrapDevicesUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
+  typeof NetworkBootstrapDevicesUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Updates the Administrative state of the Network Bootstrap Device.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesUpdateAdministrativeStateInput,
+    outputSchema: NetworkBootstrapDevicesUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapDevicesUpgradeInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/upgrade",
+    }),
+  );
+export type NetworkBootstrapDevicesUpgradeInput =
+  typeof NetworkBootstrapDevicesUpgradeInput.Type;
+
+// Output Schema
+export const NetworkBootstrapDevicesUpgradeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapDevicesUpgradeOutput =
+  typeof NetworkBootstrapDevicesUpgradeOutput.Type;
+
+// The operation
+/**
+ * Upgrades the version of the Network Bootstrap Device.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapDevicesUpgrade =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapDevicesUpgradeInput,
+    outputSchema: NetworkBootstrapDevicesUpgradeOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapInterfacesCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
+    }),
+  );
+export type NetworkBootstrapInterfacesCreateInput =
+  typeof NetworkBootstrapInterfacesCreateInput.Type;
+
+// Output Schema
+export const NetworkBootstrapInterfacesCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type NetworkBootstrapInterfacesCreateOutput =
+  typeof NetworkBootstrapInterfacesCreateOutput.Type;
+
+// The operation
+/**
+ * Create a Network Bootstrap Interface resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
+ */
+export const NetworkBootstrapInterfacesCreate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapInterfacesCreateInput,
+    outputSchema: NetworkBootstrapInterfacesCreateOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapInterfacesDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
+    }),
+  );
+export type NetworkBootstrapInterfacesDeleteInput =
+  typeof NetworkBootstrapInterfacesDeleteInput.Type;
+
+// Output Schema
+export const NetworkBootstrapInterfacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type NetworkBootstrapInterfacesDeleteOutput =
+  typeof NetworkBootstrapInterfacesDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete the Network Bootstrap Interface resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
+ */
+export const NetworkBootstrapInterfacesDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapInterfacesDeleteInput,
+    outputSchema: NetworkBootstrapInterfacesDeleteOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapInterfacesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
+    }),
+  );
+export type NetworkBootstrapInterfacesGetInput =
+  typeof NetworkBootstrapInterfacesGetInput.Type;
+
+// Output Schema
+export const NetworkBootstrapInterfacesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type NetworkBootstrapInterfacesGetOutput =
+  typeof NetworkBootstrapInterfacesGetOutput.Type;
+
+// The operation
+/**
+ * Get the Network Bootstrap Interface resource details.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
+ */
+export const NetworkBootstrapInterfacesGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapInterfacesGetInput,
+    outputSchema: NetworkBootstrapInterfacesGetOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces",
+    }),
+  );
+export type NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput =
+  typeof NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput.Type;
+
+// Output Schema
+export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
+  typeof NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput.Type;
+
+// The operation
+/**
+ * List all the Network Bootstrap Interface resources in a given resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ */
+export const NetworkBootstrapInterfacesListByNetworkBootstrapDevice =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput,
+    outputSchema: NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapInterfacesUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
+    }),
+  );
+export type NetworkBootstrapInterfacesUpdateInput =
+  typeof NetworkBootstrapInterfacesUpdateInput.Type;
+
+// Output Schema
+export const NetworkBootstrapInterfacesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type NetworkBootstrapInterfacesUpdateOutput =
+  typeof NetworkBootstrapInterfacesUpdateOutput.Type;
+
+// The operation
+/**
+ * Update certain properties of the Network Bootstrap Interface resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
+ */
+export const NetworkBootstrapInterfacesUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapInterfacesUpdateInput,
+    outputSchema: NetworkBootstrapInterfacesUpdateOutput,
+  }));
+// Input Schema
+export const NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
+    networkBootstrapInterfaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
+  typeof NetworkBootstrapInterfacesUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
+  typeof NetworkBootstrapInterfacesUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Update the admin state of the Network Interface.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
+ * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
+ */
+export const NetworkBootstrapInterfacesUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkBootstrapInterfacesUpdateAdministrativeStateInput,
+    outputSchema: NetworkBootstrapInterfacesUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
 export const NetworkDevicesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3324,13 +5586,12 @@ export type NetworkDevicesCreateOutput = typeof NetworkDevicesCreateOutput.Type;
 
 // The operation
 /**
- * Create Network Device.
- *
  * Create a Network Device resource
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3343,6 +5604,7 @@ export const NetworkDevicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3359,13 +5621,12 @@ export type NetworkDevicesDeleteOutput = typeof NetworkDevicesDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes a Network Device.
- *
  * Delete the Network Device resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3378,6 +5639,7 @@ export const NetworkDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -3398,13 +5660,12 @@ export type NetworkDevicesGetOutput = typeof NetworkDevicesGetOutput.Type;
 
 // The operation
 /**
- * Gets a Network Device.
- *
  * Gets the Network Device resource details.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkDevicesGetInput,
@@ -3414,6 +5675,7 @@ export const NetworkDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const NetworkDeviceSkusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    networkDeviceSkuName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3430,12 +5692,11 @@ export type NetworkDeviceSkusGetOutput = typeof NetworkDeviceSkusGetOutput.Type;
 
 // The operation
 /**
- * Gets a Network Device Sku.
- *
  * Get a Network Device SKU details.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param networkDeviceSkuName - Name of the Network Device SKU.
  */
 export const NetworkDeviceSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3460,7 +5721,7 @@ export type NetworkDeviceSkusListBySubscriptionInput =
 // Output Schema
 export const NetworkDeviceSkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkDeviceSkusListBySubscriptionOutput =
@@ -3468,12 +5729,10 @@ export type NetworkDeviceSkusListBySubscriptionOutput =
 
 // The operation
 /**
- * List Network Device SKUs by subscription.
- *
  * List Network Device SKUs for the given subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkDeviceSkusListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3498,13 +5757,11 @@ export type NetworkDevicesListByResourceGroupInput =
 // Output Schema
 export const NetworkDevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3513,13 +5770,11 @@ export type NetworkDevicesListByResourceGroupOutput =
 
 // The operation
 /**
- * List NetworkDevices by resource group.
- *
  * List all the Network Device resources in a given resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NetworkDevicesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3543,13 +5798,11 @@ export type NetworkDevicesListBySubscriptionInput =
 // Output Schema
 export const NetworkDevicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3558,12 +5811,10 @@ export type NetworkDevicesListBySubscriptionOutput =
 
 // The operation
 /**
- * List NetworkDevices by subscription.
- *
  * List all the Network Device resources in a given subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkDevicesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3575,6 +5826,7 @@ export const NetworkDevicesRebootInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3587,6 +5839,43 @@ export type NetworkDevicesRebootInput = typeof NetworkDevicesRebootInput.Type;
 // Output Schema
 export const NetworkDevicesRebootOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -3608,13 +5897,12 @@ export type NetworkDevicesRebootOutput = typeof NetworkDevicesRebootOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Reboot the Network Device.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesReboot = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3627,6 +5915,7 @@ export const NetworkDevicesRefreshConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3639,6 +5928,418 @@ export type NetworkDevicesRefreshConfigurationInput =
 
 // Output Schema
 export const NetworkDevicesRefreshConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkDevicesRefreshConfigurationOutput =
+  typeof NetworkDevicesRefreshConfigurationOutput.Type;
+
+// The operation
+/**
+ * Refreshes the configuration the Network Device.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkDeviceName - Name of the Network Device.
+ */
+export const NetworkDevicesRefreshConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkDevicesRefreshConfigurationInput,
+    outputSchema: NetworkDevicesRefreshConfigurationOutput,
+  }));
+// Input Schema
+export const NetworkDevicesResyncCertificatesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncCertificates",
+    }),
+  );
+export type NetworkDevicesResyncCertificatesInput =
+  typeof NetworkDevicesResyncCertificatesInput.Type;
+
+// Output Schema
+export const NetworkDevicesResyncCertificatesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkDevicesResyncCertificatesOutput =
+  typeof NetworkDevicesResyncCertificatesOutput.Type;
+
+// The operation
+/**
+ * Resync the latest certificates to the Network Device.
+ *
+ * Updates the Network Device to use the latest certificates. Does not generate new certificates. Allows network devices missed during a previous certificate rotation to be brought back into sync.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkDeviceName - Name of the Network Device.
+ */
+export const NetworkDevicesResyncCertificates =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkDevicesResyncCertificatesInput,
+    outputSchema: NetworkDevicesResyncCertificatesOutput,
+  }));
+// Input Schema
+export const NetworkDevicesResyncPasswordsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncPasswords",
+    }),
+  );
+export type NetworkDevicesResyncPasswordsInput =
+  typeof NetworkDevicesResyncPasswordsInput.Type;
+
+// Output Schema
+export const NetworkDevicesResyncPasswordsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkDevicesResyncPasswordsOutput =
+  typeof NetworkDevicesResyncPasswordsOutput.Type;
+
+// The operation
+/**
+ * Resync the latest passwords to the Network Device.
+ *
+ * Updates the Network Device to use the latest passwords. Does not generate new passwords. Allows network devices missed during a previous password rotation to be brought back into sync.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkDeviceName - Name of the Network Device.
+ */
+export const NetworkDevicesResyncPasswords =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkDevicesResyncPasswordsInput,
+    outputSchema: NetworkDevicesResyncPasswordsOutput,
+  }));
+// Input Schema
+export const NetworkDevicesRunRoCommandInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRoCommand",
+    }),
+  );
+export type NetworkDevicesRunRoCommandInput =
+  typeof NetworkDevicesRunRoCommandInput.Type;
+
+// Output Schema
+export const NetworkDevicesRunRoCommandOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
@@ -3657,29 +6358,189 @@ export const NetworkDevicesRefreshConfigurationOutput =
       }),
     ),
   });
-export type NetworkDevicesRefreshConfigurationOutput =
-  typeof NetworkDevicesRefreshConfigurationOutput.Type;
+export type NetworkDevicesRunRoCommandOutput =
+  typeof NetworkDevicesRunRoCommandOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
+ * Run the RO Command on the Network Device.
  *
- * Refreshes the configuration the Network Device.
- *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesRefreshConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NetworkDevicesRefreshConfigurationInput,
-    outputSchema: NetworkDevicesRefreshConfigurationOutput,
-  }));
+export const NetworkDevicesRunRoCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkDevicesRunRoCommandInput,
+    outputSchema: NetworkDevicesRunRoCommandOutput,
+  }),
+);
+// Input Schema
+export const NetworkDevicesRunRwCommandInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRwCommand",
+    }),
+  );
+export type NetworkDevicesRunRwCommandInput =
+  typeof NetworkDevicesRunRwCommandInput.Type;
+
+// Output Schema
+export const NetworkDevicesRunRwCommandOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        configurationState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Rejected",
+            "Accepted",
+            "Provisioned",
+            "ErrorProvisioning",
+            "Deprovisioning",
+            "Deprovisioned",
+            "ErrorDeprovisioning",
+            "DeferredControl",
+            "Provisioning",
+            "PendingCommit",
+            "PendingAdministrativeUpdate",
+          ]),
+        ),
+        outputUrl: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type NetworkDevicesRunRwCommandOutput =
+  typeof NetworkDevicesRunRwCommandOutput.Type;
+
+// The operation
+/**
+ * Run the RW Command on the Network Device.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkDeviceName - Name of the Network Device.
+ */
+export const NetworkDevicesRunRwCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkDevicesRunRwCommandInput,
+    outputSchema: NetworkDevicesRunRwCommandOutput,
+  }),
+);
 // Input Schema
 export const NetworkDevicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3699,13 +6560,12 @@ export type NetworkDevicesUpdateOutput = typeof NetworkDevicesUpdateOutput.Type;
 
 // The operation
 /**
- * Updates a Network Device.
- *
  * Update certain properties of the Network Device resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3718,6 +6578,7 @@ export const NetworkDevicesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3731,12 +6592,94 @@ export type NetworkDevicesUpdateAdministrativeStateInput =
 // Output Schema
 export const NetworkDevicesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -3747,19 +6690,19 @@ export const NetworkDevicesUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
   });
 export type NetworkDevicesUpdateAdministrativeStateOutput =
   typeof NetworkDevicesUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Updates the Administrative state of the Network Device.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3771,8 +6714,8 @@ export const NetworkDevicesUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    version: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3784,12 +6727,94 @@ export type NetworkDevicesUpgradeInput = typeof NetworkDevicesUpgradeInput.Type;
 // Output Schema
 export const NetworkDevicesUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -3800,20 +6825,19 @@ export const NetworkDevicesUpgradeOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
   });
 export type NetworkDevicesUpgradeOutput =
   typeof NetworkDevicesUpgradeOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Upgrades the version of the Network Device.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param version - Specify the version.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3826,6 +6850,7 @@ export const NetworkFabricControllersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricControllerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3847,13 +6872,12 @@ export type NetworkFabricControllersCreateOutput =
 
 // The operation
 /**
- * Create Network fabric controller.
- *
  * Creates a Network Fabric Controller.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
 export const NetworkFabricControllersCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3865,6 +6889,7 @@ export const NetworkFabricControllersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricControllerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3883,13 +6908,12 @@ export type NetworkFabricControllersDeleteOutput =
 
 // The operation
 /**
- * Deletes a Network Fabric Controller.
- *
  * Deletes the Network Fabric Controller resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
 export const NetworkFabricControllersDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3901,6 +6925,7 @@ export const NetworkFabricControllersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricControllerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3922,13 +6947,12 @@ export type NetworkFabricControllersGetOutput =
 
 // The operation
 /**
- * Gets a Network Fabric Controller.
- *
  * Shows the provisioning status of Network Fabric Controller.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
 export const NetworkFabricControllersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3954,13 +6978,11 @@ export type NetworkFabricControllersListByResourceGroupInput =
 // Output Schema
 export const NetworkFabricControllersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3969,13 +6991,11 @@ export type NetworkFabricControllersListByResourceGroupOutput =
 
 // The operation
 /**
- * List NetworkFabricControllers by resource group.
- *
  * Lists all the NetworkFabricControllers thats available in the resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NetworkFabricControllersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3999,13 +7019,11 @@ export type NetworkFabricControllersListBySubscriptionInput =
 // Output Schema
 export const NetworkFabricControllersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4014,12 +7032,10 @@ export type NetworkFabricControllersListBySubscriptionOutput =
 
 // The operation
 /**
- * List NetworkFabricControllers by subscription.
- *
  * Lists all the NetworkFabricControllers by subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkFabricControllersListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4031,6 +7047,7 @@ export const NetworkFabricControllersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricControllerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4052,13 +7069,12 @@ export type NetworkFabricControllersUpdateOutput =
 
 // The operation
 /**
- * Updates a Network Fabric Controller.
- *
  * Updates are currently not supported for the Network Fabric Controller resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
 export const NetworkFabricControllersUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4066,10 +7082,301 @@ export const NetworkFabricControllersUpdate =
     outputSchema: NetworkFabricControllersUpdateOutput,
   }));
 // Input Schema
+export const NetworkFabricsArmConfigurationDiffInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/armConfigurationDiff",
+    }),
+  );
+export type NetworkFabricsArmConfigurationDiffInput =
+  typeof NetworkFabricsArmConfigurationDiffInput.Type;
+
+// Output Schema
+export const NetworkFabricsArmConfigurationDiffOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        configurationDiffUrl: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type NetworkFabricsArmConfigurationDiffOutput =
+  typeof NetworkFabricsArmConfigurationDiffOutput.Type;
+
+// The operation
+/**
+ * Post action: Triggers diff of NetworkFabric ARM Configuration.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsArmConfigurationDiff =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsArmConfigurationDiffInput,
+    outputSchema: NetworkFabricsArmConfigurationDiffOutput,
+  }));
+// Input Schema
+export const NetworkFabricsCommitBatchStatusInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitBatchStatus",
+    }),
+  );
+export type NetworkFabricsCommitBatchStatusInput =
+  typeof NetworkFabricsCommitBatchStatusInput.Type;
+
+// Output Schema
+export const NetworkFabricsCommitBatchStatusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        commitBatchId: Schema.optional(Schema.String),
+        commitBatchState: Schema.optional(
+          Schema.Literals(["Processing", "Succeeded", "Failed"]),
+        ),
+        commitBatchDetails: Schema.optional(
+          Schema.Struct({
+            failedDevices: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsCommitBatchStatusOutput =
+  typeof NetworkFabricsCommitBatchStatusOutput.Type;
+
+// The operation
+/**
+ * Post action: Returns a status of commit batch operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsCommitBatchStatus =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsCommitBatchStatusInput,
+    outputSchema: NetworkFabricsCommitBatchStatusOutput,
+  }));
+// Input Schema
 export const NetworkFabricsCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4083,12 +7390,94 @@ export type NetworkFabricsCommitConfigurationInput =
 // Output Schema
 export const NetworkFabricsCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -4099,19 +7488,19 @@ export const NetworkFabricsCommitConfigurationOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
   });
 export type NetworkFabricsCommitConfigurationOutput =
   typeof NetworkFabricsCommitConfigurationOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Atomic update of the given Network Fabric instance. Sync update of NFA resources at Fabric level.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsCommitConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4123,6 +7512,7 @@ export const NetworkFabricsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4142,13 +7532,12 @@ export type NetworkFabricsCreateOutput = typeof NetworkFabricsCreateOutput.Type;
 
 // The operation
 /**
- * Create Network Fabric.
- *
  * Create Network Fabric resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4161,6 +7550,7 @@ export const NetworkFabricsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4177,13 +7567,12 @@ export type NetworkFabricsDeleteOutput = typeof NetworkFabricsDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes a Network Fabric.
- *
  * Delete Network Fabric resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4196,6 +7585,7 @@ export const NetworkFabricsDeprovisionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4209,6 +7599,43 @@ export type NetworkFabricsDeprovisionInput =
 // Output Schema
 export const NetworkFabricsDeprovisionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -4231,13 +7658,12 @@ export type NetworkFabricsDeprovisionOutput =
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Deprovisions the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsDeprovision = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4246,10 +7672,152 @@ export const NetworkFabricsDeprovision = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const NetworkFabricsDiscardCommitBatchInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/discardCommitBatch",
+    }),
+  );
+export type NetworkFabricsDiscardCommitBatchInput =
+  typeof NetworkFabricsDiscardCommitBatchInput.Type;
+
+// Output Schema
+export const NetworkFabricsDiscardCommitBatchOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        commitBatchId: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type NetworkFabricsDiscardCommitBatchOutput =
+  typeof NetworkFabricsDiscardCommitBatchOutput.Type;
+
+// The operation
+/**
+ * Post action: Discards a Batch operation in progress.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsDiscardCommitBatch =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsDiscardCommitBatchInput,
+    outputSchema: NetworkFabricsDiscardCommitBatchOutput,
+  }));
+// Input Schema
 export const NetworkFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -4270,13 +7838,12 @@ export type NetworkFabricsGetOutput = typeof NetworkFabricsGetOutput.Type;
 
 // The operation
 /**
- * Gets a Network Fabric.
- *
  * Get Network Fabric resource details.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkFabricsGetInput,
@@ -4287,6 +7854,7 @@ export const NetworkFabricsGetTopologyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4300,12 +7868,94 @@ export type NetworkFabricsGetTopologyInput =
 // Output Schema
 export const NetworkFabricsGetTopologyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -4316,19 +7966,24 @@ export const NetworkFabricsGetTopologyOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        url: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NetworkFabricsGetTopologyOutput =
   typeof NetworkFabricsGetTopologyOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Gets Topology of the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsGetTopology = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4340,6 +7995,7 @@ export const NetworkFabricsGetTopology = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const NetworkFabricSkusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    networkFabricSkuName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4356,12 +8012,11 @@ export type NetworkFabricSkusGetOutput = typeof NetworkFabricSkusGetOutput.Type;
 
 // The operation
 /**
- * Gets a Network Fabric Sku.
- *
  * Implements Network Fabric SKU GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param networkFabricSkuName - Name of the Network Fabric SKU.
  */
 export const NetworkFabricSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4386,7 +8041,7 @@ export type NetworkFabricSkusListBySubscriptionInput =
 // Output Schema
 export const NetworkFabricSkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkFabricSkusListBySubscriptionOutput =
@@ -4394,12 +8049,10 @@ export type NetworkFabricSkusListBySubscriptionOutput =
 
 // The operation
 /**
- * List Network Fabric SKUs by subscription.
- *
  * Implements Network Fabric SKUs list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkFabricSkusListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4424,13 +8077,11 @@ export type NetworkFabricsListByResourceGroupInput =
 // Output Schema
 export const NetworkFabricsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4439,13 +8090,11 @@ export type NetworkFabricsListByResourceGroupOutput =
 
 // The operation
 /**
- * List Network Fabrics by resource group.
- *
  * List all the Network Fabric resources in the given resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NetworkFabricsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4469,13 +8118,11 @@ export type NetworkFabricsListBySubscriptionInput =
 // Output Schema
 export const NetworkFabricsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4484,12 +8131,10 @@ export type NetworkFabricsListBySubscriptionOutput =
 
 // The operation
 /**
- * List Network Fabrics by subscription.
- *
  * List all the Network Fabric resources in the given subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkFabricsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4497,10 +8142,102 @@ export const NetworkFabricsListBySubscription =
     outputSchema: NetworkFabricsListBySubscriptionOutput,
   }));
 // Input Schema
+export const NetworkFabricsLockFabricInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/lockFabric",
+    }),
+  );
+export type NetworkFabricsLockFabricInput =
+  typeof NetworkFabricsLockFabricInput.Type;
+
+// Output Schema
+export const NetworkFabricsLockFabricOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsLockFabricOutput =
+  typeof NetworkFabricsLockFabricOutput.Type;
+
+// The operation
+/**
+ * Post action: Triggers network fabric lock operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsLockFabric = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkFabricsLockFabricInput,
+    outputSchema: NetworkFabricsLockFabricOutput,
+  }),
+);
+// Input Schema
 export const NetworkFabricsProvisionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4514,6 +8251,43 @@ export type NetworkFabricsProvisionInput =
 // Output Schema
 export const NetworkFabricsProvisionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -4536,13 +8310,12 @@ export type NetworkFabricsProvisionOutput =
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Provisions the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsProvision = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4555,6 +8328,7 @@ export const NetworkFabricsRefreshConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4568,6 +8342,43 @@ export type NetworkFabricsRefreshConfigurationInput =
 // Output Schema
 export const NetworkFabricsRefreshConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -4590,13 +8401,12 @@ export type NetworkFabricsRefreshConfigurationOutput =
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Refreshes the configuration of the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsRefreshConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4604,10 +8414,567 @@ export const NetworkFabricsRefreshConfiguration =
     outputSchema: NetworkFabricsRefreshConfigurationOutput,
   }));
 // Input Schema
+export const NetworkFabricsResyncCertificatesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncCertificates",
+    }),
+  );
+export type NetworkFabricsResyncCertificatesInput =
+  typeof NetworkFabricsResyncCertificatesInput.Type;
+
+// Output Schema
+export const NetworkFabricsResyncCertificatesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkFabricsResyncCertificatesOutput =
+  typeof NetworkFabricsResyncCertificatesOutput.Type;
+
+// The operation
+/**
+ * Re-sync all certificates on Network Devices.
+ *
+ * Updates all Network Devices to use the latest certificates. Does not generate new certificates. Allows network devices missed during a previous certificate rotation to be brought back into sync.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsResyncCertificates =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsResyncCertificatesInput,
+    outputSchema: NetworkFabricsResyncCertificatesOutput,
+  }));
+// Input Schema
+export const NetworkFabricsResyncPasswordsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncPasswords",
+    }),
+  );
+export type NetworkFabricsResyncPasswordsInput =
+  typeof NetworkFabricsResyncPasswordsInput.Type;
+
+// Output Schema
+export const NetworkFabricsResyncPasswordsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkFabricsResyncPasswordsOutput =
+  typeof NetworkFabricsResyncPasswordsOutput.Type;
+
+// The operation
+/**
+ * Resync the latest passwords to the Terminal Server and Network Devices.
+ *
+ * Updates the Terminal Server and all Network Devices to use the latest passwords. Does not generate new passwords.
+ * Allows devices to be brought back in sync after a partially successful password rotation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsResyncPasswords =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsResyncPasswordsInput,
+    outputSchema: NetworkFabricsResyncPasswordsOutput,
+  }));
+// Input Schema
+export const NetworkFabricsRotateCertificatesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotateCertificates",
+    }),
+  );
+export type NetworkFabricsRotateCertificatesInput =
+  typeof NetworkFabricsRotateCertificatesInput.Type;
+
+// Output Schema
+export const NetworkFabricsRotateCertificatesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkFabricsRotateCertificatesOutput =
+  typeof NetworkFabricsRotateCertificatesOutput.Type;
+
+// The operation
+/**
+ * Rotate all certificates on Network Devices.
+ *
+ * Creates new certificates, then updates the Network Devices to use the new certificates. Note that disabled devices cannot be updated and must be resynchronized with the new certificates once they are enabled.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsRotateCertificates =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsRotateCertificatesInput,
+    outputSchema: NetworkFabricsRotateCertificatesOutput,
+  }));
+// Input Schema
+export const NetworkFabricsRotatePasswordsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotatePasswords",
+    }),
+  );
+export type NetworkFabricsRotatePasswordsInput =
+  typeof NetworkFabricsRotatePasswordsInput.Type;
+
+// Output Schema
+export const NetworkFabricsRotatePasswordsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+  });
+export type NetworkFabricsRotatePasswordsOutput =
+  typeof NetworkFabricsRotatePasswordsOutput.Type;
+
+// The operation
+/**
+ * Rotate all passwords on the Terminal Server and Network Devices.
+ *
+ * Creates new passwords, then updates the Terminal Server and Network Devices to use the new passwords.
+ * Note that disabled devices cannot be updated and must be resynchronized with the new passwords once they are enabled.
+ * Fails if any of the devices could not be updated with the new password.
+ * Failed devices should be resynchronized with the new passwords once possible.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsRotatePasswords =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsRotatePasswordsInput,
+    outputSchema: NetworkFabricsRotatePasswordsOutput,
+  }));
+// Input Schema
 export const NetworkFabricsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4627,13 +8994,12 @@ export type NetworkFabricsUpdateOutput = typeof NetworkFabricsUpdateOutput.Type;
 
 // The operation
 /**
- * Updates a Network Fabric.
- *
  * Update certain properties of the Network Fabric resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4646,8 +9012,8 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4660,12 +9026,94 @@ export type NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
 // Output Schema
 export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -4676,20 +9124,25 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
   typeof NetworkFabricsUpdateInfraManagementBfdConfigurationOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Updates the Infra Management BFD Configuration of the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsUpdateInfraManagementBfdConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4701,8 +9154,8 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4715,12 +9168,94 @@ export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
 // Output Schema
 export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -4731,20 +9266,25 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
   typeof NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Updates the Workload Management BFD Configuration of the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsUpdateWorkloadManagementBfdConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4756,6 +9296,7 @@ export const NetworkFabricsUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4768,6 +9309,43 @@ export type NetworkFabricsUpgradeInput = typeof NetworkFabricsUpgradeInput.Type;
 // Output Schema
 export const NetworkFabricsUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -4790,13 +9368,12 @@ export type NetworkFabricsUpgradeOutput =
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Upgrades the version of the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4809,6 +9386,7 @@ export const NetworkFabricsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4844,13 +9422,12 @@ export type NetworkFabricsValidateConfigurationOutput =
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Validates the configuration of the underlying resources in the given Network Fabric instance.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsValidateConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4858,10 +9435,153 @@ export const NetworkFabricsValidateConfiguration =
     outputSchema: NetworkFabricsValidateConfigurationOutput,
   }));
 // Input Schema
+export const NetworkFabricsViewDeviceConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/viewDeviceConfiguration",
+    }),
+  );
+export type NetworkFabricsViewDeviceConfigurationInput =
+  typeof NetworkFabricsViewDeviceConfigurationInput.Type;
+
+// Output Schema
+export const NetworkFabricsViewDeviceConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        deviceConfigurationUrl: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type NetworkFabricsViewDeviceConfigurationOutput =
+  typeof NetworkFabricsViewDeviceConfigurationOutput.Type;
+
+// The operation
+/**
+ * Post action: Triggers view of network fabric configuration.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ */
+export const NetworkFabricsViewDeviceConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsViewDeviceConfigurationInput,
+    outputSchema: NetworkFabricsViewDeviceConfigurationOutput,
+  }));
+// Input Schema
 export const NetworkInterfacesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4880,13 +9600,13 @@ export type NetworkInterfacesCreateOutput =
 
 // The operation
 /**
- * Create NetworkInterface.
- *
  * Create a Network Interface resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
+ * @param networkInterfaceName - Name of the Network Interface.
  */
 export const NetworkInterfacesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4899,6 +9619,8 @@ export const NetworkInterfacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4917,13 +9639,13 @@ export type NetworkInterfacesDeleteOutput =
 
 // The operation
 /**
- * Deletes a NetworkInterface.
- *
  * Delete the Network Interface resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
+ * @param networkInterfaceName - Name of the Network Interface.
  */
 export const NetworkInterfacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4936,6 +9658,8 @@ export const NetworkInterfacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4952,13 +9676,13 @@ export type NetworkInterfacesGetOutput = typeof NetworkInterfacesGetOutput.Type;
 
 // The operation
 /**
- * Gets a NetworkInterface.
- *
  * Get the Network Interface resource details.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
+ * @param networkInterfaceName - Name of the Network Interface.
  */
 export const NetworkInterfacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4971,6 +9695,7 @@ export const NetworkInterfacesListByNetworkDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4984,7 +9709,7 @@ export type NetworkInterfacesListByNetworkDeviceInput =
 // Output Schema
 export const NetworkInterfacesListByNetworkDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkInterfacesListByNetworkDeviceOutput =
@@ -4992,13 +9717,12 @@ export type NetworkInterfacesListByNetworkDeviceOutput =
 
 // The operation
 /**
- * List all Network Interfaces that are available using an Network Device.
- *
  * List all the Network Interface resources in a given resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkInterfacesListByNetworkDevice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5010,6 +9734,8 @@ export const NetworkInterfacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5028,13 +9754,13 @@ export type NetworkInterfacesUpdateOutput =
 
 // The operation
 /**
- * Updates a NetworkInterface.
- *
  * Update certain properties of the Network Interface resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkDeviceName - Name of the Network Device.
+ * @param networkInterfaceName - Name of the Network Interface.
  */
 export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5047,8 +9773,9 @@ export const NetworkInterfacesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkDeviceName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5060,6 +9787,381 @@ export type NetworkInterfacesUpdateAdministrativeStateInput =
 
 // Output Schema
 export const NetworkInterfacesUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  });
+export type NetworkInterfacesUpdateAdministrativeStateOutput =
+  typeof NetworkInterfacesUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Update the admin state of the Network Interface.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkDeviceName - Name of the Network Device.
+ * @param networkInterfaceName - Name of the Network Interface.
+ */
+export const NetworkInterfacesUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkInterfacesUpdateAdministrativeStateInput,
+    outputSchema: NetworkInterfacesUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const NetworkMonitorsCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkMonitorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
+    }),
+  );
+export type NetworkMonitorsCreateInput = typeof NetworkMonitorsCreateInput.Type;
+
+// Output Schema
+export const NetworkMonitorsCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type NetworkMonitorsCreateOutput =
+  typeof NetworkMonitorsCreateOutput.Type;
+
+// The operation
+/**
+ * Creates NetworkMonitor resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkMonitorName - Name of the Network Monitor.
+ */
+export const NetworkMonitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkMonitorsCreateInput,
+    outputSchema: NetworkMonitorsCreateOutput,
+  }),
+);
+// Input Schema
+export const NetworkMonitorsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkMonitorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
+    }),
+  );
+export type NetworkMonitorsDeleteInput = typeof NetworkMonitorsDeleteInput.Type;
+
+// Output Schema
+export const NetworkMonitorsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type NetworkMonitorsDeleteOutput =
+  typeof NetworkMonitorsDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes layer 2 connectivity between compute nodes by managed by named NetworkMonitor name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkMonitorName - Name of the Network Monitor.
+ */
+export const NetworkMonitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkMonitorsDeleteInput,
+    outputSchema: NetworkMonitorsDeleteOutput,
+  }),
+);
+// Input Schema
+export const NetworkMonitorsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkMonitorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
+    }),
+  );
+export type NetworkMonitorsGetInput = typeof NetworkMonitorsGetInput.Type;
+
+// Output Schema
+export const NetworkMonitorsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type NetworkMonitorsGetOutput = typeof NetworkMonitorsGetOutput.Type;
+
+// The operation
+/**
+ * Implements NetworkMonitor GET method.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkMonitorName - Name of the Network Monitor.
+ */
+export const NetworkMonitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: NetworkMonitorsGetInput,
+  outputSchema: NetworkMonitorsGetOutput,
+}));
+// Input Schema
+export const NetworkMonitorsListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
+    }),
+  );
+export type NetworkMonitorsListByResourceGroupInput =
+  typeof NetworkMonitorsListByResourceGroupInput.Type;
+
+// Output Schema
+export const NetworkMonitorsListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkMonitorsListByResourceGroupOutput =
+  typeof NetworkMonitorsListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Displays NetworkMonitors list by resource group GET method.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const NetworkMonitorsListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkMonitorsListByResourceGroupInput,
+    outputSchema: NetworkMonitorsListByResourceGroupOutput,
+  }));
+// Input Schema
+export const NetworkMonitorsListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
+    }),
+  );
+export type NetworkMonitorsListBySubscriptionInput =
+  typeof NetworkMonitorsListBySubscriptionInput.Type;
+
+// Output Schema
+export const NetworkMonitorsListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkMonitorsListBySubscriptionOutput =
+  typeof NetworkMonitorsListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * Displays NetworkMonitors list by subscription GET method.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const NetworkMonitorsListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkMonitorsListBySubscriptionInput,
+    outputSchema: NetworkMonitorsListBySubscriptionOutput,
+  }));
+// Input Schema
+export const NetworkMonitorsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkMonitorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
+    }),
+  );
+export type NetworkMonitorsUpdateInput = typeof NetworkMonitorsUpdateInput.Type;
+
+// Output Schema
+export const NetworkMonitorsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type NetworkMonitorsUpdateOutput =
+  typeof NetworkMonitorsUpdateOutput.Type;
+
+// The operation
+/**
+ * API to update certain properties of the NetworkMonitor resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkMonitorName - Name of the Network Monitor.
+ */
+export const NetworkMonitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkMonitorsUpdateInput,
+    outputSchema: NetworkMonitorsUpdateOutput,
+  }),
+);
+// Input Schema
+export const NetworkMonitorsUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkMonitorName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkMonitorsUpdateAdministrativeStateInput =
+  typeof NetworkMonitorsUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkMonitorsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
@@ -5078,30 +10180,29 @@ export const NetworkInterfacesUpdateAdministrativeStateOutput =
       }),
     ),
   });
-export type NetworkInterfacesUpdateAdministrativeStateOutput =
-  typeof NetworkInterfacesUpdateAdministrativeStateOutput.Type;
+export type NetworkMonitorsUpdateAdministrativeStateOutput =
+  typeof NetworkMonitorsUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Updates the admin state of the network interface.
+ * Enables isolation domain across the fabric or on specified racks.
  *
- * Update the admin state of the Network Interface.
- *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param networkMonitorName - Name of the Network Monitor.
  */
-export const NetworkInterfacesUpdateAdministrativeState =
+export const NetworkMonitorsUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: NetworkInterfacesUpdateAdministrativeStateInput,
-    outputSchema: NetworkInterfacesUpdateAdministrativeStateOutput,
+    inputSchema: NetworkMonitorsUpdateAdministrativeStateInput,
+    outputSchema: NetworkMonitorsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
 export const NetworkPacketBrokersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5123,13 +10224,12 @@ export type NetworkPacketBrokersCreateOutput =
 
 // The operation
 /**
- * Create Network Packet Broker.
- *
  * Creates a Network Packet Broker.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
 export const NetworkPacketBrokersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5142,6 +10242,7 @@ export const NetworkPacketBrokersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5160,13 +10261,12 @@ export type NetworkPacketBrokersDeleteOutput =
 
 // The operation
 /**
- * Deletes a Network Packet Broker.
- *
  * Deletes Network Packet Broker.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
 export const NetworkPacketBrokersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5179,6 +10279,7 @@ export const NetworkPacketBrokersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5200,13 +10301,12 @@ export type NetworkPacketBrokersGetOutput =
 
 // The operation
 /**
- * Gets a Network Packet Broker.
- *
  * Retrieves details of this Network Packet Broker.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
 export const NetworkPacketBrokersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5232,13 +10332,11 @@ export type NetworkPacketBrokersListByResourceGroupInput =
 // Output Schema
 export const NetworkPacketBrokersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5247,13 +10345,11 @@ export type NetworkPacketBrokersListByResourceGroupOutput =
 
 // The operation
 /**
- * List all Network Packet Brokers under resource group.
- *
  * Displays NetworkPacketBrokers list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NetworkPacketBrokersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5277,13 +10373,11 @@ export type NetworkPacketBrokersListBySubscriptionInput =
 // Output Schema
 export const NetworkPacketBrokersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5292,12 +10386,10 @@ export type NetworkPacketBrokersListBySubscriptionOutput =
 
 // The operation
 /**
- * List Network Packet Brokers by subscription.
- *
  * Displays Network Packet Brokers list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkPacketBrokersListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5309,6 +10401,7 @@ export const NetworkPacketBrokersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5330,13 +10423,12 @@ export type NetworkPacketBrokersUpdateOutput =
 
 // The operation
 /**
- * Updates the Network Packet Broker.
- *
  * API to update certain properties of the Network Packet Broker resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
 export const NetworkPacketBrokersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5349,6 +10441,7 @@ export const NetworkRacksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkRackName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5368,13 +10461,12 @@ export type NetworkRacksCreateOutput = typeof NetworkRacksCreateOutput.Type;
 
 // The operation
 /**
- * Create Network Rack.
- *
  * Create Network Rack resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkRackName - Name of the Network Rack.
  */
 export const NetworkRacksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksCreateInput,
@@ -5385,6 +10477,7 @@ export const NetworkRacksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkRackName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5400,13 +10493,12 @@ export type NetworkRacksDeleteOutput = typeof NetworkRacksDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes a Network Rack.
- *
  * Delete Network Rack resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkRackName - Name of the Network Rack.
  */
 export const NetworkRacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksDeleteInput,
@@ -5416,6 +10508,7 @@ export const NetworkRacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const NetworkRacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkRackName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -5434,13 +10527,12 @@ export type NetworkRacksGetOutput = typeof NetworkRacksGetOutput.Type;
 
 // The operation
 /**
- * Gets a Network Rack.
- *
  * Get Network Rack resource details.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkRackName - Name of the Network Rack.
  */
 export const NetworkRacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksGetInput,
@@ -5464,13 +10556,11 @@ export type NetworkRacksListByResourceGroupInput =
 // Output Schema
 export const NetworkRacksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5479,13 +10569,11 @@ export type NetworkRacksListByResourceGroupOutput =
 
 // The operation
 /**
- * List Network Racks by resource group.
- *
  * List all Network Rack resources in the given resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NetworkRacksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5509,13 +10597,11 @@ export type NetworkRacksListBySubscriptionInput =
 // Output Schema
 export const NetworkRacksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5524,12 +10610,10 @@ export type NetworkRacksListBySubscriptionOutput =
 
 // The operation
 /**
- * List Network Racks by subscription.
- *
  * List all Network Rack resources in the given subscription
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkRacksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5541,6 +10625,7 @@ export const NetworkRacksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkRackName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5560,13 +10645,12 @@ export type NetworkRacksUpdateOutput = typeof NetworkRacksUpdateOutput.Type;
 
 // The operation
 /**
- * Updates a Network Rack.
- *
  * Update certain properties of the Network Rack resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkRackName - Name of the Network Rack.
  */
 export const NetworkRacksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksUpdateInput,
@@ -5577,6 +10661,7 @@ export const NetworkTapRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5597,13 +10682,12 @@ export type NetworkTapRulesCreateOutput =
 
 // The operation
 /**
- * Create Network Tap Rule.
- *
  * Create Network Tap Rule resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5616,6 +10700,7 @@ export const NetworkTapRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5633,13 +10718,12 @@ export type NetworkTapRulesDeleteOutput =
 
 // The operation
 /**
- * Deletes a Network Tap Rule.
- *
  * Delete Network Tap Rule resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5652,6 +10736,7 @@ export const NetworkTapRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5671,13 +10756,12 @@ export type NetworkTapRulesGetOutput = typeof NetworkTapRulesGetOutput.Type;
 
 // The operation
 /**
- * Gets a Network Tap Rule.
- *
  * Get Network Tap Rule resource details.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapRulesGetInput,
@@ -5701,13 +10785,11 @@ export type NetworkTapRulesListByResourceGroupInput =
 // Output Schema
 export const NetworkTapRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5716,13 +10798,11 @@ export type NetworkTapRulesListByResourceGroupOutput =
 
 // The operation
 /**
- * List Network Tap Rules by resource group.
- *
  * List all the Network Tap Rule resources in the given resource group.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NetworkTapRulesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5746,13 +10826,11 @@ export type NetworkTapRulesListBySubscriptionInput =
 // Output Schema
 export const NetworkTapRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5761,12 +10839,10 @@ export type NetworkTapRulesListBySubscriptionOutput =
 
 // The operation
 /**
- * List NetworkTapRules by subscription.
- *
  * List all the Network Tap Rule resources in the given subscription.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkTapRulesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5778,6 +10854,7 @@ export const NetworkTapRulesResyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5790,12 +10867,94 @@ export type NetworkTapRulesResyncInput = typeof NetworkTapRulesResyncInput.Type;
 // Output Schema
 export const NetworkTapRulesResyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -5806,19 +10965,19 @@ export const NetworkTapRulesResyncOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
   });
 export type NetworkTapRulesResyncOutput =
   typeof NetworkTapRulesResyncOutput.Type;
 
 // The operation
 /**
- * Resync the Network Tap Rule.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5831,6 +10990,7 @@ export const NetworkTapRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5851,13 +11011,12 @@ export type NetworkTapRulesUpdateOutput =
 
 // The operation
 /**
- * Updates a Network Tap Rule.
- *
  * Update certain properties of the Network Tap Rule resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5870,8 +11029,8 @@ export const NetworkTapRulesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5906,14 +11065,12 @@ export type NetworkTapRulesUpdateAdministrativeStateOutput =
 
 // The operation
 /**
- * Updates administrative state of  Network Tap Rules.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5925,6 +11082,7 @@ export const NetworkTapRulesValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5960,13 +11118,12 @@ export type NetworkTapRulesValidateConfigurationOutput =
 
 // The operation
 /**
- * Validates the configuration of the Network Tap Rule.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesValidateConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5978,6 +11135,7 @@ export const NetworkTapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -5998,13 +11156,12 @@ export type NetworkTapsCreateOutput = typeof NetworkTapsCreateOutput.Type;
 
 // The operation
 /**
- * Create Network Tap.
- *
  * Creates a Network Tap.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapName - Name of the Network Tap.
  */
 export const NetworkTapsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsCreateInput,
@@ -6015,6 +11172,7 @@ export const NetworkTapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -6031,13 +11189,12 @@ export type NetworkTapsDeleteOutput = typeof NetworkTapsDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes a Network Tap.
- *
  * Deletes Network Tap.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapName - Name of the Network Tap.
  */
 export const NetworkTapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsDeleteInput,
@@ -6047,6 +11204,7 @@ export const NetworkTapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const NetworkTapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkTapName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -6065,13 +11223,12 @@ export type NetworkTapsGetOutput = typeof NetworkTapsGetOutput.Type;
 
 // The operation
 /**
- * Gets a Network Tap.
- *
  * Retrieves details of this Network Tap.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapName - Name of the Network Tap.
  */
 export const NetworkTapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsGetInput,
@@ -6095,13 +11252,11 @@ export type NetworkTapsListByResourceGroupInput =
 // Output Schema
 export const NetworkTapsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6110,13 +11265,11 @@ export type NetworkTapsListByResourceGroupOutput =
 
 // The operation
 /**
- * List Network Taps by resource group.
- *
  * Displays Network Taps list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const NetworkTapsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6140,13 +11293,11 @@ export type NetworkTapsListBySubscriptionInput =
 // Output Schema
 export const NetworkTapsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6155,12 +11306,10 @@ export type NetworkTapsListBySubscriptionOutput =
 
 // The operation
 /**
- * List Network Taps by subscription.
- *
  * Displays Network Taps list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkTapsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6172,6 +11321,7 @@ export const NetworkTapsResyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -6185,12 +11335,94 @@ export type NetworkTapsResyncInput = typeof NetworkTapsResyncInput.Type;
 // Output Schema
 export const NetworkTapsResyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -6201,18 +11433,18 @@ export const NetworkTapsResyncOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
   });
 export type NetworkTapsResyncOutput = typeof NetworkTapsResyncOutput.Type;
 
 // The operation
 /**
- * Resync operation on the Network Tap.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapName - Name of the Network Tap.
  */
 export const NetworkTapsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsResyncInput,
@@ -6223,6 +11455,7 @@ export const NetworkTapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -6243,13 +11476,12 @@ export type NetworkTapsUpdateOutput = typeof NetworkTapsUpdateOutput.Type;
 
 // The operation
 /**
- * Updates the Network Taps.
- *
  * API to update certain properties of the Network Tap resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkTapName - Name of the Network Tap.
  */
 export const NetworkTapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsUpdateInput,
@@ -6260,8 +11492,8 @@ export const NetworkTapsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkTapName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6274,12 +11506,94 @@ export type NetworkTapsUpdateAdministrativeStateInput =
 // Output Schema
 export const NetworkTapsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -6290,20 +11604,25 @@ export const NetworkTapsUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type NetworkTapsUpdateAdministrativeStateOutput =
   typeof NetworkTapsUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Updates administrative state of  Network Tap.
- *
  * Implements the operation to the underlying resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param networkTapName - Name of the Network Tap.
  */
 export const NetworkTapsUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6315,6 +11634,8 @@ export const NetworkToNetworkInterconnectsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6333,13 +11654,13 @@ export type NetworkToNetworkInterconnectsCreateOutput =
 
 // The operation
 /**
- * Configuration used to setup CE-PE connectivity.
- *
  * Configuration used to setup CE-PE connectivity PUT Method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
+ * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6351,6 +11672,8 @@ export const NetworkToNetworkInterconnectsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6369,13 +11692,13 @@ export type NetworkToNetworkInterconnectsDeleteOutput =
 
 // The operation
 /**
- * Deletes a NetworkToNetworkInterconnects.
- *
  * Implements NetworkToNetworkInterconnects DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
+ * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6387,6 +11710,8 @@ export const NetworkToNetworkInterconnectsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6405,13 +11730,13 @@ export type NetworkToNetworkInterconnectsGetOutput =
 
 // The operation
 /**
- * Configuration used to setup CE-PE connectivity.
- *
  * Implements NetworkToNetworkInterconnects GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
+ * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6423,6 +11748,7 @@ export const NetworkToNetworkInterconnectsListByNetworkFabricInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6436,7 +11762,7 @@ export type NetworkToNetworkInterconnectsListByNetworkFabricInput =
 // Output Schema
 export const NetworkToNetworkInterconnectsListByNetworkFabricOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkToNetworkInterconnectsListByNetworkFabricOutput =
@@ -6444,13 +11770,12 @@ export type NetworkToNetworkInterconnectsListByNetworkFabricOutput =
 
 // The operation
 /**
- * Executes list operation to display Network To Network Interconnects within a Network Fabric.
- *
  * Implements Network To Network Interconnects list by Network Fabric GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkToNetworkInterconnectsListByNetworkFabric =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6462,6 +11787,8 @@ export const NetworkToNetworkInterconnectsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6480,13 +11807,13 @@ export type NetworkToNetworkInterconnectsUpdateOutput =
 
 // The operation
 /**
- * Updates a Network To NetworkInterconnects.
- *
  * Update certain properties of the Network To NetworkInterconnects resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param networkFabricName - Name of the Network Fabric.
+ * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6498,8 +11825,9 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6512,12 +11840,94 @@ export type NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
 // Output Schema
 export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -6528,20 +11938,26 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
   typeof NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Updates the Admin State.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param networkFabricName - Name of the Network Fabric.
+ * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6549,12 +11965,160 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeState =
     outputSchema: NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateBfdAdministrativeState",
+    }),
+  );
+export type NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
+  typeof NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        routeType: Schema.optional(Schema.Literals(["Static", "OptionA"])),
+        administrativeState: Schema.optional(
+          Schema.Literals(["Enabled", "Disabled", "MAT", "RMA"]),
+        ),
+      }),
+    ),
+  });
+export type NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
+  typeof NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Updates the Admin State.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkFabricName - Name of the Network Fabric.
+ * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
+ */
+export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput,
+    outputSchema:
+      NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput,
+  }));
+// Input Schema
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkFabricName: Schema.String.pipe(T.PathParam()),
+    networkToNetworkInterconnectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6567,12 +12131,94 @@ export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeSt
 // Output Schema
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -6583,20 +12229,26 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
   typeof NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Implements the operation to the underlying resources.
- *
  * Updates the NPB Static Route BFD Administrative State.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param networkFabricName - Name of the Network Fabric.
+ * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6644,7 +12296,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Returns list of all operations.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */
@@ -6657,6 +12309,7 @@ export const RoutePoliciesCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    routePolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6692,13 +12345,12 @@ export type RoutePoliciesCommitConfigurationOutput =
 
 // The operation
 /**
- * Execute the commit on the resources.
- *
  * Commits the configuration of the given resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesCommitConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6710,6 +12362,7 @@ export const RoutePoliciesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    routePolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6729,13 +12382,12 @@ export type RoutePoliciesCreateOutput = typeof RoutePoliciesCreateOutput.Type;
 
 // The operation
 /**
- * Create Route Policy.
- *
  * Implements Route Policy PUT method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesCreateInput,
@@ -6746,6 +12398,7 @@ export const RoutePoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    routePolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6762,13 +12415,12 @@ export type RoutePoliciesDeleteOutput = typeof RoutePoliciesDeleteOutput.Type;
 
 // The operation
 /**
- * Deletes a Route Policy.
- *
  * Implements Route Policy DELETE method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesDeleteInput,
@@ -6778,6 +12430,7 @@ export const RoutePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RoutePoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  routePolicyName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -6798,13 +12451,12 @@ export type RoutePoliciesGetOutput = typeof RoutePoliciesGetOutput.Type;
 
 // The operation
 /**
- * Gets a Route Policy.
- *
  * Implements Route Policy GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesGetInput,
@@ -6828,13 +12480,11 @@ export type RoutePoliciesListByResourceGroupInput =
 // Output Schema
 export const RoutePoliciesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6843,13 +12493,11 @@ export type RoutePoliciesListByResourceGroupOutput =
 
 // The operation
 /**
- * List RoutePolicies by resource group.
- *
  * Implements RoutePolicies list by resource group GET method.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
  */
 export const RoutePoliciesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6873,13 +12521,11 @@ export type RoutePoliciesListBySubscriptionInput =
 // Output Schema
 export const RoutePoliciesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6888,12 +12534,10 @@ export type RoutePoliciesListBySubscriptionOutput =
 
 // The operation
 /**
- * List RoutePolicies by subscription.
- *
  * Implements RoutePolicies list by subscription GET method.
  *
- * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const RoutePoliciesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6905,6 +12549,7 @@ export const RoutePoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    routePolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6924,13 +12569,12 @@ export type RoutePoliciesUpdateOutput = typeof RoutePoliciesUpdateOutput.Type;
 
 // The operation
 /**
- * Updates a Route Policy.
- *
  * API to update certain properties of the Route Policy resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesUpdateInput,
@@ -6941,8 +12585,8 @@ export const RoutePoliciesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    routePolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6955,12 +12599,94 @@ export type RoutePoliciesUpdateAdministrativeStateInput =
 // Output Schema
 export const RoutePoliciesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+                resourceId: Schema.optional(Schema.String),
+                name: Schema.optional(Schema.String),
+                status: Schema.String,
+                percentComplete: Schema.optional(Schema.Number),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+                operations: Schema.optional(Schema.Array(Schema.Unknown)),
+                error: Schema.optional(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
         message: Schema.optional(Schema.String),
         target: Schema.optional(Schema.String),
-        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
         additionalInfo: Schema.optional(
           Schema.Array(
             Schema.Struct({
@@ -6971,20 +12697,25 @@ export const RoutePoliciesUpdateAdministrativeStateOutput =
         ),
       }),
     ),
+    resourceId: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        successfulResources: Schema.optional(Schema.Array(Schema.String)),
+        failedResources: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   });
 export type RoutePoliciesUpdateAdministrativeStateOutput =
   typeof RoutePoliciesUpdateAdministrativeStateOutput.Type;
 
 // The operation
 /**
- * Executes enable operation to the underlying resources.
- *
  * Updated the admin state for this Route Policy.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param state - Administrative state.
+ * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesUpdateAdministrativeState =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6996,6 +12727,7 @@ export const RoutePoliciesValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    routePolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7033,9 +12765,10 @@ export type RoutePoliciesValidateConfigurationOutput =
 /**
  * Validates the configuration of the resources.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesValidateConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

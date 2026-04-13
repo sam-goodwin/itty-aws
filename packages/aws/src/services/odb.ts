@@ -2577,6 +2577,8 @@ export const ManagedServices = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManagedServices",
 }) as any as S.Schema<ManagedServices>;
+export type ResourceIdList = string[];
+export const ResourceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface OdbNetwork {
   odbNetworkId: string;
   displayName?: string;
@@ -2599,6 +2601,7 @@ export interface OdbNetwork {
   createdAt?: Date;
   percentProgress?: number;
   managedServices?: ManagedServices;
+  ec2PlacementGroupIds?: string[];
 }
 export const OdbNetwork = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2625,6 +2628,7 @@ export const OdbNetwork = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     percentProgress: S.optional(S.Number),
     managedServices: S.optional(ManagedServices),
+    ec2PlacementGroupIds: S.optional(ResourceIdList),
   }),
 ).annotate({ identifier: "OdbNetwork" }) as any as S.Schema<OdbNetwork>;
 export interface GetOdbNetworkOutput {
@@ -2744,6 +2748,7 @@ export interface OdbNetworkSummary {
   createdAt?: Date;
   percentProgress?: number;
   managedServices?: ManagedServices;
+  ec2PlacementGroupIds?: string[];
 }
 export const OdbNetworkSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2770,6 +2775,7 @@ export const OdbNetworkSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     percentProgress: S.optional(S.Number),
     managedServices: S.optional(ManagedServices),
+    ec2PlacementGroupIds: S.optional(ResourceIdList),
   }),
 ).annotate({
   identifier: "OdbNetworkSummary",

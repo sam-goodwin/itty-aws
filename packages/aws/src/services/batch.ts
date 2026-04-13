@@ -198,12 +198,14 @@ export const LaunchTemplateSpecification =
 export interface Ec2Configuration {
   imageType?: string;
   imageIdOverride?: string;
+  batchImageStatus?: string;
   imageKubernetesVersion?: string;
 }
 export const Ec2Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     imageType: S.optional(S.String),
     imageIdOverride: S.optional(S.String),
+    batchImageStatus: S.optional(S.String),
     imageKubernetesVersion: S.optional(S.String),
   }),
 ).annotate({
@@ -493,6 +495,125 @@ export const CreateJobQueueResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateJobQueueResponse",
 }) as any as S.Schema<CreateJobQueueResponse>;
+export interface QuotaShareCapacityLimit {
+  maxCapacity?: number;
+  capacityUnit?: string;
+}
+export const QuotaShareCapacityLimit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxCapacity: S.optional(S.Number),
+      capacityUnit: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "QuotaShareCapacityLimit",
+}) as any as S.Schema<QuotaShareCapacityLimit>;
+export type QuotaShareCapacityLimits = QuotaShareCapacityLimit[];
+export const QuotaShareCapacityLimits = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  QuotaShareCapacityLimit,
+);
+export type QuotaShareResourceSharingStrategy =
+  | "RESERVE"
+  | "LEND"
+  | "LEND_AND_BORROW"
+  | (string & {});
+export const QuotaShareResourceSharingStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface QuotaShareResourceSharingConfiguration {
+  strategy?: QuotaShareResourceSharingStrategy;
+  borrowLimit?: number;
+}
+export const QuotaShareResourceSharingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      strategy: S.optional(QuotaShareResourceSharingStrategy),
+      borrowLimit: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "QuotaShareResourceSharingConfiguration",
+  }) as any as S.Schema<QuotaShareResourceSharingConfiguration>;
+export type QuotaShareInSharePreemptionState =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
+export const QuotaShareInSharePreemptionState =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface QuotaSharePreemptionConfiguration {
+  inSharePreemption?: QuotaShareInSharePreemptionState;
+}
+export const QuotaSharePreemptionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inSharePreemption: S.optional(QuotaShareInSharePreemptionState),
+    }),
+  ).annotate({
+    identifier: "QuotaSharePreemptionConfiguration",
+  }) as any as S.Schema<QuotaSharePreemptionConfiguration>;
+export type QuotaShareState = "ENABLED" | "DISABLED" | (string & {});
+export const QuotaShareState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateQuotaShareRequest {
+  quotaShareName?: string;
+  jobQueue?: string;
+  capacityLimits?: QuotaShareCapacityLimit[];
+  resourceSharingConfiguration?: QuotaShareResourceSharingConfiguration;
+  preemptionConfiguration?: QuotaSharePreemptionConfiguration;
+  state?: QuotaShareState;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateQuotaShareRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      quotaShareName: S.optional(S.String),
+      jobQueue: S.optional(S.String),
+      capacityLimits: S.optional(QuotaShareCapacityLimits),
+      resourceSharingConfiguration: S.optional(
+        QuotaShareResourceSharingConfiguration,
+      ),
+      preemptionConfiguration: S.optional(QuotaSharePreemptionConfiguration),
+      state: S.optional(QuotaShareState),
+      tags: S.optional(TagrisTagsMap),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/v1/createquotashare" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateQuotaShareRequest",
+}) as any as S.Schema<CreateQuotaShareRequest>;
+export interface CreateQuotaShareResponse {
+  quotaShareName?: string;
+  quotaShareArn?: string;
+}
+export const CreateQuotaShareResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      quotaShareName: S.optional(S.String),
+      quotaShareArn: S.optional(S.String),
+    }).pipe(ns),
+).annotate({
+  identifier: "CreateQuotaShareResponse",
+}) as any as S.Schema<CreateQuotaShareResponse>;
+export type QuotaShareIdleResourceAssignmentStrategy = "FIFO" | (string & {});
+export const QuotaShareIdleResourceAssignmentStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface QuotaSharePolicy {
+  idleResourceAssignmentStrategy?: QuotaShareIdleResourceAssignmentStrategy;
+}
+export const QuotaSharePolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    idleResourceAssignmentStrategy: S.optional(
+      QuotaShareIdleResourceAssignmentStrategy,
+    ),
+  }),
+).annotate({
+  identifier: "QuotaSharePolicy",
+}) as any as S.Schema<QuotaSharePolicy>;
 export interface ShareAttributes {
   shareIdentifier?: string;
   weightFactor?: number;
@@ -524,6 +645,7 @@ export const FairsharePolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FairsharePolicy>;
 export interface CreateSchedulingPolicyRequest {
   name?: string;
+  quotaSharePolicy?: QuotaSharePolicy;
   fairsharePolicy?: FairsharePolicy;
   tags?: { [key: string]: string | undefined };
 }
@@ -531,6 +653,7 @@ export const CreateSchedulingPolicyRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
+      quotaSharePolicy: S.optional(QuotaSharePolicy),
       fairsharePolicy: S.optional(FairsharePolicy),
       tags: S.optional(TagrisTagsMap),
     }).pipe(
@@ -690,6 +813,31 @@ export const DeleteJobQueueResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteJobQueueResponse",
 }) as any as S.Schema<DeleteJobQueueResponse>;
+export interface DeleteQuotaShareRequest {
+  quotaShareArn?: string;
+}
+export const DeleteQuotaShareRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ quotaShareArn: S.optional(S.String) }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/v1/deletequotashare" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteQuotaShareRequest",
+}) as any as S.Schema<DeleteQuotaShareRequest>;
+export interface DeleteQuotaShareResponse {}
+export const DeleteQuotaShareResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteQuotaShareResponse",
+}) as any as S.Schema<DeleteQuotaShareResponse>;
 export interface DeleteSchedulingPolicyRequest {
   arn?: string;
 }
@@ -2771,6 +2919,69 @@ export const DescribeJobsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobsResponse",
 }) as any as S.Schema<DescribeJobsResponse>;
+export interface DescribeQuotaShareRequest {
+  quotaShareArn?: string;
+}
+export const DescribeQuotaShareRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ quotaShareArn: S.optional(S.String) }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/v1/describequotashare" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DescribeQuotaShareRequest",
+}) as any as S.Schema<DescribeQuotaShareRequest>;
+export type QuotaShareStatus =
+  | "CREATING"
+  | "VALID"
+  | "INVALID"
+  | "UPDATING"
+  | "DELETING"
+  | (string & {});
+export const QuotaShareStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DescribeQuotaShareResponse {
+  quotaShareName?: string;
+  quotaShareArn?: string;
+  jobQueueArn?: string;
+  capacityLimits?: (QuotaShareCapacityLimit & {
+    maxCapacity: number;
+    capacityUnit: string;
+  })[];
+  resourceSharingConfiguration?: QuotaShareResourceSharingConfiguration & {
+    strategy: QuotaShareResourceSharingStrategy;
+  };
+  preemptionConfiguration?: QuotaSharePreemptionConfiguration & {
+    inSharePreemption: QuotaShareInSharePreemptionState;
+  };
+  state?: QuotaShareState;
+  status?: QuotaShareStatus;
+  tags?: { [key: string]: string | undefined };
+}
+export const DescribeQuotaShareResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      quotaShareName: S.optional(S.String),
+      quotaShareArn: S.optional(S.String),
+      jobQueueArn: S.optional(S.String),
+      capacityLimits: S.optional(QuotaShareCapacityLimits),
+      resourceSharingConfiguration: S.optional(
+        QuotaShareResourceSharingConfiguration,
+      ),
+      preemptionConfiguration: S.optional(QuotaSharePreemptionConfiguration),
+      state: S.optional(QuotaShareState),
+      status: S.optional(QuotaShareStatus),
+      tags: S.optional(TagrisTagsMap),
+    }).pipe(ns),
+).annotate({
+  identifier: "DescribeQuotaShareResponse",
+}) as any as S.Schema<DescribeQuotaShareResponse>;
 export interface DescribeSchedulingPoliciesRequest {
   arns?: string[];
 }
@@ -2793,6 +3004,7 @@ export const DescribeSchedulingPoliciesRequest =
 export interface SchedulingPolicyDetail {
   name?: string;
   arn?: string;
+  quotaSharePolicy?: QuotaSharePolicy;
   fairsharePolicy?: FairsharePolicy;
   tags?: { [key: string]: string | undefined };
 }
@@ -2801,6 +3013,7 @@ export const SchedulingPolicyDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       name: S.optional(S.String),
       arn: S.optional(S.String),
+      quotaSharePolicy: S.optional(QuotaSharePolicy),
       fairsharePolicy: S.optional(FairsharePolicy),
       tags: S.optional(TagrisTagsMap),
     }),
@@ -2815,6 +3028,9 @@ export interface DescribeSchedulingPoliciesResponse {
   schedulingPolicies?: (SchedulingPolicyDetail & {
     name: string;
     arn: string;
+    quotaSharePolicy: QuotaSharePolicy & {
+      idleResourceAssignmentStrategy: QuotaShareIdleResourceAssignmentStrategy;
+    };
     fairsharePolicy: FairsharePolicy & {
       shareDistribution: (ShareAttributes & { shareIdentifier: string })[];
     };
@@ -3019,6 +3235,48 @@ export const ServiceJobRetryStrategy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceJobRetryStrategy>;
 export type ServiceJobType = "SAGEMAKER_TRAINING" | (string & {});
 export const ServiceJobType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ServiceJobPreemptionConfiguration {
+  preemptionRetriesBeforeTermination?: number;
+}
+export const ServiceJobPreemptionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ preemptionRetriesBeforeTermination: S.optional(S.Number) }),
+  ).annotate({
+    identifier: "ServiceJobPreemptionConfiguration",
+  }) as any as S.Schema<ServiceJobPreemptionConfiguration>;
+export interface ServiceJobPreemptedAttempt {
+  serviceResourceId?: ServiceResourceId;
+  startedAt?: number;
+  stoppedAt?: number;
+  statusReason?: string;
+}
+export const ServiceJobPreemptedAttempt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceResourceId: S.optional(ServiceResourceId),
+      startedAt: S.optional(S.Number),
+      stoppedAt: S.optional(S.Number),
+      statusReason: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ServiceJobPreemptedAttempt",
+}) as any as S.Schema<ServiceJobPreemptedAttempt>;
+export type ServiceJobRecentPreemptedAttemptList = ServiceJobPreemptedAttempt[];
+export const ServiceJobRecentPreemptedAttemptList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServiceJobPreemptedAttempt);
+export interface ServiceJobPreemptionSummary {
+  preemptedAttemptCount?: number;
+  recentPreemptedAttempts?: ServiceJobPreemptedAttempt[];
+}
+export const ServiceJobPreemptionSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      preemptedAttemptCount: S.optional(S.Number),
+      recentPreemptedAttempts: S.optional(ServiceJobRecentPreemptedAttemptList),
+    }),
+  ).annotate({
+    identifier: "ServiceJobPreemptionSummary",
+  }) as any as S.Schema<ServiceJobPreemptionSummary>;
 export type ServiceJobStatus =
   | "SUBMITTED"
   | "PENDING"
@@ -3064,6 +3322,16 @@ export interface DescribeServiceJobResponse {
   serviceRequestPayload?: string;
   serviceJobType: ServiceJobType;
   shareIdentifier?: string;
+  quotaShareName?: string;
+  preemptionConfiguration?: ServiceJobPreemptionConfiguration;
+  preemptionSummary?: ServiceJobPreemptionSummary & {
+    recentPreemptedAttempts: (ServiceJobPreemptedAttempt & {
+      serviceResourceId: ServiceResourceId & {
+        name: ServiceResourceIdName;
+        value: string;
+      };
+    })[];
+  };
   startedAt: number;
   status: ServiceJobStatus;
   statusReason?: string;
@@ -3089,6 +3357,9 @@ export const DescribeServiceJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       serviceRequestPayload: S.optional(S.String),
       serviceJobType: S.optional(ServiceJobType),
       shareIdentifier: S.optional(S.String),
+      quotaShareName: S.optional(S.String),
+      preemptionConfiguration: S.optional(ServiceJobPreemptionConfiguration),
+      preemptionSummary: S.optional(ServiceJobPreemptionSummary),
       startedAt: S.optional(S.Number),
       status: S.optional(ServiceJobStatus),
       statusReason: S.optional(S.String),
@@ -3147,6 +3418,43 @@ export const FrontOfQueueDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FrontOfQueueDetail",
 }) as any as S.Schema<FrontOfQueueDetail>;
+export interface FrontOfQuotaShareJobSummary {
+  jobArn?: string;
+  earliestTimeAtPosition?: number;
+}
+export const FrontOfQuotaShareJobSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobArn: S.optional(S.String),
+      earliestTimeAtPosition: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "FrontOfQuotaShareJobSummary",
+  }) as any as S.Schema<FrontOfQuotaShareJobSummary>;
+export type FrontOfQuotaShareJobSummaryList = FrontOfQuotaShareJobSummary[];
+export const FrontOfQuotaShareJobSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FrontOfQuotaShareJobSummary);
+export type FrontOfQuotaSharesJobSummaryMap = {
+  [key: string]: FrontOfQuotaShareJobSummary[] | undefined;
+};
+export const FrontOfQuotaSharesJobSummaryMap =
+  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+    S.String,
+    FrontOfQuotaShareJobSummaryList.pipe(S.optional),
+  );
+export interface FrontOfQuotaSharesDetail {
+  quotaShares?: { [key: string]: FrontOfQuotaShareJobSummary[] | undefined };
+  lastUpdatedAt?: number;
+}
+export const FrontOfQuotaSharesDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      quotaShares: S.optional(FrontOfQuotaSharesJobSummaryMap),
+      lastUpdatedAt: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "FrontOfQuotaSharesDetail",
+}) as any as S.Schema<FrontOfQuotaSharesDetail>;
 export interface QueueSnapshotCapacityUsage {
   capacityUnit?: string;
   quantity?: number;
@@ -3209,9 +3517,54 @@ export const FairshareUtilizationDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "FairshareUtilizationDetail",
 }) as any as S.Schema<FairshareUtilizationDetail>;
+export interface QuotaShareCapacityUsage {
+  capacityUnit?: string;
+  quantity?: number;
+}
+export const QuotaShareCapacityUsage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      capacityUnit: S.optional(S.String),
+      quantity: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "QuotaShareCapacityUsage",
+}) as any as S.Schema<QuotaShareCapacityUsage>;
+export type QuotaShareCapacityUsageList = QuotaShareCapacityUsage[];
+export const QuotaShareCapacityUsageList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  QuotaShareCapacityUsage,
+);
+export interface QuotaShareCapacityUtilization {
+  quotaShareName?: string;
+  capacityUsage?: QuotaShareCapacityUsage[];
+}
+export const QuotaShareCapacityUtilization =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      quotaShareName: S.optional(S.String),
+      capacityUsage: S.optional(QuotaShareCapacityUsageList),
+    }),
+  ).annotate({
+    identifier: "QuotaShareCapacityUtilization",
+  }) as any as S.Schema<QuotaShareCapacityUtilization>;
+export type QuotaShareCapacityUtilizationList = QuotaShareCapacityUtilization[];
+export const QuotaShareCapacityUtilizationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuotaShareCapacityUtilization);
+export interface QuotaShareUtilizationDetail {
+  topCapacityUtilization?: QuotaShareCapacityUtilization[];
+}
+export const QuotaShareUtilizationDetail =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      topCapacityUtilization: S.optional(QuotaShareCapacityUtilizationList),
+    }),
+  ).annotate({
+    identifier: "QuotaShareUtilizationDetail",
+  }) as any as S.Schema<QuotaShareUtilizationDetail>;
 export interface QueueSnapshotUtilizationDetail {
   totalCapacityUsage?: QueueSnapshotCapacityUsage[];
   fairshareUtilization?: FairshareUtilizationDetail;
+  quotaShareUtilization?: QuotaShareUtilizationDetail;
   lastUpdatedAt?: number;
 }
 export const QueueSnapshotUtilizationDetail =
@@ -3219,6 +3572,7 @@ export const QueueSnapshotUtilizationDetail =
     S.Struct({
       totalCapacityUsage: S.optional(QueueSnapshotCapacityUsageList),
       fairshareUtilization: S.optional(FairshareUtilizationDetail),
+      quotaShareUtilization: S.optional(QuotaShareUtilizationDetail),
       lastUpdatedAt: S.optional(S.Number),
     }),
   ).annotate({
@@ -3226,12 +3580,14 @@ export const QueueSnapshotUtilizationDetail =
   }) as any as S.Schema<QueueSnapshotUtilizationDetail>;
 export interface GetJobQueueSnapshotResponse {
   frontOfQueue?: FrontOfQueueDetail;
+  frontOfQuotaShares?: FrontOfQuotaSharesDetail;
   queueUtilization?: QueueSnapshotUtilizationDetail;
 }
 export const GetJobQueueSnapshotResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       frontOfQueue: S.optional(FrontOfQueueDetail),
+      frontOfQuotaShares: S.optional(FrontOfQuotaSharesDetail),
       queueUtilization: S.optional(QueueSnapshotUtilizationDetail),
     }).pipe(ns),
   ).annotate({
@@ -3538,6 +3894,84 @@ export const ListJobsByConsumableResourceResponse =
   ).annotate({
     identifier: "ListJobsByConsumableResourceResponse",
   }) as any as S.Schema<ListJobsByConsumableResourceResponse>;
+export interface ListQuotaSharesRequest {
+  jobQueue?: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListQuotaSharesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      jobQueue: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/v1/listquotashares" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListQuotaSharesRequest",
+}) as any as S.Schema<ListQuotaSharesRequest>;
+export interface QuotaShareDetail {
+  quotaShareName?: string;
+  quotaShareArn?: string;
+  jobQueueArn?: string;
+  capacityLimits?: QuotaShareCapacityLimit[];
+  resourceSharingConfiguration?: QuotaShareResourceSharingConfiguration;
+  preemptionConfiguration?: QuotaSharePreemptionConfiguration;
+  state?: QuotaShareState;
+  status?: QuotaShareStatus;
+}
+export const QuotaShareDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    quotaShareName: S.optional(S.String),
+    quotaShareArn: S.optional(S.String),
+    jobQueueArn: S.optional(S.String),
+    capacityLimits: S.optional(QuotaShareCapacityLimits),
+    resourceSharingConfiguration: S.optional(
+      QuotaShareResourceSharingConfiguration,
+    ),
+    preemptionConfiguration: S.optional(QuotaSharePreemptionConfiguration),
+    state: S.optional(QuotaShareState),
+    status: S.optional(QuotaShareStatus),
+  }),
+).annotate({
+  identifier: "QuotaShareDetail",
+}) as any as S.Schema<QuotaShareDetail>;
+export type QuotaShareList = QuotaShareDetail[];
+export const QuotaShareList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuotaShareDetail);
+export interface ListQuotaSharesResponse {
+  quotaShares?: (QuotaShareDetail & {
+    capacityLimits: (QuotaShareCapacityLimit & {
+      maxCapacity: number;
+      capacityUnit: string;
+    })[];
+    resourceSharingConfiguration: QuotaShareResourceSharingConfiguration & {
+      strategy: QuotaShareResourceSharingStrategy;
+    };
+    preemptionConfiguration: QuotaSharePreemptionConfiguration & {
+      inSharePreemption: QuotaShareInSharePreemptionState;
+    };
+  })[];
+  nextToken?: string;
+}
+export const ListQuotaSharesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      quotaShares: S.optional(QuotaShareList),
+      nextToken: S.optional(S.String),
+    }).pipe(ns),
+).annotate({
+  identifier: "ListQuotaSharesResponse",
+}) as any as S.Schema<ListQuotaSharesResponse>;
 export interface ListSchedulingPoliciesRequest {
   maxResults?: number;
   nextToken?: string;
@@ -3642,6 +4076,7 @@ export interface ServiceJobSummary {
   scheduledAt?: number;
   serviceJobType?: ServiceJobType;
   shareIdentifier?: string;
+  quotaShareName?: string;
   status?: ServiceJobStatus;
   statusReason?: string;
   startedAt?: number;
@@ -3658,6 +4093,7 @@ export const ServiceJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     scheduledAt: S.optional(S.Number),
     serviceJobType: S.optional(ServiceJobType),
     shareIdentifier: S.optional(S.String),
+    quotaShareName: S.optional(S.String),
     status: S.optional(ServiceJobStatus),
     statusReason: S.optional(S.String),
     startedAt: S.optional(S.Number),
@@ -4010,6 +4446,8 @@ export interface SubmitServiceJobRequest {
   serviceRequestPayload?: string;
   serviceJobType?: ServiceJobType;
   shareIdentifier?: string;
+  quotaShareName?: string;
+  preemptionConfiguration?: ServiceJobPreemptionConfiguration;
   timeoutConfig?: ServiceJobTimeout;
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
@@ -4024,6 +4462,8 @@ export const SubmitServiceJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       serviceRequestPayload: S.optional(S.String),
       serviceJobType: S.optional(ServiceJobType),
       shareIdentifier: S.optional(S.String),
+      quotaShareName: S.optional(S.String),
+      preemptionConfiguration: S.optional(ServiceJobPreemptionConfiguration),
       timeoutConfig: S.optional(ServiceJobTimeout),
       tags: S.optional(TagrisTagsMap),
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -4350,14 +4790,60 @@ export const UpdateJobQueueResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateJobQueueResponse",
 }) as any as S.Schema<UpdateJobQueueResponse>;
+export interface UpdateQuotaShareRequest {
+  quotaShareArn?: string;
+  capacityLimits?: QuotaShareCapacityLimit[];
+  resourceSharingConfiguration?: QuotaShareResourceSharingConfiguration;
+  preemptionConfiguration?: QuotaSharePreemptionConfiguration;
+  state?: QuotaShareState;
+}
+export const UpdateQuotaShareRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      quotaShareArn: S.optional(S.String),
+      capacityLimits: S.optional(QuotaShareCapacityLimits),
+      resourceSharingConfiguration: S.optional(
+        QuotaShareResourceSharingConfiguration,
+      ),
+      preemptionConfiguration: S.optional(QuotaSharePreemptionConfiguration),
+      state: S.optional(QuotaShareState),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/v1/updatequotashare" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateQuotaShareRequest",
+}) as any as S.Schema<UpdateQuotaShareRequest>;
+export interface UpdateQuotaShareResponse {
+  quotaShareName?: string;
+  quotaShareArn?: string;
+}
+export const UpdateQuotaShareResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      quotaShareName: S.optional(S.String),
+      quotaShareArn: S.optional(S.String),
+    }).pipe(ns),
+).annotate({
+  identifier: "UpdateQuotaShareResponse",
+}) as any as S.Schema<UpdateQuotaShareResponse>;
 export interface UpdateSchedulingPolicyRequest {
   arn?: string;
+  quotaSharePolicy?: QuotaSharePolicy;
   fairsharePolicy?: FairsharePolicy;
 }
 export const UpdateSchedulingPolicyRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.optional(S.String),
+      quotaSharePolicy: S.optional(QuotaSharePolicy),
       fairsharePolicy: S.optional(FairsharePolicy),
     }).pipe(
       T.all(
@@ -4416,6 +4902,44 @@ export const UpdateServiceEnvironmentResponse =
   ).annotate({
     identifier: "UpdateServiceEnvironmentResponse",
   }) as any as S.Schema<UpdateServiceEnvironmentResponse>;
+export interface UpdateServiceJobRequest {
+  jobId?: string;
+  schedulingPriority?: number;
+}
+export const UpdateServiceJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      jobId: S.optional(S.String),
+      schedulingPriority: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/v1/updateservicejob" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateServiceJobRequest",
+}) as any as S.Schema<UpdateServiceJobRequest>;
+export interface UpdateServiceJobResponse {
+  jobArn?: string;
+  jobName?: string;
+  jobId?: string;
+}
+export const UpdateServiceJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      jobArn: S.optional(S.String),
+      jobName: S.optional(S.String),
+      jobId: S.optional(S.String),
+    }).pipe(ns),
+).annotate({
+  identifier: "UpdateServiceJobResponse",
+}) as any as S.Schema<UpdateServiceJobResponse>;
 
 //# Errors
 export class ClientException extends S.TaggedErrorClass<ClientException>()(
@@ -4538,6 +5062,23 @@ export const createJobQueue: API.OperationMethod<
   output: CreateJobQueueResponse,
   errors: [ClientException, ServerException],
 }));
+export type CreateQuotaShareError =
+  | ClientException
+  | ServerException
+  | CommonErrors;
+/**
+ * Creates an Batch quota share. Each quota share operates as a virtual queue with a configured compute capacity, resource sharing strategy, and borrow limits.
+ */
+export const createQuotaShare: API.OperationMethod<
+  CreateQuotaShareRequest,
+  CreateQuotaShareResponse,
+  CreateQuotaShareError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateQuotaShareRequest,
+  output: CreateQuotaShareResponse,
+  errors: [ClientException, ServerException],
+}));
 export type CreateSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -4620,8 +5161,7 @@ export type DeleteJobQueueError =
 /**
  * Deletes the specified job queue. You must first disable submissions for a queue with the
  * UpdateJobQueue operation. All jobs in the queue are eventually terminated
- * when you delete a job queue. The jobs are terminated at a rate of about 16 jobs each
- * second.
+ * when you delete a job queue.
  *
  * It's not necessary to disassociate compute environments from a queue before submitting a
  * `DeleteJobQueue` request.
@@ -4634,6 +5174,25 @@ export const deleteJobQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteJobQueueRequest,
   output: DeleteJobQueueResponse,
+  errors: [ClientException, ServerException],
+}));
+export type DeleteQuotaShareError =
+  | ClientException
+  | ServerException
+  | CommonErrors;
+/**
+ * Deletes the specified quota share. You must first disable submissions for the share by
+ * updating the state to `DISABLED` using the UpdateQuotaShare operation.
+ * All jobs in the share are eventually terminated when you delete a quota share.
+ */
+export const deleteQuotaShare: API.OperationMethod<
+  DeleteQuotaShareRequest,
+  DeleteQuotaShareResponse,
+  DeleteQuotaShareError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteQuotaShareRequest,
+  output: DeleteQuotaShareResponse,
   errors: [ClientException, ServerException],
 }));
 export type DeleteSchedulingPolicyError =
@@ -4843,6 +5402,23 @@ export const describeJobs: API.OperationMethod<
   output: DescribeJobsResponse,
   errors: [ClientException, ServerException],
 }));
+export type DescribeQuotaShareError =
+  | ClientException
+  | ServerException
+  | CommonErrors;
+/**
+ * Returns a description of the specified quota share.
+ */
+export const describeQuotaShare: API.OperationMethod<
+  DescribeQuotaShareRequest,
+  DescribeQuotaShareResponse,
+  DescribeQuotaShareError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeQuotaShareRequest,
+  output: DescribeQuotaShareResponse,
+  errors: [ClientException, ServerException],
+}));
 export type DescribeSchedulingPoliciesError =
   | ClientException
   | ServerException
@@ -4920,8 +5496,10 @@ export type GetJobQueueSnapshotError =
   | ServerException
   | CommonErrors;
 /**
- * Provides a list of the first 100 `RUNNABLE` jobs associated to a single job
- * queue and includes capacity utilization, including total usage and breakdown by share for fairshare scheduling job queues.
+ * Provides a snapshot of job queue state, including ordering of `RUNNABLE` jobs, as well as capacity utilization for already dispatched jobs.
+ * The first 100 `RUNNABLE` jobs in the job queue are listed in order of dispatch. For job queues with an attached
+ * quota-share policy, the first `RUNNABLE` job in each quota share is also listed. Capacity utilization for the job queue is provided, as well as
+ * break downs by share for job queues with attached fair-share or quota-share scheduling policies.
  */
 export const getJobQueueSnapshot: API.OperationMethod<
   GetJobQueueSnapshotRequest,
@@ -5049,6 +5627,44 @@ export const listJobsByConsumableResource: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "jobs",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListQuotaSharesError =
+  | ClientException
+  | ServerException
+  | CommonErrors;
+/**
+ * Returns a list of Batch quota shares associated with a job queue.
+ */
+export const listQuotaShares: API.OperationMethod<
+  ListQuotaSharesRequest,
+  ListQuotaSharesResponse,
+  ListQuotaSharesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListQuotaSharesRequest,
+  ) => stream.Stream<
+    ListQuotaSharesResponse,
+    ListQuotaSharesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListQuotaSharesRequest,
+  ) => stream.Stream<
+    QuotaShareDetail,
+    ListQuotaSharesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListQuotaSharesRequest,
+  output: ListQuotaSharesResponse,
+  errors: [ClientException, ServerException],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "quotaShares",
     pageSize: "maxResults",
   } as const,
 }));
@@ -5329,6 +5945,23 @@ export const updateJobQueue: API.OperationMethod<
   output: UpdateJobQueueResponse,
   errors: [ClientException, ServerException],
 }));
+export type UpdateQuotaShareError =
+  | ClientException
+  | ServerException
+  | CommonErrors;
+/**
+ * Updates a quota share.
+ */
+export const updateQuotaShare: API.OperationMethod<
+  UpdateQuotaShareRequest,
+  UpdateQuotaShareResponse,
+  UpdateQuotaShareError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateQuotaShareRequest,
+  output: UpdateQuotaShareResponse,
+  errors: [ClientException, ServerException],
+}));
 export type UpdateSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -5361,5 +5994,22 @@ export const updateServiceEnvironment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServiceEnvironmentRequest,
   output: UpdateServiceEnvironmentResponse,
+  errors: [ClientException, ServerException],
+}));
+export type UpdateServiceJobError =
+  | ClientException
+  | ServerException
+  | CommonErrors;
+/**
+ * Updates the priority of a specified service job in an Batch job queue.
+ */
+export const updateServiceJob: API.OperationMethod<
+  UpdateServiceJobRequest,
+  UpdateServiceJobResponse,
+  UpdateServiceJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateServiceJobRequest,
+  output: UpdateServiceJobResponse,
   errors: [ClientException, ServerException],
 }));

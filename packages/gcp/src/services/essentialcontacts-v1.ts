@@ -52,21 +52,17 @@ export interface GoogleCloudEssentialcontactsV1Contact {
   validateTime?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1Contact: Schema.Schema<GoogleCloudEssentialcontactsV1Contact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      notificationCategorySubscriptions: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      languageTag: Schema.optional(Schema.String),
-      validationState: Schema.optional(Schema.String),
-      validateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEssentialcontactsV1Contact",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1Contact>;
+export const GoogleCloudEssentialcontactsV1Contact =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    notificationCategorySubscriptions: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    languageTag: Schema.optional(Schema.String),
+    validationState: Schema.optional(Schema.String),
+    validateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudEssentialcontactsV1Contact" });
 
 export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   /** The contacts for the specified resource. */
@@ -75,24 +71,21 @@ export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1ListContactsResponse: Schema.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contacts: Schema.optional(
-        Schema.Array(GoogleCloudEssentialcontactsV1Contact),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEssentialcontactsV1ListContactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contacts: Schema.optional(
+      Schema.Array(GoogleCloudEssentialcontactsV1Contact),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEssentialcontactsV1ListContactsResponse",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   /** All contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
@@ -101,20 +94,18 @@ export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1ComputeContactsResponse: Schema.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contacts: Schema.optional(
-        Schema.Array(GoogleCloudEssentialcontactsV1Contact),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEssentialcontactsV1ComputeContactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contacts: Schema.optional(
+      Schema.Array(GoogleCloudEssentialcontactsV1Contact),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEssentialcontactsV1ComputeContactsResponse",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>;
+  });
 
 export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
-  /** Required. The list of names of the contacts to send a test message to. Format: organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or projects/{project_id}/contacts/{contact_id} */
+  /** Required. The list of names of the contacts to send a test message to. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   contacts?: Array<string>;
   /** Required. The notification category to send the test message for. All contacts must be subscribed to this category. */
   notificationCategory?:
@@ -130,22 +121,20 @@ export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
     | (string & {});
 }
 
-export const GoogleCloudEssentialcontactsV1SendTestMessageRequest: Schema.Schema<GoogleCloudEssentialcontactsV1SendTestMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contacts: Schema.optional(Schema.Array(Schema.String)),
-      notificationCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEssentialcontactsV1SendTestMessageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contacts: Schema.optional(Schema.Array(Schema.String)),
+    notificationCategory: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEssentialcontactsV1SendTestMessageRequest",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1SendTestMessageRequest>;
+  });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
 
 export interface CreateProjectsContactsRequest {
-  /** Required. The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
@@ -230,7 +219,7 @@ export const patchProjectsContacts: API.OperationMethod<
 }));
 
 export interface ListProjectsContactsRequest {
-  /** Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. If not specified, the default page_size is 100. */
   pageSize?: number;
@@ -272,7 +261,7 @@ export const listProjectsContacts: API.PaginatedOperationMethod<
 }));
 
 export interface GetProjectsContactsRequest {
-  /** Required. The name of the contact to retrieve. Format: organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or projects/{project_id}/contacts/{contact_id} */
+  /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 
@@ -306,7 +295,7 @@ export const getProjectsContacts: API.OperationMethod<
 }));
 
 export interface DeleteProjectsContactsRequest {
-  /** Required. The name of the contact to delete. Format: organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or projects/{project_id}/contacts/{contact_id} */
+  /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 
@@ -340,7 +329,7 @@ export const deleteProjectsContacts: API.OperationMethod<
 }));
 
 export interface ComputeProjectsContactsRequest {
-  /** Required. The name of the resource to compute contacts for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** The categories of notifications to compute contacts for. If ALL is included in this list, contacts subscribed to any notification category will be returned. */
   notificationCategories?:
@@ -400,7 +389,7 @@ export const computeProjectsContacts: API.PaginatedOperationMethod<
 }));
 
 export interface SendTestMessageProjectsContactsRequest {
-  /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   resource: string;
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
@@ -440,7 +429,7 @@ export const sendTestMessageProjectsContacts: API.OperationMethod<
 }));
 
 export interface CreateFoldersContactsRequest {
-  /** Required. The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
@@ -525,7 +514,7 @@ export const patchFoldersContacts: API.OperationMethod<
 }));
 
 export interface ListFoldersContactsRequest {
-  /** Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. If not specified, the default page_size is 100. */
   pageSize?: number;
@@ -567,7 +556,7 @@ export const listFoldersContacts: API.PaginatedOperationMethod<
 }));
 
 export interface GetFoldersContactsRequest {
-  /** Required. The name of the contact to retrieve. Format: organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or projects/{project_id}/contacts/{contact_id} */
+  /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 
@@ -601,7 +590,7 @@ export const getFoldersContacts: API.OperationMethod<
 }));
 
 export interface DeleteFoldersContactsRequest {
-  /** Required. The name of the contact to delete. Format: organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or projects/{project_id}/contacts/{contact_id} */
+  /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 
@@ -635,7 +624,7 @@ export const deleteFoldersContacts: API.OperationMethod<
 }));
 
 export interface ComputeFoldersContactsRequest {
-  /** Required. The name of the resource to compute contacts for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** The categories of notifications to compute contacts for. If ALL is included in this list, contacts subscribed to any notification category will be returned. */
   notificationCategories?:
@@ -692,7 +681,7 @@ export const computeFoldersContacts: API.PaginatedOperationMethod<
 }));
 
 export interface SendTestMessageFoldersContactsRequest {
-  /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   resource: string;
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
@@ -732,7 +721,7 @@ export const sendTestMessageFoldersContacts: API.OperationMethod<
 }));
 
 export interface CreateOrganizationsContactsRequest {
-  /** Required. The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The resource to save this contact for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
@@ -817,7 +806,7 @@ export const patchOrganizationsContacts: API.OperationMethod<
 }));
 
 export interface ListOrganizationsContactsRequest {
-  /** Required. The parent resource name. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. If not specified, the default page_size is 100. */
   pageSize?: number;
@@ -862,7 +851,7 @@ export const listOrganizationsContacts: API.PaginatedOperationMethod<
 }));
 
 export interface GetOrganizationsContactsRequest {
-  /** Required. The name of the contact to retrieve. Format: organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or projects/{project_id}/contacts/{contact_id} */
+  /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 
@@ -897,7 +886,7 @@ export const getOrganizationsContacts: API.OperationMethod<
 }));
 
 export interface DeleteOrganizationsContactsRequest {
-  /** Required. The name of the contact to delete. Format: organizations/{organization_id}/contacts/{contact_id}, folders/{folder_id}/contacts/{contact_id} or projects/{project_id}/contacts/{contact_id} */
+  /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
 
@@ -931,7 +920,7 @@ export const deleteOrganizationsContacts: API.OperationMethod<
 }));
 
 export interface ComputeOrganizationsContactsRequest {
-  /** Required. The name of the resource to compute contacts for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
   /** The categories of notifications to compute contacts for. If ALL is included in this list, contacts subscribed to any notification category will be returned. */
   notificationCategories?:
@@ -991,7 +980,7 @@ export const computeOrganizationsContacts: API.PaginatedOperationMethod<
 }));
 
 export interface SendTestMessageOrganizationsContactsRequest {
-  /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} */
+  /** Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   resource: string;
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;

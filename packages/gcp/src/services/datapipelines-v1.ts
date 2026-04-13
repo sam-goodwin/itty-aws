@@ -61,31 +61,27 @@ export interface GoogleCloudDatapipelinesV1RuntimeEnvironment {
   enableStreamingEngine?: boolean;
 }
 
-export const GoogleCloudDatapipelinesV1RuntimeEnvironment: Schema.Schema<GoogleCloudDatapipelinesV1RuntimeEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numWorkers: Schema.optional(Schema.Number),
-      maxWorkers: Schema.optional(Schema.Number),
-      zone: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-      tempLocation: Schema.optional(Schema.String),
-      bypassTempDirValidation: Schema.optional(Schema.Boolean),
-      machineType: Schema.optional(Schema.String),
-      additionalExperiments: Schema.optional(Schema.Array(Schema.String)),
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-      additionalUserLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      kmsKeyName: Schema.optional(Schema.String),
-      ipConfiguration: Schema.optional(Schema.String),
-      workerRegion: Schema.optional(Schema.String),
-      workerZone: Schema.optional(Schema.String),
-      enableStreamingEngine: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1RuntimeEnvironment",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1RuntimeEnvironment>;
+export const GoogleCloudDatapipelinesV1RuntimeEnvironment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    numWorkers: Schema.optional(Schema.Number),
+    maxWorkers: Schema.optional(Schema.Number),
+    zone: Schema.optional(Schema.String),
+    serviceAccountEmail: Schema.optional(Schema.String),
+    tempLocation: Schema.optional(Schema.String),
+    bypassTempDirValidation: Schema.optional(Schema.Boolean),
+    machineType: Schema.optional(Schema.String),
+    additionalExperiments: Schema.optional(Schema.Array(Schema.String)),
+    network: Schema.optional(Schema.String),
+    subnetwork: Schema.optional(Schema.String),
+    additionalUserLabels: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    kmsKeyName: Schema.optional(Schema.String),
+    ipConfiguration: Schema.optional(Schema.String),
+    workerRegion: Schema.optional(Schema.String),
+    workerZone: Schema.optional(Schema.String),
+    enableStreamingEngine: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1RuntimeEnvironment" });
 
 export interface GoogleCloudDatapipelinesV1LaunchTemplateParameters {
   /** Required. The job name to use for the created job. */
@@ -100,22 +96,18 @@ export interface GoogleCloudDatapipelinesV1LaunchTemplateParameters {
   transformNameMapping?: Record<string, string>;
 }
 
-export const GoogleCloudDatapipelinesV1LaunchTemplateParameters: Schema.Schema<GoogleCloudDatapipelinesV1LaunchTemplateParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobName: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      environment: Schema.optional(
-        GoogleCloudDatapipelinesV1RuntimeEnvironment,
-      ),
-      update: Schema.optional(Schema.Boolean),
-      transformNameMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDatapipelinesV1LaunchTemplateParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobName: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    environment: Schema.optional(GoogleCloudDatapipelinesV1RuntimeEnvironment),
+    update: Schema.optional(Schema.Boolean),
+    transformNameMapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatapipelinesV1LaunchTemplateParameters",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1LaunchTemplateParameters>;
+  });
 
 export interface GoogleCloudDatapipelinesV1LaunchTemplateRequest {
   /** Required. The ID of the Cloud Platform project that the job belongs to. */
@@ -130,20 +122,18 @@ export interface GoogleCloudDatapipelinesV1LaunchTemplateRequest {
   location?: string;
 }
 
-export const GoogleCloudDatapipelinesV1LaunchTemplateRequest: Schema.Schema<GoogleCloudDatapipelinesV1LaunchTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-      gcsPath: Schema.optional(Schema.String),
-      launchParameters: Schema.optional(
-        GoogleCloudDatapipelinesV1LaunchTemplateParameters,
-      ),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatapipelinesV1LaunchTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+    gcsPath: Schema.optional(Schema.String),
+    launchParameters: Schema.optional(
+      GoogleCloudDatapipelinesV1LaunchTemplateParameters,
+    ),
+    location: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatapipelinesV1LaunchTemplateRequest",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1LaunchTemplateRequest>;
+  });
 
 export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   /** The initial number of Compute Engine instances for the job. */
@@ -188,31 +178,29 @@ export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
     | (string & {});
 }
 
-export const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment: Schema.Schema<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numWorkers: Schema.optional(Schema.Number),
-      maxWorkers: Schema.optional(Schema.Number),
-      zone: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-      tempLocation: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      additionalExperiments: Schema.optional(Schema.Array(Schema.String)),
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-      additionalUserLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      kmsKeyName: Schema.optional(Schema.String),
-      ipConfiguration: Schema.optional(Schema.String),
-      workerRegion: Schema.optional(Schema.String),
-      workerZone: Schema.optional(Schema.String),
-      enableStreamingEngine: Schema.optional(Schema.Boolean),
-      flexrsGoal: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    numWorkers: Schema.optional(Schema.Number),
+    maxWorkers: Schema.optional(Schema.Number),
+    zone: Schema.optional(Schema.String),
+    serviceAccountEmail: Schema.optional(Schema.String),
+    tempLocation: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+    additionalExperiments: Schema.optional(Schema.Array(Schema.String)),
+    network: Schema.optional(Schema.String),
+    subnetwork: Schema.optional(Schema.String),
+    additionalUserLabels: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    kmsKeyName: Schema.optional(Schema.String),
+    ipConfiguration: Schema.optional(Schema.String),
+    workerRegion: Schema.optional(Schema.String),
+    workerZone: Schema.optional(Schema.String),
+    enableStreamingEngine: Schema.optional(Schema.Boolean),
+    flexrsGoal: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment>;
+  });
 
 export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   /** Required. The job name to use for the created job. For an update job request, the job name should be the same as the existing running job. */
@@ -231,26 +219,22 @@ export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   transformNameMappings?: Record<string, string>;
 }
 
-export const GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter: Schema.Schema<GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobName: Schema.optional(Schema.String),
-      containerSpecGcsPath: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      launchOptions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      environment: Schema.optional(
-        GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment,
-      ),
-      update: Schema.optional(Schema.Boolean),
-      transformNameMappings: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobName: Schema.optional(Schema.String),
+    containerSpecGcsPath: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    launchOptions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    environment: Schema.optional(
+      GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment,
+    ),
+    update: Schema.optional(Schema.Boolean),
+    transformNameMappings: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter>;
+  });
 
 export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
   /** Required. The ID of the Cloud Platform project that the job belongs to. */
@@ -263,19 +247,17 @@ export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest: Schema.Schema<GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      launchParameter: Schema.optional(
-        GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter,
-      ),
-      location: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    launchParameter: Schema.optional(
+      GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter,
+    ),
+    location: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest>;
+  });
 
 export interface GoogleCloudDatapipelinesV1Workload {
   /** Template information and additional parameters needed to launch a Dataflow job using the standard launch API. */
@@ -284,19 +266,15 @@ export interface GoogleCloudDatapipelinesV1Workload {
   dataflowFlexTemplateRequest?: GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest;
 }
 
-export const GoogleCloudDatapipelinesV1Workload: Schema.Schema<GoogleCloudDatapipelinesV1Workload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataflowLaunchTemplateRequest: Schema.optional(
-        GoogleCloudDatapipelinesV1LaunchTemplateRequest,
-      ),
-      dataflowFlexTemplateRequest: Schema.optional(
-        GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1Workload",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1Workload>;
+export const GoogleCloudDatapipelinesV1Workload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataflowLaunchTemplateRequest: Schema.optional(
+      GoogleCloudDatapipelinesV1LaunchTemplateRequest,
+    ),
+    dataflowFlexTemplateRequest: Schema.optional(
+      GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1Workload" });
 
 export interface GoogleCloudDatapipelinesV1ScheduleSpec {
   /** Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler. */
@@ -307,16 +285,12 @@ export interface GoogleCloudDatapipelinesV1ScheduleSpec {
   nextJobTime?: string;
 }
 
-export const GoogleCloudDatapipelinesV1ScheduleSpec: Schema.Schema<GoogleCloudDatapipelinesV1ScheduleSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedule: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      nextJobTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1ScheduleSpec",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1ScheduleSpec>;
+export const GoogleCloudDatapipelinesV1ScheduleSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schedule: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    nextJobTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1ScheduleSpec" });
 
 export interface GoogleCloudDatapipelinesV1Pipeline {
   /** The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location. */
@@ -354,33 +328,28 @@ export interface GoogleCloudDatapipelinesV1Pipeline {
   pipelineSources?: Record<string, string>;
 }
 
-export const GoogleCloudDatapipelinesV1Pipeline: Schema.Schema<GoogleCloudDatapipelinesV1Pipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-      workload: Schema.optional(GoogleCloudDatapipelinesV1Workload),
-      scheduleInfo: Schema.optional(GoogleCloudDatapipelinesV1ScheduleSpec),
-      jobCount: Schema.optional(Schema.Number),
-      schedulerServiceAccountEmail: Schema.optional(Schema.String),
-      pipelineSources: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1Pipeline",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1Pipeline>;
+export const GoogleCloudDatapipelinesV1Pipeline =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+    workload: Schema.optional(GoogleCloudDatapipelinesV1Workload),
+    scheduleInfo: Schema.optional(GoogleCloudDatapipelinesV1ScheduleSpec),
+    jobCount: Schema.optional(Schema.Number),
+    schedulerServiceAccountEmail: Schema.optional(Schema.String),
+    pipelineSources: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1Pipeline" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudDatapipelinesV1ListPipelinesResponse {
   /** Results that matched the filter criteria and were accessible to the caller. Results are always in descending order of pipeline creation date. */
@@ -389,31 +358,29 @@ export interface GoogleCloudDatapipelinesV1ListPipelinesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatapipelinesV1ListPipelinesResponse: Schema.Schema<GoogleCloudDatapipelinesV1ListPipelinesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pipelines: Schema.optional(
-        Schema.Array(GoogleCloudDatapipelinesV1Pipeline),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatapipelinesV1ListPipelinesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pipelines: Schema.optional(
+      Schema.Array(GoogleCloudDatapipelinesV1Pipeline),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatapipelinesV1ListPipelinesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1ListPipelinesResponse>;
+  });
 
 export interface GoogleCloudDatapipelinesV1StopPipelineRequest {}
 
-export const GoogleCloudDatapipelinesV1StopPipelineRequest: Schema.Schema<GoogleCloudDatapipelinesV1StopPipelineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDatapipelinesV1StopPipelineRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatapipelinesV1StopPipelineRequest",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1StopPipelineRequest>;
+  });
 
 export interface GoogleCloudDatapipelinesV1RunPipelineRequest {}
 
-export const GoogleCloudDatapipelinesV1RunPipelineRequest: Schema.Schema<GoogleCloudDatapipelinesV1RunPipelineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDatapipelinesV1RunPipelineRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatapipelinesV1RunPipelineRequest",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1RunPipelineRequest>;
+  });
 
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -424,18 +391,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleCloudDatapipelinesV1SdkVersion {
   /** The version of the SDK used to run the job. */
@@ -452,16 +414,12 @@ export interface GoogleCloudDatapipelinesV1SdkVersion {
     | (string & {});
 }
 
-export const GoogleCloudDatapipelinesV1SdkVersion: Schema.Schema<GoogleCloudDatapipelinesV1SdkVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      versionDisplayName: Schema.optional(Schema.String),
-      sdkSupportStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1SdkVersion",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1SdkVersion>;
+export const GoogleCloudDatapipelinesV1SdkVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    versionDisplayName: Schema.optional(Schema.String),
+    sdkSupportStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1SdkVersion" });
 
 export interface GoogleCloudDatapipelinesV1DataflowJobDetails {
   /** Output only. The SDK version used to run the job. */
@@ -472,18 +430,12 @@ export interface GoogleCloudDatapipelinesV1DataflowJobDetails {
   resourceInfo?: Record<string, number>;
 }
 
-export const GoogleCloudDatapipelinesV1DataflowJobDetails: Schema.Schema<GoogleCloudDatapipelinesV1DataflowJobDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdkVersion: Schema.optional(GoogleCloudDatapipelinesV1SdkVersion),
-      currentWorkers: Schema.optional(Schema.Number),
-      resourceInfo: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1DataflowJobDetails",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1DataflowJobDetails>;
+export const GoogleCloudDatapipelinesV1DataflowJobDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkVersion: Schema.optional(GoogleCloudDatapipelinesV1SdkVersion),
+    currentWorkers: Schema.optional(Schema.Number),
+    resourceInfo: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1DataflowJobDetails" });
 
 export interface GoogleCloudDatapipelinesV1Job {
   /** Required. The fully qualified resource name for the job. */
@@ -509,36 +461,28 @@ export interface GoogleCloudDatapipelinesV1Job {
   dataflowJobDetails?: GoogleCloudDatapipelinesV1DataflowJobDetails;
 }
 
-export const GoogleCloudDatapipelinesV1Job: Schema.Schema<GoogleCloudDatapipelinesV1Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-      dataflowJobDetails: Schema.optional(
-        GoogleCloudDatapipelinesV1DataflowJobDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1Job",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1Job>;
+export const GoogleCloudDatapipelinesV1Job =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+    dataflowJobDetails: Schema.optional(
+      GoogleCloudDatapipelinesV1DataflowJobDetails,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1Job" });
 
 export interface GoogleCloudDatapipelinesV1RunPipelineResponse {
   /** Job that was created as part of RunPipeline operation. */
   job?: GoogleCloudDatapipelinesV1Job;
 }
 
-export const GoogleCloudDatapipelinesV1RunPipelineResponse: Schema.Schema<GoogleCloudDatapipelinesV1RunPipelineResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      job: Schema.optional(GoogleCloudDatapipelinesV1Job),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1RunPipelineResponse",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1RunPipelineResponse>;
+export const GoogleCloudDatapipelinesV1RunPipelineResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    job: Schema.optional(GoogleCloudDatapipelinesV1Job),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1RunPipelineResponse" });
 
 export interface GoogleCloudDatapipelinesV1ListJobsResponse {
   /** Results that were accessible to the caller. Results are always in descending order of job creation date. */
@@ -547,15 +491,11 @@ export interface GoogleCloudDatapipelinesV1ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatapipelinesV1ListJobsResponse: Schema.Schema<GoogleCloudDatapipelinesV1ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobs: Schema.optional(Schema.Array(GoogleCloudDatapipelinesV1Job)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatapipelinesV1ListJobsResponse",
-  }) as any as Schema.Schema<GoogleCloudDatapipelinesV1ListJobsResponse>;
+export const GoogleCloudDatapipelinesV1ListJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobs: Schema.optional(Schema.Array(GoogleCloudDatapipelinesV1Job)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatapipelinesV1ListJobsResponse" });
 
 // ==========================================================================
 // Operations

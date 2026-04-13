@@ -72,8 +72,13 @@ export type WidgetHeight = number;
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
 export type DashboardArn = string;
+export type ScheduledReportName = string;
+export type ServiceRoleArn = string;
+export type ClientToken = string;
+export type ScheduledReportArn = string;
 export type MaxResults = number;
 export type NextPageToken = string;
+export type ResourceArn = string;
 
 //# Schemas
 export type MetricName =
@@ -473,6 +478,85 @@ export const CreateDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDashboardResponse",
 }) as any as S.Schema<CreateDashboardResponse>;
+export interface SchedulePeriod {
+  startTime?: Date;
+  endTime?: Date;
+}
+export const SchedulePeriod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "SchedulePeriod" }) as any as S.Schema<SchedulePeriod>;
+export type ScheduleState = "ENABLED" | "DISABLED" | (string & {});
+export const ScheduleState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ScheduleConfig {
+  scheduleExpression?: string;
+  scheduleExpressionTimeZone?: string;
+  schedulePeriod?: SchedulePeriod;
+  state?: ScheduleState;
+}
+export const ScheduleConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scheduleExpression: S.optional(S.String),
+    scheduleExpressionTimeZone: S.optional(S.String),
+    schedulePeriod: S.optional(SchedulePeriod),
+    state: S.optional(ScheduleState),
+  }),
+).annotate({ identifier: "ScheduleConfig" }) as any as S.Schema<ScheduleConfig>;
+export type WidgetIdList = string[];
+export const WidgetIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ScheduledReportInput {
+  name: string;
+  dashboardArn: string;
+  scheduledReportExecutionRoleArn: string;
+  scheduleConfig: ScheduleConfig;
+  description?: string;
+  widgetIds?: string[];
+  widgetDateRangeOverride?: DateTimeRange;
+}
+export const ScheduledReportInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    dashboardArn: S.String,
+    scheduledReportExecutionRoleArn: S.String,
+    scheduleConfig: ScheduleConfig,
+    description: S.optional(S.String),
+    widgetIds: S.optional(WidgetIdList),
+    widgetDateRangeOverride: S.optional(DateTimeRange),
+  }),
+).annotate({
+  identifier: "ScheduledReportInput",
+}) as any as S.Schema<ScheduledReportInput>;
+export interface CreateScheduledReportRequest {
+  scheduledReport: ScheduledReportInput;
+  resourceTags?: ResourceTag[];
+  clientToken?: string;
+}
+export const CreateScheduledReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      scheduledReport: ScheduledReportInput,
+      resourceTags: S.optional(ResourceTagList),
+      clientToken: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Client-Token"),
+        T.IdempotencyToken(),
+      ),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "CreateScheduledReportRequest",
+  }) as any as S.Schema<CreateScheduledReportRequest>;
+export interface CreateScheduledReportResponse {
+  arn: string;
+}
+export const CreateScheduledReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ arn: S.String }),
+  ).annotate({
+    identifier: "CreateScheduledReportResponse",
+  }) as any as S.Schema<CreateScheduledReportResponse>;
 export interface DeleteDashboardRequest {
   arn: string;
 }
@@ -492,6 +576,88 @@ export const DeleteDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteDashboardResponse",
 }) as any as S.Schema<DeleteDashboardResponse>;
+export interface DeleteScheduledReportRequest {
+  arn: string;
+}
+export const DeleteScheduledReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ arn: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteScheduledReportRequest",
+  }) as any as S.Schema<DeleteScheduledReportRequest>;
+export interface DeleteScheduledReportResponse {
+  arn: string;
+}
+export const DeleteScheduledReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ arn: S.String }),
+  ).annotate({
+    identifier: "DeleteScheduledReportResponse",
+  }) as any as S.Schema<DeleteScheduledReportResponse>;
+export interface ExecuteScheduledReportRequest {
+  arn: string;
+  clientToken?: string;
+  dryRun?: boolean;
+}
+export const ExecuteScheduledReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arn: S.String,
+      clientToken: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Client-Token"),
+        T.IdempotencyToken(),
+      ),
+      dryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ExecuteScheduledReportRequest",
+  }) as any as S.Schema<ExecuteScheduledReportRequest>;
+export type HealthStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
+export const HealthStatusCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type StatusReason =
+  | "DATA_SOURCE_ACCESS_DENIED"
+  | "EXECUTION_ROLE_ASSUME_FAILED"
+  | "EXECUTION_ROLE_INSUFFICIENT_PERMISSIONS"
+  | "DASHBOARD_NOT_FOUND"
+  | "DASHBOARD_ACCESS_DENIED"
+  | "INTERNAL_FAILURE"
+  | "WIDGET_ID_NOT_FOUND"
+  | (string & {});
+export const StatusReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type StatusReasonList = StatusReason[];
+export const StatusReasonList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(StatusReason);
+export interface HealthStatus {
+  statusCode: HealthStatusCode;
+  lastRefreshedAt?: Date;
+  statusReasons?: StatusReason[];
+}
+export const HealthStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    statusCode: HealthStatusCode,
+    lastRefreshedAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    statusReasons: S.optional(StatusReasonList),
+  }),
+).annotate({ identifier: "HealthStatus" }) as any as S.Schema<HealthStatus>;
+export interface ExecuteScheduledReportResponse {
+  healthStatus?: HealthStatus;
+  executionTriggered?: boolean;
+}
+export const ExecuteScheduledReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      healthStatus: S.optional(HealthStatus),
+      executionTriggered: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ExecuteScheduledReportResponse",
+  }) as any as S.Schema<ExecuteScheduledReportResponse>;
 export interface GetDashboardRequest {
   arn: string;
 }
@@ -546,6 +712,59 @@ export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
+export interface GetScheduledReportRequest {
+  arn: string;
+}
+export const GetScheduledReportRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ arn: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetScheduledReportRequest",
+}) as any as S.Schema<GetScheduledReportRequest>;
+export interface ScheduledReport {
+  arn?: string;
+  name: string;
+  dashboardArn: string;
+  scheduledReportExecutionRoleArn: string;
+  scheduleConfig: ScheduleConfig;
+  description?: string;
+  widgetIds?: string[];
+  widgetDateRangeOverride?: DateTimeRange;
+  createdAt?: Date;
+  updatedAt?: Date;
+  lastExecutionAt?: Date;
+  healthStatus?: HealthStatus;
+}
+export const ScheduledReport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    name: S.String,
+    dashboardArn: S.String,
+    scheduledReportExecutionRoleArn: S.String,
+    scheduleConfig: ScheduleConfig,
+    description: S.optional(S.String),
+    widgetIds: S.optional(WidgetIdList),
+    widgetDateRangeOverride: S.optional(DateTimeRange),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastExecutionAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    healthStatus: S.optional(HealthStatus),
+  }),
+).annotate({
+  identifier: "ScheduledReport",
+}) as any as S.Schema<ScheduledReport>;
+export interface GetScheduledReportResponse {
+  scheduledReport: ScheduledReport;
+}
+export const GetScheduledReportResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ scheduledReport: ScheduledReport }),
+).annotate({
+  identifier: "GetScheduledReportResponse",
+}) as any as S.Schema<GetScheduledReportResponse>;
 export interface ListDashboardsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -596,6 +815,63 @@ export const ListDashboardsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListDashboardsResponse",
 }) as any as S.Schema<ListDashboardsResponse>;
+export interface ListScheduledReportsRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListScheduledReportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListScheduledReportsRequest",
+  }) as any as S.Schema<ListScheduledReportsRequest>;
+export interface ScheduledReportSummary {
+  arn: string;
+  name: string;
+  dashboardArn: string;
+  scheduleExpression: string;
+  state: ScheduleState;
+  healthStatus: HealthStatus;
+  scheduleExpressionTimeZone?: string;
+  widgetIds?: string[];
+}
+export const ScheduledReportSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      arn: S.String,
+      name: S.String,
+      dashboardArn: S.String,
+      scheduleExpression: S.String,
+      state: ScheduleState,
+      healthStatus: HealthStatus,
+      scheduleExpressionTimeZone: S.optional(S.String),
+      widgetIds: S.optional(WidgetIdList),
+    }),
+).annotate({
+  identifier: "ScheduledReportSummary",
+}) as any as S.Schema<ScheduledReportSummary>;
+export type ScheduledReportSummaryList = ScheduledReportSummary[];
+export const ScheduledReportSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ScheduledReportSummary,
+);
+export interface ListScheduledReportsResponse {
+  scheduledReports: ScheduledReportSummary[];
+  nextToken?: string;
+}
+export const ListScheduledReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      scheduledReports: ScheduledReportSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListScheduledReportsResponse",
+  }) as any as S.Schema<ListScheduledReportsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -654,7 +930,7 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDashboardRequest {
   arn: string;
-  name?: string;
+  name: string;
   description?: string;
   widgets?: Widget[];
 }
@@ -662,7 +938,7 @@ export const UpdateDashboardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       arn: S.String,
-      name: S.optional(S.String),
+      name: S.String,
       description: S.optional(S.String),
       widgets: S.optional(WidgetList),
     }).pipe(
@@ -679,6 +955,46 @@ export const UpdateDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateDashboardResponse",
 }) as any as S.Schema<UpdateDashboardResponse>;
+export interface UpdateScheduledReportRequest {
+  arn: string;
+  name?: string;
+  description?: string;
+  dashboardArn?: string;
+  scheduledReportExecutionRoleArn?: string;
+  scheduleConfig?: ScheduleConfig;
+  widgetIds?: string[];
+  widgetDateRangeOverride?: DateTimeRange;
+  clearWidgetIds?: boolean;
+  clearWidgetDateRangeOverride?: boolean;
+}
+export const UpdateScheduledReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arn: S.String,
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      dashboardArn: S.optional(S.String),
+      scheduledReportExecutionRoleArn: S.optional(S.String),
+      scheduleConfig: S.optional(ScheduleConfig),
+      widgetIds: S.optional(WidgetIdList),
+      widgetDateRangeOverride: S.optional(DateTimeRange),
+      clearWidgetIds: S.optional(S.Boolean),
+      clearWidgetDateRangeOverride: S.optional(S.Boolean),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "UpdateScheduledReportRequest",
+  }) as any as S.Schema<UpdateScheduledReportRequest>;
+export interface UpdateScheduledReportResponse {
+  arn: string;
+}
+export const UpdateScheduledReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ arn: S.String }),
+  ).annotate({
+    identifier: "UpdateScheduledReportResponse",
+  }) as any as S.Schema<UpdateScheduledReportResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
@@ -701,6 +1017,10 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { message: S.String },
 ).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+).pipe(C.withConflictError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
@@ -733,6 +1053,34 @@ export const createDashboard: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type CreateScheduledReportError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new scheduled report for a dashboard. A scheduled report automatically generates and delivers dashboard snapshots on a recurring schedule. Reports are delivered within 15 minutes of the scheduled delivery time.
+ */
+export const createScheduledReport: API.OperationMethod<
+  CreateScheduledReportRequest,
+  CreateScheduledReportResponse,
+  CreateScheduledReportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateScheduledReportRequest,
+  output: CreateScheduledReportResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type DeleteDashboardError =
   | AccessDeniedException
   | InternalServerException
@@ -753,6 +1101,62 @@ export const deleteDashboard: API.OperationMethod<
   errors: [
     AccessDeniedException,
     InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteScheduledReportError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a specified scheduled report. This is an irreversible operation.
+ */
+export const deleteScheduledReport: API.OperationMethod<
+  DeleteScheduledReportRequest,
+  DeleteScheduledReportResponse,
+  DeleteScheduledReportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteScheduledReportRequest,
+  output: DeleteScheduledReportResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ExecuteScheduledReportError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Triggers an immediate execution of a scheduled report, outside of its regular schedule. The scheduled report must be in `ENABLED` state. Calling this operation on a `DISABLED` scheduled report returns a `ValidationException`.
+ *
+ * If a `clientToken` is provided, the service uses it for idempotency. Requests with the same client token will not trigger a new execution within the same minute.
+ */
+export const executeScheduledReport: API.OperationMethod<
+  ExecuteScheduledReportRequest,
+  ExecuteScheduledReportResponse,
+  ExecuteScheduledReportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteScheduledReportRequest,
+  output: ExecuteScheduledReportResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
@@ -809,6 +1213,32 @@ export const getResourcePolicy: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type GetScheduledReportError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the configuration and metadata of a specified scheduled report.
+ */
+export const getScheduledReport: API.OperationMethod<
+  GetScheduledReportRequest,
+  GetScheduledReportResponse,
+  GetScheduledReportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetScheduledReportRequest,
+  output: GetScheduledReportResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type ListDashboardsError =
   | AccessDeniedException
   | InternalServerException
@@ -851,6 +1281,51 @@ export const listDashboards: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "dashboards",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListScheduledReportsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of scheduled reports in your account.
+ */
+export const listScheduledReports: API.OperationMethod<
+  ListScheduledReportsRequest,
+  ListScheduledReportsResponse,
+  ListScheduledReportsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListScheduledReportsRequest,
+  ) => stream.Stream<
+    ListScheduledReportsResponse,
+    ListScheduledReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListScheduledReportsRequest,
+  ) => stream.Stream<
+    ScheduledReportSummary,
+    ListScheduledReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListScheduledReportsRequest,
+  output: ListScheduledReportsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "scheduledReports",
     pageSize: "maxResults",
   } as const,
 }));
@@ -946,6 +1421,34 @@ export const updateDashboard: API.OperationMethod<
   output: UpdateDashboardResponse,
   errors: [
     AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateScheduledReportError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing scheduled report's properties, including its name, description, schedule configuration, and widget settings. Only the parameters included in the request are updated; all other properties remain unchanged.
+ */
+export const updateScheduledReport: API.OperationMethod<
+  UpdateScheduledReportRequest,
+  UpdateScheduledReportResponse,
+  UpdateScheduledReportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateScheduledReportRequest,
+  output: UpdateScheduledReportResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,

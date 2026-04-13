@@ -57,6 +57,7 @@ export const GetBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   backup_policy: Schema.NullOr(
     Schema.Struct({
       id: Schema.String,
+      display_name: Schema.String,
       name: Schema.String,
       target: Schema.Literals(["production", "development"]),
       retention_value: Schema.Number,

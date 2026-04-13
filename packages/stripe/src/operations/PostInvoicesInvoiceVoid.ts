@@ -318,6 +318,7 @@ export const PostInvoicesInvoiceVoidOutput =
           ),
           pricing: Schema.Unknown,
           quantity: Schema.NullOr(Schema.Number),
+          quantity_decimal: Schema.NullOr(Schema.String),
           subscription: Schema.Unknown,
           subtotal: Schema.Number,
           taxes: Schema.NullOr(
@@ -541,8 +542,8 @@ export type PostInvoicesInvoiceVoidOutput =
 /**
  * Void an invoice
  *
- * <p>Mark a finalized invoice as void. This cannot be undone. Voiding an invoice is similar to <a href="#delete_invoice">deletion</a>, however it only applies to finalized invoices and maintains a papertrail where the invoice can still be found.</p>
- * <p>Consult with local regulations to determine whether and how an invoice might be amended, canceled, or voided in the jurisdiction you’re doing business in. You might need to <a href="#create_invoice">issue another invoice</a> or <a href="#create_credit_note">credit note</a> instead. Stripe recommends that you consult with your legal counsel for advice specific to your business.</p>
+ * <p>Mark a finalized invoice as void. This cannot be undone. Voiding an invoice is similar to <a href="/api/invoices/delete">deletion</a>, however it only applies to finalized invoices and maintains a papertrail where the invoice can still be found.</p>
+ * <p>Consult with local regulations to determine whether and how an invoice might be amended, canceled, or voided in the jurisdiction you’re doing business in. You might need to <a href="/api/invoices/create">issue another invoice</a> or <a href="/api/credit_notes/create">credit note</a> instead. Stripe recommends that you consult with your legal counsel for advice specific to your business.</p>
  */
 export const PostInvoicesInvoiceVoid = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

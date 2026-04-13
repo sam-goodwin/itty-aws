@@ -35,16 +35,11 @@ export interface UrlNotification {
   notifyTime?: string;
 }
 
-export const UrlNotification: Schema.Schema<UrlNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      notifyTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UrlNotification",
-  }) as any as Schema.Schema<UrlNotification>;
+export const UrlNotification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  notifyTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UrlNotification" });
 
 export interface UrlNotificationMetadata {
   /** URL to which this metadata refers. */
@@ -55,30 +50,22 @@ export interface UrlNotificationMetadata {
   latestRemove?: UrlNotification;
 }
 
-export const UrlNotificationMetadata: Schema.Schema<UrlNotificationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      latestUpdate: Schema.optional(UrlNotification),
-      latestRemove: Schema.optional(UrlNotification),
-    }),
-  ).annotate({
-    identifier: "UrlNotificationMetadata",
-  }) as any as Schema.Schema<UrlNotificationMetadata>;
+export const UrlNotificationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    latestUpdate: Schema.optional(UrlNotification),
+    latestRemove: Schema.optional(UrlNotification),
+  }).annotate({ identifier: "UrlNotificationMetadata" });
 
 export interface PublishUrlNotificationResponse {
   /** Description of the notification events received for this URL. */
   urlNotificationMetadata?: UrlNotificationMetadata;
 }
 
-export const PublishUrlNotificationResponse: Schema.Schema<PublishUrlNotificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urlNotificationMetadata: Schema.optional(UrlNotificationMetadata),
-    }),
-  ).annotate({
-    identifier: "PublishUrlNotificationResponse",
-  }) as any as Schema.Schema<PublishUrlNotificationResponse>;
+export const PublishUrlNotificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    urlNotificationMetadata: Schema.optional(UrlNotificationMetadata),
+  }).annotate({ identifier: "PublishUrlNotificationResponse" });
 
 // ==========================================================================
 // Operations

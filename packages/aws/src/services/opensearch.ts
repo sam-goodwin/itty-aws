@@ -107,8 +107,10 @@ export type RoleArn = string;
 export type DataSourceDescription = string;
 export type DirectQueryDataSourceName = string;
 export type DirectQueryDataSourceRoleArn = string;
+export type AMPWorkspaceArn = string;
 export type DirectQueryDataSourceDescription = string;
 export type ARN = string;
+export type PolicyDocument = string;
 export type TagKey = string;
 export type TagValue = string;
 export type PackageID = string;
@@ -128,7 +130,6 @@ export type KmsKeyArn = string;
 export type Id = string;
 export type VersionString = string;
 export type IntegerClass = number;
-export type PolicyDocument = string;
 export type UserPoolId = string;
 export type IdentityPoolId = string;
 export type KmsKeyId = string;
@@ -175,6 +176,8 @@ export type PackageUser = string;
 export type PackageOwner = string;
 export type DomainArn = string;
 export type VpcEndpointId = string;
+export type ApplicationId = string;
+export type CapabilityName = string;
 export type MaxResults = number;
 export type NextToken = string;
 export type AutoTuneDate = Date;
@@ -193,6 +196,7 @@ export type StorageTypeName = string;
 export type VolumeSize = string;
 export type DeploymentType = string;
 export type NonEmptyString = string;
+export type InsightEntityValue = string;
 export type InstanceRole = string;
 export type StorageSubTypeName = string;
 export type LimitName = string;
@@ -201,12 +205,14 @@ export type MinimumInstanceCount = number;
 export type MaximumInstanceCount = number;
 export type DescribePackagesFilterValue = string;
 export type ReservationToken = string;
+export type CapabilityFailureDetails = string;
 export type RequestId = string;
 export type MaintenanceStatusMessage = string;
 export type CommitMessage = string;
 export type UpgradeName = string;
 export type StartTimestamp = Date;
 export type Issue = string;
+export type InsightPageSize = number;
 export type InstanceTypeString = string;
 export type InstanceCount = number;
 
@@ -375,12 +381,36 @@ export const SecurityLakeDirectQueryDataSource =
   ).annotate({
     identifier: "SecurityLakeDirectQueryDataSource",
   }) as any as S.Schema<SecurityLakeDirectQueryDataSource>;
+export interface PrometheusDirectQueryDataSource {
+  RoleArn: string;
+  WorkspaceArn: string;
+}
+export const PrometheusDirectQueryDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ RoleArn: S.String, WorkspaceArn: S.String }),
+  ).annotate({
+    identifier: "PrometheusDirectQueryDataSource",
+  }) as any as S.Schema<PrometheusDirectQueryDataSource>;
 export type DirectQueryDataSourceType =
-  | { CloudWatchLog: CloudWatchDirectQueryDataSource; SecurityLake?: never }
-  | { CloudWatchLog?: never; SecurityLake: SecurityLakeDirectQueryDataSource };
+  | {
+      CloudWatchLog: CloudWatchDirectQueryDataSource;
+      SecurityLake?: never;
+      Prometheus?: never;
+    }
+  | {
+      CloudWatchLog?: never;
+      SecurityLake: SecurityLakeDirectQueryDataSource;
+      Prometheus?: never;
+    }
+  | {
+      CloudWatchLog?: never;
+      SecurityLake?: never;
+      Prometheus: PrometheusDirectQueryDataSource;
+    };
 export const DirectQueryDataSourceType = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ CloudWatchLog: CloudWatchDirectQueryDataSource }),
   S.Struct({ SecurityLake: SecurityLakeDirectQueryDataSource }),
+  S.Struct({ Prometheus: PrometheusDirectQueryDataSource }),
 ]);
 export type DirectQueryOpenSearchARNList = string[];
 export const DirectQueryOpenSearchARNList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
@@ -399,7 +429,8 @@ export interface AddDirectQueryDataSourceRequest {
   DataSourceName: string;
   DataSourceType: DirectQueryDataSourceType;
   Description?: string;
-  OpenSearchArns: string[];
+  OpenSearchArns?: string[];
+  DataSourceAccessPolicy?: string;
   TagList?: Tag[];
 }
 export const AddDirectQueryDataSourceRequest =
@@ -408,7 +439,8 @@ export const AddDirectQueryDataSourceRequest =
       DataSourceName: S.String,
       DataSourceType: DirectQueryDataSourceType,
       Description: S.optional(S.String),
-      OpenSearchArns: DirectQueryOpenSearchARNList,
+      OpenSearchArns: S.optional(DirectQueryOpenSearchARNList),
+      DataSourceAccessPolicy: S.optional(S.String),
       TagList: S.optional(TagList),
     }).pipe(
       T.all(
@@ -824,11 +856,13 @@ export const CancelServiceSoftwareUpdateResponse =
 export interface DataSource {
   dataSourceArn?: string;
   dataSourceDescription?: string;
+  iamRoleForDataSourceArn?: string;
 }
 export const DataSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceArn: S.optional(S.String),
     dataSourceDescription: S.optional(S.String),
+    iamRoleForDataSourceArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 export type DataSources = DataSource[];
@@ -1236,6 +1270,7 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
   | "Policy-Min-TLS-1-2-2019-07"
   | "Policy-Min-TLS-1-2-PFS-2023-10"
+  | "Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08"
   | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DomainEndpointOptions {
@@ -2584,6 +2619,51 @@ export const DeleteVpcEndpointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteVpcEndpointResponse",
 }) as any as S.Schema<DeleteVpcEndpointResponse>;
+export interface DeregisterCapabilityRequest {
+  applicationId: string;
+  capabilityName: string;
+}
+export const DeregisterCapabilityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+      capabilityName: S.String.pipe(T.HttpLabel("capabilityName")),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "DELETE",
+          uri: "/2021-01-01/opensearch/application/{applicationId}/capability/deregister/{capabilityName}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeregisterCapabilityRequest",
+  }) as any as S.Schema<DeregisterCapabilityRequest>;
+export type CapabilityStatus =
+  | "creating"
+  | "create_failed"
+  | "active"
+  | "updating"
+  | "update_failed"
+  | "deleting"
+  | "delete_failed"
+  | (string & {});
+export const CapabilityStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DeregisterCapabilityResponse {
+  status?: CapabilityStatus;
+}
+export const DeregisterCapabilityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ status: S.optional(CapabilityStatus) }).pipe(ns),
+  ).annotate({
+    identifier: "DeregisterCapabilityResponse",
+  }) as any as S.Schema<DeregisterCapabilityResponse>;
 export interface DescribeDomainRequest {
   DomainName: string;
 }
@@ -3489,6 +3569,65 @@ export const DescribeInboundConnectionsResponse =
   ).annotate({
     identifier: "DescribeInboundConnectionsResponse",
   }) as any as S.Schema<DescribeInboundConnectionsResponse>;
+export type InsightEntityType = "Account" | "DomainName" | (string & {});
+export const InsightEntityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface InsightEntity {
+  Type: InsightEntityType;
+  Value?: string;
+}
+export const InsightEntity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: InsightEntityType, Value: S.optional(S.String) }),
+).annotate({ identifier: "InsightEntity" }) as any as S.Schema<InsightEntity>;
+export interface DescribeInsightDetailsRequest {
+  Entity: InsightEntity;
+  InsightId: string;
+  ShowHtmlContent?: boolean;
+}
+export const DescribeInsightDetailsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Entity: InsightEntity,
+      InsightId: S.String,
+      ShowHtmlContent: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "POST",
+          uri: "/2021-01-01/opensearch/insight-details",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeInsightDetailsRequest",
+  }) as any as S.Schema<DescribeInsightDetailsRequest>;
+export type InsightFieldType = "text" | "metric" | (string & {});
+export const InsightFieldType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface InsightField {
+  Name: string;
+  Type: InsightFieldType;
+  Value: string;
+}
+export const InsightField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Type: InsightFieldType, Value: S.String }),
+).annotate({ identifier: "InsightField" }) as any as S.Schema<InsightField>;
+export type InsightFieldList = InsightField[];
+export const InsightFieldList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(InsightField);
+export interface DescribeInsightDetailsResponse {
+  Fields: InsightField[];
+}
+export const DescribeInsightDetailsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Fields: InsightFieldList }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeInsightDetailsResponse",
+  }) as any as S.Schema<DescribeInsightDetailsResponse>;
 export interface DescribeInstanceTypeLimitsRequest {
   DomainName?: string;
   InstanceType: OpenSearchPartitionInstanceType;
@@ -4096,6 +4235,75 @@ export const GetApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetApplicationResponse",
 }) as any as S.Schema<GetApplicationResponse>;
+export interface GetCapabilityRequest {
+  applicationId: string;
+  capabilityName: string;
+}
+export const GetCapabilityRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    capabilityName: S.String.pipe(T.HttpLabel("capabilityName")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/2021-01-01/opensearch/application/{applicationId}/capability/{capabilityName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCapabilityRequest",
+}) as any as S.Schema<GetCapabilityRequest>;
+export interface AIConfig {}
+export const AIConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({ identifier: "AIConfig" }) as any as S.Schema<AIConfig>;
+export type CapabilityExtendedResponseConfig = { aiConfig: AIConfig };
+export const CapabilityExtendedResponseConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([S.Struct({ aiConfig: AIConfig })]);
+export type CapabilityFailureReason =
+  | "KMS_KEY_INSUFFICIENT_PERMISSION"
+  | (string & {});
+export const CapabilityFailureReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CapabilityFailure {
+  reason?: CapabilityFailureReason;
+  details?: string;
+}
+export const CapabilityFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reason: S.optional(CapabilityFailureReason),
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CapabilityFailure",
+}) as any as S.Schema<CapabilityFailure>;
+export type CapabilityFailures = CapabilityFailure[];
+export const CapabilityFailures =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CapabilityFailure);
+export interface GetCapabilityResponse {
+  capabilityName?: string;
+  applicationId?: string;
+  status?: CapabilityStatus;
+  capabilityConfig?: CapabilityExtendedResponseConfig;
+  failures?: CapabilityFailure[];
+}
+export const GetCapabilityResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capabilityName: S.optional(S.String),
+    applicationId: S.optional(S.String),
+    status: S.optional(CapabilityStatus),
+    capabilityConfig: S.optional(CapabilityExtendedResponseConfig),
+    failures: S.optional(CapabilityFailures),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetCapabilityResponse",
+}) as any as S.Schema<GetCapabilityResponse>;
 export interface GetCompatibleVersionsRequest {
   DomainName?: string;
 }
@@ -4250,6 +4458,7 @@ export interface GetDirectQueryDataSourceResponse {
   DataSourceType?: DirectQueryDataSourceType;
   Description?: string;
   OpenSearchArns?: string[];
+  DataSourceAccessPolicy?: string;
   DataSourceArn?: string;
 }
 export const GetDirectQueryDataSourceResponse =
@@ -4259,6 +4468,7 @@ export const GetDirectQueryDataSourceResponse =
       DataSourceType: S.optional(DirectQueryDataSourceType),
       Description: S.optional(S.String),
       OpenSearchArns: S.optional(DirectQueryOpenSearchARNList),
+      DataSourceAccessPolicy: S.optional(S.String),
       DataSourceArn: S.optional(S.String),
     }).pipe(ns),
   ).annotate({
@@ -4889,6 +5099,92 @@ export const ListDomainsForPackageResponse =
   ).annotate({
     identifier: "ListDomainsForPackageResponse",
   }) as any as S.Schema<ListDomainsForPackageResponse>;
+export interface InsightTimeRange {
+  From: number;
+  To: number;
+}
+export const InsightTimeRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ From: S.Number, To: S.Number }),
+).annotate({
+  identifier: "InsightTimeRange",
+}) as any as S.Schema<InsightTimeRange>;
+export type InsightSortOrder = "ASC" | "DESC" | (string & {});
+export const InsightSortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListInsightsRequest {
+  Entity: InsightEntity;
+  TimeRange?: InsightTimeRange;
+  SortOrder?: InsightSortOrder;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListInsightsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Entity: InsightEntity,
+    TimeRange: S.optional(InsightTimeRange),
+    SortOrder: S.optional(InsightSortOrder),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/2021-01-01/opensearch/insights" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListInsightsRequest",
+}) as any as S.Schema<ListInsightsRequest>;
+export type InsightType = "EVENT" | "RECOMMENDATION" | (string & {});
+export const InsightType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type InsightPriorityLevel =
+  | "CRITICAL"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | (string & {});
+export const InsightPriorityLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type InsightStatus = "ACTIVE" | "RESOLVED" | "DISMISSED" | (string & {});
+export const InsightStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface Insight {
+  InsightId?: string;
+  DisplayName?: string;
+  Type?: InsightType;
+  Priority?: InsightPriorityLevel;
+  Status?: InsightStatus;
+  CreationTime?: Date;
+  UpdateTime?: Date;
+  IsExperimental?: boolean;
+}
+export const Insight = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InsightId: S.optional(S.String),
+    DisplayName: S.optional(S.String),
+    Type: S.optional(InsightType),
+    Priority: S.optional(InsightPriorityLevel),
+    Status: S.optional(InsightStatus),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    IsExperimental: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
+export type InsightList = Insight[];
+export const InsightList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Insight);
+export interface ListInsightsResponse {
+  Insights?: Insight[];
+  NextToken?: string;
+}
+export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Insights: S.optional(InsightList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListInsightsResponse",
+}) as any as S.Schema<ListInsightsResponse>;
 export interface ListInstanceTypeDetailsRequest {
   EngineVersion: string;
   DomainName?: string;
@@ -5350,6 +5646,59 @@ export const PutDefaultApplicationSettingResponse =
   ).annotate({
     identifier: "PutDefaultApplicationSettingResponse",
   }) as any as S.Schema<PutDefaultApplicationSettingResponse>;
+export type CapabilityBaseRequestConfig = { aiConfig: AIConfig };
+export const CapabilityBaseRequestConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ aiConfig: AIConfig }),
+]);
+export interface RegisterCapabilityRequest {
+  applicationId: string;
+  capabilityName: string;
+  capabilityConfig: CapabilityBaseRequestConfig;
+}
+export const RegisterCapabilityRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+      capabilityName: S.String,
+      capabilityConfig: CapabilityBaseRequestConfig,
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "POST",
+          uri: "/2021-01-01/opensearch/application/{applicationId}/capability/register",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "RegisterCapabilityRequest",
+}) as any as S.Schema<RegisterCapabilityRequest>;
+export type CapabilityBaseResponseConfig = { aiConfig: AIConfig };
+export const CapabilityBaseResponseConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union(
+  [S.Struct({ aiConfig: AIConfig })],
+);
+export interface RegisterCapabilityResponse {
+  capabilityName?: string;
+  applicationId?: string;
+  status?: CapabilityStatus;
+  capabilityConfig?: CapabilityBaseResponseConfig;
+}
+export const RegisterCapabilityResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      capabilityName: S.optional(S.String),
+      applicationId: S.optional(S.String),
+      status: S.optional(CapabilityStatus),
+      capabilityConfig: S.optional(CapabilityBaseResponseConfig),
+    }).pipe(ns),
+).annotate({
+  identifier: "RegisterCapabilityResponse",
+}) as any as S.Schema<RegisterCapabilityResponse>;
 export interface RejectInboundConnectionRequest {
   ConnectionId: string;
 }
@@ -5620,7 +5969,8 @@ export interface UpdateDirectQueryDataSourceRequest {
   DataSourceName: string;
   DataSourceType: DirectQueryDataSourceType;
   Description?: string;
-  OpenSearchArns: string[];
+  OpenSearchArns?: string[];
+  DataSourceAccessPolicy?: string;
 }
 export const UpdateDirectQueryDataSourceRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5628,7 +5978,8 @@ export const UpdateDirectQueryDataSourceRequest =
       DataSourceName: S.String.pipe(T.HttpLabel("DataSourceName")),
       DataSourceType: DirectQueryDataSourceType,
       Description: S.optional(S.String),
-      OpenSearchArns: DirectQueryOpenSearchARNList,
+      OpenSearchArns: S.optional(DirectQueryOpenSearchARNList),
+      DataSourceAccessPolicy: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -6031,6 +6382,10 @@ export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidP
   "InvalidPaginationTokenException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
 export class SlotNotAvailableException extends S.TaggedErrorClass<SlotNotAvailableException>()(
   "SlotNotAvailableException",
   { SlotSuggestions: S.optional(SlotList), message: S.optional(S.String) },
@@ -6698,6 +7053,34 @@ export const deleteVpcEndpoint: API.OperationMethod<
     ResourceNotFoundException,
   ],
 }));
+export type DeregisterCapabilityError =
+  | AccessDeniedException
+  | ConflictException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deregisters a capability from an OpenSearch UI application. This operation removes the capability and its associated configuration.
+ */
+export const deregisterCapability: API.OperationMethod<
+  DeregisterCapabilityRequest,
+  DeregisterCapabilityResponse,
+  DeregisterCapabilityError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeregisterCapabilityRequest,
+  output: DeregisterCapabilityResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
 export type DescribeDomainError =
   | BaseException
   | InternalException
@@ -6958,6 +7341,36 @@ export const describeInboundConnections: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
+}));
+export type DescribeInsightDetailsError =
+  | BaseException
+  | DisabledOperationException
+  | InternalException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Describes the details of an existing insight for an Amazon OpenSearch Service domain.
+ * Returns detailed fields associated with the specified insight, such as text descriptions
+ * and metric data.
+ */
+export const describeInsightDetails: API.OperationMethod<
+  DescribeInsightDetailsRequest,
+  DescribeInsightDetailsResponse,
+  DescribeInsightDetailsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeInsightDetailsRequest,
+  output: DescribeInsightDetailsResponse,
+  errors: [
+    BaseException,
+    DisabledOperationException,
+    InternalException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
 }));
 export type DescribeInstanceTypeLimitsError =
   | BaseException
@@ -7272,6 +7685,32 @@ export const getApplication: API.OperationMethod<
   errors: [
     AccessDeniedException,
     BaseException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type GetCapabilityError =
+  | AccessDeniedException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a registered capability for an OpenSearch UI application, including its configuration and current status.
+ */
+export const getCapability: API.OperationMethod<
+  GetCapabilityRequest,
+  GetCapabilityResponse,
+  GetCapabilityError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCapabilityRequest,
+  output: GetCapabilityResponse,
+  errors: [
+    AccessDeniedException,
     DisabledOperationException,
     InternalException,
     ResourceNotFoundException,
@@ -7784,6 +8223,36 @@ export const listDomainsForPackage: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type ListInsightsError =
+  | BaseException
+  | DisabledOperationException
+  | InternalException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists insights for an Amazon OpenSearch Service domain or Amazon Web Services account.
+ * Returns a paginated list of insights based on the specified entity, filters, time range,
+ * and sort order.
+ */
+export const listInsights: API.OperationMethod<
+  ListInsightsRequest,
+  ListInsightsResponse,
+  ListInsightsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListInsightsRequest,
+  output: ListInsightsResponse,
+  errors: [
+    BaseException,
+    DisabledOperationException,
+    InternalException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
 export type ListInstanceTypeDetailsError =
   | BaseException
   | InternalException
@@ -8121,6 +8590,36 @@ export const putDefaultApplicationSetting: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type RegisterCapabilityError =
+  | AccessDeniedException
+  | ConflictException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Registers a capability for an OpenSearch UI application. Use this operation to enable specific capabilities, such as AI features, for a given application. The capability configuration defines the type and settings of the capability to register. For more information about the AI features, see Agentic AI for OpenSearch UI.
+ */
+export const registerCapability: API.OperationMethod<
+  RegisterCapabilityRequest,
+  RegisterCapabilityResponse,
+  RegisterCapabilityError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RegisterCapabilityRequest,
+  output: RegisterCapabilityResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
+}));
 export type RejectInboundConnectionError =
   | DisabledOperationException
   | ResourceNotFoundException
@@ -8303,6 +8802,7 @@ export type UpdateDirectQueryDataSourceError =
   | BaseException
   | DisabledOperationException
   | InternalException
+  | LimitExceededException
   | ResourceNotFoundException
   | ValidationException
   | CommonErrors;
@@ -8322,6 +8822,7 @@ export const updateDirectQueryDataSource: API.OperationMethod<
     BaseException,
     DisabledOperationException,
     InternalException,
+    LimitExceededException,
     ResourceNotFoundException,
     ValidationException,
   ],

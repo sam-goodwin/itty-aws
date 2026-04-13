@@ -4439,6 +4439,15 @@ export const CreateCoreV1NamespacedPodOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -10899,6 +10908,11 @@ export const DeleteCoreV1CollectionNamespacedConfigMapOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -10962,6 +10976,11 @@ export const DeleteCoreV1CollectionNamespacedEndpointsOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11022,6 +11041,11 @@ export const DeleteCoreV1CollectionNamespacedEventOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11085,6 +11109,11 @@ export const DeleteCoreV1CollectionNamespacedLimitRangeOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11148,6 +11177,11 @@ export const DeleteCoreV1CollectionNamespacedPersistentVolumeClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11208,6 +11242,11 @@ export const DeleteCoreV1CollectionNamespacedPodOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11271,6 +11310,11 @@ export const DeleteCoreV1CollectionNamespacedPodTemplateOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11334,6 +11378,11 @@ export const DeleteCoreV1CollectionNamespacedReplicationControllerOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11397,6 +11446,11 @@ export const DeleteCoreV1CollectionNamespacedResourceQuotaOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11460,6 +11514,11 @@ export const DeleteCoreV1CollectionNamespacedSecretOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11523,6 +11582,11 @@ export const DeleteCoreV1CollectionNamespacedServiceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11586,6 +11650,11 @@ export const DeleteCoreV1CollectionNamespacedServiceAccountOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11644,6 +11713,11 @@ export const DeleteCoreV1CollectionNodeOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11703,6 +11777,11 @@ export const DeleteCoreV1CollectionPersistentVolumeOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11760,6 +11839,11 @@ export const DeleteCoreV1NamespaceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11824,6 +11908,11 @@ export const DeleteCoreV1NamespacedConfigMapOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11887,6 +11976,11 @@ export const DeleteCoreV1NamespacedEndpointsOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -11950,6 +12044,11 @@ export const DeleteCoreV1NamespacedEventOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -12014,6 +12113,11 @@ export const DeleteCoreV1NamespacedLimitRangeOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -14949,6 +15053,15 @@ export const DeleteCoreV1NamespacedPodOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -17488,6 +17601,11 @@ export const DeleteCoreV1NamespacedReplicationControllerOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -17653,6 +17771,11 @@ export const DeleteCoreV1NamespacedSecretOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -17965,6 +18088,11 @@ export const DeleteCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -18660,6 +18788,11 @@ export const ListCoreV1ComponentStatusOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -18752,6 +18885,11 @@ export const ListCoreV1ConfigMapForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -18894,6 +19032,11 @@ export const ListCoreV1EndpointsForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19018,6 +19161,11 @@ export const ListCoreV1EventForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19128,6 +19276,11 @@ export const ListCoreV1LimitRangeForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19234,6 +19387,11 @@ export const ListCoreV1NamespaceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19326,6 +19484,11 @@ export const ListCoreV1NamespacedConfigMapOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19468,6 +19631,11 @@ export const ListCoreV1NamespacedEndpointsOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19592,6 +19760,11 @@ export const ListCoreV1NamespacedEventOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19706,6 +19879,11 @@ export const ListCoreV1NamespacedLimitRangeOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -19879,6 +20057,11 @@ export const ListCoreV1NamespacedPersistentVolumeClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -22709,6 +22892,15 @@ export const ListCoreV1NamespacedPodOutput =
               ),
             ),
             message: Schema.optional(Schema.String),
+            nodeAllocatableResourceClaimStatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  containers: Schema.optional(Schema.Array(Schema.String)),
+                  resourceClaimName: Schema.String,
+                  resources: Schema.Record(Schema.String, Schema.String),
+                }),
+              ),
+            ),
             nominatedNodeName: Schema.optional(Schema.String),
             observedGeneration: Schema.optional(Schema.Number),
             phase: Schema.optional(Schema.String),
@@ -22761,6 +22953,11 @@ export const ListCoreV1NamespacedPodOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -25316,6 +25513,11 @@ export const ListCoreV1NamespacedPodTemplateOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -28031,6 +28233,11 @@ export const ListCoreV1NamespacedReplicationControllerOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -28145,6 +28352,11 @@ export const ListCoreV1NamespacedResourceQuotaOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -28237,6 +28449,11 @@ export const ListCoreV1NamespacedSecretOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -28409,6 +28626,11 @@ export const ListCoreV1NamespacedServiceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -28520,6 +28742,11 @@ export const ListCoreV1NamespacedServiceAccountOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -28772,6 +28999,11 @@ export const ListCoreV1NodeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       remainingItemCount: Schema.optional(Schema.Number),
       resourceVersion: Schema.optional(Schema.String),
       selfLink: Schema.optional(Schema.String),
+      shardInfo: Schema.optional(
+        Schema.Struct({
+          selector: Schema.String,
+        }),
+      ),
     }),
   ),
 });
@@ -29187,6 +29419,11 @@ export const ListCoreV1PersistentVolumeOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -29358,6 +29595,11 @@ export const ListCoreV1PersistentVolumeClaimForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -32188,6 +32430,15 @@ export const ListCoreV1PodForAllNamespacesOutput =
               ),
             ),
             message: Schema.optional(Schema.String),
+            nodeAllocatableResourceClaimStatuses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  containers: Schema.optional(Schema.Array(Schema.String)),
+                  resourceClaimName: Schema.String,
+                  resources: Schema.Record(Schema.String, Schema.String),
+                }),
+              ),
+            ),
             nominatedNodeName: Schema.optional(Schema.String),
             observedGeneration: Schema.optional(Schema.Number),
             phase: Schema.optional(Schema.String),
@@ -32240,6 +32491,11 @@ export const ListCoreV1PodForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -34791,6 +35047,11 @@ export const ListCoreV1PodTemplateForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -37503,6 +37764,11 @@ export const ListCoreV1ReplicationControllerForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -37614,6 +37880,11 @@ export const ListCoreV1ResourceQuotaForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -37706,6 +37977,11 @@ export const ListCoreV1SecretForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -37813,6 +38089,11 @@ export const ListCoreV1ServiceAccountForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -37984,6 +38265,11 @@ export const ListCoreV1ServiceForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -41736,6 +42022,15 @@ export const PatchCoreV1NamespacedPodOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -44554,6 +44849,15 @@ export const PatchCoreV1NamespacedPodEphemeralcontainersOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -47371,6 +47675,15 @@ export const PatchCoreV1NamespacedPodResizeOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -50188,6 +50501,15 @@ export const PatchCoreV1NamespacedPodStatusOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -63648,6 +63970,15 @@ export const ReadCoreV1NamespacedPodOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -66460,6 +66791,15 @@ export const ReadCoreV1NamespacedPodEphemeralcontainersOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -69298,6 +69638,15 @@ export const ReadCoreV1NamespacedPodResizeOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -72109,6 +72458,15 @@ export const ReadCoreV1NamespacedPodStatusOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -85542,6 +85900,15 @@ export const ReplaceCoreV1NamespacedPodOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -88360,6 +88727,15 @@ export const ReplaceCoreV1NamespacedPodEphemeralcontainersOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -91177,6 +91553,15 @@ export const ReplaceCoreV1NamespacedPodResizeOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),
@@ -93994,6 +94379,15 @@ export const ReplaceCoreV1NamespacedPodStatusOutput =
           ),
         ),
         message: Schema.optional(Schema.String),
+        nodeAllocatableResourceClaimStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              containers: Schema.optional(Schema.Array(Schema.String)),
+              resourceClaimName: Schema.String,
+              resources: Schema.Record(Schema.String, Schema.String),
+            }),
+          ),
+        ),
         nominatedNodeName: Schema.optional(Schema.String),
         observedGeneration: Schema.optional(Schema.Number),
         phase: Schema.optional(Schema.String),

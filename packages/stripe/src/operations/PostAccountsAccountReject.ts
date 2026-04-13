@@ -208,6 +208,9 @@ export const PostAccountsAccountRejectOutput =
         twint_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),
+        upi_payments: Schema.optional(
+          Schema.Literals(["active", "inactive", "pending"]),
+        ),
         us_bank_account_ach_payments: Schema.optional(
           Schema.Literals(["active", "inactive", "pending"]),
         ),

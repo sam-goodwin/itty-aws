@@ -365,10 +365,11 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
 
     // Topological sort schemas based on $ref dependencies
     const sortedSchemas = topologicalSortSchemas(doc.schemas);
+    const recursiveSchemas = findRecursiveSchemas(doc.schemas);
 
     for (const [originalName, schema] of sortedSchemas) {
       const name = schemaRenames.get(originalName) ?? originalName;
-      const schemaLines = generateSchema(name, schema, doc.schemas, schemaRenames);
+      const schemaLines = generateSchema(name, schema, doc.schemas, schemaRenames, recursiveSchemas.has(originalName));
       lines.push(...schemaLines);
       lines.push("");
     }
@@ -471,6 +472,7 @@ function generateSchema(
   schema: SchemaObject,
   allSchemas: Record<string, SchemaObject>,
   renames?: Map<string, string>,
+  isRecursive?: boolean,
 ): string[] {
   const lines: string[] = [];
   const resolveRef = (ref: string) => renames?.get(ref) ?? ref;
@@ -490,10 +492,16 @@ function generateSchema(
     lines.push(`}`);
     lines.push("");
 
-    // Generate Effect Schema
-    lines.push(
-      `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({`,
-    );
+    // Generate Effect Schema — only use Schema.suspend for recursive types
+    if (isRecursive) {
+      lines.push(
+        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({`,
+      );
+    } else {
+      lines.push(
+        `export const ${name} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      );
+    }
     for (const [propName, propSchema] of Object.entries(schema.properties)) {
       const schemaExpr = propertyToSchemaExpr(propSchema, allSchemas, renames);
       const isRequired = schema.required?.includes(propName);
@@ -505,9 +513,15 @@ function generateSchema(
         );
       }
     }
-    lines.push(
-      `})).annotate({ identifier: ${JSON.stringify(name)} }) as any as Schema.Schema<${name}>;`,
-    );
+    if (isRecursive) {
+      lines.push(
+        `})).annotate({ identifier: ${JSON.stringify(name)} }) as any as Schema.Schema<${name}>;`,
+      );
+    } else {
+      lines.push(
+        `}).annotate({ identifier: ${JSON.stringify(name)} });`,
+      );
+    }
   } else if (schema.type === "object" && schema.additionalProperties) {
     // Map type
     const valType = propertyToTsType(schema.additionalProperties, allSchemas, renames);
@@ -1023,6 +1037,39 @@ function methodToOperation(
 // =============================================================================
 // Schema Topological Sort
 // =============================================================================
+
+function findRecursiveSchemas(
+  schemas: Record<string, SchemaObject>,
+): Set<string> {
+  const recursive = new Set<string>();
+  const deps = new Map<string, string[]>();
+
+  // Build dependency map
+  for (const [name, schema] of Object.entries(schemas)) {
+    deps.set(name, collectSchemaDeps(schema));
+  }
+
+  // For each schema, check if there's a path back to itself (cycle detection via DFS)
+  for (const name of Object.keys(schemas)) {
+    const visited = new Set<string>();
+    const stack = [...(deps.get(name) ?? [])];
+    while (stack.length > 0) {
+      const current = stack.pop()!;
+      if (current === name) {
+        recursive.add(name);
+        break;
+      }
+      if (visited.has(current)) continue;
+      visited.add(current);
+      const currentDeps = deps.get(current);
+      if (currentDeps) {
+        stack.push(...currentDeps);
+      }
+    }
+  }
+
+  return recursive;
+}
 
 function topologicalSortSchemas(
   schemas: Record<string, SchemaObject>,

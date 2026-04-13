@@ -120,6 +120,7 @@ export type MatchValueString = string;
 export type HeaderName = string;
 export type EnvironmentVariableKey = string;
 export type EnvironmentVariableValue = string;
+export type MountPath = string;
 export type WorkloadIdentityArn = string;
 export type CredentialProviderName = string;
 export type ApiKeyType = string | redacted.Redacted<string>;
@@ -131,6 +132,7 @@ export type BrowserProfileArn = string;
 export type BrowserSessionId = string;
 export type BrowserId = string;
 export type SandboxName = string;
+export type ToolSecretArn = string;
 export type BrowserArn = string;
 export type CodeInterpreterId = string;
 export type CodeInterpreterArn = string;
@@ -140,6 +142,7 @@ export type EvaluatorInstructions = string | redacted.Redacted<string>;
 export type ModelId = string;
 export type NonEmptyString = string;
 export type AdditionalModelRequestFields = unknown;
+export type LambdaArn = string;
 export type CustomEvaluatorArn = string;
 export type EvaluatorId = string;
 export type EvaluatorArn = string;
@@ -172,7 +175,14 @@ export type ApiKeyCredentialParameterName = string;
 export type ApiKeyCredentialPrefix = string;
 export type HttpHeaderName = string;
 export type HttpQueryParameterName = string;
+export type ResourceConfigurationIdentifier = string;
+export type VpcIdentifier = string;
+export type SecurityGroupIdentifier = string;
+export type RoutingDomain = string;
 export type TargetId = string;
+export type DomainName = string;
+export type ResourceGatewayArn = string;
+export type ResourceAssociationArn = string;
 export type TargetMaxResults = number;
 export type TargetNextToken = string;
 export type Name = string;
@@ -208,6 +218,22 @@ export type PolicyGenerationArn = string;
 export type Statement = string;
 export type PolicyName = string;
 export type PolicyArn = string;
+export type RegistryIdentifier = string;
+export type RegistryRecordName = string;
+export type SchemaVersion = string;
+export type InlineContent = string;
+export type RegistryRecordVersion = string;
+export type McpServerUrl = string;
+export type CredentialProviderArn = string;
+export type IamRoleArn = string;
+export type IamSigningServiceName = string;
+export type IamSigningRegion = string;
+export type RegistryRecordArn = string;
+export type RecordIdentifier = string;
+export type RegistryArn = string;
+export type RegistryRecordId = string;
+export type RegistryName = string;
+export type RegistryId = string;
 export type WorkloadIdentityNameType = string;
 export type ResourceOauth2ReturnUrlType = string;
 export type WorkloadIdentityArnType = string;
@@ -952,7 +978,7 @@ export type RequestHeaderConfiguration = { requestHeaderAllowlist: string[] };
 export const RequestHeaderConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ requestHeaderAllowlist: RequestHeaderAllowlist }),
 ]);
-export type ServerProtocol = "MCP" | "HTTP" | "A2A" | (string & {});
+export type ServerProtocol = "MCP" | "HTTP" | "A2A" | "AGUI" | (string & {});
 export const ServerProtocol = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ProtocolConfiguration {
   serverProtocol: ServerProtocol;
@@ -980,6 +1006,25 @@ export const EnvironmentVariablesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export interface SessionStorageConfiguration {
+  mountPath: string;
+}
+export const SessionStorageConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ mountPath: S.String }),
+  ).annotate({
+    identifier: "SessionStorageConfiguration",
+  }) as any as S.Schema<SessionStorageConfiguration>;
+export type FilesystemConfiguration = {
+  sessionStorage: SessionStorageConfiguration;
+};
+export const FilesystemConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ sessionStorage: SessionStorageConfiguration }),
+]);
+export type FilesystemConfigurations = FilesystemConfiguration[];
+export const FilesystemConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  FilesystemConfiguration,
+);
 export interface CreateAgentRuntimeRequest {
   agentRuntimeName: string;
   agentRuntimeArtifact: AgentRuntimeArtifact;
@@ -992,6 +1037,7 @@ export interface CreateAgentRuntimeRequest {
   protocolConfiguration?: ProtocolConfiguration;
   lifecycleConfiguration?: LifecycleConfiguration;
   environmentVariables?: { [key: string]: string | undefined };
+  filesystemConfigurations?: FilesystemConfiguration[];
   tags?: { [key: string]: string | undefined };
 }
 export const CreateAgentRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1008,6 +1054,7 @@ export const CreateAgentRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       protocolConfiguration: S.optional(ProtocolConfiguration),
       lifecycleConfiguration: S.optional(LifecycleConfiguration),
       environmentVariables: S.optional(EnvironmentVariablesMap),
+      filesystemConfigurations: S.optional(FilesystemConfigurations),
       tags: S.optional(TagsMap),
     }).pipe(
       T.all(
@@ -1111,6 +1158,7 @@ export interface GetAgentRuntimeResponse {
   authorizerConfiguration?: AuthorizerConfiguration;
   requestHeaderConfiguration?: RequestHeaderConfiguration;
   metadataConfiguration?: RuntimeMetadataConfiguration;
+  filesystemConfigurations?: FilesystemConfiguration[];
 }
 export const GetAgentRuntimeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1134,6 +1182,7 @@ export const GetAgentRuntimeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       authorizerConfiguration: S.optional(AuthorizerConfiguration),
       requestHeaderConfiguration: S.optional(RequestHeaderConfiguration),
       metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
+      filesystemConfigurations: S.optional(FilesystemConfigurations),
     }),
 ).annotate({
   identifier: "GetAgentRuntimeResponse",
@@ -1150,6 +1199,7 @@ export interface UpdateAgentRuntimeRequest {
   lifecycleConfiguration?: LifecycleConfiguration;
   metadataConfiguration?: RuntimeMetadataConfiguration;
   environmentVariables?: { [key: string]: string | undefined };
+  filesystemConfigurations?: FilesystemConfiguration[];
   clientToken?: string;
 }
 export const UpdateAgentRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1166,6 +1216,7 @@ export const UpdateAgentRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       lifecycleConfiguration: S.optional(LifecycleConfiguration),
       metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
       environmentVariables: S.optional(EnvironmentVariablesMap),
+      filesystemConfigurations: S.optional(FilesystemConfigurations),
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
@@ -1691,12 +1742,14 @@ export const DeleteBrowserProfileResponse =
 export interface ListBrowserProfilesRequest {
   maxResults?: number;
   nextToken?: string;
+  name?: string;
 }
 export const ListBrowserProfilesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      name: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/browser-profiles" }),
@@ -1792,6 +1845,52 @@ export const BrowserSigningConfigInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BrowserSigningConfigInput",
 }) as any as S.Schema<BrowserSigningConfigInput>;
+export type ResourceLocation = { s3: S3Location };
+export const ResourceLocation = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ s3: S3Location }),
+]);
+export type BrowserEnterprisePolicyType =
+  | "MANAGED"
+  | "RECOMMENDED"
+  | (string & {});
+export const BrowserEnterprisePolicyType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface BrowserEnterprisePolicy {
+  location: ResourceLocation;
+  type?: BrowserEnterprisePolicyType;
+}
+export const BrowserEnterprisePolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      location: ResourceLocation,
+      type: S.optional(BrowserEnterprisePolicyType),
+    }),
+).annotate({
+  identifier: "BrowserEnterprisePolicy",
+}) as any as S.Schema<BrowserEnterprisePolicy>;
+export type BrowserEnterprisePolicies = BrowserEnterprisePolicy[];
+export const BrowserEnterprisePolicies = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  BrowserEnterprisePolicy,
+);
+export interface SecretsManagerLocation {
+  secretArn: string;
+}
+export const SecretsManagerLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ secretArn: S.String }),
+).annotate({
+  identifier: "SecretsManagerLocation",
+}) as any as S.Schema<SecretsManagerLocation>;
+export type CertificateLocation = { secretsManager: SecretsManagerLocation };
+export const CertificateLocation = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ secretsManager: SecretsManagerLocation }),
+]);
+export interface Certificate {
+  location: CertificateLocation;
+}
+export const Certificate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ location: CertificateLocation }),
+).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+export type Certificates = Certificate[];
+export const Certificates = /*@__PURE__*/ /*#__PURE__*/ S.Array(Certificate);
 export interface CreateBrowserRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -1799,6 +1898,8 @@ export interface CreateBrowserRequest {
   networkConfiguration: BrowserNetworkConfiguration;
   recording?: RecordingConfig;
   browserSigning?: BrowserSigningConfigInput;
+  enterprisePolicies?: BrowserEnterprisePolicy[];
+  certificates?: Certificate[];
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -1810,6 +1911,8 @@ export const CreateBrowserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     networkConfiguration: BrowserNetworkConfiguration,
     recording: S.optional(RecordingConfig),
     browserSigning: S.optional(BrowserSigningConfigInput),
+    enterprisePolicies: S.optional(BrowserEnterprisePolicies),
+    certificates: S.optional(Certificates),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     tags: S.optional(TagsMap),
   }).pipe(
@@ -1884,6 +1987,8 @@ export interface GetBrowserResponse {
   networkConfiguration: BrowserNetworkConfiguration;
   recording?: RecordingConfig;
   browserSigning?: BrowserSigningConfigOutput;
+  enterprisePolicies?: BrowserEnterprisePolicy[];
+  certificates?: Certificate[];
   status: BrowserStatus;
   failureReason?: string;
   createdAt: Date;
@@ -1899,6 +2004,8 @@ export const GetBrowserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     networkConfiguration: BrowserNetworkConfiguration,
     recording: S.optional(RecordingConfig),
     browserSigning: S.optional(BrowserSigningConfigOutput),
+    enterprisePolicies: S.optional(BrowserEnterprisePolicies),
+    certificates: S.optional(Certificates),
     status: BrowserStatus,
     failureReason: S.optional(S.String),
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2031,6 +2138,7 @@ export interface CreateCodeInterpreterRequest {
   description?: string | redacted.Redacted<string>;
   executionRoleArn?: string;
   networkConfiguration: CodeInterpreterNetworkConfiguration;
+  certificates?: Certificate[];
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -2041,6 +2149,7 @@ export const CreateCodeInterpreterRequest =
       description: S.optional(SensitiveString),
       executionRoleArn: S.optional(S.String),
       networkConfiguration: CodeInterpreterNetworkConfiguration,
+      certificates: S.optional(Certificates),
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       tags: S.optional(TagsMap),
     }).pipe(
@@ -2113,6 +2222,7 @@ export interface GetCodeInterpreterResponse {
   executionRoleArn?: string;
   networkConfiguration: CodeInterpreterNetworkConfiguration;
   status: CodeInterpreterStatus;
+  certificates?: Certificate[];
   failureReason?: string;
   createdAt: Date;
   lastUpdatedAt: Date;
@@ -2127,6 +2237,7 @@ export const GetCodeInterpreterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       executionRoleArn: S.optional(S.String),
       networkConfiguration: CodeInterpreterNetworkConfiguration,
       status: CodeInterpreterStatus,
+      certificates: S.optional(Certificates),
       failureReason: S.optional(S.String),
       createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2332,9 +2443,28 @@ export const LlmAsAJudgeEvaluatorConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "LlmAsAJudgeEvaluatorConfig",
 }) as any as S.Schema<LlmAsAJudgeEvaluatorConfig>;
-export type EvaluatorConfig = { llmAsAJudge: LlmAsAJudgeEvaluatorConfig };
+export interface LambdaEvaluatorConfig {
+  lambdaArn: string;
+  lambdaTimeoutInSeconds?: number;
+}
+export const LambdaEvaluatorConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lambdaArn: S.String,
+    lambdaTimeoutInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "LambdaEvaluatorConfig",
+}) as any as S.Schema<LambdaEvaluatorConfig>;
+export type CodeBasedEvaluatorConfig = { lambdaConfig: LambdaEvaluatorConfig };
+export const CodeBasedEvaluatorConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ lambdaConfig: LambdaEvaluatorConfig }),
+]);
+export type EvaluatorConfig =
+  | { llmAsAJudge: LlmAsAJudgeEvaluatorConfig; codeBased?: never }
+  | { llmAsAJudge?: never; codeBased: CodeBasedEvaluatorConfig };
 export const EvaluatorConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ llmAsAJudge: LlmAsAJudgeEvaluatorConfig }),
+  S.Struct({ codeBased: CodeBasedEvaluatorConfig }),
 ]);
 export type EvaluatorLevel = "TOOL_CALL" | "TRACE" | "SESSION" | (string & {});
 export const EvaluatorLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -2538,7 +2668,7 @@ export const ListEvaluatorsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEvaluatorsRequest",
 }) as any as S.Schema<ListEvaluatorsRequest>;
-export type EvaluatorType = "Builtin" | "Custom" | (string & {});
+export type EvaluatorType = "Builtin" | "Custom" | "CustomCode" | (string & {});
 export const EvaluatorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface EvaluatorSummary {
   evaluatorArn: string;
@@ -3113,12 +3243,23 @@ export const McpLambdaTargetConfiguration =
   ).annotate({
     identifier: "McpLambdaTargetConfiguration",
   }) as any as S.Schema<McpLambdaTargetConfiguration>;
+export type McpToolSchemaConfiguration =
+  | { s3: S3Configuration; inlinePayload?: never }
+  | { s3?: never; inlinePayload: string | redacted.Redacted<string> };
+export const McpToolSchemaConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ s3: S3Configuration }),
+  S.Struct({ inlinePayload: SensitiveString }),
+]);
 export interface McpServerTargetConfiguration {
   endpoint: string;
+  mcpToolSchema?: McpToolSchemaConfiguration;
 }
 export const McpServerTargetConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ endpoint: S.String }),
+    S.Struct({
+      endpoint: S.String,
+      mcpToolSchema: S.optional(McpToolSchemaConfiguration),
+    }),
   ).annotate({
     identifier: "McpServerTargetConfiguration",
   }) as any as S.Schema<McpServerTargetConfiguration>;
@@ -3306,18 +3447,35 @@ export const GatewayApiKeyCredentialProvider =
   ).annotate({
     identifier: "GatewayApiKeyCredentialProvider",
   }) as any as S.Schema<GatewayApiKeyCredentialProvider>;
+export interface IamCredentialProvider {
+  service: string;
+  region?: string;
+}
+export const IamCredentialProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ service: S.String, region: S.optional(S.String) }),
+).annotate({
+  identifier: "IamCredentialProvider",
+}) as any as S.Schema<IamCredentialProvider>;
 export type CredentialProvider =
   | {
       oauthCredentialProvider: OAuthCredentialProvider;
       apiKeyCredentialProvider?: never;
+      iamCredentialProvider?: never;
     }
   | {
       oauthCredentialProvider?: never;
       apiKeyCredentialProvider: GatewayApiKeyCredentialProvider;
+      iamCredentialProvider?: never;
+    }
+  | {
+      oauthCredentialProvider?: never;
+      apiKeyCredentialProvider?: never;
+      iamCredentialProvider: IamCredentialProvider;
     };
 export const CredentialProvider = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ oauthCredentialProvider: OAuthCredentialProvider }),
   S.Struct({ apiKeyCredentialProvider: GatewayApiKeyCredentialProvider }),
+  S.Struct({ iamCredentialProvider: IamCredentialProvider }),
 ]);
 export interface CredentialProviderConfiguration {
   credentialProviderType: CredentialProviderType;
@@ -3362,6 +3520,52 @@ export const MetadataConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MetadataConfiguration",
 }) as any as S.Schema<MetadataConfiguration>;
+export type SelfManagedLatticeResource = {
+  resourceConfigurationIdentifier: string;
+};
+export const SelfManagedLatticeResource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ resourceConfigurationIdentifier: S.String }),
+]);
+export type SubnetIds = string[];
+export const SubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type EndpointIpAddressType = "IPV4" | "IPV6" | (string & {});
+export const EndpointIpAddressType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SecurityGroupIds = string[];
+export const SecurityGroupIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ManagedLatticeResource {
+  vpcIdentifier: string;
+  subnetIds: string[];
+  endpointIpAddressType: EndpointIpAddressType;
+  securityGroupIds?: string[];
+  tags?: { [key: string]: string | undefined };
+  routingDomain?: string;
+}
+export const ManagedLatticeResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      vpcIdentifier: S.String,
+      subnetIds: SubnetIds,
+      endpointIpAddressType: EndpointIpAddressType,
+      securityGroupIds: S.optional(SecurityGroupIds),
+      tags: S.optional(TagsMap),
+      routingDomain: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ManagedLatticeResource",
+}) as any as S.Schema<ManagedLatticeResource>;
+export type PrivateEndpoint =
+  | {
+      selfManagedLatticeResource: SelfManagedLatticeResource;
+      managedLatticeResource?: never;
+    }
+  | {
+      selfManagedLatticeResource?: never;
+      managedLatticeResource: ManagedLatticeResource;
+    };
+export const PrivateEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ selfManagedLatticeResource: SelfManagedLatticeResource }),
+  S.Struct({ managedLatticeResource: ManagedLatticeResource }),
+]);
 export interface CreateGatewayTargetRequest {
   gatewayIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -3370,6 +3574,7 @@ export interface CreateGatewayTargetRequest {
   targetConfiguration: TargetConfiguration;
   credentialProviderConfigurations?: CredentialProviderConfiguration[];
   metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
 }
 export const CreateGatewayTargetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3383,6 +3588,7 @@ export const CreateGatewayTargetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         CredentialProviderConfigurations,
       ),
       metadataConfiguration: S.optional(MetadataConfiguration),
+      privateEndpoint: S.optional(PrivateEndpoint),
     }).pipe(
       T.all(
         T.Http({
@@ -3408,8 +3614,42 @@ export type TargetStatus =
   | "FAILED"
   | "SYNCHRONIZING"
   | "SYNCHRONIZE_UNSUCCESSFUL"
+  | "CREATE_PENDING_AUTH"
+  | "UPDATE_PENDING_AUTH"
+  | "SYNCHRONIZE_PENDING_AUTH"
   | (string & {});
 export const TargetStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ManagedResourceDetails {
+  domain?: string;
+  resourceGatewayArn?: string;
+  resourceAssociationArn?: string;
+}
+export const ManagedResourceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      domain: S.optional(S.String),
+      resourceGatewayArn: S.optional(S.String),
+      resourceAssociationArn: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ManagedResourceDetails",
+}) as any as S.Schema<ManagedResourceDetails>;
+export type PrivateEndpointManagedResources = ManagedResourceDetails[];
+export const PrivateEndpointManagedResources =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ManagedResourceDetails);
+export interface OAuth2AuthorizationData {
+  authorizationUrl: string;
+  userId?: string;
+}
+export const OAuth2AuthorizationData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ authorizationUrl: S.String, userId: S.optional(S.String) }),
+).annotate({
+  identifier: "OAuth2AuthorizationData",
+}) as any as S.Schema<OAuth2AuthorizationData>;
+export type AuthorizationData = { oauth2: OAuth2AuthorizationData };
+export const AuthorizationData = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ oauth2: OAuth2AuthorizationData }),
+]);
 export interface CreateGatewayTargetResponse {
   gatewayArn: string;
   targetId: string;
@@ -3423,6 +3663,9 @@ export interface CreateGatewayTargetResponse {
   credentialProviderConfigurations: CredentialProviderConfiguration[];
   lastSynchronizedAt?: Date;
   metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointManagedResources?: ManagedResourceDetails[];
+  authorizationData?: AuthorizationData;
 }
 export const CreateGatewayTargetResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3441,6 +3684,11 @@ export const CreateGatewayTargetResponse =
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
       metadataConfiguration: S.optional(MetadataConfiguration),
+      privateEndpoint: S.optional(PrivateEndpoint),
+      privateEndpointManagedResources: S.optional(
+        PrivateEndpointManagedResources,
+      ),
+      authorizationData: S.optional(AuthorizationData),
     }),
   ).annotate({
     identifier: "CreateGatewayTargetResponse",
@@ -3525,6 +3773,9 @@ export interface GetGatewayTargetResponse {
   credentialProviderConfigurations: CredentialProviderConfiguration[];
   lastSynchronizedAt?: Date;
   metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointManagedResources?: ManagedResourceDetails[];
+  authorizationData?: AuthorizationData;
 }
 export const GetGatewayTargetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3543,6 +3794,11 @@ export const GetGatewayTargetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
       metadataConfiguration: S.optional(MetadataConfiguration),
+      privateEndpoint: S.optional(PrivateEndpoint),
+      privateEndpointManagedResources: S.optional(
+        PrivateEndpointManagedResources,
+      ),
+      authorizationData: S.optional(AuthorizationData),
     }),
 ).annotate({
   identifier: "GetGatewayTargetResponse",
@@ -3644,6 +3900,9 @@ export interface GatewayTarget {
   credentialProviderConfigurations: CredentialProviderConfiguration[];
   lastSynchronizedAt?: Date;
   metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointManagedResources?: ManagedResourceDetails[];
+  authorizationData?: AuthorizationData;
 }
 export const GatewayTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3661,6 +3920,11 @@ export const GatewayTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
     metadataConfiguration: S.optional(MetadataConfiguration),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateEndpointManagedResources: S.optional(
+      PrivateEndpointManagedResources,
+    ),
+    authorizationData: S.optional(AuthorizationData),
   }),
 ).annotate({ identifier: "GatewayTarget" }) as any as S.Schema<GatewayTarget>;
 export type GatewayTargetList = GatewayTarget[];
@@ -3683,6 +3947,7 @@ export interface UpdateGatewayTargetRequest {
   targetConfiguration: TargetConfiguration;
   credentialProviderConfigurations?: CredentialProviderConfiguration[];
   metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
 }
 export const UpdateGatewayTargetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3696,6 +3961,7 @@ export const UpdateGatewayTargetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         CredentialProviderConfigurations,
       ),
       metadataConfiguration: S.optional(MetadataConfiguration),
+      privateEndpoint: S.optional(PrivateEndpoint),
     }).pipe(
       T.all(
         T.Http({
@@ -3725,6 +3991,9 @@ export interface UpdateGatewayTargetResponse {
   credentialProviderConfigurations: CredentialProviderConfiguration[];
   lastSynchronizedAt?: Date;
   metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointManagedResources?: ManagedResourceDetails[];
+  authorizationData?: AuthorizationData;
 }
 export const UpdateGatewayTargetResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3743,6 +4012,11 @@ export const UpdateGatewayTargetResponse =
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
       metadataConfiguration: S.optional(MetadataConfiguration),
+      privateEndpoint: S.optional(PrivateEndpoint),
+      privateEndpointManagedResources: S.optional(
+        PrivateEndpointManagedResources,
+      ),
+      authorizationData: S.optional(AuthorizationData),
     }),
   ).annotate({
     identifier: "UpdateGatewayTargetResponse",
@@ -3753,6 +4027,7 @@ export interface SemanticMemoryStrategyInput {
   name: string;
   description?: string | redacted.Redacted<string>;
   namespaces?: string[];
+  namespaceTemplates?: string[];
 }
 export const SemanticMemoryStrategyInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3760,6 +4035,7 @@ export const SemanticMemoryStrategyInput =
       name: S.String,
       description: S.optional(SensitiveString),
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
     }),
   ).annotate({
     identifier: "SemanticMemoryStrategyInput",
@@ -3768,6 +4044,7 @@ export interface SummaryMemoryStrategyInput {
   name: string;
   description?: string | redacted.Redacted<string>;
   namespaces?: string[];
+  namespaceTemplates?: string[];
 }
 export const SummaryMemoryStrategyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3775,6 +4052,7 @@ export const SummaryMemoryStrategyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       name: S.String,
       description: S.optional(SensitiveString),
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
     }),
 ).annotate({
   identifier: "SummaryMemoryStrategyInput",
@@ -3783,6 +4061,7 @@ export interface UserPreferenceMemoryStrategyInput {
   name: string;
   description?: string | redacted.Redacted<string>;
   namespaces?: string[];
+  namespaceTemplates?: string[];
 }
 export const UserPreferenceMemoryStrategyInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3790,6 +4069,7 @@ export const UserPreferenceMemoryStrategyInput =
       name: S.String,
       description: S.optional(SensitiveString),
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
     }),
   ).annotate({
     identifier: "UserPreferenceMemoryStrategyInput",
@@ -3911,6 +4191,7 @@ export interface EpisodicOverrideReflectionConfigurationInput {
   appendToPrompt: string | redacted.Redacted<string>;
   modelId: string;
   namespaces?: string[];
+  namespaceTemplates?: string[];
 }
 export const EpisodicOverrideReflectionConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3918,6 +4199,7 @@ export const EpisodicOverrideReflectionConfigurationInput =
       appendToPrompt: SensitiveString,
       modelId: S.String,
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
     }),
   ).annotate({
     identifier: "EpisodicOverrideReflectionConfigurationInput",
@@ -4062,6 +4344,7 @@ export interface CustomMemoryStrategyInput {
   name: string;
   description?: string | redacted.Redacted<string>;
   namespaces?: string[];
+  namespaceTemplates?: string[];
   configuration?: CustomConfigurationInput;
 }
 export const CustomMemoryStrategyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -4070,17 +4353,22 @@ export const CustomMemoryStrategyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       name: S.String,
       description: S.optional(SensitiveString),
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
       configuration: S.optional(CustomConfigurationInput),
     }),
 ).annotate({
   identifier: "CustomMemoryStrategyInput",
 }) as any as S.Schema<CustomMemoryStrategyInput>;
 export interface EpisodicReflectionConfigurationInput {
-  namespaces: string[];
+  namespaces?: string[];
+  namespaceTemplates?: string[];
 }
 export const EpisodicReflectionConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ namespaces: NamespacesList }),
+    S.Struct({
+      namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
+    }),
   ).annotate({
     identifier: "EpisodicReflectionConfigurationInput",
   }) as any as S.Schema<EpisodicReflectionConfigurationInput>;
@@ -4088,6 +4376,7 @@ export interface EpisodicMemoryStrategyInput {
   name: string;
   description?: string | redacted.Redacted<string>;
   namespaces?: string[];
+  namespaceTemplates?: string[];
   reflectionConfiguration?: EpisodicReflectionConfigurationInput;
 }
 export const EpisodicMemoryStrategyInput =
@@ -4096,6 +4385,7 @@ export const EpisodicMemoryStrategyInput =
       name: S.String,
       description: S.optional(SensitiveString),
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
       reflectionConfiguration: S.optional(EpisodicReflectionConfigurationInput),
     }),
   ).annotate({
@@ -4385,6 +4675,7 @@ export interface EpisodicReflectionOverride {
   appendToPrompt: string | redacted.Redacted<string>;
   modelId: string;
   namespaces?: string[];
+  namespaceTemplates?: string[];
 }
 export const EpisodicReflectionOverride = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4392,6 +4683,7 @@ export const EpisodicReflectionOverride = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       appendToPrompt: SensitiveString,
       modelId: S.String,
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
     }),
 ).annotate({
   identifier: "EpisodicReflectionOverride",
@@ -4404,11 +4696,15 @@ export const CustomReflectionConfiguration =
     S.Struct({ episodicReflectionOverride: EpisodicReflectionOverride }),
   ]);
 export interface EpisodicReflectionConfiguration {
-  namespaces: string[];
+  namespaces?: string[];
+  namespaceTemplates?: string[];
 }
 export const EpisodicReflectionConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ namespaces: NamespacesList }),
+    S.Struct({
+      namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
+    }),
   ).annotate({
     identifier: "EpisodicReflectionConfiguration",
   }) as any as S.Schema<EpisodicReflectionConfiguration>;
@@ -4539,6 +4835,7 @@ export interface MemoryStrategy {
   configuration?: StrategyConfiguration;
   type: MemoryStrategyType;
   namespaces: string[];
+  namespaceTemplates: string[];
   createdAt?: Date;
   updatedAt?: Date;
   status?: MemoryStrategyStatus;
@@ -4551,6 +4848,7 @@ export const MemoryStrategy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     configuration: S.optional(StrategyConfiguration),
     type: MemoryStrategyType,
     namespaces: NamespacesList,
+    namespaceTemplates: NamespacesList,
     createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     status: S.optional(MemoryStrategyStatus),
@@ -4795,6 +5093,7 @@ export interface ModifyMemoryStrategyInput {
   memoryStrategyId: string;
   description?: string | redacted.Redacted<string>;
   namespaces?: string[];
+  namespaceTemplates?: string[];
   configuration?: ModifyStrategyConfiguration;
 }
 export const ModifyMemoryStrategyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -4803,6 +5102,7 @@ export const ModifyMemoryStrategyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       memoryStrategyId: S.String,
       description: S.optional(SensitiveString),
       namespaces: S.optional(NamespacesList),
+      namespaceTemplates: S.optional(NamespacesList),
       configuration: S.optional(ModifyStrategyConfiguration),
     }),
 ).annotate({
@@ -7011,6 +7311,1032 @@ export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPoliciesResponse",
 }) as any as S.Schema<ListPoliciesResponse>;
+export type DescriptorType =
+  | "MCP"
+  | "A2A"
+  | "CUSTOM"
+  | "AGENT_SKILLS"
+  | (string & {});
+export const DescriptorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ServerDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const ServerDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServerDefinition",
+}) as any as S.Schema<ServerDefinition>;
+export interface ToolsDefinition {
+  protocolVersion?: string;
+  inlineContent?: string;
+}
+export const ToolsDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocolVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ToolsDefinition",
+}) as any as S.Schema<ToolsDefinition>;
+export interface McpDescriptor {
+  server?: ServerDefinition;
+  tools?: ToolsDefinition;
+}
+export const McpDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    server: S.optional(ServerDefinition),
+    tools: S.optional(ToolsDefinition),
+  }),
+).annotate({ identifier: "McpDescriptor" }) as any as S.Schema<McpDescriptor>;
+export interface AgentCardDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const AgentCardDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentCardDefinition",
+}) as any as S.Schema<AgentCardDefinition>;
+export interface A2aDescriptor {
+  agentCard?: AgentCardDefinition;
+}
+export const A2aDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ agentCard: S.optional(AgentCardDefinition) }),
+).annotate({ identifier: "A2aDescriptor" }) as any as S.Schema<A2aDescriptor>;
+export interface CustomDescriptor {
+  inlineContent?: string;
+}
+export const CustomDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ inlineContent: S.optional(S.String) }),
+).annotate({
+  identifier: "CustomDescriptor",
+}) as any as S.Schema<CustomDescriptor>;
+export interface SkillMdDefinition {
+  inlineContent?: string;
+}
+export const SkillMdDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ inlineContent: S.optional(S.String) }),
+).annotate({
+  identifier: "SkillMdDefinition",
+}) as any as S.Schema<SkillMdDefinition>;
+export interface SkillDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const SkillDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SkillDefinition",
+}) as any as S.Schema<SkillDefinition>;
+export interface AgentSkillsDescriptor {
+  skillMd?: SkillMdDefinition;
+  skillDefinition?: SkillDefinition;
+}
+export const AgentSkillsDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skillMd: S.optional(SkillMdDefinition),
+    skillDefinition: S.optional(SkillDefinition),
+  }),
+).annotate({
+  identifier: "AgentSkillsDescriptor",
+}) as any as S.Schema<AgentSkillsDescriptor>;
+export interface Descriptors {
+  mcp?: McpDescriptor;
+  a2a?: A2aDescriptor;
+  custom?: CustomDescriptor;
+  agentSkills?: AgentSkillsDescriptor;
+}
+export const Descriptors = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mcp: S.optional(McpDescriptor),
+    a2a: S.optional(A2aDescriptor),
+    custom: S.optional(CustomDescriptor),
+    agentSkills: S.optional(AgentSkillsDescriptor),
+  }),
+).annotate({ identifier: "Descriptors" }) as any as S.Schema<Descriptors>;
+export type SynchronizationType = "URL" | (string & {});
+export const SynchronizationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RegistryRecordCredentialProviderType =
+  | "OAUTH"
+  | "IAM"
+  | (string & {});
+export const RegistryRecordCredentialProviderType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RegistryRecordOAuthGrantType = "CLIENT_CREDENTIALS" | (string & {});
+export const RegistryRecordOAuthGrantType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ScopeList = string[];
+export const ScopeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type CustomParameterMap = { [key: string]: string | undefined };
+export const CustomParameterMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface RegistryRecordOAuthCredentialProvider {
+  providerArn: string;
+  grantType?: RegistryRecordOAuthGrantType;
+  scopes?: string[];
+  customParameters?: { [key: string]: string | undefined };
+}
+export const RegistryRecordOAuthCredentialProvider =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      providerArn: S.String,
+      grantType: S.optional(RegistryRecordOAuthGrantType),
+      scopes: S.optional(ScopeList),
+      customParameters: S.optional(CustomParameterMap),
+    }),
+  ).annotate({
+    identifier: "RegistryRecordOAuthCredentialProvider",
+  }) as any as S.Schema<RegistryRecordOAuthCredentialProvider>;
+export interface RegistryRecordIamCredentialProvider {
+  roleArn?: string;
+  service?: string;
+  region?: string;
+}
+export const RegistryRecordIamCredentialProvider =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roleArn: S.optional(S.String),
+      service: S.optional(S.String),
+      region: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RegistryRecordIamCredentialProvider",
+  }) as any as S.Schema<RegistryRecordIamCredentialProvider>;
+export type RegistryRecordCredentialProviderUnion =
+  | {
+      oauthCredentialProvider: RegistryRecordOAuthCredentialProvider;
+      iamCredentialProvider?: never;
+    }
+  | {
+      oauthCredentialProvider?: never;
+      iamCredentialProvider: RegistryRecordIamCredentialProvider;
+    };
+export const RegistryRecordCredentialProviderUnion =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({
+      oauthCredentialProvider: RegistryRecordOAuthCredentialProvider,
+    }),
+    S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
+  ]);
+export interface RegistryRecordCredentialProviderConfiguration {
+  credentialProviderType: RegistryRecordCredentialProviderType;
+  credentialProvider: RegistryRecordCredentialProviderUnion;
+}
+export const RegistryRecordCredentialProviderConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      credentialProviderType: RegistryRecordCredentialProviderType,
+      credentialProvider: RegistryRecordCredentialProviderUnion,
+    }),
+  ).annotate({
+    identifier: "RegistryRecordCredentialProviderConfiguration",
+  }) as any as S.Schema<RegistryRecordCredentialProviderConfiguration>;
+export type RegistryRecordCredentialProviderConfigurationList =
+  RegistryRecordCredentialProviderConfiguration[];
+export const RegistryRecordCredentialProviderConfigurationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    RegistryRecordCredentialProviderConfiguration,
+  );
+export interface FromUrlSynchronizationConfiguration {
+  url: string;
+  credentialProviderConfigurations?: RegistryRecordCredentialProviderConfiguration[];
+}
+export const FromUrlSynchronizationConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.String,
+      credentialProviderConfigurations: S.optional(
+        RegistryRecordCredentialProviderConfigurationList,
+      ),
+    }),
+  ).annotate({
+    identifier: "FromUrlSynchronizationConfiguration",
+  }) as any as S.Schema<FromUrlSynchronizationConfiguration>;
+export interface SynchronizationConfiguration {
+  fromUrl?: FromUrlSynchronizationConfiguration;
+}
+export const SynchronizationConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ fromUrl: S.optional(FromUrlSynchronizationConfiguration) }),
+  ).annotate({
+    identifier: "SynchronizationConfiguration",
+  }) as any as S.Schema<SynchronizationConfiguration>;
+export interface CreateRegistryRecordRequest {
+  registryId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  descriptors?: Descriptors;
+  recordVersion?: string;
+  synchronizationType?: SynchronizationType;
+  synchronizationConfiguration?: SynchronizationConfiguration;
+  clientToken?: string;
+}
+export const CreateRegistryRecordRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      name: S.String,
+      description: S.optional(SensitiveString),
+      descriptorType: DescriptorType,
+      descriptors: S.optional(Descriptors),
+      recordVersion: S.optional(S.String),
+      synchronizationType: S.optional(SynchronizationType),
+      synchronizationConfiguration: S.optional(SynchronizationConfiguration),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/registries/{registryId}/records" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateRegistryRecordRequest",
+  }) as any as S.Schema<CreateRegistryRecordRequest>;
+export type RegistryRecordStatus =
+  | "DRAFT"
+  | "PENDING_APPROVAL"
+  | "APPROVED"
+  | "REJECTED"
+  | "DEPRECATED"
+  | "CREATING"
+  | "UPDATING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | (string & {});
+export const RegistryRecordStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateRegistryRecordResponse {
+  recordArn: string;
+  status: RegistryRecordStatus;
+}
+export const CreateRegistryRecordResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ recordArn: S.String, status: RegistryRecordStatus }),
+  ).annotate({
+    identifier: "CreateRegistryRecordResponse",
+  }) as any as S.Schema<CreateRegistryRecordResponse>;
+export interface GetRegistryRecordRequest {
+  registryId: string;
+  recordId: string;
+}
+export const GetRegistryRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      recordId: S.String.pipe(T.HttpLabel("recordId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/registries/{registryId}/records/{recordId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetRegistryRecordRequest",
+}) as any as S.Schema<GetRegistryRecordRequest>;
+export interface GetRegistryRecordResponse {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  descriptors: Descriptors;
+  recordVersion?: string;
+  status: RegistryRecordStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  statusReason?: string;
+  synchronizationType?: SynchronizationType;
+  synchronizationConfiguration?: SynchronizationConfiguration;
+}
+export const GetRegistryRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      registryArn: S.String,
+      recordArn: S.String,
+      recordId: S.String,
+      name: S.String,
+      description: S.optional(SensitiveString),
+      descriptorType: DescriptorType,
+      descriptors: Descriptors,
+      recordVersion: S.optional(S.String),
+      status: RegistryRecordStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      statusReason: S.optional(S.String),
+      synchronizationType: S.optional(SynchronizationType),
+      synchronizationConfiguration: S.optional(SynchronizationConfiguration),
+    }),
+).annotate({
+  identifier: "GetRegistryRecordResponse",
+}) as any as S.Schema<GetRegistryRecordResponse>;
+export interface UpdatedServerDefinition {
+  optionalValue?: ServerDefinition;
+}
+export const UpdatedServerDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ optionalValue: S.optional(ServerDefinition) }),
+).annotate({
+  identifier: "UpdatedServerDefinition",
+}) as any as S.Schema<UpdatedServerDefinition>;
+export interface UpdatedToolsDefinition {
+  optionalValue?: ToolsDefinition;
+}
+export const UpdatedToolsDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ optionalValue: S.optional(ToolsDefinition) }),
+).annotate({
+  identifier: "UpdatedToolsDefinition",
+}) as any as S.Schema<UpdatedToolsDefinition>;
+export interface UpdatedMcpDescriptorFields {
+  server?: UpdatedServerDefinition;
+  tools?: UpdatedToolsDefinition;
+}
+export const UpdatedMcpDescriptorFields = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      server: S.optional(UpdatedServerDefinition),
+      tools: S.optional(UpdatedToolsDefinition),
+    }),
+).annotate({
+  identifier: "UpdatedMcpDescriptorFields",
+}) as any as S.Schema<UpdatedMcpDescriptorFields>;
+export interface UpdatedMcpDescriptor {
+  optionalValue?: UpdatedMcpDescriptorFields;
+}
+export const UpdatedMcpDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(UpdatedMcpDescriptorFields) }),
+).annotate({
+  identifier: "UpdatedMcpDescriptor",
+}) as any as S.Schema<UpdatedMcpDescriptor>;
+export interface UpdatedA2aDescriptor {
+  optionalValue?: A2aDescriptor;
+}
+export const UpdatedA2aDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(A2aDescriptor) }),
+).annotate({
+  identifier: "UpdatedA2aDescriptor",
+}) as any as S.Schema<UpdatedA2aDescriptor>;
+export interface UpdatedCustomDescriptor {
+  optionalValue?: CustomDescriptor;
+}
+export const UpdatedCustomDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ optionalValue: S.optional(CustomDescriptor) }),
+).annotate({
+  identifier: "UpdatedCustomDescriptor",
+}) as any as S.Schema<UpdatedCustomDescriptor>;
+export interface UpdatedSkillMdDefinition {
+  optionalValue?: SkillMdDefinition;
+}
+export const UpdatedSkillMdDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ optionalValue: S.optional(SkillMdDefinition) }),
+).annotate({
+  identifier: "UpdatedSkillMdDefinition",
+}) as any as S.Schema<UpdatedSkillMdDefinition>;
+export interface UpdatedSkillDefinition {
+  optionalValue?: SkillDefinition;
+}
+export const UpdatedSkillDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ optionalValue: S.optional(SkillDefinition) }),
+).annotate({
+  identifier: "UpdatedSkillDefinition",
+}) as any as S.Schema<UpdatedSkillDefinition>;
+export interface UpdatedAgentSkillsDescriptorFields {
+  skillMd?: UpdatedSkillMdDefinition;
+  skillDefinition?: UpdatedSkillDefinition;
+}
+export const UpdatedAgentSkillsDescriptorFields =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      skillMd: S.optional(UpdatedSkillMdDefinition),
+      skillDefinition: S.optional(UpdatedSkillDefinition),
+    }),
+  ).annotate({
+    identifier: "UpdatedAgentSkillsDescriptorFields",
+  }) as any as S.Schema<UpdatedAgentSkillsDescriptorFields>;
+export interface UpdatedAgentSkillsDescriptor {
+  optionalValue?: UpdatedAgentSkillsDescriptorFields;
+}
+export const UpdatedAgentSkillsDescriptor =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ optionalValue: S.optional(UpdatedAgentSkillsDescriptorFields) }),
+  ).annotate({
+    identifier: "UpdatedAgentSkillsDescriptor",
+  }) as any as S.Schema<UpdatedAgentSkillsDescriptor>;
+export interface UpdatedDescriptorsUnion {
+  mcp?: UpdatedMcpDescriptor;
+  a2a?: UpdatedA2aDescriptor;
+  custom?: UpdatedCustomDescriptor;
+  agentSkills?: UpdatedAgentSkillsDescriptor;
+}
+export const UpdatedDescriptorsUnion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      mcp: S.optional(UpdatedMcpDescriptor),
+      a2a: S.optional(UpdatedA2aDescriptor),
+      custom: S.optional(UpdatedCustomDescriptor),
+      agentSkills: S.optional(UpdatedAgentSkillsDescriptor),
+    }),
+).annotate({
+  identifier: "UpdatedDescriptorsUnion",
+}) as any as S.Schema<UpdatedDescriptorsUnion>;
+export interface UpdatedDescriptors {
+  optionalValue?: UpdatedDescriptorsUnion;
+}
+export const UpdatedDescriptors = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(UpdatedDescriptorsUnion) }),
+).annotate({
+  identifier: "UpdatedDescriptors",
+}) as any as S.Schema<UpdatedDescriptors>;
+export interface UpdatedSynchronizationType {
+  optionalValue?: SynchronizationType;
+}
+export const UpdatedSynchronizationType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ optionalValue: S.optional(SynchronizationType) }),
+).annotate({
+  identifier: "UpdatedSynchronizationType",
+}) as any as S.Schema<UpdatedSynchronizationType>;
+export interface UpdatedSynchronizationConfiguration {
+  optionalValue?: SynchronizationConfiguration;
+}
+export const UpdatedSynchronizationConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ optionalValue: S.optional(SynchronizationConfiguration) }),
+  ).annotate({
+    identifier: "UpdatedSynchronizationConfiguration",
+  }) as any as S.Schema<UpdatedSynchronizationConfiguration>;
+export interface UpdateRegistryRecordRequest {
+  registryId: string;
+  recordId: string;
+  name?: string;
+  description?: UpdatedDescription;
+  descriptorType?: DescriptorType;
+  descriptors?: UpdatedDescriptors;
+  recordVersion?: string;
+  synchronizationType?: UpdatedSynchronizationType;
+  synchronizationConfiguration?: UpdatedSynchronizationConfiguration;
+  triggerSynchronization?: boolean;
+}
+export const UpdateRegistryRecordRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      recordId: S.String.pipe(T.HttpLabel("recordId")),
+      name: S.optional(S.String),
+      description: S.optional(UpdatedDescription),
+      descriptorType: S.optional(DescriptorType),
+      descriptors: S.optional(UpdatedDescriptors),
+      recordVersion: S.optional(S.String),
+      synchronizationType: S.optional(UpdatedSynchronizationType),
+      synchronizationConfiguration: S.optional(
+        UpdatedSynchronizationConfiguration,
+      ),
+      triggerSynchronization: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PATCH",
+          uri: "/registries/{registryId}/records/{recordId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateRegistryRecordRequest",
+  }) as any as S.Schema<UpdateRegistryRecordRequest>;
+export interface UpdateRegistryRecordResponse {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  descriptors: Descriptors;
+  recordVersion?: string;
+  status: RegistryRecordStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  statusReason?: string;
+  synchronizationType?: SynchronizationType;
+  synchronizationConfiguration?: SynchronizationConfiguration;
+}
+export const UpdateRegistryRecordResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryArn: S.String,
+      recordArn: S.String,
+      recordId: S.String,
+      name: S.String,
+      description: S.optional(SensitiveString),
+      descriptorType: DescriptorType,
+      descriptors: Descriptors,
+      recordVersion: S.optional(S.String),
+      status: RegistryRecordStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      statusReason: S.optional(S.String),
+      synchronizationType: S.optional(SynchronizationType),
+      synchronizationConfiguration: S.optional(SynchronizationConfiguration),
+    }),
+  ).annotate({
+    identifier: "UpdateRegistryRecordResponse",
+  }) as any as S.Schema<UpdateRegistryRecordResponse>;
+export interface DeleteRegistryRecordRequest {
+  registryId: string;
+  recordId: string;
+}
+export const DeleteRegistryRecordRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      recordId: S.String.pipe(T.HttpLabel("recordId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/registries/{registryId}/records/{recordId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteRegistryRecordRequest",
+  }) as any as S.Schema<DeleteRegistryRecordRequest>;
+export interface DeleteRegistryRecordResponse {}
+export const DeleteRegistryRecordResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteRegistryRecordResponse",
+  }) as any as S.Schema<DeleteRegistryRecordResponse>;
+export interface ListRegistryRecordsRequest {
+  registryId: string;
+  maxResults?: number;
+  nextToken?: string;
+  name?: string;
+  status?: RegistryRecordStatus;
+  descriptorType?: DescriptorType;
+}
+export const ListRegistryRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      name: S.optional(S.String).pipe(T.HttpQuery("name")),
+      status: S.optional(RegistryRecordStatus).pipe(T.HttpQuery("status")),
+      descriptorType: S.optional(DescriptorType).pipe(
+        T.HttpQuery("descriptorType"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/registries/{registryId}/records" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListRegistryRecordsRequest",
+}) as any as S.Schema<ListRegistryRecordsRequest>;
+export interface RegistryRecordSummary {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  recordVersion: string;
+  status: RegistryRecordStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const RegistryRecordSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryArn: S.String,
+    recordArn: S.String,
+    recordId: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    descriptorType: DescriptorType,
+    recordVersion: S.String,
+    status: RegistryRecordStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "RegistryRecordSummary",
+}) as any as S.Schema<RegistryRecordSummary>;
+export type RegistryRecordSummaryList = RegistryRecordSummary[];
+export const RegistryRecordSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RegistryRecordSummary,
+);
+export interface ListRegistryRecordsResponse {
+  registryRecords: RegistryRecordSummary[];
+  nextToken?: string;
+}
+export const ListRegistryRecordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryRecords: RegistryRecordSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListRegistryRecordsResponse",
+  }) as any as S.Schema<ListRegistryRecordsResponse>;
+export interface SubmitRegistryRecordForApprovalRequest {
+  registryId: string;
+  recordId: string;
+}
+export const SubmitRegistryRecordForApprovalRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      recordId: S.String.pipe(T.HttpLabel("recordId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/registries/{registryId}/records/{recordId}/submit-for-approval",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "SubmitRegistryRecordForApprovalRequest",
+  }) as any as S.Schema<SubmitRegistryRecordForApprovalRequest>;
+export interface SubmitRegistryRecordForApprovalResponse {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  status: RegistryRecordStatus;
+  updatedAt: Date;
+}
+export const SubmitRegistryRecordForApprovalResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryArn: S.String,
+      recordArn: S.String,
+      recordId: S.String,
+      status: RegistryRecordStatus,
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+  ).annotate({
+    identifier: "SubmitRegistryRecordForApprovalResponse",
+  }) as any as S.Schema<SubmitRegistryRecordForApprovalResponse>;
+export interface UpdateRegistryRecordStatusRequest {
+  registryId: string;
+  recordId: string;
+  status: RegistryRecordStatus;
+  statusReason: string;
+}
+export const UpdateRegistryRecordStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      recordId: S.String.pipe(T.HttpLabel("recordId")),
+      status: RegistryRecordStatus,
+      statusReason: S.String,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PATCH",
+          uri: "/registries/{registryId}/records/{recordId}/status",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateRegistryRecordStatusRequest",
+  }) as any as S.Schema<UpdateRegistryRecordStatusRequest>;
+export interface UpdateRegistryRecordStatusResponse {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  status: RegistryRecordStatus;
+  statusReason: string;
+  updatedAt: Date;
+}
+export const UpdateRegistryRecordStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      registryArn: S.String,
+      recordArn: S.String,
+      recordId: S.String,
+      status: RegistryRecordStatus,
+      statusReason: S.String,
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+  ).annotate({
+    identifier: "UpdateRegistryRecordStatusResponse",
+  }) as any as S.Schema<UpdateRegistryRecordStatusResponse>;
+export type RegistryAuthorizerType = "CUSTOM_JWT" | "AWS_IAM" | (string & {});
+export const RegistryAuthorizerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ApprovalConfiguration {
+  autoApproval?: boolean;
+}
+export const ApprovalConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ autoApproval: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "ApprovalConfiguration",
+}) as any as S.Schema<ApprovalConfiguration>;
+export interface CreateRegistryRequest {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  authorizerType?: RegistryAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  clientToken?: string;
+  approvalConfiguration?: ApprovalConfiguration;
+}
+export const CreateRegistryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    authorizerType: S.optional(RegistryAuthorizerType),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    approvalConfiguration: S.optional(ApprovalConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/registries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateRegistryRequest",
+}) as any as S.Schema<CreateRegistryRequest>;
+export interface CreateRegistryResponse {
+  registryArn: string;
+}
+export const CreateRegistryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ registryArn: S.String }),
+).annotate({
+  identifier: "CreateRegistryResponse",
+}) as any as S.Schema<CreateRegistryResponse>;
+export interface GetRegistryRequest {
+  registryId: string;
+}
+export const GetRegistryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ registryId: S.String.pipe(T.HttpLabel("registryId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/registries/{registryId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetRegistryRequest",
+}) as any as S.Schema<GetRegistryRequest>;
+export type RegistryStatus =
+  | "CREATING"
+  | "READY"
+  | "UPDATING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | (string & {});
+export const RegistryStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetRegistryResponse {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  registryId: string;
+  registryArn: string;
+  authorizerType?: RegistryAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  approvalConfiguration?: ApprovalConfiguration;
+  status: RegistryStatus;
+  statusReason?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const GetRegistryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    registryId: S.String,
+    registryArn: S.String,
+    authorizerType: S.optional(RegistryAuthorizerType),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    approvalConfiguration: S.optional(ApprovalConfiguration),
+    status: RegistryStatus,
+    statusReason: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GetRegistryResponse",
+}) as any as S.Schema<GetRegistryResponse>;
+export interface UpdatedAuthorizerConfiguration {
+  optionalValue?: AuthorizerConfiguration;
+}
+export const UpdatedAuthorizerConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ optionalValue: S.optional(AuthorizerConfiguration) }),
+  ).annotate({
+    identifier: "UpdatedAuthorizerConfiguration",
+  }) as any as S.Schema<UpdatedAuthorizerConfiguration>;
+export interface UpdatedApprovalConfiguration {
+  optionalValue?: ApprovalConfiguration;
+}
+export const UpdatedApprovalConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ optionalValue: S.optional(ApprovalConfiguration) }),
+  ).annotate({
+    identifier: "UpdatedApprovalConfiguration",
+  }) as any as S.Schema<UpdatedApprovalConfiguration>;
+export interface UpdateRegistryRequest {
+  registryId: string;
+  name?: string;
+  description?: UpdatedDescription;
+  authorizerConfiguration?: UpdatedAuthorizerConfiguration;
+  approvalConfiguration?: UpdatedApprovalConfiguration;
+}
+export const UpdateRegistryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryId: S.String.pipe(T.HttpLabel("registryId")),
+    name: S.optional(S.String),
+    description: S.optional(UpdatedDescription),
+    authorizerConfiguration: S.optional(UpdatedAuthorizerConfiguration),
+    approvalConfiguration: S.optional(UpdatedApprovalConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/registries/{registryId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateRegistryRequest",
+}) as any as S.Schema<UpdateRegistryRequest>;
+export interface UpdateRegistryResponse {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  registryId: string;
+  registryArn: string;
+  authorizerType?: RegistryAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  approvalConfiguration?: ApprovalConfiguration;
+  status: RegistryStatus;
+  statusReason?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const UpdateRegistryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      description: S.optional(SensitiveString),
+      registryId: S.String,
+      registryArn: S.String,
+      authorizerType: S.optional(RegistryAuthorizerType),
+      authorizerConfiguration: S.optional(AuthorizerConfiguration),
+      approvalConfiguration: S.optional(ApprovalConfiguration),
+      status: RegistryStatus,
+      statusReason: S.optional(S.String),
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+).annotate({
+  identifier: "UpdateRegistryResponse",
+}) as any as S.Schema<UpdateRegistryResponse>;
+export interface DeleteRegistryRequest {
+  registryId: string;
+}
+export const DeleteRegistryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ registryId: S.String.pipe(T.HttpLabel("registryId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/registries/{registryId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteRegistryRequest",
+}) as any as S.Schema<DeleteRegistryRequest>;
+export interface DeleteRegistryResponse {
+  status: RegistryStatus;
+}
+export const DeleteRegistryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ status: RegistryStatus }),
+).annotate({
+  identifier: "DeleteRegistryResponse",
+}) as any as S.Schema<DeleteRegistryResponse>;
+export interface ListRegistriesRequest {
+  maxResults?: number;
+  nextToken?: string;
+  status?: RegistryStatus;
+}
+export const ListRegistriesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    status: S.optional(RegistryStatus).pipe(T.HttpQuery("status")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/registries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListRegistriesRequest",
+}) as any as S.Schema<ListRegistriesRequest>;
+export interface RegistrySummary {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  registryId: string;
+  registryArn: string;
+  authorizerType?: RegistryAuthorizerType;
+  status: RegistryStatus;
+  statusReason?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const RegistrySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    registryId: S.String,
+    registryArn: S.String,
+    authorizerType: S.optional(RegistryAuthorizerType),
+    status: RegistryStatus,
+    statusReason: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "RegistrySummary",
+}) as any as S.Schema<RegistrySummary>;
+export type RegistrySummaryList = RegistrySummary[];
+export const RegistrySummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RegistrySummary);
+export interface ListRegistriesResponse {
+  registries: RegistrySummary[];
+  nextToken?: string;
+}
+export const ListRegistriesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      registries: RegistrySummaryList,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListRegistriesResponse",
+}) as any as S.Schema<ListRegistriesResponse>;
 export type ResourceOauth2ReturnUrlListType = string[];
 export const ResourceOauth2ReturnUrlListType =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
@@ -8439,7 +9765,7 @@ export type CreateEvaluatorError =
   | ValidationException
   | CommonErrors;
 /**
- * Creates a custom evaluator for agent quality assessment. Custom evaluators use LLM-as-a-Judge configurations with user-defined prompts, rating scales, and model settings to evaluate agent performance at tool call, trace, or session levels.
+ * Creates a custom evaluator for agent quality assessment. Custom evaluators can use either LLM-as-a-Judge configurations with user-defined prompts, rating scales, and model settings, or code-based configurations with customer-managed Lambda functions to evaluate agent performance at tool call, trace, or session levels.
  */
 export const createEvaluator: API.OperationMethod<
   CreateEvaluatorRequest,
@@ -8786,6 +10112,8 @@ export type DeleteGatewayTargetError =
   | CommonErrors;
 /**
  * Deletes a gateway target.
+ *
+ * You cannot delete a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before deleting the target.
  */
 export const deleteGatewayTarget: API.OperationMethod<
   DeleteGatewayTargetRequest,
@@ -8885,7 +10213,11 @@ export type SynchronizeGatewayTargetsError =
   | ValidationException
   | CommonErrors;
 /**
- * The gateway targets.
+ * Synchronizes the gateway targets by fetching the latest tool definitions from the target endpoints.
+ *
+ * You cannot synchronize a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before synchronizing.
+ *
+ * You cannot synchronize a target that has a static tool schema (`mcpToolSchema`) configured. Remove the static schema through an `UpdateGatewayTarget` call to enable dynamic tool synchronization.
  */
 export const synchronizeGatewayTargets: API.OperationMethod<
   SynchronizeGatewayTargetsRequest,
@@ -8916,6 +10248,8 @@ export type UpdateGatewayTargetError =
   | CommonErrors;
 /**
  * Updates an existing gateway target.
+ *
+ * You cannot update a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before updating the target.
  */
 export const updateGatewayTarget: API.OperationMethod<
   UpdateGatewayTargetRequest,
@@ -9895,6 +11229,386 @@ export const listPolicies: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "policies",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type CreateRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new registry record within the specified registry. A registry record represents an individual AI resource's metadata in the registry. This could be an MCP server (and associated tools), A2A agent, agent skill, or a custom resource with a custom schema.
+ *
+ * The record is processed asynchronously and returns HTTP 202 Accepted.
+ */
+export const createRegistryRecord: API.OperationMethod<
+  CreateRegistryRecordRequest,
+  CreateRegistryRecordResponse,
+  CreateRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateRegistryRecordRequest,
+  output: CreateRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific registry record.
+ */
+export const getRegistryRecord: API.OperationMethod<
+  GetRegistryRecordRequest,
+  GetRegistryRecordResponse,
+  GetRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegistryRecordRequest,
+  output: GetRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing registry record. This operation uses PATCH semantics, so you only need to specify the fields you want to change. The update is processed asynchronously and returns HTTP 202 Accepted.
+ */
+export const updateRegistryRecord: API.OperationMethod<
+  UpdateRegistryRecordRequest,
+  UpdateRegistryRecordResponse,
+  UpdateRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateRegistryRecordRequest,
+  output: UpdateRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a registry record. The record's status transitions to `DELETING` and the record is removed asynchronously.
+ */
+export const deleteRegistryRecord: API.OperationMethod<
+  DeleteRegistryRecordRequest,
+  DeleteRegistryRecordResponse,
+  DeleteRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRegistryRecordRequest,
+  output: DeleteRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListRegistryRecordsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists registry records within a registry. You can optionally filter results using the `name`, `status`, and `descriptorType` parameters. When multiple filters are specified, they are combined using AND logic.
+ */
+export const listRegistryRecords: API.OperationMethod<
+  ListRegistryRecordsRequest,
+  ListRegistryRecordsResponse,
+  ListRegistryRecordsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRegistryRecordsRequest,
+  ) => stream.Stream<
+    ListRegistryRecordsResponse,
+    ListRegistryRecordsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRegistryRecordsRequest,
+  ) => stream.Stream<
+    RegistryRecordSummary,
+    ListRegistryRecordsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRegistryRecordsRequest,
+  output: ListRegistryRecordsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "registryRecords",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type SubmitRegistryRecordForApprovalError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Submits a registry record for approval. This transitions the record from `DRAFT` status to `PENDING_APPROVAL` status. If the registry has auto-approval enabled, the record is automatically approved.
+ */
+export const submitRegistryRecordForApproval: API.OperationMethod<
+  SubmitRegistryRecordForApprovalRequest,
+  SubmitRegistryRecordForApprovalResponse,
+  SubmitRegistryRecordForApprovalError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SubmitRegistryRecordForApprovalRequest,
+  output: SubmitRegistryRecordForApprovalResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateRegistryRecordStatusError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the status of a registry record. Use this operation to approve, reject, or deprecate a registry record.
+ */
+export const updateRegistryRecordStatus: API.OperationMethod<
+  UpdateRegistryRecordStatusRequest,
+  UpdateRegistryRecordStatusResponse,
+  UpdateRegistryRecordStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateRegistryRecordStatusRequest,
+  output: UpdateRegistryRecordStatusResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type CreateRegistryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new registry in your Amazon Web Services account. A registry serves as a centralized catalog for organizing and managing registry records, including MCP servers, A2A agents, agent skills, and custom resource types.
+ *
+ * If you specify `CUSTOM_JWT` as the `authorizerType`, you must provide an `authorizerConfiguration`.
+ */
+export const createRegistry: API.OperationMethod<
+  CreateRegistryRequest,
+  CreateRegistryResponse,
+  CreateRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateRegistryRequest,
+  output: CreateRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetRegistryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific registry.
+ */
+export const getRegistry: API.OperationMethod<
+  GetRegistryRequest,
+  GetRegistryResponse,
+  GetRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRegistryRequest,
+  output: GetRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateRegistryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing registry. This operation uses PATCH semantics, so you only need to specify the fields you want to change.
+ */
+export const updateRegistry: API.OperationMethod<
+  UpdateRegistryRequest,
+  UpdateRegistryResponse,
+  UpdateRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateRegistryRequest,
+  output: UpdateRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteRegistryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a registry. The registry must contain zero records before it can be deleted. This operation initiates the deletion process asynchronously.
+ */
+export const deleteRegistry: API.OperationMethod<
+  DeleteRegistryRequest,
+  DeleteRegistryResponse,
+  DeleteRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRegistryRequest,
+  output: DeleteRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListRegistriesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all registries in the account. You can optionally filter results by status using the `status` parameter.
+ */
+export const listRegistries: API.OperationMethod<
+  ListRegistriesRequest,
+  ListRegistriesResponse,
+  ListRegistriesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRegistriesRequest,
+  ) => stream.Stream<
+    ListRegistriesResponse,
+    ListRegistriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRegistriesRequest,
+  ) => stream.Stream<
+    RegistrySummary,
+    ListRegistriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRegistriesRequest,
+  output: ListRegistriesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "registries",
     pageSize: "maxResults",
   } as const,
 }));

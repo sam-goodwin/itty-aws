@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,16 +69,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface GSuitePrincipal {
   /** This principal references a Google Workspace user account. */
@@ -95,16 +86,11 @@ export interface GSuitePrincipal {
   gsuiteDomain?: boolean;
 }
 
-export const GSuitePrincipal: Schema.Schema<GSuitePrincipal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gsuiteUserEmail: Schema.optional(Schema.String),
-      gsuiteGroupEmail: Schema.optional(Schema.String),
-      gsuiteDomain: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GSuitePrincipal",
-  }) as any as Schema.Schema<GSuitePrincipal>;
+export const GSuitePrincipal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gsuiteUserEmail: Schema.optional(Schema.String),
+  gsuiteGroupEmail: Schema.optional(Schema.String),
+  gsuiteDomain: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GSuitePrincipal" });
 
 export interface Principal {
   /** This principal is a Google Workspace user, group or domain. */
@@ -115,42 +101,29 @@ export interface Principal {
   groupResourceName?: string;
 }
 
-export const Principal: Schema.Schema<Principal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gsuitePrincipal: Schema.optional(GSuitePrincipal),
-      userResourceName: Schema.optional(Schema.String),
-      groupResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Principal" }) as any as Schema.Schema<Principal>;
+export const Principal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gsuitePrincipal: Schema.optional(GSuitePrincipal),
+  userResourceName: Schema.optional(Schema.String),
+  groupResourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Principal" });
 
 export interface CheckAccessResponse {
   /** Returns true if principal has access. Returns false otherwise. */
   hasAccess?: boolean;
 }
 
-export const CheckAccessResponse: Schema.Schema<CheckAccessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasAccess: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CheckAccessResponse",
-  }) as any as Schema.Schema<CheckAccessResponse>;
+export const CheckAccessResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hasAccess: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CheckAccessResponse" });
 
 export interface DebugOptions {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   enableDebugging?: boolean;
 }
 
-export const DebugOptions: Schema.Schema<DebugOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableDebugging: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DebugOptions",
-  }) as any as Schema.Schema<DebugOptions>;
+export const DebugOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableDebugging: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DebugOptions" });
 
 export interface SearchItemsByViewUrlRequest {
   /** Specify the full view URL to find the corresponding item. The maximum length is 2048 characters. */
@@ -161,16 +134,12 @@ export interface SearchItemsByViewUrlRequest {
   debugOptions?: DebugOptions;
 }
 
-export const SearchItemsByViewUrlRequest: Schema.Schema<SearchItemsByViewUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewUrl: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "SearchItemsByViewUrlRequest",
-  }) as any as Schema.Schema<SearchItemsByViewUrlRequest>;
+export const SearchItemsByViewUrlRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewUrl: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    debugOptions: Schema.optional(DebugOptions),
+  }).annotate({ identifier: "SearchItemsByViewUrlRequest" });
 
 export interface ItemAcl {
   /** The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters. */
@@ -190,16 +159,13 @@ export interface ItemAcl {
   owners?: Array<Principal>;
 }
 
-export const ItemAcl: Schema.Schema<ItemAcl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inheritAclFrom: Schema.optional(Schema.String),
-      aclInheritanceType: Schema.optional(Schema.String),
-      readers: Schema.optional(Schema.Array(Principal)),
-      deniedReaders: Schema.optional(Schema.Array(Principal)),
-      owners: Schema.optional(Schema.Array(Principal)),
-    }),
-  ).annotate({ identifier: "ItemAcl" }) as any as Schema.Schema<ItemAcl>;
+export const ItemAcl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inheritAclFrom: Schema.optional(Schema.String),
+  aclInheritanceType: Schema.optional(Schema.String),
+  readers: Schema.optional(Schema.Array(Principal)),
+  deniedReaders: Schema.optional(Schema.Array(Principal)),
+  owners: Schema.optional(Schema.Array(Principal)),
+}).annotate({ identifier: "ItemAcl" });
 
 export interface Interaction {
   type?: "UNSPECIFIED" | "VIEW" | "EDIT" | (string & {});
@@ -209,30 +175,20 @@ export interface Interaction {
   interactionTime?: string;
 }
 
-export const Interaction: Schema.Schema<Interaction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      principal: Schema.optional(Principal),
-      interactionTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Interaction",
-  }) as any as Schema.Schema<Interaction>;
+export const Interaction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  principal: Schema.optional(Principal),
+  interactionTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interaction" });
 
 export interface SearchQualityMetadata {
   /** An indication of the quality of the item, used to influence search quality. Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0. */
   quality?: number;
 }
 
-export const SearchQualityMetadata: Schema.Schema<SearchQualityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quality: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SearchQualityMetadata",
-  }) as any as Schema.Schema<SearchQualityMetadata>;
+export const SearchQualityMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  quality: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SearchQualityMetadata" });
 
 export interface ContextAttribute {
   /** The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched. */
@@ -241,15 +197,10 @@ export interface ContextAttribute {
   values?: Array<string>;
 }
 
-export const ContextAttribute: Schema.Schema<ContextAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ContextAttribute",
-  }) as any as Schema.Schema<ContextAttribute>;
+export const ContextAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ContextAttribute" });
 
 export interface ItemMetadata {
   /** The title of the item. If given, this will be the displayed title of the Search result. The maximum length is 2048 characters. */
@@ -280,65 +231,45 @@ export interface ItemMetadata {
   contextAttributes?: Array<ContextAttribute>;
 }
 
-export const ItemMetadata: Schema.Schema<ItemMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      sourceRepositoryUrl: Schema.optional(Schema.String),
-      containerName: Schema.optional(Schema.String),
-      objectType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      interactions: Schema.optional(Schema.Array(Interaction)),
-      contentLanguage: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      searchQualityMetadata: Schema.optional(SearchQualityMetadata),
-      keywords: Schema.optional(Schema.Array(Schema.String)),
-      hash: Schema.optional(Schema.String),
-      contextAttributes: Schema.optional(Schema.Array(ContextAttribute)),
-    }),
-  ).annotate({
-    identifier: "ItemMetadata",
-  }) as any as Schema.Schema<ItemMetadata>;
+export const ItemMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  sourceRepositoryUrl: Schema.optional(Schema.String),
+  containerName: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  interactions: Schema.optional(Schema.Array(Interaction)),
+  contentLanguage: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+  searchQualityMetadata: Schema.optional(SearchQualityMetadata),
+  keywords: Schema.optional(Schema.Array(Schema.String)),
+  hash: Schema.optional(Schema.String),
+  contextAttributes: Schema.optional(Schema.Array(ContextAttribute)),
+}).annotate({ identifier: "ItemMetadata" });
 
 export interface IntegerValues {
   values?: Array<string>;
 }
 
-export const IntegerValues: Schema.Schema<IntegerValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "IntegerValues",
-  }) as any as Schema.Schema<IntegerValues>;
+export const IntegerValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "IntegerValues" });
 
 export interface DoubleValues {
   values?: Array<number>;
 }
 
-export const DoubleValues: Schema.Schema<DoubleValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "DoubleValues",
-  }) as any as Schema.Schema<DoubleValues>;
+export const DoubleValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "DoubleValues" });
 
 export interface TimestampValues {
   values?: Array<string>;
 }
 
-export const TimestampValues: Schema.Schema<TimestampValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TimestampValues",
-  }) as any as Schema.Schema<TimestampValues>;
+export const TimestampValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TimestampValues" });
 
 export interface ObjectValues {
   values?: Array<StructuredDataObject>;
@@ -358,12 +289,9 @@ export interface EnumValues {
   values?: Array<string>;
 }
 
-export const EnumValues: Schema.Schema<EnumValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "EnumValues" }) as any as Schema.Schema<EnumValues>;
+export const EnumValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "EnumValues" });
 
 export interface Cloudsearch_Date {
   /** Year of date. Must be from 1 to 9999. */
@@ -374,51 +302,37 @@ export interface Cloudsearch_Date {
   day?: number;
 }
 
-export const Cloudsearch_Date: Schema.Schema<Cloudsearch_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Cloudsearch_Date",
-  }) as any as Schema.Schema<Cloudsearch_Date>;
+export const Cloudsearch_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Cloudsearch_Date" });
 
 export interface DateValues {
   values?: Array<Cloudsearch_Date>;
 }
 
-export const DateValues: Schema.Schema<DateValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Cloudsearch_Date)),
-    }),
-  ).annotate({ identifier: "DateValues" }) as any as Schema.Schema<DateValues>;
+export const DateValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Cloudsearch_Date)),
+}).annotate({ identifier: "DateValues" });
 
 export interface TextValues {
   /** The maximum allowable length for text values is 2048 characters. */
   values?: Array<string>;
 }
 
-export const TextValues: Schema.Schema<TextValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "TextValues" }) as any as Schema.Schema<TextValues>;
+export const TextValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TextValues" });
 
 export interface HtmlValues {
   /** The maximum allowable length for html values is 2048 characters. */
   values?: Array<string>;
 }
 
-export const HtmlValues: Schema.Schema<HtmlValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "HtmlValues" }) as any as Schema.Schema<HtmlValues>;
+export const HtmlValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HtmlValues" });
 
 export interface NamedProperty {
   /** The name of the property. This name should correspond to the name of the property that was registered for object definition in the schema. The maximum allowable length for this property is 256 characters. */
@@ -473,29 +387,19 @@ export interface ItemStructuredData {
   hash?: string;
 }
 
-export const ItemStructuredData: Schema.Schema<ItemStructuredData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      object: Schema.optional(StructuredDataObject),
-      hash: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ItemStructuredData",
-  }) as any as Schema.Schema<ItemStructuredData>;
+export const ItemStructuredData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  object: Schema.optional(StructuredDataObject),
+  hash: Schema.optional(Schema.String),
+}).annotate({ identifier: "ItemStructuredData" });
 
 export interface UploadItemRef {
   /** The name of the content reference. The maximum length is 2048 characters. */
   name?: string;
 }
 
-export const UploadItemRef: Schema.Schema<UploadItemRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadItemRef",
-  }) as any as Schema.Schema<UploadItemRef>;
+export const UploadItemRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadItemRef" });
 
 export interface ItemContent {
   contentFormat?: "UNSPECIFIED" | "HTML" | "TEXT" | "RAW" | (string & {});
@@ -507,17 +411,12 @@ export interface ItemContent {
   hash?: string;
 }
 
-export const ItemContent: Schema.Schema<ItemContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentFormat: Schema.optional(Schema.String),
-      inlineContent: Schema.optional(Schema.String),
-      contentDataRef: Schema.optional(UploadItemRef),
-      hash: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ItemContent",
-  }) as any as Schema.Schema<ItemContent>;
+export const ItemContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentFormat: Schema.optional(Schema.String),
+  inlineContent: Schema.optional(Schema.String),
+  contentDataRef: Schema.optional(UploadItemRef),
+  hash: Schema.optional(Schema.String),
+}).annotate({ identifier: "ItemContent" });
 
 export interface FieldViolation {
   /** Path of field with violation. */
@@ -526,15 +425,10 @@ export interface FieldViolation {
   description?: string;
 }
 
-export const FieldViolation: Schema.Schema<FieldViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FieldViolation",
-  }) as any as Schema.Schema<FieldViolation>;
+export const FieldViolation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "FieldViolation" });
 
 export interface ProcessingError {
   /** Error code indicating the nature of the error. */
@@ -551,16 +445,11 @@ export interface ProcessingError {
   fieldViolations?: Array<FieldViolation>;
 }
 
-export const ProcessingError: Schema.Schema<ProcessingError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      fieldViolations: Schema.optional(Schema.Array(FieldViolation)),
-    }),
-  ).annotate({
-    identifier: "ProcessingError",
-  }) as any as Schema.Schema<ProcessingError>;
+export const ProcessingError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  fieldViolations: Schema.optional(Schema.Array(FieldViolation)),
+}).annotate({ identifier: "ProcessingError" });
 
 export interface RepositoryError {
   /** The type of error. */
@@ -582,16 +471,11 @@ export interface RepositoryError {
   errorMessage?: string;
 }
 
-export const RepositoryError: Schema.Schema<RepositoryError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      httpStatusCode: Schema.optional(Schema.Number),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RepositoryError",
-  }) as any as Schema.Schema<RepositoryError>;
+export const RepositoryError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  httpStatusCode: Schema.optional(Schema.Number),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepositoryError" });
 
 export interface ItemStatus {
   /** Status code. */
@@ -608,14 +492,11 @@ export interface ItemStatus {
   repositoryErrors?: Array<RepositoryError>;
 }
 
-export const ItemStatus: Schema.Schema<ItemStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      processingErrors: Schema.optional(Schema.Array(ProcessingError)),
-      repositoryErrors: Schema.optional(Schema.Array(RepositoryError)),
-    }),
-  ).annotate({ identifier: "ItemStatus" }) as any as Schema.Schema<ItemStatus>;
+export const ItemStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  processingErrors: Schema.optional(Schema.Array(ProcessingError)),
+  repositoryErrors: Schema.optional(Schema.Array(RepositoryError)),
+}).annotate({ identifier: "ItemStatus" });
 
 export interface Item {
   /** The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum length is 1536 characters. */
@@ -645,21 +526,18 @@ export interface Item {
     | (string & {});
 }
 
-export const Item: Schema.Schema<Item> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      acl: Schema.optional(ItemAcl),
-      metadata: Schema.optional(ItemMetadata),
-      structuredData: Schema.optional(ItemStructuredData),
-      content: Schema.optional(ItemContent),
-      version: Schema.optional(Schema.String),
-      status: Schema.optional(ItemStatus),
-      queue: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.String),
-      itemType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Item" }) as any as Schema.Schema<Item>;
+export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  acl: Schema.optional(ItemAcl),
+  metadata: Schema.optional(ItemMetadata),
+  structuredData: Schema.optional(ItemStructuredData),
+  content: Schema.optional(ItemContent),
+  version: Schema.optional(Schema.String),
+  status: Schema.optional(ItemStatus),
+  queue: Schema.optional(Schema.String),
+  payload: Schema.optional(Schema.String),
+  itemType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Item" });
 
 export interface SearchItemsByViewUrlResponse {
   items?: Array<Item>;
@@ -667,29 +545,20 @@ export interface SearchItemsByViewUrlResponse {
   nextPageToken?: string;
 }
 
-export const SearchItemsByViewUrlResponse: Schema.Schema<SearchItemsByViewUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Item)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchItemsByViewUrlResponse",
-  }) as any as Schema.Schema<SearchItemsByViewUrlResponse>;
+export const SearchItemsByViewUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(Item)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchItemsByViewUrlResponse" });
 
 export interface VPCSettings {
   /** The resource name of the GCP Project to be used for VPC SC policy check. VPC security settings on this project will be honored for Cloud Search APIs after project_name has been updated through CustomerService. Format: projects/{project_id} */
   project?: string;
 }
 
-export const VPCSettings: Schema.Schema<VPCSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      project: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VPCSettings",
-  }) as any as Schema.Schema<VPCSettings>;
+export const VPCSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.optional(Schema.String),
+}).annotate({ identifier: "VPCSettings" });
 
 export interface AuditLoggingSettings {
   /** The resource name of the GCP Project to store audit logs. Cloud audit logging will be enabled after project_name has been updated through CustomerService. Format: projects/{project_id} */
@@ -702,17 +571,12 @@ export interface AuditLoggingSettings {
   logDataReadActions?: boolean;
 }
 
-export const AuditLoggingSettings: Schema.Schema<AuditLoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      project: Schema.optional(Schema.String),
-      logAdminReadActions: Schema.optional(Schema.Boolean),
-      logDataWriteActions: Schema.optional(Schema.Boolean),
-      logDataReadActions: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AuditLoggingSettings",
-  }) as any as Schema.Schema<AuditLoggingSettings>;
+export const AuditLoggingSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.optional(Schema.String),
+  logAdminReadActions: Schema.optional(Schema.Boolean),
+  logDataWriteActions: Schema.optional(Schema.Boolean),
+  logDataReadActions: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AuditLoggingSettings" });
 
 export interface CustomerSettings {
   /** VPC SC settings for the customer. If update_mask is empty then this field will be updated based on UpdateCustomerSettings request. */
@@ -721,22 +585,17 @@ export interface CustomerSettings {
   auditLoggingSettings?: AuditLoggingSettings;
 }
 
-export const CustomerSettings: Schema.Schema<CustomerSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vpcSettings: Schema.optional(VPCSettings),
-      auditLoggingSettings: Schema.optional(AuditLoggingSettings),
-    }),
-  ).annotate({
-    identifier: "CustomerSettings",
-  }) as any as Schema.Schema<CustomerSettings>;
+export const CustomerSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vpcSettings: Schema.optional(VPCSettings),
+  auditLoggingSettings: Schema.optional(AuditLoggingSettings),
+}).annotate({ identifier: "CustomerSettings" });
 
 export interface InitializeCustomerRequest {}
 
-export const InitializeCustomerRequest: Schema.Schema<InitializeCustomerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InitializeCustomerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InitializeCustomerRequest",
-  }) as any as Schema.Schema<InitializeCustomerRequest>;
+  });
 
 export interface ListItemsResponse {
   items?: Array<Item>;
@@ -744,29 +603,19 @@ export interface ListItemsResponse {
   nextPageToken?: string;
 }
 
-export const ListItemsResponse: Schema.Schema<ListItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Item)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListItemsResponse",
-  }) as any as Schema.Schema<ListItemsResponse>;
+export const ListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Item)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListItemsResponse" });
 
 export interface IndexItemOptions {
   /** Specifies if the index request should allow Google Workspace principals that do not exist or are deleted. */
   allowUnknownGsuitePrincipals?: boolean;
 }
 
-export const IndexItemOptions: Schema.Schema<IndexItemOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowUnknownGsuitePrincipals: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IndexItemOptions",
-  }) as any as Schema.Schema<IndexItemOptions>;
+export const IndexItemOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowUnknownGsuitePrincipals: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "IndexItemOptions" });
 
 export interface IndexItemRequest {
   /** The name of the item. Format: datasources/{source_id}/items/{item_id} */
@@ -780,18 +629,13 @@ export interface IndexItemRequest {
   indexItemOptions?: IndexItemOptions;
 }
 
-export const IndexItemRequest: Schema.Schema<IndexItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(Item),
-      connectorName: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-      indexItemOptions: Schema.optional(IndexItemOptions),
-    }),
-  ).annotate({
-    identifier: "IndexItemRequest",
-  }) as any as Schema.Schema<IndexItemRequest>;
+export const IndexItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  item: Schema.optional(Item),
+  connectorName: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+  debugOptions: Schema.optional(DebugOptions),
+  indexItemOptions: Schema.optional(IndexItemOptions),
+}).annotate({ identifier: "IndexItemRequest" });
 
 export interface StartUploadItemRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
@@ -800,15 +644,12 @@ export interface StartUploadItemRequest {
   debugOptions?: DebugOptions;
 }
 
-export const StartUploadItemRequest: Schema.Schema<StartUploadItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectorName: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "StartUploadItemRequest",
-  }) as any as Schema.Schema<StartUploadItemRequest>;
+export const StartUploadItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    connectorName: Schema.optional(Schema.String),
+    debugOptions: Schema.optional(DebugOptions),
+  },
+).annotate({ identifier: "StartUploadItemRequest" });
 
 export interface PollItemsRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
@@ -830,32 +671,22 @@ export interface PollItemsRequest {
   debugOptions?: DebugOptions;
 }
 
-export const PollItemsRequest: Schema.Schema<PollItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectorName: Schema.optional(Schema.String),
-      statusCodes: Schema.optional(Schema.Array(Schema.String)),
-      limit: Schema.optional(Schema.Number),
-      queue: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "PollItemsRequest",
-  }) as any as Schema.Schema<PollItemsRequest>;
+export const PollItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectorName: Schema.optional(Schema.String),
+  statusCodes: Schema.optional(Schema.Array(Schema.String)),
+  limit: Schema.optional(Schema.Number),
+  queue: Schema.optional(Schema.String),
+  debugOptions: Schema.optional(DebugOptions),
+}).annotate({ identifier: "PollItemsRequest" });
 
 export interface PollItemsResponse {
   /** Set of items from the queue available for connector to process. These items have the following subset of fields populated: version metadata.hash structured_data.hash content.hash payload status queue */
   items?: Array<Item>;
 }
 
-export const PollItemsResponse: Schema.Schema<PollItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Item)),
-    }),
-  ).annotate({
-    identifier: "PollItemsResponse",
-  }) as any as Schema.Schema<PollItemsResponse>;
+export const PollItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Item)),
+}).annotate({ identifier: "PollItemsResponse" });
 
 export interface PushItem {
   /** The type of the push operation that defines the push behavior. */
@@ -880,18 +711,15 @@ export interface PushItem {
   repositoryError?: RepositoryError;
 }
 
-export const PushItem: Schema.Schema<PushItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      metadataHash: Schema.optional(Schema.String),
-      structuredDataHash: Schema.optional(Schema.String),
-      contentHash: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.String),
-      queue: Schema.optional(Schema.String),
-      repositoryError: Schema.optional(RepositoryError),
-    }),
-  ).annotate({ identifier: "PushItem" }) as any as Schema.Schema<PushItem>;
+export const PushItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  metadataHash: Schema.optional(Schema.String),
+  structuredDataHash: Schema.optional(Schema.String),
+  contentHash: Schema.optional(Schema.String),
+  payload: Schema.optional(Schema.String),
+  queue: Schema.optional(Schema.String),
+  repositoryError: Schema.optional(RepositoryError),
+}).annotate({ identifier: "PushItem" });
 
 export interface PushItemRequest {
   /** Item to push onto the queue. */
@@ -902,16 +730,11 @@ export interface PushItemRequest {
   debugOptions?: DebugOptions;
 }
 
-export const PushItemRequest: Schema.Schema<PushItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(PushItem),
-      connectorName: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "PushItemRequest",
-  }) as any as Schema.Schema<PushItemRequest>;
+export const PushItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  item: Schema.optional(PushItem),
+  connectorName: Schema.optional(Schema.String),
+  debugOptions: Schema.optional(DebugOptions),
+}).annotate({ identifier: "PushItemRequest" });
 
 export interface UnreserveItemsRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
@@ -922,16 +745,11 @@ export interface UnreserveItemsRequest {
   debugOptions?: DebugOptions;
 }
 
-export const UnreserveItemsRequest: Schema.Schema<UnreserveItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectorName: Schema.optional(Schema.String),
-      queue: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "UnreserveItemsRequest",
-  }) as any as Schema.Schema<UnreserveItemsRequest>;
+export const UnreserveItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectorName: Schema.optional(Schema.String),
+  queue: Schema.optional(Schema.String),
+  debugOptions: Schema.optional(DebugOptions),
+}).annotate({ identifier: "UnreserveItemsRequest" });
 
 export interface DeleteQueueItemsRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
@@ -942,16 +760,12 @@ export interface DeleteQueueItemsRequest {
   debugOptions?: DebugOptions;
 }
 
-export const DeleteQueueItemsRequest: Schema.Schema<DeleteQueueItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectorName: Schema.optional(Schema.String),
-      queue: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "DeleteQueueItemsRequest",
-  }) as any as Schema.Schema<DeleteQueueItemsRequest>;
+export const DeleteQueueItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectorName: Schema.optional(Schema.String),
+    queue: Schema.optional(Schema.String),
+    debugOptions: Schema.optional(DebugOptions),
+  }).annotate({ identifier: "DeleteQueueItemsRequest" });
 
 export interface RequestOptions {
   /** The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field using the language set in browser or for the page. In the event that the user's language preference is known, set this field to the known user language. When specified, the documents in search results are biased towards the specified language. The Suggest API uses this field as a hint to make better third-party autocomplete predictions. */
@@ -964,17 +778,12 @@ export interface RequestOptions {
   searchApplicationId?: string;
 }
 
-export const RequestOptions: Schema.Schema<RequestOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      debugOptions: Schema.optional(DebugOptions),
-      timeZone: Schema.optional(Schema.String),
-      searchApplicationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestOptions",
-  }) as any as Schema.Schema<RequestOptions>;
+export const RequestOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  debugOptions: Schema.optional(DebugOptions),
+  timeZone: Schema.optional(Schema.String),
+  searchApplicationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RequestOptions" });
 
 export interface Source {
   /** Source name for content indexed by the Indexing API. */
@@ -993,13 +802,10 @@ export interface Source {
     | (string & {});
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      predefinedSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  predefinedSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "Source" });
 
 export interface Value {
   stringValue?: string;
@@ -1010,17 +816,14 @@ export interface Value {
   dateValue?: Cloudsearch_Date;
 }
 
-export const Value: Schema.Schema<Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      integerValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      timestampValue: Schema.optional(Schema.String),
-      booleanValue: Schema.optional(Schema.Boolean),
-      dateValue: Schema.optional(Cloudsearch_Date),
-    }),
-  ).annotate({ identifier: "Value" }) as any as Schema.Schema<Value>;
+export const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stringValue: Schema.optional(Schema.String),
+  integerValue: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  timestampValue: Schema.optional(Schema.String),
+  booleanValue: Schema.optional(Schema.Boolean),
+  dateValue: Schema.optional(Cloudsearch_Date),
+}).annotate({ identifier: "Value" });
 
 export interface ValueFilter {
   /** The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query. */
@@ -1029,15 +832,10 @@ export interface ValueFilter {
   value?: Value;
 }
 
-export const ValueFilter: Schema.Schema<ValueFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      value: Schema.optional(Value),
-    }),
-  ).annotate({
-    identifier: "ValueFilter",
-  }) as any as Schema.Schema<ValueFilter>;
+export const ValueFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+  value: Schema.optional(Value),
+}).annotate({ identifier: "ValueFilter" });
 
 export interface CompositeFilter {
   /** The logic operator of the sub filter. */
@@ -1076,15 +874,10 @@ export interface FilterOptions {
   filter?: Filter;
 }
 
-export const FilterOptions: Schema.Schema<FilterOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectType: Schema.optional(Schema.String),
-      filter: Schema.optional(Filter),
-    }),
-  ).annotate({
-    identifier: "FilterOptions",
-  }) as any as Schema.Schema<FilterOptions>;
+export const FilterOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.optional(Schema.String),
+  filter: Schema.optional(Filter),
+}).annotate({ identifier: "FilterOptions" });
 
 export interface DataSourceRestriction {
   /** The source of restriction. */
@@ -1093,15 +886,10 @@ export interface DataSourceRestriction {
   filterOptions?: Array<FilterOptions>;
 }
 
-export const DataSourceRestriction: Schema.Schema<DataSourceRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      filterOptions: Schema.optional(Schema.Array(FilterOptions)),
-    }),
-  ).annotate({
-    identifier: "DataSourceRestriction",
-  }) as any as Schema.Schema<DataSourceRestriction>;
+export const DataSourceRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  filterOptions: Schema.optional(Schema.Array(FilterOptions)),
+}).annotate({ identifier: "DataSourceRestriction" });
 
 export interface SuggestRequest {
   /** Request options, such as the search application and user timezone. */
@@ -1112,37 +900,38 @@ export interface SuggestRequest {
   dataSourceRestrictions?: Array<DataSourceRestriction>;
 }
 
-export const SuggestRequest: Schema.Schema<SuggestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestOptions: Schema.optional(RequestOptions),
-      query: Schema.optional(Schema.String),
-      dataSourceRestrictions: Schema.optional(
-        Schema.Array(DataSourceRestriction),
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestRequest",
-  }) as any as Schema.Schema<SuggestRequest>;
+export const SuggestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestOptions: Schema.optional(RequestOptions),
+  query: Schema.optional(Schema.String),
+  dataSourceRestrictions: Schema.optional(Schema.Array(DataSourceRestriction)),
+}).annotate({ identifier: "SuggestRequest" });
 
-export interface QuerySuggestion {}
+export interface QuerySuggestion {
+  /** Source corpus of the suggestion. */
+  sourceCorpus?:
+    | "SOURCE_CORPUS_UNSPECIFIED"
+    | "GMAIL"
+    | "DRIVE"
+    | "CHAT"
+    | "CALENDAR"
+    | (string & {});
+  /** Last query time of the suggestion for query history suggestions. */
+  lastQueryTime?: string;
+}
 
-export const QuerySuggestion: Schema.Schema<QuerySuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "QuerySuggestion",
-  }) as any as Schema.Schema<QuerySuggestion>;
+export const QuerySuggestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceCorpus: Schema.optional(Schema.String),
+  lastQueryTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "QuerySuggestion" });
 
 export interface Name {
   /** The read-only display name formatted according to the locale specified by the viewer's account or the `Accept-Language` HTTP header. */
   displayName?: string;
 }
 
-export const Name: Schema.Schema<Name> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Name" }) as any as Schema.Schema<Name>;
+export const Name = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Name" });
 
 export interface EmailAddress {
   /** The email address. */
@@ -1157,18 +946,13 @@ export interface EmailAddress {
   emailUrl?: string;
 }
 
-export const EmailAddress: Schema.Schema<EmailAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(Schema.String),
-      primary: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-      emailUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EmailAddress",
-  }) as any as Schema.Schema<EmailAddress>;
+export const EmailAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailAddress: Schema.optional(Schema.String),
+  primary: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+  emailUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "EmailAddress" });
 
 export interface PhoneNumber {
   /** The phone number of the person. */
@@ -1176,27 +960,19 @@ export interface PhoneNumber {
   type?: "OTHER" | "MOBILE" | "OFFICE" | (string & {});
 }
 
-export const PhoneNumber: Schema.Schema<PhoneNumber> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PhoneNumber",
-  }) as any as Schema.Schema<PhoneNumber>;
+export const PhoneNumber = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phoneNumber: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "PhoneNumber" });
 
 export interface Photo {
   /** The URL of the photo. */
   url?: string;
 }
 
-export const Photo: Schema.Schema<Photo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Photo" }) as any as Schema.Schema<Photo>;
+export const Photo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "Photo" });
 
 export interface Person {
   /** The resource name of the person to provide information about. See [`People.get`](https://developers.google.com/people/api/rest/v1/people/get) from the Google People API. */
@@ -1213,31 +989,23 @@ export interface Person {
   photos?: Array<Photo>;
 }
 
-export const Person: Schema.Schema<Person> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      obfuscatedId: Schema.optional(Schema.String),
-      personNames: Schema.optional(Schema.Array(Name)),
-      emailAddresses: Schema.optional(Schema.Array(EmailAddress)),
-      phoneNumbers: Schema.optional(Schema.Array(PhoneNumber)),
-      photos: Schema.optional(Schema.Array(Photo)),
-    }),
-  ).annotate({ identifier: "Person" }) as any as Schema.Schema<Person>;
+export const Person = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  obfuscatedId: Schema.optional(Schema.String),
+  personNames: Schema.optional(Schema.Array(Name)),
+  emailAddresses: Schema.optional(Schema.Array(EmailAddress)),
+  phoneNumbers: Schema.optional(Schema.Array(PhoneNumber)),
+  photos: Schema.optional(Schema.Array(Photo)),
+}).annotate({ identifier: "Person" });
 
 export interface PeopleSuggestion {
   /** Suggested person. All fields of the person object might not be populated. */
   person?: Person;
 }
 
-export const PeopleSuggestion: Schema.Schema<PeopleSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      person: Schema.optional(Person),
-    }),
-  ).annotate({
-    identifier: "PeopleSuggestion",
-  }) as any as Schema.Schema<PeopleSuggestion>;
+export const PeopleSuggestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  person: Schema.optional(Person),
+}).annotate({ identifier: "PeopleSuggestion" });
 
 export interface SuggestResult {
   /** The suggested query that will be used for search, when the user clicks on the suggestion */
@@ -1250,45 +1018,32 @@ export interface SuggestResult {
   peopleSuggestion?: PeopleSuggestion;
 }
 
-export const SuggestResult: Schema.Schema<SuggestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedQuery: Schema.optional(Schema.String),
-      source: Schema.optional(Source),
-      querySuggestion: Schema.optional(QuerySuggestion),
-      peopleSuggestion: Schema.optional(PeopleSuggestion),
-    }),
-  ).annotate({
-    identifier: "SuggestResult",
-  }) as any as Schema.Schema<SuggestResult>;
+export const SuggestResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedQuery: Schema.optional(Schema.String),
+  source: Schema.optional(Source),
+  querySuggestion: Schema.optional(QuerySuggestion),
+  peopleSuggestion: Schema.optional(PeopleSuggestion),
+}).annotate({ identifier: "SuggestResult" });
 
 export interface SuggestResponse {
   /** List of suggestions. */
   suggestResults?: Array<SuggestResult>;
 }
 
-export const SuggestResponse: Schema.Schema<SuggestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestResults: Schema.optional(Schema.Array(SuggestResult)),
-    }),
-  ).annotate({
-    identifier: "SuggestResponse",
-  }) as any as Schema.Schema<SuggestResponse>;
+export const SuggestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestResults: Schema.optional(Schema.Array(SuggestResult)),
+}).annotate({ identifier: "SuggestResponse" });
 
 export interface IntegerFacetingOptions {
   /** Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}. */
   integerBuckets?: Array<string>;
 }
 
-export const IntegerFacetingOptions: Schema.Schema<IntegerFacetingOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integerBuckets: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "IntegerFacetingOptions",
-  }) as any as Schema.Schema<IntegerFacetingOptions>;
+export const IntegerFacetingOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    integerBuckets: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "IntegerFacetingOptions" });
 
 export interface FacetOptions {
   /** Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used. */
@@ -1303,18 +1058,13 @@ export interface FacetOptions {
   integerFacetingOptions?: IntegerFacetingOptions;
 }
 
-export const FacetOptions: Schema.Schema<FacetOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceName: Schema.optional(Schema.String),
-      objectType: Schema.optional(Schema.String),
-      operatorName: Schema.optional(Schema.String),
-      numFacetBuckets: Schema.optional(Schema.Number),
-      integerFacetingOptions: Schema.optional(IntegerFacetingOptions),
-    }),
-  ).annotate({
-    identifier: "FacetOptions",
-  }) as any as Schema.Schema<FacetOptions>;
+export const FacetOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceName: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  operatorName: Schema.optional(Schema.String),
+  numFacetBuckets: Schema.optional(Schema.Number),
+  integerFacetingOptions: Schema.optional(IntegerFacetingOptions),
+}).annotate({ identifier: "FacetOptions" });
 
 export interface SortOptions {
   /** The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable. */
@@ -1323,15 +1073,10 @@ export interface SortOptions {
   sortOrder?: "ASCENDING" | "DESCENDING" | (string & {});
 }
 
-export const SortOptions: Schema.Schema<SortOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      sortOrder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SortOptions",
-  }) as any as Schema.Schema<SortOptions>;
+export const SortOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+  sortOrder: Schema.optional(Schema.String),
+}).annotate({ identifier: "SortOptions" });
 
 export interface QueryInterpretationOptions {
   /** Flag to disable natural language (NL) interpretation of queries. Default is false, Set to true to disable natural language interpretation. NL interpretation only applies to predefined datasources. */
@@ -1342,16 +1087,12 @@ export interface QueryInterpretationOptions {
   disableSupplementalResults?: boolean;
 }
 
-export const QueryInterpretationOptions: Schema.Schema<QueryInterpretationOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableNlInterpretation: Schema.optional(Schema.Boolean),
-      enableVerbatimMode: Schema.optional(Schema.Boolean),
-      disableSupplementalResults: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "QueryInterpretationOptions",
-  }) as any as Schema.Schema<QueryInterpretationOptions>;
+export const QueryInterpretationOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disableNlInterpretation: Schema.optional(Schema.Boolean),
+    enableVerbatimMode: Schema.optional(Schema.Boolean),
+    disableSupplementalResults: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "QueryInterpretationOptions" });
 
 export interface SearchRequest {
   /** Request options, such as the search application and user timezone. */
@@ -1373,24 +1114,17 @@ export interface SearchRequest {
   contextAttributes?: Array<ContextAttribute>;
 }
 
-export const SearchRequest: Schema.Schema<SearchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestOptions: Schema.optional(RequestOptions),
-      query: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      start: Schema.optional(Schema.Number),
-      dataSourceRestrictions: Schema.optional(
-        Schema.Array(DataSourceRestriction),
-      ),
-      facetOptions: Schema.optional(Schema.Array(FacetOptions)),
-      sortOptions: Schema.optional(SortOptions),
-      queryInterpretationOptions: Schema.optional(QueryInterpretationOptions),
-      contextAttributes: Schema.optional(Schema.Array(ContextAttribute)),
-    }),
-  ).annotate({
-    identifier: "SearchRequest",
-  }) as any as Schema.Schema<SearchRequest>;
+export const SearchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestOptions: Schema.optional(RequestOptions),
+  query: Schema.optional(Schema.String),
+  pageSize: Schema.optional(Schema.Number),
+  start: Schema.optional(Schema.Number),
+  dataSourceRestrictions: Schema.optional(Schema.Array(DataSourceRestriction)),
+  facetOptions: Schema.optional(Schema.Array(FacetOptions)),
+  sortOptions: Schema.optional(SortOptions),
+  queryInterpretationOptions: Schema.optional(QueryInterpretationOptions),
+  contextAttributes: Schema.optional(Schema.Array(ContextAttribute)),
+}).annotate({ identifier: "SearchRequest" });
 
 export interface QueryInterpretation {
   /** The interpretation of the query used in search. For example, queries with natural language intent like "email from john" will be interpreted as "from:john source:mail". This field will not be filled when the reason is NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY. */
@@ -1408,18 +1142,13 @@ export interface QueryInterpretation {
   interpretedQueryEstimatedResultCount?: string;
 }
 
-export const QueryInterpretation: Schema.Schema<QueryInterpretation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interpretedQuery: Schema.optional(Schema.String),
-      interpretationType: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      interpretedQueryActualResultCount: Schema.optional(Schema.Number),
-      interpretedQueryEstimatedResultCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryInterpretation",
-  }) as any as Schema.Schema<QueryInterpretation>;
+export const QueryInterpretation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interpretedQuery: Schema.optional(Schema.String),
+  interpretationType: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  interpretedQueryActualResultCount: Schema.optional(Schema.Number),
+  interpretedQueryEstimatedResultCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryInterpretation" });
 
 export interface MatchRange {
   /** Starting position of the match in the snippet. */
@@ -1428,13 +1157,10 @@ export interface MatchRange {
   end?: number;
 }
 
-export const MatchRange: Schema.Schema<MatchRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(Schema.Number),
-      end: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "MatchRange" }) as any as Schema.Schema<MatchRange>;
+export const MatchRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(Schema.Number),
+  end: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MatchRange" });
 
 export interface Snippet {
   /** The snippet of the document. May contain escaped HTML character that should be unescaped prior to rendering. */
@@ -1443,13 +1169,10 @@ export interface Snippet {
   matchRanges?: Array<MatchRange>;
 }
 
-export const Snippet: Schema.Schema<Snippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippet: Schema.optional(Schema.String),
-      matchRanges: Schema.optional(Schema.Array(MatchRange)),
-    }),
-  ).annotate({ identifier: "Snippet" }) as any as Schema.Schema<Snippet>;
+export const Snippet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snippet: Schema.optional(Schema.String),
+  matchRanges: Schema.optional(Schema.Array(MatchRange)),
+}).annotate({ identifier: "Snippet" });
 
 export interface ResultDisplayField {
   /** The display label for the property. */
@@ -1460,29 +1183,19 @@ export interface ResultDisplayField {
   property?: NamedProperty;
 }
 
-export const ResultDisplayField: Schema.Schema<ResultDisplayField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      operatorName: Schema.optional(Schema.String),
-      property: Schema.optional(NamedProperty),
-    }),
-  ).annotate({
-    identifier: "ResultDisplayField",
-  }) as any as Schema.Schema<ResultDisplayField>;
+export const ResultDisplayField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.String),
+  operatorName: Schema.optional(Schema.String),
+  property: Schema.optional(NamedProperty),
+}).annotate({ identifier: "ResultDisplayField" });
 
 export interface ResultDisplayLine {
   fields?: Array<ResultDisplayField>;
 }
 
-export const ResultDisplayLine: Schema.Schema<ResultDisplayLine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.Array(ResultDisplayField)),
-    }),
-  ).annotate({
-    identifier: "ResultDisplayLine",
-  }) as any as Schema.Schema<ResultDisplayLine>;
+export const ResultDisplayLine = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fields: Schema.optional(Schema.Array(ResultDisplayField)),
+}).annotate({ identifier: "ResultDisplayLine" });
 
 export interface ResultDisplayMetadata {
   /** The display label for the object. */
@@ -1491,15 +1204,10 @@ export interface ResultDisplayMetadata {
   metalines?: Array<ResultDisplayLine>;
 }
 
-export const ResultDisplayMetadata: Schema.Schema<ResultDisplayMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectTypeLabel: Schema.optional(Schema.String),
-      metalines: Schema.optional(Schema.Array(ResultDisplayLine)),
-    }),
-  ).annotate({
-    identifier: "ResultDisplayMetadata",
-  }) as any as Schema.Schema<ResultDisplayMetadata>;
+export const ResultDisplayMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectTypeLabel: Schema.optional(Schema.String),
+  metalines: Schema.optional(Schema.Array(ResultDisplayLine)),
+}).annotate({ identifier: "ResultDisplayMetadata" });
 
 export interface Metadata {
   /** The named source for the result, such as Gmail. */
@@ -1522,34 +1230,26 @@ export interface Metadata {
   objectType?: string;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      mimeType: Schema.optional(Schema.String),
-      thumbnailUrl: Schema.optional(Schema.String),
-      owner: Schema.optional(Person),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(NamedProperty)),
-      displayOptions: Schema.optional(ResultDisplayMetadata),
-      objectType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  mimeType: Schema.optional(Schema.String),
+  thumbnailUrl: Schema.optional(Schema.String),
+  owner: Schema.optional(Person),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Array(NamedProperty)),
+  displayOptions: Schema.optional(ResultDisplayMetadata),
+  objectType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Metadata" });
 
 export interface ResultDebugInfo {
   /** General debug info formatted for display. */
   formattedDebugInfo?: string;
 }
 
-export const ResultDebugInfo: Schema.Schema<ResultDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formattedDebugInfo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResultDebugInfo",
-  }) as any as Schema.Schema<ResultDebugInfo>;
+export const ResultDebugInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formattedDebugInfo: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResultDebugInfo" });
 
 export interface SearchResult {
   /** Title of the search result. */
@@ -1585,30 +1285,18 @@ export interface StructuredResult {
   person?: Person;
 }
 
-export const StructuredResult: Schema.Schema<StructuredResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      person: Schema.optional(Person),
-    }),
-  ).annotate({
-    identifier: "StructuredResult",
-  }) as any as Schema.Schema<StructuredResult>;
+export const StructuredResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  person: Schema.optional(Person),
+}).annotate({ identifier: "StructuredResult" });
 
 export interface SafeHtmlProto {
   /** IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the top of .proto file for programming language packages with which to create or read this message. */
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
 
-export const SafeHtmlProto: Schema.Schema<SafeHtmlProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateDoNotAccessOrElseSafeHtmlWrappedValue: Schema.optional(
-        Schema.String,
-      ),
-    }),
-  ).annotate({
-    identifier: "SafeHtmlProto",
-  }) as any as Schema.Schema<SafeHtmlProto>;
+export const SafeHtmlProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateDoNotAccessOrElseSafeHtmlWrappedValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "SafeHtmlProto" });
 
 export interface SpellResult {
   /** The suggested spelling of the query. */
@@ -1623,16 +1311,11 @@ export interface SpellResult {
   suggestedQueryHtml?: SafeHtmlProto;
 }
 
-export const SpellResult: Schema.Schema<SpellResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedQuery: Schema.optional(Schema.String),
-      suggestionType: Schema.optional(Schema.String),
-      suggestedQueryHtml: Schema.optional(SafeHtmlProto),
-    }),
-  ).annotate({
-    identifier: "SpellResult",
-  }) as any as Schema.Schema<SpellResult>;
+export const SpellResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedQuery: Schema.optional(Schema.String),
+  suggestionType: Schema.optional(Schema.String),
+  suggestedQueryHtml: Schema.optional(SafeHtmlProto),
+}).annotate({ identifier: "SpellResult" });
 
 export interface FacetBucket {
   value?: Value;
@@ -1644,17 +1327,12 @@ export interface FacetBucket {
   filter?: Filter;
 }
 
-export const FacetBucket: Schema.Schema<FacetBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Value),
-      count: Schema.optional(Schema.Number),
-      percentage: Schema.optional(Schema.Number),
-      filter: Schema.optional(Filter),
-    }),
-  ).annotate({
-    identifier: "FacetBucket",
-  }) as any as Schema.Schema<FacetBucket>;
+export const FacetBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Value),
+  count: Schema.optional(Schema.Number),
+  percentage: Schema.optional(Schema.Number),
+  filter: Schema.optional(Filter),
+}).annotate({ identifier: "FacetBucket" });
 
 export interface FacetResult {
   /** Source name for which facet results are returned. Will not be empty. */
@@ -1667,57 +1345,39 @@ export interface FacetResult {
   buckets?: Array<FacetBucket>;
 }
 
-export const FacetResult: Schema.Schema<FacetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceName: Schema.optional(Schema.String),
-      objectType: Schema.optional(Schema.String),
-      operatorName: Schema.optional(Schema.String),
-      buckets: Schema.optional(Schema.Array(FacetBucket)),
-    }),
-  ).annotate({
-    identifier: "FacetResult",
-  }) as any as Schema.Schema<FacetResult>;
+export const FacetResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceName: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  operatorName: Schema.optional(Schema.String),
+  buckets: Schema.optional(Schema.Array(FacetBucket)),
+}).annotate({ identifier: "FacetResult" });
 
 export interface ResponseDebugInfo {
   /** General debug info formatted for display. */
   formattedDebugInfo?: string;
 }
 
-export const ResponseDebugInfo: Schema.Schema<ResponseDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formattedDebugInfo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResponseDebugInfo",
-  }) as any as Schema.Schema<ResponseDebugInfo>;
+export const ResponseDebugInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formattedDebugInfo: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResponseDebugInfo" });
 
 export interface ErrorMessage {
   source?: Source;
   errorMessage?: string;
 }
 
-export const ErrorMessage: Schema.Schema<ErrorMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ErrorMessage",
-  }) as any as Schema.Schema<ErrorMessage>;
+export const ErrorMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "ErrorMessage" });
 
 export interface ErrorInfo {
   errorMessages?: Array<ErrorMessage>;
 }
 
-export const ErrorInfo: Schema.Schema<ErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessages: Schema.optional(Schema.Array(ErrorMessage)),
-    }),
-  ).annotate({ identifier: "ErrorInfo" }) as any as Schema.Schema<ErrorInfo>;
+export const ErrorInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorMessages: Schema.optional(Schema.Array(ErrorMessage)),
+}).annotate({ identifier: "ErrorInfo" });
 
 export interface SourceResultCount {
   /** The source the result count information is associated with. */
@@ -1730,31 +1390,21 @@ export interface SourceResultCount {
   resultCountExact?: string;
 }
 
-export const SourceResultCount: Schema.Schema<SourceResultCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      hasMoreResults: Schema.optional(Schema.Boolean),
-      resultCountEstimate: Schema.optional(Schema.String),
-      resultCountExact: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceResultCount",
-  }) as any as Schema.Schema<SourceResultCount>;
+export const SourceResultCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  hasMoreResults: Schema.optional(Schema.Boolean),
+  resultCountEstimate: Schema.optional(Schema.String),
+  resultCountExact: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceResultCount" });
 
 export interface ResultCounts {
   /** Result count information for each source with results. */
   sourceResultCounts?: Array<SourceResultCount>;
 }
 
-export const ResultCounts: Schema.Schema<ResultCounts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceResultCounts: Schema.optional(Schema.Array(SourceResultCount)),
-    }),
-  ).annotate({
-    identifier: "ResultCounts",
-  }) as any as Schema.Schema<ResultCounts>;
+export const ResultCounts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceResultCounts: Schema.optional(Schema.Array(SourceResultCount)),
+}).annotate({ identifier: "ResultCounts" });
 
 export interface SearchResponse {
   /** Query interpretation result for user query. Empty if query interpretation is disabled. */
@@ -1781,24 +1431,19 @@ export interface SearchResponse {
   resultCounts?: ResultCounts;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryInterpretation: Schema.optional(QueryInterpretation),
-      results: Schema.optional(Schema.Array(SearchResult)),
-      structuredResults: Schema.optional(Schema.Array(StructuredResult)),
-      spellResults: Schema.optional(Schema.Array(SpellResult)),
-      facetResults: Schema.optional(Schema.Array(FacetResult)),
-      hasMoreResults: Schema.optional(Schema.Boolean),
-      resultCountEstimate: Schema.optional(Schema.String),
-      resultCountExact: Schema.optional(Schema.String),
-      debugInfo: Schema.optional(ResponseDebugInfo),
-      errorInfo: Schema.optional(ErrorInfo),
-      resultCounts: Schema.optional(ResultCounts),
-    }),
-  ).annotate({
-    identifier: "SearchResponse",
-  }) as any as Schema.Schema<SearchResponse>;
+export const SearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryInterpretation: Schema.optional(QueryInterpretation),
+  results: Schema.optional(Schema.Array(SearchResult)),
+  structuredResults: Schema.optional(Schema.Array(StructuredResult)),
+  spellResults: Schema.optional(Schema.Array(SpellResult)),
+  facetResults: Schema.optional(Schema.Array(FacetResult)),
+  hasMoreResults: Schema.optional(Schema.Boolean),
+  resultCountEstimate: Schema.optional(Schema.String),
+  resultCountExact: Schema.optional(Schema.String),
+  debugInfo: Schema.optional(ResponseDebugInfo),
+  errorInfo: Schema.optional(ErrorInfo),
+  resultCounts: Schema.optional(ResultCounts),
+}).annotate({ identifier: "SearchResponse" });
 
 export interface QueryOperator {
   /** The name of the operator. */
@@ -1837,25 +1482,20 @@ export interface QueryOperator {
   objectType?: string;
 }
 
-export const QueryOperator: Schema.Schema<QueryOperator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      lessThanOperatorName: Schema.optional(Schema.String),
-      greaterThanOperatorName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      isSortable: Schema.optional(Schema.Boolean),
-      isFacetable: Schema.optional(Schema.Boolean),
-      isReturnable: Schema.optional(Schema.Boolean),
-      isRepeatable: Schema.optional(Schema.Boolean),
-      isSuggestable: Schema.optional(Schema.Boolean),
-      enumValues: Schema.optional(Schema.Array(Schema.String)),
-      objectType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryOperator",
-  }) as any as Schema.Schema<QueryOperator>;
+export const QueryOperator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+  lessThanOperatorName: Schema.optional(Schema.String),
+  greaterThanOperatorName: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  isSortable: Schema.optional(Schema.Boolean),
+  isFacetable: Schema.optional(Schema.Boolean),
+  isReturnable: Schema.optional(Schema.Boolean),
+  isRepeatable: Schema.optional(Schema.Boolean),
+  isSuggestable: Schema.optional(Schema.Boolean),
+  enumValues: Schema.optional(Schema.Array(Schema.String)),
+  objectType: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryOperator" });
 
 export interface QuerySource {
   /** The name of the source */
@@ -1868,60 +1508,41 @@ export interface QuerySource {
   operators?: Array<QueryOperator>;
 }
 
-export const QuerySource: Schema.Schema<QuerySource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      shortName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      operators: Schema.optional(Schema.Array(QueryOperator)),
-    }),
-  ).annotate({
-    identifier: "QuerySource",
-  }) as any as Schema.Schema<QuerySource>;
+export const QuerySource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  shortName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  operators: Schema.optional(Schema.Array(QueryOperator)),
+}).annotate({ identifier: "QuerySource" });
 
 export interface ListQuerySourcesResponse {
   sources?: Array<QuerySource>;
   nextPageToken?: string;
 }
 
-export const ListQuerySourcesResponse: Schema.Schema<ListQuerySourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sources: Schema.optional(Schema.Array(QuerySource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListQuerySourcesResponse",
-  }) as any as Schema.Schema<ListQuerySourcesResponse>;
+export const ListQuerySourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sources: Schema.optional(Schema.Array(QuerySource)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListQuerySourcesResponse" });
 
 export interface QueryActivity {
   /** User input query to be logged/removed. */
   query?: string;
 }
 
-export const QueryActivity: Schema.Schema<QueryActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryActivity",
-  }) as any as Schema.Schema<QueryActivity>;
+export const QueryActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryActivity" });
 
 export interface UserActivity {
   /** Contains data which needs to be logged/removed. */
   queryActivity?: QueryActivity;
 }
 
-export const UserActivity: Schema.Schema<UserActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryActivity: Schema.optional(QueryActivity),
-    }),
-  ).annotate({
-    identifier: "UserActivity",
-  }) as any as Schema.Schema<UserActivity>;
+export const UserActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryActivity: Schema.optional(QueryActivity),
+}).annotate({ identifier: "UserActivity" });
 
 export interface RemoveActivityRequest {
   /** User Activity containing the data to be deleted. */
@@ -1930,36 +1551,25 @@ export interface RemoveActivityRequest {
   requestOptions?: RequestOptions;
 }
 
-export const RemoveActivityRequest: Schema.Schema<RemoveActivityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userActivity: Schema.optional(UserActivity),
-      requestOptions: Schema.optional(RequestOptions),
-    }),
-  ).annotate({
-    identifier: "RemoveActivityRequest",
-  }) as any as Schema.Schema<RemoveActivityRequest>;
+export const RemoveActivityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userActivity: Schema.optional(UserActivity),
+  requestOptions: Schema.optional(RequestOptions),
+}).annotate({ identifier: "RemoveActivityRequest" });
 
 export interface RemoveActivityResponse {}
 
-export const RemoveActivityResponse: Schema.Schema<RemoveActivityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RemoveActivityResponse",
-  }) as any as Schema.Schema<RemoveActivityResponse>;
+export const RemoveActivityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RemoveActivityResponse" });
 
 export interface SourceScoringConfig {
   /** Importance of the source. */
   sourceImportance?: "DEFAULT" | "LOW" | "HIGH" | (string & {});
 }
 
-export const SourceScoringConfig: Schema.Schema<SourceScoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceImportance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceScoringConfig",
-  }) as any as Schema.Schema<SourceScoringConfig>;
+export const SourceScoringConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceImportance: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceScoringConfig" });
 
 export interface SourceCrowdingConfig {
   /** Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100. */
@@ -1968,15 +1578,10 @@ export interface SourceCrowdingConfig {
   numSuggestions?: number;
 }
 
-export const SourceCrowdingConfig: Schema.Schema<SourceCrowdingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numResults: Schema.optional(Schema.Number),
-      numSuggestions: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SourceCrowdingConfig",
-  }) as any as Schema.Schema<SourceCrowdingConfig>;
+export const SourceCrowdingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numResults: Schema.optional(Schema.Number),
+  numSuggestions: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SourceCrowdingConfig" });
 
 export interface SourceConfig {
   /** The source for which this configuration is to be used. */
@@ -1987,16 +1592,11 @@ export interface SourceConfig {
   crowdingConfig?: SourceCrowdingConfig;
 }
 
-export const SourceConfig: Schema.Schema<SourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      scoringConfig: Schema.optional(SourceScoringConfig),
-      crowdingConfig: Schema.optional(SourceCrowdingConfig),
-    }),
-  ).annotate({
-    identifier: "SourceConfig",
-  }) as any as Schema.Schema<SourceConfig>;
+export const SourceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  scoringConfig: Schema.optional(SourceScoringConfig),
+  crowdingConfig: Schema.optional(SourceCrowdingConfig),
+}).annotate({ identifier: "SourceConfig" });
 
 export interface ScoringConfig {
   /** Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI. */
@@ -2005,15 +1605,10 @@ export interface ScoringConfig {
   disablePersonalization?: boolean;
 }
 
-export const ScoringConfig: Schema.Schema<ScoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableFreshness: Schema.optional(Schema.Boolean),
-      disablePersonalization: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ScoringConfig",
-  }) as any as Schema.Schema<ScoringConfig>;
+export const ScoringConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableFreshness: Schema.optional(Schema.Boolean),
+  disablePersonalization: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ScoringConfig" });
 
 export interface QueryInterpretationConfig {
   /** Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for verbatim mode. */
@@ -2022,15 +1617,11 @@ export interface QueryInterpretationConfig {
   forceDisableSupplementalResults?: boolean;
 }
 
-export const QueryInterpretationConfig: Schema.Schema<QueryInterpretationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      forceVerbatimMode: Schema.optional(Schema.Boolean),
-      forceDisableSupplementalResults: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "QueryInterpretationConfig",
-  }) as any as Schema.Schema<QueryInterpretationConfig>;
+export const QueryInterpretationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forceVerbatimMode: Schema.optional(Schema.Boolean),
+    forceDisableSupplementalResults: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "QueryInterpretationConfig" });
 
 export interface SearchApplication {
   /** The name of the Search Application. Format: searchapplications/{application_id}. */
@@ -2057,26 +1648,19 @@ export interface SearchApplication {
   queryInterpretationConfig?: QueryInterpretationConfig;
 }
 
-export const SearchApplication: Schema.Schema<SearchApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      dataSourceRestrictions: Schema.optional(
-        Schema.Array(DataSourceRestriction),
-      ),
-      sourceConfig: Schema.optional(Schema.Array(SourceConfig)),
-      scoringConfig: Schema.optional(ScoringConfig),
-      defaultSortOptions: Schema.optional(SortOptions),
-      defaultFacetOptions: Schema.optional(Schema.Array(FacetOptions)),
-      returnResultThumbnailUrls: Schema.optional(Schema.Boolean),
-      operationIds: Schema.optional(Schema.Array(Schema.String)),
-      enableAuditLog: Schema.optional(Schema.Boolean),
-      queryInterpretationConfig: Schema.optional(QueryInterpretationConfig),
-    }),
-  ).annotate({
-    identifier: "SearchApplication",
-  }) as any as Schema.Schema<SearchApplication>;
+export const SearchApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  dataSourceRestrictions: Schema.optional(Schema.Array(DataSourceRestriction)),
+  sourceConfig: Schema.optional(Schema.Array(SourceConfig)),
+  scoringConfig: Schema.optional(ScoringConfig),
+  defaultSortOptions: Schema.optional(SortOptions),
+  defaultFacetOptions: Schema.optional(Schema.Array(FacetOptions)),
+  returnResultThumbnailUrls: Schema.optional(Schema.Boolean),
+  operationIds: Schema.optional(Schema.Array(Schema.String)),
+  enableAuditLog: Schema.optional(Schema.Boolean),
+  queryInterpretationConfig: Schema.optional(QueryInterpretationConfig),
+}).annotate({ identifier: "SearchApplication" });
 
 export interface ListSearchApplicationsResponse {
   searchApplications?: Array<SearchApplication>;
@@ -2084,29 +1668,21 @@ export interface ListSearchApplicationsResponse {
   nextPageToken?: string;
 }
 
-export const ListSearchApplicationsResponse: Schema.Schema<ListSearchApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchApplications: Schema.optional(Schema.Array(SearchApplication)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSearchApplicationsResponse",
-  }) as any as Schema.Schema<ListSearchApplicationsResponse>;
+export const ListSearchApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchApplications: Schema.optional(Schema.Array(SearchApplication)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSearchApplicationsResponse" });
 
 export interface ResetSearchApplicationRequest {
   /** Common debug options. */
   debugOptions?: DebugOptions;
 }
 
-export const ResetSearchApplicationRequest: Schema.Schema<ResetSearchApplicationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "ResetSearchApplicationRequest",
-  }) as any as Schema.Schema<ResetSearchApplicationRequest>;
+export const ResetSearchApplicationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    debugOptions: Schema.optional(DebugOptions),
+  }).annotate({ identifier: "ResetSearchApplicationRequest" });
 
 export interface FreshnessOptions {
   /** This property indicates the freshness level of the object in the index. If set, this property must be a top-level property within the property definitions and it must be a timestamp type or date type. Otherwise, the Indexing API uses updateTime as the freshness indicator. The maximum length is 256 characters. When a property is used to calculate freshness, the value defaults to 2 years from the current time. */
@@ -2115,41 +1691,28 @@ export interface FreshnessOptions {
   freshnessDuration?: string;
 }
 
-export const FreshnessOptions: Schema.Schema<FreshnessOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      freshnessProperty: Schema.optional(Schema.String),
-      freshnessDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FreshnessOptions",
-  }) as any as Schema.Schema<FreshnessOptions>;
+export const FreshnessOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  freshnessProperty: Schema.optional(Schema.String),
+  freshnessDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "FreshnessOptions" });
 
 export interface DisplayedProperty {
   /** The name of the top-level property as defined in a property definition for the object. If the name is not a defined property in the schema, an error is given when attempting to update the schema. */
   propertyName?: string;
 }
 
-export const DisplayedProperty: Schema.Schema<DisplayedProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      propertyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DisplayedProperty",
-  }) as any as Schema.Schema<DisplayedProperty>;
+export const DisplayedProperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  propertyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DisplayedProperty" });
 
 export interface Metaline {
   /** The list of displayed properties for the metaline. The maximum number of properties is 5. */
   properties?: Array<DisplayedProperty>;
 }
 
-export const Metaline: Schema.Schema<Metaline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(Schema.Array(DisplayedProperty)),
-    }),
-  ).annotate({ identifier: "Metaline" }) as any as Schema.Schema<Metaline>;
+export const Metaline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.Array(DisplayedProperty)),
+}).annotate({ identifier: "Metaline" });
 
 export interface ObjectDisplayOptions {
   /** The user friendly label to display in the search result to indicate the type of the item. This is OPTIONAL; if not provided, an object label isn't displayed on the context line of the search results. The maximum length is 64 characters. */
@@ -2158,15 +1721,10 @@ export interface ObjectDisplayOptions {
   metalines?: Array<Metaline>;
 }
 
-export const ObjectDisplayOptions: Schema.Schema<ObjectDisplayOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectDisplayLabel: Schema.optional(Schema.String),
-      metalines: Schema.optional(Schema.Array(Metaline)),
-    }),
-  ).annotate({
-    identifier: "ObjectDisplayOptions",
-  }) as any as Schema.Schema<ObjectDisplayOptions>;
+export const ObjectDisplayOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectDisplayLabel: Schema.optional(Schema.String),
+  metalines: Schema.optional(Schema.Array(Metaline)),
+}).annotate({ identifier: "ObjectDisplayOptions" });
 
 export interface ObjectOptions {
   /** The freshness options for an object. */
@@ -2177,18 +1735,11 @@ export interface ObjectOptions {
   suggestionFilteringOperators?: Array<string>;
 }
 
-export const ObjectOptions: Schema.Schema<ObjectOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      freshnessOptions: Schema.optional(FreshnessOptions),
-      displayOptions: Schema.optional(ObjectDisplayOptions),
-      suggestionFilteringOperators: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "ObjectOptions",
-  }) as any as Schema.Schema<ObjectOptions>;
+export const ObjectOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  freshnessOptions: Schema.optional(FreshnessOptions),
+  displayOptions: Schema.optional(ObjectDisplayOptions),
+  suggestionFilteringOperators: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ObjectOptions" });
 
 export interface IntegerOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the integer property. For example, if operatorName is *priority* and the property's name is *priorityVal*, then queries like *priority:<value>* show results only where the value of the property named *priorityVal* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
@@ -2199,16 +1750,13 @@ export interface IntegerOperatorOptions {
   greaterThanOperatorName?: string;
 }
 
-export const IntegerOperatorOptions: Schema.Schema<IntegerOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      lessThanOperatorName: Schema.optional(Schema.String),
-      greaterThanOperatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IntegerOperatorOptions",
-  }) as any as Schema.Schema<IntegerOperatorOptions>;
+export const IntegerOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operatorName: Schema.optional(Schema.String),
+    lessThanOperatorName: Schema.optional(Schema.String),
+    greaterThanOperatorName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "IntegerOperatorOptions" });
 
 export interface IntegerPropertyOptions {
   /** Used to specify the ordered ranking for the integer. Can only be used if isRepeatable is false. */
@@ -2223,46 +1771,33 @@ export interface IntegerPropertyOptions {
   integerFacetingOptions?: IntegerFacetingOptions;
 }
 
-export const IntegerPropertyOptions: Schema.Schema<IntegerPropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orderedRanking: Schema.optional(Schema.String),
-      minimumValue: Schema.optional(Schema.String),
-      maximumValue: Schema.optional(Schema.String),
-      operatorOptions: Schema.optional(IntegerOperatorOptions),
-      integerFacetingOptions: Schema.optional(IntegerFacetingOptions),
-    }),
-  ).annotate({
-    identifier: "IntegerPropertyOptions",
-  }) as any as Schema.Schema<IntegerPropertyOptions>;
+export const IntegerPropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    orderedRanking: Schema.optional(Schema.String),
+    minimumValue: Schema.optional(Schema.String),
+    maximumValue: Schema.optional(Schema.String),
+    operatorOptions: Schema.optional(IntegerOperatorOptions),
+    integerFacetingOptions: Schema.optional(IntegerFacetingOptions),
+  },
+).annotate({ identifier: "IntegerPropertyOptions" });
 
 export interface DoubleOperatorOptions {
   /** Indicates the operator name required in the query in order to use the double property in sorting or as a facet. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
 
-export const DoubleOperatorOptions: Schema.Schema<DoubleOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DoubleOperatorOptions",
-  }) as any as Schema.Schema<DoubleOperatorOptions>;
+export const DoubleOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DoubleOperatorOptions" });
 
 export interface DoublePropertyOptions {
   /** If set, describes how the double should be used as a search operator. */
   operatorOptions?: DoubleOperatorOptions;
 }
 
-export const DoublePropertyOptions: Schema.Schema<DoublePropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorOptions: Schema.optional(DoubleOperatorOptions),
-    }),
-  ).annotate({
-    identifier: "DoublePropertyOptions",
-  }) as any as Schema.Schema<DoublePropertyOptions>;
+export const DoublePropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorOptions: Schema.optional(DoubleOperatorOptions),
+}).annotate({ identifier: "DoublePropertyOptions" });
 
 export interface TimestampOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the timestamp property. For example, if operatorName is *closedon* and the property's name is *closeDate*, then queries like *closedon:<value>* show results only where the value of the property named *closeDate* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
@@ -2273,58 +1808,44 @@ export interface TimestampOperatorOptions {
   greaterThanOperatorName?: string;
 }
 
-export const TimestampOperatorOptions: Schema.Schema<TimestampOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      lessThanOperatorName: Schema.optional(Schema.String),
-      greaterThanOperatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimestampOperatorOptions",
-  }) as any as Schema.Schema<TimestampOperatorOptions>;
+export const TimestampOperatorOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operatorName: Schema.optional(Schema.String),
+    lessThanOperatorName: Schema.optional(Schema.String),
+    greaterThanOperatorName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimestampOperatorOptions" });
 
 export interface TimestampPropertyOptions {
   /** If set, describes how the timestamp should be used as a search operator. */
   operatorOptions?: TimestampOperatorOptions;
 }
 
-export const TimestampPropertyOptions: Schema.Schema<TimestampPropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorOptions: Schema.optional(TimestampOperatorOptions),
-    }),
-  ).annotate({
-    identifier: "TimestampPropertyOptions",
-  }) as any as Schema.Schema<TimestampPropertyOptions>;
+export const TimestampPropertyOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operatorOptions: Schema.optional(TimestampOperatorOptions),
+  }).annotate({ identifier: "TimestampPropertyOptions" });
 
 export interface BooleanOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the boolean property. For example, if operatorName is *closed* and the property's name is *isClosed*, then queries like *closed:<value>* show results only where the value of the property named *isClosed* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
 
-export const BooleanOperatorOptions: Schema.Schema<BooleanOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BooleanOperatorOptions",
-  }) as any as Schema.Schema<BooleanOperatorOptions>;
+export const BooleanOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operatorName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BooleanOperatorOptions" });
 
 export interface BooleanPropertyOptions {
   /** If set, describes how the boolean should be used as a search operator. */
   operatorOptions?: BooleanOperatorOptions;
 }
 
-export const BooleanPropertyOptions: Schema.Schema<BooleanPropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorOptions: Schema.optional(BooleanOperatorOptions),
-    }),
-  ).annotate({
-    identifier: "BooleanPropertyOptions",
-  }) as any as Schema.Schema<BooleanPropertyOptions>;
+export const BooleanPropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operatorOptions: Schema.optional(BooleanOperatorOptions),
+  },
+).annotate({ identifier: "BooleanPropertyOptions" });
 
 export interface ObjectPropertyOptions {
   /** The properties of the sub-object. These properties represent a nested object. For example, if this property represents a postal address, the subobjectProperties might be named *street*, *city*, and *state*. The maximum number of elements is 1000. */
@@ -2347,29 +1868,19 @@ export interface EnumValuePair {
   integerValue?: number;
 }
 
-export const EnumValuePair: Schema.Schema<EnumValuePair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      integerValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EnumValuePair",
-  }) as any as Schema.Schema<EnumValuePair>;
+export const EnumValuePair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stringValue: Schema.optional(Schema.String),
+  integerValue: Schema.optional(Schema.Number),
+}).annotate({ identifier: "EnumValuePair" });
 
 export interface EnumOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the enum property. For example, if operatorName is *priority* and the property's name is *priorityVal*, then queries like *priority:<value>* show results only where the value of the property named *priorityVal* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
 
-export const EnumOperatorOptions: Schema.Schema<EnumOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnumOperatorOptions",
-  }) as any as Schema.Schema<EnumOperatorOptions>;
+export const EnumOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnumOperatorOptions" });
 
 export interface EnumPropertyOptions {
   /** The list of possible values for the enumeration property. All EnumValuePairs must provide a string value. If you specify an integer value for one EnumValuePair, then all possible EnumValuePairs must provide an integer value. Both the string value and integer value must be unique over all possible values. Once set, possible values cannot be removed or modified. If you supply an ordered ranking and think you might insert additional enum values in the future, leave gaps in the initial integer values to allow adding a value in between previously registered values. The maximum number of elements is 100. */
@@ -2380,16 +1891,11 @@ export interface EnumPropertyOptions {
   operatorOptions?: EnumOperatorOptions;
 }
 
-export const EnumPropertyOptions: Schema.Schema<EnumPropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      possibleValues: Schema.optional(Schema.Array(EnumValuePair)),
-      orderedRanking: Schema.optional(Schema.String),
-      operatorOptions: Schema.optional(EnumOperatorOptions),
-    }),
-  ).annotate({
-    identifier: "EnumPropertyOptions",
-  }) as any as Schema.Schema<EnumPropertyOptions>;
+export const EnumPropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  possibleValues: Schema.optional(Schema.Array(EnumValuePair)),
+  orderedRanking: Schema.optional(Schema.String),
+  operatorOptions: Schema.optional(EnumOperatorOptions),
+}).annotate({ identifier: "EnumPropertyOptions" });
 
 export interface DateOperatorOptions {
   /** Indicates the actual string required in the query in order to isolate the date property. For example, suppose an issue tracking schema object has a property named *closeDate* that specifies an operator with an operatorName of *closedon*. For searches on that data, queries like *closedon:<value>* show results only where the value of the *closeDate* property matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the indexed datasource. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
@@ -2400,44 +1906,29 @@ export interface DateOperatorOptions {
   greaterThanOperatorName?: string;
 }
 
-export const DateOperatorOptions: Schema.Schema<DateOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      lessThanOperatorName: Schema.optional(Schema.String),
-      greaterThanOperatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DateOperatorOptions",
-  }) as any as Schema.Schema<DateOperatorOptions>;
+export const DateOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+  lessThanOperatorName: Schema.optional(Schema.String),
+  greaterThanOperatorName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DateOperatorOptions" });
 
 export interface DatePropertyOptions {
   /** If set, describes how the date should be used as a search operator. */
   operatorOptions?: DateOperatorOptions;
 }
 
-export const DatePropertyOptions: Schema.Schema<DatePropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorOptions: Schema.optional(DateOperatorOptions),
-    }),
-  ).annotate({
-    identifier: "DatePropertyOptions",
-  }) as any as Schema.Schema<DatePropertyOptions>;
+export const DatePropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorOptions: Schema.optional(DateOperatorOptions),
+}).annotate({ identifier: "DatePropertyOptions" });
 
 export interface RetrievalImportance {
   /** Indicates the ranking importance given to property when it is matched during retrieval. Once set, the token importance of a property cannot be changed. */
   importance?: "DEFAULT" | "HIGHEST" | "HIGH" | "LOW" | "NONE" | (string & {});
 }
 
-export const RetrievalImportance: Schema.Schema<RetrievalImportance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      importance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetrievalImportance",
-  }) as any as Schema.Schema<RetrievalImportance>;
+export const RetrievalImportance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  importance: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetrievalImportance" });
 
 export interface TextOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the text property. For example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:<value>* show results only where the value of the property named *subjectLine* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any text properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
@@ -2446,15 +1937,10 @@ export interface TextOperatorOptions {
   exactMatchWithOperator?: boolean;
 }
 
-export const TextOperatorOptions: Schema.Schema<TextOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      exactMatchWithOperator: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TextOperatorOptions",
-  }) as any as Schema.Schema<TextOperatorOptions>;
+export const TextOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+  exactMatchWithOperator: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TextOperatorOptions" });
 
 export interface TextPropertyOptions {
   /** Indicates the search quality importance of the tokens within the field when used for retrieval. */
@@ -2463,29 +1949,19 @@ export interface TextPropertyOptions {
   operatorOptions?: TextOperatorOptions;
 }
 
-export const TextPropertyOptions: Schema.Schema<TextPropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retrievalImportance: Schema.optional(RetrievalImportance),
-      operatorOptions: Schema.optional(TextOperatorOptions),
-    }),
-  ).annotate({
-    identifier: "TextPropertyOptions",
-  }) as any as Schema.Schema<TextPropertyOptions>;
+export const TextPropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retrievalImportance: Schema.optional(RetrievalImportance),
+  operatorOptions: Schema.optional(TextOperatorOptions),
+}).annotate({ identifier: "TextPropertyOptions" });
 
 export interface HtmlOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the html property. For example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:<value>* show results only where the value of the property named *subjectLine* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator return all items where *<value>* matches the value of any html properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
 
-export const HtmlOperatorOptions: Schema.Schema<HtmlOperatorOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HtmlOperatorOptions",
-  }) as any as Schema.Schema<HtmlOperatorOptions>;
+export const HtmlOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+}).annotate({ identifier: "HtmlOperatorOptions" });
 
 export interface HtmlPropertyOptions {
   /** Indicates the search quality importance of the tokens within the field when used for retrieval. Can only be set to DEFAULT or NONE. */
@@ -2494,29 +1970,21 @@ export interface HtmlPropertyOptions {
   operatorOptions?: HtmlOperatorOptions;
 }
 
-export const HtmlPropertyOptions: Schema.Schema<HtmlPropertyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retrievalImportance: Schema.optional(RetrievalImportance),
-      operatorOptions: Schema.optional(HtmlOperatorOptions),
-    }),
-  ).annotate({
-    identifier: "HtmlPropertyOptions",
-  }) as any as Schema.Schema<HtmlPropertyOptions>;
+export const HtmlPropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retrievalImportance: Schema.optional(RetrievalImportance),
+  operatorOptions: Schema.optional(HtmlOperatorOptions),
+}).annotate({ identifier: "HtmlPropertyOptions" });
 
 export interface PropertyDisplayOptions {
   /** The user friendly label for the property that is used if the property is specified to be displayed in ObjectDisplayOptions. If provided, the display label is shown in front of the property values when the property is part of the object display options. For example, if the property value is '1', the value by itself may not be useful context for the user. If the display name given was 'priority', then the user sees 'priority : 1' in the search results which provides clear context to search users. This is OPTIONAL; if not given, only the property values are displayed. The maximum length is 64 characters. */
   displayLabel?: string;
 }
 
-export const PropertyDisplayOptions: Schema.Schema<PropertyDisplayOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PropertyDisplayOptions",
-  }) as any as Schema.Schema<PropertyDisplayOptions>;
+export const PropertyDisplayOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    displayLabel: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "PropertyDisplayOptions" });
 
 export interface PropertyDefinition {
   /** The name of the property. Item indexing requests sent to the Indexing API should set the property name equal to this value. For example, if name is *subject_line*, then indexing requests for document items with subject fields should set the name for that field equal to *subject_line*. Use the name as the identifier for the object property. Once registered as a property for an object, you cannot re-use this name for another property within that object. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The maximum length is 256 characters. */
@@ -2580,16 +2048,11 @@ export interface ObjectDefinition {
   propertyDefinitions?: Array<PropertyDefinition>;
 }
 
-export const ObjectDefinition: Schema.Schema<ObjectDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      options: Schema.optional(ObjectOptions),
-      propertyDefinitions: Schema.optional(Schema.Array(PropertyDefinition)),
-    }),
-  ).annotate({
-    identifier: "ObjectDefinition",
-  }) as any as Schema.Schema<ObjectDefinition>;
+export const ObjectDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  options: Schema.optional(ObjectOptions),
+  propertyDefinitions: Schema.optional(Schema.Array(PropertyDefinition)),
+}).annotate({ identifier: "ObjectDefinition" });
 
 export interface Cloudsearch_Schema {
   /** The list of top-level objects for the data source. The maximum number of elements is 10. */
@@ -2598,15 +2061,10 @@ export interface Cloudsearch_Schema {
   operationIds?: Array<string>;
 }
 
-export const Cloudsearch_Schema: Schema.Schema<Cloudsearch_Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectDefinitions: Schema.optional(Schema.Array(ObjectDefinition)),
-      operationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Cloudsearch_Schema",
-  }) as any as Schema.Schema<Cloudsearch_Schema>;
+export const Cloudsearch_Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectDefinitions: Schema.optional(Schema.Array(ObjectDefinition)),
+  operationIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Cloudsearch_Schema" });
 
 export interface UpdateSchemaRequest {
   /** If true, the schema will be checked for validity, but will not be registered with the data source, even if valid. */
@@ -2617,16 +2075,11 @@ export interface UpdateSchemaRequest {
   debugOptions?: DebugOptions;
 }
 
-export const UpdateSchemaRequest: Schema.Schema<UpdateSchemaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      schema: Schema.optional(Cloudsearch_Schema),
-      debugOptions: Schema.optional(DebugOptions),
-    }),
-  ).annotate({
-    identifier: "UpdateSchemaRequest",
-  }) as any as Schema.Schema<UpdateSchemaRequest>;
+export const UpdateSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validateOnly: Schema.optional(Schema.Boolean),
+  schema: Schema.optional(Cloudsearch_Schema),
+  debugOptions: Schema.optional(DebugOptions),
+}).annotate({ identifier: "UpdateSchemaRequest" });
 
 export interface DataSource {
   /** The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource. */
@@ -2649,20 +2102,17 @@ export interface DataSource {
   operationIds?: Array<string>;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      shortName: Schema.optional(Schema.String),
-      indexingServiceAccounts: Schema.optional(Schema.Array(Schema.String)),
-      disableServing: Schema.optional(Schema.Boolean),
-      disableModifications: Schema.optional(Schema.Boolean),
-      itemsVisibility: Schema.optional(Schema.Array(GSuitePrincipal)),
-      returnThumbnailUrls: Schema.optional(Schema.Boolean),
-      operationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "DataSource" }) as any as Schema.Schema<DataSource>;
+export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  shortName: Schema.optional(Schema.String),
+  indexingServiceAccounts: Schema.optional(Schema.Array(Schema.String)),
+  disableServing: Schema.optional(Schema.Boolean),
+  disableModifications: Schema.optional(Schema.Boolean),
+  itemsVisibility: Schema.optional(Schema.Array(GSuitePrincipal)),
+  returnThumbnailUrls: Schema.optional(Schema.Boolean),
+  operationIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DataSource" });
 
 export interface UpdateDataSourceRequest {
   source?: DataSource;
@@ -2672,16 +2122,12 @@ export interface UpdateDataSourceRequest {
   updateMask?: string;
 }
 
-export const UpdateDataSourceRequest: Schema.Schema<UpdateDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(DataSource),
-      debugOptions: Schema.optional(DebugOptions),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateDataSourceRequest",
-  }) as any as Schema.Schema<UpdateDataSourceRequest>;
+export const UpdateDataSourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(DataSource),
+    debugOptions: Schema.optional(DebugOptions),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateDataSourceRequest" });
 
 export interface ListDataSourceResponse {
   sources?: Array<DataSource>;
@@ -2689,15 +2135,12 @@ export interface ListDataSourceResponse {
   nextPageToken?: string;
 }
 
-export const ListDataSourceResponse: Schema.Schema<ListDataSourceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sources: Schema.optional(Schema.Array(DataSource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDataSourceResponse",
-  }) as any as Schema.Schema<ListDataSourceResponse>;
+export const ListDataSourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sources: Schema.optional(Schema.Array(DataSource)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListDataSourceResponse" });
 
 export interface ItemCountByStatus {
   /** Status of the items. */
@@ -2714,16 +2157,11 @@ export interface ItemCountByStatus {
   indexedItemsCount?: string;
 }
 
-export const ItemCountByStatus: Schema.Schema<ItemCountByStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusCode: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      indexedItemsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ItemCountByStatus",
-  }) as any as Schema.Schema<ItemCountByStatus>;
+export const ItemCountByStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusCode: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+  indexedItemsCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "ItemCountByStatus" });
 
 export interface DataSourceIndexStats {
   /** The date for which index stats were calculated. If the date of request is not the current date then stats calculated on the next day are returned. Stats are calculated close to mid night in this case. If date of request is current date, then real time stats are returned. */
@@ -2732,15 +2170,10 @@ export interface DataSourceIndexStats {
   itemCountByStatus?: Array<ItemCountByStatus>;
 }
 
-export const DataSourceIndexStats: Schema.Schema<DataSourceIndexStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      itemCountByStatus: Schema.optional(Schema.Array(ItemCountByStatus)),
-    }),
-  ).annotate({
-    identifier: "DataSourceIndexStats",
-  }) as any as Schema.Schema<DataSourceIndexStats>;
+export const DataSourceIndexStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Cloudsearch_Date),
+  itemCountByStatus: Schema.optional(Schema.Array(ItemCountByStatus)),
+}).annotate({ identifier: "DataSourceIndexStats" });
 
 export interface GetDataSourceIndexStatsResponse {
   /** Summary of indexed item counts, one for each day in the requested range. */
@@ -2749,15 +2182,11 @@ export interface GetDataSourceIndexStatsResponse {
   averageIndexedItemCount?: string;
 }
 
-export const GetDataSourceIndexStatsResponse: Schema.Schema<GetDataSourceIndexStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(DataSourceIndexStats)),
-      averageIndexedItemCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetDataSourceIndexStatsResponse",
-  }) as any as Schema.Schema<GetDataSourceIndexStatsResponse>;
+export const GetDataSourceIndexStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(DataSourceIndexStats)),
+    averageIndexedItemCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetDataSourceIndexStatsResponse" });
 
 export interface CustomerIndexStats {
   /** The date for which statistics were calculated. */
@@ -2766,15 +2195,10 @@ export interface CustomerIndexStats {
   itemCountByStatus?: Array<ItemCountByStatus>;
 }
 
-export const CustomerIndexStats: Schema.Schema<CustomerIndexStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      itemCountByStatus: Schema.optional(Schema.Array(ItemCountByStatus)),
-    }),
-  ).annotate({
-    identifier: "CustomerIndexStats",
-  }) as any as Schema.Schema<CustomerIndexStats>;
+export const CustomerIndexStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Cloudsearch_Date),
+  itemCountByStatus: Schema.optional(Schema.Array(ItemCountByStatus)),
+}).annotate({ identifier: "CustomerIndexStats" });
 
 export interface GetCustomerIndexStatsResponse {
   /** Summary of indexed item counts, one for each day in the requested range. */
@@ -2783,15 +2207,11 @@ export interface GetCustomerIndexStatsResponse {
   averageIndexedItemCount?: string;
 }
 
-export const GetCustomerIndexStatsResponse: Schema.Schema<GetCustomerIndexStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(CustomerIndexStats)),
-      averageIndexedItemCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetCustomerIndexStatsResponse",
-  }) as any as Schema.Schema<GetCustomerIndexStatsResponse>;
+export const GetCustomerIndexStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(CustomerIndexStats)),
+    averageIndexedItemCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetCustomerIndexStatsResponse" });
 
 export interface QueryCountByStatus {
   /** This represents the http status code. */
@@ -2799,15 +2219,10 @@ export interface QueryCountByStatus {
   count?: string;
 }
 
-export const QueryCountByStatus: Schema.Schema<QueryCountByStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusCode: Schema.optional(Schema.Number),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryCountByStatus",
-  }) as any as Schema.Schema<QueryCountByStatus>;
+export const QueryCountByStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusCode: Schema.optional(Schema.Number),
+  count: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryCountByStatus" });
 
 export interface SearchApplicationQueryStats {
   /** The date for which query stats were calculated. Stats calculated on the next day close to midnight are returned. */
@@ -2815,15 +2230,11 @@ export interface SearchApplicationQueryStats {
   queryCountByStatus?: Array<QueryCountByStatus>;
 }
 
-export const SearchApplicationQueryStats: Schema.Schema<SearchApplicationQueryStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      queryCountByStatus: Schema.optional(Schema.Array(QueryCountByStatus)),
-    }),
-  ).annotate({
-    identifier: "SearchApplicationQueryStats",
-  }) as any as Schema.Schema<SearchApplicationQueryStats>;
+export const SearchApplicationQueryStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(Cloudsearch_Date),
+    queryCountByStatus: Schema.optional(Schema.Array(QueryCountByStatus)),
+  }).annotate({ identifier: "SearchApplicationQueryStats" });
 
 export interface GetSearchApplicationQueryStatsResponse {
   /** Query stats per date for a search application. */
@@ -2832,15 +2243,11 @@ export interface GetSearchApplicationQueryStatsResponse {
   totalQueryCount?: string;
 }
 
-export const GetSearchApplicationQueryStatsResponse: Schema.Schema<GetSearchApplicationQueryStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(SearchApplicationQueryStats)),
-      totalQueryCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetSearchApplicationQueryStatsResponse",
-  }) as any as Schema.Schema<GetSearchApplicationQueryStatsResponse>;
+export const GetSearchApplicationQueryStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(SearchApplicationQueryStats)),
+    totalQueryCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetSearchApplicationQueryStatsResponse" });
 
 export interface CustomerQueryStats {
   /** The date for which query stats were calculated. Stats calculated on the next day close to midnight are returned. */
@@ -2848,15 +2255,10 @@ export interface CustomerQueryStats {
   queryCountByStatus?: Array<QueryCountByStatus>;
 }
 
-export const CustomerQueryStats: Schema.Schema<CustomerQueryStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      queryCountByStatus: Schema.optional(Schema.Array(QueryCountByStatus)),
-    }),
-  ).annotate({
-    identifier: "CustomerQueryStats",
-  }) as any as Schema.Schema<CustomerQueryStats>;
+export const CustomerQueryStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Cloudsearch_Date),
+  queryCountByStatus: Schema.optional(Schema.Array(QueryCountByStatus)),
+}).annotate({ identifier: "CustomerQueryStats" });
 
 export interface GetCustomerQueryStatsResponse {
   stats?: Array<CustomerQueryStats>;
@@ -2864,15 +2266,11 @@ export interface GetCustomerQueryStatsResponse {
   totalQueryCount?: string;
 }
 
-export const GetCustomerQueryStatsResponse: Schema.Schema<GetCustomerQueryStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(CustomerQueryStats)),
-      totalQueryCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetCustomerQueryStatsResponse",
-  }) as any as Schema.Schema<GetCustomerQueryStatsResponse>;
+export const GetCustomerQueryStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(CustomerQueryStats)),
+    totalQueryCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetCustomerQueryStatsResponse" });
 
 export interface SearchApplicationUserStats {
   /** The date for which session stats were calculated. Stats calculated on the next day close to midnight are returned. */
@@ -2885,30 +2283,22 @@ export interface SearchApplicationUserStats {
   thirtyDaysActiveUsersCount?: string;
 }
 
-export const SearchApplicationUserStats: Schema.Schema<SearchApplicationUserStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      oneDayActiveUsersCount: Schema.optional(Schema.String),
-      sevenDaysActiveUsersCount: Schema.optional(Schema.String),
-      thirtyDaysActiveUsersCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchApplicationUserStats",
-  }) as any as Schema.Schema<SearchApplicationUserStats>;
+export const SearchApplicationUserStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(Cloudsearch_Date),
+    oneDayActiveUsersCount: Schema.optional(Schema.String),
+    sevenDaysActiveUsersCount: Schema.optional(Schema.String),
+    thirtyDaysActiveUsersCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchApplicationUserStats" });
 
 export interface GetSearchApplicationUserStatsResponse {
   stats?: Array<SearchApplicationUserStats>;
 }
 
-export const GetSearchApplicationUserStatsResponse: Schema.Schema<GetSearchApplicationUserStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(SearchApplicationUserStats)),
-    }),
-  ).annotate({
-    identifier: "GetSearchApplicationUserStatsResponse",
-  }) as any as Schema.Schema<GetSearchApplicationUserStatsResponse>;
+export const GetSearchApplicationUserStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(SearchApplicationUserStats)),
+  }).annotate({ identifier: "GetSearchApplicationUserStatsResponse" });
 
 export interface CustomerUserStats {
   /** The date for which session stats were calculated. Stats calculated on the next day close to midnight are returned. */
@@ -2921,30 +2311,21 @@ export interface CustomerUserStats {
   thirtyDaysActiveUsersCount?: string;
 }
 
-export const CustomerUserStats: Schema.Schema<CustomerUserStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      oneDayActiveUsersCount: Schema.optional(Schema.String),
-      sevenDaysActiveUsersCount: Schema.optional(Schema.String),
-      thirtyDaysActiveUsersCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerUserStats",
-  }) as any as Schema.Schema<CustomerUserStats>;
+export const CustomerUserStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Cloudsearch_Date),
+  oneDayActiveUsersCount: Schema.optional(Schema.String),
+  sevenDaysActiveUsersCount: Schema.optional(Schema.String),
+  thirtyDaysActiveUsersCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerUserStats" });
 
 export interface GetCustomerUserStatsResponse {
   stats?: Array<CustomerUserStats>;
 }
 
-export const GetCustomerUserStatsResponse: Schema.Schema<GetCustomerUserStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(CustomerUserStats)),
-    }),
-  ).annotate({
-    identifier: "GetCustomerUserStatsResponse",
-  }) as any as Schema.Schema<GetCustomerUserStatsResponse>;
+export const GetCustomerUserStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(CustomerUserStats)),
+  }).annotate({ identifier: "GetCustomerUserStatsResponse" });
 
 export interface SearchApplicationSessionStats {
   /** The date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned. */
@@ -2953,28 +2334,20 @@ export interface SearchApplicationSessionStats {
   searchSessionsCount?: string;
 }
 
-export const SearchApplicationSessionStats: Schema.Schema<SearchApplicationSessionStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      searchSessionsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchApplicationSessionStats",
-  }) as any as Schema.Schema<SearchApplicationSessionStats>;
+export const SearchApplicationSessionStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(Cloudsearch_Date),
+    searchSessionsCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchApplicationSessionStats" });
 
 export interface GetSearchApplicationSessionStatsResponse {
   stats?: Array<SearchApplicationSessionStats>;
 }
 
-export const GetSearchApplicationSessionStatsResponse: Schema.Schema<GetSearchApplicationSessionStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(SearchApplicationSessionStats)),
-    }),
-  ).annotate({
-    identifier: "GetSearchApplicationSessionStatsResponse",
-  }) as any as Schema.Schema<GetSearchApplicationSessionStatsResponse>;
+export const GetSearchApplicationSessionStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(SearchApplicationSessionStats)),
+  }).annotate({ identifier: "GetSearchApplicationSessionStatsResponse" });
 
 export interface CustomerSessionStats {
   /** The date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned. */
@@ -2983,28 +2356,19 @@ export interface CustomerSessionStats {
   searchSessionsCount?: string;
 }
 
-export const CustomerSessionStats: Schema.Schema<CustomerSessionStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      searchSessionsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerSessionStats",
-  }) as any as Schema.Schema<CustomerSessionStats>;
+export const CustomerSessionStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Cloudsearch_Date),
+  searchSessionsCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerSessionStats" });
 
 export interface GetCustomerSessionStatsResponse {
   stats?: Array<CustomerSessionStats>;
 }
 
-export const GetCustomerSessionStatsResponse: Schema.Schema<GetCustomerSessionStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(CustomerSessionStats)),
-    }),
-  ).annotate({
-    identifier: "GetCustomerSessionStatsResponse",
-  }) as any as Schema.Schema<GetCustomerSessionStatsResponse>;
+export const GetCustomerSessionStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(CustomerSessionStats)),
+  }).annotate({ identifier: "GetCustomerSessionStatsResponse" });
 
 export interface CustomerSearchApplicationStats {
   /** The date for which search application stats were calculated. */
@@ -3013,15 +2377,11 @@ export interface CustomerSearchApplicationStats {
   count?: string;
 }
 
-export const CustomerSearchApplicationStats: Schema.Schema<CustomerSearchApplicationStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Cloudsearch_Date),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerSearchApplicationStats",
-  }) as any as Schema.Schema<CustomerSearchApplicationStats>;
+export const CustomerSearchApplicationStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(Cloudsearch_Date),
+    count: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerSearchApplicationStats" });
 
 export interface GetCustomerSearchApplicationStatsResponse {
   /** Search application stats by date. */
@@ -3030,15 +2390,11 @@ export interface GetCustomerSearchApplicationStatsResponse {
   averageSearchApplicationCount?: string;
 }
 
-export const GetCustomerSearchApplicationStatsResponse: Schema.Schema<GetCustomerSearchApplicationStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(Schema.Array(CustomerSearchApplicationStats)),
-      averageSearchApplicationCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetCustomerSearchApplicationStatsResponse",
-  }) as any as Schema.Schema<GetCustomerSearchApplicationStatsResponse>;
+export const GetCustomerSearchApplicationStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(Schema.Array(CustomerSearchApplicationStats)),
+    averageSearchApplicationCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetCustomerSearchApplicationStatsResponse" });
 
 export interface UnmappedIdentity {
   /** The resource name for an external user. */
@@ -3054,15 +2410,10 @@ export interface UnmappedIdentity {
     | (string & {});
 }
 
-export const UnmappedIdentity: Schema.Schema<UnmappedIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalIdentity: Schema.optional(Principal),
-      resolutionStatusCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnmappedIdentity",
-  }) as any as Schema.Schema<UnmappedIdentity>;
+export const UnmappedIdentity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  externalIdentity: Schema.optional(Principal),
+  resolutionStatusCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnmappedIdentity" });
 
 export interface ListUnmappedIdentitiesResponse {
   unmappedIdentities?: Array<UnmappedIdentity>;
@@ -3070,15 +2421,11 @@ export interface ListUnmappedIdentitiesResponse {
   nextPageToken?: string;
 }
 
-export const ListUnmappedIdentitiesResponse: Schema.Schema<ListUnmappedIdentitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unmappedIdentities: Schema.optional(Schema.Array(UnmappedIdentity)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUnmappedIdentitiesResponse",
-  }) as any as Schema.Schema<ListUnmappedIdentitiesResponse>;
+export const ListUnmappedIdentitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unmappedIdentities: Schema.optional(Schema.Array(UnmappedIdentity)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUnmappedIdentitiesResponse" });
 
 export interface ListItemNamesForUnmappedIdentityResponse {
   itemNames?: Array<string>;
@@ -3086,27 +2433,20 @@ export interface ListItemNamesForUnmappedIdentityResponse {
   nextPageToken?: string;
 }
 
-export const ListItemNamesForUnmappedIdentityResponse: Schema.Schema<ListItemNamesForUnmappedIdentityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      itemNames: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListItemNamesForUnmappedIdentityResponse",
-  }) as any as Schema.Schema<ListItemNamesForUnmappedIdentityResponse>;
+export const ListItemNamesForUnmappedIdentityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    itemNames: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListItemNamesForUnmappedIdentityResponse" });
 
 export interface Media {
   /** Name of the media resource. */
   resourceName?: string;
 }
 
-export const Media: Schema.Schema<Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Media" }) as any as Schema.Schema<Media>;
+export const Media = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Media" });
 
 export interface DriveMimeTypeRestrict {
   type?:
@@ -3128,27 +2468,17 @@ export interface DriveMimeTypeRestrict {
     | (string & {});
 }
 
-export const DriveMimeTypeRestrict: Schema.Schema<DriveMimeTypeRestrict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DriveMimeTypeRestrict",
-  }) as any as Schema.Schema<DriveMimeTypeRestrict>;
+export const DriveMimeTypeRestrict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveMimeTypeRestrict" });
 
 export interface DriveLocationRestrict {
   type?: "UNSPECIFIED" | "TRASHED" | "STARRED" | (string & {});
 }
 
-export const DriveLocationRestrict: Schema.Schema<DriveLocationRestrict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DriveLocationRestrict",
-  }) as any as Schema.Schema<DriveLocationRestrict>;
+export const DriveLocationRestrict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveLocationRestrict" });
 
 export interface DriveTimeSpanRestrict {
   type?:
@@ -3161,14 +2491,9 @@ export interface DriveTimeSpanRestrict {
     | (string & {});
 }
 
-export const DriveTimeSpanRestrict: Schema.Schema<DriveTimeSpanRestrict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DriveTimeSpanRestrict",
-  }) as any as Schema.Schema<DriveTimeSpanRestrict>;
+export const DriveTimeSpanRestrict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveTimeSpanRestrict" });
 
 export interface DriveFollowUpRestrict {
   type?:
@@ -3178,14 +2503,9 @@ export interface DriveFollowUpRestrict {
     | (string & {});
 }
 
-export const DriveFollowUpRestrict: Schema.Schema<DriveFollowUpRestrict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DriveFollowUpRestrict",
-  }) as any as Schema.Schema<DriveFollowUpRestrict>;
+export const DriveFollowUpRestrict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveFollowUpRestrict" });
 
 export interface RestrictItem {
   /** The search restrict (e.g. "after:2017-09-11 before:2017-09-12"). */
@@ -3197,30 +2517,22 @@ export interface RestrictItem {
   driveFollowUpRestrict?: DriveFollowUpRestrict;
 }
 
-export const RestrictItem: Schema.Schema<RestrictItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchOperator: Schema.optional(Schema.String),
-      driveMimeTypeRestrict: Schema.optional(DriveMimeTypeRestrict),
-      driveLocationRestrict: Schema.optional(DriveLocationRestrict),
-      driveTimeSpanRestrict: Schema.optional(DriveTimeSpanRestrict),
-      driveFollowUpRestrict: Schema.optional(DriveFollowUpRestrict),
-    }),
-  ).annotate({
-    identifier: "RestrictItem",
-  }) as any as Schema.Schema<RestrictItem>;
+export const RestrictItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  searchOperator: Schema.optional(Schema.String),
+  driveMimeTypeRestrict: Schema.optional(DriveMimeTypeRestrict),
+  driveLocationRestrict: Schema.optional(DriveLocationRestrict),
+  driveTimeSpanRestrict: Schema.optional(DriveTimeSpanRestrict),
+  driveFollowUpRestrict: Schema.optional(DriveFollowUpRestrict),
+}).annotate({ identifier: "RestrictItem" });
 
 export interface QueryItem {
   /** True if the text was generated by means other than a previous user search. */
   isSynthetic?: boolean;
 }
 
-export const QueryItem: Schema.Schema<QueryItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isSynthetic: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "QueryItem" }) as any as Schema.Schema<QueryItem>;
+export const QueryItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isSynthetic: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "QueryItem" });
 
 export interface EnterpriseTopazSidekickRankingParams {
   /** The start-time that this object will bid-for If the type is marked as FIXED, then this start-time will persist after bidding. If the type is marked as FLEXIBLE, then it will occur at the given time or sometime after the requested time. Expected to be set for all types. */
@@ -3244,33 +2556,25 @@ export interface EnterpriseTopazSidekickRankingParams {
   score?: number;
 }
 
-export const EnterpriseTopazSidekickRankingParams: Schema.Schema<EnterpriseTopazSidekickRankingParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTimeMs: Schema.optional(Schema.String),
-      endTimeMs: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.String),
-      spanMs: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickRankingParams",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickRankingParams>;
+export const EnterpriseTopazSidekickRankingParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTimeMs: Schema.optional(Schema.String),
+    endTimeMs: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.String),
+    spanMs: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EnterpriseTopazSidekickRankingParams" });
 
 export interface EnterpriseTopazSidekickNlpMetadata {
   /** Confidence of the interpretation that generated this card. */
   confidence?: number;
 }
 
-export const EnterpriseTopazSidekickNlpMetadata: Schema.Schema<EnterpriseTopazSidekickNlpMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickNlpMetadata",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickNlpMetadata>;
+export const EnterpriseTopazSidekickNlpMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EnterpriseTopazSidekickNlpMetadata" });
 
 export interface EnterpriseTopazSidekickCardMetadata {
   /** Chronology. */
@@ -3301,20 +2605,16 @@ export interface EnterpriseTopazSidekickCardMetadata {
   nlpMetadata?: EnterpriseTopazSidekickNlpMetadata;
 }
 
-export const EnterpriseTopazSidekickCardMetadata: Schema.Schema<EnterpriseTopazSidekickCardMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chronology: Schema.optional(Schema.String),
-      renderMode: Schema.optional(Schema.String),
-      cardId: Schema.optional(Schema.String),
-      rankingParams: Schema.optional(EnterpriseTopazSidekickRankingParams),
-      debugInfo: Schema.optional(Schema.String),
-      cardCategory: Schema.optional(Schema.String),
-      nlpMetadata: Schema.optional(EnterpriseTopazSidekickNlpMetadata),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickCardMetadata",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickCardMetadata>;
+export const EnterpriseTopazSidekickCardMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chronology: Schema.optional(Schema.String),
+    renderMode: Schema.optional(Schema.String),
+    cardId: Schema.optional(Schema.String),
+    rankingParams: Schema.optional(EnterpriseTopazSidekickRankingParams),
+    debugInfo: Schema.optional(Schema.String),
+    cardCategory: Schema.optional(Schema.String),
+    nlpMetadata: Schema.optional(EnterpriseTopazSidekickNlpMetadata),
+  }).annotate({ identifier: "EnterpriseTopazSidekickCardMetadata" });
 
 export interface EnterpriseTopazSidekickPerson {
   /** Gaia id. */
@@ -3335,35 +2635,27 @@ export interface EnterpriseTopazSidekickPerson {
   obfuscatedGaiaId?: string;
 }
 
-export const EnterpriseTopazSidekickPerson: Schema.Schema<EnterpriseTopazSidekickPerson> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gaiaId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      attendingStatus: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-      isGroup: Schema.optional(Schema.Boolean),
-      affinityLevel: Schema.optional(Schema.String),
-      obfuscatedGaiaId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickPerson",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPerson>;
+export const EnterpriseTopazSidekickPerson =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gaiaId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    attendingStatus: Schema.optional(Schema.String),
+    photoUrl: Schema.optional(Schema.String),
+    isGroup: Schema.optional(Schema.Boolean),
+    affinityLevel: Schema.optional(Schema.String),
+    obfuscatedGaiaId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickPerson" });
 
 export interface EnterpriseTopazSidekickCommonPersonBirthday {
   /** Unstructured birthday. */
   value?: string;
 }
 
-export const EnterpriseTopazSidekickCommonPersonBirthday: Schema.Schema<EnterpriseTopazSidekickCommonPersonBirthday> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickCommonPersonBirthday",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickCommonPersonBirthday>;
+export const EnterpriseTopazSidekickCommonPersonBirthday =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickCommonPersonBirthday" });
 
 export interface EnterpriseTopazSidekickCommonPerson {
   /** Email. */
@@ -3453,22 +2745,20 @@ export interface EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata {
   isPrivate?: boolean;
 }
 
-export const EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata: Schema.Schema<EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      owner: Schema.optional(EnterpriseTopazSidekickCommonPerson),
-      lastViewTimeMs: Schema.optional(Schema.String),
-      lastEditTimeMs: Schema.optional(Schema.String),
-      lastUpdatedTimeMs: Schema.optional(Schema.String),
-      lastCommentTimeMs: Schema.optional(Schema.String),
-      documentId: Schema.optional(Schema.String),
-      lastModificationTimeMillis: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      isPrivate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    owner: Schema.optional(EnterpriseTopazSidekickCommonPerson),
+    lastViewTimeMs: Schema.optional(Schema.String),
+    lastEditTimeMs: Schema.optional(Schema.String),
+    lastUpdatedTimeMs: Schema.optional(Schema.String),
+    lastCommentTimeMs: Schema.optional(Schema.String),
+    documentId: Schema.optional(Schema.String),
+    lastModificationTimeMillis: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    isPrivate: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata>;
+  });
 
 export interface EnterpriseTopazSidekickCommonDocumentJustification {
   /** A locale aware message that explains why this document was selected. */
@@ -3491,29 +2781,23 @@ export interface EnterpriseTopazSidekickCommonDocumentJustification {
     | (string & {});
 }
 
-export const EnterpriseTopazSidekickCommonDocumentJustification: Schema.Schema<EnterpriseTopazSidekickCommonDocumentJustification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      justification: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickCommonDocumentJustification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    justification: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickCommonDocumentJustification",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickCommonDocumentJustification>;
+  });
 
 export interface EnterpriseTopazSidekickCommonDebugInfo {
   /** Debug message. */
   message?: string;
 }
 
-export const EnterpriseTopazSidekickCommonDebugInfo: Schema.Schema<EnterpriseTopazSidekickCommonDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickCommonDebugInfo",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickCommonDebugInfo>;
+export const EnterpriseTopazSidekickCommonDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickCommonDebugInfo" });
 
 export interface EnterpriseTopazSidekickCommonDocument {
   /** Title of the document. */
@@ -3596,31 +2880,27 @@ export interface EnterpriseTopazSidekickCommonDocument {
   genericUrl?: string;
 }
 
-export const EnterpriseTopazSidekickCommonDocument: Schema.Schema<EnterpriseTopazSidekickCommonDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      snippet: Schema.optional(Schema.String),
-      driveDocumentMetadata: Schema.optional(
-        EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata,
-      ),
-      justification: Schema.optional(
-        EnterpriseTopazSidekickCommonDocumentJustification,
-      ),
-      debugInfo: Schema.optional(EnterpriseTopazSidekickCommonDebugInfo),
-      reason: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      provenance: Schema.optional(Schema.String),
-      thumbnailUrl: Schema.optional(Schema.String),
-      accessType: Schema.optional(Schema.String),
-      documentId: Schema.optional(Schema.String),
-      genericUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickCommonDocument",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickCommonDocument>;
+export const EnterpriseTopazSidekickCommonDocument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    snippet: Schema.optional(Schema.String),
+    driveDocumentMetadata: Schema.optional(
+      EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata,
+    ),
+    justification: Schema.optional(
+      EnterpriseTopazSidekickCommonDocumentJustification,
+    ),
+    debugInfo: Schema.optional(EnterpriseTopazSidekickCommonDebugInfo),
+    reason: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    provenance: Schema.optional(Schema.String),
+    thumbnailUrl: Schema.optional(Schema.String),
+    accessType: Schema.optional(Schema.String),
+    documentId: Schema.optional(Schema.String),
+    genericUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickCommonDocument" });
 
 export interface EnterpriseTopazSidekickAgendaEntry {
   /** Title of the agenda item. */
@@ -3694,43 +2974,39 @@ export interface EnterpriseTopazSidekickAgendaEntry {
   endDate?: string;
 }
 
-export const EnterpriseTopazSidekickAgendaEntry: Schema.Schema<EnterpriseTopazSidekickAgendaEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      startTimeMs: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTimeMs: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      isAllDay: Schema.optional(Schema.Boolean),
-      location: Schema.optional(Schema.String),
-      hangoutUrl: Schema.optional(Schema.String),
-      invitee: Schema.optional(Schema.Array(EnterpriseTopazSidekickPerson)),
-      agendaItemUrl: Schema.optional(Schema.String),
-      notifyToUser: Schema.optional(Schema.Boolean),
-      currentUserAttendingStatus: Schema.optional(Schema.String),
-      showFullEventDetailsToUse: Schema.optional(Schema.Boolean),
-      hangoutId: Schema.optional(Schema.String),
-      eventId: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      chronology: Schema.optional(Schema.String),
-      guestsCanSeeGuests: Schema.optional(Schema.Boolean),
-      guestsCanInviteOthers: Schema.optional(Schema.Boolean),
-      guestsCanModify: Schema.optional(Schema.Boolean),
-      requesterIsOwner: Schema.optional(Schema.Boolean),
-      document: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickCommonDocument),
-      ),
-      creator: Schema.optional(EnterpriseTopazSidekickPerson),
-      lastModificationTimeMs: Schema.optional(Schema.String),
-      otherAttendeesExcluded: Schema.optional(Schema.Boolean),
-      startDate: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickAgendaEntry",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAgendaEntry>;
+export const EnterpriseTopazSidekickAgendaEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    startTimeMs: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTimeMs: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    isAllDay: Schema.optional(Schema.Boolean),
+    location: Schema.optional(Schema.String),
+    hangoutUrl: Schema.optional(Schema.String),
+    invitee: Schema.optional(Schema.Array(EnterpriseTopazSidekickPerson)),
+    agendaItemUrl: Schema.optional(Schema.String),
+    notifyToUser: Schema.optional(Schema.Boolean),
+    currentUserAttendingStatus: Schema.optional(Schema.String),
+    showFullEventDetailsToUse: Schema.optional(Schema.Boolean),
+    hangoutId: Schema.optional(Schema.String),
+    eventId: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    chronology: Schema.optional(Schema.String),
+    guestsCanSeeGuests: Schema.optional(Schema.Boolean),
+    guestsCanInviteOthers: Schema.optional(Schema.Boolean),
+    guestsCanModify: Schema.optional(Schema.Boolean),
+    requesterIsOwner: Schema.optional(Schema.Boolean),
+    document: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickCommonDocument),
+    ),
+    creator: Schema.optional(EnterpriseTopazSidekickPerson),
+    lastModificationTimeMs: Schema.optional(Schema.String),
+    otherAttendeesExcluded: Schema.optional(Schema.Boolean),
+    startDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickAgendaEntry" });
 
 export interface EnterpriseTopazSidekickConflictingEventsCardProto {
   /** The event identified as being the most important. */
@@ -3739,17 +3015,15 @@ export interface EnterpriseTopazSidekickConflictingEventsCardProto {
   conflictingEvent?: Array<EnterpriseTopazSidekickAgendaEntry>;
 }
 
-export const EnterpriseTopazSidekickConflictingEventsCardProto: Schema.Schema<EnterpriseTopazSidekickConflictingEventsCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainEvent: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
-      conflictingEvent: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickAgendaEntry),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickConflictingEventsCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mainEvent: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
+    conflictingEvent: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickAgendaEntry),
+    ),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickConflictingEventsCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickConflictingEventsCardProto>;
+  });
 
 export interface EnterpriseTopazSidekickTimeSlot {
   /** Start time in milliseconds. */
@@ -3766,19 +3040,15 @@ export interface EnterpriseTopazSidekickTimeSlot {
   endTimeHourAndMinute?: string;
 }
 
-export const EnterpriseTopazSidekickTimeSlot: Schema.Schema<EnterpriseTopazSidekickTimeSlot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTimeInMillis: Schema.optional(Schema.String),
-      endTimeInMillis: Schema.optional(Schema.String),
-      startTimeDay: Schema.optional(Schema.String),
-      startTimeHourAndMinute: Schema.optional(Schema.String),
-      endTimeDay: Schema.optional(Schema.String),
-      endTimeHourAndMinute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickTimeSlot",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickTimeSlot>;
+export const EnterpriseTopazSidekickTimeSlot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTimeInMillis: Schema.optional(Schema.String),
+    endTimeInMillis: Schema.optional(Schema.String),
+    startTimeDay: Schema.optional(Schema.String),
+    startTimeHourAndMinute: Schema.optional(Schema.String),
+    endTimeDay: Schema.optional(Schema.String),
+    endTimeHourAndMinute: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickTimeSlot" });
 
 export interface EnterpriseTopazSidekickScheduledMeeting {
   /** The meeting time slot. */
@@ -3789,16 +3059,12 @@ export interface EnterpriseTopazSidekickScheduledMeeting {
   meetingLocation?: string;
 }
 
-export const EnterpriseTopazSidekickScheduledMeeting: Schema.Schema<EnterpriseTopazSidekickScheduledMeeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meetingTime: Schema.optional(EnterpriseTopazSidekickTimeSlot),
-      meetingTitle: Schema.optional(Schema.String),
-      meetingLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickScheduledMeeting",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickScheduledMeeting>;
+export const EnterpriseTopazSidekickScheduledMeeting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meetingTime: Schema.optional(EnterpriseTopazSidekickTimeSlot),
+    meetingTitle: Schema.optional(Schema.String),
+    meetingLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickScheduledMeeting" });
 
 export interface EnterpriseTopazSidekickFindMeetingTimeCardProto {
   /** Requester. */
@@ -3817,26 +3083,22 @@ export interface EnterpriseTopazSidekickFindMeetingTimeCardProto {
   scheduledMeeting?: EnterpriseTopazSidekickScheduledMeeting;
 }
 
-export const EnterpriseTopazSidekickFindMeetingTimeCardProto: Schema.Schema<EnterpriseTopazSidekickFindMeetingTimeCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requester: Schema.optional(EnterpriseTopazSidekickPerson),
-      invitees: Schema.optional(Schema.Array(EnterpriseTopazSidekickPerson)),
-      timeBoundaries: Schema.optional(EnterpriseTopazSidekickTimeSlot),
-      commonAvailableTimeSlots: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickTimeSlot),
-      ),
-      timezoneId: Schema.optional(Schema.String),
-      skippedInvitees: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickPerson),
-      ),
-      scheduledMeeting: Schema.optional(
-        EnterpriseTopazSidekickScheduledMeeting,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickFindMeetingTimeCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requester: Schema.optional(EnterpriseTopazSidekickPerson),
+    invitees: Schema.optional(Schema.Array(EnterpriseTopazSidekickPerson)),
+    timeBoundaries: Schema.optional(EnterpriseTopazSidekickTimeSlot),
+    commonAvailableTimeSlots: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickTimeSlot),
+    ),
+    timezoneId: Schema.optional(Schema.String),
+    skippedInvitees: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickPerson),
+    ),
+    scheduledMeeting: Schema.optional(EnterpriseTopazSidekickScheduledMeeting),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickFindMeetingTimeCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickFindMeetingTimeCardProto>;
+  });
 
 export interface EnterpriseTopazSidekickMeetingNotesCardError {
   /** The description of the reason why create-meeting-notes failed. */
@@ -3847,16 +3109,12 @@ export interface EnterpriseTopazSidekickMeetingNotesCardError {
   event?: EnterpriseTopazSidekickAgendaEntry;
 }
 
-export const EnterpriseTopazSidekickMeetingNotesCardError: Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickMeetingNotesCardError",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardError>;
+export const EnterpriseTopazSidekickMeetingNotesCardError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
+  }).annotate({ identifier: "EnterpriseTopazSidekickMeetingNotesCardError" });
 
 export interface EnterpriseTopazSidekickMeetingNotesCardRequest {
   /** The event to request meeting notes creation */
@@ -3867,16 +3125,12 @@ export interface EnterpriseTopazSidekickMeetingNotesCardRequest {
   canCreateFor?: Array<"UNKNOWN" | "MYSELF" | "ALL_ATTENDEES" | (string & {})>;
 }
 
-export const EnterpriseTopazSidekickMeetingNotesCardRequest: Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
-      error: Schema.optional(EnterpriseTopazSidekickMeetingNotesCardError),
-      canCreateFor: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickMeetingNotesCardRequest",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardRequest>;
+export const EnterpriseTopazSidekickMeetingNotesCardRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
+    error: Schema.optional(EnterpriseTopazSidekickMeetingNotesCardError),
+    canCreateFor: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EnterpriseTopazSidekickMeetingNotesCardRequest" });
 
 export interface EnterpriseTopazSidekickMeetingNotesCardProto {
   /** Title we want to show for meeting notes in the answer card */
@@ -3889,17 +3143,13 @@ export interface EnterpriseTopazSidekickMeetingNotesCardProto {
   fileId?: string;
 }
 
-export const EnterpriseTopazSidekickMeetingNotesCardProto: Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
-      fileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickMeetingNotesCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickMeetingNotesCardProto>;
+export const EnterpriseTopazSidekickMeetingNotesCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
+    fileId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickMeetingNotesCardProto" });
 
 export interface EnterpriseTopazSidekickDocumentGroup {
   /** Document group type */
@@ -3908,33 +3158,27 @@ export interface EnterpriseTopazSidekickDocumentGroup {
   personalizedDocument?: Array<EnterpriseTopazSidekickCommonDocument>;
 }
 
-export const EnterpriseTopazSidekickDocumentGroup: Schema.Schema<EnterpriseTopazSidekickDocumentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupType: Schema.optional(Schema.String),
-      personalizedDocument: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickCommonDocument),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickDocumentGroup",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickDocumentGroup>;
+export const EnterpriseTopazSidekickDocumentGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupType: Schema.optional(Schema.String),
+    personalizedDocument: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickCommonDocument),
+    ),
+  }).annotate({ identifier: "EnterpriseTopazSidekickDocumentGroup" });
 
 export interface EnterpriseTopazSidekickPersonalizedDocsCardProto {
   /** Document group. */
   documentGroup?: Array<EnterpriseTopazSidekickDocumentGroup>;
 }
 
-export const EnterpriseTopazSidekickPersonalizedDocsCardProto: Schema.Schema<EnterpriseTopazSidekickPersonalizedDocsCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentGroup: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickDocumentGroup),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickPersonalizedDocsCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentGroup: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickDocumentGroup),
+    ),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickPersonalizedDocsCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPersonalizedDocsCardProto>;
+  });
 
 export interface EnterpriseTopazSidekickShareMeetingDocsCardProto {
   /** Event. */
@@ -3943,17 +3187,15 @@ export interface EnterpriseTopazSidekickShareMeetingDocsCardProto {
   document?: Array<EnterpriseTopazSidekickCommonDocument>;
 }
 
-export const EnterpriseTopazSidekickShareMeetingDocsCardProto: Schema.Schema<EnterpriseTopazSidekickShareMeetingDocsCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
-      document: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickCommonDocument),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickShareMeetingDocsCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    event: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
+    document: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickCommonDocument),
+    ),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickShareMeetingDocsCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickShareMeetingDocsCardProto>;
+  });
 
 export interface EnterpriseTopazSidekickGap {
   startTimeMs?: string;
@@ -3967,19 +3209,15 @@ export interface EnterpriseTopazSidekickGap {
   displayRemainingTime?: string;
 }
 
-export const EnterpriseTopazSidekickGap: Schema.Schema<EnterpriseTopazSidekickGap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTimeMs: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTimeMs: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      remainingTime: Schema.optional(Schema.String),
-      displayRemainingTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickGap",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickGap>;
+export const EnterpriseTopazSidekickGap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTimeMs: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTimeMs: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    remainingTime: Schema.optional(Schema.String),
+    displayRemainingTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickGap" });
 
 export interface EnterpriseTopazSidekickAgendaItem {
   meeting?: EnterpriseTopazSidekickAgendaEntry;
@@ -3987,18 +3225,14 @@ export interface EnterpriseTopazSidekickAgendaItem {
   gapBefore?: EnterpriseTopazSidekickGap;
 }
 
-export const EnterpriseTopazSidekickAgendaItem: Schema.Schema<EnterpriseTopazSidekickAgendaItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meeting: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
-      conflictedGroup: Schema.optional(
-        EnterpriseTopazSidekickConflictingEventsCardProto,
-      ),
-      gapBefore: Schema.optional(EnterpriseTopazSidekickGap),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickAgendaItem",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAgendaItem>;
+export const EnterpriseTopazSidekickAgendaItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meeting: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
+    conflictedGroup: Schema.optional(
+      EnterpriseTopazSidekickConflictingEventsCardProto,
+    ),
+    gapBefore: Schema.optional(EnterpriseTopazSidekickGap),
+  }).annotate({ identifier: "EnterpriseTopazSidekickAgendaItem" });
 
 export interface EnterpriseTopazSidekickAgendaGroupCardProtoContext {
   /** User friendly free text that describes the context of the card (e.g. "Next meeting with Bob"). This is largely only applicable when the card is generated from a query. */
@@ -4009,16 +3243,14 @@ export interface EnterpriseTopazSidekickAgendaGroupCardProtoContext {
   eventsRestrict?: "NONE" | "NEXT_MEETING" | (string & {});
 }
 
-export const EnterpriseTopazSidekickAgendaGroupCardProtoContext: Schema.Schema<EnterpriseTopazSidekickAgendaGroupCardProtoContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      context: Schema.optional(Schema.String),
-      date: Schema.optional(Schema.String),
-      eventsRestrict: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickAgendaGroupCardProtoContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    context: Schema.optional(Schema.String),
+    date: Schema.optional(Schema.String),
+    eventsRestrict: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickAgendaGroupCardProtoContext",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAgendaGroupCardProtoContext>;
+  });
 
 export interface EnterpriseTopazSidekickAgendaGroupCardProto {
   currentAgendaItem?: EnterpriseTopazSidekickAgendaItem;
@@ -4026,48 +3258,40 @@ export interface EnterpriseTopazSidekickAgendaGroupCardProto {
   context?: EnterpriseTopazSidekickAgendaGroupCardProtoContext;
 }
 
-export const EnterpriseTopazSidekickAgendaGroupCardProto: Schema.Schema<EnterpriseTopazSidekickAgendaGroupCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentAgendaItem: Schema.optional(EnterpriseTopazSidekickAgendaItem),
-      agendaItem: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickAgendaItem),
-      ),
-      context: Schema.optional(
-        EnterpriseTopazSidekickAgendaGroupCardProtoContext,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickAgendaGroupCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAgendaGroupCardProto>;
+export const EnterpriseTopazSidekickAgendaGroupCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentAgendaItem: Schema.optional(EnterpriseTopazSidekickAgendaItem),
+    agendaItem: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickAgendaItem),
+    ),
+    context: Schema.optional(
+      EnterpriseTopazSidekickAgendaGroupCardProtoContext,
+    ),
+  }).annotate({ identifier: "EnterpriseTopazSidekickAgendaGroupCardProto" });
 
 export interface EnterpriseTopazSidekickRecentDocumentsCardProto {
   document?: Array<EnterpriseTopazSidekickCommonDocument>;
 }
 
-export const EnterpriseTopazSidekickRecentDocumentsCardProto: Schema.Schema<EnterpriseTopazSidekickRecentDocumentsCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickCommonDocument),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickRecentDocumentsCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    document: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickCommonDocument),
+    ),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickRecentDocumentsCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickRecentDocumentsCardProto>;
+  });
 
 export interface EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents {
   events?: Array<EnterpriseTopazSidekickAgendaEntry>;
 }
 
-export const EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents: Schema.Schema<EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      events: Schema.optional(Schema.Array(EnterpriseTopazSidekickAgendaEntry)),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    events: Schema.optional(Schema.Array(EnterpriseTopazSidekickAgendaEntry)),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents>;
+  });
 
 export interface EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry {
   category?:
@@ -4087,17 +3311,15 @@ export interface EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCatego
   rationale?: string;
 }
 
-export const EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry: Schema.Schema<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      document: Schema.optional(EnterpriseTopazSidekickCommonDocument),
-      rationale: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    document: Schema.optional(EnterpriseTopazSidekickCommonDocument),
+    rationale: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry>;
+  });
 
 export interface EnterpriseTopazSidekickDocumentPerCategoryList {
   documents?: Array<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry>;
@@ -4117,22 +3339,18 @@ export interface EnterpriseTopazSidekickDocumentPerCategoryList {
   helpMessage?: string;
 }
 
-export const EnterpriseTopazSidekickDocumentPerCategoryList: Schema.Schema<EnterpriseTopazSidekickDocumentPerCategoryList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documents: Schema.optional(
-        Schema.Array(
-          EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry,
-        ),
+export const EnterpriseTopazSidekickDocumentPerCategoryList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documents: Schema.optional(
+      Schema.Array(
+        EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry,
       ),
-      listType: Schema.optional(Schema.String),
-      listTypeDescription: Schema.optional(Schema.String),
-      responseMessage: Schema.optional(Schema.String),
-      helpMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickDocumentPerCategoryList",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickDocumentPerCategoryList>;
+    ),
+    listType: Schema.optional(Schema.String),
+    listTypeDescription: Schema.optional(Schema.String),
+    responseMessage: Schema.optional(Schema.String),
+    helpMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickDocumentPerCategoryList" });
 
 export interface EnterpriseTopazSidekickGetAndKeepAheadCardProto {
   declinedEvents?: EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents;
@@ -4140,22 +3358,20 @@ export interface EnterpriseTopazSidekickGetAndKeepAheadCardProto {
   sharedDocuments?: EnterpriseTopazSidekickDocumentPerCategoryList;
 }
 
-export const EnterpriseTopazSidekickGetAndKeepAheadCardProto: Schema.Schema<EnterpriseTopazSidekickGetAndKeepAheadCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      declinedEvents: Schema.optional(
-        EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents,
-      ),
-      mentionedDocuments: Schema.optional(
-        EnterpriseTopazSidekickDocumentPerCategoryList,
-      ),
-      sharedDocuments: Schema.optional(
-        EnterpriseTopazSidekickDocumentPerCategoryList,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickGetAndKeepAheadCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    declinedEvents: Schema.optional(
+      EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents,
+    ),
+    mentionedDocuments: Schema.optional(
+      EnterpriseTopazSidekickDocumentPerCategoryList,
+    ),
+    sharedDocuments: Schema.optional(
+      EnterpriseTopazSidekickDocumentPerCategoryList,
+    ),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickGetAndKeepAheadCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickGetAndKeepAheadCardProto>;
+  });
 
 export interface EnterpriseTopazSidekickGenericAnswerCard {
   /** Title or header of the card. */
@@ -4164,31 +3380,23 @@ export interface EnterpriseTopazSidekickGenericAnswerCard {
   answer?: string;
 }
 
-export const EnterpriseTopazSidekickGenericAnswerCard: Schema.Schema<EnterpriseTopazSidekickGenericAnswerCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      answer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickGenericAnswerCard",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickGenericAnswerCard>;
+export const EnterpriseTopazSidekickGenericAnswerCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    answer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseTopazSidekickGenericAnswerCard" });
 
 export interface EnterpriseTopazSidekickPeopleDisambiguationCard {
   /** Candidate persons for the query. */
   person?: Array<EnterpriseTopazSidekickCommonPerson>;
 }
 
-export const EnterpriseTopazSidekickPeopleDisambiguationCard: Schema.Schema<EnterpriseTopazSidekickPeopleDisambiguationCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      person: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickCommonPerson),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickPeopleDisambiguationCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    person: Schema.optional(Schema.Array(EnterpriseTopazSidekickCommonPerson)),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickPeopleDisambiguationCard",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPeopleDisambiguationCard>;
+  });
 
 export interface EnterpriseTopazSidekickPersonProfileCardRelatedPeople {
   /** Related people. */
@@ -4197,17 +3405,15 @@ export interface EnterpriseTopazSidekickPersonProfileCardRelatedPeople {
   relation?: "UNKNOWN" | "MANAGER" | "DIRECT_REPORT" | (string & {});
 }
 
-export const EnterpriseTopazSidekickPersonProfileCardRelatedPeople: Schema.Schema<EnterpriseTopazSidekickPersonProfileCardRelatedPeople> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relatedPerson: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickCommonPerson),
-      ),
-      relation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickPersonProfileCardRelatedPeople =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relatedPerson: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickCommonPerson),
+    ),
+    relation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickPersonProfileCardRelatedPeople",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPersonProfileCardRelatedPeople>;
+  });
 
 export interface EnterpriseTopazSidekickPersonProfileCard {
   /** The subject of the card. */
@@ -4215,31 +3421,25 @@ export interface EnterpriseTopazSidekickPersonProfileCard {
   relatedPeople?: Array<EnterpriseTopazSidekickPersonProfileCardRelatedPeople>;
 }
 
-export const EnterpriseTopazSidekickPersonProfileCard: Schema.Schema<EnterpriseTopazSidekickPersonProfileCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
-      relatedPeople: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickPersonProfileCardRelatedPeople),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickPersonProfileCard",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPersonProfileCard>;
+export const EnterpriseTopazSidekickPersonProfileCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
+    relatedPeople: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickPersonProfileCardRelatedPeople),
+    ),
+  }).annotate({ identifier: "EnterpriseTopazSidekickPersonProfileCard" });
 
 export interface EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader {
   /** The suggested title to display. This defaults to the user's query. */
   title?: string;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader>;
+  });
 
 export interface EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson {
   /** The profile of this person. */
@@ -4248,16 +3448,14 @@ export interface EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambigua
   query?: string;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      person: Schema.optional(EnterpriseTopazSidekickCommonPerson),
-      query: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    person: Schema.optional(EnterpriseTopazSidekickCommonPerson),
+    query: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson>;
+  });
 
 export interface EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo {
   /** The name that was extracted from the query. This may be in the form of the given name, last name, full name, LDAP, or email address. This name can be considered suitable for displaying to the user and can largely be considered to be normalized (e.g. "Bob's" -> "Bob"). */
@@ -4266,19 +3464,17 @@ export interface EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo {
   disambiguation?: Array<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson>;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      disambiguation: Schema.optional(
-        Schema.Array(
-          EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson,
-        ),
+export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    disambiguation: Schema.optional(
+      Schema.Array(
+        EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo>;
+  });
 
 export interface EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer {
   /** A localized label for the answer (e.g. "Cell phone" vs "Desk phone"). */
@@ -4287,15 +3483,13 @@ export interface EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer {
   answer?: string;
 }
 
-export const EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer: Schema.Schema<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      answer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    label: Schema.optional(Schema.String),
+    answer: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer>;
+  });
 
 export interface EnterpriseTopazSidekickAnswerAnswerList {
   /** Answer type. */
@@ -4313,17 +3507,13 @@ export interface EnterpriseTopazSidekickAnswerAnswerList {
   labeledAnswer?: Array<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer>;
 }
 
-export const EnterpriseTopazSidekickAnswerAnswerList: Schema.Schema<EnterpriseTopazSidekickAnswerAnswerList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      labeledAnswer: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickAnswerAnswerList",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAnswerAnswerList>;
+export const EnterpriseTopazSidekickAnswerAnswerList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    labeledAnswer: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer),
+    ),
+  }).annotate({ identifier: "EnterpriseTopazSidekickAnswerAnswerList" });
 
 export interface EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard {
   /** The response status. */
@@ -4347,24 +3537,22 @@ export interface EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard {
   statusMessage?: string;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseStatus: Schema.optional(Schema.String),
-      header: Schema.optional(
-        EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader,
-      ),
-      subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
-      answer: Schema.optional(Schema.Array(SafeHtmlProto)),
-      disambiguationInfo: Schema.optional(
-        EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo,
-      ),
-      answerText: Schema.optional(EnterpriseTopazSidekickAnswerAnswerList),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseStatus: Schema.optional(Schema.String),
+    header: Schema.optional(
+      EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader,
+    ),
+    subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
+    answer: Schema.optional(Schema.Array(SafeHtmlProto)),
+    disambiguationInfo: Schema.optional(
+      EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo,
+    ),
+    answerText: Schema.optional(EnterpriseTopazSidekickAnswerAnswerList),
+    statusMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard>;
+  });
 
 export interface EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard {
   /** The response status. */
@@ -4393,26 +3581,24 @@ export interface EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard {
   statusMessage?: string;
 }
 
-export const EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard: Schema.Schema<EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseStatus: Schema.optional(Schema.String),
-      header: Schema.optional(
-        EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader,
-      ),
-      subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
-      relatedPeople: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickCommonPerson),
-      ),
-      relationType: Schema.optional(Schema.String),
-      disambiguationInfo: Schema.optional(
-        EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo,
-      ),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseStatus: Schema.optional(Schema.String),
+    header: Schema.optional(
+      EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader,
+    ),
+    subject: Schema.optional(EnterpriseTopazSidekickCommonPerson),
+    relatedPeople: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickCommonPerson),
+    ),
+    relationType: Schema.optional(Schema.String),
+    disambiguationInfo: Schema.optional(
+      EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo,
+    ),
+    statusMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard>;
+  });
 
 export interface EnterpriseTopazSidekickAnswerSuggestedQueryCategory {
   /** The query list category. */
@@ -4423,32 +3609,28 @@ export interface EnterpriseTopazSidekickAnswerSuggestedQueryCategory {
   isEnabled?: boolean;
 }
 
-export const EnterpriseTopazSidekickAnswerSuggestedQueryCategory: Schema.Schema<EnterpriseTopazSidekickAnswerSuggestedQueryCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.Array(Schema.String)),
-      isEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickAnswerSuggestedQueryCategory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.Array(Schema.String)),
+    isEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickAnswerSuggestedQueryCategory",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAnswerSuggestedQueryCategory>;
+  });
 
 export interface EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard {
   /** A list of queries to suggest. */
   suggestedQueryCategory?: Array<EnterpriseTopazSidekickAnswerSuggestedQueryCategory>;
 }
 
-export const EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard: Schema.Schema<EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedQueryCategory: Schema.optional(
-        Schema.Array(EnterpriseTopazSidekickAnswerSuggestedQueryCategory),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestedQueryCategory: Schema.optional(
+      Schema.Array(EnterpriseTopazSidekickAnswerSuggestedQueryCategory),
+    ),
+  }).annotate({
     identifier: "EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard>;
+  });
 
 export interface Context {
   /** [Required] Type of the card (homepage, Answer or RHS). */
@@ -4489,22 +3671,19 @@ export interface Context {
   app?: Array<"UNKNOWN_APP" | "TOPAZ" | "MOMA" | (string & {})>;
 }
 
-export const Context: Schema.Schema<Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.Array(Schema.String)),
-      query: Schema.optional(Schema.Array(Schema.String)),
-      startDateSec: Schema.optional(Schema.String),
-      endDateSec: Schema.optional(Schema.String),
-      startDayOffsetSec: Schema.optional(Schema.String),
-      endDayOffsetSec: Schema.optional(Schema.String),
-      dayOfWeek: Schema.optional(Schema.Array(Schema.Number)),
-      locale: Schema.optional(Schema.Array(Schema.String)),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      surface: Schema.optional(Schema.Array(Schema.String)),
-      app: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Context" }) as any as Schema.Schema<Context>;
+export const Context = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.Array(Schema.String)),
+  query: Schema.optional(Schema.Array(Schema.String)),
+  startDateSec: Schema.optional(Schema.String),
+  endDateSec: Schema.optional(Schema.String),
+  startDayOffsetSec: Schema.optional(Schema.String),
+  endDayOffsetSec: Schema.optional(Schema.String),
+  dayOfWeek: Schema.optional(Schema.Array(Schema.Number)),
+  locale: Schema.optional(Schema.Array(Schema.String)),
+  location: Schema.optional(Schema.Array(Schema.String)),
+  surface: Schema.optional(Schema.Array(Schema.String)),
+  app: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Context" });
 
 export interface BackgroundColoredText {
   /** [Required] The text to display. */
@@ -4521,15 +3700,10 @@ export interface BackgroundColoredText {
     | (string & {});
 }
 
-export const BackgroundColoredText: Schema.Schema<BackgroundColoredText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      backgroundColor: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackgroundColoredText",
-  }) as any as Schema.Schema<BackgroundColoredText>;
+export const BackgroundColoredText = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  backgroundColor: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackgroundColoredText" });
 
 export interface Action {
   /** [Required] Title of the action. */
@@ -4538,13 +3712,10 @@ export interface Action {
   url?: string;
 }
 
-export const Action: Schema.Schema<Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Action" }) as any as Schema.Schema<Action>;
+export const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "Action" });
 
 export interface Content {
   /** [Optional] Title of the card. */
@@ -4557,15 +3728,12 @@ export interface Content {
   actions?: Array<Action>;
 }
 
-export const Content: Schema.Schema<Content> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(BackgroundColoredText),
-      subtitle: Schema.optional(BackgroundColoredText),
-      description: Schema.optional(SafeHtmlProto),
-      actions: Schema.optional(Schema.Array(Action)),
-    }),
-  ).annotate({ identifier: "Content" }) as any as Schema.Schema<Content>;
+export const Content = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(BackgroundColoredText),
+  subtitle: Schema.optional(BackgroundColoredText),
+  description: Schema.optional(SafeHtmlProto),
+  actions: Schema.optional(Schema.Array(Action)),
+}).annotate({ identifier: "Content" });
 
 export interface ThirdPartyGenericCard {
   /** Unique identifier for the card. */
@@ -4582,35 +3750,23 @@ export interface ThirdPartyGenericCard {
   content?: Content;
 }
 
-export const ThirdPartyGenericCard: Schema.Schema<ThirdPartyGenericCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cardId: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.Number),
-      isDismissible: Schema.optional(Schema.Boolean),
-      context: Schema.optional(Context),
-      content: Schema.optional(Content),
-    }),
-  ).annotate({
-    identifier: "ThirdPartyGenericCard",
-  }) as any as Schema.Schema<ThirdPartyGenericCard>;
+export const ThirdPartyGenericCard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cardId: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  priority: Schema.optional(Schema.Number),
+  isDismissible: Schema.optional(Schema.Boolean),
+  context: Schema.optional(Context),
+  content: Schema.optional(Content),
+}).annotate({ identifier: "ThirdPartyGenericCard" });
 
 export interface SafeUrlProto {
   /** IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the top of .proto file for programming language packages with which to create or read this message. */
   privateDoNotAccessOrElseSafeUrlWrappedValue?: string;
 }
 
-export const SafeUrlProto: Schema.Schema<SafeUrlProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateDoNotAccessOrElseSafeUrlWrappedValue: Schema.optional(
-        Schema.String,
-      ),
-    }),
-  ).annotate({
-    identifier: "SafeUrlProto",
-  }) as any as Schema.Schema<SafeUrlProto>;
+export const SafeUrlProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateDoNotAccessOrElseSafeUrlWrappedValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "SafeUrlProto" });
 
 export interface EnterpriseTopazFrontendTeamsPersonCorePhoneNumber {
   /** Phone number in no particular format (as comes from the Focus profile). */
@@ -4620,16 +3776,14 @@ export interface EnterpriseTopazFrontendTeamsPersonCorePhoneNumber {
   type?: "UNKNOWN" | "MOBILE" | "OFFICE" | "OTHER" | (string & {});
 }
 
-export const EnterpriseTopazFrontendTeamsPersonCorePhoneNumber: Schema.Schema<EnterpriseTopazFrontendTeamsPersonCorePhoneNumber> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-      phoneUrl: Schema.optional(SafeUrlProto),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseTopazFrontendTeamsPersonCorePhoneNumber =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+    phoneUrl: Schema.optional(SafeUrlProto),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseTopazFrontendTeamsPersonCorePhoneNumber",
-  }) as any as Schema.Schema<EnterpriseTopazFrontendTeamsPersonCorePhoneNumber>;
+  });
 
 export interface EnterpriseTopazFrontendTeamsLink {
   /** The identifying link type */
@@ -4637,15 +3791,11 @@ export interface EnterpriseTopazFrontendTeamsLink {
   url?: SafeUrlProto;
 }
 
-export const EnterpriseTopazFrontendTeamsLink: Schema.Schema<EnterpriseTopazFrontendTeamsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      url: Schema.optional(SafeUrlProto),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazFrontendTeamsLink",
-  }) as any as Schema.Schema<EnterpriseTopazFrontendTeamsLink>;
+export const EnterpriseTopazFrontendTeamsLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    url: Schema.optional(SafeUrlProto),
+  }).annotate({ identifier: "EnterpriseTopazFrontendTeamsLink" });
 
 export interface MapTile {
   /** Map tile x coordinate */
@@ -4656,14 +3806,11 @@ export interface MapTile {
   imageUrl?: SafeUrlProto;
 }
 
-export const MapTile: Schema.Schema<MapTile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tileX: Schema.optional(Schema.Number),
-      tileY: Schema.optional(Schema.Number),
-      imageUrl: Schema.optional(SafeUrlProto),
-    }),
-  ).annotate({ identifier: "MapTile" }) as any as Schema.Schema<MapTile>;
+export const MapTile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tileX: Schema.optional(Schema.Number),
+  tileY: Schema.optional(Schema.Number),
+  imageUrl: Schema.optional(SafeUrlProto),
+}).annotate({ identifier: "MapTile" });
 
 export interface MapInfo {
   /** Latitude in degrees */
@@ -4678,16 +3825,13 @@ export interface MapInfo {
   zoom?: number;
 }
 
-export const MapInfo: Schema.Schema<MapInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lat: Schema.optional(Schema.Number),
-      long: Schema.optional(Schema.Number),
-      locationUrl: Schema.optional(SafeUrlProto),
-      mapTile: Schema.optional(Schema.Array(MapTile)),
-      zoom: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "MapInfo" }) as any as Schema.Schema<MapInfo>;
+export const MapInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lat: Schema.optional(Schema.Number),
+  long: Schema.optional(Schema.Number),
+  locationUrl: Schema.optional(SafeUrlProto),
+  mapTile: Schema.optional(Schema.Array(MapTile)),
+  zoom: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MapInfo" });
 
 export interface PersonCore {
   /** The person's obfuscated Gaia ID. */
@@ -4812,14 +3956,9 @@ export interface PeoplePromotionCard {
   people?: Array<PersonCore>;
 }
 
-export const PeoplePromotionCard: Schema.Schema<PeoplePromotionCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      people: Schema.optional(Schema.Array(PersonCore)),
-    }),
-  ).annotate({
-    identifier: "PeoplePromotionCard",
-  }) as any as Schema.Schema<PeoplePromotionCard>;
+export const PeoplePromotionCard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  people: Schema.optional(Schema.Array(PersonCore)),
+}).annotate({ identifier: "PeoplePromotionCard" });
 
 export interface EnterpriseTopazSidekickAssistCardProto {
   /** Card metadata such as chronology and render mode of the card. */
@@ -4902,72 +4041,68 @@ export interface EnterpriseTopazSidekickAssistCardProto {
   peoplePromotionCard?: PeoplePromotionCard;
 }
 
-export const EnterpriseTopazSidekickAssistCardProto: Schema.Schema<EnterpriseTopazSidekickAssistCardProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cardMetadata: Schema.optional(EnterpriseTopazSidekickCardMetadata),
-      cardType: Schema.optional(Schema.String),
-      conflictingMeetingsCard: Schema.optional(
-        EnterpriseTopazSidekickConflictingEventsCardProto,
-      ),
-      findMeetingTimeCard: Schema.optional(
-        EnterpriseTopazSidekickFindMeetingTimeCardProto,
-      ),
-      meetingNotesCardRequest: Schema.optional(
-        EnterpriseTopazSidekickMeetingNotesCardRequest,
-      ),
-      meetingNotesCard: Schema.optional(
-        EnterpriseTopazSidekickMeetingNotesCardProto,
-      ),
-      personalizedDocsCard: Schema.optional(
-        EnterpriseTopazSidekickPersonalizedDocsCardProto,
-      ),
-      meeting: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
-      shareMeetingDocsCard: Schema.optional(
-        EnterpriseTopazSidekickShareMeetingDocsCardProto,
-      ),
-      agendaGroupCardProto: Schema.optional(
-        EnterpriseTopazSidekickAgendaGroupCardProto,
-      ),
-      workInProgressCardProto: Schema.optional(
-        EnterpriseTopazSidekickRecentDocumentsCardProto,
-      ),
-      getAndKeepAheadCard: Schema.optional(
-        EnterpriseTopazSidekickGetAndKeepAheadCardProto,
-      ),
-      genericAnswerCard: Schema.optional(
-        EnterpriseTopazSidekickGenericAnswerCard,
-      ),
-      peopleDisambiguationCard: Schema.optional(
-        EnterpriseTopazSidekickPeopleDisambiguationCard,
-      ),
-      personProfileCard: Schema.optional(
-        EnterpriseTopazSidekickPersonProfileCard,
-      ),
-      documentsWithMentions: Schema.optional(
-        EnterpriseTopazSidekickDocumentPerCategoryList,
-      ),
-      sharedDocuments: Schema.optional(
-        EnterpriseTopazSidekickDocumentPerCategoryList,
-      ),
-      documentListCard: Schema.optional(
-        EnterpriseTopazSidekickDocumentPerCategoryList,
-      ),
-      personAnswerCard: Schema.optional(
-        EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard,
-      ),
-      relatedPeopleAnswerCard: Schema.optional(
-        EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard,
-      ),
-      suggestedQueryAnswerCard: Schema.optional(
-        EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard,
-      ),
-      thirdPartyAnswerCard: Schema.optional(ThirdPartyGenericCard),
-      peoplePromotionCard: Schema.optional(PeoplePromotionCard),
-    }),
-  ).annotate({
-    identifier: "EnterpriseTopazSidekickAssistCardProto",
-  }) as any as Schema.Schema<EnterpriseTopazSidekickAssistCardProto>;
+export const EnterpriseTopazSidekickAssistCardProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cardMetadata: Schema.optional(EnterpriseTopazSidekickCardMetadata),
+    cardType: Schema.optional(Schema.String),
+    conflictingMeetingsCard: Schema.optional(
+      EnterpriseTopazSidekickConflictingEventsCardProto,
+    ),
+    findMeetingTimeCard: Schema.optional(
+      EnterpriseTopazSidekickFindMeetingTimeCardProto,
+    ),
+    meetingNotesCardRequest: Schema.optional(
+      EnterpriseTopazSidekickMeetingNotesCardRequest,
+    ),
+    meetingNotesCard: Schema.optional(
+      EnterpriseTopazSidekickMeetingNotesCardProto,
+    ),
+    personalizedDocsCard: Schema.optional(
+      EnterpriseTopazSidekickPersonalizedDocsCardProto,
+    ),
+    meeting: Schema.optional(EnterpriseTopazSidekickAgendaEntry),
+    shareMeetingDocsCard: Schema.optional(
+      EnterpriseTopazSidekickShareMeetingDocsCardProto,
+    ),
+    agendaGroupCardProto: Schema.optional(
+      EnterpriseTopazSidekickAgendaGroupCardProto,
+    ),
+    workInProgressCardProto: Schema.optional(
+      EnterpriseTopazSidekickRecentDocumentsCardProto,
+    ),
+    getAndKeepAheadCard: Schema.optional(
+      EnterpriseTopazSidekickGetAndKeepAheadCardProto,
+    ),
+    genericAnswerCard: Schema.optional(
+      EnterpriseTopazSidekickGenericAnswerCard,
+    ),
+    peopleDisambiguationCard: Schema.optional(
+      EnterpriseTopazSidekickPeopleDisambiguationCard,
+    ),
+    personProfileCard: Schema.optional(
+      EnterpriseTopazSidekickPersonProfileCard,
+    ),
+    documentsWithMentions: Schema.optional(
+      EnterpriseTopazSidekickDocumentPerCategoryList,
+    ),
+    sharedDocuments: Schema.optional(
+      EnterpriseTopazSidekickDocumentPerCategoryList,
+    ),
+    documentListCard: Schema.optional(
+      EnterpriseTopazSidekickDocumentPerCategoryList,
+    ),
+    personAnswerCard: Schema.optional(
+      EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard,
+    ),
+    relatedPeopleAnswerCard: Schema.optional(
+      EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard,
+    ),
+    suggestedQueryAnswerCard: Schema.optional(
+      EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard,
+    ),
+    thirdPartyAnswerCard: Schema.optional(ThirdPartyGenericCard),
+    peoplePromotionCard: Schema.optional(PeoplePromotionCard),
+  }).annotate({ identifier: "EnterpriseTopazSidekickAssistCardProto" });
 
 // ==========================================================================
 // Operations

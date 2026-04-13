@@ -23,58 +23,53 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface SearchResponse {
-  /** The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions. */
-  "@context"?: unknown;
   /** The schema type of top-level JSON-LD object, e.g. ItemList. */
   "@type"?: unknown;
   /** The item list of search results. */
   itemListElement?: Array<unknown>;
+  /** The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions. */
+  "@context"?: unknown;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      "@context": Schema.optional(Schema.Unknown),
-      "@type": Schema.optional(Schema.Unknown),
-      itemListElement: Schema.optional(Schema.Array(Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "SearchResponse",
-  }) as any as Schema.Schema<SearchResponse>;
+export const SearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "@type": Schema.optional(Schema.Unknown),
+  itemListElement: Schema.optional(Schema.Array(Schema.Unknown)),
+  "@context": Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "SearchResponse" });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
 
 export interface SearchEntitiesRequest {
-  /** The literal query string for search. */
-  query?: string;
   /** The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B */
   ids?: string[];
-  /** The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'. */
-  languages?: string[];
   /** Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types. */
   types?: string[];
+  /** The literal query string for search. */
+  query?: string;
+  /** Limits the number of entities to be returned. */
+  limit?: number;
   /** Enables indenting of json results. */
   indent?: boolean;
   /** Enables prefix match against names and aliases of entities */
   prefix?: boolean;
-  /** Limits the number of entities to be returned. */
-  limit?: number;
+  /** The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'. */
+  languages?: string[];
 }
 
 export const SearchEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
   ids: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("ids")),
-  languages: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("languages"),
-  ),
   types: Schema.optional(Schema.Array(Schema.String)).pipe(
     T.HttpQuery("types"),
   ),
+  query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
+  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   indent: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("indent")),
   prefix: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("prefix")),
-  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+  languages: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("languages"),
+  ),
 }).pipe(
   T.Http({ method: "GET", path: "v1/entities:search" }),
   svc,

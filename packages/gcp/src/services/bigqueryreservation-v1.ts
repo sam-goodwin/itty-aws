@@ -29,13 +29,10 @@ export interface Autoscale {
   maxSlots?: string;
 }
 
-export const Autoscale: Schema.Schema<Autoscale> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentSlots: Schema.optional(Schema.String),
-      maxSlots: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Autoscale" }) as any as Schema.Schema<Autoscale>;
+export const Autoscale = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currentSlots: Schema.optional(Schema.String),
+  maxSlots: Schema.optional(Schema.String),
+}).annotate({ identifier: "Autoscale" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -46,16 +43,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface ReplicationStatus {
   /** Output only. The last error encountered while trying to replicate changes from the primary to the secondary. This field is only available if the replication has not succeeded since. */
@@ -68,17 +62,12 @@ export interface ReplicationStatus {
   softFailoverStartTime?: string;
 }
 
-export const ReplicationStatus: Schema.Schema<ReplicationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      lastErrorTime: Schema.optional(Schema.String),
-      lastReplicationTime: Schema.optional(Schema.String),
-      softFailoverStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplicationStatus",
-  }) as any as Schema.Schema<ReplicationStatus>;
+export const ReplicationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  lastErrorTime: Schema.optional(Schema.String),
+  lastReplicationTime: Schema.optional(Schema.String),
+  softFailoverStartTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReplicationStatus" });
 
 export interface SchedulingPolicy {
   /** Optional. If present and > 0, the reservation will attempt to limit the concurrency of jobs running for any particular project within it to the given value. This feature is not yet generally available. */
@@ -87,15 +76,10 @@ export interface SchedulingPolicy {
   maxSlots?: string;
 }
 
-export const SchedulingPolicy: Schema.Schema<SchedulingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      concurrency: Schema.optional(Schema.String),
-      maxSlots: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SchedulingPolicy",
-  }) as any as Schema.Schema<SchedulingPolicy>;
+export const SchedulingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  concurrency: Schema.optional(Schema.String),
+  maxSlots: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchedulingPolicy" });
 
 export interface Reservation {
   /** Identifier. The resource name of the reservation, e.g., `projects/* /locations/* /reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
@@ -146,31 +130,26 @@ export interface Reservation {
   schedulingPolicy?: SchedulingPolicy;
 }
 
-export const Reservation: Schema.Schema<Reservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      slotCapacity: Schema.optional(Schema.String),
-      ignoreIdleSlots: Schema.optional(Schema.Boolean),
-      autoscale: Schema.optional(Autoscale),
-      concurrency: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      multiRegionAuxiliary: Schema.optional(Schema.Boolean),
-      edition: Schema.optional(Schema.String),
-      primaryLocation: Schema.optional(Schema.String),
-      secondaryLocation: Schema.optional(Schema.String),
-      originalPrimaryLocation: Schema.optional(Schema.String),
-      maxSlots: Schema.optional(Schema.String),
-      scalingMode: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reservationGroup: Schema.optional(Schema.String),
-      replicationStatus: Schema.optional(ReplicationStatus),
-      schedulingPolicy: Schema.optional(SchedulingPolicy),
-    }),
-  ).annotate({
-    identifier: "Reservation",
-  }) as any as Schema.Schema<Reservation>;
+export const Reservation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  slotCapacity: Schema.optional(Schema.String),
+  ignoreIdleSlots: Schema.optional(Schema.Boolean),
+  autoscale: Schema.optional(Autoscale),
+  concurrency: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  multiRegionAuxiliary: Schema.optional(Schema.Boolean),
+  edition: Schema.optional(Schema.String),
+  primaryLocation: Schema.optional(Schema.String),
+  secondaryLocation: Schema.optional(Schema.String),
+  originalPrimaryLocation: Schema.optional(Schema.String),
+  maxSlots: Schema.optional(Schema.String),
+  scalingMode: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  reservationGroup: Schema.optional(Schema.String),
+  replicationStatus: Schema.optional(ReplicationStatus),
+  schedulingPolicy: Schema.optional(SchedulingPolicy),
+}).annotate({ identifier: "Reservation" });
 
 export interface ListReservationsResponse {
   /** List of reservations visible to the user. */
@@ -179,36 +158,27 @@ export interface ListReservationsResponse {
   nextPageToken?: string;
 }
 
-export const ListReservationsResponse: Schema.Schema<ListReservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reservations: Schema.optional(Schema.Array(Reservation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReservationsResponse",
-  }) as any as Schema.Schema<ListReservationsResponse>;
+export const ListReservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservations: Schema.optional(Schema.Array(Reservation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListReservationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface FailoverReservationRequest {
   /** Optional. A parameter that determines how writes that are pending replication are handled after a failover is initiated. If not specified, HARD failover mode is used by default. */
   failoverMode?: "FAILOVER_MODE_UNSPECIFIED" | "SOFT" | "HARD" | (string & {});
 }
 
-export const FailoverReservationRequest: Schema.Schema<FailoverReservationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failoverMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FailoverReservationRequest",
-  }) as any as Schema.Schema<FailoverReservationRequest>;
+export const FailoverReservationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failoverMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FailoverReservationRequest" });
 
 export interface CapacityCommitment {
   /** Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
@@ -262,24 +232,19 @@ export interface CapacityCommitment {
   isFlatRate?: boolean;
 }
 
-export const CapacityCommitment: Schema.Schema<CapacityCommitment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      slotCount: Schema.optional(Schema.String),
-      plan: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      commitmentStartTime: Schema.optional(Schema.String),
-      commitmentEndTime: Schema.optional(Schema.String),
-      failureStatus: Schema.optional(Status),
-      renewalPlan: Schema.optional(Schema.String),
-      multiRegionAuxiliary: Schema.optional(Schema.Boolean),
-      edition: Schema.optional(Schema.String),
-      isFlatRate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CapacityCommitment",
-  }) as any as Schema.Schema<CapacityCommitment>;
+export const CapacityCommitment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  slotCount: Schema.optional(Schema.String),
+  plan: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  commitmentStartTime: Schema.optional(Schema.String),
+  commitmentEndTime: Schema.optional(Schema.String),
+  failureStatus: Schema.optional(Status),
+  renewalPlan: Schema.optional(Schema.String),
+  multiRegionAuxiliary: Schema.optional(Schema.Boolean),
+  edition: Schema.optional(Schema.String),
+  isFlatRate: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CapacityCommitment" });
 
 export interface ListCapacityCommitmentsResponse {
   /** List of capacity commitments visible to the user. */
@@ -288,29 +253,21 @@ export interface ListCapacityCommitmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListCapacityCommitmentsResponse: Schema.Schema<ListCapacityCommitmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      capacityCommitments: Schema.optional(Schema.Array(CapacityCommitment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCapacityCommitmentsResponse",
-  }) as any as Schema.Schema<ListCapacityCommitmentsResponse>;
+export const ListCapacityCommitmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capacityCommitments: Schema.optional(Schema.Array(CapacityCommitment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCapacityCommitmentsResponse" });
 
 export interface SplitCapacityCommitmentRequest {
   /** Number of slots in the capacity commitment after the split. */
   slotCount?: string;
 }
 
-export const SplitCapacityCommitmentRequest: Schema.Schema<SplitCapacityCommitmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      slotCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SplitCapacityCommitmentRequest",
-  }) as any as Schema.Schema<SplitCapacityCommitmentRequest>;
+export const SplitCapacityCommitmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    slotCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SplitCapacityCommitmentRequest" });
 
 export interface SplitCapacityCommitmentResponse {
   /** First capacity commitment, result of a split. */
@@ -319,15 +276,11 @@ export interface SplitCapacityCommitmentResponse {
   second?: CapacityCommitment;
 }
 
-export const SplitCapacityCommitmentResponse: Schema.Schema<SplitCapacityCommitmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      first: Schema.optional(CapacityCommitment),
-      second: Schema.optional(CapacityCommitment),
-    }),
-  ).annotate({
-    identifier: "SplitCapacityCommitmentResponse",
-  }) as any as Schema.Schema<SplitCapacityCommitmentResponse>;
+export const SplitCapacityCommitmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    first: Schema.optional(CapacityCommitment),
+    second: Schema.optional(CapacityCommitment),
+  }).annotate({ identifier: "SplitCapacityCommitmentResponse" });
 
 export interface MergeCapacityCommitmentsRequest {
   /** Ids of capacity commitments to merge. These capacity commitments must exist under admin project and location specified in the parent. ID is the last portion of capacity commitment name e.g., 'abc' for projects/myproject/locations/US/capacityCommitments/abc */
@@ -336,15 +289,11 @@ export interface MergeCapacityCommitmentsRequest {
   capacityCommitmentId?: string;
 }
 
-export const MergeCapacityCommitmentsRequest: Schema.Schema<MergeCapacityCommitmentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      capacityCommitmentIds: Schema.optional(Schema.Array(Schema.String)),
-      capacityCommitmentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MergeCapacityCommitmentsRequest",
-  }) as any as Schema.Schema<MergeCapacityCommitmentsRequest>;
+export const MergeCapacityCommitmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capacityCommitmentIds: Schema.optional(Schema.Array(Schema.String)),
+    capacityCommitmentId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MergeCapacityCommitmentsRequest" });
 
 export interface Assignment {
   /** Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`. The assignment_id must only contain lower case alphanumeric characters or dashes and the max length is 64 characters. */
@@ -369,19 +318,19 @@ export interface Assignment {
   enableGeminiInBigquery?: boolean;
   /** Optional. The scheduling policy to use for jobs and queries of this assignee when running under the associated reservation. The scheduling policy controls how the reservation's resources are distributed. This overrides the default scheduling policy specified on the reservation. This feature is not yet generally available. */
   schedulingPolicy?: SchedulingPolicy;
+  /** Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are: * `principal://goog/subject/USER_EMAIL_ADDRESS` for users, * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts, * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities. */
+  principal?: string;
 }
 
-export const Assignment: Schema.Schema<Assignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      assignee: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      enableGeminiInBigquery: Schema.optional(Schema.Boolean),
-      schedulingPolicy: Schema.optional(SchedulingPolicy),
-    }),
-  ).annotate({ identifier: "Assignment" }) as any as Schema.Schema<Assignment>;
+export const Assignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  assignee: Schema.optional(Schema.String),
+  jobType: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  enableGeminiInBigquery: Schema.optional(Schema.Boolean),
+  schedulingPolicy: Schema.optional(SchedulingPolicy),
+  principal: Schema.optional(Schema.String),
+}).annotate({ identifier: "Assignment" });
 
 export interface ListAssignmentsResponse {
   /** List of assignments visible to the user. */
@@ -390,15 +339,11 @@ export interface ListAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListAssignmentsResponse: Schema.Schema<ListAssignmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignments: Schema.optional(Schema.Array(Assignment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAssignmentsResponse",
-  }) as any as Schema.Schema<ListAssignmentsResponse>;
+export const ListAssignmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignments: Schema.optional(Schema.Array(Assignment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAssignmentsResponse" });
 
 export interface SearchAssignmentsResponse {
   /** List of assignments visible to the user. */
@@ -407,15 +352,11 @@ export interface SearchAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const SearchAssignmentsResponse: Schema.Schema<SearchAssignmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignments: Schema.optional(Schema.Array(Assignment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchAssignmentsResponse",
-  }) as any as Schema.Schema<SearchAssignmentsResponse>;
+export const SearchAssignmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignments: Schema.optional(Schema.Array(Assignment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchAssignmentsResponse" });
 
 export interface SearchAllAssignmentsResponse {
   /** List of assignments visible to the user. */
@@ -424,15 +365,11 @@ export interface SearchAllAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const SearchAllAssignmentsResponse: Schema.Schema<SearchAllAssignmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignments: Schema.optional(Schema.Array(Assignment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchAllAssignmentsResponse",
-  }) as any as Schema.Schema<SearchAllAssignmentsResponse>;
+export const SearchAllAssignmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignments: Schema.optional(Schema.Array(Assignment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchAllAssignmentsResponse" });
 
 export interface MoveAssignmentRequest {
   /** The new reservation ID, e.g.: `projects/myotherproject/locations/US/reservations/team2-prod` */
@@ -441,15 +378,10 @@ export interface MoveAssignmentRequest {
   assignmentId?: string;
 }
 
-export const MoveAssignmentRequest: Schema.Schema<MoveAssignmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationId: Schema.optional(Schema.String),
-      assignmentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveAssignmentRequest",
-  }) as any as Schema.Schema<MoveAssignmentRequest>;
+export const MoveAssignmentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationId: Schema.optional(Schema.String),
+  assignmentId: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveAssignmentRequest" });
 
 export interface TableReference {
   /** Optional. The assigned project ID of the project. */
@@ -460,16 +392,11 @@ export interface TableReference {
   tableId?: string;
 }
 
-export const TableReference: Schema.Schema<TableReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      datasetId: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TableReference",
-  }) as any as Schema.Schema<TableReference>;
+export const TableReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  datasetId: Schema.optional(Schema.String),
+  tableId: Schema.optional(Schema.String),
+}).annotate({ identifier: "TableReference" });
 
 export interface BiReservation {
   /** Identifier. The resource name of the singleton BI reservation. Reservation names have the form `projects/{project_id}/locations/{location_id}/biReservation`. */
@@ -482,17 +409,12 @@ export interface BiReservation {
   preferredTables?: Array<TableReference>;
 }
 
-export const BiReservation: Schema.Schema<BiReservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-      preferredTables: Schema.optional(Schema.Array(TableReference)),
-    }),
-  ).annotate({
-    identifier: "BiReservation",
-  }) as any as Schema.Schema<BiReservation>;
+export const BiReservation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+  preferredTables: Schema.optional(Schema.Array(TableReference)),
+}).annotate({ identifier: "BiReservation" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -505,15 +427,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -524,14 +443,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -545,15 +461,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -562,15 +473,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -583,15 +489,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -600,57 +503,39 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface ReservationGroup {
   /** Identifier. The resource name of the reservation group, e.g., `projects/* /locations/* /reservationGroups/team1-prod`. The reservation_group_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
   name?: string;
 }
 
-export const ReservationGroup: Schema.Schema<ReservationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReservationGroup",
-  }) as any as Schema.Schema<ReservationGroup>;
+export const ReservationGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReservationGroup" });
 
 export interface ListReservationGroupsResponse {
   /** List of reservations visible to the user. */
@@ -659,15 +544,11 @@ export interface ListReservationGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListReservationGroupsResponse: Schema.Schema<ListReservationGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reservationGroups: Schema.optional(Schema.Array(ReservationGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReservationGroupsResponse",
-  }) as any as Schema.Schema<ListReservationGroupsResponse>;
+export const ListReservationGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationGroups: Schema.optional(Schema.Array(ReservationGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListReservationGroupsResponse" });
 
 // ==========================================================================
 // Operations

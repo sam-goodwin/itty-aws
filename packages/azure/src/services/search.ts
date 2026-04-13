@@ -267,6 +267,8 @@ export type PrivateEndpointConnectionsDeleteOutput =
 // The operation
 /**
  * Disconnects the private endpoint connection and deletes it from the search service.
+ * Returns 200 (OK) with the deleted connection details on successful deletion, or 404 (Not Found) if the connection does not exist.
+ * NOTE: The behavior of returning 404 is inconsistent with ARM guidelines. Clients should expect a 204 response in future versions and avoid new dependencies on the 404 response.
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
@@ -529,6 +531,8 @@ export type QueryKeysDeleteOutput = typeof QueryKeysDeleteOutput.Type;
 // The operation
 /**
  * Deletes the specified query key. Unlike admin keys, query keys are not regenerated. The process for regenerating a query key is to delete and then recreate it.
+ * Returns 200 (OK) on successful deletion, 204 (No Content) if the service exists but the query keys not found, or 404 (Not Found) if the service is not found.
+ * NOTE: The behavior of returning 404 is inconsistent with ARM guidelines. Clients should expect a 204 response in future versions and avoid new dependencies on the 404 response.
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
@@ -687,6 +691,7 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
 // The operation
 /**
  * Deletes a search service in the given resource group, along with its associated resources.
+ * Returns 200 (OK) on successful deletion, or 204 (No Content) if the service is not found.
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
@@ -766,7 +771,7 @@ export type ServicesListByResourceGroupOutput =
 
 // The operation
 /**
- * Gets a list of all Search services in the given resource group.
+ * Gets a list of all search services in the given resource group.
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
@@ -811,7 +816,7 @@ export type ServicesListBySubscriptionOutput =
 
 // The operation
 /**
- * Gets a list of all Search services in the given subscription.
+ * Gets a list of all search services in the given subscription.
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
@@ -957,6 +962,8 @@ export type SharedPrivateLinkResourcesDeleteOutput =
 // The operation
 /**
  * Initiates the deletion of the shared private link resource from the search service.
+ * Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the service exists but the shared private link is not found, or 404 (Not Found) if the service is not found.
+ * NOTE: The behavior of returning 404 is inconsistent with ARM guidelines. Clients should expect a 204 response in future versions and avoid new dependencies on the 404 response.
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.

@@ -31,16 +31,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   /** The percentage of all accepted messages that were successfully delivered to the device. */
@@ -59,20 +54,18 @@ export interface GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   droppedTtlExpired?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1MessageOutcomePercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1MessageOutcomePercents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delivered: Schema.optional(Schema.Number),
-      pending: Schema.optional(Schema.Number),
-      collapsed: Schema.optional(Schema.Number),
-      droppedTooManyPendingMessages: Schema.optional(Schema.Number),
-      droppedAppForceStopped: Schema.optional(Schema.Number),
-      droppedDeviceInactive: Schema.optional(Schema.Number),
-      droppedTtlExpired: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleFirebaseFcmDataV1beta1MessageOutcomePercents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    delivered: Schema.optional(Schema.Number),
+    pending: Schema.optional(Schema.Number),
+    collapsed: Schema.optional(Schema.Number),
+    droppedTooManyPendingMessages: Schema.optional(Schema.Number),
+    droppedAppForceStopped: Schema.optional(Schema.Number),
+    droppedDeviceInactive: Schema.optional(Schema.Number),
+    droppedTtlExpired: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleFirebaseFcmDataV1beta1MessageOutcomePercents",
-  }) as any as Schema.Schema<GoogleFirebaseFcmDataV1beta1MessageOutcomePercents>;
+  });
 
 export interface GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   /** The percentage of accepted messages that were delivered to the device without delay from the FCM system. */
@@ -87,32 +80,28 @@ export interface GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   delayedUserStopped?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deliveredNoDelay: Schema.optional(Schema.Number),
-      delayedDeviceOffline: Schema.optional(Schema.Number),
-      delayedDeviceDoze: Schema.optional(Schema.Number),
-      delayedMessageThrottled: Schema.optional(Schema.Number),
-      delayedUserStopped: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deliveredNoDelay: Schema.optional(Schema.Number),
+    delayedDeviceOffline: Schema.optional(Schema.Number),
+    delayedDeviceDoze: Schema.optional(Schema.Number),
+    delayedMessageThrottled: Schema.optional(Schema.Number),
+    delayedUserStopped: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents",
-  }) as any as Schema.Schema<GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents>;
+  });
 
 export interface GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
   /** The percentage of accepted messages that had their priority lowered from high to normal. See [documentation for setting message priority](https://firebase.google.com/docs/cloud-messaging/android/message-priority). */
   priorityLowered?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1MessageInsightPercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1MessageInsightPercents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      priorityLowered: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleFirebaseFcmDataV1beta1MessageInsightPercents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    priorityLowered: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleFirebaseFcmDataV1beta1MessageInsightPercents",
-  }) as any as Schema.Schema<GoogleFirebaseFcmDataV1beta1MessageInsightPercents>;
+  });
 
 export interface GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   /** The percentage of accepted notifications that were successfully proxied by [Google Play services](https://developers.google.com/android/guides/overview). */
@@ -129,19 +118,17 @@ export interface GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   skippedOptedOut?: number;
 }
 
-export const GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents: Schema.Schema<GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proxied: Schema.optional(Schema.Number),
-      failed: Schema.optional(Schema.Number),
-      skippedUnsupported: Schema.optional(Schema.Number),
-      skippedNotThrottled: Schema.optional(Schema.Number),
-      skippedUnconfigured: Schema.optional(Schema.Number),
-      skippedOptedOut: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    proxied: Schema.optional(Schema.Number),
+    failed: Schema.optional(Schema.Number),
+    skippedUnsupported: Schema.optional(Schema.Number),
+    skippedNotThrottled: Schema.optional(Schema.Number),
+    skippedUnconfigured: Schema.optional(Schema.Number),
+    skippedOptedOut: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents",
-  }) as any as Schema.Schema<GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents>;
+  });
 
 export interface GoogleFirebaseFcmDataV1beta1Data {
   /** Count of messages accepted by FCM intended for Android devices. The targeted device must have opted in to the collection of usage and diagnostic information. */
@@ -158,27 +145,23 @@ export interface GoogleFirebaseFcmDataV1beta1Data {
   proxyNotificationInsightPercents?: GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents;
 }
 
-export const GoogleFirebaseFcmDataV1beta1Data: Schema.Schema<GoogleFirebaseFcmDataV1beta1Data> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countMessagesAccepted: Schema.optional(Schema.String),
-      countNotificationsAccepted: Schema.optional(Schema.String),
-      messageOutcomePercents: Schema.optional(
-        GoogleFirebaseFcmDataV1beta1MessageOutcomePercents,
-      ),
-      deliveryPerformancePercents: Schema.optional(
-        GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents,
-      ),
-      messageInsightPercents: Schema.optional(
-        GoogleFirebaseFcmDataV1beta1MessageInsightPercents,
-      ),
-      proxyNotificationInsightPercents: Schema.optional(
-        GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseFcmDataV1beta1Data",
-  }) as any as Schema.Schema<GoogleFirebaseFcmDataV1beta1Data>;
+export const GoogleFirebaseFcmDataV1beta1Data =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    countMessagesAccepted: Schema.optional(Schema.String),
+    countNotificationsAccepted: Schema.optional(Schema.String),
+    messageOutcomePercents: Schema.optional(
+      GoogleFirebaseFcmDataV1beta1MessageOutcomePercents,
+    ),
+    deliveryPerformancePercents: Schema.optional(
+      GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents,
+    ),
+    messageInsightPercents: Schema.optional(
+      GoogleFirebaseFcmDataV1beta1MessageInsightPercents,
+    ),
+    proxyNotificationInsightPercents: Schema.optional(
+      GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents,
+    ),
+  }).annotate({ identifier: "GoogleFirebaseFcmDataV1beta1Data" });
 
 export interface GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
   /** The app ID to which the messages were sent. */
@@ -191,17 +174,15 @@ export interface GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
   data?: GoogleFirebaseFcmDataV1beta1Data;
 }
 
-export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData: Schema.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appId: Schema.optional(Schema.String),
-      date: Schema.optional(GoogleTypeDate),
-      analyticsLabel: Schema.optional(Schema.String),
-      data: Schema.optional(GoogleFirebaseFcmDataV1beta1Data),
-    }),
-  ).annotate({
+export const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appId: Schema.optional(Schema.String),
+    date: Schema.optional(GoogleTypeDate),
+    analyticsLabel: Schema.optional(Schema.String),
+    data: Schema.optional(GoogleFirebaseFcmDataV1beta1Data),
+  }).annotate({
     identifier: "GoogleFirebaseFcmDataV1beta1AndroidDeliveryData",
-  }) as any as Schema.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
+  });
 
 export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   /** The delivery data for the provided app. There will be one entry per combination of app, date, and analytics label. */
@@ -210,17 +191,15 @@ export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse: Schema.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidDeliveryData: Schema.optional(
-        Schema.Array(GoogleFirebaseFcmDataV1beta1AndroidDeliveryData),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    androidDeliveryData: Schema.optional(
+      Schema.Array(GoogleFirebaseFcmDataV1beta1AndroidDeliveryData),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse",
-  }) as any as Schema.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse>;
+  });
 
 // ==========================================================================
 // Operations

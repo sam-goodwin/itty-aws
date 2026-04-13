@@ -88,15 +88,18 @@ export type RuleName = string;
 export type Region = string;
 export type SourceFilterString = string;
 export type LogsFilterString = string;
+export type DataSourceFilterString = string;
 export type AccountIdentifier = string;
 export type ResourceArn = string;
 export type LogGroupNamePattern = string;
 export type TagKey = string;
 export type TagValue = string;
 export type RetentionPeriodInDays = number;
+export type AllRegions = boolean;
 export type RuleIdentifier = string;
 export type AwsResourceExplorerManagedViewArn = string;
 export type FailureReason = string;
+export type IsReplicated = boolean;
 export type ListCentralizationRulesForOrganizationMaxResults = number;
 export type NextToken = string;
 export type ResourceIdentifierPrefix = string;
@@ -118,13 +121,15 @@ export const Regions = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type EncryptedLogGroupStrategy = "ALLOW" | "SKIP" | (string & {});
 export const EncryptedLogGroupStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface SourceLogsConfiguration {
-  LogGroupSelectionCriteria: string;
+  LogGroupSelectionCriteria?: string;
+  DataSourceSelectionCriteria?: string;
   EncryptedLogGroupStrategy: EncryptedLogGroupStrategy;
 }
 export const SourceLogsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      LogGroupSelectionCriteria: S.String,
+      LogGroupSelectionCriteria: S.optional(S.String),
+      DataSourceSelectionCriteria: S.optional(S.String),
       EncryptedLogGroupStrategy: EncryptedLogGroupStrategy,
     }),
 ).annotate({
@@ -349,6 +354,10 @@ export type ResourceType =
   | "AWS::BedrockAgentCore::Runtime"
   | "AWS::BedrockAgentCore::Browser"
   | "AWS::BedrockAgentCore::CodeInterpreter"
+  | "AWS::BedrockAgentCore::Gateway"
+  | "AWS::BedrockAgentCore::Memory"
+  | "AWS::SecurityHub::Hub"
+  | "AWS::CloudFront::Distribution"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type TelemetryType = "Logs" | "Metrics" | "Traces" | (string & {});
@@ -549,7 +558,13 @@ export const WAFLoggingParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WAFLoggingParameters",
 }) as any as S.Schema<WAFLoggingParameters>;
-export type LogType = "APPLICATION_LOGS" | "USAGE_LOGS" | (string & {});
+export type LogType =
+  | "APPLICATION_LOGS"
+  | "USAGE_LOGS"
+  | "SECURITY_FINDING_LOGS"
+  | "ACCESS_LOGS"
+  | "CONNECTION_LOGS"
+  | (string & {});
 export const LogType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type LogTypes = LogType[];
 export const LogTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(LogType);
@@ -595,6 +610,8 @@ export interface TelemetryRule {
   DestinationConfiguration?: TelemetryDestinationConfiguration;
   Scope?: string;
   SelectionCriteria?: string;
+  Regions?: string[];
+  AllRegions?: boolean;
 }
 export const TelemetryRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -604,6 +621,8 @@ export const TelemetryRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DestinationConfiguration: S.optional(TelemetryDestinationConfiguration),
     Scope: S.optional(S.String),
     SelectionCriteria: S.optional(S.String),
+    Regions: S.optional(Regions),
+    AllRegions: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "TelemetryRule" }) as any as S.Schema<TelemetryRule>;
 export interface CreateTelemetryRuleInput {
@@ -914,15 +933,35 @@ export type Status =
   | "STOPPED"
   | (string & {});
 export const Status = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface RegionStatus {
+  Region?: string;
+  Status?: string;
+  FailureReason?: string;
+  RuleArn?: string;
+}
+export const RegionStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Region: S.optional(S.String),
+    Status: S.optional(S.String),
+    FailureReason: S.optional(S.String),
+    RuleArn: S.optional(S.String),
+  }),
+).annotate({ identifier: "RegionStatus" }) as any as S.Schema<RegionStatus>;
+export type RegionStatuses = RegionStatus[];
+export const RegionStatuses = /*@__PURE__*/ /*#__PURE__*/ S.Array(RegionStatus);
 export interface GetTelemetryEvaluationStatusOutput {
   Status?: Status;
   FailureReason?: string;
+  HomeRegion?: string;
+  RegionStatuses?: RegionStatus[];
 }
 export const GetTelemetryEvaluationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       Status: S.optional(Status),
       FailureReason: S.optional(S.String),
+      HomeRegion: S.optional(S.String),
+      RegionStatuses: S.optional(RegionStatuses),
     }),
   ).annotate({
     identifier: "GetTelemetryEvaluationStatusOutput",
@@ -939,12 +978,16 @@ export const GetTelemetryEvaluationStatusForOrganizationRequest =
 export interface GetTelemetryEvaluationStatusForOrganizationOutput {
   Status?: Status;
   FailureReason?: string;
+  HomeRegion?: string;
+  RegionStatuses?: RegionStatus[];
 }
 export const GetTelemetryEvaluationStatusForOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       Status: S.optional(Status),
       FailureReason: S.optional(S.String),
+      HomeRegion: S.optional(S.String),
+      RegionStatuses: S.optional(RegionStatuses),
     }),
   ).annotate({
     identifier: "GetTelemetryEvaluationStatusForOrganizationOutput",
@@ -972,6 +1015,9 @@ export interface GetTelemetryRuleOutput {
   CreatedTimeStamp?: number;
   LastUpdateTimeStamp?: number;
   TelemetryRule?: TelemetryRule;
+  HomeRegion?: string;
+  IsReplicated?: boolean;
+  RegionStatuses?: RegionStatus[];
 }
 export const GetTelemetryRuleOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -981,6 +1027,9 @@ export const GetTelemetryRuleOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       CreatedTimeStamp: S.optional(S.Number),
       LastUpdateTimeStamp: S.optional(S.Number),
       TelemetryRule: S.optional(TelemetryRule),
+      HomeRegion: S.optional(S.String),
+      IsReplicated: S.optional(S.Boolean),
+      RegionStatuses: S.optional(RegionStatuses),
     }),
 ).annotate({
   identifier: "GetTelemetryRuleOutput",
@@ -1009,6 +1058,9 @@ export interface GetTelemetryRuleForOrganizationOutput {
   CreatedTimeStamp?: number;
   LastUpdateTimeStamp?: number;
   TelemetryRule?: TelemetryRule;
+  HomeRegion?: string;
+  IsReplicated?: boolean;
+  RegionStatuses?: RegionStatus[];
 }
 export const GetTelemetryRuleForOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1018,6 +1070,9 @@ export const GetTelemetryRuleForOrganizationOutput =
       CreatedTimeStamp: S.optional(S.Number),
       LastUpdateTimeStamp: S.optional(S.Number),
       TelemetryRule: S.optional(TelemetryRule),
+      HomeRegion: S.optional(S.String),
+      IsReplicated: S.optional(S.Boolean),
+      RegionStatuses: S.optional(RegionStatuses),
     }),
   ).annotate({
     identifier: "GetTelemetryRuleForOrganizationOutput",
@@ -1442,29 +1497,58 @@ export const StartTelemetryEnrichmentOutput =
   ).annotate({
     identifier: "StartTelemetryEnrichmentOutput",
   }) as any as S.Schema<StartTelemetryEnrichmentOutput>;
-export interface StartTelemetryEvaluationRequest {}
-export const StartTelemetryEvaluationRequest =
+export interface StartTelemetryEvaluationInput {
+  Regions?: string[];
+  AllRegions?: boolean;
+}
+export const StartTelemetryEvaluationInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    S.Struct({
+      Regions: S.optional(Regions),
+      AllRegions: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/StartTelemetryEvaluation" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
-    identifier: "StartTelemetryEvaluationRequest",
-  }) as any as S.Schema<StartTelemetryEvaluationRequest>;
+    identifier: "StartTelemetryEvaluationInput",
+  }) as any as S.Schema<StartTelemetryEvaluationInput>;
 export interface StartTelemetryEvaluationResponse {}
 export const StartTelemetryEvaluationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StartTelemetryEvaluationResponse",
   }) as any as S.Schema<StartTelemetryEvaluationResponse>;
-export interface StartTelemetryEvaluationForOrganizationRequest {}
-export const StartTelemetryEvaluationForOrganizationRequest =
+export interface StartTelemetryEvaluationForOrganizationInput {
+  Regions?: string[];
+  AllRegions?: boolean;
+}
+export const StartTelemetryEvaluationForOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    S.Struct({
+      Regions: S.optional(Regions),
+      AllRegions: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/StartTelemetryEvaluationForOrganization",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
-    identifier: "StartTelemetryEvaluationForOrganizationRequest",
-  }) as any as S.Schema<StartTelemetryEvaluationForOrganizationRequest>;
+    identifier: "StartTelemetryEvaluationForOrganizationInput",
+  }) as any as S.Schema<StartTelemetryEvaluationForOrganizationInput>;
 export interface StartTelemetryEvaluationForOrganizationResponse {}
 export const StartTelemetryEvaluationForOrganizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -2786,12 +2870,12 @@ export type StartTelemetryEvaluationError =
  * This action begins onboarding the caller Amazon Web Services account to the telemetry config feature.
  */
 export const startTelemetryEvaluation: API.OperationMethod<
-  StartTelemetryEvaluationRequest,
+  StartTelemetryEvaluationInput,
   StartTelemetryEvaluationResponse,
   StartTelemetryEvaluationError,
   Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartTelemetryEvaluationRequest,
+  input: StartTelemetryEvaluationInput,
   output: StartTelemetryEvaluationResponse,
   errors: [
     AccessDeniedException,
@@ -2810,12 +2894,12 @@ export type StartTelemetryEvaluationForOrganizationError =
  * This actions begins onboarding the organization and all member accounts to the telemetry config feature.
  */
 export const startTelemetryEvaluationForOrganization: API.OperationMethod<
-  StartTelemetryEvaluationForOrganizationRequest,
+  StartTelemetryEvaluationForOrganizationInput,
   StartTelemetryEvaluationForOrganizationResponse,
   StartTelemetryEvaluationForOrganizationError,
   Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartTelemetryEvaluationForOrganizationRequest,
+  input: StartTelemetryEvaluationForOrganizationInput,
   output: StartTelemetryEvaluationForOrganizationResponse,
   errors: [
     AccessDeniedException,

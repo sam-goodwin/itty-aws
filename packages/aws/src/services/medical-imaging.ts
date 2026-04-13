@@ -208,6 +208,7 @@ export type ImageSetWorkflowStatus =
   | "COPYING_WITH_READ_ONLY_ACCESS"
   | "COPY_FAILED"
   | "UPDATING"
+  | "UPDATING_FOR_STUDY_CONSISTENCY"
   | "UPDATED"
   | "UPDATE_FAILED"
   | "DELETING"
@@ -1132,6 +1133,7 @@ export interface UpdateImageSetMetadataRequest {
   imageSetId: string;
   latestVersionId: string;
   force?: boolean;
+  includeStudyImageSets?: boolean;
   updateImageSetMetadataUpdates: MetadataUpdates;
 }
 export const UpdateImageSetMetadataRequest =
@@ -1141,6 +1143,9 @@ export const UpdateImageSetMetadataRequest =
       imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
       latestVersionId: S.String.pipe(T.HttpQuery("latestVersion")),
       force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
+      includeStudyImageSets: S.optional(S.Boolean).pipe(
+        T.HttpQuery("includeStudyImageSets"),
+      ),
       updateImageSetMetadataUpdates: MetadataUpdates.pipe(T.HttpPayload()),
     }).pipe(
       T.all(
@@ -1404,6 +1409,14 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { message: S.String },
 ).pipe(C.withBadRequestError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.String },
+).pipe(C.withBadRequestError) {}
+export class NotAcceptableException extends S.TaggedErrorClass<NotAcceptableException>()(
+  "NotAcceptableException",
+  { message: S.String },
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type CopyImageSetError =
@@ -1496,8 +1509,10 @@ export const getDICOMImportJob: API.OperationMethod<
 }));
 export type GetImageFrameError =
   | AccessDeniedException
+  | BadRequestException
   | ConflictException
   | InternalServerException
+  | NotAcceptableException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
@@ -1515,8 +1530,10 @@ export const getImageFrame: API.OperationMethod<
   output: GetImageFrameResponse,
   errors: [
     AccessDeniedException,
+    BadRequestException,
     ConflictException,
     InternalServerException,
+    NotAcceptableException,
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,

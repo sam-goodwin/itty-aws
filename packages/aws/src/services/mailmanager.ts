@@ -128,6 +128,8 @@ export type ArchiveArn = string;
 export type IngressPointName = string;
 export type SmtpPassword = string | redacted.Redacted<string>;
 export type SecretArn = string;
+export type CAContent = string | redacted.Redacted<string>;
+export type CrlContent = string | redacted.Redacted<string>;
 export type VpcEndpointId = string;
 export type IngressPointArn = string;
 export type IngressPointARecord = string;
@@ -141,7 +143,7 @@ export type RuleName = string;
 export type AnalyzerArn = string;
 export type ResultField = string;
 export type MimeHeaderAttribute = string;
-export type RuleStringValue = string;
+export type RuleStringValue = string | redacted.Redacted<string>;
 export type RuleIpStringValue = string;
 export type IdOrArn = string;
 export type NameOrArn = string;
@@ -155,6 +157,12 @@ export type EmailAddress = string | redacted.Redacted<string>;
 export type QBusinessApplicationId = string;
 export type QBusinessIndexId = string;
 export type SnsTopicArn = string;
+export type StatusCode = string;
+export type SmtpReplyCode = string;
+export type DiagnosticMessage = string | redacted.Redacted<string>;
+export type BounceMessage = string | redacted.Redacted<string>;
+export type LambdaFunctionArn = string;
+export type LambdaRetryTimeMinutes = number;
 export type RuleSetArn = string;
 export type TrafficPolicyName = string;
 export type Ipv4Cidr = string;
@@ -1624,14 +1632,44 @@ export const ListArchivesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListArchivesResponse",
 }) as any as S.Schema<ListArchivesResponse>;
-export type IngressPointType = "OPEN" | "AUTH" | (string & {});
+export type IngressPointType = "OPEN" | "AUTH" | "MTLS" | (string & {});
 export const IngressPointType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface TrustStore {
+  CAContent: string | redacted.Redacted<string>;
+  CrlContent?: string | redacted.Redacted<string>;
+  KmsKeyArn?: string;
+}
+export const TrustStore = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CAContent: SensitiveString,
+    CrlContent: S.optional(SensitiveString),
+    KmsKeyArn: S.optional(S.String),
+  }),
+).annotate({ identifier: "TrustStore" }) as any as S.Schema<TrustStore>;
+export interface TlsAuthConfiguration {
+  TrustStore?: TrustStore;
+}
+export const TlsAuthConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ TrustStore: S.optional(TrustStore) }),
+).annotate({
+  identifier: "TlsAuthConfiguration",
+}) as any as S.Schema<TlsAuthConfiguration>;
 export type IngressPointConfiguration =
-  | { SmtpPassword: string | redacted.Redacted<string>; SecretArn?: never }
-  | { SmtpPassword?: never; SecretArn: string };
+  | {
+      SmtpPassword: string | redacted.Redacted<string>;
+      SecretArn?: never;
+      TlsAuthConfiguration?: never;
+    }
+  | { SmtpPassword?: never; SecretArn: string; TlsAuthConfiguration?: never }
+  | {
+      SmtpPassword?: never;
+      SecretArn?: never;
+      TlsAuthConfiguration: TlsAuthConfiguration;
+    };
 export const IngressPointConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ SmtpPassword: SensitiveString }),
   S.Struct({ SecretArn: S.String }),
+  S.Struct({ TlsAuthConfiguration: TlsAuthConfiguration }),
 ]);
 export type IpType = "IPV4" | "DUAL_STACK" | (string & {});
 export const IpType = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -1665,6 +1703,8 @@ export const NetworkConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ PublicNetworkConfiguration: PublicNetworkConfiguration }),
   S.Struct({ PrivateNetworkConfiguration: PrivateNetworkConfiguration }),
 ]);
+export type TlsPolicy = "REQUIRED" | "OPTIONAL" | "FIPS" | (string & {});
+export const TlsPolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateIngressPointRequest {
   ClientToken?: string;
   IngressPointName: string;
@@ -1673,6 +1713,7 @@ export interface CreateIngressPointRequest {
   TrafficPolicyId: string;
   IngressPointConfiguration?: IngressPointConfiguration;
   NetworkConfiguration?: NetworkConfiguration;
+  TlsPolicy?: TlsPolicy;
   Tags?: Tag[];
 }
 export const CreateIngressPointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1685,6 +1726,7 @@ export const CreateIngressPointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       TrafficPolicyId: S.String,
       IngressPointConfiguration: S.optional(IngressPointConfiguration),
       NetworkConfiguration: S.optional(NetworkConfiguration),
+      TlsPolicy: S.optional(TlsPolicy),
       Tags: S.optional(TagList),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1700,12 +1742,18 @@ export const CreateIngressPointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateIngressPointResponse",
 }) as any as S.Schema<CreateIngressPointResponse>;
+export type TrustStoreResponseOption = "EXCLUDE" | "INCLUDE" | (string & {});
+export const TrustStoreResponseOption = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface GetIngressPointRequest {
   IngressPointId: string;
+  IncludeTrustStoreContents?: TrustStoreResponseOption;
 }
 export const GetIngressPointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
-    S.Struct({ IngressPointId: S.String }).pipe(
+    S.Struct({
+      IngressPointId: S.String,
+      IncludeTrustStoreContents: S.optional(TrustStoreResponseOption),
+    }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
 ).annotate({
@@ -1718,6 +1766,7 @@ export type IngressPointStatus =
   | "ACTIVE"
   | "CLOSED"
   | "FAILED"
+  | "ASSOCIATED_VPC_ENDPOINT_DOES_NOT_EXIST"
   | (string & {});
 export const IngressPointStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface IngressPointPasswordConfiguration {
@@ -1740,6 +1789,7 @@ export const IngressPointPasswordConfiguration =
 export interface IngressPointAuthConfiguration {
   IngressPointPasswordConfiguration?: IngressPointPasswordConfiguration;
   SecretArn?: string;
+  TlsAuthConfiguration?: TlsAuthConfiguration;
 }
 export const IngressPointAuthConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1748,6 +1798,7 @@ export const IngressPointAuthConfiguration =
         IngressPointPasswordConfiguration,
       ),
       SecretArn: S.optional(S.String),
+      TlsAuthConfiguration: S.optional(TlsAuthConfiguration),
     }),
   ).annotate({
     identifier: "IngressPointAuthConfiguration",
@@ -1763,6 +1814,7 @@ export interface GetIngressPointResponse {
   TrafficPolicyId?: string;
   IngressPointAuthConfiguration?: IngressPointAuthConfiguration;
   NetworkConfiguration?: NetworkConfiguration;
+  TlsPolicy?: TlsPolicy;
   CreatedTimestamp?: Date;
   LastUpdatedTimestamp?: Date;
 }
@@ -1779,6 +1831,7 @@ export const GetIngressPointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       TrafficPolicyId: S.optional(S.String),
       IngressPointAuthConfiguration: S.optional(IngressPointAuthConfiguration),
       NetworkConfiguration: S.optional(NetworkConfiguration),
+      TlsPolicy: S.optional(TlsPolicy),
       CreatedTimestamp: S.optional(
         S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       ),
@@ -1798,6 +1851,7 @@ export interface UpdateIngressPointRequest {
   RuleSetId?: string;
   TrafficPolicyId?: string;
   IngressPointConfiguration?: IngressPointConfiguration;
+  TlsPolicy?: TlsPolicy;
 }
 export const UpdateIngressPointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1808,6 +1862,7 @@ export const UpdateIngressPointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       RuleSetId: S.optional(S.String),
       TrafficPolicyId: S.optional(S.String),
       IngressPointConfiguration: S.optional(IngressPointConfiguration),
+      TlsPolicy: S.optional(TlsPolicy),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2124,18 +2179,48 @@ export type RuleStringEmailAttribute =
   | "CC"
   | (string & {});
 export const RuleStringEmailAttribute = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RuleClientCertificateAttribute =
+  | "CN"
+  | "SAN_RFC822_NAME"
+  | "SAN_DNS_NAME"
+  | "SAN_DIRECTORY_NAME"
+  | "SAN_UNIFORM_RESOURCE_IDENTIFIER"
+  | "SAN_IP_ADDRESS"
+  | "SAN_REGISTERED_ID"
+  | "SERIAL_NUMBER"
+  | (string & {});
+export const RuleClientCertificateAttribute =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type RuleStringToEvaluate =
   | {
       Attribute: RuleStringEmailAttribute;
       MimeHeaderAttribute?: never;
       Analysis?: never;
+      ClientCertificateAttribute?: never;
     }
-  | { Attribute?: never; MimeHeaderAttribute: string; Analysis?: never }
-  | { Attribute?: never; MimeHeaderAttribute?: never; Analysis: Analysis };
+  | {
+      Attribute?: never;
+      MimeHeaderAttribute: string;
+      Analysis?: never;
+      ClientCertificateAttribute?: never;
+    }
+  | {
+      Attribute?: never;
+      MimeHeaderAttribute?: never;
+      Analysis: Analysis;
+      ClientCertificateAttribute?: never;
+    }
+  | {
+      Attribute?: never;
+      MimeHeaderAttribute?: never;
+      Analysis?: never;
+      ClientCertificateAttribute: RuleClientCertificateAttribute;
+    };
 export const RuleStringToEvaluate = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ Attribute: RuleStringEmailAttribute }),
   S.Struct({ MimeHeaderAttribute: S.String }),
   S.Struct({ Analysis: Analysis }),
+  S.Struct({ ClientCertificateAttribute: RuleClientCertificateAttribute }),
 ]);
 export type RuleStringOperator =
   | "EQUALS"
@@ -2145,12 +2230,13 @@ export type RuleStringOperator =
   | "CONTAINS"
   | (string & {});
 export const RuleStringOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type RuleStringList = string[];
-export const RuleStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type RuleStringList = string | redacted.Redacted<string>[];
+export const RuleStringList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface RuleStringExpression {
   Evaluate: RuleStringToEvaluate;
   Operator: RuleStringOperator;
-  Values: string[];
+  Values: string | redacted.Redacted<string>[];
 }
 export const RuleStringExpression = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2455,6 +2541,46 @@ export const SnsAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     PayloadType: S.optional(SnsNotificationPayloadType),
   }),
 ).annotate({ identifier: "SnsAction" }) as any as S.Schema<SnsAction>;
+export interface BounceAction {
+  ActionFailurePolicy?: ActionFailurePolicy;
+  RoleArn: string;
+  Sender: string | redacted.Redacted<string>;
+  StatusCode: string;
+  SmtpReplyCode: string;
+  DiagnosticMessage: string | redacted.Redacted<string>;
+  Message?: string | redacted.Redacted<string>;
+}
+export const BounceAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ActionFailurePolicy: S.optional(ActionFailurePolicy),
+    RoleArn: S.String,
+    Sender: SensitiveString,
+    StatusCode: S.String,
+    SmtpReplyCode: S.String,
+    DiagnosticMessage: SensitiveString,
+    Message: S.optional(SensitiveString),
+  }),
+).annotate({ identifier: "BounceAction" }) as any as S.Schema<BounceAction>;
+export type LambdaInvocationType = "EVENT" | "REQUEST_RESPONSE" | (string & {});
+export const LambdaInvocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface InvokeLambdaAction {
+  ActionFailurePolicy?: ActionFailurePolicy;
+  FunctionArn: string;
+  InvocationType: LambdaInvocationType;
+  RoleArn: string;
+  RetryTimeMinutes?: number;
+}
+export const InvokeLambdaAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ActionFailurePolicy: S.optional(ActionFailurePolicy),
+    FunctionArn: S.String,
+    InvocationType: LambdaInvocationType,
+    RoleArn: S.String,
+    RetryTimeMinutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "InvokeLambdaAction",
+}) as any as S.Schema<InvokeLambdaAction>;
 export type RuleAction =
   | {
       Drop: DropAction;
@@ -2467,6 +2593,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2479,6 +2607,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2491,6 +2621,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2503,6 +2635,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2515,6 +2649,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2527,6 +2663,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2539,6 +2677,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2551,6 +2691,8 @@ export type RuleAction =
       DeliverToMailbox: DeliverToMailboxAction;
       DeliverToQBusiness?: never;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2563,6 +2705,8 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness: DeliverToQBusinessAction;
       PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda?: never;
     }
   | {
       Drop?: never;
@@ -2575,6 +2719,36 @@ export type RuleAction =
       DeliverToMailbox?: never;
       DeliverToQBusiness?: never;
       PublishToSns: SnsAction;
+      Bounce?: never;
+      InvokeLambda?: never;
+    }
+  | {
+      Drop?: never;
+      Relay?: never;
+      Archive?: never;
+      WriteToS3?: never;
+      Send?: never;
+      AddHeader?: never;
+      ReplaceRecipient?: never;
+      DeliverToMailbox?: never;
+      DeliverToQBusiness?: never;
+      PublishToSns?: never;
+      Bounce: BounceAction;
+      InvokeLambda?: never;
+    }
+  | {
+      Drop?: never;
+      Relay?: never;
+      Archive?: never;
+      WriteToS3?: never;
+      Send?: never;
+      AddHeader?: never;
+      ReplaceRecipient?: never;
+      DeliverToMailbox?: never;
+      DeliverToQBusiness?: never;
+      PublishToSns?: never;
+      Bounce?: never;
+      InvokeLambda: InvokeLambdaAction;
     };
 export const RuleAction = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ Drop: DropAction }),
@@ -2587,6 +2761,8 @@ export const RuleAction = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ DeliverToMailbox: DeliverToMailboxAction }),
   S.Struct({ DeliverToQBusiness: DeliverToQBusinessAction }),
   S.Struct({ PublishToSns: SnsAction }),
+  S.Struct({ Bounce: BounceAction }),
+  S.Struct({ InvokeLambda: InvokeLambdaAction }),
 ]);
 export type RuleActions = RuleAction[];
 export const RuleActions = /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleAction);
@@ -3170,6 +3346,7 @@ export const createAddressListImportJob: API.OperationMethod<
 }));
 export type DeregisterMemberFromAddressListError =
   | AccessDeniedException
+  | ConflictException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
@@ -3187,6 +3364,7 @@ export const deregisterMemberFromAddressList: API.OperationMethod<
   output: DeregisterMemberFromAddressListResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
@@ -3535,6 +3713,7 @@ export const listTagsForResource: API.OperationMethod<
 }));
 export type RegisterMemberToAddressListError =
   | AccessDeniedException
+  | ConflictException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ThrottlingException
@@ -3553,6 +3732,7 @@ export const registerMemberToAddressList: API.OperationMethod<
   output: RegisterMemberToAddressListResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ThrottlingException,
@@ -3841,6 +4021,7 @@ export const listAddonInstances: API.OperationMethod<
 export type CreateAddonSubscriptionError =
   | ConflictException
   | ServiceQuotaExceededException
+  | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
@@ -3857,6 +4038,7 @@ export const createAddonSubscription: API.OperationMethod<
   errors: [
     ConflictException,
     ServiceQuotaExceededException,
+    ThrottlingException,
     ValidationException,
   ],
 }));
@@ -3983,6 +4165,7 @@ export type DeleteAddressListError =
   | AccessDeniedException
   | ConflictException
   | ThrottlingException
+  | ValidationException
   | CommonErrors;
 /**
  * Deletes an address list.
@@ -3995,7 +4178,12 @@ export const deleteAddressList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAddressListRequest,
   output: DeleteAddressListResponse,
-  errors: [AccessDeniedException, ConflictException, ThrottlingException],
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ThrottlingException,
+    ValidationException,
+  ],
 }));
 export type ListAddressListsError =
   | AccessDeniedException

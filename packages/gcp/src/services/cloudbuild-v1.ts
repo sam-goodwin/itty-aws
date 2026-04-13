@@ -22,69 +22,180 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+export interface WorkerConfig {
+  /** Optional. Enable nested virtualization on the worker, if supported by the machine type. By default, nested virtualization is disabled. */
+  enableNestedVirtualization?: boolean;
+  /** Optional. Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default. */
+  machineType?: string;
+  /** Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 4000. If `0` is specified, Cloud Build will use a standard disk size. */
+  diskSizeGb?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const WorkerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableNestedVirtualization: Schema.optional(Schema.Boolean),
+  machineType: Schema.optional(Schema.String),
+  diskSizeGb: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkerConfig" });
 
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+export interface NetworkConfig {
+  /** Option to configure network egress for the workers. */
+  egressOption?:
+    | "EGRESS_OPTION_UNSPECIFIED"
+    | "NO_PUBLIC_EGRESS"
+    | "PUBLIC_EGRESS"
+    | (string & {});
+  /** Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment) */
+  peeredNetwork?: string;
+  /** Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. */
+  peeredNetworkIpRange?: string;
+}
+
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  egressOption: Schema.optional(Schema.String),
+  peeredNetwork: Schema.optional(Schema.String),
+  peeredNetworkIpRange: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkConfig" });
+
+export interface PrivateServiceConnect {
+  /** Required. Immutable. Disable public IP on the primary network interface. If true, workers are created without any public address, which prevents network egress to public IPs unless a network proxy is configured. If false, workers are created with a public address which allows for public internet egress. The public address only applies to traffic through the primary network interface. If `route_all_traffic` is set to true, all traffic will go through the non-primary network interface, this boolean has no effect. */
+  publicIpAddressDisabled?: boolean;
+  /** Required. Immutable. The network attachment that the worker network interface is peered to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments) */
+  networkAttachment?: string;
+  /** Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route RFC 1918 (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16) and RFC 6598 (100.64.0.0/10) through PSC interface. */
+  routeAllTraffic?: boolean;
+}
+
+export const PrivateServiceConnect = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicIpAddressDisabled: Schema.optional(Schema.Boolean),
+  networkAttachment: Schema.optional(Schema.String),
+  routeAllTraffic: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PrivateServiceConnect" });
+
+export interface PrivatePoolV1Config {
+  /** Machine configuration for the workers in the pool. */
+  workerConfig?: WorkerConfig;
+  /** Network configuration for the pool. */
+  networkConfig?: NetworkConfig;
+  /** Immutable. Private Service Connect(PSC) Network configuration for the pool. */
+  privateServiceConnect?: PrivateServiceConnect;
+}
+
+export const PrivatePoolV1Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workerConfig: Schema.optional(WorkerConfig),
+  networkConfig: Schema.optional(NetworkConfig),
+  privateServiceConnect: Schema.optional(PrivateServiceConnect),
+}).annotate({ identifier: "PrivatePoolV1Config" });
+
+export interface BitbucketServerRepositoryId {
+  /** Required. Identifier for the repository. */
+  repoSlug?: string;
+  /** Output only. The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo. */
+  webhookId?: number;
+  /** Required. Identifier for the project storing the repository. */
+  projectKey?: string;
+}
+
+export const BitbucketServerRepositoryId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repoSlug: Schema.optional(Schema.String),
+    webhookId: Schema.optional(Schema.Number),
+    projectKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketServerRepositoryId" });
+
+export interface BitbucketServerSecrets {
+  /** Required. The resource name for the read access token's secret version. */
+  readAccessTokenVersionName?: string;
+  /** Required. The resource name for the admin access token's secret version. */
+  adminAccessTokenVersionName?: string;
+  /** Required. Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig. */
+  webhookSecretVersionName?: string;
+}
+
+export const BitbucketServerSecrets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    readAccessTokenVersionName: Schema.optional(Schema.String),
+    adminAccessTokenVersionName: Schema.optional(Schema.String),
+    webhookSecretVersionName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BitbucketServerSecrets" });
+
+export interface BitbucketServerConfig {
+  /** Time when the config was created. */
+  createTime?: string;
+  /** Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project. */
+  peeredNetwork?: string;
+  /** The resource name for the config. */
   name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
+  /** Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set. */
+  peeredNetworkIpRange?: string;
+  /** Required. Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig. */
+  hostUri?: string;
+  /** Required. Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig. */
+  apiKey?: string;
+  /** Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config. */
+  webhookKey?: string;
+  /** Output only. Connected Bitbucket Server repositories for this config. */
+  connectedRepositories?: Array<BitbucketServerRepositoryId>;
+  /** Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt. */
+  sslCa?: string;
+  /** Username of the account Cloud Build will use on Bitbucket Server. */
+  username?: string;
+  /** Required. Secret Manager secrets needed by the config. */
+  secrets?: BitbucketServerSecrets;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const BitbucketServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  peeredNetwork: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  peeredNetworkIpRange: Schema.optional(Schema.String),
+  hostUri: Schema.optional(Schema.String),
+  apiKey: Schema.optional(Schema.String),
+  webhookKey: Schema.optional(Schema.String),
+  connectedRepositories: Schema.optional(
+    Schema.Array(BitbucketServerRepositoryId),
+  ),
+  sslCa: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  secrets: Schema.optional(BitbucketServerSecrets),
+}).annotate({ identifier: "BitbucketServerConfig" });
 
-export interface CancelOperationRequest {}
+export interface ListBitbucketServerConfigsResponse {
+  /** A list of BitbucketServerConfigs */
+  bitbucketServerConfigs?: Array<BitbucketServerConfig>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const ListBitbucketServerConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitbucketServerConfigs: Schema.optional(
+      Schema.Array(BitbucketServerConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListBitbucketServerConfigsResponse" });
 
-export interface Empty {}
+export interface HttpConfig {
+  /** SecretVersion resource of the HTTP proxy URL. The Service Account used in the build (either the default Service Account or user-specified Service Account) should have `secretmanager.versions.access` permissions on this secret. The proxy URL should be in format `protocol://@]proxyhost[:port]`. */
+  proxySecretVersionName?: string;
+}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const HttpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  proxySecretVersionName: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpConfig" });
+
+export interface GitConfig {
+  /** Configuration for HTTP related git operations. */
+  http?: HttpConfig;
+}
+
+export const GitConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  http: Schema.optional(HttpConfig),
+}).annotate({ identifier: "GitConfig" });
 
 export interface StorageSource {
   /** Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
   bucket?: string;
-  /** Required. Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build. */
-  object?: string;
   /** Optional. Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used. */
   generation?: string;
   /** Optional. Option to specify the tool to fetch the source file for the build. */
@@ -93,54 +204,74 @@ export interface StorageSource {
     | "GSUTIL"
     | "GCS_FETCHER"
     | (string & {});
+  /** Required. Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build. */
+  object?: string;
 }
 
-export const StorageSource: Schema.Schema<StorageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      sourceFetcher: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StorageSource",
-  }) as any as Schema.Schema<StorageSource>;
+export const StorageSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  sourceFetcher: Schema.optional(Schema.String),
+  object: Schema.optional(Schema.String),
+}).annotate({ identifier: "StorageSource" });
 
-export interface RepoSource {
-  /** Optional. ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed. */
-  projectId?: string;
-  /** Required. Name of the Cloud Source Repository. */
-  repoName?: string;
-  /** Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
-  branchName?: string;
-  /** Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
-  tagName?: string;
-  /** Explicit commit SHA to build. */
-  commitSha?: string;
-  /** Optional. Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. */
+export interface Hash {
+  /** The hash value. */
+  value?: string;
+  /** The type of hash that was performed. */
+  type?:
+    | "NONE"
+    | "SHA256"
+    | "MD5"
+    | "GO_MODULE_H1"
+    | "SHA512"
+    | "DIRSUM_SHA256"
+    | (string & {});
+}
+
+export const Hash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Hash" });
+
+export interface FileHashes {
+  /** Collection of file hashes. */
+  fileHash?: Array<Hash>;
+}
+
+export const FileHashes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileHash: Schema.optional(Schema.Array(Hash)),
+}).annotate({ identifier: "FileHashes" });
+
+export interface StorageSourceManifest {
+  /** Required. Cloud Storage object containing the source manifest. This object must be a JSON file. */
+  object?: string;
+  /** Required. Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
+  bucket?: string;
+  /** Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used. */
+  generation?: string;
+}
+
+export const StorageSourceManifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  bucket: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+}).annotate({ identifier: "StorageSourceManifest" });
+
+export interface ConnectedRepository {
+  /** Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. */
+  revision?: string;
+  /** Required. Name of the Google Cloud Build repository, formatted as `projects/* /locations/* /connections/* /repositories/*`. */
+  repository?: string;
+  /** Optional. Directory, relative to the source root, in which to run the build. */
   dir?: string;
-  /** Optional. Only trigger a build if the revision regex does NOT match the revision regex. */
-  invertRegex?: boolean;
-  /** Optional. Substitutions to use in a triggered build. Should only be used with RunBuildTrigger */
-  substitutions?: Record<string, string>;
 }
 
-export const RepoSource: Schema.Schema<RepoSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      repoName: Schema.optional(Schema.String),
-      branchName: Schema.optional(Schema.String),
-      tagName: Schema.optional(Schema.String),
-      commitSha: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      invertRegex: Schema.optional(Schema.Boolean),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({ identifier: "RepoSource" }) as any as Schema.Schema<RepoSource>;
+export const ConnectedRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  revision: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  dir: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectedRepository" });
 
 export interface GitSource {
   /** Required. Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote. */
@@ -151,727 +282,65 @@ export interface GitSource {
   revision?: string;
 }
 
-export const GitSource: Schema.Schema<GitSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GitSource" }) as any as Schema.Schema<GitSource>;
+export const GitSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  dir: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitSource" });
 
-export interface StorageSourceManifest {
-  /** Required. Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
-  bucket?: string;
-  /** Required. Cloud Storage object containing the source manifest. This object must be a JSON file. */
-  object?: string;
-  /** Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used. */
-  generation?: string;
-}
-
-export const StorageSourceManifest: Schema.Schema<StorageSourceManifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StorageSourceManifest",
-  }) as any as Schema.Schema<StorageSourceManifest>;
-
-export interface ConnectedRepository {
-  /** Required. Name of the Google Cloud Build repository, formatted as `projects/* /locations/* /connections/* /repositories/*`. */
-  repository?: string;
-  /** Optional. Directory, relative to the source root, in which to run the build. */
+export interface RepoSource {
+  /** Required. Name of the Cloud Source Repository. */
+  repoName?: string;
+  /** Optional. Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. */
   dir?: string;
-  /** Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. */
-  revision?: string;
+  /** Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
+  branchName?: string;
+  /** Optional. Only trigger a build if the revision regex does NOT match the revision regex. */
+  invertRegex?: boolean;
+  /** Optional. Substitutions to use in a triggered build. Should only be used with RunBuildTrigger */
+  substitutions?: Record<string, string>;
+  /** Optional. ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed. */
+  projectId?: string;
+  /** Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
+  tagName?: string;
+  /** Explicit commit SHA to build. */
+  commitSha?: string;
 }
 
-export const ConnectedRepository: Schema.Schema<ConnectedRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectedRepository",
-  }) as any as Schema.Schema<ConnectedRepository>;
-
-export interface DeveloperConnectConfig {
-  /** Required. The Developer Connect Git repository link, formatted as `projects/* /locations/* /connections/* /gitRepositoryLink/*`. */
-  gitRepositoryLink?: string;
-  /** Required. Directory, relative to the source root, in which to run the build. */
-  dir?: string;
-  /** Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. */
-  revision?: string;
-}
-
-export const DeveloperConnectConfig: Schema.Schema<DeveloperConnectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitRepositoryLink: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeveloperConnectConfig",
-  }) as any as Schema.Schema<DeveloperConnectConfig>;
-
-export interface Source {
-  /** If provided, get the source from this location in Cloud Storage. */
-  storageSource?: StorageSource;
-  /** If provided, get the source from this location in a Cloud Source Repository. */
-  repoSource?: RepoSource;
-  /** If provided, get the source from this Git repository. */
-  gitSource?: GitSource;
-  /** If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher). */
-  storageSourceManifest?: StorageSourceManifest;
-  /** Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource. */
-  connectedRepository?: ConnectedRepository;
-  /** If provided, get the source from this Developer Connect config. */
-  developerConnectConfig?: DeveloperConnectConfig;
-}
-
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storageSource: Schema.optional(StorageSource),
-      repoSource: Schema.optional(RepoSource),
-      gitSource: Schema.optional(GitSource),
-      storageSourceManifest: Schema.optional(StorageSourceManifest),
-      connectedRepository: Schema.optional(ConnectedRepository),
-      developerConnectConfig: Schema.optional(DeveloperConnectConfig),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
-
-export interface Volume {
-  /** Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps. */
-  name?: string;
-  /** Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths. */
-  path?: string;
-}
-
-export const Volume: Schema.Schema<Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Volume" }) as any as Schema.Schema<Volume>;
-
-export interface TimeSpan {
-  /** Start of time span. */
-  startTime?: string;
-  /** End of time span. */
-  endTime?: string;
-}
-
-export const TimeSpan: Schema.Schema<TimeSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeSpan" }) as any as Schema.Schema<TimeSpan>;
-
-export interface BuildStep {
-  /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
-  name?: string;
-  /** A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
-  /** A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments. */
-  args?: Array<string>;
-  /** Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution. */
-  dir?: string;
-  /** Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency. */
-  id?: string;
-  /** The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully. */
-  waitFor?: Array<string>;
-  /** Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used. */
-  entrypoint?: string;
-  /** A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. */
-  secretEnv?: Array<string>;
-  /** List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<Volume>;
-  /** Output only. Stores timing information for executing this build step. */
-  timing?: TimeSpan;
-  /** Output only. Stores timing information for pulling this build step's builder image only. */
-  pullTiming?: TimeSpan;
-  /** Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out. */
-  timeout?: string;
-  /** Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses. */
-  status?:
-    | "STATUS_UNKNOWN"
-    | "PENDING"
-    | "QUEUED"
-    | "WORKING"
-    | "SUCCESS"
-    | "FAILURE"
-    | "INTERNAL_ERROR"
-    | "TIMEOUT"
-    | "CANCELLED"
-    | "EXPIRED"
-    | (string & {});
-  /** Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field. */
-  allowFailure?: boolean;
-  /** Output only. Return code from running the step. */
-  exitCode?: number;
-  /** Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence. */
-  allowExitCodes?: Array<number>;
-  /** A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args. */
-  script?: string;
-  /** Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption. */
-  automapSubstitutions?: boolean;
-}
-
-export const BuildStep: Schema.Schema<BuildStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.Array(Schema.String)),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      dir: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      waitFor: Schema.optional(Schema.Array(Schema.String)),
-      entrypoint: Schema.optional(Schema.String),
-      secretEnv: Schema.optional(Schema.Array(Schema.String)),
-      volumes: Schema.optional(Schema.Array(Volume)),
-      timing: Schema.optional(TimeSpan),
-      pullTiming: Schema.optional(TimeSpan),
-      timeout: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      allowFailure: Schema.optional(Schema.Boolean),
-      exitCode: Schema.optional(Schema.Number),
-      allowExitCodes: Schema.optional(Schema.Array(Schema.Number)),
-      script: Schema.optional(Schema.String),
-      automapSubstitutions: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "BuildStep" }) as any as Schema.Schema<BuildStep>;
-
-export interface BuiltImage {
-  /** Name used to push the container image to Google Container Registry, as presented to `docker push`. */
-  name?: string;
-  /** Docker Registry 2.0 digest. */
-  digest?: string;
-  /** Output only. Stores timing information for pushing the specified image. */
-  pushTiming?: TimeSpan;
-  /** Output only. Path to the artifact in Artifact Registry. */
-  artifactRegistryPackage?: string;
-}
-
-export const BuiltImage: Schema.Schema<BuiltImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(TimeSpan),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BuiltImage" }) as any as Schema.Schema<BuiltImage>;
-
-export interface Hash {
-  /** The type of hash that was performed. */
-  type?: "NONE" | "SHA256" | "MD5" | "GO_MODULE_H1" | "SHA512" | (string & {});
-  /** The hash value. */
-  value?: string;
-}
-
-export const Hash: Schema.Schema<Hash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Hash" }) as any as Schema.Schema<Hash>;
-
-export interface FileHashes {
-  /** Collection of file hashes. */
-  fileHash?: Array<Hash>;
-}
-
-export const FileHashes: Schema.Schema<FileHashes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileHash: Schema.optional(Schema.Array(Hash)),
-    }),
-  ).annotate({ identifier: "FileHashes" }) as any as Schema.Schema<FileHashes>;
-
-export interface UploadedPythonPackage {
-  /** URI of the uploaded artifact. */
-  uri?: string;
-  /** Hash types and values of the Python Artifact. */
-  fileHashes?: FileHashes;
-  /** Output only. Stores timing information for pushing the specified artifact. */
-  pushTiming?: TimeSpan;
-  /** Output only. Path to the artifact in Artifact Registry. */
-  artifactRegistryPackage?: string;
-}
-
-export const UploadedPythonPackage: Schema.Schema<UploadedPythonPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      fileHashes: Schema.optional(FileHashes),
-      pushTiming: Schema.optional(TimeSpan),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadedPythonPackage",
-  }) as any as Schema.Schema<UploadedPythonPackage>;
-
-export interface UploadedMavenArtifact {
-  /** URI of the uploaded artifact. */
-  uri?: string;
-  /** Hash types and values of the Maven Artifact. */
-  fileHashes?: FileHashes;
-  /** Output only. Stores timing information for pushing the specified artifact. */
-  pushTiming?: TimeSpan;
-  /** Output only. Path to the artifact in Artifact Registry. */
-  artifactRegistryPackage?: string;
-}
-
-export const UploadedMavenArtifact: Schema.Schema<UploadedMavenArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      fileHashes: Schema.optional(FileHashes),
-      pushTiming: Schema.optional(TimeSpan),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadedMavenArtifact",
-  }) as any as Schema.Schema<UploadedMavenArtifact>;
-
-export interface UploadedGoModule {
-  /** URI of the uploaded artifact. */
-  uri?: string;
-  /** Hash types and values of the Go Module Artifact. */
-  fileHashes?: FileHashes;
-  /** Output only. Stores timing information for pushing the specified artifact. */
-  pushTiming?: TimeSpan;
-  /** Output only. Path to the artifact in Artifact Registry. */
-  artifactRegistryPackage?: string;
-}
-
-export const UploadedGoModule: Schema.Schema<UploadedGoModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      fileHashes: Schema.optional(FileHashes),
-      pushTiming: Schema.optional(TimeSpan),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadedGoModule",
-  }) as any as Schema.Schema<UploadedGoModule>;
-
-export interface UploadedNpmPackage {
-  /** URI of the uploaded npm package. */
-  uri?: string;
-  /** Hash types and values of the npm package. */
-  fileHashes?: FileHashes;
-  /** Output only. Stores timing information for pushing the specified artifact. */
-  pushTiming?: TimeSpan;
-  /** Output only. Path to the artifact in Artifact Registry. */
-  artifactRegistryPackage?: string;
-}
-
-export const UploadedNpmPackage: Schema.Schema<UploadedNpmPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      fileHashes: Schema.optional(FileHashes),
-      pushTiming: Schema.optional(TimeSpan),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadedNpmPackage",
-  }) as any as Schema.Schema<UploadedNpmPackage>;
-
-export interface Results {
-  /** Container images that were built as a part of the build. */
-  images?: Array<BuiltImage>;
-  /** List of build step digests, in the order corresponding to build step indices. */
-  buildStepImages?: Array<string>;
-  /** Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
-  artifactManifest?: string;
-  /** Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
-  numArtifacts?: string;
-  /** List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can't be substituted. */
-  buildStepOutputs?: Array<string>;
-  /** Time to push all non-container artifacts to Cloud Storage. */
-  artifactTiming?: TimeSpan;
-  /** Python artifacts uploaded to Artifact Registry at the end of the build. */
-  pythonPackages?: Array<UploadedPythonPackage>;
-  /** Maven artifacts uploaded to Artifact Registry at the end of the build. */
-  mavenArtifacts?: Array<UploadedMavenArtifact>;
-  /** Optional. Go module artifacts uploaded to Artifact Registry at the end of the build. */
-  goModules?: Array<UploadedGoModule>;
-  /** Npm packages uploaded to Artifact Registry at the end of the build. */
-  npmPackages?: Array<UploadedNpmPackage>;
-}
-
-export const Results: Schema.Schema<Results> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      images: Schema.optional(Schema.Array(BuiltImage)),
-      buildStepImages: Schema.optional(Schema.Array(Schema.String)),
-      artifactManifest: Schema.optional(Schema.String),
-      numArtifacts: Schema.optional(Schema.String),
-      buildStepOutputs: Schema.optional(Schema.Array(Schema.String)),
-      artifactTiming: Schema.optional(TimeSpan),
-      pythonPackages: Schema.optional(Schema.Array(UploadedPythonPackage)),
-      mavenArtifacts: Schema.optional(Schema.Array(UploadedMavenArtifact)),
-      goModules: Schema.optional(Schema.Array(UploadedGoModule)),
-      npmPackages: Schema.optional(Schema.Array(UploadedNpmPackage)),
-    }),
-  ).annotate({ identifier: "Results" }) as any as Schema.Schema<Results>;
-
-export interface ArtifactObjects {
-  /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
-  location?: string;
-  /** Path globs used to match files in the build's workspace. */
-  paths?: Array<string>;
-  /** Output only. Stores timing information for pushing all artifact objects. */
-  timing?: TimeSpan;
-}
-
-export const ArtifactObjects: Schema.Schema<ArtifactObjects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      timing: Schema.optional(TimeSpan),
-    }),
-  ).annotate({
-    identifier: "ArtifactObjects",
-  }) as any as Schema.Schema<ArtifactObjects>;
-
-export interface MavenArtifact {
-  /** Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix. */
-  repository?: string;
-  /** Optional. Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar. */
-  path?: string;
-  /** Maven `artifactId` value used when uploading the artifact to Artifact Registry. */
-  artifactId?: string;
-  /** Maven `groupId` value used when uploading the artifact to Artifact Registry. */
-  groupId?: string;
-  /** Maven `version` value used when uploading the artifact to Artifact Registry. */
-  version?: string;
-  /** Optional. Path to a folder containing the files to upload to Artifact Registry. This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a relative path from /workspace, e.g. `my-app/target/`. This field is mutually exclusive with the `path` field. */
-  deployFolder?: string;
-}
-
-export const MavenArtifact: Schema.Schema<MavenArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      artifactId: Schema.optional(Schema.String),
-      groupId: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      deployFolder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MavenArtifact",
-  }) as any as Schema.Schema<MavenArtifact>;
-
-export interface GoModule {
-  /** Optional. Artifact Registry repository name. Specified Go modules will be zipped and uploaded to Artifact Registry with this location as a prefix. e.g. my-go-repo */
-  repositoryName?: string;
-  /** Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults to the build’s location. */
-  repositoryLocation?: string;
-  /** Optional. Project ID of the Artifact Registry repository. Defaults to the build project. */
-  repositoryProjectId?: string;
-  /** Optional. Source path of the go.mod file in the build's workspace. If not specified, this will default to the current directory. e.g. ~/code/go/mypackage */
-  sourcePath?: string;
-  /** Optional. The Go module's "module path". e.g. example.com/foo/v2 */
-  modulePath?: string;
-  /** Optional. The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1 Pre-release identifiers can also be added by appending a dash and dot separated ASCII alphanumeric characters and hyphens. e.g. v0.2.3-alpha.x.12m.5 */
-  moduleVersion?: string;
-}
-
-export const GoModule: Schema.Schema<GoModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositoryName: Schema.optional(Schema.String),
-      repositoryLocation: Schema.optional(Schema.String),
-      repositoryProjectId: Schema.optional(Schema.String),
-      sourcePath: Schema.optional(Schema.String),
-      modulePath: Schema.optional(Schema.String),
-      moduleVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GoModule" }) as any as Schema.Schema<GoModule>;
-
-export interface PythonPackage {
-  /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
-  repository?: string;
-  /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
-  paths?: Array<string>;
-}
-
-export const PythonPackage: Schema.Schema<PythonPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PythonPackage",
-  }) as any as Schema.Schema<PythonPackage>;
-
-export interface NpmPackage {
-  /** Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix. */
-  repository?: string;
-  /** Optional. Path to the package.json. e.g. workspace/path/to/package Only one of `archive` or `package_path` can be specified. */
-  packagePath?: string;
-}
-
-export const NpmPackage: Schema.Schema<NpmPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      packagePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NpmPackage" }) as any as Schema.Schema<NpmPackage>;
-
-export interface Artifacts {
-  /** A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE. */
-  images?: Array<string>;
-  /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
-  objects?: ArtifactObjects;
-  /** A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE. */
-  mavenArtifacts?: Array<MavenArtifact>;
-  /** Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build steps. If any objects fail to be pushed, the build is marked FAILURE. */
-  goModules?: Array<GoModule>;
-  /** A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE. */
-  pythonPackages?: Array<PythonPackage>;
-  /** A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE. */
-  npmPackages?: Array<NpmPackage>;
-}
-
-export const Artifacts: Schema.Schema<Artifacts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      images: Schema.optional(Schema.Array(Schema.String)),
-      objects: Schema.optional(ArtifactObjects),
-      mavenArtifacts: Schema.optional(Schema.Array(MavenArtifact)),
-      goModules: Schema.optional(Schema.Array(GoModule)),
-      pythonPackages: Schema.optional(Schema.Array(PythonPackage)),
-      npmPackages: Schema.optional(Schema.Array(NpmPackage)),
-    }),
-  ).annotate({ identifier: "Artifacts" }) as any as Schema.Schema<Artifacts>;
+export const RepoSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repoName: Schema.optional(Schema.String),
+  dir: Schema.optional(Schema.String),
+  branchName: Schema.optional(Schema.String),
+  invertRegex: Schema.optional(Schema.Boolean),
+  substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  projectId: Schema.optional(Schema.String),
+  tagName: Schema.optional(Schema.String),
+  commitSha: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepoSource" });
 
 export interface SourceProvenance {
   /** A copy of the build's `source.storage_source`, if exists, with any generations resolved. */
   resolvedStorageSource?: StorageSource;
-  /** A copy of the build's `source.repo_source`, if exists, with any revisions resolved. */
-  resolvedRepoSource?: RepoSource;
+  /** Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file. */
+  fileHashes?: Record<string, FileHashes>;
   /** A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview. */
   resolvedStorageSourceManifest?: StorageSourceManifest;
   /** Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved. */
   resolvedConnectedRepository?: ConnectedRepository;
   /** Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved. */
   resolvedGitSource?: GitSource;
-  /** Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file. */
-  fileHashes?: Record<string, FileHashes>;
+  /** A copy of the build's `source.repo_source`, if exists, with any revisions resolved. */
+  resolvedRepoSource?: RepoSource;
 }
 
-export const SourceProvenance: Schema.Schema<SourceProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolvedStorageSource: Schema.optional(StorageSource),
-      resolvedRepoSource: Schema.optional(RepoSource),
-      resolvedStorageSourceManifest: Schema.optional(StorageSourceManifest),
-      resolvedConnectedRepository: Schema.optional(ConnectedRepository),
-      resolvedGitSource: Schema.optional(GitSource),
-      fileHashes: Schema.optional(Schema.Record(Schema.String, FileHashes)),
-    }),
-  ).annotate({
-    identifier: "SourceProvenance",
-  }) as any as Schema.Schema<SourceProvenance>;
-
-export interface PoolOption {
-  /** The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} */
-  name?: string;
-}
-
-export const PoolOption: Schema.Schema<PoolOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PoolOption" }) as any as Schema.Schema<PoolOption>;
-
-export interface BuildOptions {
-  /** Requested hash for SourceProvenance. */
-  sourceProvenanceHash?: Array<
-    "NONE" | "SHA256" | "MD5" | "GO_MODULE_H1" | "SHA512" | (string & {})
-  >;
-  /** Requested verifiability options. */
-  requestedVerifyOption?: "NOT_VERIFIED" | "VERIFIED" | (string & {});
-  /** Compute Engine machine type on which to run the build. */
-  machineType?:
-    | "UNSPECIFIED"
-    | "N1_HIGHCPU_8"
-    | "N1_HIGHCPU_32"
-    | "E2_HIGHCPU_8"
-    | "E2_HIGHCPU_32"
-    | "E2_MEDIUM"
-    | (string & {});
-  /** Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 4000GB; builds that request more than the maximum are rejected with an error. */
-  diskSizeGb?: string;
-  /** Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file. */
-  substitutionOption?: "MUST_MATCH" | "ALLOW_LOOSE" | (string & {});
-  /** Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file. */
-  dynamicSubstitutions?: boolean;
-  /** Option to include built-in and custom substitutions as env variables for all build steps. */
-  automapSubstitutions?: boolean;
-  /** Option to define build log streaming behavior to Cloud Storage. */
-  logStreamingOption?:
-    | "STREAM_DEFAULT"
-    | "STREAM_ON"
-    | "STREAM_OFF"
-    | (string & {});
-  /** This field deprecated; please use `pool.name` instead. */
-  workerPool?: string;
-  /** Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information. */
-  pool?: PoolOption;
-  /** Option to specify the logging mode, which determines if and where build logs are stored. */
-  logging?:
-    | "LOGGING_UNSPECIFIED"
-    | "LEGACY"
-    | "GCS_ONLY"
-    | "STACKDRIVER_ONLY"
-    | "CLOUD_LOGGING_ONLY"
-    | "NONE"
-    | (string & {});
-  /** A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
-  /** A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build. */
-  secretEnv?: Array<string>;
-  /** Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<Volume>;
-  /** Optional. Option to specify how default logs buckets are setup. */
-  defaultLogsBucketBehavior?:
-    | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
-    | "REGIONAL_USER_OWNED_BUCKET"
-    | "LEGACY_BUCKET"
-    | (string & {});
-  /** Optional. Option to specify whether structured logging is enabled. If true, JSON-formatted logs are parsed as structured logs. */
-  enableStructuredLogging?: boolean;
-  /** Optional. Option to specify the Pub/Sub topic to receive build status updates. */
-  pubsubTopic?: string;
-}
-
-export const BuildOptions: Schema.Schema<BuildOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceProvenanceHash: Schema.optional(Schema.Array(Schema.String)),
-      requestedVerifyOption: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.String),
-      substitutionOption: Schema.optional(Schema.String),
-      dynamicSubstitutions: Schema.optional(Schema.Boolean),
-      automapSubstitutions: Schema.optional(Schema.Boolean),
-      logStreamingOption: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      pool: Schema.optional(PoolOption),
-      logging: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.Array(Schema.String)),
-      secretEnv: Schema.optional(Schema.Array(Schema.String)),
-      volumes: Schema.optional(Schema.Array(Volume)),
-      defaultLogsBucketBehavior: Schema.optional(Schema.String),
-      enableStructuredLogging: Schema.optional(Schema.Boolean),
-      pubsubTopic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildOptions",
-  }) as any as Schema.Schema<BuildOptions>;
-
-export interface Secret {
-  /** Cloud KMS key name to use to decrypt these envs. */
-  kmsKeyName?: string;
-  /** Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets. */
-  secretEnv?: Record<string, string>;
-}
-
-export const Secret: Schema.Schema<Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      secretEnv: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Secret" }) as any as Schema.Schema<Secret>;
-
-export interface ApprovalConfig {
-  /** Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start. */
-  approvalRequired?: boolean;
-}
-
-export const ApprovalConfig: Schema.Schema<ApprovalConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalRequired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ApprovalConfig",
-  }) as any as Schema.Schema<ApprovalConfig>;
-
-export interface ApprovalResult {
-  /** Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called. */
-  approverAccount?: string;
-  /** Output only. The time when the approval decision was made. */
-  approvalTime?: string;
-  /** Required. The decision of this manual approval. */
-  decision?: "DECISION_UNSPECIFIED" | "APPROVED" | "REJECTED" | (string & {});
-  /** Optional. An optional comment for this manual approval result. */
-  comment?: string;
-  /** Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build. */
-  url?: string;
-}
-
-export const ApprovalResult: Schema.Schema<ApprovalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approverAccount: Schema.optional(Schema.String),
-      approvalTime: Schema.optional(Schema.String),
-      decision: Schema.optional(Schema.String),
-      comment: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApprovalResult",
-  }) as any as Schema.Schema<ApprovalResult>;
-
-export interface BuildApproval {
-  /** Output only. The state of this build's approval. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "PENDING"
-    | "APPROVED"
-    | "REJECTED"
-    | "CANCELLED"
-    | (string & {});
-  /** Output only. Configuration for manual approval of this build. */
-  config?: ApprovalConfig;
-  /** Output only. Result of manual approval for this Build. */
-  result?: ApprovalResult;
-}
-
-export const BuildApproval: Schema.Schema<BuildApproval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      config: Schema.optional(ApprovalConfig),
-      result: Schema.optional(ApprovalResult),
-    }),
-  ).annotate({
-    identifier: "BuildApproval",
-  }) as any as Schema.Schema<BuildApproval>;
+export const SourceProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resolvedStorageSource: Schema.optional(StorageSource),
+  fileHashes: Schema.optional(Schema.Record(Schema.String, FileHashes)),
+  resolvedStorageSourceManifest: Schema.optional(StorageSourceManifest),
+  resolvedConnectedRepository: Schema.optional(ConnectedRepository),
+  resolvedGitSource: Schema.optional(GitSource),
+  resolvedRepoSource: Schema.optional(RepoSource),
+}).annotate({ identifier: "SourceProvenance" });
 
 export interface SecretManagerSecret {
   /** Resource name of the SecretVersion. In format: projects/* /secrets/* /versions/* */
@@ -880,15 +349,10 @@ export interface SecretManagerSecret {
   env?: string;
 }
 
-export const SecretManagerSecret: Schema.Schema<SecretManagerSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionName: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretManagerSecret",
-  }) as any as Schema.Schema<SecretManagerSecret>;
+export const SecretManagerSecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionName: Schema.optional(Schema.String),
+  env: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretManagerSecret" });
 
 export interface InlineSecret {
   /** Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/* /locations/* /keyRings/* /cryptoKeys/* */
@@ -897,15 +361,10 @@ export interface InlineSecret {
   envMap?: Record<string, string>;
 }
 
-export const InlineSecret: Schema.Schema<InlineSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      envMap: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InlineSecret",
-  }) as any as Schema.Schema<InlineSecret>;
+export const InlineSecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+  envMap: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "InlineSecret" });
 
 export interface Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
@@ -914,57 +373,10 @@ export interface Secrets {
   inline?: Array<InlineSecret>;
 }
 
-export const Secrets: Schema.Schema<Secrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretManager: Schema.optional(Schema.Array(SecretManagerSecret)),
-      inline: Schema.optional(Schema.Array(InlineSecret)),
-    }),
-  ).annotate({ identifier: "Secrets" }) as any as Schema.Schema<Secrets>;
-
-export interface Warning {
-  /** Explanation of the warning generated. */
-  text?: string;
-  /** The priority for this warning. */
-  priority?:
-    | "PRIORITY_UNSPECIFIED"
-    | "INFO"
-    | "WARNING"
-    | "ALERT"
-    | (string & {});
-}
-
-export const Warning: Schema.Schema<Warning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Warning" }) as any as Schema.Schema<Warning>;
-
-export interface HttpConfig {
-  /** SecretVersion resource of the HTTP proxy URL. The Service Account used in the build (either the default Service Account or user-specified Service Account) should have `secretmanager.versions.access` permissions on this secret. The proxy URL should be in format `protocol://@]proxyhost[:port]`. */
-  proxySecretVersionName?: string;
-}
-
-export const HttpConfig: Schema.Schema<HttpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proxySecretVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpConfig" }) as any as Schema.Schema<HttpConfig>;
-
-export interface GitConfig {
-  /** Configuration for HTTP related git operations. */
-  http?: HttpConfig;
-}
-
-export const GitConfig: Schema.Schema<GitConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      http: Schema.optional(HttpConfig),
-    }),
-  ).annotate({ identifier: "GitConfig" }) as any as Schema.Schema<GitConfig>;
+export const Secrets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secretManager: Schema.optional(Schema.Array(SecretManagerSecret)),
+  inline: Schema.optional(Schema.Array(InlineSecret)),
+}).annotate({ identifier: "Secrets" });
 
 export interface FailureInfo {
   /** The name of the failure. */
@@ -981,15 +393,22 @@ export interface FailureInfo {
   detail?: string;
 }
 
-export const FailureInfo: Schema.Schema<FailureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FailureInfo",
-  }) as any as Schema.Schema<FailureInfo>;
+export const FailureInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+}).annotate({ identifier: "FailureInfo" });
+
+export interface Secret {
+  /** Cloud KMS key name to use to decrypt these envs. */
+  kmsKeyName?: string;
+  /** Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets. */
+  secretEnv?: Record<string, string>;
+}
+
+export const Secret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+  secretEnv: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Secret" });
 
 export interface GitSourceRepository {
   /** Location of the Git repository. */
@@ -998,41 +417,31 @@ export interface GitSourceRepository {
   developerConnect?: string;
 }
 
-export const GitSourceRepository: Schema.Schema<GitSourceRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      developerConnect: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitSourceRepository",
-  }) as any as Schema.Schema<GitSourceRepository>;
+export const GitSourceRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  developerConnect: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitSourceRepository" });
 
 export interface GitSourceDependency {
-  /** Required. The kind of repo (url or dev connect). */
-  repository?: GitSourceRepository;
-  /** Required. The revision that we will fetch the repo at. */
-  revision?: string;
-  /** Optional. True if submodules should be fetched too (default false). */
-  recurseSubmodules?: boolean;
-  /** Optional. How much history should be fetched for the build (default 1, -1 for all history). */
-  depth?: string;
   /** Required. Where should the files be placed on the worker. */
   destPath?: string;
+  /** Optional. True if submodules should be fetched too (default false). */
+  recurseSubmodules?: boolean;
+  /** Required. The revision that we will fetch the repo at. */
+  revision?: string;
+  /** Optional. How much history should be fetched for the build (default 1, -1 for all history). */
+  depth?: string;
+  /** Required. The kind of repo (url or dev connect). */
+  repository?: GitSourceRepository;
 }
 
-export const GitSourceDependency: Schema.Schema<GitSourceDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(GitSourceRepository),
-      revision: Schema.optional(Schema.String),
-      recurseSubmodules: Schema.optional(Schema.Boolean),
-      depth: Schema.optional(Schema.String),
-      destPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitSourceDependency",
-  }) as any as Schema.Schema<GitSourceDependency>;
+export const GitSourceDependency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destPath: Schema.optional(Schema.String),
+  recurseSubmodules: Schema.optional(Schema.Boolean),
+  revision: Schema.optional(Schema.String),
+  depth: Schema.optional(Schema.String),
+  repository: Schema.optional(GitSourceRepository),
+}).annotate({ identifier: "GitSourceDependency" });
 
 export interface Dependency {
   /** If set to true disable all dependency fetching (ignoring the default source as well). */
@@ -1041,21 +450,620 @@ export interface Dependency {
   gitSource?: GitSourceDependency;
 }
 
-export const Dependency: Schema.Schema<Dependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      empty: Schema.optional(Schema.Boolean),
-      gitSource: Schema.optional(GitSourceDependency),
-    }),
-  ).annotate({ identifier: "Dependency" }) as any as Schema.Schema<Dependency>;
+export const Dependency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  empty: Schema.optional(Schema.Boolean),
+  gitSource: Schema.optional(GitSourceDependency),
+}).annotate({ identifier: "Dependency" });
+
+export interface DeveloperConnectConfig {
+  /** Required. Directory, relative to the source root, in which to run the build. */
+  dir?: string;
+  /** Required. The Developer Connect Git repository link, formatted as `projects/* /locations/* /connections/* /gitRepositoryLink/*`. */
+  gitRepositoryLink?: string;
+  /** Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. */
+  revision?: string;
+}
+
+export const DeveloperConnectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    dir: Schema.optional(Schema.String),
+    gitRepositoryLink: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DeveloperConnectConfig" });
+
+export interface Source {
+  /** If provided, get the source from this Developer Connect config. */
+  developerConnectConfig?: DeveloperConnectConfig;
+  /** If provided, get the source from this Git repository. */
+  gitSource?: GitSource;
+  /** Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource. */
+  connectedRepository?: ConnectedRepository;
+  /** If provided, get the source from this location in Cloud Storage. */
+  storageSource?: StorageSource;
+  /** If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher). */
+  storageSourceManifest?: StorageSourceManifest;
+  /** If provided, get the source from this location in a Cloud Source Repository. */
+  repoSource?: RepoSource;
+}
+
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  developerConnectConfig: Schema.optional(DeveloperConnectConfig),
+  gitSource: Schema.optional(GitSource),
+  connectedRepository: Schema.optional(ConnectedRepository),
+  storageSource: Schema.optional(StorageSource),
+  storageSourceManifest: Schema.optional(StorageSourceManifest),
+  repoSource: Schema.optional(RepoSource),
+}).annotate({ identifier: "Source" });
+
+export interface ApprovalResult {
+  /** Output only. The time when the approval decision was made. */
+  approvalTime?: string;
+  /** Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build. */
+  url?: string;
+  /** Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called. */
+  approverAccount?: string;
+  /** Required. The decision of this manual approval. */
+  decision?: "DECISION_UNSPECIFIED" | "APPROVED" | "REJECTED" | (string & {});
+  /** Optional. An optional comment for this manual approval result. */
+  comment?: string;
+}
+
+export const ApprovalResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalTime: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  approverAccount: Schema.optional(Schema.String),
+  decision: Schema.optional(Schema.String),
+  comment: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApprovalResult" });
+
+export interface ApprovalConfig {
+  /** Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start. */
+  approvalRequired?: boolean;
+}
+
+export const ApprovalConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalRequired: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ApprovalConfig" });
+
+export interface BuildApproval {
+  /** Output only. Result of manual approval for this Build. */
+  result?: ApprovalResult;
+  /** Output only. The state of this build's approval. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "PENDING"
+    | "APPROVED"
+    | "REJECTED"
+    | "CANCELLED"
+    | (string & {});
+  /** Output only. Configuration for manual approval of this build. */
+  config?: ApprovalConfig;
+}
+
+export const BuildApproval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.optional(ApprovalResult),
+  state: Schema.optional(Schema.String),
+  config: Schema.optional(ApprovalConfig),
+}).annotate({ identifier: "BuildApproval" });
+
+export interface Warning {
+  /** The priority for this warning. */
+  priority?:
+    | "PRIORITY_UNSPECIFIED"
+    | "INFO"
+    | "WARNING"
+    | "ALERT"
+    | (string & {});
+  /** Explanation of the warning generated. */
+  text?: string;
+}
+
+export const Warning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  priority: Schema.optional(Schema.String),
+  text: Schema.optional(Schema.String),
+}).annotate({ identifier: "Warning" });
+
+export interface PoolOption {
+  /** The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} */
+  name?: string;
+}
+
+export const PoolOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PoolOption" });
+
+export interface Volume {
+  /** Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps. */
+  name?: string;
+  /** Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths. */
+  path?: string;
+}
+
+export const Volume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "Volume" });
+
+export interface BuildOptions {
+  /** Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 4000GB; builds that request more than the maximum are rejected with an error. */
+  diskSizeGb?: string;
+  /** A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
+  env?: Array<string>;
+  /** Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file. */
+  substitutionOption?: "MUST_MATCH" | "ALLOW_LOOSE" | (string & {});
+  /** Compute Engine machine type on which to run the build. */
+  machineType?:
+    | "UNSPECIFIED"
+    | "N1_HIGHCPU_8"
+    | "N1_HIGHCPU_32"
+    | "E2_HIGHCPU_8"
+    | "E2_HIGHCPU_32"
+    | "E2_MEDIUM"
+    | (string & {});
+  /** Optional. Option to specify whether structured logging is enabled. If true, JSON-formatted logs are parsed as structured logs. */
+  enableStructuredLogging?: boolean;
+  /** Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file. */
+  dynamicSubstitutions?: boolean;
+  /** Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information. */
+  pool?: PoolOption;
+  /** Optional. Option to specify the Pub/Sub topic to receive build status updates. */
+  pubsubTopic?: string;
+  /** Option to specify the logging mode, which determines if and where build logs are stored. */
+  logging?:
+    | "LOGGING_UNSPECIFIED"
+    | "LEGACY"
+    | "GCS_ONLY"
+    | "STACKDRIVER_ONLY"
+    | "CLOUD_LOGGING_ONLY"
+    | "NONE"
+    | (string & {});
+  /** A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build. */
+  secretEnv?: Array<string>;
+  /** Option to define build log streaming behavior to Cloud Storage. */
+  logStreamingOption?:
+    | "STREAM_DEFAULT"
+    | "STREAM_ON"
+    | "STREAM_OFF"
+    | (string & {});
+  /** Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration. */
+  volumes?: Array<Volume>;
+  /** Requested verifiability options. */
+  requestedVerifyOption?: "NOT_VERIFIED" | "VERIFIED" | (string & {});
+  /** This field deprecated; please use `pool.name` instead. */
+  workerPool?: string;
+  /** Option to include built-in and custom substitutions as env variables for all build steps. */
+  automapSubstitutions?: boolean;
+  /** Requested hash for SourceProvenance. */
+  sourceProvenanceHash?: Array<
+    | "NONE"
+    | "SHA256"
+    | "MD5"
+    | "GO_MODULE_H1"
+    | "SHA512"
+    | "DIRSUM_SHA256"
+    | (string & {})
+  >;
+  /** Optional. Option to specify how default logs buckets are setup. */
+  defaultLogsBucketBehavior?:
+    | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
+    | "REGIONAL_USER_OWNED_BUCKET"
+    | "LEGACY_BUCKET"
+    | (string & {});
+}
+
+export const BuildOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskSizeGb: Schema.optional(Schema.String),
+  env: Schema.optional(Schema.Array(Schema.String)),
+  substitutionOption: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+  enableStructuredLogging: Schema.optional(Schema.Boolean),
+  dynamicSubstitutions: Schema.optional(Schema.Boolean),
+  pool: Schema.optional(PoolOption),
+  pubsubTopic: Schema.optional(Schema.String),
+  logging: Schema.optional(Schema.String),
+  secretEnv: Schema.optional(Schema.Array(Schema.String)),
+  logStreamingOption: Schema.optional(Schema.String),
+  volumes: Schema.optional(Schema.Array(Volume)),
+  requestedVerifyOption: Schema.optional(Schema.String),
+  workerPool: Schema.optional(Schema.String),
+  automapSubstitutions: Schema.optional(Schema.Boolean),
+  sourceProvenanceHash: Schema.optional(Schema.Array(Schema.String)),
+  defaultLogsBucketBehavior: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildOptions" });
+
+export interface TimeSpan {
+  /** Start of time span. */
+  startTime?: string;
+  /** End of time span. */
+  endTime?: string;
+}
+
+export const TimeSpan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeSpan" });
+
+export interface UploadedGoModule {
+  /** URI of the uploaded artifact. */
+  uri?: string;
+  /** Output only. Stores timing information for pushing the specified artifact. */
+  pushTiming?: TimeSpan;
+  /** Hash types and values of the Go Module Artifact. */
+  fileHashes?: FileHashes;
+  /** Output only. Path to the artifact in Artifact Registry. */
+  artifactRegistryPackage?: string;
+}
+
+export const UploadedGoModule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadedGoModule" });
+
+export interface UploadedPythonPackage {
+  /** URI of the uploaded artifact. */
+  uri?: string;
+  /** Output only. Stores timing information for pushing the specified artifact. */
+  pushTiming?: TimeSpan;
+  /** Hash types and values of the Python Artifact. */
+  fileHashes?: FileHashes;
+  /** Output only. Path to the artifact in Artifact Registry. */
+  artifactRegistryPackage?: string;
+}
+
+export const UploadedPythonPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadedPythonPackage" });
+
+export interface UploadedMavenArtifact {
+  /** URI of the uploaded artifact. */
+  uri?: string;
+  /** Output only. Stores timing information for pushing the specified artifact. */
+  pushTiming?: TimeSpan;
+  /** Hash types and values of the Maven Artifact. */
+  fileHashes?: FileHashes;
+  /** Output only. Path to the artifact in Artifact Registry. */
+  artifactRegistryPackage?: string;
+}
+
+export const UploadedMavenArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadedMavenArtifact" });
+
+export interface UploadedNpmPackage {
+  /** Hash types and values of the npm package. */
+  fileHashes?: FileHashes;
+  /** Output only. Path to the artifact in Artifact Registry. */
+  artifactRegistryPackage?: string;
+  /** URI of the uploaded npm package. */
+  uri?: string;
+  /** Output only. Stores timing information for pushing the specified artifact. */
+  pushTiming?: TimeSpan;
+}
+
+export const UploadedNpmPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+}).annotate({ identifier: "UploadedNpmPackage" });
+
+export interface BuiltImage {
+  /** Name used to push the container image to Google Container Registry, as presented to `docker push`. */
+  name?: string;
+  /** Docker Registry 2.0 digest. */
+  digest?: string;
+  /** Output only. Stores timing information for pushing the specified image. */
+  pushTiming?: TimeSpan;
+  /** Output only. Path to the artifact in Artifact Registry. */
+  artifactRegistryPackage?: string;
+  /** Output only. The OCI media type of the artifact. Non-OCI images, such as Docker images, will have an unspecified value. */
+  ociMediaType?:
+    | "OCI_MEDIA_TYPE_UNSPECIFIED"
+    | "IMAGE_MANIFEST"
+    | "IMAGE_INDEX"
+    | (string & {});
+}
+
+export const BuiltImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+  ociMediaType: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuiltImage" });
+
+export interface Results {
+  /** Optional. Go module artifacts uploaded to Artifact Registry at the end of the build. */
+  goModules?: Array<UploadedGoModule>;
+  /** Python artifacts uploaded to Artifact Registry at the end of the build. */
+  pythonPackages?: Array<UploadedPythonPackage>;
+  /** Maven artifacts uploaded to Artifact Registry at the end of the build. */
+  mavenArtifacts?: Array<UploadedMavenArtifact>;
+  /** Npm packages uploaded to Artifact Registry at the end of the build. */
+  npmPackages?: Array<UploadedNpmPackage>;
+  /** List of build step digests, in the order corresponding to build step indices. */
+  buildStepImages?: Array<string>;
+  /** Container images that were built as a part of the build. */
+  images?: Array<BuiltImage>;
+  /** List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can't be substituted. */
+  buildStepOutputs?: Array<string>;
+  /** Time to push all non-container artifacts to Cloud Storage. */
+  artifactTiming?: TimeSpan;
+  /** Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
+  numArtifacts?: string;
+  /** Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
+  artifactManifest?: string;
+}
+
+export const Results = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  goModules: Schema.optional(Schema.Array(UploadedGoModule)),
+  pythonPackages: Schema.optional(Schema.Array(UploadedPythonPackage)),
+  mavenArtifacts: Schema.optional(Schema.Array(UploadedMavenArtifact)),
+  npmPackages: Schema.optional(Schema.Array(UploadedNpmPackage)),
+  buildStepImages: Schema.optional(Schema.Array(Schema.String)),
+  images: Schema.optional(Schema.Array(BuiltImage)),
+  buildStepOutputs: Schema.optional(Schema.Array(Schema.String)),
+  artifactTiming: Schema.optional(TimeSpan),
+  numArtifacts: Schema.optional(Schema.String),
+  artifactManifest: Schema.optional(Schema.String),
+}).annotate({ identifier: "Results" });
+
+export interface ArtifactObjects {
+  /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
+  location?: string;
+  /** Path globs used to match files in the build's workspace. */
+  paths?: Array<string>;
+  /** Output only. Stores timing information for pushing all artifact objects. */
+  timing?: TimeSpan;
+}
+
+export const ArtifactObjects = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  paths: Schema.optional(Schema.Array(Schema.String)),
+  timing: Schema.optional(TimeSpan),
+}).annotate({ identifier: "ArtifactObjects" });
+
+export interface PythonPackage {
+  /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
+  repository?: string;
+  /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
+  paths?: Array<string>;
+}
+
+export const PythonPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repository: Schema.optional(Schema.String),
+  paths: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PythonPackage" });
+
+export interface GoModule {
+  /** Optional. The Go module's "module path". e.g. example.com/foo/v2 */
+  modulePath?: string;
+  /** Optional. Artifact Registry repository name. Specified Go modules will be zipped and uploaded to Artifact Registry with this location as a prefix. e.g. my-go-repo */
+  repositoryName?: string;
+  /** Optional. Project ID of the Artifact Registry repository. Defaults to the build project. */
+  repositoryProjectId?: string;
+  /** Optional. The Go module's semantic version in the form vX.Y.Z. e.g. v0.1.1 Pre-release identifiers can also be added by appending a dash and dot separated ASCII alphanumeric characters and hyphens. e.g. v0.2.3-alpha.x.12m.5 */
+  moduleVersion?: string;
+  /** Optional. Location of the Artifact Registry repository. i.e. us-east1 Defaults to the build’s location. */
+  repositoryLocation?: string;
+  /** Optional. Source path of the go.mod file in the build's workspace. If not specified, this will default to the current directory. e.g. ~/code/go/mypackage */
+  sourcePath?: string;
+}
+
+export const GoModule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  modulePath: Schema.optional(Schema.String),
+  repositoryName: Schema.optional(Schema.String),
+  repositoryProjectId: Schema.optional(Schema.String),
+  moduleVersion: Schema.optional(Schema.String),
+  repositoryLocation: Schema.optional(Schema.String),
+  sourcePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoModule" });
+
+export interface Oci {
+  /** Required. Path on the local file system where to find the container to upload. e.g. /workspace/my-image.tar */
+  file?: string;
+  /** Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0 */
+  tags?: Array<string>;
+  /** Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image */
+  registryPath?: string;
+}
+
+export const Oci = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  file: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  registryPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "Oci" });
+
+export interface MavenArtifact {
+  /** Optional. Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar. */
+  path?: string;
+  /** Maven `groupId` value used when uploading the artifact to Artifact Registry. */
+  groupId?: string;
+  /** Maven `version` value used when uploading the artifact to Artifact Registry. */
+  version?: string;
+  /** Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix. */
+  repository?: string;
+  /** Optional. Path to a folder containing the files to upload to Artifact Registry. This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a relative path from /workspace, e.g. `my-app/target/`. This field is mutually exclusive with the `path` field. */
+  deployFolder?: string;
+  /** Maven `artifactId` value used when uploading the artifact to Artifact Registry. */
+  artifactId?: string;
+}
+
+export const MavenArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  groupId: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  deployFolder: Schema.optional(Schema.String),
+  artifactId: Schema.optional(Schema.String),
+}).annotate({ identifier: "MavenArtifact" });
+
+export interface NpmPackage {
+  /** Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix. */
+  repository?: string;
+  /** Optional. Path to the package.json. e.g. workspace/path/to/package Only one of `archive` or `package_path` can be specified. */
+  packagePath?: string;
+}
+
+export const NpmPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repository: Schema.optional(Schema.String),
+  packagePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "NpmPackage" });
+
+export interface Artifacts {
+  /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
+  objects?: ArtifactObjects;
+  /** A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE. */
+  images?: Array<string>;
+  /** A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE. */
+  pythonPackages?: Array<PythonPackage>;
+  /** Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build steps. If any objects fail to be pushed, the build is marked FAILURE. */
+  goModules?: Array<GoModule>;
+  /** Optional. A list of OCI images to be uploaded to Artifact Registry upon successful completion of all build steps. OCI images in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any images fail to be pushed, the build is marked FAILURE. */
+  oci?: Array<Oci>;
+  /** A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE. */
+  mavenArtifacts?: Array<MavenArtifact>;
+  /** A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE. */
+  npmPackages?: Array<NpmPackage>;
+}
+
+export const Artifacts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objects: Schema.optional(ArtifactObjects),
+  images: Schema.optional(Schema.Array(Schema.String)),
+  pythonPackages: Schema.optional(Schema.Array(PythonPackage)),
+  goModules: Schema.optional(Schema.Array(GoModule)),
+  oci: Schema.optional(Schema.Array(Oci)),
+  mavenArtifacts: Schema.optional(Schema.Array(MavenArtifact)),
+  npmPackages: Schema.optional(Schema.Array(NpmPackage)),
+}).annotate({ identifier: "Artifacts" });
+
+export interface BuildStep {
+  /** Output only. Stores timing information for pulling this build step's builder image only. */
+  pullTiming?: TimeSpan;
+  /** Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence. */
+  allowExitCodes?: Array<number>;
+  /** A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. */
+  secretEnv?: Array<string>;
+  /** List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration. */
+  volumes?: Array<Volume>;
+  /** Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution. */
+  dir?: string;
+  /** Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses. */
+  status?:
+    | "STATUS_UNKNOWN"
+    | "PENDING"
+    | "QUEUED"
+    | "WORKING"
+    | "SUCCESS"
+    | "FAILURE"
+    | "INTERNAL_ERROR"
+    | "TIMEOUT"
+    | "CANCELLED"
+    | "EXPIRED"
+    | (string & {});
+  /** Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency. */
+  id?: string;
+  /** A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args. */
+  script?: string;
+  /** Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption. */
+  automapSubstitutions?: boolean;
+  /** Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used. */
+  entrypoint?: string;
+  /** Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field. */
+  allowFailure?: boolean;
+  /** Output only. Stores timing information for executing this build step. */
+  timing?: TimeSpan;
+  /** The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully. */
+  waitFor?: Array<string>;
+  /** A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments. */
+  args?: Array<string>;
+  /** A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
+  env?: Array<string>;
+  /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
+  name?: string;
+  /** Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out. */
+  timeout?: string;
+  /** Output only. Return code from running the step. */
+  exitCode?: number;
+}
+
+export const BuildStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pullTiming: Schema.optional(TimeSpan),
+  allowExitCodes: Schema.optional(Schema.Array(Schema.Number)),
+  secretEnv: Schema.optional(Schema.Array(Schema.String)),
+  volumes: Schema.optional(Schema.Array(Volume)),
+  dir: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  script: Schema.optional(Schema.String),
+  automapSubstitutions: Schema.optional(Schema.Boolean),
+  entrypoint: Schema.optional(Schema.String),
+  allowFailure: Schema.optional(Schema.Boolean),
+  timing: Schema.optional(TimeSpan),
+  waitFor: Schema.optional(Schema.Array(Schema.String)),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  env: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  timeout: Schema.optional(Schema.String),
+  exitCode: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BuildStep" });
 
 export interface Build {
-  /** Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service. */
-  name?: string;
+  /** Optional. Configuration for git operations. */
+  gitConfig?: GitConfig;
+  /** Output only. Time at which the request to create the build was received. */
+  createTime?: string;
+  /** A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`. */
+  images?: Array<string>;
+  /** Output only. A permanent fixed identifier for source. */
+  sourceProvenance?: SourceProvenance;
+  /** Secrets and secret environment variables. */
+  availableSecrets?: Secrets;
+  /** Output only. Contains information about the build when status=FAILURE. */
+  failureInfo?: FailureInfo;
+  /** Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets */
+  secrets?: Array<Secret>;
+  /** TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time. */
+  queueTtl?: string;
+  /** Optional. Dependencies that the Cloud Build worker will fetch before executing user steps. */
+  dependencies?: Array<Dependency>;
+  /** Optional. The location of the source files to build. */
+  source?: Source;
+  /** Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes. */
+  timeout?: string;
+  /** Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution. */
+  finishTime?: string;
+  /** Tags for annotation of a `Build`. These are not docker tags. */
+  tags?: Array<string>;
+  /** IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. */
+  serviceAccount?: string;
+  /** Output only. URL to logs for this build in Google Cloud Console. */
+  logUrl?: string;
+  /** Output only. Time at which execution of the build was started. */
+  startTime?: string;
+  /** Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically. */
+  buildTriggerId?: string;
+  /** Output only. Describes this build's approval configuration, status, and result. */
+  approval?: BuildApproval;
+  /** Output only. Non-fatal problems encountered during the execution of the build. */
+  warnings?: Array<Warning>;
+  /** Special options for this build. */
+  options?: BuildOptions;
+  /** Substitutions data for `Build` resource. */
+  substitutions?: Record<string, string>;
+  /** Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`. */
+  logsBucket?: string;
   /** Output only. Unique identifier of the build. */
   id?: string;
-  /** Output only. ID of the project. */
-  projectId?: string;
   /** Output only. Status of the build. */
   status?:
     | "STATUS_UNKNOWN"
@@ -1069,100 +1077,55 @@ export interface Build {
     | "CANCELLED"
     | "EXPIRED"
     | (string & {});
-  /** Output only. Customer-readable message about the current status. */
-  statusDetail?: string;
-  /** Optional. The location of the source files to build. */
-  source?: Source;
-  /** Required. The operations to be performed on the workspace. */
-  steps?: Array<BuildStep>;
   /** Output only. Results of the build. */
   results?: Results;
-  /** Output only. Time at which the request to create the build was received. */
-  createTime?: string;
-  /** Output only. Time at which execution of the build was started. */
-  startTime?: string;
-  /** Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution. */
-  finishTime?: string;
-  /** Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes. */
-  timeout?: string;
-  /** A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`. */
-  images?: Array<string>;
-  /** TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time. */
-  queueTtl?: string;
   /** Artifacts produced by the build that should be uploaded upon successful completion of all build steps. */
   artifacts?: Artifacts;
-  /** Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`. */
-  logsBucket?: string;
-  /** Output only. A permanent fixed identifier for source. */
-  sourceProvenance?: SourceProvenance;
-  /** Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically. */
-  buildTriggerId?: string;
-  /** Special options for this build. */
-  options?: BuildOptions;
-  /** Output only. URL to logs for this build in Google Cloud Console. */
-  logUrl?: string;
-  /** Substitutions data for `Build` resource. */
-  substitutions?: Record<string, string>;
-  /** Tags for annotation of a `Build`. These are not docker tags. */
-  tags?: Array<string>;
-  /** Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets */
-  secrets?: Array<Secret>;
+  /** Output only. Customer-readable message about the current status. */
+  statusDetail?: string;
+  /** Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service. */
+  name?: string;
+  /** Required. The operations to be performed on the workspace. */
+  steps?: Array<BuildStep>;
   /** Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included. */
   timing?: Record<string, TimeSpan>;
-  /** Output only. Describes this build's approval configuration, status, and result. */
-  approval?: BuildApproval;
-  /** IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. */
-  serviceAccount?: string;
-  /** Secrets and secret environment variables. */
-  availableSecrets?: Secrets;
-  /** Output only. Non-fatal problems encountered during the execution of the build. */
-  warnings?: Array<Warning>;
-  /** Optional. Configuration for git operations. */
-  gitConfig?: GitConfig;
-  /** Output only. Contains information about the build when status=FAILURE. */
-  failureInfo?: FailureInfo;
-  /** Optional. Dependencies that the Cloud Build worker will fetch before executing user steps. */
-  dependencies?: Array<Dependency>;
+  /** Output only. ID of the project. */
+  projectId?: string;
 }
 
-export const Build: Schema.Schema<Build> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      source: Schema.optional(Source),
-      steps: Schema.optional(Schema.Array(BuildStep)),
-      results: Schema.optional(Results),
-      createTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-      images: Schema.optional(Schema.Array(Schema.String)),
-      queueTtl: Schema.optional(Schema.String),
-      artifacts: Schema.optional(Artifacts),
-      logsBucket: Schema.optional(Schema.String),
-      sourceProvenance: Schema.optional(SourceProvenance),
-      buildTriggerId: Schema.optional(Schema.String),
-      options: Schema.optional(BuildOptions),
-      logUrl: Schema.optional(Schema.String),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      secrets: Schema.optional(Schema.Array(Secret)),
-      timing: Schema.optional(Schema.Record(Schema.String, TimeSpan)),
-      approval: Schema.optional(BuildApproval),
-      serviceAccount: Schema.optional(Schema.String),
-      availableSecrets: Schema.optional(Secrets),
-      warnings: Schema.optional(Schema.Array(Warning)),
-      gitConfig: Schema.optional(GitConfig),
-      failureInfo: Schema.optional(FailureInfo),
-      dependencies: Schema.optional(Schema.Array(Dependency)),
-    }),
-  ).annotate({ identifier: "Build" }) as any as Schema.Schema<Build>;
+export const Build = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gitConfig: Schema.optional(GitConfig),
+  createTime: Schema.optional(Schema.String),
+  images: Schema.optional(Schema.Array(Schema.String)),
+  sourceProvenance: Schema.optional(SourceProvenance),
+  availableSecrets: Schema.optional(Secrets),
+  failureInfo: Schema.optional(FailureInfo),
+  secrets: Schema.optional(Schema.Array(Secret)),
+  queueTtl: Schema.optional(Schema.String),
+  dependencies: Schema.optional(Schema.Array(Dependency)),
+  source: Schema.optional(Source),
+  timeout: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  serviceAccount: Schema.optional(Schema.String),
+  logUrl: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  buildTriggerId: Schema.optional(Schema.String),
+  approval: Schema.optional(BuildApproval),
+  warnings: Schema.optional(Schema.Array(Warning)),
+  options: Schema.optional(BuildOptions),
+  substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  logsBucket: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  results: Schema.optional(Results),
+  artifacts: Schema.optional(Artifacts),
+  statusDetail: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  steps: Schema.optional(Schema.Array(BuildStep)),
+  timing: Schema.optional(Schema.Record(Schema.String, TimeSpan)),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Build" });
 
 export interface ListBuildsResponse {
   /** Builds will be sorted by `create_time`, descending. */
@@ -1171,69 +1134,129 @@ export interface ListBuildsResponse {
   nextPageToken?: string;
 }
 
-export const ListBuildsResponse: Schema.Schema<ListBuildsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builds: Schema.optional(Schema.Array(Build)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBuildsResponse",
-  }) as any as Schema.Schema<ListBuildsResponse>;
+export const ListBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  builds: Schema.optional(Schema.Array(Build)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBuildsResponse" });
 
-export interface CancelBuildRequest {
-  /** The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}` */
-  name?: string;
-  /** Required. ID of the project. */
-  projectId?: string;
-  /** Required. ID of the build. */
+export interface GitHubEnterpriseSecrets {
+  /** The resource name for the private key secret. */
+  privateKeyName?: string;
+  /** The resource name for the webhook secret secret version in Secret Manager. */
+  webhookSecretVersionName?: string;
+  /** The resource name for the OAuth client ID secret version in Secret Manager. */
+  oauthClientIdVersionName?: string;
+  /** The resource name for the OAuth secret in Secret Manager. */
+  oauthSecretName?: string;
+  /** The resource name for the webhook secret in Secret Manager. */
+  webhookSecretName?: string;
+  /** The resource name for the OAuth client ID secret in Secret Manager. */
+  oauthClientIdName?: string;
+  /** The resource name for the private key secret version. */
+  privateKeyVersionName?: string;
+  /** The resource name for the OAuth secret secret version in Secret Manager. */
+  oauthSecretVersionName?: string;
+}
+
+export const GitHubEnterpriseSecrets =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateKeyName: Schema.optional(Schema.String),
+    webhookSecretVersionName: Schema.optional(Schema.String),
+    oauthClientIdVersionName: Schema.optional(Schema.String),
+    oauthSecretName: Schema.optional(Schema.String),
+    webhookSecretName: Schema.optional(Schema.String),
+    oauthClientIdName: Schema.optional(Schema.String),
+    privateKeyVersionName: Schema.optional(Schema.String),
+    oauthSecretVersionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GitHubEnterpriseSecrets" });
+
+export interface DeleteWorkerPoolOperationMetadata {
+  /** Time the operation was completed. */
+  completeTime?: string;
+  /** The resource name of the `WorkerPool` being deleted. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
+  workerPool?: string;
+  /** Time the operation was created. */
+  createTime?: string;
+}
+
+export const DeleteWorkerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    workerPool: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteWorkerPoolOperationMetadata" });
+
+export interface GitLabRepositoryId {
+  /** Output only. The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo. */
+  webhookId?: number;
+  /** Required. Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID */
   id?: string;
 }
 
-export const CancelBuildRequest: Schema.Schema<CancelBuildRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelBuildRequest",
-  }) as any as Schema.Schema<CancelBuildRequest>;
+export const GitLabRepositoryId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webhookId: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitLabRepositoryId" });
 
-export interface RetryBuildRequest {
-  /** The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` */
+export interface Status {
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: Array<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+}
+
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
+
+export interface WorkerPool {
+  /** Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed. */
   name?: string;
-  /** Required. ID of the project. */
-  projectId?: string;
-  /** Required. Build ID of the original build. */
-  id?: string;
+  /** Output only. Time at which the request to update the `WorkerPool` was received. */
+  updateTime?: string;
+  /** User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations. */
+  annotations?: Record<string, string>;
+  /** Output only. Time at which the request to create the `WorkerPool` was received. */
+  createTime?: string;
+  /** Output only. `WorkerPool` state. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "RUNNING"
+    | "DELETING"
+    | "DELETED"
+    | "UPDATING"
+    | (string & {});
+  /** A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters. */
+  displayName?: string;
+  /** Private Pool configuration. */
+  privatePoolV1Config?: PrivatePoolV1Config;
+  /** Output only. Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding. */
+  etag?: string;
+  /** Output only. A unique identifier for the `WorkerPool`. */
+  uid?: string;
+  /** Output only. Time at which the request to delete the `WorkerPool` was received. */
+  deleteTime?: string;
 }
 
-export const RetryBuildRequest: Schema.Schema<RetryBuildRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetryBuildRequest",
-  }) as any as Schema.Schema<RetryBuildRequest>;
-
-export interface ApproveBuildRequest {
-  /** Approval decision and metadata. */
-  approvalResult?: ApprovalResult;
-}
-
-export const ApproveBuildRequest: Schema.Schema<ApproveBuildRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalResult: Schema.optional(ApprovalResult),
-    }),
-  ).annotate({
-    identifier: "ApproveBuildRequest",
-  }) as any as Schema.Schema<ApproveBuildRequest>;
+export const WorkerPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  privatePoolV1Config: Schema.optional(PrivatePoolV1Config),
+  etag: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkerPool" });
 
 export interface PullRequestFilter {
   /** Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
@@ -1248,16 +1271,90 @@ export interface PullRequestFilter {
   invertRegex?: boolean;
 }
 
-export const PullRequestFilter: Schema.Schema<PullRequestFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      branch: Schema.optional(Schema.String),
-      commentControl: Schema.optional(Schema.String),
-      invertRegex: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PullRequestFilter",
-  }) as any as Schema.Schema<PullRequestFilter>;
+export const PullRequestFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  branch: Schema.optional(Schema.String),
+  commentControl: Schema.optional(Schema.String),
+  invertRegex: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PullRequestFilter" });
+
+export interface DeleteGitLabConfigOperationMetadata {
+  /** Time the operation was created. */
+  createTime?: string;
+  /** The resource name of the GitLabConfig to be created. Format: `projects/{project}/locations/{location}/gitlabConfigs/{id}`. */
+  gitlabConfig?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+}
+
+export const DeleteGitLabConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    gitlabConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteGitLabConfigOperationMetadata" });
+
+export interface GitLabConnectedRepository {
+  /** The name of the `GitLabConfig` that added connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
+  parent?: string;
+  /** The GitLab repositories to connect. */
+  repo?: GitLabRepositoryId;
+  /** Output only. The status of the repo connection request. */
+  status?: Status;
+}
+
+export const GitLabConnectedRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    repo: Schema.optional(GitLabRepositoryId),
+    status: Schema.optional(Status),
+  }).annotate({ identifier: "GitLabConnectedRepository" });
+
+export interface CreateGitLabConnectedRepositoryRequest {
+  /** Required. The name of the `GitLabConfig` that adds connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
+  parent?: string;
+  /** Required. The GitLab repository to connect. */
+  gitlabConnectedRepository?: GitLabConnectedRepository;
+}
+
+export const CreateGitLabConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    gitlabConnectedRepository: Schema.optional(GitLabConnectedRepository),
+  }).annotate({ identifier: "CreateGitLabConnectedRepositoryRequest" });
+
+export interface BatchCreateGitLabConnectedRepositoriesRequest {
+  /** Required. Requests to connect GitLab repositories. */
+  requests?: Array<CreateGitLabConnectedRepositoryRequest>;
+}
+
+export const BatchCreateGitLabConnectedRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(CreateGitLabConnectedRepositoryRequest),
+    ),
+  }).annotate({ identifier: "BatchCreateGitLabConnectedRepositoriesRequest" });
+
+export interface Empty {}
+
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
+
+export interface UpdateBitbucketServerConfigOperationMetadata {
+  /** Time the operation was completed. */
+  completeTime?: string;
+  /** The resource name of the BitbucketServerConfig to be updated. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
+  bitbucketServerConfig?: string;
+  /** Time the operation was created. */
+  createTime?: string;
+}
+
+export const UpdateBitbucketServerConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    bitbucketServerConfig: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateBitbucketServerConfigOperationMetadata" });
 
 export interface PushFilter {
   /** Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
@@ -1268,415 +1365,15 @@ export interface PushFilter {
   invertRegex?: boolean;
 }
 
-export const PushFilter: Schema.Schema<PushFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      branch: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-      invertRegex: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "PushFilter" }) as any as Schema.Schema<PushFilter>;
-
-export interface GitHubEventsConfig {
-  /** The installationID that emits the GitHub event. */
-  installationId?: string;
-  /** Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform". */
-  owner?: string;
-  /** Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders". */
-  name?: string;
-  /** filter to match changes in pull requests. */
-  pullRequest?: PullRequestFilter;
-  /** filter to match changes in refs like branches, tags. */
-  push?: PushFilter;
-  /** The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
-  enterpriseConfigResourceName?: string;
-}
-
-export const GitHubEventsConfig: Schema.Schema<GitHubEventsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installationId: Schema.optional(Schema.String),
-      owner: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      push: Schema.optional(PushFilter),
-      enterpriseConfigResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubEventsConfig",
-  }) as any as Schema.Schema<GitHubEventsConfig>;
-
-export interface PubsubConfig {
-  /** Output only. Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`. */
-  subscription?: string;
-  /** Optional. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. */
-  topic?: string;
-  /** Service account that will make the push request. */
-  serviceAccountEmail?: string;
-  /** Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "OK"
-    | "SUBSCRIPTION_DELETED"
-    | "TOPIC_DELETED"
-    | "SUBSCRIPTION_MISCONFIGURED"
-    | (string & {});
-}
-
-export const PubsubConfig: Schema.Schema<PubsubConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubsubConfig",
-  }) as any as Schema.Schema<PubsubConfig>;
-
-export interface WebhookConfig {
-  /** Required. Resource name for the secret required as a URL parameter. */
-  secret?: string;
-  /** Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests. */
-  state?: "STATE_UNSPECIFIED" | "OK" | "SECRET_DELETED" | (string & {});
-}
-
-export const WebhookConfig: Schema.Schema<WebhookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secret: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebhookConfig",
-  }) as any as Schema.Schema<WebhookConfig>;
-
-export interface BitbucketServerSecrets {
-  /** Required. The resource name for the admin access token's secret version. */
-  adminAccessTokenVersionName?: string;
-  /** Required. The resource name for the read access token's secret version. */
-  readAccessTokenVersionName?: string;
-  /** Required. Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig. */
-  webhookSecretVersionName?: string;
-}
-
-export const BitbucketServerSecrets: Schema.Schema<BitbucketServerSecrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adminAccessTokenVersionName: Schema.optional(Schema.String),
-      readAccessTokenVersionName: Schema.optional(Schema.String),
-      webhookSecretVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerSecrets",
-  }) as any as Schema.Schema<BitbucketServerSecrets>;
-
-export interface BitbucketServerRepositoryId {
-  /** Required. Identifier for the project storing the repository. */
-  projectKey?: string;
-  /** Required. Identifier for the repository. */
-  repoSlug?: string;
-  /** Output only. The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo. */
-  webhookId?: number;
-}
-
-export const BitbucketServerRepositoryId: Schema.Schema<BitbucketServerRepositoryId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectKey: Schema.optional(Schema.String),
-      repoSlug: Schema.optional(Schema.String),
-      webhookId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerRepositoryId",
-  }) as any as Schema.Schema<BitbucketServerRepositoryId>;
-
-export interface BitbucketServerConfig {
-  /** The resource name for the config. */
-  name?: string;
-  /** Required. Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig. */
-  hostUri?: string;
-  /** Required. Secret Manager secrets needed by the config. */
-  secrets?: BitbucketServerSecrets;
-  /** Time when the config was created. */
-  createTime?: string;
-  /** Username of the account Cloud Build will use on Bitbucket Server. */
-  username?: string;
-  /** Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config. */
-  webhookKey?: string;
-  /** Required. Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig. */
-  apiKey?: string;
-  /** Output only. Connected Bitbucket Server repositories for this config. */
-  connectedRepositories?: Array<BitbucketServerRepositoryId>;
-  /** Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project. */
-  peeredNetwork?: string;
-  /** Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt. */
-  sslCa?: string;
-  /** Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set. */
-  peeredNetworkIpRange?: string;
-}
-
-export const BitbucketServerConfig: Schema.Schema<BitbucketServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      hostUri: Schema.optional(Schema.String),
-      secrets: Schema.optional(BitbucketServerSecrets),
-      createTime: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      webhookKey: Schema.optional(Schema.String),
-      apiKey: Schema.optional(Schema.String),
-      connectedRepositories: Schema.optional(
-        Schema.Array(BitbucketServerRepositoryId),
-      ),
-      peeredNetwork: Schema.optional(Schema.String),
-      sslCa: Schema.optional(Schema.String),
-      peeredNetworkIpRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerConfig",
-  }) as any as Schema.Schema<BitbucketServerConfig>;
-
-export interface BitbucketServerTriggerConfig {
-  /** Required. Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo. */
-  repoSlug?: string;
-  /** Required. Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST". */
-  projectKey?: string;
-  /** Filter to match changes in pull requests. */
-  pullRequest?: PullRequestFilter;
-  /** Filter to match changes in refs like branches, tags. */
-  push?: PushFilter;
-  /** Required. The Bitbucket server config resource that this trigger config maps to. */
-  bitbucketServerConfigResource?: string;
-  /** Output only. The BitbucketServerConfig specified in the bitbucket_server_config_resource field. */
-  bitbucketServerConfig?: BitbucketServerConfig;
-}
-
-export const BitbucketServerTriggerConfig: Schema.Schema<BitbucketServerTriggerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repoSlug: Schema.optional(Schema.String),
-      projectKey: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      push: Schema.optional(PushFilter),
-      bitbucketServerConfigResource: Schema.optional(Schema.String),
-      bitbucketServerConfig: Schema.optional(BitbucketServerConfig),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerTriggerConfig",
-  }) as any as Schema.Schema<BitbucketServerTriggerConfig>;
-
-export interface GitLabSecrets {
-  /** Required. Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig. */
-  webhookSecretVersion?: string;
-  /** Required. Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build. */
-  apiKeyVersion?: string;
-  /** Required. The resource name for the api access token’s secret version */
-  apiAccessTokenVersion?: string;
-  /** Required. The resource name for the read access token’s secret version */
-  readAccessTokenVersion?: string;
-}
-
-export const GitLabSecrets: Schema.Schema<GitLabSecrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookSecretVersion: Schema.optional(Schema.String),
-      apiKeyVersion: Schema.optional(Schema.String),
-      apiAccessTokenVersion: Schema.optional(Schema.String),
-      readAccessTokenVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitLabSecrets",
-  }) as any as Schema.Schema<GitLabSecrets>;
-
-export interface GitLabRepositoryId {
-  /** Required. Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID */
-  id?: string;
-  /** Output only. The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo. */
-  webhookId?: number;
-}
-
-export const GitLabRepositoryId: Schema.Schema<GitLabRepositoryId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      webhookId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GitLabRepositoryId",
-  }) as any as Schema.Schema<GitLabRepositoryId>;
-
-export interface ServiceDirectoryConfig {
-  /** The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
-  service?: string;
-}
-
-export const ServiceDirectoryConfig: Schema.Schema<ServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceDirectoryConfig",
-  }) as any as Schema.Schema<ServiceDirectoryConfig>;
-
-export interface GitLabEnterpriseConfig {
-  /** Immutable. The URI of the GitlabEnterprise host. */
-  hostUri?: string;
-  /** The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance. */
-  serviceDirectoryConfig?: ServiceDirectoryConfig;
-  /** The SSL certificate to use in requests to GitLab Enterprise instances. */
-  sslCa?: string;
-}
-
-export const GitLabEnterpriseConfig: Schema.Schema<GitLabEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostUri: Schema.optional(Schema.String),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      sslCa: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitLabEnterpriseConfig",
-  }) as any as Schema.Schema<GitLabEnterpriseConfig>;
-
-export interface GitLabConfig {
-  /** The resource name for the config. */
-  name?: string;
-  /** Username of the GitLab.com or GitLab Enterprise account Cloud Build will use. */
-  username?: string;
-  /** Required. Secret Manager secrets needed by the config. */
-  secrets?: GitLabSecrets;
-  /** Output only. Time when the config was created. */
-  createTime?: string;
-  /** Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config. */
-  webhookKey?: string;
-  /** Connected GitLab.com or GitLabEnterprise repositories for this config. */
-  connectedRepositories?: Array<GitLabRepositoryId>;
-  /** Optional. GitLabEnterprise config. */
-  enterpriseConfig?: GitLabEnterpriseConfig;
-}
-
-export const GitLabConfig: Schema.Schema<GitLabConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      secrets: Schema.optional(GitLabSecrets),
-      createTime: Schema.optional(Schema.String),
-      webhookKey: Schema.optional(Schema.String),
-      connectedRepositories: Schema.optional(Schema.Array(GitLabRepositoryId)),
-      enterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
-    }),
-  ).annotate({
-    identifier: "GitLabConfig",
-  }) as any as Schema.Schema<GitLabConfig>;
-
-export interface GitLabEventsConfig {
-  /** Namespace of the GitLab project. */
-  projectNamespace?: string;
-  /** Filter to match changes in pull requests. */
-  pullRequest?: PullRequestFilter;
-  /** Filter to match changes in refs like branches, tags. */
-  push?: PushFilter;
-  /** The GitLab config resource that this trigger config maps to. */
-  gitlabConfigResource?: string;
-  /** Output only. The GitLabConfig specified in the gitlab_config_resource field. */
-  gitlabConfig?: GitLabConfig;
-}
-
-export const GitLabEventsConfig: Schema.Schema<GitLabEventsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectNamespace: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      push: Schema.optional(PushFilter),
-      gitlabConfigResource: Schema.optional(Schema.String),
-      gitlabConfig: Schema.optional(GitLabConfig),
-    }),
-  ).annotate({
-    identifier: "GitLabEventsConfig",
-  }) as any as Schema.Schema<GitLabEventsConfig>;
-
-export interface GitFileSource {
-  /** The path of the file, with the repo root as the root of the path. */
-  path?: string;
-  /** The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path. */
-  uri?: string;
-  /** The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path. */
-  repository?: string;
-  /** See RepoType above. */
-  repoType?:
-    | "UNKNOWN"
-    | "CLOUD_SOURCE_REPOSITORIES"
-    | "GITHUB"
-    | "BITBUCKET_SERVER"
-    | "GITLAB"
-    | "BITBUCKET_CLOUD"
-    | (string & {});
-  /** The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path. */
-  revision?: string;
-  /** The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`. */
-  githubEnterpriseConfig?: string;
-  /** The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
-  bitbucketServerConfig?: string;
-}
-
-export const GitFileSource: Schema.Schema<GitFileSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      repoType: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      bitbucketServerConfig: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitFileSource",
-  }) as any as Schema.Schema<GitFileSource>;
-
-export interface GitRepoSource {
-  /** The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required. */
-  uri?: string;
-  /** The connected repository resource name, in the format `projects/* /locations/* /connections/* /repositories/*`. Either `uri` or `repository` can be specified and is required. */
-  repository?: string;
-  /** The branch or tag to use. Must start with "refs/" (required). */
-  ref?: string;
-  /** See RepoType below. */
-  repoType?:
-    | "UNKNOWN"
-    | "CLOUD_SOURCE_REPOSITORIES"
-    | "GITHUB"
-    | "BITBUCKET_SERVER"
-    | "GITLAB"
-    | "BITBUCKET_CLOUD"
-    | (string & {});
-  /** The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`. */
-  githubEnterpriseConfig?: string;
-  /** The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
-  bitbucketServerConfig?: string;
-}
-
-export const GitRepoSource: Schema.Schema<GitRepoSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      ref: Schema.optional(Schema.String),
-      repoType: Schema.optional(Schema.String),
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      bitbucketServerConfig: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitRepoSource",
-  }) as any as Schema.Schema<GitRepoSource>;
+export const PushFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  branch: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+  invertRegex: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PushFilter" });
 
 export interface RepositoryEventConfig {
-  /** The resource name of the Repo API resource. */
-  repository?: string;
+  /** Filter to match changes in refs like branches, tags. */
+  push?: PushFilter;
   /** Output only. The type of the SCM vendor the repository points to. */
   repositoryType?:
     | "REPOSITORY_TYPE_UNSPECIFIED"
@@ -1688,25 +1385,390 @@ export interface RepositoryEventConfig {
     | (string & {});
   /** Filter to match changes in pull requests. */
   pullRequest?: PullRequestFilter;
-  /** Filter to match changes in refs like branches, tags. */
-  push?: PushFilter;
+  /** The resource name of the Repo API resource. */
+  repository?: string;
 }
 
-export const RepositoryEventConfig: Schema.Schema<RepositoryEventConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      repositoryType: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      push: Schema.optional(PushFilter),
-    }),
-  ).annotate({
-    identifier: "RepositoryEventConfig",
-  }) as any as Schema.Schema<RepositoryEventConfig>;
+export const RepositoryEventConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  push: Schema.optional(PushFilter),
+  repositoryType: Schema.optional(Schema.String),
+  pullRequest: Schema.optional(PullRequestFilter),
+  repository: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepositoryEventConfig" });
+
+export interface DefaultServiceAccount {
+  /** Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount`. */
+  name?: string;
+  /** Output only. The email address of the service account identity that will be used for a build by default. This is returned in the format `projects/{project}/serviceAccounts/{service_account}` where `{service_account}` could be the legacy Cloud Build SA, in the format [PROJECT_NUMBER]@cloudbuild.gserviceaccount.com or the Compute SA, in the format [PROJECT_NUMBER]-compute@developer.gserviceaccount.com. If no service account will be used by default, this will be empty. */
+  serviceAccountEmail?: string;
+}
+
+export const DefaultServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  serviceAccountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "DefaultServiceAccount" });
+
+export interface GitLabSecrets {
+  /** Required. The resource name for the read access token’s secret version */
+  readAccessTokenVersion?: string;
+  /** Required. Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig. */
+  webhookSecretVersion?: string;
+  /** Required. Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build. */
+  apiKeyVersion?: string;
+  /** Required. The resource name for the api access token’s secret version */
+  apiAccessTokenVersion?: string;
+}
+
+export const GitLabSecrets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readAccessTokenVersion: Schema.optional(Schema.String),
+  webhookSecretVersion: Schema.optional(Schema.String),
+  apiKeyVersion: Schema.optional(Schema.String),
+  apiAccessTokenVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitLabSecrets" });
+
+export interface ServiceDirectoryConfig {
+  /** The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
+  service?: string;
+}
+
+export const ServiceDirectoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ServiceDirectoryConfig" });
+
+export interface GitLabEnterpriseConfig {
+  /** The SSL certificate to use in requests to GitLab Enterprise instances. */
+  sslCa?: string;
+  /** Immutable. The URI of the GitlabEnterprise host. */
+  hostUri?: string;
+  /** The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+}
+
+export const GitLabEnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sslCa: Schema.optional(Schema.String),
+    hostUri: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+  },
+).annotate({ identifier: "GitLabEnterpriseConfig" });
+
+export interface GitLabConfig {
+  /** The resource name for the config. */
+  name?: string;
+  /** Username of the GitLab.com or GitLab Enterprise account Cloud Build will use. */
+  username?: string;
+  /** Output only. Time when the config was created. */
+  createTime?: string;
+  /** Connected GitLab.com or GitLabEnterprise repositories for this config. */
+  connectedRepositories?: Array<GitLabRepositoryId>;
+  /** Required. Secret Manager secrets needed by the config. */
+  secrets?: GitLabSecrets;
+  /** Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config. */
+  webhookKey?: string;
+  /** Optional. GitLabEnterprise config. */
+  enterpriseConfig?: GitLabEnterpriseConfig;
+}
+
+export const GitLabConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  connectedRepositories: Schema.optional(Schema.Array(GitLabRepositoryId)),
+  secrets: Schema.optional(GitLabSecrets),
+  webhookKey: Schema.optional(Schema.String),
+  enterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
+}).annotate({ identifier: "GitLabConfig" });
+
+export interface GitLabEventsConfig {
+  /** Namespace of the GitLab project. */
+  projectNamespace?: string;
+  /** Filter to match changes in refs like branches, tags. */
+  push?: PushFilter;
+  /** Filter to match changes in pull requests. */
+  pullRequest?: PullRequestFilter;
+  /** The GitLab config resource that this trigger config maps to. */
+  gitlabConfigResource?: string;
+  /** Output only. The GitLabConfig specified in the gitlab_config_resource field. */
+  gitlabConfig?: GitLabConfig;
+}
+
+export const GitLabEventsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectNamespace: Schema.optional(Schema.String),
+  push: Schema.optional(PushFilter),
+  pullRequest: Schema.optional(PullRequestFilter),
+  gitlabConfigResource: Schema.optional(Schema.String),
+  gitlabConfig: Schema.optional(GitLabConfig),
+}).annotate({ identifier: "GitLabEventsConfig" });
+
+export interface BitbucketServerTriggerConfig {
+  /** Filter to match changes in refs like branches, tags. */
+  push?: PushFilter;
+  /** Output only. The BitbucketServerConfig specified in the bitbucket_server_config_resource field. */
+  bitbucketServerConfig?: BitbucketServerConfig;
+  /** Required. Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST". */
+  projectKey?: string;
+  /** Required. Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo. */
+  repoSlug?: string;
+  /** Filter to match changes in pull requests. */
+  pullRequest?: PullRequestFilter;
+  /** Required. The Bitbucket server config resource that this trigger config maps to. */
+  bitbucketServerConfigResource?: string;
+}
+
+export const BitbucketServerTriggerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    push: Schema.optional(PushFilter),
+    bitbucketServerConfig: Schema.optional(BitbucketServerConfig),
+    projectKey: Schema.optional(Schema.String),
+    repoSlug: Schema.optional(Schema.String),
+    pullRequest: Schema.optional(PullRequestFilter),
+    bitbucketServerConfigResource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketServerTriggerConfig" });
+
+export interface BitbucketServerConnectedRepository {
+  /** Output only. The status of the repo connection request. */
+  status?: Status;
+  /** The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
+  parent?: string;
+  /** The Bitbucket Server repositories to connect. */
+  repo?: BitbucketServerRepositoryId;
+}
+
+export const BitbucketServerConnectedRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Status),
+    parent: Schema.optional(Schema.String),
+    repo: Schema.optional(BitbucketServerRepositoryId),
+  }).annotate({ identifier: "BitbucketServerConnectedRepository" });
+
+export interface CreateBitbucketServerConnectedRepositoryRequest {
+  /** Required. The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
+  parent?: string;
+  /** Required. The Bitbucket Server repository to connect. */
+  bitbucketServerConnectedRepository?: BitbucketServerConnectedRepository;
+}
+
+export const CreateBitbucketServerConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    bitbucketServerConnectedRepository: Schema.optional(
+      BitbucketServerConnectedRepository,
+    ),
+  }).annotate({
+    identifier: "CreateBitbucketServerConnectedRepositoryRequest",
+  });
+
+export interface CreateGitHubEnterpriseConfigOperationMetadata {
+  /** The resource name of the GitHubEnterprise to be created. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
+  githubEnterpriseConfig?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+  /** Time the operation was created. */
+  createTime?: string;
+}
+
+export const CreateGitHubEnterpriseConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateGitHubEnterpriseConfigOperationMetadata" });
+
+export interface BatchCreateBitbucketServerConnectedRepositoriesResponse {
+  /** The connected Bitbucket Server repositories. */
+  bitbucketServerConnectedRepositories?: Array<BitbucketServerConnectedRepository>;
+}
+
+export const BatchCreateBitbucketServerConnectedRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitbucketServerConnectedRepositories: Schema.optional(
+      Schema.Array(BitbucketServerConnectedRepository),
+    ),
+  }).annotate({
+    identifier: "BatchCreateBitbucketServerConnectedRepositoriesResponse",
+  });
+
+export interface BitbucketServerRepository {
+  /** Link to the browse repo page on the Bitbucket Server instance. */
+  browseUri?: string;
+  /** Display name of the repository. */
+  displayName?: string;
+  /** The resource name of the repository. */
+  name?: string;
+  /** Identifier for a repository hosted on a Bitbucket Server. */
+  repoId?: BitbucketServerRepositoryId;
+  /** Description of the repository. */
+  description?: string;
+}
+
+export const BitbucketServerRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    browseUri: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    repoId: Schema.optional(BitbucketServerRepositoryId),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketServerRepository" });
+
+export interface ListBitbucketServerRepositoriesResponse {
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** List of Bitbucket Server repositories. */
+  bitbucketServerRepositories?: Array<BitbucketServerRepository>;
+}
+
+export const ListBitbucketServerRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    bitbucketServerRepositories: Schema.optional(
+      Schema.Array(BitbucketServerRepository),
+    ),
+  }).annotate({ identifier: "ListBitbucketServerRepositoriesResponse" });
+
+export interface CreateBitbucketServerConfigOperationMetadata {
+  /** Time the operation was completed. */
+  completeTime?: string;
+  /** The resource name of the BitbucketServerConfig to be created. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
+  bitbucketServerConfig?: string;
+  /** Time the operation was created. */
+  createTime?: string;
+}
+
+export const CreateBitbucketServerConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    bitbucketServerConfig: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateBitbucketServerConfigOperationMetadata" });
+
+export interface GitHubEventsConfig {
+  /** filter to match changes in pull requests. */
+  pullRequest?: PullRequestFilter;
+  /** The installationID that emits the GitHub event. */
+  installationId?: string;
+  /** Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform". */
+  owner?: string;
+  /** Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders". */
+  name?: string;
+  /** filter to match changes in refs like branches, tags. */
+  push?: PushFilter;
+  /** The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
+  enterpriseConfigResourceName?: string;
+}
+
+export const GitHubEventsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pullRequest: Schema.optional(PullRequestFilter),
+  installationId: Schema.optional(Schema.String),
+  owner: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  push: Schema.optional(PushFilter),
+  enterpriseConfigResourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitHubEventsConfig" });
+
+export interface GitFileSource {
+  /** The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
+  bitbucketServerConfig?: string;
+  /** The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path. */
+  uri?: string;
+  /** See RepoType above. */
+  repoType?:
+    | "UNKNOWN"
+    | "CLOUD_SOURCE_REPOSITORIES"
+    | "GITHUB"
+    | "BITBUCKET_SERVER"
+    | "GITLAB"
+    | "BITBUCKET_CLOUD"
+    | (string & {});
+  /** The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path. */
+  repository?: string;
+  /** The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path. */
+  revision?: string;
+  /** The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`. */
+  githubEnterpriseConfig?: string;
+  /** The path of the file, with the repo root as the root of the path. */
+  path?: string;
+}
+
+export const GitFileSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitbucketServerConfig: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  repoType: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.String),
+  githubEnterpriseConfig: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitFileSource" });
+
+export interface GitRepoSource {
+  /** The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
+  bitbucketServerConfig?: string;
+  /** The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required. */
+  uri?: string;
+  /** See RepoType below. */
+  repoType?:
+    | "UNKNOWN"
+    | "CLOUD_SOURCE_REPOSITORIES"
+    | "GITHUB"
+    | "BITBUCKET_SERVER"
+    | "GITLAB"
+    | "BITBUCKET_CLOUD"
+    | (string & {});
+  /** The connected repository resource name, in the format `projects/* /locations/* /connections/* /repositories/*`. Either `uri` or `repository` can be specified and is required. */
+  repository?: string;
+  /** The branch or tag to use. Must start with "refs/" (required). */
+  ref?: string;
+  /** The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`. */
+  githubEnterpriseConfig?: string;
+}
+
+export const GitRepoSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitbucketServerConfig: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  repoType: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  ref: Schema.optional(Schema.String),
+  githubEnterpriseConfig: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitRepoSource" });
+
+export interface PubsubConfig {
+  /** Service account that will make the push request. */
+  serviceAccountEmail?: string;
+  /** Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "OK"
+    | "SUBSCRIPTION_DELETED"
+    | "TOPIC_DELETED"
+    | "SUBSCRIPTION_MISCONFIGURED"
+    | (string & {});
+  /** Optional. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. */
+  topic?: string;
+  /** Output only. Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`. */
+  subscription?: string;
+}
+
+export const PubsubConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountEmail: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  subscription: Schema.optional(Schema.String),
+}).annotate({ identifier: "PubsubConfig" });
+
+export interface WebhookConfig {
+  /** Required. Resource name for the secret required as a URL parameter. */
+  secret?: string;
+  /** Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests. */
+  state?: "STATE_UNSPECIFIED" | "OK" | "SECRET_DELETED" | (string & {});
+}
+
+export const WebhookConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secret: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebhookConfig" });
 
 export interface DeveloperConnectEventConfig {
-  /** Required. The Developer Connect Git repository link, formatted as `projects/* /locations/* /connections/* /gitRepositoryLink/*`. */
-  gitRepositoryLink?: string;
   /** Output only. The type of DeveloperConnect GitRepositoryLink. */
   gitRepositoryLinkType?:
     | "GIT_REPOSITORY_LINK_TYPE_UNSPECIFIED"
@@ -1719,71 +1781,49 @@ export interface DeveloperConnectEventConfig {
     | (string & {});
   /** Filter to match changes in pull requests. */
   pullRequest?: PullRequestFilter;
+  /** Required. The Developer Connect Git repository link, formatted as `projects/* /locations/* /connections/* /gitRepositoryLink/*`. */
+  gitRepositoryLink?: string;
   /** Filter to match changes in refs like branches and tags. */
   push?: PushFilter;
 }
 
-export const DeveloperConnectEventConfig: Schema.Schema<DeveloperConnectEventConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitRepositoryLink: Schema.optional(Schema.String),
-      gitRepositoryLinkType: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      push: Schema.optional(PushFilter),
-    }),
-  ).annotate({
-    identifier: "DeveloperConnectEventConfig",
-  }) as any as Schema.Schema<DeveloperConnectEventConfig>;
+export const DeveloperConnectEventConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitRepositoryLinkType: Schema.optional(Schema.String),
+    pullRequest: Schema.optional(PullRequestFilter),
+    gitRepositoryLink: Schema.optional(Schema.String),
+    push: Schema.optional(PushFilter),
+  }).annotate({ identifier: "DeveloperConnectEventConfig" });
 
 export interface BuildTrigger {
-  /** The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service. */
-  resourceName?: string;
-  /** Output only. Unique identifier of the trigger. */
-  id?: string;
-  /** Human-readable description of this trigger. */
-  description?: string;
-  /** User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character. */
-  name?: string;
-  /** Tags for annotation of a `BuildTrigger` */
-  tags?: Array<string>;
-  /** Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`. */
-  triggerTemplate?: RepoSource;
-  /** GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`. */
-  github?: GitHubEventsConfig;
-  /** PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published. */
-  pubsubConfig?: PubsubConfig;
-  /** WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL. */
-  webhookConfig?: WebhookConfig;
-  /** BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received. */
-  bitbucketServerTriggerConfig?: BitbucketServerTriggerConfig;
-  /** GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received. */
-  gitlabEnterpriseEventsConfig?: GitLabEventsConfig;
   /** Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers. */
   autodetect?: boolean;
-  /** Contents of the build template. */
-  build?: Build;
-  /** Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml). */
-  filename?: string;
+  /** GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`. */
+  github?: GitHubEventsConfig;
+  /** Output only. Unique identifier of the trigger. */
+  id?: string;
+  /** The configuration of a trigger that creates a build whenever an event from Repo API is received. */
+  repositoryEventConfig?: RepositoryEventConfig;
   /** The file source describing the local or remote Build template. */
   gitFileSource?: GitFileSource;
-  /** Output only. Time when the trigger was created. */
-  createTime?: string;
-  /** If true, the trigger will never automatically execute a build. */
-  disabled?: boolean;
-  /** Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`. */
-  substitutions?: Record<string, string>;
-  /** ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build. */
-  ignoredFiles?: Array<string>;
-  /** If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build. */
-  includedFiles?: Array<string>;
   /** The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers. */
   sourceToBuild?: GitRepoSource;
   /** Configuration for manual approval to start a build invocation of this BuildTrigger. */
   approvalConfig?: ApprovalConfig;
-  /** A Common Expression Language string. */
-  filter?: string;
-  /** The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set and the legacy Cloud Build service account ([PROJECT_NUM]@cloudbuild.gserviceaccount.com) is the default for the project then it will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}` */
-  serviceAccount?: string;
+  /** GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received. */
+  gitlabEnterpriseEventsConfig?: GitLabEventsConfig;
+  /** If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build. */
+  includedFiles?: Array<string>;
+  /** Contents of the build template. */
+  build?: Build;
+  /** Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml). */
+  filename?: string;
+  /** User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character. */
+  name?: string;
+  /** If true, the trigger will never automatically execute a build. */
+  disabled?: boolean;
+  /** Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`. */
+  triggerTemplate?: RepoSource;
   /** EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set. */
   eventType?:
     | "EVENT_TYPE_UNSPECIFIED"
@@ -1792,56 +1832,67 @@ export interface BuildTrigger {
     | "PUBSUB"
     | "MANUAL"
     | (string & {});
+  /** PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published. */
+  pubsubConfig?: PubsubConfig;
+  /** WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL. */
+  webhookConfig?: WebhookConfig;
+  /** BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received. */
+  bitbucketServerTriggerConfig?: BitbucketServerTriggerConfig;
+  /** Output only. Time when the trigger was created. */
+  createTime?: string;
+  /** ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build. */
+  ignoredFiles?: Array<string>;
   /** If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error. */
   includeBuildLogs?:
     | "INCLUDE_BUILD_LOGS_UNSPECIFIED"
     | "INCLUDE_BUILD_LOGS_WITH_STATUS"
     | (string & {});
-  /** The configuration of a trigger that creates a build whenever an event from Repo API is received. */
-  repositoryEventConfig?: RepositoryEventConfig;
+  /** Human-readable description of this trigger. */
+  description?: string;
+  /** Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`. */
+  substitutions?: Record<string, string>;
   /** Optional. The configuration of a trigger that creates a build whenever an event from the DeveloperConnect API is received. */
   developerConnectEventConfig?: DeveloperConnectEventConfig;
+  /** The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service. */
+  resourceName?: string;
+  /** A Common Expression Language string. */
+  filter?: string;
+  /** Tags for annotation of a `BuildTrigger` */
+  tags?: Array<string>;
+  /** The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set and the legacy Cloud Build service account ([PROJECT_NUM]@cloudbuild.gserviceaccount.com) is the default for the project then it will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}` */
+  serviceAccount?: string;
 }
 
-export const BuildTrigger: Schema.Schema<BuildTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      triggerTemplate: Schema.optional(RepoSource),
-      github: Schema.optional(GitHubEventsConfig),
-      pubsubConfig: Schema.optional(PubsubConfig),
-      webhookConfig: Schema.optional(WebhookConfig),
-      bitbucketServerTriggerConfig: Schema.optional(
-        BitbucketServerTriggerConfig,
-      ),
-      gitlabEnterpriseEventsConfig: Schema.optional(GitLabEventsConfig),
-      autodetect: Schema.optional(Schema.Boolean),
-      build: Schema.optional(Build),
-      filename: Schema.optional(Schema.String),
-      gitFileSource: Schema.optional(GitFileSource),
-      createTime: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      ignoredFiles: Schema.optional(Schema.Array(Schema.String)),
-      includedFiles: Schema.optional(Schema.Array(Schema.String)),
-      sourceToBuild: Schema.optional(GitRepoSource),
-      approvalConfig: Schema.optional(ApprovalConfig),
-      filter: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
-      includeBuildLogs: Schema.optional(Schema.String),
-      repositoryEventConfig: Schema.optional(RepositoryEventConfig),
-      developerConnectEventConfig: Schema.optional(DeveloperConnectEventConfig),
-    }),
-  ).annotate({
-    identifier: "BuildTrigger",
-  }) as any as Schema.Schema<BuildTrigger>;
+export const BuildTrigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autodetect: Schema.optional(Schema.Boolean),
+  github: Schema.optional(GitHubEventsConfig),
+  id: Schema.optional(Schema.String),
+  repositoryEventConfig: Schema.optional(RepositoryEventConfig),
+  gitFileSource: Schema.optional(GitFileSource),
+  sourceToBuild: Schema.optional(GitRepoSource),
+  approvalConfig: Schema.optional(ApprovalConfig),
+  gitlabEnterpriseEventsConfig: Schema.optional(GitLabEventsConfig),
+  includedFiles: Schema.optional(Schema.Array(Schema.String)),
+  build: Schema.optional(Build),
+  filename: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  triggerTemplate: Schema.optional(RepoSource),
+  eventType: Schema.optional(Schema.String),
+  pubsubConfig: Schema.optional(PubsubConfig),
+  webhookConfig: Schema.optional(WebhookConfig),
+  bitbucketServerTriggerConfig: Schema.optional(BitbucketServerTriggerConfig),
+  createTime: Schema.optional(Schema.String),
+  ignoredFiles: Schema.optional(Schema.Array(Schema.String)),
+  includeBuildLogs: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  developerConnectEventConfig: Schema.optional(DeveloperConnectEventConfig),
+  resourceName: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  serviceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildTrigger" });
 
 export interface ListBuildTriggersResponse {
   /** `BuildTriggers` for the project, sorted by `create_time` descending. */
@@ -1850,238 +1901,47 @@ export interface ListBuildTriggersResponse {
   nextPageToken?: string;
 }
 
-export const ListBuildTriggersResponse: Schema.Schema<ListBuildTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggers: Schema.optional(Schema.Array(BuildTrigger)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBuildTriggersResponse",
-  }) as any as Schema.Schema<ListBuildTriggersResponse>;
+export const ListBuildTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggers: Schema.optional(Schema.Array(BuildTrigger)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListBuildTriggersResponse" });
 
-export interface RunBuildTriggerRequest {
+export interface CancelBuildRequest {
+  /** Required. ID of the build. */
+  id?: string;
+  /** The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}` */
+  name?: string;
   /** Required. ID of the project. */
   projectId?: string;
-  /** Required. ID of the trigger. */
-  triggerId?: string;
-  /** Source to build against this trigger. Branch and tag names cannot consist of regular expressions. */
-  source?: RepoSource;
 }
 
-export const RunBuildTriggerRequest: Schema.Schema<RunBuildTriggerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      triggerId: Schema.optional(Schema.String),
-      source: Schema.optional(RepoSource),
-    }),
-  ).annotate({
-    identifier: "RunBuildTriggerRequest",
-  }) as any as Schema.Schema<RunBuildTriggerRequest>;
-
-export interface HttpBody {
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
-  /** The HTTP request/response body as raw binary. */
-  data?: string;
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
-}
-
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
-
-export interface ReceiveTriggerWebhookResponse {}
-
-export const ReceiveTriggerWebhookResponse: Schema.Schema<ReceiveTriggerWebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ReceiveTriggerWebhookResponse",
-  }) as any as Schema.Schema<ReceiveTriggerWebhookResponse>;
-
-export interface ListBitbucketServerConfigsResponse {
-  /** A list of BitbucketServerConfigs */
-  bitbucketServerConfigs?: Array<BitbucketServerConfig>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListBitbucketServerConfigsResponse: Schema.Schema<ListBitbucketServerConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfigs: Schema.optional(
-        Schema.Array(BitbucketServerConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBitbucketServerConfigsResponse",
-  }) as any as Schema.Schema<ListBitbucketServerConfigsResponse>;
-
-export interface BitbucketServerRepository {
-  /** The resource name of the repository. */
-  name?: string;
-  /** Display name of the repository. */
-  displayName?: string;
-  /** Description of the repository. */
-  description?: string;
-  /** Link to the browse repo page on the Bitbucket Server instance. */
-  browseUri?: string;
-  /** Identifier for a repository hosted on a Bitbucket Server. */
-  repoId?: BitbucketServerRepositoryId;
-}
-
-export const BitbucketServerRepository: Schema.Schema<BitbucketServerRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      browseUri: Schema.optional(Schema.String),
-      repoId: Schema.optional(BitbucketServerRepositoryId),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerRepository",
-  }) as any as Schema.Schema<BitbucketServerRepository>;
-
-export interface ListBitbucketServerRepositoriesResponse {
-  /** List of Bitbucket Server repositories. */
-  bitbucketServerRepositories?: Array<BitbucketServerRepository>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListBitbucketServerRepositoriesResponse: Schema.Schema<ListBitbucketServerRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerRepositories: Schema.optional(
-        Schema.Array(BitbucketServerRepository),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBitbucketServerRepositoriesResponse",
-  }) as any as Schema.Schema<ListBitbucketServerRepositoriesResponse>;
-
-export interface RemoveBitbucketServerConnectedRepositoryRequest {
-  /** The connected repository to remove. */
-  connectedRepository?: BitbucketServerRepositoryId;
-}
-
-export const RemoveBitbucketServerConnectedRepositoryRequest: Schema.Schema<RemoveBitbucketServerConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectedRepository: Schema.optional(BitbucketServerRepositoryId),
-    }),
-  ).annotate({
-    identifier: "RemoveBitbucketServerConnectedRepositoryRequest",
-  }) as any as Schema.Schema<RemoveBitbucketServerConnectedRepositoryRequest>;
-
-export interface BitbucketServerConnectedRepository {
-  /** The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
-  parent?: string;
-  /** The Bitbucket Server repositories to connect. */
-  repo?: BitbucketServerRepositoryId;
-  /** Output only. The status of the repo connection request. */
-  status?: Status;
-}
-
-export const BitbucketServerConnectedRepository: Schema.Schema<BitbucketServerConnectedRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      repo: Schema.optional(BitbucketServerRepositoryId),
-      status: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerConnectedRepository",
-  }) as any as Schema.Schema<BitbucketServerConnectedRepository>;
-
-export interface CreateBitbucketServerConnectedRepositoryRequest {
-  /** Required. The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
-  parent?: string;
-  /** Required. The Bitbucket Server repository to connect. */
-  bitbucketServerConnectedRepository?: BitbucketServerConnectedRepository;
-}
-
-export const CreateBitbucketServerConnectedRepositoryRequest: Schema.Schema<CreateBitbucketServerConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      bitbucketServerConnectedRepository: Schema.optional(
-        BitbucketServerConnectedRepository,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateBitbucketServerConnectedRepositoryRequest",
-  }) as any as Schema.Schema<CreateBitbucketServerConnectedRepositoryRequest>;
-
-export interface BatchCreateBitbucketServerConnectedRepositoriesRequest {
-  /** Required. Requests to connect Bitbucket Server repositories. */
-  requests?: Array<CreateBitbucketServerConnectedRepositoryRequest>;
-}
-
-export const BatchCreateBitbucketServerConnectedRepositoriesRequest: Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(CreateBitbucketServerConnectedRepositoryRequest),
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest",
-  }) as any as Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesRequest>;
-
-export interface ListGitLabConfigsResponse {
-  /** A list of GitLabConfigs */
-  gitlabConfigs?: Array<GitLabConfig>;
-  /** A token that can be sent as `page_token` to retrieve the next page If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListGitLabConfigsResponse: Schema.Schema<ListGitLabConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConfigs: Schema.optional(Schema.Array(GitLabConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGitLabConfigsResponse",
-  }) as any as Schema.Schema<ListGitLabConfigsResponse>;
+export const CancelBuildRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CancelBuildRequest" });
 
 export interface GitLabRepository {
-  /** The resource name of the repository */
-  name?: string;
   /** Display name of the repository */
   displayName?: string;
-  /** Description of the repository */
-  description?: string;
   /** Link to the browse repo page on the GitLab instance */
   browseUri?: string;
   /** Identifier for a repository */
   repositoryId?: GitLabRepositoryId;
+  /** Description of the repository */
+  description?: string;
+  /** The resource name of the repository */
+  name?: string;
 }
 
-export const GitLabRepository: Schema.Schema<GitLabRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      browseUri: Schema.optional(Schema.String),
-      repositoryId: Schema.optional(GitLabRepositoryId),
-    }),
-  ).annotate({
-    identifier: "GitLabRepository",
-  }) as any as Schema.Schema<GitLabRepository>;
+export const GitLabRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  browseUri: Schema.optional(Schema.String),
+  repositoryId: Schema.optional(GitLabRepositoryId),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitLabRepository" });
 
 export interface ListGitLabRepositoriesResponse {
   /** List of GitLab repositories */
@@ -2090,581 +1950,69 @@ export interface ListGitLabRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListGitLabRepositoriesResponse: Schema.Schema<ListGitLabRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabRepositories: Schema.optional(Schema.Array(GitLabRepository)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGitLabRepositoriesResponse",
-  }) as any as Schema.Schema<ListGitLabRepositoriesResponse>;
+export const ListGitLabRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabRepositories: Schema.optional(Schema.Array(GitLabRepository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGitLabRepositoriesResponse" });
 
-export interface RemoveGitLabConnectedRepositoryRequest {
+export interface CreateGitLabConfigOperationMetadata {
+  /** The resource name of the GitLabConfig to be created. Format: `projects/{project}/locations/{location}/gitlabConfigs/{id}`. */
+  gitlabConfig?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+  /** Time the operation was created. */
+  createTime?: string;
+}
+
+export const CreateGitLabConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateGitLabConfigOperationMetadata" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
+
+export interface RemoveBitbucketServerConnectedRepositoryRequest {
   /** The connected repository to remove. */
-  connectedRepository?: GitLabRepositoryId;
+  connectedRepository?: BitbucketServerRepositoryId;
 }
 
-export const RemoveGitLabConnectedRepositoryRequest: Schema.Schema<RemoveGitLabConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectedRepository: Schema.optional(GitLabRepositoryId),
-    }),
-  ).annotate({
-    identifier: "RemoveGitLabConnectedRepositoryRequest",
-  }) as any as Schema.Schema<RemoveGitLabConnectedRepositoryRequest>;
+export const RemoveBitbucketServerConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedRepository: Schema.optional(BitbucketServerRepositoryId),
+  }).annotate({
+    identifier: "RemoveBitbucketServerConnectedRepositoryRequest",
+  });
 
-export interface GitLabConnectedRepository {
-  /** The name of the `GitLabConfig` that added connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
-  parent?: string;
-  /** The GitLab repositories to connect. */
-  repo?: GitLabRepositoryId;
-  /** Output only. The status of the repo connection request. */
-  status?: Status;
-}
-
-export const GitLabConnectedRepository: Schema.Schema<GitLabConnectedRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      repo: Schema.optional(GitLabRepositoryId),
-      status: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "GitLabConnectedRepository",
-  }) as any as Schema.Schema<GitLabConnectedRepository>;
-
-export interface CreateGitLabConnectedRepositoryRequest {
-  /** Required. The name of the `GitLabConfig` that adds connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
-  parent?: string;
-  /** Required. The GitLab repository to connect. */
-  gitlabConnectedRepository?: GitLabConnectedRepository;
-}
-
-export const CreateGitLabConnectedRepositoryRequest: Schema.Schema<CreateGitLabConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      gitlabConnectedRepository: Schema.optional(GitLabConnectedRepository),
-    }),
-  ).annotate({
-    identifier: "CreateGitLabConnectedRepositoryRequest",
-  }) as any as Schema.Schema<CreateGitLabConnectedRepositoryRequest>;
-
-export interface BatchCreateGitLabConnectedRepositoriesRequest {
-  /** Required. Requests to connect GitLab repositories. */
-  requests?: Array<CreateGitLabConnectedRepositoryRequest>;
-}
-
-export const BatchCreateGitLabConnectedRepositoriesRequest: Schema.Schema<BatchCreateGitLabConnectedRepositoriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(CreateGitLabConnectedRepositoryRequest),
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchCreateGitLabConnectedRepositoriesRequest",
-  }) as any as Schema.Schema<BatchCreateGitLabConnectedRepositoriesRequest>;
-
-export interface GitHubEnterpriseSecrets {
-  /** The resource name for the private key secret. */
-  privateKeyName?: string;
-  /** The resource name for the webhook secret in Secret Manager. */
-  webhookSecretName?: string;
-  /** The resource name for the OAuth secret in Secret Manager. */
-  oauthSecretName?: string;
-  /** The resource name for the OAuth client ID secret in Secret Manager. */
-  oauthClientIdName?: string;
-  /** The resource name for the private key secret version. */
-  privateKeyVersionName?: string;
-  /** The resource name for the webhook secret secret version in Secret Manager. */
-  webhookSecretVersionName?: string;
-  /** The resource name for the OAuth secret secret version in Secret Manager. */
-  oauthSecretVersionName?: string;
-  /** The resource name for the OAuth client ID secret version in Secret Manager. */
-  oauthClientIdVersionName?: string;
-}
-
-export const GitHubEnterpriseSecrets: Schema.Schema<GitHubEnterpriseSecrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateKeyName: Schema.optional(Schema.String),
-      webhookSecretName: Schema.optional(Schema.String),
-      oauthSecretName: Schema.optional(Schema.String),
-      oauthClientIdName: Schema.optional(Schema.String),
-      privateKeyVersionName: Schema.optional(Schema.String),
-      webhookSecretVersionName: Schema.optional(Schema.String),
-      oauthSecretVersionName: Schema.optional(Schema.String),
-      oauthClientIdVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubEnterpriseSecrets",
-  }) as any as Schema.Schema<GitHubEnterpriseSecrets>;
-
-export interface GitHubEnterpriseConfig {
-  /** The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
+export interface RetryBuildRequest {
+  /** Required. Build ID of the original build. */
+  id?: string;
+  /** The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` */
   name?: string;
-  /** The URL of the github enterprise host the configuration is for. */
-  hostUrl?: string;
-  /** Required. The GitHub app id of the Cloud Build app on the GitHub Enterprise server. */
-  appId?: string;
-  /** Output only. Time when the installation was associated with the project. */
-  createTime?: string;
-  /** The key that should be attached to webhook calls to the ReceiveWebhook endpoint. */
-  webhookKey?: string;
-  /** Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project. */
-  peeredNetwork?: string;
-  /** Optional. Names of secrets in Secret Manager. */
-  secrets?: GitHubEnterpriseSecrets;
-  /** Optional. Name to display for this config. */
-  displayName?: string;
-  /** Optional. SSL certificate to use for requests to GitHub Enterprise. */
-  sslCa?: string;
+  /** Required. ID of the project. */
+  projectId?: string;
 }
 
-export const GitHubEnterpriseConfig: Schema.Schema<GitHubEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      hostUrl: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      webhookKey: Schema.optional(Schema.String),
-      peeredNetwork: Schema.optional(Schema.String),
-      secrets: Schema.optional(GitHubEnterpriseSecrets),
-      displayName: Schema.optional(Schema.String),
-      sslCa: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubEnterpriseConfig",
-  }) as any as Schema.Schema<GitHubEnterpriseConfig>;
+export const RetryBuildRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetryBuildRequest" });
 
-export interface ListGithubEnterpriseConfigsResponse {
-  /** A list of GitHubEnterpriseConfigs */
-  configs?: Array<GitHubEnterpriseConfig>;
+export interface ApproveBuildRequest {
+  /** Approval decision and metadata. */
+  approvalResult?: ApprovalResult;
 }
 
-export const ListGithubEnterpriseConfigsResponse: Schema.Schema<ListGithubEnterpriseConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(Schema.Array(GitHubEnterpriseConfig)),
-    }),
-  ).annotate({
-    identifier: "ListGithubEnterpriseConfigsResponse",
-  }) as any as Schema.Schema<ListGithubEnterpriseConfigsResponse>;
-
-export interface WorkerConfig {
-  /** Optional. Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default. */
-  machineType?: string;
-  /** Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 4000. If `0` is specified, Cloud Build will use a standard disk size. */
-  diskSizeGb?: string;
-  /** Optional. Enable nested virtualization on the worker, if supported by the machine type. By default, nested virtualization is disabled. */
-  enableNestedVirtualization?: boolean;
-}
-
-export const WorkerConfig: Schema.Schema<WorkerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.String),
-      enableNestedVirtualization: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WorkerConfig",
-  }) as any as Schema.Schema<WorkerConfig>;
-
-export interface NetworkConfig {
-  /** Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment) */
-  peeredNetwork?: string;
-  /** Option to configure network egress for the workers. */
-  egressOption?:
-    | "EGRESS_OPTION_UNSPECIFIED"
-    | "NO_PUBLIC_EGRESS"
-    | "PUBLIC_EGRESS"
-    | (string & {});
-  /** Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. */
-  peeredNetworkIpRange?: string;
-}
-
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peeredNetwork: Schema.optional(Schema.String),
-      egressOption: Schema.optional(Schema.String),
-      peeredNetworkIpRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
-
-export interface PrivateServiceConnect {
-  /** Required. Immutable. The network attachment that the worker network interface is peered to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments) */
-  networkAttachment?: string;
-  /** Required. Immutable. Disable public IP on the primary network interface. If true, workers are created without any public address, which prevents network egress to public IPs unless a network proxy is configured. If false, workers are created with a public address which allows for public internet egress. The public address only applies to traffic through the primary network interface. If `route_all_traffic` is set to true, all traffic will go through the non-primary network interface, this boolean has no effect. */
-  publicIpAddressDisabled?: boolean;
-  /** Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route RFC 1918 (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16) and RFC 6598 (100.64.0.0/10) through PSC interface. */
-  routeAllTraffic?: boolean;
-}
-
-export const PrivateServiceConnect: Schema.Schema<PrivateServiceConnect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkAttachment: Schema.optional(Schema.String),
-      publicIpAddressDisabled: Schema.optional(Schema.Boolean),
-      routeAllTraffic: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PrivateServiceConnect",
-  }) as any as Schema.Schema<PrivateServiceConnect>;
-
-export interface PrivatePoolV1Config {
-  /** Machine configuration for the workers in the pool. */
-  workerConfig?: WorkerConfig;
-  /** Network configuration for the pool. */
-  networkConfig?: NetworkConfig;
-  /** Immutable. Private Service Connect(PSC) Network configuration for the pool. */
-  privateServiceConnect?: PrivateServiceConnect;
-}
-
-export const PrivatePoolV1Config: Schema.Schema<PrivatePoolV1Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerConfig: Schema.optional(WorkerConfig),
-      networkConfig: Schema.optional(NetworkConfig),
-      privateServiceConnect: Schema.optional(PrivateServiceConnect),
-    }),
-  ).annotate({
-    identifier: "PrivatePoolV1Config",
-  }) as any as Schema.Schema<PrivatePoolV1Config>;
-
-export interface WorkerPool {
-  /** Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed. */
-  name?: string;
-  /** A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters. */
-  displayName?: string;
-  /** Output only. A unique identifier for the `WorkerPool`. */
-  uid?: string;
-  /** User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations. */
-  annotations?: Record<string, string>;
-  /** Output only. Time at which the request to create the `WorkerPool` was received. */
-  createTime?: string;
-  /** Output only. Time at which the request to update the `WorkerPool` was received. */
-  updateTime?: string;
-  /** Output only. Time at which the request to delete the `WorkerPool` was received. */
-  deleteTime?: string;
-  /** Output only. `WorkerPool` state. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "RUNNING"
-    | "DELETING"
-    | "DELETED"
-    | "UPDATING"
-    | (string & {});
-  /** Private Pool configuration. */
-  privatePoolV1Config?: PrivatePoolV1Config;
-  /** Output only. Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding. */
-  etag?: string;
-}
-
-export const WorkerPool: Schema.Schema<WorkerPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      privatePoolV1Config: Schema.optional(PrivatePoolV1Config),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WorkerPool" }) as any as Schema.Schema<WorkerPool>;
-
-export interface ListWorkerPoolsResponse {
-  /** `WorkerPools` for the specified project. */
-  workerPools?: Array<WorkerPool>;
-  /** Continuation token used to page through large result sets. Provide this value in a subsequent ListWorkerPoolsRequest to return the next page of results. */
-  nextPageToken?: string;
-}
-
-export const ListWorkerPoolsResponse: Schema.Schema<ListWorkerPoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPools: Schema.optional(Schema.Array(WorkerPool)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkerPoolsResponse",
-  }) as any as Schema.Schema<ListWorkerPoolsResponse>;
-
-export interface DefaultServiceAccount {
-  /** Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount`. */
-  name?: string;
-  /** Output only. The email address of the service account identity that will be used for a build by default. This is returned in the format `projects/{project}/serviceAccounts/{service_account}` where `{service_account}` could be the legacy Cloud Build SA, in the format [PROJECT_NUMBER]@cloudbuild.gserviceaccount.com or the Compute SA, in the format [PROJECT_NUMBER]-compute@developer.gserviceaccount.com. If no service account will be used by default, this will be empty. */
-  serviceAccountEmail?: string;
-}
-
-export const DefaultServiceAccount: Schema.Schema<DefaultServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DefaultServiceAccount",
-  }) as any as Schema.Schema<DefaultServiceAccount>;
-
-export interface BuildOperationMetadata {
-  /** The build that the operation is tracking. */
-  build?: Build;
-}
-
-export const BuildOperationMetadata: Schema.Schema<BuildOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      build: Schema.optional(Build),
-    }),
-  ).annotate({
-    identifier: "BuildOperationMetadata",
-  }) as any as Schema.Schema<BuildOperationMetadata>;
-
-export interface CreateWorkerPoolOperationMetadata {
-  /** The resource name of the `WorkerPool` to create. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
-  workerPool?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const CreateWorkerPoolOperationMetadata: Schema.Schema<CreateWorkerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPool: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateWorkerPoolOperationMetadata",
-  }) as any as Schema.Schema<CreateWorkerPoolOperationMetadata>;
-
-export interface UpdateWorkerPoolOperationMetadata {
-  /** The resource name of the `WorkerPool` being updated. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
-  workerPool?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const UpdateWorkerPoolOperationMetadata: Schema.Schema<UpdateWorkerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPool: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateWorkerPoolOperationMetadata",
-  }) as any as Schema.Schema<UpdateWorkerPoolOperationMetadata>;
-
-export interface DeleteWorkerPoolOperationMetadata {
-  /** The resource name of the `WorkerPool` being deleted. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
-  workerPool?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const DeleteWorkerPoolOperationMetadata: Schema.Schema<DeleteWorkerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPool: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteWorkerPoolOperationMetadata",
-  }) as any as Schema.Schema<DeleteWorkerPoolOperationMetadata>;
-
-export interface ArtifactResult {
-  /** The path of an artifact in a Cloud Storage bucket, with the generation number. For example, `gs://mybucket/path/to/output.jar#generation`. */
-  location?: string;
-  /** The file hash of the artifact. */
-  fileHash?: Array<FileHashes>;
-}
-
-export const ArtifactResult: Schema.Schema<ArtifactResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      fileHash: Schema.optional(Schema.Array(FileHashes)),
-    }),
-  ).annotate({
-    identifier: "ArtifactResult",
-  }) as any as Schema.Schema<ArtifactResult>;
-
-export interface CreateGitHubEnterpriseConfigOperationMetadata {
-  /** The resource name of the GitHubEnterprise to be created. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
-  githubEnterpriseConfig?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const CreateGitHubEnterpriseConfigOperationMetadata: Schema.Schema<CreateGitHubEnterpriseConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateGitHubEnterpriseConfigOperationMetadata",
-  }) as any as Schema.Schema<CreateGitHubEnterpriseConfigOperationMetadata>;
-
-export interface UpdateGitHubEnterpriseConfigOperationMetadata {
-  /** The resource name of the GitHubEnterprise to be updated. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
-  githubEnterpriseConfig?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const UpdateGitHubEnterpriseConfigOperationMetadata: Schema.Schema<UpdateGitHubEnterpriseConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateGitHubEnterpriseConfigOperationMetadata",
-  }) as any as Schema.Schema<UpdateGitHubEnterpriseConfigOperationMetadata>;
-
-export interface DeleteGitHubEnterpriseConfigOperationMetadata {
-  /** The resource name of the GitHubEnterprise to be deleted. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
-  githubEnterpriseConfig?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const DeleteGitHubEnterpriseConfigOperationMetadata: Schema.Schema<DeleteGitHubEnterpriseConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteGitHubEnterpriseConfigOperationMetadata",
-  }) as any as Schema.Schema<DeleteGitHubEnterpriseConfigOperationMetadata>;
-
-export interface ProcessAppManifestCallbackOperationMetadata {
-  /** The resource name of the GitHubEnterprise to be created. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
-  githubEnterpriseConfig?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const ProcessAppManifestCallbackOperationMetadata: Schema.Schema<ProcessAppManifestCallbackOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProcessAppManifestCallbackOperationMetadata",
-  }) as any as Schema.Schema<ProcessAppManifestCallbackOperationMetadata>;
-
-export interface BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata {
-  /** The name of the `BitbucketServerConfig` that added connected repositories. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
-  config?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata: Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier:
-      "BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata",
-  }) as any as Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata>;
-
-export interface BatchCreateBitbucketServerConnectedRepositoriesResponse {
-  /** The connected Bitbucket Server repositories. */
-  bitbucketServerConnectedRepositories?: Array<BitbucketServerConnectedRepository>;
-}
-
-export const BatchCreateBitbucketServerConnectedRepositoriesResponse: Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConnectedRepositories: Schema.optional(
-        Schema.Array(BitbucketServerConnectedRepository),
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchCreateBitbucketServerConnectedRepositoriesResponse",
-  }) as any as Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponse>;
-
-export interface CreateBitbucketServerConfigOperationMetadata {
-  /** The resource name of the BitbucketServerConfig to be created. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
-  bitbucketServerConfig?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const CreateBitbucketServerConfigOperationMetadata: Schema.Schema<CreateBitbucketServerConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateBitbucketServerConfigOperationMetadata",
-  }) as any as Schema.Schema<CreateBitbucketServerConfigOperationMetadata>;
-
-export interface UpdateBitbucketServerConfigOperationMetadata {
-  /** The resource name of the BitbucketServerConfig to be updated. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
-  bitbucketServerConfig?: string;
-  /** Time the operation was created. */
-  createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
-}
-
-export const UpdateBitbucketServerConfigOperationMetadata: Schema.Schema<UpdateBitbucketServerConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateBitbucketServerConfigOperationMetadata",
-  }) as any as Schema.Schema<UpdateBitbucketServerConfigOperationMetadata>;
+export const ApproveBuildRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalResult: Schema.optional(ApprovalResult),
+}).annotate({ identifier: "ApproveBuildRequest" });
 
 export interface DeleteBitbucketServerConfigOperationMetadata {
   /** The resource name of the BitbucketServerConfig to be deleted. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
@@ -2675,754 +2023,485 @@ export interface DeleteBitbucketServerConfigOperationMetadata {
   completeTime?: string;
 }
 
-export const DeleteBitbucketServerConfigOperationMetadata: Schema.Schema<DeleteBitbucketServerConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteBitbucketServerConfigOperationMetadata",
-  }) as any as Schema.Schema<DeleteBitbucketServerConfigOperationMetadata>;
+export const DeleteBitbucketServerConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitbucketServerConfig: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteBitbucketServerConfigOperationMetadata" });
 
-export interface CreateGitLabConfigOperationMetadata {
-  /** The resource name of the GitLabConfig to be created. Format: `projects/{project}/locations/{location}/gitlabConfigs/{id}`. */
-  gitlabConfig?: string;
+export interface RunBuildTriggerRequest {
+  /** Required. ID of the trigger. */
+  triggerId?: string;
+  /** Source to build against this trigger. Branch and tag names cannot consist of regular expressions. */
+  source?: RepoSource;
+  /** Required. ID of the project. */
+  projectId?: string;
+}
+
+export const RunBuildTriggerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    triggerId: Schema.optional(Schema.String),
+    source: Schema.optional(RepoSource),
+    projectId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RunBuildTriggerRequest" });
+
+export interface ProcessAppManifestCallbackOperationMetadata {
   /** Time the operation was created. */
   createTime?: string;
+  /** The resource name of the GitHubEnterprise to be created. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
+  githubEnterpriseConfig?: string;
   /** Time the operation was completed. */
   completeTime?: string;
 }
 
-export const CreateGitLabConfigOperationMetadata: Schema.Schema<CreateGitLabConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateGitLabConfigOperationMetadata",
-  }) as any as Schema.Schema<CreateGitLabConfigOperationMetadata>;
+export const ProcessAppManifestCallbackOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProcessAppManifestCallbackOperationMetadata" });
 
-export interface UpdateGitLabConfigOperationMetadata {
-  /** The resource name of the GitLabConfig to be created. Format: `projects/{project}/locations/{location}/gitlabConfigs/{id}`. */
-  gitlabConfig?: string;
-  /** Time the operation was created. */
+export interface Operation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+}
+
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
+
+export interface ReceiveTriggerWebhookResponse {}
+
+export const ReceiveTriggerWebhookResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ReceiveTriggerWebhookResponse",
+  });
+
+export interface GitHubEnterpriseConfig {
+  /** Optional. SSL certificate to use for requests to GitHub Enterprise. */
+  sslCa?: string;
+  /** The URL of the github enterprise host the configuration is for. */
+  hostUrl?: string;
+  /** Optional. Names of secrets in Secret Manager. */
+  secrets?: GitHubEnterpriseSecrets;
+  /** Optional. Name to display for this config. */
+  displayName?: string;
+  /** The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
+  name?: string;
+  /** Required. The GitHub app id of the Cloud Build app on the GitHub Enterprise server. */
+  appId?: string;
+  /** Output only. Time when the installation was associated with the project. */
   createTime?: string;
+  /** Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project. */
+  peeredNetwork?: string;
+  /** The key that should be attached to webhook calls to the ReceiveWebhook endpoint. */
+  webhookKey?: string;
+}
+
+export const GitHubEnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sslCa: Schema.optional(Schema.String),
+    hostUrl: Schema.optional(Schema.String),
+    secrets: Schema.optional(GitHubEnterpriseSecrets),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    peeredNetwork: Schema.optional(Schema.String),
+    webhookKey: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GitHubEnterpriseConfig" });
+
+export interface ListGithubEnterpriseConfigsResponse {
+  /** A list of GitHubEnterpriseConfigs */
+  configs?: Array<GitHubEnterpriseConfig>;
+}
+
+export const ListGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(Schema.Array(GitHubEnterpriseConfig)),
+  }).annotate({ identifier: "ListGithubEnterpriseConfigsResponse" });
+
+export interface CreateWorkerPoolOperationMetadata {
   /** Time the operation was completed. */
   completeTime?: string;
-}
-
-export const UpdateGitLabConfigOperationMetadata: Schema.Schema<UpdateGitLabConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateGitLabConfigOperationMetadata",
-  }) as any as Schema.Schema<UpdateGitLabConfigOperationMetadata>;
-
-export interface DeleteGitLabConfigOperationMetadata {
-  /** The resource name of the GitLabConfig to be created. Format: `projects/{project}/locations/{location}/gitlabConfigs/{id}`. */
-  gitlabConfig?: string;
+  /** The resource name of the `WorkerPool` to create. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
+  workerPool?: string;
   /** Time the operation was created. */
   createTime?: string;
-  /** Time the operation was completed. */
-  completeTime?: string;
 }
 
-export const DeleteGitLabConfigOperationMetadata: Schema.Schema<DeleteGitLabConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteGitLabConfigOperationMetadata",
-  }) as any as Schema.Schema<DeleteGitLabConfigOperationMetadata>;
+export const CreateWorkerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    workerPool: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateWorkerPoolOperationMetadata" });
 
-export interface BatchCreateGitLabConnectedRepositoriesResponse {
-  /** The GitLab connected repository requests' responses. */
-  gitlabConnectedRepositories?: Array<GitLabConnectedRepository>;
+export interface RemoveGitLabConnectedRepositoryRequest {
+  /** The connected repository to remove. */
+  connectedRepository?: GitLabRepositoryId;
 }
 
-export const BatchCreateGitLabConnectedRepositoriesResponse: Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConnectedRepositories: Schema.optional(
-        Schema.Array(GitLabConnectedRepository),
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchCreateGitLabConnectedRepositoriesResponse",
-  }) as any as Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponse>;
+export const RemoveGitLabConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedRepository: Schema.optional(GitLabRepositoryId),
+  }).annotate({ identifier: "RemoveGitLabConnectedRepositoryRequest" });
+
+export interface BuildOperationMetadata {
+  /** The build that the operation is tracking. */
+  build?: Build;
+}
+
+export const BuildOperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    build: Schema.optional(Build),
+  },
+).annotate({ identifier: "BuildOperationMetadata" });
 
 export interface BatchCreateGitLabConnectedRepositoriesResponseMetadata {
+  /** Time the operation was created. */
+  createTime?: string;
   /** The name of the `GitLabConfig` that added connected repositories. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
   config?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+}
+
+export const BatchCreateGitLabConnectedRepositoriesResponseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    config: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "BatchCreateGitLabConnectedRepositoriesResponseMetadata",
+  });
+
+export interface ArtifactResult {
+  /** The file hash of the artifact. */
+  fileHash?: Array<FileHashes>;
+  /** The path of an artifact in a Cloud Storage bucket, with the generation number. For example, `gs://mybucket/path/to/output.jar#generation`. */
+  location?: string;
+}
+
+export const ArtifactResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileHash: Schema.optional(Schema.Array(FileHashes)),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "ArtifactResult" });
+
+export interface UpdateGitHubEnterpriseConfigOperationMetadata {
+  /** Time the operation was created. */
+  createTime?: string;
+  /** The resource name of the GitHubEnterprise to be updated. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
+  githubEnterpriseConfig?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+}
+
+export const UpdateGitHubEnterpriseConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateGitHubEnterpriseConfigOperationMetadata" });
+
+export interface ListWorkerPoolsResponse {
+  /** `WorkerPools` for the specified project. */
+  workerPools?: Array<WorkerPool>;
+  /** Continuation token used to page through large result sets. Provide this value in a subsequent ListWorkerPoolsRequest to return the next page of results. */
+  nextPageToken?: string;
+}
+
+export const ListWorkerPoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workerPools: Schema.optional(Schema.Array(WorkerPool)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkerPoolsResponse" });
+
+export interface UpdateWorkerPoolOperationMetadata {
+  /** The resource name of the `WorkerPool` being updated. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
+  workerPool?: string;
   /** Time the operation was created. */
   createTime?: string;
   /** Time the operation was completed. */
   completeTime?: string;
 }
 
-export const BatchCreateGitLabConnectedRepositoriesResponseMetadata: Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BatchCreateGitLabConnectedRepositoriesResponseMetadata",
-  }) as any as Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponseMetadata>;
+export const UpdateWorkerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workerPool: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateWorkerPoolOperationMetadata" });
+
+export interface ListGitLabConfigsResponse {
+  /** A list of GitLabConfigs */
+  gitlabConfigs?: Array<GitLabConfig>;
+  /** A token that can be sent as `page_token` to retrieve the next page If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabConfigs: Schema.optional(Schema.Array(GitLabConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGitLabConfigsResponse" });
+
+export interface BatchCreateBitbucketServerConnectedRepositoriesRequest {
+  /** Required. Requests to connect Bitbucket Server repositories. */
+  requests?: Array<CreateBitbucketServerConnectedRepositoryRequest>;
+}
+
+export const BatchCreateBitbucketServerConnectedRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(CreateBitbucketServerConnectedRepositoryRequest),
+    ),
+  }).annotate({
+    identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest",
+  });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. The time the operation finished running. */
   endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
   /** Output only. Name of the verb executed by the operation. */
   verb?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusDetail?: string;
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
   cancelRequested?: boolean;
   /** Output only. API version used to start the operation. */
   apiVersion?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusDetail?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
+
+export interface DeleteGitHubEnterpriseConfigOperationMetadata {
+  /** The resource name of the GitHubEnterprise to be deleted. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
+  githubEnterpriseConfig?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+  /** Time the operation was created. */
+  createTime?: string;
+}
+
+export const DeleteGitHubEnterpriseConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteGitHubEnterpriseConfigOperationMetadata" });
+
+export interface BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata {
+  /** The name of the `BitbucketServerConfig` that added connected repositories. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
+  config?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+  /** Time the operation was created. */
+  createTime?: string;
+}
+
+export const BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata",
+  });
+
+export interface HttpBody {
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: Array<Record<string, unknown>>;
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
+}
+
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  contentType: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpBody" });
+
+export interface UpdateGitLabConfigOperationMetadata {
+  /** Time the operation was created. */
+  createTime?: string;
+  /** The resource name of the GitLabConfig to be created. Format: `projects/{project}/locations/{location}/gitlabConfigs/{id}`. */
+  gitlabConfig?: string;
+  /** Time the operation was completed. */
+  completeTime?: string;
+}
+
+export const UpdateGitLabConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    gitlabConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateGitLabConfigOperationMetadata" });
+
+export interface BatchCreateGitLabConnectedRepositoriesResponse {
+  /** The GitLab connected repository requests' responses. */
+  gitlabConnectedRepositories?: Array<GitLabConnectedRepository>;
+}
+
+export const BatchCreateGitLabConnectedRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabConnectedRepositories: Schema.optional(
+      Schema.Array(GitLabConnectedRepository),
+    ),
+  }).annotate({ identifier: "BatchCreateGitLabConnectedRepositoriesResponse" });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
 
-export interface GetOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
+export interface ListProjectsGithubEnterpriseConfigsRequest {
+  /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
+  parent: string;
+  /** ID of the project */
+  projectId?: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
-  svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
-
-export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetOperationsError = DefaultErrors;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getOperations: API.OperationMethod<
-  GetOperationsRequest,
-  GetOperationsResponse,
-  GetOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: GetOperationsResponse,
-  errors: [],
-}));
-
-export interface CancelOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: CancelOperationRequest;
-}
-
-export const CancelOperationsRequest =
+export const ListProjectsGithubEnterpriseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
-
-export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type CancelOperationsError = DefaultErrors;
-
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-export const cancelOperations: API.OperationMethod<
-  CancelOperationsRequest,
-  CancelOperationsResponse,
-  CancelOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelOperationsRequest,
-  output: CancelOperationsResponse,
-  errors: [],
-}));
-
-export interface CreateProjectsBuildsRequest {
-  /** Required. ID of the project. */
-  projectId: string;
-  /** The parent resource where this build will be created. Format: `projects/{project}/locations/{location}` */
-  parent?: string;
-  /** Request body */
-  body?: Build;
-}
-
-export const CreateProjectsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-    body: Schema.optional(Build).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}/builds",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsBuildsRequest>;
-
-export type CreateProjectsBuildsResponse = Operation;
-export const CreateProjectsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsBuildsError = DefaultErrors;
-
-/** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). */
-export const createProjectsBuilds: API.OperationMethod<
-  CreateProjectsBuildsRequest,
-  CreateProjectsBuildsResponse,
-  CreateProjectsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsBuildsRequest,
-  output: CreateProjectsBuildsResponse,
-  errors: [],
-}));
-
-export interface GetProjectsBuildsRequest {
-  /** Required. ID of the project. */
-  projectId: string;
-  /** Required. ID of the build. */
-  id: string;
-  /** The name of the `Build` to retrieve. Format: `projects/{project}/locations/{location}/builds/{build}` */
-  name?: string;
-}
-
-export const GetProjectsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectId}/builds/{id}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsBuildsRequest>;
-
-export type GetProjectsBuildsResponse = Build;
-export const GetProjectsBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Build;
-
-export type GetProjectsBuildsError = DefaultErrors;
-
-/** Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. */
-export const getProjectsBuilds: API.OperationMethod<
-  GetProjectsBuildsRequest,
-  GetProjectsBuildsResponse,
-  GetProjectsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsBuildsRequest,
-  output: GetProjectsBuildsResponse,
-  errors: [],
-}));
-
-export interface ListProjectsBuildsRequest {
-  /** Required. ID of the project. */
-  projectId: string;
-  /** The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}` */
-  parent?: string;
-  /** Number of results to return in the list. */
-  pageSize?: number;
-  /** The page token for the next page of Builds. If unspecified, the first page of results is returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this case, the token should be discarded, and pagination should be restarted from the first page of results. See https://google.aip.dev/158 for more. */
-  pageToken?: string;
-  /** The raw filter text to constrain the results. */
-  filter?: string;
-}
-
-export const ListProjectsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectId}/builds" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsBuildsRequest>;
-
-export type ListProjectsBuildsResponse = ListBuildsResponse;
-export const ListProjectsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBuildsResponse;
-
-export type ListProjectsBuildsError = DefaultErrors;
-
-/** Lists previously requested builds. Previously requested builds may still be in-progress, or may have finished successfully or unsuccessfully. */
-export const listProjectsBuilds: API.PaginatedOperationMethod<
-  ListProjectsBuildsRequest,
-  ListProjectsBuildsResponse,
-  ListProjectsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsBuildsRequest,
-  output: ListProjectsBuildsResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CancelProjectsBuildsRequest {
-  /** Required. ID of the project. */
-  projectId: string;
-  /** Required. ID of the build. */
-  id: string;
-  /** Request body */
-  body?: CancelBuildRequest;
-}
-
-export const CancelProjectsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    body: Schema.optional(CancelBuildRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}/builds/{id}:cancel",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelProjectsBuildsRequest>;
-
-export type CancelProjectsBuildsResponse = Build;
-export const CancelProjectsBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Build;
-
-export type CancelProjectsBuildsError = DefaultErrors;
-
-/** Cancels a build in progress. */
-export const cancelProjectsBuilds: API.OperationMethod<
-  CancelProjectsBuildsRequest,
-  CancelProjectsBuildsResponse,
-  CancelProjectsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsBuildsRequest,
-  output: CancelProjectsBuildsResponse,
-  errors: [],
-}));
-
-export interface RetryProjectsBuildsRequest {
-  /** Required. ID of the project. */
-  projectId: string;
-  /** Required. Build ID of the original build. */
-  id: string;
-  /** Request body */
-  body?: RetryBuildRequest;
-}
-
-export const RetryProjectsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    id: Schema.String.pipe(T.HttpPath("id")),
-    body: Schema.optional(RetryBuildRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}/builds/{id}:retry",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RetryProjectsBuildsRequest>;
-
-export type RetryProjectsBuildsResponse = Operation;
-export const RetryProjectsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type RetryProjectsBuildsError = DefaultErrors;
-
-/** Creates a new build based on the specified build. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
-export const retryProjectsBuilds: API.OperationMethod<
-  RetryProjectsBuildsRequest,
-  RetryProjectsBuildsResponse,
-  RetryProjectsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RetryProjectsBuildsRequest,
-  output: RetryProjectsBuildsResponse,
-  errors: [],
-}));
-
-export interface ApproveProjectsBuildsRequest {
-  /** Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" */
-  name: string;
-  /** Request body */
-  body?: ApproveBuildRequest;
-}
-
-export const ApproveProjectsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ApproveBuildRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/builds/{buildsId}:approve",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ApproveProjectsBuildsRequest>;
-
-export type ApproveProjectsBuildsResponse = Operation;
-export const ApproveProjectsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ApproveProjectsBuildsError = DefaultErrors;
-
-/** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
-export const approveProjectsBuilds: API.OperationMethod<
-  ApproveProjectsBuildsRequest,
-  ApproveProjectsBuildsResponse,
-  ApproveProjectsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ApproveProjectsBuildsRequest,
-  output: ApproveProjectsBuildsResponse,
-  errors: [],
-}));
-
-export interface CreateProjectsTriggersRequest {
-  /** Required. ID of the project for which to configure automatic builds. */
-  projectId: string;
-  /** The parent resource where this trigger will be created. Format: `projects/{project}/locations/{location}` */
-  parent?: string;
-  /** Request body */
-  body?: BuildTrigger;
-}
-
-export const CreateProjectsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-    body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}/triggers",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsTriggersRequest>;
-
-export type CreateProjectsTriggersResponse = BuildTrigger;
-export const CreateProjectsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
-
-export type CreateProjectsTriggersError = DefaultErrors;
-
-/** Creates a new `BuildTrigger`. */
-export const createProjectsTriggers: API.OperationMethod<
-  CreateProjectsTriggersRequest,
-  CreateProjectsTriggersResponse,
-  CreateProjectsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsTriggersRequest,
-  output: CreateProjectsTriggersResponse,
-  errors: [],
-}));
-
-export interface GetProjectsTriggersRequest {
-  /** Required. ID of the project that owns the trigger. */
-  projectId: string;
-  /** Required. Identifier (`id` or `name`) of the `BuildTrigger` to get. */
-  triggerId: string;
-  /** The name of the `Trigger` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
-  name?: string;
-}
-
-export const GetProjectsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectId}/triggers/{triggerId}",
+      path: "v1/projects/{projectsId}/githubEnterpriseConfigs",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTriggersRequest>;
+  ) as unknown as Schema.Schema<ListProjectsGithubEnterpriseConfigsRequest>;
 
-export type GetProjectsTriggersResponse = BuildTrigger;
-export const GetProjectsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
+export type ListProjectsGithubEnterpriseConfigsResponse =
+  ListGithubEnterpriseConfigsResponse;
+export const ListProjectsGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListGithubEnterpriseConfigsResponse;
 
-export type GetProjectsTriggersError = DefaultErrors;
+export type ListProjectsGithubEnterpriseConfigsError = DefaultErrors;
 
-/** Returns information about a `BuildTrigger`. */
-export const getProjectsTriggers: API.OperationMethod<
-  GetProjectsTriggersRequest,
-  GetProjectsTriggersResponse,
-  GetProjectsTriggersError,
+/** List all GitHubEnterpriseConfigs for a given project. */
+export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
+  ListProjectsGithubEnterpriseConfigsRequest,
+  ListProjectsGithubEnterpriseConfigsResponse,
+  ListProjectsGithubEnterpriseConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsTriggersRequest,
-  output: GetProjectsTriggersResponse,
+  input: ListProjectsGithubEnterpriseConfigsRequest,
+  output: ListProjectsGithubEnterpriseConfigsResponse,
   errors: [],
 }));
 
-export interface ListProjectsTriggersRequest {
-  /** Required. ID of the project for which to list BuildTriggers. */
-  projectId: string;
-  /** The parent of the collection of `Triggers`. Format: `projects/{project}/locations/{location}` */
-  parent?: string;
-  /** Number of results to return in the list. */
-  pageSize?: number;
-  /** Token to provide to skip to a particular spot in the list. */
-  pageToken?: string;
-}
-
-export const ListProjectsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectId}/triggers" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsTriggersRequest>;
-
-export type ListProjectsTriggersResponse = ListBuildTriggersResponse;
-export const ListProjectsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBuildTriggersResponse;
-
-export type ListProjectsTriggersError = DefaultErrors;
-
-/** Lists existing `BuildTrigger`s. */
-export const listProjectsTriggers: API.PaginatedOperationMethod<
-  ListProjectsTriggersRequest,
-  ListProjectsTriggersResponse,
-  ListProjectsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTriggersRequest,
-  output: ListProjectsTriggersResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsTriggersRequest {
-  /** Required. ID of the project that owns the trigger. */
-  projectId: string;
-  /** Required. ID of the `BuildTrigger` to delete. */
-  triggerId: string;
-  /** The name of the `Trigger` to delete. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
-  name?: string;
-}
-
-export const DeleteProjectsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectId}/triggers/{triggerId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTriggersRequest>;
-
-export type DeleteProjectsTriggersResponse = Empty;
-export const DeleteProjectsTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsTriggersError = DefaultErrors;
-
-/** Deletes a `BuildTrigger` by its project ID and trigger ID. */
-export const deleteProjectsTriggers: API.OperationMethod<
-  DeleteProjectsTriggersRequest,
-  DeleteProjectsTriggersResponse,
-  DeleteProjectsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTriggersRequest,
-  output: DeleteProjectsTriggersResponse,
-  errors: [],
-}));
-
-export interface PatchProjectsTriggersRequest {
-  /** Required. ID of the project that owns the trigger. */
-  projectId: string;
-  /** Required. ID of the `BuildTrigger` to update. */
-  triggerId: string;
+export interface PatchProjectsGithubEnterpriseConfigsRequest {
   /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
   updateMask?: string;
+  /** The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
+  name: string;
   /** Request body */
-  body?: BuildTrigger;
+  body?: GitHubEnterpriseConfig;
 }
 
-export const PatchProjectsTriggersRequest =
+export const PatchProjectsGithubEnterpriseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/projects/{projectId}/triggers/{triggerId}",
+      path: "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTriggersRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsGithubEnterpriseConfigsRequest>;
 
-export type PatchProjectsTriggersResponse = BuildTrigger;
-export const PatchProjectsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
-
-export type PatchProjectsTriggersError = DefaultErrors;
-
-/** Updates a `BuildTrigger` by its project ID and trigger ID. */
-export const patchProjectsTriggers: API.OperationMethod<
-  PatchProjectsTriggersRequest,
-  PatchProjectsTriggersResponse,
-  PatchProjectsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsTriggersRequest,
-  output: PatchProjectsTriggersResponse,
-  errors: [],
-}));
-
-export interface RunProjectsTriggersRequest {
-  /** Required. ID of the project. */
-  projectId: string;
-  /** Required. ID of the trigger. */
-  triggerId: string;
-  /** The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
-  name?: string;
-  /** Request body */
-  body?: RepoSource;
-}
-
-export const RunProjectsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    body: Schema.optional(RepoSource).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}/triggers/{triggerId}:run",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RunProjectsTriggersRequest>;
-
-export type RunProjectsTriggersResponse = Operation;
-export const RunProjectsTriggersResponse =
+export type PatchProjectsGithubEnterpriseConfigsResponse = Operation;
+export const PatchProjectsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunProjectsTriggersError = DefaultErrors;
+export type PatchProjectsGithubEnterpriseConfigsError = DefaultErrors;
 
-/** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
-export const runProjectsTriggers: API.OperationMethod<
-  RunProjectsTriggersRequest,
-  RunProjectsTriggersResponse,
-  RunProjectsTriggersError,
+/** Update an association between a GCP project and a GitHub Enterprise server. */
+export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
+  PatchProjectsGithubEnterpriseConfigsRequest,
+  PatchProjectsGithubEnterpriseConfigsResponse,
+  PatchProjectsGithubEnterpriseConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RunProjectsTriggersRequest,
-  output: RunProjectsTriggersResponse,
+  input: PatchProjectsGithubEnterpriseConfigsRequest,
+  output: PatchProjectsGithubEnterpriseConfigsResponse,
   errors: [],
 }));
 
-export interface WebhookProjectsTriggersRequest {
-  /** Project in which the specified trigger lives */
-  projectId: string;
-  /** Name of the trigger to run the payload against */
-  trigger: string;
-  /** The name of the `ReceiveTriggerWebhook` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
-  name?: string;
-  /** Secret token used for authorization if an OAuth token isn't provided. */
-  secret?: string;
-  /** Request body */
-  body?: HttpBody;
+export interface DeleteProjectsGithubEnterpriseConfigsRequest {
+  /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
+  name: string;
+  /** Unique identifier of the `GitHubEnterpriseConfig` */
+  configId?: string;
+  /** ID of the project */
+  projectId?: string;
 }
 
-export const WebhookProjectsTriggersRequest =
+export const DeleteProjectsGithubEnterpriseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    trigger: Schema.String.pipe(T.HttpPath("trigger")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    secret: Schema.optional(Schema.String).pipe(T.HttpQuery("secret")),
-    body: Schema.optional(HttpBody).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "v1/projects/{projectId}/triggers/{trigger}:webhook",
-      hasBody: true,
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<WebhookProjectsTriggersRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>;
 
-export type WebhookProjectsTriggersResponse = ReceiveTriggerWebhookResponse;
-export const WebhookProjectsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReceiveTriggerWebhookResponse;
+export type DeleteProjectsGithubEnterpriseConfigsResponse = Operation;
+export const DeleteProjectsGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WebhookProjectsTriggersError = DefaultErrors;
+export type DeleteProjectsGithubEnterpriseConfigsError = DefaultErrors;
 
-/** ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a specific trigger. */
-export const webhookProjectsTriggers: API.OperationMethod<
-  WebhookProjectsTriggersRequest,
-  WebhookProjectsTriggersResponse,
-  WebhookProjectsTriggersError,
+/** Delete an association between a GCP project and a GitHub Enterprise server. */
+export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
+  DeleteProjectsGithubEnterpriseConfigsRequest,
+  DeleteProjectsGithubEnterpriseConfigsResponse,
+  DeleteProjectsGithubEnterpriseConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: WebhookProjectsTriggersRequest,
-  output: WebhookProjectsTriggersResponse,
+  input: DeleteProjectsGithubEnterpriseConfigsRequest,
+  output: DeleteProjectsGithubEnterpriseConfigsResponse,
   errors: [],
 }));
 
@@ -3472,61 +2551,20 @@ export const createProjectsGithubEnterpriseConfigs: API.OperationMethod<
   errors: [],
 }));
 
-export interface PatchProjectsGithubEnterpriseConfigsRequest {
-  /** The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
-  name: string;
-  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
-  updateMask?: string;
-  /** Request body */
-  body?: GitHubEnterpriseConfig;
-}
-
-export const PatchProjectsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsGithubEnterpriseConfigsRequest>;
-
-export type PatchProjectsGithubEnterpriseConfigsResponse = Operation;
-export const PatchProjectsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsGithubEnterpriseConfigsError = DefaultErrors;
-
-/** Update an association between a GCP project and a GitHub Enterprise server. */
-export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
-  PatchProjectsGithubEnterpriseConfigsRequest,
-  PatchProjectsGithubEnterpriseConfigsResponse,
-  PatchProjectsGithubEnterpriseConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsGithubEnterpriseConfigsRequest,
-  output: PatchProjectsGithubEnterpriseConfigsResponse,
-  errors: [],
-}));
-
 export interface GetProjectsGithubEnterpriseConfigsRequest {
   /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
   name: string;
-  /** ID of the project */
-  projectId?: string;
   /** Unique identifier of the `GitHubEnterpriseConfig` */
   configId?: string;
+  /** ID of the project */
+  projectId?: string;
 }
 
 export const GetProjectsGithubEnterpriseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3553,81 +2591,302 @@ export const getProjectsGithubEnterpriseConfigs: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListProjectsGithubEnterpriseConfigsRequest {
-  /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
-  parent: string;
-  /** ID of the project */
-  projectId?: string;
+export interface PatchProjectsTriggersRequest {
+  /** Required. ID of the `BuildTrigger` to update. */
+  triggerId: string;
+  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
+  updateMask?: string;
+  /** Required. ID of the project that owns the trigger. */
+  projectId: string;
+  /** Request body */
+  body?: BuildTrigger;
 }
 
-export const ListProjectsGithubEnterpriseConfigsRequest =
+export const PatchProjectsTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs",
+      method: "PATCH",
+      path: "v1/projects/{projectId}/triggers/{triggerId}",
+      hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsGithubEnterpriseConfigsRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsTriggersRequest>;
 
-export type ListProjectsGithubEnterpriseConfigsResponse =
-  ListGithubEnterpriseConfigsResponse;
-export const ListProjectsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListGithubEnterpriseConfigsResponse;
+export type PatchProjectsTriggersResponse = BuildTrigger;
+export const PatchProjectsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
 
-export type ListProjectsGithubEnterpriseConfigsError = DefaultErrors;
+export type PatchProjectsTriggersError = DefaultErrors;
 
-/** List all GitHubEnterpriseConfigs for a given project. */
-export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
-  ListProjectsGithubEnterpriseConfigsRequest,
-  ListProjectsGithubEnterpriseConfigsResponse,
-  ListProjectsGithubEnterpriseConfigsError,
+/** Updates a `BuildTrigger` by its project ID and trigger ID. */
+export const patchProjectsTriggers: API.OperationMethod<
+  PatchProjectsTriggersRequest,
+  PatchProjectsTriggersResponse,
+  PatchProjectsTriggersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsGithubEnterpriseConfigsRequest,
-  output: ListProjectsGithubEnterpriseConfigsResponse,
+  input: PatchProjectsTriggersRequest,
+  output: PatchProjectsTriggersResponse,
   errors: [],
 }));
 
-export interface DeleteProjectsGithubEnterpriseConfigsRequest {
-  /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
-  name: string;
-  /** ID of the project */
-  projectId?: string;
-  /** Unique identifier of the `GitHubEnterpriseConfig` */
-  configId?: string;
+export interface RunProjectsTriggersRequest {
+  /** Required. ID of the trigger. */
+  triggerId: string;
+  /** The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
+  name?: string;
+  /** Required. ID of the project. */
+  projectId: string;
+  /** Request body */
+  body?: RepoSource;
 }
 
-export const DeleteProjectsGithubEnterpriseConfigsRequest =
+export const RunProjectsTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
+    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    body: Schema.optional(RepoSource).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectId}/triggers/{triggerId}:run",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RunProjectsTriggersRequest>;
+
+export type RunProjectsTriggersResponse = Operation;
+export const RunProjectsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type RunProjectsTriggersError = DefaultErrors;
+
+/** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
+export const runProjectsTriggers: API.OperationMethod<
+  RunProjectsTriggersRequest,
+  RunProjectsTriggersResponse,
+  RunProjectsTriggersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RunProjectsTriggersRequest,
+  output: RunProjectsTriggersResponse,
+  errors: [],
+}));
+
+export interface ListProjectsTriggersRequest {
+  /** Required. ID of the project for which to list BuildTriggers. */
+  projectId: string;
+  /** Number of results to return in the list. */
+  pageSize?: number;
+  /** The parent of the collection of `Triggers`. Format: `projects/{project}/locations/{location}` */
+  parent?: string;
+  /** Token to provide to skip to a particular spot in the list. */
+  pageToken?: string;
+}
+
+export const ListProjectsTriggersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/projects/{projectId}/triggers" }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsTriggersRequest>;
+
+export type ListProjectsTriggersResponse = ListBuildTriggersResponse;
+export const ListProjectsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBuildTriggersResponse;
+
+export type ListProjectsTriggersError = DefaultErrors;
+
+/** Lists existing `BuildTrigger`s. */
+export const listProjectsTriggers: API.PaginatedOperationMethod<
+  ListProjectsTriggersRequest,
+  ListProjectsTriggersResponse,
+  ListProjectsTriggersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsTriggersRequest,
+  output: ListProjectsTriggersResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateProjectsTriggersRequest {
+  /** Required. ID of the project for which to configure automatic builds. */
+  projectId: string;
+  /** The parent resource where this trigger will be created. Format: `projects/{project}/locations/{location}` */
+  parent?: string;
+  /** Request body */
+  body?: BuildTrigger;
+}
+
+export const CreateProjectsTriggersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
+    body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectId}/triggers",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsTriggersRequest>;
+
+export type CreateProjectsTriggersResponse = BuildTrigger;
+export const CreateProjectsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
+
+export type CreateProjectsTriggersError = DefaultErrors;
+
+/** Creates a new `BuildTrigger`. */
+export const createProjectsTriggers: API.OperationMethod<
+  CreateProjectsTriggersRequest,
+  CreateProjectsTriggersResponse,
+  CreateProjectsTriggersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsTriggersRequest,
+  output: CreateProjectsTriggersResponse,
+  errors: [],
+}));
+
+export interface GetProjectsTriggersRequest {
+  /** The name of the `Trigger` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
+  name?: string;
+  /** Required. ID of the project that owns the trigger. */
+  projectId: string;
+  /** Required. Identifier (`id` or `name`) of the `BuildTrigger` to get. */
+  triggerId: string;
+}
+
+export const GetProjectsTriggersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectId}/triggers/{triggerId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsTriggersRequest>;
+
+export type GetProjectsTriggersResponse = BuildTrigger;
+export const GetProjectsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
+
+export type GetProjectsTriggersError = DefaultErrors;
+
+/** Returns information about a `BuildTrigger`. */
+export const getProjectsTriggers: API.OperationMethod<
+  GetProjectsTriggersRequest,
+  GetProjectsTriggersResponse,
+  GetProjectsTriggersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsTriggersRequest,
+  output: GetProjectsTriggersResponse,
+  errors: [],
+}));
+
+export interface WebhookProjectsTriggersRequest {
+  /** The name of the `ReceiveTriggerWebhook` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
+  name?: string;
+  /** Secret token used for authorization if an OAuth token isn't provided. */
+  secret?: string;
+  /** Project in which the specified trigger lives */
+  projectId: string;
+  /** Name of the trigger to run the payload against */
+  trigger: string;
+  /** Request body */
+  body?: HttpBody;
+}
+
+export const WebhookProjectsTriggersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    secret: Schema.optional(Schema.String).pipe(T.HttpQuery("secret")),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    trigger: Schema.String.pipe(T.HttpPath("trigger")),
+    body: Schema.optional(HttpBody).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectId}/triggers/{trigger}:webhook",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<WebhookProjectsTriggersRequest>;
+
+export type WebhookProjectsTriggersResponse = ReceiveTriggerWebhookResponse;
+export const WebhookProjectsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ReceiveTriggerWebhookResponse;
+
+export type WebhookProjectsTriggersError = DefaultErrors;
+
+/** ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a specific trigger. */
+export const webhookProjectsTriggers: API.OperationMethod<
+  WebhookProjectsTriggersRequest,
+  WebhookProjectsTriggersResponse,
+  WebhookProjectsTriggersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: WebhookProjectsTriggersRequest,
+  output: WebhookProjectsTriggersResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsTriggersRequest {
+  /** The name of the `Trigger` to delete. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
+  name?: string;
+  /** Required. ID of the project that owns the trigger. */
+  projectId: string;
+  /** Required. ID of the `BuildTrigger` to delete. */
+  triggerId: string;
+}
+
+export const DeleteProjectsTriggersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v1/projects/{projectsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
+      path: "v1/projects/{projectId}/triggers/{triggerId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsGithubEnterpriseConfigsRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsTriggersRequest>;
 
-export type DeleteProjectsGithubEnterpriseConfigsResponse = Operation;
-export const DeleteProjectsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type DeleteProjectsTriggersResponse = Empty;
+export const DeleteProjectsTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsGithubEnterpriseConfigsError = DefaultErrors;
+export type DeleteProjectsTriggersError = DefaultErrors;
 
-/** Delete an association between a GCP project and a GitHub Enterprise server. */
-export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
-  DeleteProjectsGithubEnterpriseConfigsRequest,
-  DeleteProjectsGithubEnterpriseConfigsResponse,
-  DeleteProjectsGithubEnterpriseConfigsError,
+/** Deletes a `BuildTrigger` by its project ID and trigger ID. */
+export const deleteProjectsTriggers: API.OperationMethod<
+  DeleteProjectsTriggersRequest,
+  DeleteProjectsTriggersResponse,
+  DeleteProjectsTriggersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsGithubEnterpriseConfigsRequest,
-  output: DeleteProjectsGithubEnterpriseConfigsResponse,
+  input: DeleteProjectsTriggersRequest,
+  output: DeleteProjectsTriggersResponse,
   errors: [],
 }));
 
@@ -3666,202 +2925,299 @@ export const getDefaultServiceAccountProjectsLocations: API.OperationMethod<
   errors: [],
 }));
 
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
+export interface DeleteProjectsLocationsGithubEnterpriseConfigsRequest {
+  /** ID of the project */
+  projectId?: string;
+  /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
   name: string;
+  /** Unique identifier of the `GitHubEnterpriseConfig` */
+  configId?: string;
 }
 
-export const GetProjectsLocationsOperationsRequest =
+export const DeleteProjectsLocationsGithubEnterpriseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     name: Schema.String.pipe(T.HttpPath("name")),
+    configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
   }).pipe(
     T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>;
 
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
+export type DeleteProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
+export const DeleteProjectsLocationsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
 
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
+/** Delete an association between a GCP project and a GitHub Enterprise server. */
+export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
+  DeleteProjectsLocationsGithubEnterpriseConfigsRequest,
+  DeleteProjectsLocationsGithubEnterpriseConfigsResponse,
+  DeleteProjectsLocationsGithubEnterpriseConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
+  input: DeleteProjectsLocationsGithubEnterpriseConfigsRequest,
+  output: DeleteProjectsLocationsGithubEnterpriseConfigsResponse,
   errors: [],
 }));
 
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
+export interface CreateProjectsLocationsGithubEnterpriseConfigsRequest {
+  /** ID of the project. */
+  projectId?: string;
+  /** Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character */
+  gheConfigId?: string;
+  /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
+  parent: string;
   /** Request body */
-  body?: CancelOperationRequest;
+  body?: GitHubEnterpriseConfig;
 }
 
-export const CancelProjectsLocationsOperationsRequest =
+export const CreateProjectsLocationsGithubEnterpriseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+    gheConfigId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("gheConfigId"),
+    ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsGithubEnterpriseConfigsRequest>;
 
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type CreateProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
+export const CreateProjectsLocationsGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CreateProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
 
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
+/** Create an association between a GCP project and a GitHub Enterprise server. */
+export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
+  CreateProjectsLocationsGithubEnterpriseConfigsRequest,
+  CreateProjectsLocationsGithubEnterpriseConfigsResponse,
+  CreateProjectsLocationsGithubEnterpriseConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
+  input: CreateProjectsLocationsGithubEnterpriseConfigsRequest,
+  output: CreateProjectsLocationsGithubEnterpriseConfigsResponse,
   errors: [],
 }));
 
-export interface CreateProjectsLocationsBuildsRequest {
-  /** The parent resource where this build will be created. Format: `projects/{project}/locations/{location}` */
-  parent: string;
-  /** Required. ID of the project. */
+export interface GetProjectsLocationsGithubEnterpriseConfigsRequest {
+  /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
+  name: string;
+  /** Unique identifier of the `GitHubEnterpriseConfig` */
+  configId?: string;
+  /** ID of the project */
   projectId?: string;
-  /** Request body */
-  body?: Build;
 }
 
-export const CreateProjectsLocationsBuildsRequest =
+export const GetProjectsLocationsGithubEnterpriseConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>;
+
+export type GetProjectsLocationsGithubEnterpriseConfigsResponse =
+  GitHubEnterpriseConfig;
+export const GetProjectsLocationsGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GitHubEnterpriseConfig;
+
+export type GetProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
+
+/** Retrieve a GitHubEnterpriseConfig. */
+export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
+  GetProjectsLocationsGithubEnterpriseConfigsRequest,
+  GetProjectsLocationsGithubEnterpriseConfigsResponse,
+  GetProjectsLocationsGithubEnterpriseConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsGithubEnterpriseConfigsRequest,
+  output: GetProjectsLocationsGithubEnterpriseConfigsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsGithubEnterpriseConfigsRequest {
+  /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
+  parent: string;
+  /** ID of the project */
+  projectId?: string;
+}
+
+export const ListProjectsLocationsGithubEnterpriseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    body: Schema.optional(Build).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsBuildsRequest>;
-
-export type CreateProjectsLocationsBuildsResponse = Operation;
-export const CreateProjectsLocationsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsBuildsError = DefaultErrors;
-
-/** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). */
-export const createProjectsLocationsBuilds: API.OperationMethod<
-  CreateProjectsLocationsBuildsRequest,
-  CreateProjectsLocationsBuildsResponse,
-  CreateProjectsLocationsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBuildsRequest,
-  output: CreateProjectsLocationsBuildsResponse,
-  errors: [],
-}));
-
-export interface GetProjectsLocationsBuildsRequest {
-  /** The name of the `Build` to retrieve. Format: `projects/{project}/locations/{location}/builds/{build}` */
-  name: string;
-  /** Required. ID of the project. */
-  projectId?: string;
-  /** Required. ID of the build. */
-  id?: string;
-}
-
-export const GetProjectsLocationsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsBuildsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>;
 
-export type GetProjectsLocationsBuildsResponse = Build;
-export const GetProjectsLocationsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Build;
+export type ListProjectsLocationsGithubEnterpriseConfigsResponse =
+  ListGithubEnterpriseConfigsResponse;
+export const ListProjectsLocationsGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListGithubEnterpriseConfigsResponse;
 
-export type GetProjectsLocationsBuildsError = DefaultErrors;
+export type ListProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
 
-/** Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. */
-export const getProjectsLocationsBuilds: API.OperationMethod<
-  GetProjectsLocationsBuildsRequest,
-  GetProjectsLocationsBuildsResponse,
-  GetProjectsLocationsBuildsError,
+/** List all GitHubEnterpriseConfigs for a given project. */
+export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
+  ListProjectsLocationsGithubEnterpriseConfigsRequest,
+  ListProjectsLocationsGithubEnterpriseConfigsResponse,
+  ListProjectsLocationsGithubEnterpriseConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBuildsRequest,
-  output: GetProjectsLocationsBuildsResponse,
+  input: ListProjectsLocationsGithubEnterpriseConfigsRequest,
+  output: ListProjectsLocationsGithubEnterpriseConfigsResponse,
   errors: [],
 }));
 
-export interface ListProjectsLocationsBuildsRequest {
-  /** The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}` */
-  parent: string;
-  /** Required. ID of the project. */
+export interface PatchProjectsLocationsGithubEnterpriseConfigsRequest {
+  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
+  updateMask?: string;
+  /** The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
+  name: string;
+  /** Request body */
+  body?: GitHubEnterpriseConfig;
+}
+
+export const PatchProjectsLocationsGithubEnterpriseConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>;
+
+export type PatchProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
+export const PatchProjectsLocationsGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
+
+/** Update an association between a GCP project and a GitHub Enterprise server. */
+export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
+  PatchProjectsLocationsGithubEnterpriseConfigsRequest,
+  PatchProjectsLocationsGithubEnterpriseConfigsResponse,
+  PatchProjectsLocationsGithubEnterpriseConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsGithubEnterpriseConfigsRequest,
+  output: PatchProjectsLocationsGithubEnterpriseConfigsResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsTriggersRequest {
+  /** The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service. */
+  resourceName: string;
+  /** Required. ID of the project that owns the trigger. */
   projectId?: string;
+  /** Required. ID of the `BuildTrigger` to update. */
+  triggerId?: string;
+  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
+  updateMask?: string;
+  /** Request body */
+  body?: BuildTrigger;
+}
+
+export const PatchProjectsLocationsTriggersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+    triggerId: Schema.optional(Schema.String).pipe(T.HttpQuery("triggerId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsTriggersRequest>;
+
+export type PatchProjectsLocationsTriggersResponse = BuildTrigger;
+export const PatchProjectsLocationsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
+
+export type PatchProjectsLocationsTriggersError = DefaultErrors;
+
+/** Updates a `BuildTrigger` by its project ID and trigger ID. */
+export const patchProjectsLocationsTriggers: API.OperationMethod<
+  PatchProjectsLocationsTriggersRequest,
+  PatchProjectsLocationsTriggersResponse,
+  PatchProjectsLocationsTriggersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsTriggersRequest,
+  output: PatchProjectsLocationsTriggersResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsTriggersRequest {
+  /** The parent of the collection of `Triggers`. Format: `projects/{project}/locations/{location}` */
+  parent: string;
+  /** Token to provide to skip to a particular spot in the list. */
+  pageToken?: string;
   /** Number of results to return in the list. */
   pageSize?: number;
-  /** The page token for the next page of Builds. If unspecified, the first page of results is returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this case, the token should be discarded, and pagination should be restarted from the first page of results. See https://google.aip.dev/158 for more. */
-  pageToken?: string;
-  /** The raw filter text to constrain the results. */
-  filter?: string;
+  /** Required. ID of the project for which to list BuildTriggers. */
+  projectId?: string;
 }
 
-export const ListProjectsLocationsBuildsRequest =
+export const ListProjectsLocationsTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsBuildsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsTriggersRequest>;
 
-export type ListProjectsLocationsBuildsResponse = ListBuildsResponse;
-export const ListProjectsLocationsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBuildsResponse;
+export type ListProjectsLocationsTriggersResponse = ListBuildTriggersResponse;
+export const ListProjectsLocationsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBuildTriggersResponse;
 
-export type ListProjectsLocationsBuildsError = DefaultErrors;
+export type ListProjectsLocationsTriggersError = DefaultErrors;
 
-/** Lists previously requested builds. Previously requested builds may still be in-progress, or may have finished successfully or unsuccessfully. */
-export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
-  ListProjectsLocationsBuildsRequest,
-  ListProjectsLocationsBuildsResponse,
-  ListProjectsLocationsBuildsError,
+/** Lists existing `BuildTrigger`s. */
+export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
+  ListProjectsLocationsTriggersRequest,
+  ListProjectsLocationsTriggersResponse,
+  ListProjectsLocationsTriggersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBuildsRequest,
-  output: ListProjectsLocationsBuildsResponse,
+  input: ListProjectsLocationsTriggersRequest,
+  output: ListProjectsLocationsTriggersResponse,
   errors: [],
   pagination: {
     inputToken: "pageToken",
@@ -3869,117 +3225,41 @@ export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
   },
 }));
 
-export interface CancelProjectsLocationsBuildsRequest {
-  /** The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}` */
+export interface RunProjectsLocationsTriggersRequest {
+  /** The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
   name: string;
   /** Request body */
-  body?: CancelBuildRequest;
+  body?: RunBuildTriggerRequest;
 }
 
-export const CancelProjectsLocationsBuildsRequest =
+export const RunProjectsLocationsTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelBuildRequest).pipe(T.HttpBody()),
+    body: Schema.optional(RunBuildTriggerRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:cancel",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:run",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsBuildsRequest>;
+  ) as unknown as Schema.Schema<RunProjectsLocationsTriggersRequest>;
 
-export type CancelProjectsLocationsBuildsResponse = Build;
-export const CancelProjectsLocationsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Build;
-
-export type CancelProjectsLocationsBuildsError = DefaultErrors;
-
-/** Cancels a build in progress. */
-export const cancelProjectsLocationsBuilds: API.OperationMethod<
-  CancelProjectsLocationsBuildsRequest,
-  CancelProjectsLocationsBuildsResponse,
-  CancelProjectsLocationsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsBuildsRequest,
-  output: CancelProjectsLocationsBuildsResponse,
-  errors: [],
-}));
-
-export interface RetryProjectsLocationsBuildsRequest {
-  /** The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` */
-  name: string;
-  /** Request body */
-  body?: RetryBuildRequest;
-}
-
-export const RetryProjectsLocationsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RetryBuildRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:retry",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RetryProjectsLocationsBuildsRequest>;
-
-export type RetryProjectsLocationsBuildsResponse = Operation;
-export const RetryProjectsLocationsBuildsResponse =
+export type RunProjectsLocationsTriggersResponse = Operation;
+export const RunProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RetryProjectsLocationsBuildsError = DefaultErrors;
+export type RunProjectsLocationsTriggersError = DefaultErrors;
 
-/** Creates a new build based on the specified build. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
-export const retryProjectsLocationsBuilds: API.OperationMethod<
-  RetryProjectsLocationsBuildsRequest,
-  RetryProjectsLocationsBuildsResponse,
-  RetryProjectsLocationsBuildsError,
+/** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
+export const runProjectsLocationsTriggers: API.OperationMethod<
+  RunProjectsLocationsTriggersRequest,
+  RunProjectsLocationsTriggersResponse,
+  RunProjectsLocationsTriggersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RetryProjectsLocationsBuildsRequest,
-  output: RetryProjectsLocationsBuildsResponse,
-  errors: [],
-}));
-
-export interface ApproveProjectsLocationsBuildsRequest {
-  /** Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" */
-  name: string;
-  /** Request body */
-  body?: ApproveBuildRequest;
-}
-
-export const ApproveProjectsLocationsBuildsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ApproveBuildRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:approve",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ApproveProjectsLocationsBuildsRequest>;
-
-export type ApproveProjectsLocationsBuildsResponse = Operation;
-export const ApproveProjectsLocationsBuildsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ApproveProjectsLocationsBuildsError = DefaultErrors;
-
-/** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
-export const approveProjectsLocationsBuilds: API.OperationMethod<
-  ApproveProjectsLocationsBuildsRequest,
-  ApproveProjectsLocationsBuildsResponse,
-  ApproveProjectsLocationsBuildsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ApproveProjectsLocationsBuildsRequest,
-  output: ApproveProjectsLocationsBuildsResponse,
+  input: RunProjectsLocationsTriggersRequest,
+  output: RunProjectsLocationsTriggersResponse,
   errors: [],
 }));
 
@@ -4064,197 +3344,25 @@ export const getProjectsLocationsTriggers: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListProjectsLocationsTriggersRequest {
-  /** The parent of the collection of `Triggers`. Format: `projects/{project}/locations/{location}` */
-  parent: string;
-  /** Required. ID of the project for which to list BuildTriggers. */
-  projectId?: string;
-  /** Number of results to return in the list. */
-  pageSize?: number;
-  /** Token to provide to skip to a particular spot in the list. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTriggersRequest>;
-
-export type ListProjectsLocationsTriggersResponse = ListBuildTriggersResponse;
-export const ListProjectsLocationsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBuildTriggersResponse;
-
-export type ListProjectsLocationsTriggersError = DefaultErrors;
-
-/** Lists existing `BuildTrigger`s. */
-export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
-  ListProjectsLocationsTriggersRequest,
-  ListProjectsLocationsTriggersResponse,
-  ListProjectsLocationsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsTriggersRequest,
-  output: ListProjectsLocationsTriggersResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsLocationsTriggersRequest {
-  /** The name of the `Trigger` to delete. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
-  name: string;
-  /** Required. ID of the project that owns the trigger. */
-  projectId?: string;
-  /** Required. ID of the `BuildTrigger` to delete. */
-  triggerId?: string;
-}
-
-export const DeleteProjectsLocationsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    triggerId: Schema.optional(Schema.String).pipe(T.HttpQuery("triggerId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTriggersRequest>;
-
-export type DeleteProjectsLocationsTriggersResponse = Empty;
-export const DeleteProjectsLocationsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsTriggersError = DefaultErrors;
-
-/** Deletes a `BuildTrigger` by its project ID and trigger ID. */
-export const deleteProjectsLocationsTriggers: API.OperationMethod<
-  DeleteProjectsLocationsTriggersRequest,
-  DeleteProjectsLocationsTriggersResponse,
-  DeleteProjectsLocationsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsTriggersRequest,
-  output: DeleteProjectsLocationsTriggersResponse,
-  errors: [],
-}));
-
-export interface PatchProjectsLocationsTriggersRequest {
-  /** The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service. */
-  resourceName: string;
-  /** Required. ID of the project that owns the trigger. */
-  projectId?: string;
-  /** Required. ID of the `BuildTrigger` to update. */
-  triggerId?: string;
-  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
-  updateMask?: string;
-  /** Request body */
-  body?: BuildTrigger;
-}
-
-export const PatchProjectsLocationsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    triggerId: Schema.optional(Schema.String).pipe(T.HttpQuery("triggerId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(BuildTrigger).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTriggersRequest>;
-
-export type PatchProjectsLocationsTriggersResponse = BuildTrigger;
-export const PatchProjectsLocationsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
-
-export type PatchProjectsLocationsTriggersError = DefaultErrors;
-
-/** Updates a `BuildTrigger` by its project ID and trigger ID. */
-export const patchProjectsLocationsTriggers: API.OperationMethod<
-  PatchProjectsLocationsTriggersRequest,
-  PatchProjectsLocationsTriggersResponse,
-  PatchProjectsLocationsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsTriggersRequest,
-  output: PatchProjectsLocationsTriggersResponse,
-  errors: [],
-}));
-
-export interface RunProjectsLocationsTriggersRequest {
-  /** The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
-  name: string;
-  /** Request body */
-  body?: RunBuildTriggerRequest;
-}
-
-export const RunProjectsLocationsTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RunBuildTriggerRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:run",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RunProjectsLocationsTriggersRequest>;
-
-export type RunProjectsLocationsTriggersResponse = Operation;
-export const RunProjectsLocationsTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type RunProjectsLocationsTriggersError = DefaultErrors;
-
-/** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
-export const runProjectsLocationsTriggers: API.OperationMethod<
-  RunProjectsLocationsTriggersRequest,
-  RunProjectsLocationsTriggersResponse,
-  RunProjectsLocationsTriggersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RunProjectsLocationsTriggersRequest,
-  output: RunProjectsLocationsTriggersResponse,
-  errors: [],
-}));
-
 export interface WebhookProjectsLocationsTriggersRequest {
-  /** The name of the `ReceiveTriggerWebhook` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
-  name: string;
-  /** Project in which the specified trigger lives */
-  projectId?: string;
   /** Name of the trigger to run the payload against */
   trigger?: string;
+  /** The name of the `ReceiveTriggerWebhook` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
+  name: string;
   /** Secret token used for authorization if an OAuth token isn't provided. */
   secret?: string;
+  /** Project in which the specified trigger lives */
+  projectId?: string;
   /** Request body */
   body?: HttpBody;
 }
 
 export const WebhookProjectsLocationsTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     trigger: Schema.optional(Schema.String).pipe(T.HttpQuery("trigger")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     secret: Schema.optional(Schema.String).pipe(T.HttpQuery("secret")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -4281,6 +3389,690 @@ export const webhookProjectsLocationsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WebhookProjectsLocationsTriggersRequest,
   output: WebhookProjectsLocationsTriggersResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsTriggersRequest {
+  /** Required. ID of the `BuildTrigger` to delete. */
+  triggerId?: string;
+  /** Required. ID of the project that owns the trigger. */
+  projectId?: string;
+  /** The name of the `Trigger` to delete. Format: `projects/{project}/locations/{location}/triggers/{trigger}` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsTriggersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerId: Schema.optional(Schema.String).pipe(T.HttpQuery("triggerId")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsTriggersRequest>;
+
+export type DeleteProjectsLocationsTriggersResponse = Empty;
+export const DeleteProjectsLocationsTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsTriggersError = DefaultErrors;
+
+/** Deletes a `BuildTrigger` by its project ID and trigger ID. */
+export const deleteProjectsLocationsTriggers: API.OperationMethod<
+  DeleteProjectsLocationsTriggersRequest,
+  DeleteProjectsLocationsTriggersResponse,
+  DeleteProjectsLocationsTriggersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsTriggersRequest,
+  output: DeleteProjectsLocationsTriggersResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsGitLabConfigsRequest {
+  /** Required. Name of the parent resource. */
+  parent: string;
+  /** Optional. The ID to use for the GitLabConfig, which will become the final component of the GitLabConfig’s resource name. gitlab_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character */
+  gitlabConfigId?: string;
+  /** Request body */
+  body?: GitLabConfig;
+}
+
+export const CreateProjectsLocationsGitLabConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    gitlabConfigId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("gitlabConfigId"),
+    ),
+    body: Schema.optional(GitLabConfig).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsGitLabConfigsRequest>;
+
+export type CreateProjectsLocationsGitLabConfigsResponse = Operation;
+export const CreateProjectsLocationsGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsGitLabConfigsError = DefaultErrors;
+
+/** Creates a new `GitLabConfig`. This API is experimental */
+export const createProjectsLocationsGitLabConfigs: API.OperationMethod<
+  CreateProjectsLocationsGitLabConfigsRequest,
+  CreateProjectsLocationsGitLabConfigsResponse,
+  CreateProjectsLocationsGitLabConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsGitLabConfigsRequest,
+  output: CreateProjectsLocationsGitLabConfigsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsGitLabConfigsRequest {
+  /** Required. The config resource name. */
+  name: string;
+}
+
+export const GetProjectsLocationsGitLabConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsGitLabConfigsRequest>;
+
+export type GetProjectsLocationsGitLabConfigsResponse = GitLabConfig;
+export const GetProjectsLocationsGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GitLabConfig;
+
+export type GetProjectsLocationsGitLabConfigsError = DefaultErrors;
+
+/** Retrieves a `GitLabConfig`. This API is experimental */
+export const getProjectsLocationsGitLabConfigs: API.OperationMethod<
+  GetProjectsLocationsGitLabConfigsRequest,
+  GetProjectsLocationsGitLabConfigsResponse,
+  GetProjectsLocationsGitLabConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsGitLabConfigsRequest,
+  output: GetProjectsLocationsGitLabConfigsResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsGitLabConfigsRequest {
+  /** Required. The config resource name. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsGitLabConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsGitLabConfigsRequest>;
+
+export type DeleteProjectsLocationsGitLabConfigsResponse = Operation;
+export const DeleteProjectsLocationsGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsGitLabConfigsError = DefaultErrors;
+
+/** Delete a `GitLabConfig`. This API is experimental */
+export const deleteProjectsLocationsGitLabConfigs: API.OperationMethod<
+  DeleteProjectsLocationsGitLabConfigsRequest,
+  DeleteProjectsLocationsGitLabConfigsResponse,
+  DeleteProjectsLocationsGitLabConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsGitLabConfigsRequest,
+  output: DeleteProjectsLocationsGitLabConfigsResponse,
+  errors: [],
+}));
+
+export interface RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest {
+  /** Required. The name of the `GitLabConfig` to remove a connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
+  config: string;
+  /** Request body */
+  body?: RemoveGitLabConnectedRepositoryRequest;
+}
+
+export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.String.pipe(T.HttpPath("config")),
+    body: Schema.optional(RemoveGitLabConnectedRepositoryRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}:removeGitLabConnectedRepository",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest>;
+
+export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse =
+  Empty;
+export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError =
+  DefaultErrors;
+
+/** Remove a GitLab repository from a given GitLabConfig's connected repositories. This API is experimental. */
+export const removeGitLabConnectedRepositoryProjectsLocationsGitLabConfigs: API.OperationMethod<
+  RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest,
+  RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse,
+  RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest,
+  output: RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsGitLabConfigsRequest {
+  /** The resource name for the config. */
+  name: string;
+  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
+  updateMask?: string;
+  /** Request body */
+  body?: GitLabConfig;
+}
+
+export const PatchProjectsLocationsGitLabConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(GitLabConfig).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsGitLabConfigsRequest>;
+
+export type PatchProjectsLocationsGitLabConfigsResponse = Operation;
+export const PatchProjectsLocationsGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsGitLabConfigsError = DefaultErrors;
+
+/** Updates an existing `GitLabConfig`. This API is experimental */
+export const patchProjectsLocationsGitLabConfigs: API.OperationMethod<
+  PatchProjectsLocationsGitLabConfigsRequest,
+  PatchProjectsLocationsGitLabConfigsResponse,
+  PatchProjectsLocationsGitLabConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsGitLabConfigsRequest,
+  output: PatchProjectsLocationsGitLabConfigsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsGitLabConfigsRequest {
+  /** The maximum number of configs to return. The service may return fewer than this value. If unspecified, at most 50 configs will be returned. The maximum value is 1000;, values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Required. Name of the parent resource */
+  parent: string;
+  /** A page token, received from a previous ‘ListGitlabConfigsRequest’ call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ‘ListGitlabConfigsRequest’ must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsGitLabConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsGitLabConfigsRequest>;
+
+export type ListProjectsLocationsGitLabConfigsResponse =
+  ListGitLabConfigsResponse;
+export const ListProjectsLocationsGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListGitLabConfigsResponse;
+
+export type ListProjectsLocationsGitLabConfigsError = DefaultErrors;
+
+/** List all `GitLabConfigs` for a given project. This API is experimental */
+export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
+  ListProjectsLocationsGitLabConfigsRequest,
+  ListProjectsLocationsGitLabConfigsResponse,
+  ListProjectsLocationsGitLabConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsGitLabConfigsRequest,
+  output: ListProjectsLocationsGitLabConfigsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest {
+  /** The name of the `GitLabConfig` that adds connected repositories. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
+  parent: string;
+  /** Request body */
+  body?: BatchCreateGitLabConnectedRepositoriesRequest;
+}
+
+export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(BatchCreateGitLabConnectedRepositoriesRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}/connectedRepositories:batchCreate",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest>;
+
+export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse =
+  Operation;
+export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError =
+  DefaultErrors;
+
+/** Batch connecting GitLab repositories to Cloud Build. This API is experimental. */
+export const batchCreateProjectsLocationsGitLabConfigsConnectedRepositories: API.OperationMethod<
+  BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest,
+  BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse,
+  BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest,
+  output:
+    BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsGitLabConfigsReposRequest {
+  /** Required. Name of the parent resource. */
+  parent: string;
+  /** A page token, received from a previous ListGitLabRepositoriesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGitLabRepositoriesRequest` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of repositories to return. The service may return fewer than this value. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsGitLabConfigsReposRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}/repos",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsGitLabConfigsReposRequest>;
+
+export type ListProjectsLocationsGitLabConfigsReposResponse =
+  ListGitLabRepositoriesResponse;
+export const ListProjectsLocationsGitLabConfigsReposResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListGitLabRepositoriesResponse;
+
+export type ListProjectsLocationsGitLabConfigsReposError = DefaultErrors;
+
+/** List all repositories for a given `GitLabConfig`. This API is experimental */
+export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMethod<
+  ListProjectsLocationsGitLabConfigsReposRequest,
+  ListProjectsLocationsGitLabConfigsReposResponse,
+  ListProjectsLocationsGitLabConfigsReposError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsGitLabConfigsReposRequest,
+  output: ListProjectsLocationsGitLabConfigsReposResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListProjectsLocationsBuildsRequest {
+  /** Required. ID of the project. */
+  projectId?: string;
+  /** The raw filter text to constrain the results. */
+  filter?: string;
+  /** The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}` */
+  parent: string;
+  /** The page token for the next page of Builds. If unspecified, the first page of results is returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this case, the token should be discarded, and pagination should be restarted from the first page of results. See https://google.aip.dev/158 for more. */
+  pageToken?: string;
+  /** Number of results to return in the list. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/builds",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsBuildsRequest>;
+
+export type ListProjectsLocationsBuildsResponse = ListBuildsResponse;
+export const ListProjectsLocationsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBuildsResponse;
+
+export type ListProjectsLocationsBuildsError = DefaultErrors;
+
+/** Lists previously requested builds. Previously requested builds may still be in-progress, or may have finished successfully or unsuccessfully. */
+export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
+  ListProjectsLocationsBuildsRequest,
+  ListProjectsLocationsBuildsResponse,
+  ListProjectsLocationsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsBuildsRequest,
+  output: ListProjectsLocationsBuildsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CancelProjectsLocationsBuildsRequest {
+  /** The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}` */
+  name: string;
+  /** Request body */
+  body?: CancelBuildRequest;
+}
+
+export const CancelProjectsLocationsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CancelBuildRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelProjectsLocationsBuildsRequest>;
+
+export type CancelProjectsLocationsBuildsResponse = Build;
+export const CancelProjectsLocationsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Build;
+
+export type CancelProjectsLocationsBuildsError = DefaultErrors;
+
+/** Cancels a build in progress. */
+export const cancelProjectsLocationsBuilds: API.OperationMethod<
+  CancelProjectsLocationsBuildsRequest,
+  CancelProjectsLocationsBuildsResponse,
+  CancelProjectsLocationsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsBuildsRequest,
+  output: CancelProjectsLocationsBuildsResponse,
+  errors: [],
+}));
+
+export interface ApproveProjectsLocationsBuildsRequest {
+  /** Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" */
+  name: string;
+  /** Request body */
+  body?: ApproveBuildRequest;
+}
+
+export const ApproveProjectsLocationsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ApproveBuildRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:approve",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ApproveProjectsLocationsBuildsRequest>;
+
+export type ApproveProjectsLocationsBuildsResponse = Operation;
+export const ApproveProjectsLocationsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ApproveProjectsLocationsBuildsError = DefaultErrors;
+
+/** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
+export const approveProjectsLocationsBuilds: API.OperationMethod<
+  ApproveProjectsLocationsBuildsRequest,
+  ApproveProjectsLocationsBuildsResponse,
+  ApproveProjectsLocationsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ApproveProjectsLocationsBuildsRequest,
+  output: ApproveProjectsLocationsBuildsResponse,
+  errors: [],
+}));
+
+export interface RetryProjectsLocationsBuildsRequest {
+  /** The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` */
+  name: string;
+  /** Request body */
+  body?: RetryBuildRequest;
+}
+
+export const RetryProjectsLocationsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RetryBuildRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}:retry",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RetryProjectsLocationsBuildsRequest>;
+
+export type RetryProjectsLocationsBuildsResponse = Operation;
+export const RetryProjectsLocationsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type RetryProjectsLocationsBuildsError = DefaultErrors;
+
+/** Creates a new build based on the specified build. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
+export const retryProjectsLocationsBuilds: API.OperationMethod<
+  RetryProjectsLocationsBuildsRequest,
+  RetryProjectsLocationsBuildsResponse,
+  RetryProjectsLocationsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RetryProjectsLocationsBuildsRequest,
+  output: RetryProjectsLocationsBuildsResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsBuildsRequest {
+  /** The parent resource where this build will be created. Format: `projects/{project}/locations/{location}` */
+  parent: string;
+  /** Required. ID of the project. */
+  projectId?: string;
+  /** Request body */
+  body?: Build;
+}
+
+export const CreateProjectsLocationsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+    body: Schema.optional(Build).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/builds",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsBuildsRequest>;
+
+export type CreateProjectsLocationsBuildsResponse = Operation;
+export const CreateProjectsLocationsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsBuildsError = DefaultErrors;
+
+/** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). */
+export const createProjectsLocationsBuilds: API.OperationMethod<
+  CreateProjectsLocationsBuildsRequest,
+  CreateProjectsLocationsBuildsResponse,
+  CreateProjectsLocationsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsBuildsRequest,
+  output: CreateProjectsLocationsBuildsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsBuildsRequest {
+  /** Required. ID of the project. */
+  projectId?: string;
+  /** The name of the `Build` to retrieve. Format: `projects/{project}/locations/{location}/builds/{build}` */
+  name: string;
+  /** Required. ID of the build. */
+  id?: string;
+}
+
+export const GetProjectsLocationsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/builds/{buildsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsBuildsRequest>;
+
+export type GetProjectsLocationsBuildsResponse = Build;
+export const GetProjectsLocationsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Build;
+
+export type GetProjectsLocationsBuildsError = DefaultErrors;
+
+/** Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. */
+export const getProjectsLocationsBuilds: API.OperationMethod<
+  GetProjectsLocationsBuildsRequest,
+  GetProjectsLocationsBuildsResponse,
+  GetProjectsLocationsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsBuildsRequest,
+  output: GetProjectsLocationsBuildsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError = DefaultErrors;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [],
+}));
+
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: CancelOperationRequest;
+}
+
+export const CancelProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelProjectsLocationsOperationsError = DefaultErrors;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
   errors: [],
 }));
 
@@ -4327,47 +4119,6 @@ export const createProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   errors: [],
 }));
 
-export interface PatchProjectsLocationsBitbucketServerConfigsRequest {
-  /** The resource name for the config. */
-  name: string;
-  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
-  updateMask?: string;
-  /** Request body */
-  body?: BitbucketServerConfig;
-}
-
-export const PatchProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(BitbucketServerConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>;
-
-export type PatchProjectsLocationsBitbucketServerConfigsResponse = Operation;
-export const PatchProjectsLocationsBitbucketServerConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
-
-/** Updates an existing `BitbucketServerConfig`. This API is experimental. */
-export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
-  PatchProjectsLocationsBitbucketServerConfigsRequest,
-  PatchProjectsLocationsBitbucketServerConfigsResponse,
-  PatchProjectsLocationsBitbucketServerConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBitbucketServerConfigsRequest,
-  output: PatchProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
-}));
-
 export interface GetProjectsLocationsBitbucketServerConfigsRequest {
   /** Required. The config resource name. */
   name: string;
@@ -4401,51 +4152,6 @@ export const getProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
   input: GetProjectsLocationsBitbucketServerConfigsRequest,
   output: GetProjectsLocationsBitbucketServerConfigsResponse,
   errors: [],
-}));
-
-export interface ListProjectsLocationsBitbucketServerConfigsRequest {
-  /** Required. Name of the parent resource. */
-  parent: string;
-  /** The maximum number of configs to return. The service may return fewer than this value. If unspecified, at most 50 configs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListBitbucketServerConfigsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBitbucketServerConfigsRequest` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsBitbucketServerConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>;
-
-export type ListProjectsLocationsBitbucketServerConfigsResponse =
-  ListBitbucketServerConfigsResponse;
-export const ListProjectsLocationsBitbucketServerConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBitbucketServerConfigsResponse;
-
-export type ListProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
-
-/** List all `BitbucketServerConfigs` for a given project. This API is experimental. */
-export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperationMethod<
-  ListProjectsLocationsBitbucketServerConfigsRequest,
-  ListProjectsLocationsBitbucketServerConfigsResponse,
-  ListProjectsLocationsBitbucketServerConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBitbucketServerConfigsRequest,
-  output: ListProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface DeleteProjectsLocationsBitbucketServerConfigsRequest {
@@ -4526,45 +4232,85 @@ export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
   errors: [],
 }));
 
-export interface ListProjectsLocationsBitbucketServerConfigsReposRequest {
+export interface PatchProjectsLocationsBitbucketServerConfigsRequest {
+  /** The resource name for the config. */
+  name: string;
+  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
+  updateMask?: string;
+  /** Request body */
+  body?: BitbucketServerConfig;
+}
+
+export const PatchProjectsLocationsBitbucketServerConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(BitbucketServerConfig).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsBitbucketServerConfigsRequest>;
+
+export type PatchProjectsLocationsBitbucketServerConfigsResponse = Operation;
+export const PatchProjectsLocationsBitbucketServerConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
+
+/** Updates an existing `BitbucketServerConfig`. This API is experimental. */
+export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
+  PatchProjectsLocationsBitbucketServerConfigsRequest,
+  PatchProjectsLocationsBitbucketServerConfigsResponse,
+  PatchProjectsLocationsBitbucketServerConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsBitbucketServerConfigsRequest,
+  output: PatchProjectsLocationsBitbucketServerConfigsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsBitbucketServerConfigsRequest {
+  /** The maximum number of configs to return. The service may return fewer than this value. If unspecified, at most 50 configs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
   /** Required. Name of the parent resource. */
   parent: string;
-  /** The maximum number of configs to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListBitbucketServerRepositoriesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBitbucketServerConfigsRequest` must match the call that provided the page token. */
+  /** A page token, received from a previous `ListBitbucketServerConfigsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBitbucketServerConfigsRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
 
-export const ListProjectsLocationsBitbucketServerConfigsReposRequest =
+export const ListProjectsLocationsBitbucketServerConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}/repos",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>;
 
-export type ListProjectsLocationsBitbucketServerConfigsReposResponse =
-  ListBitbucketServerRepositoriesResponse;
-export const ListProjectsLocationsBitbucketServerConfigsReposResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBitbucketServerRepositoriesResponse;
+export type ListProjectsLocationsBitbucketServerConfigsResponse =
+  ListBitbucketServerConfigsResponse;
+export const ListProjectsLocationsBitbucketServerConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBitbucketServerConfigsResponse;
 
-export type ListProjectsLocationsBitbucketServerConfigsReposError =
-  DefaultErrors;
+export type ListProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
 
-/** List all repositories for a given `BitbucketServerConfig`. This API is experimental. */
-export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOperationMethod<
-  ListProjectsLocationsBitbucketServerConfigsReposRequest,
-  ListProjectsLocationsBitbucketServerConfigsReposResponse,
-  ListProjectsLocationsBitbucketServerConfigsReposError,
+/** List all `BitbucketServerConfigs` for a given project. This API is experimental. */
+export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperationMethod<
+  ListProjectsLocationsBitbucketServerConfigsRequest,
+  ListProjectsLocationsBitbucketServerConfigsResponse,
+  ListProjectsLocationsBitbucketServerConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBitbucketServerConfigsReposRequest,
-  output: ListProjectsLocationsBitbucketServerConfigsReposResponse,
+  input: ListProjectsLocationsBitbucketServerConfigsRequest,
+  output: ListProjectsLocationsBitbucketServerConfigsResponse,
   errors: [],
   pagination: {
     inputToken: "pageToken",
@@ -4616,162 +4362,45 @@ export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
   errors: [],
 }));
 
-export interface CreateProjectsLocationsGitLabConfigsRequest {
+export interface ListProjectsLocationsBitbucketServerConfigsReposRequest {
+  /** The maximum number of configs to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
   /** Required. Name of the parent resource. */
   parent: string;
-  /** Optional. The ID to use for the GitLabConfig, which will become the final component of the GitLabConfig’s resource name. gitlab_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character */
-  gitlabConfigId?: string;
-  /** Request body */
-  body?: GitLabConfig;
-}
-
-export const CreateProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    gitlabConfigId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("gitlabConfigId"),
-    ),
-    body: Schema.optional(GitLabConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGitLabConfigsRequest>;
-
-export type CreateProjectsLocationsGitLabConfigsResponse = Operation;
-export const CreateProjectsLocationsGitLabConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsGitLabConfigsError = DefaultErrors;
-
-/** Creates a new `GitLabConfig`. This API is experimental */
-export const createProjectsLocationsGitLabConfigs: API.OperationMethod<
-  CreateProjectsLocationsGitLabConfigsRequest,
-  CreateProjectsLocationsGitLabConfigsResponse,
-  CreateProjectsLocationsGitLabConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGitLabConfigsRequest,
-  output: CreateProjectsLocationsGitLabConfigsResponse,
-  errors: [],
-}));
-
-export interface PatchProjectsLocationsGitLabConfigsRequest {
-  /** The resource name for the config. */
-  name: string;
-  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
-  updateMask?: string;
-  /** Request body */
-  body?: GitLabConfig;
-}
-
-export const PatchProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(GitLabConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGitLabConfigsRequest>;
-
-export type PatchProjectsLocationsGitLabConfigsResponse = Operation;
-export const PatchProjectsLocationsGitLabConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsGitLabConfigsError = DefaultErrors;
-
-/** Updates an existing `GitLabConfig`. This API is experimental */
-export const patchProjectsLocationsGitLabConfigs: API.OperationMethod<
-  PatchProjectsLocationsGitLabConfigsRequest,
-  PatchProjectsLocationsGitLabConfigsResponse,
-  PatchProjectsLocationsGitLabConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGitLabConfigsRequest,
-  output: PatchProjectsLocationsGitLabConfigsResponse,
-  errors: [],
-}));
-
-export interface GetProjectsLocationsGitLabConfigsRequest {
-  /** Required. The config resource name. */
-  name: string;
-}
-
-export const GetProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGitLabConfigsRequest>;
-
-export type GetProjectsLocationsGitLabConfigsResponse = GitLabConfig;
-export const GetProjectsLocationsGitLabConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GitLabConfig;
-
-export type GetProjectsLocationsGitLabConfigsError = DefaultErrors;
-
-/** Retrieves a `GitLabConfig`. This API is experimental */
-export const getProjectsLocationsGitLabConfigs: API.OperationMethod<
-  GetProjectsLocationsGitLabConfigsRequest,
-  GetProjectsLocationsGitLabConfigsResponse,
-  GetProjectsLocationsGitLabConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGitLabConfigsRequest,
-  output: GetProjectsLocationsGitLabConfigsResponse,
-  errors: [],
-}));
-
-export interface ListProjectsLocationsGitLabConfigsRequest {
-  /** Required. Name of the parent resource */
-  parent: string;
-  /** The maximum number of configs to return. The service may return fewer than this value. If unspecified, at most 50 configs will be returned. The maximum value is 1000;, values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous ‘ListGitlabConfigsRequest’ call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ‘ListGitlabConfigsRequest’ must match the call that provided the page token. */
+  /** A page token, received from a previous `ListBitbucketServerRepositoriesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBitbucketServerConfigsRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
 
-export const ListProjectsLocationsGitLabConfigsRequest =
+export const ListProjectsLocationsBitbucketServerConfigsReposRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/bitbucketServerConfigs/{bitbucketServerConfigsId}/repos",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGitLabConfigsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsBitbucketServerConfigsReposRequest>;
 
-export type ListProjectsLocationsGitLabConfigsResponse =
-  ListGitLabConfigsResponse;
-export const ListProjectsLocationsGitLabConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListGitLabConfigsResponse;
+export type ListProjectsLocationsBitbucketServerConfigsReposResponse =
+  ListBitbucketServerRepositoriesResponse;
+export const ListProjectsLocationsBitbucketServerConfigsReposResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBitbucketServerRepositoriesResponse;
 
-export type ListProjectsLocationsGitLabConfigsError = DefaultErrors;
+export type ListProjectsLocationsBitbucketServerConfigsReposError =
+  DefaultErrors;
 
-/** List all `GitLabConfigs` for a given project. This API is experimental */
-export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
-  ListProjectsLocationsGitLabConfigsRequest,
-  ListProjectsLocationsGitLabConfigsResponse,
-  ListProjectsLocationsGitLabConfigsError,
+/** List all repositories for a given `BitbucketServerConfig`. This API is experimental. */
+export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOperationMethod<
+  ListProjectsLocationsBitbucketServerConfigsReposRequest,
+  ListProjectsLocationsBitbucketServerConfigsReposResponse,
+  ListProjectsLocationsBitbucketServerConfigsReposError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGitLabConfigsRequest,
-  output: ListProjectsLocationsGitLabConfigsResponse,
+  input: ListProjectsLocationsBitbucketServerConfigsReposRequest,
+  output: ListProjectsLocationsBitbucketServerConfigsReposResponse,
   errors: [],
   pagination: {
     inputToken: "pageToken",
@@ -4779,396 +4408,116 @@ export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
   },
 }));
 
-export interface DeleteProjectsLocationsGitLabConfigsRequest {
-  /** Required. The config resource name. */
+export interface PatchProjectsLocationsWorkerPoolsRequest {
+  /** Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed. */
   name: string;
+  /** If set, validate the request and preview the response, but do not actually post it. */
+  validateOnly?: boolean;
+  /** Optional. A mask specifying which fields in `worker_pool` to update. */
+  updateMask?: string;
+  /** Request body */
+  body?: WorkerPool;
 }
 
-export const DeleteProjectsLocationsGitLabConfigsRequest =
+export const PatchProjectsLocationsWorkerPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGitLabConfigsRequest>;
-
-export type DeleteProjectsLocationsGitLabConfigsResponse = Operation;
-export const DeleteProjectsLocationsGitLabConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsGitLabConfigsError = DefaultErrors;
-
-/** Delete a `GitLabConfig`. This API is experimental */
-export const deleteProjectsLocationsGitLabConfigs: API.OperationMethod<
-  DeleteProjectsLocationsGitLabConfigsRequest,
-  DeleteProjectsLocationsGitLabConfigsResponse,
-  DeleteProjectsLocationsGitLabConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGitLabConfigsRequest,
-  output: DeleteProjectsLocationsGitLabConfigsResponse,
-  errors: [],
-}));
-
-export interface RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest {
-  /** Required. The name of the `GitLabConfig` to remove a connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
-  config: string;
-  /** Request body */
-  body?: RemoveGitLabConnectedRepositoryRequest;
-}
-
-export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    config: Schema.String.pipe(T.HttpPath("config")),
-    body: Schema.optional(RemoveGitLabConnectedRepositoryRequest).pipe(
-      T.HttpBody(),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
     ),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(WorkerPool).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}:removeGitLabConnectedRepository",
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest>;
+  ) as unknown as Schema.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
 
-export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse =
-  Empty;
-export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type PatchProjectsLocationsWorkerPoolsResponse = Operation;
+export const PatchProjectsLocationsWorkerPoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError =
-  DefaultErrors;
+export type PatchProjectsLocationsWorkerPoolsError = DefaultErrors;
 
-/** Remove a GitLab repository from a given GitLabConfig's connected repositories. This API is experimental. */
-export const removeGitLabConnectedRepositoryProjectsLocationsGitLabConfigs: API.OperationMethod<
-  RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest,
-  RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse,
-  RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError,
+/** Updates a `WorkerPool`. */
+export const patchProjectsLocationsWorkerPools: API.OperationMethod<
+  PatchProjectsLocationsWorkerPoolsRequest,
+  PatchProjectsLocationsWorkerPoolsResponse,
+  PatchProjectsLocationsWorkerPoolsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest,
-  output: RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse,
+  input: PatchProjectsLocationsWorkerPoolsRequest,
+  output: PatchProjectsLocationsWorkerPoolsResponse,
   errors: [],
 }));
 
-export interface ListProjectsLocationsGitLabConfigsReposRequest {
-  /** Required. Name of the parent resource. */
+export interface ListProjectsLocationsWorkerPoolsRequest {
+  /** Required. The parent of the collection of `WorkerPools`. Format: `projects/{project}/locations/{location}`. */
   parent: string;
-  /** The maximum number of repositories to return. The service may return fewer than this value. */
-  pageSize?: number;
-  /** A page token, received from a previous ListGitLabRepositoriesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGitLabRepositoriesRequest` must match the call that provided the page token. */
+  /** A page token, received from a previous `ListWorkerPools` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
+  /** The maximum number of `WorkerPool`s to return. The service may return fewer than this value. If omitted, the server will use a sensible default. */
+  pageSize?: number;
 }
 
-export const ListProjectsLocationsGitLabConfigsReposRequest =
+export const ListProjectsLocationsWorkerPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}/repos",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGitLabConfigsReposRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsWorkerPoolsRequest>;
 
-export type ListProjectsLocationsGitLabConfigsReposResponse =
-  ListGitLabRepositoriesResponse;
-export const ListProjectsLocationsGitLabConfigsReposResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListGitLabRepositoriesResponse;
+export type ListProjectsLocationsWorkerPoolsResponse = ListWorkerPoolsResponse;
+export const ListProjectsLocationsWorkerPoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListWorkerPoolsResponse;
 
-export type ListProjectsLocationsGitLabConfigsReposError = DefaultErrors;
+export type ListProjectsLocationsWorkerPoolsError = DefaultErrors;
 
-/** List all repositories for a given `GitLabConfig`. This API is experimental */
-export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMethod<
-  ListProjectsLocationsGitLabConfigsReposRequest,
-  ListProjectsLocationsGitLabConfigsReposResponse,
-  ListProjectsLocationsGitLabConfigsReposError,
+/** Lists `WorkerPool`s. */
+export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
+  ListProjectsLocationsWorkerPoolsRequest,
+  ListProjectsLocationsWorkerPoolsResponse,
+  ListProjectsLocationsWorkerPoolsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGitLabConfigsReposRequest,
-  output: ListProjectsLocationsGitLabConfigsReposResponse,
+  input: ListProjectsLocationsWorkerPoolsRequest,
+  output: ListProjectsLocationsWorkerPoolsResponse,
   errors: [],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest {
-  /** The name of the `GitLabConfig` that adds connected repositories. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
-  parent: string;
-  /** Request body */
-  body?: BatchCreateGitLabConnectedRepositoriesRequest;
-}
-
-export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BatchCreateGitLabConnectedRepositoriesRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/gitLabConfigs/{gitLabConfigsId}/connectedRepositories:batchCreate",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest>;
-
-export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse =
-  Operation;
-export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError =
-  DefaultErrors;
-
-/** Batch connecting GitLab repositories to Cloud Build. This API is experimental. */
-export const batchCreateProjectsLocationsGitLabConfigsConnectedRepositories: API.OperationMethod<
-  BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest,
-  BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse,
-  BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest,
-  output:
-    BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse,
-  errors: [],
-}));
-
-export interface CreateProjectsLocationsGithubEnterpriseConfigsRequest {
-  /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
-  parent: string;
-  /** ID of the project. */
-  projectId?: string;
-  /** Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character */
-  gheConfigId?: string;
-  /** Request body */
-  body?: GitHubEnterpriseConfig;
-}
-
-export const CreateProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    gheConfigId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("gheConfigId"),
-    ),
-    body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGithubEnterpriseConfigsRequest>;
-
-export type CreateProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
-export const CreateProjectsLocationsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
-
-/** Create an association between a GCP project and a GitHub Enterprise server. */
-export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
-  CreateProjectsLocationsGithubEnterpriseConfigsRequest,
-  CreateProjectsLocationsGithubEnterpriseConfigsResponse,
-  CreateProjectsLocationsGithubEnterpriseConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: CreateProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
-}));
-
-export interface PatchProjectsLocationsGithubEnterpriseConfigsRequest {
-  /** The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
-  name: string;
-  /** Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. */
-  updateMask?: string;
-  /** Request body */
-  body?: GitHubEnterpriseConfig;
-}
-
-export const PatchProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(GitHubEnterpriseConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGithubEnterpriseConfigsRequest>;
-
-export type PatchProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
-export const PatchProjectsLocationsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
-
-/** Update an association between a GCP project and a GitHub Enterprise server. */
-export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
-  PatchProjectsLocationsGithubEnterpriseConfigsRequest,
-  PatchProjectsLocationsGithubEnterpriseConfigsResponse,
-  PatchProjectsLocationsGithubEnterpriseConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: PatchProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
-}));
-
-export interface GetProjectsLocationsGithubEnterpriseConfigsRequest {
-  /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
-  name: string;
-  /** ID of the project */
-  projectId?: string;
-  /** Unique identifier of the `GitHubEnterpriseConfig` */
-  configId?: string;
-}
-
-export const GetProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGithubEnterpriseConfigsRequest>;
-
-export type GetProjectsLocationsGithubEnterpriseConfigsResponse =
-  GitHubEnterpriseConfig;
-export const GetProjectsLocationsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GitHubEnterpriseConfig;
-
-export type GetProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
-
-/** Retrieve a GitHubEnterpriseConfig. */
-export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
-  GetProjectsLocationsGithubEnterpriseConfigsRequest,
-  GetProjectsLocationsGithubEnterpriseConfigsResponse,
-  GetProjectsLocationsGithubEnterpriseConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: GetProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
-}));
-
-export interface ListProjectsLocationsGithubEnterpriseConfigsRequest {
-  /** Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} */
-  parent: string;
-  /** ID of the project */
-  projectId?: string;
-}
-
-export const ListProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGithubEnterpriseConfigsRequest>;
-
-export type ListProjectsLocationsGithubEnterpriseConfigsResponse =
-  ListGithubEnterpriseConfigsResponse;
-export const ListProjectsLocationsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListGithubEnterpriseConfigsResponse;
-
-export type ListProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
-
-/** List all GitHubEnterpriseConfigs for a given project. */
-export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
-  ListProjectsLocationsGithubEnterpriseConfigsRequest,
-  ListProjectsLocationsGithubEnterpriseConfigsResponse,
-  ListProjectsLocationsGithubEnterpriseConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: ListProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
-}));
-
-export interface DeleteProjectsLocationsGithubEnterpriseConfigsRequest {
-  /** This field should contain the name of the enterprise config resource. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" */
-  name: string;
-  /** ID of the project */
-  projectId?: string;
-  /** Unique identifier of the `GitHubEnterpriseConfig` */
-  configId?: string;
-}
-
-export const DeleteProjectsLocationsGithubEnterpriseConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
-    configId: Schema.optional(Schema.String).pipe(T.HttpQuery("configId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/githubEnterpriseConfigs/{githubEnterpriseConfigsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGithubEnterpriseConfigsRequest>;
-
-export type DeleteProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
-export const DeleteProjectsLocationsGithubEnterpriseConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
-
-/** Delete an association between a GCP project and a GitHub Enterprise server. */
-export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
-  DeleteProjectsLocationsGithubEnterpriseConfigsRequest,
-  DeleteProjectsLocationsGithubEnterpriseConfigsResponse,
-  DeleteProjectsLocationsGithubEnterpriseConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGithubEnterpriseConfigsRequest,
-  output: DeleteProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
 }));
 
 export interface CreateProjectsLocationsWorkerPoolsRequest {
-  /** Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`. */
-  parent: string;
-  /** Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/. */
-  workerPoolId?: string;
   /** If set, validate the request and preview the response, but do not actually post it. */
   validateOnly?: boolean;
+  /** Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/. */
+  workerPoolId?: string;
+  /** Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`. */
+  parent: string;
   /** Request body */
   body?: WorkerPool;
 }
 
 export const CreateProjectsLocationsWorkerPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    workerPoolId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("workerPoolId"),
-    ),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
+    workerPoolId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("workerPoolId"),
+    ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WorkerPool).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -5232,23 +4581,23 @@ export const getProjectsLocationsWorkerPools: API.OperationMethod<
 }));
 
 export interface DeleteProjectsLocationsWorkerPoolsRequest {
-  /** Required. The name of the `WorkerPool` to delete. Format: `projects/{project}/locations/{location}/workerPools/{workerPool}`. */
-  name: string;
   /** Optional. If provided, it must match the server's etag on the workerpool for the request to be processed. */
   etag?: string;
   /** If set to true, and the `WorkerPool` is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
+  /** Required. The name of the `WorkerPool` to delete. Format: `projects/{project}/locations/{location}/workerPools/{workerPool}`. */
+  name: string;
   /** If set, validate the request and preview the response, but do not actually post it. */
   validateOnly?: boolean;
 }
 
 export const DeleteProjectsLocationsWorkerPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
+    name: Schema.String.pipe(T.HttpPath("name")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -5278,89 +4627,164 @@ export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
   errors: [],
 }));
 
-export interface PatchProjectsLocationsWorkerPoolsRequest {
-  /** Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed. */
-  name: string;
-  /** Optional. A mask specifying which fields in `worker_pool` to update. */
-  updateMask?: string;
-  /** If set, validate the request and preview the response, but do not actually post it. */
-  validateOnly?: boolean;
+export interface RetryProjectsBuildsRequest {
+  /** Required. ID of the project. */
+  projectId: string;
+  /** Required. Build ID of the original build. */
+  id: string;
   /** Request body */
-  body?: WorkerPool;
+  body?: RetryBuildRequest;
 }
 
-export const PatchProjectsLocationsWorkerPoolsRequest =
+export const RetryProjectsBuildsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-    body: Schema.optional(WorkerPool).pipe(T.HttpBody()),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    id: Schema.String.pipe(T.HttpPath("id")),
+    body: Schema.optional(RetryBuildRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
+      method: "POST",
+      path: "v1/projects/{projectId}/builds/{id}:retry",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
+  ) as unknown as Schema.Schema<RetryProjectsBuildsRequest>;
 
-export type PatchProjectsLocationsWorkerPoolsResponse = Operation;
-export const PatchProjectsLocationsWorkerPoolsResponse =
+export type RetryProjectsBuildsResponse = Operation;
+export const RetryProjectsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsWorkerPoolsError = DefaultErrors;
+export type RetryProjectsBuildsError = DefaultErrors;
 
-/** Updates a `WorkerPool`. */
-export const patchProjectsLocationsWorkerPools: API.OperationMethod<
-  PatchProjectsLocationsWorkerPoolsRequest,
-  PatchProjectsLocationsWorkerPoolsResponse,
-  PatchProjectsLocationsWorkerPoolsError,
+/** Creates a new build based on the specified build. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
+export const retryProjectsBuilds: API.OperationMethod<
+  RetryProjectsBuildsRequest,
+  RetryProjectsBuildsResponse,
+  RetryProjectsBuildsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsWorkerPoolsRequest,
-  output: PatchProjectsLocationsWorkerPoolsResponse,
+  input: RetryProjectsBuildsRequest,
+  output: RetryProjectsBuildsResponse,
   errors: [],
 }));
 
-export interface ListProjectsLocationsWorkerPoolsRequest {
-  /** Required. The parent of the collection of `WorkerPools`. Format: `projects/{project}/locations/{location}`. */
-  parent: string;
-  /** The maximum number of `WorkerPool`s to return. The service may return fewer than this value. If omitted, the server will use a sensible default. */
+export interface CreateProjectsBuildsRequest {
+  /** Required. ID of the project. */
+  projectId: string;
+  /** The parent resource where this build will be created. Format: `projects/{project}/locations/{location}` */
+  parent?: string;
+  /** Request body */
+  body?: Build;
+}
+
+export const CreateProjectsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
+    body: Schema.optional(Build).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectId}/builds",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsBuildsRequest>;
+
+export type CreateProjectsBuildsResponse = Operation;
+export const CreateProjectsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsBuildsError = DefaultErrors;
+
+/** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). */
+export const createProjectsBuilds: API.OperationMethod<
+  CreateProjectsBuildsRequest,
+  CreateProjectsBuildsResponse,
+  CreateProjectsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsBuildsRequest,
+  output: CreateProjectsBuildsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsBuildsRequest {
+  /** Required. ID of the build. */
+  id: string;
+  /** Required. ID of the project. */
+  projectId: string;
+  /** The name of the `Build` to retrieve. Format: `projects/{project}/locations/{location}/builds/{build}` */
+  name?: string;
+}
+
+export const GetProjectsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/projects/{projectId}/builds/{id}" }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsBuildsRequest>;
+
+export type GetProjectsBuildsResponse = Build;
+export const GetProjectsBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Build;
+
+export type GetProjectsBuildsError = DefaultErrors;
+
+/** Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. */
+export const getProjectsBuilds: API.OperationMethod<
+  GetProjectsBuildsRequest,
+  GetProjectsBuildsResponse,
+  GetProjectsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsBuildsRequest,
+  output: GetProjectsBuildsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsBuildsRequest {
+  /** Required. ID of the project. */
+  projectId: string;
+  /** The raw filter text to constrain the results. */
+  filter?: string;
+  /** Number of results to return in the list. */
   pageSize?: number;
-  /** A page token, received from a previous `ListWorkerPools` call. Provide this to retrieve the subsequent page. */
+  /** The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}` */
+  parent?: string;
+  /** The page token for the next page of Builds. If unspecified, the first page of results is returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this case, the token should be discarded, and pagination should be restarted from the first page of results. See https://google.aip.dev/158 for more. */
   pageToken?: string;
 }
 
-export const ListProjectsLocationsWorkerPoolsRequest =
+export const ListProjectsBuildsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerPools",
-    }),
+    T.Http({ method: "GET", path: "v1/projects/{projectId}/builds" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsWorkerPoolsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsBuildsRequest>;
 
-export type ListProjectsLocationsWorkerPoolsResponse = ListWorkerPoolsResponse;
-export const ListProjectsLocationsWorkerPoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListWorkerPoolsResponse;
+export type ListProjectsBuildsResponse = ListBuildsResponse;
+export const ListProjectsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBuildsResponse;
 
-export type ListProjectsLocationsWorkerPoolsError = DefaultErrors;
+export type ListProjectsBuildsError = DefaultErrors;
 
-/** Lists `WorkerPool`s. */
-export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
-  ListProjectsLocationsWorkerPoolsRequest,
-  ListProjectsLocationsWorkerPoolsResponse,
-  ListProjectsLocationsWorkerPoolsError,
+/** Lists previously requested builds. Previously requested builds may still be in-progress, or may have finished successfully or unsuccessfully. */
+export const listProjectsBuilds: API.PaginatedOperationMethod<
+  ListProjectsBuildsRequest,
+  ListProjectsBuildsResponse,
+  ListProjectsBuildsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsWorkerPoolsRequest,
-  output: ListProjectsLocationsWorkerPoolsResponse,
+  input: ListProjectsBuildsRequest,
+  output: ListProjectsBuildsResponse,
   errors: [],
   pagination: {
     inputToken: "pageToken",
@@ -5368,41 +4792,81 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   },
 }));
 
-export interface ReceiveGithubDotComWebhookRequest {
-  /** For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. */
-  webhookKey?: string;
+export interface CancelProjectsBuildsRequest {
+  /** Required. ID of the project. */
+  projectId: string;
+  /** Required. ID of the build. */
+  id: string;
   /** Request body */
-  body?: HttpBody;
+  body?: CancelBuildRequest;
 }
 
-export const ReceiveGithubDotComWebhookRequest =
+export const CancelProjectsBuildsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    webhookKey: Schema.optional(Schema.String).pipe(T.HttpQuery("webhookKey")),
-    body: Schema.optional(HttpBody).pipe(T.HttpBody()),
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    id: Schema.String.pipe(T.HttpPath("id")),
+    body: Schema.optional(CancelBuildRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/githubDotComWebhook:receive",
+      path: "v1/projects/{projectId}/builds/{id}:cancel",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReceiveGithubDotComWebhookRequest>;
+  ) as unknown as Schema.Schema<CancelProjectsBuildsRequest>;
 
-export type ReceiveGithubDotComWebhookResponse = Empty;
-export const ReceiveGithubDotComWebhookResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type CancelProjectsBuildsResponse = Build;
+export const CancelProjectsBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Build;
 
-export type ReceiveGithubDotComWebhookError = DefaultErrors;
+export type CancelProjectsBuildsError = DefaultErrors;
 
-/** ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook. */
-export const receiveGithubDotComWebhook: API.OperationMethod<
-  ReceiveGithubDotComWebhookRequest,
-  ReceiveGithubDotComWebhookResponse,
-  ReceiveGithubDotComWebhookError,
+/** Cancels a build in progress. */
+export const cancelProjectsBuilds: API.OperationMethod<
+  CancelProjectsBuildsRequest,
+  CancelProjectsBuildsResponse,
+  CancelProjectsBuildsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReceiveGithubDotComWebhookRequest,
-  output: ReceiveGithubDotComWebhookResponse,
+  input: CancelProjectsBuildsRequest,
+  output: CancelProjectsBuildsResponse,
+  errors: [],
+}));
+
+export interface ApproveProjectsBuildsRequest {
+  /** Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" */
+  name: string;
+  /** Request body */
+  body?: ApproveBuildRequest;
+}
+
+export const ApproveProjectsBuildsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ApproveBuildRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/builds/{buildsId}:approve",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ApproveProjectsBuildsRequest>;
+
+export type ApproveProjectsBuildsResponse = Operation;
+export const ApproveProjectsBuildsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ApproveProjectsBuildsError = DefaultErrors;
+
+/** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
+export const approveProjectsBuilds: API.OperationMethod<
+  ApproveProjectsBuildsRequest,
+  ApproveProjectsBuildsResponse,
+  ApproveProjectsBuildsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ApproveProjectsBuildsRequest,
+  output: ApproveProjectsBuildsResponse,
   errors: [],
 }));
 
@@ -5444,6 +4908,110 @@ export const regionalWebhookLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegionalWebhookLocationsRequest,
   output: RegionalWebhookLocationsResponse,
+  errors: [],
+}));
+
+export interface GetOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  svc,
+) as unknown as Schema.Schema<GetOperationsRequest>;
+
+export type GetOperationsResponse = Operation;
+export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetOperationsError = DefaultErrors;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getOperations: API.OperationMethod<
+  GetOperationsRequest,
+  GetOperationsResponse,
+  GetOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOperationsRequest,
+  output: GetOperationsResponse,
+  errors: [],
+}));
+
+export interface CancelOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: CancelOperationRequest;
+}
+
+export const CancelOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/operations/{operationsId}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+
+export type CancelOperationsResponse = Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelOperationsError = DefaultErrors;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+export const cancelOperations: API.OperationMethod<
+  CancelOperationsRequest,
+  CancelOperationsResponse,
+  CancelOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelOperationsRequest,
+  output: CancelOperationsResponse,
+  errors: [],
+}));
+
+export interface ReceiveGithubDotComWebhookRequest {
+  /** For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. */
+  webhookKey?: string;
+  /** Request body */
+  body?: HttpBody;
+}
+
+export const ReceiveGithubDotComWebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhookKey: Schema.optional(Schema.String).pipe(T.HttpQuery("webhookKey")),
+    body: Schema.optional(HttpBody).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/githubDotComWebhook:receive",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ReceiveGithubDotComWebhookRequest>;
+
+export type ReceiveGithubDotComWebhookResponse = Empty;
+export const ReceiveGithubDotComWebhookResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type ReceiveGithubDotComWebhookError = DefaultErrors;
+
+/** ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook. */
+export const receiveGithubDotComWebhook: API.OperationMethod<
+  ReceiveGithubDotComWebhookRequest,
+  ReceiveGithubDotComWebhookResponse,
+  ReceiveGithubDotComWebhookError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReceiveGithubDotComWebhookRequest,
+  output: ReceiveGithubDotComWebhookResponse,
   errors: [],
 }));
 

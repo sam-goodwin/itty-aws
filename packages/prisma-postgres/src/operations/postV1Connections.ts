@@ -27,18 +27,21 @@ export const PostV1ConnectionsOutput =
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
+            connectionString: SensitiveString,
           }),
         ),
         pooled: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
+            connectionString: SensitiveString,
           }),
         ),
         accelerate: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
+            connectionString: SensitiveString,
           }),
         ),
       }),

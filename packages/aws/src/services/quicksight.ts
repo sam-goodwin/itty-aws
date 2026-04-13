@@ -284,6 +284,9 @@ export type CopySourceArn = string;
 export type SecretArn = string;
 export type PrivateKey = string | redacted.Redacted<string>;
 export type PrivateKeyPassphrase = string | redacted.Redacted<string>;
+export type OAuthClientId = string | redacted.Redacted<string>;
+export type OAuthClientSecret = string | redacted.Redacted<string>;
+export type OAuthUsername = string | redacted.Redacted<string>;
 export type RestrictiveResourceId = string;
 export type FolderName = string;
 export type GroupName = string;
@@ -311,6 +314,8 @@ export type SensitiveS3Uri = string | redacted.Redacted<string>;
 export type S3Uri = string;
 export type PositiveLong = number;
 export type AssetBundleRestrictiveResourceId = string;
+export type AutomateId = string;
+export type SensitiveIOPayload = string | redacted.Redacted<string>;
 export type MaxResults = number;
 export type CIDR = string;
 export type IpRestrictionRuleDescription = string;
@@ -3289,11 +3294,73 @@ export const DataBarsOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataBarsOptions",
 }) as any as S.Schema<DataBarsOptions>;
+export type SparklineAxisBehavior = "SHARED" | "INDEPENDENT" | (string & {});
+export const SparklineAxisBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SparklineVisualType = "LINE" | "AREA_LINE" | (string & {});
+export const SparklineVisualType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type LineInterpolation = "LINEAR" | "SMOOTH" | "STEPPED" | (string & {});
+export const LineInterpolation = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type LineChartMarkerShape =
+  | "CIRCLE"
+  | "TRIANGLE"
+  | "SQUARE"
+  | "DIAMOND"
+  | "ROUNDED_SQUARE"
+  | (string & {});
+export const LineChartMarkerShape = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface LineChartMarkerStyleSettings {
+  MarkerVisibility?: Visibility;
+  MarkerShape?: LineChartMarkerShape;
+  MarkerSize?: string;
+  MarkerColor?: string;
+}
+export const LineChartMarkerStyleSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MarkerVisibility: S.optional(Visibility),
+      MarkerShape: S.optional(LineChartMarkerShape),
+      MarkerSize: S.optional(S.String),
+      MarkerColor: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "LineChartMarkerStyleSettings",
+  }) as any as S.Schema<LineChartMarkerStyleSettings>;
+export interface SparklinesOptions {
+  FieldId: string;
+  XAxisField: DimensionField;
+  YAxisBehavior?: SparklineAxisBehavior;
+  VisualType?: SparklineVisualType;
+  LineColor?: string;
+  LineInterpolation?: LineInterpolation;
+  AllPointsMarker?: LineChartMarkerStyleSettings;
+  MaxValueMarker?: LineChartMarkerStyleSettings;
+  MinValueMarker?: LineChartMarkerStyleSettings;
+}
+export const SparklinesOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FieldId: S.String,
+    XAxisField: DimensionField,
+    YAxisBehavior: S.optional(SparklineAxisBehavior),
+    VisualType: S.optional(SparklineVisualType),
+    LineColor: S.optional(S.String),
+    LineInterpolation: S.optional(LineInterpolation),
+    AllPointsMarker: S.optional(LineChartMarkerStyleSettings),
+    MaxValueMarker: S.optional(LineChartMarkerStyleSettings),
+    MinValueMarker: S.optional(LineChartMarkerStyleSettings),
+  }),
+).annotate({
+  identifier: "SparklinesOptions",
+}) as any as S.Schema<SparklinesOptions>;
 export interface TableInlineVisualization {
   DataBars?: DataBarsOptions;
+  Sparklines?: SparklinesOptions;
 }
 export const TableInlineVisualization = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ DataBars: S.optional(DataBarsOptions) }),
+  () =>
+    S.Struct({
+      DataBars: S.optional(DataBarsOptions),
+      Sparklines: S.optional(SparklinesOptions),
+    }),
 ).annotate({
   identifier: "TableInlineVisualization",
 }) as any as S.Schema<TableInlineVisualization>;
@@ -3301,6 +3368,96 @@ export type TableInlineVisualizationList = TableInlineVisualization[];
 export const TableInlineVisualizationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   TableInlineVisualization,
 );
+export type SelectedTooltipType =
+  | "BASIC"
+  | "DETAILED"
+  | "SHEET"
+  | (string & {});
+export const SelectedTooltipType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type TooltipTitleType = "NONE" | "PRIMARY_VALUE" | (string & {});
+export const TooltipTitleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type TooltipTarget = "BOTH" | "BAR" | "LINE" | (string & {});
+export const TooltipTarget = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface FieldTooltipItem {
+  FieldId: string;
+  Label?: string;
+  Visibility?: Visibility;
+  TooltipTarget?: TooltipTarget;
+}
+export const FieldTooltipItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FieldId: S.String,
+    Label: S.optional(S.String),
+    Visibility: S.optional(Visibility),
+    TooltipTarget: S.optional(TooltipTarget),
+  }),
+).annotate({
+  identifier: "FieldTooltipItem",
+}) as any as S.Schema<FieldTooltipItem>;
+export interface ColumnTooltipItem {
+  Column: ColumnIdentifier;
+  Label?: string;
+  Visibility?: Visibility;
+  Aggregation?: AggregationFunction;
+  TooltipTarget?: TooltipTarget;
+}
+export const ColumnTooltipItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Column: ColumnIdentifier,
+    Label: S.optional(S.String),
+    Visibility: S.optional(Visibility),
+    Aggregation: S.optional(AggregationFunction),
+    TooltipTarget: S.optional(TooltipTarget),
+  }),
+).annotate({
+  identifier: "ColumnTooltipItem",
+}) as any as S.Schema<ColumnTooltipItem>;
+export interface TooltipItem {
+  FieldTooltipItem?: FieldTooltipItem;
+  ColumnTooltipItem?: ColumnTooltipItem;
+}
+export const TooltipItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FieldTooltipItem: S.optional(FieldTooltipItem),
+    ColumnTooltipItem: S.optional(ColumnTooltipItem),
+  }),
+).annotate({ identifier: "TooltipItem" }) as any as S.Schema<TooltipItem>;
+export type TooltipItemList = TooltipItem[];
+export const TooltipItemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(TooltipItem);
+export interface FieldBasedTooltip {
+  AggregationVisibility?: Visibility;
+  TooltipTitleType?: TooltipTitleType;
+  TooltipFields?: TooltipItem[];
+}
+export const FieldBasedTooltip = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AggregationVisibility: S.optional(Visibility),
+    TooltipTitleType: S.optional(TooltipTitleType),
+    TooltipFields: S.optional(TooltipItemList),
+  }),
+).annotate({
+  identifier: "FieldBasedTooltip",
+}) as any as S.Schema<FieldBasedTooltip>;
+export interface SheetTooltip {
+  SheetId?: string;
+}
+export const SheetTooltip = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ SheetId: S.optional(S.String) }),
+).annotate({ identifier: "SheetTooltip" }) as any as S.Schema<SheetTooltip>;
+export interface TooltipOptions {
+  TooltipVisibility?: Visibility;
+  SelectedTooltipType?: SelectedTooltipType;
+  FieldBasedTooltip?: FieldBasedTooltip;
+  SheetTooltip?: SheetTooltip;
+}
+export const TooltipOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TooltipVisibility: S.optional(Visibility),
+    SelectedTooltipType: S.optional(SelectedTooltipType),
+    FieldBasedTooltip: S.optional(FieldBasedTooltip),
+    SheetTooltip: S.optional(SheetTooltip),
+  }),
+).annotate({ identifier: "TooltipOptions" }) as any as S.Schema<TooltipOptions>;
 export type DashboardCustomizationStatus =
   | "ENABLED"
   | "DISABLED"
@@ -3373,6 +3530,7 @@ export interface TableConfiguration {
   FieldOptions?: TableFieldOptions;
   PaginatedReportOptions?: TablePaginatedReportOptions;
   TableInlineVisualizations?: TableInlineVisualization[];
+  Tooltip?: TooltipOptions;
   DashboardCustomizationVisualOptions?: DashboardCustomizationVisualOptions;
   Interactions?: VisualInteractionOptions;
 }
@@ -3385,6 +3543,7 @@ export const TableConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     FieldOptions: S.optional(TableFieldOptions),
     PaginatedReportOptions: S.optional(TablePaginatedReportOptions),
     TableInlineVisualizations: S.optional(TableInlineVisualizationList),
+    Tooltip: S.optional(TooltipOptions),
     DashboardCustomizationVisualOptions: S.optional(
       DashboardCustomizationVisualOptions,
     ),
@@ -4238,6 +4397,7 @@ export interface PivotTableConfiguration {
   TotalOptions?: PivotTableTotalOptions;
   FieldOptions?: PivotTableFieldOptions;
   PaginatedReportOptions?: PivotTablePaginatedReportOptions;
+  Tooltip?: TooltipOptions;
   DashboardCustomizationVisualOptions?: DashboardCustomizationVisualOptions;
   Interactions?: VisualInteractionOptions;
 }
@@ -4250,6 +4410,7 @@ export const PivotTableConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       TotalOptions: S.optional(PivotTableTotalOptions),
       FieldOptions: S.optional(PivotTableFieldOptions),
       PaginatedReportOptions: S.optional(PivotTablePaginatedReportOptions),
+      Tooltip: S.optional(TooltipOptions),
       DashboardCustomizationVisualOptions: S.optional(
         DashboardCustomizationVisualOptions,
       ),
@@ -4968,84 +5129,6 @@ export const DataLabelOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataLabelOptions",
 }) as any as S.Schema<DataLabelOptions>;
-export type SelectedTooltipType = "BASIC" | "DETAILED" | (string & {});
-export const SelectedTooltipType = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type TooltipTitleType = "NONE" | "PRIMARY_VALUE" | (string & {});
-export const TooltipTitleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type TooltipTarget = "BOTH" | "BAR" | "LINE" | (string & {});
-export const TooltipTarget = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface FieldTooltipItem {
-  FieldId: string;
-  Label?: string;
-  Visibility?: Visibility;
-  TooltipTarget?: TooltipTarget;
-}
-export const FieldTooltipItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FieldId: S.String,
-    Label: S.optional(S.String),
-    Visibility: S.optional(Visibility),
-    TooltipTarget: S.optional(TooltipTarget),
-  }),
-).annotate({
-  identifier: "FieldTooltipItem",
-}) as any as S.Schema<FieldTooltipItem>;
-export interface ColumnTooltipItem {
-  Column: ColumnIdentifier;
-  Label?: string;
-  Visibility?: Visibility;
-  Aggregation?: AggregationFunction;
-  TooltipTarget?: TooltipTarget;
-}
-export const ColumnTooltipItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Column: ColumnIdentifier,
-    Label: S.optional(S.String),
-    Visibility: S.optional(Visibility),
-    Aggregation: S.optional(AggregationFunction),
-    TooltipTarget: S.optional(TooltipTarget),
-  }),
-).annotate({
-  identifier: "ColumnTooltipItem",
-}) as any as S.Schema<ColumnTooltipItem>;
-export interface TooltipItem {
-  FieldTooltipItem?: FieldTooltipItem;
-  ColumnTooltipItem?: ColumnTooltipItem;
-}
-export const TooltipItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FieldTooltipItem: S.optional(FieldTooltipItem),
-    ColumnTooltipItem: S.optional(ColumnTooltipItem),
-  }),
-).annotate({ identifier: "TooltipItem" }) as any as S.Schema<TooltipItem>;
-export type TooltipItemList = TooltipItem[];
-export const TooltipItemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(TooltipItem);
-export interface FieldBasedTooltip {
-  AggregationVisibility?: Visibility;
-  TooltipTitleType?: TooltipTitleType;
-  TooltipFields?: TooltipItem[];
-}
-export const FieldBasedTooltip = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AggregationVisibility: S.optional(Visibility),
-    TooltipTitleType: S.optional(TooltipTitleType),
-    TooltipFields: S.optional(TooltipItemList),
-  }),
-).annotate({
-  identifier: "FieldBasedTooltip",
-}) as any as S.Schema<FieldBasedTooltip>;
-export interface TooltipOptions {
-  TooltipVisibility?: Visibility;
-  SelectedTooltipType?: SelectedTooltipType;
-  FieldBasedTooltip?: FieldBasedTooltip;
-}
-export const TooltipOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TooltipVisibility: S.optional(Visibility),
-    SelectedTooltipType: S.optional(SelectedTooltipType),
-    FieldBasedTooltip: S.optional(FieldBasedTooltip),
-  }),
-).annotate({ identifier: "TooltipOptions" }) as any as S.Schema<TooltipOptions>;
 export interface ReferenceLineStaticDataConfiguration {
   Value: number;
 }
@@ -6134,8 +6217,6 @@ export const SingleAxisOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SingleAxisOptions",
 }) as any as S.Schema<SingleAxisOptions>;
-export type LineInterpolation = "LINEAR" | "SMOOTH" | "STEPPED" | (string & {});
-export const LineInterpolation = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type LineChartLineStyle = "SOLID" | "DOTTED" | "DASHED" | (string & {});
 export const LineChartLineStyle = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface LineChartLineStyleSettings {
@@ -6155,31 +6236,6 @@ export const LineChartLineStyleSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "LineChartLineStyleSettings",
 }) as any as S.Schema<LineChartLineStyleSettings>;
-export type LineChartMarkerShape =
-  | "CIRCLE"
-  | "TRIANGLE"
-  | "SQUARE"
-  | "DIAMOND"
-  | "ROUNDED_SQUARE"
-  | (string & {});
-export const LineChartMarkerShape = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface LineChartMarkerStyleSettings {
-  MarkerVisibility?: Visibility;
-  MarkerShape?: LineChartMarkerShape;
-  MarkerSize?: string;
-  MarkerColor?: string;
-}
-export const LineChartMarkerStyleSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MarkerVisibility: S.optional(Visibility),
-      MarkerShape: S.optional(LineChartMarkerShape),
-      MarkerSize: S.optional(S.String),
-      MarkerColor: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LineChartMarkerStyleSettings",
-  }) as any as S.Schema<LineChartMarkerStyleSettings>;
 export interface LineChartDefaultSeriesSettings {
   AxisBinding?: AxisBinding;
   LineStyleSettings?: LineChartLineStyleSettings;
@@ -9795,6 +9851,40 @@ export const SheetDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type SheetDefinitionList = SheetDefinition[];
 export const SheetDefinitionList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SheetDefinition);
+export type TooltipSheetVisualList = Visual[];
+export const TooltipSheetVisualList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(Visual);
+export type TooltipSheetTextBoxList = SheetTextBox[];
+export const TooltipSheetTextBoxList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SheetTextBox);
+export type TooltipSheetImageList = SheetImage[];
+export const TooltipSheetImageList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SheetImage);
+export interface TooltipSheetDefinition {
+  SheetId: string;
+  Name?: string;
+  Visuals?: Visual[];
+  TextBoxes?: SheetTextBox[];
+  Images?: SheetImage[];
+  Layouts?: Layout[];
+}
+export const TooltipSheetDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      SheetId: S.String,
+      Name: S.optional(S.String),
+      Visuals: S.optional(TooltipSheetVisualList),
+      TextBoxes: S.optional(TooltipSheetTextBoxList),
+      Images: S.optional(TooltipSheetImageList),
+      Layouts: S.optional(LayoutList),
+    }),
+).annotate({
+  identifier: "TooltipSheetDefinition",
+}) as any as S.Schema<TooltipSheetDefinition>;
+export type TooltipSheetDefinitionList = TooltipSheetDefinition[];
+export const TooltipSheetDefinitionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  TooltipSheetDefinition,
+);
 export interface CalculatedField {
   DataSetIdentifier: string;
   Name: string;
@@ -10942,6 +11032,7 @@ export const StaticFileList = /*@__PURE__*/ /*#__PURE__*/ S.Array(StaticFile);
 export interface AnalysisDefinition {
   DataSetIdentifierDeclarations: DataSetIdentifierDeclaration[];
   Sheets?: SheetDefinition[];
+  TooltipSheets?: TooltipSheetDefinition[];
   CalculatedFields?: CalculatedField[];
   ParameterDeclarations?: ParameterDeclaration[];
   FilterGroups?: FilterGroup[];
@@ -10955,6 +11046,7 @@ export const AnalysisDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DataSetIdentifierDeclarations: DataSetIdentifierDeclarationList,
     Sheets: S.optional(SheetDefinitionList),
+    TooltipSheets: S.optional(TooltipSheetDefinitionList),
     CalculatedFields: S.optional(CalculatedFields),
     ParameterDeclarations: S.optional(ParameterDeclarationList),
     FilterGroups: S.optional(FilterGroupList),
@@ -11519,11 +11611,15 @@ export interface Capabilities {
   BuildCalculatedFieldWithQ?: CapabilityState;
   CreateDashboardExecutiveSummaryWithQ?: CapabilityState;
   Space?: CapabilityState;
+  CreateSpaces?: CapabilityState;
+  ShareSpaces?: CapabilityState;
   ChatAgent?: CapabilityState;
   CreateChatAgents?: CapabilityState;
+  ShareChatAgents?: CapabilityState;
   Research?: CapabilityState;
   SelfUpgradeUserRole?: CapabilityState;
   Extension?: CapabilityState;
+  ManageSharedFolders?: CapabilityState;
 }
 export const Capabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11738,11 +11834,15 @@ export const Capabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     BuildCalculatedFieldWithQ: S.optional(CapabilityState),
     CreateDashboardExecutiveSummaryWithQ: S.optional(CapabilityState),
     Space: S.optional(CapabilityState),
+    CreateSpaces: S.optional(CapabilityState),
+    ShareSpaces: S.optional(CapabilityState),
     ChatAgent: S.optional(CapabilityState),
     CreateChatAgents: S.optional(CapabilityState),
+    ShareChatAgents: S.optional(CapabilityState),
     Research: S.optional(CapabilityState),
     SelfUpgradeUserRole: S.optional(CapabilityState),
     Extension: S.optional(CapabilityState),
+    ManageSharedFolders: S.optional(CapabilityState),
   }),
 ).annotate({ identifier: "Capabilities" }) as any as S.Schema<Capabilities>;
 export interface CreateCustomPermissionsRequest {
@@ -11977,6 +12077,7 @@ export const DashboardPublishOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface DashboardVersionDefinition {
   DataSetIdentifierDeclarations: DataSetIdentifierDeclaration[];
   Sheets?: SheetDefinition[];
+  TooltipSheets?: TooltipSheetDefinition[];
   CalculatedFields?: CalculatedField[];
   ParameterDeclarations?: ParameterDeclaration[];
   FilterGroups?: FilterGroup[];
@@ -11990,6 +12091,7 @@ export const DashboardVersionDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       DataSetIdentifierDeclarations: DataSetIdentifierDeclarationList,
       Sheets: S.optional(SheetDefinitionList),
+      TooltipSheets: S.optional(TooltipSheetDefinitionList),
       CalculatedFields: S.optional(CalculatedFields),
       ParameterDeclarations: S.optional(ParameterDeclarationList),
       FilterGroups: S.optional(FilterGroupList),
@@ -13940,7 +14042,12 @@ export const ServiceNowParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceNowParameters",
 }) as any as S.Schema<ServiceNowParameters>;
-export type AuthenticationType = "PASSWORD" | "TOKEN" | "X509" | (string & {});
+export type AuthenticationType =
+  | "PASSWORD"
+  | "KEYPAIR"
+  | "TOKEN"
+  | "X509"
+  | (string & {});
 export const AuthenticationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface VpcConnectionProperties {
   VpcConnectionArn: string;
@@ -15328,12 +15435,28 @@ export const WebProxyCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WebProxyCredentials",
 }) as any as S.Schema<WebProxyCredentials>;
+export interface OAuthClientCredentials {
+  ClientId?: string | redacted.Redacted<string>;
+  ClientSecret?: string | redacted.Redacted<string>;
+  Username?: string | redacted.Redacted<string>;
+}
+export const OAuthClientCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ClientId: S.optional(SensitiveString),
+      ClientSecret: S.optional(SensitiveString),
+      Username: S.optional(SensitiveString),
+    }),
+).annotate({
+  identifier: "OAuthClientCredentials",
+}) as any as S.Schema<OAuthClientCredentials>;
 export interface DataSourceCredentials {
   CredentialPair?: CredentialPair;
   CopySourceArn?: string;
   SecretArn?: string;
   KeyPairCredentials?: KeyPairCredentials;
   WebProxyCredentials?: WebProxyCredentials;
+  OAuthClientCredentials?: OAuthClientCredentials;
 }
 export const DataSourceCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15342,6 +15465,7 @@ export const DataSourceCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SecretArn: S.optional(S.String),
     KeyPairCredentials: S.optional(KeyPairCredentials),
     WebProxyCredentials: S.optional(WebProxyCredentials),
+    OAuthClientCredentials: S.optional(OAuthClientCredentials),
   }),
 ).annotate({
   identifier: "DataSourceCredentials",
@@ -16085,6 +16209,7 @@ export const DataSetConfigurationList =
 export interface TemplateVersionDefinition {
   DataSetConfigurations: DataSetConfiguration[];
   Sheets?: SheetDefinition[];
+  TooltipSheets?: TooltipSheetDefinition[];
   CalculatedFields?: CalculatedField[];
   ParameterDeclarations?: ParameterDeclaration[];
   FilterGroups?: FilterGroup[];
@@ -16099,6 +16224,7 @@ export const TemplateVersionDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       DataSetConfigurations: DataSetConfigurationList,
       Sheets: S.optional(SheetDefinitionList),
+      TooltipSheets: S.optional(TooltipSheetDefinitionList),
       CalculatedFields: S.optional(CalculatedFields),
       ParameterDeclarations: S.optional(ParameterDeclarationList),
       FilterGroups: S.optional(FilterGroupList),
@@ -20591,6 +20717,76 @@ export const DescribeAssetBundleImportJobResponse =
   ).annotate({
     identifier: "DescribeAssetBundleImportJobResponse",
   }) as any as S.Schema<DescribeAssetBundleImportJobResponse>;
+export interface DescribeAutomationJobRequest {
+  AwsAccountId: string;
+  AutomationGroupId: string;
+  AutomationId: string;
+  IncludeInputPayload?: boolean;
+  IncludeOutputPayload?: boolean;
+  JobId: string;
+}
+export const DescribeAutomationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      AutomationGroupId: S.String.pipe(T.HttpLabel("AutomationGroupId")),
+      AutomationId: S.String.pipe(T.HttpLabel("AutomationId")),
+      IncludeInputPayload: S.optional(S.Boolean).pipe(
+        T.HttpQuery("includeInputPayload"),
+      ),
+      IncludeOutputPayload: S.optional(S.Boolean).pipe(
+        T.HttpQuery("includeOutputPayload"),
+      ),
+      JobId: S.String.pipe(T.HttpLabel("JobId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{AwsAccountId}/automation-groups/{AutomationGroupId}/automations/{AutomationId}/jobs/{JobId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeAutomationJobRequest",
+  }) as any as S.Schema<DescribeAutomationJobRequest>;
+export type AutomationJobStatus =
+  | "FAILED"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "QUEUED"
+  | "STOPPED"
+  | (string & {});
+export const AutomationJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DescribeAutomationJobResponse {
+  Arn: string;
+  CreatedAt?: Date;
+  StartedAt?: Date;
+  EndedAt?: Date;
+  JobStatus: AutomationJobStatus;
+  InputPayload?: string | redacted.Redacted<string>;
+  OutputPayload?: string | redacted.Redacted<string>;
+  RequestId?: string;
+}
+export const DescribeAutomationJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Arn: S.String,
+      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      JobStatus: AutomationJobStatus,
+      InputPayload: S.optional(SensitiveString),
+      OutputPayload: S.optional(SensitiveString),
+      RequestId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DescribeAutomationJobResponse",
+  }) as any as S.Schema<DescribeAutomationJobResponse>;
 export interface DescribeBrandRequest {
   AwsAccountId: string;
   BrandId: string;
@@ -27575,6 +27771,52 @@ export const StartAssetBundleImportJobResponse =
   ).annotate({
     identifier: "StartAssetBundleImportJobResponse",
   }) as any as S.Schema<StartAssetBundleImportJobResponse>;
+export interface StartAutomationJobRequest {
+  AwsAccountId: string;
+  AutomationGroupId: string;
+  AutomationId: string;
+  InputPayload?: string | redacted.Redacted<string>;
+}
+export const StartAutomationJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      AutomationGroupId: S.String.pipe(T.HttpLabel("AutomationGroupId")),
+      AutomationId: S.String.pipe(T.HttpLabel("AutomationId")),
+      InputPayload: S.optional(SensitiveString),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{AwsAccountId}/automation-groups/{AutomationGroupId}/automations/{AutomationId}/jobs",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "StartAutomationJobRequest",
+}) as any as S.Schema<StartAutomationJobRequest>;
+export interface StartAutomationJobResponse {
+  Arn: string;
+  JobId: string;
+  Status?: number;
+  RequestId?: string;
+}
+export const StartAutomationJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Arn: S.String,
+      JobId: S.String,
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+      RequestId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "StartAutomationJobResponse",
+}) as any as S.Schema<StartAutomationJobResponse>;
 export interface SnapshotAnonymousUser {
   RowLevelPermissionTags?: SessionTag[];
 }
@@ -32570,6 +32812,32 @@ export const describeAssetBundleImportJob: API.OperationMethod<
     UnsupportedUserEditionException,
   ],
 }));
+export type DescribeAutomationJobError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves the status and details of a specified automation job, including its status and outputs.
+ */
+export const describeAutomationJob: API.OperationMethod<
+  DescribeAutomationJobRequest,
+  DescribeAutomationJobResponse,
+  DescribeAutomationJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeAutomationJobRequest,
+  output: DescribeAutomationJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+}));
 export type DescribeBrandError =
   | AccessDeniedException
   | ConflictException
@@ -36667,6 +36935,34 @@ export const startAssetBundleImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     UnsupportedUserEditionException,
+  ],
+}));
+export type StartAutomationJobError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Starts a new job for a specified automation. The job runs the automation with the provided input payload.
+ */
+export const startAutomationJob: API.OperationMethod<
+  StartAutomationJobRequest,
+  StartAutomationJobResponse,
+  StartAutomationJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartAutomationJobRequest,
+  output: StartAutomationJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ThrottlingException,
   ],
 }));
 export type StartDashboardSnapshotJobError =

@@ -6,12 +6,18 @@ import * as T from "../traits";
 export const MachinesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
-  signal: Schema.optional(Schema.String),
-  timeout: Schema.optional(
-    Schema.Struct({
-      "time.Duration": Schema.optional(Schema.Number),
-    }),
+  signal: Schema.optional(
+    Schema.Literals([
+      "SIGHUP",
+      "SIGINT",
+      "SIGQUIT",
+      "SIGKILL",
+      "SIGUSR1",
+      "SIGUSR2",
+      "SIGTERM",
+    ]),
   ),
+  timeout: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",

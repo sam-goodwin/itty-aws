@@ -538,6 +538,16 @@ export const GetPaymentMethodConfigurationsConfigurationOutput =
         }),
       }),
     ),
+    upi: Schema.optional(
+      Schema.Struct({
+        available: Schema.Boolean,
+        display_preference: Schema.Struct({
+          overridable: Schema.NullOr(Schema.Boolean),
+          preference: Schema.Literals(["none", "off", "on"]),
+          value: Schema.Literals(["off", "on"]),
+        }),
+      }),
+    ),
     us_bank_account: Schema.optional(
       Schema.Struct({
         available: Schema.Boolean,

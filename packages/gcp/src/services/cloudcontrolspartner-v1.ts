@@ -22,269 +22,6 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface WorkloadOnboardingStep {
-  /** The onboarding step. */
-  step?:
-    | "STEP_UNSPECIFIED"
-    | "EKM_PROVISIONED"
-    | "SIGNED_ACCESS_APPROVAL_CONFIGURED"
-    | (string & {});
-  /** The starting time of the onboarding step. */
-  startTime?: string;
-  /** The completion time of the onboarding step. */
-  completionTime?: string;
-  /** Output only. The completion state of the onboarding step. */
-  completionState?:
-    | "COMPLETION_STATE_UNSPECIFIED"
-    | "PENDING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "NOT_APPLICABLE"
-    | (string & {});
-}
-
-export const WorkloadOnboardingStep: Schema.Schema<WorkloadOnboardingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      completionState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadOnboardingStep",
-  }) as any as Schema.Schema<WorkloadOnboardingStep>;
-
-export interface WorkloadOnboardingState {
-  /** List of workload onboarding steps. */
-  onboardingSteps?: Array<WorkloadOnboardingStep>;
-}
-
-export const WorkloadOnboardingState: Schema.Schema<WorkloadOnboardingState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onboardingSteps: Schema.optional(Schema.Array(WorkloadOnboardingStep)),
-    }),
-  ).annotate({
-    identifier: "WorkloadOnboardingState",
-  }) as any as Schema.Schema<WorkloadOnboardingState>;
-
-export interface Workload {
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
-  name?: string;
-  /** Output only. Folder id this workload is associated with */
-  folderId?: string;
-  /** Output only. Time the resource was created. */
-  createTime?: string;
-  /** Output only. The name of container folder of the assured workload */
-  folder?: string;
-  /** Container for workload onboarding steps. */
-  workloadOnboardingState?: WorkloadOnboardingState;
-  /** Indicates whether a workload is fully onboarded. */
-  isOnboarded?: boolean;
-  /** The project id of the key management project for the workload */
-  keyManagementProjectId?: string;
-  /** The Google Cloud location of the workload */
-  location?: string;
-  /** Partner associated with this workload. */
-  partner?:
-    | "PARTNER_UNSPECIFIED"
-    | "PARTNER_LOCAL_CONTROLS_BY_S3NS"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_PSN"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT"
-    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
-    | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
-    | (string & {});
-}
-
-export const Workload: Schema.Schema<Workload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      folderId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      folder: Schema.optional(Schema.String),
-      workloadOnboardingState: Schema.optional(WorkloadOnboardingState),
-      isOnboarded: Schema.optional(Schema.Boolean),
-      keyManagementProjectId: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      partner: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Workload" }) as any as Schema.Schema<Workload>;
-
-export interface ListWorkloadsResponse {
-  /** List of customer workloads */
-  workloads?: Array<Workload>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: Array<string>;
-}
-
-export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloads: Schema.optional(Schema.Array(Workload)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadsResponse",
-  }) as any as Schema.Schema<ListWorkloadsResponse>;
-
-export interface CustomerOnboardingStep {
-  /** The onboarding step */
-  step?:
-    | "STEP_UNSPECIFIED"
-    | "KAJ_ENROLLMENT"
-    | "CUSTOMER_ENVIRONMENT"
-    | (string & {});
-  /** The starting time of the onboarding step */
-  startTime?: string;
-  /** The completion time of the onboarding step */
-  completionTime?: string;
-  /** Output only. Current state of the step */
-  completionState?:
-    | "COMPLETION_STATE_UNSPECIFIED"
-    | "PENDING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "NOT_APPLICABLE"
-    | (string & {});
-}
-
-export const CustomerOnboardingStep: Schema.Schema<CustomerOnboardingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      completionState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerOnboardingStep",
-  }) as any as Schema.Schema<CustomerOnboardingStep>;
-
-export interface CustomerOnboardingState {
-  /** List of customer onboarding steps */
-  onboardingSteps?: Array<CustomerOnboardingStep>;
-}
-
-export const CustomerOnboardingState: Schema.Schema<CustomerOnboardingState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onboardingSteps: Schema.optional(Schema.Array(CustomerOnboardingStep)),
-    }),
-  ).annotate({
-    identifier: "CustomerOnboardingState",
-  }) as any as Schema.Schema<CustomerOnboardingState>;
-
-export interface Customer {
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
-  name?: string;
-  /** Required. Display name for the customer */
-  displayName?: string;
-  /** Output only. Container for customer onboarding steps */
-  customerOnboardingState?: CustomerOnboardingState;
-  /** Output only. Indicates whether a customer is fully onboarded */
-  isOnboarded?: boolean;
-  /** Output only. The customer organization domain, extracted from CRM Organization’s display_name field. e.g. "google.com" */
-  organizationDomain?: string;
-}
-
-export const Customer: Schema.Schema<Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      customerOnboardingState: Schema.optional(CustomerOnboardingState),
-      isOnboarded: Schema.optional(Schema.Boolean),
-      organizationDomain: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Customer" }) as any as Schema.Schema<Customer>;
-
-export interface ListCustomersResponse {
-  /** List of customers */
-  customers?: Array<Customer>;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: Array<string>;
-}
-
-export const ListCustomersResponse: Schema.Schema<ListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customers: Schema.optional(Schema.Array(Customer)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListCustomersResponse",
-  }) as any as Schema.Schema<ListCustomersResponse>;
-
-export interface ConnectionError {
-  /** The error domain for the error */
-  errorDomain?: string;
-  /** The error message for the error */
-  errorMessage?: string;
-}
-
-export const ConnectionError: Schema.Schema<ConnectionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorDomain: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectionError",
-  }) as any as Schema.Schema<ConnectionError>;
-
-export interface EkmConnection {
-  /** Resource name of the EKM connection in the format: projects/{project}/locations/{location}/ekmConnections/{ekm_connection} */
-  connectionName?: string;
-  /** Output only. The connection state */
-  connectionState?:
-    | "CONNECTION_STATE_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NOT_AVAILABLE"
-    | "ERROR"
-    | "PERMISSION_DENIED"
-    | (string & {});
-  /** The connection error that occurred if any */
-  connectionError?: ConnectionError;
-}
-
-export const EkmConnection: Schema.Schema<EkmConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionName: Schema.optional(Schema.String),
-      connectionState: Schema.optional(Schema.String),
-      connectionError: Schema.optional(ConnectionError),
-    }),
-  ).annotate({
-    identifier: "EkmConnection",
-  }) as any as Schema.Schema<EkmConnection>;
-
-export interface EkmConnections {
-  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections` */
-  name?: string;
-  /** The EKM connections associated with the workload */
-  ekmConnections?: Array<EkmConnection>;
-}
-
-export const EkmConnections: Schema.Schema<EkmConnections> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
-    }),
-  ).annotate({
-    identifier: "EkmConnections",
-  }) as any as Schema.Schema<EkmConnections>;
-
 export interface PartnerPermissions {
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions` */
   name?: string;
@@ -300,15 +37,10 @@ export interface PartnerPermissions {
   >;
 }
 
-export const PartnerPermissions: Schema.Schema<PartnerPermissions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      partnerPermissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PartnerPermissions",
-  }) as any as Schema.Schema<PartnerPermissions>;
+export const PartnerPermissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  partnerPermissions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PartnerPermissions" });
 
 export interface AccessReason {
   /** Type of access justification. */
@@ -325,15 +57,10 @@ export interface AccessReason {
   detail?: string;
 }
 
-export const AccessReason: Schema.Schema<AccessReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessReason",
-  }) as any as Schema.Schema<AccessReason>;
+export const AccessReason = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessReason" });
 
 export interface AccessApprovalRequest {
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/accessApprovalRequests/{access_approval_request}` */
@@ -346,54 +73,88 @@ export interface AccessApprovalRequest {
   requestedExpirationTime?: string;
 }
 
-export const AccessApprovalRequest: Schema.Schema<AccessApprovalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      requestedReason: Schema.optional(AccessReason),
-      requestedExpirationTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessApprovalRequest",
-  }) as any as Schema.Schema<AccessApprovalRequest>;
+export const AccessApprovalRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+  requestedReason: Schema.optional(AccessReason),
+  requestedExpirationTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessApprovalRequest" });
 
-export interface ListAccessApprovalRequestsResponse {
-  /** List of access approval requests */
-  accessApprovalRequests?: Array<AccessApprovalRequest>;
+export interface CustomerOnboardingStep {
+  /** The completion time of the onboarding step */
+  completionTime?: string;
+  /** The starting time of the onboarding step */
+  startTime?: string;
+  /** Output only. Current state of the step */
+  completionState?:
+    | "COMPLETION_STATE_UNSPECIFIED"
+    | "PENDING"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "NOT_APPLICABLE"
+    | (string & {});
+  /** The onboarding step */
+  step?:
+    | "STEP_UNSPECIFIED"
+    | "KAJ_ENROLLMENT"
+    | "CUSTOMER_ENVIRONMENT"
+    | (string & {});
+}
+
+export const CustomerOnboardingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    completionTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    completionState: Schema.optional(Schema.String),
+    step: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CustomerOnboardingStep" });
+
+export interface CustomerOnboardingState {
+  /** List of customer onboarding steps */
+  onboardingSteps?: Array<CustomerOnboardingStep>;
+}
+
+export const CustomerOnboardingState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onboardingSteps: Schema.optional(Schema.Array(CustomerOnboardingStep)),
+  }).annotate({ identifier: "CustomerOnboardingState" });
+
+export interface Customer {
+  /** Required. Display name for the customer */
+  displayName?: string;
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
+  name?: string;
+  /** Output only. The customer organization domain, extracted from CRM Organization’s display_name field. e.g. "google.com" */
+  organizationDomain?: string;
+  /** Output only. Container for customer onboarding steps */
+  customerOnboardingState?: CustomerOnboardingState;
+  /** Output only. Indicates whether a customer is fully onboarded */
+  isOnboarded?: boolean;
+}
+
+export const Customer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  organizationDomain: Schema.optional(Schema.String),
+  customerOnboardingState: Schema.optional(CustomerOnboardingState),
+  isOnboarded: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Customer" });
+
+export interface ListCustomersResponse {
+  /** List of customers */
+  customers?: Array<Customer>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: Array<string>;
 }
 
-export const ListAccessApprovalRequestsResponse: Schema.Schema<ListAccessApprovalRequestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessApprovalRequests: Schema.optional(
-        Schema.Array(AccessApprovalRequest),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAccessApprovalRequestsResponse",
-  }) as any as Schema.Schema<ListAccessApprovalRequestsResponse>;
-
-export interface Sku {
-  /** Argentum product SKU, that is associated with the partner offerings to customers used by Syntro for billing purposes. SKUs can represent resold Google products or support services. */
-  id?: string;
-  /** Display name of the product identified by the SKU. A partner may want to show partner branded names for their offerings such as local sovereign cloud solutions. */
-  displayName?: string;
-}
-
-export const Sku: Schema.Schema<Sku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Sku" }) as any as Schema.Schema<Sku>;
+export const ListCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customers: Schema.optional(Schema.Array(Customer)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListCustomersResponse" });
 
 export interface EkmMetadata {
   /** The Cloud EKM partner. */
@@ -408,88 +169,254 @@ export interface EkmMetadata {
   ekmEndpointUri?: string;
 }
 
-export const EkmMetadata: Schema.Schema<EkmMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ekmSolution: Schema.optional(Schema.String),
-      ekmEndpointUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EkmMetadata",
-  }) as any as Schema.Schema<EkmMetadata>;
+export const EkmMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ekmSolution: Schema.optional(Schema.String),
+  ekmEndpointUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmMetadata" });
+
+export interface Sku {
+  /** Display name of the product identified by the SKU. A partner may want to show partner branded names for their offerings such as local sovereign cloud solutions. */
+  displayName?: string;
+  /** Argentum product SKU, that is associated with the partner offerings to customers used by Syntro for billing purposes. SKUs can represent resold Google products or support services. */
+  id?: string;
+}
+
+export const Sku = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Sku" });
 
 export interface Partner {
+  /** List of Google Cloud supported EKM partners supported by the partner */
+  ekmSolutions?: Array<EkmMetadata>;
+  /** Google Cloud project ID in the partner's Google Cloud organization for receiving enhanced Logs for Partners. */
+  partnerProjectId?: string;
+  /** List of Google Cloud regions that the partner sells services to customers. Valid Google Cloud regions found here: https://cloud.google.com/compute/docs/regions-zones */
+  operatedCloudRegions?: Array<string>;
+  /** Output only. Time the resource was created */
+  createTime?: string;
   /** Identifier. The resource name of the partner. Format: `organizations/{organization}/locations/{location}/partner` Example: "organizations/123456/locations/us-central1/partner" */
   name?: string;
   /** List of SKUs the partner is offering */
   skus?: Array<Sku>;
-  /** List of Google Cloud supported EKM partners supported by the partner */
-  ekmSolutions?: Array<EkmMetadata>;
-  /** List of Google Cloud regions that the partner sells services to customers. Valid Google Cloud regions found here: https://cloud.google.com/compute/docs/regions-zones */
-  operatedCloudRegions?: Array<string>;
-  /** Google Cloud project ID in the partner's Google Cloud organization for receiving enhanced Logs for Partners. */
-  partnerProjectId?: string;
-  /** Output only. Time the resource was created */
-  createTime?: string;
   /** Output only. The last time the resource was updated */
   updateTime?: string;
 }
 
-export const Partner: Schema.Schema<Partner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      skus: Schema.optional(Schema.Array(Sku)),
-      ekmSolutions: Schema.optional(Schema.Array(EkmMetadata)),
-      operatedCloudRegions: Schema.optional(Schema.Array(Schema.String)),
-      partnerProjectId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Partner" }) as any as Schema.Schema<Partner>;
+export const Partner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ekmSolutions: Schema.optional(Schema.Array(EkmMetadata)),
+  partnerProjectId: Schema.optional(Schema.String),
+  operatedCloudRegions: Schema.optional(Schema.Array(Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  skus: Schema.optional(Schema.Array(Sku)),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Partner" });
 
-export interface Empty {}
+export interface ListAccessApprovalRequestsResponse {
+  /** List of access approval requests */
+  accessApprovalRequests?: Array<AccessApprovalRequest>;
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const ListAccessApprovalRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessApprovalRequests: Schema.optional(
+      Schema.Array(AccessApprovalRequest),
+    ),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAccessApprovalRequestsResponse" });
+
+export interface WorkloadOnboardingStep {
+  /** The completion time of the onboarding step. */
+  completionTime?: string;
+  /** The starting time of the onboarding step. */
+  startTime?: string;
+  /** Output only. The completion state of the onboarding step. */
+  completionState?:
+    | "COMPLETION_STATE_UNSPECIFIED"
+    | "PENDING"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "NOT_APPLICABLE"
+    | (string & {});
+  /** The onboarding step. */
+  step?:
+    | "STEP_UNSPECIFIED"
+    | "EKM_PROVISIONED"
+    | "SIGNED_ACCESS_APPROVAL_CONFIGURED"
+    | (string & {});
+}
+
+export const WorkloadOnboardingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    completionTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    completionState: Schema.optional(Schema.String),
+    step: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "WorkloadOnboardingStep" });
+
+export interface WorkloadOnboardingState {
+  /** List of workload onboarding steps. */
+  onboardingSteps?: Array<WorkloadOnboardingStep>;
+}
+
+export const WorkloadOnboardingState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onboardingSteps: Schema.optional(Schema.Array(WorkloadOnboardingStep)),
+  }).annotate({ identifier: "WorkloadOnboardingState" });
+
+export interface OperationMetadata {
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+}
+
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusMessage: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
+
+export interface Workload {
+  /** Partner associated with this workload. */
+  partner?:
+    | "PARTNER_UNSPECIFIED"
+    | "PARTNER_LOCAL_CONTROLS_BY_S3NS"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_PSN"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT"
+    | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
+    | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
+    | (string & {});
+  /** Indicates whether a workload is fully onboarded. */
+  isOnboarded?: boolean;
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+  name?: string;
+  /** Container for workload onboarding steps. */
+  workloadOnboardingState?: WorkloadOnboardingState;
+  /** The project id of the key management project for the workload */
+  keyManagementProjectId?: string;
+  /** The Google Cloud location of the workload */
+  location?: string;
+  /** Output only. Time the resource was created. */
+  createTime?: string;
+  /** Output only. The name of container folder of the assured workload */
+  folder?: string;
+  /** Output only. Folder id this workload is associated with */
+  folderId?: string;
+}
+
+export const Workload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partner: Schema.optional(Schema.String),
+  isOnboarded: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  workloadOnboardingState: Schema.optional(WorkloadOnboardingState),
+  keyManagementProjectId: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  folder: Schema.optional(Schema.String),
+  folderId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Workload" });
+
+export interface ListWorkloadsResponse {
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+  /** List of customer workloads */
+  workloads?: Array<Workload>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListWorkloadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  workloads: Schema.optional(Schema.Array(Workload)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListWorkloadsResponse" });
+
+export interface ConnectionError {
+  /** The error domain for the error */
+  errorDomain?: string;
+  /** The error message for the error */
+  errorMessage?: string;
+}
+
+export const ConnectionError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorDomain: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectionError" });
+
+export interface EkmConnection {
+  /** Resource name of the EKM connection in the format: projects/{project}/locations/{location}/ekmConnections/{ekm_connection} */
+  connectionName?: string;
+  /** The connection error that occurred if any */
+  connectionError?: ConnectionError;
+  /** Output only. The connection state */
+  connectionState?:
+    | "CONNECTION_STATE_UNSPECIFIED"
+    | "AVAILABLE"
+    | "NOT_AVAILABLE"
+    | "ERROR"
+    | "PERMISSION_DENIED"
+    | (string & {});
+}
+
+export const EkmConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectionName: Schema.optional(Schema.String),
+  connectionError: Schema.optional(ConnectionError),
+  connectionState: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmConnection" });
 
 export interface Gcloud {
-  /** Gcloud command to resolve violation */
-  gcloudCommands?: Array<string>;
   /** Steps to resolve violation via gcloud cli */
   steps?: Array<string>;
+  /** Gcloud command to resolve violation */
+  gcloudCommands?: Array<string>;
   /** Additional urls for more information about steps */
   additionalLinks?: Array<string>;
 }
 
-export const Gcloud: Schema.Schema<Gcloud> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcloudCommands: Schema.optional(Schema.Array(Schema.String)),
-      steps: Schema.optional(Schema.Array(Schema.String)),
-      additionalLinks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Gcloud" }) as any as Schema.Schema<Gcloud>;
+export const Gcloud = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  steps: Schema.optional(Schema.Array(Schema.String)),
+  gcloudCommands: Schema.optional(Schema.Array(Schema.String)),
+  additionalLinks: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Gcloud" });
 
 export interface Console {
   /** Link to console page where violations can be resolved */
   consoleUris?: Array<string>;
-  /** Steps to resolve violation via cloud console */
-  steps?: Array<string>;
   /** Additional urls for more information about steps */
   additionalLinks?: Array<string>;
+  /** Steps to resolve violation via cloud console */
+  steps?: Array<string>;
 }
 
-export const Console: Schema.Schema<Console> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consoleUris: Schema.optional(Schema.Array(Schema.String)),
-      steps: Schema.optional(Schema.Array(Schema.String)),
-      additionalLinks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Console" }) as any as Schema.Schema<Console>;
+export const Console = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consoleUris: Schema.optional(Schema.Array(Schema.String)),
+  additionalLinks: Schema.optional(Schema.Array(Schema.String)),
+  steps: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Console" });
 
 export interface Instructions {
   /** Remediation instructions to resolve violation via gcloud cli */
@@ -498,21 +425,26 @@ export interface Instructions {
   consoleInstructions?: Console;
 }
 
-export const Instructions: Schema.Schema<Instructions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcloudInstructions: Schema.optional(Gcloud),
-      consoleInstructions: Schema.optional(Console),
-    }),
-  ).annotate({
-    identifier: "Instructions",
-  }) as any as Schema.Schema<Instructions>;
+export const Instructions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcloudInstructions: Schema.optional(Gcloud),
+  consoleInstructions: Schema.optional(Console),
+}).annotate({ identifier: "Instructions" });
+
+export interface EkmConnections {
+  /** The EKM connections associated with the workload */
+  ekmConnections?: Array<EkmConnection>;
+  /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections` */
+  name?: string;
+}
+
+export const EkmConnections = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmConnections" });
 
 export interface Remediation {
   /** Required. Remediation instructions to resolve violations */
   instructions?: Instructions;
-  /** Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values */
-  compliantValues?: Array<string>;
   /** Output only. Remediation type based on the type of org policy values violated */
   remediationType?:
     | "REMEDIATION_TYPE_UNSPECIFIED"
@@ -522,32 +454,35 @@ export interface Remediation {
     | "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
     | "REMEDIATION_RESOURCE_VIOLATION"
     | (string & {});
+  /** Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values */
+  compliantValues?: Array<string>;
 }
 
-export const Remediation: Schema.Schema<Remediation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instructions: Schema.optional(Instructions),
-      compliantValues: Schema.optional(Schema.Array(Schema.String)),
-      remediationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Remediation",
-  }) as any as Schema.Schema<Remediation>;
+export const Remediation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instructions: Schema.optional(Instructions),
+  remediationType: Schema.optional(Schema.String),
+  compliantValues: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Remediation" });
 
 export interface Violation {
+  /** Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty. */
+  resolveTime?: string;
+  /** Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access, Encryption, etc. */
+  category?: string;
+  /** Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this violation. Format: `projects/{project_number}/policies/{constraint_name}` `folders/{folder_id}/policies/{constraint_name}` `organizations/{organization_id}/policies/{constraint_name}` */
+  nonCompliantOrgPolicy?: string;
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/violations/{violation}` */
   name?: string;
   /** Output only. Description for the Violation. e.g. OrgPolicy gcp.resourceLocations has non compliant value. */
   description?: string;
   /** Output only. Time of the event which triggered the Violation. */
   beginTime?: string;
+  /** The folder_id of the violation */
+  folderId?: string;
+  /** Output only. Compliance violation remediation */
+  remediation?: Remediation;
   /** Output only. The last time when the Violation record was updated. */
   updateTime?: string;
-  /** Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty. */
-  resolveTime?: string;
-  /** Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access, Encryption, etc. */
-  category?: string;
   /** Output only. State of the violation */
   state?:
     | "STATE_UNSPECIFIED"
@@ -555,29 +490,26 @@ export interface Violation {
     | "UNRESOLVED"
     | "EXCEPTION"
     | (string & {});
-  /** Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this violation. Format: `projects/{project_number}/policies/{constraint_name}` `folders/{folder_id}/policies/{constraint_name}` `organizations/{organization_id}/policies/{constraint_name}` */
-  nonCompliantOrgPolicy?: string;
-  /** The folder_id of the violation */
-  folderId?: string;
-  /** Output only. Compliance violation remediation */
-  remediation?: Remediation;
 }
 
-export const Violation: Schema.Schema<Violation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      beginTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      resolveTime: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      nonCompliantOrgPolicy: Schema.optional(Schema.String),
-      folderId: Schema.optional(Schema.String),
-      remediation: Schema.optional(Remediation),
-    }),
-  ).annotate({ identifier: "Violation" }) as any as Schema.Schema<Violation>;
+export const Violation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resolveTime: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  nonCompliantOrgPolicy: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  beginTime: Schema.optional(Schema.String),
+  folderId: Schema.optional(Schema.String),
+  remediation: Schema.optional(Remediation),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Violation" });
+
+export interface Empty {}
+
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListViolationsResponse {
   /** List of violation */
@@ -588,48 +520,13 @@ export interface ListViolationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListViolationsResponse: Schema.Schema<ListViolationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      violations: Schema.optional(Schema.Array(Violation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListViolationsResponse",
-  }) as any as Schema.Schema<ListViolationsResponse>;
-
-export interface OperationMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const ListViolationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    violations: Schema.optional(Schema.Array(Violation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListViolationsResponse" });
 
 // ==========================================================================
 // Operations
@@ -666,131 +563,6 @@ export const getPartnerOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnerOrganizationsLocationsRequest,
   output: GetPartnerOrganizationsLocationsResponse,
-  errors: [],
-}));
-
-export interface GetOrganizationsLocationsCustomersRequest {
-  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
-  name: string;
-}
-
-export const GetOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersRequest>;
-
-export type GetOrganizationsLocationsCustomersResponse = Customer;
-export const GetOrganizationsLocationsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Customer;
-
-export type GetOrganizationsLocationsCustomersError = DefaultErrors;
-
-/** Gets details of a single customer */
-export const getOrganizationsLocationsCustomers: API.OperationMethod<
-  GetOrganizationsLocationsCustomersRequest,
-  GetOrganizationsLocationsCustomersResponse,
-  GetOrganizationsLocationsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsCustomersRequest,
-  output: GetOrganizationsLocationsCustomersResponse,
-  errors: [],
-}));
-
-export interface ListOrganizationsLocationsCustomersRequest {
-  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
-  parent: string;
-  /** The maximum number of Customers to return. The service may return fewer than this value. If unspecified, at most 500 Customers will be returned. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListCustomers` call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-}
-
-export const ListOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersRequest>;
-
-export type ListOrganizationsLocationsCustomersResponse = ListCustomersResponse;
-export const ListOrganizationsLocationsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCustomersResponse;
-
-export type ListOrganizationsLocationsCustomersError = DefaultErrors;
-
-/** Lists customers of a partner identified by its Google Cloud organization ID */
-export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
-  ListOrganizationsLocationsCustomersRequest,
-  ListOrganizationsLocationsCustomersResponse,
-  ListOrganizationsLocationsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsCustomersRequest,
-  output: ListOrganizationsLocationsCustomersResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreateOrganizationsLocationsCustomersRequest {
-  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
-  parent: string;
-  /** Required. The customer id to use for the customer, which will become the final component of the customer's resource name. The specified value must be a valid Google cloud organization id. */
-  customerId?: string;
-  /** Request body */
-  body?: Customer;
-}
-
-export const CreateOrganizationsLocationsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
-    body: Schema.optional(Customer).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateOrganizationsLocationsCustomersRequest>;
-
-export type CreateOrganizationsLocationsCustomersResponse = Customer;
-export const CreateOrganizationsLocationsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Customer;
-
-export type CreateOrganizationsLocationsCustomersError = DefaultErrors;
-
-/** Creates a new customer. */
-export const createOrganizationsLocationsCustomers: API.OperationMethod<
-  CreateOrganizationsLocationsCustomersRequest,
-  CreateOrganizationsLocationsCustomersResponse,
-  CreateOrganizationsLocationsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsCustomersRequest,
-  output: CreateOrganizationsLocationsCustomersResponse,
   errors: [],
 }));
 
@@ -869,59 +641,150 @@ export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
   errors: [],
 }));
 
-export interface GetOrganizationsLocationsCustomersWorkloadsRequest {
-  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+export interface GetOrganizationsLocationsCustomersRequest {
+  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
   name: string;
 }
 
-export const GetOrganizationsLocationsCustomersWorkloadsRequest =
+export const GetOrganizationsLocationsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}",
+      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
+  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersRequest>;
 
-export type GetOrganizationsLocationsCustomersWorkloadsResponse = Workload;
-export const GetOrganizationsLocationsCustomersWorkloadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Workload;
+export type GetOrganizationsLocationsCustomersResponse = Customer;
+export const GetOrganizationsLocationsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type GetOrganizationsLocationsCustomersWorkloadsError = DefaultErrors;
+export type GetOrganizationsLocationsCustomersError = DefaultErrors;
 
-/** Gets details of a single workload */
-export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
-  GetOrganizationsLocationsCustomersWorkloadsRequest,
-  GetOrganizationsLocationsCustomersWorkloadsResponse,
-  GetOrganizationsLocationsCustomersWorkloadsError,
+/** Gets details of a single customer */
+export const getOrganizationsLocationsCustomers: API.OperationMethod<
+  GetOrganizationsLocationsCustomersRequest,
+  GetOrganizationsLocationsCustomersResponse,
+  GetOrganizationsLocationsCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsCustomersWorkloadsRequest,
-  output: GetOrganizationsLocationsCustomersWorkloadsResponse,
+  input: GetOrganizationsLocationsCustomersRequest,
+  output: GetOrganizationsLocationsCustomersResponse,
+  errors: [],
+}));
+
+export interface ListOrganizationsLocationsCustomersRequest {
+  /** A page token, received from a previous `ListCustomers` call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
+  parent: string;
+  /** The maximum number of Customers to return. The service may return fewer than this value. If unspecified, at most 500 Customers will be returned. */
+  pageSize?: number;
+  /** Optional. Filtering results */
+  filter?: string;
+}
+
+export const ListOrganizationsLocationsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListOrganizationsLocationsCustomersRequest>;
+
+export type ListOrganizationsLocationsCustomersResponse = ListCustomersResponse;
+export const ListOrganizationsLocationsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListCustomersResponse;
+
+export type ListOrganizationsLocationsCustomersError = DefaultErrors;
+
+/** Lists customers of a partner identified by its Google Cloud organization ID */
+export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
+  ListOrganizationsLocationsCustomersRequest,
+  ListOrganizationsLocationsCustomersResponse,
+  ListOrganizationsLocationsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOrganizationsLocationsCustomersRequest,
+  output: ListOrganizationsLocationsCustomersResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateOrganizationsLocationsCustomersRequest {
+  /** Required. Parent resource Format: `organizations/{organization}/locations/{location}` */
+  parent: string;
+  /** Required. The customer id to use for the customer, which will become the final component of the customer's resource name. The specified value must be a valid Google cloud organization id. */
+  customerId?: string;
+  /** Request body */
+  body?: Customer;
+}
+
+export const CreateOrganizationsLocationsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
+    body: Schema.optional(Customer).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateOrganizationsLocationsCustomersRequest>;
+
+export type CreateOrganizationsLocationsCustomersResponse = Customer;
+export const CreateOrganizationsLocationsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Customer;
+
+export type CreateOrganizationsLocationsCustomersError = DefaultErrors;
+
+/** Creates a new customer. */
+export const createOrganizationsLocationsCustomers: API.OperationMethod<
+  CreateOrganizationsLocationsCustomersRequest,
+  CreateOrganizationsLocationsCustomersResponse,
+  CreateOrganizationsLocationsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateOrganizationsLocationsCustomersRequest,
+  output: CreateOrganizationsLocationsCustomersResponse,
   errors: [],
 }));
 
 export interface ListOrganizationsLocationsCustomersWorkloadsRequest {
+  /** Optional. Filtering results. */
+  filter?: string;
   /** Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}` */
   parent: string;
   /** The maximum number of workloads to return. The service may return fewer than this value. If unspecified, at most 500 workloads will be returned. */
   pageSize?: number;
   /** A page token, received from a previous `ListWorkloads` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
-  /** Optional. Filtering results. */
-  filter?: string;
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
 }
 
 export const ListOrganizationsLocationsCustomersWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
     T.Http({
@@ -952,42 +815,6 @@ export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest {
-  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections` */
-  name: string;
-}
-
-export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/ekmConnections",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
-
-export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse =
-  EkmConnections;
-export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EkmConnections;
-
-export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsError =
-  DefaultErrors;
-
-/** Gets the EKM connections associated with a workload */
-export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
-  GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest,
-  GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse,
-  GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest,
-  output: GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse,
-  errors: [],
 }));
 
 export interface GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest {
@@ -1026,26 +853,96 @@ export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.
   errors: [],
 }));
 
+export interface GetOrganizationsLocationsCustomersWorkloadsRequest {
+  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
+  name: string;
+}
+
+export const GetOrganizationsLocationsCustomersWorkloadsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>;
+
+export type GetOrganizationsLocationsCustomersWorkloadsResponse = Workload;
+export const GetOrganizationsLocationsCustomersWorkloadsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Workload;
+
+export type GetOrganizationsLocationsCustomersWorkloadsError = DefaultErrors;
+
+/** Gets details of a single workload */
+export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
+  GetOrganizationsLocationsCustomersWorkloadsRequest,
+  GetOrganizationsLocationsCustomersWorkloadsResponse,
+  GetOrganizationsLocationsCustomersWorkloadsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOrganizationsLocationsCustomersWorkloadsRequest,
+  output: GetOrganizationsLocationsCustomersWorkloadsResponse,
+  errors: [],
+}));
+
+export interface GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest {
+  /** Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections` */
+  name: string;
+}
+
+export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/ekmConnections",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>;
+
+export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse =
+  EkmConnections;
+export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ EkmConnections;
+
+export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsError =
+  DefaultErrors;
+
+/** Gets the EKM connections associated with a workload */
+export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
+  GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest,
+  GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse,
+  GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest,
+  output: GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse,
+  errors: [],
+}));
+
 export interface ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest {
+  /** Optional. A page token, received from a previous `ListAccessApprovalRequests` call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
   /** Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
   parent: string;
   /** Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned. */
   pageSize?: number;
-  /** Optional. A page token, received from a previous `ListAccessApprovalRequests` call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
   /** Optional. Filtering results. */
   filter?: string;
-  /** Optional. Hint for how to order the results. */
-  orderBy?: string;
 }
 
 export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1085,31 +982,31 @@ export interface ListOrganizationsLocationsCustomersWorkloadsViolationsRequest {
   parent: string;
   /** Optional. The maximum number of customers row to return. The service may return fewer than this value. If unspecified, at most 10 customers will be returned. */
   pageSize?: number;
-  /** Optional. A page token, received from a previous `ListViolations` call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-  /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
-  "interval.startTime"?: string;
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   "interval.endTime"?: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+  /** Optional. A page token, received from a previous `ListViolations` call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
+  /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
+  "interval.startTime"?: string;
+  /** Optional. Filtering results */
+  filter?: string;
 }
 
 export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    "interval.startTime": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("interval.startTime"),
-    ),
     "interval.endTime": Schema.optional(Schema.String).pipe(
       T.HttpQuery("interval.endTime"),
     ),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    "interval.startTime": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("interval.startTime"),
+    ),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({
       method: "GET",

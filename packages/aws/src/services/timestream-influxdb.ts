@@ -99,6 +99,8 @@ export type DbParameterGroupIdentifier = string;
 export type AllocatedStorage = number;
 export type VpcSubnetId = string;
 export type VpcSecurityGroupId = string;
+export type IanaTimezone = string;
+export type MaintenanceWindow = string;
 export type DbClusterId = string;
 export type NextToken = string;
 export type MaxResults = number;
@@ -225,6 +227,15 @@ export const LogDeliveryConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "LogDeliveryConfiguration",
 }) as any as S.Schema<LogDeliveryConfiguration>;
+export interface MaintenanceSchedule {
+  timezone: string;
+  preferredMaintenanceWindow: string;
+}
+export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ timezone: S.String, preferredMaintenanceWindow: S.String }),
+).annotate({
+  identifier: "MaintenanceSchedule",
+}) as any as S.Schema<MaintenanceSchedule>;
 export interface CreateDbClusterInput {
   name: string;
   username?: string | redacted.Redacted<string>;
@@ -243,6 +254,7 @@ export interface CreateDbClusterInput {
   deploymentType?: ClusterDeploymentType;
   failoverMode?: FailoverMode;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
+  maintenanceSchedule?: MaintenanceSchedule;
   tags?: { [key: string]: string | undefined };
 }
 export const CreateDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -264,6 +276,7 @@ export const CreateDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     deploymentType: S.optional(ClusterDeploymentType),
     failoverMode: S.optional(FailoverMode),
     logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
     tags: S.optional(RequestTagMap),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -318,6 +331,20 @@ export type EngineType =
   | "INFLUXDB_V3_ENTERPRISE"
   | (string & {});
 export const EngineType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ClusterConfiguration {
+  ingestQueryInstances?: number;
+  queryOnlyInstances?: number;
+  dedicatedCompactor?: boolean;
+}
+export const ClusterConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ingestQueryInstances: S.optional(S.Number),
+    queryOnlyInstances: S.optional(S.Number),
+    dedicatedCompactor: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ClusterConfiguration",
+}) as any as S.Schema<ClusterConfiguration>;
 export interface GetDbClusterOutput {
   id: string;
   name: string;
@@ -335,10 +362,14 @@ export interface GetDbClusterOutput {
   publiclyAccessible?: boolean;
   dbParameterGroupIdentifier?: string;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
   influxAuthParametersSecretArn?: string;
   vpcSubnetIds?: string[];
   vpcSecurityGroupIds?: string[];
   failoverMode?: FailoverMode;
+  clusterConfiguration?: ClusterConfiguration;
 }
 export const GetDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -358,10 +389,18 @@ export const GetDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     publiclyAccessible: S.optional(S.Boolean),
     dbParameterGroupIdentifier: S.optional(S.String),
     logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
     influxAuthParametersSecretArn: S.optional(S.String),
     vpcSubnetIds: S.optional(VpcSubnetIdList),
     vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
     failoverMode: S.optional(FailoverMode),
+    clusterConfiguration: S.optional(ClusterConfiguration),
   }),
 ).annotate({
   identifier: "GetDbClusterOutput",
@@ -373,6 +412,7 @@ export interface UpdateDbClusterInput {
   port?: number;
   dbInstanceType?: DbInstanceType;
   failoverMode?: FailoverMode;
+  maintenanceSchedule?: MaintenanceSchedule;
 }
 export const UpdateDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -382,6 +422,7 @@ export const UpdateDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     port: S.optional(S.Number),
     dbInstanceType: S.optional(DbInstanceType),
     failoverMode: S.optional(FailoverMode),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -614,6 +655,7 @@ export interface CreateDbInstanceInput {
   dbParameterGroupIdentifier?: string;
   deploymentType?: DeploymentType;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
+  maintenanceSchedule?: MaintenanceSchedule;
   tags?: { [key: string]: string | undefined };
   port?: number;
   networkType?: NetworkType;
@@ -634,6 +676,7 @@ export const CreateDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     dbParameterGroupIdentifier: S.optional(S.String),
     deploymentType: S.optional(DeploymentType),
     logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
     tags: S.optional(RequestTagMap),
     port: S.optional(S.Number),
     networkType: S.optional(NetworkType),
@@ -666,6 +709,9 @@ export interface CreateDbInstanceOutput {
   dbClusterId?: string;
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
 }
 export const CreateDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -692,6 +738,13 @@ export const CreateDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       dbClusterId: S.optional(S.String),
       instanceMode: S.optional(InstanceMode),
       instanceModes: S.optional(InstanceModeList),
+      maintenanceSchedule: S.optional(MaintenanceSchedule),
+      lastMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      nextMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
     }),
 ).annotate({
   identifier: "CreateDbInstanceOutput",
@@ -729,6 +782,9 @@ export interface GetDbInstanceOutput {
   dbClusterId?: string;
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
 }
 export const GetDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -754,6 +810,13 @@ export const GetDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     dbClusterId: S.optional(S.String),
     instanceMode: S.optional(InstanceMode),
     instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
   }),
 ).annotate({
   identifier: "GetDbInstanceOutput",
@@ -767,6 +830,7 @@ export interface UpdateDbInstanceInput {
   deploymentType?: DeploymentType;
   dbStorageType?: DbStorageType;
   allocatedStorage?: number;
+  maintenanceSchedule?: MaintenanceSchedule;
 }
 export const UpdateDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -778,6 +842,7 @@ export const UpdateDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     deploymentType: S.optional(DeploymentType),
     dbStorageType: S.optional(DbStorageType),
     allocatedStorage: S.optional(S.Number),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -807,6 +872,9 @@ export interface UpdateDbInstanceOutput {
   dbClusterId?: string;
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
 }
 export const UpdateDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -833,6 +901,13 @@ export const UpdateDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       dbClusterId: S.optional(S.String),
       instanceMode: S.optional(InstanceMode),
       instanceModes: S.optional(InstanceModeList),
+      maintenanceSchedule: S.optional(MaintenanceSchedule),
+      lastMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      nextMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
     }),
 ).annotate({
   identifier: "UpdateDbInstanceOutput",
@@ -870,6 +945,9 @@ export interface DeleteDbInstanceOutput {
   dbClusterId?: string;
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
 }
 export const DeleteDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -896,6 +974,13 @@ export const DeleteDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       dbClusterId: S.optional(S.String),
       instanceMode: S.optional(InstanceMode),
       instanceModes: S.optional(InstanceModeList),
+      maintenanceSchedule: S.optional(MaintenanceSchedule),
+      lastMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      nextMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
     }),
 ).annotate({
   identifier: "DeleteDbInstanceOutput",
@@ -989,6 +1074,9 @@ export interface RebootDbInstanceOutput {
   dbClusterId?: string;
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
 }
 export const RebootDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1015,6 +1103,13 @@ export const RebootDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       dbClusterId: S.optional(S.String),
       instanceMode: S.optional(InstanceMode),
       instanceModes: S.optional(InstanceModeList),
+      maintenanceSchedule: S.optional(MaintenanceSchedule),
+      lastMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      nextMaintenanceTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
     }),
 ).annotate({
   identifier: "RebootDbInstanceOutput",

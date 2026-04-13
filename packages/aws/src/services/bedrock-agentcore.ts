@@ -128,11 +128,13 @@ export type EvaluatorId = string;
 export type Span = unknown;
 export type SpanId = string;
 export type TraceId = string;
+export type EvaluationToolName = string;
 export type EvaluatorArn = string;
 export type EvaluatorName = string;
 export type EvaluationExplanation = string | redacted.Redacted<string>;
 export type EvaluationErrorMessage = string;
 export type EvaluationErrorCode = string;
+export type IgnoredReferenceInputField = string;
 export type MemoryId = string;
 export type RequestIdentifier = string;
 export type Namespace = string;
@@ -145,6 +147,16 @@ export type EventId = string;
 export type BranchName = string;
 export type MetadataKey = string;
 export type PaginationToken = string;
+export type RegistryIdentifier = string;
+export type MetadataFilterExpression = unknown;
+export type RegistryArn = string;
+export type RegistryRecordArn = string;
+export type RegistryRecordId = string;
+export type RegistryRecordName = string;
+export type Description = string | redacted.Redacted<string>;
+export type SchemaVersion = string;
+export type InlineContent = string;
+export type RegistryRecordVersion = string;
 
 //# Schemas
 export type UserIdentifier =
@@ -426,6 +438,8 @@ export const InputContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type InputContentBlockList = InputContentBlock[];
 export const InputContentBlockList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(InputContentBlock);
+export type LanguageRuntime = "nodejs" | "deno" | "python" | (string & {});
+export const LanguageRuntime = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ToolArguments {
   code?: string;
   language?: ProgrammingLanguage;
@@ -436,6 +450,7 @@ export interface ToolArguments {
   content?: InputContentBlock[];
   directoryPath?: string;
   taskId?: string;
+  runtime?: LanguageRuntime;
 }
 export const ToolArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -448,6 +463,7 @@ export const ToolArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     content: S.optional(InputContentBlockList),
     directoryPath: S.optional(S.String),
     taskId: S.optional(S.String),
+    runtime: S.optional(LanguageRuntime),
   }),
 ).annotate({ identifier: "ToolArguments" }) as any as S.Schema<ToolArguments>;
 export interface InvokeCodeInterpreterRequest {
@@ -857,6 +873,250 @@ export const InvokeAgentRuntimeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InvokeAgentRuntimeResponse",
 }) as any as S.Schema<InvokeAgentRuntimeResponse>;
+export interface InvokeAgentRuntimeCommandRequestBody {
+  command: string;
+  timeout?: number;
+}
+export const InvokeAgentRuntimeCommandRequestBody =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ command: S.String, timeout: S.optional(S.Number) }),
+  ).annotate({
+    identifier: "InvokeAgentRuntimeCommandRequestBody",
+  }) as any as S.Schema<InvokeAgentRuntimeCommandRequestBody>;
+export interface InvokeAgentRuntimeCommandRequest {
+  contentType?: string;
+  accept?: string;
+  runtimeSessionId?: string;
+  traceId?: string;
+  traceParent?: string;
+  traceState?: string;
+  baggage?: string;
+  agentRuntimeArn: string;
+  qualifier?: string;
+  accountId?: string;
+  body: InvokeAgentRuntimeCommandRequestBody;
+}
+export const InvokeAgentRuntimeCommandRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+      accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
+      runtimeSessionId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+        T.IdempotencyToken(),
+      ),
+      traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+      traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+      traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+      baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
+      agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
+      qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
+      accountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
+      body: InvokeAgentRuntimeCommandRequestBody.pipe(T.HttpPayload()).annotate(
+        { identifier: "InvokeAgentRuntimeCommandRequestBody" },
+      ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeArn}/commands" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "InvokeAgentRuntimeCommandRequest",
+  }) as any as S.Schema<InvokeAgentRuntimeCommandRequest>;
+export interface ContentStartEvent {}
+export const ContentStartEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ContentStartEvent",
+}) as any as S.Schema<ContentStartEvent>;
+export interface ContentDeltaEvent {
+  stdout?: string;
+  stderr?: string;
+}
+export const ContentDeltaEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ stdout: S.optional(S.String), stderr: S.optional(S.String) }),
+).annotate({
+  identifier: "ContentDeltaEvent",
+}) as any as S.Schema<ContentDeltaEvent>;
+export type CommandExecutionStatus = "COMPLETED" | "TIMED_OUT" | (string & {});
+export const CommandExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ContentStopEvent {
+  exitCode: number;
+  status: CommandExecutionStatus;
+}
+export const ContentStopEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ exitCode: S.Number, status: CommandExecutionStatus }),
+).annotate({
+  identifier: "ContentStopEvent",
+}) as any as S.Schema<ContentStopEvent>;
+export interface ResponseChunk {
+  contentStart?: ContentStartEvent;
+  contentDelta?: ContentDeltaEvent;
+  contentStop?: ContentStopEvent;
+}
+export const ResponseChunk = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentStart: S.optional(ContentStartEvent),
+    contentDelta: S.optional(ContentDeltaEvent),
+    contentStop: S.optional(ContentStopEvent),
+  }),
+).annotate({ identifier: "ResponseChunk" }) as any as S.Schema<ResponseChunk>;
+export type InvokeAgentRuntimeCommandStreamOutput =
+  | {
+      chunk: ResponseChunk;
+      accessDeniedException?: never;
+      internalServerException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      chunk?: never;
+      accessDeniedException: AccessDeniedException;
+      internalServerException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      chunk?: never;
+      accessDeniedException?: never;
+      internalServerException: InternalServerException;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      chunk?: never;
+      accessDeniedException?: never;
+      internalServerException?: never;
+      resourceNotFoundException: ResourceNotFoundException;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      chunk?: never;
+      accessDeniedException?: never;
+      internalServerException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException: ServiceQuotaExceededException;
+      throttlingException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      chunk?: never;
+      accessDeniedException?: never;
+      internalServerException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException: ThrottlingException;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      chunk?: never;
+      accessDeniedException?: never;
+      internalServerException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      validationException: ValidationException;
+      runtimeClientError?: never;
+    }
+  | {
+      chunk?: never;
+      accessDeniedException?: never;
+      internalServerException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      validationException?: never;
+      runtimeClientError: RuntimeClientError;
+    };
+export const InvokeAgentRuntimeCommandStreamOutput =
+  /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+    S.Union([
+      S.Struct({ chunk: ResponseChunk }),
+      S.Struct({
+        accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+          identifier: "AccessDeniedException",
+        }),
+      }),
+      S.Struct({
+        internalServerException: S.suspend(
+          () => InternalServerException,
+        ).annotate({ identifier: "InternalServerException" }),
+      }),
+      S.Struct({
+        resourceNotFoundException: S.suspend(
+          () => ResourceNotFoundException,
+        ).annotate({ identifier: "ResourceNotFoundException" }),
+      }),
+      S.Struct({
+        serviceQuotaExceededException: S.suspend(
+          () => ServiceQuotaExceededException,
+        ).annotate({ identifier: "ServiceQuotaExceededException" }),
+      }),
+      S.Struct({
+        throttlingException: S.suspend(() => ThrottlingException).annotate({
+          identifier: "ThrottlingException",
+        }),
+      }),
+      S.Struct({
+        validationException: S.suspend(() => ValidationException).annotate({
+          identifier: "ValidationException",
+        }),
+      }),
+      S.Struct({
+        runtimeClientError: S.suspend(() => RuntimeClientError).annotate({
+          identifier: "RuntimeClientError",
+        }),
+      }),
+    ]),
+  ) as any as S.Schema<
+    stream.Stream<InvokeAgentRuntimeCommandStreamOutput, Error, never>
+  >;
+export interface InvokeAgentRuntimeCommandResponse {
+  runtimeSessionId?: string;
+  traceId?: string;
+  traceParent?: string;
+  traceState?: string;
+  baggage?: string;
+  contentType: string;
+  statusCode?: number;
+  stream: stream.Stream<InvokeAgentRuntimeCommandStreamOutput, Error, never>;
+}
+export const InvokeAgentRuntimeCommandResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      runtimeSessionId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+      ),
+      traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+      traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+      traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+      baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
+      contentType: S.String.pipe(T.HttpHeader("Content-Type")),
+      statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
+      stream: InvokeAgentRuntimeCommandStreamOutput.pipe(T.HttpPayload()),
+    }),
+  ).annotate({
+    identifier: "InvokeAgentRuntimeCommandResponse",
+  }) as any as S.Schema<InvokeAgentRuntimeCommandResponse>;
 export interface StopRuntimeSessionRequest {
   runtimeSessionId: string;
   agentRuntimeArn: string;
@@ -1012,6 +1272,28 @@ export const BrowserExtension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type BrowserExtensions = BrowserExtension[];
 export const BrowserExtensions =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(BrowserExtension);
+export type BrowserEnterprisePolicyType =
+  | "MANAGED"
+  | "RECOMMENDED"
+  | (string & {});
+export const BrowserEnterprisePolicyType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface BrowserEnterprisePolicy {
+  location: ResourceLocation;
+  type?: BrowserEnterprisePolicyType;
+}
+export const BrowserEnterprisePolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      location: ResourceLocation,
+      type: S.optional(BrowserEnterprisePolicyType),
+    }),
+).annotate({
+  identifier: "BrowserEnterprisePolicy",
+}) as any as S.Schema<BrowserEnterprisePolicy>;
+export type BrowserEnterprisePolicies = BrowserEnterprisePolicy[];
+export const BrowserEnterprisePolicies = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  BrowserEnterprisePolicy,
+);
 export interface BrowserProfileConfiguration {
   profileIdentifier: string;
 }
@@ -1099,6 +1381,26 @@ export const ProxyConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProxyConfiguration",
 }) as any as S.Schema<ProxyConfiguration>;
+export interface SecretsManagerLocation {
+  secretArn: string;
+}
+export const SecretsManagerLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ secretArn: S.String }),
+).annotate({
+  identifier: "SecretsManagerLocation",
+}) as any as S.Schema<SecretsManagerLocation>;
+export type CertificateLocation = { secretsManager: SecretsManagerLocation };
+export const CertificateLocation = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ secretsManager: SecretsManagerLocation }),
+]);
+export interface Certificate {
+  location: CertificateLocation;
+}
+export const Certificate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ location: CertificateLocation }),
+).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+export type Certificates = Certificate[];
+export const Certificates = /*@__PURE__*/ /*#__PURE__*/ S.Array(Certificate);
 export interface GetBrowserSessionResponse {
   browserIdentifier: string;
   sessionId: string;
@@ -1106,11 +1408,13 @@ export interface GetBrowserSessionResponse {
   createdAt: Date;
   viewPort?: ViewPort;
   extensions?: BrowserExtension[];
+  enterprisePolicies?: BrowserEnterprisePolicy[];
   profileConfiguration?: BrowserProfileConfiguration;
   sessionTimeoutSeconds?: number;
   status?: BrowserSessionStatus;
   streams?: BrowserSessionStream;
   proxyConfiguration?: ProxyConfiguration;
+  certificates?: Certificate[];
   sessionReplayArtifact?: string;
   lastUpdatedAt?: Date;
 }
@@ -1123,11 +1427,13 @@ export const GetBrowserSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       viewPort: S.optional(ViewPort),
       extensions: S.optional(BrowserExtensions),
+      enterprisePolicies: S.optional(BrowserEnterprisePolicies),
       profileConfiguration: S.optional(BrowserProfileConfiguration),
       sessionTimeoutSeconds: S.optional(S.Number),
       status: S.optional(BrowserSessionStatus),
       streams: S.optional(BrowserSessionStream),
       proxyConfiguration: S.optional(ProxyConfiguration),
+      certificates: S.optional(Certificates),
       sessionReplayArtifact: S.optional(S.String),
       lastUpdatedAt: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1136,6 +1442,399 @@ export const GetBrowserSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBrowserSessionResponse",
 }) as any as S.Schema<GetBrowserSessionResponse>;
+export type MouseButton = "LEFT" | "RIGHT" | "MIDDLE" | (string & {});
+export const MouseButton = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface MouseClickArguments {
+  x: number;
+  y: number;
+  button?: MouseButton;
+  clickCount?: number;
+}
+export const MouseClickArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    x: S.Number,
+    y: S.Number,
+    button: S.optional(MouseButton),
+    clickCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MouseClickArguments",
+}) as any as S.Schema<MouseClickArguments>;
+export interface MouseMoveArguments {
+  x: number;
+  y: number;
+}
+export const MouseMoveArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ x: S.Number, y: S.Number }),
+).annotate({
+  identifier: "MouseMoveArguments",
+}) as any as S.Schema<MouseMoveArguments>;
+export interface MouseDragArguments {
+  endX: number;
+  endY: number;
+  startX: number;
+  startY: number;
+  button?: MouseButton;
+}
+export const MouseDragArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endX: S.Number,
+    endY: S.Number,
+    startX: S.Number,
+    startY: S.Number,
+    button: S.optional(MouseButton),
+  }),
+).annotate({
+  identifier: "MouseDragArguments",
+}) as any as S.Schema<MouseDragArguments>;
+export interface MouseScrollArguments {
+  x: number;
+  y: number;
+  deltaX?: number;
+  deltaY?: number;
+}
+export const MouseScrollArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    x: S.Number,
+    y: S.Number,
+    deltaX: S.optional(S.Number),
+    deltaY: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MouseScrollArguments",
+}) as any as S.Schema<MouseScrollArguments>;
+export interface KeyTypeArguments {
+  text: string;
+}
+export const KeyTypeArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ text: S.String }),
+).annotate({
+  identifier: "KeyTypeArguments",
+}) as any as S.Schema<KeyTypeArguments>;
+export interface KeyPressArguments {
+  key: string;
+  presses?: number;
+}
+export const KeyPressArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, presses: S.optional(S.Number) }),
+).annotate({
+  identifier: "KeyPressArguments",
+}) as any as S.Schema<KeyPressArguments>;
+export type KeyList = string[];
+export const KeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface KeyShortcutArguments {
+  keys: string[];
+}
+export const KeyShortcutArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ keys: KeyList }),
+).annotate({
+  identifier: "KeyShortcutArguments",
+}) as any as S.Schema<KeyShortcutArguments>;
+export type ScreenshotFormat = "PNG" | (string & {});
+export const ScreenshotFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ScreenshotArguments {
+  format?: ScreenshotFormat;
+}
+export const ScreenshotArguments = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ format: S.optional(ScreenshotFormat) }),
+).annotate({
+  identifier: "ScreenshotArguments",
+}) as any as S.Schema<ScreenshotArguments>;
+export type BrowserAction =
+  | {
+      mouseClick: MouseClickArguments;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove: MouseMoveArguments;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag: MouseDragArguments;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll: MouseScrollArguments;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType: KeyTypeArguments;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress: KeyPressArguments;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut: KeyShortcutArguments;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot: ScreenshotArguments;
+    };
+export const BrowserAction = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ mouseClick: MouseClickArguments }),
+  S.Struct({ mouseMove: MouseMoveArguments }),
+  S.Struct({ mouseDrag: MouseDragArguments }),
+  S.Struct({ mouseScroll: MouseScrollArguments }),
+  S.Struct({ keyType: KeyTypeArguments }),
+  S.Struct({ keyPress: KeyPressArguments }),
+  S.Struct({ keyShortcut: KeyShortcutArguments }),
+  S.Struct({ screenshot: ScreenshotArguments }),
+]);
+export interface InvokeBrowserRequest {
+  browserIdentifier: string;
+  sessionId: string;
+  action: BrowserAction;
+}
+export const InvokeBrowserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
+    sessionId: S.String.pipe(T.HttpHeader("x-amzn-browser-session-id")),
+    action: BrowserAction,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/browsers/{browserIdentifier}/sessions/invoke",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "InvokeBrowserRequest",
+}) as any as S.Schema<InvokeBrowserRequest>;
+export type BrowserActionStatus = "SUCCESS" | "FAILED" | (string & {});
+export const BrowserActionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface MouseClickResult {
+  status: BrowserActionStatus;
+  error?: string;
+}
+export const MouseClickResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+).annotate({
+  identifier: "MouseClickResult",
+}) as any as S.Schema<MouseClickResult>;
+export interface MouseMoveResult {
+  status: BrowserActionStatus;
+  error?: string;
+}
+export const MouseMoveResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+).annotate({
+  identifier: "MouseMoveResult",
+}) as any as S.Schema<MouseMoveResult>;
+export interface MouseDragResult {
+  status: BrowserActionStatus;
+  error?: string;
+}
+export const MouseDragResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+).annotate({
+  identifier: "MouseDragResult",
+}) as any as S.Schema<MouseDragResult>;
+export interface MouseScrollResult {
+  status: BrowserActionStatus;
+  error?: string;
+}
+export const MouseScrollResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+).annotate({
+  identifier: "MouseScrollResult",
+}) as any as S.Schema<MouseScrollResult>;
+export interface KeyTypeResult {
+  status: BrowserActionStatus;
+  error?: string;
+}
+export const KeyTypeResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+).annotate({ identifier: "KeyTypeResult" }) as any as S.Schema<KeyTypeResult>;
+export interface KeyPressResult {
+  status: BrowserActionStatus;
+  error?: string;
+}
+export const KeyPressResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+).annotate({ identifier: "KeyPressResult" }) as any as S.Schema<KeyPressResult>;
+export interface KeyShortcutResult {
+  status: BrowserActionStatus;
+  error?: string;
+}
+export const KeyShortcutResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+).annotate({
+  identifier: "KeyShortcutResult",
+}) as any as S.Schema<KeyShortcutResult>;
+export interface ScreenshotResult {
+  status: BrowserActionStatus;
+  error?: string;
+  data?: Uint8Array;
+}
+export const ScreenshotResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: BrowserActionStatus,
+    error: S.optional(S.String),
+    data: S.optional(T.Blob),
+  }),
+).annotate({
+  identifier: "ScreenshotResult",
+}) as any as S.Schema<ScreenshotResult>;
+export type BrowserActionResult =
+  | {
+      mouseClick: MouseClickResult;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove: MouseMoveResult;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag: MouseDragResult;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll: MouseScrollResult;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType: KeyTypeResult;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress: KeyPressResult;
+      keyShortcut?: never;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut: KeyShortcutResult;
+      screenshot?: never;
+    }
+  | {
+      mouseClick?: never;
+      mouseMove?: never;
+      mouseDrag?: never;
+      mouseScroll?: never;
+      keyType?: never;
+      keyPress?: never;
+      keyShortcut?: never;
+      screenshot: ScreenshotResult;
+    };
+export const BrowserActionResult = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ mouseClick: MouseClickResult }),
+  S.Struct({ mouseMove: MouseMoveResult }),
+  S.Struct({ mouseDrag: MouseDragResult }),
+  S.Struct({ mouseScroll: MouseScrollResult }),
+  S.Struct({ keyType: KeyTypeResult }),
+  S.Struct({ keyPress: KeyPressResult }),
+  S.Struct({ keyShortcut: KeyShortcutResult }),
+  S.Struct({ screenshot: ScreenshotResult }),
+]);
+export interface InvokeBrowserResponse {
+  result: BrowserActionResult;
+  sessionId: string;
+}
+export const InvokeBrowserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: BrowserActionResult,
+    sessionId: S.String.pipe(T.HttpHeader("x-amzn-browser-session-id")),
+  }),
+).annotate({
+  identifier: "InvokeBrowserResponse",
+}) as any as S.Schema<InvokeBrowserResponse>;
 export interface ListBrowserSessionsRequest {
   browserIdentifier: string;
   maxResults?: number;
@@ -1214,6 +1913,8 @@ export interface StartBrowserSessionRequest {
   extensions?: BrowserExtension[];
   profileConfiguration?: BrowserProfileConfiguration;
   proxyConfiguration?: ProxyConfiguration;
+  enterprisePolicies?: BrowserEnterprisePolicy[];
+  certificates?: Certificate[];
   clientToken?: string;
 }
 export const StartBrowserSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1228,6 +1929,8 @@ export const StartBrowserSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       extensions: S.optional(BrowserExtensions),
       profileConfiguration: S.optional(BrowserProfileConfiguration),
       proxyConfiguration: S.optional(ProxyConfiguration),
+      enterprisePolicies: S.optional(BrowserEnterprisePolicies),
+      certificates: S.optional(Certificates),
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
@@ -1406,6 +2109,7 @@ export interface GetCodeInterpreterSessionResponse {
   createdAt: Date;
   sessionTimeoutSeconds?: number;
   status?: CodeInterpreterSessionStatus;
+  certificates?: Certificate[];
 }
 export const GetCodeInterpreterSessionResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1416,6 +2120,7 @@ export const GetCodeInterpreterSessionResponse =
       createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       sessionTimeoutSeconds: S.optional(S.Number),
       status: S.optional(CodeInterpreterSessionStatus),
+      certificates: S.optional(Certificates),
     }),
   ).annotate({
     identifier: "GetCodeInterpreterSessionResponse",
@@ -1496,6 +2201,7 @@ export interface StartCodeInterpreterSessionRequest {
   codeInterpreterIdentifier: string;
   name?: string;
   sessionTimeoutSeconds?: number;
+  certificates?: Certificate[];
   clientToken?: string;
 }
 export const StartCodeInterpreterSessionRequest =
@@ -1508,6 +2214,7 @@ export const StartCodeInterpreterSessionRequest =
       ),
       name: S.optional(S.String),
       sessionTimeoutSeconds: S.optional(S.Number),
+      certificates: S.optional(Certificates),
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
@@ -1605,29 +2312,6 @@ export const EvaluationTarget = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ spanIds: SpanIds }),
   S.Struct({ traceIds: TraceIds }),
 ]);
-export interface EvaluateRequest {
-  evaluatorId: string;
-  evaluationInput: EvaluationInput;
-  evaluationTarget?: EvaluationTarget;
-}
-export const EvaluateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
-    evaluationInput: EvaluationInput,
-    evaluationTarget: S.optional(EvaluationTarget),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/evaluations/evaluate/{evaluatorId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "EvaluateRequest",
-}) as any as S.Schema<EvaluateRequest>;
 export interface SpanContext {
   sessionId: string;
   traceId?: string;
@@ -1644,6 +2328,72 @@ export type Context = { spanContext: SpanContext };
 export const Context = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ spanContext: SpanContext }),
 ]);
+export type EvaluationContent = { text: string };
+export const EvaluationContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: S.String }),
+]);
+export type EvaluationContentList = EvaluationContent[];
+export const EvaluationContentList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EvaluationContent);
+export type EvaluationToolNames = string[];
+export const EvaluationToolNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface EvaluationExpectedTrajectory {
+  toolNames?: string[];
+}
+export const EvaluationExpectedTrajectory =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ toolNames: S.optional(EvaluationToolNames) }),
+  ).annotate({
+    identifier: "EvaluationExpectedTrajectory",
+  }) as any as S.Schema<EvaluationExpectedTrajectory>;
+export interface EvaluationReferenceInput {
+  context: Context;
+  expectedResponse?: EvaluationContent;
+  assertions?: EvaluationContent[];
+  expectedTrajectory?: EvaluationExpectedTrajectory;
+}
+export const EvaluationReferenceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      context: Context,
+      expectedResponse: S.optional(EvaluationContent),
+      assertions: S.optional(EvaluationContentList),
+      expectedTrajectory: S.optional(EvaluationExpectedTrajectory),
+    }),
+).annotate({
+  identifier: "EvaluationReferenceInput",
+}) as any as S.Schema<EvaluationReferenceInput>;
+export type EvaluationReferenceInputs = EvaluationReferenceInput[];
+export const EvaluationReferenceInputs = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  EvaluationReferenceInput,
+);
+export interface EvaluateRequest {
+  evaluatorId: string;
+  evaluationInput: EvaluationInput;
+  evaluationTarget?: EvaluationTarget;
+  evaluationReferenceInputs?: EvaluationReferenceInput[];
+}
+export const EvaluateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
+    evaluationInput: EvaluationInput,
+    evaluationTarget: S.optional(EvaluationTarget),
+    evaluationReferenceInputs: S.optional(EvaluationReferenceInputs),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/evaluations/evaluate/{evaluatorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "EvaluateRequest",
+}) as any as S.Schema<EvaluateRequest>;
 export interface TokenUsage {
   inputTokens?: number;
   outputTokens?: number;
@@ -1656,6 +2406,10 @@ export const TokenUsage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     totalTokens: S.optional(S.Number),
   }),
 ).annotate({ identifier: "TokenUsage" }) as any as S.Schema<TokenUsage>;
+export type IgnoredReferenceInputFields = string[];
+export const IgnoredReferenceInputFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
 export interface EvaluationResultContent {
   evaluatorArn: string;
   evaluatorId: string;
@@ -1667,6 +2421,7 @@ export interface EvaluationResultContent {
   tokenUsage?: TokenUsage;
   errorMessage?: string;
   errorCode?: string;
+  ignoredReferenceInputFields?: string[];
 }
 export const EvaluationResultContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1681,6 +2436,7 @@ export const EvaluationResultContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       tokenUsage: S.optional(TokenUsage),
       errorMessage: S.optional(S.String),
       errorCode: S.optional(S.String),
+      ignoredReferenceInputFields: S.optional(IgnoredReferenceInputFields),
     }),
 ).annotate({
   identifier: "EvaluationResultContent",
@@ -2457,11 +3213,20 @@ export const ListMemoryRecordsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListMemoryRecordsOutput",
 }) as any as S.Schema<ListMemoryRecordsOutput>;
+export type EventFilterCondition = "HAS_EVENTS" | (string & {});
+export const EventFilterCondition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SessionFilter {
+  eventFilter?: EventFilterCondition;
+}
+export const SessionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ eventFilter: S.optional(EventFilterCondition) }),
+).annotate({ identifier: "SessionFilter" }) as any as S.Schema<SessionFilter>;
 export interface ListSessionsInput {
   memoryId: string;
   actorId: string;
   maxResults?: number;
   nextToken?: string;
+  filter?: SessionFilter;
 }
 export const ListSessionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2469,6 +3234,7 @@ export const ListSessionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     actorId: S.String.pipe(T.HttpLabel("actorId")),
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
+    filter: S.optional(SessionFilter),
   }).pipe(
     T.all(
       T.Http({
@@ -2628,6 +3394,195 @@ export const StartMemoryExtractionJobOutput =
   ).annotate({
     identifier: "StartMemoryExtractionJobOutput",
   }) as any as S.Schema<StartMemoryExtractionJobOutput>;
+export type RegistryIdList = string[];
+export const RegistryIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface SearchRegistryRecordsRequest {
+  searchQuery: string;
+  registryIds: string[];
+  maxResults?: number;
+  filters?: any;
+}
+export const SearchRegistryRecordsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      searchQuery: S.String,
+      registryIds: RegistryIdList,
+      maxResults: S.optional(S.Number),
+      filters: S.optional(S.Any),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/registry-records/search" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "SearchRegistryRecordsRequest",
+  }) as any as S.Schema<SearchRegistryRecordsRequest>;
+export type DescriptorType =
+  | "MCP"
+  | "A2A"
+  | "CUSTOM"
+  | "AGENT_SKILLS"
+  | (string & {});
+export const DescriptorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ServerDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const ServerDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServerDefinition",
+}) as any as S.Schema<ServerDefinition>;
+export interface ToolsDefinition {
+  protocolVersion?: string;
+  inlineContent?: string;
+}
+export const ToolsDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocolVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ToolsDefinition",
+}) as any as S.Schema<ToolsDefinition>;
+export interface McpDescriptor {
+  server: ServerDefinition;
+  tools: ToolsDefinition;
+}
+export const McpDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ server: ServerDefinition, tools: ToolsDefinition }),
+).annotate({ identifier: "McpDescriptor" }) as any as S.Schema<McpDescriptor>;
+export interface AgentCardDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const AgentCardDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentCardDefinition",
+}) as any as S.Schema<AgentCardDefinition>;
+export interface A2aDescriptor {
+  agentCard: AgentCardDefinition;
+}
+export const A2aDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ agentCard: AgentCardDefinition }),
+).annotate({ identifier: "A2aDescriptor" }) as any as S.Schema<A2aDescriptor>;
+export interface CustomDescriptor {
+  inlineContent?: string;
+}
+export const CustomDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ inlineContent: S.optional(S.String) }),
+).annotate({
+  identifier: "CustomDescriptor",
+}) as any as S.Schema<CustomDescriptor>;
+export interface SkillMdDefinition {
+  inlineContent?: string;
+}
+export const SkillMdDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ inlineContent: S.optional(S.String) }),
+).annotate({
+  identifier: "SkillMdDefinition",
+}) as any as S.Schema<SkillMdDefinition>;
+export interface SkillDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const SkillDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SkillDefinition",
+}) as any as S.Schema<SkillDefinition>;
+export interface AgentSkillsDescriptor {
+  skillMd: SkillMdDefinition;
+  skillDefinition?: SkillDefinition;
+}
+export const AgentSkillsDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skillMd: SkillMdDefinition,
+    skillDefinition: S.optional(SkillDefinition),
+  }),
+).annotate({
+  identifier: "AgentSkillsDescriptor",
+}) as any as S.Schema<AgentSkillsDescriptor>;
+export interface Descriptors {
+  mcp?: McpDescriptor;
+  a2a?: A2aDescriptor;
+  custom?: CustomDescriptor;
+  agentSkills?: AgentSkillsDescriptor;
+}
+export const Descriptors = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mcp: S.optional(McpDescriptor),
+    a2a: S.optional(A2aDescriptor),
+    custom: S.optional(CustomDescriptor),
+    agentSkills: S.optional(AgentSkillsDescriptor),
+  }),
+).annotate({ identifier: "Descriptors" }) as any as S.Schema<Descriptors>;
+export type RegistryRecordStatus =
+  | "DRAFT"
+  | "PENDING_APPROVAL"
+  | "APPROVED"
+  | "REJECTED"
+  | "DEPRECATED"
+  | (string & {});
+export const RegistryRecordStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface RegistryRecordSummary {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  descriptors: Descriptors;
+  version: string;
+  status: RegistryRecordStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const RegistryRecordSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryArn: S.String,
+    recordArn: S.String,
+    recordId: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    descriptorType: DescriptorType,
+    descriptors: Descriptors,
+    version: S.String,
+    status: RegistryRecordStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "RegistryRecordSummary",
+}) as any as S.Schema<RegistryRecordSummary>;
+export type RegistryRecordSummaryList = RegistryRecordSummary[];
+export const RegistryRecordSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RegistryRecordSummary,
+);
+export interface SearchRegistryRecordsResponse {
+  registryRecords: RegistryRecordSummary[];
+}
+export const SearchRegistryRecordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ registryRecords: RegistryRecordSummaryList }),
+  ).annotate({
+    identifier: "SearchRegistryRecordsResponse",
+  }) as any as S.Schema<SearchRegistryRecordsResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
@@ -2943,7 +3898,7 @@ export type InvokeAgentRuntimeError =
 /**
  * Sends a request to an agent or tool hosted in an Amazon Bedrock AgentCore Runtime and receives responses in real-time.
  *
- * To invoke an agent you must specify the AgentCore Runtime ARN and provide a payload containing your request. You can optionally specify a qualifier to target a specific version or endpoint of the agent.
+ * To invoke an agent, you can specify either the AgentCore Runtime ARN or the agent ID with an account ID, and provide a payload containing your request. When you use the agent ID instead of the full ARN, you don't need to URL-encode the identifier. You can optionally specify a qualifier to target a specific endpoint of the agent.
  *
  * This operation supports streaming responses, allowing you to receive partial responses as they become available. We recommend using pagination to ensure that the operation returns quickly and successfully when processing large responses.
  *
@@ -2961,6 +3916,40 @@ export const invokeAgentRuntime: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvokeAgentRuntimeRequest,
   output: InvokeAgentRuntimeResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    RuntimeClientError,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type InvokeAgentRuntimeCommandError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | RuntimeClientError
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Executes a command in a runtime session container and streams the output back to the caller. This operation allows you to run shell commands within the agent runtime environment and receive real-time streaming responses including standard output and standard error.
+ *
+ * To invoke a command, you must specify the agent runtime ARN and a runtime session ID. The command execution supports streaming responses, allowing you to receive output as it becomes available through `contentStart`, `contentDelta`, and `contentStop` events.
+ *
+ * To use this operation, you must have the `bedrock-agentcore:InvokeAgentRuntimeCommand` permission.
+ */
+export const invokeAgentRuntimeCommand: API.OperationMethod<
+  InvokeAgentRuntimeCommandRequest,
+  InvokeAgentRuntimeCommandResponse,
+  InvokeAgentRuntimeCommandError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InvokeAgentRuntimeCommandRequest,
+  output: InvokeAgentRuntimeCommandResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3079,6 +4068,44 @@ export const getBrowserSession: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type InvokeBrowserError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Invokes an operating system-level action on a browser session in Amazon Bedrock AgentCore. This operation provides direct OS-level control over browser sessions, enabling mouse actions, keyboard input, and screenshots that the WebSocket-based Chrome DevTools Protocol (CDP) cannot handle — such as interacting with print dialogs, context menus, and JavaScript alerts.
+ *
+ * You send a request with exactly one action in the `BrowserAction` union, and receive a corresponding result in the `BrowserActionResult` union.
+ *
+ * The following operations are related to `InvokeBrowser`:
+ *
+ * - StartBrowserSession
+ *
+ * - GetBrowserSession
+ *
+ * - StopBrowserSession
+ */
+export const invokeBrowser: API.OperationMethod<
+  InvokeBrowserRequest,
+  InvokeBrowserResponse,
+  InvokeBrowserError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InvokeBrowserRequest,
+  output: InvokeBrowserResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type ListBrowserSessionsError =
   | AccessDeniedException
   | InternalServerException
@@ -3138,6 +4165,8 @@ export type StartBrowserSessionError =
  * - SaveBrowserSessionProfile
  *
  * - StopBrowserSession
+ *
+ * - InvokeBrowser
  */
 export const startBrowserSession: API.OperationMethod<
   StartBrowserSessionRequest,
@@ -3879,6 +4908,8 @@ export type ListSessionsError =
 /**
  * Lists sessions in an AgentCore Memory resource based on specified criteria. We recommend using pagination to ensure that the operation returns quickly and successfully.
  *
+ * Empty sessions are automatically deleted after one day.
+ *
  * To use this operation, you must have the `bedrock-agentcore:ListSessions` permission.
  */
 export const listSessions: API.OperationMethod<
@@ -4000,6 +5031,34 @@ export const startMemoryExtractionJob: API.OperationMethod<
     ServiceException,
     ServiceQuotaExceededException,
     ThrottledException,
+    ValidationException,
+  ],
+}));
+export type SearchRegistryRecordsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Searches for registry records using semantic, lexical, or hybrid queries. Returns metadata for matching records ordered by relevance within the specified registry.
+ */
+export const searchRegistryRecords: API.OperationMethod<
+  SearchRegistryRecordsRequest,
+  SearchRegistryRecordsResponse,
+  SearchRegistryRecordsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SearchRegistryRecordsRequest,
+  output: SearchRegistryRecordsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
     ValidationException,
   ],
 }));

@@ -59,6 +59,8 @@ export type AlwaysOnCapacity = number;
 export type OnDemandCapacity = number;
 export type TargetIdleCapacity = number;
 export type MaximumCapacity = number;
+export type VpcId = string;
+export type Ipv4CidrBlock = string;
 export type CapacityValue = number;
 export type Arn = string;
 export type ClientToken = string;
@@ -84,12 +86,24 @@ export type FilePath = string;
 export type ApplicationLogOutputUri = string;
 
 //# Schemas
+export type Ipv4CidrBlockList = string[];
+export const Ipv4CidrBlockList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface VpcTransitConfiguration {
+  VpcId: string;
+  Ipv4CidrBlocks: string[];
+}
+export const VpcTransitConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ VpcId: S.String, Ipv4CidrBlocks: Ipv4CidrBlockList }),
+).annotate({
+  identifier: "VpcTransitConfiguration",
+}) as any as S.Schema<VpcTransitConfiguration>;
 export interface LocationConfiguration {
   LocationName: string;
   AlwaysOnCapacity?: number;
   OnDemandCapacity?: number;
   TargetIdleCapacity?: number;
   MaximumCapacity?: number;
+  VpcTransitConfiguration?: VpcTransitConfiguration;
 }
 export const LocationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -98,6 +112,7 @@ export const LocationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     OnDemandCapacity: S.optional(S.Number),
     TargetIdleCapacity: S.optional(S.Number),
     MaximumCapacity: S.optional(S.Number),
+    VpcTransitConfiguration: S.optional(VpcTransitConfiguration),
   }),
 ).annotate({
   identifier: "LocationConfiguration",
@@ -135,6 +150,23 @@ export type StreamGroupLocationStatus =
   | "REMOVING"
   | (string & {});
 export const StreamGroupLocationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface VpcTransitConfigurationResponse {
+  VpcId?: string;
+  Ipv4CidrBlocks?: string[];
+  TransitGatewayId?: string;
+  TransitGatewayResourceShareArn?: string;
+}
+export const VpcTransitConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      VpcId: S.optional(S.String),
+      Ipv4CidrBlocks: S.optional(Ipv4CidrBlockList),
+      TransitGatewayId: S.optional(S.String),
+      TransitGatewayResourceShareArn: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "VpcTransitConfigurationResponse",
+  }) as any as S.Schema<VpcTransitConfigurationResponse>;
 export interface LocationState {
   LocationName?: string;
   Status?: StreamGroupLocationStatus;
@@ -145,6 +177,8 @@ export interface LocationState {
   RequestedCapacity?: number;
   AllocatedCapacity?: number;
   IdleCapacity?: number;
+  InternalVpcIpv4CidrBlock?: string;
+  VpcTransitConfiguration?: VpcTransitConfigurationResponse;
 }
 export const LocationState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -157,6 +191,8 @@ export const LocationState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     RequestedCapacity: S.optional(S.Number),
     AllocatedCapacity: S.optional(S.Number),
     IdleCapacity: S.optional(S.Number),
+    InternalVpcIpv4CidrBlock: S.optional(S.String),
+    VpcTransitConfiguration: S.optional(VpcTransitConfigurationResponse),
   }),
 ).annotate({ identifier: "LocationState" }) as any as S.Schema<LocationState>;
 export type LocationStates = LocationState[];
@@ -1923,6 +1959,8 @@ export type StartStreamSessionError =
  * - Windows runtime: 10 minutes
  *
  * - **Connection timeout**: The amount of time that Amazon GameLift Streams waits for a client to connect to a stream session in `ACTIVE` status, or reconnect to a stream session in `PENDING_CLIENT_RECONNECTION` status, the latter of which occurs when a client disconnects or loses connection from a stream session. If no client connects before the timeout, Amazon GameLift Streams terminates the stream session. This value is specified by `ConnectionTimeoutSeconds` in the `StartStreamSession` parameters.
+ *
+ * - **Idle timeout**: A stream session will be terminated if no user input has been received for 60 minutes.
  *
  * - **Maximum session length**: A stream session will be terminated after this amount of time has elapsed since it started, regardless of any existing client connections. This value is specified by `SessionLengthSeconds` in the `StartStreamSession` parameters.
  *

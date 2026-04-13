@@ -185,6 +185,7 @@ export const PostInvoicesCreatePreviewInput =
             }),
           ),
           quantity: Schema.optional(Schema.Number),
+          quantity_decimal: Schema.optional(Schema.String),
           tax_behavior: Schema.optional(
             Schema.Literals(["exclusive", "inclusive", "unspecified"]),
           ),
@@ -757,6 +758,7 @@ export const PostInvoicesCreatePreviewOutput =
           ),
           pricing: Schema.Unknown,
           quantity: Schema.NullOr(Schema.Number),
+          quantity_decimal: Schema.NullOr(Schema.String),
           subscription: Schema.Unknown,
           subtotal: Schema.Number,
           taxes: Schema.NullOr(

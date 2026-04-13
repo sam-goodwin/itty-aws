@@ -11,9 +11,11 @@ import * as T from "../traits.ts";
 // Input Schema
 export const BackupShortTermRetentionPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -34,10 +36,12 @@ export type BackupShortTermRetentionPoliciesCreateOrUpdateOutput =
 /**
  * Updates a database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param policyName - The policy name. Should always be "default".
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param policyName - The policy name. Should always be default.
  */
 export const BackupShortTermRetentionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -47,9 +51,11 @@ export const BackupShortTermRetentionPoliciesCreateOrUpdate =
 // Input Schema
 export const BackupShortTermRetentionPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -70,10 +76,12 @@ export type BackupShortTermRetentionPoliciesGetOutput =
 /**
  * Gets a database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param policyName - The policy name. Should always be "default".
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param policyName - The policy name. Should always be default.
  */
 export const BackupShortTermRetentionPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -83,8 +91,10 @@ export const BackupShortTermRetentionPoliciesGet =
 // Input Schema
 export const BackupShortTermRetentionPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -98,7 +108,7 @@ export type BackupShortTermRetentionPoliciesListByDatabaseInput =
 // Output Schema
 export const BackupShortTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type BackupShortTermRetentionPoliciesListByDatabaseOutput =
@@ -108,9 +118,11 @@ export type BackupShortTermRetentionPoliciesListByDatabaseOutput =
 /**
  * Gets a database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const BackupShortTermRetentionPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -120,9 +132,11 @@ export const BackupShortTermRetentionPoliciesListByDatabase =
 // Input Schema
 export const BackupShortTermRetentionPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -143,10 +157,12 @@ export type BackupShortTermRetentionPoliciesUpdateOutput =
 /**
  * Updates a database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param policyName - The policy name. Should always be "default".
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param policyName - The policy name. Should always be default.
  */
 export const BackupShortTermRetentionPoliciesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -156,8 +172,9 @@ export const BackupShortTermRetentionPoliciesUpdate =
 // Input Schema
 export const CapabilitiesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     include: Schema.optional(
       Schema.Literals([
         "supportedEditions",
@@ -168,7 +185,6 @@ export const CapabilitiesListByLocationInput =
         "supportedJobAgentVersions",
       ]),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -814,6 +830,22 @@ export const CapabilitiesListByLocationOutput =
                           Schema.Struct({
                             name: Schema.optional(Schema.String),
                             value: Schema.optional(Schema.Number),
+                            supportedMemorySizesInGB: Schema.optional(
+                              Schema.Struct({
+                                minValue: Schema.optional(Schema.Number),
+                                maxValue: Schema.optional(Schema.Number),
+                                scaleSize: Schema.optional(Schema.Number),
+                                status: Schema.optional(
+                                  Schema.Literals([
+                                    "Visible",
+                                    "Available",
+                                    "Default",
+                                    "Disabled",
+                                  ]),
+                                ),
+                                reason: Schema.optional(Schema.String),
+                              }),
+                            ),
                             supportedMemoryLimitsMB: Schema.optional(
                               Schema.Struct({
                                 minValue: Schema.optional(Schema.Number),
@@ -1168,6 +1200,7 @@ export const CapabilitiesListByLocationOutput =
         }),
       ),
     ),
+    isZoneResilientProvisioningAllowed: Schema.optional(Schema.Boolean),
     status: Schema.optional(
       Schema.Literals(["Visible", "Available", "Default", "Disabled"]),
     ),
@@ -1180,10 +1213,10 @@ export type CapabilitiesListByLocationOutput =
 /**
  * Gets the subscription capabilities available for the specified location.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location name whose capabilities are retrieved.
  * @param include - If specified, restricts the response to only include the selected item.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const CapabilitiesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1194,11 +1227,13 @@ export const CapabilitiesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1219,10 +1254,12 @@ export type DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
 /**
  * Creates or updates a database's Advanced Threat Protection state.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseAdvancedThreatProtectionSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1232,11 +1269,13 @@ export const DatabaseAdvancedThreatProtectionSettingsCreateOrUpdate =
 // Input Schema
 export const DatabaseAdvancedThreatProtectionSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1257,10 +1296,12 @@ export type DatabaseAdvancedThreatProtectionSettingsGetOutput =
 /**
  * Gets a database's Advanced Threat Protection state.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseAdvancedThreatProtectionSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1270,8 +1311,10 @@ export const DatabaseAdvancedThreatProtectionSettingsGet =
 // Input Schema
 export const DatabaseAdvancedThreatProtectionSettingsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1285,7 +1328,7 @@ export type DatabaseAdvancedThreatProtectionSettingsListByDatabaseInput =
 // Output Schema
 export const DatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput =
@@ -1295,9 +1338,11 @@ export type DatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput =
 /**
  * Gets a list of database's Advanced Threat Protection states.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseAdvancedThreatProtectionSettingsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1307,9 +1352,11 @@ export const DatabaseAdvancedThreatProtectionSettingsListByDatabase =
 // Input Schema
 export const DatabaseAdvisorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    advisorName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    advisorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1328,10 +1375,12 @@ export type DatabaseAdvisorsGetOutput = typeof DatabaseAdvisorsGetOutput.Type;
 /**
  * Gets a database advisor.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param advisorName - The name of the Database Advisor.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseAdvisorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabaseAdvisorsGetInput,
@@ -1340,10 +1389,12 @@ export const DatabaseAdvisorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabaseAdvisorsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1363,10 +1414,12 @@ export type DatabaseAdvisorsListByDatabaseOutput =
 /**
  * Gets a list of database advisors.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseAdvisorsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1376,9 +1429,11 @@ export const DatabaseAdvisorsListByDatabase =
 // Input Schema
 export const DatabaseAdvisorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    advisorName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    advisorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1399,10 +1454,12 @@ export type DatabaseAdvisorsUpdateOutput =
 /**
  * Updates a database advisor.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param advisorName - The name of the Database Advisor.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseAdvisorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1413,8 +1470,10 @@ export const DatabaseAdvisorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseAutomaticTuningGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1435,9 +1494,11 @@ export type DatabaseAutomaticTuningGetOutput =
 /**
  * Gets a database's automatic tuning.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseAutomaticTuningGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1448,8 +1509,10 @@ export const DatabaseAutomaticTuningGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseAutomaticTuningUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1470,9 +1533,11 @@ export type DatabaseAutomaticTuningUpdateOutput =
 /**
  * Update automatic tuning properties for target database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseAutomaticTuningUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1482,8 +1547,11 @@ export const DatabaseAutomaticTuningUpdate =
 // Input Schema
 export const DatabaseBlobAuditingPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1504,9 +1572,12 @@ export type DatabaseBlobAuditingPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates a database's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const DatabaseBlobAuditingPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1516,8 +1587,11 @@ export const DatabaseBlobAuditingPoliciesCreateOrUpdate =
 // Input Schema
 export const DatabaseBlobAuditingPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1538,9 +1612,12 @@ export type DatabaseBlobAuditingPoliciesGetOutput =
 /**
  * Gets a database's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const DatabaseBlobAuditingPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1550,8 +1627,10 @@ export const DatabaseBlobAuditingPoliciesGet =
 // Input Schema
 export const DatabaseBlobAuditingPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1565,7 +1644,7 @@ export type DatabaseBlobAuditingPoliciesListByDatabaseInput =
 // Output Schema
 export const DatabaseBlobAuditingPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseBlobAuditingPoliciesListByDatabaseOutput =
@@ -1575,9 +1654,11 @@ export type DatabaseBlobAuditingPoliciesListByDatabaseOutput =
 /**
  * Lists auditing settings of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseBlobAuditingPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1587,11 +1668,13 @@ export const DatabaseBlobAuditingPoliciesListByDatabase =
 // Input Schema
 export const DatabaseColumnsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1610,12 +1693,14 @@ export type DatabaseColumnsGetOutput = typeof DatabaseColumnsGetOutput.Type;
 /**
  * Get database column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseColumnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabaseColumnsGetInput,
@@ -1624,14 +1709,16 @@ export const DatabaseColumnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabaseColumnsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     schema: Schema.optional(Schema.String),
     table: Schema.optional(Schema.String),
     column: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     $skiptoken: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -1644,7 +1731,7 @@ export type DatabaseColumnsListByDatabaseInput =
 // Output Schema
 export const DatabaseColumnsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseColumnsListByDatabaseOutput =
@@ -1654,10 +1741,12 @@ export type DatabaseColumnsListByDatabaseOutput =
 /**
  * List database columns
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param $skiptoken - An opaque token that identifies a starting point in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseColumnsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1667,12 +1756,14 @@ export const DatabaseColumnsListByDatabase =
 // Input Schema
 export const DatabaseColumnsListByTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1685,7 +1776,7 @@ export type DatabaseColumnsListByTableInput =
 // Output Schema
 export const DatabaseColumnsListByTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseColumnsListByTableOutput =
@@ -1695,12 +1786,14 @@ export type DatabaseColumnsListByTableOutput =
 /**
  * List database columns
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseColumnsListByTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1711,9 +1804,11 @@ export const DatabaseColumnsListByTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseEncryptionProtectorsRevalidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1734,10 +1829,12 @@ export type DatabaseEncryptionProtectorsRevalidateOutput =
 /**
  * Revalidates an existing encryption protector for a particular database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param encryptionProtectorName - The name of the encryption protector to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseEncryptionProtectorsRevalidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1747,9 +1844,11 @@ export const DatabaseEncryptionProtectorsRevalidate =
 // Input Schema
 export const DatabaseEncryptionProtectorsRevertInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1770,10 +1869,12 @@ export type DatabaseEncryptionProtectorsRevertOutput =
 /**
  * Reverts an existing encryption protector for a particular database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param encryptionProtectorName - The name of the encryption protector to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseEncryptionProtectorsRevert =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1783,9 +1884,11 @@ export const DatabaseEncryptionProtectorsRevert =
 // Input Schema
 export const DatabaseExtensionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    extensionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    extensionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1806,9 +1909,11 @@ export type DatabaseExtensionsCreateOrUpdateOutput =
 /**
  * Perform a database extension operation, like database import, database export, or polybase import
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseExtensionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1818,9 +1923,11 @@ export const DatabaseExtensionsCreateOrUpdate =
 // Input Schema
 export const DatabaseExtensionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    extensionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    extensionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1840,9 +1947,11 @@ export type DatabaseExtensionsGetOutput =
 /**
  * Gets a database extension. This will return resource not found as it is not supported.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1853,8 +1962,10 @@ export const DatabaseExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseExtensionsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1878,9 +1989,11 @@ export type DatabaseExtensionsListByDatabaseOutput =
 /**
  * List database extension. This will return an empty list as it is not supported.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseExtensionsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1890,9 +2003,11 @@ export const DatabaseExtensionsListByDatabase =
 // Input Schema
 export const DatabaseOperationsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1913,10 +2028,12 @@ export type DatabaseOperationsCancelOutput =
 /**
  * Cancels the asynchronous operation on the database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param operationId - The operation identifier.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseOperationsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1927,8 +2044,10 @@ export const DatabaseOperationsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseOperationsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1942,7 +2061,7 @@ export type DatabaseOperationsListByDatabaseInput =
 // Output Schema
 export const DatabaseOperationsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseOperationsListByDatabaseOutput =
@@ -1952,9 +2071,11 @@ export type DatabaseOperationsListByDatabaseOutput =
 /**
  * Gets a list of operations performed on the database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseOperationsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1964,10 +2085,12 @@ export const DatabaseOperationsListByDatabase =
 // Input Schema
 export const DatabaseRecommendedActionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     advisorName: Schema.String.pipe(T.PathParam()),
     recommendedActionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1988,11 +2111,13 @@ export type DatabaseRecommendedActionsGetOutput =
 /**
  * Gets a database recommended action.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param advisorName - The name of the Database Advisor.
  * @param recommendedActionName - The name of Database Recommended Action.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseRecommendedActionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2002,9 +2127,11 @@ export const DatabaseRecommendedActionsGet =
 // Input Schema
 export const DatabaseRecommendedActionsListByDatabaseAdvisorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    advisorName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    advisorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2025,10 +2152,12 @@ export type DatabaseRecommendedActionsListByDatabaseAdvisorOutput =
 /**
  * Gets list of Database Recommended Actions.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param advisorName - The name of the Database Advisor.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseRecommendedActionsListByDatabaseAdvisor =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2038,10 +2167,12 @@ export const DatabaseRecommendedActionsListByDatabaseAdvisor =
 // Input Schema
 export const DatabaseRecommendedActionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     advisorName: Schema.String.pipe(T.PathParam()),
     recommendedActionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2062,11 +2193,13 @@ export type DatabaseRecommendedActionsUpdateOutput =
 /**
  * Updates a database recommended action.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param advisorName - The name of the Database Advisor.
  * @param recommendedActionName - The name of Database Recommended Action.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseRecommendedActionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2076,9 +2209,11 @@ export const DatabaseRecommendedActionsUpdate =
 // Input Schema
 export const DatabaseSchemasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    schemaName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2097,10 +2232,12 @@ export type DatabaseSchemasGetOutput = typeof DatabaseSchemasGetOutput.Type;
 /**
  * Get database schema
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabaseSchemasGetInput,
@@ -2109,10 +2246,12 @@ export const DatabaseSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabaseSchemasListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2125,7 +2264,7 @@ export type DatabaseSchemasListByDatabaseInput =
 // Output Schema
 export const DatabaseSchemasListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseSchemasListByDatabaseOutput =
@@ -2135,10 +2274,12 @@ export type DatabaseSchemasListByDatabaseOutput =
 /**
  * List database schemas
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSchemasListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2148,8 +2289,10 @@ export const DatabaseSchemasListByDatabase =
 // Input Schema
 export const DatabasesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2163,8 +2306,8 @@ export type DatabasesCreateOrUpdateInput =
 // Output Schema
 export const DatabasesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type DatabasesCreateOrUpdateOutput =
   typeof DatabasesCreateOrUpdateOutput.Type;
@@ -2173,9 +2316,11 @@ export type DatabasesCreateOrUpdateOutput =
 /**
  * Creates a new database or updates an existing database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2185,8 +2330,10 @@ export const DatabasesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2204,9 +2351,11 @@ export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
 /**
  * Deletes the database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesDeleteInput,
@@ -2215,11 +2364,11 @@ export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabaseSecurityAlertPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2240,12 +2389,12 @@ export type DatabaseSecurityAlertPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates a database's security alert policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the  server.
- * @param databaseName - The name of the  database for which the security alert policy is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param securityAlertPolicyName - The name of the security alert policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSecurityAlertPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2255,11 +2404,11 @@ export const DatabaseSecurityAlertPoliciesCreateOrUpdate =
 // Input Schema
 export const DatabaseSecurityAlertPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2280,12 +2429,12 @@ export type DatabaseSecurityAlertPoliciesGetOutput =
 /**
  * Gets a database's security alert policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the  server.
- * @param databaseName - The name of the  database for which the security alert policy is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param securityAlertPolicyName - The name of the security alert policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSecurityAlertPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2295,10 +2444,10 @@ export const DatabaseSecurityAlertPoliciesGet =
 // Input Schema
 export const DatabaseSecurityAlertPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2322,11 +2471,11 @@ export type DatabaseSecurityAlertPoliciesListByDatabaseOutput =
 /**
  * Gets a list of database's security alert policies.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the  server.
- * @param databaseName - The name of the  database for which the security alert policy is defined.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseSecurityAlertPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2335,8 +2484,10 @@ export const DatabaseSecurityAlertPoliciesListByDatabase =
   }));
 // Input Schema
 export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2356,9 +2507,11 @@ export type DatabasesExportOutput = typeof DatabasesExportOutput.Type;
 /**
  * Exports a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesExport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesExportInput,
@@ -2367,13 +2520,14 @@ export const DatabasesExport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesFailoverInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     replicaType: Schema.optional(
       Schema.Literals(["Primary", "ReadableSecondary"]),
     ),
-    "api-version": Schema.String,
   },
 ).pipe(
   T.Http({
@@ -2391,11 +2545,12 @@ export type DatabasesFailoverOutput = typeof DatabasesFailoverOutput.Type;
 /**
  * Failovers a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to failover.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param replicaType - The type of replica to be failed over.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabasesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesFailoverInput,
@@ -2403,11 +2558,13 @@ export const DatabasesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
   $expand: Schema.optional(Schema.String),
   $filter: Schema.optional(Schema.String),
-  "api-version": Schema.String,
 }).pipe(
   T.Http({
     method: "GET",
@@ -2418,8 +2575,8 @@ export type DatabasesGetInput = typeof DatabasesGetInput.Type;
 
 // Output Schema
 export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
 
@@ -2427,11 +2584,13 @@ export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
 /**
  * Gets a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param $expand - The child resources to include in the response.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesGetInput,
@@ -2439,8 +2598,10 @@ export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2460,9 +2621,11 @@ export type DatabasesImportOutput = typeof DatabasesImportOutput.Type;
 /**
  * Imports a bacpac into a new database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesImport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesImportInput,
@@ -2471,9 +2634,10 @@ export const DatabasesImport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesListByElasticPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticPoolName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    elasticPoolName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2487,13 +2651,11 @@ export type DatabasesListByElasticPoolInput =
 // Output Schema
 export const DatabasesListByElasticPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2504,10 +2666,11 @@ export type DatabasesListByElasticPoolOutput =
 /**
  * Gets a list of databases in an elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param elasticPoolName - The name of the elastic pool.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabasesListByElasticPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2518,10 +2681,11 @@ export const DatabasesListByElasticPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $skipToken: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2533,13 +2697,11 @@ export type DatabasesListByServerInput = typeof DatabasesListByServerInput.Type;
 // Output Schema
 export const DatabasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2550,9 +2712,10 @@ export type DatabasesListByServerOutput =
 /**
  * Gets a list of databases.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const DatabasesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2563,8 +2726,9 @@ export const DatabasesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabasesListInaccessibleByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2578,13 +2742,11 @@ export type DatabasesListInaccessibleByServerInput =
 // Output Schema
 export const DatabasesListInaccessibleByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2595,9 +2757,10 @@ export type DatabasesListInaccessibleByServerOutput =
 /**
  * Gets a list of inaccessible databases in a logical server
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const DatabasesListInaccessibleByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2606,9 +2769,10 @@ export const DatabasesListInaccessibleByServer =
   }));
 // Input Schema
 export const DatabasesPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2620,8 +2784,8 @@ export type DatabasesPauseInput = typeof DatabasesPauseInput.Type;
 
 // Output Schema
 export const DatabasesPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type DatabasesPauseOutput = typeof DatabasesPauseOutput.Type;
 
@@ -2629,10 +2793,11 @@ export type DatabasesPauseOutput = typeof DatabasesPauseOutput.Type;
 /**
  * Pauses a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to be paused.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesPause = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesPauseInput,
@@ -2641,12 +2806,14 @@ export const DatabasesPause = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2667,10 +2834,12 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
 /**
  * Add a database's vulnerability assessment rule baseline list.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2681,12 +2850,14 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesCreateOrUpdate =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentBaselinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2707,10 +2878,12 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesGetOutput =
 /**
  * Gets a list of database's sql vulnerability assessment rule baselines.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentBaselinesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2720,11 +2893,13 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesGet =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2738,7 +2913,7 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAss
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessmentOutput =
@@ -2748,10 +2923,12 @@ export type DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAss
 /**
  * Gets a list of database's sql vulnerability assessment rule baselines.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAssessment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2763,11 +2940,13 @@ export const DatabaseSqlVulnerabilityAssessmentBaselinesListBySqlVulnerabilityAs
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2788,10 +2967,12 @@ export type DatabaseSqlVulnerabilityAssessmentExecuteScanExecuteOutput =
 /**
  * Executes a Vulnerability Assessment database scan.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentExecuteScanExecute =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2801,13 +2982,15 @@ export const DatabaseSqlVulnerabilityAssessmentExecuteScanExecute =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     ruleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2828,11 +3011,13 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput 
 /**
  * Creates or updates a database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2844,13 +3029,15 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     ruleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2871,11 +3058,13 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesDeleteOutput =
 /**
  * Removes the database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2885,13 +3074,15 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesDelete =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     ruleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2912,11 +3103,13 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesGetOutput =
 /**
  * Gets a database's sql vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2926,12 +3119,14 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesGet =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2945,7 +3140,7 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineOutput =
@@ -2955,10 +3150,12 @@ export type DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaselineOutput 
 /**
  * Gets a list of database's sql vulnerability assessment rule baselines.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaseline =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2970,13 +3167,15 @@ export const DatabaseSqlVulnerabilityAssessmentRuleBaselinesListByBaseline =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentScanResultGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
     scanResultId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2997,12 +3196,14 @@ export type DatabaseSqlVulnerabilityAssessmentScanResultGetOutput =
 /**
  * Gets a vulnerability assessment scan record of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
  * @param scanId - The scan id of the SQL Vulnerability Assessment scan to retrieve result from.
  * @param scanResultId - The scan result id of the specific result to retrieve.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentScanResultGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3012,12 +3213,14 @@ export const DatabaseSqlVulnerabilityAssessmentScanResultGet =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentScanResultListByScanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3041,11 +3244,13 @@ export type DatabaseSqlVulnerabilityAssessmentScanResultListByScanOutput =
 /**
  * Gets a vulnerability assessment scan record of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
  * @param scanId - The scan id of the SQL Vulnerability Assessment scan to retrieve result from.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentScanResultListByScan =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3055,12 +3260,14 @@ export const DatabaseSqlVulnerabilityAssessmentScanResultListByScan =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentScansGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3081,11 +3288,13 @@ export type DatabaseSqlVulnerabilityAssessmentScansGetOutput =
 /**
  * Get a database vulnerability assessment scan result.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentScansGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3095,11 +3304,13 @@ export const DatabaseSqlVulnerabilityAssessmentScansGet =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3113,7 +3324,7 @@ export type DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessm
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsOutput =
@@ -3123,10 +3334,12 @@ export type DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessm
 /**
  * Lists the vulnerability assessment scans of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessments =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3138,11 +3351,13 @@ export const DatabaseSqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssess
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentsSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3163,10 +3378,12 @@ export type DatabaseSqlVulnerabilityAssessmentsSettingsGetOutput =
 /**
  * Gets SQL Vulnerability Assessment policy for database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  */
 export const DatabaseSqlVulnerabilityAssessmentsSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3176,8 +3393,10 @@ export const DatabaseSqlVulnerabilityAssessmentsSettingsGet =
 // Input Schema
 export const DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3191,7 +3410,7 @@ export type DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseInput =
 // Output Schema
 export const DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseOutput =
@@ -3201,9 +3420,11 @@ export type DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabaseOutput =
 /**
  * Lists SQL Vulnerability Assessment policies associated with a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3213,9 +3434,10 @@ export const DatabaseSqlVulnerabilityAssessmentsSettingsListByDatabase =
   }));
 // Input Schema
 export const DatabasesRenameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3233,10 +3455,11 @@ export type DatabasesRenameOutput = typeof DatabasesRenameOutput.Type;
 /**
  * Renames a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to rename.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesRename = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesRenameInput,
@@ -3244,9 +3467,10 @@ export const DatabasesRename = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatabasesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  databaseName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3258,8 +3482,8 @@ export type DatabasesResumeInput = typeof DatabasesResumeInput.Type;
 
 // Output Schema
 export const DatabasesResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type DatabasesResumeOutput = typeof DatabasesResumeOutput.Type;
 
@@ -3267,10 +3491,11 @@ export type DatabasesResumeOutput = typeof DatabasesResumeOutput.Type;
 /**
  * Resumes a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to be resumed.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesResumeInput,
@@ -3278,8 +3503,10 @@ export const DatabasesResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3291,8 +3518,8 @@ export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
 
 // Output Schema
 export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
 
@@ -3300,9 +3527,11 @@ export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
 /**
  * Updates an existing database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabasesUpdateInput,
@@ -3311,9 +3540,10 @@ export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabasesUpgradeDataWarehouseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3334,10 +3564,11 @@ export type DatabasesUpgradeDataWarehouseOutput =
 /**
  * Upgrades a data warehouse.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to be upgraded.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabasesUpgradeDataWarehouse =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3347,10 +3578,12 @@ export const DatabasesUpgradeDataWarehouse =
 // Input Schema
 export const DatabaseTablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -3370,11 +3603,13 @@ export type DatabaseTablesGetOutput = typeof DatabaseTablesGetOutput.Type;
 /**
  * Get database table
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseTablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DatabaseTablesGetInput,
@@ -3383,11 +3618,13 @@ export const DatabaseTablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DatabaseTablesListBySchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    schemaName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    schemaName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3400,7 +3637,7 @@ export type DatabaseTablesListBySchemaInput =
 // Output Schema
 export const DatabaseTablesListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseTablesListBySchemaOutput =
@@ -3410,11 +3647,13 @@ export type DatabaseTablesListBySchemaOutput =
 /**
  * List database tables
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseTablesListBySchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3425,8 +3664,10 @@ export const DatabaseTablesListBySchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DatabaseUsagesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3440,7 +3681,7 @@ export type DatabaseUsagesListByDatabaseInput =
 // Output Schema
 export const DatabaseUsagesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseUsagesListByDatabaseOutput =
@@ -3450,9 +3691,11 @@ export type DatabaseUsagesListByDatabaseOutput =
 /**
  * Gets database usages.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DatabaseUsagesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3462,14 +3705,15 @@ export const DatabaseUsagesListByDatabase =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3490,13 +3734,14 @@ export type DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
 /**
  * Creates or updates a database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database for which the vulnerability assessment rule baseline is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3508,14 +3753,15 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentRuleBaselinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3536,13 +3782,14 @@ export type DatabaseVulnerabilityAssessmentRuleBaselinesDeleteOutput =
 /**
  * Removes the database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database for which the vulnerability assessment rule baseline is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentRuleBaselinesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3552,14 +3799,15 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesDelete =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentRuleBaselinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3580,13 +3828,14 @@ export type DatabaseVulnerabilityAssessmentRuleBaselinesGetOutput =
 /**
  * Gets a database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database for which the vulnerability assessment rule baseline is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentRuleBaselinesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3596,13 +3845,14 @@ export const DatabaseVulnerabilityAssessmentRuleBaselinesGet =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentScansExportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3623,12 +3873,13 @@ export type DatabaseVulnerabilityAssessmentScansExportOutput =
 /**
  * Convert an existing scan result to a human readable format. If already exists nothing happens
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the scanned database.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param scanId - The vulnerability assessment scan Id.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
  */
 export const DatabaseVulnerabilityAssessmentScansExport =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3638,12 +3889,14 @@ export const DatabaseVulnerabilityAssessmentScansExport =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentScansGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3664,11 +3917,13 @@ export type DatabaseVulnerabilityAssessmentScansGetOutput =
 /**
  * Gets a vulnerability assessment scan record of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentScansGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3678,12 +3933,14 @@ export const DatabaseVulnerabilityAssessmentScansGet =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentScansInitiateScanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3704,11 +3961,13 @@ export type DatabaseVulnerabilityAssessmentScansInitiateScanOutput =
 /**
  * Executes a Vulnerability Assessment database scan.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentScansInitiateScan =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3718,11 +3977,13 @@ export const DatabaseVulnerabilityAssessmentScansInitiateScan =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentScansListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3736,7 +3997,7 @@ export type DatabaseVulnerabilityAssessmentScansListByDatabaseInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
@@ -3746,10 +4007,12 @@ export type DatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
 /**
  * Lists the vulnerability assessment scans of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentScansListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3759,12 +4022,13 @@ export const DatabaseVulnerabilityAssessmentScansListByDatabase =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3785,11 +4049,12 @@ export type DatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
 /**
  * Creates or updates the database's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3799,12 +4064,13 @@ export const DatabaseVulnerabilityAssessmentsCreateOrUpdate =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3825,11 +4091,12 @@ export type DatabaseVulnerabilityAssessmentsDeleteOutput =
 /**
  * Removes the database's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3839,12 +4106,13 @@ export const DatabaseVulnerabilityAssessmentsDelete =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3865,11 +4133,12 @@ export type DatabaseVulnerabilityAssessmentsGetOutput =
 /**
  * Gets the database's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DatabaseVulnerabilityAssessmentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3879,9 +4148,10 @@ export const DatabaseVulnerabilityAssessmentsGet =
 // Input Schema
 export const DatabaseVulnerabilityAssessmentsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3895,7 +4165,7 @@ export type DatabaseVulnerabilityAssessmentsListByDatabaseInput =
 // Output Schema
 export const DatabaseVulnerabilityAssessmentsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabaseVulnerabilityAssessmentsListByDatabaseOutput =
@@ -3905,10 +4175,11 @@ export type DatabaseVulnerabilityAssessmentsListByDatabaseOutput =
 /**
  * Lists the vulnerability assessment policies associated with a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database for which the vulnerability assessment policies are defined.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  */
 export const DatabaseVulnerabilityAssessmentsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3918,9 +4189,11 @@ export const DatabaseVulnerabilityAssessmentsListByDatabase =
 // Input Schema
 export const DataMaskingPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3941,10 +4214,12 @@ export type DataMaskingPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates a database data masking policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param dataMaskingPolicyName - The name of the database for which the data masking policy applies.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DataMaskingPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3954,9 +4229,11 @@ export const DataMaskingPoliciesCreateOrUpdate =
 // Input Schema
 export const DataMaskingPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3977,10 +4254,12 @@ export type DataMaskingPoliciesGetOutput =
 /**
  * Gets the database data masking policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param dataMaskingPolicyName - The name of the database for which the data masking policy applies.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DataMaskingPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3991,10 +4270,12 @@ export const DataMaskingPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DataMaskingRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     dataMaskingRuleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4015,11 +4296,13 @@ export type DataMaskingRulesCreateOrUpdateOutput =
 /**
  * Creates or updates a database data masking rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param dataMaskingPolicyName - The name of the database for which the data masking policy applies.
  * @param dataMaskingRuleName - The name of the data masking rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DataMaskingRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4029,9 +4312,11 @@ export const DataMaskingRulesCreateOrUpdate =
 // Input Schema
 export const DataMaskingRulesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    dataMaskingPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4045,7 +4330,7 @@ export type DataMaskingRulesListByDatabaseInput =
 // Output Schema
 export const DataMaskingRulesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DataMaskingRulesListByDatabaseOutput =
@@ -4055,10 +4340,12 @@ export type DataMaskingRulesListByDatabaseOutput =
 /**
  * Gets a list of database data masking rules.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param dataMaskingPolicyName - The name of the database for which the data masking rule applies.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param dataMaskingPolicyName - The name of the database for which the data masking policy applies.
  */
 export const DataMaskingRulesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4068,11 +4355,13 @@ export const DataMaskingRulesListByDatabase =
 // Input Schema
 export const DataWarehouseUserActivitiesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     dataWarehouseUserActivityName: Schema.Literals(["current"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4093,10 +4382,12 @@ export type DataWarehouseUserActivitiesGetOutput =
 /**
  * Gets the user activities of a data warehouse which includes running and suspended queries
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param dataWarehouseUserActivityName - The activity name of the data warehouse.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DataWarehouseUserActivitiesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4106,8 +4397,10 @@ export const DataWarehouseUserActivitiesGet =
 // Input Schema
 export const DataWarehouseUserActivitiesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4121,7 +4414,7 @@ export type DataWarehouseUserActivitiesListByDatabaseInput =
 // Output Schema
 export const DataWarehouseUserActivitiesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DataWarehouseUserActivitiesListByDatabaseOutput =
@@ -4131,9 +4424,11 @@ export type DataWarehouseUserActivitiesListByDatabaseOutput =
 /**
  * List the user activities of a data warehouse which includes running and suspended queries
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const DataWarehouseUserActivitiesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4143,9 +4438,9 @@ export const DataWarehouseUserActivitiesListByDatabase =
 // Input Schema
 export const DeletedServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     deletedServerName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -4165,10 +4460,10 @@ export type DeletedServersGetOutput = typeof DeletedServersGetOutput.Type;
 /**
  * Gets a deleted server.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the region where the resource is located.
  * @param deletedServerName - The name of the deleted server.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DeletedServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeletedServersGetInput,
@@ -4190,7 +4485,7 @@ export type DeletedServersListInput = typeof DeletedServersListInput.Type;
 // Output Schema
 export const DeletedServersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedServersListOutput = typeof DeletedServersListOutput.Type;
@@ -4199,8 +4494,8 @@ export type DeletedServersListOutput = typeof DeletedServersListOutput.Type;
 /**
  * Gets a list of all deleted servers in a subscription.
  *
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const DeletedServersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeletedServersListInput,
@@ -4209,8 +4504,8 @@ export const DeletedServersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DeletedServersListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4224,7 +4519,7 @@ export type DeletedServersListByLocationInput =
 // Output Schema
 export const DeletedServersListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedServersListByLocationOutput =
@@ -4234,9 +4529,9 @@ export type DeletedServersListByLocationOutput =
 /**
  * Gets a list of deleted servers for a location.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the region where the resource is located.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DeletedServersListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4246,9 +4541,9 @@ export const DeletedServersListByLocation =
 // Input Schema
 export const DeletedServersRecoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     deletedServerName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4268,10 +4563,10 @@ export type DeletedServersRecoverOutput =
 /**
  * Recovers a deleted server.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the region where the resource is located.
  * @param deletedServerName - The name of the deleted server.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DeletedServersRecover = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4282,9 +4577,10 @@ export const DeletedServersRecover = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DistributedAvailabilityGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4305,10 +4601,11 @@ export type DistributedAvailabilityGroupsCreateOrUpdateOutput =
 /**
  * Creates a distributed availability group between Sql On-Prem and Sql Managed Instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param distributedAvailabilityGroupName - The distributed availability group name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DistributedAvailabilityGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4318,9 +4615,10 @@ export const DistributedAvailabilityGroupsCreateOrUpdate =
 // Input Schema
 export const DistributedAvailabilityGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4341,10 +4639,11 @@ export type DistributedAvailabilityGroupsDeleteOutput =
 /**
  * Drops a distributed availability group between Sql On-Prem and Sql Managed Instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param distributedAvailabilityGroupName - The distributed availability group name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DistributedAvailabilityGroupsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4354,10 +4653,10 @@ export const DistributedAvailabilityGroupsDelete =
 // Input Schema
 export const DistributedAvailabilityGroupsFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4378,11 +4677,11 @@ export type DistributedAvailabilityGroupsFailoverOutput =
 /**
  * Performs requested failover type in this distributed availability group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param distributedAvailabilityGroupName - The distributed availability group name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DistributedAvailabilityGroupsFailover =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4392,9 +4691,10 @@ export const DistributedAvailabilityGroupsFailover =
 // Input Schema
 export const DistributedAvailabilityGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4415,10 +4715,11 @@ export type DistributedAvailabilityGroupsGetOutput =
 /**
  * Gets a distributed availability group info.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param distributedAvailabilityGroupName - The distributed availability group name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DistributedAvailabilityGroupsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4428,8 +4729,9 @@ export const DistributedAvailabilityGroupsGet =
 // Input Schema
 export const DistributedAvailabilityGroupsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4453,9 +4755,10 @@ export type DistributedAvailabilityGroupsListByInstanceOutput =
 /**
  * Gets a list of a distributed availability groups in instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const DistributedAvailabilityGroupsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4465,9 +4768,10 @@ export const DistributedAvailabilityGroupsListByInstance =
 // Input Schema
 export const DistributedAvailabilityGroupsSetRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4488,10 +4792,11 @@ export type DistributedAvailabilityGroupsSetRoleOutput =
 /**
  * Sets the role for managed instance in a distributed availability group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param distributedAvailabilityGroupName - The distributed availability group name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DistributedAvailabilityGroupsSetRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4501,9 +4806,10 @@ export const DistributedAvailabilityGroupsSetRole =
 // Input Schema
 export const DistributedAvailabilityGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    distributedAvailabilityGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4524,10 +4830,11 @@ export type DistributedAvailabilityGroupsUpdateOutput =
 /**
  * Updates a distributed availability group replication mode.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param distributedAvailabilityGroupName - The distributed availability group name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const DistributedAvailabilityGroupsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4613,10 +4920,11 @@ export const ElasticPoolDatabaseActivitiesListByElasticPool =
 // Input Schema
 export const ElasticPoolOperationsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     elasticPoolName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4637,10 +4945,12 @@ export type ElasticPoolOperationsCancelOutput =
 /**
  * Cancels the asynchronous operation on the elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param elasticPoolName - The name of the elastic pool.
  * @param operationId - The operation identifier.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ElasticPoolOperationsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4651,9 +4961,10 @@ export const ElasticPoolOperationsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ElasticPoolOperationsListByElasticPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticPoolName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    elasticPoolName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4667,7 +4978,7 @@ export type ElasticPoolOperationsListByElasticPoolInput =
 // Output Schema
 export const ElasticPoolOperationsListByElasticPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ElasticPoolOperationsListByElasticPoolOutput =
@@ -4677,9 +4988,11 @@ export type ElasticPoolOperationsListByElasticPoolOutput =
 /**
  * Gets a list of operations performed on the elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param elasticPoolName - The name of the elastic pool.
  */
 export const ElasticPoolOperationsListByElasticPool =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4689,9 +5002,10 @@ export const ElasticPoolOperationsListByElasticPool =
 // Input Schema
 export const ElasticPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticPoolName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    elasticPoolName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4705,8 +5019,8 @@ export type ElasticPoolsCreateOrUpdateInput =
 // Output Schema
 export const ElasticPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ElasticPoolsCreateOrUpdateOutput =
   typeof ElasticPoolsCreateOrUpdateOutput.Type;
@@ -4715,10 +5029,11 @@ export type ElasticPoolsCreateOrUpdateOutput =
 /**
  * Creates or updates an elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param elasticPoolName - The name of the elastic pool.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ElasticPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4729,9 +5044,10 @@ export const ElasticPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ElasticPoolsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticPoolName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    elasticPoolName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4749,10 +5065,11 @@ export type ElasticPoolsDeleteOutput = typeof ElasticPoolsDeleteOutput.Type;
 /**
  * Deletes an elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param elasticPoolName - The name of the elastic pool.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ElasticPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ElasticPoolsDeleteInput,
@@ -4761,9 +5078,10 @@ export const ElasticPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ElasticPoolsFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticPoolName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    elasticPoolName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4782,10 +5100,11 @@ export type ElasticPoolsFailoverOutput = typeof ElasticPoolsFailoverOutput.Type;
 /**
  * Failovers an elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param elasticPoolName - The name of the elastic pool to failover.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param elasticPoolName - The name of the elastic pool.
  */
 export const ElasticPoolsFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4795,9 +5114,10 @@ export const ElasticPoolsFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ElasticPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  elasticPoolName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  elasticPoolName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -4809,8 +5129,8 @@ export type ElasticPoolsGetInput = typeof ElasticPoolsGetInput.Type;
 
 // Output Schema
 export const ElasticPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type ElasticPoolsGetOutput = typeof ElasticPoolsGetOutput.Type;
 
@@ -4818,10 +5138,11 @@ export type ElasticPoolsGetOutput = typeof ElasticPoolsGetOutput.Type;
 /**
  * Gets an elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param elasticPoolName - The name of the elastic pool.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ElasticPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ElasticPoolsGetInput,
@@ -4830,10 +5151,11 @@ export const ElasticPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ElasticPoolsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $skip: Schema.optional(Schema.Number),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $skip: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4846,13 +5168,11 @@ export type ElasticPoolsListByServerInput =
 // Output Schema
 export const ElasticPoolsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4863,10 +5183,11 @@ export type ElasticPoolsListByServerOutput =
 /**
  * Gets all elastic pools in a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param $skip - The number of elements in the collection to skip.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ElasticPoolsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4877,9 +5198,10 @@ export const ElasticPoolsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ElasticPoolsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    elasticPoolName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    elasticPoolName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4892,8 +5214,8 @@ export type ElasticPoolsUpdateInput = typeof ElasticPoolsUpdateInput.Type;
 // Output Schema
 export const ElasticPoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ElasticPoolsUpdateOutput = typeof ElasticPoolsUpdateOutput.Type;
 
@@ -4901,10 +5223,11 @@ export type ElasticPoolsUpdateOutput = typeof ElasticPoolsUpdateOutput.Type;
 /**
  * Updates an elastic pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param elasticPoolName - The name of the elastic pool.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ElasticPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ElasticPoolsUpdateInput,
@@ -4913,9 +5236,10 @@ export const ElasticPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const EncryptionProtectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4936,10 +5260,11 @@ export type EncryptionProtectorsCreateOrUpdateOutput =
 /**
  * Updates an existing encryption protector.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param encryptionProtectorName - The name of the encryption protector to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param encryptionProtectorName - The name of the encryption protector to be retrieved.
  */
 export const EncryptionProtectorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4949,9 +5274,10 @@ export const EncryptionProtectorsCreateOrUpdate =
 // Input Schema
 export const EncryptionProtectorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4972,10 +5298,11 @@ export type EncryptionProtectorsGetOutput =
 /**
  * Gets a server encryption protector.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param encryptionProtectorName - The name of the encryption protector to be retrieved.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const EncryptionProtectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4986,8 +5313,9 @@ export const EncryptionProtectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EncryptionProtectorsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5001,7 +5329,7 @@ export type EncryptionProtectorsListByServerInput =
 // Output Schema
 export const EncryptionProtectorsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type EncryptionProtectorsListByServerOutput =
@@ -5011,9 +5339,10 @@ export type EncryptionProtectorsListByServerOutput =
 /**
  * Gets a list of server encryption protectors
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const EncryptionProtectorsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5023,9 +5352,10 @@ export const EncryptionProtectorsListByServer =
 // Input Schema
 export const EncryptionProtectorsRevalidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5046,10 +5376,11 @@ export type EncryptionProtectorsRevalidateOutput =
 /**
  * Revalidates an existing encryption protector.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param encryptionProtectorName - The name of the encryption protector to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param encryptionProtectorName - The name of the encryption protector to be retrieved.
  */
 export const EncryptionProtectorsRevalidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5059,9 +5390,10 @@ export const EncryptionProtectorsRevalidate =
 // Input Schema
 export const EndpointCertificatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    endpointType: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    endpointType: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5082,10 +5414,11 @@ export type EndpointCertificatesGetOutput =
 /**
  * Gets a certificate used on the endpoint with the given id.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param endpointType - Type of the endpoint whose certificate the customer is looking for.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const EndpointCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5096,8 +5429,9 @@ export const EndpointCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EndpointCertificatesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5111,7 +5445,7 @@ export type EndpointCertificatesListByInstanceInput =
 // Output Schema
 export const EndpointCertificatesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type EndpointCertificatesListByInstanceOutput =
@@ -5121,9 +5455,10 @@ export type EndpointCertificatesListByInstanceOutput =
 /**
  * List certificates used on endpoints on the target instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const EndpointCertificatesListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5133,8 +5468,11 @@ export const EndpointCertificatesListByInstance =
 // Input Schema
 export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5155,9 +5493,12 @@ export type ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates an extended database's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5167,8 +5508,11 @@ export const ExtendedDatabaseBlobAuditingPoliciesCreateOrUpdate =
 // Input Schema
 export const ExtendedDatabaseBlobAuditingPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5189,9 +5533,12 @@ export type ExtendedDatabaseBlobAuditingPoliciesGetOutput =
 /**
  * Gets an extended database's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const ExtendedDatabaseBlobAuditingPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5201,8 +5548,10 @@ export const ExtendedDatabaseBlobAuditingPoliciesGet =
 // Input Schema
 export const ExtendedDatabaseBlobAuditingPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5216,7 +5565,7 @@ export type ExtendedDatabaseBlobAuditingPoliciesListByDatabaseInput =
 // Output Schema
 export const ExtendedDatabaseBlobAuditingPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ExtendedDatabaseBlobAuditingPoliciesListByDatabaseOutput =
@@ -5226,9 +5575,11 @@ export type ExtendedDatabaseBlobAuditingPoliciesListByDatabaseOutput =
 /**
  * Lists extended auditing settings of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const ExtendedDatabaseBlobAuditingPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5238,8 +5589,10 @@ export const ExtendedDatabaseBlobAuditingPoliciesListByDatabase =
 // Input Schema
 export const ExtendedServerBlobAuditingPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5260,9 +5613,11 @@ export type ExtendedServerBlobAuditingPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates an extended server's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const ExtendedServerBlobAuditingPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5272,8 +5627,10 @@ export const ExtendedServerBlobAuditingPoliciesCreateOrUpdate =
 // Input Schema
 export const ExtendedServerBlobAuditingPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5294,9 +5651,11 @@ export type ExtendedServerBlobAuditingPoliciesGetOutput =
 /**
  * Gets an extended server's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const ExtendedServerBlobAuditingPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5306,8 +5665,9 @@ export const ExtendedServerBlobAuditingPoliciesGet =
 // Input Schema
 export const ExtendedServerBlobAuditingPoliciesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5321,7 +5681,7 @@ export type ExtendedServerBlobAuditingPoliciesListByServerInput =
 // Output Schema
 export const ExtendedServerBlobAuditingPoliciesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ExtendedServerBlobAuditingPoliciesListByServerOutput =
@@ -5331,9 +5691,10 @@ export type ExtendedServerBlobAuditingPoliciesListByServerOutput =
 /**
  * Lists extended auditing settings of a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ExtendedServerBlobAuditingPoliciesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5343,10 +5704,10 @@ export const ExtendedServerBlobAuditingPoliciesListByServer =
 // Input Schema
 export const FailoverGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5367,11 +5728,11 @@ export type FailoverGroupsCreateOrUpdateOutput =
 /**
  * Creates or updates a failover group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server containing the failover group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FailoverGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5381,10 +5742,10 @@ export const FailoverGroupsCreateOrUpdate =
 // Input Schema
 export const FailoverGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5403,11 +5764,11 @@ export type FailoverGroupsDeleteOutput = typeof FailoverGroupsDeleteOutput.Type;
 /**
  * Deletes a failover group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server containing the failover group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FailoverGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5418,10 +5779,10 @@ export const FailoverGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FailoverGroupsFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5442,11 +5803,11 @@ export type FailoverGroupsFailoverOutput =
 /**
  * Fails over from the current primary server to this server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server containing the failover group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FailoverGroupsFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5457,10 +5818,10 @@ export const FailoverGroupsFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FailoverGroupsForceFailoverAllowDataLossInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5481,11 +5842,11 @@ export type FailoverGroupsForceFailoverAllowDataLossOutput =
 /**
  * Fails over from the current primary server to this server. This operation might result in data loss.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server containing the failover group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FailoverGroupsForceFailoverAllowDataLoss =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5495,10 +5856,10 @@ export const FailoverGroupsForceFailoverAllowDataLoss =
 // Input Schema
 export const FailoverGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -5518,11 +5879,11 @@ export type FailoverGroupsGetOutput = typeof FailoverGroupsGetOutput.Type;
 /**
  * Gets a failover group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server containing the failover group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FailoverGroupsGetInput,
@@ -5531,9 +5892,9 @@ export const FailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FailoverGroupsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5547,7 +5908,7 @@ export type FailoverGroupsListByServerInput =
 // Output Schema
 export const FailoverGroupsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type FailoverGroupsListByServerOutput =
@@ -5557,10 +5918,10 @@ export type FailoverGroupsListByServerOutput =
 /**
  * Lists the failover groups in a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server containing the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const FailoverGroupsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5571,9 +5932,10 @@ export const FailoverGroupsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FailoverGroupsTryPlannedBeforeForcedFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    failoverGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    failoverGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5594,10 +5956,11 @@ export type FailoverGroupsTryPlannedBeforeForcedFailoverOutput =
 /**
  * Fails over from the current primary server to this server. This operation tries planned before forced failover but might still result in data loss.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FailoverGroupsTryPlannedBeforeForcedFailover =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5607,10 +5970,10 @@ export const FailoverGroupsTryPlannedBeforeForcedFailover =
 // Input Schema
 export const FailoverGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5629,11 +5992,11 @@ export type FailoverGroupsUpdateOutput = typeof FailoverGroupsUpdateOutput.Type;
 /**
  * Updates a failover group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server containing the failover group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FailoverGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5644,9 +6007,10 @@ export const FailoverGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    firewallRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5667,10 +6031,11 @@ export type FirewallRulesCreateOrUpdateOutput =
 /**
  * Creates or updates a firewall rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param firewallRuleName - The name of the firewall rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5681,9 +6046,10 @@ export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    firewallRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5702,10 +6068,11 @@ export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
 /**
  * Deletes a firewall rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param firewallRuleName - The name of the firewall rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
@@ -5713,9 +6080,10 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  firewallRuleName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  firewallRuleName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -5735,10 +6103,11 @@ export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
 /**
  * Gets a firewall rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param firewallRuleName - The name of the firewall rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
@@ -5747,8 +6116,9 @@ export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const FirewallRulesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5762,7 +6132,7 @@ export type FirewallRulesListByServerInput =
 // Output Schema
 export const FirewallRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type FirewallRulesListByServerOutput =
@@ -5772,9 +6142,10 @@ export type FirewallRulesListByServerOutput =
 /**
  * Gets a list of firewall rules.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const FirewallRulesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5785,8 +6156,9 @@ export const FirewallRulesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const FirewallRulesReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5805,9 +6177,10 @@ export type FirewallRulesReplaceOutput = typeof FirewallRulesReplaceOutput.Type;
 /**
  * Replaces all firewall rules on the server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const FirewallRulesReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5818,9 +6191,11 @@ export const FirewallRulesReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const GeoBackupPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5841,10 +6216,12 @@ export type GeoBackupPoliciesCreateOrUpdateOutput =
 /**
  * Create or update a database default Geo backup policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param geoBackupPolicyName - The name of the Geo backup policy. This should always be 'Default'.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const GeoBackupPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5854,9 +6231,11 @@ export const GeoBackupPoliciesCreateOrUpdate =
 // Input Schema
 export const GeoBackupPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    geoBackupPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5875,10 +6254,12 @@ export type GeoBackupPoliciesGetOutput = typeof GeoBackupPoliciesGetOutput.Type;
 /**
  * Gets a Geo backup policy for the given database resource.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param geoBackupPolicyName - The name of the Geo backup policy. This should always be 'Default'.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const GeoBackupPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5889,8 +6270,10 @@ export const GeoBackupPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const GeoBackupPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5903,7 +6286,7 @@ export type GeoBackupPoliciesListInput = typeof GeoBackupPoliciesListInput.Type;
 // Output Schema
 export const GeoBackupPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type GeoBackupPoliciesListOutput =
@@ -5913,9 +6296,11 @@ export type GeoBackupPoliciesListOutput =
 /**
  * Gets a list of Geo backup policies for the given database resource.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const GeoBackupPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5926,10 +6311,10 @@ export const GeoBackupPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const InstanceFailoverGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5950,11 +6335,11 @@ export type InstanceFailoverGroupsCreateOrUpdateOutput =
 /**
  * Creates or updates a failover group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const InstanceFailoverGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5964,10 +6349,10 @@ export const InstanceFailoverGroupsCreateOrUpdate =
 // Input Schema
 export const InstanceFailoverGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5988,11 +6373,11 @@ export type InstanceFailoverGroupsDeleteOutput =
 /**
  * Deletes a failover group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const InstanceFailoverGroupsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6002,10 +6387,10 @@ export const InstanceFailoverGroupsDelete =
 // Input Schema
 export const InstanceFailoverGroupsFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6026,11 +6411,11 @@ export type InstanceFailoverGroupsFailoverOutput =
 /**
  * Fails over from the current primary managed instance to this managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const InstanceFailoverGroupsFailover =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6040,10 +6425,10 @@ export const InstanceFailoverGroupsFailover =
 // Input Schema
 export const InstanceFailoverGroupsForceFailoverAllowDataLossInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6064,11 +6449,11 @@ export type InstanceFailoverGroupsForceFailoverAllowDataLossOutput =
 /**
  * Fails over from the current primary managed instance to this managed instance. This operation might result in data loss.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const InstanceFailoverGroupsForceFailoverAllowDataLoss =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6078,10 +6463,10 @@ export const InstanceFailoverGroupsForceFailoverAllowDataLoss =
 // Input Schema
 export const InstanceFailoverGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     failoverGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6102,11 +6487,11 @@ export type InstanceFailoverGroupsGetOutput =
 /**
  * Gets a failover group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param failoverGroupName - The name of the failover group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const InstanceFailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6117,9 +6502,9 @@ export const InstanceFailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const InstanceFailoverGroupsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6133,7 +6518,7 @@ export type InstanceFailoverGroupsListByLocationInput =
 // Output Schema
 export const InstanceFailoverGroupsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type InstanceFailoverGroupsListByLocationOutput =
@@ -6143,10 +6528,10 @@ export type InstanceFailoverGroupsListByLocationOutput =
 /**
  * Lists the failover groups in a location.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const InstanceFailoverGroupsListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6154,11 +6539,88 @@ export const InstanceFailoverGroupsListByLocation =
     outputSchema: InstanceFailoverGroupsListByLocationOutput,
   }));
 // Input Schema
-export const InstancePoolsCreateOrUpdateInput =
+export const InstancePoolOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancePoolName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}/operations/{operationId}",
+    }),
+  );
+export type InstancePoolOperationsGetInput =
+  typeof InstancePoolOperationsGetInput.Type;
+
+// Output Schema
+export const InstancePoolOperationsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type InstancePoolOperationsGetOutput =
+  typeof InstancePoolOperationsGetOutput.Type;
+
+// The operation
+/**
+ * Gets a management operation on a instance pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param instancePoolName - The name of the instance pool to be retrieved.
+ */
+export const InstancePoolOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: InstancePoolOperationsGetInput,
+    outputSchema: InstancePoolOperationsGetOutput,
+  }),
+);
+// Input Schema
+export const InstancePoolOperationsListByInstancePoolInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    instancePoolName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}/operations",
+    }),
+  );
+export type InstancePoolOperationsListByInstancePoolInput =
+  typeof InstancePoolOperationsListByInstancePoolInput.Type;
+
+// Output Schema
+export const InstancePoolOperationsListByInstancePoolOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(Schema.Struct({})),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type InstancePoolOperationsListByInstancePoolOutput =
+  typeof InstancePoolOperationsListByInstancePoolOutput.Type;
+
+// The operation
+/**
+ * Gets a list of operations performed on the instance pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param instancePoolName - The name of the instance pool to be retrieved.
+ */
+export const InstancePoolOperationsListByInstancePool =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InstancePoolOperationsListByInstancePoolInput,
+    outputSchema: InstancePoolOperationsListByInstancePoolOutput,
+  }));
+// Input Schema
+export const InstancePoolsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    instancePoolName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6172,8 +6634,8 @@ export type InstancePoolsCreateOrUpdateInput =
 // Output Schema
 export const InstancePoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type InstancePoolsCreateOrUpdateOutput =
   typeof InstancePoolsCreateOrUpdateOutput.Type;
@@ -6182,10 +6644,10 @@ export type InstancePoolsCreateOrUpdateOutput =
 /**
  * Creates or updates an instance pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param instancePoolName - The name of the instance pool to be created or updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param instancePoolName - The name of the instance pool to be retrieved.
  */
 export const InstancePoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6196,9 +6658,9 @@ export const InstancePoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const InstancePoolsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancePoolName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6217,10 +6679,10 @@ export type InstancePoolsDeleteOutput = typeof InstancePoolsDeleteOutput.Type;
 /**
  * Deletes an instance pool
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param instancePoolName - The name of the instance pool to be deleted
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param instancePoolName - The name of the instance pool to be retrieved.
  */
 export const InstancePoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancePoolsDeleteInput,
@@ -6228,9 +6690,9 @@ export const InstancePoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const InstancePoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   instancePoolName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -6243,8 +6705,8 @@ export type InstancePoolsGetInput = typeof InstancePoolsGetInput.Type;
 // Output Schema
 export const InstancePoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   },
 );
 export type InstancePoolsGetOutput = typeof InstancePoolsGetOutput.Type;
@@ -6253,10 +6715,10 @@ export type InstancePoolsGetOutput = typeof InstancePoolsGetOutput.Type;
 /**
  * Gets an instance pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instancePoolName - The name of the instance pool to be retrieved.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const InstancePoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancePoolsGetInput,
@@ -6279,13 +6741,11 @@ export type InstancePoolsListInput = typeof InstancePoolsListInput.Type;
 // Output Schema
 export const InstancePoolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6295,8 +6755,8 @@ export type InstancePoolsListOutput = typeof InstancePoolsListOutput.Type;
 /**
  * Gets a list of all instance pools in the subscription.
  *
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const InstancePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancePoolsListInput,
@@ -6305,8 +6765,8 @@ export const InstancePoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const InstancePoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6320,13 +6780,11 @@ export type InstancePoolsListByResourceGroupInput =
 // Output Schema
 export const InstancePoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6337,9 +6795,9 @@ export type InstancePoolsListByResourceGroupOutput =
 /**
  * Gets a list of instance pools in the resource group
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const InstancePoolsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6349,9 +6807,9 @@ export const InstancePoolsListByResourceGroup =
 // Input Schema
 export const InstancePoolsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancePoolName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6364,8 +6822,8 @@ export type InstancePoolsUpdateInput = typeof InstancePoolsUpdateInput.Type;
 // Output Schema
 export const InstancePoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type InstancePoolsUpdateOutput = typeof InstancePoolsUpdateOutput.Type;
 
@@ -6373,10 +6831,10 @@ export type InstancePoolsUpdateOutput = typeof InstancePoolsUpdateOutput.Type;
 /**
  * Updates an instance pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param instancePoolName - The name of the instance pool to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param instancePoolName - The name of the instance pool to be retrieved.
  */
 export const InstancePoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InstancePoolsUpdateInput,
@@ -6385,9 +6843,10 @@ export const InstancePoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const IPv6FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    firewallRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6408,10 +6867,11 @@ export type IPv6FirewallRulesCreateOrUpdateOutput =
 /**
  * Creates or updates an IPv6 firewall rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param firewallRuleName - The name of the firewall rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const IPv6FirewallRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6421,9 +6881,10 @@ export const IPv6FirewallRulesCreateOrUpdate =
 // Input Schema
 export const IPv6FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    firewallRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6444,10 +6905,11 @@ export type IPv6FirewallRulesDeleteOutput =
 /**
  * Deletes an IPv6 firewall rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param firewallRuleName - The name of the firewall rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const IPv6FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6458,9 +6920,10 @@ export const IPv6FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IPv6FirewallRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    firewallRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    firewallRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6479,10 +6942,11 @@ export type IPv6FirewallRulesGetOutput = typeof IPv6FirewallRulesGetOutput.Type;
 /**
  * Gets an IPv6 firewall rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param firewallRuleName - The name of the firewall rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const IPv6FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6493,8 +6957,9 @@ export const IPv6FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const IPv6FirewallRulesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6508,7 +6973,7 @@ export type IPv6FirewallRulesListByServerInput =
 // Output Schema
 export const IPv6FirewallRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type IPv6FirewallRulesListByServerOutput =
@@ -6518,9 +6983,10 @@ export type IPv6FirewallRulesListByServerOutput =
 /**
  * Gets a list of IPv6 firewall rules.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const IPv6FirewallRulesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6530,9 +6996,10 @@ export const IPv6FirewallRulesListByServer =
 // Input Schema
 export const JobAgentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobAgentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    jobAgentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6546,8 +7013,8 @@ export type JobAgentsCreateOrUpdateInput =
 // Output Schema
 export const JobAgentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type JobAgentsCreateOrUpdateOutput =
   typeof JobAgentsCreateOrUpdateOutput.Type;
@@ -6556,10 +7023,11 @@ export type JobAgentsCreateOrUpdateOutput =
 /**
  * Creates or updates a job agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent to be created or updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  */
 export const JobAgentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6569,9 +7037,10 @@ export const JobAgentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const JobAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  jobAgentName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  jobAgentName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -6589,10 +7058,11 @@ export type JobAgentsDeleteOutput = typeof JobAgentsDeleteOutput.Type;
 /**
  * Deletes a job agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent to be deleted.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  */
 export const JobAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobAgentsDeleteInput,
@@ -6600,9 +7070,10 @@ export const JobAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  jobAgentName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  jobAgentName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -6614,8 +7085,8 @@ export type JobAgentsGetInput = typeof JobAgentsGetInput.Type;
 
 // Output Schema
 export const JobAgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type JobAgentsGetOutput = typeof JobAgentsGetOutput.Type;
 
@@ -6623,10 +7094,11 @@ export type JobAgentsGetOutput = typeof JobAgentsGetOutput.Type;
 /**
  * Gets a job agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent to be retrieved.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobAgentsGetInput,
@@ -6635,8 +7107,9 @@ export const JobAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobAgentsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6649,13 +7122,11 @@ export type JobAgentsListByServerInput = typeof JobAgentsListByServerInput.Type;
 // Output Schema
 export const JobAgentsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6666,9 +7137,10 @@ export type JobAgentsListByServerOutput =
 /**
  * Gets a list of job agents in a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const JobAgentsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6678,9 +7150,10 @@ export const JobAgentsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const JobAgentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  jobAgentName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  jobAgentName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -6692,8 +7165,8 @@ export type JobAgentsUpdateInput = typeof JobAgentsUpdateInput.Type;
 
 // Output Schema
 export const JobAgentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type JobAgentsUpdateOutput = typeof JobAgentsUpdateOutput.Type;
 
@@ -6701,10 +7174,11 @@ export type JobAgentsUpdateOutput = typeof JobAgentsUpdateOutput.Type;
 /**
  * Updates a job agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  */
 export const JobAgentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobAgentsUpdateInput,
@@ -6713,10 +7187,11 @@ export const JobAgentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobCredentialsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6737,11 +7212,12 @@ export type JobCredentialsCreateOrUpdateOutput =
 /**
  * Creates or updates a job credential.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param credentialName - The name of the credential.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobCredentialsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6751,10 +7227,11 @@ export const JobCredentialsCreateOrUpdate =
 // Input Schema
 export const JobCredentialsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6773,11 +7250,12 @@ export type JobCredentialsDeleteOutput = typeof JobCredentialsDeleteOutput.Type;
 /**
  * Deletes a job credential.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param credentialName - The name of the credential.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobCredentialsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6788,10 +7266,11 @@ export const JobCredentialsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobCredentialsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -6811,11 +7290,12 @@ export type JobCredentialsGetOutput = typeof JobCredentialsGetOutput.Type;
 /**
  * Gets a jobs credential.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param credentialName - The name of the credential.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobCredentialsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobCredentialsGetInput,
@@ -6824,9 +7304,10 @@ export const JobCredentialsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobCredentialsListByAgentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobAgentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    jobAgentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6840,7 +7321,7 @@ export type JobCredentialsListByAgentInput =
 // Output Schema
 export const JobCredentialsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobCredentialsListByAgentOutput =
@@ -6850,10 +7331,11 @@ export type JobCredentialsListByAgentOutput =
 /**
  * Gets a list of jobs credentials.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  */
 export const JobCredentialsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6864,11 +7346,12 @@ export const JobCredentialsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobExecutionsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobExecutionId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6887,12 +7370,13 @@ export type JobExecutionsCancelOutput = typeof JobExecutionsCancelOutput.Type;
 /**
  * Requests cancellation of a job execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job.
- * @param jobExecutionId - The id of the job execution to cancel.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param jobExecutionId - The id of the job execution
  */
 export const JobExecutionsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobExecutionsCancelInput,
@@ -6901,10 +7385,11 @@ export const JobExecutionsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobExecutionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6923,11 +7408,12 @@ export type JobExecutionsCreateOutput = typeof JobExecutionsCreateOutput.Type;
 /**
  * Starts an elastic job execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param jobName - The name of the job to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobExecutionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobExecutionsCreateInput,
@@ -6936,11 +7422,12 @@ export const JobExecutionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobExecutionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobExecutionId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6961,12 +7448,13 @@ export type JobExecutionsCreateOrUpdateOutput =
 /**
  * Creates or updates a job execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
- * @param jobName - The name of the job to get.
- * @param jobExecutionId - The job execution id to create the job execution under.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param jobName - The name of the job.
+ * @param jobExecutionId - The id of the job execution
  */
 export const JobExecutionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6976,11 +7464,12 @@ export const JobExecutionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const JobExecutionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   jobAgentName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
   jobExecutionId: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7000,12 +7489,13 @@ export type JobExecutionsGetOutput = typeof JobExecutionsGetOutput.Type;
 /**
  * Gets a job execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job.
  * @param jobExecutionId - The id of the job execution
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobExecutionsGetInput,
@@ -7014,9 +7504,11 @@ export const JobExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobExecutionsListByAgentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobAgentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    jobAgentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     createTimeMin: Schema.optional(Schema.String),
     createTimeMax: Schema.optional(Schema.String),
     endTimeMin: Schema.optional(Schema.String),
@@ -7024,7 +7516,6 @@ export const JobExecutionsListByAgentInput =
     isActive: Schema.optional(Schema.Boolean),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -7037,7 +7528,7 @@ export type JobExecutionsListByAgentInput =
 // Output Schema
 export const JobExecutionsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobExecutionsListByAgentOutput =
@@ -7047,8 +7538,11 @@ export type JobExecutionsListByAgentOutput =
 /**
  * Lists all executions in a job agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param createTimeMin - If specified, only job executions created at or after the specified time are included.
  * @param createTimeMax - If specified, only job executions created before the specified time are included.
  * @param endTimeMin - If specified, only job executions completed at or after the specified time are included.
@@ -7056,8 +7550,6 @@ export type JobExecutionsListByAgentOutput =
  * @param isActive - If specified, only active or only completed job executions are included.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobExecutionsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7068,10 +7560,12 @@ export const JobExecutionsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobExecutionsListByJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     createTimeMin: Schema.optional(Schema.String),
     createTimeMax: Schema.optional(Schema.String),
     endTimeMin: Schema.optional(Schema.String),
@@ -7079,7 +7573,6 @@ export const JobExecutionsListByJobInput =
     isActive: Schema.optional(Schema.Boolean),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -7092,7 +7585,7 @@ export type JobExecutionsListByJobInput =
 // Output Schema
 export const JobExecutionsListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobExecutionsListByJobOutput =
@@ -7102,9 +7595,12 @@ export type JobExecutionsListByJobOutput =
 /**
  * Lists a job's executions.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
- * @param jobName - The name of the job to get.
+ * @param jobName - The name of the job.
  * @param createTimeMin - If specified, only job executions created at or after the specified time are included.
  * @param createTimeMax - If specified, only job executions created before the specified time are included.
  * @param endTimeMin - If specified, only job executions completed at or after the specified time are included.
@@ -7112,8 +7608,6 @@ export type JobExecutionsListByJobOutput =
  * @param isActive - If specified, only active or only completed job executions are included.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobExecutionsListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7124,10 +7618,11 @@ export const JobExecutionsListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobPrivateEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     privateEndpointName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7148,11 +7643,12 @@ export type JobPrivateEndpointsCreateOrUpdateOutput =
 /**
  * Creates or updates a private endpoint.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
- * @param privateEndpointName - The name of the private endpoint.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
+ * @param privateEndpointName - The name of the private endpoint to get.
  */
 export const JobPrivateEndpointsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7162,10 +7658,11 @@ export const JobPrivateEndpointsCreateOrUpdate =
 // Input Schema
 export const JobPrivateEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     privateEndpointName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7186,11 +7683,12 @@ export type JobPrivateEndpointsDeleteOutput =
 /**
  * Deletes a private endpoint.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
- * @param privateEndpointName - The name of the private endpoint to delete.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
+ * @param privateEndpointName - The name of the private endpoint to get.
  */
 export const JobPrivateEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7201,10 +7699,11 @@ export const JobPrivateEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobPrivateEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     privateEndpointName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7225,11 +7724,12 @@ export type JobPrivateEndpointsGetOutput =
 /**
  * Gets a private endpoint.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param privateEndpointName - The name of the private endpoint to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7240,9 +7740,10 @@ export const JobPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobPrivateEndpointsListByAgentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobAgentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    jobAgentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7256,7 +7757,7 @@ export type JobPrivateEndpointsListByAgentInput =
 // Output Schema
 export const JobPrivateEndpointsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobPrivateEndpointsListByAgentOutput =
@@ -7266,10 +7767,11 @@ export type JobPrivateEndpointsListByAgentOutput =
 /**
  * Gets a list of job agent private endpoints.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  */
 export const JobPrivateEndpointsListByAgent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7279,10 +7781,11 @@ export const JobPrivateEndpointsListByAgent =
 // Input Schema
 export const JobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7301,11 +7804,12 @@ export type JobsCreateOrUpdateOutput = typeof JobsCreateOrUpdateOutput.Type;
 /**
  * Creates or updates a job.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param jobName - The name of the job to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsCreateOrUpdateInput,
@@ -7313,10 +7817,11 @@ export const JobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   jobAgentName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7334,11 +7839,12 @@ export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
 /**
  * Deletes a job.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
- * @param jobName - The name of the job to delete.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
+ * @param jobName - The name of the job to get.
  */
 export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsDeleteInput,
@@ -7346,10 +7852,11 @@ export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   jobAgentName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7367,11 +7874,12 @@ export type JobsGetOutput = typeof JobsGetOutput.Type;
 /**
  * Gets a job.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param jobName - The name of the job to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
@@ -7379,9 +7887,10 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobsListByAgentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  jobAgentName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  jobAgentName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7393,7 +7902,7 @@ export type JobsListByAgentInput = typeof JobsListByAgentInput.Type;
 
 // Output Schema
 export const JobsListByAgentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  value: Schema.Array(Schema.Struct({})),
   nextLink: Schema.optional(Schema.String),
 });
 export type JobsListByAgentOutput = typeof JobsListByAgentOutput.Type;
@@ -7402,10 +7911,11 @@ export type JobsListByAgentOutput = typeof JobsListByAgentOutput.Type;
 /**
  * Gets a list of jobs.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  */
 export const JobsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobsListByAgentInput,
@@ -7414,12 +7924,13 @@ export const JobsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobStepExecutionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobExecutionId: Schema.String.pipe(T.PathParam()),
     stepName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7438,13 +7949,14 @@ export type JobStepExecutionsGetOutput = typeof JobStepExecutionsGetOutput.Type;
 /**
  * Gets a step execution of a job execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job to get.
  * @param jobExecutionId - The unique id of the job execution
  * @param stepName - The name of the step.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobStepExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7455,11 +7967,13 @@ export const JobStepExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobStepExecutionsListByJobExecutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobExecutionId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     createTimeMin: Schema.optional(Schema.String),
     createTimeMax: Schema.optional(Schema.String),
     endTimeMin: Schema.optional(Schema.String),
@@ -7467,7 +7981,6 @@ export const JobStepExecutionsListByJobExecutionInput =
     isActive: Schema.optional(Schema.Boolean),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -7480,7 +7993,7 @@ export type JobStepExecutionsListByJobExecutionInput =
 // Output Schema
 export const JobStepExecutionsListByJobExecutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobStepExecutionsListByJobExecutionOutput =
@@ -7490,10 +8003,13 @@ export type JobStepExecutionsListByJobExecutionOutput =
 /**
  * Lists the step executions of a job execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job to get.
- * @param jobExecutionId - The id of the job execution
+ * @param jobExecutionId - The unique id of the job execution
  * @param createTimeMin - If specified, only job executions created at or after the specified time are included.
  * @param createTimeMax - If specified, only job executions created before the specified time are included.
  * @param endTimeMin - If specified, only job executions completed at or after the specified time are included.
@@ -7501,8 +8017,6 @@ export type JobStepExecutionsListByJobExecutionOutput =
  * @param isActive - If specified, only active or only completed job executions are included.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobStepExecutionsListByJobExecution =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7512,11 +8026,12 @@ export const JobStepExecutionsListByJobExecution =
 // Input Schema
 export const JobStepsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     stepName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7537,12 +8052,13 @@ export type JobStepsCreateOrUpdateOutput =
 /**
  * Creates or updates a job step. This will implicitly create a new job version.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job.
  * @param stepName - The name of the job step.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobStepsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7552,11 +8068,12 @@ export const JobStepsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const JobStepsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   jobAgentName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
   stepName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7574,12 +8091,13 @@ export type JobStepsDeleteOutput = typeof JobStepsDeleteOutput.Type;
 /**
  * Deletes a job step. This will implicitly create a new job version.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job.
- * @param stepName - The name of the job step to delete.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param stepName - The name of the job step.
  */
 export const JobStepsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobStepsDeleteInput,
@@ -7587,11 +8105,12 @@ export const JobStepsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobStepsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   jobAgentName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
   stepName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7609,12 +8128,13 @@ export type JobStepsGetOutput = typeof JobStepsGetOutput.Type;
 /**
  * Gets a job step in a job's current version.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job.
  * @param stepName - The name of the job step.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobStepsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobStepsGetInput,
@@ -7623,12 +8143,13 @@ export const JobStepsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobStepsGetByVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobVersion: Schema.Number.pipe(T.PathParam()),
     stepName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7647,13 +8168,14 @@ export type JobStepsGetByVersionOutput = typeof JobStepsGetByVersionOutput.Type;
 /**
  * Gets the specified version of a job step.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job.
  * @param jobVersion - The version of the job to get.
  * @param stepName - The name of the job step.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobStepsGetByVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7664,10 +8186,11 @@ export const JobStepsGetByVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobStepsListByJobInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -7681,7 +8204,7 @@ export type JobStepsListByJobInput = typeof JobStepsListByJobInput.Type;
 // Output Schema
 export const JobStepsListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobStepsListByJobOutput = typeof JobStepsListByJobOutput.Type;
@@ -7690,11 +8213,12 @@ export type JobStepsListByJobOutput = typeof JobStepsListByJobOutput.Type;
 /**
  * Gets all job steps for a job's current version.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
- * @param jobName - The name of the job to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param jobName - The name of the job.
  */
 export const JobStepsListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobStepsListByJobInput,
@@ -7703,11 +8227,12 @@ export const JobStepsListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobStepsListByVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobVersion: Schema.Number.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7720,7 +8245,7 @@ export type JobStepsListByVersionInput = typeof JobStepsListByVersionInput.Type;
 // Output Schema
 export const JobStepsListByVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobStepsListByVersionOutput =
@@ -7730,12 +8255,13 @@ export type JobStepsListByVersionOutput =
 /**
  * Gets all job steps in the specified job version.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
- * @param jobName - The name of the job to get.
+ * @param jobName - The name of the job.
  * @param jobVersion - The version of the job to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobStepsListByVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7746,13 +8272,14 @@ export const JobStepsListByVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobTargetExecutionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobExecutionId: Schema.String.pipe(T.PathParam()),
     stepName: Schema.String.pipe(T.PathParam()),
     targetId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7773,14 +8300,15 @@ export type JobTargetExecutionsGetOutput =
 /**
  * Gets a target execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job to get.
  * @param jobExecutionId - The unique id of the job execution
  * @param stepName - The name of the step.
  * @param targetId - The target id.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobTargetExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7791,11 +8319,13 @@ export const JobTargetExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobTargetExecutionsListByJobExecutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobExecutionId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     createTimeMin: Schema.optional(Schema.String),
     createTimeMax: Schema.optional(Schema.String),
     endTimeMin: Schema.optional(Schema.String),
@@ -7803,7 +8333,6 @@ export const JobTargetExecutionsListByJobExecutionInput =
     isActive: Schema.optional(Schema.Boolean),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -7816,7 +8345,7 @@ export type JobTargetExecutionsListByJobExecutionInput =
 // Output Schema
 export const JobTargetExecutionsListByJobExecutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobTargetExecutionsListByJobExecutionOutput =
@@ -7826,9 +8355,12 @@ export type JobTargetExecutionsListByJobExecutionOutput =
 /**
  * Lists target executions for all steps of a job execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
- * @param jobName - The name of the job to get.
+ * @param jobName - The name of the job.
  * @param jobExecutionId - The id of the job execution
  * @param createTimeMin - If specified, only job executions created at or after the specified time are included.
  * @param createTimeMax - If specified, only job executions created before the specified time are included.
@@ -7837,8 +8369,6 @@ export type JobTargetExecutionsListByJobExecutionOutput =
  * @param isActive - If specified, only active or only completed job executions are included.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobTargetExecutionsListByJobExecution =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7848,12 +8378,14 @@ export const JobTargetExecutionsListByJobExecution =
 // Input Schema
 export const JobTargetExecutionsListByStepInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
     jobExecutionId: Schema.String.pipe(T.PathParam()),
     stepName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     createTimeMin: Schema.optional(Schema.String),
     createTimeMax: Schema.optional(Schema.String),
     endTimeMin: Schema.optional(Schema.String),
@@ -7861,7 +8393,6 @@ export const JobTargetExecutionsListByStepInput =
     isActive: Schema.optional(Schema.Boolean),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -7874,7 +8405,7 @@ export type JobTargetExecutionsListByStepInput =
 // Output Schema
 export const JobTargetExecutionsListByStepOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobTargetExecutionsListByStepOutput =
@@ -7884,10 +8415,13 @@ export type JobTargetExecutionsListByStepOutput =
 /**
  * Lists the target executions of a job step execution.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job to get.
- * @param jobExecutionId - The id of the job execution
+ * @param jobExecutionId - The unique id of the job execution
  * @param stepName - The name of the step.
  * @param createTimeMin - If specified, only job executions created at or after the specified time are included.
  * @param createTimeMax - If specified, only job executions created before the specified time are included.
@@ -7896,8 +8430,6 @@ export type JobTargetExecutionsListByStepOutput =
  * @param isActive - If specified, only active or only completed job executions are included.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobTargetExecutionsListByStep =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7907,10 +8439,11 @@ export const JobTargetExecutionsListByStep =
 // Input Schema
 export const JobTargetGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     targetGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7931,11 +8464,12 @@ export type JobTargetGroupsCreateOrUpdateOutput =
 /**
  * Creates or updates a target group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param targetGroupName - The name of the target group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobTargetGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7945,10 +8479,11 @@ export const JobTargetGroupsCreateOrUpdate =
 // Input Schema
 export const JobTargetGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     targetGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7968,11 +8503,12 @@ export type JobTargetGroupsDeleteOutput =
 /**
  * Deletes a target group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param targetGroupName - The name of the target group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobTargetGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7983,10 +8519,11 @@ export const JobTargetGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobTargetGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     targetGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8005,11 +8542,12 @@ export type JobTargetGroupsGetOutput = typeof JobTargetGroupsGetOutput.Type;
 /**
  * Gets a target group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param targetGroupName - The name of the target group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobTargetGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobTargetGroupsGetInput,
@@ -8018,9 +8556,10 @@ export const JobTargetGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobTargetGroupsListByAgentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    jobAgentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    jobAgentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8034,7 +8573,7 @@ export type JobTargetGroupsListByAgentInput =
 // Output Schema
 export const JobTargetGroupsListByAgentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobTargetGroupsListByAgentOutput =
@@ -8044,10 +8583,11 @@ export type JobTargetGroupsListByAgentOutput =
 /**
  * Gets all target groups in an agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  */
 export const JobTargetGroupsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8057,11 +8597,12 @@ export const JobTargetGroupsListByAgent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const JobVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   jobAgentName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
   jobVersion: Schema.Number.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -8081,12 +8622,13 @@ export type JobVersionsGetOutput = typeof JobVersionsGetOutput.Type;
 /**
  * Gets a job version.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param jobAgentName - The name of the job agent.
  * @param jobName - The name of the job.
  * @param jobVersion - The version of the job to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobVersionsGetInput,
@@ -8095,10 +8637,11 @@ export const JobVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobVersionsListByJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     jobAgentName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8111,7 +8654,7 @@ export type JobVersionsListByJobInput = typeof JobVersionsListByJobInput.Type;
 // Output Schema
 export const JobVersionsListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobVersionsListByJobOutput = typeof JobVersionsListByJobOutput.Type;
@@ -8120,11 +8663,12 @@ export type JobVersionsListByJobOutput = typeof JobVersionsListByJobOutput.Type;
 /**
  * Gets all versions of a job.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param jobAgentName - The name of the job agent.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param jobAgentName - The name of the job agent to be retrieved.
  * @param jobName - The name of the job to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const JobVersionsListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8135,9 +8679,11 @@ export const JobVersionsListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LedgerDigestUploadsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8158,9 +8704,11 @@ export type LedgerDigestUploadsCreateOrUpdateOutput =
 /**
  * Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const LedgerDigestUploadsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8170,9 +8718,11 @@ export const LedgerDigestUploadsCreateOrUpdate =
 // Input Schema
 export const LedgerDigestUploadsDisableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8193,9 +8743,11 @@ export type LedgerDigestUploadsDisableOutput =
 /**
  * Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const LedgerDigestUploadsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8206,9 +8758,11 @@ export const LedgerDigestUploadsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LedgerDigestUploadsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8229,9 +8783,11 @@ export type LedgerDigestUploadsGetOutput =
 /**
  * Gets the current ledger digest upload configuration for a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const LedgerDigestUploadsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8242,8 +8798,10 @@ export const LedgerDigestUploadsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LedgerDigestUploadsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8257,7 +8815,7 @@ export type LedgerDigestUploadsListByDatabaseInput =
 // Output Schema
 export const LedgerDigestUploadsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LedgerDigestUploadsListByDatabaseOutput =
@@ -8267,9 +8825,11 @@ export type LedgerDigestUploadsListByDatabaseOutput =
 /**
  * Gets all ledger digest upload settings on a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const LedgerDigestUploadsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8279,11 +8839,11 @@ export const LedgerDigestUploadsListByDatabase =
 // Input Schema
 export const LongTermRetentionBackupsChangeAccessTierInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8304,8 +8864,12 @@ export type LongTermRetentionBackupsChangeAccessTierOutput =
 /**
  * Change a long term retention backup access tier.
  *
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
  */
 export const LongTermRetentionBackupsChangeAccessTier =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8315,12 +8879,12 @@ export const LongTermRetentionBackupsChangeAccessTier =
 // Input Schema
 export const LongTermRetentionBackupsChangeAccessTierByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8341,9 +8905,13 @@ export type LongTermRetentionBackupsChangeAccessTierByResourceGroupOutput =
 /**
  * Change a long term retention backup access tier.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
  */
 export const LongTermRetentionBackupsChangeAccessTierByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8353,11 +8921,11 @@ export const LongTermRetentionBackupsChangeAccessTierByResourceGroup =
 // Input Schema
 export const LongTermRetentionBackupsCopyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8378,12 +8946,12 @@ export type LongTermRetentionBackupsCopyOutput =
 /**
  * Copy an existing long term retention backup.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsCopy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8393,12 +8961,12 @@ export const LongTermRetentionBackupsCopy =
 // Input Schema
 export const LongTermRetentionBackupsCopyByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8419,13 +8987,13 @@ export type LongTermRetentionBackupsCopyByResourceGroupOutput =
 /**
  * Copy an existing long term retention backup to a different server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsCopyByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8435,11 +9003,11 @@ export const LongTermRetentionBackupsCopyByResourceGroup =
 // Input Schema
 export const LongTermRetentionBackupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8460,12 +9028,12 @@ export type LongTermRetentionBackupsDeleteOutput =
 /**
  * Deletes a long term retention backup.
  *
- * @param locationName - The location of the database
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8475,12 +9043,12 @@ export const LongTermRetentionBackupsDelete =
 // Input Schema
 export const LongTermRetentionBackupsDeleteByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8501,13 +9069,13 @@ export type LongTermRetentionBackupsDeleteByResourceGroupOutput =
 /**
  * Deletes a long term retention backup.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param locationName - The location of the database
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsDeleteByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8517,11 +9085,11 @@ export const LongTermRetentionBackupsDeleteByResourceGroup =
 // Input Schema
 export const LongTermRetentionBackupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8542,12 +9110,12 @@ export type LongTermRetentionBackupsGetOutput =
 /**
  * Gets a long term retention backup.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8558,12 +9126,12 @@ export const LongTermRetentionBackupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LongTermRetentionBackupsGetByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8584,13 +9152,13 @@ export type LongTermRetentionBackupsGetByResourceGroupOutput =
 /**
  * Gets a long term retention backup.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsGetByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8600,13 +9168,13 @@ export const LongTermRetentionBackupsGetByResourceGroup =
 // Input Schema
 export const LongTermRetentionBackupsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -8629,13 +9197,13 @@ export type LongTermRetentionBackupsListByDatabaseOutput =
 /**
  * Lists all long term retention backups for a database.
  *
- * @param locationName - The location of the database
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8645,11 +9213,11 @@ export const LongTermRetentionBackupsListByDatabase =
 // Input Schema
 export const LongTermRetentionBackupsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -8672,11 +9240,11 @@ export type LongTermRetentionBackupsListByLocationOutput =
 /**
  * Lists the long term retention backups for a given location.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8686,14 +9254,14 @@ export const LongTermRetentionBackupsListByLocation =
 // Input Schema
 export const LongTermRetentionBackupsListByResourceGroupDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -8716,14 +9284,14 @@ export type LongTermRetentionBackupsListByResourceGroupDatabaseOutput =
 /**
  * Lists all long term retention backups for a database based on a particular resource group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param locationName - The location of the database
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsListByResourceGroupDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8733,12 +9301,12 @@ export const LongTermRetentionBackupsListByResourceGroupDatabase =
 // Input Schema
 export const LongTermRetentionBackupsListByResourceGroupLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -8761,12 +9329,12 @@ export type LongTermRetentionBackupsListByResourceGroupLocationOutput =
 /**
  * Lists the long term retention backups for a given location based on resource group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsListByResourceGroupLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8776,13 +9344,13 @@ export const LongTermRetentionBackupsListByResourceGroupLocation =
 // Input Schema
 export const LongTermRetentionBackupsListByResourceGroupServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -8805,13 +9373,13 @@ export type LongTermRetentionBackupsListByResourceGroupServerOutput =
 /**
  * Lists the long term retention backups for a given server based on resource groups.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database
  * @param longTermRetentionServerName - The name of the server
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsListByResourceGroupServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8821,12 +9389,12 @@ export const LongTermRetentionBackupsListByResourceGroupServer =
 // Input Schema
 export const LongTermRetentionBackupsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -8849,12 +9417,12 @@ export type LongTermRetentionBackupsListByServerOutput =
 /**
  * Lists the long term retention backups for a given server.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database
  * @param longTermRetentionServerName - The name of the server
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8862,13 +9430,349 @@ export const LongTermRetentionBackupsListByServer =
     outputSchema: LongTermRetentionBackupsListByServerOutput,
   }));
 // Input Schema
-export const LongTermRetentionBackupsUpdateInput =
+export const LongTermRetentionBackupsLockTimeBasedImmutabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/lockTimeBasedImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsLockTimeBasedImmutabilityInput =
+  typeof LongTermRetentionBackupsLockTimeBasedImmutabilityInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsLockTimeBasedImmutabilityOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsLockTimeBasedImmutabilityOutput =
+  typeof LongTermRetentionBackupsLockTimeBasedImmutabilityOutput.Type;
+
+// The operation
+/**
+ * Lock time based immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsLockTimeBasedImmutability =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: LongTermRetentionBackupsLockTimeBasedImmutabilityInput,
+    outputSchema: LongTermRetentionBackupsLockTimeBasedImmutabilityOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/lockTimeBasedImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupInput =
+  typeof LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupOutput =
+  typeof LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Lock time based immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupInput,
+    outputSchema:
+      LongTermRetentionBackupsLockTimeBasedImmutabilityByResourceGroupOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeLegalHoldImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityInput =
+  typeof LongTermRetentionBackupsRemoveLegalHoldImmutabilityInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityOutput =
+  typeof LongTermRetentionBackupsRemoveLegalHoldImmutabilityOutput.Type;
+
+// The operation
+/**
+ * Remove legal hold immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsRemoveLegalHoldImmutability =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: LongTermRetentionBackupsRemoveLegalHoldImmutabilityInput,
+    outputSchema: LongTermRetentionBackupsRemoveLegalHoldImmutabilityOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeLegalHoldImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupInput =
+  typeof LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupOutput =
+  typeof LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Remove legal hold immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupInput,
+    outputSchema:
+      LongTermRetentionBackupsRemoveLegalHoldImmutabilityByResourceGroupOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeTimeBasedImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityInput =
+  typeof LongTermRetentionBackupsRemoveTimeBasedImmutabilityInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityOutput =
+  typeof LongTermRetentionBackupsRemoveTimeBasedImmutabilityOutput.Type;
+
+// The operation
+/**
+ * Remove time based immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsRemoveTimeBasedImmutability =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: LongTermRetentionBackupsRemoveTimeBasedImmutabilityInput,
+    outputSchema: LongTermRetentionBackupsRemoveTimeBasedImmutabilityOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/removeTimeBasedImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupInput =
+  typeof LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupOutput =
+  typeof LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Remove time based immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupInput,
+    outputSchema:
+      LongTermRetentionBackupsRemoveTimeBasedImmutabilityByResourceGroupOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsSetLegalHoldImmutabilityInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/setLegalHoldImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsSetLegalHoldImmutabilityInput =
+  typeof LongTermRetentionBackupsSetLegalHoldImmutabilityInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsSetLegalHoldImmutabilityOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsSetLegalHoldImmutabilityOutput =
+  typeof LongTermRetentionBackupsSetLegalHoldImmutabilityOutput.Type;
+
+// The operation
+/**
+ * Set legal hold immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsSetLegalHoldImmutability =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: LongTermRetentionBackupsSetLegalHoldImmutabilityInput,
+    outputSchema: LongTermRetentionBackupsSetLegalHoldImmutabilityOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups/{backupName}/setLegalHoldImmutability",
+    }),
+  );
+export type LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupInput =
+  typeof LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupInput.Type;
+
+// Output Schema
+export const LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupOutput =
+  typeof LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Set legal hold immutability of an existing long term retention backup.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
+ * @param longTermRetentionServerName - The name of the server
+ * @param longTermRetentionDatabaseName - The name of the database
+ * @param backupName - The backup name.
+ */
+export const LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupInput,
+    outputSchema:
+      LongTermRetentionBackupsSetLegalHoldImmutabilityByResourceGroupOutput,
+  }));
+// Input Schema
+export const LongTermRetentionBackupsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
+    longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
+    backupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8889,12 +9793,12 @@ export type LongTermRetentionBackupsUpdateOutput =
 /**
  * Updates an existing long term retention backup.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8904,12 +9808,12 @@ export const LongTermRetentionBackupsUpdate =
 // Input Schema
 export const LongTermRetentionBackupsUpdateByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     longTermRetentionServerName: Schema.String.pipe(T.PathParam()),
     longTermRetentionDatabaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8930,13 +9834,13 @@ export type LongTermRetentionBackupsUpdateByResourceGroupOutput =
 /**
  * Updates an existing long term retention backup.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database.
  * @param longTermRetentionServerName - The name of the server
  * @param longTermRetentionDatabaseName - The name of the database
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionBackupsUpdateByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8946,11 +9850,11 @@ export const LongTermRetentionBackupsUpdateByResourceGroup =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8971,12 +9875,12 @@ export type LongTermRetentionManagedInstanceBackupsDeleteOutput =
 /**
  * Deletes a long term retention backup.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the managed database.
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8986,12 +9890,12 @@ export const LongTermRetentionManagedInstanceBackupsDelete =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsDeleteByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9012,13 +9916,13 @@ export type LongTermRetentionManagedInstanceBackupsDeleteByResourceGroupOutput =
 /**
  * Deletes a long term retention backup.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param locationName - The location of the database
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the managed database.
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsDeleteByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9030,11 +9934,11 @@ export const LongTermRetentionManagedInstanceBackupsDeleteByResourceGroup =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9055,12 +9959,12 @@ export type LongTermRetentionManagedInstanceBackupsGetOutput =
 /**
  * Gets a long term retention backup for a managed database.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the managed database.
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9070,12 +9974,12 @@ export const LongTermRetentionManagedInstanceBackupsGet =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsGetByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     backupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9096,13 +10000,13 @@ export type LongTermRetentionManagedInstanceBackupsGetByResourceGroupOutput =
 /**
  * Gets a long term retention backup for a managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the managed database.
  * @param backupName - The backup name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsGetByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9113,13 +10017,13 @@ export const LongTermRetentionManagedInstanceBackupsGetByResourceGroup =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9132,7 +10036,7 @@ export type LongTermRetentionManagedInstanceBackupsListByDatabaseInput =
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionManagedInstanceBackupsListByDatabaseOutput =
@@ -9142,13 +10046,13 @@ export type LongTermRetentionManagedInstanceBackupsListByDatabaseOutput =
 /**
  * Lists all long term retention backups for a managed database.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the managed database.
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9158,12 +10062,12 @@ export const LongTermRetentionManagedInstanceBackupsListByDatabase =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9176,7 +10080,7 @@ export type LongTermRetentionManagedInstanceBackupsListByInstanceInput =
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionManagedInstanceBackupsListByInstanceOutput =
@@ -9186,12 +10090,12 @@ export type LongTermRetentionManagedInstanceBackupsListByInstanceOutput =
 /**
  * Lists the long term retention backups for a given managed instance.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database
  * @param managedInstanceName - The name of the managed instance.
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9201,14 +10105,14 @@ export const LongTermRetentionManagedInstanceBackupsListByInstance =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9221,7 +10125,7 @@ export type LongTermRetentionManagedInstanceBackupsListByLocationInput =
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionManagedInstanceBackupsListByLocationOutput =
@@ -9231,14 +10135,14 @@ export type LongTermRetentionManagedInstanceBackupsListByLocationOutput =
 /**
  * Lists the long term retention backups for managed databases in a given location.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The location of the database.
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9248,14 +10152,14 @@ export const LongTermRetentionManagedInstanceBackupsListByLocation =
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9268,7 +10172,7 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseIn
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseOutput =
@@ -9278,14 +10182,14 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabaseOu
 /**
  * Lists all long term retention backups for a managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param locationName - The location of the database
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The location of the database.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the managed database.
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9297,13 +10201,13 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupDatabase 
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9316,7 +10220,7 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceIn
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceOutput =
@@ -9326,13 +10230,13 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupInstanceOu
 /**
  * Lists the long term retention backups for a given managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database.
  * @param managedInstanceName - The name of the managed instance.
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9344,15 +10248,15 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupInstance 
 // Input Schema
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     databaseState: Schema.optional(Schema.Literals(["All", "Live", "Deleted"])),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9365,7 +10269,7 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationIn
 // Output Schema
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationOutput =
@@ -9375,15 +10279,15 @@ export type LongTermRetentionManagedInstanceBackupsListByResourceGroupLocationOu
 /**
  * Lists the long term retention backups for managed databases in a given location.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The location of the database.
  * @param onlyLatestPerDatabase - Whether or not to only get the latest backup for each database.
  * @param databaseState - Whether to query against just live databases, just deleted databases, or all databases.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9395,9 +10299,11 @@ export const LongTermRetentionManagedInstanceBackupsListByResourceGroupLocation 
 // Input Schema
 export const LongTermRetentionPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9416,12 +10322,14 @@ export type LongTermRetentionPoliciesCreateOrUpdateOutput =
 
 // The operation
 /**
- * Sets a database's long term retention policy.
+ * Set or update a database's long term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param policyName - The policy name. Should always be Default.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9431,9 +10339,11 @@ export const LongTermRetentionPoliciesCreateOrUpdate =
 // Input Schema
 export const LongTermRetentionPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9454,10 +10364,12 @@ export type LongTermRetentionPoliciesGetOutput =
 /**
  * Gets a database's long term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param policyName - The policy name. Should always be Default.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const LongTermRetentionPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9467,8 +10379,10 @@ export const LongTermRetentionPoliciesGet =
 // Input Schema
 export const LongTermRetentionPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9482,7 +10396,7 @@ export type LongTermRetentionPoliciesListByDatabaseInput =
 // Output Schema
 export const LongTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type LongTermRetentionPoliciesListByDatabaseOutput =
@@ -9492,9 +10406,11 @@ export type LongTermRetentionPoliciesListByDatabaseOutput =
 /**
  * Gets a database's long term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const LongTermRetentionPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9504,11 +10420,12 @@ export const LongTermRetentionPoliciesListByDatabase =
 // Input Schema
 export const MaintenanceWindowOptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    maintenanceWindowOptionsName: Schema.String,
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    maintenanceWindowOptionsName: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9528,11 +10445,12 @@ export type MaintenanceWindowOptionsGetOutput =
 /**
  * Gets a list of available maintenance windows.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to get maintenance windows options for.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param maintenanceWindowOptionsName - Maintenance window options name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const MaintenanceWindowOptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9543,11 +10461,12 @@ export const MaintenanceWindowOptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const MaintenanceWindowsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    maintenanceWindowName: Schema.String,
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    maintenanceWindowName: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9567,11 +10486,12 @@ export type MaintenanceWindowsCreateOrUpdateOutput =
 /**
  * Sets maintenance windows settings for a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to set maintenance windows for.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param maintenanceWindowName - Maintenance window name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const MaintenanceWindowsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9581,11 +10501,12 @@ export const MaintenanceWindowsCreateOrUpdate =
 // Input Schema
 export const MaintenanceWindowsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    maintenanceWindowName: Schema.String,
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    maintenanceWindowName: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9604,11 +10525,12 @@ export type MaintenanceWindowsGetOutput =
 /**
  * Gets maintenance windows settings for a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database to get maintenance windows for.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param maintenanceWindowName - Maintenance window name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const MaintenanceWindowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9619,9 +10541,11 @@ export const MaintenanceWindowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9642,10 +10566,12 @@ export type ManagedBackupShortTermRetentionPoliciesCreateOrUpdateOutput =
 /**
  * Updates a managed database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param policyName - The policy name. Should always be "default".
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
+ * @param policyName - The policy name.
  */
 export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9655,9 +10581,11 @@ export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdate =
 // Input Schema
 export const ManagedBackupShortTermRetentionPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9678,10 +10606,12 @@ export type ManagedBackupShortTermRetentionPoliciesGetOutput =
 /**
  * Gets a managed database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param policyName - The policy name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedBackupShortTermRetentionPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9691,8 +10621,10 @@ export const ManagedBackupShortTermRetentionPoliciesGet =
 // Input Schema
 export const ManagedBackupShortTermRetentionPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9706,7 +10638,7 @@ export type ManagedBackupShortTermRetentionPoliciesListByDatabaseInput =
 // Output Schema
 export const ManagedBackupShortTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedBackupShortTermRetentionPoliciesListByDatabaseOutput =
@@ -9716,9 +10648,11 @@ export type ManagedBackupShortTermRetentionPoliciesListByDatabaseOutput =
 /**
  * Gets a managed database's short term retention policy list.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedBackupShortTermRetentionPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9728,9 +10662,11 @@ export const ManagedBackupShortTermRetentionPoliciesListByDatabase =
 // Input Schema
 export const ManagedBackupShortTermRetentionPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9751,10 +10687,12 @@ export type ManagedBackupShortTermRetentionPoliciesUpdateOutput =
 /**
  * Updates a managed database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param policyName - The policy name. Should always be "default".
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
+ * @param policyName - The policy name.
  */
 export const ManagedBackupShortTermRetentionPoliciesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9764,11 +10702,13 @@ export const ManagedBackupShortTermRetentionPoliciesUpdate =
 // Input Schema
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9789,10 +10729,12 @@ export type ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateOutput 
 /**
  * Creates or updates a managed database's Advanced Threat Protection state.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9804,11 +10746,13 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdate =
 // Input Schema
 export const ManagedDatabaseAdvancedThreatProtectionSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9829,10 +10773,12 @@ export type ManagedDatabaseAdvancedThreatProtectionSettingsGetOutput =
 /**
  * Gets a managed database's Advanced Threat Protection state.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseAdvancedThreatProtectionSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9842,8 +10788,10 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsGet =
 // Input Schema
 export const ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9857,7 +10805,7 @@ export type ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput =
@@ -9867,9 +10815,11 @@ export type ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseOutput 
 /**
  * Gets a list of managed database's Advanced Threat Protection states.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9881,12 +10831,13 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabase =
 // Input Schema
 export const ManagedDatabaseColumnsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -9907,13 +10858,14 @@ export type ManagedDatabaseColumnsGetOutput =
 /**
  * Get managed database column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseColumnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -9924,14 +10876,16 @@ export const ManagedDatabaseColumnsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabaseColumnsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     schema: Schema.optional(Schema.String),
     table: Schema.optional(Schema.String),
     column: Schema.optional(Schema.String),
     orderBy: Schema.optional(Schema.String),
     $skiptoken: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -9944,7 +10898,7 @@ export type ManagedDatabaseColumnsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseColumnsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseColumnsListByDatabaseOutput =
@@ -9954,10 +10908,12 @@ export type ManagedDatabaseColumnsListByDatabaseOutput =
 /**
  * List managed database columns
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param $skiptoken - An opaque token that identifies a starting point in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseColumnsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9967,13 +10923,14 @@ export const ManagedDatabaseColumnsListByDatabase =
 // Input Schema
 export const ManagedDatabaseColumnsListByTableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9986,7 +10943,7 @@ export type ManagedDatabaseColumnsListByTableInput =
 // Output Schema
 export const ManagedDatabaseColumnsListByTableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseColumnsListByTableOutput =
@@ -9996,13 +10953,14 @@ export type ManagedDatabaseColumnsListByTableOutput =
 /**
  * List managed database columns
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseColumnsListByTable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10012,10 +10970,10 @@ export const ManagedDatabaseColumnsListByTable =
 // Input Schema
 export const ManagedDatabaseMoveOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10036,9 +10994,11 @@ export type ManagedDatabaseMoveOperationsGetOutput =
 /**
  * Gets a managed database move operation.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The name of the region where the resource is located.
+ * @param operationId - The ID of the managed database move operation.
  */
 export const ManagedDatabaseMoveOperationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10048,12 +11008,12 @@ export const ManagedDatabaseMoveOperationsGet =
 // Input Schema
 export const ManagedDatabaseMoveOperationsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     onlyLatestPerDatabase: Schema.optional(Schema.Boolean),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -10076,11 +11036,12 @@ export type ManagedDatabaseMoveOperationsListByLocationOutput =
 /**
  * Lists managed database move operations.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param locationName - The name of the region where the resource is located.
  * @param onlyLatestPerDatabase - Whether or not to only get the latest operation for each database. Has higher priority than $filter.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseMoveOperationsListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10090,9 +11051,11 @@ export const ManagedDatabaseMoveOperationsListByLocation =
 // Input Schema
 export const ManagedDatabaseQueriesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    queryId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    queryId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10113,9 +11076,11 @@ export type ManagedDatabaseQueriesGetOutput =
 /**
  * Get query by query id.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabaseQueriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10126,13 +11091,15 @@ export const ManagedDatabaseQueriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabaseQueriesListByQueryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    queryId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    queryId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     interval: Schema.optional(Schema.Literals(["PT1H", "P1D"])),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -10145,7 +11112,7 @@ export type ManagedDatabaseQueriesListByQueryInput =
 // Output Schema
 export const ManagedDatabaseQueriesListByQueryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseQueriesListByQueryOutput =
@@ -10155,12 +11122,14 @@ export type ManagedDatabaseQueriesListByQueryOutput =
 /**
  * Get query execution statistics by query id.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param startTime - Start time for observed period.
  * @param endTime - End time for observed period.
  * @param interval - The time step to be used to summarize the metric values.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseQueriesListByQuery =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10170,8 +11139,10 @@ export const ManagedDatabaseQueriesListByQuery =
 // Input Schema
 export const ManagedDatabaseRecommendedSensitivityLabelsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10192,9 +11163,11 @@ export type ManagedDatabaseRecommendedSensitivityLabelsUpdateOutput =
 /**
  * Update recommended sensitivity labels states of a given database using an operations batch.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabaseRecommendedSensitivityLabelsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10204,9 +11177,11 @@ export const ManagedDatabaseRecommendedSensitivityLabelsUpdate =
 // Input Schema
 export const ManagedDatabaseRestoreDetailsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restoreDetailsName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    restoreDetailsName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10227,10 +11202,12 @@ export type ManagedDatabaseRestoreDetailsGetOutput =
 /**
  * Gets managed database restore details.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param restoreDetailsName - The name of the restore details to retrieve.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseRestoreDetailsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10240,8 +11217,10 @@ export const ManagedDatabaseRestoreDetailsGet =
 // Input Schema
 export const ManagedDatabasesCancelMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10262,9 +11241,11 @@ export type ManagedDatabasesCancelMoveOutput =
 /**
  * Cancels a managed database move operation.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesCancelMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10275,10 +11256,11 @@ export const ManagedDatabasesCancelMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabaseSchemasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10299,11 +11281,12 @@ export type ManagedDatabaseSchemasGetOutput =
 /**
  * Get managed database schema
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10314,11 +11297,12 @@ export const ManagedDatabaseSchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabaseSchemasListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -10331,7 +11315,7 @@ export type ManagedDatabaseSchemasListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSchemasListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSchemasListByDatabaseOutput =
@@ -10341,11 +11325,12 @@ export type ManagedDatabaseSchemasListByDatabaseOutput =
 /**
  * List managed database schemas
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSchemasListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10355,8 +11340,10 @@ export const ManagedDatabaseSchemasListByDatabase =
 // Input Schema
 export const ManagedDatabasesCompleteMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10377,9 +11364,11 @@ export type ManagedDatabasesCompleteMoveOutput =
 /**
  * Completes a managed database move operation.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesCompleteMove =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10389,8 +11378,10 @@ export const ManagedDatabasesCompleteMove =
 // Input Schema
 export const ManagedDatabasesCompleteRestoreInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10411,9 +11402,11 @@ export type ManagedDatabasesCompleteRestoreOutput =
 /**
  * Completes the restore operation on a managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesCompleteRestore =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10423,8 +11416,10 @@ export const ManagedDatabasesCompleteRestore =
 // Input Schema
 export const ManagedDatabasesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10438,8 +11433,8 @@ export type ManagedDatabasesCreateOrUpdateInput =
 // Output Schema
 export const ManagedDatabasesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedDatabasesCreateOrUpdateOutput =
   typeof ManagedDatabasesCreateOrUpdateOutput.Type;
@@ -10448,9 +11443,11 @@ export type ManagedDatabasesCreateOrUpdateOutput =
 /**
  * Creates a new database or updates an existing database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10460,8 +11457,10 @@ export const ManagedDatabasesCreateOrUpdate =
 // Input Schema
 export const ManagedDatabasesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10482,9 +11481,11 @@ export type ManagedDatabasesDeleteOutput =
 /**
  * Deletes a managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -10495,11 +11496,11 @@ export const ManagedDatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10520,12 +11521,12 @@ export type ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates a database's security alert policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
- * @param databaseName - The name of the managed database for which the security alert policy is defined.
+ * @param databaseName - The name of the database.
  * @param securityAlertPolicyName - The name of the security alert policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10535,11 +11536,11 @@ export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdate =
 // Input Schema
 export const ManagedDatabaseSecurityAlertPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10560,12 +11561,12 @@ export type ManagedDatabaseSecurityAlertPoliciesGetOutput =
 /**
  * Gets a managed database's security alert policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
- * @param databaseName - The name of the managed database for which the security alert policy is defined.
+ * @param databaseName - The name of the database.
  * @param securityAlertPolicyName - The name of the security alert policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSecurityAlertPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10575,10 +11576,10 @@ export const ManagedDatabaseSecurityAlertPoliciesGet =
 // Input Schema
 export const ManagedDatabaseSecurityAlertPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10592,7 +11593,7 @@ export type ManagedDatabaseSecurityAlertPoliciesListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSecurityAlertPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSecurityAlertPoliciesListByDatabaseOutput =
@@ -10602,11 +11603,11 @@ export type ManagedDatabaseSecurityAlertPoliciesListByDatabaseOutput =
 /**
  * Gets a list of managed database's security alert policies.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
- * @param databaseName - The name of the managed database for which the security alert policies are defined.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabaseSecurityAlertPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10616,14 +11617,15 @@ export const ManagedDatabaseSecurityAlertPoliciesListByDatabase =
 // Input Schema
 export const ManagedDatabaseSecurityEventsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
     $skiptoken: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -10636,7 +11638,7 @@ export type ManagedDatabaseSecurityEventsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSecurityEventsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSecurityEventsListByDatabaseOutput =
@@ -10646,14 +11648,15 @@ export type ManagedDatabaseSecurityEventsListByDatabaseOutput =
 /**
  * Gets a list of security events.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the managed database for which the security events are retrieved.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param $filter - An OData filter expression that filters elements in the collection.
  * @param $skip - The number of elements in the collection to skip.
  * @param $top - The number of elements to return from the collection.
  * @param $skiptoken - An opaque token that identifies a starting point in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSecurityEventsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10663,13 +11666,14 @@ export const ManagedDatabaseSecurityEventsListByDatabase =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10690,14 +11694,15 @@ export type ManagedDatabaseSensitivityLabelsCreateOrUpdateOutput =
 /**
  * Creates or updates the sensitivity label of a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSensitivityLabelsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10707,13 +11712,14 @@ export const ManagedDatabaseSensitivityLabelsCreateOrUpdate =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10734,14 +11740,15 @@ export type ManagedDatabaseSensitivityLabelsDeleteOutput =
 /**
  * Deletes the sensitivity label of a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSensitivityLabelsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10751,15 +11758,16 @@ export const ManagedDatabaseSensitivityLabelsDelete =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsDisableRecommendationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["recommended"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10780,13 +11788,15 @@ export type ManagedDatabaseSensitivityLabelsDisableRecommendationOutput =
 /**
  * Disables sensitivity recommendations on a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param sensitivityLabelSource - The source of the sensitivity label.
  */
 export const ManagedDatabaseSensitivityLabelsDisableRecommendation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10796,15 +11806,16 @@ export const ManagedDatabaseSensitivityLabelsDisableRecommendation =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsEnableRecommendationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["recommended"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10825,13 +11836,15 @@ export type ManagedDatabaseSensitivityLabelsEnableRecommendationOutput =
 /**
  * Enables sensitivity recommendations on a given column (recommendations are enabled by default on all columns)
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param sensitivityLabelSource - The source of the sensitivity label.
  */
 export const ManagedDatabaseSensitivityLabelsEnableRecommendation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10841,15 +11854,16 @@ export const ManagedDatabaseSensitivityLabelsEnableRecommendation =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current", "recommended"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -10870,14 +11884,15 @@ export type ManagedDatabaseSensitivityLabelsGetOutput =
 /**
  * Gets the sensitivity label of a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSensitivityLabelsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10887,10 +11902,12 @@ export const ManagedDatabaseSensitivityLabelsGet =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -10903,7 +11920,7 @@ export type ManagedDatabaseSensitivityLabelsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSensitivityLabelsListByDatabaseOutput =
@@ -10913,10 +11930,12 @@ export type ManagedDatabaseSensitivityLabelsListByDatabaseOutput =
 /**
  * Gets the sensitivity labels of a given database
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSensitivityLabelsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10926,12 +11945,14 @@ export const ManagedDatabaseSensitivityLabelsListByDatabase =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsListCurrentByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
     $count: Schema.optional(Schema.Boolean),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -10944,7 +11965,7 @@ export type ManagedDatabaseSensitivityLabelsListCurrentByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsListCurrentByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSensitivityLabelsListCurrentByDatabaseOutput =
@@ -10954,10 +11975,12 @@ export type ManagedDatabaseSensitivityLabelsListCurrentByDatabaseOutput =
 /**
  * Gets the sensitivity labels of a given database
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSensitivityLabelsListCurrentByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10967,12 +11990,14 @@ export const ManagedDatabaseSensitivityLabelsListCurrentByDatabase =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
     includeDisabledRecommendations: Schema.optional(Schema.Boolean),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -10985,7 +12010,7 @@ export type ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseOutput =
@@ -10995,11 +12020,13 @@ export type ManagedDatabaseSensitivityLabelsListRecommendedByDatabaseOutput =
 /**
  * Gets the sensitivity labels of a given database
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param includeDisabledRecommendations - Specifies whether to include disabled recommendations or not.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11010,8 +12037,10 @@ export const ManagedDatabaseSensitivityLabelsListRecommendedByDatabase =
 // Input Schema
 export const ManagedDatabaseSensitivityLabelsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11032,9 +12061,11 @@ export type ManagedDatabaseSensitivityLabelsUpdateOutput =
 /**
  * Update sensitivity labels of a given database using an operations batch.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabaseSensitivityLabelsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11044,8 +12075,10 @@ export const ManagedDatabaseSensitivityLabelsUpdate =
 // Input Schema
 export const ManagedDatabasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11058,8 +12091,8 @@ export type ManagedDatabasesGetInput = typeof ManagedDatabasesGetInput.Type;
 // Output Schema
 export const ManagedDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedDatabasesGetOutput = typeof ManagedDatabasesGetOutput.Type;
 
@@ -11067,9 +12100,11 @@ export type ManagedDatabasesGetOutput = typeof ManagedDatabasesGetOutput.Type;
 /**
  * Gets a managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ManagedDatabasesGetInput,
@@ -11078,8 +12113,9 @@ export const ManagedDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ManagedDatabasesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11093,13 +12129,11 @@ export type ManagedDatabasesListByInstanceInput =
 // Output Schema
 export const ManagedDatabasesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -11110,9 +12144,10 @@ export type ManagedDatabasesListByInstanceOutput =
 /**
  * Gets a list of managed databases.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedDatabasesListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11122,8 +12157,9 @@ export const ManagedDatabasesListByInstance =
 // Input Schema
 export const ManagedDatabasesListInaccessibleByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11137,13 +12173,11 @@ export type ManagedDatabasesListInaccessibleByInstanceInput =
 // Output Schema
 export const ManagedDatabasesListInaccessibleByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -11154,9 +12188,10 @@ export type ManagedDatabasesListInaccessibleByInstanceOutput =
 /**
  * Gets a list of inaccessible managed databases in a managed instance
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedDatabasesListInaccessibleByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11164,10 +12199,53 @@ export const ManagedDatabasesListInaccessibleByInstance =
     outputSchema: ManagedDatabasesListInaccessibleByInstanceOutput,
   }));
 // Input Schema
+export const ManagedDatabasesReevaluateInaccessibleDatabaseStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/reevaluateInaccessibleDatabaseState",
+    }),
+  );
+export type ManagedDatabasesReevaluateInaccessibleDatabaseStateInput =
+  typeof ManagedDatabasesReevaluateInaccessibleDatabaseStateInput.Type;
+
+// Output Schema
+export const ManagedDatabasesReevaluateInaccessibleDatabaseStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type ManagedDatabasesReevaluateInaccessibleDatabaseStateOutput =
+  typeof ManagedDatabasesReevaluateInaccessibleDatabaseStateOutput.Type;
+
+// The operation
+/**
+ * Reevaluates the inaccessibility state of a managed database.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
+ */
+export const ManagedDatabasesReevaluateInaccessibleDatabaseState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedDatabasesReevaluateInaccessibleDatabaseStateInput,
+    outputSchema: ManagedDatabasesReevaluateInaccessibleDatabaseStateOutput,
+  }));
+// Input Schema
 export const ManagedDatabasesStartMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11188,9 +12266,11 @@ export type ManagedDatabasesStartMoveOutput =
 /**
  * Starts a managed database move operation.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesStartMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11201,8 +12281,10 @@ export const ManagedDatabasesStartMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabasesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11216,8 +12298,8 @@ export type ManagedDatabasesUpdateInput =
 // Output Schema
 export const ManagedDatabasesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedDatabasesUpdateOutput =
   typeof ManagedDatabasesUpdateOutput.Type;
@@ -11226,9 +12308,11 @@ export type ManagedDatabasesUpdateOutput =
 /**
  * Updates an existing database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11239,11 +12323,12 @@ export const ManagedDatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabaseTablesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11264,12 +12349,13 @@ export type ManagedDatabaseTablesGetOutput =
 /**
  * Get managed database table
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseTablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -11280,12 +12366,13 @@ export const ManagedDatabaseTablesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedDatabaseTablesListBySchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -11298,7 +12385,7 @@ export type ManagedDatabaseTablesListBySchemaInput =
 // Output Schema
 export const ManagedDatabaseTablesListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseTablesListBySchemaOutput =
@@ -11308,12 +12395,13 @@ export type ManagedDatabaseTablesListBySchemaOutput =
 /**
  * List managed database tables
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseTablesListBySchema =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11323,11 +12411,11 @@ export const ManagedDatabaseTablesListBySchema =
 // Input Schema
 export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11348,12 +12436,12 @@ export type ManagedDatabaseTransparentDataEncryptionCreateOrUpdateOutput =
 /**
  * Updates a database's transparent data encryption configuration.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
- * @param databaseName - The name of the managed database for which the security alert policy is defined.
+ * @param databaseName - The name of the database.
  * @param tdeName - The name of the transparent data encryption configuration.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11363,11 +12451,11 @@ export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdate =
 // Input Schema
 export const ManagedDatabaseTransparentDataEncryptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11388,12 +12476,12 @@ export type ManagedDatabaseTransparentDataEncryptionGetOutput =
 /**
  * Gets a managed database's transparent data encryption.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
- * @param databaseName - The name of the managed database for which the transparent data encryption is defined.
+ * @param databaseName - The name of the database.
  * @param tdeName - The name of the transparent data encryption configuration.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseTransparentDataEncryptionGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11403,10 +12491,10 @@ export const ManagedDatabaseTransparentDataEncryptionGet =
 // Input Schema
 export const ManagedDatabaseTransparentDataEncryptionListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11420,7 +12508,7 @@ export type ManagedDatabaseTransparentDataEncryptionListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseTransparentDataEncryptionListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseTransparentDataEncryptionListByDatabaseOutput =
@@ -11430,11 +12518,11 @@ export type ManagedDatabaseTransparentDataEncryptionListByDatabaseOutput =
 /**
  * Gets a list of managed database's transparent data encryptions.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
- * @param databaseName - The name of the managed database for which the transparent data encryption is defined.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param databaseName - The name of the database.
  */
 export const ManagedDatabaseTransparentDataEncryptionListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11444,6 +12532,7 @@ export const ManagedDatabaseTransparentDataEncryptionListByDatabase =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -11452,7 +12541,6 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateIn
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11473,14 +12561,14 @@ export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOut
 /**
  * Creates or updates a database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment rule baseline is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11492,6 +12580,7 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdate =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -11500,7 +12589,6 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteInput =
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11521,14 +12609,14 @@ export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDeleteOutput =
 /**
  * Removes the database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment rule baseline is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11539,6 +12627,7 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesDelete =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -11547,7 +12636,6 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetInput =
     ),
     ruleId: Schema.String.pipe(T.PathParam()),
     baselineName: Schema.Literals(["master", "default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11568,14 +12656,14 @@ export type ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGetOutput =
 /**
  * Gets a database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment rule baseline is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param baselineName - The name of the vulnerability assessment rule baseline (default implies a baseline on a database level rule and master for server level rule).
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11585,6 +12673,7 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesGet =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentScansExportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -11592,7 +12681,6 @@ export const ManagedDatabaseVulnerabilityAssessmentScansExportInput =
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11613,13 +12701,13 @@ export type ManagedDatabaseVulnerabilityAssessmentScansExportOutput =
 /**
  * Convert an existing scan result to a human readable format. If already exists nothing happens
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
- * @param databaseName - The name of the scanned database.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param scanId - The vulnerability assessment scan Id.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
  */
 export const ManagedDatabaseVulnerabilityAssessmentScansExport =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11629,13 +12717,14 @@ export const ManagedDatabaseVulnerabilityAssessmentScansExport =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentScansGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11656,12 +12745,13 @@ export type ManagedDatabaseVulnerabilityAssessmentScansGetOutput =
 /**
  * Gets a vulnerability assessment scan record of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentScansGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11671,13 +12761,14 @@ export const ManagedDatabaseVulnerabilityAssessmentScansGet =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentScansInitiateScanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11698,12 +12789,13 @@ export type ManagedDatabaseVulnerabilityAssessmentScansInitiateScanOutput =
 /**
  * Executes a Vulnerability Assessment database scan.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param scanId - The vulnerability assessment scan Id of the scan to retrieve.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentScansInitiateScan =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11713,12 +12805,13 @@ export const ManagedDatabaseVulnerabilityAssessmentScansInitiateScan =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11732,7 +12825,7 @@ export type ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
@@ -11742,11 +12835,12 @@ export type ManagedDatabaseVulnerabilityAssessmentScansListByDatabaseOutput =
 /**
  * Lists the vulnerability assessment scans of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11757,13 +12851,13 @@ export const ManagedDatabaseVulnerabilityAssessmentScansListByDatabase =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11784,12 +12878,12 @@ export type ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateOutput =
 /**
  * Creates or updates the database's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11799,13 +12893,13 @@ export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdate =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11826,12 +12920,12 @@ export type ManagedDatabaseVulnerabilityAssessmentsDeleteOutput =
 /**
  * Removes the database's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11841,13 +12935,13 @@ export const ManagedDatabaseVulnerabilityAssessmentsDelete =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11868,12 +12962,12 @@ export type ManagedDatabaseVulnerabilityAssessmentsGetOutput =
 /**
  * Gets the database's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11883,10 +12977,10 @@ export const ManagedDatabaseVulnerabilityAssessmentsGet =
 // Input Schema
 export const ManagedDatabaseVulnerabilityAssessmentsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11900,7 +12994,7 @@ export type ManagedDatabaseVulnerabilityAssessmentsListByDatabaseInput =
 // Output Schema
 export const ManagedDatabaseVulnerabilityAssessmentsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedDatabaseVulnerabilityAssessmentsListByDatabaseOutput =
@@ -11910,11 +13004,11 @@ export type ManagedDatabaseVulnerabilityAssessmentsListByDatabaseOutput =
 /**
  * Lists the vulnerability assessments of a managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param managedInstanceName - The name of the managed instance.
  * @param databaseName - The name of the database for which the vulnerability assessment is defined.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedDatabaseVulnerabilityAssessmentsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11924,9 +13018,10 @@ export const ManagedDatabaseVulnerabilityAssessmentsListByDatabase =
 // Input Schema
 export const ManagedInstanceAdministratorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11947,9 +13042,10 @@ export type ManagedInstanceAdministratorsCreateOrUpdateOutput =
 /**
  * Creates or updates a managed instance administrator.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceAdministratorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11959,9 +13055,10 @@ export const ManagedInstanceAdministratorsCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceAdministratorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -11982,9 +13079,10 @@ export type ManagedInstanceAdministratorsDeleteOutput =
 /**
  * Deletes a managed instance administrator.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceAdministratorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11994,9 +13092,10 @@ export const ManagedInstanceAdministratorsDelete =
 // Input Schema
 export const ManagedInstanceAdministratorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12017,9 +13116,10 @@ export type ManagedInstanceAdministratorsGetOutput =
 /**
  * Gets a managed instance administrator.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceAdministratorsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12029,8 +13129,9 @@ export const ManagedInstanceAdministratorsGet =
 // Input Schema
 export const ManagedInstanceAdministratorsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12044,7 +13145,7 @@ export type ManagedInstanceAdministratorsListByInstanceInput =
 // Output Schema
 export const ManagedInstanceAdministratorsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceAdministratorsListByInstanceOutput =
@@ -12054,9 +13155,10 @@ export type ManagedInstanceAdministratorsListByInstanceOutput =
 /**
  * Gets a list of managed instance administrators.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceAdministratorsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12066,11 +13168,12 @@ export const ManagedInstanceAdministratorsListByInstance =
 // Input Schema
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12091,10 +13194,11 @@ export type ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateOutput 
 /**
  * Creates or updates Advanced Threat Protection settings.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12106,11 +13210,12 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceAdvancedThreatProtectionSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12131,10 +13236,11 @@ export type ManagedInstanceAdvancedThreatProtectionSettingsGetOutput =
 /**
  * Get a managed instance's Advanced Threat Protection state.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceAdvancedThreatProtectionSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12144,8 +13250,9 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsGet =
 // Input Schema
 export const ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12159,7 +13266,7 @@ export type ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceInput =
 // Output Schema
 export const ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceOutput =
@@ -12169,9 +13276,10 @@ export type ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceOutput 
 /**
  * Get the managed instance's Advanced Threat Protection settings.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceAdvancedThreatProtectionSettingsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12183,9 +13291,10 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsListByInstance =
 // Input Schema
 export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12206,10 +13315,11 @@ export type ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateOutput =
 /**
  * Sets Server Active Directory only authentication property or updates an existing server Active Directory only authentication property.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param authenticationName - The name of server azure active directory only authentication.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12219,9 +13329,10 @@ export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceAzureADOnlyAuthenticationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12242,10 +13353,11 @@ export type ManagedInstanceAzureADOnlyAuthenticationsDeleteOutput =
 /**
  * Deletes an existing server Active Directory only authentication property.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param authenticationName - The name of server azure active directory only authentication.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceAzureADOnlyAuthenticationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12255,9 +13367,10 @@ export const ManagedInstanceAzureADOnlyAuthenticationsDelete =
 // Input Schema
 export const ManagedInstanceAzureADOnlyAuthenticationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12278,10 +13391,11 @@ export type ManagedInstanceAzureADOnlyAuthenticationsGetOutput =
 /**
  * Gets a specific Azure Active Directory only authentication property.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param authenticationName - The name of server azure active directory only authentication.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceAzureADOnlyAuthenticationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12291,8 +13405,9 @@ export const ManagedInstanceAzureADOnlyAuthenticationsGet =
 // Input Schema
 export const ManagedInstanceAzureADOnlyAuthenticationsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12316,9 +13431,10 @@ export type ManagedInstanceAzureADOnlyAuthenticationsListByInstanceOutput =
 /**
  * Gets a list of server Azure Active Directory only authentications.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceAzureADOnlyAuthenticationsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12328,9 +13444,10 @@ export const ManagedInstanceAzureADOnlyAuthenticationsListByInstance =
 // Input Schema
 export const ManagedInstanceDtcsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dtcName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    dtcName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12351,10 +13468,11 @@ export type ManagedInstanceDtcsCreateOrUpdateOutput =
 /**
  * Updates managed instance DTC settings.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param dtcName - The name of the managed instance DTC.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceDtcsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12364,9 +13482,10 @@ export const ManagedInstanceDtcsCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceDtcsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dtcName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    dtcName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12387,10 +13506,11 @@ export type ManagedInstanceDtcsGetOutput =
 /**
  * Gets managed instance DTC settings.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param dtcName - The name of the managed instance DTC.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceDtcsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -12401,8 +13521,9 @@ export const ManagedInstanceDtcsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstanceDtcsListByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12416,7 +13537,7 @@ export type ManagedInstanceDtcsListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstanceDtcsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceDtcsListByManagedInstanceOutput =
@@ -12426,9 +13547,10 @@ export type ManagedInstanceDtcsListByManagedInstanceOutput =
 /**
  * Gets a list of managed instance DTC settings.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceDtcsListByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12438,9 +13560,10 @@ export const ManagedInstanceDtcsListByManagedInstance =
 // Input Schema
 export const ManagedInstanceEncryptionProtectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12461,10 +13584,11 @@ export type ManagedInstanceEncryptionProtectorsCreateOrUpdateOutput =
 /**
  * Updates an existing encryption protector.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param encryptionProtectorName - The name of the encryption protector to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param encryptionProtectorName - The name of the encryption protector to be retrieved.
  */
 export const ManagedInstanceEncryptionProtectorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12474,9 +13598,10 @@ export const ManagedInstanceEncryptionProtectorsCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceEncryptionProtectorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12497,10 +13622,11 @@ export type ManagedInstanceEncryptionProtectorsGetOutput =
 /**
  * Gets a managed instance encryption protector.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param encryptionProtectorName - The name of the encryption protector to be retrieved.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceEncryptionProtectorsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12510,8 +13636,9 @@ export const ManagedInstanceEncryptionProtectorsGet =
 // Input Schema
 export const ManagedInstanceEncryptionProtectorsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12525,7 +13652,7 @@ export type ManagedInstanceEncryptionProtectorsListByInstanceInput =
 // Output Schema
 export const ManagedInstanceEncryptionProtectorsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceEncryptionProtectorsListByInstanceOutput =
@@ -12535,9 +13662,10 @@ export type ManagedInstanceEncryptionProtectorsListByInstanceOutput =
 /**
  * Gets a list of managed instance encryption protectors
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceEncryptionProtectorsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12547,9 +13675,10 @@ export const ManagedInstanceEncryptionProtectorsListByInstance =
 // Input Schema
 export const ManagedInstanceEncryptionProtectorsRevalidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    encryptionProtectorName: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12570,10 +13699,11 @@ export type ManagedInstanceEncryptionProtectorsRevalidateOutput =
 /**
  * Revalidates an existing encryption protector.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param encryptionProtectorName - The name of the encryption protector to be updated.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param encryptionProtectorName - The name of the encryption protector to be retrieved.
  */
 export const ManagedInstanceEncryptionProtectorsRevalidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12583,9 +13713,10 @@ export const ManagedInstanceEncryptionProtectorsRevalidate =
 // Input Schema
 export const ManagedInstanceKeysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12606,10 +13737,11 @@ export type ManagedInstanceKeysCreateOrUpdateOutput =
 /**
  * Creates or updates a managed instance key.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param keyName - The name of the managed instance key to be operated on (updated or created).
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param keyName - The name of the managed instance key to be retrieved.
  */
 export const ManagedInstanceKeysCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12619,9 +13751,10 @@ export const ManagedInstanceKeysCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceKeysDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12642,10 +13775,11 @@ export type ManagedInstanceKeysDeleteOutput =
 /**
  * Deletes the managed instance key with the given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param keyName - The name of the managed instance key to be deleted.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param keyName - The name of the managed instance key to be retrieved.
  */
 export const ManagedInstanceKeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -12656,9 +13790,10 @@ export const ManagedInstanceKeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstanceKeysGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12679,10 +13814,11 @@ export type ManagedInstanceKeysGetOutput =
 /**
  * Gets a managed instance key.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param keyName - The name of the managed instance key to be retrieved.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -12693,10 +13829,11 @@ export const ManagedInstanceKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstanceKeysListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -12709,7 +13846,7 @@ export type ManagedInstanceKeysListByInstanceInput =
 // Output Schema
 export const ManagedInstanceKeysListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceKeysListByInstanceOutput =
@@ -12719,10 +13856,11 @@ export type ManagedInstanceKeysListByInstanceOutput =
 /**
  * Gets a list of managed instance keys.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceKeysListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12732,9 +13870,11 @@ export const ManagedInstanceKeysListByInstance =
 // Input Schema
 export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12755,10 +13895,12 @@ export type ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateOutput =
 /**
  * Sets a managed database's long term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param policyName - The policy name. Should always be Default.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12768,9 +13910,11 @@ export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceLongTermRetentionPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12791,10 +13935,12 @@ export type ManagedInstanceLongTermRetentionPoliciesDeleteOutput =
 /**
  * Deletes a managed database's long term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param policyName - The policy name. Should always be Default.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceLongTermRetentionPoliciesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12804,9 +13950,11 @@ export const ManagedInstanceLongTermRetentionPoliciesDelete =
 // Input Schema
 export const ManagedInstanceLongTermRetentionPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12827,10 +13975,12 @@ export type ManagedInstanceLongTermRetentionPoliciesGetOutput =
 /**
  * Gets a managed database's long term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  * @param policyName - The policy name. Should always be Default.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceLongTermRetentionPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12840,8 +13990,10 @@ export const ManagedInstanceLongTermRetentionPoliciesGet =
 // Input Schema
 export const ManagedInstanceLongTermRetentionPoliciesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12855,7 +14007,7 @@ export type ManagedInstanceLongTermRetentionPoliciesListByDatabaseInput =
 // Output Schema
 export const ManagedInstanceLongTermRetentionPoliciesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceLongTermRetentionPoliciesListByDatabaseOutput =
@@ -12865,9 +14017,11 @@ export type ManagedInstanceLongTermRetentionPoliciesListByDatabaseOutput =
 /**
  * Gets a database's long term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedInstanceLongTermRetentionPoliciesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12877,9 +14031,10 @@ export const ManagedInstanceLongTermRetentionPoliciesListByDatabase =
 // Input Schema
 export const ManagedInstanceOperationsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12900,9 +14055,10 @@ export type ManagedInstanceOperationsCancelOutput =
 /**
  * Cancels the asynchronous operation on the managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceOperationsCancel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12912,9 +14068,10 @@ export const ManagedInstanceOperationsCancel =
 // Input Schema
 export const ManagedInstanceOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12935,9 +14092,10 @@ export type ManagedInstanceOperationsGetOutput =
 /**
  * Gets a management operation on a managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceOperationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12947,8 +14105,9 @@ export const ManagedInstanceOperationsGet =
 // Input Schema
 export const ManagedInstanceOperationsListByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -12962,7 +14121,7 @@ export type ManagedInstanceOperationsListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstanceOperationsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceOperationsListByManagedInstanceOutput =
@@ -12972,9 +14131,10 @@ export type ManagedInstanceOperationsListByManagedInstanceOutput =
 /**
  * Gets a list of operations performed on the managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceOperationsListByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -12984,9 +14144,10 @@ export const ManagedInstanceOperationsListByManagedInstance =
 // Input Schema
 export const ManagedInstancePrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13007,9 +14168,11 @@ export type ManagedInstancePrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Approve or reject a private endpoint connection with a given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const ManagedInstancePrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13019,9 +14182,10 @@ export const ManagedInstancePrivateEndpointConnectionsCreateOrUpdate =
 // Input Schema
 export const ManagedInstancePrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13042,9 +14206,11 @@ export type ManagedInstancePrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes a private endpoint connection with a given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const ManagedInstancePrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13054,9 +14220,10 @@ export const ManagedInstancePrivateEndpointConnectionsDelete =
 // Input Schema
 export const ManagedInstancePrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13077,10 +14244,11 @@ export type ManagedInstancePrivateEndpointConnectionsGetOutput =
 /**
  * Gets a private endpoint connection.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancePrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13090,8 +14258,9 @@ export const ManagedInstancePrivateEndpointConnectionsGet =
 // Input Schema
 export const ManagedInstancePrivateEndpointConnectionsListByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13105,7 +14274,7 @@ export type ManagedInstancePrivateEndpointConnectionsListByManagedInstanceInput 
 // Output Schema
 export const ManagedInstancePrivateEndpointConnectionsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstancePrivateEndpointConnectionsListByManagedInstanceOutput =
@@ -13115,9 +14284,10 @@ export type ManagedInstancePrivateEndpointConnectionsListByManagedInstanceOutput
 /**
  * Gets all private endpoint connections on a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancePrivateEndpointConnectionsListByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13129,9 +14299,10 @@ export const ManagedInstancePrivateEndpointConnectionsListByManagedInstance =
 // Input Schema
 export const ManagedInstancePrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    groupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13152,10 +14323,11 @@ export type ManagedInstancePrivateLinkResourcesGetOutput =
 /**
  * Gets a private link resource for SQL server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param groupName - The name of the private link resource.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancePrivateLinkResourcesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13165,8 +14337,9 @@ export const ManagedInstancePrivateLinkResourcesGet =
 // Input Schema
 export const ManagedInstancePrivateLinkResourcesListByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13180,7 +14353,7 @@ export type ManagedInstancePrivateLinkResourcesListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstancePrivateLinkResourcesListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstancePrivateLinkResourcesListByManagedInstanceOutput =
@@ -13190,9 +14363,10 @@ export type ManagedInstancePrivateLinkResourcesListByManagedInstanceOutput =
 /**
  * Gets the private link resources for SQL server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancePrivateLinkResourcesListByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13203,8 +14377,9 @@ export const ManagedInstancePrivateLinkResourcesListByManagedInstance =
 // Input Schema
 export const ManagedInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13218,8 +14393,8 @@ export type ManagedInstancesCreateOrUpdateInput =
 // Output Schema
 export const ManagedInstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedInstancesCreateOrUpdateOutput =
   typeof ManagedInstancesCreateOrUpdateOutput.Type;
@@ -13228,9 +14403,10 @@ export type ManagedInstancesCreateOrUpdateOutput =
 /**
  * Creates or updates a managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13240,8 +14416,9 @@ export const ManagedInstancesCreateOrUpdate =
 // Input Schema
 export const ManagedInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13262,9 +14439,10 @@ export type ManagedInstancesDeleteOutput =
 /**
  * Deletes a managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -13275,13 +14453,13 @@ export const ManagedInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstancesFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     replicaType: Schema.optional(
       Schema.Literals(["Primary", "ReadableSecondary"]),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -13301,11 +14479,11 @@ export type ManagedInstancesFailoverOutput =
 /**
  * Failovers a managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param managedInstanceName - The name of the managed instance to failover.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param replicaType - The type of replica to be failed over.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -13316,10 +14494,11 @@ export const ManagedInstancesFailover = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -13331,8 +14510,8 @@ export type ManagedInstancesGetInput = typeof ManagedInstancesGetInput.Type;
 // Output Schema
 export const ManagedInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedInstancesGetOutput = typeof ManagedInstancesGetOutput.Type;
 
@@ -13340,10 +14519,11 @@ export type ManagedInstancesGetOutput = typeof ManagedInstancesGetOutput.Type;
 /**
  * Gets a managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ManagedInstancesGetInput,
@@ -13353,8 +14533,8 @@ export const ManagedInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const ManagedInstancesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -13366,13 +14546,11 @@ export type ManagedInstancesListInput = typeof ManagedInstancesListInput.Type;
 // Output Schema
 export const ManagedInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13382,9 +14560,9 @@ export type ManagedInstancesListOutput = typeof ManagedInstancesListOutput.Type;
 /**
  * Gets a list of all managed instances in the subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -13395,11 +14573,11 @@ export const ManagedInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstancesListByInstancePoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancePoolName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -13412,13 +14590,11 @@ export type ManagedInstancesListByInstancePoolInput =
 // Output Schema
 export const ManagedInstancesListByInstancePoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13429,11 +14605,11 @@ export type ManagedInstancesListByInstancePoolOutput =
 /**
  * Gets a list of all managed instances in an instance pool.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param instancePoolName - The instance pool name.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param instancePoolName - The name of the instance pool to be retrieved.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancesListByInstancePool =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13443,8 +14619,10 @@ export const ManagedInstancesListByInstancePool =
 // Input Schema
 export const ManagedInstancesListByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     numberOfQueries: Schema.optional(Schema.Number),
     databases: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -13456,7 +14634,6 @@ export const ManagedInstancesListByManagedInstanceInput =
     observationMetric: Schema.optional(
       Schema.Literals(["cpu", "io", "logIo", "duration", "dtu"]),
     ),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -13469,60 +14646,58 @@ export type ManagedInstancesListByManagedInstanceInput =
 // Output Schema
 export const ManagedInstancesListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          numberOfQueries: Schema.optional(Schema.Number),
-          aggregationFunction: Schema.optional(Schema.String),
-          observationMetric: Schema.optional(Schema.String),
-          intervalType: Schema.optional(Schema.Literals(["PT1H", "P1D"])),
-          startTime: Schema.optional(Schema.String),
-          endTime: Schema.optional(Schema.String),
-          queries: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                databaseName: Schema.optional(Schema.String),
-                queryId: Schema.optional(Schema.String),
-                startTime: Schema.optional(Schema.String),
-                endTime: Schema.optional(Schema.String),
-                intervals: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      intervalStartTime: Schema.optional(Schema.String),
-                      intervalType: Schema.optional(
-                        Schema.Literals(["PT1H", "P1D"]),
+    value: Schema.Array(
+      Schema.Struct({
+        numberOfQueries: Schema.optional(Schema.Number),
+        aggregationFunction: Schema.optional(Schema.String),
+        observationMetric: Schema.optional(Schema.String),
+        intervalType: Schema.optional(Schema.Literals(["PT1H", "P1D"])),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        queries: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              databaseName: Schema.optional(Schema.String),
+              queryId: Schema.optional(Schema.String),
+              startTime: Schema.optional(Schema.String),
+              endTime: Schema.optional(Schema.String),
+              intervals: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    intervalStartTime: Schema.optional(Schema.String),
+                    intervalType: Schema.optional(
+                      Schema.Literals(["PT1H", "P1D"]),
+                    ),
+                    executionCount: Schema.optional(Schema.Number),
+                    metrics: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          displayName: Schema.optional(Schema.String),
+                          unit: Schema.optional(
+                            Schema.Literals([
+                              "percentage",
+                              "KB",
+                              "microseconds",
+                              "count",
+                            ]),
+                          ),
+                          value: Schema.optional(Schema.Number),
+                          min: Schema.optional(Schema.Number),
+                          max: Schema.optional(Schema.Number),
+                          avg: Schema.optional(Schema.Number),
+                          sum: Schema.optional(Schema.Number),
+                          stdev: Schema.optional(Schema.Number),
+                        }),
                       ),
-                      executionCount: Schema.optional(Schema.Number),
-                      metrics: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                            unit: Schema.optional(
-                              Schema.Literals([
-                                "percentage",
-                                "KB",
-                                "microseconds",
-                                "count",
-                              ]),
-                            ),
-                            value: Schema.optional(Schema.Number),
-                            min: Schema.optional(Schema.Number),
-                            max: Schema.optional(Schema.Number),
-                            avg: Schema.optional(Schema.Number),
-                            sum: Schema.optional(Schema.Number),
-                            stdev: Schema.optional(Schema.Number),
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
-              }),
-            ),
+              ),
+            }),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13533,7 +14708,10 @@ export type ManagedInstancesListByManagedInstanceOutput =
 /**
  * Get top resource consuming queries of a managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param numberOfQueries - How many 'top queries' to return. Default is 5.
  * @param databases - Comma separated list of databases to be included into search. All DB's are included if this parameter is not specified.
  * @param startTime - Start time for observed period.
@@ -13541,8 +14719,6 @@ export type ManagedInstancesListByManagedInstanceOutput =
  * @param interval - The time step to be used to summarize the metric values. Default value is PT1H
  * @param aggregationFunction - Aggregation function to be used, default value is 'sum'
  * @param observationMetric - Metric to be used for ranking top queries. Default is 'cpu'
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancesListByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13552,10 +14728,10 @@ export const ManagedInstancesListByManagedInstance =
 // Input Schema
 export const ManagedInstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -13568,13 +14744,11 @@ export type ManagedInstancesListByResourceGroupInput =
 // Output Schema
 export const ManagedInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13585,10 +14759,10 @@ export type ManagedInstancesListByResourceGroupOutput =
 /**
  * Gets a list of managed instances in a resource group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13598,8 +14772,9 @@ export const ManagedInstancesListByResourceGroup =
 // Input Schema
 export const ManagedInstancesListOutboundNetworkDependenciesByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13613,26 +14788,24 @@ export type ManagedInstancesListOutboundNetworkDependenciesByManagedInstanceInpu
 // Output Schema
 export const ManagedInstancesListOutboundNetworkDependenciesByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          category: Schema.optional(Schema.String),
-          endpoints: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                domainName: Schema.optional(Schema.String),
-                endpointDetails: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
+    value: Schema.Array(
+      Schema.Struct({
+        category: Schema.optional(Schema.String),
+        endpoints: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              domainName: Schema.optional(Schema.String),
+              endpointDetails: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    port: Schema.optional(Schema.Number),
+                  }),
                 ),
-              }),
-            ),
+              ),
+            }),
           ),
-        }),
-      ),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13643,9 +14816,10 @@ export type ManagedInstancesListOutboundNetworkDependenciesByManagedInstanceOutp
 /**
  * Gets the collection of outbound network dependencies for the given managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancesListOutboundNetworkDependenciesByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13655,10 +14829,47 @@ export const ManagedInstancesListOutboundNetworkDependenciesByManagedInstance =
       ManagedInstancesListOutboundNetworkDependenciesByManagedInstanceOutput,
   }));
 // Input Schema
+export const ManagedInstancesReevaluateInaccessibleDatabaseStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/reevaluateInaccessibleDatabaseState",
+    }),
+  );
+export type ManagedInstancesReevaluateInaccessibleDatabaseStateInput =
+  typeof ManagedInstancesReevaluateInaccessibleDatabaseStateInput.Type;
+
+// Output Schema
+export const ManagedInstancesReevaluateInaccessibleDatabaseStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ManagedInstancesReevaluateInaccessibleDatabaseStateOutput =
+  typeof ManagedInstancesReevaluateInaccessibleDatabaseStateOutput.Type;
+
+// The operation
+/**
+ * Reevaluates the inaccessibility state of all managed databases.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ */
+export const ManagedInstancesReevaluateInaccessibleDatabaseState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedInstancesReevaluateInaccessibleDatabaseStateInput,
+    outputSchema: ManagedInstancesReevaluateInaccessibleDatabaseStateOutput,
+  }));
+// Input Schema
 export const ManagedInstancesRefreshStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13679,9 +14890,10 @@ export type ManagedInstancesRefreshStatusOutput =
 /**
  * Refresh external governance enablement status.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancesRefreshStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13691,8 +14903,9 @@ export const ManagedInstancesRefreshStatus =
 // Input Schema
 export const ManagedInstancesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13705,8 +14918,8 @@ export type ManagedInstancesStartInput = typeof ManagedInstancesStartInput.Type;
 // Output Schema
 export const ManagedInstancesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedInstancesStartOutput =
   typeof ManagedInstancesStartOutput.Type;
@@ -13715,9 +14928,10 @@ export type ManagedInstancesStartOutput =
 /**
  * Starts the managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -13728,8 +14942,9 @@ export const ManagedInstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13742,8 +14957,8 @@ export type ManagedInstancesStopInput = typeof ManagedInstancesStopInput.Type;
 // Output Schema
 export const ManagedInstancesStopOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedInstancesStopOutput = typeof ManagedInstancesStopOutput.Type;
 
@@ -13751,9 +14966,10 @@ export type ManagedInstancesStopOutput = typeof ManagedInstancesStopOutput.Type;
 /**
  * Stops the managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -13764,8 +14980,9 @@ export const ManagedInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13779,8 +14996,8 @@ export type ManagedInstancesUpdateInput =
 // Output Schema
 export const ManagedInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ManagedInstancesUpdateOutput =
   typeof ManagedInstancesUpdateOutput.Type;
@@ -13789,9 +15006,10 @@ export type ManagedInstancesUpdateOutput =
 /**
  * Updates a managed instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -13800,10 +15018,47 @@ export const ManagedInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ManagedInstancesValidateAzureKeyVaultEncryptionKeyInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/validateAzureKeyVaultEncryptionKey",
+    }),
+  );
+export type ManagedInstancesValidateAzureKeyVaultEncryptionKeyInput =
+  typeof ManagedInstancesValidateAzureKeyVaultEncryptionKeyInput.Type;
+
+// Output Schema
+export const ManagedInstancesValidateAzureKeyVaultEncryptionKeyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ManagedInstancesValidateAzureKeyVaultEncryptionKeyOutput =
+  typeof ManagedInstancesValidateAzureKeyVaultEncryptionKeyOutput.Type;
+
+// The operation
+/**
+ * Validates customer managed key.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ */
+export const ManagedInstancesValidateAzureKeyVaultEncryptionKey =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedInstancesValidateAzureKeyVaultEncryptionKeyInput,
+    outputSchema: ManagedInstancesValidateAzureKeyVaultEncryptionKeyOutput,
+  }));
+// Input Schema
 export const ManagedInstanceTdeCertificatesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13824,9 +15079,10 @@ export type ManagedInstanceTdeCertificatesCreateOutput =
 /**
  * Creates a TDE certificate for a given server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceTdeCertificatesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13836,12 +15092,12 @@ export const ManagedInstanceTdeCertificatesCreate =
 // Input Schema
 export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13862,11 +15118,11 @@ export type ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateOutput =
 /**
  * Creates or updates the managed instance's vulnerability assessment. Learn more about setting SQL vulnerability assessment with managed identity - https://docs.microsoft.com/azure/azure-sql/database/sql-database-vulnerability-assessment-storage
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param managedInstanceName - The name of the managed instance for which the vulnerability assessment is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13876,12 +15132,12 @@ export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdate =
 // Input Schema
 export const ManagedInstanceVulnerabilityAssessmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13902,11 +15158,11 @@ export type ManagedInstanceVulnerabilityAssessmentsDeleteOutput =
 /**
  * Removes the managed instance's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param managedInstanceName - The name of the managed instance for which the vulnerability assessment is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceVulnerabilityAssessmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13916,12 +15172,12 @@ export const ManagedInstanceVulnerabilityAssessmentsDelete =
 // Input Schema
 export const ManagedInstanceVulnerabilityAssessmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13942,11 +15198,11 @@ export type ManagedInstanceVulnerabilityAssessmentsGetOutput =
 /**
  * Gets the managed instance's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param managedInstanceName - The name of the managed instance for which the vulnerability assessment is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedInstanceVulnerabilityAssessmentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13956,9 +15212,9 @@ export const ManagedInstanceVulnerabilityAssessmentsGet =
 // Input Schema
 export const ManagedInstanceVulnerabilityAssessmentsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -13972,7 +15228,7 @@ export type ManagedInstanceVulnerabilityAssessmentsListByInstanceInput =
 // Output Schema
 export const ManagedInstanceVulnerabilityAssessmentsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedInstanceVulnerabilityAssessmentsListByInstanceOutput =
@@ -13982,10 +15238,10 @@ export type ManagedInstanceVulnerabilityAssessmentsListByInstanceOutput =
 /**
  * Gets the managed instance's vulnerability assessment policies.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param managedInstanceName - The name of the managed instance for which the vulnerability assessments is defined.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedInstanceVulnerabilityAssessmentsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -13995,9 +15251,11 @@ export const ManagedInstanceVulnerabilityAssessmentsListByInstance =
 // Input Schema
 export const ManagedLedgerDigestUploadsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14018,10 +15276,11 @@ export type ManagedLedgerDigestUploadsCreateOrUpdateOutput =
 /**
  * Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param ledgerDigestUploads - The name of the Ledger Digest Upload Configurations.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedLedgerDigestUploadsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14031,9 +15290,11 @@ export const ManagedLedgerDigestUploadsCreateOrUpdate =
 // Input Schema
 export const ManagedLedgerDigestUploadsDisableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14054,9 +15315,11 @@ export type ManagedLedgerDigestUploadsDisableOutput =
 /**
  * Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedLedgerDigestUploadsDisable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14066,9 +15329,11 @@ export const ManagedLedgerDigestUploadsDisable =
 // Input Schema
 export const ManagedLedgerDigestUploadsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    ledgerDigestUploads: Schema.Literals(["current"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14089,9 +15354,11 @@ export type ManagedLedgerDigestUploadsGetOutput =
 /**
  * Gets the current ledger digest upload configuration for a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedLedgerDigestUploadsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14101,8 +15368,10 @@ export const ManagedLedgerDigestUploadsGet =
 // Input Schema
 export const ManagedLedgerDigestUploadsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14116,7 +15385,7 @@ export type ManagedLedgerDigestUploadsListByDatabaseInput =
 // Output Schema
 export const ManagedLedgerDigestUploadsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedLedgerDigestUploadsListByDatabaseOutput =
@@ -14126,9 +15395,11 @@ export type ManagedLedgerDigestUploadsListByDatabaseOutput =
 /**
  * Gets all ledger digest upload settings on a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param databaseName - The name of the database.
  */
 export const ManagedLedgerDigestUploadsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14138,10 +15409,11 @@ export const ManagedLedgerDigestUploadsListByDatabase =
 // Input Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14162,10 +15434,11 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCrea
 /**
  * Sets a database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param policyName - The policy name. Should always be "default".
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param policyName - The policy name.
  */
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14177,10 +15450,11 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCre
 // Input Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14201,10 +15475,11 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGetO
 /**
  * Gets a dropped database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param policyName - The policy name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14216,9 +15491,10 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesGet
 // Input Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14232,7 +15508,7 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesList
 // Output Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabaseOutput =
@@ -14242,9 +15518,10 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesList
 /**
  * Gets a dropped database's short term retention policy list.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesListByRestorableDroppedDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14256,10 +15533,11 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesLis
 // Input Schema
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     policyName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14280,10 +15558,11 @@ export type ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpda
 /**
  * Sets a database's short term retention policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param policyName - The policy name. Should always be "default".
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param policyName - The policy name.
  */
 export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14295,9 +15574,10 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpd
 // Input Schema
 export const ManagedServerDnsAliasesAcquireInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsAliasName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    dnsAliasName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14318,9 +15598,10 @@ export type ManagedServerDnsAliasesAcquireOutput =
 /**
  * Acquires managed server DNS alias from another managed server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedServerDnsAliasesAcquire =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14330,9 +15611,10 @@ export const ManagedServerDnsAliasesAcquire =
 // Input Schema
 export const ManagedServerDnsAliasesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsAliasName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    dnsAliasName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14353,9 +15635,10 @@ export type ManagedServerDnsAliasesCreateOrUpdateOutput =
 /**
  * Creates a managed server DNS alias.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedServerDnsAliasesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14365,9 +15648,10 @@ export const ManagedServerDnsAliasesCreateOrUpdate =
 // Input Schema
 export const ManagedServerDnsAliasesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsAliasName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    dnsAliasName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14388,9 +15672,10 @@ export type ManagedServerDnsAliasesDeleteOutput =
 /**
  * Deletes the managed server DNS alias with the given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedServerDnsAliasesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14400,9 +15685,10 @@ export const ManagedServerDnsAliasesDelete =
 // Input Schema
 export const ManagedServerDnsAliasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    dnsAliasName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    dnsAliasName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14423,9 +15709,10 @@ export type ManagedServerDnsAliasesGetOutput =
 /**
  * Gets a server DNS alias.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedServerDnsAliasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -14436,8 +15723,9 @@ export const ManagedServerDnsAliasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ManagedServerDnsAliasesListByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14451,7 +15739,7 @@ export type ManagedServerDnsAliasesListByManagedInstanceInput =
 // Output Schema
 export const ManagedServerDnsAliasesListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedServerDnsAliasesListByManagedInstanceOutput =
@@ -14461,9 +15749,10 @@ export type ManagedServerDnsAliasesListByManagedInstanceOutput =
 /**
  * Gets a list of managed server DNS aliases for a managed server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedServerDnsAliasesListByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14473,9 +15762,10 @@ export const ManagedServerDnsAliasesListByManagedInstance =
 // Input Schema
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14496,10 +15786,11 @@ export type ManagedServerSecurityAlertPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates a threat detection policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param securityAlertPolicyName - The name of the security alert policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedServerSecurityAlertPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14509,9 +15800,10 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdate =
 // Input Schema
 export const ManagedServerSecurityAlertPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14532,10 +15824,11 @@ export type ManagedServerSecurityAlertPoliciesGetOutput =
 /**
  * Get a managed server's threat detection policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param securityAlertPolicyName - The name of the security alert policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ManagedServerSecurityAlertPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14545,8 +15838,9 @@ export const ManagedServerSecurityAlertPoliciesGet =
 // Input Schema
 export const ManagedServerSecurityAlertPoliciesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14560,7 +15854,7 @@ export type ManagedServerSecurityAlertPoliciesListByInstanceInput =
 // Output Schema
 export const ManagedServerSecurityAlertPoliciesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ManagedServerSecurityAlertPoliciesListByInstanceOutput =
@@ -14570,9 +15864,10 @@ export type ManagedServerSecurityAlertPoliciesListByInstanceOutput =
 /**
  * Get the managed server's threat detection policies.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ManagedServerSecurityAlertPoliciesListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14582,9 +15877,10 @@ export const ManagedServerSecurityAlertPoliciesListByInstance =
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    nspConfigName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    nspConfigName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14605,9 +15901,10 @@ export type NetworkSecurityPerimeterConfigurationsGetOutput =
 /**
  * Gets a network security perimeter configuration.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const NetworkSecurityPerimeterConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14617,8 +15914,9 @@ export const NetworkSecurityPerimeterConfigurationsGet =
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14632,7 +15930,7 @@ export type NetworkSecurityPerimeterConfigurationsListByServerInput =
 // Output Schema
 export const NetworkSecurityPerimeterConfigurationsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterConfigurationsListByServerOutput =
@@ -14642,9 +15940,10 @@ export type NetworkSecurityPerimeterConfigurationsListByServerOutput =
 /**
  * Gets a list of NSP configurations for a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const NetworkSecurityPerimeterConfigurationsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14654,9 +15953,10 @@ export const NetworkSecurityPerimeterConfigurationsListByServer =
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    nspConfigName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    nspConfigName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14677,9 +15977,10 @@ export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
 /**
  * Reconcile network security perimeter configuration for SQL Resource Provider
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const NetworkSecurityPerimeterConfigurationsReconcile =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14721,7 +16022,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available SQL Rest API operations.
  *
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -14730,9 +16031,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const OutboundFirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    outboundRuleFqdn: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    outboundRuleFqdn: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14753,9 +16055,10 @@ export type OutboundFirewallRulesCreateOrUpdateOutput =
 /**
  * Create a outbound firewall rule with a given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const OutboundFirewallRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14765,9 +16068,10 @@ export const OutboundFirewallRulesCreateOrUpdate =
 // Input Schema
 export const OutboundFirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    outboundRuleFqdn: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    outboundRuleFqdn: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14788,9 +16092,10 @@ export type OutboundFirewallRulesDeleteOutput =
 /**
  * Deletes a outbound firewall rule with a given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const OutboundFirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -14801,9 +16106,10 @@ export const OutboundFirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const OutboundFirewallRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    outboundRuleFqdn: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    outboundRuleFqdn: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14824,9 +16130,10 @@ export type OutboundFirewallRulesGetOutput =
 /**
  * Gets an outbound firewall rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const OutboundFirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -14837,8 +16144,9 @@ export const OutboundFirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const OutboundFirewallRulesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14852,7 +16160,7 @@ export type OutboundFirewallRulesListByServerInput =
 // Output Schema
 export const OutboundFirewallRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type OutboundFirewallRulesListByServerOutput =
@@ -14862,9 +16170,10 @@ export type OutboundFirewallRulesListByServerOutput =
 /**
  * Gets all outbound firewall rules on a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const OutboundFirewallRulesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14874,9 +16183,10 @@ export const OutboundFirewallRulesListByServer =
 // Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14897,9 +16207,11 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Approve or reject a private endpoint connection with a given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14909,9 +16221,10 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14932,9 +16245,11 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes a private endpoint connection with a given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14944,9 +16259,10 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14967,10 +16283,11 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets a private endpoint connection.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14980,8 +16297,9 @@ export const PrivateEndpointConnectionsGet =
 // Input Schema
 export const PrivateEndpointConnectionsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -14995,7 +16313,7 @@ export type PrivateEndpointConnectionsListByServerInput =
 // Output Schema
 export const PrivateEndpointConnectionsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListByServerOutput =
@@ -15005,9 +16323,10 @@ export type PrivateEndpointConnectionsListByServerOutput =
 /**
  * Gets all private endpoint connections on a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const PrivateEndpointConnectionsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15017,9 +16336,10 @@ export const PrivateEndpointConnectionsListByServer =
 // Input Schema
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    groupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15040,10 +16360,11 @@ export type PrivateLinkResourcesGetOutput =
 /**
  * Gets a private link resource for SQL server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param groupName - The name of the private link resource.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -15054,8 +16375,9 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PrivateLinkResourcesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15069,7 +16391,7 @@ export type PrivateLinkResourcesListByServerInput =
 // Output Schema
 export const PrivateLinkResourcesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesListByServerOutput =
@@ -15079,9 +16401,10 @@ export type PrivateLinkResourcesListByServerOutput =
 /**
  * Gets the private link resources for SQL server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const PrivateLinkResourcesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15091,8 +16414,10 @@ export const PrivateLinkResourcesListByServer =
 // Input Schema
 export const RecommendedSensitivityLabelsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15113,9 +16438,11 @@ export type RecommendedSensitivityLabelsUpdateOutput =
 /**
  * Update recommended sensitivity labels states of a given database using an operations batch.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const RecommendedSensitivityLabelsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15198,9 +16525,10 @@ export const RecoverableDatabasesListByServer =
 // Input Schema
 export const RecoverableManagedDatabasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    recoverableDatabaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    recoverableDatabaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15221,9 +16549,10 @@ export type RecoverableManagedDatabasesGetOutput =
 /**
  * Gets a recoverable managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const RecoverableManagedDatabasesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15233,8 +16562,9 @@ export const RecoverableManagedDatabasesGet =
 // Input Schema
 export const RecoverableManagedDatabasesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15248,7 +16578,7 @@ export type RecoverableManagedDatabasesListByInstanceInput =
 // Output Schema
 export const RecoverableManagedDatabasesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type RecoverableManagedDatabasesListByInstanceOutput =
@@ -15258,9 +16588,10 @@ export type RecoverableManagedDatabasesListByInstanceOutput =
 /**
  * Gets a list of recoverable managed databases.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const RecoverableManagedDatabasesListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15270,9 +16601,11 @@ export const RecoverableManagedDatabasesListByInstance =
 // Input Schema
 export const ReplicationLinksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    linkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    linkId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15293,9 +16626,12 @@ export type ReplicationLinksCreateOrUpdateOutput =
 /**
  * Updates the replication link type.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param linkId - The name of the replication link.
  */
 export const ReplicationLinksCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15421,9 +16757,11 @@ export const ReplicationLinksFailoverAllowDataLoss =
 // Input Schema
 export const ReplicationLinksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    linkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    linkId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15442,10 +16780,12 @@ export type ReplicationLinksGetOutput = typeof ReplicationLinksGetOutput.Type;
 /**
  * Gets a replication link.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param linkId - The name of the replication link.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ReplicationLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReplicationLinksGetInput,
@@ -15454,8 +16794,10 @@ export const ReplicationLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ReplicationLinksListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15469,7 +16811,7 @@ export type ReplicationLinksListByDatabaseInput =
 // Output Schema
 export const ReplicationLinksListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReplicationLinksListByDatabaseOutput =
@@ -15479,9 +16821,11 @@ export type ReplicationLinksListByDatabaseOutput =
 /**
  * Gets a list of replication links on database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const ReplicationLinksListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15491,8 +16835,9 @@ export const ReplicationLinksListByDatabase =
 // Input Schema
 export const ReplicationLinksListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15506,7 +16851,7 @@ export type ReplicationLinksListByServerInput =
 // Output Schema
 export const ReplicationLinksListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReplicationLinksListByServerOutput =
@@ -15516,9 +16861,10 @@ export type ReplicationLinksListByServerOutput =
 /**
  * Gets a list of replication links.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ReplicationLinksListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15567,9 +16913,11 @@ export const ReplicationLinksUnlink = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ReplicationLinksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    linkId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    linkId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15590,9 +16938,12 @@ export type ReplicationLinksUpdateOutput =
 /**
  * Updates the replication link type.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param linkId - The name of the replication link.
  */
 export const ReplicationLinksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -15603,12 +16954,13 @@ export const ReplicationLinksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RestorableDroppedDatabasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $expand: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -15620,7 +16972,25 @@ export type RestorableDroppedDatabasesGetInput =
 
 // Output Schema
 export const RestorableDroppedDatabasesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type RestorableDroppedDatabasesGetOutput =
   typeof RestorableDroppedDatabasesGetOutput.Type;
 
@@ -15628,11 +16998,12 @@ export type RestorableDroppedDatabasesGetOutput =
 /**
  * Gets a restorable dropped database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param $expand - The child resources to include in the response.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const RestorableDroppedDatabasesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15642,8 +17013,9 @@ export const RestorableDroppedDatabasesGet =
 // Input Schema
 export const RestorableDroppedDatabasesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15657,7 +17029,37 @@ export type RestorableDroppedDatabasesListByServerInput =
 // Output Schema
 export const RestorableDroppedDatabasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type RestorableDroppedDatabasesListByServerOutput =
@@ -15667,9 +17069,10 @@ export type RestorableDroppedDatabasesListByServerOutput =
 /**
  * Gets a list of restorable dropped databases.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const RestorableDroppedDatabasesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15679,9 +17082,10 @@ export const RestorableDroppedDatabasesListByServer =
 // Input Schema
 export const RestorableDroppedManagedDatabasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    restorableDroppedDatabaseId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15695,8 +17099,8 @@ export type RestorableDroppedManagedDatabasesGetInput =
 // Output Schema
 export const RestorableDroppedManagedDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type RestorableDroppedManagedDatabasesGetOutput =
   typeof RestorableDroppedManagedDatabasesGetOutput.Type;
@@ -15705,9 +17109,10 @@ export type RestorableDroppedManagedDatabasesGetOutput =
 /**
  * Gets a restorable dropped managed database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const RestorableDroppedManagedDatabasesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15717,8 +17122,9 @@ export const RestorableDroppedManagedDatabasesGet =
 // Input Schema
 export const RestorableDroppedManagedDatabasesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15732,13 +17138,11 @@ export type RestorableDroppedManagedDatabasesListByInstanceInput =
 // Output Schema
 export const RestorableDroppedManagedDatabasesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -15749,9 +17153,10 @@ export type RestorableDroppedManagedDatabasesListByInstanceOutput =
 /**
  * Gets a list of restorable dropped managed databases.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const RestorableDroppedManagedDatabasesListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15761,8 +17166,10 @@ export const RestorableDroppedManagedDatabasesListByInstance =
 // Input Schema
 export const RestorePointsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15781,9 +17188,11 @@ export type RestorePointsCreateOutput = typeof RestorePointsCreateOutput.Type;
 /**
  * Creates a restore point for a data warehouse.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const RestorePointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RestorePointsCreateInput,
@@ -15792,9 +17201,11 @@ export const RestorePointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RestorePointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    restorePointName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    restorePointName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15813,10 +17224,12 @@ export type RestorePointsDeleteOutput = typeof RestorePointsDeleteOutput.Type;
 /**
  * Deletes a restore point.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param restorePointName - The name of the restore point.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const RestorePointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RestorePointsDeleteInput,
@@ -15824,9 +17237,11 @@ export const RestorePointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RestorePointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  restorePointName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  restorePointName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -15846,10 +17261,12 @@ export type RestorePointsGetOutput = typeof RestorePointsGetOutput.Type;
 /**
  * Gets a restore point.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param restorePointName - The name of the restore point.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const RestorePointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RestorePointsGetInput,
@@ -15858,8 +17275,10 @@ export const RestorePointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RestorePointsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15873,7 +17292,7 @@ export type RestorePointsListByDatabaseInput =
 // Output Schema
 export const RestorePointsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type RestorePointsListByDatabaseOutput =
@@ -15883,9 +17302,11 @@ export type RestorePointsListByDatabaseOutput =
 /**
  * Gets a list of database restore points.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const RestorePointsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -15896,12 +17317,14 @@ export const RestorePointsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SensitivityLabelsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15922,13 +17345,15 @@ export type SensitivityLabelsCreateOrUpdateOutput =
 /**
  * Creates or updates the sensitivity label of a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SensitivityLabelsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15938,12 +17363,14 @@ export const SensitivityLabelsCreateOrUpdate =
 // Input Schema
 export const SensitivityLabelsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -15964,13 +17391,15 @@ export type SensitivityLabelsDeleteOutput =
 /**
  * Deletes the sensitivity label of a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SensitivityLabelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -15981,14 +17410,16 @@ export const SensitivityLabelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SensitivityLabelsDisableRecommendationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["recommended"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16009,12 +17440,15 @@ export type SensitivityLabelsDisableRecommendationOutput =
 /**
  * Disables sensitivity recommendations on a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param sensitivityLabelSource - The source of the sensitivity label.
  */
 export const SensitivityLabelsDisableRecommendation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16024,14 +17458,16 @@ export const SensitivityLabelsDisableRecommendation =
 // Input Schema
 export const SensitivityLabelsEnableRecommendationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["recommended"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16052,12 +17488,15 @@ export type SensitivityLabelsEnableRecommendationOutput =
 /**
  * Enables sensitivity recommendations on a given column (recommendations are enabled by default on all columns)
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param sensitivityLabelSource - The source of the sensitivity label.
  */
 export const SensitivityLabelsEnableRecommendation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16067,14 +17506,16 @@ export const SensitivityLabelsEnableRecommendation =
 // Input Schema
 export const SensitivityLabelsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     schemaName: Schema.String.pipe(T.PathParam()),
     tableName: Schema.String.pipe(T.PathParam()),
     columnName: Schema.String.pipe(T.PathParam()),
     sensitivityLabelSource: Schema.Literals(["current", "recommended"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16093,13 +17534,15 @@ export type SensitivityLabelsGetOutput = typeof SensitivityLabelsGetOutput.Type;
 /**
  * Gets the sensitivity label of a given column
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param schemaName - The name of the schema.
  * @param tableName - The name of the table.
  * @param columnName - The name of the column.
  * @param sensitivityLabelSource - The source of the sensitivity label.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SensitivityLabelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -16110,10 +17553,12 @@ export const SensitivityLabelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SensitivityLabelsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -16126,7 +17571,7 @@ export type SensitivityLabelsListByDatabaseInput =
 // Output Schema
 export const SensitivityLabelsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SensitivityLabelsListByDatabaseOutput =
@@ -16136,10 +17581,12 @@ export type SensitivityLabelsListByDatabaseOutput =
 /**
  * Gets the sensitivity labels of a given database
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SensitivityLabelsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16149,12 +17596,14 @@ export const SensitivityLabelsListByDatabase =
 // Input Schema
 export const SensitivityLabelsListCurrentByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
     $count: Schema.optional(Schema.Boolean),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -16167,7 +17616,7 @@ export type SensitivityLabelsListCurrentByDatabaseInput =
 // Output Schema
 export const SensitivityLabelsListCurrentByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SensitivityLabelsListCurrentByDatabaseOutput =
@@ -16177,10 +17626,12 @@ export type SensitivityLabelsListCurrentByDatabaseOutput =
 /**
  * Gets the sensitivity labels of a given database
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SensitivityLabelsListCurrentByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16190,12 +17641,14 @@ export const SensitivityLabelsListCurrentByDatabase =
 // Input Schema
 export const SensitivityLabelsListRecommendedByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $skipToken: Schema.optional(Schema.String),
     includeDisabledRecommendations: Schema.optional(Schema.Boolean),
     $filter: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -16208,7 +17661,7 @@ export type SensitivityLabelsListRecommendedByDatabaseInput =
 // Output Schema
 export const SensitivityLabelsListRecommendedByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SensitivityLabelsListRecommendedByDatabaseOutput =
@@ -16218,11 +17671,13 @@ export type SensitivityLabelsListRecommendedByDatabaseOutput =
 /**
  * Gets the sensitivity labels of a given database
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param includeDisabledRecommendations - Specifies whether to include disabled recommendations or not.
  * @param $filter - An OData filter expression that filters elements in the collection.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SensitivityLabelsListRecommendedByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16232,8 +17687,10 @@ export const SensitivityLabelsListRecommendedByDatabase =
 // Input Schema
 export const SensitivityLabelsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16254,9 +17711,11 @@ export type SensitivityLabelsUpdateOutput =
 /**
  * Update sensitivity labels of a given database using an operations batch.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const SensitivityLabelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -16267,11 +17726,12 @@ export const SensitivityLabelsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16292,10 +17752,11 @@ export type ServerAdvancedThreatProtectionSettingsCreateOrUpdateOutput =
 /**
  * Creates or updates an Advanced Threat Protection state.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16305,11 +17766,12 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdate =
 // Input Schema
 export const ServerAdvancedThreatProtectionSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     advancedThreatProtectionName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16330,10 +17792,11 @@ export type ServerAdvancedThreatProtectionSettingsGetOutput =
 /**
  * Get a server's Advanced Threat Protection state.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param advancedThreatProtectionName - The name of the Advanced Threat Protection state.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAdvancedThreatProtectionSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16343,8 +17806,9 @@ export const ServerAdvancedThreatProtectionSettingsGet =
 // Input Schema
 export const ServerAdvancedThreatProtectionSettingsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16368,9 +17832,10 @@ export type ServerAdvancedThreatProtectionSettingsListByServerOutput =
 /**
  * Get a list of the server's Advanced Threat Protection states.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerAdvancedThreatProtectionSettingsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16380,9 +17845,10 @@ export const ServerAdvancedThreatProtectionSettingsListByServer =
 // Input Schema
 export const ServerAdvisorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    advisorName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    advisorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -16402,10 +17868,11 @@ export type ServerAdvisorsGetOutput = typeof ServerAdvisorsGetOutput.Type;
 /**
  * Gets a server advisor.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param advisorName - The name of the Server Advisor.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAdvisorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServerAdvisorsGetInput,
@@ -16414,10 +17881,11 @@ export const ServerAdvisorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServerAdvisorsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -16437,10 +17905,11 @@ export type ServerAdvisorsListByServerOutput =
 /**
  * Gets a list of server advisors.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAdvisorsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -16451,9 +17920,10 @@ export const ServerAdvisorsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerAdvisorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    advisorName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    advisorName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16472,10 +17942,11 @@ export type ServerAdvisorsUpdateOutput = typeof ServerAdvisorsUpdateOutput.Type;
 /**
  * Updates a server advisor.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param advisorName - The name of the Server Advisor.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAdvisorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -16486,8 +17957,9 @@ export const ServerAdvisorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerAutomaticTuningGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16508,9 +17980,10 @@ export type ServerAutomaticTuningGetOutput =
 /**
  * Retrieves server automatic tuning options.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerAutomaticTuningGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -16521,8 +17994,9 @@ export const ServerAutomaticTuningGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerAutomaticTuningUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16543,9 +18017,10 @@ export type ServerAutomaticTuningUpdateOutput =
 /**
  * Update automatic tuning options on server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerAutomaticTuningUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -16556,9 +18031,10 @@ export const ServerAutomaticTuningUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerAzureADAdministratorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16579,10 +18055,11 @@ export type ServerAzureADAdministratorsCreateOrUpdateOutput =
 /**
  * Creates or updates an existing Azure Active Directory administrator.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param administratorName - The name of server active directory administrator.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAzureADAdministratorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16592,9 +18069,10 @@ export const ServerAzureADAdministratorsCreateOrUpdate =
 // Input Schema
 export const ServerAzureADAdministratorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16615,10 +18093,11 @@ export type ServerAzureADAdministratorsDeleteOutput =
 /**
  * Deletes the Azure Active Directory administrator with the given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param administratorName - The name of server active directory administrator.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAzureADAdministratorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16628,9 +18107,10 @@ export const ServerAzureADAdministratorsDelete =
 // Input Schema
 export const ServerAzureADAdministratorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    administratorName: Schema.Literals(["ActiveDirectory"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16651,10 +18131,11 @@ export type ServerAzureADAdministratorsGetOutput =
 /**
  * Gets a Azure Active Directory administrator.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param administratorName - The name of server active directory administrator.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAzureADAdministratorsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16664,8 +18145,9 @@ export const ServerAzureADAdministratorsGet =
 // Input Schema
 export const ServerAzureADAdministratorsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16689,9 +18171,10 @@ export type ServerAzureADAdministratorsListByServerOutput =
 /**
  * Gets a list of Azure Active Directory administrators in a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerAzureADAdministratorsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16701,9 +18184,10 @@ export const ServerAzureADAdministratorsListByServer =
 // Input Schema
 export const ServerAzureADOnlyAuthenticationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16724,10 +18208,11 @@ export type ServerAzureADOnlyAuthenticationsCreateOrUpdateOutput =
 /**
  * Sets Server Active Directory only authentication property or updates an existing server Active Directory only authentication property.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param authenticationName - The name of server azure active directory only authentication.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAzureADOnlyAuthenticationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16737,9 +18222,10 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdate =
 // Input Schema
 export const ServerAzureADOnlyAuthenticationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16760,10 +18246,11 @@ export type ServerAzureADOnlyAuthenticationsDeleteOutput =
 /**
  * Deletes an existing server Active Directory only authentication property.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param authenticationName - The name of server azure active directory only authentication.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAzureADOnlyAuthenticationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16773,9 +18260,10 @@ export const ServerAzureADOnlyAuthenticationsDelete =
 // Input Schema
 export const ServerAzureADOnlyAuthenticationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    authenticationName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16796,10 +18284,11 @@ export type ServerAzureADOnlyAuthenticationsGetOutput =
 /**
  * Gets a specific Azure Active Directory only authentication property.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param authenticationName - The name of server azure active directory only authentication.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerAzureADOnlyAuthenticationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16809,8 +18298,9 @@ export const ServerAzureADOnlyAuthenticationsGet =
 // Input Schema
 export const ServerAzureADOnlyAuthenticationsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16834,9 +18324,10 @@ export type ServerAzureADOnlyAuthenticationsListByServerOutput =
 /**
  * Gets a list of server Azure Active Directory only authentications.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerAzureADOnlyAuthenticationsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16846,8 +18337,10 @@ export const ServerAzureADOnlyAuthenticationsListByServer =
 // Input Schema
 export const ServerBlobAuditingPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16868,9 +18361,11 @@ export type ServerBlobAuditingPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates a server's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const ServerBlobAuditingPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16880,8 +18375,10 @@ export const ServerBlobAuditingPoliciesCreateOrUpdate =
 // Input Schema
 export const ServerBlobAuditingPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    blobAuditingPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16902,9 +18399,11 @@ export type ServerBlobAuditingPoliciesGetOutput =
 /**
  * Gets a server's blob auditing policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param blobAuditingPolicyName - The name of the blob auditing policy.
  */
 export const ServerBlobAuditingPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16914,8 +18413,9 @@ export const ServerBlobAuditingPoliciesGet =
 // Input Schema
 export const ServerBlobAuditingPoliciesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16929,7 +18429,7 @@ export type ServerBlobAuditingPoliciesListByServerInput =
 // Output Schema
 export const ServerBlobAuditingPoliciesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerBlobAuditingPoliciesListByServerOutput =
@@ -16939,9 +18439,10 @@ export type ServerBlobAuditingPoliciesListByServerOutput =
 /**
  * Lists auditing settings of a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerBlobAuditingPoliciesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16951,11 +18452,12 @@ export const ServerBlobAuditingPoliciesListByServer =
 // Input Schema
 export const ServerConfigurationOptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     serverConfigurationOptionName: Schema.Literals([
       "allowPolybaseExport",
     ]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -16976,10 +18478,11 @@ export type ServerConfigurationOptionsCreateOrUpdateOutput =
 /**
  * Updates managed instance server configuration option.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param serverConfigurationOptionName - The name of the server configuration option.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerConfigurationOptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16989,11 +18492,12 @@ export const ServerConfigurationOptionsCreateOrUpdate =
 // Input Schema
 export const ServerConfigurationOptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     serverConfigurationOptionName: Schema.Literals([
       "allowPolybaseExport",
     ]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17014,10 +18518,11 @@ export type ServerConfigurationOptionsGetOutput =
 /**
  * Gets managed instance server configuration option.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param serverConfigurationOptionName - The name of the server configuration option.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerConfigurationOptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17027,8 +18532,9 @@ export const ServerConfigurationOptionsGet =
 // Input Schema
 export const ServerConfigurationOptionsListByManagedInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17042,7 +18548,7 @@ export type ServerConfigurationOptionsListByManagedInstanceInput =
 // Output Schema
 export const ServerConfigurationOptionsListByManagedInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerConfigurationOptionsListByManagedInstanceOutput =
@@ -17052,9 +18558,10 @@ export type ServerConfigurationOptionsListByManagedInstanceOutput =
 /**
  * Gets a list of managed instance server configuration options.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ServerConfigurationOptionsListByManagedInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17064,9 +18571,10 @@ export const ServerConfigurationOptionsListByManagedInstance =
 // Input Schema
 export const ServerConnectionPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    connectionPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17087,10 +18595,11 @@ export type ServerConnectionPoliciesCreateOrUpdateOutput =
 /**
  * Updates a server connection policy
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param connectionPolicyName - The name of the connection policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerConnectionPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17100,9 +18609,10 @@ export const ServerConnectionPoliciesCreateOrUpdate =
 // Input Schema
 export const ServerConnectionPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    connectionPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    connectionPolicyName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17123,10 +18633,11 @@ export type ServerConnectionPoliciesGetOutput =
 /**
  * Gets a server connection policy
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param connectionPolicyName - The name of the connection policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerConnectionPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -17137,8 +18648,9 @@ export const ServerConnectionPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerConnectionPoliciesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17152,7 +18664,7 @@ export type ServerConnectionPoliciesListByServerInput =
 // Output Schema
 export const ServerConnectionPoliciesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerConnectionPoliciesListByServerOutput =
@@ -17162,9 +18674,10 @@ export type ServerConnectionPoliciesListByServerOutput =
 /**
  * Lists connection policy
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerConnectionPoliciesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17174,11 +18687,12 @@ export const ServerConnectionPoliciesListByServer =
 // Input Schema
 export const ServerDevOpsAuditSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     devOpsAuditingSettingsName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17199,9 +18713,10 @@ export type ServerDevOpsAuditSettingsCreateOrUpdateOutput =
 /**
  * Creates or updates a server's DevOps audit settings.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerDevOpsAuditSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17211,11 +18726,12 @@ export const ServerDevOpsAuditSettingsCreateOrUpdate =
 // Input Schema
 export const ServerDevOpsAuditSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     devOpsAuditingSettingsName: Schema.Literals(["Default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17236,9 +18752,10 @@ export type ServerDevOpsAuditSettingsGetOutput =
 /**
  * Gets a server's DevOps audit settings.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerDevOpsAuditSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17248,8 +18765,9 @@ export const ServerDevOpsAuditSettingsGet =
 // Input Schema
 export const ServerDevOpsAuditSettingsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17273,9 +18791,10 @@ export type ServerDevOpsAuditSettingsListByServerOutput =
 /**
  * Lists DevOps audit settings of a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerDevOpsAuditSettingsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17285,10 +18804,10 @@ export const ServerDevOpsAuditSettingsListByServer =
 // Input Schema
 export const ServerDnsAliasesAcquireInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     dnsAliasName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17309,11 +18828,11 @@ export type ServerDnsAliasesAcquireOutput =
 /**
  * Acquires server DNS alias from another server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server that the alias is pointing to.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param dnsAliasName - The name of the server dns alias.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerDnsAliasesAcquire = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -17324,10 +18843,10 @@ export const ServerDnsAliasesAcquire = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerDnsAliasesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     dnsAliasName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17348,11 +18867,11 @@ export type ServerDnsAliasesCreateOrUpdateOutput =
 /**
  * Creates a server DNS alias.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server that the alias is pointing to.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param dnsAliasName - The name of the server dns alias.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerDnsAliasesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17362,10 +18881,10 @@ export const ServerDnsAliasesCreateOrUpdate =
 // Input Schema
 export const ServerDnsAliasesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     dnsAliasName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17386,11 +18905,11 @@ export type ServerDnsAliasesDeleteOutput =
 /**
  * Deletes the server DNS alias with the given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server that the alias is pointing to.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param dnsAliasName - The name of the server dns alias.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerDnsAliasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -17401,10 +18920,10 @@ export const ServerDnsAliasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerDnsAliasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     dnsAliasName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17423,11 +18942,11 @@ export type ServerDnsAliasesGetOutput = typeof ServerDnsAliasesGetOutput.Type;
 /**
  * Gets a server DNS alias.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server that the alias is pointing to.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param dnsAliasName - The name of the server dns alias.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerDnsAliasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServerDnsAliasesGetInput,
@@ -17436,9 +18955,9 @@ export const ServerDnsAliasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServerDnsAliasesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17452,7 +18971,7 @@ export type ServerDnsAliasesListByServerInput =
 // Output Schema
 export const ServerDnsAliasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerDnsAliasesListByServerOutput =
@@ -17462,10 +18981,10 @@ export type ServerDnsAliasesListByServerOutput =
 /**
  * Gets a list of server DNS aliases for a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server that the alias is pointing to.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerDnsAliasesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17475,9 +18994,10 @@ export const ServerDnsAliasesListByServer =
 // Input Schema
 export const ServerKeysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    keyName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    keyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17498,10 +19018,11 @@ export type ServerKeysCreateOrUpdateOutput =
 /**
  * Creates or updates a server key.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param keyName - The name of the server key to be operated on (updated or created). The key name is required to be in the format of 'vault_key_version'. For example, if the keyId is https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion, then the server key name should be formatted as: YourVaultName_YourKeyName_YourKeyVersion
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param keyName - The name of the server key to be retrieved.
  */
 export const ServerKeysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -17511,9 +19032,10 @@ export const ServerKeysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServerKeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  keyName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -17531,10 +19053,11 @@ export type ServerKeysDeleteOutput = typeof ServerKeysDeleteOutput.Type;
 /**
  * Deletes the server key with the given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param keyName - The name of the server key to be deleted.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param keyName - The name of the server key to be retrieved.
  */
 export const ServerKeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServerKeysDeleteInput,
@@ -17542,9 +19065,10 @@ export const ServerKeysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ServerKeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
-  keyName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
+  keyName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -17564,10 +19088,11 @@ export type ServerKeysGetOutput = typeof ServerKeysGetOutput.Type;
 /**
  * Gets a server key.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param keyName - The name of the server key to be retrieved.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServerKeysGetInput,
@@ -17576,8 +19101,9 @@ export const ServerKeysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServerKeysListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17591,7 +19117,7 @@ export type ServerKeysListByServerInput =
 // Output Schema
 export const ServerKeysListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerKeysListByServerOutput =
@@ -17601,9 +19127,10 @@ export type ServerKeysListByServerOutput =
 /**
  * Gets a list of server keys.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerKeysListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -17614,8 +19141,9 @@ export const ServerKeysListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerOperationsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17629,7 +19157,7 @@ export type ServerOperationsListByServerInput =
 // Output Schema
 export const ServerOperationsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerOperationsListByServerOutput =
@@ -17639,9 +19167,10 @@ export type ServerOperationsListByServerOutput =
 /**
  * Gets a list of operations performed on the server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerOperationsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17677,8 +19206,8 @@ export type ServersCheckNameAvailabilityOutput =
 /**
  * Determines whether a resource can be created with the specified name.
  *
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ServersCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17688,8 +19217,9 @@ export const ServersCheckNameAvailability =
 // Input Schema
 export const ServersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17702,8 +19232,8 @@ export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
 // Output Schema
 export const ServersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type ServersCreateOrUpdateOutput =
   typeof ServersCreateOrUpdateOutput.Type;
@@ -17712,9 +19242,10 @@ export type ServersCreateOrUpdateOutput =
 /**
  * Creates or updates a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -17724,8 +19255,9 @@ export const ServersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -17743,9 +19275,10 @@ export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
 /**
  * Deletes a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersDeleteInput,
@@ -17754,9 +19287,10 @@ export const ServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServerSecurityAlertPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17777,10 +19311,11 @@ export type ServerSecurityAlertPoliciesCreateOrUpdateOutput =
 /**
  * Creates or updates a threat detection policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param securityAlertPolicyName - The name of the threat detection policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param securityAlertPolicyName - The name of the security alert policy.
  */
 export const ServerSecurityAlertPoliciesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17790,9 +19325,10 @@ export const ServerSecurityAlertPoliciesCreateOrUpdate =
 // Input Schema
 export const ServerSecurityAlertPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    securityAlertPolicyName: Schema.Literals(["Default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17813,10 +19349,11 @@ export type ServerSecurityAlertPoliciesGetOutput =
 /**
  * Get a server's security alert policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param securityAlertPolicyName - The name of the security alert policy.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerSecurityAlertPoliciesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17826,8 +19363,9 @@ export const ServerSecurityAlertPoliciesGet =
 // Input Schema
 export const ServerSecurityAlertPoliciesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17851,9 +19389,10 @@ export type ServerSecurityAlertPoliciesListByServerOutput =
 /**
  * Get the server's threat detection policies.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerSecurityAlertPoliciesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -17862,10 +19401,11 @@ export const ServerSecurityAlertPoliciesListByServer =
   }));
 // Input Schema
 export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  $expand: Schema.optional(Schema.String),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -17876,8 +19416,8 @@ export type ServersGetInput = typeof ServersGetInput.Type;
 
 // Output Schema
 export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type ServersGetOutput = typeof ServersGetOutput.Type;
 
@@ -17885,10 +19425,11 @@ export type ServersGetOutput = typeof ServersGetOutput.Type;
 /**
  * Gets a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersGetInput,
@@ -17897,8 +19438,9 @@ export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServersImportDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -17918,9 +19460,10 @@ export type ServersImportDatabaseOutput =
 /**
  * Imports a bacpac into a new database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersImportDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -17931,8 +19474,8 @@ export const ServersImportDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
-  $expand: Schema.optional(Schema.String),
   "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -17943,13 +19486,11 @@ export type ServersListInput = typeof ServersListInput.Type;
 
 // Output Schema
 export const ServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        location: Schema.String,
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      location: Schema.String,
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -17959,9 +19500,9 @@ export type ServersListOutput = typeof ServersListOutput.Type;
 /**
  * Gets a list of all servers in the subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersListInput,
@@ -17970,10 +19511,10 @@ export const ServersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
-    $expand: Schema.optional(Schema.String),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -17986,13 +19527,11 @@ export type ServersListByResourceGroupInput =
 // Output Schema
 export const ServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -18003,10 +19542,10 @@ export type ServersListByResourceGroupOutput =
 /**
  * Gets a list of servers in a resource groups.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $expand - The child resources to include in the response.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -18017,8 +19556,9 @@ export const ServersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServersRefreshStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18037,9 +19577,10 @@ export type ServersRefreshStatusOutput = typeof ServersRefreshStatusOutput.Type;
 /**
  * Refresh external governance enablement status.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersRefreshStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -18049,8 +19590,9 @@ export const ServersRefreshStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -18062,8 +19604,8 @@ export type ServersUpdateInput = typeof ServersUpdateInput.Type;
 
 // Output Schema
 export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
 });
 export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
 
@@ -18071,9 +19613,10 @@ export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
 /**
  * Updates a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersUpdateInput,
@@ -18082,9 +19625,10 @@ export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ServerTrustCertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18105,10 +19649,11 @@ export type ServerTrustCertificatesCreateOrUpdateOutput =
 /**
  * Uploads a server trust certificate from SQL Server to SQL Managed Instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param certificateName - Name of of the certificate to upload.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param certificateName - Name of of the certificate to get.
  */
 export const ServerTrustCertificatesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18118,9 +19663,10 @@ export const ServerTrustCertificatesCreateOrUpdate =
 // Input Schema
 export const ServerTrustCertificatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18141,10 +19687,11 @@ export type ServerTrustCertificatesDeleteOutput =
 /**
  * Deletes a server trust certificate that was uploaded from SQL Server to SQL Managed Instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param certificateName - Name of of the certificate to delete.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
+ * @param certificateName - Name of of the certificate to get.
  */
 export const ServerTrustCertificatesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18154,9 +19701,10 @@ export const ServerTrustCertificatesDelete =
 // Input Schema
 export const ServerTrustCertificatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    certificateName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18177,10 +19725,11 @@ export type ServerTrustCertificatesGetOutput =
 /**
  * Gets a server trust certificate that was uploaded from SQL Server to SQL Managed Instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param certificateName - Name of of the certificate to get.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerTrustCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -18191,8 +19740,9 @@ export const ServerTrustCertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerTrustCertificatesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18216,9 +19766,10 @@ export type ServerTrustCertificatesListByInstanceOutput =
 /**
  * Gets a list of the server trust certificates used to secure communication between SQL Server and the specified SQL Managed Instance
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ServerTrustCertificatesListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18228,10 +19779,10 @@ export const ServerTrustCertificatesListByInstance =
 // Input Schema
 export const ServerTrustGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     serverTrustGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18252,11 +19803,11 @@ export type ServerTrustGroupsCreateOrUpdateOutput =
 /**
  * Creates or updates a server trust group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param serverTrustGroupName - The name of the server trust group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerTrustGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18266,10 +19817,10 @@ export const ServerTrustGroupsCreateOrUpdate =
 // Input Schema
 export const ServerTrustGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     serverTrustGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18290,11 +19841,11 @@ export type ServerTrustGroupsDeleteOutput =
 /**
  * Deletes a server trust group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param serverTrustGroupName - The name of the server trust group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerTrustGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -18305,10 +19856,10 @@ export const ServerTrustGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerTrustGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     serverTrustGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18327,11 +19878,11 @@ export type ServerTrustGroupsGetOutput = typeof ServerTrustGroupsGetOutput.Type;
 /**
  * Gets a server trust group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
  * @param serverTrustGroupName - The name of the server trust group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerTrustGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -18342,8 +19893,9 @@ export const ServerTrustGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerTrustGroupsListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18357,7 +19909,7 @@ export type ServerTrustGroupsListByInstanceInput =
 // Output Schema
 export const ServerTrustGroupsListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerTrustGroupsListByInstanceOutput =
@@ -18367,9 +19919,10 @@ export type ServerTrustGroupsListByInstanceOutput =
 /**
  * Gets a server trust groups by instance name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const ServerTrustGroupsListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18379,9 +19932,9 @@ export const ServerTrustGroupsListByInstance =
 // Input Schema
 export const ServerTrustGroupsListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18395,7 +19948,7 @@ export type ServerTrustGroupsListByLocationInput =
 // Output Schema
 export const ServerTrustGroupsListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerTrustGroupsListByLocationOutput =
@@ -18405,10 +19958,10 @@ export type ServerTrustGroupsListByLocationOutput =
 /**
  * Lists a server trust group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param locationName - The name of the region where the resource is located.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerTrustGroupsListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18465,12 +20018,12 @@ export const ServerUsagesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ServerVulnerabilityAssessmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18491,11 +20044,11 @@ export type ServerVulnerabilityAssessmentsCreateOrUpdateOutput =
 /**
  * Creates or updates the server's vulnerability assessment. Learn more about setting SQL vulnerability assessment with managed identity - https://docs.microsoft.com/azure/azure-sql/database/sql-database-vulnerability-assessment-storage
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server for which the vulnerability assessment is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerVulnerabilityAssessmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18505,12 +20058,12 @@ export const ServerVulnerabilityAssessmentsCreateOrUpdate =
 // Input Schema
 export const ServerVulnerabilityAssessmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18531,11 +20084,11 @@ export type ServerVulnerabilityAssessmentsDeleteOutput =
 /**
  * Removes the server's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server for which the vulnerability assessment is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerVulnerabilityAssessmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18545,12 +20098,12 @@ export const ServerVulnerabilityAssessmentsDelete =
 // Input Schema
 export const ServerVulnerabilityAssessmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18571,11 +20124,11 @@ export type ServerVulnerabilityAssessmentsGetOutput =
 /**
  * Gets the server's vulnerability assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server for which the vulnerability assessment is defined.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const ServerVulnerabilityAssessmentsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18585,8 +20138,9 @@ export const ServerVulnerabilityAssessmentsGet =
 // Input Schema
 export const ServerVulnerabilityAssessmentsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18600,7 +20154,7 @@ export type ServerVulnerabilityAssessmentsListByServerInput =
 // Output Schema
 export const ServerVulnerabilityAssessmentsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ServerVulnerabilityAssessmentsListByServerOutput =
@@ -18610,9 +20164,10 @@ export type ServerVulnerabilityAssessmentsListByServerOutput =
 /**
  * Lists the vulnerability assessment policies associated with a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const ServerVulnerabilityAssessmentsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18622,8 +20177,9 @@ export const ServerVulnerabilityAssessmentsListByServer =
 // Input Schema
 export const SqlAgentCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -18644,9 +20200,10 @@ export type SqlAgentCreateOrUpdateOutput =
 /**
  * Puts new sql agent configuration to instance.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const SqlAgentCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -18656,8 +20213,9 @@ export const SqlAgentCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SqlAgentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  managedInstanceName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -18675,9 +20233,10 @@ export type SqlAgentGetOutput = typeof SqlAgentGetOutput.Type;
 /**
  * Gets current instance sql agent configuration.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const SqlAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SqlAgentGetInput,
@@ -18686,14 +20245,15 @@ export const SqlAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SqlVulnerabilityAssessmentBaselineGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -18713,11 +20273,12 @@ export type SqlVulnerabilityAssessmentBaselineGetOutput =
 /**
  * Gets a list of database's sql vulnerability assessment rule baselines.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentBaselineGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18727,13 +20288,14 @@ export const SqlVulnerabilityAssessmentBaselineGet =
 // Input Schema
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -18746,7 +20308,7 @@ export type SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentIn
 // Output Schema
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentOutput =
@@ -18756,11 +20318,12 @@ export type SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessmentOu
 /**
  * Gets a list of database's sql vulnerability assessment rule baselines.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18772,14 +20335,15 @@ export const SqlVulnerabilityAssessmentBaselineListBySqlVulnerabilityAssessment 
 // Input Schema
 export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -18799,11 +20363,12 @@ export type SqlVulnerabilityAssessmentBaselinesCreateOrUpdateOutput =
 /**
  * Add a database's vulnerability assessment rule baseline list.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18813,13 +20378,14 @@ export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdate =
 // Input Schema
 export const SqlVulnerabilityAssessmentExecuteScanExecuteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "POST",
@@ -18839,11 +20405,12 @@ export type SqlVulnerabilityAssessmentExecuteScanExecuteOutput =
 /**
  * Executes a Vulnerability Assessment database scan.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentExecuteScanExecute =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18853,15 +20420,16 @@ export const SqlVulnerabilityAssessmentExecuteScanExecute =
 // Input Schema
 export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     ruleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -18881,12 +20449,13 @@ export type SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateOutput =
 /**
  * Creates or updates a database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18896,15 +20465,16 @@ export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdate =
 // Input Schema
 export const SqlVulnerabilityAssessmentRuleBaselineGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     ruleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -18924,12 +20494,13 @@ export type SqlVulnerabilityAssessmentRuleBaselineGetOutput =
 /**
  * Gets a system database's sql vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentRuleBaselineGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18939,14 +20510,15 @@ export const SqlVulnerabilityAssessmentRuleBaselineGet =
 // Input Schema
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -18959,7 +20531,7 @@ export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaselineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineOutput =
@@ -18969,11 +20541,12 @@ export type SqlVulnerabilityAssessmentRuleBaselineListByBaselineOutput =
 /**
  * Gets a system database's sql vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentRuleBaselineListByBaseline =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -18983,15 +20556,16 @@ export const SqlVulnerabilityAssessmentRuleBaselineListByBaseline =
 // Input Schema
 export const SqlVulnerabilityAssessmentRuleBaselinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     baselineName: Schema.Literals(["default"]).pipe(T.PathParam()),
     ruleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -19011,12 +20585,13 @@ export type SqlVulnerabilityAssessmentRuleBaselinesDeleteOutput =
 /**
  * Removes the database's vulnerability assessment rule baseline.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param ruleId - The vulnerability assessment rule ID.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentRuleBaselinesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19026,15 +20601,16 @@ export const SqlVulnerabilityAssessmentRuleBaselinesDelete =
 // Input Schema
 export const SqlVulnerabilityAssessmentScanResultGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
     scanResultId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -19054,13 +20630,14 @@ export type SqlVulnerabilityAssessmentScanResultGetOutput =
 /**
  * Gets a vulnerability assessment scan record of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
  * @param scanId - The scan id of the SQL Vulnerability Assessment scan to retrieve result from.
  * @param scanResultId - The scan result id of the specific result to retrieve.
  * @param systemDatabaseName - The SQL vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentScanResultGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19070,14 +20647,15 @@ export const SqlVulnerabilityAssessmentScanResultGet =
 // Input Schema
 export const SqlVulnerabilityAssessmentScanResultListByScanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -19100,12 +20678,13 @@ export type SqlVulnerabilityAssessmentScanResultListByScanOutput =
 /**
  * Gets a vulnerability assessment scan record of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
  * @param scanId - The scan id of the SQL Vulnerability Assessment scan to retrieve result from.
  * @param systemDatabaseName - The SQL vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentScanResultListByScan =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19115,14 +20694,15 @@ export const SqlVulnerabilityAssessmentScanResultListByScan =
 // Input Schema
 export const SqlVulnerabilityAssessmentScansGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
     scanId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -19142,11 +20722,12 @@ export type SqlVulnerabilityAssessmentScansGetOutput =
 /**
  * Get a system database vulnerability assessment scan record.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentScansGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19156,13 +20737,14 @@ export const SqlVulnerabilityAssessmentScansGet =
 // Input Schema
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    systemDatabaseName: Schema.Literals(["master"]),
     "api-version": Schema.String,
+    systemDatabaseName: Schema.Literals(["master"]),
   }).pipe(
     T.Http({
       method: "GET",
@@ -19175,7 +20757,7 @@ export type SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsInpu
 // Output Schema
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsOutput =
@@ -19185,11 +20767,12 @@ export type SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessmentsOutp
 /**
  * Lists the vulnerability assessment scans of a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the vulnerability assessment.
  * @param systemDatabaseName - The vulnerability assessment system database name.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessments =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19201,11 +20784,12 @@ export const SqlVulnerabilityAssessmentScansListBySqlVulnerabilityAssessments =
 // Input Schema
 export const SqlVulnerabilityAssessmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19226,10 +20810,11 @@ export type SqlVulnerabilityAssessmentsDeleteOutput =
 /**
  * Removes SQL Vulnerability Assessment.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19239,11 +20824,12 @@ export const SqlVulnerabilityAssessmentsDelete =
 // Input Schema
 export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19264,10 +20850,11 @@ export type SqlVulnerabilityAssessmentsSettingsCreateOrUpdateOutput =
 /**
  * Creates or updates SQL Vulnerability Assessment policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19277,11 +20864,12 @@ export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdate =
 // Input Schema
 export const SqlVulnerabilityAssessmentsSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     vulnerabilityAssessmentName: Schema.Literals(["default"]).pipe(
       T.PathParam(),
     ),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19302,10 +20890,11 @@ export type SqlVulnerabilityAssessmentsSettingsGetOutput =
 /**
  * Gets SQL Vulnerability Assessment policy.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param vulnerabilityAssessmentName - The name of the SQL Vulnerability Assessment.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SqlVulnerabilityAssessmentsSettingsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19315,8 +20904,9 @@ export const SqlVulnerabilityAssessmentsSettingsGet =
 // Input Schema
 export const SqlVulnerabilityAssessmentsSettingsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19330,7 +20920,7 @@ export type SqlVulnerabilityAssessmentsSettingsListByServerInput =
 // Output Schema
 export const SqlVulnerabilityAssessmentsSettingsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlVulnerabilityAssessmentsSettingsListByServerOutput =
@@ -19340,9 +20930,10 @@ export type SqlVulnerabilityAssessmentsSettingsListByServerOutput =
 /**
  * Lists SQL Vulnerability Assessment policies associated with a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const SqlVulnerabilityAssessmentsSettingsListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19352,9 +20943,10 @@ export const SqlVulnerabilityAssessmentsSettingsListByServer =
 // Input Schema
 export const StartStopManagedInstanceSchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    startStopScheduleName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    startStopScheduleName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19375,10 +20967,11 @@ export type StartStopManagedInstanceSchedulesCreateOrUpdateOutput =
 /**
  * Creates or updates the managed instance's Start/Stop schedule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param startStopScheduleName - Name of the managed instance Start/Stop schedule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const StartStopManagedInstanceSchedulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19388,9 +20981,10 @@ export const StartStopManagedInstanceSchedulesCreateOrUpdate =
 // Input Schema
 export const StartStopManagedInstanceSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    startStopScheduleName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    startStopScheduleName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19411,10 +21005,11 @@ export type StartStopManagedInstanceSchedulesDeleteOutput =
 /**
  * Deletes the managed instance's Start/Stop schedule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param startStopScheduleName - Name of the managed instance Start/Stop schedule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const StartStopManagedInstanceSchedulesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19424,9 +21019,10 @@ export const StartStopManagedInstanceSchedulesDelete =
 // Input Schema
 export const StartStopManagedInstanceSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    startStopScheduleName: Schema.Literals(["default"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
+    startStopScheduleName: Schema.Literals(["default"]).pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19447,10 +21043,11 @@ export type StartStopManagedInstanceSchedulesGetOutput =
 /**
  * Gets the managed instance's Start/Stop schedule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  * @param startStopScheduleName - Name of the managed instance Start/Stop schedule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const StartStopManagedInstanceSchedulesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19460,8 +21057,9 @@ export const StartStopManagedInstanceSchedulesGet =
 // Input Schema
 export const StartStopManagedInstanceSchedulesListByInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    managedInstanceName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19475,7 +21073,7 @@ export type StartStopManagedInstanceSchedulesListByInstanceInput =
 // Output Schema
 export const StartStopManagedInstanceSchedulesListByInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type StartStopManagedInstanceSchedulesListByInstanceOutput =
@@ -19485,9 +21083,10 @@ export type StartStopManagedInstanceSchedulesListByInstanceOutput =
 /**
  * Lists the managed instance's Start/Stop schedules.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param managedInstanceName - The name of the managed instance.
  */
 export const StartStopManagedInstanceSchedulesListByInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19497,9 +21096,9 @@ export const StartStopManagedInstanceSchedulesListByInstance =
 // Input Schema
 export const SubscriptionUsagesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     usageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19519,10 +21118,10 @@ export type SubscriptionUsagesGetOutput =
 /**
  * Gets a subscription usage metric.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the region where the resource is located.
  * @param usageName - Name of usage metric to return.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SubscriptionUsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -19533,8 +21132,8 @@ export const SubscriptionUsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SubscriptionUsagesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19548,7 +21147,7 @@ export type SubscriptionUsagesListByLocationInput =
 // Output Schema
 export const SubscriptionUsagesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SubscriptionUsagesListByLocationOutput =
@@ -19558,9 +21157,9 @@ export type SubscriptionUsagesListByLocationOutput =
 /**
  * Gets all subscription usage metrics in a given location.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the region where the resource is located.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SubscriptionUsagesListByLocation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19570,8 +21169,10 @@ export const SubscriptionUsagesListByLocation =
 // Input Schema
 export const SynapseLinkWorkspacesListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19585,7 +21186,7 @@ export type SynapseLinkWorkspacesListByDatabaseInput =
 // Output Schema
 export const SynapseLinkWorkspacesListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SynapseLinkWorkspacesListByDatabaseOutput =
@@ -19595,9 +21196,11 @@ export type SynapseLinkWorkspacesListByDatabaseOutput =
 /**
  * Gets all synapselink workspaces for a database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const SynapseLinkWorkspacesListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19607,10 +21210,10 @@ export const SynapseLinkWorkspacesListByDatabase =
 // Input Schema
 export const SyncAgentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     syncAgentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19631,11 +21234,11 @@ export type SyncAgentsCreateOrUpdateOutput =
 /**
  * Creates or updates a sync agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server on which the sync agent is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param syncAgentName - The name of the sync agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncAgentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -19645,10 +21248,10 @@ export const SyncAgentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SyncAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   syncAgentName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -19666,11 +21269,11 @@ export type SyncAgentsDeleteOutput = typeof SyncAgentsDeleteOutput.Type;
 /**
  * Deletes a sync agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server on which the sync agent is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param syncAgentName - The name of the sync agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncAgentsDeleteInput,
@@ -19679,10 +21282,10 @@ export const SyncAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SyncAgentsGenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     syncAgentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19704,11 +21307,11 @@ export type SyncAgentsGenerateKeyOutput =
 /**
  * Generates a sync agent key.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server on which the sync agent is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param syncAgentName - The name of the sync agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncAgentsGenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -19718,10 +21321,10 @@ export const SyncAgentsGenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SyncAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
   syncAgentName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -19741,11 +21344,11 @@ export type SyncAgentsGetOutput = typeof SyncAgentsGetOutput.Type;
 /**
  * Gets a sync agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server on which the sync agent is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param syncAgentName - The name of the sync agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncAgentsGetInput,
@@ -19754,9 +21357,9 @@ export const SyncAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SyncAgentsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19770,7 +21373,7 @@ export type SyncAgentsListByServerInput =
 // Output Schema
 export const SyncAgentsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncAgentsListByServerOutput =
@@ -19780,10 +21383,10 @@ export type SyncAgentsListByServerOutput =
 /**
  * Lists sync agents in a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server on which the sync agent is hosted.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const SyncAgentsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -19794,10 +21397,10 @@ export const SyncAgentsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SyncAgentsListLinkedDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     syncAgentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19811,7 +21414,7 @@ export type SyncAgentsListLinkedDatabasesInput =
 // Output Schema
 export const SyncAgentsListLinkedDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncAgentsListLinkedDatabasesOutput =
@@ -19821,11 +21424,11 @@ export type SyncAgentsListLinkedDatabasesOutput =
 /**
  * Lists databases linked to a sync agent.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param serverName - The name of the server on which the sync agent is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param syncAgentName - The name of the sync agent.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncAgentsListLinkedDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19835,10 +21438,11 @@ export const SyncAgentsListLinkedDatabases =
 // Input Schema
 export const SyncGroupsCancelSyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19857,11 +21461,12 @@ export type SyncGroupsCancelSyncOutput = typeof SyncGroupsCancelSyncOutput.Type;
 /**
  * Cancels a sync group synchronization.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsCancelSync = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -19872,10 +21477,11 @@ export const SyncGroupsCancelSync = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SyncGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19896,11 +21502,12 @@ export type SyncGroupsCreateOrUpdateOutput =
 /**
  * Creates or updates a sync group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -19910,10 +21517,11 @@ export const SyncGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SyncGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -19931,11 +21539,12 @@ export type SyncGroupsDeleteOutput = typeof SyncGroupsDeleteOutput.Type;
 /**
  * Deletes a sync group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncGroupsDeleteInput,
@@ -19943,10 +21552,11 @@ export const SyncGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SyncGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -19966,11 +21576,12 @@ export type SyncGroupsGetOutput = typeof SyncGroupsGetOutput.Type;
 /**
  * Gets a sync group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncGroupsGetInput,
@@ -19979,9 +21590,10 @@ export const SyncGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SyncGroupsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -19995,7 +21607,7 @@ export type SyncGroupsListByDatabaseInput =
 // Output Schema
 export const SyncGroupsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncGroupsListByDatabaseOutput =
@@ -20005,10 +21617,11 @@ export type SyncGroupsListByDatabaseOutput =
 /**
  * Lists sync groups under a hub database.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const SyncGroupsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20019,10 +21632,11 @@ export const SyncGroupsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SyncGroupsListHubSchemasInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20036,35 +21650,33 @@ export type SyncGroupsListHubSchemasInput =
 // Output Schema
 export const SyncGroupsListHubSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tables: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                columns: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      dataSize: Schema.optional(Schema.String),
-                      dataType: Schema.optional(Schema.String),
-                      errorId: Schema.optional(Schema.String),
-                      hasError: Schema.optional(Schema.Boolean),
-                      isPrimaryKey: Schema.optional(Schema.Boolean),
-                      name: Schema.optional(Schema.String),
-                      quotedName: Schema.optional(Schema.String),
-                    }),
-                  ),
+    value: Schema.Array(
+      Schema.Struct({
+        tables: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              columns: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    dataSize: Schema.optional(Schema.String),
+                    dataType: Schema.optional(Schema.String),
+                    errorId: Schema.optional(Schema.String),
+                    hasError: Schema.optional(Schema.Boolean),
+                    isPrimaryKey: Schema.optional(Schema.Boolean),
+                    name: Schema.optional(Schema.String),
+                    quotedName: Schema.optional(Schema.String),
+                  }),
                 ),
-                errorId: Schema.optional(Schema.String),
-                hasError: Schema.optional(Schema.Boolean),
-                name: Schema.optional(Schema.String),
-                quotedName: Schema.optional(Schema.String),
-              }),
-            ),
+              ),
+              errorId: Schema.optional(Schema.String),
+              hasError: Schema.optional(Schema.Boolean),
+              name: Schema.optional(Schema.String),
+              quotedName: Schema.optional(Schema.String),
+            }),
           ),
-          lastUpdateTime: Schema.optional(Schema.String),
-        }),
-      ),
+        ),
+        lastUpdateTime: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20075,11 +21687,12 @@ export type SyncGroupsListHubSchemasOutput =
 /**
  * Gets a collection of hub database schemas.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsListHubSchemas = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20090,15 +21703,16 @@ export const SyncGroupsListHubSchemas = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SyncGroupsListLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     startTime: Schema.String,
     endTime: Schema.String,
     type: Schema.Literals(["All", "Error", "Warning", "Success"]),
     continuationToken: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -20110,19 +21724,17 @@ export type SyncGroupsListLogsInput = typeof SyncGroupsListLogsInput.Type;
 // Output Schema
 export const SyncGroupsListLogsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          timestamp: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals(["All", "Error", "Warning", "Success"]),
-          ),
-          source: Schema.optional(Schema.String),
-          details: Schema.optional(Schema.String),
-          tracingId: Schema.optional(Schema.String),
-          operationStatus: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        timestamp: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals(["All", "Error", "Warning", "Success"]),
+        ),
+        source: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.String),
+        tracingId: Schema.optional(Schema.String),
+        operationStatus: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20132,15 +21744,16 @@ export type SyncGroupsListLogsOutput = typeof SyncGroupsListLogsOutput.Type;
 /**
  * Gets a collection of sync group logs.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
  * @param startTime - Get logs generated after this time.
  * @param endTime - Get logs generated before this time.
  * @param type - The types of logs to retrieve.
  * @param continuationToken - The continuation token for this operation.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsListLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncGroupsListLogsInput,
@@ -20149,8 +21762,8 @@ export const SyncGroupsListLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SyncGroupsListSyncDatabaseIdsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20164,12 +21777,10 @@ export type SyncGroupsListSyncDatabaseIdsInput =
 // Output Schema
 export const SyncGroupsListSyncDatabaseIdsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20180,9 +21791,9 @@ export type SyncGroupsListSyncDatabaseIdsOutput =
 /**
  * Gets a collection of sync database ids.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param locationName - The name of the region where the resource is located.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsListSyncDatabaseIds =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20192,10 +21803,11 @@ export const SyncGroupsListSyncDatabaseIds =
 // Input Schema
 export const SyncGroupsRefreshHubSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20216,11 +21828,12 @@ export type SyncGroupsRefreshHubSchemaOutput =
 /**
  * Refreshes a hub database schema.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsRefreshHubSchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20231,10 +21844,11 @@ export const SyncGroupsRefreshHubSchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SyncGroupsTriggerSyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20254,11 +21868,12 @@ export type SyncGroupsTriggerSyncOutput =
 /**
  * Triggers a sync group synchronization.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsTriggerSync = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20268,10 +21883,11 @@ export const SyncGroupsTriggerSync = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const SyncGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20291,11 +21907,12 @@ export type SyncGroupsUpdateOutput = typeof SyncGroupsUpdateOutput.Type;
 /**
  * Updates a sync group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncGroupsUpdateInput,
@@ -20304,11 +21921,12 @@ export const SyncGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SyncMembersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     syncMemberName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20329,12 +21947,13 @@ export type SyncMembersCreateOrUpdateOutput =
 /**
  * Creates or updates a sync member.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
- * @param syncGroupName - The name of the sync group on which the sync member is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param syncGroupName - The name of the sync group.
  * @param syncMemberName - The name of the sync member.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncMembersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20345,11 +21964,12 @@ export const SyncMembersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SyncMembersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     syncMemberName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -20368,12 +21988,13 @@ export type SyncMembersDeleteOutput = typeof SyncMembersDeleteOutput.Type;
 /**
  * Deletes a sync member.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
- * @param syncGroupName - The name of the sync group on which the sync member is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param syncGroupName - The name of the sync group.
  * @param syncMemberName - The name of the sync member.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncMembersDeleteInput,
@@ -20381,11 +22002,12 @@ export const SyncMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SyncMembersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serverName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
   syncGroupName: Schema.String.pipe(T.PathParam()),
   syncMemberName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20405,12 +22027,13 @@ export type SyncMembersGetOutput = typeof SyncMembersGetOutput.Type;
 /**
  * Gets a sync member.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
- * @param syncGroupName - The name of the sync group on which the sync member is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param syncGroupName - The name of the sync group.
  * @param syncMemberName - The name of the sync member.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncMembersGetInput,
@@ -20419,10 +22042,11 @@ export const SyncMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SyncMembersListBySyncGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20436,7 +22060,7 @@ export type SyncMembersListBySyncGroupInput =
 // Output Schema
 export const SyncMembersListBySyncGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SyncMembersListBySyncGroupOutput =
@@ -20446,11 +22070,12 @@ export type SyncMembersListBySyncGroupOutput =
 /**
  * Lists sync members in the given sync group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param syncGroupName - The name of the sync group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncMembersListBySyncGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20461,11 +22086,12 @@ export const SyncMembersListBySyncGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SyncMembersListMemberSchemasInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     syncMemberName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20479,35 +22105,33 @@ export type SyncMembersListMemberSchemasInput =
 // Output Schema
 export const SyncMembersListMemberSchemasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tables: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                columns: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      dataSize: Schema.optional(Schema.String),
-                      dataType: Schema.optional(Schema.String),
-                      errorId: Schema.optional(Schema.String),
-                      hasError: Schema.optional(Schema.Boolean),
-                      isPrimaryKey: Schema.optional(Schema.Boolean),
-                      name: Schema.optional(Schema.String),
-                      quotedName: Schema.optional(Schema.String),
-                    }),
-                  ),
+    value: Schema.Array(
+      Schema.Struct({
+        tables: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              columns: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    dataSize: Schema.optional(Schema.String),
+                    dataType: Schema.optional(Schema.String),
+                    errorId: Schema.optional(Schema.String),
+                    hasError: Schema.optional(Schema.Boolean),
+                    isPrimaryKey: Schema.optional(Schema.Boolean),
+                    name: Schema.optional(Schema.String),
+                    quotedName: Schema.optional(Schema.String),
+                  }),
                 ),
-                errorId: Schema.optional(Schema.String),
-                hasError: Schema.optional(Schema.Boolean),
-                name: Schema.optional(Schema.String),
-                quotedName: Schema.optional(Schema.String),
-              }),
-            ),
+              ),
+              errorId: Schema.optional(Schema.String),
+              hasError: Schema.optional(Schema.Boolean),
+              name: Schema.optional(Schema.String),
+              quotedName: Schema.optional(Schema.String),
+            }),
           ),
-          lastUpdateTime: Schema.optional(Schema.String),
-        }),
-      ),
+        ),
+        lastUpdateTime: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20518,12 +22142,13 @@ export type SyncMembersListMemberSchemasOutput =
 /**
  * Gets a sync member database schema.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
- * @param syncGroupName - The name of the sync group on which the sync member is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param syncGroupName - The name of the sync group.
  * @param syncMemberName - The name of the sync member.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncMembersListMemberSchemas =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20533,11 +22158,12 @@ export const SyncMembersListMemberSchemas =
 // Input Schema
 export const SyncMembersRefreshMemberSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     syncMemberName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20558,12 +22184,13 @@ export type SyncMembersRefreshMemberSchemaOutput =
 /**
  * Refreshes a sync member database schema.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
- * @param syncGroupName - The name of the sync group on which the sync member is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param syncGroupName - The name of the sync group.
  * @param syncMemberName - The name of the sync member.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncMembersRefreshMemberSchema =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20573,11 +22200,12 @@ export const SyncMembersRefreshMemberSchema =
 // Input Schema
 export const SyncMembersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     syncGroupName: Schema.String.pipe(T.PathParam()),
     syncMemberName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -20597,12 +22225,13 @@ export type SyncMembersUpdateOutput = typeof SyncMembersUpdateOutput.Type;
 /**
  * Updates an existing sync member.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param databaseName - The name of the database on which the sync group is hosted.
- * @param syncGroupName - The name of the sync group on which the sync member is hosted.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param syncGroupName - The name of the sync group.
  * @param syncMemberName - The name of the sync member.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const SyncMembersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SyncMembersUpdateInput,
@@ -20611,8 +22240,9 @@ export const SyncMembersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TdeCertificatesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20632,9 +22262,10 @@ export type TdeCertificatesCreateOutput =
 /**
  * Creates a TDE certificate for a given server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const TdeCertificatesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20644,9 +22275,9 @@ export const TdeCertificatesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const TimeZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   locationName: Schema.String.pipe(T.PathParam()),
   timeZoneId: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -20664,8 +22295,10 @@ export type TimeZonesGetOutput = typeof TimeZonesGetOutput.Type;
 /**
  * Gets a managed instance time zone.
  *
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
+ * @param timeZoneId - The time zone ID.
  */
 export const TimeZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TimeZonesGetInput,
@@ -20674,8 +22307,8 @@ export const TimeZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const TimeZonesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20689,7 +22322,7 @@ export type TimeZonesListByLocationInput =
 // Output Schema
 export const TimeZonesListByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type TimeZonesListByLocationOutput =
@@ -20699,8 +22332,9 @@ export type TimeZonesListByLocationOutput =
 /**
  * Gets a list of managed instance time zones by location.
  *
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationName - The location of the database.
  */
 export const TimeZonesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20711,11 +22345,11 @@ export const TimeZonesListByLocation = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const TransparentDataEncryptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20736,12 +22370,12 @@ export type TransparentDataEncryptionsCreateOrUpdateOutput =
 /**
  * Updates a logical database's transparent data encryption configuration.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
- * @param databaseName - The name of the logical database for which the security alert policy is defined.
+ * @param databaseName - The name of the database.
  * @param tdeName - The name of the transparent data encryption configuration.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const TransparentDataEncryptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20751,11 +22385,11 @@ export const TransparentDataEncryptionsCreateOrUpdate =
 // Input Schema
 export const TransparentDataEncryptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20776,12 +22410,12 @@ export type TransparentDataEncryptionsGetOutput =
 /**
  * Gets a logical database's transparent data encryption.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
- * @param databaseName - The name of the logical database for which the transparent data encryption is defined.
+ * @param databaseName - The name of the database.
  * @param tdeName - The name of the transparent data encryption configuration.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const TransparentDataEncryptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20791,10 +22425,10 @@ export const TransparentDataEncryptionsGet =
 // Input Schema
 export const TransparentDataEncryptionsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20808,7 +22442,7 @@ export type TransparentDataEncryptionsListByDatabaseInput =
 // Output Schema
 export const TransparentDataEncryptionsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type TransparentDataEncryptionsListByDatabaseOutput =
@@ -20818,11 +22452,11 @@ export type TransparentDataEncryptionsListByDatabaseOutput =
 /**
  * Gets a list of the logical database's transparent data encryption.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
- * @param databaseName - The name of the logical database for which the transparent data encryption is defined.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param databaseName - The name of the database.
  */
 export const TransparentDataEncryptionsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20830,13 +22464,93 @@ export const TransparentDataEncryptionsListByDatabase =
     outputSchema: TransparentDataEncryptionsListByDatabaseOutput,
   }));
 // Input Schema
+export const TransparentDataEncryptionsResumeInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}/resume",
+    }),
+  );
+export type TransparentDataEncryptionsResumeInput =
+  typeof TransparentDataEncryptionsResumeInput.Type;
+
+// Output Schema
+export const TransparentDataEncryptionsResumeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type TransparentDataEncryptionsResumeOutput =
+  typeof TransparentDataEncryptionsResumeOutput.Type;
+
+// The operation
+/**
+ * Resume ongoing logical database's Transparent Data Encryption scan configuration.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param tdeName - The name of the transparent data encryption configuration.
+ */
+export const TransparentDataEncryptionsResume =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TransparentDataEncryptionsResumeInput,
+    outputSchema: TransparentDataEncryptionsResumeOutput,
+  }));
+// Input Schema
+export const TransparentDataEncryptionsSuspendInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    tdeName: Schema.Literals(["current"]).pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/{tdeName}/suspend",
+    }),
+  );
+export type TransparentDataEncryptionsSuspendInput =
+  typeof TransparentDataEncryptionsSuspendInput.Type;
+
+// Output Schema
+export const TransparentDataEncryptionsSuspendOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type TransparentDataEncryptionsSuspendOutput =
+  typeof TransparentDataEncryptionsSuspendOutput.Type;
+
+// The operation
+/**
+ * Suspend ongoing logical database's Transparent Data Encryption scan configuration.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param tdeName - The name of the transparent data encryption configuration.
+ */
+export const TransparentDataEncryptionsSuspend =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TransparentDataEncryptionsSuspendInput,
+    outputSchema: TransparentDataEncryptionsSuspendOutput,
+  }));
+// Input Schema
 export const UsagesListByInstancePoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     instancePoolName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    expandChildren: Schema.optional(Schema.Boolean),
     "api-version": Schema.String,
+    expandChildren: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "GET",
@@ -20849,23 +22563,21 @@ export type UsagesListByInstancePoolInput =
 // Output Schema
 export const UsagesListByInstancePoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              localizedValue: Schema.optional(Schema.String),
-            }),
-          ),
-          type: Schema.optional(Schema.String),
-          unit: Schema.optional(Schema.String),
-          currentValue: Schema.optional(Schema.Number),
-          limit: Schema.optional(Schema.Number),
-          requestedLimit: Schema.optional(Schema.Number),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(
+          Schema.Struct({
+            value: Schema.optional(Schema.String),
+            localizedValue: Schema.optional(Schema.String),
+          }),
+        ),
+        type: Schema.optional(Schema.String),
+        unit: Schema.optional(Schema.String),
+        currentValue: Schema.optional(Schema.Number),
+        limit: Schema.optional(Schema.Number),
+        requestedLimit: Schema.optional(Schema.Number),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20876,11 +22588,11 @@ export type UsagesListByInstancePoolOutput =
 /**
  * Gets all instance pool usage metrics
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param instancePoolName - The name of the instance pool to be retrieved.
  * @param expandChildren - Optional request parameter to include managed instance usages within the instance pool.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const UsagesListByInstancePool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20889,10 +22601,50 @@ export const UsagesListByInstancePool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const VirtualClustersCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualClusterName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters/{virtualClusterName}",
+    }),
+  );
+export type VirtualClustersCreateOrUpdateInput =
+  typeof VirtualClustersCreateOrUpdateInput.Type;
+
+// Output Schema
+export const VirtualClustersCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  });
+export type VirtualClustersCreateOrUpdateOutput =
+  typeof VirtualClustersCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates virtual cluster.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualClusterName - The name of the virtual cluster.
+ */
+export const VirtualClustersCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: VirtualClustersCreateOrUpdateInput,
+    outputSchema: VirtualClustersCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const VirtualClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualClusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20912,9 +22664,10 @@ export type VirtualClustersDeleteOutput =
 /**
  * Deletes a virtual cluster.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualClusterName - The name of the virtual cluster.
  */
 export const VirtualClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20925,8 +22678,9 @@ export const VirtualClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualClustersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualClusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -20939,8 +22693,8 @@ export type VirtualClustersGetInput = typeof VirtualClustersGetInput.Type;
 // Output Schema
 export const VirtualClustersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type VirtualClustersGetOutput = typeof VirtualClustersGetOutput.Type;
 
@@ -20948,9 +22702,10 @@ export type VirtualClustersGetOutput = typeof VirtualClustersGetOutput.Type;
 /**
  * Gets a virtual cluster.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualClusterName - The name of the virtual cluster.
  */
 export const VirtualClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualClustersGetInput,
@@ -20972,13 +22727,11 @@ export type VirtualClustersListInput = typeof VirtualClustersListInput.Type;
 // Output Schema
 export const VirtualClustersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20988,8 +22741,8 @@ export type VirtualClustersListOutput = typeof VirtualClustersListOutput.Type;
 /**
  * Gets a list of all virtualClusters in the subscription.
  *
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const VirtualClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualClustersListInput,
@@ -20998,8 +22751,8 @@ export const VirtualClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VirtualClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21013,13 +22766,11 @@ export type VirtualClustersListByResourceGroupInput =
 // Output Schema
 export const VirtualClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21030,9 +22781,9 @@ export type VirtualClustersListByResourceGroupOutput =
 /**
  * Gets a list of virtual clusters in a resource group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const VirtualClustersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -21042,8 +22793,9 @@ export const VirtualClustersListByResourceGroup =
 // Input Schema
 export const VirtualClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualClusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21056,8 +22808,8 @@ export type VirtualClustersUpdateInput = typeof VirtualClustersUpdateInput.Type;
 // Output Schema
 export const VirtualClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   });
 export type VirtualClustersUpdateOutput =
   typeof VirtualClustersUpdateOutput.Type;
@@ -21066,9 +22818,10 @@ export type VirtualClustersUpdateOutput =
 /**
  * Updates an existing virtual cluster.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualClusterName - The name of the virtual cluster.
  */
 export const VirtualClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21079,8 +22832,9 @@ export const VirtualClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualClustersUpdateDnsServersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualClusterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21101,9 +22855,10 @@ export type VirtualClustersUpdateDnsServersOutput =
 /**
  * Synchronizes the DNS server settings used by the managed instances inside the given virtual cluster.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualClusterName - The name of the virtual cluster.
  */
 export const VirtualClustersUpdateDnsServers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -21113,9 +22868,10 @@ export const VirtualClustersUpdateDnsServers =
 // Input Schema
 export const VirtualNetworkRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21136,10 +22892,11 @@ export type VirtualNetworkRulesCreateOrUpdateOutput =
 /**
  * Creates or updates an existing virtual network rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param virtualNetworkRuleName - The name of the virtual network rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const VirtualNetworkRulesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -21149,9 +22906,10 @@ export const VirtualNetworkRulesCreateOrUpdate =
 // Input Schema
 export const VirtualNetworkRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21172,10 +22930,11 @@ export type VirtualNetworkRulesDeleteOutput =
 /**
  * Deletes the virtual network rule with the given name.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param virtualNetworkRuleName - The name of the virtual network rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const VirtualNetworkRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21186,9 +22945,10 @@ export const VirtualNetworkRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualNetworkRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    virtualNetworkRuleName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21209,10 +22969,11 @@ export type VirtualNetworkRulesGetOutput =
 /**
  * Gets a virtual network rule.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  * @param virtualNetworkRuleName - The name of the virtual network rule.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const VirtualNetworkRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21223,8 +22984,9 @@ export const VirtualNetworkRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const VirtualNetworkRulesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21238,7 +23000,7 @@ export type VirtualNetworkRulesListByServerInput =
 // Output Schema
 export const VirtualNetworkRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type VirtualNetworkRulesListByServerOutput =
@@ -21248,9 +23010,10 @@ export type VirtualNetworkRulesListByServerOutput =
 /**
  * Gets a list of virtual network rules in a server.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
  */
 export const VirtualNetworkRulesListByServer =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -21260,10 +23023,12 @@ export const VirtualNetworkRulesListByServer =
 // Input Schema
 export const WorkloadClassifiersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21284,11 +23049,13 @@ export type WorkloadClassifiersCreateOrUpdateOutput =
 /**
  * Creates or updates a workload classifier.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param workloadGroupName - The name of the workload group from which to receive the classifier from.
- * @param workloadClassifierName - The name of the workload classifier to create/update.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param workloadGroupName - The name of the workload group.
+ * @param workloadClassifierName - The name of the workload classifier.
  */
 export const WorkloadClassifiersCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -21298,10 +23065,12 @@ export const WorkloadClassifiersCreateOrUpdate =
 // Input Schema
 export const WorkloadClassifiersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21322,11 +23091,13 @@ export type WorkloadClassifiersDeleteOutput =
 /**
  * Deletes a workload classifier.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param workloadGroupName - The name of the workload group from which to receive the classifier from.
- * @param workloadClassifierName - The name of the workload classifier to delete.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param workloadGroupName - The name of the workload group.
+ * @param workloadClassifierName - The name of the workload classifier.
  */
 export const WorkloadClassifiersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21337,10 +23108,12 @@ export const WorkloadClassifiersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkloadClassifiersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     workloadGroupName: Schema.String.pipe(T.PathParam()),
     workloadClassifierName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21361,11 +23134,13 @@ export type WorkloadClassifiersGetOutput =
 /**
  * Gets a workload classifier
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param workloadGroupName - The name of the workload group from which to receive the classifier from.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param workloadGroupName - The name of the workload group.
  * @param workloadClassifierName - The name of the workload classifier.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const WorkloadClassifiersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21376,9 +23151,11 @@ export const WorkloadClassifiersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkloadClassifiersListByWorkloadGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    workloadGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21392,7 +23169,7 @@ export type WorkloadClassifiersListByWorkloadGroupInput =
 // Output Schema
 export const WorkloadClassifiersListByWorkloadGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkloadClassifiersListByWorkloadGroupOutput =
@@ -21402,10 +23179,12 @@ export type WorkloadClassifiersListByWorkloadGroupOutput =
 /**
  * Gets the list of workload classifiers for a workload group
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param workloadGroupName - The name of the workload group from which to receive the classifiers from.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param workloadGroupName - The name of the workload group.
  */
 export const WorkloadClassifiersListByWorkloadGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -21415,9 +23194,11 @@ export const WorkloadClassifiersListByWorkloadGroup =
 // Input Schema
 export const WorkloadGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    workloadGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21438,10 +23219,12 @@ export type WorkloadGroupsCreateOrUpdateOutput =
 /**
  * Creates or updates a workload group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param workloadGroupName - The name of the workload group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const WorkloadGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -21451,9 +23234,11 @@ export const WorkloadGroupsCreateOrUpdate =
 // Input Schema
 export const WorkloadGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    workloadGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21472,10 +23257,12 @@ export type WorkloadGroupsDeleteOutput = typeof WorkloadGroupsDeleteOutput.Type;
 /**
  * Deletes a workload group.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param workloadGroupName - The name of the workload group to delete.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
+ * @param workloadGroupName - The name of the workload group.
  */
 export const WorkloadGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21486,9 +23273,11 @@ export const WorkloadGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const WorkloadGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    workloadGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    workloadGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -21508,10 +23297,12 @@ export type WorkloadGroupsGetOutput = typeof WorkloadGroupsGetOutput.Type;
 /**
  * Gets a workload group
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  * @param workloadGroupName - The name of the workload group.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
  */
 export const WorkloadGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkloadGroupsGetInput,
@@ -21520,8 +23311,10 @@ export const WorkloadGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WorkloadGroupsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serverName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -21535,7 +23328,7 @@ export type WorkloadGroupsListByDatabaseInput =
 // Output Schema
 export const WorkloadGroupsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkloadGroupsListByDatabaseOutput =
@@ -21545,9 +23338,11 @@ export type WorkloadGroupsListByDatabaseOutput =
 /**
  * Gets the list of workload groups
  *
- * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
- * @param subscriptionId - The subscription ID that identifies an Azure subscription.
- * @param api-version - The API version to use for the request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serverName - The name of the server.
+ * @param databaseName - The name of the database.
  */
 export const WorkloadGroupsListByDatabase =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -2777,7 +2777,7 @@ export type GetV2CoreAccountsOutput = typeof GetV2CoreAccountsOutput.Type;
 
 // The operation
 /**
- * List Accounts
+ * List accounts
  *
  * Returns a list of Accounts.
  *

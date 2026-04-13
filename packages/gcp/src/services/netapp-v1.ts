@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface StoragePool {
   /** Identifier. Name of the storage pool */
@@ -182,54 +171,54 @@ export interface StoragePool {
   coldTierSizeUsedGib?: string;
   /** Output only. Total hot tier data rounded down to the nearest GiB used by the storage pool. */
   hotTierSizeUsedGib?: string;
-  /** Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes or `UNIFIED_LARGE_CAPACITY` (both `FILE` and `BLOCK`) volumes with large capacity. If not specified during creation, it defaults to `FILE`. */
-  type?:
-    | "STORAGE_POOL_TYPE_UNSPECIFIED"
-    | "FILE"
-    | "UNIFIED"
-    | "UNIFIED_LARGE_CAPACITY"
+  /** Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes. If not specified during creation, it defaults to `FILE`. */
+  type?: "STORAGE_POOL_TYPE_UNSPECIFIED" | "FILE" | "UNIFIED" | (string & {});
+  /** Optional. Mode of the storage pool. This field is used to control whether the user can perform the ONTAP operations on the storage pool using the GCNV ONTAP Mode APIs. If not specified during creation, it defaults to `DEFAULT`. */
+  mode?: "MODE_UNSPECIFIED" | "DEFAULT" | "ONTAP" | (string & {});
+  /** Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified. */
+  scaleType?:
+    | "SCALE_TYPE_UNSPECIFIED"
+    | "SCALE_TYPE_DEFAULT"
+    | "SCALE_TYPE_SCALEOUT"
     | (string & {});
 }
 
-export const StoragePool: Schema.Schema<StoragePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      serviceLevel: Schema.optional(Schema.String),
-      capacityGib: Schema.optional(Schema.String),
-      volumeCapacityGib: Schema.optional(Schema.String),
-      volumeCount: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      stateDetails: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      network: Schema.optional(Schema.String),
-      activeDirectory: Schema.optional(Schema.String),
-      kmsConfig: Schema.optional(Schema.String),
-      ldapEnabled: Schema.optional(Schema.Boolean),
-      psaRange: Schema.optional(Schema.String),
-      encryptionType: Schema.optional(Schema.String),
-      globalAccessAllowed: Schema.optional(Schema.Boolean),
-      allowAutoTiering: Schema.optional(Schema.Boolean),
-      replicaZone: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      customPerformanceEnabled: Schema.optional(Schema.Boolean),
-      totalThroughputMibps: Schema.optional(Schema.String),
-      totalIops: Schema.optional(Schema.String),
-      hotTierSizeGib: Schema.optional(Schema.String),
-      enableHotTierAutoResize: Schema.optional(Schema.Boolean),
-      qosType: Schema.optional(Schema.String),
-      availableThroughputMibps: Schema.optional(Schema.Number),
-      coldTierSizeUsedGib: Schema.optional(Schema.String),
-      hotTierSizeUsedGib: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StoragePool",
-  }) as any as Schema.Schema<StoragePool>;
+export const StoragePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  serviceLevel: Schema.optional(Schema.String),
+  capacityGib: Schema.optional(Schema.String),
+  volumeCapacityGib: Schema.optional(Schema.String),
+  volumeCount: Schema.optional(Schema.Number),
+  state: Schema.optional(Schema.String),
+  stateDetails: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  network: Schema.optional(Schema.String),
+  activeDirectory: Schema.optional(Schema.String),
+  kmsConfig: Schema.optional(Schema.String),
+  ldapEnabled: Schema.optional(Schema.Boolean),
+  psaRange: Schema.optional(Schema.String),
+  encryptionType: Schema.optional(Schema.String),
+  globalAccessAllowed: Schema.optional(Schema.Boolean),
+  allowAutoTiering: Schema.optional(Schema.Boolean),
+  replicaZone: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  customPerformanceEnabled: Schema.optional(Schema.Boolean),
+  totalThroughputMibps: Schema.optional(Schema.String),
+  totalIops: Schema.optional(Schema.String),
+  hotTierSizeGib: Schema.optional(Schema.String),
+  enableHotTierAutoResize: Schema.optional(Schema.Boolean),
+  qosType: Schema.optional(Schema.String),
+  availableThroughputMibps: Schema.optional(Schema.Number),
+  coldTierSizeUsedGib: Schema.optional(Schema.String),
+  hotTierSizeUsedGib: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+  scaleType: Schema.optional(Schema.String),
+}).annotate({ identifier: "StoragePool" });
 
 export interface ListStoragePoolsResponse {
   /** The list of StoragePools */
@@ -240,16 +229,12 @@ export interface ListStoragePoolsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListStoragePoolsResponse: Schema.Schema<ListStoragePoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storagePools: Schema.optional(Schema.Array(StoragePool)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListStoragePoolsResponse",
-  }) as any as Schema.Schema<ListStoragePoolsResponse>;
+export const ListStoragePoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storagePools: Schema.optional(Schema.Array(StoragePool)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListStoragePoolsResponse" });
 
 export interface ValidateDirectoryServiceRequest {
   /** Type of directory service policy attached to the storage pool. */
@@ -259,21 +244,17 @@ export interface ValidateDirectoryServiceRequest {
     | (string & {});
 }
 
-export const ValidateDirectoryServiceRequest: Schema.Schema<ValidateDirectoryServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      directoryServiceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidateDirectoryServiceRequest",
-  }) as any as Schema.Schema<ValidateDirectoryServiceRequest>;
+export const ValidateDirectoryServiceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directoryServiceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ValidateDirectoryServiceRequest" });
 
 export interface SwitchActiveReplicaZoneRequest {}
 
-export const SwitchActiveReplicaZoneRequest: Schema.Schema<SwitchActiveReplicaZoneRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SwitchActiveReplicaZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SwitchActiveReplicaZoneRequest",
-  }) as any as Schema.Schema<SwitchActiveReplicaZoneRequest>;
+  });
 
 export interface SimpleExportPolicyRule {
   /** Comma separated list of allowed clients IP addresses */
@@ -314,40 +295,32 @@ export interface SimpleExportPolicyRule {
   anonUid?: string;
 }
 
-export const SimpleExportPolicyRule: Schema.Schema<SimpleExportPolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedClients: Schema.optional(Schema.String),
-      hasRootAccess: Schema.optional(Schema.String),
-      accessType: Schema.optional(Schema.String),
-      nfsv3: Schema.optional(Schema.Boolean),
-      nfsv4: Schema.optional(Schema.Boolean),
-      kerberos5ReadOnly: Schema.optional(Schema.Boolean),
-      kerberos5ReadWrite: Schema.optional(Schema.Boolean),
-      kerberos5iReadOnly: Schema.optional(Schema.Boolean),
-      kerberos5iReadWrite: Schema.optional(Schema.Boolean),
-      kerberos5pReadOnly: Schema.optional(Schema.Boolean),
-      kerberos5pReadWrite: Schema.optional(Schema.Boolean),
-      squashMode: Schema.optional(Schema.String),
-      anonUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SimpleExportPolicyRule",
-  }) as any as Schema.Schema<SimpleExportPolicyRule>;
+export const SimpleExportPolicyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    allowedClients: Schema.optional(Schema.String),
+    hasRootAccess: Schema.optional(Schema.String),
+    accessType: Schema.optional(Schema.String),
+    nfsv3: Schema.optional(Schema.Boolean),
+    nfsv4: Schema.optional(Schema.Boolean),
+    kerberos5ReadOnly: Schema.optional(Schema.Boolean),
+    kerberos5ReadWrite: Schema.optional(Schema.Boolean),
+    kerberos5iReadOnly: Schema.optional(Schema.Boolean),
+    kerberos5iReadWrite: Schema.optional(Schema.Boolean),
+    kerberos5pReadOnly: Schema.optional(Schema.Boolean),
+    kerberos5pReadWrite: Schema.optional(Schema.Boolean),
+    squashMode: Schema.optional(Schema.String),
+    anonUid: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "SimpleExportPolicyRule" });
 
 export interface ExportPolicy {
   /** Required. List of export policy rules */
   rules?: Array<SimpleExportPolicyRule>;
 }
 
-export const ExportPolicy: Schema.Schema<ExportPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rules: Schema.optional(Schema.Array(SimpleExportPolicyRule)),
-    }),
-  ).annotate({
-    identifier: "ExportPolicy",
-  }) as any as Schema.Schema<ExportPolicy>;
+export const ExportPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rules: Schema.optional(Schema.Array(SimpleExportPolicyRule)),
+}).annotate({ identifier: "ExportPolicy" });
 
 export interface MountOption {
   /** Export string */
@@ -368,18 +341,13 @@ export interface MountOption {
   ipAddress?: string;
 }
 
-export const MountOption: Schema.Schema<MountOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      export: Schema.optional(Schema.String),
-      exportFull: Schema.optional(Schema.String),
-      protocol: Schema.optional(Schema.String),
-      instructions: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MountOption",
-  }) as any as Schema.Schema<MountOption>;
+export const MountOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  export: Schema.optional(Schema.String),
+  exportFull: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+  instructions: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "MountOption" });
 
 export interface HourlySchedule {
   /** The maximum number of Snapshots to keep for the hourly schedule */
@@ -388,15 +356,10 @@ export interface HourlySchedule {
   minute?: number;
 }
 
-export const HourlySchedule: Schema.Schema<HourlySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotsToKeep: Schema.optional(Schema.Number),
-      minute: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HourlySchedule",
-  }) as any as Schema.Schema<HourlySchedule>;
+export const HourlySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotsToKeep: Schema.optional(Schema.Number),
+  minute: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HourlySchedule" });
 
 export interface DailySchedule {
   /** The maximum number of Snapshots to keep for the hourly schedule */
@@ -407,16 +370,11 @@ export interface DailySchedule {
   hour?: number;
 }
 
-export const DailySchedule: Schema.Schema<DailySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotsToKeep: Schema.optional(Schema.Number),
-      minute: Schema.optional(Schema.Number),
-      hour: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DailySchedule",
-  }) as any as Schema.Schema<DailySchedule>;
+export const DailySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotsToKeep: Schema.optional(Schema.Number),
+  minute: Schema.optional(Schema.Number),
+  hour: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DailySchedule" });
 
 export interface WeeklySchedule {
   /** The maximum number of Snapshots to keep for the hourly schedule */
@@ -429,17 +387,12 @@ export interface WeeklySchedule {
   day?: string;
 }
 
-export const WeeklySchedule: Schema.Schema<WeeklySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotsToKeep: Schema.optional(Schema.Number),
-      minute: Schema.optional(Schema.Number),
-      hour: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WeeklySchedule",
-  }) as any as Schema.Schema<WeeklySchedule>;
+export const WeeklySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotsToKeep: Schema.optional(Schema.Number),
+  minute: Schema.optional(Schema.Number),
+  hour: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.String),
+}).annotate({ identifier: "WeeklySchedule" });
 
 export interface MonthlySchedule {
   /** The maximum number of Snapshots to keep for the hourly schedule */
@@ -452,17 +405,12 @@ export interface MonthlySchedule {
   daysOfMonth?: string;
 }
 
-export const MonthlySchedule: Schema.Schema<MonthlySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotsToKeep: Schema.optional(Schema.Number),
-      minute: Schema.optional(Schema.Number),
-      hour: Schema.optional(Schema.Number),
-      daysOfMonth: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MonthlySchedule",
-  }) as any as Schema.Schema<MonthlySchedule>;
+export const MonthlySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotsToKeep: Schema.optional(Schema.Number),
+  minute: Schema.optional(Schema.Number),
+  hour: Schema.optional(Schema.Number),
+  daysOfMonth: Schema.optional(Schema.String),
+}).annotate({ identifier: "MonthlySchedule" });
 
 export interface SnapshotPolicy {
   /** If enabled, make snapshots automatically according to the schedules. Default is false. */
@@ -477,35 +425,25 @@ export interface SnapshotPolicy {
   monthlySchedule?: MonthlySchedule;
 }
 
-export const SnapshotPolicy: Schema.Schema<SnapshotPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      hourlySchedule: Schema.optional(HourlySchedule),
-      dailySchedule: Schema.optional(DailySchedule),
-      weeklySchedule: Schema.optional(WeeklySchedule),
-      monthlySchedule: Schema.optional(MonthlySchedule),
-    }),
-  ).annotate({
-    identifier: "SnapshotPolicy",
-  }) as any as Schema.Schema<SnapshotPolicy>;
+export const SnapshotPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  hourlySchedule: Schema.optional(HourlySchedule),
+  dailySchedule: Schema.optional(DailySchedule),
+  weeklySchedule: Schema.optional(WeeklySchedule),
+  monthlySchedule: Schema.optional(MonthlySchedule),
+}).annotate({ identifier: "SnapshotPolicy" });
 
 export interface RestoreParameters {
   /** Full name of the snapshot resource. Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot} */
   sourceSnapshot?: string;
-  /** Full name of the backup resource. Format: projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} */
+  /** Full name of the backup resource. Format for standard backup: projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id} Format for BackupDR backup: projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup} */
   sourceBackup?: string;
 }
 
-export const RestoreParameters: Schema.Schema<RestoreParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceSnapshot: Schema.optional(Schema.String),
-      sourceBackup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestoreParameters",
-  }) as any as Schema.Schema<RestoreParameters>;
+export const RestoreParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceSnapshot: Schema.optional(Schema.String),
+  sourceBackup: Schema.optional(Schema.String),
+}).annotate({ identifier: "RestoreParameters" });
 
 export interface BackupConfig {
   /** Optional. When specified, schedule backups will be created based on the policy configuration. */
@@ -518,17 +456,12 @@ export interface BackupConfig {
   backupChainBytes?: string;
 }
 
-export const BackupConfig: Schema.Schema<BackupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPolicies: Schema.optional(Schema.Array(Schema.String)),
-      backupVault: Schema.optional(Schema.String),
-      scheduledBackupEnabled: Schema.optional(Schema.Boolean),
-      backupChainBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupConfig",
-  }) as any as Schema.Schema<BackupConfig>;
+export const BackupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupPolicies: Schema.optional(Schema.Array(Schema.String)),
+  backupVault: Schema.optional(Schema.String),
+  scheduledBackupEnabled: Schema.optional(Schema.Boolean),
+  backupChainBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupConfig" });
 
 export interface TieringPolicy {
   /** Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED. */
@@ -539,16 +472,11 @@ export interface TieringPolicy {
   hotTierBypassModeEnabled?: boolean;
 }
 
-export const TieringPolicy: Schema.Schema<TieringPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tierAction: Schema.optional(Schema.String),
-      coolingThresholdDays: Schema.optional(Schema.Number),
-      hotTierBypassModeEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TieringPolicy",
-  }) as any as Schema.Schema<TieringPolicy>;
+export const TieringPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tierAction: Schema.optional(Schema.String),
+  coolingThresholdDays: Schema.optional(Schema.Number),
+  hotTierBypassModeEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TieringPolicy" });
 
 export interface HybridReplicationParameters {
   /** Required. Desired name for the replication of this volume. */
@@ -586,24 +514,20 @@ export interface HybridReplicationParameters {
   largeVolumeConstituentCount?: number;
 }
 
-export const HybridReplicationParameters: Schema.Schema<HybridReplicationParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replication: Schema.optional(Schema.String),
-      peerVolumeName: Schema.optional(Schema.String),
-      peerClusterName: Schema.optional(Schema.String),
-      peerSvmName: Schema.optional(Schema.String),
-      peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
-      clusterLocation: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      replicationSchedule: Schema.optional(Schema.String),
-      hybridReplicationType: Schema.optional(Schema.String),
-      largeVolumeConstituentCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HybridReplicationParameters",
-  }) as any as Schema.Schema<HybridReplicationParameters>;
+export const HybridReplicationParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replication: Schema.optional(Schema.String),
+    peerVolumeName: Schema.optional(Schema.String),
+    peerClusterName: Schema.optional(Schema.String),
+    peerSvmName: Schema.optional(Schema.String),
+    peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
+    clusterLocation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    replicationSchedule: Schema.optional(Schema.String),
+    hybridReplicationType: Schema.optional(Schema.String),
+    largeVolumeConstituentCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HybridReplicationParameters" });
 
 export interface CachePrePopulate {
   /** Optional. List of directory-paths to be pre-populated for the FlexCache volume. */
@@ -614,16 +538,11 @@ export interface CachePrePopulate {
   recursion?: boolean;
 }
 
-export const CachePrePopulate: Schema.Schema<CachePrePopulate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pathList: Schema.optional(Schema.Array(Schema.String)),
-      excludePathList: Schema.optional(Schema.Array(Schema.String)),
-      recursion: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CachePrePopulate",
-  }) as any as Schema.Schema<CachePrePopulate>;
+export const CachePrePopulate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pathList: Schema.optional(Schema.Array(Schema.String)),
+  excludePathList: Schema.optional(Schema.Array(Schema.String)),
+  recursion: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CachePrePopulate" });
 
 export interface CacheConfig {
   /** Optional. Pre-populate cache volume with data from the origin volume. */
@@ -642,17 +561,12 @@ export interface CacheConfig {
     | (string & {});
 }
 
-export const CacheConfig: Schema.Schema<CacheConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cachePrePopulate: Schema.optional(CachePrePopulate),
-      writebackEnabled: Schema.optional(Schema.Boolean),
-      cifsChangeNotifyEnabled: Schema.optional(Schema.Boolean),
-      cachePrePopulateState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CacheConfig",
-  }) as any as Schema.Schema<CacheConfig>;
+export const CacheConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cachePrePopulate: Schema.optional(CachePrePopulate),
+  writebackEnabled: Schema.optional(Schema.Boolean),
+  cifsChangeNotifyEnabled: Schema.optional(Schema.Boolean),
+  cachePrePopulateState: Schema.optional(Schema.String),
+}).annotate({ identifier: "CacheConfig" });
 
 export interface CacheParameters {
   /** Required. Name of the origin volume for the cache volume. */
@@ -685,24 +599,19 @@ export interface CacheParameters {
   stateDetails?: string;
 }
 
-export const CacheParameters: Schema.Schema<CacheParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peerVolumeName: Schema.optional(Schema.String),
-      peerClusterName: Schema.optional(Schema.String),
-      peerSvmName: Schema.optional(Schema.String),
-      peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
-      enableGlobalFileLock: Schema.optional(Schema.Boolean),
-      cacheConfig: Schema.optional(CacheConfig),
-      cacheState: Schema.optional(Schema.String),
-      command: Schema.optional(Schema.String),
-      peeringCommandExpiryTime: Schema.optional(Schema.String),
-      passphrase: Schema.optional(Schema.String),
-      stateDetails: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CacheParameters",
-  }) as any as Schema.Schema<CacheParameters>;
+export const CacheParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  peerVolumeName: Schema.optional(Schema.String),
+  peerClusterName: Schema.optional(Schema.String),
+  peerSvmName: Schema.optional(Schema.String),
+  peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
+  enableGlobalFileLock: Schema.optional(Schema.Boolean),
+  cacheConfig: Schema.optional(CacheConfig),
+  cacheState: Schema.optional(Schema.String),
+  command: Schema.optional(Schema.String),
+  peeringCommandExpiryTime: Schema.optional(Schema.String),
+  passphrase: Schema.optional(Schema.String),
+  stateDetails: Schema.optional(Schema.String),
+}).annotate({ identifier: "CacheParameters" });
 
 export interface BlockDevice {
   /** Optional. User-defined name for the block device, unique within the volume. In case no user input is provided, name will be auto-generated in the backend. The name must meet the following requirements: * Be between 1 and 255 characters long. * Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9), and the following special characters: "-", "_", "}", "{", ".". * Spaces are not allowed. */
@@ -717,18 +626,22 @@ export interface BlockDevice {
   osType?: "OS_TYPE_UNSPECIFIED" | "LINUX" | "WINDOWS" | "ESXI" | (string & {});
 }
 
-export const BlockDevice: Schema.Schema<BlockDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      hostGroups: Schema.optional(Schema.Array(Schema.String)),
-      identifier: Schema.optional(Schema.String),
-      sizeGib: Schema.optional(Schema.String),
-      osType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlockDevice",
-  }) as any as Schema.Schema<BlockDevice>;
+export const BlockDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  hostGroups: Schema.optional(Schema.Array(Schema.String)),
+  identifier: Schema.optional(Schema.String),
+  sizeGib: Schema.optional(Schema.String),
+  osType: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlockDevice" });
+
+export interface LargeCapacityConfig {
+  /** Optional. The number of internal constituents (e.g., FlexVols) for this large volume. The minimum number of constituents is 2. */
+  constituentCount?: number;
+}
+
+export const LargeCapacityConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  constituentCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LargeCapacityConfig" });
 
 export interface CloneDetails {
   /** Output only. Specifies the full resource name of the source snapshot from which this volume was cloned. Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot} */
@@ -739,16 +652,11 @@ export interface CloneDetails {
   sharedSpaceGib?: string;
 }
 
-export const CloneDetails: Schema.Schema<CloneDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceSnapshot: Schema.optional(Schema.String),
-      sourceVolume: Schema.optional(Schema.String),
-      sharedSpaceGib: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloneDetails",
-  }) as any as Schema.Schema<CloneDetails>;
+export const CloneDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceSnapshot: Schema.optional(Schema.String),
+  sourceVolume: Schema.optional(Schema.String),
+  sharedSpaceGib: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloneDetails" });
 
 export interface Volume {
   /** Identifier. Name of the volume */
@@ -859,7 +767,7 @@ export interface Volume {
   restrictedActions?: Array<
     "RESTRICTED_ACTION_UNSPECIFIED" | "DELETE" | (string & {})
   >;
-  /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. */
+  /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and `large_capacity_config` are mutually exclusive. */
   largeCapacity?: boolean;
   /** Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints. Only the volume with large_capacity will be allowed to have multiple endpoints. */
   multipleEndpoints?: boolean;
@@ -881,58 +789,58 @@ export interface Volume {
   hotTierSizeUsedGib?: string;
   /** Optional. Block devices for the volume. Currently, only one block device is permitted per Volume. */
   blockDevices?: Array<BlockDevice>;
+  /** Optional. Large capacity config for the volume. Enables and configures large capacity for volumes in Unified pools with File protocols. Not applicable for Block protocols in Unified pools. This field and the legacy `large_capacity` boolean field are mutually exclusive. */
+  largeCapacityConfig?: LargeCapacityConfig;
   /** Output only. If this volume is a clone, this field contains details about the clone. */
   cloneDetails?: CloneDetails;
 }
 
-export const Volume: Schema.Schema<Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateDetails: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      shareName: Schema.optional(Schema.String),
-      psaRange: Schema.optional(Schema.String),
-      storagePool: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      serviceLevel: Schema.optional(Schema.String),
-      capacityGib: Schema.optional(Schema.String),
-      exportPolicy: Schema.optional(ExportPolicy),
-      protocols: Schema.optional(Schema.Array(Schema.String)),
-      smbSettings: Schema.optional(Schema.Array(Schema.String)),
-      mountOptions: Schema.optional(Schema.Array(MountOption)),
-      unixPermissions: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      snapshotPolicy: Schema.optional(SnapshotPolicy),
-      snapReserve: Schema.optional(Schema.Number),
-      snapshotDirectory: Schema.optional(Schema.Boolean),
-      usedGib: Schema.optional(Schema.String),
-      securityStyle: Schema.optional(Schema.String),
-      kerberosEnabled: Schema.optional(Schema.Boolean),
-      ldapEnabled: Schema.optional(Schema.Boolean),
-      activeDirectory: Schema.optional(Schema.String),
-      restoreParameters: Schema.optional(RestoreParameters),
-      kmsConfig: Schema.optional(Schema.String),
-      encryptionType: Schema.optional(Schema.String),
-      hasReplication: Schema.optional(Schema.Boolean),
-      backupConfig: Schema.optional(BackupConfig),
-      restrictedActions: Schema.optional(Schema.Array(Schema.String)),
-      largeCapacity: Schema.optional(Schema.Boolean),
-      multipleEndpoints: Schema.optional(Schema.Boolean),
-      tieringPolicy: Schema.optional(TieringPolicy),
-      replicaZone: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      coldTierSizeGib: Schema.optional(Schema.String),
-      hybridReplicationParameters: Schema.optional(HybridReplicationParameters),
-      throughputMibps: Schema.optional(Schema.Number),
-      cacheParameters: Schema.optional(CacheParameters),
-      hotTierSizeUsedGib: Schema.optional(Schema.String),
-      blockDevices: Schema.optional(Schema.Array(BlockDevice)),
-      cloneDetails: Schema.optional(CloneDetails),
-    }),
-  ).annotate({ identifier: "Volume" }) as any as Schema.Schema<Volume>;
+export const Volume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  stateDetails: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  shareName: Schema.optional(Schema.String),
+  psaRange: Schema.optional(Schema.String),
+  storagePool: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  serviceLevel: Schema.optional(Schema.String),
+  capacityGib: Schema.optional(Schema.String),
+  exportPolicy: Schema.optional(ExportPolicy),
+  protocols: Schema.optional(Schema.Array(Schema.String)),
+  smbSettings: Schema.optional(Schema.Array(Schema.String)),
+  mountOptions: Schema.optional(Schema.Array(MountOption)),
+  unixPermissions: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  snapshotPolicy: Schema.optional(SnapshotPolicy),
+  snapReserve: Schema.optional(Schema.Number),
+  snapshotDirectory: Schema.optional(Schema.Boolean),
+  usedGib: Schema.optional(Schema.String),
+  securityStyle: Schema.optional(Schema.String),
+  kerberosEnabled: Schema.optional(Schema.Boolean),
+  ldapEnabled: Schema.optional(Schema.Boolean),
+  activeDirectory: Schema.optional(Schema.String),
+  restoreParameters: Schema.optional(RestoreParameters),
+  kmsConfig: Schema.optional(Schema.String),
+  encryptionType: Schema.optional(Schema.String),
+  hasReplication: Schema.optional(Schema.Boolean),
+  backupConfig: Schema.optional(BackupConfig),
+  restrictedActions: Schema.optional(Schema.Array(Schema.String)),
+  largeCapacity: Schema.optional(Schema.Boolean),
+  multipleEndpoints: Schema.optional(Schema.Boolean),
+  tieringPolicy: Schema.optional(TieringPolicy),
+  replicaZone: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  coldTierSizeGib: Schema.optional(Schema.String),
+  hybridReplicationParameters: Schema.optional(HybridReplicationParameters),
+  throughputMibps: Schema.optional(Schema.Number),
+  cacheParameters: Schema.optional(CacheParameters),
+  hotTierSizeUsedGib: Schema.optional(Schema.String),
+  blockDevices: Schema.optional(Schema.Array(BlockDevice)),
+  largeCapacityConfig: Schema.optional(LargeCapacityConfig),
+  cloneDetails: Schema.optional(CloneDetails),
+}).annotate({ identifier: "Volume" });
 
 export interface ListVolumesResponse {
   /** The list of Volume */
@@ -943,30 +851,20 @@ export interface ListVolumesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListVolumesResponse: Schema.Schema<ListVolumesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volumes: Schema.optional(Schema.Array(Volume)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListVolumesResponse",
-  }) as any as Schema.Schema<ListVolumesResponse>;
+export const ListVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  volumes: Schema.optional(Schema.Array(Volume)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListVolumesResponse" });
 
 export interface RevertVolumeRequest {
   /** Required. The snapshot resource ID, in the format 'my-snapshot', where the specified ID is the {snapshot_id} of the fully qualified name like projects/{project_id}/locations/{location_id}/volumes/{volume_id}/snapshots/{snapshot_id} */
   snapshotId?: string;
 }
 
-export const RevertVolumeRequest: Schema.Schema<RevertVolumeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RevertVolumeRequest",
-  }) as any as Schema.Schema<RevertVolumeRequest>;
+export const RevertVolumeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RevertVolumeRequest" });
 
 export interface EstablishVolumePeeringRequest {
   /** Required. Name of the user's local source cluster to be peered with the destination cluster. */
@@ -979,17 +877,13 @@ export interface EstablishVolumePeeringRequest {
   peerVolumeName?: string;
 }
 
-export const EstablishVolumePeeringRequest: Schema.Schema<EstablishVolumePeeringRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peerClusterName: Schema.optional(Schema.String),
-      peerSvmName: Schema.optional(Schema.String),
-      peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
-      peerVolumeName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EstablishVolumePeeringRequest",
-  }) as any as Schema.Schema<EstablishVolumePeeringRequest>;
+export const EstablishVolumePeeringRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    peerClusterName: Schema.optional(Schema.String),
+    peerSvmName: Schema.optional(Schema.String),
+    peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
+    peerVolumeName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EstablishVolumePeeringRequest" });
 
 export interface Snapshot {
   /** Identifier. The resource name of the snapshot. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}`. */
@@ -1016,18 +910,15 @@ export interface Snapshot {
   labels?: Record<string, string>;
 }
 
-export const Snapshot: Schema.Schema<Snapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateDetails: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      usedBytes: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Snapshot" }) as any as Schema.Schema<Snapshot>;
+export const Snapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  stateDetails: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  usedBytes: Schema.optional(Schema.Number),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Snapshot" });
 
 export interface ListSnapshotsResponse {
   /** A list of snapshots in the project for the specified volume. */
@@ -1038,16 +929,11 @@ export interface ListSnapshotsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListSnapshotsResponse: Schema.Schema<ListSnapshotsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshots: Schema.optional(Schema.Array(Snapshot)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListSnapshotsResponse",
-  }) as any as Schema.Schema<ListSnapshotsResponse>;
+export const ListSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshots: Schema.optional(Schema.Array(Snapshot)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListSnapshotsResponse" });
 
 export interface ActiveDirectory {
   /** Identifier. The resource name of the active directory. Format: `projects/{project_number}/locations/{location_id}/activeDirectories/{active_directory_id}`. */
@@ -1105,35 +991,30 @@ export interface ActiveDirectory {
   stateDetails?: string;
 }
 
-export const ActiveDirectory: Schema.Schema<ActiveDirectory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-      site: Schema.optional(Schema.String),
-      dns: Schema.optional(Schema.String),
-      netBiosPrefix: Schema.optional(Schema.String),
-      organizationalUnit: Schema.optional(Schema.String),
-      aesEncryption: Schema.optional(Schema.Boolean),
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      backupOperators: Schema.optional(Schema.Array(Schema.String)),
-      administrators: Schema.optional(Schema.Array(Schema.String)),
-      securityOperators: Schema.optional(Schema.Array(Schema.String)),
-      kdcHostname: Schema.optional(Schema.String),
-      kdcIp: Schema.optional(Schema.String),
-      nfsUsersWithLdap: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      ldapSigning: Schema.optional(Schema.Boolean),
-      encryptDcConnections: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      stateDetails: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActiveDirectory",
-  }) as any as Schema.Schema<ActiveDirectory>;
+export const ActiveDirectory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  site: Schema.optional(Schema.String),
+  dns: Schema.optional(Schema.String),
+  netBiosPrefix: Schema.optional(Schema.String),
+  organizationalUnit: Schema.optional(Schema.String),
+  aesEncryption: Schema.optional(Schema.Boolean),
+  username: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+  backupOperators: Schema.optional(Schema.Array(Schema.String)),
+  administrators: Schema.optional(Schema.Array(Schema.String)),
+  securityOperators: Schema.optional(Schema.Array(Schema.String)),
+  kdcHostname: Schema.optional(Schema.String),
+  kdcIp: Schema.optional(Schema.String),
+  nfsUsersWithLdap: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  ldapSigning: Schema.optional(Schema.Boolean),
+  encryptDcConnections: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  stateDetails: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActiveDirectory" });
 
 export interface ListActiveDirectoriesResponse {
   /** The list of active directories. */
@@ -1144,16 +1025,12 @@ export interface ListActiveDirectoriesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListActiveDirectoriesResponse: Schema.Schema<ListActiveDirectoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activeDirectories: Schema.optional(Schema.Array(ActiveDirectory)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListActiveDirectoriesResponse",
-  }) as any as Schema.Schema<ListActiveDirectoriesResponse>;
+export const ListActiveDirectoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeDirectories: Schema.optional(Schema.Array(ActiveDirectory)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListActiveDirectoriesResponse" });
 
 export interface KmsConfig {
   /** Identifier. Name of the KmsConfig. Format: `projects/{project}/locations/{location}/kmsConfigs/{kms_config}` */
@@ -1189,20 +1066,17 @@ export interface KmsConfig {
   serviceAccount?: string;
 }
 
-export const KmsConfig: Schema.Schema<KmsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateDetails: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      instructions: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "KmsConfig" }) as any as Schema.Schema<KmsConfig>;
+export const KmsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  cryptoKeyName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  stateDetails: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  instructions: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "KmsConfig" });
 
 export interface ListKmsConfigsResponse {
   /** The list of KmsConfigs */
@@ -1213,30 +1087,25 @@ export interface ListKmsConfigsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListKmsConfigsResponse: Schema.Schema<ListKmsConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsConfigs: Schema.optional(Schema.Array(KmsConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListKmsConfigsResponse",
-  }) as any as Schema.Schema<ListKmsConfigsResponse>;
+export const ListKmsConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    kmsConfigs: Schema.optional(Schema.Array(KmsConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListKmsConfigsResponse" });
 
 export interface EncryptVolumesRequest {}
 
-export const EncryptVolumesRequest: Schema.Schema<EncryptVolumesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "EncryptVolumesRequest",
-  }) as any as Schema.Schema<EncryptVolumesRequest>;
+export const EncryptVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "EncryptVolumesRequest" });
 
 export interface VerifyKmsConfigRequest {}
 
-export const VerifyKmsConfigRequest: Schema.Schema<VerifyKmsConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "VerifyKmsConfigRequest",
-  }) as any as Schema.Schema<VerifyKmsConfigRequest>;
+export const VerifyKmsConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "VerifyKmsConfigRequest" });
 
 export interface VerifyKmsConfigResponse {
   /** Output only. If the customer key configured correctly to the encrypt volume. */
@@ -1247,16 +1116,12 @@ export interface VerifyKmsConfigResponse {
   instructions?: string;
 }
 
-export const VerifyKmsConfigResponse: Schema.Schema<VerifyKmsConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      healthy: Schema.optional(Schema.Boolean),
-      healthError: Schema.optional(Schema.String),
-      instructions: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyKmsConfigResponse",
-  }) as any as Schema.Schema<VerifyKmsConfigResponse>;
+export const VerifyKmsConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthy: Schema.optional(Schema.Boolean),
+    healthError: Schema.optional(Schema.String),
+    instructions: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyKmsConfigResponse" });
 
 export interface TransferStats {
   /** Cumulative bytes transferred so far for the replication relationship. */
@@ -1277,21 +1142,16 @@ export interface TransferStats {
   lastTransferError?: string;
 }
 
-export const TransferStats: Schema.Schema<TransferStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferBytes: Schema.optional(Schema.String),
-      totalTransferDuration: Schema.optional(Schema.String),
-      lastTransferBytes: Schema.optional(Schema.String),
-      lastTransferDuration: Schema.optional(Schema.String),
-      lagDuration: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      lastTransferEndTime: Schema.optional(Schema.String),
-      lastTransferError: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferStats",
-  }) as any as Schema.Schema<TransferStats>;
+export const TransferStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  transferBytes: Schema.optional(Schema.String),
+  totalTransferDuration: Schema.optional(Schema.String),
+  lastTransferBytes: Schema.optional(Schema.String),
+  lastTransferDuration: Schema.optional(Schema.String),
+  lagDuration: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  lastTransferEndTime: Schema.optional(Schema.String),
+  lastTransferError: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferStats" });
 
 export interface DestinationVolumeParameters {
   /** Required. Existing destination StoragePool name. */
@@ -1306,18 +1166,14 @@ export interface DestinationVolumeParameters {
   tieringPolicy?: TieringPolicy;
 }
 
-export const DestinationVolumeParameters: Schema.Schema<DestinationVolumeParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storagePool: Schema.optional(Schema.String),
-      volumeId: Schema.optional(Schema.String),
-      shareName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      tieringPolicy: Schema.optional(TieringPolicy),
-    }),
-  ).annotate({
-    identifier: "DestinationVolumeParameters",
-  }) as any as Schema.Schema<DestinationVolumeParameters>;
+export const DestinationVolumeParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storagePool: Schema.optional(Schema.String),
+    volumeId: Schema.optional(Schema.String),
+    shareName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    tieringPolicy: Schema.optional(TieringPolicy),
+  }).annotate({ identifier: "DestinationVolumeParameters" });
 
 export interface HybridPeeringDetails {
   /** Output only. IP address of the subnet. */
@@ -1336,34 +1192,24 @@ export interface HybridPeeringDetails {
   peerSvmName?: string;
 }
 
-export const HybridPeeringDetails: Schema.Schema<HybridPeeringDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subnetIp: Schema.optional(Schema.String),
-      command: Schema.optional(Schema.String),
-      commandExpiryTime: Schema.optional(Schema.String),
-      passphrase: Schema.optional(Schema.String),
-      peerVolumeName: Schema.optional(Schema.String),
-      peerClusterName: Schema.optional(Schema.String),
-      peerSvmName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HybridPeeringDetails",
-  }) as any as Schema.Schema<HybridPeeringDetails>;
+export const HybridPeeringDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnetIp: Schema.optional(Schema.String),
+  command: Schema.optional(Schema.String),
+  commandExpiryTime: Schema.optional(Schema.String),
+  passphrase: Schema.optional(Schema.String),
+  peerVolumeName: Schema.optional(Schema.String),
+  peerClusterName: Schema.optional(Schema.String),
+  peerSvmName: Schema.optional(Schema.String),
+}).annotate({ identifier: "HybridPeeringDetails" });
 
 export interface UserCommands {
   /** Output only. List of commands to be executed by the customer. */
   commands?: Array<string>;
 }
 
-export const UserCommands: Schema.Schema<UserCommands> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commands: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UserCommands",
-  }) as any as Schema.Schema<UserCommands>;
+export const UserCommands = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commands: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "UserCommands" });
 
 export interface Replication {
   /** Identifier. The resource name of the Replication. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}`. */
@@ -1440,31 +1286,26 @@ export interface Replication {
   hybridReplicationUserCommands?: UserCommands;
 }
 
-export const Replication: Schema.Schema<Replication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateDetails: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      replicationSchedule: Schema.optional(Schema.String),
-      mirrorState: Schema.optional(Schema.String),
-      healthy: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      destinationVolume: Schema.optional(Schema.String),
-      transferStats: Schema.optional(TransferStats),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      destinationVolumeParameters: Schema.optional(DestinationVolumeParameters),
-      sourceVolume: Schema.optional(Schema.String),
-      hybridPeeringDetails: Schema.optional(HybridPeeringDetails),
-      clusterLocation: Schema.optional(Schema.String),
-      hybridReplicationType: Schema.optional(Schema.String),
-      hybridReplicationUserCommands: Schema.optional(UserCommands),
-    }),
-  ).annotate({
-    identifier: "Replication",
-  }) as any as Schema.Schema<Replication>;
+export const Replication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  stateDetails: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  replicationSchedule: Schema.optional(Schema.String),
+  mirrorState: Schema.optional(Schema.String),
+  healthy: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  destinationVolume: Schema.optional(Schema.String),
+  transferStats: Schema.optional(TransferStats),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  destinationVolumeParameters: Schema.optional(DestinationVolumeParameters),
+  sourceVolume: Schema.optional(Schema.String),
+  hybridPeeringDetails: Schema.optional(HybridPeeringDetails),
+  clusterLocation: Schema.optional(Schema.String),
+  hybridReplicationType: Schema.optional(Schema.String),
+  hybridReplicationUserCommands: Schema.optional(UserCommands),
+}).annotate({ identifier: "Replication" });
 
 export interface ListReplicationsResponse {
   /** A list of replications in the project for the specified volume. */
@@ -1475,44 +1316,37 @@ export interface ListReplicationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListReplicationsResponse: Schema.Schema<ListReplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replications: Schema.optional(Schema.Array(Replication)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListReplicationsResponse",
-  }) as any as Schema.Schema<ListReplicationsResponse>;
+export const ListReplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replications: Schema.optional(Schema.Array(Replication)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListReplicationsResponse" });
 
 export interface StopReplicationRequest {
   /** Indicates whether to stop replication forcefully while data transfer is in progress. Warning! if force is true, this will abort any current transfers and can lead to data loss due to partial transfer. If force is false, stop replication will fail while data transfer is in progress and you will need to retry later. */
   force?: boolean;
 }
 
-export const StopReplicationRequest: Schema.Schema<StopReplicationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      force: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "StopReplicationRequest",
-  }) as any as Schema.Schema<StopReplicationRequest>;
+export const StopReplicationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    force: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "StopReplicationRequest" });
 
 export interface ResumeReplicationRequest {}
 
-export const ResumeReplicationRequest: Schema.Schema<ResumeReplicationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResumeReplicationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumeReplicationRequest",
-  }) as any as Schema.Schema<ResumeReplicationRequest>;
+  });
 
 export interface ReverseReplicationDirectionRequest {}
 
-export const ReverseReplicationDirectionRequest: Schema.Schema<ReverseReplicationDirectionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReverseReplicationDirectionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReverseReplicationDirectionRequest",
-  }) as any as Schema.Schema<ReverseReplicationDirectionRequest>;
+  });
 
 export interface EstablishPeeringRequest {
   /** Required. Name of the user's local source cluster to be peered with the destination cluster. */
@@ -1525,24 +1359,19 @@ export interface EstablishPeeringRequest {
   peerVolumeName?: string;
 }
 
-export const EstablishPeeringRequest: Schema.Schema<EstablishPeeringRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peerClusterName: Schema.optional(Schema.String),
-      peerSvmName: Schema.optional(Schema.String),
-      peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
-      peerVolumeName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EstablishPeeringRequest",
-  }) as any as Schema.Schema<EstablishPeeringRequest>;
+export const EstablishPeeringRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    peerClusterName: Schema.optional(Schema.String),
+    peerSvmName: Schema.optional(Schema.String),
+    peerIpAddresses: Schema.optional(Schema.Array(Schema.String)),
+    peerVolumeName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EstablishPeeringRequest" });
 
 export interface SyncReplicationRequest {}
 
-export const SyncReplicationRequest: Schema.Schema<SyncReplicationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SyncReplicationRequest",
-  }) as any as Schema.Schema<SyncReplicationRequest>;
+export const SyncReplicationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SyncReplicationRequest" });
 
 export interface BackupRetentionPolicy {
   /** Required. Minimum retention duration in days for backups in the backup vault. */
@@ -1557,18 +1386,13 @@ export interface BackupRetentionPolicy {
   manualBackupImmutable?: boolean;
 }
 
-export const BackupRetentionPolicy: Schema.Schema<BackupRetentionPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupMinimumEnforcedRetentionDays: Schema.optional(Schema.Number),
-      dailyBackupImmutable: Schema.optional(Schema.Boolean),
-      weeklyBackupImmutable: Schema.optional(Schema.Boolean),
-      monthlyBackupImmutable: Schema.optional(Schema.Boolean),
-      manualBackupImmutable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BackupRetentionPolicy",
-  }) as any as Schema.Schema<BackupRetentionPolicy>;
+export const BackupRetentionPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupMinimumEnforcedRetentionDays: Schema.optional(Schema.Number),
+  dailyBackupImmutable: Schema.optional(Schema.Boolean),
+  weeklyBackupImmutable: Schema.optional(Schema.Boolean),
+  monthlyBackupImmutable: Schema.optional(Schema.Boolean),
+  manualBackupImmutable: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "BackupRetentionPolicy" });
 
 export interface BackupVault {
   /** Identifier. The resource name of the backup vault. Format: `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`. */
@@ -1618,27 +1442,22 @@ export interface BackupVault {
   backupsCryptoKeyVersion?: string;
 }
 
-export const BackupVault: Schema.Schema<BackupVault> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      backupVaultType: Schema.optional(Schema.String),
-      sourceRegion: Schema.optional(Schema.String),
-      backupRegion: Schema.optional(Schema.String),
-      sourceBackupVault: Schema.optional(Schema.String),
-      destinationBackupVault: Schema.optional(Schema.String),
-      backupRetentionPolicy: Schema.optional(BackupRetentionPolicy),
-      kmsConfig: Schema.optional(Schema.String),
-      encryptionState: Schema.optional(Schema.String),
-      backupsCryptoKeyVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupVault",
-  }) as any as Schema.Schema<BackupVault>;
+export const BackupVault = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  backupVaultType: Schema.optional(Schema.String),
+  sourceRegion: Schema.optional(Schema.String),
+  backupRegion: Schema.optional(Schema.String),
+  sourceBackupVault: Schema.optional(Schema.String),
+  destinationBackupVault: Schema.optional(Schema.String),
+  backupRetentionPolicy: Schema.optional(BackupRetentionPolicy),
+  kmsConfig: Schema.optional(Schema.String),
+  encryptionState: Schema.optional(Schema.String),
+  backupsCryptoKeyVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupVault" });
 
 export interface ListBackupVaultsResponse {
   /** A list of backupVaults in the project for the specified location. */
@@ -1649,16 +1468,12 @@ export interface ListBackupVaultsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBackupVaultsResponse: Schema.Schema<ListBackupVaultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupVaults: Schema.optional(Schema.Array(BackupVault)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBackupVaultsResponse",
-  }) as any as Schema.Schema<ListBackupVaultsResponse>;
+export const ListBackupVaultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupVaults: Schema.optional(Schema.Array(BackupVault)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackupVaultsResponse" });
 
 export interface Backup {
   /** Identifier. The resource name of the backup. Format: `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`. */
@@ -1679,7 +1494,7 @@ export interface Backup {
   volumeUsageBytes?: string;
   /** Output only. Type of backup, manually created or created by a backup policy. */
   backupType?: "TYPE_UNSPECIFIED" | "MANUAL" | "SCHEDULED" | (string & {});
-  /** Volume full name of this backup belongs to. Format: `projects/{projects_id}/locations/{location}/volumes/{volume_id}` */
+  /** Volume full name of this backup belongs to. Either source_volume or ontap_source should be provided. Format: `projects/{projects_id}/locations/{location}/volumes/{volume_id}` */
   sourceVolume?: string;
   /** If specified, backup will be created from the given snapshot. If not specified, there will be a new snapshot taken to initiate the backup creation. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}` */
   sourceSnapshot?: string;
@@ -1701,26 +1516,23 @@ export interface Backup {
   enforcedRetentionEndTime?: string;
 }
 
-export const Backup: Schema.Schema<Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      volumeUsageBytes: Schema.optional(Schema.String),
-      backupType: Schema.optional(Schema.String),
-      sourceVolume: Schema.optional(Schema.String),
-      sourceSnapshot: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      chainStorageBytes: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      volumeRegion: Schema.optional(Schema.String),
-      backupRegion: Schema.optional(Schema.String),
-      enforcedRetentionEndTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Backup" }) as any as Schema.Schema<Backup>;
+export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  volumeUsageBytes: Schema.optional(Schema.String),
+  backupType: Schema.optional(Schema.String),
+  sourceVolume: Schema.optional(Schema.String),
+  sourceSnapshot: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  chainStorageBytes: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  volumeRegion: Schema.optional(Schema.String),
+  backupRegion: Schema.optional(Schema.String),
+  enforcedRetentionEndTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Backup" });
 
 export interface ListBackupsResponse {
   /** A list of backups in the project. */
@@ -1731,16 +1543,11 @@ export interface ListBackupsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backups: Schema.optional(Schema.Array(Backup)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBackupsResponse",
-  }) as any as Schema.Schema<ListBackupsResponse>;
+export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backups: Schema.optional(Schema.Array(Backup)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListBackupsResponse" });
 
 export interface BackupPolicy {
   /** Identifier. The resource name of the backup policy. Format: `projects/{project_id}/locations/{location}/backupPolicies/{backup_policy_id}`. */
@@ -1772,23 +1579,18 @@ export interface BackupPolicy {
     | (string & {});
 }
 
-export const BackupPolicy: Schema.Schema<BackupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      dailyBackupLimit: Schema.optional(Schema.Number),
-      weeklyBackupLimit: Schema.optional(Schema.Number),
-      monthlyBackupLimit: Schema.optional(Schema.Number),
-      description: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      assignedVolumeCount: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupPolicy",
-  }) as any as Schema.Schema<BackupPolicy>;
+export const BackupPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  dailyBackupLimit: Schema.optional(Schema.Number),
+  weeklyBackupLimit: Schema.optional(Schema.Number),
+  monthlyBackupLimit: Schema.optional(Schema.Number),
+  description: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  assignedVolumeCount: Schema.optional(Schema.Number),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupPolicy" });
 
 export interface ListBackupPoliciesResponse {
   /** The list of backup policies. */
@@ -1799,16 +1601,12 @@ export interface ListBackupPoliciesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBackupPoliciesResponse: Schema.Schema<ListBackupPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPolicies: Schema.optional(Schema.Array(BackupPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBackupPoliciesResponse",
-  }) as any as Schema.Schema<ListBackupPoliciesResponse>;
+export const ListBackupPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupPolicies: Schema.optional(Schema.Array(BackupPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackupPoliciesResponse" });
 
 export interface QuotaRule {
   /** Identifier. The resource name of the quota rule. Format: `projects/{project_number}/locations/{location_id}/volumes/volumes/{volume_id}/quotaRules/{quota_rule_id}`. */
@@ -1844,20 +1642,17 @@ export interface QuotaRule {
   labels?: Record<string, string>;
 }
 
-export const QuotaRule: Schema.Schema<QuotaRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      diskLimitMib: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      stateDetails: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "QuotaRule" }) as any as Schema.Schema<QuotaRule>;
+export const QuotaRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  diskLimitMib: Schema.optional(Schema.Number),
+  state: Schema.optional(Schema.String),
+  stateDetails: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "QuotaRule" });
 
 export interface ListQuotaRulesResponse {
   /** List of quota rules */
@@ -1868,16 +1663,13 @@ export interface ListQuotaRulesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListQuotaRulesResponse: Schema.Schema<ListQuotaRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quotaRules: Schema.optional(Schema.Array(QuotaRule)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListQuotaRulesResponse",
-  }) as any as Schema.Schema<ListQuotaRulesResponse>;
+export const ListQuotaRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    quotaRules: Schema.optional(Schema.Array(QuotaRule)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListQuotaRulesResponse" });
 
 export interface RestoreBackupFilesRequest {
   /** Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}` */
@@ -1888,16 +1680,12 @@ export interface RestoreBackupFilesRequest {
   restoreDestinationPath?: string;
 }
 
-export const RestoreBackupFilesRequest: Schema.Schema<RestoreBackupFilesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backup: Schema.optional(Schema.String),
-      fileList: Schema.optional(Schema.Array(Schema.String)),
-      restoreDestinationPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestoreBackupFilesRequest",
-  }) as any as Schema.Schema<RestoreBackupFilesRequest>;
+export const RestoreBackupFilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backup: Schema.optional(Schema.String),
+    fileList: Schema.optional(Schema.Array(Schema.String)),
+    restoreDestinationPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestoreBackupFilesRequest" });
 
 export interface HostGroup {
   /** Identifier. The resource name of the host group. Format: `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`. */
@@ -1925,19 +1713,16 @@ export interface HostGroup {
   labels?: Record<string, string>;
 }
 
-export const HostGroup: Schema.Schema<HostGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      hosts: Schema.optional(Schema.Array(Schema.String)),
-      osType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "HostGroup" }) as any as Schema.Schema<HostGroup>;
+export const HostGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  hosts: Schema.optional(Schema.Array(Schema.String)),
+  osType: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "HostGroup" });
 
 export interface ListHostGroupsResponse {
   /** The list of host groups. */
@@ -1948,16 +1733,73 @@ export interface ListHostGroupsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListHostGroupsResponse: Schema.Schema<ListHostGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostGroups: Schema.optional(Schema.Array(HostGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListHostGroupsResponse",
-  }) as any as Schema.Schema<ListHostGroupsResponse>;
+export const ListHostGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hostGroups: Schema.optional(Schema.Array(HostGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListHostGroupsResponse" });
+
+export interface ExecuteOntapPostRequest {
+  /** Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For example: ``` { "body": { "field1": "value1", "field2": "value2", } } ``` */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPostRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "ExecuteOntapPostRequest" });
+
+export interface ExecuteOntapPostResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPostResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "ExecuteOntapPostResponse" });
+
+export interface ExecuteOntapGetResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapGetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "ExecuteOntapGetResponse" });
+
+export interface ExecuteOntapDeleteResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapDeleteResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "ExecuteOntapDeleteResponse" });
+
+export interface ExecuteOntapPatchRequest {
+  /** Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For example: ``` { "body": { "field1": "value1", "field2": "value2", } } ``` */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "ExecuteOntapPatchRequest" });
+
+export interface ExecuteOntapPatchResponse {
+  /** The raw `JSON` body of the response. */
+  body?: Record<string, unknown>;
+}
+
+export const ExecuteOntapPatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "ExecuteOntapPatchResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -1972,16 +1814,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1990,15 +1829,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2017,20 +1851,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface LocationMetadata {
   /** Output only. Supported service levels in a location. */
@@ -2055,17 +1884,12 @@ export interface LocationMetadata {
   hasOntapProxy?: boolean;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportedServiceLevels: Schema.optional(Schema.Array(Schema.String)),
-      supportedFlexPerformance: Schema.optional(Schema.Array(Schema.String)),
-      hasVcp: Schema.optional(Schema.Boolean),
-      hasOntapProxy: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LocationMetadata",
-  }) as any as Schema.Schema<LocationMetadata>;
+export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportedServiceLevels: Schema.optional(Schema.Array(Schema.String)),
+  supportedFlexPerformance: Schema.optional(Schema.Array(Schema.String)),
+  hasVcp: Schema.optional(Schema.Boolean),
+  hasOntapProxy: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LocationMetadata" });
 
 // ==========================================================================
 // Operations
@@ -2104,7 +1928,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2590,6 +2414,158 @@ export const switchProjectsLocationsStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchProjectsLocationsStoragePoolsRequest,
   output: SwitchProjectsLocationsStoragePoolsResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+  /** Request body */
+  body?: ExecuteOntapPostRequest;
+}
+
+export const ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+    body: Schema.optional(ExecuteOntapPostRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapPostResponse;
+export const ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapPostResponse;
+
+export type ExecuteOntapPostProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster. */
+export const executeOntapPostProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapPostProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapPostProjectsLocationsStoragePoolsOntapResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+}
+
+export const ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapGetResponse;
+export const ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapGetResponse;
+
+export type ExecuteOntapGetProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster. */
+export const executeOntapGetProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapGetProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapGetProjectsLocationsStoragePoolsOntapResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+}
+
+export const ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapDeleteResponse;
+export const ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapDeleteResponse;
+
+export type ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster. */
+export const executeOntapDeleteProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapResponse,
+  errors: [],
+}));
+
+export interface ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest {
+  /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
+  ontapPath: string;
+  /** Request body */
+  body?: ExecuteOntapPatchRequest;
+}
+
+export const ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ontapPath: Schema.String.pipe(T.HttpPath("ontapPath")),
+    body: Schema.optional(ExecuteOntapPatchRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/storagePools/{storagePoolsId}/ontap/{ontapId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest>;
+
+export type ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse =
+  ExecuteOntapPatchResponse;
+export const ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteOntapPatchResponse;
+
+export type ExecuteOntapPatchProjectsLocationsStoragePoolsOntapError =
+  DefaultErrors;
+
+/** `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster. */
+export const executeOntapPatchProjectsLocationsStoragePoolsOntap: API.OperationMethod<
+  ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest,
+  ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse,
+  ExecuteOntapPatchProjectsLocationsStoragePoolsOntapError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest,
+  output: ExecuteOntapPatchProjectsLocationsStoragePoolsOntapResponse,
   errors: [],
 }));
 

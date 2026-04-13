@@ -22,76 +22,184 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface UpdateEntitiesWithConditionsResponse {
+  /** Response returned by the external system. */
+  response?: Record<string, unknown>;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+}
+
+export const UpdateEntitiesWithConditionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+    ),
+  }).annotate({ identifier: "UpdateEntitiesWithConditionsResponse" });
+
+export interface Connectors_Date {
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+}
+
+export const Connectors_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Connectors_Date" });
+
+export interface TimeOfDay {
+  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
+  nanos?: number;
+  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
+  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  minutes?: number;
+}
+
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nanos: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
+
+export interface DenyMaintenancePeriod {
+  /** Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be the same or after the start. */
+  startDate?: Connectors_Date;
+  /** Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC */
+  time?: TimeOfDay;
+  /** Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be before the end. */
+  endDate?: Connectors_Date;
+}
+
+export const DenyMaintenancePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Connectors_Date),
+  time: Schema.optional(TimeOfDay),
+  endDate: Schema.optional(Connectors_Date),
+}).annotate({ identifier: "DenyMaintenancePeriod" });
+
+export interface QueryParameter {
+  dataType?:
+    | "DATA_TYPE_UNSPECIFIED"
+    | "INT"
+    | "SMALLINT"
+    | "DOUBLE"
+    | "DATE"
+    | "DATETIME"
+    | "TIME"
+    | "STRING"
+    | "LONG"
+    | "BOOLEAN"
+    | "DECIMAL"
+    | "UUID"
+    | "BLOB"
+    | "BIT"
+    | "TINYINT"
+    | "INTEGER"
+    | "BIGINT"
+    | "FLOAT"
+    | "REAL"
+    | "NUMERIC"
+    | "CHAR"
+    | "VARCHAR"
+    | "LONGVARCHAR"
+    | "TIMESTAMP"
+    | "NCHAR"
+    | "NVARCHAR"
+    | "LONGNVARCHAR"
+    | "NULL"
+    | "OTHER"
+    | "JAVA_OBJECT"
+    | "DISTINCT"
+    | "STRUCT"
+    | "ARRAY"
+    | "CLOB"
+    | "REF"
+    | "DATALINK"
+    | "ROWID"
+    | "BINARY"
+    | "VARBINARY"
+    | "LONGVARBINARY"
+    | "NCLOB"
+    | "SQLXML"
+    | "REF_CURSOR"
+    | "TIME_WITH_TIMEZONE"
+    | "TIMESTAMP_WITH_TIMEZONE"
+    | (string & {});
+  value?: unknown;
+}
+
+export const QueryParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataType: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "QueryParameter" });
+
 export interface ExecutionConfig {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   headers?: string;
 }
 
-export const ExecutionConfig: Schema.Schema<ExecutionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecutionConfig",
-  }) as any as Schema.Schema<ExecutionConfig>;
+export const ExecutionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExecutionConfig" });
 
-export interface ExecuteActionRequest {
-  /** Parameters for executing the action. The parameters can be key/value pairs or nested structs. */
-  parameters?: Record<string, unknown>;
-  /** Execution config for the request. */
-  executionConfig?: ExecutionConfig;
+export interface Reference {
+  /** Name of reference entity type. */
+  type?: string;
+  /** Name of the reference field. */
+  name?: string;
 }
 
-export const ExecuteActionRequest: Schema.Schema<ExecuteActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      executionConfig: Schema.optional(ExecutionConfig),
-    }),
-  ).annotate({
-    identifier: "ExecuteActionRequest",
-  }) as any as Schema.Schema<ExecuteActionRequest>;
-
-export interface ExecuteActionResponse {
-  /** In the case of successful invocation of the specified action, the results Struct contains values based on the response of the action invoked. 1. If the action execution produces any entities as a result, they are returned as an array of Structs with the 'key' being the field name and the 'value' being the value of that field in each result row. { 'results': [{'key': 'value'}, ...] } */
-  results?: Array<Record<string, unknown>>;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const ExecuteActionResponse: Schema.Schema<ExecuteActionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExecuteActionResponse",
-  }) as any as Schema.Schema<ExecuteActionResponse>;
+export const Reference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Reference" });
 
 export interface JsonSchema {
-  /** A description of this schema. */
-  description?: string;
-  /** The default value of the field or object described by this schema. */
-  default?: unknown;
-  /** Whether this property is required. */
-  required?: Array<string>;
-  /** JSON Schema Validation: A Vocabulary for Structural Validation of JSON */
-  type?: Array<string>;
-  /** Schema that applies to array values, applicable only if this is of type `array`. */
-  items?: JsonSchema;
-  /** The child schemas, applicable only if this is of type `object`. The key is the name of the property and the value is the json schema that describes that property */
-  properties?: Record<string, JsonSchema>;
   /** Possible values for an enumeration. This works in conjunction with `type` to represent types with a fixed set of legal values */
   enum?: Array<unknown>;
+  /** Whether this property is required. */
+  required?: Array<string>;
+  /** A description of this schema. */
+  description?: string;
+  /** Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format */
+  format?: string;
+  /** Whether the minimum number value is exclusive. */
+  exclusiveMinimum?: boolean;
+  /** Whether the items in the array field are unique. */
+  uniqueItems?: boolean;
+  /** Maximum number of items in the array field. */
+  maxItems?: number;
+  /** Maximum value of the number field. */
+  maximum?: unknown;
+  /** The default value of the field or object described by this schema. */
+  default?: unknown;
+  /** JSON Schema Validation: A Vocabulary for Structural Validation of JSON */
+  type?: Array<string>;
+  /** Minimum length of the string field. */
+  minLength?: number;
+  /** Minimum value of the number field. */
+  minimum?: unknown;
+  /** Regex pattern of the string field. This is a string value that describes the regular expression that the string value should match. */
+  pattern?: string;
+  /** The child schemas, applicable only if this is of type `object`. The key is the name of the property and the value is the json schema that describes that property */
+  properties?: Record<string, JsonSchema>;
+  /** Schema that applies to array values, applicable only if this is of type `array`. */
+  items?: JsonSchema;
+  /** Minimum number of items in the array field. */
+  minItems?: number;
+  /** Whether the maximum number value is exclusive. */
+  exclusiveMaximum?: boolean;
   /** JDBC datatype of the field. */
   jdbcType?:
     | "DATA_TYPE_UNSPECIFIED"
@@ -140,8 +248,8 @@ export interface JsonSchema {
     | "TIME_WITH_TIMEZONE"
     | "TIMESTAMP_WITH_TIMEZONE"
     | (string & {});
-  /** Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format */
-  format?: string;
+  /** Maximum length of the string field. */
+  maxLength?: number;
   /** Additional details apart from standard json schema fields, this gives flexibility to store metadata about the schema */
   additionalDetails?: Record<string, unknown>;
 }
@@ -149,770 +257,40 @@ export interface JsonSchema {
 export const JsonSchema: Schema.Schema<JsonSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      description: Schema.optional(Schema.String),
-      default: Schema.optional(Schema.Unknown),
-      required: Schema.optional(Schema.Array(Schema.String)),
-      type: Schema.optional(Schema.Array(Schema.String)),
-      items: Schema.optional(JsonSchema),
-      properties: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
       enum: Schema.optional(Schema.Array(Schema.Unknown)),
-      jdbcType: Schema.optional(Schema.String),
+      required: Schema.optional(Schema.Array(Schema.String)),
+      description: Schema.optional(Schema.String),
       format: Schema.optional(Schema.String),
+      exclusiveMinimum: Schema.optional(Schema.Boolean),
+      uniqueItems: Schema.optional(Schema.Boolean),
+      maxItems: Schema.optional(Schema.Number),
+      maximum: Schema.optional(Schema.Unknown),
+      default: Schema.optional(Schema.Unknown),
+      type: Schema.optional(Schema.Array(Schema.String)),
+      minLength: Schema.optional(Schema.Number),
+      minimum: Schema.optional(Schema.Unknown),
+      pattern: Schema.optional(Schema.String),
+      properties: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
+      items: Schema.optional(JsonSchema),
+      minItems: Schema.optional(Schema.Number),
+      exclusiveMaximum: Schema.optional(Schema.Boolean),
+      jdbcType: Schema.optional(Schema.String),
+      maxLength: Schema.optional(Schema.Number),
       additionalDetails: Schema.optional(
         Schema.Record(Schema.String, Schema.Unknown),
       ),
     }),
   ).annotate({ identifier: "JsonSchema" }) as any as Schema.Schema<JsonSchema>;
 
-export interface InputParameter {
-  /** Name of the Parameter. */
-  name?: string;
-  /** A brief description of the Parameter. */
-  description?: string;
-  /** The data type of the Parameter */
-  dataType?:
-    | "DATA_TYPE_UNSPECIFIED"
-    | "INT"
-    | "SMALLINT"
-    | "DOUBLE"
-    | "DATE"
-    | "DATETIME"
-    | "TIME"
-    | "STRING"
-    | "LONG"
-    | "BOOLEAN"
-    | "DECIMAL"
-    | "UUID"
-    | "BLOB"
-    | "BIT"
-    | "TINYINT"
-    | "INTEGER"
-    | "BIGINT"
-    | "FLOAT"
-    | "REAL"
-    | "NUMERIC"
-    | "CHAR"
-    | "VARCHAR"
-    | "LONGVARCHAR"
-    | "TIMESTAMP"
-    | "NCHAR"
-    | "NVARCHAR"
-    | "LONGNVARCHAR"
-    | "NULL"
-    | "OTHER"
-    | "JAVA_OBJECT"
-    | "DISTINCT"
-    | "STRUCT"
-    | "ARRAY"
-    | "CLOB"
-    | "REF"
-    | "DATALINK"
-    | "ROWID"
-    | "BINARY"
-    | "VARBINARY"
-    | "LONGVARBINARY"
-    | "NCLOB"
-    | "SQLXML"
-    | "REF_CURSOR"
-    | "TIME_WITH_TIMEZONE"
-    | "TIMESTAMP_WITH_TIMEZONE"
-    | (string & {});
-  /** Specifies whether a null value is allowed. */
-  nullable?: boolean;
-  /** The following field specifies the default value of the Parameter provided by the external system if a value is not provided. */
-  defaultValue?: unknown;
-  /** JsonSchema of the parameter, applicable only if parameter is of type `STRUCT` */
-  jsonSchema?: JsonSchema;
-  /** The following map contains fields that are not explicitly mentioned above,this give connectors the flexibility to add new metadata fields. */
-  additionalDetails?: Record<string, unknown>;
-}
-
-export const InputParameter: Schema.Schema<InputParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      nullable: Schema.optional(Schema.Boolean),
-      defaultValue: Schema.optional(Schema.Unknown),
-      jsonSchema: Schema.optional(JsonSchema),
-      additionalDetails: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "InputParameter",
-  }) as any as Schema.Schema<InputParameter>;
-
-export interface ResultMetadata {
-  /** Name of the metadata field. */
-  name?: string;
-  /** A brief description of the metadata field. */
-  description?: string;
-  /** The data type of the metadata field */
-  dataType?:
-    | "DATA_TYPE_UNSPECIFIED"
-    | "INT"
-    | "SMALLINT"
-    | "DOUBLE"
-    | "DATE"
-    | "DATETIME"
-    | "TIME"
-    | "STRING"
-    | "LONG"
-    | "BOOLEAN"
-    | "DECIMAL"
-    | "UUID"
-    | "BLOB"
-    | "BIT"
-    | "TINYINT"
-    | "INTEGER"
-    | "BIGINT"
-    | "FLOAT"
-    | "REAL"
-    | "NUMERIC"
-    | "CHAR"
-    | "VARCHAR"
-    | "LONGVARCHAR"
-    | "TIMESTAMP"
-    | "NCHAR"
-    | "NVARCHAR"
-    | "LONGNVARCHAR"
-    | "NULL"
-    | "OTHER"
-    | "JAVA_OBJECT"
-    | "DISTINCT"
-    | "STRUCT"
-    | "ARRAY"
-    | "CLOB"
-    | "REF"
-    | "DATALINK"
-    | "ROWID"
-    | "BINARY"
-    | "VARBINARY"
-    | "LONGVARBINARY"
-    | "NCLOB"
-    | "SQLXML"
-    | "REF_CURSOR"
-    | "TIME_WITH_TIMEZONE"
-    | "TIMESTAMP_WITH_TIMEZONE"
-    | (string & {});
-  /** JsonSchema of the result, applicable only if parameter is of type `STRUCT` */
-  jsonSchema?: JsonSchema;
-  /** Specifies whether a null value is allowed. */
-  nullable?: boolean;
-  /** The following field specifies the default value of the Parameter provided by the external system if a value is not provided. */
-  defaultValue?: unknown;
-}
-
-export const ResultMetadata: Schema.Schema<ResultMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      jsonSchema: Schema.optional(JsonSchema),
-      nullable: Schema.optional(Schema.Boolean),
-      defaultValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "ResultMetadata",
-  }) as any as Schema.Schema<ResultMetadata>;
-
-export interface Action {
-  /** Name of the action. */
-  name?: string;
-  /** List containing input parameter metadata. */
-  inputParameters?: Array<InputParameter>;
-  /** List containing the metadata of result fields. */
-  resultMetadata?: Array<ResultMetadata>;
-  /** JsonSchema representation of this actions's input schema */
-  inputJsonSchema?: JsonSchema;
-  /** JsonSchema representation of this actions's result schema */
-  resultJsonSchema?: JsonSchema;
-  /** Display Name of action to be shown on client side */
-  displayName?: string;
-  /** Brief Description of action */
-  description?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const Action: Schema.Schema<Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(Schema.Array(InputParameter)),
-      resultMetadata: Schema.optional(Schema.Array(ResultMetadata)),
-      inputJsonSchema: Schema.optional(JsonSchema),
-      resultJsonSchema: Schema.optional(JsonSchema),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "Action" }) as any as Schema.Schema<Action>;
-
-export interface ListActionsResponse {
-  /** List of action metadata. */
-  actions?: Array<Action>;
-  /** List of actions which contain unsupported Datatypes. Check datatype.proto for more information. */
-  unsupportedActionNames?: Array<string>;
-  /** Next page token if more actions available. */
-  nextPageToken?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const ListActionsResponse: Schema.Schema<ListActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(Action)),
-      unsupportedActionNames: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListActionsResponse",
-  }) as any as Schema.Schema<ListActionsResponse>;
-
-export interface CheckStatusResponse {
-  /** State of the connector. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "ACTIVE"
-    | "ERROR"
-    | "AUTH_ERROR"
-    | (string & {});
-  /** When the connector is not in ACTIVE state, the description must be populated to specify the reason why it's not in ACTIVE state. */
-  description?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const CheckStatusResponse: Schema.Schema<CheckStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "CheckStatusResponse",
-  }) as any as Schema.Schema<CheckStatusResponse>;
-
-export interface CheckReadinessResponse {
-  status?: string;
-}
-
-export const CheckReadinessResponse: Schema.Schema<CheckReadinessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CheckReadinessResponse",
-  }) as any as Schema.Schema<CheckReadinessResponse>;
-
-export interface AuthCodeData {
-  /** OAuth authorization code. */
-  authCode?: string;
-  /** OAuth PKCE verifier, needed if PKCE is enabled for this particular connection. */
-  pkceVerifier?: string;
-  /** OAuth redirect URI passed in during the auth code flow, required by some OAuth backends. */
-  redirectUri?: string;
-  /** Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
-}
-
-export const AuthCodeData: Schema.Schema<AuthCodeData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authCode: Schema.optional(Schema.String),
-      pkceVerifier: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuthCodeData",
-  }) as any as Schema.Schema<AuthCodeData>;
-
-export interface OAuth2Config {
-  /** Client ID for the OAuth2 flow. */
-  clientId?: string;
-  /** Client secret for the OAuth2 flow. */
-  clientSecret?: string;
-  /** Authorization Server URL/Token Endpoint for Authorization Code Flow */
-  authUri?: string;
-}
-
-export const OAuth2Config: Schema.Schema<OAuth2Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      authUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OAuth2Config",
-  }) as any as Schema.Schema<OAuth2Config>;
-
-export interface ExchangeAuthCodeRequest {
-  /** Optional. AuthCodeData contains the data the runtime requires to exchange for access and refresh tokens. If the data is not provided, the runtime will read the data from the secret manager. */
-  authCodeData?: AuthCodeData;
-  /** ExecutionConfig contains the configuration for the execution of the request. */
-  executionConfig?: ExecutionConfig;
-  /** OAuth2Config contains the OAuth2 config for the connection. */
-  oauth2Config?: OAuth2Config;
-}
-
-export const ExchangeAuthCodeRequest: Schema.Schema<ExchangeAuthCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authCodeData: Schema.optional(AuthCodeData),
-      executionConfig: Schema.optional(ExecutionConfig),
-      oauth2Config: Schema.optional(OAuth2Config),
-    }),
-  ).annotate({
-    identifier: "ExchangeAuthCodeRequest",
-  }) as any as Schema.Schema<ExchangeAuthCodeRequest>;
-
-export interface AccessCredentials {
-  /** OAuth access token. */
-  accessToken?: string;
-  /** OAuth refresh token. */
-  refreshToken?: string;
-  /** Duration till the access token expires. */
-  expiresIn?: string;
-}
-
-export const AccessCredentials: Schema.Schema<AccessCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessToken: Schema.optional(Schema.String),
-      refreshToken: Schema.optional(Schema.String),
-      expiresIn: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessCredentials",
-  }) as any as Schema.Schema<AccessCredentials>;
-
-export interface ExchangeAuthCodeResponse {
-  accessCredentials?: AccessCredentials;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const ExchangeAuthCodeResponse: Schema.Schema<ExchangeAuthCodeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessCredentials: Schema.optional(AccessCredentials),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExchangeAuthCodeResponse",
-  }) as any as Schema.Schema<ExchangeAuthCodeResponse>;
-
-export interface RefreshAccessTokenRequest {
-  /** Optional. Refresh Token String. If the Refresh Token is not provided, the runtime will read the data from the secret manager. */
-  refreshToken?: string;
-  /** ExecutionConfig contains the configuration for the execution of the request. */
-  executionConfig?: ExecutionConfig;
-  /** OAuth2Config contains the OAuth2 config for the connection. */
-  oauth2Config?: OAuth2Config;
-}
-
-export const RefreshAccessTokenRequest: Schema.Schema<RefreshAccessTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refreshToken: Schema.optional(Schema.String),
-      executionConfig: Schema.optional(ExecutionConfig),
-      oauth2Config: Schema.optional(OAuth2Config),
-    }),
-  ).annotate({
-    identifier: "RefreshAccessTokenRequest",
-  }) as any as Schema.Schema<RefreshAccessTokenRequest>;
-
-export interface RefreshAccessTokenResponse {
-  accessCredentials?: AccessCredentials;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const RefreshAccessTokenResponse: Schema.Schema<RefreshAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessCredentials: Schema.optional(AccessCredentials),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "RefreshAccessTokenResponse",
-  }) as any as Schema.Schema<RefreshAccessTokenResponse>;
-
-export interface ToolAnnotations {
-  /** If true, the tool may perform destructive updates to its environment. If false, the tool performs only additive updates. (This property is meaningful only when `read_only_hint == false`) */
-  destructiveHint?: boolean;
-  /** If true, calling the tool repeatedly with the same arguments will have no additional effect on the environment. (This property is meaningful only when `read_only_hint == false`) */
-  idempotentHint?: boolean;
-  /** If true, this tool may interact with an "open world" of external entities. If false, the tool's domain of interaction is closed. For example, the world of a web search tool is open, whereas that of a memory tool is not. */
-  openWorldHint?: boolean;
-  /** If true, the tool does not modify its environment. */
-  readOnlyHint?: boolean;
-  /** A human-readable title for the tool. */
-  title?: string;
-}
-
-export const ToolAnnotations: Schema.Schema<ToolAnnotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destructiveHint: Schema.optional(Schema.Boolean),
-      idempotentHint: Schema.optional(Schema.Boolean),
-      openWorldHint: Schema.optional(Schema.Boolean),
-      readOnlyHint: Schema.optional(Schema.Boolean),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolAnnotations",
-  }) as any as Schema.Schema<ToolAnnotations>;
-
-export interface Tool {
-  /** Name of the tool. */
-  name?: string;
-  /** Description of the tool. */
-  description?: string;
-  /** JSON schema for the input parameters of the tool. */
-  inputSchema?: JsonSchema;
-  /** JSON schema for the output of the tool. */
-  outputSchema?: JsonSchema;
-  /** List of tool names that this tool depends on. */
-  dependsOn?: Array<string>;
-  /** Annotations for the tool. */
-  annotations?: ToolAnnotations;
-}
-
-export const Tool: Schema.Schema<Tool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      inputSchema: Schema.optional(JsonSchema),
-      outputSchema: Schema.optional(JsonSchema),
-      dependsOn: Schema.optional(Schema.Array(Schema.String)),
-      annotations: Schema.optional(ToolAnnotations),
-    }),
-  ).annotate({ identifier: "Tool" }) as any as Schema.Schema<Tool>;
-
-export interface ListToolsResponse {
-  /** List of available tools. */
-  tools?: Array<Tool>;
-  /** Next page token. */
-  nextPageToken?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const ListToolsResponse: Schema.Schema<ListToolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tools: Schema.optional(Schema.Array(Tool)),
-      nextPageToken: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListToolsResponse",
-  }) as any as Schema.Schema<ListToolsResponse>;
-
-export interface ExecuteToolRequest {
-  /** Input parameters for the tool. */
-  parameters?: Record<string, unknown>;
-  /** execution config for the request. */
-  executionConfig?: ExecutionConfig;
-  /** Tool definition for the tool to be executed. */
-  toolDefinition?: Record<string, unknown>;
-}
-
-export const ExecuteToolRequest: Schema.Schema<ExecuteToolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      executionConfig: Schema.optional(ExecutionConfig),
-      toolDefinition: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExecuteToolRequest",
-  }) as any as Schema.Schema<ExecuteToolRequest>;
-
-export interface ExecuteToolResponse {
-  /** Output from the tool execution. */
-  result?: Record<string, unknown>;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const ExecuteToolResponse: Schema.Schema<ExecuteToolResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExecuteToolResponse",
-  }) as any as Schema.Schema<ExecuteToolResponse>;
-
-export interface ToolSpec {
-  /** List of tool definitions. */
-  toolDefinitions?: Array<Record<string, unknown>>;
-  /** Version of the tool spec. Format: providerId/connectorId/versionId/toolSpecId */
-  toolSpecVersion?: string;
-}
-
-export const ToolSpec: Schema.Schema<ToolSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolDefinitions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      toolSpecVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ToolSpec" }) as any as Schema.Schema<ToolSpec>;
-
-export interface ListToolsPostRequest {
-  /** Page size. */
-  pageSize?: number;
-  /** Page token. */
-  pageToken?: string;
-  /** execution config for the request. */
-  executionConfig?: ExecutionConfig;
-  /** List of tool specifications. */
-  toolSpec?: ToolSpec;
-}
-
-export const ListToolsPostRequest: Schema.Schema<ListToolsPostRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-      executionConfig: Schema.optional(ExecutionConfig),
-      toolSpec: Schema.optional(ToolSpec),
-    }),
-  ).annotate({
-    identifier: "ListToolsPostRequest",
-  }) as any as Schema.Schema<ListToolsPostRequest>;
-
-export interface Resource {
-  /** The URI of this resource. */
-  uri?: string;
-  /** A human-readable name for this resource. */
-  name?: string;
-  /** A description of what this resource represents. */
-  description?: string;
-  /** The MIME type of this resource, if known. */
-  mimeType?: string;
-  /** The size of the raw resource content, in bytes, if known. */
-  size?: string;
-}
-
-export const Resource: Schema.Schema<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Resource" }) as any as Schema.Schema<Resource>;
-
-export interface ListResourcesResponse {
-  /** List of available resources. */
-  resources?: Array<Resource>;
-  /** Next page token if more resources available. */
-  nextPageToken?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const ListResourcesResponse: Schema.Schema<ListResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Resource)),
-      nextPageToken: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListResourcesResponse",
-  }) as any as Schema.Schema<ListResourcesResponse>;
-
-export interface GetResourceResponse {
-  /** The content of the resource. */
-  data?: string;
-  /** The MIME type of the resource. */
-  mimeType?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const GetResourceResponse: Schema.Schema<GetResourceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetResourceResponse",
-  }) as any as Schema.Schema<GetResourceResponse>;
-
-export interface GetResourcePostRequest {
-  /** execution config for the request. */
-  executionConfig?: ExecutionConfig;
-  /** List of tool specifications. */
-  toolSpec?: ToolSpec;
-}
-
-export const GetResourcePostRequest: Schema.Schema<GetResourcePostRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionConfig: Schema.optional(ExecutionConfig),
-      toolSpec: Schema.optional(ToolSpec),
-    }),
-  ).annotate({
-    identifier: "GetResourcePostRequest",
-  }) as any as Schema.Schema<GetResourcePostRequest>;
-
-export interface ToolName {
-  /** Tool name that was generated in the list tools call. */
-  name?: string;
-  /** Entity name for which the tool was generated. */
-  entityName?: string;
-  /** Operation for which the tool was generated. */
-  operation?:
-    | "OPERATION_UNSPECIFIED"
-    | "LIST"
-    | "GET"
-    | "CREATE"
-    | "UPDATE"
-    | "DELETE"
-    | (string & {});
-}
-
-export const ToolName: Schema.Schema<ToolName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      entityName: Schema.optional(Schema.String),
-      operation: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ToolName" }) as any as Schema.Schema<ToolName>;
-
-export interface GenerateCustomToolspecRequest {
-  /** list of tools to be generated. */
-  toolNames?: Array<ToolName>;
-}
-
-export const GenerateCustomToolspecRequest: Schema.Schema<GenerateCustomToolspecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolNames: Schema.optional(Schema.Array(ToolName)),
-    }),
-  ).annotate({
-    identifier: "GenerateCustomToolspecRequest",
-  }) as any as Schema.Schema<GenerateCustomToolspecRequest>;
-
-export interface GenerateCustomToolspecResponse {
-  /** tool spec that has tool_defitions array containing the tools for all sted tool_names. */
-  toolSpec?: ToolSpec;
-}
-
-export const GenerateCustomToolspecResponse: Schema.Schema<GenerateCustomToolspecResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolSpec: Schema.optional(ToolSpec),
-    }),
-  ).annotate({
-    identifier: "GenerateCustomToolspecResponse",
-  }) as any as Schema.Schema<GenerateCustomToolspecResponse>;
-
-export interface ListCustomToolNamesResponse {
-  /** List of custom tools. */
-  toolNames?: Array<ToolName>;
-}
-
-export const ListCustomToolNamesResponse: Schema.Schema<ListCustomToolNamesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolNames: Schema.optional(Schema.Array(ToolName)),
-    }),
-  ).annotate({
-    identifier: "ListCustomToolNamesResponse",
-  }) as any as Schema.Schema<ListCustomToolNamesResponse>;
-
-export interface Reference {
-  /** Name of reference entity type. */
-  type?: string;
-  /** Name of the reference field. */
-  name?: string;
-}
-
-export const Reference: Schema.Schema<Reference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Reference" }) as any as Schema.Schema<Reference>;
-
 export interface Field {
-  /** Name of the Field. */
-  name?: string;
   /** A brief description of the Field. */
   description?: string;
+  /** The following boolean field specifies if the current Field acts as a primary key or id if the parent is of type entity. */
+  key?: boolean;
+  /** Specifies whether a null value is allowed. */
+  nullable?: boolean;
+  /** Reference captures the association between two different entity types. Value links to the reference of another entity type. */
+  reference?: Reference;
   /** The data type of the Field. */
   dataType?:
     | "DATA_TYPE_UNSPECIFIED"
@@ -961,38 +339,33 @@ export interface Field {
     | "TIME_WITH_TIMEZONE"
     | "TIMESTAMP_WITH_TIMEZONE"
     | (string & {});
-  /** The following boolean field specifies if the current Field acts as a primary key or id if the parent is of type entity. */
-  key?: boolean;
-  /** Specifies whether a null value is allowed. */
-  nullable?: boolean;
+  /** JsonSchema of the field, applicable only if field is of type `STRUCT` */
+  jsonSchema?: JsonSchema;
   /** The following field specifies the default value of the Field provided by the external system if a value is not provided. */
   defaultValue?: unknown;
   /** The following map contains fields that are not explicitly mentioned above,this give connectors the flexibility to add new metadata fields. */
   additionalDetails?: Record<string, unknown>;
-  /** Reference captures the association between two different entity types. Value links to the reference of another entity type. */
-  reference?: Reference;
-  /** JsonSchema of the field, applicable only if field is of type `STRUCT` */
-  jsonSchema?: JsonSchema;
+  /** Name of the Field. */
+  name?: string;
 }
 
-export const Field: Schema.Schema<Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.Boolean),
-      nullable: Schema.optional(Schema.Boolean),
-      defaultValue: Schema.optional(Schema.Unknown),
-      additionalDetails: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      reference: Schema.optional(Reference),
-      jsonSchema: Schema.optional(JsonSchema),
-    }),
-  ).annotate({ identifier: "Field" }) as any as Schema.Schema<Field>;
+export const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.Boolean),
+  nullable: Schema.optional(Schema.Boolean),
+  reference: Schema.optional(Reference),
+  dataType: Schema.optional(Schema.String),
+  jsonSchema: Schema.optional(JsonSchema),
+  defaultValue: Schema.optional(Schema.Unknown),
+  additionalDetails: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Field" });
 
 export interface EntityType {
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
   /** The name of the entity type. */
   name?: string;
   /** List containing metadata information about each field of the entity type. */
@@ -1009,54 +382,53 @@ export interface EntityType {
     | (string & {})
   >;
   defaultSortBy?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
 }
 
-export const EntityType: Schema.Schema<EntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(Field)),
-      jsonSchema: Schema.optional(JsonSchema),
-      operations: Schema.optional(Schema.Array(Schema.String)),
-      defaultSortBy: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "EntityType" }) as any as Schema.Schema<EntityType>;
+export const EntityType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  name: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Array(Field)),
+  jsonSchema: Schema.optional(JsonSchema),
+  operations: Schema.optional(Schema.Array(Schema.String)),
+  defaultSortBy: Schema.optional(Schema.String),
+}).annotate({ identifier: "EntityType" });
 
-export interface ListEntityTypesResponse {
-  /** List of metadata related to all entity types. */
-  types?: Array<EntityType>;
-  /** Next page token if more entity types available. */
-  nextPageToken?: string;
-  /** List of entity type names which contain unsupported Datatypes. Check datatype.proto for more information. */
-  unsupportedTypeNames?: Array<string>;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
+export interface SloEligibility {
+  /** User-defined reason for the current value of instance eligibility. Usually, this can be directly mapped to the internal state. An empty reason is allowed. */
+  reason?: string;
+  /** Whether an instance is eligible or ineligible. */
+  eligible?: boolean;
 }
 
-export const ListEntityTypesResponse: Schema.Schema<ListEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      types: Schema.optional(Schema.Array(EntityType)),
-      nextPageToken: Schema.optional(Schema.String),
-      unsupportedTypeNames: Schema.optional(Schema.Array(Schema.String)),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListEntityTypesResponse",
-  }) as any as Schema.Schema<ListEntityTypesResponse>;
+export const SloEligibility = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  eligible: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SloEligibility" });
+
+export interface ToolSpec {
+  /** List of tool definitions. */
+  toolDefinitions?: Array<Record<string, unknown>>;
+  /** Version of the tool spec. Format: providerId/connectorId/versionId/toolSpecId */
+  toolSpecVersion?: string;
+}
+
+export const ToolSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolDefinitions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  toolSpecVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolSpec" });
+
+export interface PerSliSloEligibility {
+  /** An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI which has not been declared in the binary flags, there will be an error message emitted in the Eligibility Exporter log and the metric for the SLI in question will not be emitted. */
+  eligibilities?: Record<string, SloEligibility>;
+}
+
+export const PerSliSloEligibility = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eligibilities: Schema.optional(Schema.Record(Schema.String, SloEligibility)),
+}).annotate({ identifier: "PerSliSloEligibility" });
 
 export interface Entity {
   /** Output only. Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
@@ -1067,76 +439,35 @@ export interface Entity {
   metadata?: Record<string, Record<string, unknown>>;
 }
 
-export const Entity: Schema.Schema<Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "Entity" }) as any as Schema.Schema<Entity>;
+export const Entity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Entity" });
 
 export interface ListEntitiesResponse {
-  /** List containing entity rows. */
-  entities?: Array<Entity>;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
   /** Next page token if more records are available. */
   nextPageToken?: string;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
+  /** List containing entity rows. */
+  entities?: Array<Entity>;
 }
 
-export const ListEntitiesResponse: Schema.Schema<ListEntitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entities: Schema.optional(Schema.Array(Entity)),
-      nextPageToken: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListEntitiesResponse",
-  }) as any as Schema.Schema<ListEntitiesResponse>;
+export const ListEntitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  nextPageToken: Schema.optional(Schema.String),
+  entities: Schema.optional(Schema.Array(Entity)),
+}).annotate({ identifier: "ListEntitiesResponse" });
 
-export interface UpdateEntitiesWithConditionsResponse {
-  /** Response returned by the external system. */
-  response?: Record<string, unknown>;
-  /** Metadata like service latency, etc. */
-  metadata?: Record<string, Record<string, unknown>>;
-}
-
-export const UpdateEntitiesWithConditionsResponse: Schema.Schema<UpdateEntitiesWithConditionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateEntitiesWithConditionsResponse",
-  }) as any as Schema.Schema<UpdateEntitiesWithConditionsResponse>;
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
-
-export interface QueryParameter {
-  value?: unknown;
+export interface ResultMetadata {
+  /** Name of the metadata field. */
+  name?: string;
+  /** The data type of the metadata field */
   dataType?:
     | "DATA_TYPE_UNSPECIFIED"
     | "INT"
@@ -1184,220 +515,298 @@ export interface QueryParameter {
     | "TIME_WITH_TIMEZONE"
     | "TIMESTAMP_WITH_TIMEZONE"
     | (string & {});
+  /** A brief description of the metadata field. */
+  description?: string;
+  /** Specifies whether a null value is allowed. */
+  nullable?: boolean;
+  /** JsonSchema of the result, applicable only if parameter is of type `STRUCT` */
+  jsonSchema?: JsonSchema;
+  /** The following field specifies the default value of the Parameter provided by the external system if a value is not provided. */
+  defaultValue?: unknown;
 }
 
-export const QueryParameter: Schema.Schema<QueryParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Unknown),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryParameter",
-  }) as any as Schema.Schema<QueryParameter>;
+export const ResultMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  dataType: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  nullable: Schema.optional(Schema.Boolean),
+  jsonSchema: Schema.optional(JsonSchema),
+  defaultValue: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "ResultMetadata" });
 
-export interface Query {
-  /** Required. Sql query to execute. */
-  query?: string;
-  /** Sets the number of seconds the driver will wait for a query to execute. */
-  timeout?: string;
-  /** Sets the limit for the maximum number of rows returned after the query execution. */
-  maxRows?: string;
-  /** In the struct, the value corresponds to the value of query parameter and date type corresponds to the date type of the query parameter. */
-  queryParameters?: Array<QueryParameter>;
+export interface InputParameter {
+  /** The data type of the Parameter */
+  dataType?:
+    | "DATA_TYPE_UNSPECIFIED"
+    | "INT"
+    | "SMALLINT"
+    | "DOUBLE"
+    | "DATE"
+    | "DATETIME"
+    | "TIME"
+    | "STRING"
+    | "LONG"
+    | "BOOLEAN"
+    | "DECIMAL"
+    | "UUID"
+    | "BLOB"
+    | "BIT"
+    | "TINYINT"
+    | "INTEGER"
+    | "BIGINT"
+    | "FLOAT"
+    | "REAL"
+    | "NUMERIC"
+    | "CHAR"
+    | "VARCHAR"
+    | "LONGVARCHAR"
+    | "TIMESTAMP"
+    | "NCHAR"
+    | "NVARCHAR"
+    | "LONGNVARCHAR"
+    | "NULL"
+    | "OTHER"
+    | "JAVA_OBJECT"
+    | "DISTINCT"
+    | "STRUCT"
+    | "ARRAY"
+    | "CLOB"
+    | "REF"
+    | "DATALINK"
+    | "ROWID"
+    | "BINARY"
+    | "VARBINARY"
+    | "LONGVARBINARY"
+    | "NCLOB"
+    | "SQLXML"
+    | "REF_CURSOR"
+    | "TIME_WITH_TIMEZONE"
+    | "TIMESTAMP_WITH_TIMEZONE"
+    | (string & {});
+  /** The following map contains fields that are not explicitly mentioned above,this give connectors the flexibility to add new metadata fields. */
+  additionalDetails?: Record<string, unknown>;
+  /** Name of the Parameter. */
+  name?: string;
+  /** The following field specifies the default value of the Parameter provided by the external system if a value is not provided. */
+  defaultValue?: unknown;
+  /** JsonSchema of the parameter, applicable only if parameter is of type `STRUCT` */
+  jsonSchema?: JsonSchema;
+  /** A brief description of the Parameter. */
+  description?: string;
+  /** Specifies whether a null value is allowed. */
+  nullable?: boolean;
 }
 
-export const Query: Schema.Schema<Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-      maxRows: Schema.optional(Schema.String),
-      queryParameters: Schema.optional(Schema.Array(QueryParameter)),
-    }),
-  ).annotate({ identifier: "Query" }) as any as Schema.Schema<Query>;
+export const InputParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataType: Schema.optional(Schema.String),
+  additionalDetails: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  name: Schema.optional(Schema.String),
+  defaultValue: Schema.optional(Schema.Unknown),
+  jsonSchema: Schema.optional(JsonSchema),
+  description: Schema.optional(Schema.String),
+  nullable: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "InputParameter" });
 
-export interface ExecuteSqlQueryRequest {
-  /** Required. SQL statement passed by clients like Integration Platform, the query is passed as-is to the driver used for interfacing with external systems. */
-  query?: Query;
+export interface Action {
+  /** Name of the action. */
+  name?: string;
+  /** List containing the metadata of result fields. */
+  resultMetadata?: Array<ResultMetadata>;
+  /** JsonSchema representation of this actions's input schema */
+  inputJsonSchema?: JsonSchema;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+  /** Display Name of action to be shown on client side */
+  displayName?: string;
+  /** Brief Description of action */
+  description?: string;
+  /** JsonSchema representation of this actions's result schema */
+  resultJsonSchema?: JsonSchema;
+  /** List containing input parameter metadata. */
+  inputParameters?: Array<InputParameter>;
 }
 
-export const ExecuteSqlQueryRequest: Schema.Schema<ExecuteSqlQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Query),
-    }),
-  ).annotate({
-    identifier: "ExecuteSqlQueryRequest",
-  }) as any as Schema.Schema<ExecuteSqlQueryRequest>;
+export const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  resultMetadata: Schema.optional(Schema.Array(ResultMetadata)),
+  inputJsonSchema: Schema.optional(JsonSchema),
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  resultJsonSchema: Schema.optional(JsonSchema),
+  inputParameters: Schema.optional(Schema.Array(InputParameter)),
+}).annotate({ identifier: "Action" });
+
+export interface ListActionsResponse {
+  /** List of action metadata. */
+  actions?: Array<Action>;
+  /** List of actions which contain unsupported Datatypes. Check datatype.proto for more information. */
+  unsupportedActionNames?: Array<string>;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+  /** Next page token if more actions available. */
+  nextPageToken?: string;
+}
+
+export const ListActionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actions: Schema.optional(Schema.Array(Action)),
+  unsupportedActionNames: Schema.optional(Schema.Array(Schema.String)),
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListActionsResponse" });
+
+export interface ToolAnnotations {
+  /** If true, the tool does not modify its environment. */
+  readOnlyHint?: boolean;
+  /** If true, calling the tool repeatedly with the same arguments will have no additional effect on the environment. (This property is meaningful only when `read_only_hint == false`) */
+  idempotentHint?: boolean;
+  /** If true, the tool may perform destructive updates to its environment. If false, the tool performs only additive updates. (This property is meaningful only when `read_only_hint == false`) */
+  destructiveHint?: boolean;
+  /** If true, this tool may interact with an "open world" of external entities. If false, the tool's domain of interaction is closed. For example, the world of a web search tool is open, whereas that of a memory tool is not. */
+  openWorldHint?: boolean;
+  /** A human-readable title for the tool. */
+  title?: string;
+}
+
+export const ToolAnnotations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readOnlyHint: Schema.optional(Schema.Boolean),
+  idempotentHint: Schema.optional(Schema.Boolean),
+  destructiveHint: Schema.optional(Schema.Boolean),
+  openWorldHint: Schema.optional(Schema.Boolean),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolAnnotations" });
+
+export interface Tool {
+  /** Name of the tool. */
+  name?: string;
+  /** JSON schema for the output of the tool. */
+  outputSchema?: JsonSchema;
+  /** Annotations for the tool. */
+  annotations?: ToolAnnotations;
+  /** Description of the tool. */
+  description?: string;
+  /** List of tool names that this tool depends on. */
+  dependsOn?: Array<string>;
+  /** Metadata for the tool. */
+  _meta?: Record<string, unknown>;
+  /** JSON schema for the input parameters of the tool. */
+  inputSchema?: JsonSchema;
+}
+
+export const Tool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  outputSchema: Schema.optional(JsonSchema),
+  annotations: Schema.optional(ToolAnnotations),
+  description: Schema.optional(Schema.String),
+  dependsOn: Schema.optional(Schema.Array(Schema.String)),
+  _meta: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  inputSchema: Schema.optional(JsonSchema),
+}).annotate({ identifier: "Tool" });
+
+export interface ListToolsResponse {
+  /** List of available tools. */
+  tools?: Array<Tool>;
+  /** Next page token. */
+  nextPageToken?: string;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+}
+
+export const ListToolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tools: Schema.optional(Schema.Array(Tool)),
+  nextPageToken: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "ListToolsResponse" });
 
 export interface ExecuteSqlQueryResponse {
   /** In the case of successful execution of the query the response contains results returned by the external system. For example, the result rows of the query are contained in the 'results' Struct list - "results": [ { "field1": "val1", "field2": "val2",.. },.. ] Each Struct row can contain fields any type of like nested Structs or lists. */
   results?: Array<Record<string, unknown>>;
 }
 
-export const ExecuteSqlQueryResponse: Schema.Schema<ExecuteSqlQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExecuteSqlQueryResponse",
-  }) as any as Schema.Schema<ExecuteSqlQueryResponse>;
+export const ExecuteSqlQueryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "ExecuteSqlQueryResponse" });
 
-export interface ProvisionedResource {
-  /** Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for example: 'compute-instance', 'compute-disk', 'compute-autoscaler'. */
-  resourceType?: string;
-  /** URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)". */
-  resourceUrl?: string;
+export interface AuthCodeData {
+  /** OAuth PKCE verifier, needed if PKCE is enabled for this particular connection. */
+  pkceVerifier?: string;
+  /** OAuth redirect URI passed in during the auth code flow, required by some OAuth backends. */
+  redirectUri?: string;
+  /** OAuth authorization code. */
+  authCode?: string;
+  /** Scopes the connection will request when the user performs the auth code flow. */
+  scopes?: Array<string>;
 }
 
-export const ProvisionedResource: Schema.Schema<ProvisionedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      resourceUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProvisionedResource",
-  }) as any as Schema.Schema<ProvisionedResource>;
+export const AuthCodeData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pkceVerifier: Schema.optional(Schema.String),
+  redirectUri: Schema.optional(Schema.String),
+  authCode: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuthCodeData" });
 
-export interface SloEligibility {
-  /** Whether an instance is eligible or ineligible. */
-  eligible?: boolean;
-  /** User-defined reason for the current value of instance eligibility. Usually, this can be directly mapped to the internal state. An empty reason is allowed. */
-  reason?: string;
+export interface OAuth2Config {
+  /** Client secret for the OAuth2 flow. */
+  clientSecret?: string;
+  /** Client ID for the OAuth2 flow. */
+  clientId?: string;
+  /** Authorization Server URL/Token Endpoint for Authorization Code Flow */
+  authUri?: string;
 }
 
-export const SloEligibility: Schema.Schema<SloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eligible: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SloEligibility",
-  }) as any as Schema.Schema<SloEligibility>;
+export const OAuth2Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientSecret: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  authUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "OAuth2Config" });
 
-export interface PerSliSloEligibility {
-  /** An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI which has not been declared in the binary flags, there will be an error message emitted in the Eligibility Exporter log and the metric for the SLI in question will not be emitted. */
-  eligibilities?: Record<string, SloEligibility>;
+export interface ExchangeAuthCodeRequest {
+  /** ExecutionConfig contains the configuration for the execution of the request. */
+  executionConfig?: ExecutionConfig;
+  /** Optional. AuthCodeData contains the data the runtime requires to exchange for access and refresh tokens. If the data is not provided, the runtime will read the data from the secret manager. */
+  authCodeData?: AuthCodeData;
+  /** OAuth2Config contains the OAuth2 config for the connection. */
+  oauth2Config?: OAuth2Config;
 }
 
-export const PerSliSloEligibility: Schema.Schema<PerSliSloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eligibilities: Schema.optional(
-        Schema.Record(Schema.String, SloEligibility),
-      ),
-    }),
-  ).annotate({
-    identifier: "PerSliSloEligibility",
-  }) as any as Schema.Schema<PerSliSloEligibility>;
-
-export interface NodeSloMetadata {
-  /** The id of the node. This should be equal to SaasInstanceNode.node_id. */
-  nodeId?: string;
-  /** The location of the node, if different from instance location. */
-  location?: string;
-  /** If present, this will override eligibility for the node coming from instance or exclusions for specified SLIs. */
-  perSliEligibility?: PerSliSloEligibility;
-}
-
-export const NodeSloMetadata: Schema.Schema<NodeSloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeId: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      perSliEligibility: Schema.optional(PerSliSloEligibility),
-    }),
-  ).annotate({
-    identifier: "NodeSloMetadata",
-  }) as any as Schema.Schema<NodeSloMetadata>;
-
-export interface SloMetadata {
-  /** Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty. */
-  tier?: string;
-  /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
-  nodes?: Array<NodeSloMetadata>;
-  /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
-  perSliEligibility?: PerSliSloEligibility;
-}
-
-export const SloMetadata: Schema.Schema<SloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tier: Schema.optional(Schema.String),
-      nodes: Schema.optional(Schema.Array(NodeSloMetadata)),
-      perSliEligibility: Schema.optional(PerSliSloEligibility),
-    }),
-  ).annotate({
-    identifier: "SloMetadata",
-  }) as any as Schema.Schema<SloMetadata>;
+export const ExchangeAuthCodeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionConfig: Schema.optional(ExecutionConfig),
+    authCodeData: Schema.optional(AuthCodeData),
+    oauth2Config: Schema.optional(OAuth2Config),
+  }).annotate({ identifier: "ExchangeAuthCodeRequest" });
 
 export interface MaintenanceSchedule {
-  /** The scheduled start time for the maintenance. */
-  startTime?: string;
+  /** schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule. It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance cannot be scheduled to start beyond this deadline. */
+  scheduleDeadlineTime?: string;
   /** The scheduled end time for the maintenance. */
   endTime?: string;
   /** This field is deprecated, and will be always set to true since reschedule can happen multiple times now. This field should not be removed until all service producers remove this for their customers. */
   canReschedule?: boolean;
+  /** The scheduled start time for the maintenance. */
+  startTime?: string;
   /** The rollout management policy this maintenance schedule is associated with. When doing reschedule update request, the reschedule should be against this given policy. */
   rolloutManagementPolicy?: string;
-  /** schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule. It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance cannot be scheduled to start beyond this deadline. */
-  scheduleDeadlineTime?: string;
 }
 
-export const MaintenanceSchedule: Schema.Schema<MaintenanceSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      canReschedule: Schema.optional(Schema.Boolean),
-      rolloutManagementPolicy: Schema.optional(Schema.String),
-      scheduleDeadlineTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceSchedule",
-  }) as any as Schema.Schema<MaintenanceSchedule>;
-
-export interface TimeOfDay {
-  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  minutes?: number;
-  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
-  nanos?: number;
-}
-
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
-
-export interface DailyCycle {
-  /** Time within the day to start the operations. */
-  startTime?: TimeOfDay;
-  /** Output only. Duration of the time window, set by service producer. */
-  duration?: string;
-}
-
-export const DailyCycle: Schema.Schema<DailyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DailyCycle" }) as any as Schema.Schema<DailyCycle>;
+export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheduleDeadlineTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  canReschedule: Schema.optional(Schema.Boolean),
+  startTime: Schema.optional(Schema.String),
+  rolloutManagementPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceSchedule" });
 
 export interface Schedule {
   /** Allows to define schedule that runs specified day of the week. */
@@ -1417,89 +826,46 @@ export interface Schedule {
   duration?: string;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.String),
-      startTime: Schema.optional(TimeOfDay),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Schedule" }) as any as Schema.Schema<Schedule>;
+export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.String),
+  startTime: Schema.optional(TimeOfDay),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "Schedule" });
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
   schedule?: Array<Schedule>;
 }
 
-export const WeeklyCycle: Schema.Schema<WeeklyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedule: Schema.optional(Schema.Array(Schedule)),
-    }),
-  ).annotate({
-    identifier: "WeeklyCycle",
-  }) as any as Schema.Schema<WeeklyCycle>;
+export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schedule: Schema.optional(Schema.Array(Schedule)),
+}).annotate({ identifier: "WeeklyCycle" });
+
+export interface DailyCycle {
+  /** Time within the day to start the operations. */
+  startTime?: TimeOfDay;
+  /** Output only. Duration of the time window, set by service producer. */
+  duration?: string;
+}
+
+export const DailyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(TimeOfDay),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "DailyCycle" });
 
 export interface MaintenanceWindow {
-  /** Daily cycle. */
-  dailyCycle?: DailyCycle;
   /** Weekly cycle. */
   weeklyCycle?: WeeklyCycle;
+  /** Daily cycle. */
+  dailyCycle?: DailyCycle;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailyCycle: Schema.optional(DailyCycle),
-      weeklyCycle: Schema.optional(WeeklyCycle),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
-
-export interface Connectors_Date {
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-}
-
-export const Connectors_Date: Schema.Schema<Connectors_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Connectors_Date",
-  }) as any as Schema.Schema<Connectors_Date>;
-
-export interface DenyMaintenancePeriod {
-  /** Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be the same or after the start. */
-  startDate?: Connectors_Date;
-  /** Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be before the end. */
-  endDate?: Connectors_Date;
-  /** Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC */
-  time?: TimeOfDay;
-}
-
-export const DenyMaintenancePeriod: Schema.Schema<DenyMaintenancePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Connectors_Date),
-      endDate: Schema.optional(Connectors_Date),
-      time: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "DenyMaintenancePeriod",
-  }) as any as Schema.Schema<DenyMaintenancePeriod>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weeklyCycle: Schema.optional(WeeklyCycle),
+  dailyCycle: Schema.optional(DailyCycle),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface UpdatePolicy {
-  /** Optional. Maintenance window that is applied to resources covered by this policy. */
-  window?: MaintenanceWindow;
   /** Optional. Relative scheduling channel applied to resource. */
   channel?:
     | "UPDATE_CHANNEL_UNSPECIFIED"
@@ -1509,32 +875,27 @@ export interface UpdatePolicy {
     | "WEEK2"
     | "WEEK5"
     | (string & {});
+  /** Optional. Maintenance window that is applied to resources covered by this policy. */
+  window?: MaintenanceWindow;
   /** Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. The protocol supports zero-to-many such periods, but the current SLM Rollout implementation only supports zero-to-one. */
   denyMaintenancePeriods?: Array<DenyMaintenancePeriod>;
 }
 
-export const UpdatePolicy: Schema.Schema<UpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      window: Schema.optional(MaintenanceWindow),
-      channel: Schema.optional(Schema.String),
-      denyMaintenancePeriods: Schema.optional(
-        Schema.Array(DenyMaintenancePeriod),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdatePolicy",
-  }) as any as Schema.Schema<UpdatePolicy>;
+export const UpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channel: Schema.optional(Schema.String),
+  window: Schema.optional(MaintenanceWindow),
+  denyMaintenancePeriods: Schema.optional(Schema.Array(DenyMaintenancePeriod)),
+}).annotate({ identifier: "UpdatePolicy" });
 
 export interface MaintenancePolicy {
-  /** Required. MaintenancePolicy name using the form: `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}` where {project_id} refers to a GCP consumer project ID, {location_id} refers to a GCP region/zone, {maintenance_policy_id} must be 1-63 characters long and match the regular expression `[a-z0-9]([-a-z0-9]*[a-z0-9])?`. */
-  name?: string;
-  /** Output only. The time when the resource was created. */
-  createTime?: string;
-  /** Output only. The time when the resource was updated. */
-  updateTime?: string;
   /** Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512. */
   description?: string;
+  /** Output only. The time when the resource was created. */
+  createTime?: string;
+  /** Required. MaintenancePolicy name using the form: `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}` where {project_id} refers to a GCP consumer project ID, {location_id} refers to a GCP region/zone, {maintenance_policy_id} must be 1-63 characters long and match the regular expression `[a-z0-9]([-a-z0-9]*[a-z0-9])?`. */
+  name?: string;
+  /** Output only. The time when the resource was updated. */
+  updateTime?: string;
   /** Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both the key and the value are arbitrary strings provided by the user. */
   labels?: Record<string, string>;
   /** Optional. The state of the policy. */
@@ -1543,66 +904,85 @@ export interface MaintenancePolicy {
   updatePolicy?: UpdatePolicy;
 }
 
-export const MaintenancePolicy: Schema.Schema<MaintenancePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      updatePolicy: Schema.optional(UpdatePolicy),
-    }),
-  ).annotate({
-    identifier: "MaintenancePolicy",
-  }) as any as Schema.Schema<MaintenancePolicy>;
+export const MaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+  updatePolicy: Schema.optional(UpdatePolicy),
+}).annotate({ identifier: "MaintenancePolicy" });
 
 export interface MaintenanceSettings {
-  /** Optional. Exclude instance from maintenance. When true, rollout service will not attempt maintenance on the instance. Rollout service will include the instance in reported rollout progress as not attempted. */
-  exclude?: boolean;
   /** Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name of the oneof policy name defined in MaintenancePolicy, and the embedded policy must define the same policy type. For details, please refer to go/mr-user-guide. Should not be set if maintenance_policy_names is set. If only the name is needed, then only populate MaintenancePolicy.name. */
   maintenancePolicies?: Record<string, MaintenancePolicy>;
+  /** Optional. Exclude instance from maintenance. When true, rollout service will not attempt maintenance on the instance. Rollout service will include the instance in reported rollout progress as not attempted. */
+  exclude?: boolean;
   /** Optional. If the update call is triggered from rollback, set the value as true. */
   isRollback?: boolean;
 }
 
-export const MaintenanceSettings: Schema.Schema<MaintenanceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exclude: Schema.optional(Schema.Boolean),
-      maintenancePolicies: Schema.optional(
-        Schema.Record(Schema.String, MaintenancePolicy),
-      ),
-      isRollback: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MaintenanceSettings",
-  }) as any as Schema.Schema<MaintenanceSettings>;
+export const MaintenanceSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maintenancePolicies: Schema.optional(
+    Schema.Record(Schema.String, MaintenancePolicy),
+  ),
+  exclude: Schema.optional(Schema.Boolean),
+  isRollback: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "MaintenanceSettings" });
+
+export interface NodeSloMetadata {
+  /** The location of the node, if different from instance location. */
+  location?: string;
+  /** The id of the node. This should be equal to SaasInstanceNode.node_id. */
+  nodeId?: string;
+  /** If present, this will override eligibility for the node coming from instance or exclusions for specified SLIs. */
+  perSliEligibility?: PerSliSloEligibility;
+}
+
+export const NodeSloMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  nodeId: Schema.optional(Schema.String),
+  perSliEligibility: Schema.optional(PerSliSloEligibility),
+}).annotate({ identifier: "NodeSloMetadata" });
+
+export interface SloMetadata {
+  /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
+  nodes?: Array<NodeSloMetadata>;
+  /** Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty. */
+  tier?: string;
+  /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
+  perSliEligibility?: PerSliSloEligibility;
+}
+
+export const SloMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodes: Schema.optional(Schema.Array(NodeSloMetadata)),
+  tier: Schema.optional(Schema.String),
+  perSliEligibility: Schema.optional(PerSliSloEligibility),
+}).annotate({ identifier: "SloMetadata" });
 
 export interface NotificationParameter {
   /** Optional. Array of string values. e.g. instance's replica information. */
   values?: Array<string>;
 }
 
-export const NotificationParameter: Schema.Schema<NotificationParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NotificationParameter",
-  }) as any as Schema.Schema<NotificationParameter>;
+export const NotificationParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "NotificationParameter" });
+
+export interface ProvisionedResource {
+  /** Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for example: 'compute-instance', 'compute-disk', 'compute-autoscaler'. */
+  resourceType?: string;
+  /** URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)". */
+  resourceUrl?: string;
+}
+
+export const ProvisionedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  resourceUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProvisionedResource" });
 
 export interface Instance {
-  /** Unique name of the resource. It uses the form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}` Note: This name is passed, stored and logged across the rollout system. So use of consumer project_id or any other consumer PII in the name is strongly discouraged for wipeout (go/wipeout) compliance. See go/elysium/project_ids#storage-guidance for more details. */
-  name?: string;
-  /** Output only. Timestamp when the resource was created. */
-  createTime?: string;
-  /** Output only. Timestamp when the resource was last modified. */
-  updateTime?: string;
-  /** Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both the key and the value are arbitrary strings provided by the user. */
-  labels?: Record<string, string>;
   /** Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to use). */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1613,71 +993,511 @@ export interface Instance {
     | "DELETING"
     | "ERROR"
     | (string & {});
-  /** Software versions that are used to deploy this instance. This can be mutated by rollout services. */
-  softwareVersions?: Record<string, string>;
-  /** Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy type. For details, please refer to go/mr-user-guide. Should not be set if maintenance_settings.maintenance_policies is set. */
-  maintenancePolicyNames?: Record<string, string>;
+  /** Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this field. Instead they should use software_versions. */
+  slmInstanceTemplate?: string;
+  /** Unique name of the resource. It uses the form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}` Note: This name is passed, stored and logged across the rollout system. So use of consumer project_id or any other consumer PII in the name is strongly discouraged for wipeout (go/wipeout) compliance. See go/elysium/project_ids#storage-guidance for more details. */
+  name?: string;
+  /** Optional. The MaintenanceSettings associated with instance. */
+  maintenanceSettings?: MaintenanceSettings;
   /** Output only. ID of the associated GCP tenant project. See go/get-instance-metadata. */
   tenantProjectId?: string;
   /** Output only. Custom string attributes used primarily to expose producer-specific information in monitoring dashboards. See go/get-instance-metadata. */
   producerMetadata?: Record<string, string>;
-  /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
-  provisionedResources?: Array<ProvisionedResource>;
+  /** Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy type. For details, please refer to go/mr-user-guide. Should not be set if maintenance_settings.maintenance_policies is set. */
+  maintenancePolicyNames?: Record<string, string>;
+  /** Output only. Timestamp when the resource was last modified. */
+  updateTime?: string;
   /** Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform. See go/cloud-ssa-standard-slo for feature description. */
   sloMetadata?: SloMetadata;
   /** The MaintenanceSchedule contains the scheduling information of published maintenance schedule with same key as software_versions. */
   maintenanceSchedules?: Record<string, MaintenanceSchedule>;
   /** consumer_defined_name is the name of the instance set by the service consumers. Generally this is different from the `name` field which reperesents the system-assigned id of the instance which the service consumers do not recognize. This is a required field for tenants onboarding to Maintenance Window notifications (go/slm-rollout-maintenance-policies#prerequisites). */
   consumerDefinedName?: string;
-  /** Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this field. Instead they should use software_versions. */
-  slmInstanceTemplate?: string;
-  /** Optional. The MaintenanceSettings associated with instance. */
-  maintenanceSettings?: MaintenanceSettings;
-  /** Optional. The instance_type of this instance of format: projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or not. */
-  instanceType?: string;
-  /** Optional. notification_parameter are information that service producers may like to include that is not relevant to Rollout. This parameter will only be passed to Gamma and Cloud Logging for notification/logging purpose. */
-  notificationParameters?: Record<string, NotificationParameter>;
   /** Optional. The consumer_project_number associated with this Apigee instance. This field is added specifically to support Apigee integration with SLM Rollout and UMM. It represents the numerical project ID of the GCP project that consumes this Apigee instance. It is used for SLM rollout notifications and UMM integration, enabling proper mapping to customer projects and log delivery for Apigee instances. This field complements consumer_project_id and may be used for specific Apigee scenarios where the numerical ID is required. */
   consumerProjectNumber?: string;
+  /** Output only. Timestamp when the resource was created. */
+  createTime?: string;
+  /** Software versions that are used to deploy this instance. This can be mutated by rollout services. */
+  softwareVersions?: Record<string, string>;
+  /** Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both the key and the value are arbitrary strings provided by the user. */
+  labels?: Record<string, string>;
+  /** Optional. notification_parameter are information that service producers may like to include that is not relevant to Rollout. This parameter will only be passed to Gamma and Cloud Logging for notification/logging purpose. */
+  notificationParameters?: Record<string, NotificationParameter>;
+  /** Optional. The instance_type of this instance of format: projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or not. */
+  instanceType?: string;
+  /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
+  provisionedResources?: Array<ProvisionedResource>;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      softwareVersions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  slmInstanceTemplate: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  maintenanceSettings: Schema.optional(MaintenanceSettings),
+  tenantProjectId: Schema.optional(Schema.String),
+  producerMetadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  maintenancePolicyNames: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  updateTime: Schema.optional(Schema.String),
+  sloMetadata: Schema.optional(SloMetadata),
+  maintenanceSchedules: Schema.optional(
+    Schema.Record(Schema.String, MaintenanceSchedule),
+  ),
+  consumerDefinedName: Schema.optional(Schema.String),
+  consumerProjectNumber: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  softwareVersions: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  notificationParameters: Schema.optional(
+    Schema.Record(Schema.String, NotificationParameter),
+  ),
+  instanceType: Schema.optional(Schema.String),
+  provisionedResources: Schema.optional(Schema.Array(ProvisionedResource)),
+}).annotate({ identifier: "Instance" });
+
+export interface CheckStatusResponse {
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+  /** State of the connector. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "ERROR"
+    | "AUTH_ERROR"
+    | (string & {});
+  /** When the connector is not in ACTIVE state, the description must be populated to specify the reason why it's not in ACTIVE state. */
+  description?: string;
+}
+
+export const CheckStatusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  state: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "CheckStatusResponse" });
+
+export interface ToolName {
+  /** Tool name that was generated in the list tools call. */
+  name?: string;
+  /** Operation for which the tool was generated. */
+  operation?:
+    | "OPERATION_UNSPECIFIED"
+    | "LIST"
+    | "GET"
+    | "CREATE"
+    | "UPDATE"
+    | "DELETE"
+    | (string & {});
+  /** Entity name for which the tool was generated. */
+  entityName?: string;
+}
+
+export const ToolName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  entityName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolName" });
+
+export interface ListCustomToolNamesResponse {
+  /** List of custom tools. */
+  toolNames?: Array<ToolName>;
+}
+
+export const ListCustomToolNamesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolNames: Schema.optional(Schema.Array(ToolName)),
+  }).annotate({ identifier: "ListCustomToolNamesResponse" });
+
+export interface ExecuteToolRequest {
+  /** execution config for the request. */
+  executionConfig?: ExecutionConfig;
+  /** Input parameters for the tool. */
+  parameters?: Record<string, unknown>;
+  /** Tool definition for the tool to be executed. */
+  toolDefinition?: Record<string, unknown>;
+}
+
+export const ExecuteToolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionConfig: Schema.optional(ExecutionConfig),
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  toolDefinition: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ExecuteToolRequest" });
+
+export interface AccessCredentials {
+  /** OAuth access token. */
+  accessToken?: string;
+  /** OAuth refresh token. */
+  refreshToken?: string;
+  /** Duration till the access token expires. */
+  expiresIn?: string;
+}
+
+export const AccessCredentials = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessToken: Schema.optional(Schema.String),
+  refreshToken: Schema.optional(Schema.String),
+  expiresIn: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessCredentials" });
+
+export interface ExchangeAuthCodeResponse {
+  accessCredentials?: AccessCredentials;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+}
+
+export const ExchangeAuthCodeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessCredentials: Schema.optional(AccessCredentials),
+    metadata: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Record(Schema.String, Schema.Unknown),
       ),
-      maintenancePolicyNames: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "ExchangeAuthCodeResponse" });
+
+export interface Query {
+  /** Sets the number of seconds the driver will wait for a query to execute. */
+  timeout?: string;
+  /** Sets the limit for the maximum number of rows returned after the query execution. */
+  maxRows?: string;
+  /** In the struct, the value corresponds to the value of query parameter and date type corresponds to the date type of the query parameter. */
+  queryParameters?: Array<QueryParameter>;
+  /** Required. Sql query to execute. */
+  query?: string;
+}
+
+export const Query = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeout: Schema.optional(Schema.String),
+  maxRows: Schema.optional(Schema.String),
+  queryParameters: Schema.optional(Schema.Array(QueryParameter)),
+  query: Schema.optional(Schema.String),
+}).annotate({ identifier: "Query" });
+
+export interface CheckReadinessResponse {
+  status?: string;
+}
+
+export const CheckReadinessResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    status: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CheckReadinessResponse" });
+
+export interface RefreshAccessTokenResponse {
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+  accessCredentials?: AccessCredentials;
+}
+
+export const RefreshAccessTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Record(Schema.String, Schema.Unknown),
       ),
-      tenantProjectId: Schema.optional(Schema.String),
-      producerMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+    ),
+    accessCredentials: Schema.optional(AccessCredentials),
+  }).annotate({ identifier: "RefreshAccessTokenResponse" });
+
+export interface GetResourcePostRequest {
+  /** execution config for the request. */
+  executionConfig?: ExecutionConfig;
+  /** List of tool specifications. */
+  toolSpec?: ToolSpec;
+}
+
+export const GetResourcePostRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    executionConfig: Schema.optional(ExecutionConfig),
+    toolSpec: Schema.optional(ToolSpec),
+  },
+).annotate({ identifier: "GetResourcePostRequest" });
+
+export interface ExecuteSqlQueryRequest {
+  /** Required. SQL statement passed by clients like Integration Platform, the query is passed as-is to the driver used for interfacing with external systems. */
+  query?: Query;
+}
+
+export const ExecuteSqlQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    query: Schema.optional(Query),
+  },
+).annotate({ identifier: "ExecuteSqlQueryRequest" });
+
+export interface GenerateCustomToolspecResponse {
+  /** tool spec that has tool_defitions array containing the tools for all sted tool_names. */
+  toolSpec?: ToolSpec;
+}
+
+export const GenerateCustomToolspecResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolSpec: Schema.optional(ToolSpec),
+  }).annotate({ identifier: "GenerateCustomToolspecResponse" });
+
+export interface ExecuteActionResponse {
+  /** In the case of successful invocation of the specified action, the results Struct contains values based on the response of the action invoked. 1. If the action execution produces any entities as a result, they are returned as an array of Structs with the 'key' being the field name and the 'value' being the value of that field in each result row. { 'results': [{'key': 'value'}, ...] } */
+  results?: Array<Record<string, unknown>>;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+}
+
+export const ExecuteActionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  results: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "ExecuteActionResponse" });
+
+export interface RefreshAccessTokenRequest {
+  /** ExecutionConfig contains the configuration for the execution of the request. */
+  executionConfig?: ExecutionConfig;
+  /** Optional. Refresh Token String. If the Refresh Token is not provided, the runtime will read the data from the secret manager. */
+  refreshToken?: string;
+  /** OAuth2Config contains the OAuth2 config for the connection. */
+  oauth2Config?: OAuth2Config;
+}
+
+export const RefreshAccessTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionConfig: Schema.optional(ExecutionConfig),
+    refreshToken: Schema.optional(Schema.String),
+    oauth2Config: Schema.optional(OAuth2Config),
+  }).annotate({ identifier: "RefreshAccessTokenRequest" });
+
+export interface ExecuteActionRequest {
+  /** Parameters for executing the action. The parameters can be key/value pairs or nested structs. */
+  parameters?: Record<string, unknown>;
+  /** Execution config for the request. */
+  executionConfig?: ExecutionConfig;
+}
+
+export const ExecuteActionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  executionConfig: Schema.optional(ExecutionConfig),
+}).annotate({ identifier: "ExecuteActionRequest" });
+
+export interface ExecuteToolResponse {
+  /** Output from the tool execution. */
+  result?: Record<string, unknown>;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+  /** Metadata for the tool execution result. */
+  _meta?: Record<string, unknown>;
+}
+
+export const ExecuteToolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  _meta: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ExecuteToolResponse" });
+
+export interface Resource {
+  /** A human-readable name for this resource. */
+  name?: string;
+  /** The URI of this resource. */
+  uri?: string;
+  /** A description of what this resource represents. */
+  description?: string;
+  /** Metadata for the resource. */
+  _meta?: Record<string, unknown>;
+  /** The MIME type of this resource, if known. */
+  mimeType?: string;
+  /** The size of the raw resource content, in bytes, if known. */
+  size?: string;
+}
+
+export const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  _meta: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  mimeType: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+}).annotate({ identifier: "Resource" });
+
+export interface Empty {}
+
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
+
+export interface ListResourcesResponse {
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+  /** List of available resources. */
+  resources?: Array<Resource>;
+  /** Next page token if more resources available. */
+  nextPageToken?: string;
+}
+
+export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  resources: Schema.optional(Schema.Array(Resource)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListResourcesResponse" });
+
+export interface ListEntityTypesResponse {
+  /** Next page token if more entity types available. */
+  nextPageToken?: string;
+  /** List of metadata related to all entity types. */
+  types?: Array<EntityType>;
+  /** List of entity type names which contain unsupported Datatypes. Check datatype.proto for more information. */
+  unsupportedTypeNames?: Array<string>;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+}
+
+export const ListEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    types: Schema.optional(Schema.Array(EntityType)),
+    unsupportedTypeNames: Schema.optional(Schema.Array(Schema.String)),
+    metadata: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Record(Schema.String, Schema.Unknown),
       ),
-      provisionedResources: Schema.optional(Schema.Array(ProvisionedResource)),
-      sloMetadata: Schema.optional(SloMetadata),
-      maintenanceSchedules: Schema.optional(
-        Schema.Record(Schema.String, MaintenanceSchedule),
-      ),
-      consumerDefinedName: Schema.optional(Schema.String),
-      slmInstanceTemplate: Schema.optional(Schema.String),
-      maintenanceSettings: Schema.optional(MaintenanceSettings),
-      instanceType: Schema.optional(Schema.String),
-      notificationParameters: Schema.optional(
-        Schema.Record(Schema.String, NotificationParameter),
-      ),
-      consumerProjectNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+    ),
+  }).annotate({ identifier: "ListEntityTypesResponse" });
+
+export interface ListToolsPostRequest {
+  /** execution config for the request. */
+  executionConfig?: ExecutionConfig;
+  /** List of tool specifications. */
+  toolSpec?: ToolSpec;
+  /** Page token. */
+  pageToken?: string;
+  /** Page size. */
+  pageSize?: number;
+}
+
+export const ListToolsPostRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionConfig: Schema.optional(ExecutionConfig),
+  toolSpec: Schema.optional(ToolSpec),
+  pageToken: Schema.optional(Schema.String),
+  pageSize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ListToolsPostRequest" });
+
+export interface GetResourceResponse {
+  /** Metadata for the resource. */
+  _meta?: Record<string, unknown>;
+  /** The content of the resource. */
+  data?: string;
+  /** The MIME type of the resource. */
+  mimeType?: string;
+  /** Metadata like service latency, etc. */
+  metadata?: Record<string, Record<string, unknown>>;
+}
+
+export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  _meta: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  data: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+  metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GetResourceResponse" });
+
+export interface GenerateCustomToolspecRequest {
+  /** list of tools to be generated. */
+  toolNames?: Array<ToolName>;
+}
+
+export const GenerateCustomToolspecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolNames: Schema.optional(Schema.Array(ToolName)),
+  }).annotate({ identifier: "GenerateCustomToolspecRequest" });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
+
+export interface ListCustomToolNamesProjectsLocationsConnectionsRequest {
+  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
+  name: string;
+}
+
+export const ListCustomToolNamesProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:listCustomToolNames",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>;
+
+export type ListCustomToolNamesProjectsLocationsConnectionsResponse =
+  ListCustomToolNamesResponse;
+export const ListCustomToolNamesProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListCustomToolNamesResponse;
+
+export type ListCustomToolNamesProjectsLocationsConnectionsError =
+  DefaultErrors;
+
+/** Lists custom tool names. */
+export const listCustomToolNamesProjectsLocationsConnections: API.OperationMethod<
+  ListCustomToolNamesProjectsLocationsConnectionsRequest,
+  ListCustomToolNamesProjectsLocationsConnectionsResponse,
+  ListCustomToolNamesProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListCustomToolNamesProjectsLocationsConnectionsRequest,
+  output: ListCustomToolNamesProjectsLocationsConnectionsResponse,
+  errors: [],
+}));
+
+export interface RefreshAccessTokenProjectsLocationsConnectionsRequest {
+  name: string;
+  /** Request body */
+  body?: RefreshAccessTokenRequest;
+}
+
+export const RefreshAccessTokenProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RefreshAccessTokenRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:refreshAccessToken",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<RefreshAccessTokenProjectsLocationsConnectionsRequest>;
+
+export type RefreshAccessTokenProjectsLocationsConnectionsResponse =
+  RefreshAccessTokenResponse;
+export const RefreshAccessTokenProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RefreshAccessTokenResponse;
+
+export type RefreshAccessTokenProjectsLocationsConnectionsError = DefaultErrors;
+
+/** RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access token (and new associated credentials). */
+export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod<
+  RefreshAccessTokenProjectsLocationsConnectionsRequest,
+  RefreshAccessTokenProjectsLocationsConnectionsResponse,
+  RefreshAccessTokenProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RefreshAccessTokenProjectsLocationsConnectionsRequest,
+  output: RefreshAccessTokenProjectsLocationsConnectionsResponse,
+  errors: [],
+}));
 
 export interface CheckStatusProjectsLocationsConnectionsRequest {
   name: string;
@@ -1715,6 +1535,86 @@ export const checkStatusProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckStatusProjectsLocationsConnectionsRequest,
   output: CheckStatusProjectsLocationsConnectionsResponse,
+  errors: [],
+}));
+
+export interface GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest {
+  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
+  name: string;
+  /** Request body */
+  body?: GenerateCustomToolspecRequest;
+}
+
+export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GenerateCustomToolspecRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:generateConnectionToolspecOverride",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest>;
+
+export type GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse =
+  GenerateCustomToolspecResponse;
+export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GenerateCustomToolspecResponse;
+
+export type GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError =
+  DefaultErrors;
+
+/** Generate toolspec override for the given list of toolNames. */
+export const generateConnectionToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
+  GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest,
+  GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse,
+  GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest,
+  output:
+    GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse,
+  errors: [],
+}));
+
+export interface ExecuteSqlQueryProjectsLocationsConnectionsRequest {
+  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
+  connection: string;
+  /** Request body */
+  body?: ExecuteSqlQueryRequest;
+}
+
+export const ExecuteSqlQueryProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection: Schema.String.pipe(T.HttpPath("connection")),
+    body: Schema.optional(ExecuteSqlQueryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:executeSqlQuery",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>;
+
+export type ExecuteSqlQueryProjectsLocationsConnectionsResponse =
+  ExecuteSqlQueryResponse;
+export const ExecuteSqlQueryProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteSqlQueryResponse;
+
+export type ExecuteSqlQueryProjectsLocationsConnectionsError = DefaultErrors;
+
+/** Executes a SQL statement specified in the body of the request. An example of this SQL statement in the case of Salesforce connector would be 'select * from Account a, Order o where a.Id = o.AccountId'. */
+export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
+  ExecuteSqlQueryProjectsLocationsConnectionsRequest,
+  ExecuteSqlQueryProjectsLocationsConnectionsResponse,
+  ExecuteSqlQueryProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteSqlQueryProjectsLocationsConnectionsRequest,
+  output: ExecuteSqlQueryProjectsLocationsConnectionsResponse,
   errors: [],
 }));
 
@@ -1790,44 +1690,6 @@ export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
   errors: [],
 }));
 
-export interface RefreshAccessTokenProjectsLocationsConnectionsRequest {
-  name: string;
-  /** Request body */
-  body?: RefreshAccessTokenRequest;
-}
-
-export const RefreshAccessTokenProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RefreshAccessTokenRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:refreshAccessToken",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RefreshAccessTokenProjectsLocationsConnectionsRequest>;
-
-export type RefreshAccessTokenProjectsLocationsConnectionsResponse =
-  RefreshAccessTokenResponse;
-export const RefreshAccessTokenProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RefreshAccessTokenResponse;
-
-export type RefreshAccessTokenProjectsLocationsConnectionsError = DefaultErrors;
-
-/** RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access token (and new associated credentials). */
-export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod<
-  RefreshAccessTokenProjectsLocationsConnectionsRequest,
-  RefreshAccessTokenProjectsLocationsConnectionsResponse,
-  RefreshAccessTokenProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RefreshAccessTokenProjectsLocationsConnectionsRequest,
-  output: RefreshAccessTokenProjectsLocationsConnectionsResponse,
-  errors: [],
-}));
-
 export interface ToolsProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   parent: string;
@@ -1866,168 +1728,13 @@ export const toolsProjectsLocationsConnections: API.OperationMethod<
   errors: [],
 }));
 
-export interface GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest {
-  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
-  name: string;
-  /** Request body */
-  body?: GenerateCustomToolspecRequest;
-}
-
-export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GenerateCustomToolspecRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:generateConnectionToolspecOverride",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest>;
-
-export type GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse =
-  GenerateCustomToolspecResponse;
-export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateCustomToolspecResponse;
-
-export type GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError =
-  DefaultErrors;
-
-/** Generate toolspec override for the given list of toolNames. */
-export const generateConnectionToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
-  GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest,
-  GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse,
-  GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest,
-  output:
-    GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse,
-  errors: [],
-}));
-
-export interface ListCustomToolNamesProjectsLocationsConnectionsRequest {
-  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
-  name: string;
-}
-
-export const ListCustomToolNamesProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:listCustomToolNames",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>;
-
-export type ListCustomToolNamesProjectsLocationsConnectionsResponse =
-  ListCustomToolNamesResponse;
-export const ListCustomToolNamesProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCustomToolNamesResponse;
-
-export type ListCustomToolNamesProjectsLocationsConnectionsError =
-  DefaultErrors;
-
-/** Lists custom tool names. */
-export const listCustomToolNamesProjectsLocationsConnections: API.OperationMethod<
-  ListCustomToolNamesProjectsLocationsConnectionsRequest,
-  ListCustomToolNamesProjectsLocationsConnectionsResponse,
-  ListCustomToolNamesProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListCustomToolNamesProjectsLocationsConnectionsRequest,
-  output: ListCustomToolNamesProjectsLocationsConnectionsResponse,
-  errors: [],
-}));
-
-export interface ExecuteSqlQueryProjectsLocationsConnectionsRequest {
-  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
-  connection: string;
-  /** Request body */
-  body?: ExecuteSqlQueryRequest;
-}
-
-export const ExecuteSqlQueryProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connection: Schema.String.pipe(T.HttpPath("connection")),
-    body: Schema.optional(ExecuteSqlQueryRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:executeSqlQuery",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>;
-
-export type ExecuteSqlQueryProjectsLocationsConnectionsResponse =
-  ExecuteSqlQueryResponse;
-export const ExecuteSqlQueryProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExecuteSqlQueryResponse;
-
-export type ExecuteSqlQueryProjectsLocationsConnectionsError = DefaultErrors;
-
-/** Executes a SQL statement specified in the body of the request. An example of this SQL statement in the case of Salesforce connector would be 'select * from Account a, Order o where a.Id = o.AccountId'. */
-export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
-  ExecuteSqlQueryProjectsLocationsConnectionsRequest,
-  ExecuteSqlQueryProjectsLocationsConnectionsResponse,
-  ExecuteSqlQueryProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ExecuteSqlQueryProjectsLocationsConnectionsRequest,
-  output: ExecuteSqlQueryProjectsLocationsConnectionsResponse,
-  errors: [],
-}));
-
-export interface ExecuteProjectsLocationsConnectionsActionsRequest {
-  /** Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} */
-  name: string;
-  /** Request body */
-  body?: ExecuteActionRequest;
-}
-
-export const ExecuteProjectsLocationsConnectionsActionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ExecuteActionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/actions/{actionsId}:execute",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
-
-export type ExecuteProjectsLocationsConnectionsActionsResponse =
-  ExecuteActionResponse;
-export const ExecuteProjectsLocationsConnectionsActionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ExecuteActionResponse;
-
-export type ExecuteProjectsLocationsConnectionsActionsError = DefaultErrors;
-
-/** Executes an action with the name specified in the request. The input parameters for executing the action are passed through the body of the ExecuteAction request. */
-export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
-  ExecuteProjectsLocationsConnectionsActionsRequest,
-  ExecuteProjectsLocationsConnectionsActionsResponse,
-  ExecuteProjectsLocationsConnectionsActionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ExecuteProjectsLocationsConnectionsActionsRequest,
-  output: ExecuteProjectsLocationsConnectionsActionsResponse,
-  errors: [],
-}));
-
 export interface ListProjectsLocationsConnectionsActionsRequest {
-  /** Required. Parent resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection} */
-  parent: string;
-  /** Number of Actions to return. Defaults to 25. */
-  pageSize?: number;
   /** Page token, return from a previous ListActions call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of actions. */
   pageToken?: string;
+  /** Number of Actions to return. Defaults to 25. */
+  pageSize?: number;
+  /** Required. Parent resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection} */
+  parent: string;
   /** Specifies which fields of the Action are returned in the response. */
   view?:
     | "ACTION_VIEW_UNSPECIFIED"
@@ -2040,9 +1747,9 @@ export interface ListProjectsLocationsConnectionsActionsRequest {
 
 export const ListProjectsLocationsConnectionsActionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     "executionConfig.headers": Schema.optional(Schema.String).pipe(
       T.HttpQuery("executionConfig.headers"),
@@ -2124,11 +1831,50 @@ export const getProjectsLocationsConnectionsActions: API.OperationMethod<
   errors: [],
 }));
 
+export interface ExecuteProjectsLocationsConnectionsActionsRequest {
+  /** Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} */
+  name: string;
+  /** Request body */
+  body?: ExecuteActionRequest;
+}
+
+export const ExecuteProjectsLocationsConnectionsActionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ExecuteActionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/actions/{actionsId}:execute",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
+
+export type ExecuteProjectsLocationsConnectionsActionsResponse =
+  ExecuteActionResponse;
+export const ExecuteProjectsLocationsConnectionsActionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ExecuteActionResponse;
+
+export type ExecuteProjectsLocationsConnectionsActionsError = DefaultErrors;
+
+/** Executes an action with the name specified in the request. The input parameters for executing the action are passed through the body of the ExecuteAction request. */
+export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
+  ExecuteProjectsLocationsConnectionsActionsRequest,
+  ExecuteProjectsLocationsConnectionsActionsResponse,
+  ExecuteProjectsLocationsConnectionsActionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExecuteProjectsLocationsConnectionsActionsRequest,
+  output: ExecuteProjectsLocationsConnectionsActionsResponse,
+  errors: [],
+}));
+
 export interface ListProjectsLocationsConnectionsToolsRequest {
-  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
-  parent: string;
   /** Page size. */
   pageSize?: number;
+  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
+  parent: string;
   /** Page token. */
   pageToken?: string;
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
@@ -2137,8 +1883,8 @@ export interface ListProjectsLocationsConnectionsToolsRequest {
 
 export const ListProjectsLocationsConnectionsToolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     "executionConfig.headers": Schema.optional(Schema.String).pipe(
       T.HttpQuery("executionConfig.headers"),
@@ -2212,11 +1958,51 @@ export const executeProjectsLocationsConnectionsTools: API.OperationMethod<
   errors: [],
 }));
 
+export interface GetResourcePostProjectsLocationsConnectionsResourcesRequest {
+  /** Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} */
+  name: string;
+  /** Request body */
+  body?: GetResourcePostRequest;
+}
+
+export const GetResourcePostProjectsLocationsConnectionsResourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GetResourcePostRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources/{resourcesId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>;
+
+export type GetResourcePostProjectsLocationsConnectionsResourcesResponse =
+  GetResourceResponse;
+export const GetResourcePostProjectsLocationsConnectionsResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GetResourceResponse;
+
+export type GetResourcePostProjectsLocationsConnectionsResourcesError =
+  DefaultErrors;
+
+/** Gets a specific resource with POST. */
+export const getResourcePostProjectsLocationsConnectionsResources: API.OperationMethod<
+  GetResourcePostProjectsLocationsConnectionsResourcesRequest,
+  GetResourcePostProjectsLocationsConnectionsResourcesResponse,
+  GetResourcePostProjectsLocationsConnectionsResourcesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResourcePostProjectsLocationsConnectionsResourcesRequest,
+  output: GetResourcePostProjectsLocationsConnectionsResourcesResponse,
+  errors: [],
+}));
+
 export interface ListProjectsLocationsConnectionsResourcesRequest {
-  /** Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} */
-  parent: string;
   /** Optional. Page size for the request. */
   pageSize?: number;
+  /** Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} */
+  parent: string;
   /** Optional. Page token for the request. */
   pageToken?: string;
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
@@ -2225,8 +2011,8 @@ export interface ListProjectsLocationsConnectionsResourcesRequest {
 
 export const ListProjectsLocationsConnectionsResourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     "executionConfig.headers": Schema.optional(Schema.String).pipe(
       T.HttpQuery("executionConfig.headers"),
@@ -2302,47 +2088,9 @@ export const getProjectsLocationsConnectionsResources: API.OperationMethod<
   errors: [],
 }));
 
-export interface GetResourcePostProjectsLocationsConnectionsResourcesRequest {
-  /** Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} */
-  name: string;
-  /** Request body */
-  body?: GetResourcePostRequest;
-}
-
-export const GetResourcePostProjectsLocationsConnectionsResourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GetResourcePostRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources/{resourcesId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>;
-
-export type GetResourcePostProjectsLocationsConnectionsResourcesResponse =
-  GetResourceResponse;
-export const GetResourcePostProjectsLocationsConnectionsResourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetResourceResponse;
-
-export type GetResourcePostProjectsLocationsConnectionsResourcesError =
-  DefaultErrors;
-
-/** Gets a specific resource with POST. */
-export const getResourcePostProjectsLocationsConnectionsResources: API.OperationMethod<
-  GetResourcePostProjectsLocationsConnectionsResourcesRequest,
-  GetResourcePostProjectsLocationsConnectionsResourcesResponse,
-  GetResourcePostProjectsLocationsConnectionsResourcesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetResourcePostProjectsLocationsConnectionsResourcesRequest,
-  output: GetResourcePostProjectsLocationsConnectionsResourcesResponse,
-  errors: [],
-}));
-
 export interface GetProjectsLocationsConnectionsEntityTypesRequest {
+  /** Context metadata for request could be used to fetch customization of entity type schema. */
+  contextMetadata?: string;
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType} */
   name: string;
   /** Specifies view for entity type schema. */
@@ -2351,19 +2099,17 @@ export interface GetProjectsLocationsConnectionsEntityTypesRequest {
     | "ENTITY_TYPE_SCHEMA_VIEW_BASIC"
     | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED"
     | (string & {});
-  /** Context metadata for request could be used to fetch customization of entity type schema. */
-  contextMetadata?: string;
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
 
 export const GetProjectsLocationsConnectionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     contextMetadata: Schema.optional(Schema.String).pipe(
       T.HttpQuery("contextMetadata"),
     ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     "executionConfig.headers": Schema.optional(Schema.String).pipe(
       T.HttpQuery("executionConfig.headers"),
     ),
@@ -2396,10 +2142,6 @@ export const getProjectsLocationsConnectionsEntityTypes: API.OperationMethod<
 export interface ListProjectsLocationsConnectionsEntityTypesRequest {
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection} */
   parent: string;
-  /** Number of entity types to return. Defaults to 25. */
-  pageSize?: number;
-  /** Page token, return from a previous ListEntityTypes call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of entity types. */
-  pageToken?: string;
   /** Specifies which fields of the Entity Type are returned in the response. */
   view?:
     | "ENTITY_TYPE_VIEW_UNSPECIFIED"
@@ -2408,17 +2150,21 @@ export interface ListProjectsLocationsConnectionsEntityTypesRequest {
     | (string & {});
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
+  /** Page token, return from a previous ListEntityTypes call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of entity types. */
+  pageToken?: string;
+  /** Number of entity types to return. Defaults to 25. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsConnectionsEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     "executionConfig.headers": Schema.optional(Schema.String).pipe(
       T.HttpQuery("executionConfig.headers"),
     ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2450,68 +2196,95 @@ export const listProjectsLocationsConnectionsEntityTypes: API.PaginatedOperation
   },
 }));
 
-export interface ListProjectsLocationsConnectionsEntityTypesEntitiesRequest {
+export interface UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
+  /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
+  "executionConfig.headers"?: string;
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
-  parent: string;
-  /** Number of entity rows to return. Defaults page size = 25. Max page size = 200. */
-  pageSize?: number;
-  /** Page token value if available from a previous request. */
-  pageToken?: string;
-  /** List of 'sort_by' columns to use when returning the results. */
-  sortBy?: string[];
-  /** List of 'sort_order' columns to use when returning the results. */
-  sortOrder?: string[];
-  /** Conditions to be used when listing entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. */
+  entityType: string;
+  /** Required. Conditions to be used when updating entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. */
   conditions?: string;
+  /** Request body */
+  body?: Entity;
+}
+
+export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "executionConfig.headers": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("executionConfig.headers"),
+    ),
+    entityType: Schema.String.pipe(T.HttpPath("entityType")),
+    conditions: Schema.optional(Schema.String).pipe(T.HttpQuery("conditions")),
+    body: Schema.optional(Entity).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities:updateEntitiesWithConditions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+
+export type UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  UpdateEntitiesWithConditionsResponse;
+export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ UpdateEntitiesWithConditionsResponse;
+
+export type UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
+  DefaultErrors;
+
+/** Updates entities based on conditions specified in the request and not on entity id. */
+export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
+  UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+  UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  output:
+    UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest {
+  /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
+  name: string;
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
 
-export const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest =
+export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    sortBy: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("sortBy"),
-    ),
-    sortOrder: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("sortOrder"),
-    ),
-    conditions: Schema.optional(Schema.String).pipe(T.HttpQuery("conditions")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     "executionConfig.headers": Schema.optional(Schema.String).pipe(
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
     T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities",
+      method: "DELETE",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities/{entitiesId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
-export type ListProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  ListEntitiesResponse;
-export const ListProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListEntitiesResponse;
+export type DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  Empty;
+export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ListProjectsLocationsConnectionsEntityTypesEntitiesError =
+export type DeleteProjectsLocationsConnectionsEntityTypesEntitiesError =
   DefaultErrors;
 
-/** Lists entity rows of a particular entity type contained in the request. Note: 1. Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is provided, the primary key of the table is used. If zero or more than one primary key is available, we default to the unpaginated list entities logic which only returns the first page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise undefined behaviors may be observed during pagination. 4. Since transactions are not supported, any updates, inserts or deletes during pagination can lead to stale data being returned or other unexpected behaviors. */
-export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedOperationMethod<
-  ListProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  ListProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  ListProjectsLocationsConnectionsEntityTypesEntitiesError,
+/** Deletes an existing entity row matching the entity type and entity id specified in the request. */
+export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
+  DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+  DeleteProjectsLocationsConnectionsEntityTypesEntitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: ListProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  output: DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse,
   errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface GetProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -2552,6 +2325,117 @@ export const getProjectsLocationsConnectionsEntityTypesEntities: API.OperationMe
   input: GetProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: GetProjectsLocationsConnectionsEntityTypesEntitiesResponse,
   errors: [],
+}));
+
+export interface DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
+  /** Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. */
+  conditions?: string;
+  /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
+  entityType: string;
+  /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
+  "executionConfig.headers"?: string;
+}
+
+export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conditions: Schema.optional(Schema.String).pipe(T.HttpQuery("conditions")),
+    entityType: Schema.String.pipe(T.HttpPath("entityType")),
+    "executionConfig.headers": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("executionConfig.headers"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities:deleteEntitiesWithConditions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+
+export type DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  Empty;
+export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
+  DefaultErrors;
+
+/** Deletes entities based on conditions specified in the request and not on entity id. */
+export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
+  DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+  DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  output:
+    DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsConnectionsEntityTypesEntitiesRequest {
+  /** Number of entity rows to return. Defaults page size = 25. Max page size = 200. */
+  pageSize?: number;
+  /** List of 'sort_order' columns to use when returning the results. */
+  sortOrder?: string[];
+  /** Conditions to be used when listing entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. */
+  conditions?: string;
+  /** Page token value if available from a previous request. */
+  pageToken?: string;
+  /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
+  parent: string;
+  /** List of 'sort_by' columns to use when returning the results. */
+  sortBy?: string[];
+  /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
+  "executionConfig.headers"?: string;
+}
+
+export const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    sortOrder: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("sortOrder"),
+    ),
+    conditions: Schema.optional(Schema.String).pipe(T.HttpQuery("conditions")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    sortBy: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("sortBy"),
+    ),
+    "executionConfig.headers": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("executionConfig.headers"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
+
+export type ListProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  ListEntitiesResponse;
+export const ListProjectsLocationsConnectionsEntityTypesEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListEntitiesResponse;
+
+export type ListProjectsLocationsConnectionsEntityTypesEntitiesError =
+  DefaultErrors;
+
+/** Lists entity rows of a particular entity type contained in the request. Note: 1. Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is provided, the primary key of the table is used. If zero or more than one primary key is available, we default to the unpaginated list entities logic which only returns the first page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise undefined behaviors may be observed during pagination. 4. Since transactions are not supported, any updates, inserts or deletes during pagination can lead to stale data being returned or other unexpected behaviors. */
+export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedOperationMethod<
+  ListProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  ListProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+  ListProjectsLocationsConnectionsEntityTypesEntitiesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsConnectionsEntityTypesEntitiesRequest,
+  output: ListProjectsLocationsConnectionsEntityTypesEntitiesResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -2641,143 +2525,5 @@ export const patchProjectsLocationsConnectionsEntityTypesEntities: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: PatchProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
-}));
-
-export interface UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
-  /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
-  entityType: string;
-  /** Required. Conditions to be used when updating entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. */
-  conditions?: string;
-  /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
-  "executionConfig.headers"?: string;
-  /** Request body */
-  body?: Entity;
-}
-
-export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entityType: Schema.String.pipe(T.HttpPath("entityType")),
-    conditions: Schema.optional(Schema.String).pipe(T.HttpQuery("conditions")),
-    "executionConfig.headers": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("executionConfig.headers"),
-    ),
-    body: Schema.optional(Entity).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities:updateEntitiesWithConditions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
-export type UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  UpdateEntitiesWithConditionsResponse;
-export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UpdateEntitiesWithConditionsResponse;
-
-export type UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
-
-/** Updates entities based on conditions specified in the request and not on entity id. */
-export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
-  UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output:
-    UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
-}));
-
-export interface DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest {
-  /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
-  name: string;
-  /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
-  "executionConfig.headers"?: string;
-}
-
-export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    "executionConfig.headers": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("executionConfig.headers"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities/{entitiesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
-export type DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  Empty;
-export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
-
-/** Deletes an existing entity row matching the entity type and entity id specified in the request. */
-export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
-  DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  DeleteProjectsLocationsConnectionsEntityTypesEntitiesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
-}));
-
-export interface DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
-  /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
-  entityType: string;
-  /** Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. */
-  conditions?: string;
-  /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
-  "executionConfig.headers"?: string;
-}
-
-export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entityType: Schema.String.pipe(T.HttpPath("entityType")),
-    conditions: Schema.optional(Schema.String).pipe(T.HttpQuery("conditions")),
-    "executionConfig.headers": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("executionConfig.headers"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities:deleteEntitiesWithConditions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
-export type DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  Empty;
-export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
-
-/** Deletes entities based on conditions specified in the request and not on entity id. */
-export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
-  DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output:
-    DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
   errors: [],
 }));

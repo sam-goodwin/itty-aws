@@ -24,7 +24,7 @@ export type V1MergeABranchOutput = typeof V1MergeABranchOutput.Type;
  *
  * Merges the specified database branch
  *
- * @param branch_id_or_ref - Branch ID
+ * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
 export const v1MergeABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1MergeABranchInput,

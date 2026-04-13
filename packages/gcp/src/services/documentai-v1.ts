@@ -31,18 +31,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -57,18 +52,14 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -79,23 +70,18 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
   /** TextSegment start UTF-8 char index in the Document.text. */
@@ -104,15 +90,13 @@ export interface GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
   endIndex?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment: Schema.Schema<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startIndex: Schema.optional(Schema.String),
-      endIndex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIndex: Schema.optional(Schema.String),
+    endIndex: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentTextAnchor {
   /** The text segments from the Document.text. */
@@ -121,17 +105,13 @@ export interface GoogleCloudDocumentaiV1DocumentTextAnchor {
   content?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentTextAnchor: Schema.Schema<GoogleCloudDocumentaiV1DocumentTextAnchor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textSegments: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment),
-      ),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentTextAnchor",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentTextAnchor>;
+export const GoogleCloudDocumentaiV1DocumentTextAnchor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textSegments: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment),
+    ),
+    content: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentTextAnchor" });
 
 export interface GoogleTypeColor {
   /** The amount of red in the color as a value in the interval [0, 1]. */
@@ -144,17 +124,12 @@ export interface GoogleTypeColor {
   alpha?: number;
 }
 
-export const GoogleTypeColor: Schema.Schema<GoogleTypeColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      red: Schema.optional(Schema.Number),
-      green: Schema.optional(Schema.Number),
-      blue: Schema.optional(Schema.Number),
-      alpha: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeColor",
-  }) as any as Schema.Schema<GoogleTypeColor>;
+export const GoogleTypeColor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  red: Schema.optional(Schema.Number),
+  green: Schema.optional(Schema.Number),
+  blue: Schema.optional(Schema.Number),
+  alpha: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeColor" });
 
 export interface GoogleCloudDocumentaiV1DocumentStyleFontSize {
   /** Font size for the text. */
@@ -163,15 +138,11 @@ export interface GoogleCloudDocumentaiV1DocumentStyleFontSize {
   unit?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentStyleFontSize: Schema.Schema<GoogleCloudDocumentaiV1DocumentStyleFontSize> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      size: Schema.optional(Schema.Number),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentStyleFontSize",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentStyleFontSize>;
+export const GoogleCloudDocumentaiV1DocumentStyleFontSize =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    size: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentStyleFontSize" });
 
 export interface GoogleCloudDocumentaiV1DocumentStyle {
   /** Text anchor indexing into the Document.text. */
@@ -192,21 +163,17 @@ export interface GoogleCloudDocumentaiV1DocumentStyle {
   fontFamily?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentStyle: Schema.Schema<GoogleCloudDocumentaiV1DocumentStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textAnchor: Schema.optional(GoogleCloudDocumentaiV1DocumentTextAnchor),
-      color: Schema.optional(GoogleTypeColor),
-      backgroundColor: Schema.optional(GoogleTypeColor),
-      fontWeight: Schema.optional(Schema.String),
-      textStyle: Schema.optional(Schema.String),
-      textDecoration: Schema.optional(Schema.String),
-      fontSize: Schema.optional(GoogleCloudDocumentaiV1DocumentStyleFontSize),
-      fontFamily: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentStyle",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentStyle>;
+export const GoogleCloudDocumentaiV1DocumentStyle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textAnchor: Schema.optional(GoogleCloudDocumentaiV1DocumentTextAnchor),
+    color: Schema.optional(GoogleTypeColor),
+    backgroundColor: Schema.optional(GoogleTypeColor),
+    fontWeight: Schema.optional(Schema.String),
+    textStyle: Schema.optional(Schema.String),
+    textDecoration: Schema.optional(Schema.String),
+    fontSize: Schema.optional(GoogleCloudDocumentaiV1DocumentStyleFontSize),
+    fontFamily: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentStyle" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageImage {
   /** Raw byte content of the image. */
@@ -219,17 +186,13 @@ export interface GoogleCloudDocumentaiV1DocumentPageImage {
   height?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageImage: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      width: Schema.optional(Schema.Number),
-      height: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageImage",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageImage>;
+export const GoogleCloudDocumentaiV1DocumentPageImage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    width: Schema.optional(Schema.Number),
+    height: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageImage" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageMatrix {
   /** Number of rows in the matrix. */
@@ -242,17 +205,13 @@ export interface GoogleCloudDocumentaiV1DocumentPageMatrix {
   data?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageMatrix: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageMatrix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Number),
-      cols: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.Number),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageMatrix",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageMatrix>;
+export const GoogleCloudDocumentaiV1DocumentPageMatrix =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rows: Schema.optional(Schema.Number),
+    cols: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.Number),
+    data: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageMatrix" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageDimension {
   /** Page width. */
@@ -263,16 +222,12 @@ export interface GoogleCloudDocumentaiV1DocumentPageDimension {
   unit?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageDimension: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Schema.Number),
-      height: Schema.optional(Schema.Number),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageDimension",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageDimension>;
+export const GoogleCloudDocumentaiV1DocumentPageDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    width: Schema.optional(Schema.Number),
+    height: Schema.optional(Schema.Number),
+    unit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageDimension" });
 
 export interface GoogleCloudDocumentaiV1Vertex {
   /** X coordinate. */
@@ -281,15 +236,11 @@ export interface GoogleCloudDocumentaiV1Vertex {
   y?: number;
 }
 
-export const GoogleCloudDocumentaiV1Vertex: Schema.Schema<GoogleCloudDocumentaiV1Vertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      x: Schema.optional(Schema.Number),
-      y: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1Vertex",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1Vertex>;
+export const GoogleCloudDocumentaiV1Vertex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    x: Schema.optional(Schema.Number),
+    y: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1Vertex" });
 
 export interface GoogleCloudDocumentaiV1NormalizedVertex {
   /** X coordinate. */
@@ -298,15 +249,11 @@ export interface GoogleCloudDocumentaiV1NormalizedVertex {
   y?: number;
 }
 
-export const GoogleCloudDocumentaiV1NormalizedVertex: Schema.Schema<GoogleCloudDocumentaiV1NormalizedVertex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      x: Schema.optional(Schema.Number),
-      y: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1NormalizedVertex",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1NormalizedVertex>;
+export const GoogleCloudDocumentaiV1NormalizedVertex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    x: Schema.optional(Schema.Number),
+    y: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1NormalizedVertex" });
 
 export interface GoogleCloudDocumentaiV1BoundingPoly {
   /** The bounding polygon vertices. */
@@ -315,17 +262,13 @@ export interface GoogleCloudDocumentaiV1BoundingPoly {
   normalizedVertices?: Array<GoogleCloudDocumentaiV1NormalizedVertex>;
 }
 
-export const GoogleCloudDocumentaiV1BoundingPoly: Schema.Schema<GoogleCloudDocumentaiV1BoundingPoly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vertices: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1Vertex)),
-      normalizedVertices: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1NormalizedVertex),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1BoundingPoly",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1BoundingPoly>;
+export const GoogleCloudDocumentaiV1BoundingPoly =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vertices: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1Vertex)),
+    normalizedVertices: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1NormalizedVertex),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1BoundingPoly" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageLayout {
   /** Text anchor indexing into the Document.text. */
@@ -344,17 +287,13 @@ export interface GoogleCloudDocumentaiV1DocumentPageLayout {
     | (string & {});
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageLayout: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textAnchor: Schema.optional(GoogleCloudDocumentaiV1DocumentTextAnchor),
-      confidence: Schema.optional(Schema.Number),
-      boundingPoly: Schema.optional(GoogleCloudDocumentaiV1BoundingPoly),
-      orientation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageLayout",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageLayout>;
+export const GoogleCloudDocumentaiV1DocumentPageLayout =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textAnchor: Schema.optional(GoogleCloudDocumentaiV1DocumentTextAnchor),
+    confidence: Schema.optional(Schema.Number),
+    boundingPoly: Schema.optional(GoogleCloudDocumentaiV1BoundingPoly),
+    orientation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageLayout" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
   /** The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`. */
@@ -363,15 +302,13 @@ export interface GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
   confidence?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageDetectedLanguage: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageDetectedLanguage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageDetectedLanguage",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /** The index of the index into current revision's parent_ids list. */
@@ -382,16 +319,14 @@ export interface GoogleCloudDocumentaiV1DocumentProvenanceParent {
   id?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentProvenanceParent: Schema.Schema<GoogleCloudDocumentaiV1DocumentProvenanceParent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.Number),
-      index: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentProvenanceParent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.Number),
+    index: Schema.optional(Schema.Number),
+    id: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentProvenanceParent",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentProvenanceParent>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentProvenance {
   /** The index of the revision that produced this element. */
@@ -413,19 +348,15 @@ export interface GoogleCloudDocumentaiV1DocumentProvenance {
     | (string & {});
 }
 
-export const GoogleCloudDocumentaiV1DocumentProvenance: Schema.Schema<GoogleCloudDocumentaiV1DocumentProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.Number),
-      parents: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentProvenanceParent),
-      ),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentProvenance",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentProvenance>;
+export const GoogleCloudDocumentaiV1DocumentProvenance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.Number),
+    id: Schema.optional(Schema.Number),
+    parents: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentProvenanceParent),
+    ),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentProvenance" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageBlock {
   /** Layout for Block. */
@@ -436,18 +367,14 @@ export interface GoogleCloudDocumentaiV1DocumentPageBlock {
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageBlock: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageBlock",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageBlock>;
+export const GoogleCloudDocumentaiV1DocumentPageBlock =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageBlock" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageParagraph {
   /** Layout for Paragraph. */
@@ -458,18 +385,14 @@ export interface GoogleCloudDocumentaiV1DocumentPageParagraph {
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageParagraph: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageParagraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageParagraph",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageParagraph>;
+export const GoogleCloudDocumentaiV1DocumentPageParagraph =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageParagraph" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageLine {
   /** Layout for Line. */
@@ -480,32 +403,26 @@ export interface GoogleCloudDocumentaiV1DocumentPageLine {
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageLine: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageLine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageLine",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageLine>;
+export const GoogleCloudDocumentaiV1DocumentPageLine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageLine" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
   /** Detected break type. */
   type?: "TYPE_UNSPECIFIED" | "SPACE" | "WIDE_SPACE" | "HYPHEN" | (string & {});
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   /** Font size in points (`1` point is `¹⁄₇₂` inches). */
@@ -540,28 +457,26 @@ export interface GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   backgroundColor?: GoogleTypeColor;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fontSize: Schema.optional(Schema.Number),
-      pixelFontSize: Schema.optional(Schema.Number),
-      letterSpacing: Schema.optional(Schema.Number),
-      fontType: Schema.optional(Schema.String),
-      bold: Schema.optional(Schema.Boolean),
-      italic: Schema.optional(Schema.Boolean),
-      underlined: Schema.optional(Schema.Boolean),
-      strikeout: Schema.optional(Schema.Boolean),
-      subscript: Schema.optional(Schema.Boolean),
-      superscript: Schema.optional(Schema.Boolean),
-      smallcaps: Schema.optional(Schema.Boolean),
-      fontWeight: Schema.optional(Schema.Number),
-      handwritten: Schema.optional(Schema.Boolean),
-      textColor: Schema.optional(GoogleTypeColor),
-      backgroundColor: Schema.optional(GoogleTypeColor),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fontSize: Schema.optional(Schema.Number),
+    pixelFontSize: Schema.optional(Schema.Number),
+    letterSpacing: Schema.optional(Schema.Number),
+    fontType: Schema.optional(Schema.String),
+    bold: Schema.optional(Schema.Boolean),
+    italic: Schema.optional(Schema.Boolean),
+    underlined: Schema.optional(Schema.Boolean),
+    strikeout: Schema.optional(Schema.Boolean),
+    subscript: Schema.optional(Schema.Boolean),
+    superscript: Schema.optional(Schema.Boolean),
+    smallcaps: Schema.optional(Schema.Boolean),
+    fontWeight: Schema.optional(Schema.Number),
+    handwritten: Schema.optional(Schema.Boolean),
+    textColor: Schema.optional(GoogleTypeColor),
+    backgroundColor: Schema.optional(GoogleTypeColor),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageToken {
   /** Layout for Token. */
@@ -576,24 +491,20 @@ export interface GoogleCloudDocumentaiV1DocumentPageToken {
   styleInfo?: GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageToken: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      detectedBreak: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak,
-      ),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-      styleInfo: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageToken",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageToken>;
+export const GoogleCloudDocumentaiV1DocumentPageToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    detectedBreak: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak,
+    ),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+    styleInfo: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageToken" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageVisualElement {
   /** Layout for VisualElement. */
@@ -604,18 +515,16 @@ export interface GoogleCloudDocumentaiV1DocumentPageVisualElement {
   detectedLanguages?: Array<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageVisualElement: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageVisualElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      type: Schema.optional(Schema.String),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageVisualElement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    type: Schema.optional(Schema.String),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageVisualElement",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageVisualElement>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageTableTableCell {
   /** Layout for TableCell. */
@@ -628,35 +537,31 @@ export interface GoogleCloudDocumentaiV1DocumentPageTableTableCell {
   detectedLanguages?: Array<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageTableTableCell: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      rowSpan: Schema.optional(Schema.Number),
-      colSpan: Schema.optional(Schema.Number),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageTableTableCell =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    rowSpan: Schema.optional(Schema.Number),
+    colSpan: Schema.optional(Schema.Number),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageTableTableCell",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableCell>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageTableTableRow {
   /** Cells that make up this row. */
   cells?: Array<GoogleCloudDocumentaiV1DocumentPageTableTableCell>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageTableTableRow: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cells: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageTableTableCell),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageTableTableRow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cells: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageTableTableCell),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageTableTableRow",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableRow>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageTable {
   /** Layout for Table. */
@@ -671,24 +576,20 @@ export interface GoogleCloudDocumentaiV1DocumentPageTable {
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageTable: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      headerRows: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageTableTableRow),
-      ),
-      bodyRows: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageTableTableRow),
-      ),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageTable",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageTable>;
+export const GoogleCloudDocumentaiV1DocumentPageTable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    headerRows: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageTableTableRow),
+    ),
+    bodyRows: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageTableTableRow),
+    ),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageTable" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageFormField {
   /** Layout for the FormField name. For example, `Address`, `Email`, `Grand total`, `Phone number`, etc. */
@@ -709,25 +610,21 @@ export interface GoogleCloudDocumentaiV1DocumentPageFormField {
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageFormField: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageFormField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldName: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      fieldValue: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      nameDetectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      valueDetectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      valueType: Schema.optional(Schema.String),
-      correctedKeyText: Schema.optional(Schema.String),
-      correctedValueText: Schema.optional(Schema.String),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageFormField",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageFormField>;
+export const GoogleCloudDocumentaiV1DocumentPageFormField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldName: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    fieldValue: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    nameDetectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    valueDetectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    valueType: Schema.optional(Schema.String),
+    correctedKeyText: Schema.optional(Schema.String),
+    correctedValueText: Schema.optional(Schema.String),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageFormField" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageSymbol {
   /** Layout for Symbol. */
@@ -736,17 +633,13 @@ export interface GoogleCloudDocumentaiV1DocumentPageSymbol {
   detectedLanguages?: Array<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageSymbol: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageSymbol> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageSymbol",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageSymbol>;
+export const GoogleCloudDocumentaiV1DocumentPageSymbol =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageSymbol" });
 
 export interface GoogleCloudDocumentaiV1Barcode {
   /** Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type. */
@@ -757,16 +650,12 @@ export interface GoogleCloudDocumentaiV1Barcode {
   rawValue?: string;
 }
 
-export const GoogleCloudDocumentaiV1Barcode: Schema.Schema<GoogleCloudDocumentaiV1Barcode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(Schema.String),
-      valueFormat: Schema.optional(Schema.String),
-      rawValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1Barcode",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1Barcode>;
+export const GoogleCloudDocumentaiV1Barcode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    format: Schema.optional(Schema.String),
+    valueFormat: Schema.optional(Schema.String),
+    rawValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1Barcode" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
   /** Layout for DetectedBarcode. */
@@ -775,15 +664,13 @@ export interface GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
   barcode?: GoogleCloudDocumentaiV1Barcode;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageDetectedBarcode: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      barcode: Schema.optional(GoogleCloudDocumentaiV1Barcode),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageDetectedBarcode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    barcode: Schema.optional(GoogleCloudDocumentaiV1Barcode),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageDetectedBarcode",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
   /** Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare` */
@@ -792,16 +679,14 @@ export interface GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDe
   confidence?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
   /** The overall quality score. Range `[0, 1]` where `1` is perfect quality. */
@@ -810,19 +695,17 @@ export interface GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
   detectedDefects?: Array<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageImageQualityScores: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScores> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qualityScore: Schema.optional(Schema.Number),
-      detectedDefects: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect,
-        ),
+export const GoogleCloudDocumentaiV1DocumentPageImageQualityScores =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qualityScore: Schema.optional(Schema.Number),
+    detectedDefects: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageImageQualityScores",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScores>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPage {
   /** 1-based index for current Page in a parent Document. Useful when a page is taken out of a Document for individual processing. */
@@ -861,54 +744,50 @@ export interface GoogleCloudDocumentaiV1DocumentPage {
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPage: Schema.Schema<GoogleCloudDocumentaiV1DocumentPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageNumber: Schema.optional(Schema.Number),
-      image: Schema.optional(GoogleCloudDocumentaiV1DocumentPageImage),
-      transforms: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageMatrix),
-      ),
-      dimension: Schema.optional(GoogleCloudDocumentaiV1DocumentPageDimension),
-      layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
-      detectedLanguages: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
-      ),
-      blocks: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageBlock),
-      ),
-      paragraphs: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageParagraph),
-      ),
-      lines: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageLine),
-      ),
-      tokens: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageToken),
-      ),
-      visualElements: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageVisualElement),
-      ),
-      tables: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageTable),
-      ),
-      formFields: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageFormField),
-      ),
-      symbols: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageSymbol),
-      ),
-      detectedBarcodes: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedBarcode),
-      ),
-      imageQualityScores: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentPageImageQualityScores,
-      ),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPage",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPage>;
+export const GoogleCloudDocumentaiV1DocumentPage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageNumber: Schema.optional(Schema.Number),
+    image: Schema.optional(GoogleCloudDocumentaiV1DocumentPageImage),
+    transforms: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageMatrix),
+    ),
+    dimension: Schema.optional(GoogleCloudDocumentaiV1DocumentPageDimension),
+    layout: Schema.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
+    detectedLanguages: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedLanguage),
+    ),
+    blocks: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageBlock),
+    ),
+    paragraphs: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageParagraph),
+    ),
+    lines: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageLine),
+    ),
+    tokens: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageToken),
+    ),
+    visualElements: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageVisualElement),
+    ),
+    tables: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageTable),
+    ),
+    formFields: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageFormField),
+    ),
+    symbols: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageSymbol),
+    ),
+    detectedBarcodes: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageDetectedBarcode),
+    ),
+    imageQualityScores: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentPageImageQualityScores,
+    ),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPage" });
 
 export interface GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   /** Required. Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json. */
@@ -932,34 +811,28 @@ export interface GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   confidence?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRef: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      page: Schema.optional(Schema.String),
-      layoutType: Schema.optional(Schema.String),
-      layoutId: Schema.optional(Schema.String),
-      boundingPoly: Schema.optional(GoogleCloudDocumentaiV1BoundingPoly),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRef =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    page: Schema.optional(Schema.String),
+    layoutType: Schema.optional(Schema.String),
+    layoutId: Schema.optional(Schema.String),
+    boundingPoly: Schema.optional(GoogleCloudDocumentaiV1BoundingPoly),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentPageAnchorPageRef",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentPageAnchor {
   /** One or more references to visual page elements */
   pageRefs?: Array<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentPageAnchor: Schema.Schema<GoogleCloudDocumentaiV1DocumentPageAnchor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageRefs: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentPageAnchorPageRef),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageAnchor",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentPageAnchor>;
+export const GoogleCloudDocumentaiV1DocumentPageAnchor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageRefs: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentPageAnchorPageRef),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentPageAnchor" });
 
 export interface GoogleTypeMoney {
   /** The three-letter currency code defined in ISO 4217. */
@@ -970,16 +843,11 @@ export interface GoogleTypeMoney {
   nanos?: number;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeMoney",
-  }) as any as Schema.Schema<GoogleTypeMoney>;
+export const GoogleTypeMoney = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeMoney" });
 
 export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -990,16 +858,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -1008,15 +871,10 @@ export interface GoogleTypeTimeZone {
   version?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeTimeZone",
-  }) as any as Schema.Schema<GoogleTypeTimeZone>;
+export const GoogleTypeTimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeTimeZone" });
 
 export interface GoogleTypeDateTime {
   /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
@@ -1039,22 +897,17 @@ export interface GoogleTypeDateTime {
   timeZone?: GoogleTypeTimeZone;
 }
 
-export const GoogleTypeDateTime: Schema.Schema<GoogleTypeDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      utcOffset: Schema.optional(Schema.String),
-      timeZone: Schema.optional(GoogleTypeTimeZone),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDateTime",
-  }) as any as Schema.Schema<GoogleTypeDateTime>;
+export const GoogleTypeDateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  utcOffset: Schema.optional(Schema.String),
+  timeZone: Schema.optional(GoogleTypeTimeZone),
+}).annotate({ identifier: "GoogleTypeDateTime" });
 
 export interface GoogleTypePostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
@@ -1081,24 +934,20 @@ export interface GoogleTypePostalAddress {
   organization?: string;
 }
 
-export const GoogleTypePostalAddress: Schema.Schema<GoogleTypePostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.Number),
-      regionCode: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-      sortingCode: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      sublocality: Schema.optional(Schema.String),
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-      recipients: Schema.optional(Schema.Array(Schema.String)),
-      organization: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypePostalAddress",
-  }) as any as Schema.Schema<GoogleTypePostalAddress>;
+export const GoogleTypePostalAddress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.Number),
+    regionCode: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    postalCode: Schema.optional(Schema.String),
+    sortingCode: Schema.optional(Schema.String),
+    administrativeArea: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    sublocality: Schema.optional(Schema.String),
+    addressLines: Schema.optional(Schema.Array(Schema.String)),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
+    organization: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypePostalAddress" });
 
 export interface GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   /** Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto */
@@ -1121,22 +970,20 @@ export interface GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   text?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentEntityNormalizedValue: Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityNormalizedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      moneyValue: Schema.optional(GoogleTypeMoney),
-      dateValue: Schema.optional(GoogleTypeDate),
-      datetimeValue: Schema.optional(GoogleTypeDateTime),
-      addressValue: Schema.optional(GoogleTypePostalAddress),
-      booleanValue: Schema.optional(Schema.Boolean),
-      integerValue: Schema.optional(Schema.Number),
-      floatValue: Schema.optional(Schema.Number),
-      signatureValue: Schema.optional(Schema.Boolean),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentEntityNormalizedValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moneyValue: Schema.optional(GoogleTypeMoney),
+    dateValue: Schema.optional(GoogleTypeDate),
+    datetimeValue: Schema.optional(GoogleTypeDateTime),
+    addressValue: Schema.optional(GoogleTypePostalAddress),
+    booleanValue: Schema.optional(Schema.Boolean),
+    integerValue: Schema.optional(Schema.Number),
+    floatValue: Schema.optional(Schema.Number),
+    signatureValue: Schema.optional(Schema.Boolean),
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentEntityNormalizedValue",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityNormalizedValue>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentEntity {
   /** Optional. Provenance of the entity. Text anchor indexing into the Document.text. */
@@ -1198,16 +1045,12 @@ export interface GoogleCloudDocumentaiV1DocumentEntityRelation {
   relation?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentEntityRelation: Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityRelation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subjectId: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.String),
-      relation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentEntityRelation",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityRelation>;
+export const GoogleCloudDocumentaiV1DocumentEntityRelation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subjectId: Schema.optional(Schema.String),
+    objectId: Schema.optional(Schema.String),
+    relation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentEntityRelation" });
 
 export interface GoogleCloudDocumentaiV1DocumentTextChange {
   /** Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index. */
@@ -1218,18 +1061,14 @@ export interface GoogleCloudDocumentaiV1DocumentTextChange {
   provenance?: Array<GoogleCloudDocumentaiV1DocumentProvenance>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentTextChange: Schema.Schema<GoogleCloudDocumentaiV1DocumentTextChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textAnchor: Schema.optional(GoogleCloudDocumentaiV1DocumentTextAnchor),
-      changedText: Schema.optional(Schema.String),
-      provenance: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentProvenance),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentTextChange",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentTextChange>;
+export const GoogleCloudDocumentaiV1DocumentTextChange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textAnchor: Schema.optional(GoogleCloudDocumentaiV1DocumentTextAnchor),
+    changedText: Schema.optional(Schema.String),
+    provenance: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentProvenance),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentTextChange" });
 
 export interface GoogleCloudDocumentaiV1DocumentShardInfo {
   /** The 0-based index of this shard. */
@@ -1242,17 +1081,13 @@ export interface GoogleCloudDocumentaiV1DocumentShardInfo {
   pageOffset?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentShardInfo: Schema.Schema<GoogleCloudDocumentaiV1DocumentShardInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shardIndex: Schema.optional(Schema.String),
-      shardCount: Schema.optional(Schema.String),
-      textOffset: Schema.optional(Schema.String),
-      pageOffset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentShardInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentShardInfo>;
+export const GoogleCloudDocumentaiV1DocumentShardInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shardIndex: Schema.optional(Schema.String),
+    shardCount: Schema.optional(Schema.String),
+    textOffset: Schema.optional(Schema.String),
+    pageOffset: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentShardInfo" });
 
 export interface GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
   /** Human review state. For example, `requested`, `succeeded`, `rejected`. */
@@ -1261,15 +1096,13 @@ export interface GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
   stateMessage?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentRevisionHumanReview: Schema.Schema<GoogleCloudDocumentaiV1DocumentRevisionHumanReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentRevisionHumanReview =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentRevisionHumanReview",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentRevisionHumanReview>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentRevision {
   /** If the change was made by a person specify the name or id of that person. */
@@ -1288,22 +1121,18 @@ export interface GoogleCloudDocumentaiV1DocumentRevision {
   humanReview?: GoogleCloudDocumentaiV1DocumentRevisionHumanReview;
 }
 
-export const GoogleCloudDocumentaiV1DocumentRevision: Schema.Schema<GoogleCloudDocumentaiV1DocumentRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agent: Schema.optional(Schema.String),
-      processor: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.Array(Schema.Number)),
-      parentIds: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      humanReview: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentRevisionHumanReview,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentRevision",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentRevision>;
+export const GoogleCloudDocumentaiV1DocumentRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agent: Schema.optional(Schema.String),
+    processor: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.Array(Schema.Number)),
+    parentIds: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    humanReview: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentRevisionHumanReview,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentRevision" });
 
 export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock {
   /** Text content stored in the block. */
@@ -1451,16 +1280,14 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   pageEnd?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan: Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageStart: Schema.optional(Schema.Number),
-      pageEnd: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageStart: Schema.optional(Schema.Number),
+    pageEnd: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock {
   /** Block consisting of text content. */
@@ -1505,18 +1332,14 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayout {
   blocks?: Array<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentDocumentLayout: Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blocks: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock,
-        ),
+export const GoogleCloudDocumentaiV1DocumentDocumentLayout =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    blocks: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentDocumentLayout",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayout>;
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentDocumentLayout" });
 
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan {
   /** Page where chunk starts in the document. */
@@ -1525,16 +1348,14 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpa
   pageEnd?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageStart: Schema.optional(Schema.Number),
-      pageEnd: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageStart: Schema.optional(Schema.Number),
+    pageEnd: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
   /** Header in text format. */
@@ -1543,18 +1364,16 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHea
   pageSpan?: GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
 }
 
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      pageSpan: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    pageSpan: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter {
   /** Footer in text format. */
@@ -1563,18 +1382,16 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFoo
   pageSpan?: GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
 }
 
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      pageSpan: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    pageSpan: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
   /** ID of the chunk. */
@@ -1591,45 +1408,39 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
   pageFooters?: Array<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chunkId: Schema.optional(Schema.String),
-      sourceBlockIds: Schema.optional(Schema.Array(Schema.String)),
-      content: Schema.optional(Schema.String),
-      pageSpan: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan,
+export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chunkId: Schema.optional(Schema.String),
+    sourceBlockIds: Schema.optional(Schema.Array(Schema.String)),
+    content: Schema.optional(Schema.String),
+    pageSpan: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan,
+    ),
+    pageHeaders: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader,
       ),
-      pageHeaders: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader,
-        ),
+    ),
+    pageFooters: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter,
       ),
-      pageFooters: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocument {
   /** List of chunks. */
   chunks?: Array<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentChunkedDocument: Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chunks: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocument",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocument>;
+export const GoogleCloudDocumentaiV1DocumentChunkedDocument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chunks: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocument" });
 
 export interface GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult {
   /** Optional. The name of the rule resource that is used for validation. Format: `projects/{project}/locations/{location}/rules/{rule}` */
@@ -1650,19 +1461,17 @@ export interface GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidation
   validationDetails?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult: Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rule: Schema.optional(Schema.String),
-      ruleName: Schema.optional(Schema.String),
-      ruleDescription: Schema.optional(Schema.String),
-      validationResultType: Schema.optional(Schema.String),
-      validationDetails: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rule: Schema.optional(Schema.String),
+    ruleName: Schema.optional(Schema.String),
+    ruleDescription: Schema.optional(Schema.String),
+    validationResultType: Schema.optional(Schema.String),
+    validationDetails: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentEntityValidationOutput {
   /** The result of each validation rule. */
@@ -1671,19 +1480,17 @@ export interface GoogleCloudDocumentaiV1DocumentEntityValidationOutput {
   passAllRules?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1DocumentEntityValidationOutput: Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityValidationOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validationResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult,
-        ),
+export const GoogleCloudDocumentaiV1DocumentEntityValidationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validationResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult,
       ),
-      passAllRules: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+    ),
+    passAllRules: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentEntityValidationOutput",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentEntityValidationOutput>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentEntitiesRevision {
   /** The revision id. */
@@ -1696,21 +1503,19 @@ export interface GoogleCloudDocumentaiV1DocumentEntitiesRevision {
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
 
-export const GoogleCloudDocumentaiV1DocumentEntitiesRevision: Schema.Schema<GoogleCloudDocumentaiV1DocumentEntitiesRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentEntity),
-      ),
-      entityValidationOutput: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentEntityValidationOutput,
-      ),
-      provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentEntitiesRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentEntity),
+    ),
+    entityValidationOutput: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentEntityValidationOutput,
+    ),
+    provenance: Schema.optional(GoogleCloudDocumentaiV1DocumentProvenance),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentEntitiesRevision",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentEntitiesRevision>;
+  });
 
 export interface GoogleCloudDocumentaiV1Document {
   /** Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris). */
@@ -1751,49 +1556,45 @@ export interface GoogleCloudDocumentaiV1Document {
   entitiesRevisionId?: string;
 }
 
-export const GoogleCloudDocumentaiV1Document: Schema.Schema<GoogleCloudDocumentaiV1Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      docid: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      textStyles: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentStyle),
-      ),
-      pages: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1DocumentPage)),
-      entities: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentEntity),
-      ),
-      entityRelations: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentEntityRelation),
-      ),
-      textChanges: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentTextChange),
-      ),
-      shardInfo: Schema.optional(GoogleCloudDocumentaiV1DocumentShardInfo),
-      error: Schema.optional(GoogleRpcStatus),
-      revisions: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentRevision),
-      ),
-      documentLayout: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentDocumentLayout,
-      ),
-      chunkedDocument: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentChunkedDocument,
-      ),
-      entityValidationOutput: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentEntityValidationOutput,
-      ),
-      entitiesRevisions: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentEntitiesRevision),
-      ),
-      entitiesRevisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1Document",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1Document>;
+export const GoogleCloudDocumentaiV1Document =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    docid: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    textStyles: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentStyle),
+    ),
+    pages: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1DocumentPage)),
+    entities: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentEntity),
+    ),
+    entityRelations: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentEntityRelation),
+    ),
+    textChanges: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentTextChange),
+    ),
+    shardInfo: Schema.optional(GoogleCloudDocumentaiV1DocumentShardInfo),
+    error: Schema.optional(GoogleRpcStatus),
+    revisions: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentRevision),
+    ),
+    documentLayout: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentDocumentLayout,
+    ),
+    chunkedDocument: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentChunkedDocument,
+    ),
+    entityValidationOutput: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentEntityValidationOutput,
+    ),
+    entitiesRevisions: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentEntitiesRevision),
+    ),
+    entitiesRevisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1Document" });
 
 export interface GoogleCloudDocumentaiV1RawDocument {
   /** Inline document content. */
@@ -1804,16 +1605,12 @@ export interface GoogleCloudDocumentaiV1RawDocument {
   displayName?: string;
 }
 
-export const GoogleCloudDocumentaiV1RawDocument: Schema.Schema<GoogleCloudDocumentaiV1RawDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1RawDocument",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1RawDocument>;
+export const GoogleCloudDocumentaiV1RawDocument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1RawDocument" });
 
 export interface GoogleCloudDocumentaiV1GcsDocument {
   /** The Cloud Storage object uri. */
@@ -1822,43 +1619,33 @@ export interface GoogleCloudDocumentaiV1GcsDocument {
   mimeType?: string;
 }
 
-export const GoogleCloudDocumentaiV1GcsDocument: Schema.Schema<GoogleCloudDocumentaiV1GcsDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1GcsDocument",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1GcsDocument>;
+export const GoogleCloudDocumentaiV1GcsDocument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1GcsDocument" });
 
 export interface GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector {
   /** Optional. Indices of the pages (starting from 1). */
   pages?: Array<number>;
 }
 
-export const GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector: Schema.Schema<GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pages: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pages: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector>;
+  });
 
 export interface GoogleCloudDocumentaiV1OcrConfigHints {
   /** List of BCP-47 language codes to use for OCR. In most cases, not specifying it yields the best results since it enables automatic language detection. For languages based on the Latin alphabet, setting hints is not needed. In rare cases, when the language of the text in the image is known, setting a hint will help get better results (although it will be a significant hindrance if the hint is wrong). */
   languageHints?: Array<string>;
 }
 
-export const GoogleCloudDocumentaiV1OcrConfigHints: Schema.Schema<GoogleCloudDocumentaiV1OcrConfigHints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageHints: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1OcrConfigHints",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1OcrConfigHints>;
+export const GoogleCloudDocumentaiV1OcrConfigHints =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageHints: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1OcrConfigHints" });
 
 export interface GoogleCloudDocumentaiV1OcrConfigPremiumFeatures {
   /** Turn on selection mark detector in OCR engine. Only available in OCR 2.0 (and later) processors. */
@@ -1869,16 +1656,14 @@ export interface GoogleCloudDocumentaiV1OcrConfigPremiumFeatures {
   enableMathOcr?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1OcrConfigPremiumFeatures: Schema.Schema<GoogleCloudDocumentaiV1OcrConfigPremiumFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableSelectionMarkDetection: Schema.optional(Schema.Boolean),
-      computeStyleInfo: Schema.optional(Schema.Boolean),
-      enableMathOcr: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1OcrConfigPremiumFeatures =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableSelectionMarkDetection: Schema.optional(Schema.Boolean),
+    computeStyleInfo: Schema.optional(Schema.Boolean),
+    enableMathOcr: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1OcrConfigPremiumFeatures",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1OcrConfigPremiumFeatures>;
+  });
 
 export interface GoogleCloudDocumentaiV1OcrConfig {
   /** Hints for the OCR model. */
@@ -1899,23 +1684,19 @@ export interface GoogleCloudDocumentaiV1OcrConfig {
   premiumFeatures?: GoogleCloudDocumentaiV1OcrConfigPremiumFeatures;
 }
 
-export const GoogleCloudDocumentaiV1OcrConfig: Schema.Schema<GoogleCloudDocumentaiV1OcrConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hints: Schema.optional(GoogleCloudDocumentaiV1OcrConfigHints),
-      enableNativePdfParsing: Schema.optional(Schema.Boolean),
-      enableImageQualityScores: Schema.optional(Schema.Boolean),
-      advancedOcrOptions: Schema.optional(Schema.Array(Schema.String)),
-      enableSymbol: Schema.optional(Schema.Boolean),
-      computeStyleInfo: Schema.optional(Schema.Boolean),
-      disableCharacterBoxesDetection: Schema.optional(Schema.Boolean),
-      premiumFeatures: Schema.optional(
-        GoogleCloudDocumentaiV1OcrConfigPremiumFeatures,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1OcrConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1OcrConfig>;
+export const GoogleCloudDocumentaiV1OcrConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hints: Schema.optional(GoogleCloudDocumentaiV1OcrConfigHints),
+    enableNativePdfParsing: Schema.optional(Schema.Boolean),
+    enableImageQualityScores: Schema.optional(Schema.Boolean),
+    advancedOcrOptions: Schema.optional(Schema.Array(Schema.String)),
+    enableSymbol: Schema.optional(Schema.Boolean),
+    computeStyleInfo: Schema.optional(Schema.Boolean),
+    disableCharacterBoxesDetection: Schema.optional(Schema.Boolean),
+    premiumFeatures: Schema.optional(
+      GoogleCloudDocumentaiV1OcrConfigPremiumFeatures,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1OcrConfig" });
 
 export interface GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig {
   /** Optional. The chunk sizes to use when splitting documents, in order of level. */
@@ -1924,16 +1705,14 @@ export interface GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig
   includeAncestorHeadings?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig: Schema.Schema<GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chunkSize: Schema.optional(Schema.Number),
-      includeAncestorHeadings: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chunkSize: Schema.optional(Schema.Number),
+    includeAncestorHeadings: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
   /** Optional. Config for chunking in layout parser processor. */
@@ -1948,34 +1727,30 @@ export interface GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
   enableTableAnnotation?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig: Schema.Schema<GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chunkingConfig: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig,
-      ),
-      returnImages: Schema.optional(Schema.Boolean),
-      returnBoundingBoxes: Schema.optional(Schema.Boolean),
-      enableImageAnnotation: Schema.optional(Schema.Boolean),
-      enableTableAnnotation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chunkingConfig: Schema.optional(
+      GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig,
+    ),
+    returnImages: Schema.optional(Schema.Boolean),
+    returnBoundingBoxes: Schema.optional(Schema.Boolean),
+    enableImageAnnotation: Schema.optional(Schema.Boolean),
+    enableTableAnnotation: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues {
   /** The individual values that this enum values type can include. */
   values?: Array<string>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues: Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   /** The name of the property. Follows the same guidelines as the EntityType name. */
@@ -2001,18 +1776,16 @@ export interface GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
     | (string & {});
 }
 
-export const GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty: Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      occurrenceType: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    valueType: Schema.optional(Schema.String),
+    occurrenceType: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   /** If specified, lists all the possible values for this entity. This should not be more than a handful of values. If the number of values is >10 or could change frequently, use the `EntityType.value_ontology` field and specify a list of all possible values in a value ontology file. */
@@ -2027,22 +1800,20 @@ export interface GoogleCloudDocumentaiV1DocumentSchemaEntityType {
   properties?: Array<GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty>;
 }
 
-export const GoogleCloudDocumentaiV1DocumentSchemaEntityType: Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enumValues: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues,
-      ),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      baseTypes: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentSchemaEntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enumValues: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues,
+    ),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    baseTypes: Schema.optional(Schema.Array(Schema.String)),
+    properties: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentSchemaEntityType",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaEntityType>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentSchemaMetadata {
   /** If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be applied to the entire document (classification). */
@@ -2055,17 +1826,13 @@ export interface GoogleCloudDocumentaiV1DocumentSchemaMetadata {
   skipNamingValidation?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1DocumentSchemaMetadata: Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentSplitter: Schema.optional(Schema.Boolean),
-      documentAllowMultipleLabels: Schema.optional(Schema.Boolean),
-      prefixedNamingOnProperties: Schema.optional(Schema.Boolean),
-      skipNamingValidation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentSchemaMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentSchemaMetadata>;
+export const GoogleCloudDocumentaiV1DocumentSchemaMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentSplitter: Schema.optional(Schema.Boolean),
+    documentAllowMultipleLabels: Schema.optional(Schema.Boolean),
+    prefixedNamingOnProperties: Schema.optional(Schema.Boolean),
+    skipNamingValidation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentSchemaMetadata" });
 
 export interface GoogleCloudDocumentaiV1DocumentSchema {
   /** Display name to show users. */
@@ -2080,20 +1847,16 @@ export interface GoogleCloudDocumentaiV1DocumentSchema {
   documentPrompt?: string;
 }
 
-export const GoogleCloudDocumentaiV1DocumentSchema: Schema.Schema<GoogleCloudDocumentaiV1DocumentSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      entityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1DocumentSchemaEntityType),
-      ),
-      metadata: Schema.optional(GoogleCloudDocumentaiV1DocumentSchemaMetadata),
-      documentPrompt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentSchema",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentSchema>;
+export const GoogleCloudDocumentaiV1DocumentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    entityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1DocumentSchemaEntityType),
+    ),
+    metadata: Schema.optional(GoogleCloudDocumentaiV1DocumentSchemaMetadata),
+    documentPrompt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentSchema" });
 
 export interface GoogleCloudDocumentaiV1ProcessOptions {
   /** Which pages to process (1-indexed). */
@@ -2110,23 +1873,19 @@ export interface GoogleCloudDocumentaiV1ProcessOptions {
   schemaOverride?: GoogleCloudDocumentaiV1DocumentSchema;
 }
 
-export const GoogleCloudDocumentaiV1ProcessOptions: Schema.Schema<GoogleCloudDocumentaiV1ProcessOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      individualPageSelector: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector,
-      ),
-      fromStart: Schema.optional(Schema.Number),
-      fromEnd: Schema.optional(Schema.Number),
-      ocrConfig: Schema.optional(GoogleCloudDocumentaiV1OcrConfig),
-      layoutConfig: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig,
-      ),
-      schemaOverride: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ProcessOptions",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessOptions>;
+export const GoogleCloudDocumentaiV1ProcessOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    individualPageSelector: Schema.optional(
+      GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector,
+    ),
+    fromStart: Schema.optional(Schema.Number),
+    fromEnd: Schema.optional(Schema.Number),
+    ocrConfig: Schema.optional(GoogleCloudDocumentaiV1OcrConfig),
+    layoutConfig: Schema.optional(
+      GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig,
+    ),
+    schemaOverride: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ProcessOptions" });
 
 export interface GoogleCloudDocumentaiV1ProcessRequest {
   /** An inline document proto. */
@@ -2147,21 +1906,17 @@ export interface GoogleCloudDocumentaiV1ProcessRequest {
   imagelessMode?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1ProcessRequest: Schema.Schema<GoogleCloudDocumentaiV1ProcessRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inlineDocument: Schema.optional(GoogleCloudDocumentaiV1Document),
-      rawDocument: Schema.optional(GoogleCloudDocumentaiV1RawDocument),
-      gcsDocument: Schema.optional(GoogleCloudDocumentaiV1GcsDocument),
-      skipHumanReview: Schema.optional(Schema.Boolean),
-      fieldMask: Schema.optional(Schema.String),
-      processOptions: Schema.optional(GoogleCloudDocumentaiV1ProcessOptions),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      imagelessMode: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ProcessRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessRequest>;
+export const GoogleCloudDocumentaiV1ProcessRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inlineDocument: Schema.optional(GoogleCloudDocumentaiV1Document),
+    rawDocument: Schema.optional(GoogleCloudDocumentaiV1RawDocument),
+    gcsDocument: Schema.optional(GoogleCloudDocumentaiV1GcsDocument),
+    skipHumanReview: Schema.optional(Schema.Boolean),
+    fieldMask: Schema.optional(Schema.String),
+    processOptions: Schema.optional(GoogleCloudDocumentaiV1ProcessOptions),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    imagelessMode: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ProcessRequest" });
 
 export interface GoogleCloudDocumentaiV1HumanReviewStatus {
   /** The state of human review on the processing request. */
@@ -2178,16 +1933,12 @@ export interface GoogleCloudDocumentaiV1HumanReviewStatus {
   humanReviewOperation?: string;
 }
 
-export const GoogleCloudDocumentaiV1HumanReviewStatus: Schema.Schema<GoogleCloudDocumentaiV1HumanReviewStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      humanReviewOperation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1HumanReviewStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1HumanReviewStatus>;
+export const GoogleCloudDocumentaiV1HumanReviewStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    humanReviewOperation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1HumanReviewStatus" });
 
 export interface GoogleCloudDocumentaiV1ProcessResponse {
   /** The document payload, will populate fields based on the processor's behavior. */
@@ -2196,47 +1947,35 @@ export interface GoogleCloudDocumentaiV1ProcessResponse {
   humanReviewStatus?: GoogleCloudDocumentaiV1HumanReviewStatus;
 }
 
-export const GoogleCloudDocumentaiV1ProcessResponse: Schema.Schema<GoogleCloudDocumentaiV1ProcessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(GoogleCloudDocumentaiV1Document),
-      humanReviewStatus: Schema.optional(
-        GoogleCloudDocumentaiV1HumanReviewStatus,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ProcessResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessResponse>;
+export const GoogleCloudDocumentaiV1ProcessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    document: Schema.optional(GoogleCloudDocumentaiV1Document),
+    humanReviewStatus: Schema.optional(
+      GoogleCloudDocumentaiV1HumanReviewStatus,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ProcessResponse" });
 
 export interface GoogleCloudDocumentaiV1GcsPrefix {
   /** The URI prefix. */
   gcsUriPrefix?: string;
 }
 
-export const GoogleCloudDocumentaiV1GcsPrefix: Schema.Schema<GoogleCloudDocumentaiV1GcsPrefix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1GcsPrefix",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1GcsPrefix>;
+export const GoogleCloudDocumentaiV1GcsPrefix =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUriPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1GcsPrefix" });
 
 export interface GoogleCloudDocumentaiV1GcsDocuments {
   /** The list of documents. */
   documents?: Array<GoogleCloudDocumentaiV1GcsDocument>;
 }
 
-export const GoogleCloudDocumentaiV1GcsDocuments: Schema.Schema<GoogleCloudDocumentaiV1GcsDocuments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documents: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1GcsDocument),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1GcsDocuments",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1GcsDocuments>;
+export const GoogleCloudDocumentaiV1GcsDocuments =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documents: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1GcsDocument),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1GcsDocuments" });
 
 export interface GoogleCloudDocumentaiV1BatchDocumentsInputConfig {
   /** The set of documents that match the specified Cloud Storage `gcs_prefix`. */
@@ -2245,15 +1984,13 @@ export interface GoogleCloudDocumentaiV1BatchDocumentsInputConfig {
   gcsDocuments?: GoogleCloudDocumentaiV1GcsDocuments;
 }
 
-export const GoogleCloudDocumentaiV1BatchDocumentsInputConfig: Schema.Schema<GoogleCloudDocumentaiV1BatchDocumentsInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsPrefix: Schema.optional(GoogleCloudDocumentaiV1GcsPrefix),
-      gcsDocuments: Schema.optional(GoogleCloudDocumentaiV1GcsDocuments),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1BatchDocumentsInputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsPrefix: Schema.optional(GoogleCloudDocumentaiV1GcsPrefix),
+    gcsDocuments: Schema.optional(GoogleCloudDocumentaiV1GcsDocuments),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1BatchDocumentsInputConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1BatchDocumentsInputConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig {
   /** The number of pages per shard. */
@@ -2262,16 +1999,14 @@ export interface GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShard
   pagesOverlap?: number;
 }
 
-export const GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig: Schema.Schema<GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pagesPerShard: Schema.optional(Schema.Number),
-      pagesOverlap: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pagesPerShard: Schema.optional(Schema.Number),
+    pagesOverlap: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig {
   /** The Cloud Storage uri (a directory) of the output. */
@@ -2282,34 +2017,28 @@ export interface GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig {
   shardingConfig?: GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig;
 }
 
-export const GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig: Schema.Schema<GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      fieldMask: Schema.optional(Schema.String),
-      shardingConfig: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    fieldMask: Schema.optional(Schema.String),
+    shardingConfig: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1DocumentOutputConfig {
   /** Output config to write the results to Cloud Storage. */
   gcsOutputConfig?: GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig;
 }
 
-export const GoogleCloudDocumentaiV1DocumentOutputConfig: Schema.Schema<GoogleCloudDocumentaiV1DocumentOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsOutputConfig: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentOutputConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DocumentOutputConfig>;
+export const GoogleCloudDocumentaiV1DocumentOutputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsOutputConfig: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DocumentOutputConfig" });
 
 export interface GoogleCloudDocumentaiV1BatchProcessRequest {
   /** The input documents for the BatchProcessDocuments method. */
@@ -2324,36 +2053,30 @@ export interface GoogleCloudDocumentaiV1BatchProcessRequest {
   labels?: Record<string, string>;
 }
 
-export const GoogleCloudDocumentaiV1BatchProcessRequest: Schema.Schema<GoogleCloudDocumentaiV1BatchProcessRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputDocuments: Schema.optional(
-        GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
-      ),
-      documentOutputConfig: Schema.optional(
-        GoogleCloudDocumentaiV1DocumentOutputConfig,
-      ),
-      skipHumanReview: Schema.optional(Schema.Boolean),
-      processOptions: Schema.optional(GoogleCloudDocumentaiV1ProcessOptions),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1BatchProcessRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1BatchProcessRequest>;
+export const GoogleCloudDocumentaiV1BatchProcessRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputDocuments: Schema.optional(
+      GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
+    ),
+    documentOutputConfig: Schema.optional(
+      GoogleCloudDocumentaiV1DocumentOutputConfig,
+    ),
+    skipHumanReview: Schema.optional(Schema.Boolean),
+    processOptions: Schema.optional(GoogleCloudDocumentaiV1ProcessOptions),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1BatchProcessRequest" });
 
 export interface GoogleCloudDocumentaiV1ProcessorTypeLocationInfo {
   /** The location ID. For supported locations, refer to [regional and multi-regional support](/document-ai/docs/regions). */
   locationId?: string;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorTypeLocationInfo: Schema.Schema<GoogleCloudDocumentaiV1ProcessorTypeLocationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessorTypeLocationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ProcessorTypeLocationInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorTypeLocationInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1ProcessorType {
   /** The resource name of the processor type. Format: `projects/{project}/processorTypes/{processor_type}` */
@@ -2381,38 +2104,32 @@ export interface GoogleCloudDocumentaiV1ProcessorType {
   sampleDocumentUris?: Array<string>;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorType: Schema.Schema<GoogleCloudDocumentaiV1ProcessorType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      availableLocations: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1ProcessorTypeLocationInfo),
-      ),
-      allowCreation: Schema.optional(Schema.Boolean),
-      launchStage: Schema.optional(Schema.String),
-      sampleDocumentUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ProcessorType",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorType>;
+export const GoogleCloudDocumentaiV1ProcessorType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    availableLocations: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1ProcessorTypeLocationInfo),
+    ),
+    allowCreation: Schema.optional(Schema.Boolean),
+    launchStage: Schema.optional(Schema.String),
+    sampleDocumentUris: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ProcessorType" });
 
 export interface GoogleCloudDocumentaiV1FetchProcessorTypesResponse {
   /** The list of processor types. */
   processorTypes?: Array<GoogleCloudDocumentaiV1ProcessorType>;
 }
 
-export const GoogleCloudDocumentaiV1FetchProcessorTypesResponse: Schema.Schema<GoogleCloudDocumentaiV1FetchProcessorTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorTypes: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1ProcessorType),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1FetchProcessorTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorTypes: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1ProcessorType),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1FetchProcessorTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1FetchProcessorTypesResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1ListProcessorTypesResponse {
   /** The processor types. */
@@ -2421,17 +2138,15 @@ export interface GoogleCloudDocumentaiV1ListProcessorTypesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDocumentaiV1ListProcessorTypesResponse: Schema.Schema<GoogleCloudDocumentaiV1ListProcessorTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorTypes: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1ProcessorType),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ListProcessorTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorTypes: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1ProcessorType),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ListProcessorTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ListProcessorTypesResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1ProcessorVersionAlias {
   /** The alias in the form of `processor_version` resource name. */
@@ -2440,15 +2155,11 @@ export interface GoogleCloudDocumentaiV1ProcessorVersionAlias {
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorVersionAlias: Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionAlias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ProcessorVersionAlias",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionAlias>;
+export const GoogleCloudDocumentaiV1ProcessorVersionAlias =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alias: Schema.optional(Schema.String),
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ProcessorVersionAlias" });
 
 export interface GoogleCloudDocumentaiV1Processor {
   /** Output only. Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}` */
@@ -2486,27 +2197,23 @@ export interface GoogleCloudDocumentaiV1Processor {
   activeSchemaVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1Processor: Schema.Schema<GoogleCloudDocumentaiV1Processor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      defaultProcessorVersion: Schema.optional(Schema.String),
-      processorVersionAliases: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1ProcessorVersionAlias),
-      ),
-      processEndpoint: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      activeSchemaVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1Processor",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1Processor>;
+export const GoogleCloudDocumentaiV1Processor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    defaultProcessorVersion: Schema.optional(Schema.String),
+    processorVersionAliases: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1ProcessorVersionAlias),
+    ),
+    processEndpoint: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    activeSchemaVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1Processor" });
 
 export interface GoogleCloudDocumentaiV1ListProcessorsResponse {
   /** The list of processors. */
@@ -2515,17 +2222,11 @@ export interface GoogleCloudDocumentaiV1ListProcessorsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDocumentaiV1ListProcessorsResponse: Schema.Schema<GoogleCloudDocumentaiV1ListProcessorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processors: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1Processor),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ListProcessorsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ListProcessorsResponse>;
+export const GoogleCloudDocumentaiV1ListProcessorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processors: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1Processor)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ListProcessorsResponse" });
 
 export interface GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions {
   /** Optional. Training method to use for CDE training. */
@@ -2536,33 +2237,32 @@ export interface GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocume
     | (string & {});
 }
 
-export const GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions: Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trainingMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trainingMethod: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions>;
+  });
 
 export interface GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions {
   /** Optional. The number of steps to run for model tuning. Valid values are between 1 and 400. If not provided, recommended steps will be used. */
   trainSteps?: number;
   /** Optional. The multiplier to apply to the recommended learning rate. Valid values are between 0.1 and 10. If not provided, recommended learning rate will be used. */
   learningRateMultiplier?: number;
+  /** Optional. Resource name of a previously fine tuned version id to copy the overwritten configs from. The base_processor_version should be newer than the base processor version used to fine tune this provided processor version. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`. */
+  previousFineTunedProcessorVersionName?: string;
 }
 
-export const GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions: Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trainSteps: Schema.optional(Schema.Number),
-      learningRateMultiplier: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trainSteps: Schema.optional(Schema.Number),
+    learningRateMultiplier: Schema.optional(Schema.Number),
+    previousFineTunedProcessorVersionName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions>;
+  });
 
 export interface GoogleCloudDocumentaiV1EvaluationMetrics {
   /** The calculated precision. */
@@ -2589,24 +2289,20 @@ export interface GoogleCloudDocumentaiV1EvaluationMetrics {
   totalDocumentsCount?: number;
 }
 
-export const GoogleCloudDocumentaiV1EvaluationMetrics: Schema.Schema<GoogleCloudDocumentaiV1EvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      precision: Schema.optional(Schema.Number),
-      recall: Schema.optional(Schema.Number),
-      f1Score: Schema.optional(Schema.Number),
-      predictedOccurrencesCount: Schema.optional(Schema.Number),
-      groundTruthOccurrencesCount: Schema.optional(Schema.Number),
-      predictedDocumentCount: Schema.optional(Schema.Number),
-      groundTruthDocumentCount: Schema.optional(Schema.Number),
-      truePositivesCount: Schema.optional(Schema.Number),
-      falsePositivesCount: Schema.optional(Schema.Number),
-      falseNegativesCount: Schema.optional(Schema.Number),
-      totalDocumentsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1EvaluationMetrics",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluationMetrics>;
+export const GoogleCloudDocumentaiV1EvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    precision: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+    f1Score: Schema.optional(Schema.Number),
+    predictedOccurrencesCount: Schema.optional(Schema.Number),
+    groundTruthOccurrencesCount: Schema.optional(Schema.Number),
+    predictedDocumentCount: Schema.optional(Schema.Number),
+    groundTruthDocumentCount: Schema.optional(Schema.Number),
+    truePositivesCount: Schema.optional(Schema.Number),
+    falsePositivesCount: Schema.optional(Schema.Number),
+    falseNegativesCount: Schema.optional(Schema.Number),
+    totalDocumentsCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1EvaluationMetrics" });
 
 export interface GoogleCloudDocumentaiV1EvaluationReference {
   /** The resource name of the Long Running Operation for the evaluation. */
@@ -2619,21 +2315,15 @@ export interface GoogleCloudDocumentaiV1EvaluationReference {
   aggregateMetricsExact?: GoogleCloudDocumentaiV1EvaluationMetrics;
 }
 
-export const GoogleCloudDocumentaiV1EvaluationReference: Schema.Schema<GoogleCloudDocumentaiV1EvaluationReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Schema.String),
-      evaluation: Schema.optional(Schema.String),
-      aggregateMetrics: Schema.optional(
-        GoogleCloudDocumentaiV1EvaluationMetrics,
-      ),
-      aggregateMetricsExact: Schema.optional(
-        GoogleCloudDocumentaiV1EvaluationMetrics,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1EvaluationReference",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluationReference>;
+export const GoogleCloudDocumentaiV1EvaluationReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Schema.String),
+    evaluation: Schema.optional(Schema.String),
+    aggregateMetrics: Schema.optional(GoogleCloudDocumentaiV1EvaluationMetrics),
+    aggregateMetricsExact: Schema.optional(
+      GoogleCloudDocumentaiV1EvaluationMetrics,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1EvaluationReference" });
 
 export interface GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo {
   /** The time at which this processor version will be deprecated. */
@@ -2642,15 +2332,13 @@ export interface GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo {
   replacementProcessorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo: Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deprecationTime: Schema.optional(Schema.String),
-      replacementProcessorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deprecationTime: Schema.optional(Schema.String),
+    replacementProcessorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo {
   /** Whether fine tuning is allowed for this base processor version. */
@@ -2659,16 +2347,14 @@ export interface GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundation
   minTrainLabeledDocuments?: number;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finetuningAllowed: Schema.optional(Schema.Boolean),
-      minTrainLabeledDocuments: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    finetuningAllowed: Schema.optional(Schema.Boolean),
+    minTrainLabeledDocuments: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo {
   /** The type of custom model created by the user. */
@@ -2681,16 +2367,14 @@ export interface GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenA
   baseProcessorVersionId?: string;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customModelType: Schema.optional(Schema.String),
-      baseProcessorVersionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customModelType: Schema.optional(Schema.String),
+    baseProcessorVersionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo {
   /** Information for a pretrained Google-managed foundation model. */
@@ -2699,19 +2383,17 @@ export interface GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo {
   customGenAiModelInfo?: GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      foundationGenAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo,
-      ),
-      customGenAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    foundationGenAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo,
+    ),
+    customGenAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1ProcessorVersion {
   /** Identifier. The resource name of the processor version. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}` */
@@ -2758,33 +2440,29 @@ export interface GoogleCloudDocumentaiV1ProcessorVersion {
   genAiModelInfo?: GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo;
 }
 
-export const GoogleCloudDocumentaiV1ProcessorVersion: Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      documentSchema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      latestEvaluation: Schema.optional(
-        GoogleCloudDocumentaiV1EvaluationReference,
-      ),
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyVersionName: Schema.optional(Schema.String),
-      googleManaged: Schema.optional(Schema.Boolean),
-      deprecationInfo: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo,
-      ),
-      modelType: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      genAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ProcessorVersion",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ProcessorVersion>;
+export const GoogleCloudDocumentaiV1ProcessorVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    documentSchema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    latestEvaluation: Schema.optional(
+      GoogleCloudDocumentaiV1EvaluationReference,
+    ),
+    kmsKeyName: Schema.optional(Schema.String),
+    kmsKeyVersionName: Schema.optional(Schema.String),
+    googleManaged: Schema.optional(Schema.Boolean),
+    deprecationInfo: Schema.optional(
+      GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo,
+    ),
+    modelType: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    genAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ProcessorVersion" });
 
 export interface GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData {
   /** The documents used for training the new version. */
@@ -2793,19 +2471,17 @@ export interface GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData {
   testDocuments?: GoogleCloudDocumentaiV1BatchDocumentsInputConfig;
 }
 
-export const GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData: Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trainingDocuments: Schema.optional(
-        GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
-      ),
-      testDocuments: Schema.optional(
-        GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trainingDocuments: Schema.optional(
+      GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
+    ),
+    testDocuments: Schema.optional(
+      GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData>;
+  });
 
 export interface GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
   /** Options to control Custom Document Extraction (CDE) Processor. */
@@ -2822,27 +2498,23 @@ export interface GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
   baseProcessorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1TrainProcessorVersionRequest: Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDocumentExtractionOptions: Schema.optional(
-        GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions,
-      ),
-      foundationModelTuningOptions: Schema.optional(
-        GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions,
-      ),
-      processorVersion: Schema.optional(
-        GoogleCloudDocumentaiV1ProcessorVersion,
-      ),
-      documentSchema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
-      inputData: Schema.optional(
-        GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData,
-      ),
-      baseProcessorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1TrainProcessorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customDocumentExtractionOptions: Schema.optional(
+      GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions,
+    ),
+    foundationModelTuningOptions: Schema.optional(
+      GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions,
+    ),
+    processorVersion: Schema.optional(GoogleCloudDocumentaiV1ProcessorVersion),
+    documentSchema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
+    inputData: Schema.optional(
+      GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData,
+    ),
+    baseProcessorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1TrainProcessorVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1ListProcessorVersionsResponse {
   /** The list of processors. */
@@ -2851,59 +2523,55 @@ export interface GoogleCloudDocumentaiV1ListProcessorVersionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDocumentaiV1ListProcessorVersionsResponse: Schema.Schema<GoogleCloudDocumentaiV1ListProcessorVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorVersions: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1ProcessorVersion),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ListProcessorVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorVersions: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1ProcessorVersion),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ListProcessorVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ListProcessorVersionsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1DeployProcessorVersionRequest {}
 
-export const GoogleCloudDocumentaiV1DeployProcessorVersionRequest: Schema.Schema<GoogleCloudDocumentaiV1DeployProcessorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1DeployProcessorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1DeployProcessorVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DeployProcessorVersionRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1UndeployProcessorVersionRequest {}
 
-export const GoogleCloudDocumentaiV1UndeployProcessorVersionRequest: Schema.Schema<GoogleCloudDocumentaiV1UndeployProcessorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1UndeployProcessorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1UndeployProcessorVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1UndeployProcessorVersionRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1EnableProcessorRequest {}
 
-export const GoogleCloudDocumentaiV1EnableProcessorRequest: Schema.Schema<GoogleCloudDocumentaiV1EnableProcessorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1EnableProcessorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1EnableProcessorRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EnableProcessorRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1DisableProcessorRequest {}
 
-export const GoogleCloudDocumentaiV1DisableProcessorRequest: Schema.Schema<GoogleCloudDocumentaiV1DisableProcessorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1DisableProcessorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1DisableProcessorRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DisableProcessorRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest {
   /** Required. The resource name of child ProcessorVersion to use as default. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{version}` */
   defaultProcessorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest: Schema.Schema<GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultProcessorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultProcessorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1ReviewDocumentRequest {
   /** An inline document proto. */
@@ -2916,33 +2584,27 @@ export interface GoogleCloudDocumentaiV1ReviewDocumentRequest {
   documentSchema?: GoogleCloudDocumentaiV1DocumentSchema;
 }
 
-export const GoogleCloudDocumentaiV1ReviewDocumentRequest: Schema.Schema<GoogleCloudDocumentaiV1ReviewDocumentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inlineDocument: Schema.optional(GoogleCloudDocumentaiV1Document),
-      enableSchemaValidation: Schema.optional(Schema.Boolean),
-      priority: Schema.optional(Schema.String),
-      documentSchema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ReviewDocumentRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ReviewDocumentRequest>;
+export const GoogleCloudDocumentaiV1ReviewDocumentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inlineDocument: Schema.optional(GoogleCloudDocumentaiV1Document),
+    enableSchemaValidation: Schema.optional(Schema.Boolean),
+    priority: Schema.optional(Schema.String),
+    documentSchema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ReviewDocumentRequest" });
 
 export interface GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest {
   /** Optional. The documents used in the evaluation. If unspecified, use the processor's dataset as evaluation input. */
   evaluationDocuments?: GoogleCloudDocumentaiV1BatchDocumentsInputConfig;
 }
 
-export const GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest: Schema.Schema<GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluationDocuments: Schema.optional(
-        GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluationDocuments: Schema.optional(
+      GoogleCloudDocumentaiV1BatchDocumentsInputConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluateProcessorVersionRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1EvaluationCounters {
   /** How many documents were sent for evaluation. */
@@ -2955,17 +2617,13 @@ export interface GoogleCloudDocumentaiV1EvaluationCounters {
   evaluatedDocumentsCount?: number;
 }
 
-export const GoogleCloudDocumentaiV1EvaluationCounters: Schema.Schema<GoogleCloudDocumentaiV1EvaluationCounters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputDocumentsCount: Schema.optional(Schema.Number),
-      invalidDocumentsCount: Schema.optional(Schema.Number),
-      failedDocumentsCount: Schema.optional(Schema.Number),
-      evaluatedDocumentsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1EvaluationCounters",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluationCounters>;
+export const GoogleCloudDocumentaiV1EvaluationCounters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputDocumentsCount: Schema.optional(Schema.Number),
+    invalidDocumentsCount: Schema.optional(Schema.Number),
+    failedDocumentsCount: Schema.optional(Schema.Number),
+    evaluatedDocumentsCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1EvaluationCounters" });
 
 export interface GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics {
   /** The confidence level. */
@@ -2974,15 +2632,13 @@ export interface GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics {
   metrics?: GoogleCloudDocumentaiV1EvaluationMetrics;
 }
 
-export const GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics: Schema.Schema<GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceLevel: Schema.optional(Schema.Number),
-      metrics: Schema.optional(GoogleCloudDocumentaiV1EvaluationMetrics),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceLevel: Schema.optional(Schema.Number),
+    metrics: Schema.optional(GoogleCloudDocumentaiV1EvaluationMetrics),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics>;
+  });
 
 export interface GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics {
   /** Metrics across confidence levels with fuzzy matching enabled. */
@@ -3001,24 +2657,22 @@ export interface GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics {
   metricsType?: "METRICS_TYPE_UNSPECIFIED" | "AGGREGATE" | (string & {});
 }
 
-export const GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics: Schema.Schema<GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceLevelMetrics: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics),
-      ),
-      confidenceLevelMetricsExact: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics),
-      ),
-      auprc: Schema.optional(Schema.Number),
-      estimatedCalibrationError: Schema.optional(Schema.Number),
-      auprcExact: Schema.optional(Schema.Number),
-      estimatedCalibrationErrorExact: Schema.optional(Schema.Number),
-      metricsType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceLevelMetrics: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics),
+    ),
+    confidenceLevelMetricsExact: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics),
+    ),
+    auprc: Schema.optional(Schema.Number),
+    estimatedCalibrationError: Schema.optional(Schema.Number),
+    auprcExact: Schema.optional(Schema.Number),
+    estimatedCalibrationErrorExact: Schema.optional(Schema.Number),
+    metricsType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics>;
+  });
 
 export interface GoogleCloudDocumentaiV1EvaluationEvaluationRevision {
   /** Output only. The revision ID of the evaluation. */
@@ -3034,26 +2688,24 @@ export interface GoogleCloudDocumentaiV1EvaluationEvaluationRevision {
   >;
 }
 
-export const GoogleCloudDocumentaiV1EvaluationEvaluationRevision: Schema.Schema<GoogleCloudDocumentaiV1EvaluationEvaluationRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-      documentCounters: Schema.optional(
-        GoogleCloudDocumentaiV1EvaluationCounters,
-      ),
-      allEntitiesMetrics: Schema.optional(
+export const GoogleCloudDocumentaiV1EvaluationEvaluationRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+    documentCounters: Schema.optional(
+      GoogleCloudDocumentaiV1EvaluationCounters,
+    ),
+    allEntitiesMetrics: Schema.optional(
+      GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics,
+    ),
+    entityMetrics: Schema.optional(
+      Schema.Record(
+        Schema.String,
         GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics,
       ),
-      entityMetrics: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1EvaluationEvaluationRevision",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluationEvaluationRevision>;
+  });
 
 export interface GoogleCloudDocumentaiV1Evaluation {
   /** The resource name of the evaluation. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}/evaluations/{evaluation}` */
@@ -3077,32 +2729,28 @@ export interface GoogleCloudDocumentaiV1Evaluation {
   revisions?: Array<GoogleCloudDocumentaiV1EvaluationEvaluationRevision>;
 }
 
-export const GoogleCloudDocumentaiV1Evaluation: Schema.Schema<GoogleCloudDocumentaiV1Evaluation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      documentCounters: Schema.optional(
-        GoogleCloudDocumentaiV1EvaluationCounters,
-      ),
-      allEntitiesMetrics: Schema.optional(
+export const GoogleCloudDocumentaiV1Evaluation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    documentCounters: Schema.optional(
+      GoogleCloudDocumentaiV1EvaluationCounters,
+    ),
+    allEntitiesMetrics: Schema.optional(
+      GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics,
+    ),
+    entityMetrics: Schema.optional(
+      Schema.Record(
+        Schema.String,
         GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics,
       ),
-      entityMetrics: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics,
-        ),
-      ),
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyVersionName: Schema.optional(Schema.String),
-      revisions: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1EvaluationEvaluationRevision),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1Evaluation",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1Evaluation>;
+    ),
+    kmsKeyName: Schema.optional(Schema.String),
+    kmsKeyVersionName: Schema.optional(Schema.String),
+    revisions: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1EvaluationEvaluationRevision),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1Evaluation" });
 
 export interface GoogleCloudDocumentaiV1ListEvaluationsResponse {
   /** The evaluations requested. */
@@ -3111,17 +2759,13 @@ export interface GoogleCloudDocumentaiV1ListEvaluationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDocumentaiV1ListEvaluationsResponse: Schema.Schema<GoogleCloudDocumentaiV1ListEvaluationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluations: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1Evaluation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ListEvaluationsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ListEvaluationsResponse>;
+export const GoogleCloudDocumentaiV1ListEvaluationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluations: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1Evaluation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ListEvaluationsResponse" });
 
 export interface GoogleCloudDocumentaiV1NextSchema {
   /** Identifier. The resource name of the Schema. Format: `projects/{project}/locations/{location}/schemas/{schema}` */
@@ -3136,18 +2780,14 @@ export interface GoogleCloudDocumentaiV1NextSchema {
   updateTime?: string;
 }
 
-export const GoogleCloudDocumentaiV1NextSchema: Schema.Schema<GoogleCloudDocumentaiV1NextSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1NextSchema",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1NextSchema>;
+export const GoogleCloudDocumentaiV1NextSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1NextSchema" });
 
 export interface GoogleCloudDocumentaiV1ListSchemasResponse {
   /** The list of Schemas. */
@@ -3156,15 +2796,11 @@ export interface GoogleCloudDocumentaiV1ListSchemasResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDocumentaiV1ListSchemasResponse: Schema.Schema<GoogleCloudDocumentaiV1ListSchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemas: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1NextSchema)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ListSchemasResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ListSchemasResponse>;
+export const GoogleCloudDocumentaiV1ListSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemas: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1NextSchema)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ListSchemasResponse" });
 
 export interface GoogleCloudDocumentaiV1SchemaVersion {
   /** Identifier. The resource name of the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}` */
@@ -3179,48 +2815,36 @@ export interface GoogleCloudDocumentaiV1SchemaVersion {
   schema?: GoogleCloudDocumentaiV1DocumentSchema;
 }
 
-export const GoogleCloudDocumentaiV1SchemaVersion: Schema.Schema<GoogleCloudDocumentaiV1SchemaVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      schema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1SchemaVersion",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1SchemaVersion>;
+export const GoogleCloudDocumentaiV1SchemaVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    schema: Schema.optional(GoogleCloudDocumentaiV1DocumentSchema),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1SchemaVersion" });
 
 export interface GoogleCloudDocumentaiV1Documents {
   /** The list of documents. */
   documents?: Array<GoogleCloudDocumentaiV1Document>;
 }
 
-export const GoogleCloudDocumentaiV1Documents: Schema.Schema<GoogleCloudDocumentaiV1Documents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documents: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1Document)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1Documents",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1Documents>;
+export const GoogleCloudDocumentaiV1Documents =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documents: Schema.optional(Schema.Array(GoogleCloudDocumentaiV1Document)),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1Documents" });
 
 export interface GoogleCloudDocumentaiV1RawDocuments {
   /** Specifies raw document content and mime type. */
   documents?: Array<GoogleCloudDocumentaiV1RawDocument>;
 }
 
-export const GoogleCloudDocumentaiV1RawDocuments: Schema.Schema<GoogleCloudDocumentaiV1RawDocuments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documents: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1RawDocument),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1RawDocuments",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1RawDocuments>;
+export const GoogleCloudDocumentaiV1RawDocuments =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documents: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1RawDocument),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1RawDocuments" });
 
 export interface GoogleCloudDocumentaiV1SchemaGenerationIteration {
   /** Optional. The prompt used for the iteration. */
@@ -3231,32 +2855,26 @@ export interface GoogleCloudDocumentaiV1SchemaGenerationIteration {
   adjustedSchema?: GoogleCloudDocumentaiV1SchemaVersion;
 }
 
-export const GoogleCloudDocumentaiV1SchemaGenerationIteration: Schema.Schema<GoogleCloudDocumentaiV1SchemaGenerationIteration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prompt: Schema.optional(Schema.String),
-      generatedSchema: Schema.optional(GoogleCloudDocumentaiV1SchemaVersion),
-      adjustedSchema: Schema.optional(GoogleCloudDocumentaiV1SchemaVersion),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1SchemaGenerationIteration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prompt: Schema.optional(Schema.String),
+    generatedSchema: Schema.optional(GoogleCloudDocumentaiV1SchemaVersion),
+    adjustedSchema: Schema.optional(GoogleCloudDocumentaiV1SchemaVersion),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1SchemaGenerationIteration",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1SchemaGenerationIteration>;
+  });
 
 export interface GoogleCloudDocumentaiV1SchemaGenerationHistory {
   /** Required. Previous prompt-answers in a chronological order. */
   iterations?: Array<GoogleCloudDocumentaiV1SchemaGenerationIteration>;
 }
 
-export const GoogleCloudDocumentaiV1SchemaGenerationHistory: Schema.Schema<GoogleCloudDocumentaiV1SchemaGenerationHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iterations: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1SchemaGenerationIteration),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1SchemaGenerationHistory",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1SchemaGenerationHistory>;
+export const GoogleCloudDocumentaiV1SchemaGenerationHistory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iterations: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1SchemaGenerationIteration),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1SchemaGenerationHistory" });
 
 export interface GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams {
   /** Optional. The prompt used for the schema generation. */
@@ -3265,16 +2883,14 @@ export interface GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSche
   history?: GoogleCloudDocumentaiV1SchemaGenerationHistory;
 }
 
-export const GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams: Schema.Schema<GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prompt: Schema.optional(Schema.String),
-      history: Schema.optional(GoogleCloudDocumentaiV1SchemaGenerationHistory),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prompt: Schema.optional(Schema.String),
+    history: Schema.optional(GoogleCloudDocumentaiV1SchemaGenerationHistory),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams>;
+  });
 
 export interface GoogleCloudDocumentaiV1GenerateSchemaVersionRequest {
   /** The set of documents specified inline. For each document, its `uri` or `content` field must be set. */
@@ -3291,35 +2907,31 @@ export interface GoogleCloudDocumentaiV1GenerateSchemaVersionRequest {
   generateSchemaVersionParams?: GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams;
 }
 
-export const GoogleCloudDocumentaiV1GenerateSchemaVersionRequest: Schema.Schema<GoogleCloudDocumentaiV1GenerateSchemaVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inlineDocuments: Schema.optional(GoogleCloudDocumentaiV1Documents),
-      rawDocuments: Schema.optional(GoogleCloudDocumentaiV1RawDocuments),
-      gcsDocuments: Schema.optional(GoogleCloudDocumentaiV1GcsDocuments),
-      gcsPrefix: Schema.optional(GoogleCloudDocumentaiV1GcsPrefix),
-      baseSchemaVersion: Schema.optional(Schema.String),
-      generateSchemaVersionParams: Schema.optional(
-        GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1GenerateSchemaVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inlineDocuments: Schema.optional(GoogleCloudDocumentaiV1Documents),
+    rawDocuments: Schema.optional(GoogleCloudDocumentaiV1RawDocuments),
+    gcsDocuments: Schema.optional(GoogleCloudDocumentaiV1GcsDocuments),
+    gcsPrefix: Schema.optional(GoogleCloudDocumentaiV1GcsPrefix),
+    baseSchemaVersion: Schema.optional(Schema.String),
+    generateSchemaVersionParams: Schema.optional(
+      GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1GenerateSchemaVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1GenerateSchemaVersionRequest>;
+  });
 
 export interface GoogleCloudDocumentaiV1GenerateSchemaVersionResponse {
   /** The schema version generated by the model. */
   schemaVersion?: GoogleCloudDocumentaiV1SchemaVersion;
 }
 
-export const GoogleCloudDocumentaiV1GenerateSchemaVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1GenerateSchemaVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaVersion: Schema.optional(GoogleCloudDocumentaiV1SchemaVersion),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1GenerateSchemaVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaVersion: Schema.optional(GoogleCloudDocumentaiV1SchemaVersion),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1GenerateSchemaVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1GenerateSchemaVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1ListSchemaVersionsResponse {
   /** The list of SchemaVersions. */
@@ -3328,17 +2940,15 @@ export interface GoogleCloudDocumentaiV1ListSchemaVersionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDocumentaiV1ListSchemaVersionsResponse: Schema.Schema<GoogleCloudDocumentaiV1ListSchemaVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaVersions: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1SchemaVersion),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ListSchemaVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaVersions: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1SchemaVersion),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ListSchemaVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ListSchemaVersionsResponse>;
+  });
 
 export interface GoogleCloudLocationLocation {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -3353,18 +2963,14 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationLocation",
-  }) as any as Schema.Schema<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -3373,29 +2979,23 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationListLocationsResponse",
-  }) as any as Schema.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant {
   floatValue?: number;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floatValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    floatValue: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField {
   /** The field name to validate. This can be a simple field name or a nested field one using the ':' (meant as an aggregator) or '*' (meant as foreach) operators. */
@@ -3404,18 +3004,16 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   defaultValue?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldName: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant,
-      ),
-    }),
-  ).annotate({
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldName: Schema.optional(Schema.String),
+    defaultValue: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant,
+    ),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences {
   field?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField;
@@ -3424,19 +3022,17 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   maxOccurrences?: number;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
-      ),
-      minOccurrences: Schema.optional(Schema.Number),
-      maxOccurrences: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
+    ),
+    minOccurrences: Schema.optional(Schema.Number),
+    maxOccurrences: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex {
   field?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField;
@@ -3444,18 +3040,16 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   pattern?: string;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
-      ),
-      pattern: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
+    ),
+    pattern: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation {
   /** A list of fields to be used as operands. */
@@ -3519,21 +3113,19 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
     | (string & {});
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      leftOperand: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation,
-      ),
-      rightOperand: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation,
-      ),
-      validationOperator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    leftOperand: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation,
+    ),
+    rightOperand: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation,
+    ),
+    validationOperator: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule {
   alignmentType?:
@@ -3545,16 +3137,14 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   tolerance?: number;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alignmentType: Schema.optional(Schema.String),
-      tolerance: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alignmentType: Schema.optional(Schema.String),
+    tolerance: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule {
   /** The full path of the parent field. */
@@ -3565,25 +3155,23 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   alignmentRule?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentField: Schema.optional(
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parentField: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
+    ),
+    childFields: Schema.optional(
+      Schema.Array(
         CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
       ),
-      childFields: Schema.optional(
-        Schema.Array(
-          CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
-        ),
-      ),
-      alignmentRule: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule,
-      ),
-    }),
-  ).annotate({
+    ),
+    alignmentRule: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule,
+    ),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule {
   /** The fields to be aligned. */
@@ -3592,22 +3180,20 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   alignmentRule?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(
-        Schema.Array(
-          CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
-        ),
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(
+      Schema.Array(
+        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField,
       ),
-      alignmentRule: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule,
-      ),
-    }),
-  ).annotate({
+    ),
+    alignmentRule: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule,
+    ),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule {
   /** Unique identifier of the rule. Optional. */
@@ -3623,56 +3209,52 @@ export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidatio
   entityAlignmentRule?: CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      fieldOccurrences: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences,
-      ),
-      fieldRegex: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex,
-      ),
-      formValidation: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation,
-      ),
-      childAlignmentRule: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule,
-      ),
-      entityAlignmentRule: Schema.optional(
-        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule,
-      ),
-    }),
-  ).annotate({
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ruleId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    fieldOccurrences: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences,
+    ),
+    fieldRegex: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex,
+    ),
+    formValidation: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation,
+    ),
+    childAlignmentRule: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule,
+    ),
+    entityAlignmentRule: Schema.optional(
+      CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule,
+    ),
+  }).annotate({
     identifier:
       "CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule>;
+  });
 
 export interface CloudAiDocumentaiLabHifiaToolsValidationValidatorInput {
   validationRules?: Array<CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule>;
 }
 
-export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInput: Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validationRules: Schema.optional(
-        Schema.Array(
-          CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule,
-        ),
+export const CloudAiDocumentaiLabHifiaToolsValidationValidatorInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validationRules: Schema.optional(
+      Schema.Array(
+        CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "CloudAiDocumentaiLabHifiaToolsValidationValidatorInput",
-  }) as any as Schema.Schema<CloudAiDocumentaiLabHifiaToolsValidationValidatorInput>;
+  });
 
 export interface GoogleCloudDocumentaiV1BatchProcessResponse {}
 
-export const GoogleCloudDocumentaiV1BatchProcessResponse: Schema.Schema<GoogleCloudDocumentaiV1BatchProcessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1BatchProcessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1BatchProcessResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1BatchProcessResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus {
   /** The source of the document, same as the input_gcs_source field in the request when the batch process started. */
@@ -3685,20 +3267,18 @@ export interface GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessSta
   humanReviewStatus?: GoogleCloudDocumentaiV1HumanReviewStatus;
 }
 
-export const GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus: Schema.Schema<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputGcsSource: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-      outputGcsDestination: Schema.optional(Schema.String),
-      humanReviewStatus: Schema.optional(
-        GoogleCloudDocumentaiV1HumanReviewStatus,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputGcsSource: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+    outputGcsDestination: Schema.optional(Schema.String),
+    humanReviewStatus: Schema.optional(
+      GoogleCloudDocumentaiV1HumanReviewStatus,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus>;
+  });
 
 export interface GoogleCloudDocumentaiV1BatchProcessMetadata {
   /** The state of the current batch processing. */
@@ -3721,22 +3301,18 @@ export interface GoogleCloudDocumentaiV1BatchProcessMetadata {
   individualProcessStatuses?: Array<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus>;
 }
 
-export const GoogleCloudDocumentaiV1BatchProcessMetadata: Schema.Schema<GoogleCloudDocumentaiV1BatchProcessMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      individualProcessStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus,
-        ),
+export const GoogleCloudDocumentaiV1BatchProcessMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    individualProcessStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1BatchProcessMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1BatchProcessMetadata>;
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1BatchProcessMetadata" });
 
 export interface GoogleCloudDocumentaiV1ReviewDocumentResponse {
   /** The Cloud Storage uri for the human reviewed document if the review is succeeded. */
@@ -3747,16 +3323,12 @@ export interface GoogleCloudDocumentaiV1ReviewDocumentResponse {
   rejectionReason?: string;
 }
 
-export const GoogleCloudDocumentaiV1ReviewDocumentResponse: Schema.Schema<GoogleCloudDocumentaiV1ReviewDocumentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      rejectionReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1ReviewDocumentResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ReviewDocumentResponse>;
+export const GoogleCloudDocumentaiV1ReviewDocumentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsDestination: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    rejectionReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1ReviewDocumentResponse" });
 
 export interface GoogleCloudDocumentaiV1CommonOperationMetadata {
   /** The state of the operation. */
@@ -3778,18 +3350,14 @@ export interface GoogleCloudDocumentaiV1CommonOperationMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDocumentaiV1CommonOperationMetadata: Schema.Schema<GoogleCloudDocumentaiV1CommonOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1CommonOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1CommonOperationMetadata>;
+export const GoogleCloudDocumentaiV1CommonOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1CommonOperationMetadata" });
 
 export interface GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata {
   /** The basic metadata of the long-running operation. */
@@ -3798,164 +3366,144 @@ export interface GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata {
   questionId?: string;
 }
 
-export const GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata: Schema.Schema<GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-      questionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+    questionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1DeleteProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1DeleteProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiV1DeleteProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DeleteProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DeleteProcessorMetadata>;
+export const GoogleCloudDocumentaiV1DeleteProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1DeleteProcessorMetadata" });
 
 export interface GoogleCloudDocumentaiV1EnableProcessorResponse {}
 
-export const GoogleCloudDocumentaiV1EnableProcessorResponse: Schema.Schema<GoogleCloudDocumentaiV1EnableProcessorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1EnableProcessorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1EnableProcessorResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EnableProcessorResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1EnableProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1EnableProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiV1EnableProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1EnableProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EnableProcessorMetadata>;
+export const GoogleCloudDocumentaiV1EnableProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1EnableProcessorMetadata" });
 
 export interface GoogleCloudDocumentaiV1DisableProcessorResponse {}
 
-export const GoogleCloudDocumentaiV1DisableProcessorResponse: Schema.Schema<GoogleCloudDocumentaiV1DisableProcessorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1DisableProcessorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1DisableProcessorResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DisableProcessorResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1DisableProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1DisableProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiV1DisableProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DisableProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DisableProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DisableProcessorMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1DeployProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1DeployProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1DeployProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1DeployProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1DeployProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DeployProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1DeployProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiV1DeployProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1DeployProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1DeployProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1DeployProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1DeployProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1UndeployProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiV1UndeployProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1UndeployProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1UndeployProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1UndeployProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1UndeployProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation {
   /** The total number of document errors. */
@@ -3968,18 +3516,16 @@ export interface GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetVali
   datasetErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation: Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentErrorCount: Schema.optional(Schema.Number),
-      datasetErrorCount: Schema.optional(Schema.Number),
-      documentErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      datasetErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentErrorCount: Schema.optional(Schema.Number),
+    datasetErrorCount: Schema.optional(Schema.Number),
+    documentErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    datasetErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation>;
+  });
 
 export interface GoogleCloudDocumentaiV1TrainProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
@@ -3990,73 +3536,65 @@ export interface GoogleCloudDocumentaiV1TrainProcessorVersionMetadata {
   testDatasetValidation?: GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation;
 }
 
-export const GoogleCloudDocumentaiV1TrainProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-      trainingDatasetValidation: Schema.optional(
-        GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation,
-      ),
-      testDatasetValidation: Schema.optional(
-        GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1TrainProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+    trainingDatasetValidation: Schema.optional(
+      GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation,
+    ),
+    testDatasetValidation: Schema.optional(
+      GoogleCloudDocumentaiV1TrainProcessorVersionMetadataDatasetValidation,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1TrainProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1TrainProcessorVersionResponse {
   /** The resource name of the processor version produced by training. */
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1TrainProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1TrainProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1TrainProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1TrainProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse {
   /** The resource name of the created evaluation. */
   evaluation?: string;
 }
 
-export const GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3BatchProcessResponse {}
 
-export const GoogleCloudDocumentaiV1beta3BatchProcessResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3BatchProcessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3BatchProcessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3BatchProcessResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3BatchProcessResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3HumanReviewStatus {
   /** The state of human review on the processing request. */
@@ -4073,16 +3611,12 @@ export interface GoogleCloudDocumentaiV1beta3HumanReviewStatus {
   humanReviewOperation?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3HumanReviewStatus: Schema.Schema<GoogleCloudDocumentaiV1beta3HumanReviewStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      humanReviewOperation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3HumanReviewStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3HumanReviewStatus>;
+export const GoogleCloudDocumentaiV1beta3HumanReviewStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    humanReviewOperation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3HumanReviewStatus" });
 
 export interface GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
   /** The source of the document, same as the input_gcs_source field in the request when the batch process started. */
@@ -4097,21 +3631,19 @@ export interface GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProce
   humanReviewStatus?: GoogleCloudDocumentaiV1beta3HumanReviewStatus;
 }
 
-export const GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus: Schema.Schema<GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputGcsSource: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-      outputGcsDestination: Schema.optional(Schema.String),
-      humanReviewOperation: Schema.optional(Schema.String),
-      humanReviewStatus: Schema.optional(
-        GoogleCloudDocumentaiV1beta3HumanReviewStatus,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputGcsSource: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+    outputGcsDestination: Schema.optional(Schema.String),
+    humanReviewOperation: Schema.optional(Schema.String),
+    humanReviewStatus: Schema.optional(
+      GoogleCloudDocumentaiV1beta3HumanReviewStatus,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   /** The state of the current batch processing. */
@@ -4134,22 +3666,20 @@ export interface GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   individualProcessStatuses?: Array<GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>;
 }
 
-export const GoogleCloudDocumentaiV1beta3BatchProcessMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3BatchProcessMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      individualProcessStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus,
-        ),
+export const GoogleCloudDocumentaiV1beta3BatchProcessMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    individualProcessStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3BatchProcessMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3BatchProcessMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
   /** The state of the operation. */
@@ -4171,80 +3701,72 @@ export interface GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3CommonOperationMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3CommonOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3CommonOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3CommonOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3EnableProcessorResponse {}
 
-export const GoogleCloudDocumentaiV1beta3EnableProcessorResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3EnableProcessorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3EnableProcessorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3EnableProcessorResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3EnableProcessorResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3EnableProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3EnableProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3EnableProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3EnableProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3EnableProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3EnableProcessorMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DisableProcessorResponse {}
 
-export const GoogleCloudDocumentaiV1beta3DisableProcessorResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3DisableProcessorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3DisableProcessorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DisableProcessorResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DisableProcessorResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DisableProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3DisableProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3DisableProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DisableProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DisableProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DisableProcessorMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ProcessorVersionAlias {
   /** The alias in the form of `processor_version` resource name. */
@@ -4253,15 +3775,13 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorVersionAlias {
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3ProcessorVersionAlias: Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionAlias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ProcessorVersionAlias =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alias: Schema.optional(Schema.String),
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionAlias",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionAlias>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3Processor {
   /** Output only. Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}` */
@@ -4299,58 +3819,50 @@ export interface GoogleCloudDocumentaiV1beta3Processor {
   activeSchemaVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3Processor: Schema.Schema<GoogleCloudDocumentaiV1beta3Processor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      defaultProcessorVersion: Schema.optional(Schema.String),
-      processorVersionAliases: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1beta3ProcessorVersionAlias),
-      ),
-      processEndpoint: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      activeSchemaVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3Processor",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3Processor>;
+export const GoogleCloudDocumentaiV1beta3Processor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    defaultProcessorVersion: Schema.optional(Schema.String),
+    processorVersionAliases: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1beta3ProcessorVersionAlias),
+    ),
+    processEndpoint: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    activeSchemaVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3Processor" });
 
 export interface GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata {
   /** The basic metadata for the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues {
   /** The individual values that this enum values type can include. */
   values?: Array<string>;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3SummaryOptions {
   /** How long the summary should be. */
@@ -4364,31 +3876,23 @@ export interface GoogleCloudDocumentaiV1beta3SummaryOptions {
   format?: "FORMAT_UNSPECIFIED" | "PARAGRAPH" | "BULLETS" | (string & {});
 }
 
-export const GoogleCloudDocumentaiV1beta3SummaryOptions: Schema.Schema<GoogleCloudDocumentaiV1beta3SummaryOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      length: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3SummaryOptions",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3SummaryOptions>;
+export const GoogleCloudDocumentaiV1beta3SummaryOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    length: Schema.optional(Schema.String),
+    format: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3SummaryOptions" });
 
 export interface GoogleCloudDocumentaiV1beta3FieldExtractionMetadata {
   /** Summary options config. */
   summaryOptions?: GoogleCloudDocumentaiV1beta3SummaryOptions;
 }
 
-export const GoogleCloudDocumentaiV1beta3FieldExtractionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3FieldExtractionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summaryOptions: Schema.optional(
-        GoogleCloudDocumentaiV1beta3SummaryOptions,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3FieldExtractionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summaryOptions: Schema.optional(GoogleCloudDocumentaiV1beta3SummaryOptions),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3FieldExtractionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3FieldExtractionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3PropertyMetadata {
   /** Whether the property should be considered as "inactive". */
@@ -4397,17 +3901,13 @@ export interface GoogleCloudDocumentaiV1beta3PropertyMetadata {
   fieldExtractionMetadata?: GoogleCloudDocumentaiV1beta3FieldExtractionMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3PropertyMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3PropertyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inactive: Schema.optional(Schema.Boolean),
-      fieldExtractionMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3FieldExtractionMetadata,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3PropertyMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3PropertyMetadata>;
+export const GoogleCloudDocumentaiV1beta3PropertyMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inactive: Schema.optional(Schema.Boolean),
+    fieldExtractionMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3FieldExtractionMetadata,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3PropertyMetadata" });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty {
   /** The name of the property. Follows the same guidelines as the EntityType name. */
@@ -4437,36 +3937,30 @@ export interface GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty {
   propertyMetadata?: GoogleCloudDocumentaiV1beta3PropertyMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      occurrenceType: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      propertyMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3PropertyMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    valueType: Schema.optional(Schema.String),
+    occurrenceType: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    propertyMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3PropertyMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3EntityTypeMetadata {
   /** Whether the entity type should be considered inactive. */
   inactive?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1beta3EntityTypeMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3EntityTypeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inactive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3EntityTypeMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3EntityTypeMetadata>;
+export const GoogleCloudDocumentaiV1beta3EntityTypeMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inactive: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3EntityTypeMetadata" });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType {
   /** If specified, lists all the possible values for this entity. This should not be more than a handful of values. If the number of values is >10 or could change frequently, use the `EntityType.value_ontology` field and specify a list of all possible values in a value ontology file. */
@@ -4485,28 +3979,26 @@ export interface GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType {
   entityTypeMetadata?: GoogleCloudDocumentaiV1beta3EntityTypeMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enumValues: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues,
+export const GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enumValues: Schema.optional(
+      GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues,
+    ),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    baseTypes: Schema.optional(Schema.Array(Schema.String)),
+    properties: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty,
       ),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      baseTypes: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty,
-        ),
-      ),
-      entityTypeMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3EntityTypeMetadata,
-      ),
-    }),
-  ).annotate({
+    ),
+    entityTypeMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3EntityTypeMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata {
   /** If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be applied to the entire document (classification). */
@@ -4519,17 +4011,15 @@ export interface GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata {
   skipNamingValidation?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentSplitter: Schema.optional(Schema.Boolean),
-      documentAllowMultipleLabels: Schema.optional(Schema.Boolean),
-      prefixedNamingOnProperties: Schema.optional(Schema.Boolean),
-      skipNamingValidation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentSplitter: Schema.optional(Schema.Boolean),
+    documentAllowMultipleLabels: Schema.optional(Schema.Boolean),
+    prefixedNamingOnProperties: Schema.optional(Schema.Boolean),
+    skipNamingValidation: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentSchema {
   /** Display name to show users. */
@@ -4544,22 +4034,18 @@ export interface GoogleCloudDocumentaiV1beta3DocumentSchema {
   documentPrompt?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentSchema: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      entityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType),
-      ),
-      metadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata,
-      ),
-      documentPrompt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3DocumentSchema",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentSchema>;
+export const GoogleCloudDocumentaiV1beta3DocumentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    entityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType),
+    ),
+    metadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata,
+    ),
+    documentPrompt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3DocumentSchema" });
 
 export interface GoogleCloudDocumentaiV1beta3EvaluationMetrics {
   /** The calculated precision. */
@@ -4586,24 +4072,20 @@ export interface GoogleCloudDocumentaiV1beta3EvaluationMetrics {
   totalDocumentsCount?: number;
 }
 
-export const GoogleCloudDocumentaiV1beta3EvaluationMetrics: Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      precision: Schema.optional(Schema.Number),
-      recall: Schema.optional(Schema.Number),
-      f1Score: Schema.optional(Schema.Number),
-      predictedOccurrencesCount: Schema.optional(Schema.Number),
-      groundTruthOccurrencesCount: Schema.optional(Schema.Number),
-      predictedDocumentCount: Schema.optional(Schema.Number),
-      groundTruthDocumentCount: Schema.optional(Schema.Number),
-      truePositivesCount: Schema.optional(Schema.Number),
-      falsePositivesCount: Schema.optional(Schema.Number),
-      falseNegativesCount: Schema.optional(Schema.Number),
-      totalDocumentsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3EvaluationMetrics",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluationMetrics>;
+export const GoogleCloudDocumentaiV1beta3EvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    precision: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+    f1Score: Schema.optional(Schema.Number),
+    predictedOccurrencesCount: Schema.optional(Schema.Number),
+    groundTruthOccurrencesCount: Schema.optional(Schema.Number),
+    predictedDocumentCount: Schema.optional(Schema.Number),
+    groundTruthDocumentCount: Schema.optional(Schema.Number),
+    truePositivesCount: Schema.optional(Schema.Number),
+    falsePositivesCount: Schema.optional(Schema.Number),
+    falseNegativesCount: Schema.optional(Schema.Number),
+    totalDocumentsCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3EvaluationMetrics" });
 
 export interface GoogleCloudDocumentaiV1beta3EvaluationReference {
   /** The resource name of the Long Running Operation for the evaluation. */
@@ -4616,21 +4098,19 @@ export interface GoogleCloudDocumentaiV1beta3EvaluationReference {
   aggregateMetricsExact?: GoogleCloudDocumentaiV1beta3EvaluationMetrics;
 }
 
-export const GoogleCloudDocumentaiV1beta3EvaluationReference: Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluationReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Schema.String),
-      evaluation: Schema.optional(Schema.String),
-      aggregateMetrics: Schema.optional(
-        GoogleCloudDocumentaiV1beta3EvaluationMetrics,
-      ),
-      aggregateMetricsExact: Schema.optional(
-        GoogleCloudDocumentaiV1beta3EvaluationMetrics,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3EvaluationReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Schema.String),
+    evaluation: Schema.optional(Schema.String),
+    aggregateMetrics: Schema.optional(
+      GoogleCloudDocumentaiV1beta3EvaluationMetrics,
+    ),
+    aggregateMetricsExact: Schema.optional(
+      GoogleCloudDocumentaiV1beta3EvaluationMetrics,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3EvaluationReference",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluationReference>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo {
   /** The time at which this processor version will be deprecated. */
@@ -4639,15 +4119,13 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo {
   replacementProcessorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo: Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deprecationTime: Schema.optional(Schema.String),
-      replacementProcessorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deprecationTime: Schema.optional(Schema.String),
+    replacementProcessorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo {
   /** Whether fine tuning is allowed for this base processor version. */
@@ -4656,16 +4134,14 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFound
   minTrainLabeledDocuments?: number;
 }
 
-export const GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finetuningAllowed: Schema.optional(Schema.Boolean),
-      minTrainLabeledDocuments: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    finetuningAllowed: Schema.optional(Schema.Boolean),
+    minTrainLabeledDocuments: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo {
   /** The type of custom model created by the user. */
@@ -4678,16 +4154,14 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCusto
   baseProcessorVersionId?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customModelType: Schema.optional(Schema.String),
-      baseProcessorVersionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customModelType: Schema.optional(Schema.String),
+    baseProcessorVersionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo {
   /** Information for a pretrained Google-managed foundation model. */
@@ -4696,19 +4170,17 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo {
   customGenAiModelInfo?: GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo;
 }
 
-export const GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      foundationGenAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo,
-      ),
-      customGenAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    foundationGenAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo,
+    ),
+    customGenAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ProcessorVersion {
   /** Identifier. The resource name of the processor version. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}` */
@@ -4755,35 +4227,29 @@ export interface GoogleCloudDocumentaiV1beta3ProcessorVersion {
   genAiModelInfo?: GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo;
 }
 
-export const GoogleCloudDocumentaiV1beta3ProcessorVersion: Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      documentSchema: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DocumentSchema,
-      ),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      latestEvaluation: Schema.optional(
-        GoogleCloudDocumentaiV1beta3EvaluationReference,
-      ),
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyVersionName: Schema.optional(Schema.String),
-      googleManaged: Schema.optional(Schema.Boolean),
-      deprecationInfo: Schema.optional(
-        GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo,
-      ),
-      modelType: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      genAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersion",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ProcessorVersion>;
+export const GoogleCloudDocumentaiV1beta3ProcessorVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    documentSchema: Schema.optional(GoogleCloudDocumentaiV1beta3DocumentSchema),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    latestEvaluation: Schema.optional(
+      GoogleCloudDocumentaiV1beta3EvaluationReference,
+    ),
+    kmsKeyName: Schema.optional(Schema.String),
+    kmsKeyVersionName: Schema.optional(Schema.String),
+    googleManaged: Schema.optional(Schema.Boolean),
+    deprecationInfo: Schema.optional(
+      GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo,
+    ),
+    modelType: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    genAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3ProcessorVersion" });
 
 export interface GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
   /** The Cloud Storage uri for the human reviewed document if the review is succeeded. */
@@ -4794,16 +4260,14 @@ export interface GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
   rejectionReason?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3ReviewDocumentResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3ReviewDocumentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      rejectionReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ReviewDocumentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsDestination: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    rejectionReason: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ReviewDocumentResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ReviewDocumentResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
   /** Used only when Operation.done is false. */
@@ -4827,108 +4291,98 @@ export interface GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
   questionId?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-      questionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+    questionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation {
   /** The total number of document errors. */
@@ -4941,18 +4395,16 @@ export interface GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatase
   datasetErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation: Schema.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentErrorCount: Schema.optional(Schema.Number),
-      datasetErrorCount: Schema.optional(Schema.Number),
-      documentErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      datasetErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentErrorCount: Schema.optional(Schema.Number),
+    datasetErrorCount: Schema.optional(Schema.Number),
+    documentErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    datasetErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
@@ -4963,140 +4415,120 @@ export interface GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata {
   testDatasetValidation?: GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation;
 }
 
-export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-      trainingDatasetValidation: Schema.optional(
-        GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation,
-      ),
-      testDatasetValidation: Schema.optional(
-        GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+    trainingDatasetValidation: Schema.optional(
+      GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation,
+    ),
+    testDatasetValidation: Schema.optional(
+      GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse {
   /** The resource name of the processor version produced by training. */
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse {
   /** The resource name of the created evaluation. */
   evaluation?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata {
   /** The basic metadata for the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse {
   /** The destination processor version name. */
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ImportProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiV1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3GcsPrefix {
   /** The URI prefix. */
   gcsUriPrefix?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3GcsPrefix: Schema.Schema<GoogleCloudDocumentaiV1beta3GcsPrefix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3GcsPrefix",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3GcsPrefix>;
+export const GoogleCloudDocumentaiV1beta3GcsPrefix =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUriPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3GcsPrefix" });
 
 export interface GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig {
   /** Required. The Cloud Storage URI (a directory) where the documents belonging to the dataset must be stored. */
   gcsPrefix?: GoogleCloudDocumentaiV1beta3GcsPrefix;
 }
 
-export const GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig: Schema.Schema<GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsPrefix: Schema.optional(GoogleCloudDocumentaiV1beta3GcsPrefix),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsPrefix: Schema.optional(GoogleCloudDocumentaiV1beta3GcsPrefix),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig {
   /** Output only. The collection in Document AI Warehouse associated with the dataset. */
@@ -5105,22 +4537,20 @@ export interface GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig {
   schema?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig: Schema.Schema<GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collection: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collection: Schema.optional(Schema.String),
+    schema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig {}
 
-export const GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig: Schema.Schema<GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3Dataset {
   /** Optional. User-managed Cloud Storage dataset configuration. Use this configuration if the dataset documents are stored under a user-managed Cloud Storage location. */
@@ -5144,26 +4574,22 @@ export interface GoogleCloudDocumentaiV1beta3Dataset {
   satisfiesPzi?: boolean;
 }
 
-export const GoogleCloudDocumentaiV1beta3Dataset: Schema.Schema<GoogleCloudDocumentaiV1beta3Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsManagedConfig: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig,
-      ),
-      documentWarehouseConfig: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig,
-      ),
-      unmanagedDatasetConfig: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig,
-      ),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3Dataset",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3Dataset>;
+export const GoogleCloudDocumentaiV1beta3Dataset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsManagedConfig: Schema.optional(
+      GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig,
+    ),
+    documentWarehouseConfig: Schema.optional(
+      GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig,
+    ),
+    unmanagedDatasetConfig: Schema.optional(
+      GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig,
+    ),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3Dataset" });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId {
   /** Required. The Cloud Storage URI where the actual document is stored. */
@@ -5172,29 +4598,25 @@ export interface GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId {
   cwDocId?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      cwDocId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    cwDocId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId {
   /** Required. The id of the document. */
   docId?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      docId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    docId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3RevisionRef {
   /** Reads the revision by the predefined case. */
@@ -5210,16 +4632,12 @@ export interface GoogleCloudDocumentaiV1beta3RevisionRef {
   latestProcessorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiV1beta3RevisionRef: Schema.Schema<GoogleCloudDocumentaiV1beta3RevisionRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionCase: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      latestProcessorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3RevisionRef",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3RevisionRef>;
+export const GoogleCloudDocumentaiV1beta3RevisionRef =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionCase: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    latestProcessorVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3RevisionRef" });
 
 export interface GoogleCloudDocumentaiV1beta3DocumentId {
   /** A document id within user-managed Cloud Storage. */
@@ -5230,20 +4648,16 @@ export interface GoogleCloudDocumentaiV1beta3DocumentId {
   revisionRef?: GoogleCloudDocumentaiV1beta3RevisionRef;
 }
 
-export const GoogleCloudDocumentaiV1beta3DocumentId: Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsManagedDocId: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId,
-      ),
-      unmanagedDocId: Schema.optional(
-        GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId,
-      ),
-      revisionRef: Schema.optional(GoogleCloudDocumentaiV1beta3RevisionRef),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1beta3DocumentId",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3DocumentId>;
+export const GoogleCloudDocumentaiV1beta3DocumentId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsManagedDocId: Schema.optional(
+      GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId,
+    ),
+    unmanagedDocId: Schema.optional(
+      GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId,
+    ),
+    revisionRef: Schema.optional(GoogleCloudDocumentaiV1beta3RevisionRef),
+  }).annotate({ identifier: "GoogleCloudDocumentaiV1beta3DocumentId" });
 
 export interface GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus {
   /** The source Cloud Storage URI of the document. */
@@ -5254,17 +4668,15 @@ export interface GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualIm
   outputDocumentId?: GoogleCloudDocumentaiV1beta3DocumentId;
 }
 
-export const GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus: Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputGcsSource: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-      outputDocumentId: Schema.optional(GoogleCloudDocumentaiV1beta3DocumentId),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputGcsSource: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+    outputDocumentId: Schema.optional(GoogleCloudDocumentaiV1beta3DocumentId),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult {
   /** The source Cloud Storage URI specified in the import config. */
@@ -5273,16 +4685,14 @@ export interface GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfig
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult: Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputGcsSource: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputGcsSource: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -5295,34 +4705,32 @@ export interface GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata {
   totalDocumentCount?: number;
 }
 
-export const GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+    individualImportStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus,
       ),
-      individualImportStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus,
-        ),
+    ),
+    importConfigValidationResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult,
       ),
-      importConfigValidationResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult,
-        ),
-      ),
-      totalDocumentCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    totalDocumentCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3ImportDocumentsResponse {}
 
-export const GoogleCloudDocumentaiV1beta3ImportDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3ImportDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3ImportDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3ImportDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus {
   /** The document id of the document. */
@@ -5331,16 +4739,14 @@ export interface GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndivid
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus: Schema.Schema<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(GoogleCloudDocumentaiV1beta3DocumentId),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(GoogleCloudDocumentaiV1beta3DocumentId),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -5353,30 +4759,28 @@ export interface GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata {
   errorDocumentCount?: number;
 }
 
-export const GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiV1beta3CommonOperationMetadata,
+    ),
+    individualBatchDeleteStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus,
       ),
-      individualBatchDeleteStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus,
-        ),
-      ),
-      totalDocumentCount: Schema.optional(Schema.Number),
-      errorDocumentCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    totalDocumentCount: Schema.optional(Schema.Number),
+    errorDocumentCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse {}
 
-export const GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
   /** The state of the operation. */
@@ -5398,80 +4802,72 @@ export interface GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
   updateTime?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias {
   /** The alias in the form of `processor_version` resource name. */
@@ -5480,15 +4876,13 @@ export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias {
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alias: Schema.optional(Schema.String),
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3Processor {
   /** Output only. Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}` */
@@ -5526,43 +4920,37 @@ export interface GoogleCloudDocumentaiUiv1beta3Processor {
   activeSchemaVersion?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3Processor: Schema.Schema<GoogleCloudDocumentaiUiv1beta3Processor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      defaultProcessorVersion: Schema.optional(Schema.String),
-      processorVersionAliases: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias),
-      ),
-      processEndpoint: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      activeSchemaVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3Processor",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3Processor>;
+export const GoogleCloudDocumentaiUiv1beta3Processor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    defaultProcessorVersion: Schema.optional(Schema.String),
+    processorVersionAliases: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias),
+    ),
+    processEndpoint: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    activeSchemaVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3Processor" });
 
 export interface GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata {
   /** The basic metadata for the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SchemaEntityType {
   /** Name of the type. It must satisfy the following constraints: 1. Must be unique within the set of same level types (with case-insensitive match). 2. Maximum 64 characters. 3. Must start with a letter. 4. Allowed characters: ASCII letters [a-zA-Z], ASCII digits [0-9], or one of the following punctuation characters: * underscore '_' (recommended) * hyphen '-' (allowed, not recommended) * colon ':' (allowed, not recommended) NOTE: Whitespace characters are not allowed. 5. Cannot end with a punctuation character. 6. Cannot contain the following restricted strings: "google", "DocumentAI" (case-insensitive match). 7. A slash character '/' is reserved as a separator in flattened representations of nested entity types (e.g., "line_item/amount") in which case each part (e.g., "line_item", "amount") must comply with the rules defined above. We recommend using the snake case ("snake_case") in entity type names. */
@@ -5623,33 +5011,27 @@ export interface GoogleCloudDocumentaiUiv1beta3Schema {
   entityTypes?: Array<GoogleCloudDocumentaiUiv1beta3SchemaEntityType>;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3Schema: Schema.Schema<GoogleCloudDocumentaiUiv1beta3Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      entityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiUiv1beta3SchemaEntityType),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3Schema",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3Schema>;
+export const GoogleCloudDocumentaiUiv1beta3Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    entityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiUiv1beta3SchemaEntityType),
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3Schema" });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues {
   /** The individual values that this enum values type can include. */
   values?: Array<string>;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata {
   /** Whether to enable human review validation. */
@@ -5658,29 +5040,25 @@ export interface GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata {
   confidenceThreshold?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableValidation: Schema.optional(Schema.Boolean),
-      confidenceThreshold: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableValidation: Schema.optional(Schema.Boolean),
+    confidenceThreshold: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata {
   /** Whether to enable normalization editing. */
   enableNormalizationEditing?: boolean;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableNormalizationEditing: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableNormalizationEditing: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata {
   /** Explicit flag that controls whether the label is editable. */
@@ -5689,44 +5067,38 @@ export interface GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata {
   processorVersions?: Array<string>;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      editable: Schema.optional(Schema.Boolean),
-      processorVersions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    editable: Schema.optional(Schema.Boolean),
+    processorVersions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata {
   /** True if is inferred by schema inference. */
   inferred?: boolean;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inferred: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inferred: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery {
   /** The original entity query inputed by the user. */
   userEntityQuery?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery: Schema.Schema<GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEntityQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userEntityQuery: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SummaryOptions {
   /** How long the summary should be. */
@@ -5740,15 +5112,11 @@ export interface GoogleCloudDocumentaiUiv1beta3SummaryOptions {
   format?: "FORMAT_UNSPECIFIED" | "PARAGRAPH" | "BULLETS" | (string & {});
 }
 
-export const GoogleCloudDocumentaiUiv1beta3SummaryOptions: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SummaryOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      length: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3SummaryOptions",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SummaryOptions>;
+export const GoogleCloudDocumentaiUiv1beta3SummaryOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    length: Schema.optional(Schema.String),
+    format: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3SummaryOptions" });
 
 export interface GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata {
   /** Entity query config. */
@@ -5757,33 +5125,29 @@ export interface GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata {
   summaryOptions?: GoogleCloudDocumentaiUiv1beta3SummaryOptions;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityQuery: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery,
-      ),
-      summaryOptions: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3SummaryOptions,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityQuery: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery,
+    ),
+    summaryOptions: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3SummaryOptions,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3FieldTierMetadata {
   /** Integer that indicates the tier of a property. e.g. Invoice has entities that are classified as tier 1 which is the most important, while tier 2 and tier 3 less so. This attribute can be used to filter schema attributes before running eval. e.g. compute F1 score for only tier 1 entities. If not present this attribute should be inferred as 1. */
   tierLevel?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3FieldTierMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3FieldTierMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tierLevel: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3FieldTierMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tierLevel: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3FieldTierMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3FieldTierMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3PropertyMetadata {
   /** Whether the property should be considered as "inactive". */
@@ -5802,32 +5166,28 @@ export interface GoogleCloudDocumentaiUiv1beta3PropertyMetadata {
   fieldTierMetadata?: GoogleCloudDocumentaiUiv1beta3FieldTierMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3PropertyMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3PropertyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inactive: Schema.optional(Schema.Boolean),
-      humanReviewMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata,
-      ),
-      humanReviewLabelingMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata,
-      ),
-      schemaEditabilityMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata,
-      ),
-      schemaInferenceMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata,
-      ),
-      fieldExtractionMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata,
-      ),
-      fieldTierMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3FieldTierMetadata,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3PropertyMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3PropertyMetadata>;
+export const GoogleCloudDocumentaiUiv1beta3PropertyMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inactive: Schema.optional(Schema.Boolean),
+    humanReviewMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata,
+    ),
+    humanReviewLabelingMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata,
+    ),
+    schemaEditabilityMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata,
+    ),
+    schemaInferenceMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata,
+    ),
+    fieldExtractionMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata,
+    ),
+    fieldTierMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3FieldTierMetadata,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3PropertyMetadata" });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty {
   /** The name of the property. Follows the same guidelines as the EntityType name. */
@@ -5857,23 +5217,21 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty 
   propertyMetadata?: GoogleCloudDocumentaiUiv1beta3PropertyMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      occurrenceType: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      propertyMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3PropertyMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    valueType: Schema.optional(Schema.String),
+    occurrenceType: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    propertyMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3PropertyMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata {
   /** Whether the entity type should be considered inactive. */
@@ -5890,29 +5248,27 @@ export interface GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata {
   fieldTierMetadata?: GoogleCloudDocumentaiUiv1beta3FieldTierMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inactive: Schema.optional(Schema.Boolean),
-      humanReviewMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata,
-      ),
-      humanReviewLabelingMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata,
-      ),
-      schemaEditabilityMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata,
-      ),
-      schemaInferenceMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata,
-      ),
-      fieldTierMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3FieldTierMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inactive: Schema.optional(Schema.Boolean),
+    humanReviewMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata,
+    ),
+    humanReviewLabelingMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata,
+    ),
+    schemaEditabilityMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata,
+    ),
+    schemaInferenceMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata,
+    ),
+    fieldTierMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3FieldTierMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType {
   /** If specified, lists all the possible values for this entity. This should not be more than a handful of values. If the number of values is >10 or could change frequently, use the `EntityType.value_ontology` field and specify a list of all possible values in a value ontology file. */
@@ -5931,28 +5287,26 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType {
   entityTypeMetadata?: GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enumValues: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues,
+export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enumValues: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues,
+    ),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    baseTypes: Schema.optional(Schema.Array(Schema.String)),
+    properties: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty,
       ),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      baseTypes: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty,
-        ),
-      ),
-      entityTypeMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata,
-      ),
-    }),
-  ).annotate({
+    ),
+    entityTypeMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata {
   /** If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be applied to the entire document (classification). */
@@ -5965,17 +5319,15 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata {
   skipNamingValidation?: boolean;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentSplitter: Schema.optional(Schema.Boolean),
-      documentAllowMultipleLabels: Schema.optional(Schema.Boolean),
-      prefixedNamingOnProperties: Schema.optional(Schema.Boolean),
-      skipNamingValidation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentSplitter: Schema.optional(Schema.Boolean),
+    documentAllowMultipleLabels: Schema.optional(Schema.Boolean),
+    prefixedNamingOnProperties: Schema.optional(Schema.Boolean),
+    skipNamingValidation: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentSchema {
   /** Display name to show users. */
@@ -5990,22 +5342,18 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentSchema {
   documentPrompt?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentSchema: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      entityTypes: Schema.optional(
-        Schema.Array(GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType),
-      ),
-      metadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata,
-      ),
-      documentPrompt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3DocumentSchema",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentSchema>;
+export const GoogleCloudDocumentaiUiv1beta3DocumentSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    entityTypes: Schema.optional(
+      Schema.Array(GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType),
+    ),
+    metadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata,
+    ),
+    documentPrompt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3DocumentSchema" });
 
 export interface GoogleCloudDocumentaiUiv1beta3EvaluationMetrics {
   /** The calculated precision. */
@@ -6032,24 +5380,22 @@ export interface GoogleCloudDocumentaiUiv1beta3EvaluationMetrics {
   totalDocumentsCount?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3EvaluationMetrics: Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      precision: Schema.optional(Schema.Number),
-      recall: Schema.optional(Schema.Number),
-      f1Score: Schema.optional(Schema.Number),
-      predictedOccurrencesCount: Schema.optional(Schema.Number),
-      groundTruthOccurrencesCount: Schema.optional(Schema.Number),
-      predictedDocumentCount: Schema.optional(Schema.Number),
-      groundTruthDocumentCount: Schema.optional(Schema.Number),
-      truePositivesCount: Schema.optional(Schema.Number),
-      falsePositivesCount: Schema.optional(Schema.Number),
-      falseNegativesCount: Schema.optional(Schema.Number),
-      totalDocumentsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3EvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    precision: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+    f1Score: Schema.optional(Schema.Number),
+    predictedOccurrencesCount: Schema.optional(Schema.Number),
+    groundTruthOccurrencesCount: Schema.optional(Schema.Number),
+    predictedDocumentCount: Schema.optional(Schema.Number),
+    groundTruthDocumentCount: Schema.optional(Schema.Number),
+    truePositivesCount: Schema.optional(Schema.Number),
+    falsePositivesCount: Schema.optional(Schema.Number),
+    falseNegativesCount: Schema.optional(Schema.Number),
+    totalDocumentsCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3EvaluationMetrics",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluationMetrics>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3EvaluationReference {
   /** The resource name of the Long Running Operation for the evaluation. */
@@ -6062,21 +5408,19 @@ export interface GoogleCloudDocumentaiUiv1beta3EvaluationReference {
   aggregateMetricsExact?: GoogleCloudDocumentaiUiv1beta3EvaluationMetrics;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3EvaluationReference: Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluationReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Schema.String),
-      evaluation: Schema.optional(Schema.String),
-      aggregateMetrics: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3EvaluationMetrics,
-      ),
-      aggregateMetricsExact: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3EvaluationMetrics,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3EvaluationReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Schema.String),
+    evaluation: Schema.optional(Schema.String),
+    aggregateMetrics: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3EvaluationMetrics,
+    ),
+    aggregateMetricsExact: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3EvaluationMetrics,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3EvaluationReference",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluationReference>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo {
   /** The time at which this processor version will be deprecated. */
@@ -6085,15 +5429,13 @@ export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo {
   replacementProcessorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deprecationTime: Schema.optional(Schema.String),
-      replacementProcessorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deprecationTime: Schema.optional(Schema.String),
+    replacementProcessorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo {
   /** Whether fine tuning is allowed for this base processor version. */
@@ -6102,16 +5444,14 @@ export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFou
   minTrainLabeledDocuments?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finetuningAllowed: Schema.optional(Schema.Boolean),
-      minTrainLabeledDocuments: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    finetuningAllowed: Schema.optional(Schema.Boolean),
+    minTrainLabeledDocuments: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo {
   /** The type of custom model created by the user. */
@@ -6124,16 +5464,14 @@ export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCus
   baseProcessorVersionId?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customModelType: Schema.optional(Schema.String),
-      baseProcessorVersionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customModelType: Schema.optional(Schema.String),
+    baseProcessorVersionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo {
   /** Information for a pretrained Google-managed foundation model. */
@@ -6142,19 +5480,17 @@ export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo {
   customGenAiModelInfo?: GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      foundationGenAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo,
-      ),
-      customGenAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    foundationGenAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo,
+    ),
+    customGenAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersion {
   /** Identifier. The resource name of the processor version. Format: `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}` */
@@ -6205,37 +5541,33 @@ export interface GoogleCloudDocumentaiUiv1beta3ProcessorVersion {
   genAiModelInfo?: GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ProcessorVersion: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      schema: Schema.optional(GoogleCloudDocumentaiUiv1beta3Schema),
-      documentSchema: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3DocumentSchema,
-      ),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      latestEvaluation: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3EvaluationReference,
-      ),
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyVersionName: Schema.optional(Schema.String),
-      googleManaged: Schema.optional(Schema.Boolean),
-      deploymentAllowed: Schema.optional(Schema.Boolean),
-      deprecationInfo: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo,
-      ),
-      modelType: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      genAiModelInfo: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3ProcessorVersion",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ProcessorVersion>;
+export const GoogleCloudDocumentaiUiv1beta3ProcessorVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    schema: Schema.optional(GoogleCloudDocumentaiUiv1beta3Schema),
+    documentSchema: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3DocumentSchema,
+    ),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    latestEvaluation: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3EvaluationReference,
+    ),
+    kmsKeyName: Schema.optional(Schema.String),
+    kmsKeyVersionName: Schema.optional(Schema.String),
+    googleManaged: Schema.optional(Schema.Boolean),
+    deploymentAllowed: Schema.optional(Schema.Boolean),
+    deprecationInfo: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo,
+    ),
+    modelType: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    genAiModelInfo: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo,
+    ),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3ProcessorVersion" });
 
 export interface GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation {
   /** The total number of document errors. */
@@ -6248,18 +5580,16 @@ export interface GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataData
   datasetErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation: Schema.Schema<GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentErrorCount: Schema.optional(Schema.Number),
-      datasetErrorCount: Schema.optional(Schema.Number),
-      documentErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      datasetErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentErrorCount: Schema.optional(Schema.Number),
+    datasetErrorCount: Schema.optional(Schema.Number),
+    documentErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    datasetErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
@@ -6270,307 +5600,273 @@ export interface GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
   testDatasetValidation?: GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-      trainingDatasetValidation: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation,
-      ),
-      testDatasetValidation: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    trainingDatasetValidation: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation,
+    ),
+    testDatasetValidation: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse {
   /** The resource name of the processor version produced by training. */
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
   /** The resource name of the created evaluation. */
   evaluation?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluation: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata {
   /** The common metadata about the operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse {
   /** The Cloud Storage URI containing the output artifacts. */
   gcsUri?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata {
   /** The basic metadata for the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse {
   /** The destination processor version name. */
   processorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processorVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId {
   /** Required. The Cloud Storage URI where the actual document is stored. */
@@ -6579,29 +5875,25 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId {
   cwDocId?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      cwDocId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    cwDocId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId {
   /** Required. The id of the document. */
   docId?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      docId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    docId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3RevisionRef {
   /** Reads the revision by the predefined case. */
@@ -6617,16 +5909,12 @@ export interface GoogleCloudDocumentaiUiv1beta3RevisionRef {
   latestProcessorVersion?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3RevisionRef: Schema.Schema<GoogleCloudDocumentaiUiv1beta3RevisionRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionCase: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      latestProcessorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3RevisionRef",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3RevisionRef>;
+export const GoogleCloudDocumentaiUiv1beta3RevisionRef =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionCase: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    latestProcessorVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3RevisionRef" });
 
 export interface GoogleCloudDocumentaiUiv1beta3DocumentId {
   /** A document id within user-managed Cloud Storage. */
@@ -6637,20 +5925,16 @@ export interface GoogleCloudDocumentaiUiv1beta3DocumentId {
   revisionRef?: GoogleCloudDocumentaiUiv1beta3RevisionRef;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3DocumentId: Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsManagedDocId: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId,
-      ),
-      unmanagedDocId: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId,
-      ),
-      revisionRef: Schema.optional(GoogleCloudDocumentaiUiv1beta3RevisionRef),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiUiv1beta3DocumentId",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3DocumentId>;
+export const GoogleCloudDocumentaiUiv1beta3DocumentId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsManagedDocId: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId,
+    ),
+    unmanagedDocId: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId,
+    ),
+    revisionRef: Schema.optional(GoogleCloudDocumentaiUiv1beta3RevisionRef),
+  }).annotate({ identifier: "GoogleCloudDocumentaiUiv1beta3DocumentId" });
 
 export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus {
   /** The source Cloud Storage URI of the document. */
@@ -6663,20 +5947,16 @@ export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividual
   outputDocumentId?: GoogleCloudDocumentaiUiv1beta3DocumentId;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputGcsSource: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-      outputGcsDestination: Schema.optional(Schema.String),
-      outputDocumentId: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3DocumentId,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputGcsSource: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+    outputGcsDestination: Schema.optional(Schema.String),
+    outputDocumentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult {
   /** The source Cloud Storage URI specified in the import config. */
@@ -6685,16 +5965,14 @@ export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConf
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputGcsSource: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputGcsSource: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -6707,34 +5985,32 @@ export interface GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata {
   totalDocumentCount?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    individualImportStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus,
       ),
-      individualImportStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus,
-        ),
+    ),
+    importConfigValidationResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult,
       ),
-      importConfigValidationResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult,
-        ),
-      ),
-      totalDocumentCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    totalDocumentCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus {
   /** The document id of the document. */
@@ -6743,16 +6019,14 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndivid
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -6775,30 +6049,28 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata {
     | (string & {});
 }
 
-export const GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    individualBatchMoveStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus,
       ),
-      individualBatchMoveStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus,
-        ),
-      ),
-      destDatasetType: Schema.optional(Schema.String),
-      destSplitType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    destDatasetType: Schema.optional(Schema.String),
+    destSplitType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus {
   /** The document id of the document. */
@@ -6807,16 +6079,14 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndiv
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -6825,28 +6095,26 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata {
   individualBatchUpdateStatuses?: Array<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus>;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    individualBatchUpdateStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus,
       ),
-      individualBatchUpdateStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus {
   /** The document id of the document. */
@@ -6855,16 +6123,14 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndiv
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -6877,30 +6143,28 @@ export interface GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata {
   errorDocumentCount?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    individualBatchDeleteStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus,
       ),
-      individualBatchDeleteStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus,
-        ),
-      ),
-      totalDocumentCount: Schema.optional(Schema.Number),
-      errorDocumentCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    totalDocumentCount: Schema.optional(Schema.Number),
+    errorDocumentCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus {
   /** The document identifier. */
@@ -6916,17 +6180,15 @@ export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDo
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
-      documentInconsistencyType: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
+    documentInconsistencyType: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus {
   /** The type of the inconsistency of the dataset. */
@@ -6938,16 +6200,14 @@ export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyn
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetInconsistencyType: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetInconsistencyType: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata {
   /** The basic metadata of the long-running operation. */
@@ -6958,33 +6218,31 @@ export interface GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata {
   datasetResyncStatuses?: Array<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus>;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    individualDocumentResyncStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus,
       ),
-      individualDocumentResyncStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus,
-        ),
+    ),
+    datasetResyncStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus,
       ),
-      datasetResyncStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus {
   /** The path to source docproto of the document. */
@@ -6995,17 +6253,15 @@ export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividual
   outputGcsDestination?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
-      status: Schema.optional(GoogleRpcStatus),
-      outputGcsDestination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
+    status: Schema.optional(GoogleRpcStatus),
+    outputGcsDestination: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat {
   /** The dataset split type. */
@@ -7019,16 +6275,14 @@ export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExpor
   totalDocumentCount?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      splitType: Schema.optional(Schema.String),
-      totalDocumentCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    splitType: Schema.optional(Schema.String),
+    totalDocumentCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -7039,33 +6293,31 @@ export interface GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata {
   splitExportStats?: Array<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat>;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    individualExportStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus,
       ),
-      individualExportStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus,
-        ),
+    ),
+    splitExportStats: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat,
       ),
-      splitExportStats: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse {}
 
-export const GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus {
   /** The status of the document auto-labeling. */
@@ -7074,16 +6326,14 @@ export interface GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndivid
   documentId?: GoogleCloudDocumentaiUiv1beta3DocumentId;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus: Schema.Schema<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(GoogleRpcStatus),
-      documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(GoogleRpcStatus),
+    documentId: Schema.optional(GoogleCloudDocumentaiUiv1beta3DocumentId),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
@@ -7094,37 +6344,33 @@ export interface GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata {
   totalDocumentCount?: number;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+export const GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+    individualAutoLabelStatuses: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus,
       ),
-      individualAutoLabelStatuses: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus,
-        ),
-      ),
-      totalDocumentCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    totalDocumentCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument {
   /** An internal identifier for document. */
   documentId?: string;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse {
   /** The result of the sampling process. */
@@ -7135,36 +6381,32 @@ export interface GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse {
   sampleTrainingStatus?: GoogleRpcStatus;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selectedDocuments: Schema.optional(
-        Schema.Array(
-          GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument,
-        ),
+export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    selectedDocuments: Schema.optional(
+      Schema.Array(
+        GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument,
       ),
-      sampleTestStatus: Schema.optional(GoogleRpcStatus),
-      sampleTrainingStatus: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+    ),
+    sampleTestStatus: Schema.optional(GoogleRpcStatus),
+    sampleTrainingStatus: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse>;
+  });
 
 export interface GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata {
   /** The basic metadata of the long-running operation. */
   commonMetadata?: GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata;
 }
 
-export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata: Schema.Schema<GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonMetadata: Schema.optional(
-        GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonMetadata: Schema.optional(
+      GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata>;
+  });
 
 // ==========================================================================
 // Operations
@@ -7273,7 +6515,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,

@@ -91,16 +91,18 @@ export type RtbTaggableResourceArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type CustomerProvidedId = string;
+export type LinkTimeoutInMillis = number;
 export type Version = string;
 export type FlowModuleName = string;
 export type LinkId = string;
+export type URL = string;
 export type VpcId = string;
 export type SubnetId = string;
 export type SecurityGroupId = string;
 export type DomainName = string;
-export type URL = string;
 export type Base64EncodedCertificateChain = string | redacted.Redacted<string>;
 export type AutoScalingGroupName = string;
+export type StatusCodeMatcher = string;
 export type KubernetesEndpointsResourceName = string;
 export type KubernetesNamespace = string;
 export type URI = string;
@@ -347,6 +349,7 @@ export interface CreateLinkRequest {
   httpResponderAllowed?: boolean;
   tags?: { [key: string]: string | undefined };
   logSettings: LinkLogSettings;
+  timeoutInMillis?: number;
 }
 export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -356,6 +359,7 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     httpResponderAllowed: S.optional(S.Boolean),
     tags: S.optional(TagsMap),
     logSettings: LinkLogSettings,
+    timeoutInMillis: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/gateway/{gatewayId}/create-link" }),
@@ -515,6 +519,13 @@ export const ModuleConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ModuleConfigurationList = ModuleConfiguration[];
 export const ModuleConfigurationList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ModuleConfiguration);
+export type ConnectivityType =
+  | "DEFAULT"
+  | "PUBLIC_INGRESS"
+  | "PUBLIC_EGRESS"
+  | "EXTERNAL_INBOUND"
+  | (string & {});
+export const ConnectivityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateLinkResponse {
   gatewayId: string;
   peerGatewayId: string;
@@ -525,6 +536,8 @@ export interface CreateLinkResponse {
   flowModules?: ModuleConfiguration[];
   pendingFlowModules?: ModuleConfiguration[];
   attributes?: LinkAttributes;
+  logSettings?: LinkLogSettings;
+  connectivityType?: ConnectivityType;
   linkId: string;
   customerProvidedId?: string;
 }
@@ -539,6 +552,8 @@ export const CreateLinkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     flowModules: S.optional(ModuleConfigurationList),
     pendingFlowModules: S.optional(ModuleConfigurationList),
     attributes: S.optional(LinkAttributes),
+    logSettings: S.optional(LinkLogSettings),
+    connectivityType: S.optional(ConnectivityType),
     linkId: S.String,
     customerProvidedId: S.optional(S.String),
   }),
@@ -574,9 +589,12 @@ export interface GetLinkResponse {
   flowModules?: ModuleConfiguration[];
   pendingFlowModules?: ModuleConfiguration[];
   attributes?: LinkAttributes;
+  logSettings?: LinkLogSettings;
+  connectivityType?: ConnectivityType;
   linkId: string;
   tags?: { [key: string]: string | undefined };
-  logSettings?: LinkLogSettings;
+  httpResponderAllowed?: boolean;
+  timeoutInMillis?: number;
 }
 export const GetLinkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -589,9 +607,12 @@ export const GetLinkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     flowModules: S.optional(ModuleConfigurationList),
     pendingFlowModules: S.optional(ModuleConfigurationList),
     attributes: S.optional(LinkAttributes),
+    logSettings: S.optional(LinkLogSettings),
+    connectivityType: S.optional(ConnectivityType),
     linkId: S.String,
     tags: S.optional(TagsMap),
-    logSettings: S.optional(LinkLogSettings),
+    httpResponderAllowed: S.optional(S.Boolean),
+    timeoutInMillis: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "GetLinkResponse",
@@ -659,8 +680,11 @@ export interface ListLinksResponseStructure {
   flowModules?: ModuleConfiguration[];
   pendingFlowModules?: ModuleConfiguration[];
   attributes?: LinkAttributes;
+  logSettings?: LinkLogSettings;
+  connectivityType?: ConnectivityType;
   linkId: string;
   tags?: { [key: string]: string | undefined };
+  publicEndpoint?: string;
 }
 export const ListLinksResponseStructure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -674,8 +698,11 @@ export const ListLinksResponseStructure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       flowModules: S.optional(ModuleConfigurationList),
       pendingFlowModules: S.optional(ModuleConfigurationList),
       attributes: S.optional(LinkAttributes),
+      logSettings: S.optional(LinkLogSettings),
+      connectivityType: S.optional(ConnectivityType),
       linkId: S.String,
       tags: S.optional(TagsMap),
+      publicEndpoint: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ListLinksResponseStructure",
@@ -698,6 +725,7 @@ export interface AcceptLinkRequest {
   linkId: string;
   attributes?: LinkAttributes;
   logSettings: LinkLogSettings;
+  timeoutInMillis?: number;
 }
 export const AcceptLinkRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -705,6 +733,7 @@ export const AcceptLinkRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     linkId: S.String.pipe(T.HttpLabel("linkId")),
     attributes: S.optional(LinkAttributes),
     logSettings: LinkLogSettings,
+    timeoutInMillis: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({
@@ -731,6 +760,8 @@ export interface AcceptLinkResponse {
   flowModules?: ModuleConfiguration[];
   pendingFlowModules?: ModuleConfiguration[];
   attributes?: LinkAttributes;
+  logSettings?: LinkLogSettings;
+  connectivityType?: ConnectivityType;
   linkId: string;
 }
 export const AcceptLinkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -744,6 +775,8 @@ export const AcceptLinkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     flowModules: S.optional(ModuleConfigurationList),
     pendingFlowModules: S.optional(ModuleConfigurationList),
     attributes: S.optional(LinkAttributes),
+    logSettings: S.optional(LinkLogSettings),
+    connectivityType: S.optional(ConnectivityType),
     linkId: S.String,
   }),
 ).annotate({
@@ -783,6 +816,8 @@ export interface RejectLinkResponse {
   flowModules?: ModuleConfiguration[];
   pendingFlowModules?: ModuleConfiguration[];
   attributes?: LinkAttributes;
+  logSettings?: LinkLogSettings;
+  connectivityType?: ConnectivityType;
   linkId: string;
 }
 export const RejectLinkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -796,6 +831,8 @@ export const RejectLinkResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     flowModules: S.optional(ModuleConfigurationList),
     pendingFlowModules: S.optional(ModuleConfigurationList),
     attributes: S.optional(LinkAttributes),
+    logSettings: S.optional(LinkLogSettings),
+    connectivityType: S.optional(ConnectivityType),
     linkId: S.String,
   }),
 ).annotate({
@@ -805,12 +842,14 @@ export interface UpdateLinkRequest {
   gatewayId: string;
   linkId: string;
   logSettings?: LinkLogSettings;
+  timeoutInMillis?: number;
 }
 export const UpdateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
     logSettings: S.optional(LinkLogSettings),
+    timeoutInMillis: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "PATCH", uri: "/gateway/{gatewayId}/link/{linkId}" }),
@@ -1161,10 +1200,14 @@ export interface GetOutboundExternalLinkResponse {
   linkId: string;
   status: LinkStatus;
   publicEndpoint: string;
+  flowModules?: ModuleConfiguration[];
+  pendingFlowModules?: ModuleConfiguration[];
+  attributes?: LinkAttributes;
   createdAt?: Date;
   updatedAt?: Date;
   tags?: { [key: string]: string | undefined };
   logSettings?: LinkLogSettings;
+  connectivityType?: ConnectivityType;
 }
 export const GetOutboundExternalLinkResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1173,16 +1216,28 @@ export const GetOutboundExternalLinkResponse =
       linkId: S.String,
       status: LinkStatus,
       publicEndpoint: S.String,
+      flowModules: S.optional(ModuleConfigurationList),
+      pendingFlowModules: S.optional(ModuleConfigurationList),
+      attributes: S.optional(LinkAttributes),
       createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       tags: S.optional(TagsMap),
       logSettings: S.optional(LinkLogSettings),
+      connectivityType: S.optional(ConnectivityType),
     }),
   ).annotate({
     identifier: "GetOutboundExternalLinkResponse",
   }) as any as S.Schema<GetOutboundExternalLinkResponse>;
 export type Protocol = "HTTP" | "HTTPS" | (string & {});
 export const Protocol = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ProtocolList = Protocol[];
+export const ProtocolList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Protocol);
+export interface ListenerConfig {
+  protocols: Protocol[];
+}
+export const ListenerConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ protocols: ProtocolList }),
+).annotate({ identifier: "ListenerConfig" }) as any as S.Schema<ListenerConfig>;
 export type CertificateAuthorityCertificates =
   | string
   | redacted.Redacted<string>[];
@@ -1203,15 +1258,41 @@ export type AutoScalingGroupNameList = string[];
 export const AutoScalingGroupNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
 );
+export interface HealthCheckConfig {
+  port: number;
+  path: string;
+  protocol?: Protocol;
+  timeoutMs?: number;
+  intervalSeconds?: number;
+  statusCodeMatcher?: string;
+  healthyThresholdCount?: number;
+  unhealthyThresholdCount?: number;
+}
+export const HealthCheckConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    port: S.Number,
+    path: S.String,
+    protocol: S.optional(Protocol),
+    timeoutMs: S.optional(S.Number),
+    intervalSeconds: S.optional(S.Number),
+    statusCodeMatcher: S.optional(S.String),
+    healthyThresholdCount: S.optional(S.Number),
+    unhealthyThresholdCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "HealthCheckConfig",
+}) as any as S.Schema<HealthCheckConfig>;
 export interface AutoScalingGroupsConfiguration {
   autoScalingGroupNames: string[];
   roleArn: string;
+  healthCheckConfig?: HealthCheckConfig;
 }
 export const AutoScalingGroupsConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       autoScalingGroupNames: AutoScalingGroupNameList,
       roleArn: S.String,
+      healthCheckConfig: S.optional(HealthCheckConfig),
     }),
   ).annotate({
     identifier: "AutoScalingGroupsConfiguration",
@@ -1246,6 +1327,8 @@ export const ManagedEndpointConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union(
     S.Struct({ eksEndpoints: EksEndpointsConfiguration }),
   ],
 );
+export type GatewayType = "EXTERNAL" | "INTERNAL" | (string & {});
+export const GatewayType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateResponderGatewayRequest {
   vpcId: string;
   subnetIds: string[];
@@ -1253,11 +1336,13 @@ export interface CreateResponderGatewayRequest {
   domainName?: string;
   port: number;
   protocol: Protocol;
+  listenerConfig?: ListenerConfig;
   trustStoreConfiguration?: TrustStoreConfiguration;
   managedEndpointConfiguration?: ManagedEndpointConfiguration;
   clientToken: string;
   description?: string;
   tags?: { [key: string]: string | undefined };
+  gatewayType?: GatewayType;
 }
 export const CreateResponderGatewayRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1268,11 +1353,13 @@ export const CreateResponderGatewayRequest =
       domainName: S.optional(S.String),
       port: S.Number,
       protocol: Protocol,
+      listenerConfig: S.optional(ListenerConfig),
       trustStoreConfiguration: S.optional(TrustStoreConfiguration),
       managedEndpointConfiguration: S.optional(ManagedEndpointConfiguration),
       clientToken: S.String.pipe(T.IdempotencyToken()),
       description: S.optional(S.String),
       tags: S.optional(TagsMap),
+      gatewayType: S.optional(GatewayType),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/responder-gateway" }),
@@ -1301,10 +1388,17 @@ export const ResponderGatewayStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateResponderGatewayResponse {
   gatewayId: string;
   status: ResponderGatewayStatus;
+  listenerConfig?: ListenerConfig;
+  externalInboundEndpoint?: string;
 }
 export const CreateResponderGatewayResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ gatewayId: S.String, status: ResponderGatewayStatus }),
+    S.Struct({
+      gatewayId: S.String,
+      status: ResponderGatewayStatus,
+      listenerConfig: S.optional(ListenerConfig),
+      externalInboundEndpoint: S.optional(S.String),
+    }),
   ).annotate({
     identifier: "CreateResponderGatewayResponse",
   }) as any as S.Schema<CreateResponderGatewayResponse>;
@@ -1337,6 +1431,7 @@ export interface GetResponderGatewayResponse {
   domainName?: string;
   port: number;
   protocol: Protocol;
+  listenerConfig?: ListenerConfig;
   trustStoreConfiguration?: TrustStoreConfiguration;
   managedEndpointConfiguration?: ManagedEndpointConfiguration;
   gatewayId: string;
@@ -1344,6 +1439,8 @@ export interface GetResponderGatewayResponse {
   activeLinksCount?: number;
   totalLinksCount?: number;
   inboundLinksCount?: number;
+  gatewayType?: GatewayType;
+  externalInboundEndpoint?: string;
 }
 export const GetResponderGatewayResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1358,6 +1455,7 @@ export const GetResponderGatewayResponse =
       domainName: S.optional(S.String),
       port: S.Number,
       protocol: Protocol,
+      listenerConfig: S.optional(ListenerConfig),
       trustStoreConfiguration: S.optional(TrustStoreConfiguration),
       managedEndpointConfiguration: S.optional(ManagedEndpointConfiguration),
       gatewayId: S.String,
@@ -1365,6 +1463,8 @@ export const GetResponderGatewayResponse =
       activeLinksCount: S.optional(S.Number),
       totalLinksCount: S.optional(S.Number),
       inboundLinksCount: S.optional(S.Number),
+      gatewayType: S.optional(GatewayType),
+      externalInboundEndpoint: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GetResponderGatewayResponse",
@@ -1401,6 +1501,7 @@ export interface UpdateResponderGatewayRequest {
   domainName?: string;
   port: number;
   protocol: Protocol;
+  listenerConfig?: ListenerConfig;
   trustStoreConfiguration?: TrustStoreConfiguration;
   managedEndpointConfiguration?: ManagedEndpointConfiguration;
   clientToken: string;
@@ -1413,6 +1514,7 @@ export const UpdateResponderGatewayRequest =
       domainName: S.optional(S.String),
       port: S.Number,
       protocol: Protocol,
+      listenerConfig: S.optional(ListenerConfig),
       trustStoreConfiguration: S.optional(TrustStoreConfiguration),
       managedEndpointConfiguration: S.optional(ManagedEndpointConfiguration),
       clientToken: S.String.pipe(T.IdempotencyToken()),
@@ -1564,6 +1666,7 @@ export interface GetInboundExternalLinkResponse {
   updatedAt?: Date;
   tags?: { [key: string]: string | undefined };
   logSettings?: LinkLogSettings;
+  connectivityType?: ConnectivityType;
 }
 export const GetInboundExternalLinkResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1579,6 +1682,7 @@ export const GetInboundExternalLinkResponse =
       updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       tags: S.optional(TagsMap),
       logSettings: S.optional(LinkLogSettings),
+      connectivityType: S.optional(ConnectivityType),
     }),
   ).annotate({
     identifier: "GetInboundExternalLinkResponse",

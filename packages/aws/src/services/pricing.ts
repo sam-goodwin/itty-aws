@@ -88,12 +88,14 @@ const rules = T.EndpointResolver((p, _) => {
 
 //# Newtypes
 export type FormatVersion = string;
-export type BoxedInteger = number;
+export type DescribeServicesMaxResults = number;
 export type ErrorMessage = string;
+export type GetAttributeValuesMaxResults = number;
 export type PriceListArn = string;
 export type FileFormat = string;
 export type Field = string;
 export type Value = string;
+export type GetProductsMaxResults = number;
 export type SynthesizedJsonPriceListJsonItem = string;
 export type ServiceCode = string;
 export type EffectiveDate = Date;
@@ -321,6 +323,10 @@ export const ListPriceListsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPriceListsResponse>;
 
 //# Errors
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
 export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
   "ExpiredNextTokenException",
   { Message: S.optional(S.String) },
@@ -347,10 +353,6 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
   { Message: S.optional(S.String) },
   T.Retryable({ throttling: true }),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
@@ -358,6 +360,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
 
 //# Operations
 export type DescribeServicesError =
+  | AccessDeniedException
   | ExpiredNextTokenException
   | InternalErrorException
   | InvalidNextTokenException
@@ -366,13 +369,7 @@ export type DescribeServicesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Returns the metadata for one service or a list of the metadata for all services. Use
- * this without a service code to get the service codes for all services.
- * Use it with a service code, such as `AmazonEC2`, to get information specific to
- * that service, such as the attribute
- * names available for that service. For example, some of the attribute names available for EC2 are
- * `volumeType`, `maxIopsVolume`, `operation`,
- * `locationType`, and `instanceCapacity10xlarge`.
+ * Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as `AmazonEC2`, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are `volumeType`, `maxIopsVolume`, `operation`, `locationType`, and `instanceCapacity10xlarge`.
  */
 export const describeServices: API.OperationMethod<
   DescribeServicesRequest,
@@ -398,6 +395,7 @@ export const describeServices: API.OperationMethod<
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [
+    AccessDeniedException,
     ExpiredNextTokenException,
     InternalErrorException,
     InvalidNextTokenException,
@@ -413,6 +411,7 @@ export const describeServices: API.OperationMethod<
   } as const,
 }));
 export type GetAttributeValuesError =
+  | AccessDeniedException
   | ExpiredNextTokenException
   | InternalErrorException
   | InvalidNextTokenException
@@ -421,10 +420,7 @@ export type GetAttributeValuesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Returns a list of attribute values. Attributes are similar to the details
- * in a Price List API offer file. For a list of available attributes, see
- * Offer File Definitions
- * in the Billing and Cost Management User Guide.
+ * Returns a list of attribute values. Attributes are similar to the details in a Price List API offer file. For a list of available attributes, see Offer File Definitions in the Billing and Cost Management User Guide.
  */
 export const getAttributeValues: API.OperationMethod<
   GetAttributeValuesRequest,
@@ -450,6 +446,7 @@ export const getAttributeValues: API.OperationMethod<
   input: GetAttributeValuesRequest,
   output: GetAttributeValuesResponse,
   errors: [
+    AccessDeniedException,
     ExpiredNextTokenException,
     InternalErrorException,
     InvalidNextTokenException,
@@ -473,11 +470,9 @@ export type GetPriceListFileUrlError =
   | ThrottlingException
   | CommonErrors;
 /**
- * **This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the Amazon Web Services Service Terms (Section 1.10).**
+ * * **This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the Amazon Web Services Service Terms (Section 1.10).** *
  *
- * This returns the URL that you can retrieve your Price List file from. This URL is based
- * on the `PriceListArn` and `FileFormat` that you retrieve from the
- * ListPriceLists response.
+ * This returns the URL that you can retrieve your Price List file from. This URL is based on the `PriceListArn` and `FileFormat` that you retrieve from the ListPriceLists response.
  */
 export const getPriceListFileUrl: API.OperationMethod<
   GetPriceListFileUrlRequest,
@@ -497,6 +492,7 @@ export const getPriceListFileUrl: API.OperationMethod<
   ],
 }));
 export type GetProductsError =
+  | AccessDeniedException
   | ExpiredNextTokenException
   | InternalErrorException
   | InvalidNextTokenException
@@ -531,6 +527,7 @@ export const getProducts: API.OperationMethod<
   input: GetProductsRequest,
   output: GetProductsResponse,
   errors: [
+    AccessDeniedException,
     ExpiredNextTokenException,
     InternalErrorException,
     InvalidNextTokenException,
@@ -556,15 +553,9 @@ export type ListPriceListsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * **This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the Amazon Web Services Service Terms (Section 1.10).**
+ * * **This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the Amazon Web Services Service Terms (Section 1.10).** *
  *
- * This returns a list of Price List references that the requester if authorized to view,
- * given a `ServiceCode`, `CurrencyCode`, and an
- * `EffectiveDate`. Use without a `RegionCode` filter to list Price
- * List references from all available Amazon Web Services Regions. Use with a
- * `RegionCode` filter to get the Price List reference that's specific to a
- * specific Amazon Web Services Region. You can use the `PriceListArn` from the
- * response to get your preferred Price List files through the GetPriceListFileUrl API.
+ * This returns a list of Price List references that the requester if authorized to view, given a `ServiceCode`, `CurrencyCode`, and an `EffectiveDate`. Use without a `RegionCode` filter to list Price List references from all available Amazon Web Services Regions. Use with a `RegionCode` filter to get the Price List reference that's specific to a specific Amazon Web Services Region. You can use the `PriceListArn` from the response to get your preferred Price List files through the GetPriceListFileUrl API.
  */
 export const listPriceLists: API.OperationMethod<
   ListPriceListsRequest,

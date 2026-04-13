@@ -26,6 +26,11 @@ export const GetV1ComputeServicesVersionsByVersionIdOutput =
       status: Schema.String,
       previewDomain: Schema.NullOr(Schema.String),
       envVars: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      portMapping: Schema.optional(
+        Schema.Struct({
+          http: Schema.optional(Schema.Number),
+        }),
+      ),
       createdAt: Schema.String,
     }),
   });

@@ -125,6 +125,7 @@ export type RedirectURL = string;
 export type FeedbackURL = string;
 export type SettingsGroup = string;
 export type EmbedHostDomain = string;
+export type UrlPattern = string;
 export type StreamingUrlUserId = string;
 export type ThemeFooterLinkDisplayName = string;
 export type ThemeFooterLinkURL = string;
@@ -1195,6 +1196,9 @@ export interface ComputeCapacityStatus {
   AvailableUserSessions?: number;
   ActiveUserSessions?: number;
   ActualUserSessions?: number;
+  Draining?: number;
+  DrainModeActiveUserSessions?: number;
+  DrainModeUnusedUserSessions?: number;
 }
 export const ComputeCapacityStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1206,6 +1210,9 @@ export const ComputeCapacityStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AvailableUserSessions: S.optional(S.Number),
     ActiveUserSessions: S.optional(S.Number),
     ActualUserSessions: S.optional(S.Number),
+    Draining: S.optional(S.Number),
+    DrainModeActiveUserSessions: S.optional(S.Number),
+    DrainModeUnusedUserSessions: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ComputeCapacityStatus",
@@ -1758,6 +1765,30 @@ export const StreamingExperienceSettings =
   ).annotate({
     identifier: "StreamingExperienceSettings",
   }) as any as S.Schema<StreamingExperienceSettings>;
+export type UrlPatternList = string[];
+export const UrlPatternList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface UrlRedirectionConfig {
+  Enabled?: boolean;
+  AllowedUrls?: string[];
+  DeniedUrls?: string[];
+}
+export const UrlRedirectionConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Enabled: S.optional(S.Boolean),
+    AllowedUrls: S.optional(UrlPatternList),
+    DeniedUrls: S.optional(UrlPatternList),
+  }),
+).annotate({
+  identifier: "UrlRedirectionConfig",
+}) as any as S.Schema<UrlRedirectionConfig>;
+export interface ContentRedirection {
+  HostToClient?: UrlRedirectionConfig;
+}
+export const ContentRedirection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ HostToClient: S.optional(UrlRedirectionConfig) }),
+).annotate({
+  identifier: "ContentRedirection",
+}) as any as S.Schema<ContentRedirection>;
 export interface CreateStackRequest {
   Name?: string;
   Description?: string;
@@ -1771,6 +1802,7 @@ export interface CreateStackRequest {
   AccessEndpoints?: AccessEndpoint[];
   EmbedHostDomains?: string[];
   StreamingExperienceSettings?: StreamingExperienceSettings;
+  ContentRedirection?: ContentRedirection;
 }
 export const CreateStackRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1786,6 +1818,7 @@ export const CreateStackRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AccessEndpoints: S.optional(AccessEndpointList),
     EmbedHostDomains: S.optional(EmbedHostDomains),
     StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
+    ContentRedirection: S.optional(ContentRedirection),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1839,6 +1872,7 @@ export interface Stack {
   AccessEndpoints?: AccessEndpoint[];
   EmbedHostDomains?: string[];
   StreamingExperienceSettings?: StreamingExperienceSettings;
+  ContentRedirection?: ContentRedirection;
 }
 export const Stack = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1856,6 +1890,7 @@ export const Stack = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AccessEndpoints: S.optional(AccessEndpointList),
     EmbedHostDomains: S.optional(EmbedHostDomains),
     StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
+    ContentRedirection: S.optional(ContentRedirection),
   }),
 ).annotate({ identifier: "Stack" }) as any as S.Schema<Stack>;
 export interface CreateStackResult {
@@ -1866,6 +1901,9 @@ export interface CreateStackResult {
     })[];
     UserSettings: (UserSetting & { Action: Action; Permission: Permission })[];
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
+    ContentRedirection: ContentRedirection & {
+      HostToClient: UrlRedirectionConfig & { Enabled: boolean };
+    };
   };
 }
 export const CreateStackResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2854,6 +2892,12 @@ export type SessionConnectionState =
   | "NOT_CONNECTED"
   | (string & {});
 export const SessionConnectionState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type InstanceDrainStatus =
+  | "ACTIVE"
+  | "DRAINING"
+  | "NOT_APPLICABLE"
+  | (string & {});
+export const InstanceDrainStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Session {
   Id?: string;
   UserId?: string;
@@ -2866,6 +2910,7 @@ export interface Session {
   AuthenticationType?: AuthenticationType;
   NetworkAccessConfiguration?: NetworkAccessConfiguration;
   InstanceId?: string;
+  InstanceDrainStatus?: InstanceDrainStatus;
 }
 export const Session = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2882,6 +2927,7 @@ export const Session = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AuthenticationType: S.optional(AuthenticationType),
     NetworkAccessConfiguration: S.optional(NetworkAccessConfiguration),
     InstanceId: S.optional(S.String),
+    InstanceDrainStatus: S.optional(InstanceDrainStatus),
   }),
 ).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
 export type SessionList = Session[];
@@ -2988,6 +3034,9 @@ export interface DescribeStacksResult {
     })[];
     UserSettings: (UserSetting & { Action: Action; Permission: Permission })[];
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
+    ContentRedirection: ContentRedirection & {
+      HostToClient: UrlRedirectionConfig & { Enabled: boolean };
+    };
   })[];
   NextToken?: string;
 }
@@ -3301,6 +3350,23 @@ export const DisassociateSoftwareFromImageBuilderResult =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateSoftwareFromImageBuilderResult",
   }) as any as S.Schema<DisassociateSoftwareFromImageBuilderResult>;
+export interface DrainSessionInstanceRequest {
+  SessionId?: string;
+}
+export const DrainSessionInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ SessionId: S.optional(S.String) }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DrainSessionInstanceRequest",
+  }) as any as S.Schema<DrainSessionInstanceRequest>;
+export interface DrainSessionInstanceResult {}
+export const DrainSessionInstanceResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DrainSessionInstanceResult",
+}) as any as S.Schema<DrainSessionInstanceResult>;
 export interface EnableUserRequest {
   UserName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
@@ -4025,6 +4091,7 @@ export type StackAttribute =
   | "IAM_ROLE_ARN"
   | "ACCESS_ENDPOINTS"
   | "STREAMING_EXPERIENCE_SETTINGS"
+  | "CONTENT_REDIRECTION"
   | (string & {});
 export const StackAttribute = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type StackAttributes = StackAttribute[];
@@ -4074,6 +4141,9 @@ export interface UpdateStackResult {
     })[];
     UserSettings: (UserSetting & { Action: Action; Permission: Permission })[];
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
+    ContentRedirection: ContentRedirection & {
+      HostToClient: UrlRedirectionConfig & { Enabled: boolean };
+    };
   };
 }
 export const UpdateStackResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5709,6 +5779,28 @@ export const disassociateSoftwareFromImageBuilder: API.OperationMethod<
   errors: [
     ConcurrentModificationException,
     InvalidParameterCombinationException,
+    OperationNotPermittedException,
+    ResourceNotFoundException,
+  ],
+}));
+export type DrainSessionInstanceError =
+  | ConcurrentModificationException
+  | OperationNotPermittedException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Drains the instance hosting the specified streaming session. The instance stops accepting new sessions while existing sessions continue uninterrupted. Once all sessions end, the instance is reclaimed and replaced. This only applies to multi-session fleets.
+ */
+export const drainSessionInstance: API.OperationMethod<
+  DrainSessionInstanceRequest,
+  DrainSessionInstanceResult,
+  DrainSessionInstanceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DrainSessionInstanceRequest,
+  output: DrainSessionInstanceResult,
+  errors: [
+    ConcurrentModificationException,
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],

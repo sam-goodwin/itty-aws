@@ -27,28 +27,24 @@ export interface GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest {
   scriptId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scriptId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse {
   /** The id of the linked Apps Script project. */
   scriptId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scriptId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest {
   /** The name of the Apps Script project to be created. */
@@ -57,29 +53,25 @@ export interface GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest {
   authConfigId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appsScriptProject: Schema.optional(Schema.String),
-      authConfigId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appsScriptProject: Schema.optional(Schema.String),
+    authConfigId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse {
   /** The created AppsScriptProject ID. */
   projectId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCloudKmsConfig {
   /** Required. Location name of the key ring, e.g. "us-west1". */
@@ -94,18 +86,14 @@ export interface GoogleCloudIntegrationsV1alphaCloudKmsConfig {
   kmsProjectId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCloudKmsConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaCloudKmsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsLocation: Schema.optional(Schema.String),
-      kmsRing: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      keyVersion: Schema.optional(Schema.String),
-      kmsProjectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaCloudKmsConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCloudKmsConfig>;
+export const GoogleCloudIntegrationsV1alphaCloudKmsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsLocation: Schema.optional(Schema.String),
+    kmsRing: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    keyVersion: Schema.optional(Schema.String),
+    kmsProjectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaCloudKmsConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaProvisionClientRequest {
   /** Optional. OPTIONAL: Cloud KMS config for AuthModule to encrypt/decrypt credentials. */
@@ -124,29 +112,26 @@ export interface GoogleCloudIntegrationsV1alphaProvisionClientRequest {
   enableManagedAiFeatures?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaProvisionClientRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudKmsConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCloudKmsConfig,
-      ),
-      createSampleWorkflows: Schema.optional(Schema.Boolean),
-      provisionGmek: Schema.optional(Schema.Boolean),
-      runAsServiceAccount: Schema.optional(Schema.String),
-      skipCpProvision: Schema.optional(Schema.Boolean),
-      enableHttpCall: Schema.optional(Schema.Boolean),
-      enableManagedAiFeatures: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaProvisionClientRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudKmsConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCloudKmsConfig,
+    ),
+    createSampleWorkflows: Schema.optional(Schema.Boolean),
+    provisionGmek: Schema.optional(Schema.Boolean),
+    runAsServiceAccount: Schema.optional(Schema.String),
+    skipCpProvision: Schema.optional(Schema.Boolean),
+    enableHttpCall: Schema.optional(Schema.Boolean),
+    enableManagedAiFeatures: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaProvisionClientRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientRequest>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest {
   /** Optional. Indicate which workflows to create */
@@ -158,30 +143,28 @@ export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorReque
   >;
 }
 
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflows: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflows: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse {}
 
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaDeprovisionClientRequest {}
 
-export const GoogleCloudIntegrationsV1alphaDeprovisionClientRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaDeprovisionClientRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaDeprovisionClientRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaDeprovisionClientRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaDeprovisionClientRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCustomerConfig {
   /** Optional. Indicates if the client should be allowed to use managed AI features, i.e. using Cloud Companion APIs of the tenant project. This will allow the customers to use features like Troubleshooting, OpenAPI spec enrichment, etc. for free. */
@@ -196,20 +179,16 @@ export interface GoogleCloudIntegrationsV1alphaCustomerConfig {
   cloudKmsConfig?: GoogleCloudIntegrationsV1alphaCloudKmsConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaCustomerConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaCustomerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableManagedAiFeatures: Schema.optional(Schema.Boolean),
-      runAsServiceAccount: Schema.optional(Schema.String),
-      enableVariableMasking: Schema.optional(Schema.Boolean),
-      enableHttpCall: Schema.optional(Schema.Boolean),
-      cloudKmsConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCloudKmsConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaCustomerConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCustomerConfig>;
+export const GoogleCloudIntegrationsV1alphaCustomerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableManagedAiFeatures: Schema.optional(Schema.Boolean),
+    runAsServiceAccount: Schema.optional(Schema.String),
+    enableVariableMasking: Schema.optional(Schema.Boolean),
+    enableHttpCall: Schema.optional(Schema.Boolean),
+    cloudKmsConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCloudKmsConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaCustomerConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaClientConfig {
   /** Globally unique ID (project_id + region) */
@@ -253,47 +232,41 @@ export interface GoogleCloudIntegrationsV1alphaClientConfig {
   customerConfig?: GoogleCloudIntegrationsV1alphaCustomerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaClientConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaClientConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      cloudKmsConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCloudKmsConfig,
-      ),
-      createTime: Schema.optional(Schema.String),
-      p4ServiceAccount: Schema.optional(Schema.String),
-      billingType: Schema.optional(Schema.String),
-      clientState: Schema.optional(Schema.String),
-      runAsServiceAccount: Schema.optional(Schema.String),
-      enableVariableMasking: Schema.optional(Schema.Boolean),
-      isGmek: Schema.optional(Schema.Boolean),
-      enableInternalIp: Schema.optional(Schema.Boolean),
-      enableHttpCall: Schema.optional(Schema.Boolean),
-      enableManagedAiFeatures: Schema.optional(Schema.Boolean),
-      customerConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCustomerConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaClientConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaClientConfig>;
+export const GoogleCloudIntegrationsV1alphaClientConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    cloudKmsConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCloudKmsConfig,
+    ),
+    createTime: Schema.optional(Schema.String),
+    p4ServiceAccount: Schema.optional(Schema.String),
+    billingType: Schema.optional(Schema.String),
+    clientState: Schema.optional(Schema.String),
+    runAsServiceAccount: Schema.optional(Schema.String),
+    enableVariableMasking: Schema.optional(Schema.Boolean),
+    isGmek: Schema.optional(Schema.Boolean),
+    enableInternalIp: Schema.optional(Schema.Boolean),
+    enableHttpCall: Schema.optional(Schema.Boolean),
+    enableManagedAiFeatures: Schema.optional(Schema.Boolean),
+    customerConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCustomerConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaClientConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaGetClientResponse {
   /** Required. Required: The client configuration that was requested */
   client?: GoogleCloudIntegrationsV1alphaClientConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaGetClientResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGetClientResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      client: Schema.optional(GoogleCloudIntegrationsV1alphaClientConfig),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaGetClientResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    client: Schema.optional(GoogleCloudIntegrationsV1alphaClientConfig),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaGetClientResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaGetClientResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest {
   /** Required. Field mask specifying the fields in the customer config that have been modified and must be updated. If absent or empty, no fields are updated. */
@@ -302,33 +275,29 @@ export interface GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest {
   customerConfig?: GoogleCloudIntegrationsV1alphaCustomerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      customerConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCustomerConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    customerConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCustomerConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse {
   /** Required. The updated customer configuration. */
   customerConfig?: GoogleCloudIntegrationsV1alphaCustomerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCustomerConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCustomerConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaProjectProperties {
   /** An enum value of what the enablement state is for the given project */
@@ -351,90 +320,78 @@ export interface GoogleCloudIntegrationsV1alphaProjectProperties {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaProjectProperties: Schema.Schema<GoogleCloudIntegrationsV1alphaProjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipEnablementState: Schema.optional(Schema.String),
-      provisionedRegions: Schema.optional(Schema.Array(Schema.String)),
-      billingType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaProjectProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipEnablementState: Schema.optional(Schema.String),
+    provisionedRegions: Schema.optional(Schema.Array(Schema.String)),
+    billingType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaProjectProperties",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaProjectProperties>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaGetClientMetadataResponse {
   /** Required. Required: The client configuration that was requested */
   properties?: GoogleCloudIntegrationsV1alphaProjectProperties;
 }
 
-export const GoogleCloudIntegrationsV1alphaGetClientMetadataResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGetClientMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(
-        GoogleCloudIntegrationsV1alphaProjectProperties,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaGetClientMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      GoogleCloudIntegrationsV1alphaProjectProperties,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaGetClientMetadataResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaGetClientMetadataResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest {
   /** Required. REQUIRED: Cloud KMS config for AuthModule to encrypt/decrypt credentials. */
   cloudKmsConfig?: GoogleCloudIntegrationsV1alphaCloudKmsConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudKmsConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCloudKmsConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudKmsConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCloudKmsConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest {
   /** Required. REQUIRED: Run-as service account to be updated */
   runAsServiceAccount?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runAsServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runAsServiceAccount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest {
   /** Required. REQUIRED: True if variable masking feature should be turned on for this region */
   enableVariableMasking?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableVariableMasking: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableVariableMasking: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaToggleHttpRequest {
   /** Required. REQUIRED: True if http call feature should be turned on for this region */
   enableHttpCall?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaToggleHttpRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaToggleHttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableHttpCall: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaToggleHttpRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableHttpCall: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaToggleHttpRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaToggleHttpRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest {
   /** Indicates the id of the GCP project that the function will be created in. */
@@ -451,31 +408,27 @@ export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      functionName: Schema.optional(Schema.String),
-      functionRegion: Schema.optional(Schema.String),
-      gcfApiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    functionName: Schema.optional(Schema.String),
+    functionRegion: Schema.optional(Schema.String),
+    gcfApiVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse {
   /** The trigger url that will be returned */
   triggerUrl?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerUrl: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaClientCertificate {
   /** The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines. For example, -----BEGIN CERTIFICATE----- MIICTTCCAbagAwIBAgIJAPT0tSKNxan/MA0GCSqGSIb3DQEBCwUAMCoxFzAVBgNV BAoTDkdvb2dsZSBURVNUSU5HMQ8wDQYDVQQDEwZ0ZXN0Q0EwHhcNMTUwMTAxMDAw MDAwWhcNMjUwMTAxMDAwMDAwWjAuMRcwFQYDVQQKEw5Hb29nbGUgVEVTVElORzET MBEGA1UEAwwKam9lQGJhbmFuYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA vDYFgMgxi5W488d9J7UpCInl0NXmZQpJDEHE4hvkaRlH7pnC71H0DLt0/3zATRP1 JzY2+eqBmbGl4/sgZKYv8UrLnNyQNUTsNx1iZAfPUflf5FwgVsai8BM0pUciq1NB xD429VFcrGZNucvFLh72RuRFIKH8WUpiK/iZNFkWhZ0CAwEAAaN3MHUwDgYDVR0P AQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMB Af8EAjAAMBkGA1UdDgQSBBCVgnFBCWgL/iwCqnGrhTPQMBsGA1UdIwQUMBKAEKey Um2o4k2WiEVA0ldQvNYwDQYJKoZIhvcNAQELBQADgYEAYK986R4E3L1v+Q6esBtW JrUwA9UmJRSQr0N5w3o9XzarU37/bkjOP0Fw0k/A6Vv1n3vlciYfBFaBIam1qRHr 5dMsYf4CZS6w50r7hyzqyrwDoyNxkLnd2PdcHT/sym1QmflsjEs7pejtnohO6N2H wQW6M0H7Zt8claGRla4fKkg= -----END CERTIFICATE----- */
@@ -486,16 +439,14 @@ export interface GoogleCloudIntegrationsV1alphaClientCertificate {
   passphrase?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaClientCertificate: Schema.Schema<GoogleCloudIntegrationsV1alphaClientCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sslCertificate: Schema.optional(Schema.String),
-      encryptedPrivateKey: Schema.optional(Schema.String),
-      passphrase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaClientCertificate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sslCertificate: Schema.optional(Schema.String),
+    encryptedPrivateKey: Schema.optional(Schema.String),
+    passphrase: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaClientCertificate",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaClientCertificate>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCertificate {
   /** Output only. Auto generated primary key */
@@ -522,24 +473,20 @@ export interface GoogleCloudIntegrationsV1alphaCertificate {
   rawCertificate?: GoogleCloudIntegrationsV1alphaClientCertificate;
 }
 
-export const GoogleCloudIntegrationsV1alphaCertificate: Schema.Schema<GoogleCloudIntegrationsV1alphaCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      requestorId: Schema.optional(Schema.String),
-      credentialId: Schema.optional(Schema.String),
-      certificateStatus: Schema.optional(Schema.String),
-      validStartTime: Schema.optional(Schema.String),
-      validEndTime: Schema.optional(Schema.String),
-      rawCertificate: Schema.optional(
-        GoogleCloudIntegrationsV1alphaClientCertificate,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaCertificate",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCertificate>;
+export const GoogleCloudIntegrationsV1alphaCertificate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    requestorId: Schema.optional(Schema.String),
+    credentialId: Schema.optional(Schema.String),
+    certificateStatus: Schema.optional(Schema.String),
+    validStartTime: Schema.optional(Schema.String),
+    validEndTime: Schema.optional(Schema.String),
+    rawCertificate: Schema.optional(
+      GoogleCloudIntegrationsV1alphaClientCertificate,
+    ),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaCertificate" });
 
 export interface GoogleCloudIntegrationsV1alphaListCertificatesResponse {
   /** The list of Certificates retrieved. */
@@ -548,17 +495,15 @@ export interface GoogleCloudIntegrationsV1alphaListCertificatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListCertificatesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListCertificatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificates: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaCertificate),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificates: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaCertificate),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListCertificatesResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListCertificatesResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   /** Username to be used */
@@ -567,71 +512,61 @@ export interface GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   password?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaUsernameAndPassword: Schema.Schema<GoogleCloudIntegrationsV1alphaUsernameAndPassword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUsernameAndPassword =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUsernameAndPassword",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUsernameAndPassword>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaStringParameterArray {
   /** String array. */
   stringValues?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaStringParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaStringParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaStringParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaStringParameterArray",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaStringParameterArray>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntParameterArray {
   /** Integer array. */
   intValues?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaIntParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaIntParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaIntParameterArray",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntParameterArray>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaDoubleParameterArray {
   /** Double number array. */
   doubleValues?: Array<number>;
 }
 
-export const GoogleCloudIntegrationsV1alphaDoubleParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaDoubleParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      doubleValues: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaDoubleParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    doubleValues: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaDoubleParameterArray",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaDoubleParameterArray>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaBooleanParameterArray {
   /** Boolean array. */
   booleanValues?: Array<boolean>;
 }
 
-export const GoogleCloudIntegrationsV1alphaBooleanParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaBooleanParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaBooleanParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaBooleanParameterArray",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaBooleanParameterArray>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaValueType {
   /** String. */
@@ -654,30 +589,24 @@ export interface GoogleCloudIntegrationsV1alphaValueType {
   jsonValue?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaValueType: Schema.Schema<GoogleCloudIntegrationsV1alphaValueType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      intValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      booleanValue: Schema.optional(Schema.Boolean),
-      stringArray: Schema.optional(
-        GoogleCloudIntegrationsV1alphaStringParameterArray,
-      ),
-      intArray: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntParameterArray,
-      ),
-      doubleArray: Schema.optional(
-        GoogleCloudIntegrationsV1alphaDoubleParameterArray,
-      ),
-      booleanArray: Schema.optional(
-        GoogleCloudIntegrationsV1alphaBooleanParameterArray,
-      ),
-      jsonValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaValueType",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaValueType>;
+export const GoogleCloudIntegrationsV1alphaValueType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValue: Schema.optional(Schema.String),
+    intValue: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    booleanValue: Schema.optional(Schema.Boolean),
+    stringArray: Schema.optional(
+      GoogleCloudIntegrationsV1alphaStringParameterArray,
+    ),
+    intArray: Schema.optional(GoogleCloudIntegrationsV1alphaIntParameterArray),
+    doubleArray: Schema.optional(
+      GoogleCloudIntegrationsV1alphaDoubleParameterArray,
+    ),
+    booleanArray: Schema.optional(
+      GoogleCloudIntegrationsV1alphaBooleanParameterArray,
+    ),
+    jsonValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaValueType" });
 
 export interface GoogleCloudIntegrationsV1alphaParameterMapField {
   /** Referencing one of the Integration variables. */
@@ -686,15 +615,13 @@ export interface GoogleCloudIntegrationsV1alphaParameterMapField {
   literalValue?: GoogleCloudIntegrationsV1alphaValueType;
 }
 
-export const GoogleCloudIntegrationsV1alphaParameterMapField: Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMapField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referenceKey: Schema.optional(Schema.String),
-      literalValue: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaParameterMapField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referenceKey: Schema.optional(Schema.String),
+    literalValue: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaParameterMapField",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMapField>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaParameterMapEntry {
   /** Key of the map entry. */
@@ -703,15 +630,13 @@ export interface GoogleCloudIntegrationsV1alphaParameterMapEntry {
   value?: GoogleCloudIntegrationsV1alphaParameterMapField;
 }
 
-export const GoogleCloudIntegrationsV1alphaParameterMapEntry: Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMapEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
-      value: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaParameterMapEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
+    value: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaParameterMapEntry",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMapEntry>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaParameterMap {
   /** A list of parameter map entries. */
@@ -760,18 +685,14 @@ export interface GoogleCloudIntegrationsV1alphaParameterMap {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaParameterMap: Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaParameterMapEntry),
-      ),
-      keyType: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaParameterMap",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMap>;
+export const GoogleCloudIntegrationsV1alphaParameterMap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaParameterMapEntry),
+    ),
+    keyType: Schema.optional(Schema.String),
+    valueType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaParameterMap" });
 
 export interface GoogleCloudIntegrationsV1alphaAccessToken {
   /** The access token encapsulating the security identity of a process or thread. */
@@ -786,18 +707,14 @@ export interface GoogleCloudIntegrationsV1alphaAccessToken {
   refreshTokenExpireTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAccessToken: Schema.Schema<GoogleCloudIntegrationsV1alphaAccessToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessToken: Schema.optional(Schema.String),
-      accessTokenExpireTime: Schema.optional(Schema.String),
-      tokenType: Schema.optional(Schema.String),
-      refreshToken: Schema.optional(Schema.String),
-      refreshTokenExpireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaAccessToken",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaAccessToken>;
+export const GoogleCloudIntegrationsV1alphaAccessToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessToken: Schema.optional(Schema.String),
+    accessTokenExpireTime: Schema.optional(Schema.String),
+    tokenType: Schema.optional(Schema.String),
+    refreshToken: Schema.optional(Schema.String),
+    refreshTokenExpireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaAccessToken" });
 
 export interface GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
   /** The client's id. */
@@ -829,24 +746,22 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
   applyReauthPolicy?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode: Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      authEndpoint: Schema.optional(Schema.String),
-      authParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
-      tokenEndpoint: Schema.optional(Schema.String),
-      tokenParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
-      accessToken: Schema.optional(GoogleCloudIntegrationsV1alphaAccessToken),
-      authCode: Schema.optional(Schema.String),
-      requestType: Schema.optional(Schema.String),
-      applyReauthPolicy: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    authEndpoint: Schema.optional(Schema.String),
+    authParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
+    tokenEndpoint: Schema.optional(Schema.String),
+    tokenParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
+    accessToken: Schema.optional(GoogleCloudIntegrationsV1alphaAccessToken),
+    authCode: Schema.optional(Schema.String),
+    requestType: Schema.optional(Schema.String),
+    applyReauthPolicy: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
   /** The client's ID. */
@@ -870,20 +785,18 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials: Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      tokenEndpoint: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      tokenParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
-      accessToken: Schema.optional(GoogleCloudIntegrationsV1alphaAccessToken),
-      requestType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    tokenEndpoint: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    tokenParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
+    accessToken: Schema.optional(GoogleCloudIntegrationsV1alphaAccessToken),
+    requestType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
   /** The client's ID. */
@@ -911,22 +824,20 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials: Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      tokenEndpoint: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      tokenParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
-      accessToken: Schema.optional(GoogleCloudIntegrationsV1alphaAccessToken),
-      requestType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    tokenEndpoint: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    tokenParams: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMap),
+    accessToken: Schema.optional(GoogleCloudIntegrationsV1alphaAccessToken),
+    requestType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaJwt {
   /** Identifies which algorithm is used to generate the signature. */
@@ -939,17 +850,13 @@ export interface GoogleCloudIntegrationsV1alphaJwt {
   jwt?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaJwt: Schema.Schema<GoogleCloudIntegrationsV1alphaJwt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jwtHeader: Schema.optional(Schema.String),
-      jwtPayload: Schema.optional(Schema.String),
-      secret: Schema.optional(Schema.String),
-      jwt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaJwt",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaJwt>;
+export const GoogleCloudIntegrationsV1alphaJwt =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jwtHeader: Schema.optional(Schema.String),
+    jwtPayload: Schema.optional(Schema.String),
+    secret: Schema.optional(Schema.String),
+    jwt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaJwt" });
 
 export interface GoogleCloudIntegrationsV1alphaAuthToken {
   /** Authentication type, e.g. "Basic", "Bearer", etc. */
@@ -958,15 +865,11 @@ export interface GoogleCloudIntegrationsV1alphaAuthToken {
   token?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAuthToken: Schema.Schema<GoogleCloudIntegrationsV1alphaAuthToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaAuthToken",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaAuthToken>;
+export const GoogleCloudIntegrationsV1alphaAuthToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaAuthToken" });
 
 export interface GoogleCloudIntegrationsV1alphaServiceAccountCredentials {
   /** Name of the service account that has the permission to make the request. */
@@ -975,15 +878,13 @@ export interface GoogleCloudIntegrationsV1alphaServiceAccountCredentials {
   scope?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaServiceAccountCredentials: Schema.Schema<GoogleCloudIntegrationsV1alphaServiceAccountCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaServiceAccountCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaServiceAccountCredentials",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaServiceAccountCredentials>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaOidcToken {
   /** The service account email to be used as the identity for the token. */
@@ -996,17 +897,13 @@ export interface GoogleCloudIntegrationsV1alphaOidcToken {
   tokenExpireTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaOidcToken: Schema.Schema<GoogleCloudIntegrationsV1alphaOidcToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountEmail: Schema.optional(Schema.String),
-      audience: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      tokenExpireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaOidcToken",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaOidcToken>;
+export const GoogleCloudIntegrationsV1alphaOidcToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountEmail: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    tokenExpireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaOidcToken" });
 
 export interface GoogleCloudIntegrationsV1alphaCredential {
   /** Credential type associated with auth config. */
@@ -1042,32 +939,28 @@ export interface GoogleCloudIntegrationsV1alphaCredential {
   oidcToken?: GoogleCloudIntegrationsV1alphaOidcToken;
 }
 
-export const GoogleCloudIntegrationsV1alphaCredential: Schema.Schema<GoogleCloudIntegrationsV1alphaCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      credentialType: Schema.optional(Schema.String),
-      usernameAndPassword: Schema.optional(
-        GoogleCloudIntegrationsV1alphaUsernameAndPassword,
-      ),
-      oauth2AuthorizationCode: Schema.optional(
-        GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode,
-      ),
-      oauth2ClientCredentials: Schema.optional(
-        GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials,
-      ),
-      oauth2ResourceOwnerCredentials: Schema.optional(
-        GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials,
-      ),
-      jwt: Schema.optional(GoogleCloudIntegrationsV1alphaJwt),
-      authToken: Schema.optional(GoogleCloudIntegrationsV1alphaAuthToken),
-      serviceAccountCredentials: Schema.optional(
-        GoogleCloudIntegrationsV1alphaServiceAccountCredentials,
-      ),
-      oidcToken: Schema.optional(GoogleCloudIntegrationsV1alphaOidcToken),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaCredential",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCredential>;
+export const GoogleCloudIntegrationsV1alphaCredential =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    credentialType: Schema.optional(Schema.String),
+    usernameAndPassword: Schema.optional(
+      GoogleCloudIntegrationsV1alphaUsernameAndPassword,
+    ),
+    oauth2AuthorizationCode: Schema.optional(
+      GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode,
+    ),
+    oauth2ClientCredentials: Schema.optional(
+      GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials,
+    ),
+    oauth2ResourceOwnerCredentials: Schema.optional(
+      GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials,
+    ),
+    jwt: Schema.optional(GoogleCloudIntegrationsV1alphaJwt),
+    authToken: Schema.optional(GoogleCloudIntegrationsV1alphaAuthToken),
+    serviceAccountCredentials: Schema.optional(
+      GoogleCloudIntegrationsV1alphaServiceAccountCredentials,
+    ),
+    oidcToken: Schema.optional(GoogleCloudIntegrationsV1alphaOidcToken),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaCredential" });
 
 export interface GoogleCloudIntegrationsV1alphaAuthConfig {
   /** Resource name of the auth config. For more information, see Manage authentication profiles. projects/{project}/locations/{location}/authConfigs/{authConfig}. */
@@ -1131,32 +1024,28 @@ export interface GoogleCloudIntegrationsV1alphaAuthConfig {
   overrideValidTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAuthConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      encryptedCredential: Schema.optional(Schema.String),
-      decryptedCredential: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCredential,
-      ),
-      certificateId: Schema.optional(Schema.String),
-      credentialType: Schema.optional(Schema.String),
-      creatorEmail: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      lastModifierEmail: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      visibility: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      expiryNotificationDuration: Schema.optional(Schema.Array(Schema.String)),
-      validTime: Schema.optional(Schema.String),
-      overrideValidTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaAuthConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>;
+export const GoogleCloudIntegrationsV1alphaAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    encryptedCredential: Schema.optional(Schema.String),
+    decryptedCredential: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCredential,
+    ),
+    certificateId: Schema.optional(Schema.String),
+    credentialType: Schema.optional(Schema.String),
+    creatorEmail: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    lastModifierEmail: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    visibility: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    expiryNotificationDuration: Schema.optional(Schema.Array(Schema.String)),
+    validTime: Schema.optional(Schema.String),
+    overrideValidTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaAuthConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaListAuthConfigsResponse {
   /** The list of AuthConfigs retrieved. */
@@ -1165,32 +1054,28 @@ export interface GoogleCloudIntegrationsV1alphaListAuthConfigsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListAuthConfigsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListAuthConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authConfigs: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaAuthConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListAuthConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authConfigs: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaAuthConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListAuthConfigsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListAuthConfigsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse {
   /** All regions where Connector Platform is provisioned. */
   regions?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse>;
+  });
 
 export interface GoogleCloudConnectorsV1ConnectionStatus {
   /** State. */
@@ -1210,30 +1095,22 @@ export interface GoogleCloudConnectorsV1ConnectionStatus {
   status?: string;
 }
 
-export const GoogleCloudConnectorsV1ConnectionStatus: Schema.Schema<GoogleCloudConnectorsV1ConnectionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1ConnectionStatus",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1ConnectionStatus>;
+export const GoogleCloudConnectorsV1ConnectionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1ConnectionStatus" });
 
 export interface GoogleCloudConnectorsV1Secret {
   /** Optional. The resource name of the secret version in the format, format as: `projects/* /secrets/* /versions/*`. */
   secretVersion?: string;
 }
 
-export const GoogleCloudConnectorsV1Secret: Schema.Schema<GoogleCloudConnectorsV1Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1Secret",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1Secret>;
+export const GoogleCloudConnectorsV1Secret =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1Secret" });
 
 export interface GoogleCloudConnectorsV1EncryptionKey {
   /** Optional. Specifies the type of the encryption key. */
@@ -1246,15 +1123,11 @@ export interface GoogleCloudConnectorsV1EncryptionKey {
   kmsKeyName?: string;
 }
 
-export const GoogleCloudConnectorsV1EncryptionKey: Schema.Schema<GoogleCloudConnectorsV1EncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1EncryptionKey",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EncryptionKey>;
+export const GoogleCloudConnectorsV1EncryptionKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1EncryptionKey" });
 
 export interface GoogleCloudConnectorsV1ConfigVariable {
   /** Optional. Key of the config variable. */
@@ -1271,19 +1144,15 @@ export interface GoogleCloudConnectorsV1ConfigVariable {
   encryptionKeyValue?: GoogleCloudConnectorsV1EncryptionKey;
 }
 
-export const GoogleCloudConnectorsV1ConfigVariable: Schema.Schema<GoogleCloudConnectorsV1ConfigVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      intValue: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      stringValue: Schema.optional(Schema.String),
-      secretValue: Schema.optional(GoogleCloudConnectorsV1Secret),
-      encryptionKeyValue: Schema.optional(GoogleCloudConnectorsV1EncryptionKey),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1ConfigVariable",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1ConfigVariable>;
+export const GoogleCloudConnectorsV1ConfigVariable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    intValue: Schema.optional(Schema.String),
+    boolValue: Schema.optional(Schema.Boolean),
+    stringValue: Schema.optional(Schema.String),
+    secretValue: Schema.optional(GoogleCloudConnectorsV1Secret),
+    encryptionKeyValue: Schema.optional(GoogleCloudConnectorsV1EncryptionKey),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1ConfigVariable" });
 
 export interface GoogleCloudConnectorsV1AuthConfigUserPassword {
   /** Optional. Username. */
@@ -1292,15 +1161,11 @@ export interface GoogleCloudConnectorsV1AuthConfigUserPassword {
   password?: GoogleCloudConnectorsV1Secret;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigUserPassword: Schema.Schema<GoogleCloudConnectorsV1AuthConfigUserPassword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(GoogleCloudConnectorsV1Secret),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1AuthConfigUserPassword",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfigUserPassword>;
+export const GoogleCloudConnectorsV1AuthConfigUserPassword =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(GoogleCloudConnectorsV1Secret),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1AuthConfigUserPassword" });
 
 export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims {
   /** Optional. Value for the "iss" claim. */
@@ -1311,16 +1176,14 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims {
   audience?: string;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issuer: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      audience: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issuer: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims>;
+  });
 
 export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer {
   /** Optional. Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/* /secrets/* /versions/*`. */
@@ -1329,17 +1192,15 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer {
   jwtClaims?: GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientKey: Schema.optional(GoogleCloudConnectorsV1Secret),
-      jwtClaims: Schema.optional(
-        GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientKey: Schema.optional(GoogleCloudConnectorsV1Secret),
+    jwtClaims: Schema.optional(
+      GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims,
+    ),
+  }).annotate({
     identifier: "GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer>;
+  });
 
 export interface GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials {
   /** Optional. The client identifier. */
@@ -1348,15 +1209,13 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials {
   clientSecret?: GoogleCloudConnectorsV1Secret;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(GoogleCloudConnectorsV1Secret),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(GoogleCloudConnectorsV1Secret),
+  }).annotate({
     identifier: "GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials>;
+  });
 
 export interface GoogleCloudConnectorsV1AuthConfigSshPublicKey {
   /** Optional. The user account used to authenticate. */
@@ -1369,17 +1228,13 @@ export interface GoogleCloudConnectorsV1AuthConfigSshPublicKey {
   sshClientCertPass?: GoogleCloudConnectorsV1Secret;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigSshPublicKey: Schema.Schema<GoogleCloudConnectorsV1AuthConfigSshPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      sshClientCert: Schema.optional(GoogleCloudConnectorsV1Secret),
-      certType: Schema.optional(Schema.String),
-      sshClientCertPass: Schema.optional(GoogleCloudConnectorsV1Secret),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1AuthConfigSshPublicKey",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfigSshPublicKey>;
+export const GoogleCloudConnectorsV1AuthConfigSshPublicKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    sshClientCert: Schema.optional(GoogleCloudConnectorsV1Secret),
+    certType: Schema.optional(Schema.String),
+    sshClientCertPass: Schema.optional(GoogleCloudConnectorsV1Secret),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1AuthConfigSshPublicKey" });
 
 export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
   /** Optional. Authorization code to be exchanged for access and refresh tokens. */
@@ -1400,21 +1255,19 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
   authUri?: string;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authCode: Schema.optional(Schema.String),
-      pkceVerifier: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(GoogleCloudConnectorsV1Secret),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      enablePkce: Schema.optional(Schema.Boolean),
-      authUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authCode: Schema.optional(Schema.String),
+    pkceVerifier: Schema.optional(Schema.String),
+    redirectUri: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(GoogleCloudConnectorsV1Secret),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    enablePkce: Schema.optional(Schema.Boolean),
+    authUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow>;
+  });
 
 export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged {
   /** Optional. Authorization code to be exchanged for access and refresh tokens. */
@@ -1425,17 +1278,15 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManage
   scopes?: Array<string>;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authCode: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authCode: Schema.optional(Schema.String),
+    redirectUri: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged>;
+  });
 
 export interface GoogleCloudConnectorsV1AuthConfig {
   /** Optional. The type of authentication configured. */
@@ -1467,36 +1318,32 @@ export interface GoogleCloudConnectorsV1AuthConfig {
   authKey?: string;
 }
 
-export const GoogleCloudConnectorsV1AuthConfig: Schema.Schema<GoogleCloudConnectorsV1AuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authType: Schema.optional(Schema.String),
-      userPassword: Schema.optional(
-        GoogleCloudConnectorsV1AuthConfigUserPassword,
-      ),
-      oauth2JwtBearer: Schema.optional(
-        GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer,
-      ),
-      oauth2ClientCredentials: Schema.optional(
-        GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials,
-      ),
-      sshPublicKey: Schema.optional(
-        GoogleCloudConnectorsV1AuthConfigSshPublicKey,
-      ),
-      oauth2AuthCodeFlow: Schema.optional(
-        GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow,
-      ),
-      oauth2AuthCodeFlowGoogleManaged: Schema.optional(
-        GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged,
-      ),
-      additionalVariables: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
-      ),
-      authKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1AuthConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1AuthConfig>;
+export const GoogleCloudConnectorsV1AuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authType: Schema.optional(Schema.String),
+    userPassword: Schema.optional(
+      GoogleCloudConnectorsV1AuthConfigUserPassword,
+    ),
+    oauth2JwtBearer: Schema.optional(
+      GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer,
+    ),
+    oauth2ClientCredentials: Schema.optional(
+      GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials,
+    ),
+    sshPublicKey: Schema.optional(
+      GoogleCloudConnectorsV1AuthConfigSshPublicKey,
+    ),
+    oauth2AuthCodeFlow: Schema.optional(
+      GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow,
+    ),
+    oauth2AuthCodeFlowGoogleManaged: Schema.optional(
+      GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged,
+    ),
+    additionalVariables: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
+    ),
+    authKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1AuthConfig" });
 
 export interface GoogleCloudConnectorsV1LockConfig {
   /** Optional. Indicates whether or not the connection is locked. */
@@ -1505,15 +1352,11 @@ export interface GoogleCloudConnectorsV1LockConfig {
   reason?: string;
 }
 
-export const GoogleCloudConnectorsV1LockConfig: Schema.Schema<GoogleCloudConnectorsV1LockConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locked: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1LockConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1LockConfig>;
+export const GoogleCloudConnectorsV1LockConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locked: Schema.optional(Schema.Boolean),
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1LockConfig" });
 
 export interface GoogleCloudConnectorsV1Destination {
   /** PSC service attachments. Format: projects/* /regions/* /serviceAttachments/* */
@@ -1524,16 +1367,12 @@ export interface GoogleCloudConnectorsV1Destination {
   port?: number;
 }
 
-export const GoogleCloudConnectorsV1Destination: Schema.Schema<GoogleCloudConnectorsV1Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAttachment: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1Destination",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1Destination>;
+export const GoogleCloudConnectorsV1Destination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAttachment: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1Destination" });
 
 export interface GoogleCloudConnectorsV1DestinationConfig {
   /** Optional. The key is the destination identifier that is supported by the Connector. */
@@ -1542,17 +1381,13 @@ export interface GoogleCloudConnectorsV1DestinationConfig {
   destinations?: Array<GoogleCloudConnectorsV1Destination>;
 }
 
-export const GoogleCloudConnectorsV1DestinationConfig: Schema.Schema<GoogleCloudConnectorsV1DestinationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      destinations: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1Destination),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1DestinationConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1DestinationConfig>;
+export const GoogleCloudConnectorsV1DestinationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    destinations: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1Destination),
+    ),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1DestinationConfig" });
 
 export interface GoogleCloudConnectorsV1NodeConfig {
   /** Optional. Minimum number of nodes in the runtime nodes. */
@@ -1561,15 +1396,11 @@ export interface GoogleCloudConnectorsV1NodeConfig {
   maxNodeCount?: number;
 }
 
-export const GoogleCloudConnectorsV1NodeConfig: Schema.Schema<GoogleCloudConnectorsV1NodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minNodeCount: Schema.optional(Schema.Number),
-      maxNodeCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1NodeConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1NodeConfig>;
+export const GoogleCloudConnectorsV1NodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minNodeCount: Schema.optional(Schema.Number),
+    maxNodeCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1NodeConfig" });
 
 export interface GoogleCloudConnectorsV1LogConfig {
   /** Optional. Enabled represents whether logging is enabled or not for a connection. */
@@ -1578,15 +1409,11 @@ export interface GoogleCloudConnectorsV1LogConfig {
   level?: "LOG_LEVEL_UNSPECIFIED" | "ERROR" | "INFO" | "DEBUG" | (string & {});
 }
 
-export const GoogleCloudConnectorsV1LogConfig: Schema.Schema<GoogleCloudConnectorsV1LogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      level: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1LogConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1LogConfig>;
+export const GoogleCloudConnectorsV1LogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    level: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1LogConfig" });
 
 export interface GoogleCloudConnectorsV1SslConfig {
   /** Optional. Controls the ssl type for the given connector version. */
@@ -1611,25 +1438,21 @@ export interface GoogleCloudConnectorsV1SslConfig {
   additionalVariables?: Array<GoogleCloudConnectorsV1ConfigVariable>;
 }
 
-export const GoogleCloudConnectorsV1SslConfig: Schema.Schema<GoogleCloudConnectorsV1SslConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      trustModel: Schema.optional(Schema.String),
-      privateServerCertificate: Schema.optional(GoogleCloudConnectorsV1Secret),
-      clientCertificate: Schema.optional(GoogleCloudConnectorsV1Secret),
-      clientPrivateKey: Schema.optional(GoogleCloudConnectorsV1Secret),
-      clientPrivateKeyPass: Schema.optional(GoogleCloudConnectorsV1Secret),
-      serverCertType: Schema.optional(Schema.String),
-      clientCertType: Schema.optional(Schema.String),
-      useSsl: Schema.optional(Schema.Boolean),
-      additionalVariables: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1SslConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1SslConfig>;
+export const GoogleCloudConnectorsV1SslConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    trustModel: Schema.optional(Schema.String),
+    privateServerCertificate: Schema.optional(GoogleCloudConnectorsV1Secret),
+    clientCertificate: Schema.optional(GoogleCloudConnectorsV1Secret),
+    clientPrivateKey: Schema.optional(GoogleCloudConnectorsV1Secret),
+    clientPrivateKeyPass: Schema.optional(GoogleCloudConnectorsV1Secret),
+    serverCertType: Schema.optional(Schema.String),
+    clientCertType: Schema.optional(Schema.String),
+    useSsl: Schema.optional(Schema.Boolean),
+    additionalVariables: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
+    ),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1SslConfig" });
 
 export interface GoogleCloudConnectorsV1EventingConfigDeadLetterConfig {
   /** Optional. Topic to push events which couldn't be processed. */
@@ -1638,29 +1461,23 @@ export interface GoogleCloudConnectorsV1EventingConfigDeadLetterConfig {
   projectId?: string;
 }
 
-export const GoogleCloudConnectorsV1EventingConfigDeadLetterConfig: Schema.Schema<GoogleCloudConnectorsV1EventingConfigDeadLetterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1EventingConfigDeadLetterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topic: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudConnectorsV1EventingConfigDeadLetterConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EventingConfigDeadLetterConfig>;
+  });
 
 export interface GoogleCloudConnectorsV1EnrichmentConfig {
   /** Optional. Append ACL to the event. */
   appendAcl?: boolean;
 }
 
-export const GoogleCloudConnectorsV1EnrichmentConfig: Schema.Schema<GoogleCloudConnectorsV1EnrichmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appendAcl: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1EnrichmentConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EnrichmentConfig>;
+export const GoogleCloudConnectorsV1EnrichmentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appendAcl: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1EnrichmentConfig" });
 
 export interface GoogleCloudConnectorsV1EventingConfig {
   /** Optional. Registration endpoint for auto registration. */
@@ -1691,38 +1508,32 @@ export interface GoogleCloudConnectorsV1EventingConfig {
   allowedEventTypes?: Array<string>;
 }
 
-export const GoogleCloudConnectorsV1EventingConfig: Schema.Schema<GoogleCloudConnectorsV1EventingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registrationDestinationConfig: Schema.optional(
-        GoogleCloudConnectorsV1DestinationConfig,
-      ),
-      authConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
-      listenerAuthConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
-      additionalVariables: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
-      ),
-      enrichmentEnabled: Schema.optional(Schema.Boolean),
-      privateConnectivityEnabled: Schema.optional(Schema.Boolean),
-      eventsListenerIngressEndpoint: Schema.optional(Schema.String),
-      deadLetterConfig: Schema.optional(
-        GoogleCloudConnectorsV1EventingConfigDeadLetterConfig,
-      ),
-      proxyDestinationConfig: Schema.optional(
-        GoogleCloudConnectorsV1DestinationConfig,
-      ),
-      enrichmentConfig: Schema.optional(
-        GoogleCloudConnectorsV1EnrichmentConfig,
-      ),
-      sslConfig: Schema.optional(GoogleCloudConnectorsV1SslConfig),
-      privateConnectivityAllowlistedProjects: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      allowedEventTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1EventingConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EventingConfig>;
+export const GoogleCloudConnectorsV1EventingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registrationDestinationConfig: Schema.optional(
+      GoogleCloudConnectorsV1DestinationConfig,
+    ),
+    authConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
+    listenerAuthConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
+    additionalVariables: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
+    ),
+    enrichmentEnabled: Schema.optional(Schema.Boolean),
+    privateConnectivityEnabled: Schema.optional(Schema.Boolean),
+    eventsListenerIngressEndpoint: Schema.optional(Schema.String),
+    deadLetterConfig: Schema.optional(
+      GoogleCloudConnectorsV1EventingConfigDeadLetterConfig,
+    ),
+    proxyDestinationConfig: Schema.optional(
+      GoogleCloudConnectorsV1DestinationConfig,
+    ),
+    enrichmentConfig: Schema.optional(GoogleCloudConnectorsV1EnrichmentConfig),
+    sslConfig: Schema.optional(GoogleCloudConnectorsV1SslConfig),
+    privateConnectivityAllowlistedProjects: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    allowedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1EventingConfig" });
 
 export interface GoogleCloudConnectorsV1EventingStatus {
   /** Output only. State. */
@@ -1736,15 +1547,11 @@ export interface GoogleCloudConnectorsV1EventingStatus {
   description?: string;
 }
 
-export const GoogleCloudConnectorsV1EventingStatus: Schema.Schema<GoogleCloudConnectorsV1EventingStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1EventingStatus",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EventingStatus>;
+export const GoogleCloudConnectorsV1EventingStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1EventingStatus" });
 
 export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
   /** Output only. Name of the Webhook */
@@ -1761,38 +1568,34 @@ export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
   nextRefreshTime?: string;
 }
 
-export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData: Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      additionalVariables: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
-      ),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      nextRefreshTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    additionalVariables: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
+    ),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    nextRefreshTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudConnectorsV1EventingRuntimeDataWebhookData",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
+  });
 
 export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions {
   /** Output only. Webhook data. */
   webhookData?: Array<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
 }
 
-export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions: Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookData: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1EventingRuntimeDataWebhookData),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhookData: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1EventingRuntimeDataWebhookData),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions>;
+  });
 
 export interface GoogleCloudConnectorsV1EventingRuntimeData {
   /** Output only. Current status of eventing. */
@@ -1807,22 +1610,18 @@ export interface GoogleCloudConnectorsV1EventingRuntimeData {
   webhookSubscriptions?: GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions;
 }
 
-export const GoogleCloudConnectorsV1EventingRuntimeData: Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(GoogleCloudConnectorsV1EventingStatus),
-      eventsListenerEndpoint: Schema.optional(Schema.String),
-      eventsListenerPscSa: Schema.optional(Schema.String),
-      webhookData: Schema.optional(
-        GoogleCloudConnectorsV1EventingRuntimeDataWebhookData,
-      ),
-      webhookSubscriptions: Schema.optional(
-        GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1EventingRuntimeData",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeData>;
+export const GoogleCloudConnectorsV1EventingRuntimeData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(GoogleCloudConnectorsV1EventingStatus),
+    eventsListenerEndpoint: Schema.optional(Schema.String),
+    eventsListenerPscSa: Schema.optional(Schema.String),
+    webhookData: Schema.optional(
+      GoogleCloudConnectorsV1EventingRuntimeDataWebhookData,
+    ),
+    webhookSubscriptions: Schema.optional(
+      GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions,
+    ),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1EventingRuntimeData" });
 
 export interface GoogleCloudConnectorsV1HPAConfig {
   /** Output only. Percent CPU utilization where HPA triggers autoscaling. */
@@ -1831,15 +1630,11 @@ export interface GoogleCloudConnectorsV1HPAConfig {
   memoryUtilizationThreshold?: string;
 }
 
-export const GoogleCloudConnectorsV1HPAConfig: Schema.Schema<GoogleCloudConnectorsV1HPAConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpuUtilizationThreshold: Schema.optional(Schema.String),
-      memoryUtilizationThreshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1HPAConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1HPAConfig>;
+export const GoogleCloudConnectorsV1HPAConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpuUtilizationThreshold: Schema.optional(Schema.String),
+    memoryUtilizationThreshold: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1HPAConfig" });
 
 export interface GoogleCloudConnectorsV1ResourceRequests {
   /** Output only. CPU request. */
@@ -1848,15 +1643,11 @@ export interface GoogleCloudConnectorsV1ResourceRequests {
   memory?: string;
 }
 
-export const GoogleCloudConnectorsV1ResourceRequests: Schema.Schema<GoogleCloudConnectorsV1ResourceRequests> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.String),
-      memory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1ResourceRequests",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1ResourceRequests>;
+export const GoogleCloudConnectorsV1ResourceRequests =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpu: Schema.optional(Schema.String),
+    memory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1ResourceRequests" });
 
 export interface GoogleCloudConnectorsV1ResourceLimits {
   /** Output only. CPU limit. */
@@ -1865,15 +1656,11 @@ export interface GoogleCloudConnectorsV1ResourceLimits {
   memory?: string;
 }
 
-export const GoogleCloudConnectorsV1ResourceLimits: Schema.Schema<GoogleCloudConnectorsV1ResourceLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.String),
-      memory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1ResourceLimits",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1ResourceLimits>;
+export const GoogleCloudConnectorsV1ResourceLimits =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpu: Schema.optional(Schema.String),
+    memory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1ResourceLimits" });
 
 export interface GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
   /** Output only. Max QPS supported by the connector version before throttling of requests. */
@@ -1914,26 +1701,22 @@ export interface GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
     | (string & {});
 }
 
-export const GoogleCloudConnectorsV1ConnectorVersionInfraConfig: Schema.Schema<GoogleCloudConnectorsV1ConnectorVersionInfraConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ratelimitThreshold: Schema.optional(Schema.String),
-      internalclientRatelimitThreshold: Schema.optional(Schema.String),
-      hpaConfig: Schema.optional(GoogleCloudConnectorsV1HPAConfig),
-      resourceRequests: Schema.optional(
-        GoogleCloudConnectorsV1ResourceRequests,
-      ),
-      resourceLimits: Schema.optional(GoogleCloudConnectorsV1ResourceLimits),
-      sharedDeployment: Schema.optional(Schema.String),
-      connectionRatelimitWindowSeconds: Schema.optional(Schema.String),
-      deploymentModel: Schema.optional(Schema.String),
-      deploymentModelMigrationState: Schema.optional(Schema.String),
-      maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
-      tlsMigrationState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudConnectorsV1ConnectorVersionInfraConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ratelimitThreshold: Schema.optional(Schema.String),
+    internalclientRatelimitThreshold: Schema.optional(Schema.String),
+    hpaConfig: Schema.optional(GoogleCloudConnectorsV1HPAConfig),
+    resourceRequests: Schema.optional(GoogleCloudConnectorsV1ResourceRequests),
+    resourceLimits: Schema.optional(GoogleCloudConnectorsV1ResourceLimits),
+    sharedDeployment: Schema.optional(Schema.String),
+    connectionRatelimitWindowSeconds: Schema.optional(Schema.String),
+    deploymentModel: Schema.optional(Schema.String),
+    deploymentModelMigrationState: Schema.optional(Schema.String),
+    maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
+    tlsMigrationState: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudConnectorsV1ConnectorVersionInfraConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1ConnectorVersionInfraConfig>;
+  });
 
 export interface GoogleCloudConnectorsV1BillingConfig {
   /** Output only. Billing category for the connector. */
@@ -1944,14 +1727,10 @@ export interface GoogleCloudConnectorsV1BillingConfig {
     | (string & {});
 }
 
-export const GoogleCloudConnectorsV1BillingConfig: Schema.Schema<GoogleCloudConnectorsV1BillingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1BillingConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1BillingConfig>;
+export const GoogleCloudConnectorsV1BillingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingCategory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1BillingConfig" });
 
 export interface GoogleCloudConnectorsV1TrafficShapingConfig {
   /** Required. Maximum number of api calls allowed. */
@@ -1960,15 +1739,11 @@ export interface GoogleCloudConnectorsV1TrafficShapingConfig {
   duration?: string;
 }
 
-export const GoogleCloudConnectorsV1TrafficShapingConfig: Schema.Schema<GoogleCloudConnectorsV1TrafficShapingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quotaLimit: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1TrafficShapingConfig",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1TrafficShapingConfig>;
+export const GoogleCloudConnectorsV1TrafficShapingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quotaLimit: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1TrafficShapingConfig" });
 
 export interface GoogleCloudConnectorsV1Connection {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -2058,58 +1833,54 @@ export interface GoogleCloudConnectorsV1Connection {
   fallbackOnAdminCredentials?: boolean;
 }
 
-export const GoogleCloudConnectorsV1Connection: Schema.Schema<GoogleCloudConnectorsV1Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      connectorVersion: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleCloudConnectorsV1ConnectionStatus),
-      configVariables: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
-      ),
-      authConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
-      lockConfig: Schema.optional(GoogleCloudConnectorsV1LockConfig),
-      destinationConfigs: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1DestinationConfig),
-      ),
-      imageLocation: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      serviceDirectory: Schema.optional(Schema.String),
-      envoyImageLocation: Schema.optional(Schema.String),
-      suspended: Schema.optional(Schema.Boolean),
-      nodeConfig: Schema.optional(GoogleCloudConnectorsV1NodeConfig),
-      logConfig: Schema.optional(GoogleCloudConnectorsV1LogConfig),
-      sslConfig: Schema.optional(GoogleCloudConnectorsV1SslConfig),
-      subscriptionType: Schema.optional(Schema.String),
-      connectionRevision: Schema.optional(Schema.String),
-      eventingEnablementType: Schema.optional(Schema.String),
-      eventingConfig: Schema.optional(GoogleCloudConnectorsV1EventingConfig),
-      connectorVersionLaunchStage: Schema.optional(Schema.String),
-      eventingRuntimeData: Schema.optional(
-        GoogleCloudConnectorsV1EventingRuntimeData,
-      ),
-      connectorVersionInfraConfig: Schema.optional(
-        GoogleCloudConnectorsV1ConnectorVersionInfraConfig,
-      ),
-      isTrustedTester: Schema.optional(Schema.Boolean),
-      authOverrideEnabled: Schema.optional(Schema.Boolean),
-      billingConfig: Schema.optional(GoogleCloudConnectorsV1BillingConfig),
-      asyncOperationsEnabled: Schema.optional(Schema.Boolean),
-      host: Schema.optional(Schema.String),
-      tlsServiceDirectory: Schema.optional(Schema.String),
-      euaOauthAuthConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
-      trafficShapingConfigs: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1TrafficShapingConfig),
-      ),
-      fallbackOnAdminCredentials: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1Connection",
-  }) as any as Schema.Schema<GoogleCloudConnectorsV1Connection>;
+export const GoogleCloudConnectorsV1Connection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    connectorVersion: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleCloudConnectorsV1ConnectionStatus),
+    configVariables: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1ConfigVariable),
+    ),
+    authConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
+    lockConfig: Schema.optional(GoogleCloudConnectorsV1LockConfig),
+    destinationConfigs: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1DestinationConfig),
+    ),
+    imageLocation: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    serviceDirectory: Schema.optional(Schema.String),
+    envoyImageLocation: Schema.optional(Schema.String),
+    suspended: Schema.optional(Schema.Boolean),
+    nodeConfig: Schema.optional(GoogleCloudConnectorsV1NodeConfig),
+    logConfig: Schema.optional(GoogleCloudConnectorsV1LogConfig),
+    sslConfig: Schema.optional(GoogleCloudConnectorsV1SslConfig),
+    subscriptionType: Schema.optional(Schema.String),
+    connectionRevision: Schema.optional(Schema.String),
+    eventingEnablementType: Schema.optional(Schema.String),
+    eventingConfig: Schema.optional(GoogleCloudConnectorsV1EventingConfig),
+    connectorVersionLaunchStage: Schema.optional(Schema.String),
+    eventingRuntimeData: Schema.optional(
+      GoogleCloudConnectorsV1EventingRuntimeData,
+    ),
+    connectorVersionInfraConfig: Schema.optional(
+      GoogleCloudConnectorsV1ConnectorVersionInfraConfig,
+    ),
+    isTrustedTester: Schema.optional(Schema.Boolean),
+    authOverrideEnabled: Schema.optional(Schema.Boolean),
+    billingConfig: Schema.optional(GoogleCloudConnectorsV1BillingConfig),
+    asyncOperationsEnabled: Schema.optional(Schema.Boolean),
+    host: Schema.optional(Schema.String),
+    tlsServiceDirectory: Schema.optional(Schema.String),
+    euaOauthAuthConfig: Schema.optional(GoogleCloudConnectorsV1AuthConfig),
+    trafficShapingConfigs: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1TrafficShapingConfig),
+    ),
+    fallbackOnAdminCredentials: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudConnectorsV1Connection" });
 
 export interface GoogleCloudIntegrationsV1alphaListConnectionsResponse {
   /** Connections. */
@@ -2118,17 +1889,15 @@ export interface GoogleCloudIntegrationsV1alphaListConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListConnectionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connections: Schema.optional(
-        Schema.Array(GoogleCloudConnectorsV1Connection),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connections: Schema.optional(
+      Schema.Array(GoogleCloudConnectorsV1Connection),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListConnectionsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListConnectionsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
   /** List of entity names. */
@@ -2137,15 +1906,13 @@ export interface GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
   actions?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata: Schema.Schema<GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entities: Schema.optional(Schema.Array(Schema.String)),
-      actions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entities: Schema.optional(Schema.Array(Schema.String)),
+    actions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaRuntimeEntitySchema {
   /** Name of the entity. */
@@ -2156,16 +1923,14 @@ export interface GoogleCloudIntegrationsV1alphaRuntimeEntitySchema {
   arrayFieldSchema?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema: Schema.Schema<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      fieldSchema: Schema.optional(Schema.String),
-      arrayFieldSchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entity: Schema.optional(Schema.String),
+    fieldSchema: Schema.optional(Schema.String),
+    arrayFieldSchema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaRuntimeEntitySchema",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse {
   /** Runtime entity schemas. */
@@ -2174,18 +1939,16 @@ export interface GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse 
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimeEntitySchemas: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaRuntimeEntitySchema),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runtimeEntitySchemas: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaRuntimeEntitySchema),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaRuntimeActionSchema {
   /** Name of the action. */
@@ -2196,16 +1959,14 @@ export interface GoogleCloudIntegrationsV1alphaRuntimeActionSchema {
   outputSchema?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema: Schema.Schema<GoogleCloudIntegrationsV1alphaRuntimeActionSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-      inputSchema: Schema.optional(Schema.String),
-      outputSchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    action: Schema.optional(Schema.String),
+    inputSchema: Schema.optional(Schema.String),
+    outputSchema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaRuntimeActionSchema",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaRuntimeActionSchema>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse {
   /** Runtime action schemas. */
@@ -2214,98 +1975,84 @@ export interface GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse 
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimeActionSchemas: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaRuntimeActionSchema),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runtimeActionSchemas: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaRuntimeActionSchema),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter {
   objectValue?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoStringParameterArray {
   stringValues?: Array<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoStringParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoStringParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoStringParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoStringParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoStringParameterArray>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoIntParameterArray {
   intValues?: Array<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoIntParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoIntParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoIntParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoIntParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoIntParameterArray>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray {
   doubleValues?: Array<number>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      doubleValues: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    doubleValues: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoProtoParameterArray {
   protoValues?: Array<Record<string, unknown>>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoProtoParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoProtoParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protoValues: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoProtoParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protoValues: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoProtoParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoProtoParameterArray>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray {
   booleanValues?: Array<boolean>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParameterValueType {
   stringValue?: string;
@@ -2322,37 +2069,35 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterValueType {
   jsonValue?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterValueType: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterValueType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      intValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      booleanValue: Schema.optional(Schema.Boolean),
-      protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      serializedObjectValue: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter,
-      ),
-      stringArray: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoStringParameterArray,
-      ),
-      intArray: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoIntParameterArray,
-      ),
-      doubleArray: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray,
-      ),
-      protoArray: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoProtoParameterArray,
-      ),
-      booleanArray: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray,
-      ),
-      jsonValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoParameterValueType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValue: Schema.optional(Schema.String),
+    intValue: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    booleanValue: Schema.optional(Schema.Boolean),
+    protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    serializedObjectValue: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter,
+    ),
+    stringArray: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoStringParameterArray,
+    ),
+    intArray: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoIntParameterArray,
+    ),
+    doubleArray: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray,
+    ),
+    protoArray: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoProtoParameterArray,
+    ),
+    booleanArray: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray,
+    ),
+    jsonValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoParameterValueType",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterValueType>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParameterEntry {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition. */
@@ -2384,19 +2129,17 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterEntry {
   masked?: boolean;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterEntry: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoParameterValueType,
-      ),
-      dataType: Schema.optional(Schema.String),
-      masked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoParameterEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoParameterValueType,
+    ),
+    dataType: Schema.optional(Schema.String),
+    masked: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoParameterEntry",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
+  });
 
 export interface EnterpriseCrmEventbusProtoFailurePolicy {
   /** Defines what happens to the task upon failure. */
@@ -2418,17 +2161,13 @@ export interface EnterpriseCrmEventbusProtoFailurePolicy {
   retryCondition?: string;
 }
 
-export const EnterpriseCrmEventbusProtoFailurePolicy: Schema.Schema<EnterpriseCrmEventbusProtoFailurePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retryStrategy: Schema.optional(Schema.String),
-      maxNumRetries: Schema.optional(Schema.Number),
-      intervalInSeconds: Schema.optional(Schema.String),
-      retryCondition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoFailurePolicy",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoFailurePolicy>;
+export const EnterpriseCrmEventbusProtoFailurePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retryStrategy: Schema.optional(Schema.String),
+    maxNumRetries: Schema.optional(Schema.Number),
+    intervalInSeconds: Schema.optional(Schema.String),
+    retryCondition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoFailurePolicy" });
 
 export interface EnterpriseCrmEventbusProtoConditionalFailurePolicies {
   /** The list of failure policies that will be applied to the task in order. */
@@ -2437,58 +2176,44 @@ export interface EnterpriseCrmEventbusProtoConditionalFailurePolicies {
   defaultFailurePolicy?: EnterpriseCrmEventbusProtoFailurePolicy;
 }
 
-export const EnterpriseCrmEventbusProtoConditionalFailurePolicies: Schema.Schema<EnterpriseCrmEventbusProtoConditionalFailurePolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failurePolicies: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoFailurePolicy),
-      ),
-      defaultFailurePolicy: Schema.optional(
-        EnterpriseCrmEventbusProtoFailurePolicy,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoConditionalFailurePolicies =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failurePolicies: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoFailurePolicy),
+    ),
+    defaultFailurePolicy: Schema.optional(
+      EnterpriseCrmEventbusProtoFailurePolicy,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoConditionalFailurePolicies",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoConditionalFailurePolicies>;
+  });
 
 export interface EnterpriseCrmEventbusProtoStringArray {
   values?: Array<string>;
 }
 
-export const EnterpriseCrmEventbusProtoStringArray: Schema.Schema<EnterpriseCrmEventbusProtoStringArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoStringArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoStringArray>;
+export const EnterpriseCrmEventbusProtoStringArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringArray" });
 
 export interface EnterpriseCrmEventbusProtoIntArray {
   values?: Array<string>;
 }
 
-export const EnterpriseCrmEventbusProtoIntArray: Schema.Schema<EnterpriseCrmEventbusProtoIntArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoIntArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoIntArray>;
+export const EnterpriseCrmEventbusProtoIntArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntArray" });
 
 export interface EnterpriseCrmEventbusProtoDoubleArray {
   values?: Array<number>;
 }
 
-export const EnterpriseCrmEventbusProtoDoubleArray: Schema.Schema<EnterpriseCrmEventbusProtoDoubleArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoDoubleArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoDoubleArray>;
+export const EnterpriseCrmEventbusProtoDoubleArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleArray" });
 
 export interface EnterpriseCrmEventbusProtoValueType {
   stringValue?: string;
@@ -2501,21 +2226,17 @@ export interface EnterpriseCrmEventbusProtoValueType {
   booleanValue?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoValueType: Schema.Schema<EnterpriseCrmEventbusProtoValueType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      intValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      stringArray: Schema.optional(EnterpriseCrmEventbusProtoStringArray),
-      intArray: Schema.optional(EnterpriseCrmEventbusProtoIntArray),
-      doubleArray: Schema.optional(EnterpriseCrmEventbusProtoDoubleArray),
-      booleanValue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoValueType",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoValueType>;
+export const EnterpriseCrmEventbusProtoValueType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValue: Schema.optional(Schema.String),
+    intValue: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    stringArray: Schema.optional(EnterpriseCrmEventbusProtoStringArray),
+    intArray: Schema.optional(EnterpriseCrmEventbusProtoIntArray),
+    doubleArray: Schema.optional(EnterpriseCrmEventbusProtoDoubleArray),
+    booleanValue: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoValueType" });
 
 export interface EnterpriseCrmEventbusProtoCondition {
   /** Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown. */
@@ -2536,32 +2257,24 @@ export interface EnterpriseCrmEventbusProtoCondition {
   value?: EnterpriseCrmEventbusProtoValueType;
 }
 
-export const EnterpriseCrmEventbusProtoCondition: Schema.Schema<EnterpriseCrmEventbusProtoCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventPropertyKey: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-      value: Schema.optional(EnterpriseCrmEventbusProtoValueType),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoCondition",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoCondition>;
+export const EnterpriseCrmEventbusProtoCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventPropertyKey: Schema.optional(Schema.String),
+    operator: Schema.optional(Schema.String),
+    value: Schema.optional(EnterpriseCrmEventbusProtoValueType),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoCondition" });
 
 export interface EnterpriseCrmEventbusProtoCombinedCondition {
   /** A set of individual constituent conditions. */
   conditions?: Array<EnterpriseCrmEventbusProtoCondition>;
 }
 
-export const EnterpriseCrmEventbusProtoCombinedCondition: Schema.Schema<EnterpriseCrmEventbusProtoCombinedCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditions: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoCondition),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoCombinedCondition",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoCombinedCondition>;
+export const EnterpriseCrmEventbusProtoCombinedCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conditions: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoCondition),
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoCombinedCondition" });
 
 export interface EnterpriseCrmEventbusProtoNextTask {
   /** ID of the next task. */
@@ -2578,51 +2291,43 @@ export interface EnterpriseCrmEventbusProtoNextTask {
   description?: string;
 }
 
-export const EnterpriseCrmEventbusProtoNextTask: Schema.Schema<EnterpriseCrmEventbusProtoNextTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskConfigId: Schema.optional(Schema.String),
-      taskNumber: Schema.optional(Schema.String),
-      combinedConditions: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoCombinedCondition),
-      ),
-      condition: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoNextTask",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoNextTask>;
+export const EnterpriseCrmEventbusProtoNextTask =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskConfigId: Schema.optional(Schema.String),
+    taskNumber: Schema.optional(Schema.String),
+    combinedConditions: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoCombinedCondition),
+    ),
+    condition: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoNextTask" });
 
 export interface EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue {
   absolute?: string;
   percentage?: number;
 }
 
-export const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue: Schema.Schema<EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      absolute: Schema.optional(Schema.String),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    absolute: Schema.optional(Schema.String),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue>;
+  });
 
 export interface EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   enumStrings?: Array<string>;
   filterType?: "DEFAULT_INCLUSIVE" | "EXCLUSIVE" | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList: Schema.Schema<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enumStrings: Schema.optional(Schema.Array(Schema.String)),
-      filterType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enumStrings: Schema.optional(Schema.Array(Schema.String)),
+    filterType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList>;
+  });
 
 export interface EnterpriseCrmEventbusProtoTaskAlertConfig {
   /** A name to identify this alert. This will be displayed in the alert subject. If set, this name should be unique in within the scope of the containing workflow. */
@@ -2661,48 +2366,42 @@ export interface EnterpriseCrmEventbusProtoTaskAlertConfig {
   clientId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskAlertConfig: Schema.Schema<EnterpriseCrmEventbusProtoTaskAlertConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alertName: Schema.optional(Schema.String),
-      metricType: Schema.optional(Schema.String),
-      thresholdType: Schema.optional(Schema.String),
-      thresholdValue: Schema.optional(
-        EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue,
-      ),
-      durationThresholdMs: Schema.optional(Schema.String),
-      errorEnumList: Schema.optional(
-        EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
-      ),
-      warningEnumList: Schema.optional(
-        EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
-      ),
-      aggregationPeriod: Schema.optional(Schema.String),
-      numAggregationPeriods: Schema.optional(Schema.Number),
-      alertDisabled: Schema.optional(Schema.Boolean),
-      onlyFinalAttempt: Schema.optional(Schema.Boolean),
-      playbookUrl: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTaskAlertConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTaskAlertConfig>;
+export const EnterpriseCrmEventbusProtoTaskAlertConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alertName: Schema.optional(Schema.String),
+    metricType: Schema.optional(Schema.String),
+    thresholdType: Schema.optional(Schema.String),
+    thresholdValue: Schema.optional(
+      EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue,
+    ),
+    durationThresholdMs: Schema.optional(Schema.String),
+    errorEnumList: Schema.optional(
+      EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
+    ),
+    warningEnumList: Schema.optional(
+      EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
+    ),
+    aggregationPeriod: Schema.optional(Schema.String),
+    numAggregationPeriods: Schema.optional(Schema.Number),
+    alertDisabled: Schema.optional(Schema.Boolean),
+    onlyFinalAttempt: Schema.optional(Schema.Boolean),
+    playbookUrl: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskAlertConfig" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoEventParameters {
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution. */
   parameters?: Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventParameters: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoEventParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoEventParameters",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventParameters>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
   /** Required. This is the name of the task that needs to be executed upon rollback of this task. */
@@ -2713,62 +2412,48 @@ export interface EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
   taskNumbersToRollback?: Array<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoRollbackStrategy: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoRollbackStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollbackTaskImplementationClassName: Schema.optional(Schema.String),
-      parameters: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      taskNumbersToRollback: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoRollbackStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollbackTaskImplementationClassName: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    taskNumbersToRollback: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoRollbackStrategy",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoRollbackStrategy>;
+  });
 
 export interface EnterpriseCrmEventbusProtoCoordinate {
   x?: number;
   y?: number;
 }
 
-export const EnterpriseCrmEventbusProtoCoordinate: Schema.Schema<EnterpriseCrmEventbusProtoCoordinate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      x: Schema.optional(Schema.Number),
-      y: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoCoordinate",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoCoordinate>;
+export const EnterpriseCrmEventbusProtoCoordinate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    x: Schema.optional(Schema.Number),
+    y: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoCoordinate" });
 
 export interface EnterpriseCrmEventbusProtoSuccessPolicy {
   /** State to which the execution snapshot status will be set if the task succeeds. */
   finalState?: "UNSPECIFIED" | "SUCCEEDED" | "SUSPENDED" | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoSuccessPolicy: Schema.Schema<EnterpriseCrmEventbusProtoSuccessPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finalState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoSuccessPolicy",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSuccessPolicy>;
+export const EnterpriseCrmEventbusProtoSuccessPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    finalState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoSuccessPolicy" });
 
 export interface EnterpriseCrmEventbusProtoTaskMetadataAdmin {
   userEmail?: string;
   googleGroupEmail?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskMetadataAdmin: Schema.Schema<EnterpriseCrmEventbusProtoTaskMetadataAdmin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEmail: Schema.optional(Schema.String),
-      googleGroupEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTaskMetadataAdmin",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTaskMetadataAdmin>;
+export const EnterpriseCrmEventbusProtoTaskMetadataAdmin =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userEmail: Schema.optional(Schema.String),
+    googleGroupEmail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskMetadataAdmin" });
 
 export interface EnterpriseCrmEventbusProtoTaskMetadata {
   admins?: Array<EnterpriseCrmEventbusProtoTaskMetadataAdmin>;
@@ -2858,37 +2543,33 @@ export interface EnterpriseCrmEventbusProtoTaskMetadata {
   externalDocLink?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskMetadata: Schema.Schema<EnterpriseCrmEventbusProtoTaskMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      admins: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoTaskMetadataAdmin),
-      ),
-      name: Schema.optional(Schema.String),
-      descriptiveName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      defaultSpec: Schema.optional(Schema.String),
-      g3DocLink: Schema.optional(Schema.String),
-      iconLink: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      codeSearchLink: Schema.optional(Schema.String),
-      isDeprecated: Schema.optional(Schema.Boolean),
-      activeTaskName: Schema.optional(Schema.String),
-      docMarkdown: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      system: Schema.optional(Schema.String),
-      defaultJsonValidationOption: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      externalCategory: Schema.optional(Schema.String),
-      externalCategorySequence: Schema.optional(Schema.Number),
-      externalDocMarkdown: Schema.optional(Schema.String),
-      externalDocHtml: Schema.optional(Schema.String),
-      standaloneExternalDocHtml: Schema.optional(Schema.String),
-      externalDocLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTaskMetadata",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTaskMetadata>;
+export const EnterpriseCrmEventbusProtoTaskMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    admins: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoTaskMetadataAdmin),
+    ),
+    name: Schema.optional(Schema.String),
+    descriptiveName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    defaultSpec: Schema.optional(Schema.String),
+    g3DocLink: Schema.optional(Schema.String),
+    iconLink: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    codeSearchLink: Schema.optional(Schema.String),
+    isDeprecated: Schema.optional(Schema.Boolean),
+    activeTaskName: Schema.optional(Schema.String),
+    docMarkdown: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    system: Schema.optional(Schema.String),
+    defaultJsonValidationOption: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    externalCategory: Schema.optional(Schema.String),
+    externalCategorySequence: Schema.optional(Schema.Number),
+    externalDocMarkdown: Schema.optional(Schema.String),
+    externalDocHtml: Schema.optional(Schema.String),
+    standaloneExternalDocHtml: Schema.optional(Schema.String),
+    externalDocLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskMetadata" });
 
 export interface EnterpriseCrmEventbusStatsDimensions {
   /** Stats have been or will be aggregated on set fields for any semantically-meaningful combination. */
@@ -2910,23 +2591,19 @@ export interface EnterpriseCrmEventbusStatsDimensions {
   enumFilterType?: "DEFAULT_INCLUSIVE" | "EXCLUSIVE" | (string & {});
 }
 
-export const EnterpriseCrmEventbusStatsDimensions: Schema.Schema<EnterpriseCrmEventbusStatsDimensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerId: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      workflowName: Schema.optional(Schema.String),
-      workflowId: Schema.optional(Schema.String),
-      taskName: Schema.optional(Schema.String),
-      taskNumber: Schema.optional(Schema.String),
-      errorEnumString: Schema.optional(Schema.String),
-      warningEnumString: Schema.optional(Schema.String),
-      retryAttempt: Schema.optional(Schema.String),
-      enumFilterType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusStatsDimensions",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusStatsDimensions>;
+export const EnterpriseCrmEventbusStatsDimensions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    workflowName: Schema.optional(Schema.String),
+    workflowId: Schema.optional(Schema.String),
+    taskName: Schema.optional(Schema.String),
+    taskNumber: Schema.optional(Schema.String),
+    errorEnumString: Schema.optional(Schema.String),
+    warningEnumString: Schema.optional(Schema.String),
+    retryAttempt: Schema.optional(Schema.String),
+    enumFilterType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusStatsDimensions" });
 
 export interface EnterpriseCrmEventbusStats {
   /** Dimensions that these stats have been aggregated on. */
@@ -2941,18 +2618,14 @@ export interface EnterpriseCrmEventbusStats {
   warningRate?: number;
 }
 
-export const EnterpriseCrmEventbusStats: Schema.Schema<EnterpriseCrmEventbusStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(EnterpriseCrmEventbusStatsDimensions),
-      qps: Schema.optional(Schema.Number),
-      durationInSeconds: Schema.optional(Schema.Number),
-      errorRate: Schema.optional(Schema.Number),
-      warningRate: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusStats",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusStats>;
+export const EnterpriseCrmEventbusStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(EnterpriseCrmEventbusStatsDimensions),
+    qps: Schema.optional(Schema.Number),
+    durationInSeconds: Schema.optional(Schema.Number),
+    errorRate: Schema.optional(Schema.Number),
+    warningRate: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EnterpriseCrmEventbusStats" });
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition {
   /** Path to the proto file that contains the message type's definition. */
@@ -2961,15 +2634,13 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition {
   fullName?: string;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      fullName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    fullName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition>;
+  });
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryConfig {
   /** A short phrase to describe what this parameter contains. */
@@ -3000,22 +2671,18 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryConfig {
   hideDefaultValue?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryConfig: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      descriptivePhrase: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      helpText: Schema.optional(Schema.String),
-      uiPlaceholderText: Schema.optional(Schema.String),
-      inputDisplayOption: Schema.optional(Schema.String),
-      subSectionLabel: Schema.optional(Schema.String),
-      parameterNameOption: Schema.optional(Schema.String),
-      isHidden: Schema.optional(Schema.Boolean),
-      hideDefaultValue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParamSpecEntryConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryConfig>;
+export const EnterpriseCrmEventbusProtoParamSpecEntryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    descriptivePhrase: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    helpText: Schema.optional(Schema.String),
+    uiPlaceholderText: Schema.optional(Schema.String),
+    inputDisplayOption: Schema.optional(Schema.String),
+    subSectionLabel: Schema.optional(Schema.String),
+    parameterNameOption: Schema.optional(Schema.String),
+    isHidden: Schema.optional(Schema.Boolean),
+    hideDefaultValue: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoParamSpecEntryConfig" });
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange {
   /** The inclusive minimum of the acceptable range. */
@@ -3024,16 +2691,14 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange 
   max?: string;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      min: Schema.optional(Schema.String),
-      max: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    min: Schema.optional(Schema.String),
+    max: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange>;
+  });
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange {
   /** The inclusive minimum of the acceptable range. */
@@ -3042,16 +2707,14 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRan
   max?: number;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      min: Schema.optional(Schema.Number),
-      max: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    min: Schema.optional(Schema.Number),
+    max: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange>;
+  });
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex {
   /** The regex applied to the input value(s). */
@@ -3060,16 +2723,14 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringReg
   exclusive?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regex: Schema.optional(Schema.String),
-      exclusive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regex: Schema.optional(Schema.String),
+    exclusive: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex>;
+  });
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
   intRange?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange;
@@ -3077,22 +2738,20 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
   stringRegex?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRule: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intRange: Schema.optional(
-        EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange,
-      ),
-      doubleRange: Schema.optional(
-        EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange,
-      ),
-      stringRegex: Schema.optional(
-        EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intRange: Schema.optional(
+      EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange,
+    ),
+    doubleRange: Schema.optional(
+      EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange,
+    ),
+    stringRegex: Schema.optional(
+      EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRule",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRule>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given task. These parameters must be predefined in the workflow definition. */
@@ -3139,46 +2798,42 @@ export interface EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
   validationRule?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRule;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      protoDef: Schema.optional(
-        EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition,
-      ),
-      className: Schema.optional(Schema.String),
-      collectionElementClassName: Schema.optional(Schema.String),
-      jsonSchema: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoParameterValueType,
-      ),
-      isOutput: Schema.optional(Schema.Boolean),
-      config: Schema.optional(EnterpriseCrmEventbusProtoParamSpecEntryConfig),
-      required: Schema.optional(Schema.Boolean),
-      isDeprecated: Schema.optional(Schema.Boolean),
-      validationRule: Schema.optional(
-        EnterpriseCrmEventbusProtoParamSpecEntryValidationRule,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+    protoDef: Schema.optional(
+      EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition,
+    ),
+    className: Schema.optional(Schema.String),
+    collectionElementClassName: Schema.optional(Schema.String),
+    jsonSchema: Schema.optional(Schema.String),
+    defaultValue: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoParameterValueType,
+    ),
+    isOutput: Schema.optional(Schema.Boolean),
+    config: Schema.optional(EnterpriseCrmEventbusProtoParamSpecEntryConfig),
+    required: Schema.optional(Schema.Boolean),
+    isDeprecated: Schema.optional(Schema.Boolean),
+    validationRule: Schema.optional(
+      EnterpriseCrmEventbusProtoParamSpecEntryValidationRule,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoParamSpecEntry",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage {
   parameters?: Array<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoParamSpecEntry),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoParamSpecEntry),
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage>;
+  });
 
 export interface EnterpriseCrmEventbusProtoTaskUiModuleConfig {
   /** ID of the config module. */
@@ -3206,30 +2861,22 @@ export interface EnterpriseCrmEventbusProtoTaskUiModuleConfig {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoTaskUiModuleConfig: Schema.Schema<EnterpriseCrmEventbusProtoTaskUiModuleConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      moduleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTaskUiModuleConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
+export const EnterpriseCrmEventbusProtoTaskUiModuleConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moduleId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskUiModuleConfig" });
 
 export interface EnterpriseCrmEventbusProtoTaskUiConfig {
   /** Configurations of included config modules. */
   taskUiModuleConfigs?: Array<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
 }
 
-export const EnterpriseCrmEventbusProtoTaskUiConfig: Schema.Schema<EnterpriseCrmEventbusProtoTaskUiConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskUiModuleConfigs: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoTaskUiModuleConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTaskUiConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTaskUiConfig>;
+export const EnterpriseCrmEventbusProtoTaskUiConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskUiModuleConfigs: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoTaskUiModuleConfig),
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskUiConfig" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoTaskEntity {
   /** Metadata inclueds the task name, author and so on. */
@@ -3246,21 +2893,17 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskEntity {
   disabledForVpcSc?: boolean;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTaskEntity: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTaskEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(EnterpriseCrmEventbusProtoTaskMetadata),
-      stats: Schema.optional(EnterpriseCrmEventbusStats),
-      paramSpecs: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage,
-      ),
-      uiConfig: Schema.optional(EnterpriseCrmEventbusProtoTaskUiConfig),
-      taskType: Schema.optional(Schema.String),
-      disabledForVpcSc: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmFrontendsEventbusProtoTaskEntity",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTaskEntity>;
+export const EnterpriseCrmFrontendsEventbusProtoTaskEntity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(EnterpriseCrmEventbusProtoTaskMetadata),
+    stats: Schema.optional(EnterpriseCrmEventbusStats),
+    paramSpecs: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage,
+    ),
+    uiConfig: Schema.optional(EnterpriseCrmEventbusProtoTaskUiConfig),
+    taskType: Schema.optional(Schema.String),
+    disabledForVpcSc: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmFrontendsEventbusProtoTaskEntity" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoTaskConfig {
   /** The name for the task. */
@@ -3343,59 +2986,53 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskConfig {
     | (string & {});
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfig: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskName: Schema.optional(Schema.String),
-      taskNumber: Schema.optional(Schema.String),
-      parameters: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          EnterpriseCrmFrontendsEventbusProtoParameterEntry,
-        ),
+export const EnterpriseCrmFrontendsEventbusProtoTaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskName: Schema.optional(Schema.String),
+    taskNumber: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        EnterpriseCrmFrontendsEventbusProtoParameterEntry,
       ),
-      taskSpec: Schema.optional(Schema.String),
-      creatorEmail: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      lastModifiedTime: Schema.optional(Schema.String),
-      failurePolicy: Schema.optional(EnterpriseCrmEventbusProtoFailurePolicy),
-      synchronousCallFailurePolicy: Schema.optional(
-        EnterpriseCrmEventbusProtoFailurePolicy,
-      ),
-      conditionalFailurePolicies: Schema.optional(
-        EnterpriseCrmEventbusProtoConditionalFailurePolicies,
-      ),
-      nextTasks: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoNextTask),
-      ),
-      nextTasksExecutionPolicy: Schema.optional(Schema.String),
-      alertConfigs: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoTaskAlertConfig),
-      ),
-      rollbackStrategy: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoRollbackStrategy,
-      ),
-      position: Schema.optional(EnterpriseCrmEventbusProtoCoordinate),
-      taskExecutionStrategy: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      incomingEdgeCount: Schema.optional(Schema.Number),
-      precondition: Schema.optional(Schema.String),
-      preconditionLabel: Schema.optional(Schema.String),
-      disableStrictTypeValidation: Schema.optional(Schema.Boolean),
-      successPolicy: Schema.optional(EnterpriseCrmEventbusProtoSuccessPolicy),
-      taskEntity: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoTaskEntity,
-      ),
-      jsonValidationOption: Schema.optional(Schema.String),
-      taskType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      taskTemplateName: Schema.optional(Schema.String),
-      errorCatcherId: Schema.optional(Schema.String),
-      externalTaskType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmFrontendsEventbusProtoTaskConfig",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTaskConfig>;
+    ),
+    taskSpec: Schema.optional(Schema.String),
+    creatorEmail: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    failurePolicy: Schema.optional(EnterpriseCrmEventbusProtoFailurePolicy),
+    synchronousCallFailurePolicy: Schema.optional(
+      EnterpriseCrmEventbusProtoFailurePolicy,
+    ),
+    conditionalFailurePolicies: Schema.optional(
+      EnterpriseCrmEventbusProtoConditionalFailurePolicies,
+    ),
+    nextTasks: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoNextTask),
+    ),
+    nextTasksExecutionPolicy: Schema.optional(Schema.String),
+    alertConfigs: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoTaskAlertConfig),
+    ),
+    rollbackStrategy: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoRollbackStrategy,
+    ),
+    position: Schema.optional(EnterpriseCrmEventbusProtoCoordinate),
+    taskExecutionStrategy: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    incomingEdgeCount: Schema.optional(Schema.Number),
+    precondition: Schema.optional(Schema.String),
+    preconditionLabel: Schema.optional(Schema.String),
+    disableStrictTypeValidation: Schema.optional(Schema.Boolean),
+    successPolicy: Schema.optional(EnterpriseCrmEventbusProtoSuccessPolicy),
+    taskEntity: Schema.optional(EnterpriseCrmFrontendsEventbusProtoTaskEntity),
+    jsonValidationOption: Schema.optional(Schema.String),
+    taskType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    taskTemplateName: Schema.optional(Schema.String),
+    errorCatcherId: Schema.optional(Schema.String),
+    externalTaskType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmFrontendsEventbusProtoTaskConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaEventParameter {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition. */
@@ -3406,16 +3043,12 @@ export interface GoogleCloudIntegrationsV1alphaEventParameter {
   masked?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaEventParameter: Schema.Schema<GoogleCloudIntegrationsV1alphaEventParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
-      masked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaEventParameter",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaEventParameter>;
+export const GoogleCloudIntegrationsV1alphaEventParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
+    masked: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaEventParameter" });
 
 export interface GoogleCloudIntegrationsV1alphaFailurePolicy {
   /** Defines what happens to the task upon failure. */
@@ -3437,17 +3070,13 @@ export interface GoogleCloudIntegrationsV1alphaFailurePolicy {
   condition?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaFailurePolicy: Schema.Schema<GoogleCloudIntegrationsV1alphaFailurePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retryStrategy: Schema.optional(Schema.String),
-      maxRetries: Schema.optional(Schema.Number),
-      intervalTime: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaFailurePolicy",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaFailurePolicy>;
+export const GoogleCloudIntegrationsV1alphaFailurePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retryStrategy: Schema.optional(Schema.String),
+    maxRetries: Schema.optional(Schema.Number),
+    intervalTime: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaFailurePolicy" });
 
 export interface GoogleCloudIntegrationsV1alphaConditionalFailurePolicies {
   /** The list of failure policies that will be applied to the task in order. */
@@ -3456,19 +3085,17 @@ export interface GoogleCloudIntegrationsV1alphaConditionalFailurePolicies {
   defaultFailurePolicy?: GoogleCloudIntegrationsV1alphaFailurePolicy;
 }
 
-export const GoogleCloudIntegrationsV1alphaConditionalFailurePolicies: Schema.Schema<GoogleCloudIntegrationsV1alphaConditionalFailurePolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failurePolicies: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaFailurePolicy),
-      ),
-      defaultFailurePolicy: Schema.optional(
-        GoogleCloudIntegrationsV1alphaFailurePolicy,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaConditionalFailurePolicies =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failurePolicies: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaFailurePolicy),
+    ),
+    defaultFailurePolicy: Schema.optional(
+      GoogleCloudIntegrationsV1alphaFailurePolicy,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaConditionalFailurePolicies",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaConditionalFailurePolicies>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaNextTask {
   /** ID of the next task. */
@@ -3483,18 +3110,14 @@ export interface GoogleCloudIntegrationsV1alphaNextTask {
   description?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaNextTask: Schema.Schema<GoogleCloudIntegrationsV1alphaNextTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskConfigId: Schema.optional(Schema.String),
-      taskId: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaNextTask",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaNextTask>;
+export const GoogleCloudIntegrationsV1alphaNextTask =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskConfigId: Schema.optional(Schema.String),
+    taskId: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaNextTask" });
 
 export interface GoogleCloudIntegrationsV1alphaSuccessPolicy {
   /** State to which the execution snapshot status will be set if the task succeeds. */
@@ -3505,14 +3128,10 @@ export interface GoogleCloudIntegrationsV1alphaSuccessPolicy {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaSuccessPolicy: Schema.Schema<GoogleCloudIntegrationsV1alphaSuccessPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finalState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaSuccessPolicy",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSuccessPolicy>;
+export const GoogleCloudIntegrationsV1alphaSuccessPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    finalState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaSuccessPolicy" });
 
 export interface GoogleCloudIntegrationsV1alphaCoordinate {
   /** Required. X axis of the coordinate */
@@ -3521,15 +3140,11 @@ export interface GoogleCloudIntegrationsV1alphaCoordinate {
   y?: number;
 }
 
-export const GoogleCloudIntegrationsV1alphaCoordinate: Schema.Schema<GoogleCloudIntegrationsV1alphaCoordinate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      x: Schema.optional(Schema.Number),
-      y: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaCoordinate",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCoordinate>;
+export const GoogleCloudIntegrationsV1alphaCoordinate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    x: Schema.optional(Schema.Number),
+    y: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaCoordinate" });
 
 export interface GoogleCloudIntegrationsV1alphaTaskConfig {
   /** Optional. The name for the task. */
@@ -3587,45 +3202,37 @@ export interface GoogleCloudIntegrationsV1alphaTaskConfig {
   position?: GoogleCloudIntegrationsV1alphaCoordinate;
 }
 
-export const GoogleCloudIntegrationsV1alphaTaskConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaTaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      task: Schema.optional(Schema.String),
-      taskId: Schema.optional(Schema.String),
-      parameters: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudIntegrationsV1alphaEventParameter,
-        ),
+export const GoogleCloudIntegrationsV1alphaTaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    task: Schema.optional(Schema.String),
+    taskId: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudIntegrationsV1alphaEventParameter,
       ),
-      failurePolicy: Schema.optional(
-        GoogleCloudIntegrationsV1alphaFailurePolicy,
-      ),
-      synchronousCallFailurePolicy: Schema.optional(
-        GoogleCloudIntegrationsV1alphaFailurePolicy,
-      ),
-      conditionalFailurePolicies: Schema.optional(
-        GoogleCloudIntegrationsV1alphaConditionalFailurePolicies,
-      ),
-      nextTasks: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaNextTask),
-      ),
-      nextTasksExecutionPolicy: Schema.optional(Schema.String),
-      taskExecutionStrategy: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      successPolicy: Schema.optional(
-        GoogleCloudIntegrationsV1alphaSuccessPolicy,
-      ),
-      jsonValidationOption: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      taskTemplate: Schema.optional(Schema.String),
-      errorCatcherId: Schema.optional(Schema.String),
-      externalTaskType: Schema.optional(Schema.String),
-      position: Schema.optional(GoogleCloudIntegrationsV1alphaCoordinate),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaTaskConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTaskConfig>;
+    ),
+    failurePolicy: Schema.optional(GoogleCloudIntegrationsV1alphaFailurePolicy),
+    synchronousCallFailurePolicy: Schema.optional(
+      GoogleCloudIntegrationsV1alphaFailurePolicy,
+    ),
+    conditionalFailurePolicies: Schema.optional(
+      GoogleCloudIntegrationsV1alphaConditionalFailurePolicies,
+    ),
+    nextTasks: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaNextTask),
+    ),
+    nextTasksExecutionPolicy: Schema.optional(Schema.String),
+    taskExecutionStrategy: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    successPolicy: Schema.optional(GoogleCloudIntegrationsV1alphaSuccessPolicy),
+    jsonValidationOption: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    taskTemplate: Schema.optional(Schema.String),
+    errorCatcherId: Schema.optional(Schema.String),
+    externalTaskType: Schema.optional(Schema.String),
+    position: Schema.optional(GoogleCloudIntegrationsV1alphaCoordinate),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaTaskConfig" });
 
 export interface EnterpriseCrmEventbusProtoWorkflowAlertConfig {
   /** A name to identify this alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the workflow. */
@@ -3669,112 +3276,88 @@ export interface EnterpriseCrmEventbusProtoWorkflowAlertConfig {
   playbookUrl?: string;
 }
 
-export const EnterpriseCrmEventbusProtoWorkflowAlertConfig: Schema.Schema<EnterpriseCrmEventbusProtoWorkflowAlertConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alertName: Schema.optional(Schema.String),
-      metricType: Schema.optional(Schema.String),
-      thresholdType: Schema.optional(Schema.String),
-      thresholdValue: Schema.optional(
-        EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue,
-      ),
-      durationThresholdMs: Schema.optional(Schema.String),
-      errorEnumList: Schema.optional(
-        EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
-      ),
-      warningEnumList: Schema.optional(
-        EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
-      ),
-      aggregationPeriod: Schema.optional(Schema.String),
-      numAggregationPeriods: Schema.optional(Schema.Number),
-      alertDisabled: Schema.optional(Schema.Boolean),
-      clientId: Schema.optional(Schema.String),
-      onlyFinalAttempt: Schema.optional(Schema.Boolean),
-      playbookUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoWorkflowAlertConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoWorkflowAlertConfig>;
+export const EnterpriseCrmEventbusProtoWorkflowAlertConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alertName: Schema.optional(Schema.String),
+    metricType: Schema.optional(Schema.String),
+    thresholdType: Schema.optional(Schema.String),
+    thresholdValue: Schema.optional(
+      EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue,
+    ),
+    durationThresholdMs: Schema.optional(Schema.String),
+    errorEnumList: Schema.optional(
+      EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
+    ),
+    warningEnumList: Schema.optional(
+      EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList,
+    ),
+    aggregationPeriod: Schema.optional(Schema.String),
+    numAggregationPeriods: Schema.optional(Schema.Number),
+    alertDisabled: Schema.optional(Schema.Boolean),
+    clientId: Schema.optional(Schema.String),
+    onlyFinalAttempt: Schema.optional(Schema.Boolean),
+    playbookUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoWorkflowAlertConfig" });
 
 export interface EnterpriseCrmEventbusProtoSerializedObjectParameter {
   objectValue?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSerializedObjectParameter: Schema.Schema<EnterpriseCrmEventbusProtoSerializedObjectParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoSerializedObjectParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoSerializedObjectParameter",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSerializedObjectParameter>;
+  });
 
 export interface EnterpriseCrmEventbusProtoStringParameterArray {
   stringValues?: Array<string>;
 }
 
-export const EnterpriseCrmEventbusProtoStringParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoStringParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoStringParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoStringParameterArray>;
+export const EnterpriseCrmEventbusProtoStringParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoIntParameterArray {
   intValues?: Array<string>;
 }
 
-export const EnterpriseCrmEventbusProtoIntParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoIntParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoIntParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoIntParameterArray>;
+export const EnterpriseCrmEventbusProtoIntParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoDoubleParameterArray {
   doubleValues?: Array<number>;
 }
 
-export const EnterpriseCrmEventbusProtoDoubleParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoDoubleParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      doubleValues: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoDoubleParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoDoubleParameterArray>;
+export const EnterpriseCrmEventbusProtoDoubleParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    doubleValues: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoProtoParameterArray {
   protoValues?: Array<Record<string, unknown>>;
 }
 
-export const EnterpriseCrmEventbusProtoProtoParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoProtoParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protoValues: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoProtoParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoProtoParameterArray>;
+export const EnterpriseCrmEventbusProtoProtoParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protoValues: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoProtoParameterArray" });
 
 export interface EnterpriseCrmEventbusProtoBooleanParameterArray {
   booleanValues?: Array<boolean>;
 }
 
-export const EnterpriseCrmEventbusProtoBooleanParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoBooleanParameterArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoBooleanParameterArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoBooleanParameterArray",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBooleanParameterArray>;
+  });
 
 export interface EnterpriseCrmEventbusProtoParameterValueType {
   stringValue?: string;
@@ -3790,34 +3373,28 @@ export interface EnterpriseCrmEventbusProtoParameterValueType {
   booleanArray?: EnterpriseCrmEventbusProtoBooleanParameterArray;
 }
 
-export const EnterpriseCrmEventbusProtoParameterValueType: Schema.Schema<EnterpriseCrmEventbusProtoParameterValueType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      intValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      booleanValue: Schema.optional(Schema.Boolean),
-      protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      serializedObjectValue: Schema.optional(
-        EnterpriseCrmEventbusProtoSerializedObjectParameter,
-      ),
-      stringArray: Schema.optional(
-        EnterpriseCrmEventbusProtoStringParameterArray,
-      ),
-      intArray: Schema.optional(EnterpriseCrmEventbusProtoIntParameterArray),
-      doubleArray: Schema.optional(
-        EnterpriseCrmEventbusProtoDoubleParameterArray,
-      ),
-      protoArray: Schema.optional(
-        EnterpriseCrmEventbusProtoProtoParameterArray,
-      ),
-      booleanArray: Schema.optional(
-        EnterpriseCrmEventbusProtoBooleanParameterArray,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParameterValueType",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParameterValueType>;
+export const EnterpriseCrmEventbusProtoParameterValueType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValue: Schema.optional(Schema.String),
+    intValue: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    booleanValue: Schema.optional(Schema.Boolean),
+    protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    serializedObjectValue: Schema.optional(
+      EnterpriseCrmEventbusProtoSerializedObjectParameter,
+    ),
+    stringArray: Schema.optional(
+      EnterpriseCrmEventbusProtoStringParameterArray,
+    ),
+    intArray: Schema.optional(EnterpriseCrmEventbusProtoIntParameterArray),
+    doubleArray: Schema.optional(
+      EnterpriseCrmEventbusProtoDoubleParameterArray,
+    ),
+    protoArray: Schema.optional(EnterpriseCrmEventbusProtoProtoParameterArray),
+    booleanArray: Schema.optional(
+      EnterpriseCrmEventbusProtoBooleanParameterArray,
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoParameterValueType" });
 
 export interface EnterpriseCrmEventbusProtoParameterEntry {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition. */
@@ -3828,32 +3405,24 @@ export interface EnterpriseCrmEventbusProtoParameterEntry {
   masked?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoParameterEntry: Schema.Schema<EnterpriseCrmEventbusProtoParameterEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(EnterpriseCrmEventbusProtoParameterValueType),
-      masked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParameterEntry",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParameterEntry>;
+export const EnterpriseCrmEventbusProtoParameterEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(EnterpriseCrmEventbusProtoParameterValueType),
+    masked: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoParameterEntry" });
 
 export interface EnterpriseCrmEventbusProtoEventParameters {
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
   parameters?: Array<EnterpriseCrmEventbusProtoParameterEntry>;
 }
 
-export const EnterpriseCrmEventbusProtoEventParameters: Schema.Schema<EnterpriseCrmEventbusProtoEventParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoParameterEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoEventParameters",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoEventParameters>;
+export const EnterpriseCrmEventbusProtoEventParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoParameterEntry),
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoEventParameters" });
 
 export interface EnterpriseCrmEventbusProtoTriggerCriteria {
   /** Optional. Implementation class name. The class should implement the “TypedTask” interface. */
@@ -3864,18 +3433,12 @@ export interface EnterpriseCrmEventbusProtoTriggerCriteria {
   condition?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTriggerCriteria: Schema.Schema<EnterpriseCrmEventbusProtoTriggerCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerCriteriaTaskImplementationClassName: Schema.optional(
-        Schema.String,
-      ),
-      parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
-      condition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTriggerCriteria",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTriggerCriteria>;
+export const EnterpriseCrmEventbusProtoTriggerCriteria =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerCriteriaTaskImplementationClassName: Schema.optional(Schema.String),
+    parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
+    condition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTriggerCriteria" });
 
 export interface EnterpriseCrmEventbusProtoCloudSchedulerConfig {
   /** Required. Service account used by Cloud Scheduler to trigger the integration at scheduled time */
@@ -3888,31 +3451,25 @@ export interface EnterpriseCrmEventbusProtoCloudSchedulerConfig {
   errorMessage?: string;
 }
 
-export const EnterpriseCrmEventbusProtoCloudSchedulerConfig: Schema.Schema<EnterpriseCrmEventbusProtoCloudSchedulerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountEmail: Schema.optional(Schema.String),
-      cronTab: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoCloudSchedulerConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoCloudSchedulerConfig>;
+export const EnterpriseCrmEventbusProtoCloudSchedulerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountEmail: Schema.optional(Schema.String),
+    cronTab: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoCloudSchedulerConfig" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables {
   /** Optional. List of variable names. */
   names?: Array<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /** The user created label for a particular trigger. */
@@ -3972,43 +3529,39 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   outputVariables?: EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfig: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      startTasks: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoNextTask),
-      ),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      triggerType: Schema.optional(Schema.String),
-      position: Schema.optional(EnterpriseCrmEventbusProtoCoordinate),
-      triggerNumber: Schema.optional(Schema.String),
-      alertConfig: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoWorkflowAlertConfig),
-      ),
-      nextTasksExecutionPolicy: Schema.optional(Schema.String),
-      enabledClients: Schema.optional(Schema.Array(Schema.String)),
-      pauseWorkflowExecutions: Schema.optional(Schema.Boolean),
-      triggerCriteria: Schema.optional(
-        EnterpriseCrmEventbusProtoTriggerCriteria,
-      ),
-      triggerId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      cloudSchedulerConfig: Schema.optional(
-        EnterpriseCrmEventbusProtoCloudSchedulerConfig,
-      ),
-      errorCatcherId: Schema.optional(Schema.String),
-      triggerName: Schema.optional(Schema.String),
-      inputVariables: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables,
-      ),
-      outputVariables: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoTriggerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    label: Schema.optional(Schema.String),
+    startTasks: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoNextTask),
+    ),
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    triggerType: Schema.optional(Schema.String),
+    position: Schema.optional(EnterpriseCrmEventbusProtoCoordinate),
+    triggerNumber: Schema.optional(Schema.String),
+    alertConfig: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoWorkflowAlertConfig),
+    ),
+    nextTasksExecutionPolicy: Schema.optional(Schema.String),
+    enabledClients: Schema.optional(Schema.Array(Schema.String)),
+    pauseWorkflowExecutions: Schema.optional(Schema.Boolean),
+    triggerCriteria: Schema.optional(EnterpriseCrmEventbusProtoTriggerCriteria),
+    triggerId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    cloudSchedulerConfig: Schema.optional(
+      EnterpriseCrmEventbusProtoCloudSchedulerConfig,
+    ),
+    errorCatcherId: Schema.optional(Schema.String),
+    triggerName: Schema.optional(Schema.String),
+    inputVariables: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables,
+    ),
+    outputVariables: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoTriggerConfig",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
   /** Absolute value threshold. */
@@ -4017,16 +3570,14 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdVa
   percentage?: number;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      absolute: Schema.optional(Schema.String),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    absolute: Schema.optional(Schema.String),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
   /** Name of the alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the integration. */
@@ -4065,24 +3616,22 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
   onlyFinalAttempt?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      metricType: Schema.optional(Schema.String),
-      thresholdType: Schema.optional(Schema.String),
-      thresholdValue: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue,
-      ),
-      durationThreshold: Schema.optional(Schema.String),
-      aggregationPeriod: Schema.optional(Schema.String),
-      alertThreshold: Schema.optional(Schema.Number),
-      disableAlert: Schema.optional(Schema.Boolean),
-      onlyFinalAttempt: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    metricType: Schema.optional(Schema.String),
+    thresholdType: Schema.optional(Schema.String),
+    thresholdValue: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue,
+    ),
+    durationThreshold: Schema.optional(Schema.String),
+    aggregationPeriod: Schema.optional(Schema.String),
+    alertThreshold: Schema.optional(Schema.Number),
+    disableAlert: Schema.optional(Schema.Boolean),
+    onlyFinalAttempt: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaIntegrationAlertConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
   /** Required. Service account used by Cloud Scheduler to trigger the integration at scheduled time */
@@ -4095,31 +3644,27 @@ export interface GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
   errorMessage?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaCloudSchedulerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountEmail: Schema.optional(Schema.String),
-      cronTab: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountEmail: Schema.optional(Schema.String),
+    cronTab: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCloudSchedulerConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCloudSchedulerConfig>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTriggerConfigVariables {
   /** Optional. List of variable names. */
   names?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTriggerConfigVariables: Schema.Schema<GoogleCloudIntegrationsV1alphaTriggerConfigVariables> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaTriggerConfigVariables =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTriggerConfigVariables",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTriggerConfigVariables>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTriggerConfig {
   /** Optional. The user created label for a particular trigger. */
@@ -4170,38 +3715,34 @@ export interface GoogleCloudIntegrationsV1alphaTriggerConfig {
   outputVariables?: GoogleCloudIntegrationsV1alphaTriggerConfigVariables;
 }
 
-export const GoogleCloudIntegrationsV1alphaTriggerConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaTriggerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      startTasks: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaNextTask),
-      ),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      triggerType: Schema.optional(Schema.String),
-      triggerNumber: Schema.optional(Schema.String),
-      alertConfig: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationAlertConfig),
-      ),
-      nextTasksExecutionPolicy: Schema.optional(Schema.String),
-      triggerId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      cloudSchedulerConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCloudSchedulerConfig,
-      ),
-      errorCatcherId: Schema.optional(Schema.String),
-      position: Schema.optional(GoogleCloudIntegrationsV1alphaCoordinate),
-      trigger: Schema.optional(Schema.String),
-      inputVariables: Schema.optional(
-        GoogleCloudIntegrationsV1alphaTriggerConfigVariables,
-      ),
-      outputVariables: Schema.optional(
-        GoogleCloudIntegrationsV1alphaTriggerConfigVariables,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaTriggerConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTriggerConfig>;
+export const GoogleCloudIntegrationsV1alphaTriggerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    label: Schema.optional(Schema.String),
+    startTasks: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaNextTask),
+    ),
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    triggerType: Schema.optional(Schema.String),
+    triggerNumber: Schema.optional(Schema.String),
+    alertConfig: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationAlertConfig),
+    ),
+    nextTasksExecutionPolicy: Schema.optional(Schema.String),
+    triggerId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    cloudSchedulerConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCloudSchedulerConfig,
+    ),
+    errorCatcherId: Schema.optional(Schema.String),
+    position: Schema.optional(GoogleCloudIntegrationsV1alphaCoordinate),
+    trigger: Schema.optional(Schema.String),
+    inputVariables: Schema.optional(
+      GoogleCloudIntegrationsV1alphaTriggerConfigVariables,
+    ),
+    outputVariables: Schema.optional(
+      GoogleCloudIntegrationsV1alphaTriggerConfigVariables,
+    ),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaTriggerConfig" });
 
 export interface EnterpriseCrmEventbusProtoLogSettings {
   /** The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key. */
@@ -4220,16 +3761,12 @@ export interface EnterpriseCrmEventbusProtoLogSettings {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoLogSettings: Schema.Schema<EnterpriseCrmEventbusProtoLogSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logFieldName: Schema.optional(Schema.String),
-      seedScope: Schema.optional(Schema.String),
-      seedPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoLogSettings",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoLogSettings>;
+export const EnterpriseCrmEventbusProtoLogSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logFieldName: Schema.optional(Schema.String),
+    seedScope: Schema.optional(Schema.String),
+    seedPeriod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoLogSettings" });
 
 export interface EnterpriseCrmEventbusProtoAttributes {
   /** Things like URL, Email, Currency, Timestamp (rather than string, int64...) */
@@ -4258,22 +3795,18 @@ export interface EnterpriseCrmEventbusProtoAttributes {
   masked?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoAttributes: Schema.Schema<EnterpriseCrmEventbusProtoAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataType: Schema.optional(Schema.String),
-      isRequired: Schema.optional(Schema.Boolean),
-      defaultValue: Schema.optional(EnterpriseCrmEventbusProtoValueType),
-      taskVisibility: Schema.optional(Schema.Array(Schema.String)),
-      logSettings: Schema.optional(EnterpriseCrmEventbusProtoLogSettings),
-      isSearchable: Schema.optional(Schema.Boolean),
-      searchable: Schema.optional(Schema.String),
-      readOnly: Schema.optional(Schema.Boolean),
-      masked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoAttributes",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoAttributes>;
+export const EnterpriseCrmEventbusProtoAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataType: Schema.optional(Schema.String),
+    isRequired: Schema.optional(Schema.Boolean),
+    defaultValue: Schema.optional(EnterpriseCrmEventbusProtoValueType),
+    taskVisibility: Schema.optional(Schema.Array(Schema.String)),
+    logSettings: Schema.optional(EnterpriseCrmEventbusProtoLogSettings),
+    isSearchable: Schema.optional(Schema.Boolean),
+    searchable: Schema.optional(Schema.String),
+    readOnly: Schema.optional(Schema.Boolean),
+    masked: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoAttributes" });
 
 export interface EnterpriseCrmEventbusProtoNodeIdentifier {
   /** Destination node where the edge ends. It can only be a task config. */
@@ -4286,15 +3819,11 @@ export interface EnterpriseCrmEventbusProtoNodeIdentifier {
   elementIdentifier?: string;
 }
 
-export const EnterpriseCrmEventbusProtoNodeIdentifier: Schema.Schema<EnterpriseCrmEventbusProtoNodeIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      elementType: Schema.optional(Schema.String),
-      elementIdentifier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoNodeIdentifier",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoNodeIdentifier>;
+export const EnterpriseCrmEventbusProtoNodeIdentifier =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elementType: Schema.optional(Schema.String),
+    elementIdentifier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoNodeIdentifier" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition. */
@@ -4386,16 +3915,14 @@ export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameters {
   parameters?: Array<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameters: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry),
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoWorkflowParameters",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntegrationParameter {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition. */
@@ -4448,25 +3975,23 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationParameter {
   description?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationParameter: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
-      searchable: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      inputOutputType: Schema.optional(Schema.String),
-      isTransient: Schema.optional(Schema.Boolean),
-      producer: Schema.optional(Schema.String),
-      jsonSchema: Schema.optional(Schema.String),
-      containsLargeData: Schema.optional(Schema.Boolean),
-      masked: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaIntegrationParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+    defaultValue: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
+    searchable: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    inputOutputType: Schema.optional(Schema.String),
+    isTransient: Schema.optional(Schema.Boolean),
+    producer: Schema.optional(Schema.String),
+    jsonSchema: Schema.optional(Schema.String),
+    containsLargeData: Schema.optional(Schema.Boolean),
+    masked: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaIntegrationParameter",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
+  });
 
 export interface EnterpriseCrmEventbusProtoPropertyEntry {
   /** Key is used to retrieve the corresponding property value. This should be unique for a given fired event. The Tasks should be aware of the keys used while firing the events for them to be able to retrieve the values. */
@@ -4475,45 +4000,33 @@ export interface EnterpriseCrmEventbusProtoPropertyEntry {
   value?: EnterpriseCrmEventbusProtoValueType;
 }
 
-export const EnterpriseCrmEventbusProtoPropertyEntry: Schema.Schema<EnterpriseCrmEventbusProtoPropertyEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(EnterpriseCrmEventbusProtoValueType),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoPropertyEntry",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoPropertyEntry>;
+export const EnterpriseCrmEventbusProtoPropertyEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(EnterpriseCrmEventbusProtoValueType),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoPropertyEntry" });
 
 export interface EnterpriseCrmEventbusProtoEventBusProperties {
   /** An unordered list of property entries. */
   properties?: Array<EnterpriseCrmEventbusProtoPropertyEntry>;
 }
 
-export const EnterpriseCrmEventbusProtoEventBusProperties: Schema.Schema<EnterpriseCrmEventbusProtoEventBusProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoPropertyEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoEventBusProperties",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoEventBusProperties>;
+export const EnterpriseCrmEventbusProtoEventBusProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoPropertyEntry),
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoEventBusProperties" });
 
 export interface EnterpriseCrmEventbusProtoNextTeardownTask {
   /** Required. Name of the next teardown task. */
   name?: string;
 }
 
-export const EnterpriseCrmEventbusProtoNextTeardownTask: Schema.Schema<EnterpriseCrmEventbusProtoNextTeardownTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoNextTeardownTask",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoNextTeardownTask>;
+export const EnterpriseCrmEventbusProtoNextTeardownTask =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoNextTeardownTask" });
 
 export interface EnterpriseCrmEventbusProtoTeardownTaskConfig {
   /** Required. Implementation class name. */
@@ -4528,37 +4041,29 @@ export interface EnterpriseCrmEventbusProtoTeardownTaskConfig {
   nextTeardownTask?: EnterpriseCrmEventbusProtoNextTeardownTask;
 }
 
-export const EnterpriseCrmEventbusProtoTeardownTaskConfig: Schema.Schema<EnterpriseCrmEventbusProtoTeardownTaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      teardownTaskImplementationClassName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
-      properties: Schema.optional(EnterpriseCrmEventbusProtoEventBusProperties),
-      creatorEmail: Schema.optional(Schema.String),
-      nextTeardownTask: Schema.optional(
-        EnterpriseCrmEventbusProtoNextTeardownTask,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTeardownTaskConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
+export const EnterpriseCrmEventbusProtoTeardownTaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    teardownTaskImplementationClassName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
+    properties: Schema.optional(EnterpriseCrmEventbusProtoEventBusProperties),
+    creatorEmail: Schema.optional(Schema.String),
+    nextTeardownTask: Schema.optional(
+      EnterpriseCrmEventbusProtoNextTeardownTask,
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTeardownTaskConfig" });
 
 export interface EnterpriseCrmEventbusProtoTeardown {
   /** Required. */
   teardownTaskConfigs?: Array<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
 }
 
-export const EnterpriseCrmEventbusProtoTeardown: Schema.Schema<EnterpriseCrmEventbusProtoTeardown> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      teardownTaskConfigs: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoTeardownTaskConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTeardown",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTeardown>;
+export const EnterpriseCrmEventbusProtoTeardown =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    teardownTaskConfigs: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoTeardownTaskConfig),
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTeardown" });
 
 export interface GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
   /** Required. An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow */
@@ -4575,21 +4080,19 @@ export interface GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
   position?: GoogleCloudIntegrationsV1alphaCoordinate;
 }
 
-export const GoogleCloudIntegrationsV1alphaErrorCatcherConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaErrorCatcherConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCatcherId: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      errorCatcherNumber: Schema.optional(Schema.String),
-      startErrorTasks: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaNextTask),
-      ),
-      description: Schema.optional(Schema.String),
-      position: Schema.optional(GoogleCloudIntegrationsV1alphaCoordinate),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaErrorCatcherConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorCatcherId: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    errorCatcherNumber: Schema.optional(Schema.String),
+    startErrorTasks: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaNextTask),
+    ),
+    description: Schema.optional(Schema.String),
+    position: Schema.optional(GoogleCloudIntegrationsV1alphaCoordinate),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaErrorCatcherConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
   /** Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed. */
@@ -4603,15 +4106,13 @@ export interface GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
   enableCloudLogging?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaCloudLoggingDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaCloudLoggingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudLoggingSeverity: Schema.optional(Schema.String),
-      enableCloudLogging: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCloudLoggingDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudLoggingSeverity: Schema.optional(Schema.String),
+    enableCloudLogging: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCloudLoggingDetails",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCloudLoggingDetails>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntegrationConfigParameter {
   /** Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables. */
@@ -4620,17 +4121,15 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationConfigParameter {
   value?: GoogleCloudIntegrationsV1alphaValueType;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameter: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationParameter,
-      ),
-      value: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameter: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationParameter,
+    ),
+    value: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaIntegrationConfigParameter",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntegrationVersion {
   /** Output only. Auto-generated primary key. */
@@ -4712,58 +4211,56 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersion {
   cloudKmsKey?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationVersion: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      taskConfigsInternal: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoTaskConfig),
-      ),
-      taskConfigs: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTaskConfig),
-      ),
-      triggerConfigsInternal: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoTriggerConfig),
-      ),
-      triggerConfigs: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTriggerConfig),
-      ),
-      integrationParametersInternal: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoWorkflowParameters,
-      ),
-      integrationParameters: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationParameter),
-      ),
-      teardown: Schema.optional(EnterpriseCrmEventbusProtoTeardown),
-      origin: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      snapshotNumber: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      lockHolder: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      lastModifierEmail: Schema.optional(Schema.String),
-      parentTemplateId: Schema.optional(Schema.String),
-      userLabel: Schema.optional(Schema.String),
-      databasePersistencePolicy: Schema.optional(Schema.String),
-      errorCatcherConfigs: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaErrorCatcherConfig),
-      ),
-      runAsServiceAccount: Schema.optional(Schema.String),
-      cloudLoggingDetails: Schema.optional(
-        GoogleCloudIntegrationsV1alphaCloudLoggingDetails,
-      ),
-      integrationConfigParameters: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationConfigParameter),
-      ),
-      enableVariableMasking: Schema.optional(Schema.Boolean),
-      createdFromTemplate: Schema.optional(Schema.String),
-      cloudKmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaIntegrationVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    taskConfigsInternal: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoTaskConfig),
+    ),
+    taskConfigs: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTaskConfig),
+    ),
+    triggerConfigsInternal: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoTriggerConfig),
+    ),
+    triggerConfigs: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTriggerConfig),
+    ),
+    integrationParametersInternal: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoWorkflowParameters,
+    ),
+    integrationParameters: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationParameter),
+    ),
+    teardown: Schema.optional(EnterpriseCrmEventbusProtoTeardown),
+    origin: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    snapshotNumber: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    lockHolder: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    lastModifierEmail: Schema.optional(Schema.String),
+    parentTemplateId: Schema.optional(Schema.String),
+    userLabel: Schema.optional(Schema.String),
+    databasePersistencePolicy: Schema.optional(Schema.String),
+    errorCatcherConfigs: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaErrorCatcherConfig),
+    ),
+    runAsServiceAccount: Schema.optional(Schema.String),
+    cloudLoggingDetails: Schema.optional(
+      GoogleCloudIntegrationsV1alphaCloudLoggingDetails,
+    ),
+    integrationConfigParameters: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationConfigParameter),
+    ),
+    enableVariableMasking: Schema.optional(Schema.Boolean),
+    createdFromTemplate: Schema.optional(Schema.String),
+    cloudKmsKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaIntegrationVersion",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse {
   /** The integrations which match the request. */
@@ -4774,43 +4271,39 @@ export interface GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse {
   noPermission?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersions: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersion),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      noPermission: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersions: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersion),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    noPermission: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest {
   /** Optional. Config parameters used during integration execution. */
   configParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse {}
 
-export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest {
   /** The textproto of the IntegrationVersion. */
@@ -4819,32 +4312,28 @@ export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      fileFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    fileFormat: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse {
   /** The uploaded integration. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersion: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersion,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersion: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersion,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSerializedFile {
   /** String representation of the file content. */
@@ -4857,15 +4346,11 @@ export interface GoogleCloudIntegrationsV1alphaSerializedFile {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaSerializedFile: Schema.Schema<GoogleCloudIntegrationsV1alphaSerializedFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      file: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaSerializedFile",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSerializedFile>;
+export const GoogleCloudIntegrationsV1alphaSerializedFile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    file: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaSerializedFile" });
 
 export interface GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse {
   /** String representation of the requested file. */
@@ -4874,18 +4359,16 @@ export interface GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionRespons
   files?: Array<GoogleCloudIntegrationsV1alphaSerializedFile>;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      files: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaSerializedFile),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    files: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaSerializedFile),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaFile {
   /** Integration version */
@@ -4900,65 +4383,57 @@ export interface GoogleCloudIntegrationsV1alphaFile {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaFile: Schema.Schema<GoogleCloudIntegrationsV1alphaFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersion: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersion,
-      ),
-      integrationConfig: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaFile",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaFile>;
+export const GoogleCloudIntegrationsV1alphaFile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersion: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersion,
+    ),
+    integrationConfig: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaFile" });
 
 export interface GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse {
   /** List containing JSON for multiple file with type information. */
   files?: Array<GoogleCloudIntegrationsV1alphaFile>;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      files: Schema.optional(Schema.Array(GoogleCloudIntegrationsV1alphaFile)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    files: Schema.optional(Schema.Array(GoogleCloudIntegrationsV1alphaFile)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest {}
 
-export const GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse {
   /** Version after the lock is acquired by the new user. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
 
-export const GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersion: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersion,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersion: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersion,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest {}
 
-export const GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest {
   /** Required. Matched against all {@link TriggerConfig}s across all integrations. i.e. TriggerConfig.trigger_id.equals(trigger_id). The trigger_id is in the format of `api_trigger/TRIGGER_NAME`. */
@@ -4977,26 +4452,24 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest {
   inputParameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerId: Schema.optional(Schema.String),
-      parameters: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      doNotPropagateError: Schema.optional(Schema.Boolean),
-      parameterEntries: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
-      ),
-      requestId: Schema.optional(Schema.String),
-      executionId: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerId: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    doNotPropagateError: Schema.optional(Schema.Boolean),
+    parameterEntries: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
+    ),
+    requestId: Schema.optional(Schema.String),
+    executionId: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
   /** The id of the execution corresponding to this run of integration. */
@@ -5013,27 +4486,25 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
   parameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      eventParameters: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      executionFailed: Schema.optional(Schema.Boolean),
-      parameterEntries: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
-      ),
-      outputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      parameters: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    eventParameters: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    executionFailed: Schema.optional(Schema.Boolean),
+    parameterEntries: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
+    ),
+    outputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    parameters: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest {
   /** Required. Matched against all {@link TriggerConfig}s across all integrations. i.e. TriggerConfig.trigger_id.equals(trigger_id) */
@@ -5052,52 +4523,46 @@ export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest {
   userGeneratedExecutionId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerId: Schema.optional(Schema.String),
-      parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
-      scheduleTime: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      parameterEntries: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
-      ),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-      userGeneratedExecutionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerId: Schema.optional(Schema.String),
+    parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
+    scheduleTime: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    parameterEntries: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
+    ),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+    userGeneratedExecutionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse {
   /** The execution info id for the executed integrations. */
   executionInfoIds?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionInfoIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionInfoIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteEventResponse {
   /** The id of the execution corresponding to this run of integration. */
   executionId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteEventResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteEventResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecuteEventResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteEventResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteEventResponse>;
+  });
 
 export interface EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata {
   /** The task number associated with this snapshot. Could be empty. */
@@ -5118,22 +4583,20 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionS
   integrationName?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskNumber: Schema.optional(Schema.String),
-      taskName: Schema.optional(Schema.String),
-      eventAttemptNum: Schema.optional(Schema.Number),
-      taskAttemptNum: Schema.optional(Schema.Number),
-      taskLabel: Schema.optional(Schema.String),
-      ancestorTaskNumbers: Schema.optional(Schema.Array(Schema.String)),
-      ancestorIterationNumbers: Schema.optional(Schema.Array(Schema.String)),
-      integrationName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskNumber: Schema.optional(Schema.String),
+    taskName: Schema.optional(Schema.String),
+    eventAttemptNum: Schema.optional(Schema.Number),
+    taskAttemptNum: Schema.optional(Schema.Number),
+    taskLabel: Schema.optional(Schema.String),
+    ancestorTaskNumbers: Schema.optional(Schema.Array(Schema.String)),
+    ancestorIterationNumbers: Schema.optional(Schema.Array(Schema.String)),
+    integrationName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata>;
+  });
 
 export interface EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats {
   /** The start time of the task execution for current attempt. This could be in the future if it's been scheduled. */
@@ -5142,16 +4605,14 @@ export interface EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats 
   endTime?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats: Schema.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
+  });
 
 export interface EnterpriseCrmEventbusProtoTaskExecutionDetails {
   /** Pointer to the task config it used for execution. */
@@ -5176,21 +4637,17 @@ export interface EnterpriseCrmEventbusProtoTaskExecutionDetails {
   skippedOnFailure?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoTaskExecutionDetails: Schema.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskNumber: Schema.optional(Schema.String),
-      taskExecutionState: Schema.optional(Schema.String),
-      taskAttemptStats: Schema.optional(
-        Schema.Array(
-          EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats,
-        ),
+export const EnterpriseCrmEventbusProtoTaskExecutionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskNumber: Schema.optional(Schema.String),
+    taskExecutionState: Schema.optional(Schema.String),
+    taskAttemptStats: Schema.optional(
+      Schema.Array(
+        EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats,
       ),
-      skippedOnFailure: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTaskExecutionDetails",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
+    ),
+    skippedOnFailure: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskExecutionDetails" });
 
 export interface EnterpriseCrmEventbusProtoConditionResult {
   /** the current task number. */
@@ -5201,16 +4658,12 @@ export interface EnterpriseCrmEventbusProtoConditionResult {
   result?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoConditionResult: Schema.Schema<EnterpriseCrmEventbusProtoConditionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentTaskNumber: Schema.optional(Schema.String),
-      nextTaskNumber: Schema.optional(Schema.String),
-      result: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoConditionResult",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoConditionResult>;
+export const EnterpriseCrmEventbusProtoConditionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentTaskNumber: Schema.optional(Schema.String),
+    nextTaskNumber: Schema.optional(Schema.String),
+    result: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoConditionResult" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
   /** Auto-generated. Used as primary key for EventExecutionSnapshots table. */
@@ -5234,33 +4687,31 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
   conditionResults?: Array<EnterpriseCrmEventbusProtoConditionResult>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventExecutionSnapshotId: Schema.optional(Schema.String),
-      eventExecutionInfoId: Schema.optional(Schema.String),
-      checkpointTaskNumber: Schema.optional(Schema.String),
-      eventExecutionSnapshotMetadata: Schema.optional(
-        EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata,
-      ),
-      taskName: Schema.optional(Schema.String),
-      snapshotTime: Schema.optional(Schema.String),
-      eventParams: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      diffParams: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      taskExecutionDetails: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoTaskExecutionDetails),
-      ),
-      conditionResults: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoConditionResult),
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventExecutionSnapshotId: Schema.optional(Schema.String),
+    eventExecutionInfoId: Schema.optional(Schema.String),
+    checkpointTaskNumber: Schema.optional(Schema.String),
+    eventExecutionSnapshotMetadata: Schema.optional(
+      EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata,
+    ),
+    taskName: Schema.optional(Schema.String),
+    snapshotTime: Schema.optional(Schema.String),
+    eventParams: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    diffParams: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    taskExecutionDetails: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoTaskExecutionDetails),
+    ),
+    conditionResults: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoConditionResult),
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>;
+  });
 
 export interface EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats {
   /** The start time of the event execution for current attempt. This could be in the future if it's been scheduled. */
@@ -5269,16 +4720,14 @@ export interface EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStat
   endTime?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
   /** The execution state of this event. */
@@ -5311,29 +4760,27 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
   cancelReason?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventExecutionState: Schema.optional(Schema.String),
-      eventExecutionSnapshot: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot),
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventExecutionState: Schema.optional(Schema.String),
+    eventExecutionSnapshot: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot),
+    ),
+    networkAddress: Schema.optional(Schema.String),
+    logFilePath: Schema.optional(Schema.String),
+    eventAttemptStats: Schema.optional(
+      Schema.Array(
+        EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats,
       ),
-      networkAddress: Schema.optional(Schema.String),
-      logFilePath: Schema.optional(Schema.String),
-      eventAttemptStats: Schema.optional(
-        Schema.Array(
-          EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats,
-        ),
-      ),
-      ryeLockUnheldCount: Schema.optional(Schema.Number),
-      nextExecutionTime: Schema.optional(Schema.String),
-      eventRetriesFromBeginningCount: Schema.optional(Schema.Number),
-      eventExecutionSnapshotsSize: Schema.optional(Schema.String),
-      cancelReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    ryeLockUnheldCount: Schema.optional(Schema.Number),
+    nextExecutionTime: Schema.optional(Schema.String),
+    eventRetriesFromBeginningCount: Schema.optional(Schema.Number),
+    eventExecutionSnapshotsSize: Schema.optional(Schema.String),
+    cancelReason: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails>;
+  });
 
 export interface CrmlogErrorCode {
   commonErrorCode?:
@@ -5402,14 +4849,9 @@ export interface CrmlogErrorCode {
     | (string & {});
 }
 
-export const CrmlogErrorCode: Schema.Schema<CrmlogErrorCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonErrorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CrmlogErrorCode",
-  }) as any as Schema.Schema<CrmlogErrorCode>;
+export const CrmlogErrorCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commonErrorCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "CrmlogErrorCode" });
 
 export interface EnterpriseCrmEventbusProtoErrorDetail {
   /** The associated error-code, which can be a common or internal code. */
@@ -5422,17 +4864,13 @@ export interface EnterpriseCrmEventbusProtoErrorDetail {
   taskNumber?: number;
 }
 
-export const EnterpriseCrmEventbusProtoErrorDetail: Schema.Schema<EnterpriseCrmEventbusProtoErrorDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCode: Schema.optional(CrmlogErrorCode),
-      errorMessage: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      taskNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoErrorDetail",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoErrorDetail>;
+export const EnterpriseCrmEventbusProtoErrorDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorCode: Schema.optional(CrmlogErrorCode),
+    errorMessage: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    taskNumber: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoErrorDetail" });
 
 export interface EnterpriseCrmEventbusProtoExecutionTraceInfo {
   /** Used to aggregate ExecutionTraceInfo. */
@@ -5441,15 +4879,11 @@ export interface EnterpriseCrmEventbusProtoExecutionTraceInfo {
   parentEventExecutionInfoId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoExecutionTraceInfo: Schema.Schema<EnterpriseCrmEventbusProtoExecutionTraceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      traceId: Schema.optional(Schema.String),
-      parentEventExecutionInfoId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoExecutionTraceInfo",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoExecutionTraceInfo>;
+export const EnterpriseCrmEventbusProtoExecutionTraceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    traceId: Schema.optional(Schema.String),
+    parentEventExecutionInfoId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoExecutionTraceInfo" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo {
   /** If this execution is a replay of another execution, then this field contains the original execution id. */
@@ -5466,18 +4900,16 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
     | (string & {});
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalExecutionInfoId: Schema.optional(Schema.String),
-      replayedExecutionInfoIds: Schema.optional(Schema.Array(Schema.String)),
-      replayReason: Schema.optional(Schema.String),
-      replayMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalExecutionInfoId: Schema.optional(Schema.String),
+    replayedExecutionInfoIds: Schema.optional(Schema.Array(Schema.String)),
+    replayReason: Schema.optional(Schema.String),
+    replayMode: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo>;
+  });
 
 export interface EnterpriseCrmEventbusProtoCloudLoggingDetails {
   /** Status of whether Cloud Logging is enabled or not for the integration version getting executed. */
@@ -5491,15 +4923,11 @@ export interface EnterpriseCrmEventbusProtoCloudLoggingDetails {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoCloudLoggingDetails: Schema.Schema<EnterpriseCrmEventbusProtoCloudLoggingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableCloudLogging: Schema.optional(Schema.Boolean),
-      cloudLoggingSeverity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoCloudLoggingDetails",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoCloudLoggingDetails>;
+export const EnterpriseCrmEventbusProtoCloudLoggingDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableCloudLogging: Schema.optional(Schema.Boolean),
+    cloudLoggingSeverity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoCloudLoggingDetails" });
 
 export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
   /** Auto-generated primary key. */
@@ -5560,49 +4988,47 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
   integrationVersionUserLabel?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventExecutionInfoId: Schema.optional(Schema.String),
-      workflowName: Schema.optional(Schema.String),
-      workflowId: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      triggerId: Schema.optional(Schema.String),
-      requestParams: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      responseParams: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      postMethod: Schema.optional(Schema.String),
-      eventExecutionDetails: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails,
-      ),
-      createTime: Schema.optional(Schema.String),
-      lastModifiedTime: Schema.optional(Schema.String),
-      errors: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoErrorDetail),
-      ),
-      errorCode: Schema.optional(CrmlogErrorCode),
-      tenant: Schema.optional(Schema.String),
-      product: Schema.optional(Schema.String),
-      snapshotNumber: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      executionTraceInfo: Schema.optional(
-        EnterpriseCrmEventbusProtoExecutionTraceInfo,
-      ),
-      workflowRetryBackoffIntervalSeconds: Schema.optional(Schema.String),
-      replayInfo: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo,
-      ),
-      cloudLoggingDetails: Schema.optional(
-        EnterpriseCrmEventbusProtoCloudLoggingDetails,
-      ),
-      integrationVersionUserLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventExecutionInfoId: Schema.optional(Schema.String),
+    workflowName: Schema.optional(Schema.String),
+    workflowId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    triggerId: Schema.optional(Schema.String),
+    requestParams: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    responseParams: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    postMethod: Schema.optional(Schema.String),
+    eventExecutionDetails: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails,
+    ),
+    createTime: Schema.optional(Schema.String),
+    lastModifiedTime: Schema.optional(Schema.String),
+    errors: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoErrorDetail),
+    ),
+    errorCode: Schema.optional(CrmlogErrorCode),
+    tenant: Schema.optional(Schema.String),
+    product: Schema.optional(Schema.String),
+    snapshotNumber: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    executionTraceInfo: Schema.optional(
+      EnterpriseCrmEventbusProtoExecutionTraceInfo,
+    ),
+    workflowRetryBackoffIntervalSeconds: Schema.optional(Schema.String),
+    replayInfo: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo,
+    ),
+    cloudLoggingDetails: Schema.optional(
+      EnterpriseCrmEventbusProtoCloudLoggingDetails,
+    ),
+    integrationVersionUserLabel: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo>;
+  });
 
 export interface EnterpriseCrmEventbusProtoEventExecutionSnapshot {
   /** Auto-generated. Used as primary key for EventExecutionSnapshots table. */
@@ -5632,32 +5058,30 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshot {
   workflowName?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionSnapshot: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventExecutionSnapshotId: Schema.optional(Schema.String),
-      eventExecutionInfoId: Schema.optional(Schema.String),
-      checkpointTaskNumber: Schema.optional(Schema.String),
-      eventExecutionSnapshotMetadata: Schema.optional(
-        EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata,
-      ),
-      taskName: Schema.optional(Schema.String),
-      snapshotTime: Schema.optional(Schema.String),
-      eventParams: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
-      diffParams: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
-      taskExecutionDetails: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoTaskExecutionDetails),
-      ),
-      conditionResults: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoConditionResult),
-      ),
-      exceedMaxSize: Schema.optional(Schema.Boolean),
-      clientId: Schema.optional(Schema.String),
-      workflowName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoEventExecutionSnapshot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventExecutionSnapshotId: Schema.optional(Schema.String),
+    eventExecutionInfoId: Schema.optional(Schema.String),
+    checkpointTaskNumber: Schema.optional(Schema.String),
+    eventExecutionSnapshotMetadata: Schema.optional(
+      EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata,
+    ),
+    taskName: Schema.optional(Schema.String),
+    snapshotTime: Schema.optional(Schema.String),
+    eventParams: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
+    diffParams: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
+    taskExecutionDetails: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoTaskExecutionDetails),
+    ),
+    conditionResults: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoConditionResult),
+    ),
+    exceedMaxSize: Schema.optional(Schema.Boolean),
+    clientId: Schema.optional(Schema.String),
+    workflowName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoEventExecutionSnapshot",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshot>;
+  });
 
 export interface EnterpriseCrmEventbusProtoEventExecutionDetails {
   eventExecutionState?:
@@ -5688,29 +5112,27 @@ export interface EnterpriseCrmEventbusProtoEventExecutionDetails {
   cancelReason?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionDetails: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventExecutionState: Schema.optional(Schema.String),
-      eventExecutionSnapshot: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoEventExecutionSnapshot),
+export const EnterpriseCrmEventbusProtoEventExecutionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventExecutionState: Schema.optional(Schema.String),
+    eventExecutionSnapshot: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoEventExecutionSnapshot),
+    ),
+    networkAddress: Schema.optional(Schema.String),
+    logFilePath: Schema.optional(Schema.String),
+    eventAttemptStats: Schema.optional(
+      Schema.Array(
+        EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats,
       ),
-      networkAddress: Schema.optional(Schema.String),
-      logFilePath: Schema.optional(Schema.String),
-      eventAttemptStats: Schema.optional(
-        Schema.Array(
-          EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats,
-        ),
-      ),
-      ryeLockUnheldCount: Schema.optional(Schema.Number),
-      nextExecutionTime: Schema.optional(Schema.String),
-      eventRetriesFromBeginningCount: Schema.optional(Schema.Number),
-      eventExecutionSnapshotsSize: Schema.optional(Schema.String),
-      cancelReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    ryeLockUnheldCount: Schema.optional(Schema.Number),
+    nextExecutionTime: Schema.optional(Schema.String),
+    eventRetriesFromBeginningCount: Schema.optional(Schema.Number),
+    eventExecutionSnapshotsSize: Schema.optional(Schema.String),
+    cancelReason: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoEventExecutionDetails",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionDetails>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata {
   /** The task number associated with this snapshot. */
@@ -5731,22 +5153,20 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapsho
   integrationName?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskNumber: Schema.optional(Schema.String),
-      task: Schema.optional(Schema.String),
-      executionAttempt: Schema.optional(Schema.Number),
-      taskAttempt: Schema.optional(Schema.Number),
-      taskLabel: Schema.optional(Schema.String),
-      ancestorTaskNumbers: Schema.optional(Schema.Array(Schema.String)),
-      ancestorIterationNumbers: Schema.optional(Schema.Array(Schema.String)),
-      integrationName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskNumber: Schema.optional(Schema.String),
+    task: Schema.optional(Schema.String),
+    executionAttempt: Schema.optional(Schema.Number),
+    taskAttempt: Schema.optional(Schema.Number),
+    taskLabel: Schema.optional(Schema.String),
+    ancestorTaskNumbers: Schema.optional(Schema.Array(Schema.String)),
+    ancestorIterationNumbers: Schema.optional(Schema.Array(Schema.String)),
+    integrationName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaAttemptStats {
   /** The start time of the integration execution for current attempt. This could be in the future if it's been scheduled. */
@@ -5755,15 +5175,11 @@ export interface GoogleCloudIntegrationsV1alphaAttemptStats {
   endTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAttemptStats: Schema.Schema<GoogleCloudIntegrationsV1alphaAttemptStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaAttemptStats",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaAttemptStats>;
+export const GoogleCloudIntegrationsV1alphaAttemptStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaAttemptStats" });
 
 export interface GoogleCloudIntegrationsV1alphaTaskExecutionDetails {
   /** Pointer to the task config it used for execution. */
@@ -5788,18 +5204,16 @@ export interface GoogleCloudIntegrationsV1alphaTaskExecutionDetails {
   taskAttemptStats?: Array<GoogleCloudIntegrationsV1alphaAttemptStats>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaTaskExecutionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskNumber: Schema.optional(Schema.String),
-      taskExecutionState: Schema.optional(Schema.String),
-      taskAttemptStats: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaAttemptStats),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskNumber: Schema.optional(Schema.String),
+    taskExecutionState: Schema.optional(Schema.String),
+    taskAttemptStats: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaAttemptStats),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTaskExecutionDetails",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecutionSnapshot {
   /** Indicates "after which checkpoint task's execution" this snapshot is taken. */
@@ -5812,23 +5226,21 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshot {
   taskExecutionDetails?: Array<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionSnapshot: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      checkpointTaskNumber: Schema.optional(Schema.String),
-      executionSnapshotMetadata: Schema.optional(
-        GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata,
-      ),
-      params: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-      taskExecutionDetails: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTaskExecutionDetails),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecutionSnapshot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    checkpointTaskNumber: Schema.optional(Schema.String),
+    executionSnapshotMetadata: Schema.optional(
+      GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata,
+    ),
+    params: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+    taskExecutionDetails: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTaskExecutionDetails),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecutionSnapshot",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshot>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecutionDetails {
   /** Status of the execution. */
@@ -5850,21 +5262,17 @@ export interface GoogleCloudIntegrationsV1alphaExecutionDetails {
   eventExecutionSnapshotsSize?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      executionSnapshots: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaExecutionSnapshot),
-      ),
-      attemptStats: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaAttemptStats),
-      ),
-      eventExecutionSnapshotsSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaExecutionDetails",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionDetails>;
+export const GoogleCloudIntegrationsV1alphaExecutionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    executionSnapshots: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaExecutionSnapshot),
+    ),
+    attemptStats: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaAttemptStats),
+    ),
+    eventExecutionSnapshotsSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaExecutionDetails" });
 
 export interface GoogleCloudIntegrationsV1alphaExecutionReplayInfo {
   /** If this execution is a replay of another execution, then this field contains the original execution id. */
@@ -5881,17 +5289,15 @@ export interface GoogleCloudIntegrationsV1alphaExecutionReplayInfo {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionReplayInfo: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionReplayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalExecutionInfoId: Schema.optional(Schema.String),
-      replayedExecutionInfoIds: Schema.optional(Schema.Array(Schema.String)),
-      replayReason: Schema.optional(Schema.String),
-      replayMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecutionReplayInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalExecutionInfoId: Schema.optional(Schema.String),
+    replayedExecutionInfoIds: Schema.optional(Schema.Array(Schema.String)),
+    replayReason: Schema.optional(Schema.String),
+    replayMode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecutionReplayInfo",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionReplayInfo>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecution {
   /** Auto-generated primary key. */
@@ -5992,48 +5398,42 @@ export interface GoogleCloudIntegrationsV1alphaListExecutionsResponse {
   executions?: Array<GoogleCloudIntegrationsV1alphaExecution>;
 }
 
-export const GoogleCloudIntegrationsV1alphaListExecutionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionInfos: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      executions: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaExecution),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListExecutionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionInfos: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    executions: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaExecution),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListExecutionsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListExecutionsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCancelExecutionRequest {
   /** Required. Reason for cancelling the execution. This is provided by the client requesting the cancellation, and is not used by the Platform. */
   cancelReason?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCancelExecutionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cancelReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCancelExecutionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cancelReason: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCancelExecutionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaCancelExecutionResponse {
   /** True if cancellation performed successfully. */
   isCanceled?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaCancelExecutionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isCanceled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaCancelExecutionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isCanceled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaCancelExecutionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTestIntegrationsRequest {
   /** Required. integration config to execute the workflow */
@@ -6054,29 +5454,27 @@ export interface GoogleCloudIntegrationsV1alphaTestIntegrationsRequest {
   configParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersion: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersion,
-      ),
-      parameters: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      triggerId: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      testMode: Schema.optional(Schema.Boolean),
-      deadlineSecondsTime: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-      configParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaTestIntegrationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersion: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersion,
+    ),
+    parameters: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    triggerId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    testMode: Schema.optional(Schema.Boolean),
+    deadlineSecondsTime: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+    configParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTestIntegrationsRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {
   /** The id of the execution corresponding to this run of integration. */
@@ -6091,38 +5489,34 @@ export interface GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {
   parameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      eventParameters: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventParameters,
-      ),
-      executionFailed: Schema.optional(Schema.Boolean),
-      parameterEntries: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
-      ),
-      parameters: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    eventParameters: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventParameters,
+    ),
+    executionFailed: Schema.optional(Schema.Boolean),
+    parameterEntries: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
+    ),
+    parameters: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTestIntegrationsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaDownloadExecutionResponse {
   /** The content of downloaded execution. */
   content?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadExecutionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadExecutionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaDownloadExecutionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaDownloadExecutionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadExecutionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
   /** Required. The user provided reason for replaying the execution. */
@@ -6139,19 +5533,17 @@ export interface GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaReplayExecutionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaReplayExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replayReason: Schema.optional(Schema.String),
-      updateMask: Schema.optional(Schema.String),
-      modifiedParameters: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-      replayMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaReplayExecutionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replayReason: Schema.optional(Schema.String),
+    updateMask: Schema.optional(Schema.String),
+    modifiedParameters: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+    replayMode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaReplayExecutionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaReplayExecutionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaReplayExecutionResponse {
   /** Next ID: 4 The id of the execution corresponding to this run of the integration. */
@@ -6162,18 +5554,16 @@ export interface GoogleCloudIntegrationsV1alphaReplayExecutionResponse {
   outputParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudIntegrationsV1alphaReplayExecutionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaReplayExecutionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      replayedExecutionId: Schema.optional(Schema.String),
-      outputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaReplayExecutionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    replayedExecutionId: Schema.optional(Schema.String),
+    outputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaReplayExecutionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaReplayExecutionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntegration {
   /** Required. The resource name of the integration. */
@@ -6192,20 +5582,16 @@ export interface GoogleCloudIntegrationsV1alphaIntegration {
   createTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegration: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      creatorEmail: Schema.optional(Schema.String),
-      lastModifierEmail: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaIntegration",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntegration>;
+export const GoogleCloudIntegrationsV1alphaIntegration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    active: Schema.optional(Schema.Boolean),
+    creatorEmail: Schema.optional(Schema.String),
+    lastModifierEmail: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaIntegration" });
 
 export interface GoogleCloudIntegrationsV1alphaListIntegrationsResponse {
   /** The integrations which match the request. */
@@ -6214,17 +5600,15 @@ export interface GoogleCloudIntegrationsV1alphaListIntegrationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListIntegrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrations: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegration),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListIntegrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrations: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegration),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListIntegrationsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListIntegrationsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult {
   /** The integration document metadata. */
@@ -6251,22 +5635,20 @@ export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegra
   version?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult: Schema.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      creator: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    creator: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse {
   /** The list of integrations that match the search criteria. */
@@ -6275,19 +5657,17 @@ export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrations: Schema.optional(
-        Schema.Array(
-          GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult,
-        ),
+export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrations: Schema.optional(
+      Schema.Array(
+        GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult,
       ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSfdcChannel {
   /** Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}. */
@@ -6310,22 +5690,18 @@ export interface GoogleCloudIntegrationsV1alphaSfdcChannel {
   lastReplayId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSfdcChannel: Schema.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      channelTopic: Schema.optional(Schema.String),
-      isActive: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      lastReplayId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaSfdcChannel",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>;
+export const GoogleCloudIntegrationsV1alphaSfdcChannel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    channelTopic: Schema.optional(Schema.String),
+    isActive: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    lastReplayId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaSfdcChannel" });
 
 export interface GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse {
   /** The list of SfdcChannels retrieved. */
@@ -6334,17 +5710,15 @@ export interface GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sfdcChannels: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaSfdcChannel),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sfdcChannels: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaSfdcChannel),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSfdcInstance {
   /** Resource name of the SFDC instance projects/{project}/locations/{location}/sfdcInstances/{sfdcInstance}. */
@@ -6367,22 +5741,18 @@ export interface GoogleCloudIntegrationsV1alphaSfdcInstance {
   serviceAuthority?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSfdcInstance: Schema.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      sfdcOrgId: Schema.optional(Schema.String),
-      authConfigId: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      serviceAuthority: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaSfdcInstance",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>;
+export const GoogleCloudIntegrationsV1alphaSfdcInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    sfdcOrgId: Schema.optional(Schema.String),
+    authConfigId: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    serviceAuthority: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaSfdcInstance" });
 
 export interface GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse {
   /** The list of SfdcInstances retrieved. */
@@ -6391,17 +5761,15 @@ export interface GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sfdcInstances: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaSfdcInstance),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sfdcInstances: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaSfdcInstance),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSuspensionAudit {
   /** Time at which this suspension was resolved. */
@@ -6410,31 +5778,25 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionAudit {
   resolver?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspensionAudit: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionAudit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolveTime: Schema.optional(Schema.String),
-      resolver: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaSuspensionAudit",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionAudit>;
+export const GoogleCloudIntegrationsV1alphaSuspensionAudit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resolveTime: Schema.optional(Schema.String),
+    resolver: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaSuspensionAudit" });
 
 export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity {
   emailAddress?: string;
   gaiaId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(Schema.String),
-      gaiaId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emailAddress: Schema.optional(Schema.String),
+    gaiaId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity>;
+  });
 
 export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissions {
   mdbGroup?: string;
@@ -6444,36 +5806,30 @@ export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissions {
   googleGroup?: EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionAuthPermissions: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mdbGroup: Schema.optional(Schema.String),
-      loasRole: Schema.optional(Schema.String),
-      gaiaIdentity: Schema.optional(
-        EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity,
-      ),
-      googleGroup: Schema.optional(
-        EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoSuspensionAuthPermissions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mdbGroup: Schema.optional(Schema.String),
+    loasRole: Schema.optional(Schema.String),
+    gaiaIdentity: Schema.optional(
+      EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity,
+    ),
+    googleGroup: Schema.optional(
+      EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoSuspensionAuthPermissions",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissions>;
+  });
 
 export interface EnterpriseCrmEventbusProtoToken {
   name?: string;
   value?: string;
 }
 
-export const EnterpriseCrmEventbusProtoToken: Schema.Schema<EnterpriseCrmEventbusProtoToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoToken",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoToken>;
+export const EnterpriseCrmEventbusProtoToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoToken" });
 
 export interface EnterpriseCrmEventbusProtoAddress {
   /** Required. */
@@ -6482,16 +5838,12 @@ export interface EnterpriseCrmEventbusProtoAddress {
   tokens?: Array<EnterpriseCrmEventbusProtoToken>;
 }
 
-export const EnterpriseCrmEventbusProtoAddress: Schema.Schema<EnterpriseCrmEventbusProtoAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      tokens: Schema.optional(Schema.Array(EnterpriseCrmEventbusProtoToken)),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoAddress",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoAddress>;
+export const EnterpriseCrmEventbusProtoAddress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    tokens: Schema.optional(Schema.Array(EnterpriseCrmEventbusProtoToken)),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoAddress" });
 
 export interface EnterpriseCrmEventbusProtoBuganizerNotification {
   /** ID of the buganizer component within which to create a new issue. Required. */
@@ -6504,17 +5856,15 @@ export interface EnterpriseCrmEventbusProtoBuganizerNotification {
   templateId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoBuganizerNotification: Schema.Schema<EnterpriseCrmEventbusProtoBuganizerNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      componentId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      assigneeEmailAddress: Schema.optional(Schema.String),
-      templateId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoBuganizerNotification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    componentId: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    assigneeEmailAddress: Schema.optional(Schema.String),
+    templateId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoBuganizerNotification",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBuganizerNotification>;
+  });
 
 export interface GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest {
   /** Matched against all {@link TriggerConfig}s across all workflows. i.e. TriggerConfig.trigger_id.equals(trigger_id) Required. */
@@ -6549,26 +5899,24 @@ export interface GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest
   quotaRetryCount?: number;
 }
 
-export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest: Schema.Schema<GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerId: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
-      priority: Schema.optional(Schema.String),
-      testMode: Schema.optional(Schema.Boolean),
-      scheduledTime: Schema.optional(Schema.String),
-      ignoreErrorIfNoActiveWorkflow: Schema.optional(Schema.Boolean),
-      workflowName: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-      userGeneratedExecutionId: Schema.optional(Schema.String),
-      quotaRetryCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
+    priority: Schema.optional(Schema.String),
+    testMode: Schema.optional(Schema.Boolean),
+    scheduledTime: Schema.optional(Schema.String),
+    ignoreErrorIfNoActiveWorkflow: Schema.optional(Schema.Boolean),
+    workflowName: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+    userGeneratedExecutionId: Schema.optional(Schema.String),
+    quotaRetryCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest",
-  }) as any as Schema.Schema<GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest>;
+  });
 
 export interface EnterpriseCrmEventbusProtoCustomSuspensionRequest {
   /** In the fired event, set the SuspensionInfo message as the value for this key. */
@@ -6577,17 +5925,15 @@ export interface EnterpriseCrmEventbusProtoCustomSuspensionRequest {
   postToQueueWithTriggerIdRequest?: GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest;
 }
 
-export const EnterpriseCrmEventbusProtoCustomSuspensionRequest: Schema.Schema<EnterpriseCrmEventbusProtoCustomSuspensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suspensionInfoEventParameterKey: Schema.optional(Schema.String),
-      postToQueueWithTriggerIdRequest: Schema.optional(
-        GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoCustomSuspensionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suspensionInfoEventParameterKey: Schema.optional(Schema.String),
+    postToQueueWithTriggerIdRequest: Schema.optional(
+      GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoCustomSuspensionRequest",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoCustomSuspensionRequest>;
+  });
 
 export interface EnterpriseCrmEventbusProtoNotification {
   emailAddress?: EnterpriseCrmEventbusProtoAddress;
@@ -6598,22 +5944,16 @@ export interface EnterpriseCrmEventbusProtoNotification {
   request?: EnterpriseCrmEventbusProtoCustomSuspensionRequest;
 }
 
-export const EnterpriseCrmEventbusProtoNotification: Schema.Schema<EnterpriseCrmEventbusProtoNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(EnterpriseCrmEventbusProtoAddress),
-      pubsubTopic: Schema.optional(Schema.String),
-      buganizerNotification: Schema.optional(
-        EnterpriseCrmEventbusProtoBuganizerNotification,
-      ),
-      escalatorQueue: Schema.optional(Schema.String),
-      request: Schema.optional(
-        EnterpriseCrmEventbusProtoCustomSuspensionRequest,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoNotification",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoNotification>;
+export const EnterpriseCrmEventbusProtoNotification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emailAddress: Schema.optional(EnterpriseCrmEventbusProtoAddress),
+    pubsubTopic: Schema.optional(Schema.String),
+    buganizerNotification: Schema.optional(
+      EnterpriseCrmEventbusProtoBuganizerNotification,
+    ),
+    escalatorQueue: Schema.optional(Schema.String),
+    request: Schema.optional(EnterpriseCrmEventbusProtoCustomSuspensionRequest),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoNotification" });
 
 export interface EnterpriseCrmEventbusProtoSuspensionExpiration {
   /** Milliseconds after which the previous suspension action reminder, if any, is sent using the selected notification option, for a suspension which is still PENDING_UNSPECIFIED. */
@@ -6624,16 +5964,12 @@ export interface EnterpriseCrmEventbusProtoSuspensionExpiration {
   liftWhenExpired?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionExpiration: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionExpiration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remindAfterMs: Schema.optional(Schema.Number),
-      expireAfterMs: Schema.optional(Schema.Number),
-      liftWhenExpired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoSuspensionExpiration",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSuspensionExpiration>;
+export const EnterpriseCrmEventbusProtoSuspensionExpiration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    remindAfterMs: Schema.optional(Schema.Number),
+    expireAfterMs: Schema.optional(Schema.Number),
+    liftWhenExpired: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoSuspensionExpiration" });
 
 export interface EnterpriseCrmEventbusProtoSuspensionConfig {
   /** Identities able to resolve this suspension. */
@@ -6645,23 +5981,19 @@ export interface EnterpriseCrmEventbusProtoSuspensionConfig {
   suspensionExpiration?: EnterpriseCrmEventbusProtoSuspensionExpiration;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionConfig: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      whoMayResolve: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoSuspensionAuthPermissions),
-      ),
-      customMessage: Schema.optional(Schema.String),
-      notifications: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoNotification),
-      ),
-      suspensionExpiration: Schema.optional(
-        EnterpriseCrmEventbusProtoSuspensionExpiration,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoSuspensionConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSuspensionConfig>;
+export const EnterpriseCrmEventbusProtoSuspensionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    whoMayResolve: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoSuspensionAuthPermissions),
+    ),
+    customMessage: Schema.optional(Schema.String),
+    notifications: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoNotification),
+    ),
+    suspensionExpiration: Schema.optional(
+      EnterpriseCrmEventbusProtoSuspensionExpiration,
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoSuspensionConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration {
   /** Time after the previous suspension action reminder, if any, is sent using the selected notification option, for a suspension which is still PENDING_UNSPECIFIED. */
@@ -6672,16 +6004,14 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration {
   liftWhenExpired?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remindTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      liftWhenExpired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    remindTime: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    liftWhenExpired: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig {
   /** Information to provide for recipients. */
@@ -6692,18 +6022,16 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig {
   expiration?: GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customMessage: Schema.optional(Schema.String),
-      emailAddresses: Schema.optional(Schema.Array(Schema.String)),
-      expiration: Schema.optional(
-        GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customMessage: Schema.optional(Schema.String),
+    emailAddresses: Schema.optional(Schema.Array(Schema.String)),
+    expiration: Schema.optional(
+      GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSuspension {
   /** Resource name for suspensions suspension/{suspension_id} */
@@ -6733,48 +6061,42 @@ export interface GoogleCloudIntegrationsV1alphaSuspension {
   approvalConfig?: GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspension: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      eventExecutionInfoId: Schema.optional(Schema.String),
-      taskId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      audit: Schema.optional(GoogleCloudIntegrationsV1alphaSuspensionAudit),
-      createTime: Schema.optional(Schema.String),
-      lastModifyTime: Schema.optional(Schema.String),
-      suspensionConfig: Schema.optional(
-        EnterpriseCrmEventbusProtoSuspensionConfig,
-      ),
-      integration: Schema.optional(Schema.String),
-      approvalConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaSuspension",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSuspension>;
+export const GoogleCloudIntegrationsV1alphaSuspension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    eventExecutionInfoId: Schema.optional(Schema.String),
+    taskId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    audit: Schema.optional(GoogleCloudIntegrationsV1alphaSuspensionAudit),
+    createTime: Schema.optional(Schema.String),
+    lastModifyTime: Schema.optional(Schema.String),
+    suspensionConfig: Schema.optional(
+      EnterpriseCrmEventbusProtoSuspensionConfig,
+    ),
+    integration: Schema.optional(Schema.String),
+    approvalConfig: Schema.optional(
+      GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaSuspension" });
 
 export interface GoogleCloudIntegrationsV1alphaResolveSuspensionRequest {
   /** Suspension, containing the event_execution_info_id, task_id, and state to set on the corresponding suspension record. */
   suspension?: GoogleCloudIntegrationsV1alphaSuspension;
 }
 
-export const GoogleCloudIntegrationsV1alphaResolveSuspensionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suspension: Schema.optional(GoogleCloudIntegrationsV1alphaSuspension),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaResolveSuspensionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suspension: Schema.optional(GoogleCloudIntegrationsV1alphaSuspension),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaResolveSuspensionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaResolveSuspensionResponse {}
 
-export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaResolveSuspensionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaListSuspensionsResponse {
   /** The suspensions for the relevant execution which the caller has permissions to view and resolve. */
@@ -6783,45 +6105,39 @@ export interface GoogleCloudIntegrationsV1alphaListSuspensionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListSuspensionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListSuspensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suspensions: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaSuspension),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListSuspensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suspensions: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaSuspension),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListSuspensionsResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListSuspensionsResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaLiftSuspensionRequest {
   /** User passed in suspension result and will be used to control workflow execution branching behavior by setting up corresponnding edge condition with suspension result. For example, if you want to lift the suspension, you can pass "Approved", or if you want to reject the suspension and terminate workfloe execution, you can pass "Rejected" and terminate the workflow execution with configuring the edge condition. */
   suspensionResult?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLiftSuspensionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suspensionResult: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaLiftSuspensionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suspensionResult: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaLiftSuspensionRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaLiftSuspensionResponse {
   /** Execution Id that will be returned */
   eventExecutionInfoId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLiftSuspensionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventExecutionInfoId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaLiftSuspensionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventExecutionInfoId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaLiftSuspensionResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaMockConfig {
   /** Mockstrategy defines how the particular task should be mocked during test execution */
@@ -6838,18 +6154,14 @@ export interface GoogleCloudIntegrationsV1alphaMockConfig {
   failedExecutions?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaMockConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaMockConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mockStrategy: Schema.optional(Schema.String),
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaEventParameter),
-      ),
-      failedExecutions: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaMockConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaMockConfig>;
+export const GoogleCloudIntegrationsV1alphaMockConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mockStrategy: Schema.optional(Schema.String),
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaEventParameter),
+    ),
+    failedExecutions: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaMockConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaAssertion {
   /** Optional. The type of assertion to perform. */
@@ -6871,17 +6183,13 @@ export interface GoogleCloudIntegrationsV1alphaAssertion {
   retryCount?: number;
 }
 
-export const GoogleCloudIntegrationsV1alphaAssertion: Schema.Schema<GoogleCloudIntegrationsV1alphaAssertion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assertionStrategy: Schema.optional(Schema.String),
-      parameter: Schema.optional(GoogleCloudIntegrationsV1alphaEventParameter),
-      condition: Schema.optional(Schema.String),
-      retryCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaAssertion",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaAssertion>;
+export const GoogleCloudIntegrationsV1alphaAssertion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assertionStrategy: Schema.optional(Schema.String),
+    parameter: Schema.optional(GoogleCloudIntegrationsV1alphaEventParameter),
+    condition: Schema.optional(Schema.String),
+    retryCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaAssertion" });
 
 export interface GoogleCloudIntegrationsV1alphaTestTaskConfig {
   /** Required. This defines in the test case, the task in integration which will be mocked by this test task config */
@@ -6896,20 +6204,16 @@ export interface GoogleCloudIntegrationsV1alphaTestTaskConfig {
   taskConfig?: GoogleCloudIntegrationsV1alphaTaskConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestTaskConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaTestTaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskNumber: Schema.optional(Schema.String),
-      mockConfig: Schema.optional(GoogleCloudIntegrationsV1alphaMockConfig),
-      assertions: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaAssertion),
-      ),
-      task: Schema.optional(Schema.String),
-      taskConfig: Schema.optional(GoogleCloudIntegrationsV1alphaTaskConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaTestTaskConfig",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTestTaskConfig>;
+export const GoogleCloudIntegrationsV1alphaTestTaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskNumber: Schema.optional(Schema.String),
+    mockConfig: Schema.optional(GoogleCloudIntegrationsV1alphaMockConfig),
+    assertions: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaAssertion),
+    ),
+    task: Schema.optional(Schema.String),
+    taskConfig: Schema.optional(GoogleCloudIntegrationsV1alphaTaskConfig),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaTestTaskConfig" });
 
 export interface GoogleCloudIntegrationsV1alphaTestCase {
   /** Output only. Auto-generated primary key. */
@@ -6944,32 +6248,26 @@ export interface GoogleCloudIntegrationsV1alphaTestCase {
   triggerConfig?: GoogleCloudIntegrationsV1alphaTriggerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestCase: Schema.Schema<GoogleCloudIntegrationsV1alphaTestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      triggerId: Schema.optional(Schema.String),
-      testInputParameters: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationParameter),
-      ),
-      testTaskConfigs: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTestTaskConfig),
-      ),
-      databasePersistencePolicy: Schema.optional(Schema.String),
-      creatorEmail: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      lastModifierEmail: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      lockHolderEmail: Schema.optional(Schema.String),
-      triggerConfig: Schema.optional(
-        GoogleCloudIntegrationsV1alphaTriggerConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaTestCase",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTestCase>;
+export const GoogleCloudIntegrationsV1alphaTestCase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    triggerId: Schema.optional(Schema.String),
+    testInputParameters: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationParameter),
+    ),
+    testTaskConfigs: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTestTaskConfig),
+    ),
+    databasePersistencePolicy: Schema.optional(Schema.String),
+    creatorEmail: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    lastModifierEmail: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    lockHolderEmail: Schema.optional(Schema.String),
+    triggerConfig: Schema.optional(GoogleCloudIntegrationsV1alphaTriggerConfig),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaTestCase" });
 
 export interface GoogleCloudIntegrationsV1alphaListTestCasesResponse {
   /** The test cases corresponding to the specified filter */
@@ -6978,33 +6276,29 @@ export interface GoogleCloudIntegrationsV1alphaListTestCasesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListTestCasesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTestCase),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCases: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTestCase),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListTestCasesResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest {
   /** Optional. Input parameters used by test case execution. */
   inputParameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputParameters: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputParameters: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaAssertionResult {
   /** Assertion that was run. */
@@ -7023,18 +6317,14 @@ export interface GoogleCloudIntegrationsV1alphaAssertionResult {
   failureMessage?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAssertionResult: Schema.Schema<GoogleCloudIntegrationsV1alphaAssertionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assertion: Schema.optional(GoogleCloudIntegrationsV1alphaAssertion),
-      taskNumber: Schema.optional(Schema.String),
-      taskName: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      failureMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaAssertionResult",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaAssertionResult>;
+export const GoogleCloudIntegrationsV1alphaAssertionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assertion: Schema.optional(GoogleCloudIntegrationsV1alphaAssertion),
+    taskNumber: Schema.optional(Schema.String),
+    taskName: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    failureMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaAssertionResult" });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse {
   /** The id of the execution corresponding to this run of integration. */
@@ -7051,21 +6341,19 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      outputParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      assertionResults: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaAssertionResult),
-      ),
-      testExecutionState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    outputParameters: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    assertionResults: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaAssertionResult),
+    ),
+    testExecutionState: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUploadTestCaseRequest {
   /** The textproto of the test case. */
@@ -7074,73 +6362,65 @@ export interface GoogleCloudIntegrationsV1alphaUploadTestCaseRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTestCaseRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTestCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      fileFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUploadTestCaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    fileFormat: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUploadTestCaseRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTestCaseRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUploadTestCaseResponse {
   /** The uploaded TestCase */
   testCase?: GoogleCloudIntegrationsV1alphaTestCase;
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTestCaseResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTestCaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCase: Schema.optional(GoogleCloudIntegrationsV1alphaTestCase),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUploadTestCaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCase: Schema.optional(GoogleCloudIntegrationsV1alphaTestCase),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUploadTestCaseResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTestCaseResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse {
   /** String representation of the test case. */
   content?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest {}
 
-export const GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest {}
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse {
   /** Results of each execution of test cases in an integration version. */
   executeTestCaseResponses?: Array<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executeTestCaseResponses: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executeTestCaseResponses: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate {
   /** Required. Unique Key of the IntegrationVersion. */
@@ -7149,17 +6429,15 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate {
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      integrationVersion: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersion,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    integrationVersion: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersion,
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTemplateBundle {
   /** Required. Main integration templates of the template bundle. */
@@ -7168,19 +6446,15 @@ export interface GoogleCloudIntegrationsV1alphaTemplateBundle {
   subIntegrationVersionTemplates?: Array<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTemplateBundle: Schema.Schema<GoogleCloudIntegrationsV1alphaTemplateBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersionTemplate: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate,
-      ),
-      subIntegrationVersionTemplates: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaTemplateBundle",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTemplateBundle>;
+export const GoogleCloudIntegrationsV1alphaTemplateBundle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersionTemplate: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate,
+    ),
+    subIntegrationVersionTemplates: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate),
+    ),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaTemplateBundle" });
 
 export interface GoogleCloudIntegrationsV1alphaTemplateComponent {
   /** Optional. Type of the component. */
@@ -7189,15 +6463,13 @@ export interface GoogleCloudIntegrationsV1alphaTemplateComponent {
   name?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaTemplateComponent: Schema.Schema<GoogleCloudIntegrationsV1alphaTemplateComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaTemplateComponent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTemplateComponent",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTemplateComponent>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaTemplate {
   /** Identifier. Resource name of the template. */
@@ -7258,33 +6530,29 @@ export interface GoogleCloudIntegrationsV1alphaTemplate {
   sharedWith?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTemplate: Schema.Schema<GoogleCloudIntegrationsV1alphaTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      usageInfo: Schema.optional(Schema.String),
-      docLink: Schema.optional(Schema.String),
-      templateBundle: Schema.optional(
-        GoogleCloudIntegrationsV1alphaTemplateBundle,
-      ),
-      components: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTemplateComponent),
-      ),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      author: Schema.optional(Schema.String),
-      usageCount: Schema.optional(Schema.String),
-      lastUsedTime: Schema.optional(Schema.String),
-      visibility: Schema.optional(Schema.String),
-      sharedWith: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaTemplate",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaTemplate>;
+export const GoogleCloudIntegrationsV1alphaTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    usageInfo: Schema.optional(Schema.String),
+    docLink: Schema.optional(Schema.String),
+    templateBundle: Schema.optional(
+      GoogleCloudIntegrationsV1alphaTemplateBundle,
+    ),
+    components: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTemplateComponent),
+    ),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    categories: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    author: Schema.optional(Schema.String),
+    usageCount: Schema.optional(Schema.String),
+    lastUsedTime: Schema.optional(Schema.String),
+    visibility: Schema.optional(Schema.String),
+    sharedWith: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaTemplate" });
 
 export interface GoogleCloudIntegrationsV1alphaListTemplatesResponse {
   /** List of templates retrieved. */
@@ -7293,17 +6561,15 @@ export interface GoogleCloudIntegrationsV1alphaListTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListTemplatesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templates: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTemplate),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaListTemplatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templates: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTemplate),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaListTemplatesResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaListTemplatesResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
   /** List of templates retrieved. */
@@ -7312,17 +6578,15 @@ export interface GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templates: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaTemplate),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templates: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaTemplate),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaSearchTemplatesResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails {
   /** Required. Name of the sub integration which would be created via templates. */
@@ -7331,16 +6595,14 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDeta
   integrationDescription?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integration: Schema.optional(Schema.String),
-      integrationDescription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integration: Schema.optional(Schema.String),
+    integrationDescription: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUseTemplateRequest {
   /** Required. Integration details which would be created via templates. */
@@ -7354,23 +6616,21 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateRequest {
   integrationRegion?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaUseTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationDetails: Schema.optional(
+export const GoogleCloudIntegrationsV1alphaUseTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationDetails: Schema.optional(
+      GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails,
+    ),
+    subIntegrations: Schema.optional(
+      Schema.Record(
+        Schema.String,
         GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails,
       ),
-      subIntegrations: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails,
-        ),
-      ),
-      integrationRegion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    integrationRegion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUseTemplateRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUseTemplateResponse {
   /** IntegrationVersion which is created. */
@@ -7379,19 +6639,17 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateResponse {
   subIntegrationVersions?: Array<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
 }
 
-export const GoogleCloudIntegrationsV1alphaUseTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersion: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersion,
-      ),
-      subIntegrationVersions: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersion),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUseTemplateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersion: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersion,
+    ),
+    subIntegrationVersions: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersion),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUseTemplateResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaImportTemplateRequest {
   /** Required. Resource Name of the integration where template needs to be imported/inserted. */
@@ -7403,20 +6661,18 @@ export interface GoogleCloudIntegrationsV1alphaImportTemplateRequest {
   >;
 }
 
-export const GoogleCloudIntegrationsV1alphaImportTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaImportTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integration: Schema.optional(Schema.String),
-      subIntegrations: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails,
-        ),
+export const GoogleCloudIntegrationsV1alphaImportTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integration: Schema.optional(Schema.String),
+    subIntegrations: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaImportTemplateRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaImportTemplateRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaImportTemplateResponse {
   /** IntegrationVersion after the import. */
@@ -7425,47 +6681,41 @@ export interface GoogleCloudIntegrationsV1alphaImportTemplateResponse {
   subIntegrationVersions?: Array<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
 }
 
-export const GoogleCloudIntegrationsV1alphaImportTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaImportTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationVersion: Schema.optional(
-        GoogleCloudIntegrationsV1alphaIntegrationVersion,
-      ),
-      subIntegrationVersions: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersion),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaImportTemplateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationVersion: Schema.optional(
+      GoogleCloudIntegrationsV1alphaIntegrationVersion,
+    ),
+    subIntegrationVersions: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersion),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaImportTemplateResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaImportTemplateResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaShareTemplateRequest {
   /** Optional. Project name resources to share the template. The project names is expected in resource format Ex: projects/{project-number} or organization/{org-id} */
   resourceNames?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaShareTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaShareTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaShareTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaShareTemplateRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaShareTemplateRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUnshareTemplateRequest {
   /** Optional. Project name resources to unshare the template. The project names is expected in resource format Ex: projects/{project-number} */
   resourceNames?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUnshareTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUnshareTemplateRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUnshareTemplateRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUploadTemplateRequest {
   /** Required. The textproto of the template. */
@@ -7474,43 +6724,37 @@ export interface GoogleCloudIntegrationsV1alphaUploadTemplateRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      fileFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUploadTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    fileFormat: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUploadTemplateRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaUploadTemplateResponse {
   /** The uploaded Template */
   template?: GoogleCloudIntegrationsV1alphaTemplate;
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      template: Schema.optional(GoogleCloudIntegrationsV1alphaTemplate),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaUploadTemplateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    template: Schema.optional(GoogleCloudIntegrationsV1alphaTemplate),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaUploadTemplateResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaDownloadTemplateResponse {
   /** String representation of the template. */
   content?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaDownloadTemplateResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaApiTriggerResource {
   /** Required. Integration where the API is published */
@@ -7519,15 +6763,13 @@ export interface GoogleCloudIntegrationsV1alphaApiTriggerResource {
   triggerId?: Array<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaApiTriggerResource: Schema.Schema<GoogleCloudIntegrationsV1alphaApiTriggerResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationResource: Schema.optional(Schema.String),
-      triggerId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaApiTriggerResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationResource: Schema.optional(Schema.String),
+    triggerId: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaApiTriggerResource",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaApiTriggerResource>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest {
   /** Required. List of api triggers */
@@ -7536,45 +6778,39 @@ export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiTriggerResources: Schema.optional(
-        Schema.Array(GoogleCloudIntegrationsV1alphaApiTriggerResource),
-      ),
-      fileFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiTriggerResources: Schema.optional(
+      Schema.Array(GoogleCloudIntegrationsV1alphaApiTriggerResource),
+    ),
+    fileFormat: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse {
   /** Open API spec as per the required format */
   openApiSpec?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openApiSpec: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    openApiSpec: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse>;
+  });
 
 export interface GoogleCloudIntegrationsV1alphaGenerateTokenResponse {
   /** The message that notifies the user if the request succeeded or not. */
   message?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaGenerateTokenResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIntegrationsV1alphaGenerateTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaGenerateTokenResponse",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateTokenResponse>;
+  });
 
 export interface EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam {
   /** UUID of the AuthConfig. */
@@ -7601,18 +6837,16 @@ export interface EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam {
   scope?: string;
 }
 
-export const EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam: Schema.Schema<EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authConfigId: Schema.optional(Schema.String),
-      allowedCredentialTypes: Schema.optional(Schema.Array(Schema.String)),
-      allowedServiceAccountInContext: Schema.optional(Schema.Boolean),
-      useServiceAccountInContext: Schema.optional(Schema.Boolean),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authConfigId: Schema.optional(Schema.String),
+    allowedCredentialTypes: Schema.optional(Schema.Array(Schema.String)),
+    allowedServiceAccountInContext: Schema.optional(Schema.Boolean),
+    useServiceAccountInContext: Schema.optional(Schema.Boolean),
+    scope: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam>;
+  });
 
 export interface EnterpriseCrmEventbusProtoBaseFunction {
   functionName?:
@@ -7628,14 +6862,10 @@ export interface EnterpriseCrmEventbusProtoBaseFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBaseFunction: Schema.Schema<EnterpriseCrmEventbusProtoBaseFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoBaseFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBaseFunction>;
+export const EnterpriseCrmEventbusProtoBaseFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoBaseFunction" });
 
 export interface EnterpriseCrmEventbusProtoStringFunction {
   functionName?:
@@ -7660,14 +6890,10 @@ export interface EnterpriseCrmEventbusProtoStringFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoStringFunction: Schema.Schema<EnterpriseCrmEventbusProtoStringFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoStringFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoStringFunction>;
+export const EnterpriseCrmEventbusProtoStringFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringFunction" });
 
 export interface EnterpriseCrmEventbusProtoIntFunction {
   functionName?:
@@ -7690,14 +6916,10 @@ export interface EnterpriseCrmEventbusProtoIntFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoIntFunction: Schema.Schema<EnterpriseCrmEventbusProtoIntFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoIntFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoIntFunction>;
+export const EnterpriseCrmEventbusProtoIntFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntFunction" });
 
 export interface EnterpriseCrmEventbusProtoDoubleFunction {
   functionName?:
@@ -7721,14 +6943,10 @@ export interface EnterpriseCrmEventbusProtoDoubleFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoDoubleFunction: Schema.Schema<EnterpriseCrmEventbusProtoDoubleFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoDoubleFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoDoubleFunction>;
+export const EnterpriseCrmEventbusProtoDoubleFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleFunction" });
 
 export interface EnterpriseCrmEventbusProtoBooleanFunction {
   functionName?:
@@ -7746,14 +6964,10 @@ export interface EnterpriseCrmEventbusProtoBooleanFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBooleanFunction: Schema.Schema<EnterpriseCrmEventbusProtoBooleanFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoBooleanFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBooleanFunction>;
+export const EnterpriseCrmEventbusProtoBooleanFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoBooleanFunction" });
 
 export interface EnterpriseCrmEventbusProtoProtoFunction {
   functionName?:
@@ -7775,14 +6989,10 @@ export interface EnterpriseCrmEventbusProtoProtoFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoProtoFunction: Schema.Schema<EnterpriseCrmEventbusProtoProtoFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoProtoFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoProtoFunction>;
+export const EnterpriseCrmEventbusProtoProtoFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoProtoFunction" });
 
 export interface EnterpriseCrmEventbusProtoStringArrayFunction {
   functionName?:
@@ -7802,14 +7012,10 @@ export interface EnterpriseCrmEventbusProtoStringArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoStringArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoStringArrayFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoStringArrayFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoStringArrayFunction>;
+export const EnterpriseCrmEventbusProtoStringArrayFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringArrayFunction" });
 
 export interface EnterpriseCrmEventbusProtoIntArrayFunction {
   functionName?:
@@ -7833,14 +7039,10 @@ export interface EnterpriseCrmEventbusProtoIntArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoIntArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoIntArrayFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoIntArrayFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoIntArrayFunction>;
+export const EnterpriseCrmEventbusProtoIntArrayFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntArrayFunction" });
 
 export interface EnterpriseCrmEventbusProtoDoubleArrayFunction {
   functionName?:
@@ -7864,14 +7066,10 @@ export interface EnterpriseCrmEventbusProtoDoubleArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoDoubleArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoDoubleArrayFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoDoubleArrayFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoDoubleArrayFunction>;
+export const EnterpriseCrmEventbusProtoDoubleArrayFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleArrayFunction" });
 
 export interface EnterpriseCrmEventbusProtoBooleanArrayFunction {
   functionName?:
@@ -7891,14 +7089,10 @@ export interface EnterpriseCrmEventbusProtoBooleanArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBooleanArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoBooleanArrayFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoBooleanArrayFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBooleanArrayFunction>;
+export const EnterpriseCrmEventbusProtoBooleanArrayFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoBooleanArrayFunction" });
 
 export interface EnterpriseCrmEventbusProtoProtoArrayFunction {
   functionName?:
@@ -7918,14 +7112,10 @@ export interface EnterpriseCrmEventbusProtoProtoArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoProtoArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoProtoArrayFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoProtoArrayFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoProtoArrayFunction>;
+export const EnterpriseCrmEventbusProtoProtoArrayFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoProtoArrayFunction" });
 
 export interface EnterpriseCrmEventbusProtoJsonFunction {
   functionName?:
@@ -7956,14 +7146,10 @@ export interface EnterpriseCrmEventbusProtoJsonFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoJsonFunction: Schema.Schema<EnterpriseCrmEventbusProtoJsonFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoJsonFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoJsonFunction>;
+export const EnterpriseCrmEventbusProtoJsonFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoJsonFunction" });
 
 export interface EnterpriseCrmEventbusProtoFunctionType {
   /** LINT.IfChange */
@@ -7981,37 +7167,31 @@ export interface EnterpriseCrmEventbusProtoFunctionType {
   jsonFunction?: EnterpriseCrmEventbusProtoJsonFunction;
 }
 
-export const EnterpriseCrmEventbusProtoFunctionType: Schema.Schema<EnterpriseCrmEventbusProtoFunctionType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseFunction: Schema.optional(EnterpriseCrmEventbusProtoBaseFunction),
-      stringFunction: Schema.optional(EnterpriseCrmEventbusProtoStringFunction),
-      intFunction: Schema.optional(EnterpriseCrmEventbusProtoIntFunction),
-      doubleFunction: Schema.optional(EnterpriseCrmEventbusProtoDoubleFunction),
-      booleanFunction: Schema.optional(
-        EnterpriseCrmEventbusProtoBooleanFunction,
-      ),
-      protoFunction: Schema.optional(EnterpriseCrmEventbusProtoProtoFunction),
-      stringArrayFunction: Schema.optional(
-        EnterpriseCrmEventbusProtoStringArrayFunction,
-      ),
-      intArrayFunction: Schema.optional(
-        EnterpriseCrmEventbusProtoIntArrayFunction,
-      ),
-      doubleArrayFunction: Schema.optional(
-        EnterpriseCrmEventbusProtoDoubleArrayFunction,
-      ),
-      booleanArrayFunction: Schema.optional(
-        EnterpriseCrmEventbusProtoBooleanArrayFunction,
-      ),
-      protoArrayFunction: Schema.optional(
-        EnterpriseCrmEventbusProtoProtoArrayFunction,
-      ),
-      jsonFunction: Schema.optional(EnterpriseCrmEventbusProtoJsonFunction),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoFunctionType",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoFunctionType>;
+export const EnterpriseCrmEventbusProtoFunctionType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseFunction: Schema.optional(EnterpriseCrmEventbusProtoBaseFunction),
+    stringFunction: Schema.optional(EnterpriseCrmEventbusProtoStringFunction),
+    intFunction: Schema.optional(EnterpriseCrmEventbusProtoIntFunction),
+    doubleFunction: Schema.optional(EnterpriseCrmEventbusProtoDoubleFunction),
+    booleanFunction: Schema.optional(EnterpriseCrmEventbusProtoBooleanFunction),
+    protoFunction: Schema.optional(EnterpriseCrmEventbusProtoProtoFunction),
+    stringArrayFunction: Schema.optional(
+      EnterpriseCrmEventbusProtoStringArrayFunction,
+    ),
+    intArrayFunction: Schema.optional(
+      EnterpriseCrmEventbusProtoIntArrayFunction,
+    ),
+    doubleArrayFunction: Schema.optional(
+      EnterpriseCrmEventbusProtoDoubleArrayFunction,
+    ),
+    booleanArrayFunction: Schema.optional(
+      EnterpriseCrmEventbusProtoBooleanArrayFunction,
+    ),
+    protoArrayFunction: Schema.optional(
+      EnterpriseCrmEventbusProtoProtoArrayFunction,
+    ),
+    jsonFunction: Schema.optional(EnterpriseCrmEventbusProtoJsonFunction),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoFunctionType" });
 
 export interface EnterpriseCrmEventbusProtoFunction {
   /** The name of the function to perform. */
@@ -8107,23 +7287,17 @@ export interface EnterpriseCrmEventbusProtoField {
   cardinality?: "UNSPECIFIED" | "OPTIONAL" | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoField: Schema.Schema<EnterpriseCrmEventbusProtoField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referenceKey: Schema.optional(Schema.String),
-      transformExpression: Schema.optional(
-        EnterpriseCrmEventbusProtoTransformExpression,
-      ),
-      defaultValue: Schema.optional(
-        EnterpriseCrmEventbusProtoParameterValueType,
-      ),
-      fieldType: Schema.optional(Schema.String),
-      protoDefPath: Schema.optional(Schema.String),
-      cardinality: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoField",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoField>;
+export const EnterpriseCrmEventbusProtoField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referenceKey: Schema.optional(Schema.String),
+    transformExpression: Schema.optional(
+      EnterpriseCrmEventbusProtoTransformExpression,
+    ),
+    defaultValue: Schema.optional(EnterpriseCrmEventbusProtoParameterValueType),
+    fieldType: Schema.optional(Schema.String),
+    protoDefPath: Schema.optional(Schema.String),
+    cardinality: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoField" });
 
 export interface EnterpriseCrmEventbusProtoMappedField {
   /** The input field being mapped from. */
@@ -8132,30 +7306,22 @@ export interface EnterpriseCrmEventbusProtoMappedField {
   outputField?: EnterpriseCrmEventbusProtoField;
 }
 
-export const EnterpriseCrmEventbusProtoMappedField: Schema.Schema<EnterpriseCrmEventbusProtoMappedField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputField: Schema.optional(EnterpriseCrmEventbusProtoField),
-      outputField: Schema.optional(EnterpriseCrmEventbusProtoField),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoMappedField",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoMappedField>;
+export const EnterpriseCrmEventbusProtoMappedField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputField: Schema.optional(EnterpriseCrmEventbusProtoField),
+    outputField: Schema.optional(EnterpriseCrmEventbusProtoField),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoMappedField" });
 
 export interface EnterpriseCrmEventbusProtoFieldMappingConfig {
   mappedFields?: Array<EnterpriseCrmEventbusProtoMappedField>;
 }
 
-export const EnterpriseCrmEventbusProtoFieldMappingConfig: Schema.Schema<EnterpriseCrmEventbusProtoFieldMappingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mappedFields: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoMappedField),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoFieldMappingConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoFieldMappingConfig>;
+export const EnterpriseCrmEventbusProtoFieldMappingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mappedFields: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoMappedField),
+    ),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoFieldMappingConfig" });
 
 export interface EnterpriseCrmEventbusProtoLoopMetadata {
   /** Starting from 1, not 0. */
@@ -8177,17 +7343,13 @@ export interface EnterpriseCrmEventbusProtoLoopMetadata {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoLoopMetadata: Schema.Schema<EnterpriseCrmEventbusProtoLoopMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentIterationCount: Schema.optional(Schema.String),
-      currentIterationDetail: Schema.optional(Schema.String),
-      errorMsg: Schema.optional(Schema.String),
-      failureLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoLoopMetadata",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoLoopMetadata>;
+export const EnterpriseCrmEventbusProtoLoopMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentIterationCount: Schema.optional(Schema.String),
+    currentIterationDetail: Schema.optional(Schema.String),
+    errorMsg: Schema.optional(Schema.String),
+    failureLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoLoopMetadata" });
 
 export interface EnterpriseCrmEventbusProtoParameterMapField {
   /** Referencing one of the WF variables. */
@@ -8196,32 +7358,22 @@ export interface EnterpriseCrmEventbusProtoParameterMapField {
   literalValue?: EnterpriseCrmEventbusProtoParameterValueType;
 }
 
-export const EnterpriseCrmEventbusProtoParameterMapField: Schema.Schema<EnterpriseCrmEventbusProtoParameterMapField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referenceKey: Schema.optional(Schema.String),
-      literalValue: Schema.optional(
-        EnterpriseCrmEventbusProtoParameterValueType,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParameterMapField",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParameterMapField>;
+export const EnterpriseCrmEventbusProtoParameterMapField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referenceKey: Schema.optional(Schema.String),
+    literalValue: Schema.optional(EnterpriseCrmEventbusProtoParameterValueType),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoParameterMapField" });
 
 export interface EnterpriseCrmEventbusProtoParameterMapEntry {
   key?: EnterpriseCrmEventbusProtoParameterMapField;
   value?: EnterpriseCrmEventbusProtoParameterMapField;
 }
 
-export const EnterpriseCrmEventbusProtoParameterMapEntry: Schema.Schema<EnterpriseCrmEventbusProtoParameterMapEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(EnterpriseCrmEventbusProtoParameterMapField),
-      value: Schema.optional(EnterpriseCrmEventbusProtoParameterMapField),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParameterMapEntry",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParameterMapEntry>;
+export const EnterpriseCrmEventbusProtoParameterMapEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(EnterpriseCrmEventbusProtoParameterMapField),
+    value: Schema.optional(EnterpriseCrmEventbusProtoParameterMapField),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoParameterMapEntry" });
 
 export interface EnterpriseCrmEventbusProtoParameterMap {
   entries?: Array<EnterpriseCrmEventbusProtoParameterMapEntry>;
@@ -8268,18 +7420,14 @@ export interface EnterpriseCrmEventbusProtoParameterMap {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoParameterMap: Schema.Schema<EnterpriseCrmEventbusProtoParameterMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoParameterMapEntry),
-      ),
-      keyType: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParameterMap",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoParameterMap>;
+export const EnterpriseCrmEventbusProtoParameterMap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoParameterMapEntry),
+    ),
+    keyType: Schema.optional(Schema.String),
+    valueType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoParameterMap" });
 
 export interface EnterpriseCrmEventbusProtoScatterResponse {
   /** The element that was scattered for this execution. */
@@ -8294,22 +7442,18 @@ export interface EnterpriseCrmEventbusProtoScatterResponse {
   errorMsg?: string;
 }
 
-export const EnterpriseCrmEventbusProtoScatterResponse: Schema.Schema<EnterpriseCrmEventbusProtoScatterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scatterElement: Schema.optional(
-        EnterpriseCrmEventbusProtoParameterValueType,
-      ),
-      executionIds: Schema.optional(Schema.Array(Schema.String)),
-      isSuccessful: Schema.optional(Schema.Boolean),
-      responseParams: Schema.optional(
-        Schema.Array(EnterpriseCrmEventbusProtoParameterEntry),
-      ),
-      errorMsg: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoScatterResponse",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoScatterResponse>;
+export const EnterpriseCrmEventbusProtoScatterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scatterElement: Schema.optional(
+      EnterpriseCrmEventbusProtoParameterValueType,
+    ),
+    executionIds: Schema.optional(Schema.Array(Schema.String)),
+    isSuccessful: Schema.optional(Schema.Boolean),
+    responseParams: Schema.optional(
+      Schema.Array(EnterpriseCrmEventbusProtoParameterEntry),
+    ),
+    errorMsg: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoScatterResponse" });
 
 export interface EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit {
   timestamp?: string;
@@ -8317,16 +7461,14 @@ export interface EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit {
   resolvedByCpi?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestamp: Schema.optional(Schema.String),
-      resolvedBy: Schema.optional(Schema.String),
-      resolvedByCpi: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timestamp: Schema.optional(Schema.String),
+    resolvedBy: Schema.optional(Schema.String),
+    resolvedByCpi: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit>;
+  });
 
 export interface EnterpriseCrmEventbusProtoExternalTraffic {
   source?: "SOURCE_UNSPECIFIED" | "APIGEE" | "SECURITY" | (string & {});
@@ -8342,19 +7484,15 @@ export interface EnterpriseCrmEventbusProtoExternalTraffic {
   enableInternalIp?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoExternalTraffic: Schema.Schema<EnterpriseCrmEventbusProtoExternalTraffic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      gcpProjectId: Schema.optional(Schema.String),
-      gcpProjectNumber: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      retryRequestForQuota: Schema.optional(Schema.Boolean),
-      enableInternalIp: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoExternalTraffic",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoExternalTraffic>;
+export const EnterpriseCrmEventbusProtoExternalTraffic =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    gcpProjectId: Schema.optional(Schema.String),
+    gcpProjectNumber: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    retryRequestForQuota: Schema.optional(Schema.Boolean),
+    enableInternalIp: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoExternalTraffic" });
 
 export interface EnterpriseCrmEventbusProtoCloudKmsConfig {
   /** Location name of the key ring, e.g. "us-west1". */
@@ -8371,19 +7509,15 @@ export interface EnterpriseCrmEventbusProtoCloudKmsConfig {
   serviceAccount?: string;
 }
 
-export const EnterpriseCrmEventbusProtoCloudKmsConfig: Schema.Schema<EnterpriseCrmEventbusProtoCloudKmsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationName: Schema.optional(Schema.String),
-      keyRingName: Schema.optional(Schema.String),
-      keyName: Schema.optional(Schema.String),
-      keyVersionName: Schema.optional(Schema.String),
-      gcpProjectId: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoCloudKmsConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoCloudKmsConfig>;
+export const EnterpriseCrmEventbusProtoCloudKmsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationName: Schema.optional(Schema.String),
+    keyRingName: Schema.optional(Schema.String),
+    keyName: Schema.optional(Schema.String),
+    keyVersionName: Schema.optional(Schema.String),
+    gcpProjectId: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoCloudKmsConfig" });
 
 export interface EnterpriseCrmEventbusProtoSuspensionResolutionInfo {
   /** Primary key for the SuspensionResolutionInfoTable. */
@@ -8425,34 +7559,30 @@ export interface EnterpriseCrmEventbusProtoSuspensionResolutionInfo {
   clientId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionResolutionInfo: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionResolutionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suspensionId: Schema.optional(Schema.String),
-      eventExecutionInfoId: Schema.optional(Schema.String),
-      taskNumber: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      audit: Schema.optional(
-        EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit,
-      ),
-      createdTimestamp: Schema.optional(Schema.String),
-      lastModifiedTimestamp: Schema.optional(Schema.String),
-      suspensionConfig: Schema.optional(
-        EnterpriseCrmEventbusProtoSuspensionConfig,
-      ),
-      workflowName: Schema.optional(Schema.String),
-      externalTraffic: Schema.optional(
-        EnterpriseCrmEventbusProtoExternalTraffic,
-      ),
-      product: Schema.optional(Schema.String),
-      cloudKmsConfig: Schema.optional(EnterpriseCrmEventbusProtoCloudKmsConfig),
-      encryptedSuspensionResolutionInfo: Schema.optional(Schema.String),
-      wrappedDek: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoSuspensionResolutionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suspensionId: Schema.optional(Schema.String),
+    eventExecutionInfoId: Schema.optional(Schema.String),
+    taskNumber: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    audit: Schema.optional(
+      EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit,
+    ),
+    createdTimestamp: Schema.optional(Schema.String),
+    lastModifiedTimestamp: Schema.optional(Schema.String),
+    suspensionConfig: Schema.optional(
+      EnterpriseCrmEventbusProtoSuspensionConfig,
+    ),
+    workflowName: Schema.optional(Schema.String),
+    externalTraffic: Schema.optional(EnterpriseCrmEventbusProtoExternalTraffic),
+    product: Schema.optional(Schema.String),
+    cloudKmsConfig: Schema.optional(EnterpriseCrmEventbusProtoCloudKmsConfig),
+    encryptedSuspensionResolutionInfo: Schema.optional(Schema.String),
+    wrappedDek: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmEventbusProtoSuspensionResolutionInfo",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoSuspensionResolutionInfo>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParameterMapField {
   /** Referencing one of the WF variables. */
@@ -8461,36 +7591,30 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterMapField {
   literalValue?: EnterpriseCrmFrontendsEventbusProtoParameterValueType;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterMapField: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMapField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referenceKey: Schema.optional(Schema.String),
-      literalValue: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoParameterValueType,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoParameterMapField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referenceKey: Schema.optional(Schema.String),
+    literalValue: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoParameterValueType,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoParameterMapField",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMapField>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParameterMapEntry {
   key?: EnterpriseCrmFrontendsEventbusProtoParameterMapField;
   value?: EnterpriseCrmFrontendsEventbusProtoParameterMapField;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterMapEntry: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMapEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoParameterMapField,
-      ),
-      value: Schema.optional(
-        EnterpriseCrmFrontendsEventbusProtoParameterMapField,
-      ),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoParameterMapEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(EnterpriseCrmFrontendsEventbusProtoParameterMapField),
+    value: Schema.optional(
+      EnterpriseCrmFrontendsEventbusProtoParameterMapField,
+    ),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoParameterMapEntry",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMapEntry>;
+  });
 
 export interface EnterpriseCrmFrontendsEventbusProtoParameterMap {
   entries?: Array<EnterpriseCrmFrontendsEventbusProtoParameterMapEntry>;
@@ -8537,18 +7661,16 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterMap {
     | (string & {});
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterMap: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterMapEntry),
-      ),
-      keyType: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmFrontendsEventbusProtoParameterMap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterMapEntry),
+    ),
+    keyType: Schema.optional(Schema.String),
+    valueType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoParameterMap",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMap>;
+  });
 
 export interface EnterpriseCrmEventbusProtoConnectorsConnection {
   /** Connection name Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -8561,17 +7683,13 @@ export interface EnterpriseCrmEventbusProtoConnectorsConnection {
   host?: string;
 }
 
-export const EnterpriseCrmEventbusProtoConnectorsConnection: Schema.Schema<EnterpriseCrmEventbusProtoConnectorsConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionName: Schema.optional(Schema.String),
-      serviceName: Schema.optional(Schema.String),
-      connectorVersion: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoConnectorsConnection",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoConnectorsConnection>;
+export const EnterpriseCrmEventbusProtoConnectorsConnection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionName: Schema.optional(Schema.String),
+    serviceName: Schema.optional(Schema.String),
+    connectorVersion: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseCrmEventbusProtoConnectorsConnection" });
 
 export interface EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig {
   /** User-selected connection. */
@@ -8589,18 +7707,14 @@ export interface EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig 
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig: Schema.Schema<EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connection: Schema.optional(
-        EnterpriseCrmEventbusProtoConnectorsConnection,
-      ),
-      operation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection: Schema.optional(EnterpriseCrmEventbusProtoConnectorsConnection),
+    operation: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig>;
+  });
 
 // ==========================================================================
 // Operations

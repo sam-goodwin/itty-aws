@@ -44,3 +44,7 @@ export * from "./listAPITokens";
 export * from "./createAPIToken";
 export * from "./revokeAPIToken";
 export * from "./listOrganizationAuditLogs";
+export * from "./listOrganizationInvitesV2";
+export * from "./inviteOrganizationMemberV2";
+export * from "./deleteOrganizationInviteByEmailV2";
+export * from "./getCurrentUser";

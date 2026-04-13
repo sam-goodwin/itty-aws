@@ -5,6 +5,7 @@ import * as T from "../traits";
 // Input Schema
 export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenName: Schema.String.pipe(T.PathParam()),
+  organization: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "POST", path: "/v1/auth/api-tokens/{tokenName}" }));
 export type CreateAPITokenInput = typeof CreateAPITokenInput.Type;
 
@@ -20,7 +21,7 @@ export type CreateAPITokenOutput = typeof CreateAPITokenOutput.Type;
 /**
  * Create API Token
  *
- * Returns a new API token belonging to a user.
+ * Returns a new API token belonging to a user. You can optionally restrict the token to a single organization by passing the organization slug in the request body. Organization-scoped tokens can only manage resources within that organization.
  *
  * @param tokenName - The name of the api token.
  */

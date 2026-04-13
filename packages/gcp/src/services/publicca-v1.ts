@@ -31,16 +31,11 @@ export interface ExternalAccountKey {
   b64MacKey?: string;
 }
 
-export const ExternalAccountKey: Schema.Schema<ExternalAccountKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      keyId: Schema.optional(Schema.String),
-      b64MacKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExternalAccountKey",
-  }) as any as Schema.Schema<ExternalAccountKey>;
+export const ExternalAccountKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  keyId: Schema.optional(Schema.String),
+  b64MacKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExternalAccountKey" });
 
 // ==========================================================================
 // Operations

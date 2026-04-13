@@ -31,33 +31,26 @@ export interface File {
   fingerprint?: string;
 }
 
-export const File: Schema.Schema<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "File" }) as any as Schema.Schema<File>;
+export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "File" });
 
 export interface Source {
   /** Required. `File` set constituting the `Source` bundle. */
   files?: Array<File>;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      files: Schema.optional(Schema.Array(File)),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  files: Schema.optional(Schema.Array(File)),
+}).annotate({ identifier: "Source" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Arg {
   /** Argument exactly matches value provided. */
@@ -66,13 +59,10 @@ export interface Arg {
   anyValue?: Empty;
 }
 
-export const Arg: Schema.Schema<Arg> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exactValue: Schema.optional(Schema.Unknown),
-      anyValue: Schema.optional(Empty),
-    }),
-  ).annotate({ identifier: "Arg" }) as any as Schema.Schema<Arg>;
+export const Arg = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exactValue: Schema.optional(Schema.Unknown),
+  anyValue: Schema.optional(Empty),
+}).annotate({ identifier: "Arg" });
 
 export interface Result {
   /** The result is an actual value. The type of the value must match that of the type declared by the service. */
@@ -81,13 +71,10 @@ export interface Result {
   undefined?: Empty;
 }
 
-export const Result: Schema.Schema<Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Unknown),
-      undefined: Schema.optional(Empty),
-    }),
-  ).annotate({ identifier: "Result" }) as any as Schema.Schema<Result>;
+export const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Unknown),
+  undefined: Schema.optional(Empty),
+}).annotate({ identifier: "Result" });
 
 export interface FunctionMock {
   /** The name of the function. The function name must match one provided by a service declaration. */
@@ -98,16 +85,11 @@ export interface FunctionMock {
   result?: Result;
 }
 
-export const FunctionMock: Schema.Schema<FunctionMock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      function: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Arg)),
-      result: Schema.optional(Result),
-    }),
-  ).annotate({
-    identifier: "FunctionMock",
-  }) as any as Schema.Schema<FunctionMock>;
+export const FunctionMock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  function: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Arg)),
+  result: Schema.optional(Result),
+}).annotate({ identifier: "FunctionMock" });
 
 export interface TestCase {
   /** Test expectation. */
@@ -133,29 +115,23 @@ export interface TestCase {
     | (string & {});
 }
 
-export const TestCase: Schema.Schema<TestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expectation: Schema.optional(Schema.String),
-      request: Schema.optional(Schema.Unknown),
-      resource: Schema.optional(Schema.Unknown),
-      functionMocks: Schema.optional(Schema.Array(FunctionMock)),
-      pathEncoding: Schema.optional(Schema.String),
-      expressionReportLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TestCase" }) as any as Schema.Schema<TestCase>;
+export const TestCase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expectation: Schema.optional(Schema.String),
+  request: Schema.optional(Schema.Unknown),
+  resource: Schema.optional(Schema.Unknown),
+  functionMocks: Schema.optional(Schema.Array(FunctionMock)),
+  pathEncoding: Schema.optional(Schema.String),
+  expressionReportLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "TestCase" });
 
 export interface TestSuite {
   /** Collection of test cases associated with the `TestSuite`. */
   testCases?: Array<TestCase>;
 }
 
-export const TestSuite: Schema.Schema<TestSuite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(Schema.Array(TestCase)),
-    }),
-  ).annotate({ identifier: "TestSuite" }) as any as Schema.Schema<TestSuite>;
+export const TestSuite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  testCases: Schema.optional(Schema.Array(TestCase)),
+}).annotate({ identifier: "TestSuite" });
 
 export interface TestRulesetRequest {
   /** Optional. Optional `Source` to be checked for correctness. This field must not be set when the resource name refers to a `Ruleset`. */
@@ -164,15 +140,10 @@ export interface TestRulesetRequest {
   testSuite?: TestSuite;
 }
 
-export const TestRulesetRequest: Schema.Schema<TestRulesetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      testSuite: Schema.optional(TestSuite),
-    }),
-  ).annotate({
-    identifier: "TestRulesetRequest",
-  }) as any as Schema.Schema<TestRulesetRequest>;
+export const TestRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  testSuite: Schema.optional(TestSuite),
+}).annotate({ identifier: "TestRulesetRequest" });
 
 export interface SourcePosition {
   /** Name of the `File`. */
@@ -187,18 +158,13 @@ export interface SourcePosition {
   endOffset?: number;
 }
 
-export const SourcePosition: Schema.Schema<SourcePosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileName: Schema.optional(Schema.String),
-      line: Schema.optional(Schema.Number),
-      column: Schema.optional(Schema.Number),
-      currentOffset: Schema.optional(Schema.Number),
-      endOffset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SourcePosition",
-  }) as any as Schema.Schema<SourcePosition>;
+export const SourcePosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileName: Schema.optional(Schema.String),
+  line: Schema.optional(Schema.Number),
+  column: Schema.optional(Schema.Number),
+  currentOffset: Schema.optional(Schema.Number),
+  endOffset: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SourcePosition" });
 
 export interface Issue {
   /** Position of the issue in the `Source`. */
@@ -214,14 +180,11 @@ export interface Issue {
     | (string & {});
 }
 
-export const Issue: Schema.Schema<Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourcePosition: Schema.optional(SourcePosition),
-      description: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Issue" }) as any as Schema.Schema<Issue>;
+export const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourcePosition: Schema.optional(SourcePosition),
+  description: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "Issue" });
 
 export interface FunctionCall {
   /** Name of the function invoked. */
@@ -230,15 +193,10 @@ export interface FunctionCall {
   args?: Array<unknown>;
 }
 
-export const FunctionCall: Schema.Schema<FunctionCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      function: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "FunctionCall",
-  }) as any as Schema.Schema<FunctionCall>;
+export const FunctionCall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  function: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.Unknown)),
+}).annotate({ identifier: "FunctionCall" });
 
 export interface VisitedExpression {
   /** Position in the `Source` or `Ruleset` where an expression was visited. */
@@ -247,15 +205,10 @@ export interface VisitedExpression {
   value?: unknown;
 }
 
-export const VisitedExpression: Schema.Schema<VisitedExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourcePosition: Schema.optional(SourcePosition),
-      value: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "VisitedExpression",
-  }) as any as Schema.Schema<VisitedExpression>;
+export const VisitedExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourcePosition: Schema.optional(SourcePosition),
+  value: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "VisitedExpression" });
 
 export interface ValueCount {
   /** The return value of the expression */
@@ -264,13 +217,10 @@ export interface ValueCount {
   count?: number;
 }
 
-export const ValueCount: Schema.Schema<ValueCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Unknown),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "ValueCount" }) as any as Schema.Schema<ValueCount>;
+export const ValueCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Unknown),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ValueCount" });
 
 export interface ExpressionReport {
   /** Position of expression in original rules source. */
@@ -307,17 +257,14 @@ export interface TestResult {
   expressionReports?: Array<ExpressionReport>;
 }
 
-export const TestResult: Schema.Schema<TestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      debugMessages: Schema.optional(Schema.Array(Schema.String)),
-      errorPosition: Schema.optional(SourcePosition),
-      functionCalls: Schema.optional(Schema.Array(FunctionCall)),
-      visitedExpressions: Schema.optional(Schema.Array(VisitedExpression)),
-      expressionReports: Schema.optional(Schema.Array(ExpressionReport)),
-    }),
-  ).annotate({ identifier: "TestResult" }) as any as Schema.Schema<TestResult>;
+export const TestResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  debugMessages: Schema.optional(Schema.Array(Schema.String)),
+  errorPosition: Schema.optional(SourcePosition),
+  functionCalls: Schema.optional(Schema.Array(FunctionCall)),
+  visitedExpressions: Schema.optional(Schema.Array(VisitedExpression)),
+  expressionReports: Schema.optional(Schema.Array(ExpressionReport)),
+}).annotate({ identifier: "TestResult" });
 
 export interface TestRulesetResponse {
   /** Syntactic and semantic `Source` issues of varying severity. Issues of `ERROR` severity will prevent tests from executing. */
@@ -326,27 +273,19 @@ export interface TestRulesetResponse {
   testResults?: Array<TestResult>;
 }
 
-export const TestRulesetResponse: Schema.Schema<TestRulesetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(Schema.Array(Issue)),
-      testResults: Schema.optional(Schema.Array(TestResult)),
-    }),
-  ).annotate({
-    identifier: "TestRulesetResponse",
-  }) as any as Schema.Schema<TestRulesetResponse>;
+export const TestRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issues: Schema.optional(Schema.Array(Issue)),
+  testResults: Schema.optional(Schema.Array(TestResult)),
+}).annotate({ identifier: "TestRulesetResponse" });
 
 export interface Metadata {
   /** Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these. */
   services?: Array<string>;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  services: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Metadata" });
 
 export interface Ruleset {
   /** Output only. Name of the `Ruleset`. The ruleset_id is auto generated by the service. Format: `projects/{project_id}/rulesets/{ruleset_id}` */
@@ -361,16 +300,13 @@ export interface Ruleset {
   attachmentPoint?: string;
 }
 
-export const Ruleset: Schema.Schema<Ruleset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      source: Schema.optional(Source),
-      createTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Metadata),
-      attachmentPoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Ruleset" }) as any as Schema.Schema<Ruleset>;
+export const Ruleset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  source: Schema.optional(Source),
+  createTime: Schema.optional(Schema.String),
+  metadata: Schema.optional(Metadata),
+  attachmentPoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Ruleset" });
 
 export interface ListRulesetsResponse {
   /** List of `Ruleset` instances. */
@@ -379,15 +315,10 @@ export interface ListRulesetsResponse {
   nextPageToken?: string;
 }
 
-export const ListRulesetsResponse: Schema.Schema<ListRulesetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rulesets: Schema.optional(Schema.Array(Ruleset)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRulesetsResponse",
-  }) as any as Schema.Schema<ListRulesetsResponse>;
+export const ListRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rulesets: Schema.optional(Schema.Array(Ruleset)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListRulesetsResponse" });
 
 export interface Release {
   /** Required. Format: `projects/{project_id}/releases/{release_id}` */
@@ -400,15 +331,12 @@ export interface Release {
   updateTime?: string;
 }
 
-export const Release: Schema.Schema<Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      rulesetName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Release" }) as any as Schema.Schema<Release>;
+export const Release = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  rulesetName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Release" });
 
 export interface UpdateReleaseRequest {
   /** Required. `Release` to update. */
@@ -417,15 +345,10 @@ export interface UpdateReleaseRequest {
   updateMask?: string;
 }
 
-export const UpdateReleaseRequest: Schema.Schema<UpdateReleaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      release: Schema.optional(Release),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateReleaseRequest",
-  }) as any as Schema.Schema<UpdateReleaseRequest>;
+export const UpdateReleaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  release: Schema.optional(Release),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateReleaseRequest" });
 
 export interface ListReleasesResponse {
   /** List of `Release` instances. */
@@ -434,15 +357,10 @@ export interface ListReleasesResponse {
   nextPageToken?: string;
 }
 
-export const ListReleasesResponse: Schema.Schema<ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releases: Schema.optional(Schema.Array(Release)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReleasesResponse",
-  }) as any as Schema.Schema<ListReleasesResponse>;
+export const ListReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  releases: Schema.optional(Schema.Array(Release)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListReleasesResponse" });
 
 export interface GetReleaseExecutableResponse {
   /** Executable view of the `Ruleset` referenced by the `Release`. */
@@ -467,19 +385,15 @@ export interface GetReleaseExecutableResponse {
   syncTime?: string;
 }
 
-export const GetReleaseExecutableResponse: Schema.Schema<GetReleaseExecutableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executable: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-      rulesetName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      executableVersion: Schema.optional(Schema.String),
-      syncTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetReleaseExecutableResponse",
-  }) as any as Schema.Schema<GetReleaseExecutableResponse>;
+export const GetReleaseExecutableResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executable: Schema.optional(Schema.String),
+    language: Schema.optional(Schema.String),
+    rulesetName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    executableVersion: Schema.optional(Schema.String),
+    syncTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetReleaseExecutableResponse" });
 
 // ==========================================================================
 // Operations

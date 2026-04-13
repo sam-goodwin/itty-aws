@@ -58,6 +58,7 @@ export const GetInvoiceitemsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
       ),
       quantity: Schema.Number,
+      quantity_decimal: Schema.String,
       tax_rates: Schema.NullOr(
         Schema.Array(
           Schema.Struct({

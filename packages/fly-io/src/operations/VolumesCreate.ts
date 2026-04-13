@@ -14,6 +14,7 @@ export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       gpus: Schema.optional(Schema.Number),
       host_dedication_id: Schema.optional(Schema.String),
       kernel_args: Schema.optional(Schema.Array(Schema.String)),
+      max_memory_mb: Schema.optional(Schema.Number),
       memory_mb: Schema.optional(Schema.Number),
       persist_rootfs: Schema.optional(
         Schema.Literals(["never", "always", "restart"]),
@@ -57,6 +58,7 @@ export const VolumesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   size_gb: Schema.optional(Schema.Number),
   snapshot_retention: Schema.optional(Schema.Number),
   state: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.Literals(["local", "cache"])),
   zone: Schema.optional(Schema.String),
 });
 export type VolumesCreateOutput = typeof VolumesCreateOutput.Type;

@@ -33,15 +33,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -52,14 +49,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -70,56 +64,40 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Pubsub_Schema {
   /** Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`. */
@@ -134,18 +112,13 @@ export interface Pubsub_Schema {
   revisionCreateTime?: string;
 }
 
-export const Pubsub_Schema: Schema.Schema<Pubsub_Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      definition: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Pubsub_Schema",
-  }) as any as Schema.Schema<Pubsub_Schema>;
+export const Pubsub_Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  definition: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+  revisionCreateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Pubsub_Schema" });
 
 export interface ListSchemasResponse {
   /** The resulting schemas. */
@@ -154,15 +127,10 @@ export interface ListSchemasResponse {
   nextPageToken?: string;
 }
 
-export const ListSchemasResponse: Schema.Schema<ListSchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemas: Schema.optional(Schema.Array(Pubsub_Schema)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSchemasResponse",
-  }) as any as Schema.Schema<ListSchemasResponse>;
+export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schemas: Schema.optional(Schema.Array(Pubsub_Schema)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSchemasResponse" });
 
 export interface ListSchemaRevisionsResponse {
   /** The revisions of the schema. */
@@ -171,71 +139,50 @@ export interface ListSchemaRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSchemaRevisionsResponse: Schema.Schema<ListSchemaRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemas: Schema.optional(Schema.Array(Pubsub_Schema)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSchemaRevisionsResponse",
-  }) as any as Schema.Schema<ListSchemaRevisionsResponse>;
+export const ListSchemaRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemas: Schema.optional(Schema.Array(Pubsub_Schema)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSchemaRevisionsResponse" });
 
 export interface CommitSchemaRequest {
   /** Required. The schema revision to commit. */
   schema?: Pubsub_Schema;
 }
 
-export const CommitSchemaRequest: Schema.Schema<CommitSchemaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schema: Schema.optional(Pubsub_Schema),
-    }),
-  ).annotate({
-    identifier: "CommitSchemaRequest",
-  }) as any as Schema.Schema<CommitSchemaRequest>;
+export const CommitSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schema: Schema.optional(Pubsub_Schema),
+}).annotate({ identifier: "CommitSchemaRequest" });
 
 export interface RollbackSchemaRequest {
   /** Required. The revision ID to roll back to. It must be a revision of the same schema. Example: c7cfa2a8 */
   revisionId?: string;
 }
 
-export const RollbackSchemaRequest: Schema.Schema<RollbackSchemaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackSchemaRequest",
-  }) as any as Schema.Schema<RollbackSchemaRequest>;
+export const RollbackSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  revisionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RollbackSchemaRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ValidateSchemaRequest {
   /** Required. The schema object to validate. */
   schema?: Pubsub_Schema;
 }
 
-export const ValidateSchemaRequest: Schema.Schema<ValidateSchemaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schema: Schema.optional(Pubsub_Schema),
-    }),
-  ).annotate({
-    identifier: "ValidateSchemaRequest",
-  }) as any as Schema.Schema<ValidateSchemaRequest>;
+export const ValidateSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schema: Schema.optional(Pubsub_Schema),
+}).annotate({ identifier: "ValidateSchemaRequest" });
 
 export interface ValidateSchemaResponse {}
 
-export const ValidateSchemaResponse: Schema.Schema<ValidateSchemaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ValidateSchemaResponse",
-  }) as any as Schema.Schema<ValidateSchemaResponse>;
+export const ValidateSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ValidateSchemaResponse" });
 
 export interface ValidateMessageRequest {
   /** Name of the schema against which to validate. Format is `projects/{project}/schemas/{schema}`. */
@@ -248,24 +195,21 @@ export interface ValidateMessageRequest {
   encoding?: "ENCODING_UNSPECIFIED" | "JSON" | "BINARY" | (string & {});
 }
 
-export const ValidateMessageRequest: Schema.Schema<ValidateMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      schema: Schema.optional(Pubsub_Schema),
-      message: Schema.optional(Schema.String),
-      encoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidateMessageRequest",
-  }) as any as Schema.Schema<ValidateMessageRequest>;
+export const ValidateMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    schema: Schema.optional(Pubsub_Schema),
+    message: Schema.optional(Schema.String),
+    encoding: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ValidateMessageRequest" });
 
 export interface ValidateMessageResponse {}
 
-export const ValidateMessageResponse: Schema.Schema<ValidateMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ValidateMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ValidateMessageResponse",
-  }) as any as Schema.Schema<ValidateMessageResponse>;
+  });
 
 export interface MessageStoragePolicy {
   /** Optional. A list of IDs of Google Cloud regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed Google Cloud regions (or running outside of Google Cloud altogether) are routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration. */
@@ -274,15 +218,10 @@ export interface MessageStoragePolicy {
   enforceInTransit?: boolean;
 }
 
-export const MessageStoragePolicy: Schema.Schema<MessageStoragePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedPersistenceRegions: Schema.optional(Schema.Array(Schema.String)),
-      enforceInTransit: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MessageStoragePolicy",
-  }) as any as Schema.Schema<MessageStoragePolicy>;
+export const MessageStoragePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedPersistenceRegions: Schema.optional(Schema.Array(Schema.String)),
+  enforceInTransit: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "MessageStoragePolicy" });
 
 export interface SchemaSettings {
   /** Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted. */
@@ -295,17 +234,12 @@ export interface SchemaSettings {
   lastRevisionId?: string;
 }
 
-export const SchemaSettings: Schema.Schema<SchemaSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schema: Schema.optional(Schema.String),
-      encoding: Schema.optional(Schema.String),
-      firstRevisionId: Schema.optional(Schema.String),
-      lastRevisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SchemaSettings",
-  }) as any as Schema.Schema<SchemaSettings>;
+export const SchemaSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schema: Schema.optional(Schema.String),
+  encoding: Schema.optional(Schema.String),
+  firstRevisionId: Schema.optional(Schema.String),
+  lastRevisionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchemaSettings" });
 
 export interface AwsKinesis {
   /** Output only. An output-only field that indicates the state of the Kinesis ingestion source. */
@@ -316,6 +250,7 @@ export interface AwsKinesis {
     | "PUBLISH_PERMISSION_DENIED"
     | "STREAM_NOT_FOUND"
     | "CONSUMER_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Required. The Kinesis stream ARN to ingest data from. */
   streamArn?: string;
@@ -327,42 +262,34 @@ export interface AwsKinesis {
   gcpServiceAccount?: string;
 }
 
-export const AwsKinesis: Schema.Schema<AwsKinesis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      streamArn: Schema.optional(Schema.String),
-      consumerArn: Schema.optional(Schema.String),
-      awsRoleArn: Schema.optional(Schema.String),
-      gcpServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AwsKinesis" }) as any as Schema.Schema<AwsKinesis>;
+export const AwsKinesis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  streamArn: Schema.optional(Schema.String),
+  consumerArn: Schema.optional(Schema.String),
+  awsRoleArn: Schema.optional(Schema.String),
+  gcpServiceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "AwsKinesis" });
 
 export interface TextFormat {
   /** Optional. When unset, '\n' is used. */
   delimiter?: string;
 }
 
-export const TextFormat: Schema.Schema<TextFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delimiter: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TextFormat" }) as any as Schema.Schema<TextFormat>;
+export const TextFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  delimiter: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextFormat" });
 
 export interface AvroFormat {}
 
-export const AvroFormat: Schema.Schema<AvroFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AvroFormat",
-  }) as any as Schema.Schema<AvroFormat>;
+export const AvroFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AvroFormat" });
 
 export interface PubSubAvroFormat {}
 
-export const PubSubAvroFormat: Schema.Schema<PubSubAvroFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PubSubAvroFormat",
-  }) as any as Schema.Schema<PubSubAvroFormat>;
+export const PubSubAvroFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PubSubAvroFormat" });
 
 export interface CloudStorage {
   /** Output only. An output-only field that indicates the state of the Cloud Storage ingestion source. */
@@ -373,6 +300,7 @@ export interface CloudStorage {
     | "PUBLISH_PERMISSION_DENIED"
     | "BUCKET_NOT_FOUND"
     | "TOO_MANY_OBJECTS"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Optional. Cloud Storage bucket. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming). */
   bucket?: string;
@@ -388,20 +316,15 @@ export interface CloudStorage {
   matchGlob?: string;
 }
 
-export const CloudStorage: Schema.Schema<CloudStorage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      bucket: Schema.optional(Schema.String),
-      textFormat: Schema.optional(TextFormat),
-      avroFormat: Schema.optional(AvroFormat),
-      pubsubAvroFormat: Schema.optional(PubSubAvroFormat),
-      minimumObjectCreateTime: Schema.optional(Schema.String),
-      matchGlob: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudStorage",
-  }) as any as Schema.Schema<CloudStorage>;
+export const CloudStorage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  bucket: Schema.optional(Schema.String),
+  textFormat: Schema.optional(TextFormat),
+  avroFormat: Schema.optional(AvroFormat),
+  pubsubAvroFormat: Schema.optional(PubSubAvroFormat),
+  minimumObjectCreateTime: Schema.optional(Schema.String),
+  matchGlob: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudStorage" });
 
 export interface AzureEventHubs {
   /** Output only. An output-only field that indicates the state of the Event Hubs ingestion source. */
@@ -414,6 +337,7 @@ export interface AzureEventHubs {
     | "EVENT_HUB_NOT_FOUND"
     | "SUBSCRIPTION_NOT_FOUND"
     | "RESOURCE_GROUP_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Optional. Name of the resource group within the azure subscription. */
   resourceGroup?: string;
@@ -431,21 +355,16 @@ export interface AzureEventHubs {
   gcpServiceAccount?: string;
 }
 
-export const AzureEventHubs: Schema.Schema<AzureEventHubs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      resourceGroup: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      eventHub: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      subscriptionId: Schema.optional(Schema.String),
-      gcpServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AzureEventHubs",
-  }) as any as Schema.Schema<AzureEventHubs>;
+export const AzureEventHubs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(Schema.String),
+  namespace: Schema.optional(Schema.String),
+  eventHub: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  subscriptionId: Schema.optional(Schema.String),
+  gcpServiceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "AzureEventHubs" });
 
 export interface AwsMsk {
   /** Output only. An output-only field that indicates the state of the Amazon MSK ingestion source. */
@@ -456,6 +375,7 @@ export interface AwsMsk {
     | "PUBLISH_PERMISSION_DENIED"
     | "CLUSTER_NOT_FOUND"
     | "TOPIC_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Required. The Amazon Resource Name (ARN) that uniquely identifies the cluster. */
   clusterArn?: string;
@@ -467,16 +387,13 @@ export interface AwsMsk {
   gcpServiceAccount?: string;
 }
 
-export const AwsMsk: Schema.Schema<AwsMsk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      clusterArn: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      awsRoleArn: Schema.optional(Schema.String),
-      gcpServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AwsMsk" }) as any as Schema.Schema<AwsMsk>;
+export const AwsMsk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  clusterArn: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  awsRoleArn: Schema.optional(Schema.String),
+  gcpServiceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "AwsMsk" });
 
 export interface ConfluentCloud {
   /** Output only. An output-only field that indicates the state of the Confluent Cloud ingestion source. */
@@ -488,6 +405,7 @@ export interface ConfluentCloud {
     | "UNREACHABLE_BOOTSTRAP_SERVER"
     | "CLUSTER_NOT_FOUND"
     | "TOPIC_NOT_FOUND"
+    | "CONFLICTING_REGION_CONSTRAINTS"
     | (string & {});
   /** Required. The address of the bootstrap server. The format is url:port. */
   bootstrapServer?: string;
@@ -501,19 +419,14 @@ export interface ConfluentCloud {
   gcpServiceAccount?: string;
 }
 
-export const ConfluentCloud: Schema.Schema<ConfluentCloud> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      bootstrapServer: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      identityPoolId: Schema.optional(Schema.String),
-      gcpServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfluentCloud",
-  }) as any as Schema.Schema<ConfluentCloud>;
+export const ConfluentCloud = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  bootstrapServer: Schema.optional(Schema.String),
+  clusterId: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  identityPoolId: Schema.optional(Schema.String),
+  gcpServiceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConfluentCloud" });
 
 export interface PlatformLogsSettings {
   /** Optional. The minimum severity level of Platform Logs that will be written. */
@@ -527,14 +440,9 @@ export interface PlatformLogsSettings {
     | (string & {});
 }
 
-export const PlatformLogsSettings: Schema.Schema<PlatformLogsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlatformLogsSettings",
-  }) as any as Schema.Schema<PlatformLogsSettings>;
+export const PlatformLogsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlatformLogsSettings" });
 
 export interface IngestionDataSourceSettings {
   /** Optional. Amazon Kinesis Data Streams. */
@@ -551,19 +459,15 @@ export interface IngestionDataSourceSettings {
   platformLogsSettings?: PlatformLogsSettings;
 }
 
-export const IngestionDataSourceSettings: Schema.Schema<IngestionDataSourceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      awsKinesis: Schema.optional(AwsKinesis),
-      cloudStorage: Schema.optional(CloudStorage),
-      azureEventHubs: Schema.optional(AzureEventHubs),
-      awsMsk: Schema.optional(AwsMsk),
-      confluentCloud: Schema.optional(ConfluentCloud),
-      platformLogsSettings: Schema.optional(PlatformLogsSettings),
-    }),
-  ).annotate({
-    identifier: "IngestionDataSourceSettings",
-  }) as any as Schema.Schema<IngestionDataSourceSettings>;
+export const IngestionDataSourceSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    awsKinesis: Schema.optional(AwsKinesis),
+    cloudStorage: Schema.optional(CloudStorage),
+    azureEventHubs: Schema.optional(AzureEventHubs),
+    awsMsk: Schema.optional(AwsMsk),
+    confluentCloud: Schema.optional(ConfluentCloud),
+    platformLogsSettings: Schema.optional(PlatformLogsSettings),
+  }).annotate({ identifier: "IngestionDataSourceSettings" });
 
 export interface JavaScriptUDF {
   /** Required. Name of the JavasScript function that should applied to Pub/Sub messages. */
@@ -572,29 +476,19 @@ export interface JavaScriptUDF {
   code?: string;
 }
 
-export const JavaScriptUDF: Schema.Schema<JavaScriptUDF> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JavaScriptUDF",
-  }) as any as Schema.Schema<JavaScriptUDF>;
+export const JavaScriptUDF = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  functionName: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "JavaScriptUDF" });
 
 export interface UnstructuredInference {
   /** Optional. A parameters object to be included in each inference request. The parameters object is combined with the data field of the Pub/Sub message to form the inference request. */
   parameters?: Record<string, unknown>;
 }
 
-export const UnstructuredInference: Schema.Schema<UnstructuredInference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "UnstructuredInference",
-  }) as any as Schema.Schema<UnstructuredInference>;
+export const UnstructuredInference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "UnstructuredInference" });
 
 export interface AIInference {
   /** Required. An endpoint to a Vertex AI model of the form `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`. Vertex AI API requests will be sent to this endpoint. */
@@ -605,16 +499,11 @@ export interface AIInference {
   serviceAccountEmail?: string;
 }
 
-export const AIInference: Schema.Schema<AIInference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoint: Schema.optional(Schema.String),
-      unstructuredInference: Schema.optional(UnstructuredInference),
-      serviceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AIInference",
-  }) as any as Schema.Schema<AIInference>;
+export const AIInference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoint: Schema.optional(Schema.String),
+  unstructuredInference: Schema.optional(UnstructuredInference),
+  serviceAccountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "AIInference" });
 
 export interface MessageTransform {
   /** Optional. JavaScript User Defined Function. If multiple JavaScriptUDF's are specified on a resource, each must have a unique `function_name`. */
@@ -627,17 +516,12 @@ export interface MessageTransform {
   disabled?: boolean;
 }
 
-export const MessageTransform: Schema.Schema<MessageTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      javascriptUdf: Schema.optional(JavaScriptUDF),
-      aiInference: Schema.optional(AIInference),
-      enabled: Schema.optional(Schema.Boolean),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MessageTransform",
-  }) as any as Schema.Schema<MessageTransform>;
+export const MessageTransform = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  javascriptUdf: Schema.optional(JavaScriptUDF),
+  aiInference: Schema.optional(AIInference),
+  enabled: Schema.optional(Schema.Boolean),
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "MessageTransform" });
 
 export interface Topic {
   /** Required. Identifier. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
@@ -668,22 +552,19 @@ export interface Topic {
   tags?: Record<string, string>;
 }
 
-export const Topic: Schema.Schema<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      messageStoragePolicy: Schema.optional(MessageStoragePolicy),
-      kmsKeyName: Schema.optional(Schema.String),
-      schemaSettings: Schema.optional(SchemaSettings),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      messageRetentionDuration: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      ingestionDataSourceSettings: Schema.optional(IngestionDataSourceSettings),
-      messageTransforms: Schema.optional(Schema.Array(MessageTransform)),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Topic" }) as any as Schema.Schema<Topic>;
+export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  messageStoragePolicy: Schema.optional(MessageStoragePolicy),
+  kmsKeyName: Schema.optional(Schema.String),
+  schemaSettings: Schema.optional(SchemaSettings),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  messageRetentionDuration: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  ingestionDataSourceSettings: Schema.optional(IngestionDataSourceSettings),
+  messageTransforms: Schema.optional(Schema.Array(MessageTransform)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Topic" });
 
 export interface UpdateTopicRequest {
   /** Required. The updated topic object. */
@@ -692,15 +573,10 @@ export interface UpdateTopicRequest {
   updateMask?: string;
 }
 
-export const UpdateTopicRequest: Schema.Schema<UpdateTopicRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Topic),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateTopicRequest",
-  }) as any as Schema.Schema<UpdateTopicRequest>;
+export const UpdateTopicRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Topic),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateTopicRequest" });
 
 export interface PubsubMessage {
   /** Optional. The message data field. If this field is empty, the message must contain at least one attribute. */
@@ -715,46 +591,31 @@ export interface PubsubMessage {
   orderingKey?: string;
 }
 
-export const PubsubMessage: Schema.Schema<PubsubMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      messageId: Schema.optional(Schema.String),
-      publishTime: Schema.optional(Schema.String),
-      orderingKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubsubMessage",
-  }) as any as Schema.Schema<PubsubMessage>;
+export const PubsubMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  messageId: Schema.optional(Schema.String),
+  publishTime: Schema.optional(Schema.String),
+  orderingKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "PubsubMessage" });
 
 export interface PublishRequest {
   /** Required. The messages to publish. */
   messages?: Array<PubsubMessage>;
 }
 
-export const PublishRequest: Schema.Schema<PublishRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(Schema.Array(PubsubMessage)),
-    }),
-  ).annotate({
-    identifier: "PublishRequest",
-  }) as any as Schema.Schema<PublishRequest>;
+export const PublishRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messages: Schema.optional(Schema.Array(PubsubMessage)),
+}).annotate({ identifier: "PublishRequest" });
 
 export interface PublishResponse {
   /** Optional. The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
   messageIds?: Array<string>;
 }
 
-export const PublishResponse: Schema.Schema<PublishResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PublishResponse",
-  }) as any as Schema.Schema<PublishResponse>;
+export const PublishResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PublishResponse" });
 
 export interface ListTopicsResponse {
   /** Optional. The resulting topics. */
@@ -763,15 +624,10 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topics: Schema.optional(Schema.Array(Topic)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicsResponse",
-  }) as any as Schema.Schema<ListTopicsResponse>;
+export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topics: Schema.optional(Schema.Array(Topic)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTopicsResponse" });
 
 export interface ListTopicSubscriptionsResponse {
   /** Optional. The names of subscriptions attached to the topic specified in the request. */
@@ -780,15 +636,11 @@ export interface ListTopicSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicSubscriptionsResponse: Schema.Schema<ListTopicSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriptions: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicSubscriptionsResponse",
-  }) as any as Schema.Schema<ListTopicSubscriptionsResponse>;
+export const ListTopicSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTopicSubscriptionsResponse" });
 
 export interface ListTopicSnapshotsResponse {
   /** Optional. The names of the snapshots that match the request. */
@@ -797,22 +649,18 @@ export interface ListTopicSnapshotsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicSnapshotsResponse: Schema.Schema<ListTopicSnapshotsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshots: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicSnapshotsResponse",
-  }) as any as Schema.Schema<ListTopicSnapshotsResponse>;
+export const ListTopicSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snapshots: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTopicSnapshotsResponse" });
 
 export interface DetachSubscriptionResponse {}
 
-export const DetachSubscriptionResponse: Schema.Schema<DetachSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DetachSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DetachSubscriptionResponse",
-  }) as any as Schema.Schema<DetachSubscriptionResponse>;
+  });
 
 export interface OidcToken {
   /** Optional. [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push). */
@@ -821,32 +669,25 @@ export interface OidcToken {
   audience?: string;
 }
 
-export const OidcToken: Schema.Schema<OidcToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountEmail: Schema.optional(Schema.String),
-      audience: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "OidcToken" }) as any as Schema.Schema<OidcToken>;
+export const OidcToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountEmail: Schema.optional(Schema.String),
+  audience: Schema.optional(Schema.String),
+}).annotate({ identifier: "OidcToken" });
 
 export interface PubsubWrapper {}
 
-export const PubsubWrapper: Schema.Schema<PubsubWrapper> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PubsubWrapper",
-  }) as any as Schema.Schema<PubsubWrapper>;
+export const PubsubWrapper = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PubsubWrapper" });
 
 export interface NoWrapper {
   /** Optional. When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:` headers of the HTTP request. Writes the Pub/Sub message attributes to `:` headers of the HTTP request. */
   writeMetadata?: boolean;
 }
 
-export const NoWrapper: Schema.Schema<NoWrapper> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeMetadata: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "NoWrapper" }) as any as Schema.Schema<NoWrapper>;
+export const NoWrapper = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  writeMetadata: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NoWrapper" });
 
 export interface PushConfig {
   /** Optional. A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`. */
@@ -861,16 +702,13 @@ export interface PushConfig {
   noWrapper?: NoWrapper;
 }
 
-export const PushConfig: Schema.Schema<PushConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pushEndpoint: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      oidcToken: Schema.optional(OidcToken),
-      pubsubWrapper: Schema.optional(PubsubWrapper),
-      noWrapper: Schema.optional(NoWrapper),
-    }),
-  ).annotate({ identifier: "PushConfig" }) as any as Schema.Schema<PushConfig>;
+export const PushConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pushEndpoint: Schema.optional(Schema.String),
+  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  oidcToken: Schema.optional(OidcToken),
+  pubsubWrapper: Schema.optional(PubsubWrapper),
+  noWrapper: Schema.optional(NoWrapper),
+}).annotate({ identifier: "PushConfig" });
 
 export interface BigQueryConfig {
   /** Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId} */
@@ -897,27 +735,21 @@ export interface BigQueryConfig {
   serviceAccountEmail?: string;
 }
 
-export const BigQueryConfig: Schema.Schema<BigQueryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(Schema.String),
-      useTopicSchema: Schema.optional(Schema.Boolean),
-      writeMetadata: Schema.optional(Schema.Boolean),
-      dropUnknownFields: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      useTableSchema: Schema.optional(Schema.Boolean),
-      serviceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BigQueryConfig",
-  }) as any as Schema.Schema<BigQueryConfig>;
+export const BigQueryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  table: Schema.optional(Schema.String),
+  useTopicSchema: Schema.optional(Schema.Boolean),
+  writeMetadata: Schema.optional(Schema.Boolean),
+  dropUnknownFields: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  useTableSchema: Schema.optional(Schema.Boolean),
+  serviceAccountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "BigQueryConfig" });
 
 export interface TextConfig {}
 
-export const TextConfig: Schema.Schema<TextConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "TextConfig",
-  }) as any as Schema.Schema<TextConfig>;
+export const TextConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "TextConfig" });
 
 export interface AvroConfig {
   /** Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output. The subscription name, message_id, and publish_time fields are put in their own fields while all other message properties other than data (for example, an ordering_key, if present) are added as entries in the attributes map. */
@@ -926,13 +758,10 @@ export interface AvroConfig {
   useTopicSchema?: boolean;
 }
 
-export const AvroConfig: Schema.Schema<AvroConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeMetadata: Schema.optional(Schema.Boolean),
-      useTopicSchema: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "AvroConfig" }) as any as Schema.Schema<AvroConfig>;
+export const AvroConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  writeMetadata: Schema.optional(Schema.Boolean),
+  useTopicSchema: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AvroConfig" });
 
 export interface CloudStorageConfig {
   /** Required. User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming). */
@@ -967,38 +796,58 @@ export interface CloudStorageConfig {
   serviceAccountEmail?: string;
 }
 
-export const CloudStorageConfig: Schema.Schema<CloudStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      filenamePrefix: Schema.optional(Schema.String),
-      filenameSuffix: Schema.optional(Schema.String),
-      filenameDatetimeFormat: Schema.optional(Schema.String),
-      textConfig: Schema.optional(TextConfig),
-      avroConfig: Schema.optional(AvroConfig),
-      maxDuration: Schema.optional(Schema.String),
-      maxBytes: Schema.optional(Schema.String),
-      maxMessages: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudStorageConfig",
-  }) as any as Schema.Schema<CloudStorageConfig>;
+export const CloudStorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+  filenamePrefix: Schema.optional(Schema.String),
+  filenameSuffix: Schema.optional(Schema.String),
+  filenameDatetimeFormat: Schema.optional(Schema.String),
+  textConfig: Schema.optional(TextConfig),
+  avroConfig: Schema.optional(AvroConfig),
+  maxDuration: Schema.optional(Schema.String),
+  maxBytes: Schema.optional(Schema.String),
+  maxMessages: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  serviceAccountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudStorageConfig" });
+
+export interface BigtableConfig {
+  /** Optional. The unique name of the table to write messages to. Values are of the form `projects//instances//tables/`. */
+  table?: string;
+  /** Optional. The app profile to use for the Bigtable writes. If not specified, the "default" application profile will be used. The app profile must use single-cluster routing. */
+  appProfileId?: string;
+  /** Optional. The service account to use to write to Bigtable. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used. */
+  serviceAccountEmail?: string;
+  /** Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table under the pubsub_metadata column family. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column. */
+  writeMetadata?: boolean;
+  /** Output only. An output-only field that indicates whether or not the subscription can receive messages. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "NOT_FOUND"
+    | "APP_PROFILE_MISCONFIGURED"
+    | "PERMISSION_DENIED"
+    | "SCHEMA_MISMATCH"
+    | "IN_TRANSIT_LOCATION_RESTRICTION"
+    | "VERTEX_AI_LOCATION_RESTRICTION"
+    | (string & {});
+}
+
+export const BigtableConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  table: Schema.optional(Schema.String),
+  appProfileId: Schema.optional(Schema.String),
+  serviceAccountEmail: Schema.optional(Schema.String),
+  writeMetadata: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "BigtableConfig" });
 
 export interface ExpirationPolicy {
   /** Optional. Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires. */
   ttl?: string;
 }
 
-export const ExpirationPolicy: Schema.Schema<ExpirationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ttl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExpirationPolicy",
-  }) as any as Schema.Schema<ExpirationPolicy>;
+export const ExpirationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ttl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExpirationPolicy" });
 
 export interface DeadLetterPolicy {
   /** Optional. The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost. */
@@ -1007,15 +856,10 @@ export interface DeadLetterPolicy {
   maxDeliveryAttempts?: number;
 }
 
-export const DeadLetterPolicy: Schema.Schema<DeadLetterPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deadLetterTopic: Schema.optional(Schema.String),
-      maxDeliveryAttempts: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeadLetterPolicy",
-  }) as any as Schema.Schema<DeadLetterPolicy>;
+export const DeadLetterPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deadLetterTopic: Schema.optional(Schema.String),
+  maxDeliveryAttempts: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeadLetterPolicy" });
 
 export interface RetryPolicy {
   /** Optional. The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds. */
@@ -1024,15 +868,10 @@ export interface RetryPolicy {
   maximumBackoff?: string;
 }
 
-export const RetryPolicy: Schema.Schema<RetryPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumBackoff: Schema.optional(Schema.String),
-      maximumBackoff: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetryPolicy",
-  }) as any as Schema.Schema<RetryPolicy>;
+export const RetryPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimumBackoff: Schema.optional(Schema.String),
+  maximumBackoff: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetryPolicy" });
 
 export interface AnalyticsHubSubscriptionInfo {
   /** Optional. The name of the associated Analytics Hub listing resource. Pattern: "projects/{project}/locations/{location}/dataExchanges/{data_exchange}/listings/{listing}" */
@@ -1041,15 +880,11 @@ export interface AnalyticsHubSubscriptionInfo {
   subscription?: string;
 }
 
-export const AnalyticsHubSubscriptionInfo: Schema.Schema<AnalyticsHubSubscriptionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      listing: Schema.optional(Schema.String),
-      subscription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyticsHubSubscriptionInfo",
-  }) as any as Schema.Schema<AnalyticsHubSubscriptionInfo>;
+export const AnalyticsHubSubscriptionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    listing: Schema.optional(Schema.String),
+    subscription: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnalyticsHubSubscriptionInfo" });
 
 export interface Subscription {
   /** Required. Identifier. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
@@ -1062,6 +897,8 @@ export interface Subscription {
   bigqueryConfig?: BigQueryConfig;
   /** Optional. If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it. */
   cloudStorageConfig?: CloudStorageConfig;
+  /** Optional. If delivery to Bigtable is used with this subscription, this field is used to configure it. */
+  bigtableConfig?: BigtableConfig;
   /** Optional. The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be _outstanding_. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message. */
   ackDeadlineSeconds?: number;
   /** Optional. Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages. */
@@ -1096,36 +933,30 @@ export interface Subscription {
   tags?: Record<string, string>;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      pushConfig: Schema.optional(PushConfig),
-      bigqueryConfig: Schema.optional(BigQueryConfig),
-      cloudStorageConfig: Schema.optional(CloudStorageConfig),
-      ackDeadlineSeconds: Schema.optional(Schema.Number),
-      retainAckedMessages: Schema.optional(Schema.Boolean),
-      messageRetentionDuration: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      enableMessageOrdering: Schema.optional(Schema.Boolean),
-      expirationPolicy: Schema.optional(ExpirationPolicy),
-      filter: Schema.optional(Schema.String),
-      deadLetterPolicy: Schema.optional(DeadLetterPolicy),
-      retryPolicy: Schema.optional(RetryPolicy),
-      detached: Schema.optional(Schema.Boolean),
-      enableExactlyOnceDelivery: Schema.optional(Schema.Boolean),
-      topicMessageRetentionDuration: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      analyticsHubSubscriptionInfo: Schema.optional(
-        AnalyticsHubSubscriptionInfo,
-      ),
-      messageTransforms: Schema.optional(Schema.Array(MessageTransform)),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Subscription",
-  }) as any as Schema.Schema<Subscription>;
+export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  pushConfig: Schema.optional(PushConfig),
+  bigqueryConfig: Schema.optional(BigQueryConfig),
+  cloudStorageConfig: Schema.optional(CloudStorageConfig),
+  bigtableConfig: Schema.optional(BigtableConfig),
+  ackDeadlineSeconds: Schema.optional(Schema.Number),
+  retainAckedMessages: Schema.optional(Schema.Boolean),
+  messageRetentionDuration: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  enableMessageOrdering: Schema.optional(Schema.Boolean),
+  expirationPolicy: Schema.optional(ExpirationPolicy),
+  filter: Schema.optional(Schema.String),
+  deadLetterPolicy: Schema.optional(DeadLetterPolicy),
+  retryPolicy: Schema.optional(RetryPolicy),
+  detached: Schema.optional(Schema.Boolean),
+  enableExactlyOnceDelivery: Schema.optional(Schema.Boolean),
+  topicMessageRetentionDuration: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  analyticsHubSubscriptionInfo: Schema.optional(AnalyticsHubSubscriptionInfo),
+  messageTransforms: Schema.optional(Schema.Array(MessageTransform)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Subscription" });
 
 export interface UpdateSubscriptionRequest {
   /** Required. The updated subscription object. */
@@ -1134,15 +965,11 @@ export interface UpdateSubscriptionRequest {
   updateMask?: string;
 }
 
-export const UpdateSubscriptionRequest: Schema.Schema<UpdateSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateSubscriptionRequest",
-  }) as any as Schema.Schema<UpdateSubscriptionRequest>;
+export const UpdateSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateSubscriptionRequest" });
 
 export interface ListSubscriptionsResponse {
   /** Optional. The subscriptions that match the request. */
@@ -1151,15 +978,11 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriptions: Schema.optional(Schema.Array(Subscription)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSubscriptionsResponse",
-  }) as any as Schema.Schema<ListSubscriptionsResponse>;
+export const ListSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSubscriptionsResponse" });
 
 export interface ModifyAckDeadlineRequest {
   /** Required. List of acknowledgment IDs. */
@@ -1168,29 +991,20 @@ export interface ModifyAckDeadlineRequest {
   ackDeadlineSeconds?: number;
 }
 
-export const ModifyAckDeadlineRequest: Schema.Schema<ModifyAckDeadlineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ackIds: Schema.optional(Schema.Array(Schema.String)),
-      ackDeadlineSeconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ModifyAckDeadlineRequest",
-  }) as any as Schema.Schema<ModifyAckDeadlineRequest>;
+export const ModifyAckDeadlineRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ackIds: Schema.optional(Schema.Array(Schema.String)),
+    ackDeadlineSeconds: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ModifyAckDeadlineRequest" });
 
 export interface AcknowledgeRequest {
   /** Required. The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the `Pull` response. Must not be empty. */
   ackIds?: Array<string>;
 }
 
-export const AcknowledgeRequest: Schema.Schema<AcknowledgeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ackIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AcknowledgeRequest",
-  }) as any as Schema.Schema<AcknowledgeRequest>;
+export const AcknowledgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ackIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AcknowledgeRequest" });
 
 export interface PullRequest {
   /** Optional. If this field set to true, the system will respond immediately even if it there are no messages available to return in the `Pull` response. Otherwise, the system may wait (for a bounded amount of time) until at least one message is available, rather than returning no messages. Warning: setting this field to `true` is discouraged because it adversely impacts the performance of `Pull` operations. We recommend that users do not set this field. */
@@ -1199,15 +1013,10 @@ export interface PullRequest {
   maxMessages?: number;
 }
 
-export const PullRequest: Schema.Schema<PullRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      returnImmediately: Schema.optional(Schema.Boolean),
-      maxMessages: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PullRequest",
-  }) as any as Schema.Schema<PullRequest>;
+export const PullRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  returnImmediately: Schema.optional(Schema.Boolean),
+  maxMessages: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PullRequest" });
 
 export interface ReceivedMessage {
   /** Optional. This ID can be used to acknowledge the received message. */
@@ -1218,44 +1027,30 @@ export interface ReceivedMessage {
   deliveryAttempt?: number;
 }
 
-export const ReceivedMessage: Schema.Schema<ReceivedMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ackId: Schema.optional(Schema.String),
-      message: Schema.optional(PubsubMessage),
-      deliveryAttempt: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ReceivedMessage",
-  }) as any as Schema.Schema<ReceivedMessage>;
+export const ReceivedMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ackId: Schema.optional(Schema.String),
+  message: Schema.optional(PubsubMessage),
+  deliveryAttempt: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ReceivedMessage" });
 
 export interface PullResponse {
   /** Optional. Received Pub/Sub messages. The list will be empty if there are no more messages available in the backlog, or if no messages could be returned before the request timeout. For JSON, the response can be entirely empty. The Pub/Sub system may return fewer than the `maxMessages` requested even if there are more messages available in the backlog. */
   receivedMessages?: Array<ReceivedMessage>;
 }
 
-export const PullResponse: Schema.Schema<PullResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      receivedMessages: Schema.optional(Schema.Array(ReceivedMessage)),
-    }),
-  ).annotate({
-    identifier: "PullResponse",
-  }) as any as Schema.Schema<PullResponse>;
+export const PullResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  receivedMessages: Schema.optional(Schema.Array(ReceivedMessage)),
+}).annotate({ identifier: "PullResponse" });
 
 export interface ModifyPushConfigRequest {
   /** Required. The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` or `StreamingPull` is not called. */
   pushConfig?: PushConfig;
 }
 
-export const ModifyPushConfigRequest: Schema.Schema<ModifyPushConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pushConfig: Schema.optional(PushConfig),
-    }),
-  ).annotate({
-    identifier: "ModifyPushConfigRequest",
-  }) as any as Schema.Schema<ModifyPushConfigRequest>;
+export const ModifyPushConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pushConfig: Schema.optional(PushConfig),
+  }).annotate({ identifier: "ModifyPushConfigRequest" });
 
 export interface Snapshot {
   /** Optional. The name of the snapshot. */
@@ -1268,15 +1063,12 @@ export interface Snapshot {
   labels?: Record<string, string>;
 }
 
-export const Snapshot: Schema.Schema<Snapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Snapshot" }) as any as Schema.Schema<Snapshot>;
+export const Snapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Snapshot" });
 
 export interface ListSnapshotsResponse {
   /** Optional. The resulting snapshots. */
@@ -1285,15 +1077,10 @@ export interface ListSnapshotsResponse {
   nextPageToken?: string;
 }
 
-export const ListSnapshotsResponse: Schema.Schema<ListSnapshotsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshots: Schema.optional(Schema.Array(Snapshot)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSnapshotsResponse",
-  }) as any as Schema.Schema<ListSnapshotsResponse>;
+export const ListSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshots: Schema.optional(Schema.Array(Snapshot)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSnapshotsResponse" });
 
 export interface CreateSnapshotRequest {
   /** Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`. */
@@ -1304,16 +1091,11 @@ export interface CreateSnapshotRequest {
   tags?: Record<string, string>;
 }
 
-export const CreateSnapshotRequest: Schema.Schema<CreateSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CreateSnapshotRequest",
-  }) as any as Schema.Schema<CreateSnapshotRequest>;
+export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscription: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "CreateSnapshotRequest" });
 
 export interface UpdateSnapshotRequest {
   /** Required. The updated snapshot object. */
@@ -1322,15 +1104,10 @@ export interface UpdateSnapshotRequest {
   updateMask?: string;
 }
 
-export const UpdateSnapshotRequest: Schema.Schema<UpdateSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshot: Schema.optional(Snapshot),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateSnapshotRequest",
-  }) as any as Schema.Schema<UpdateSnapshotRequest>;
+export const UpdateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshot: Schema.optional(Snapshot),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateSnapshotRequest" });
 
 export interface SeekRequest {
   /** Optional. The time to seek to. Messages retained in the subscription that were published before this time are marked as acknowledged, and messages retained in the subscription that were published after this time are marked as unacknowledged. Note that this operation affects only those messages retained in the subscription (configured by the combination of `message_retention_duration` and `retain_acked_messages`). For example, if `time` corresponds to a point before the message retention window (or to a point before the system's notion of the subscription creation time), only retained messages will be marked as unacknowledged, and already-expunged messages will not be restored. */
@@ -1339,22 +1116,16 @@ export interface SeekRequest {
   snapshot?: string;
 }
 
-export const SeekRequest: Schema.Schema<SeekRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      time: Schema.optional(Schema.String),
-      snapshot: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SeekRequest",
-  }) as any as Schema.Schema<SeekRequest>;
+export const SeekRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  time: Schema.optional(Schema.String),
+  snapshot: Schema.optional(Schema.String),
+}).annotate({ identifier: "SeekRequest" });
 
 export interface SeekResponse {}
 
-export const SeekResponse: Schema.Schema<SeekResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SeekResponse",
-  }) as any as Schema.Schema<SeekResponse>;
+export const SeekResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SeekResponse" });
 
 // ==========================================================================
 // Operations

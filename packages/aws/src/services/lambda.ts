@@ -5755,6 +5755,18 @@ export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotRea
   "ResourceNotReadyException",
   { Type: S.optional(S.String), message: S.optional(S.String) },
 ).pipe(C.withServerError) {}
+export class S3FilesMountConnectivityException extends S.TaggedErrorClass<S3FilesMountConnectivityException>()(
+  "S3FilesMountConnectivityException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+).pipe(C.withTimeoutError) {}
+export class S3FilesMountFailureException extends S.TaggedErrorClass<S3FilesMountFailureException>()(
+  "S3FilesMountFailureException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class S3FilesMountTimeoutException extends S.TaggedErrorClass<S3FilesMountTimeoutException>()(
+  "S3FilesMountTimeoutException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+).pipe(C.withTimeoutError) {}
 export class SerializedRequestEntityTooLargeException extends S.TaggedErrorClass<SerializedRequestEntityTooLargeException>()(
   "SerializedRequestEntityTooLargeException",
   { Type: S.optional(S.String), message: S.optional(S.String) },
@@ -7718,6 +7730,9 @@ export type InvokeError =
   | ResourceConflictException
   | ResourceNotFoundException
   | ResourceNotReadyException
+  | S3FilesMountConnectivityException
+  | S3FilesMountFailureException
+  | S3FilesMountTimeoutException
   | SerializedRequestEntityTooLargeException
   | ServiceException
   | SnapStartException
@@ -7780,6 +7795,9 @@ export const invoke: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
     ResourceNotReadyException,
+    S3FilesMountConnectivityException,
+    S3FilesMountFailureException,
+    S3FilesMountTimeoutException,
     SerializedRequestEntityTooLargeException,
     ServiceException,
     SnapStartException,
@@ -7849,6 +7867,9 @@ export type InvokeWithResponseStreamError =
   | ResourceConflictException
   | ResourceNotFoundException
   | ResourceNotReadyException
+  | S3FilesMountConnectivityException
+  | S3FilesMountFailureException
+  | S3FilesMountTimeoutException
   | SerializedRequestEntityTooLargeException
   | ServiceException
   | SnapStartException
@@ -7896,6 +7917,9 @@ export const invokeWithResponseStream: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
     ResourceNotReadyException,
+    S3FilesMountConnectivityException,
+    S3FilesMountFailureException,
+    S3FilesMountTimeoutException,
     SerializedRequestEntityTooLargeException,
     ServiceException,
     SnapStartException,

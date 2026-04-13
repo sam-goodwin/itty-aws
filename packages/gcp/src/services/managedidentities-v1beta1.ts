@@ -22,130 +22,36 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
+export interface GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter {
+  /** Optional. Array of string values. e.g. instance's replica information. */
+  values?: Array<string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
+    identifier:
+      "GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter",
+  });
 
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
+export interface CheckMigrationPermissionRequest {}
+
+export const CheckMigrationPermissionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CheckMigrationPermissionRequest",
+  });
+
+export interface RestoreDomainRequest {
+  /** Required. ID of the backup to be restored */
+  backupId?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
-
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
-
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
-
-export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const RestoreDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RestoreDomainRequest" });
 
 export interface Trust {
-  /** The fully qualified target domain name which will be in trust with the current domain. */
-  targetDomainName?: string;
-  /** The type of trust represented by the trust resource. */
-  trustType?: "TRUST_TYPE_UNSPECIFIED" | "FOREST" | "EXTERNAL" | (string & {});
   /** The trust direction, which decides if the current domain is trusted, trusting, or both. */
   trustDirection?:
     | "TRUST_DIRECTION_UNSPECIFIED"
@@ -153,16 +59,10 @@ export interface Trust {
     | "OUTBOUND"
     | "BIDIRECTIONAL"
     | (string & {});
-  /** The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources. */
-  selectiveAuthentication?: boolean;
-  /** The target DNS server IP addresses which can resolve the remote domain involved in the trust. */
-  targetDnsIpAddresses?: Array<string>;
-  /** Input only. The trust secret used for the handshake with the target domain. It will not be stored. */
-  trustHandshakeSecret?: string;
-  /** Output only. The time the instance was created. */
-  createTime?: string;
-  /** Output only. The last update time. */
-  updateTime?: string;
+  /** Output only. The last heartbeat time when the trust was known to be connected. */
+  lastTrustHeartbeatTime?: string;
+  /** The type of trust represented by the trust resource. */
+  trustType?: "TRUST_TYPE_UNSPECIFIED" | "FOREST" | "EXTERNAL" | (string & {});
   /** Output only. The current state of the trust. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -172,48 +72,182 @@ export interface Trust {
     | "CONNECTED"
     | "DISCONNECTED"
     | (string & {});
+  /** Input only. The trust secret used for the handshake with the target domain. It will not be stored. */
+  trustHandshakeSecret?: string;
+  /** The fully qualified target domain name which will be in trust with the current domain. */
+  targetDomainName?: string;
+  /** The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources. */
+  selectiveAuthentication?: boolean;
+  /** The target DNS server IP addresses which can resolve the remote domain involved in the trust. */
+  targetDnsIpAddresses?: Array<string>;
   /** Output only. Additional information about the current state of the trust, if available. */
   stateDescription?: string;
-  /** Output only. The last heartbeat time when the trust was known to be connected. */
-  lastTrustHeartbeatTime?: string;
+  /** Output only. The last update time. */
+  updateTime?: string;
+  /** Output only. The time the instance was created. */
+  createTime?: string;
 }
 
-export const Trust: Schema.Schema<Trust> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetDomainName: Schema.optional(Schema.String),
-      trustType: Schema.optional(Schema.String),
-      trustDirection: Schema.optional(Schema.String),
-      selectiveAuthentication: Schema.optional(Schema.Boolean),
-      targetDnsIpAddresses: Schema.optional(Schema.Array(Schema.String)),
-      trustHandshakeSecret: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateDescription: Schema.optional(Schema.String),
-      lastTrustHeartbeatTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Trust" }) as any as Schema.Schema<Trust>;
+export const Trust = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trustDirection: Schema.optional(Schema.String),
+  lastTrustHeartbeatTime: Schema.optional(Schema.String),
+  trustType: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  trustHandshakeSecret: Schema.optional(Schema.String),
+  targetDomainName: Schema.optional(Schema.String),
+  selectiveAuthentication: Schema.optional(Schema.Boolean),
+  targetDnsIpAddresses: Schema.optional(Schema.Array(Schema.String)),
+  stateDescription: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Trust" });
+
+export interface DetachTrustRequest {
+  /** Required. The domain trust resource to removed. */
+  trust?: Trust;
+}
+
+export const DetachTrustRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trust: Schema.optional(Trust),
+}).annotate({ identifier: "DetachTrustRequest" });
+
+export interface GoogleCloudManagedidentitiesV1OpMetadata {
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+}
+
+export const GoogleCloudManagedidentitiesV1OpMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    endTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudManagedidentitiesV1OpMetadata" });
+
+export interface GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
+  /** Whether an instance is eligible or ineligible. */
+  eligible?: boolean;
+  /** User-defined reason for the current value of instance eligibility. Usually, this can be directly mapped to the internal state. An empty reason is allowed. */
+  reason?: string;
+}
+
+export const GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eligible: Schema.optional(Schema.Boolean),
+    reason: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility",
+  });
+
+export interface GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
+  /** An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI which has not been declared in the binary flags, there will be an error message emitted in the Eligibility Exporter log and the metric for the SLI in question will not be emitted. */
+  eligibilities?: Record<
+    string,
+    GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+  >;
+}
+
+export const GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eligibilities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility,
+      ),
+    ),
+  }).annotate({
+    identifier:
+      "GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility",
+  });
+
+export interface GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
+  /** The location of the node, if different from instance location. */
+  location?: string;
+  /** The id of the node. This should be equal to SaasInstanceNode.node_id. */
+  nodeId?: string;
+  /** If present, this will override eligibility for the node coming from instance or exclusions for specified SLIs. */
+  perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
+}
+
+export const GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    nodeId: Schema.optional(Schema.String),
+    perSliEligibility: Schema.optional(
+      GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility,
+    ),
+  }).annotate({
+    identifier:
+      "GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata",
+  });
+
+export interface GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
+  /** Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty. */
+  tier?: string;
+  /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
+  perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
+  /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
+  nodes?: Array<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>;
+}
+
+export const GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tier: Schema.optional(Schema.String),
+    perSliEligibility: Schema.optional(
+      GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility,
+    ),
+    nodes: Schema.optional(
+      Schema.Array(
+        GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata,
+      ),
+    ),
+  }).annotate({
+    identifier: "GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata",
+  });
+
+export interface TimeOfDay {
+  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  minutes?: number;
+  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
+  nanos?: number;
+}
+
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface Domain {
-  /** Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. */
-  name?: string;
-  /** Optional. Resource labels that can contain user-provided metadata. */
-  labels?: Record<string, string>;
-  /** Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail. */
-  authorizedNetworks?: Array<string>;
   /** Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks]. */
   reservedIpRange?: string;
-  /** Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block. */
-  locations?: Array<string>;
-  /** Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used. */
-  admin?: string;
-  /** Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network. */
-  fqdn?: string;
   /** Output only. The time the instance was created. */
   createTime?: string;
   /** Output only. The last update time. */
   updateTime?: string;
+  /** Output only. The current trusts associated with the domain. */
+  trusts?: Array<Trust>;
+  /** Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail. */
+  authorizedNetworks?: Array<string>;
+  /** Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network. */
+  fqdn?: string;
   /** Output only. The current state of this domain. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -225,271 +259,77 @@ export interface Domain {
     | "PERFORMING_MAINTENANCE"
     | "UNAVAILABLE"
     | (string & {});
+  /** Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used. */
+  admin?: string;
+  /** Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. */
+  name?: string;
+  /** Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block. */
+  locations?: Array<string>;
+  /** Optional. Resource labels that can contain user-provided metadata. */
+  labels?: Record<string, string>;
   /** Output only. Additional information about the current status of this domain, if available. */
   statusMessage?: string;
-  /** Output only. The current trusts associated with the domain. */
-  trusts?: Array<Trust>;
   /** Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled. */
   auditLogsEnabled?: boolean;
 }
 
-export const Domain: Schema.Schema<Domain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      authorizedNetworks: Schema.optional(Schema.Array(Schema.String)),
-      reservedIpRange: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      admin: Schema.optional(Schema.String),
-      fqdn: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      trusts: Schema.optional(Schema.Array(Trust)),
-      auditLogsEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Domain" }) as any as Schema.Schema<Domain>;
+export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reservedIpRange: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  trusts: Schema.optional(Schema.Array(Trust)),
+  authorizedNetworks: Schema.optional(Schema.Array(Schema.String)),
+  fqdn: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  admin: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  statusMessage: Schema.optional(Schema.String),
+  auditLogsEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Domain" });
 
-export interface ResetAdminPasswordRequest {}
-
-export const ResetAdminPasswordRequest: Schema.Schema<ResetAdminPasswordRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResetAdminPasswordRequest",
-  }) as any as Schema.Schema<ResetAdminPasswordRequest>;
-
-export interface ResetAdminPasswordResponse {
-  /** A random password. See admin for more information. */
-  password?: string;
+export interface OnPremDomainSIDDetails {
+  /** Current SID filtering state. */
+  sidFilteringState?:
+    | "SID_FILTERING_STATE_UNSPECIFIED"
+    | "ENABLED"
+    | "DISABLED"
+    | (string & {});
+  /** FQDN of the on-prem domain being migrated. */
+  name?: string;
 }
 
-export const ResetAdminPasswordResponse: Schema.Schema<ResetAdminPasswordResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      password: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResetAdminPasswordResponse",
-  }) as any as Schema.Schema<ResetAdminPasswordResponse>;
+export const OnPremDomainSIDDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sidFilteringState: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "OnPremDomainSIDDetails" });
 
-export interface ListDomainsResponse {
-  /** A list of Managed Identities Service domains in the project. */
-  domains?: Array<Domain>;
-  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
-}
+export interface DisableMigrationRequest {}
 
-export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domains: Schema.optional(Schema.Array(Domain)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListDomainsResponse",
-  }) as any as Schema.Schema<ListDomainsResponse>;
-
-export interface AttachTrustRequest {
-  /** Required. The domain trust resource. */
-  trust?: Trust;
-}
-
-export const AttachTrustRequest: Schema.Schema<AttachTrustRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trust: Schema.optional(Trust),
-    }),
-  ).annotate({
-    identifier: "AttachTrustRequest",
-  }) as any as Schema.Schema<AttachTrustRequest>;
-
-export interface ReconfigureTrustRequest {
-  /** Required. The fully-qualified target domain name which will be in trust with current domain. */
-  targetDomainName?: string;
-  /** Required. The target DNS server IP addresses to resolve the remote domain involved in the trust. */
-  targetDnsIpAddresses?: Array<string>;
-}
-
-export const ReconfigureTrustRequest: Schema.Schema<ReconfigureTrustRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetDomainName: Schema.optional(Schema.String),
-      targetDnsIpAddresses: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ReconfigureTrustRequest",
-  }) as any as Schema.Schema<ReconfigureTrustRequest>;
-
-export interface DetachTrustRequest {
-  /** Required. The domain trust resource to removed. */
-  trust?: Trust;
-}
-
-export const DetachTrustRequest: Schema.Schema<DetachTrustRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trust: Schema.optional(Trust),
-    }),
-  ).annotate({
-    identifier: "DetachTrustRequest",
-  }) as any as Schema.Schema<DetachTrustRequest>;
+export const DisableMigrationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DisableMigrationRequest",
+  });
 
 export interface ValidateTrustRequest {
   /** Required. The domain trust to validate trust state for. */
   trust?: Trust;
 }
 
-export const ValidateTrustRequest: Schema.Schema<ValidateTrustRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trust: Schema.optional(Trust),
-    }),
-  ).annotate({
-    identifier: "ValidateTrustRequest",
-  }) as any as Schema.Schema<ValidateTrustRequest>;
-
-export interface SqlIntegration {
-  /** The unique name of the sql integration in the form of `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}` */
-  name?: string;
-  /** The full resource name of an integrated sql instance */
-  sqlInstance?: string;
-  /** Output only. The time sql integration was created. */
-  createTime?: string;
-  /** Output only. The time sql integration was updated. */
-  updateTime?: string;
-  /** Output only. The current state of the sql integration. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "DELETING"
-    | "READY"
-    | (string & {});
-}
-
-export const SqlIntegration: Schema.Schema<SqlIntegration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sqlInstance: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SqlIntegration",
-  }) as any as Schema.Schema<SqlIntegration>;
-
-export interface ListSqlIntegrationsResponse {
-  /** A list of SqlIntegrations of a domain. */
-  sqlIntegrations?: Array<SqlIntegration>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
-}
-
-export const ListSqlIntegrationsResponse: Schema.Schema<ListSqlIntegrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlIntegrations: Schema.optional(Schema.Array(SqlIntegration)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListSqlIntegrationsResponse",
-  }) as any as Schema.Schema<ListSqlIntegrationsResponse>;
-
-export interface RestoreDomainRequest {
-  /** Required. ID of the backup to be restored */
-  backupId?: string;
-}
-
-export const RestoreDomainRequest: Schema.Schema<RestoreDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestoreDomainRequest",
-  }) as any as Schema.Schema<RestoreDomainRequest>;
-
-export interface Certificate {
-  /** The certificate subject. */
-  subject?: string;
-  /** The certificate thumbprint which uniquely identifies the certificate. */
-  thumbprint?: string;
-  /** The additional hostnames for the domain. */
-  subjectAlternativeName?: Array<string>;
-  /** The issuer of this certificate. */
-  issuingCertificate?: Certificate;
-  /** The certificate expire time. */
-  expireTime?: string;
-}
-
-export const Certificate: Schema.Schema<Certificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subject: Schema.optional(Schema.String),
-      thumbprint: Schema.optional(Schema.String),
-      subjectAlternativeName: Schema.optional(Schema.Array(Schema.String)),
-      issuingCertificate: Schema.optional(Certificate),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Certificate",
-  }) as any as Schema.Schema<Certificate>;
-
-export interface LDAPSSettings {
-  /** The resource name of the LDAPS settings. Uses the form: `projects/{project}/locations/{location}/domains/{domain}`. */
-  name?: string;
-  /** Output only. The certificate used to configure LDAPS. Certificates can be chained with a maximum length of 15. */
-  certificate?: Certificate;
-  /** Output only. The current state of this LDAPS settings. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "UPDATING"
-    | "ACTIVE"
-    | "FAILED"
-    | (string & {});
-  /** Input only. The uploaded PKCS12-formatted certificate to configure LDAPS with. It will enable the domain controllers in this domain to accept LDAPS connections (either LDAP over SSL/TLS or the StartTLS operation). A valid certificate chain must form a valid x.509 certificate chain (or be comprised of a single self-signed certificate. It must be encrypted with either: 1) PBES2 + PBKDF2 + AES256 encryption and SHA256 PRF; or 2) pbeWithSHA1And3-KeyTripleDES-CBC Private key must be included for the leaf / single self-signed certificate. Note: For a fqdn your-example-domain.com, the wildcard fqdn is *.your-example-domain.com. Specifically the leaf certificate must have: - Either a blank subject or a subject with CN matching the wildcard fqdn. - Exactly two SANs - the fqdn and wildcard fqdn. - Encipherment and digital key signature key usages. - Server authentication extended key usage (OID=1.3.6.1.5.5.7.3.1) - Private key must be in one of the following formats: RSA, ECDSA, ED25519. - Private key must have appropriate key length: 2048 for RSA, 256 for ECDSA - Signature algorithm of the leaf certificate cannot be MD2, MD5 or SHA1. */
-  certificatePfx?: string;
-  /** Input only. The password used to encrypt the uploaded pfx certificate. */
-  certificatePassword?: string;
-  /** Output only. Last update time. */
-  updateTime?: string;
-}
-
-export const LDAPSSettings: Schema.Schema<LDAPSSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      certificate: Schema.optional(Certificate),
-      state: Schema.optional(Schema.String),
-      certificatePfx: Schema.optional(Schema.String),
-      certificatePassword: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LDAPSSettings",
-  }) as any as Schema.Schema<LDAPSSettings>;
+export const ValidateTrustRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trust: Schema.optional(Trust),
+}).annotate({ identifier: "ValidateTrustRequest" });
 
 export interface Peering {
-  /** Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. */
-  name?: string;
   /** Optional. Resource labels to represent user provided metadata. */
   labels?: Record<string, string>;
-  /** Required. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail. */
-  authorizedNetwork?: string;
   /** Required. Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   domainResource?: string;
-  /** Output only. The time the instance was created. */
-  createTime?: string;
-  /** Output only. Last update time. */
-  updateTime?: string;
+  /** Required. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail. */
+  authorizedNetwork?: string;
   /** Output only. The current state of this Peering. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -498,273 +338,77 @@ export interface Peering {
     | "DISCONNECTED"
     | "DELETING"
     | (string & {});
+  /** Output only. The time the instance was created. */
+  createTime?: string;
   /** Output only. Additional information about the current status of this peering, if available. */
   statusMessage?: string;
-}
-
-export const Peering: Schema.Schema<Peering> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      authorizedNetwork: Schema.optional(Schema.String),
-      domainResource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Peering" }) as any as Schema.Schema<Peering>;
-
-export interface ListPeeringsResponse {
-  /** A list of Managed Identities Service Peerings in the project. */
-  peerings?: Array<Peering>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: Array<string>;
-}
-
-export const ListPeeringsResponse: Schema.Schema<ListPeeringsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peerings: Schema.optional(Schema.Array(Peering)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListPeeringsResponse",
-  }) as any as Schema.Schema<ListPeeringsResponse>;
-
-export interface Backup {
-  /** Output only. The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name} */
+  /** Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. */
   name?: string;
-  /** Optional. Resource labels to represent user provided metadata. */
-  labels?: Record<string, string>;
-  /** Output only. The time the backups was created. */
-  createTime?: string;
   /** Output only. Last update time. */
   updateTime?: string;
-  /** Output only. Indicates whether it’s an on-demand backup or scheduled. */
-  type?:
-    | "TYPE_UNSPECIFIED"
-    | "ON_DEMAND"
-    | "SCHEDULED"
-    | "SCHEMA_EXTENSION"
-    | (string & {});
-  /** Output only. The current state of the backup. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "ACTIVE"
-    | "FAILED"
-    | "DELETING"
-    | (string & {});
-  /** Output only. Additional information about the current status of this backup, if available. */
-  statusMessage?: string;
-  /** Optional. A short description of the backup. */
-  description?: string;
 }
 
-export const Backup: Schema.Schema<Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Backup" }) as any as Schema.Schema<Backup>;
+export const Peering = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  domainResource: Schema.optional(Schema.String),
+  authorizedNetwork: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Peering" });
 
-export interface ListBackupsResponse {
-  /** A list of Cloud AD backups in the domain. */
-  backups?: Array<Backup>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: Array<string>;
-}
-
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backups: Schema.optional(Schema.Array(Backup)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBackupsResponse",
-  }) as any as Schema.Schema<ListBackupsResponse>;
-
-export interface ExtendSchemaRequest {
-  /** Required. Description for Schema Change. */
-  description?: string;
-  /** File stored in Cloud Storage bucket and represented in the form projects/{project_id}/buckets/{bucket_name}/objects/{object_name} File should be in the same project as the domain. */
-  gcsPath?: string;
-  /** File uploaded as a byte stream input. */
-  fileContents?: string;
-}
-
-export const ExtendSchemaRequest: Schema.Schema<ExtendSchemaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      gcsPath: Schema.optional(Schema.String),
-      fileContents: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtendSchemaRequest",
-  }) as any as Schema.Schema<ExtendSchemaRequest>;
-
-export interface OnPremDomainDetails {
-  /** Required. FQDN of the on-prem domain being migrated. */
-  domainName?: string;
-  /** Optional. Option to disable SID filtering. */
-  disableSidFiltering?: boolean;
-}
-
-export const OnPremDomainDetails: Schema.Schema<OnPremDomainDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      disableSidFiltering: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OnPremDomainDetails",
-  }) as any as Schema.Schema<OnPremDomainDetails>;
-
-export interface EnableMigrationRequest {
-  /** Required. List of the on-prem domains to be migrated. */
-  migratingDomains?: Array<OnPremDomainDetails>;
-  /** Optional. Period after which the migration would be auto disabled. If unspecified, a default timeout of 48h is used. */
-  enableDuration?: string;
-}
-
-export const EnableMigrationRequest: Schema.Schema<EnableMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migratingDomains: Schema.optional(Schema.Array(OnPremDomainDetails)),
-      enableDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnableMigrationRequest",
-  }) as any as Schema.Schema<EnableMigrationRequest>;
-
-export interface DisableMigrationRequest {}
-
-export const DisableMigrationRequest: Schema.Schema<DisableMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DisableMigrationRequest",
-  }) as any as Schema.Schema<DisableMigrationRequest>;
-
-export interface CheckMigrationPermissionRequest {}
-
-export const CheckMigrationPermissionRequest: Schema.Schema<CheckMigrationPermissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CheckMigrationPermissionRequest",
-  }) as any as Schema.Schema<CheckMigrationPermissionRequest>;
-
-export interface OnPremDomainSIDDetails {
-  /** FQDN of the on-prem domain being migrated. */
+export interface Location {
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
-  /** Current SID filtering state. */
-  sidFilteringState?:
-    | "SID_FILTERING_STATE_UNSPECIFIED"
-    | "ENABLED"
-    | "DISABLED"
-    | (string & {});
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
 }
 
-export const OnPremDomainSIDDetails: Schema.Schema<OnPremDomainSIDDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sidFilteringState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OnPremDomainSIDDetails",
-  }) as any as Schema.Schema<OnPremDomainSIDDetails>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
-export interface CheckMigrationPermissionResponse {
-  /** The state of DomainMigration. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "DISABLED"
-    | "ENABLED"
-    | "NEEDS_MAINTENANCE"
-    | (string & {});
-  /** The state of SID filtering of all the domains which has trust established. */
-  onpremDomains?: Array<OnPremDomainSIDDetails>;
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: Array<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 
-export const CheckMigrationPermissionResponse: Schema.Schema<CheckMigrationPermissionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      onpremDomains: Schema.optional(Schema.Array(OnPremDomainSIDDetails)),
-    }),
-  ).annotate({
-    identifier: "CheckMigrationPermissionResponse",
-  }) as any as Schema.Schema<CheckMigrationPermissionResponse>;
-
-export interface DomainJoinMachineRequest {
-  /** Required. Full instance id token of compute engine VM to verify instance identity. More about this: https://cloud.google.com/compute/docs/instances/verifying-instance-identity#request_signature */
-  vmIdToken?: string;
-  /** Optional. OU name to which the VM needs to be domain joined. If the field is not provided, the VM is joined to the default OU which is created. The default OU for the domain join api is created as GCE Instances under the Cloud OU. Example - OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com If the field is provided, then the custom OU is searched for under GCE Instances OU. Example - if ou_name=test_ou then the VM is domain joined to the following OU: OU=test_ou,OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com if present. If OU is not present under GCE Instances, then error is returned. */
-  ouName?: string;
-  /** Optional. force if True, forces domain join even if the computer account already exists. */
-  force?: boolean;
-}
-
-export const DomainJoinMachineRequest: Schema.Schema<DomainJoinMachineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmIdToken: Schema.optional(Schema.String),
-      ouName: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DomainJoinMachineRequest",
-  }) as any as Schema.Schema<DomainJoinMachineRequest>;
-
-export interface DomainJoinMachineResponse {
-  /** The response is the offline domain join blob that is returned after running the djoin command. To correctly use the response of the API, please refer to the sample usage. */
-  domainJoinBlob?: string;
-}
-
-export const DomainJoinMachineResponse: Schema.Schema<DomainJoinMachineResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainJoinBlob: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DomainJoinMachineResponse",
-  }) as any as Schema.Schema<DomainJoinMachineResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -775,14 +419,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -793,330 +434,11 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
-
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-}
-
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
-
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
-}
-
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
-
-export interface OperationMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusDetail?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-  cancelRequested?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
-
-export interface GoogleCloudManagedidentitiesV1OpMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const GoogleCloudManagedidentitiesV1OpMetadata: Schema.Schema<GoogleCloudManagedidentitiesV1OpMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudManagedidentitiesV1OpMetadata",
-  }) as any as Schema.Schema<GoogleCloudManagedidentitiesV1OpMetadata>;
-
-export interface GoogleCloudManagedidentitiesV1alpha1OpMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const GoogleCloudManagedidentitiesV1alpha1OpMetadata: Schema.Schema<GoogleCloudManagedidentitiesV1alpha1OpMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudManagedidentitiesV1alpha1OpMetadata",
-  }) as any as Schema.Schema<GoogleCloudManagedidentitiesV1alpha1OpMetadata>;
-
-export interface GoogleCloudManagedidentitiesV1beta1OpMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-}
-
-export const GoogleCloudManagedidentitiesV1beta1OpMetadata: Schema.Schema<GoogleCloudManagedidentitiesV1beta1OpMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudManagedidentitiesV1beta1OpMetadata",
-  }) as any as Schema.Schema<GoogleCloudManagedidentitiesV1beta1OpMetadata>;
-
-export interface GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
-  /** Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for example: 'compute-instance', 'compute-disk', 'compute-autoscaler'. */
-  resourceType?: string;
-  /** URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)". */
-  resourceUrl?: string;
-}
-
-export const GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      resourceUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>;
-
-export interface GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
-  /** Whether an instance is eligible or ineligible. */
-  eligible?: boolean;
-  /** User-defined reason for the current value of instance eligibility. Usually, this can be directly mapped to the internal state. An empty reason is allowed. */
-  reason?: string;
-}
-
-export const GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eligible: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>;
-
-export interface GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
-  /** An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI which has not been declared in the binary flags, there will be an error message emitted in the Eligibility Exporter log and the metric for the SLI in question will not be emitted. */
-  eligibilities?: Record<
-    string,
-    GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
-  >;
-}
-
-export const GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eligibilities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility>;
-
-export interface GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
-  /** The id of the node. This should be equal to SaasInstanceNode.node_id. */
-  nodeId?: string;
-  /** The location of the node, if different from instance location. */
-  location?: string;
-  /** If present, this will override eligibility for the node coming from instance or exclusions for specified SLIs. */
-  perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
-}
-
-export const GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeId: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      perSliEligibility: Schema.optional(
-        GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>;
-
-export interface GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-  /** Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty. */
-  tier?: string;
-  /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
-  nodes?: Array<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>;
-  /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
-  perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
-}
-
-export const GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tier: Schema.optional(Schema.String),
-      nodes: Schema.optional(
-        Schema.Array(
-          GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata,
-        ),
-      ),
-      perSliEligibility: Schema.optional(
-        GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata>;
-
-export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
-  /** The scheduled start time for the maintenance. */
-  startTime?: string;
-  /** The scheduled end time for the maintenance. */
-  endTime?: string;
-  /** This field is deprecated, and will be always set to true since reschedule can happen multiple times now. This field should not be removed until all service producers remove this for their customers. */
-  canReschedule?: boolean;
-  /** The rollout management policy this maintenance schedule is associated with. When doing reschedule update request, the reschedule should be against this given policy. */
-  rolloutManagementPolicy?: string;
-  /** schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule. It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance cannot be scheduled to start beyond this deadline. */
-  scheduleDeadlineTime?: string;
-}
-
-export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      canReschedule: Schema.optional(Schema.Boolean),
-      rolloutManagementPolicy: Schema.optional(Schema.String),
-      scheduleDeadlineTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>;
-
-export interface TimeOfDay {
-  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  minutes?: number;
-  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
-  nanos?: number;
-}
-
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface DailyCycle {
   /** Time within the day to start the operations. */
@@ -1125,13 +447,48 @@ export interface DailyCycle {
   duration?: string;
 }
 
-export const DailyCycle: Schema.Schema<DailyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DailyCycle" }) as any as Schema.Schema<DailyCycle>;
+export const DailyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(TimeOfDay),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "DailyCycle" });
+
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: Array<Record<string, unknown>>;
+}
+
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
+
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+}
+
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface Schedule {
   /** Allows to define schedule that runs specified day of the week. */
@@ -1151,28 +508,114 @@ export interface Schedule {
   duration?: string;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.String),
-      startTime: Schema.optional(TimeOfDay),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Schedule" }) as any as Schema.Schema<Schedule>;
+export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.String),
+  startTime: Schema.optional(TimeOfDay),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "Schedule" });
+
+export interface ListDomainsResponse {
+  /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** A list of locations that could not be reached. */
+  unreachable?: Array<string>;
+  /** A list of Managed Identities Service domains in the project. */
+  domains?: Array<Domain>;
+}
+
+export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  domains: Schema.optional(Schema.Array(Domain)),
+}).annotate({ identifier: "ListDomainsResponse" });
+
+export interface DomainJoinMachineRequest {
+  /** Required. Full instance id token of compute engine VM to verify instance identity. More about this: https://cloud.google.com/compute/docs/instances/verifying-instance-identity#request_signature */
+  vmIdToken?: string;
+  /** Optional. OU name to which the VM needs to be domain joined. If the field is not provided, the VM is joined to the default OU which is created. The default OU for the domain join api is created as GCE Instances under the Cloud OU. Example - OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com If the field is provided, then the custom OU is searched for under GCE Instances OU. Example - if ou_name=test_ou then the VM is domain joined to the following OU: OU=test_ou,OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com if present. If OU is not present under GCE Instances, then error is returned. */
+  ouName?: string;
+  /** Optional. force if True, forces domain join even if the computer account already exists. */
+  force?: boolean;
+}
+
+export const DomainJoinMachineRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmIdToken: Schema.optional(Schema.String),
+    ouName: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DomainJoinMachineRequest" });
+
+export interface GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
+  /** Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for example: 'compute-instance', 'compute-disk', 'compute-autoscaler'. */
+  resourceType?: string;
+  /** URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)". */
+  resourceUrl?: string;
+}
+
+export const GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    resourceUrl: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource",
+  });
+
+export interface SqlIntegration {
+  /** Output only. The current state of the sql integration. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "DELETING"
+    | "READY"
+    | (string & {});
+  /** The unique name of the sql integration in the form of `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}` */
+  name?: string;
+  /** Output only. The time sql integration was updated. */
+  updateTime?: string;
+  /** Output only. The time sql integration was created. */
+  createTime?: string;
+  /** The full resource name of an integrated sql instance */
+  sqlInstance?: string;
+}
+
+export const SqlIntegration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  sqlInstance: Schema.optional(Schema.String),
+}).annotate({ identifier: "SqlIntegration" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
+
+export interface ExtendSchemaRequest {
+  /** Required. Description for Schema Change. */
+  description?: string;
+  /** File uploaded as a byte stream input. */
+  fileContents?: string;
+  /** File stored in Cloud Storage bucket and represented in the form projects/{project_id}/buckets/{bucket_name}/objects/{object_name} File should be in the same project as the domain. */
+  gcsPath?: string;
+}
+
+export const ExtendSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  fileContents: Schema.optional(Schema.String),
+  gcsPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExtendSchemaRequest" });
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
   schedule?: Array<Schedule>;
 }
 
-export const WeeklyCycle: Schema.Schema<WeeklyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedule: Schema.optional(Schema.Array(Schedule)),
-    }),
-  ).annotate({
-    identifier: "WeeklyCycle",
-  }) as any as Schema.Schema<WeeklyCycle>;
+export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schedule: Schema.optional(Schema.Array(Schedule)),
+}).annotate({ identifier: "WeeklyCycle" });
 
 export interface MaintenanceWindow {
   /** Daily cycle. */
@@ -1181,59 +624,92 @@ export interface MaintenanceWindow {
   weeklyCycle?: WeeklyCycle;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailyCycle: Schema.optional(DailyCycle),
-      weeklyCycle: Schema.optional(WeeklyCycle),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dailyCycle: Schema.optional(DailyCycle),
+  weeklyCycle: Schema.optional(WeeklyCycle),
+}).annotate({ identifier: "MaintenanceWindow" });
+
+export interface ListPeeringsResponse {
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+  /** A list of Managed Identities Service Peerings in the project. */
+  peerings?: Array<Peering>;
+}
+
+export const ListPeeringsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  peerings: Schema.optional(Schema.Array(Peering)),
+}).annotate({ identifier: "ListPeeringsResponse" });
+
+export interface Empty {}
+
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
+
+export interface ListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: Array<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: Array<string>;
+}
+
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
+
+export interface DomainJoinMachineResponse {
+  /** The response is the offline domain join blob that is returned after running the djoin command. To correctly use the response of the API, please refer to the sample usage. */
+  domainJoinBlob?: string;
+}
+
+export const DomainJoinMachineResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainJoinBlob: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DomainJoinMachineResponse" });
 
 export interface Managedidentities_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
 }
 
-export const Managedidentities_Date: Schema.Schema<Managedidentities_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Managedidentities_Date",
-  }) as any as Schema.Schema<Managedidentities_Date>;
+export const Managedidentities_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    year: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "Managedidentities_Date" });
 
 export interface DenyMaintenancePeriod {
+  /** Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC */
+  time?: TimeOfDay;
   /** Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be the same or after the start. */
   startDate?: Managedidentities_Date;
   /** Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be before the end. */
   endDate?: Managedidentities_Date;
-  /** Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC */
-  time?: TimeOfDay;
 }
 
-export const DenyMaintenancePeriod: Schema.Schema<DenyMaintenancePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Managedidentities_Date),
-      endDate: Schema.optional(Managedidentities_Date),
-      time: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "DenyMaintenancePeriod",
-  }) as any as Schema.Schema<DenyMaintenancePeriod>;
+export const DenyMaintenancePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  time: Schema.optional(TimeOfDay),
+  startDate: Schema.optional(Managedidentities_Date),
+  endDate: Schema.optional(Managedidentities_Date),
+}).annotate({ identifier: "DenyMaintenancePeriod" });
 
 export interface UpdatePolicy {
-  /** Optional. Maintenance window that is applied to resources covered by this policy. */
-  window?: MaintenanceWindow;
   /** Optional. Relative scheduling channel applied to resource. */
   channel?:
     | "UPDATE_CHANNEL_UNSPECIFIED"
@@ -1245,52 +721,318 @@ export interface UpdatePolicy {
     | (string & {});
   /** Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. The protocol supports zero-to-many such periods, but the current SLM Rollout implementation only supports zero-to-one. */
   denyMaintenancePeriods?: Array<DenyMaintenancePeriod>;
+  /** Optional. Maintenance window that is applied to resources covered by this policy. */
+  window?: MaintenanceWindow;
 }
 
-export const UpdatePolicy: Schema.Schema<UpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      window: Schema.optional(MaintenanceWindow),
-      channel: Schema.optional(Schema.String),
-      denyMaintenancePeriods: Schema.optional(
-        Schema.Array(DenyMaintenancePeriod),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdatePolicy",
-  }) as any as Schema.Schema<UpdatePolicy>;
+export const UpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channel: Schema.optional(Schema.String),
+  denyMaintenancePeriods: Schema.optional(Schema.Array(DenyMaintenancePeriod)),
+  window: Schema.optional(MaintenanceWindow),
+}).annotate({ identifier: "UpdatePolicy" });
 
 export interface MaintenancePolicy {
-  /** Required. MaintenancePolicy name using the form: `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}` where {project_id} refers to a GCP consumer project ID, {location_id} refers to a GCP region/zone, {maintenance_policy_id} must be 1-63 characters long and match the regular expression `[a-z0-9]([-a-z0-9]*[a-z0-9])?`. */
-  name?: string;
+  /** Optional. The state of the policy. */
+  state?: "STATE_UNSPECIFIED" | "READY" | "DELETING" | (string & {});
   /** Output only. The time when the resource was created. */
   createTime?: string;
+  /** Required. MaintenancePolicy name using the form: `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}` where {project_id} refers to a GCP consumer project ID, {location_id} refers to a GCP region/zone, {maintenance_policy_id} must be 1-63 characters long and match the regular expression `[a-z0-9]([-a-z0-9]*[a-z0-9])?`. */
+  name?: string;
   /** Output only. The time when the resource was updated. */
   updateTime?: string;
   /** Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512. */
   description?: string;
-  /** Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both the key and the value are arbitrary strings provided by the user. */
-  labels?: Record<string, string>;
-  /** Optional. The state of the policy. */
-  state?: "STATE_UNSPECIFIED" | "READY" | "DELETING" | (string & {});
   /** Maintenance policy applicable to instance update. */
   updatePolicy?: UpdatePolicy;
+  /** Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both the key and the value are arbitrary strings provided by the user. */
+  labels?: Record<string, string>;
 }
 
-export const MaintenancePolicy: Schema.Schema<MaintenancePolicy> =
+export const MaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  updatePolicy: Schema.optional(UpdatePolicy),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "MaintenancePolicy" });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: Array<string>;
+}
+
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface GoogleCloudManagedidentitiesV1beta1OpMetadata {
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+}
+
+export const GoogleCloudManagedidentitiesV1beta1OpMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudManagedidentitiesV1beta1OpMetadata" });
+
+export interface GoogleCloudManagedidentitiesV1alpha1OpMetadata {
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+}
+
+export const GoogleCloudManagedidentitiesV1alpha1OpMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudManagedidentitiesV1alpha1OpMetadata" });
+
+export interface ReconfigureTrustRequest {
+  /** Required. The fully-qualified target domain name which will be in trust with current domain. */
+  targetDomainName?: string;
+  /** Required. The target DNS server IP addresses to resolve the remote domain involved in the trust. */
+  targetDnsIpAddresses?: Array<string>;
+}
+
+export const ReconfigureTrustRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetDomainName: Schema.optional(Schema.String),
+    targetDnsIpAddresses: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ReconfigureTrustRequest" });
+
+export interface Certificate {
+  /** The certificate subject. */
+  subject?: string;
+  /** The certificate expire time. */
+  expireTime?: string;
+  /** The additional hostnames for the domain. */
+  subjectAlternativeName?: Array<string>;
+  /** The issuer of this certificate. */
+  issuingCertificate?: Certificate;
+  /** The certificate thumbprint which uniquely identifies the certificate. */
+  thumbprint?: string;
+}
+
+export const Certificate: Schema.Schema<Certificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      updatePolicy: Schema.optional(UpdatePolicy),
+      subject: Schema.optional(Schema.String),
+      expireTime: Schema.optional(Schema.String),
+      subjectAlternativeName: Schema.optional(Schema.Array(Schema.String)),
+      issuingCertificate: Schema.optional(Certificate),
+      thumbprint: Schema.optional(Schema.String),
     }),
   ).annotate({
-    identifier: "MaintenancePolicy",
-  }) as any as Schema.Schema<MaintenancePolicy>;
+    identifier: "Certificate",
+  }) as any as Schema.Schema<Certificate>;
+
+export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
+  /** The rollout management policy this maintenance schedule is associated with. When doing reschedule update request, the reschedule should be against this given policy. */
+  rolloutManagementPolicy?: string;
+  /** schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule. It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance cannot be scheduled to start beyond this deadline. */
+  scheduleDeadlineTime?: string;
+  /** This field is deprecated, and will be always set to true since reschedule can happen multiple times now. This field should not be removed until all service producers remove this for their customers. */
+  canReschedule?: boolean;
+  /** The scheduled end time for the maintenance. */
+  endTime?: string;
+  /** The scheduled start time for the maintenance. */
+  startTime?: string;
+}
+
+export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rolloutManagementPolicy: Schema.optional(Schema.String),
+    scheduleDeadlineTime: Schema.optional(Schema.String),
+    canReschedule: Schema.optional(Schema.Boolean),
+    endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule",
+  });
+
+export interface ResetAdminPasswordResponse {
+  /** A random password. See admin for more information. */
+  password?: string;
+}
+
+export const ResetAdminPasswordResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    password: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResetAdminPasswordResponse" });
+
+export interface CheckMigrationPermissionResponse {
+  /** The state of DomainMigration. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "DISABLED"
+    | "ENABLED"
+    | "NEEDS_MAINTENANCE"
+    | (string & {});
+  /** The state of SID filtering of all the domains which has trust established. */
+  onpremDomains?: Array<OnPremDomainSIDDetails>;
+}
+
+export const CheckMigrationPermissionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    onpremDomains: Schema.optional(Schema.Array(OnPremDomainSIDDetails)),
+  }).annotate({ identifier: "CheckMigrationPermissionResponse" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+}
+
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface OperationMetadata {
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+  cancelRequested?: boolean;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusDetail?: string;
+}
+
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: Array<string>;
+}
+
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface ResetAdminPasswordRequest {}
+
+export const ResetAdminPasswordRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResetAdminPasswordRequest",
+  });
+
+export interface OnPremDomainDetails {
+  /** Optional. Option to disable SID filtering. */
+  disableSidFiltering?: boolean;
+  /** Required. FQDN of the on-prem domain being migrated. */
+  domainName?: string;
+}
+
+export const OnPremDomainDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableSidFiltering: Schema.optional(Schema.Boolean),
+  domainName: Schema.optional(Schema.String),
+}).annotate({ identifier: "OnPremDomainDetails" });
+
+export interface EnableMigrationRequest {
+  /** Required. List of the on-prem domains to be migrated. */
+  migratingDomains?: Array<OnPremDomainDetails>;
+  /** Optional. Period after which the migration would be auto disabled. If unspecified, a default timeout of 48h is used. */
+  enableDuration?: string;
+}
+
+export const EnableMigrationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    migratingDomains: Schema.optional(Schema.Array(OnPremDomainDetails)),
+    enableDuration: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "EnableMigrationRequest" });
+
+export interface LDAPSSettings {
+  /** Output only. The current state of this LDAPS settings. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "UPDATING"
+    | "ACTIVE"
+    | "FAILED"
+    | (string & {});
+  /** Input only. The uploaded PKCS12-formatted certificate to configure LDAPS with. It will enable the domain controllers in this domain to accept LDAPS connections (either LDAP over SSL/TLS or the StartTLS operation). A valid certificate chain must form a valid x.509 certificate chain (or be comprised of a single self-signed certificate. It must be encrypted with either: 1) PBES2 + PBKDF2 + AES256 encryption and SHA256 PRF; or 2) pbeWithSHA1And3-KeyTripleDES-CBC Private key must be included for the leaf / single self-signed certificate. Note: For a fqdn your-example-domain.com, the wildcard fqdn is *.your-example-domain.com. Specifically the leaf certificate must have: - Either a blank subject or a subject with CN matching the wildcard fqdn. - Exactly two SANs - the fqdn and wildcard fqdn. - Encipherment and digital key signature key usages. - Server authentication extended key usage (OID=1.3.6.1.5.5.7.3.1) - Private key must be in one of the following formats: RSA, ECDSA, ED25519. - Private key must have appropriate key length: 2048 for RSA, 256 for ECDSA - Signature algorithm of the leaf certificate cannot be MD2, MD5 or SHA1. */
+  certificatePfx?: string;
+  /** The resource name of the LDAPS settings. Uses the form: `projects/{project}/locations/{location}/domains/{domain}`. */
+  name?: string;
+  /** Output only. Last update time. */
+  updateTime?: string;
+  /** Input only. The password used to encrypt the uploaded pfx certificate. */
+  certificatePassword?: string;
+  /** Output only. The certificate used to configure LDAPS. Certificates can be chained with a maximum length of 15. */
+  certificate?: Certificate;
+}
+
+export const LDAPSSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  certificatePfx: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  certificatePassword: Schema.optional(Schema.String),
+  certificate: Schema.optional(Certificate),
+}).annotate({ identifier: "LDAPSSettings" });
+
+export interface ListSqlIntegrationsResponse {
+  /** A list of SqlIntegrations of a domain. */
+  sqlIntegrations?: Array<SqlIntegration>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** A list of locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListSqlIntegrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlIntegrations: Schema.optional(Schema.Array(SqlIntegration)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListSqlIntegrationsResponse" });
 
 export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /** Optional. Exclude instance from maintenance. When true, rollout service will not attempt maintenance on the instance. Rollout service will include the instance in reported rollout progress as not attempted. */
@@ -1301,44 +1043,124 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSetti
   isRollback?: boolean;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exclude: Schema.optional(Schema.Boolean),
-      maintenancePolicies: Schema.optional(
-        Schema.Record(Schema.String, MaintenancePolicy),
-      ),
-      isRollback: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exclude: Schema.optional(Schema.Boolean),
+    maintenancePolicies: Schema.optional(
+      Schema.Record(Schema.String, MaintenancePolicy),
+    ),
+    isRollback: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings>;
+  });
 
-export interface GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter {
-  /** Optional. Array of string values. e.g. instance's replica information. */
-  values?: Array<string>;
+export interface Backup {
+  /** Optional. Resource labels to represent user provided metadata. */
+  labels?: Record<string, string>;
+  /** Output only. Indicates whether it’s an on-demand backup or scheduled. */
+  type?:
+    | "TYPE_UNSPECIFIED"
+    | "ON_DEMAND"
+    | "SCHEDULED"
+    | "SCHEMA_EXTENSION"
+    | (string & {});
+  /** Output only. The current state of the backup. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "ACTIVE"
+    | "FAILED"
+    | "DELETING"
+    | (string & {});
+  /** Output only. The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name} */
+  name?: string;
+  /** Output only. Last update time. */
+  updateTime?: string;
+  /** Optional. A short description of the backup. */
+  description?: string;
+  /** Output only. The time the backups was created. */
+  createTime?: string;
+  /** Output only. Additional information about the current status of this backup, if available. */
+  statusMessage?: string;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter>;
+export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  type: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Backup" });
+
+export interface ListBackupsResponse {
+  /** A list of Cloud AD backups in the domain. */
+  backups?: Array<Backup>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backups: Schema.optional(Schema.Array(Backup)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListBackupsResponse" });
+
+export interface AttachTrustRequest {
+  /** Required. The domain trust resource. */
+  trust?: Trust;
+}
+
+export const AttachTrustRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trust: Schema.optional(Trust),
+}).annotate({ identifier: "AttachTrustRequest" });
 
 export interface GoogleCloudSaasacceleratorManagementProvidersV1Instance {
-  /** Unique name of the resource. It uses the form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}` Note: This name is passed, stored and logged across the rollout system. So use of consumer project_id or any other consumer PII in the name is strongly discouraged for wipeout (go/wipeout) compliance. See go/elysium/project_ids#storage-guidance for more details. */
-  name?: string;
-  /** Output only. Timestamp when the resource was created. */
-  createTime?: string;
-  /** Output only. Timestamp when the resource was last modified. */
-  updateTime?: string;
+  /** The MaintenanceSchedule contains the scheduling information of published maintenance schedule with same key as software_versions. */
+  maintenanceSchedules?: Record<
+    string,
+    GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+  >;
+  /** Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform. See go/cloud-ssa-standard-slo for feature description. */
+  sloMetadata?: GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata;
+  /** Software versions that are used to deploy this instance. This can be mutated by rollout services. */
+  softwareVersions?: Record<string, string>;
+  /** Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy type. For details, please refer to go/mr-user-guide. Should not be set if maintenance_settings.maintenance_policies is set. */
+  maintenancePolicyNames?: Record<string, string>;
   /** Optional. Resource labels to represent user provided metadata. Each label is a key-value pair, where both the key and the value are arbitrary strings provided by the user. */
   labels?: Record<string, string>;
+  /** Unique name of the resource. It uses the form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}` Note: This name is passed, stored and logged across the rollout system. So use of consumer project_id or any other consumer PII in the name is strongly discouraged for wipeout (go/wipeout) compliance. See go/elysium/project_ids#storage-guidance for more details. */
+  name?: string;
+  /** Optional. The instance_type of this instance of format: projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or not. */
+  instanceType?: string;
+  /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
+  provisionedResources?: Array<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>;
+  /** consumer_defined_name is the name of the instance set by the service consumers. Generally this is different from the `name` field which reperesents the system-assigned id of the instance which the service consumers do not recognize. This is a required field for tenants onboarding to Maintenance Window notifications (go/slm-rollout-maintenance-policies#prerequisites). */
+  consumerDefinedName?: string;
+  /** Output only. ID of the associated GCP tenant project. See go/get-instance-metadata. */
+  tenantProjectId?: string;
+  /** Output only. Custom string attributes used primarily to expose producer-specific information in monitoring dashboards. See go/get-instance-metadata. */
+  producerMetadata?: Record<string, string>;
+  /** Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this field. Instead they should use software_versions. */
+  slmInstanceTemplate?: string;
+  /** Output only. Timestamp when the resource was last modified. */
+  updateTime?: string;
+  /** Output only. Timestamp when the resource was created. */
+  createTime?: string;
+  /** Optional. The consumer_project_number associated with this Apigee instance. This field is added specifically to support Apigee integration with SLM Rollout and UMM. It represents the numerical project ID of the GCP project that consumes this Apigee instance. It is used for SLM rollout notifications and UMM integration, enabling proper mapping to customer projects and log delivery for Apigee instances. This field complements consumer_project_id and may be used for specific Apigee scenarios where the numerical ID is required. */
+  consumerProjectNumber?: string;
+  /** Optional. notification_parameter are information that service producers may like to include that is not relevant to Rollout. This parameter will only be passed to Gamma and Cloud Logging for notification/logging purpose. */
+  notificationParameters?: Record<
+    string,
+    GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
+  >;
+  /** Optional. The MaintenanceSettings associated with instance. */
+  maintenanceSettings?: GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings;
   /** Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to use). */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1349,89 +1171,55 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1Instance {
     | "DELETING"
     | "ERROR"
     | (string & {});
-  /** Software versions that are used to deploy this instance. This can be mutated by rollout services. */
-  softwareVersions?: Record<string, string>;
-  /** Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy type. For details, please refer to go/mr-user-guide. Should not be set if maintenance_settings.maintenance_policies is set. */
-  maintenancePolicyNames?: Record<string, string>;
-  /** Output only. ID of the associated GCP tenant project. See go/get-instance-metadata. */
-  tenantProjectId?: string;
-  /** Output only. Custom string attributes used primarily to expose producer-specific information in monitoring dashboards. See go/get-instance-metadata. */
-  producerMetadata?: Record<string, string>;
-  /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
-  provisionedResources?: Array<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>;
-  /** Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform. See go/cloud-ssa-standard-slo for feature description. */
-  sloMetadata?: GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata;
-  /** The MaintenanceSchedule contains the scheduling information of published maintenance schedule with same key as software_versions. */
-  maintenanceSchedules?: Record<
-    string,
-    GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
-  >;
-  /** consumer_defined_name is the name of the instance set by the service consumers. Generally this is different from the `name` field which reperesents the system-assigned id of the instance which the service consumers do not recognize. This is a required field for tenants onboarding to Maintenance Window notifications (go/slm-rollout-maintenance-policies#prerequisites). */
-  consumerDefinedName?: string;
-  /** Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this field. Instead they should use software_versions. */
-  slmInstanceTemplate?: string;
-  /** Optional. The MaintenanceSettings associated with instance. */
-  maintenanceSettings?: GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings;
-  /** Optional. The instance_type of this instance of format: projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or not. */
-  instanceType?: string;
-  /** Optional. notification_parameter are information that service producers may like to include that is not relevant to Rollout. This parameter will only be passed to Gamma and Cloud Logging for notification/logging purpose. */
-  notificationParameters?: Record<
-    string,
-    GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
-  >;
-  /** Optional. The consumer_project_number associated with this Apigee instance. This field is added specifically to support Apigee integration with SLM Rollout and UMM. It represents the numerical project ID of the GCP project that consumes this Apigee instance. It is used for SLM rollout notifications and UMM integration, enabling proper mapping to customer projects and log delivery for Apigee instances. This field complements consumer_project_id and may be used for specific Apigee scenarios where the numerical ID is required. */
-  consumerProjectNumber?: string;
 }
 
-export const GoogleCloudSaasacceleratorManagementProvidersV1Instance: Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      softwareVersions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+export const GoogleCloudSaasacceleratorManagementProvidersV1Instance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maintenanceSchedules: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule,
       ),
-      maintenancePolicyNames: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+    ),
+    sloMetadata: Schema.optional(
+      GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata,
+    ),
+    softwareVersions: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    maintenancePolicyNames: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    instanceType: Schema.optional(Schema.String),
+    provisionedResources: Schema.optional(
+      Schema.Array(
+        GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource,
       ),
-      tenantProjectId: Schema.optional(Schema.String),
-      producerMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+    ),
+    consumerDefinedName: Schema.optional(Schema.String),
+    tenantProjectId: Schema.optional(Schema.String),
+    producerMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    slmInstanceTemplate: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    consumerProjectNumber: Schema.optional(Schema.String),
+    notificationParameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter,
       ),
-      provisionedResources: Schema.optional(
-        Schema.Array(
-          GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource,
-        ),
-      ),
-      sloMetadata: Schema.optional(
-        GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata,
-      ),
-      maintenanceSchedules: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule,
-        ),
-      ),
-      consumerDefinedName: Schema.optional(Schema.String),
-      slmInstanceTemplate: Schema.optional(Schema.String),
-      maintenanceSettings: Schema.optional(
-        GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings,
-      ),
-      instanceType: Schema.optional(Schema.String),
-      notificationParameters: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter,
-        ),
-      ),
-      consumerProjectNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    maintenanceSettings: Schema.optional(
+      GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings,
+    ),
+    state: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudSaasacceleratorManagementProvidersV1Instance",
-  }) as any as Schema.Schema<GoogleCloudSaasacceleratorManagementProvidersV1Instance>;
+  });
 
 // ==========================================================================
 // Operations
@@ -1442,23 +1230,23 @@ export interface ListProjectsLocationsRequest {
   name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/locations" }),
     svc,
@@ -1521,27 +1309,27 @@ export const getProjectsLocations: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsGlobalOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list filter. */
-  filter?: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list filter. */
+  filter?: string;
 }
 
 export const ListProjectsLocationsGlobalOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
     ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1679,322 +1467,6 @@ export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
   errors: [],
 }));
 
-export interface CreateProjectsLocationsGlobalDomainsRequest {
-  /** Required. The resource project name and location using the form: `projects/{project_id}/locations/global` */
-  parent: string;
-  /** Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project. */
-  domainName?: string;
-  /** Request body */
-  body?: Domain;
-}
-
-export const CreateProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    domainName: Schema.optional(Schema.String).pipe(T.HttpQuery("domainName")),
-    body: Schema.optional(Domain).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsGlobalDomainsRequest>;
-
-export type CreateProjectsLocationsGlobalDomainsResponse = Operation;
-export const CreateProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Creates a Microsoft AD domain. */
-export const createProjectsLocationsGlobalDomains: API.OperationMethod<
-  CreateProjectsLocationsGlobalDomainsRequest,
-  CreateProjectsLocationsGlobalDomainsResponse,
-  CreateProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGlobalDomainsRequest,
-  output: CreateProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface ResetAdminPasswordProjectsLocationsGlobalDomainsRequest {
-  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  name: string;
-  /** Request body */
-  body?: ResetAdminPasswordRequest;
-}
-
-export const ResetAdminPasswordProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ResetAdminPasswordRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:resetAdminPassword",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ResetAdminPasswordProjectsLocationsGlobalDomainsRequest>;
-
-export type ResetAdminPasswordProjectsLocationsGlobalDomainsResponse =
-  ResetAdminPasswordResponse;
-export const ResetAdminPasswordProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResetAdminPasswordResponse;
-
-export type ResetAdminPasswordProjectsLocationsGlobalDomainsError =
-  DefaultErrors;
-
-/** Resets a domain's administrator password. */
-export const resetAdminPasswordProjectsLocationsGlobalDomains: API.OperationMethod<
-  ResetAdminPasswordProjectsLocationsGlobalDomainsRequest,
-  ResetAdminPasswordProjectsLocationsGlobalDomainsResponse,
-  ResetAdminPasswordProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ResetAdminPasswordProjectsLocationsGlobalDomainsRequest,
-  output: ResetAdminPasswordProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface ListProjectsLocationsGlobalDomainsRequest {
-  /** Required. The resource name of the domain location using the form: `projects/{project_id}/locations/global` */
-  parent: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used. Regardless of the page_size value, the response may include a partial list. Callers should rely on a response's next_page_token to determine if there are additional results to list. */
-  pageSize?: number;
-  /** The `next_page_token` value returned from a previous ListDomainsRequest request, if any. */
-  pageToken?: string;
-  /** Optional. A filter specifying constraints of a list operation. For example, `Domain.fqdn="mydomain.myorginization"`. */
-  filter?: string;
-  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlobalDomainsRequest>;
-
-export type ListProjectsLocationsGlobalDomainsResponse = ListDomainsResponse;
-export const ListProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
-
-export type ListProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Lists domains in a project. */
-export const listProjectsLocationsGlobalDomains: API.PaginatedOperationMethod<
-  ListProjectsLocationsGlobalDomainsRequest,
-  ListProjectsLocationsGlobalDomainsResponse,
-  ListProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlobalDomainsRequest,
-  output: ListProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsGlobalDomainsRequest {
-  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  name: string;
-}
-
-export const GetProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlobalDomainsRequest>;
-
-export type GetProjectsLocationsGlobalDomainsResponse = Domain;
-export const GetProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Domain;
-
-export type GetProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Gets information about a domain. */
-export const getProjectsLocationsGlobalDomains: API.OperationMethod<
-  GetProjectsLocationsGlobalDomainsRequest,
-  GetProjectsLocationsGlobalDomainsResponse,
-  GetProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlobalDomainsRequest,
-  output: GetProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface PatchProjectsLocationsGlobalDomainsRequest {
-  /** Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. */
-  name: string;
-  /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include fields from Domain: * `labels` * `locations` * `authorized_networks` * `audit_logs_enabled` */
-  updateMask?: string;
-  /** Request body */
-  body?: Domain;
-}
-
-export const PatchProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Domain).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalDomainsRequest>;
-
-export type PatchProjectsLocationsGlobalDomainsResponse = Operation;
-export const PatchProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Updates the metadata and configuration of a domain. */
-export const patchProjectsLocationsGlobalDomains: API.OperationMethod<
-  PatchProjectsLocationsGlobalDomainsRequest,
-  PatchProjectsLocationsGlobalDomainsResponse,
-  PatchProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGlobalDomainsRequest,
-  output: PatchProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface DeleteProjectsLocationsGlobalDomainsRequest {
-  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalDomainsRequest>;
-
-export type DeleteProjectsLocationsGlobalDomainsResponse = Operation;
-export const DeleteProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Deletes a domain. */
-export const deleteProjectsLocationsGlobalDomains: API.OperationMethod<
-  DeleteProjectsLocationsGlobalDomainsRequest,
-  DeleteProjectsLocationsGlobalDomainsResponse,
-  DeleteProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGlobalDomainsRequest,
-  output: DeleteProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface AttachTrustProjectsLocationsGlobalDomainsRequest {
-  /** Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  name: string;
-  /** Request body */
-  body?: AttachTrustRequest;
-}
-
-export const AttachTrustProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(AttachTrustRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:attachTrust",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<AttachTrustProjectsLocationsGlobalDomainsRequest>;
-
-export type AttachTrustProjectsLocationsGlobalDomainsResponse = Operation;
-export const AttachTrustProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type AttachTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Adds an AD trust to a domain. */
-export const attachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
-  AttachTrustProjectsLocationsGlobalDomainsRequest,
-  AttachTrustProjectsLocationsGlobalDomainsResponse,
-  AttachTrustProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AttachTrustProjectsLocationsGlobalDomainsRequest,
-  output: AttachTrustProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface ReconfigureTrustProjectsLocationsGlobalDomainsRequest {
-  /** Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  name: string;
-  /** Request body */
-  body?: ReconfigureTrustRequest;
-}
-
-export const ReconfigureTrustProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ReconfigureTrustRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:reconfigureTrust",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ReconfigureTrustProjectsLocationsGlobalDomainsRequest>;
-
-export type ReconfigureTrustProjectsLocationsGlobalDomainsResponse = Operation;
-export const ReconfigureTrustProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ReconfigureTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Updates the DNS conditional forwarder. */
-export const reconfigureTrustProjectsLocationsGlobalDomains: API.OperationMethod<
-  ReconfigureTrustProjectsLocationsGlobalDomainsRequest,
-  ReconfigureTrustProjectsLocationsGlobalDomainsResponse,
-  ReconfigureTrustProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReconfigureTrustProjectsLocationsGlobalDomainsRequest,
-  output: ReconfigureTrustProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
 export interface DetachTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
@@ -2030,44 +1502,6 @@ export const detachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachTrustProjectsLocationsGlobalDomainsRequest,
   output: DetachTrustProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface ValidateTrustProjectsLocationsGlobalDomainsRequest {
-  /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  name: string;
-  /** Request body */
-  body?: ValidateTrustRequest;
-}
-
-export const ValidateTrustProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ValidateTrustRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:validateTrust",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ValidateTrustProjectsLocationsGlobalDomainsRequest>;
-
-export type ValidateTrustProjectsLocationsGlobalDomainsResponse = Operation;
-export const ValidateTrustProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ValidateTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Validates a trust state, that the target domain is reachable, and that the target domain is able to accept incoming trust requests. */
-export const validateTrustProjectsLocationsGlobalDomains: API.OperationMethod<
-  ValidateTrustProjectsLocationsGlobalDomainsRequest,
-  ValidateTrustProjectsLocationsGlobalDomainsResponse,
-  ValidateTrustProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ValidateTrustProjectsLocationsGlobalDomainsRequest,
-  output: ValidateTrustProjectsLocationsGlobalDomainsResponse,
   errors: [],
 }));
 
@@ -2109,38 +1543,306 @@ export const restoreProjectsLocationsGlobalDomains: API.OperationMethod<
   errors: [],
 }));
 
-export interface GetLdapssettingsProjectsLocationsGlobalDomainsRequest {
+export interface SetIamPolicyProjectsLocationsGlobalDomainsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGlobalDomainsRequest>;
+
+export type SetIamPolicyProjectsLocationsGlobalDomainsResponse = Policy;
+export const SetIamPolicyProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
+  SetIamPolicyProjectsLocationsGlobalDomainsRequest,
+  SetIamPolicyProjectsLocationsGlobalDomainsResponse,
+  SetIamPolicyProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsGlobalDomainsRequest,
+  output: SetIamPolicyProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsGlobalDomainsRequest {
+  /** Required. The resource project name and location using the form: `projects/{project_id}/locations/global` */
+  parent: string;
+  /** Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project. */
+  domainName?: string;
+  /** Request body */
+  body?: Domain;
+}
+
+export const CreateProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    domainName: Schema.optional(Schema.String).pipe(T.HttpQuery("domainName")),
+    body: Schema.optional(Domain).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsGlobalDomainsRequest>;
+
+export type CreateProjectsLocationsGlobalDomainsResponse = Operation;
+export const CreateProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Creates a Microsoft AD domain. */
+export const createProjectsLocationsGlobalDomains: API.OperationMethod<
+  CreateProjectsLocationsGlobalDomainsRequest,
+  CreateProjectsLocationsGlobalDomainsResponse,
+  CreateProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsGlobalDomainsRequest,
+  output: CreateProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
 }
 
-export const GetLdapssettingsProjectsLocationsGlobalDomainsRequest =
+export const GetProjectsLocationsGlobalDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/ldapssettings",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetLdapssettingsProjectsLocationsGlobalDomainsRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsGlobalDomainsRequest>;
 
-export type GetLdapssettingsProjectsLocationsGlobalDomainsResponse =
-  LDAPSSettings;
-export const GetLdapssettingsProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LDAPSSettings;
+export type GetProjectsLocationsGlobalDomainsResponse = Domain;
+export const GetProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type GetLdapssettingsProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type GetProjectsLocationsGlobalDomainsError = DefaultErrors;
 
-/** Gets the domain ldaps settings. */
-export const getLdapssettingsProjectsLocationsGlobalDomains: API.OperationMethod<
-  GetLdapssettingsProjectsLocationsGlobalDomainsRequest,
-  GetLdapssettingsProjectsLocationsGlobalDomainsResponse,
-  GetLdapssettingsProjectsLocationsGlobalDomainsError,
+/** Gets information about a domain. */
+export const getProjectsLocationsGlobalDomains: API.OperationMethod<
+  GetProjectsLocationsGlobalDomainsRequest,
+  GetProjectsLocationsGlobalDomainsResponse,
+  GetProjectsLocationsGlobalDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetLdapssettingsProjectsLocationsGlobalDomainsRequest,
-  output: GetLdapssettingsProjectsLocationsGlobalDomainsResponse,
+  input: GetProjectsLocationsGlobalDomainsRequest,
+  output: GetProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsProjectsLocationsGlobalDomainsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsRequest>;
+
+export type TestIamPermissionsProjectsLocationsGlobalDomainsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsGlobalDomainsError =
+  DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsGlobalDomains: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsGlobalDomainsRequest,
+  TestIamPermissionsProjectsLocationsGlobalDomainsResponse,
+  TestIamPermissionsProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsGlobalDomainsRequest,
+  output: TestIamPermissionsProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest {
+  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  domain: string;
+  /** Request body */
+  body?: CheckMigrationPermissionRequest;
+}
+
+export const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.String.pipe(T.HttpPath("domain")),
+    body: Schema.optional(CheckMigrationPermissionRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:checkMigrationPermission",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest>;
+
+export type CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse =
+  CheckMigrationPermissionResponse;
+export const CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CheckMigrationPermissionResponse;
+
+export type CheckMigrationPermissionProjectsLocationsGlobalDomainsError =
+  DefaultErrors;
+
+/** CheckMigrationPermission API gets the current state of DomainMigration */
+export const checkMigrationPermissionProjectsLocationsGlobalDomains: API.OperationMethod<
+  CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest,
+  CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse,
+  CheckMigrationPermissionProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest,
+  output: CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface ExtendSchemaProjectsLocationsGlobalDomainsRequest {
+  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  domain: string;
+  /** Request body */
+  body?: ExtendSchemaRequest;
+}
+
+export const ExtendSchemaProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.String.pipe(T.HttpPath("domain")),
+    body: Schema.optional(ExtendSchemaRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:extendSchema",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ExtendSchemaProjectsLocationsGlobalDomainsRequest>;
+
+export type ExtendSchemaProjectsLocationsGlobalDomainsResponse = Operation;
+export const ExtendSchemaProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ExtendSchemaProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Extend Schema for Domain */
+export const extendSchemaProjectsLocationsGlobalDomains: API.OperationMethod<
+  ExtendSchemaProjectsLocationsGlobalDomainsRequest,
+  ExtendSchemaProjectsLocationsGlobalDomainsResponse,
+  ExtendSchemaProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExtendSchemaProjectsLocationsGlobalDomainsRequest,
+  output: ExtendSchemaProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface ValidateTrustProjectsLocationsGlobalDomainsRequest {
+  /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  name: string;
+  /** Request body */
+  body?: ValidateTrustRequest;
+}
+
+export const ValidateTrustProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ValidateTrustRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:validateTrust",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ValidateTrustProjectsLocationsGlobalDomainsRequest>;
+
+export type ValidateTrustProjectsLocationsGlobalDomainsResponse = Operation;
+export const ValidateTrustProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ValidateTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Validates a trust state, that the target domain is reachable, and that the target domain is able to accept incoming trust requests. */
+export const validateTrustProjectsLocationsGlobalDomains: API.OperationMethod<
+  ValidateTrustProjectsLocationsGlobalDomainsRequest,
+  ValidateTrustProjectsLocationsGlobalDomainsResponse,
+  ValidateTrustProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ValidateTrustProjectsLocationsGlobalDomainsRequest,
+  output: ValidateTrustProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsGlobalDomainsRequest {
+  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalDomainsRequest>;
+
+export type DeleteProjectsLocationsGlobalDomainsResponse = Operation;
+export const DeleteProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Deletes a domain. */
+export const deleteProjectsLocationsGlobalDomains: API.OperationMethod<
+  DeleteProjectsLocationsGlobalDomainsRequest,
+  DeleteProjectsLocationsGlobalDomainsResponse,
+  DeleteProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsGlobalDomainsRequest,
+  output: DeleteProjectsLocationsGlobalDomainsResponse,
   errors: [],
 }));
 
@@ -2187,157 +1889,38 @@ export const updateLdapssettingsProjectsLocationsGlobalDomains: API.OperationMet
   errors: [],
 }));
 
-export interface ExtendSchemaProjectsLocationsGlobalDomainsRequest {
+export interface GetLdapssettingsProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  domain: string;
-  /** Request body */
-  body?: ExtendSchemaRequest;
+  name: string;
 }
 
-export const ExtendSchemaProjectsLocationsGlobalDomainsRequest =
+export const GetLdapssettingsProjectsLocationsGlobalDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domain: Schema.String.pipe(T.HttpPath("domain")),
-    body: Schema.optional(ExtendSchemaRequest).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:extendSchema",
-      hasBody: true,
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/ldapssettings",
     }),
     svc,
-  ) as unknown as Schema.Schema<ExtendSchemaProjectsLocationsGlobalDomainsRequest>;
+  ) as unknown as Schema.Schema<GetLdapssettingsProjectsLocationsGlobalDomainsRequest>;
 
-export type ExtendSchemaProjectsLocationsGlobalDomainsResponse = Operation;
-export const ExtendSchemaProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type GetLdapssettingsProjectsLocationsGlobalDomainsResponse =
+  LDAPSSettings;
+export const GetLdapssettingsProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ LDAPSSettings;
 
-export type ExtendSchemaProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type GetLdapssettingsProjectsLocationsGlobalDomainsError = DefaultErrors;
 
-/** Extend Schema for Domain */
-export const extendSchemaProjectsLocationsGlobalDomains: API.OperationMethod<
-  ExtendSchemaProjectsLocationsGlobalDomainsRequest,
-  ExtendSchemaProjectsLocationsGlobalDomainsResponse,
-  ExtendSchemaProjectsLocationsGlobalDomainsError,
+/** Gets the domain ldaps settings. */
+export const getLdapssettingsProjectsLocationsGlobalDomains: API.OperationMethod<
+  GetLdapssettingsProjectsLocationsGlobalDomainsRequest,
+  GetLdapssettingsProjectsLocationsGlobalDomainsResponse,
+  GetLdapssettingsProjectsLocationsGlobalDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ExtendSchemaProjectsLocationsGlobalDomainsRequest,
-  output: ExtendSchemaProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface EnableMigrationProjectsLocationsGlobalDomainsRequest {
-  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  domain: string;
-  /** Request body */
-  body?: EnableMigrationRequest;
-}
-
-export const EnableMigrationProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domain: Schema.String.pipe(T.HttpPath("domain")),
-    body: Schema.optional(EnableMigrationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:enableMigration",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<EnableMigrationProjectsLocationsGlobalDomainsRequest>;
-
-export type EnableMigrationProjectsLocationsGlobalDomainsResponse = Operation;
-export const EnableMigrationProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type EnableMigrationProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Enable Domain Migration */
-export const enableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
-  EnableMigrationProjectsLocationsGlobalDomainsRequest,
-  EnableMigrationProjectsLocationsGlobalDomainsResponse,
-  EnableMigrationProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: EnableMigrationProjectsLocationsGlobalDomainsRequest,
-  output: EnableMigrationProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface DisableMigrationProjectsLocationsGlobalDomainsRequest {
-  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  domain: string;
-  /** Request body */
-  body?: DisableMigrationRequest;
-}
-
-export const DisableMigrationProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domain: Schema.String.pipe(T.HttpPath("domain")),
-    body: Schema.optional(DisableMigrationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:disableMigration",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DisableMigrationProjectsLocationsGlobalDomainsRequest>;
-
-export type DisableMigrationProjectsLocationsGlobalDomainsResponse = Operation;
-export const DisableMigrationProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DisableMigrationProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Disable Domain Migration */
-export const disableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
-  DisableMigrationProjectsLocationsGlobalDomainsRequest,
-  DisableMigrationProjectsLocationsGlobalDomainsResponse,
-  DisableMigrationProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DisableMigrationProjectsLocationsGlobalDomainsRequest,
-  output: DisableMigrationProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
-export interface CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest {
-  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  domain: string;
-  /** Request body */
-  body?: CheckMigrationPermissionRequest;
-}
-
-export const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domain: Schema.String.pipe(T.HttpPath("domain")),
-    body: Schema.optional(CheckMigrationPermissionRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:checkMigrationPermission",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest>;
-
-export type CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse =
-  CheckMigrationPermissionResponse;
-export const CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CheckMigrationPermissionResponse;
-
-export type CheckMigrationPermissionProjectsLocationsGlobalDomainsError =
-  DefaultErrors;
-
-/** CheckMigrationPermission API gets the current state of DomainMigration */
-export const checkMigrationPermissionProjectsLocationsGlobalDomains: API.OperationMethod<
-  CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest,
-  CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse,
-  CheckMigrationPermissionProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest,
-  output: CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse,
+  input: GetLdapssettingsProjectsLocationsGlobalDomainsRequest,
+  output: GetLdapssettingsProjectsLocationsGlobalDomainsResponse,
   errors: [],
 }));
 
@@ -2381,44 +1964,6 @@ export const domainJoinMachineProjectsLocationsGlobalDomains: API.OperationMetho
   errors: [],
 }));
 
-export interface SetIamPolicyProjectsLocationsGlobalDomainsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsGlobalDomainsRequest>;
-
-export type SetIamPolicyProjectsLocationsGlobalDomainsResponse = Policy;
-export const SetIamPolicyProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsGlobalDomainsError = DefaultErrors;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
-  SetIamPolicyProjectsLocationsGlobalDomainsRequest,
-  SetIamPolicyProjectsLocationsGlobalDomainsResponse,
-  SetIamPolicyProjectsLocationsGlobalDomainsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsGlobalDomainsRequest,
-  output: SetIamPolicyProjectsLocationsGlobalDomainsResponse,
-  errors: [],
-}));
-
 export interface GetIamPolicyProjectsLocationsGlobalDomainsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2458,66 +2003,309 @@ export const getIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
   errors: [],
 }));
 
-export interface TestIamPermissionsProjectsLocationsGlobalDomainsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
+export interface ResetAdminPasswordProjectsLocationsGlobalDomainsRequest {
+  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  name: string;
   /** Request body */
-  body?: TestIamPermissionsRequest;
+  body?: ResetAdminPasswordRequest;
 }
 
-export const TestIamPermissionsProjectsLocationsGlobalDomainsRequest =
+export const ResetAdminPasswordProjectsLocationsGlobalDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ResetAdminPasswordRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:testIamPermissions",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:resetAdminPassword",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsRequest>;
+  ) as unknown as Schema.Schema<ResetAdminPasswordProjectsLocationsGlobalDomainsRequest>;
 
-export type TestIamPermissionsProjectsLocationsGlobalDomainsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsGlobalDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+export type ResetAdminPasswordProjectsLocationsGlobalDomainsResponse =
+  ResetAdminPasswordResponse;
+export const ResetAdminPasswordProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResetAdminPasswordResponse;
 
-export type TestIamPermissionsProjectsLocationsGlobalDomainsError =
+export type ResetAdminPasswordProjectsLocationsGlobalDomainsError =
   DefaultErrors;
 
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsGlobalDomains: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsGlobalDomainsRequest,
-  TestIamPermissionsProjectsLocationsGlobalDomainsResponse,
-  TestIamPermissionsProjectsLocationsGlobalDomainsError,
+/** Resets a domain's administrator password. */
+export const resetAdminPasswordProjectsLocationsGlobalDomains: API.OperationMethod<
+  ResetAdminPasswordProjectsLocationsGlobalDomainsRequest,
+  ResetAdminPasswordProjectsLocationsGlobalDomainsResponse,
+  ResetAdminPasswordProjectsLocationsGlobalDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsGlobalDomainsRequest,
-  output: TestIamPermissionsProjectsLocationsGlobalDomainsResponse,
+  input: ResetAdminPasswordProjectsLocationsGlobalDomainsRequest,
+  output: ResetAdminPasswordProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface DisableMigrationProjectsLocationsGlobalDomainsRequest {
+  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  domain: string;
+  /** Request body */
+  body?: DisableMigrationRequest;
+}
+
+export const DisableMigrationProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.String.pipe(T.HttpPath("domain")),
+    body: Schema.optional(DisableMigrationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:disableMigration",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DisableMigrationProjectsLocationsGlobalDomainsRequest>;
+
+export type DisableMigrationProjectsLocationsGlobalDomainsResponse = Operation;
+export const DisableMigrationProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DisableMigrationProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Disable Domain Migration */
+export const disableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
+  DisableMigrationProjectsLocationsGlobalDomainsRequest,
+  DisableMigrationProjectsLocationsGlobalDomainsResponse,
+  DisableMigrationProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DisableMigrationProjectsLocationsGlobalDomainsRequest,
+  output: DisableMigrationProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsGlobalDomainsRequest {
+  /** Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. */
+  name: string;
+  /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include fields from Domain: * `labels` * `locations` * `authorized_networks` * `audit_logs_enabled` */
+  updateMask?: string;
+  /** Request body */
+  body?: Domain;
+}
+
+export const PatchProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Domain).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalDomainsRequest>;
+
+export type PatchProjectsLocationsGlobalDomainsResponse = Operation;
+export const PatchProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Updates the metadata and configuration of a domain. */
+export const patchProjectsLocationsGlobalDomains: API.OperationMethod<
+  PatchProjectsLocationsGlobalDomainsRequest,
+  PatchProjectsLocationsGlobalDomainsResponse,
+  PatchProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsGlobalDomainsRequest,
+  output: PatchProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface AttachTrustProjectsLocationsGlobalDomainsRequest {
+  /** Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  name: string;
+  /** Request body */
+  body?: AttachTrustRequest;
+}
+
+export const AttachTrustProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(AttachTrustRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:attachTrust",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<AttachTrustProjectsLocationsGlobalDomainsRequest>;
+
+export type AttachTrustProjectsLocationsGlobalDomainsResponse = Operation;
+export const AttachTrustProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type AttachTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Adds an AD trust to a domain. */
+export const attachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
+  AttachTrustProjectsLocationsGlobalDomainsRequest,
+  AttachTrustProjectsLocationsGlobalDomainsResponse,
+  AttachTrustProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AttachTrustProjectsLocationsGlobalDomainsRequest,
+  output: AttachTrustProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface EnableMigrationProjectsLocationsGlobalDomainsRequest {
+  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  domain: string;
+  /** Request body */
+  body?: EnableMigrationRequest;
+}
+
+export const EnableMigrationProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.String.pipe(T.HttpPath("domain")),
+    body: Schema.optional(EnableMigrationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:enableMigration",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<EnableMigrationProjectsLocationsGlobalDomainsRequest>;
+
+export type EnableMigrationProjectsLocationsGlobalDomainsResponse = Operation;
+export const EnableMigrationProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type EnableMigrationProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Enable Domain Migration */
+export const enableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
+  EnableMigrationProjectsLocationsGlobalDomainsRequest,
+  EnableMigrationProjectsLocationsGlobalDomainsResponse,
+  EnableMigrationProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: EnableMigrationProjectsLocationsGlobalDomainsRequest,
+  output: EnableMigrationProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsGlobalDomainsRequest {
+  /** Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. */
+  orderBy?: string;
+  /** Optional. A filter specifying constraints of a list operation. For example, `Domain.fqdn="mydomain.myorginization"`. */
+  filter?: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used. Regardless of the page_size value, the response may include a partial list. Callers should rely on a response's next_page_token to determine if there are additional results to list. */
+  pageSize?: number;
+  /** Required. The resource name of the domain location using the form: `projects/{project_id}/locations/global` */
+  parent: string;
+  /** The `next_page_token` value returned from a previous ListDomainsRequest request, if any. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsGlobalDomainsRequest>;
+
+export type ListProjectsLocationsGlobalDomainsResponse = ListDomainsResponse;
+export const ListProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
+
+export type ListProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Lists domains in a project. */
+export const listProjectsLocationsGlobalDomains: API.PaginatedOperationMethod<
+  ListProjectsLocationsGlobalDomainsRequest,
+  ListProjectsLocationsGlobalDomainsResponse,
+  ListProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsGlobalDomainsRequest,
+  output: ListProjectsLocationsGlobalDomainsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ReconfigureTrustProjectsLocationsGlobalDomainsRequest {
+  /** Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  name: string;
+  /** Request body */
+  body?: ReconfigureTrustRequest;
+}
+
+export const ReconfigureTrustProjectsLocationsGlobalDomainsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ReconfigureTrustRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}:reconfigureTrust",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ReconfigureTrustProjectsLocationsGlobalDomainsRequest>;
+
+export type ReconfigureTrustProjectsLocationsGlobalDomainsResponse = Operation;
+export const ReconfigureTrustProjectsLocationsGlobalDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ReconfigureTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
+
+/** Updates the DNS conditional forwarder. */
+export const reconfigureTrustProjectsLocationsGlobalDomains: API.OperationMethod<
+  ReconfigureTrustProjectsLocationsGlobalDomainsRequest,
+  ReconfigureTrustProjectsLocationsGlobalDomainsResponse,
+  ReconfigureTrustProjectsLocationsGlobalDomainsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReconfigureTrustProjectsLocationsGlobalDomainsRequest,
+  output: ReconfigureTrustProjectsLocationsGlobalDomainsResponse,
   errors: [],
 }));
 
 export interface ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest {
-  /** Required. The resource name of the SqlIntegrations using the form: `projects/{project_id}/locations/global/domains/*` */
-  parent: string;
+  /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
+  orderBy?: string;
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response'ANIZATIONs next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
+  /** Required. The resource name of the SqlIntegrations using the form: `projects/{project_id}/locations/global/domains/*` */
+  parent: string;
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
   /** Optional. Filter specifying constraints of a list operation. For example, `SqlIntegration.name="sql"`. */
   filter?: string;
-  /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
-  orderBy?: string;
 }
 
 export const ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2586,6 +2374,120 @@ export const getProjectsLocationsGlobalDomainsSqlIntegrations: API.OperationMeth
   errors: [],
 }));
 
+export interface GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}:getIamPolicy",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>;
+
+export type GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse = Policy;
+export const GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsGlobalDomainsBackupsError =
+  DefaultErrors;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
+  GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
+  GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse,
+  GetIamPolicyProjectsLocationsGlobalDomainsBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
+  output: GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsGlobalDomainsBackupsRequest {
+  /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
+  name: string;
+}
+
+export const GetProjectsLocationsGlobalDomainsBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsGlobalDomainsBackupsRequest>;
+
+export type GetProjectsLocationsGlobalDomainsBackupsResponse = Backup;
+export const GetProjectsLocationsGlobalDomainsBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Backup;
+
+export type GetProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
+
+/** Gets details of a single Backup. */
+export const getProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
+  GetProjectsLocationsGlobalDomainsBackupsRequest,
+  GetProjectsLocationsGlobalDomainsBackupsResponse,
+  GetProjectsLocationsGlobalDomainsBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsGlobalDomainsBackupsRequest,
+  output: GetProjectsLocationsGlobalDomainsBackupsResponse,
+  errors: [],
+}));
+
+export interface TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest>;
+
+export type TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsGlobalDomainsBackupsError =
+  DefaultErrors;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest,
+  TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse,
+  TestIamPermissionsProjectsLocationsGlobalDomainsBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest,
+  output: TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse,
+  errors: [],
+}));
+
 export interface CreateProjectsLocationsGlobalDomainsBackupsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   parent: string;
@@ -2624,91 +2526,6 @@ export const createProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalDomainsBackupsRequest,
   output: CreateProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
-}));
-
-export interface ListProjectsLocationsGlobalDomainsBackupsRequest {
-  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
-  parent: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-  /** Optional. Filter specifying constraints of a list operation. */
-  filter?: string;
-  /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsGlobalDomainsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>;
-
-export type ListProjectsLocationsGlobalDomainsBackupsResponse =
-  ListBackupsResponse;
-export const ListProjectsLocationsGlobalDomainsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
-
-export type ListProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
-
-/** Lists Backup in a given project. */
-export const listProjectsLocationsGlobalDomainsBackups: API.PaginatedOperationMethod<
-  ListProjectsLocationsGlobalDomainsBackupsRequest,
-  ListProjectsLocationsGlobalDomainsBackupsResponse,
-  ListProjectsLocationsGlobalDomainsBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlobalDomainsBackupsRequest,
-  output: ListProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsGlobalDomainsBackupsRequest {
-  /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
-  name: string;
-}
-
-export const GetProjectsLocationsGlobalDomainsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlobalDomainsBackupsRequest>;
-
-export type GetProjectsLocationsGlobalDomainsBackupsResponse = Backup;
-export const GetProjectsLocationsGlobalDomainsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Backup;
-
-export type GetProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
-
-/** Gets details of a single Backup. */
-export const getProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
-  GetProjectsLocationsGlobalDomainsBackupsRequest,
-  GetProjectsLocationsGlobalDomainsBackupsResponse,
-  GetProjectsLocationsGlobalDomainsBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlobalDomainsBackupsRequest,
-  output: GetProjectsLocationsGlobalDomainsBackupsResponse,
   errors: [],
 }));
 
@@ -2753,40 +2570,6 @@ export const patchProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
   errors: [],
 }));
 
-export interface DeleteProjectsLocationsGlobalDomainsBackupsRequest {
-  /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsGlobalDomainsBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalDomainsBackupsRequest>;
-
-export type DeleteProjectsLocationsGlobalDomainsBackupsResponse = Operation;
-export const DeleteProjectsLocationsGlobalDomainsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
-
-/** Deletes identified Backup. */
-export const deleteProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
-  DeleteProjectsLocationsGlobalDomainsBackupsRequest,
-  DeleteProjectsLocationsGlobalDomainsBackupsResponse,
-  DeleteProjectsLocationsGlobalDomainsBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGlobalDomainsBackupsRequest,
-  output: DeleteProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
-}));
-
 export interface SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2826,83 +2609,172 @@ export const setIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMet
   errors: [],
 }));
 
-export interface GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
+export interface ListProjectsLocationsGlobalDomainsBackupsRequest {
+  /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
+  orderBy?: string;
+  /** Optional. Filter specifying constraints of a list operation. */
+  filter?: string;
+  /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
+  parent: string;
+  /** Optional. The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
 }
 
-export const GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest =
+export const ListProjectsLocationsGlobalDomainsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}:getIamPolicy",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>;
 
-export type GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse = Policy;
-export const GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type ListProjectsLocationsGlobalDomainsBackupsResponse =
+  ListBackupsResponse;
+export const ListProjectsLocationsGlobalDomainsBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
 
-export type GetIamPolicyProjectsLocationsGlobalDomainsBackupsError =
-  DefaultErrors;
+export type ListProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
 
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
-  GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
-  GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse,
-  GetIamPolicyProjectsLocationsGlobalDomainsBackupsError,
+/** Lists Backup in a given project. */
+export const listProjectsLocationsGlobalDomainsBackups: API.PaginatedOperationMethod<
+  ListProjectsLocationsGlobalDomainsBackupsRequest,
+  ListProjectsLocationsGlobalDomainsBackupsResponse,
+  ListProjectsLocationsGlobalDomainsBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsGlobalDomainsBackupsRequest,
+  output: ListProjectsLocationsGlobalDomainsBackupsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsGlobalDomainsBackupsRequest {
+  /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsGlobalDomainsBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalDomainsBackupsRequest>;
+
+export type DeleteProjectsLocationsGlobalDomainsBackupsResponse = Operation;
+export const DeleteProjectsLocationsGlobalDomainsBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
+
+/** Deletes identified Backup. */
+export const deleteProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
+  DeleteProjectsLocationsGlobalDomainsBackupsRequest,
+  DeleteProjectsLocationsGlobalDomainsBackupsResponse,
+  DeleteProjectsLocationsGlobalDomainsBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
-  output: GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse,
+  input: DeleteProjectsLocationsGlobalDomainsBackupsRequest,
+  output: DeleteProjectsLocationsGlobalDomainsBackupsResponse,
   errors: [],
 }));
 
-export interface TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
+export interface ListProjectsLocationsGlobalPeeringsRequest {
+  /** Required. The resource name of the domain location using the form: `projects/{project_id}/locations/global` */
+  parent: string;
+  /** Optional. The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
+  pageSize?: number;
+  /** Optional. Filter specifying constraints of a list operation. For example, `peering.authoized_network ="/projects/myprojectid"`. */
+  filter?: string;
+  /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
+  orderBy?: string;
 }
 
-export const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest =
+export const ListProjectsLocationsGlobalPeeringsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/global/domains/{domainsId}/backups/{backupsId}:testIamPermissions",
-      hasBody: true,
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/global/peerings",
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsGlobalPeeringsRequest>;
 
-export type TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+export type ListProjectsLocationsGlobalPeeringsResponse = ListPeeringsResponse;
+export const ListProjectsLocationsGlobalPeeringsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListPeeringsResponse;
 
-export type TestIamPermissionsProjectsLocationsGlobalDomainsBackupsError =
-  DefaultErrors;
+export type ListProjectsLocationsGlobalPeeringsError = DefaultErrors;
 
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest,
-  TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse,
-  TestIamPermissionsProjectsLocationsGlobalDomainsBackupsError,
+/** Lists Peerings in a given project. */
+export const listProjectsLocationsGlobalPeerings: API.PaginatedOperationMethod<
+  ListProjectsLocationsGlobalPeeringsRequest,
+  ListProjectsLocationsGlobalPeeringsResponse,
+  ListProjectsLocationsGlobalPeeringsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsGlobalPeeringsRequest,
+  output: ListProjectsLocationsGlobalPeeringsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsGlobalPeeringsRequest {
+  /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
+  name: string;
+}
+
+export const DeleteProjectsLocationsGlobalPeeringsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1beta1/projects/{projectsId}/locations/global/peerings/{peeringsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalPeeringsRequest>;
+
+export type DeleteProjectsLocationsGlobalPeeringsResponse = Operation;
+export const DeleteProjectsLocationsGlobalPeeringsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsGlobalPeeringsError = DefaultErrors;
+
+/** Deletes identified Peering. */
+export const deleteProjectsLocationsGlobalPeerings: API.OperationMethod<
+  DeleteProjectsLocationsGlobalPeeringsRequest,
+  DeleteProjectsLocationsGlobalPeeringsResponse,
+  DeleteProjectsLocationsGlobalPeeringsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest,
-  output: TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse,
+  input: DeleteProjectsLocationsGlobalPeeringsRequest,
+  output: DeleteProjectsLocationsGlobalPeeringsResponse,
   errors: [],
 }));
 
@@ -2947,90 +2819,6 @@ export const createProjectsLocationsGlobalPeerings: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListProjectsLocationsGlobalPeeringsRequest {
-  /** Required. The resource name of the domain location using the form: `projects/{project_id}/locations/global` */
-  parent: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
-  pageSize?: number;
-  /** Optional. The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-  /** Optional. Filter specifying constraints of a list operation. For example, `peering.authoized_network ="/projects/myprojectid"`. */
-  filter?: string;
-  /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsGlobalPeeringsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/peerings",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsGlobalPeeringsRequest>;
-
-export type ListProjectsLocationsGlobalPeeringsResponse = ListPeeringsResponse;
-export const ListProjectsLocationsGlobalPeeringsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPeeringsResponse;
-
-export type ListProjectsLocationsGlobalPeeringsError = DefaultErrors;
-
-/** Lists Peerings in a given project. */
-export const listProjectsLocationsGlobalPeerings: API.PaginatedOperationMethod<
-  ListProjectsLocationsGlobalPeeringsRequest,
-  ListProjectsLocationsGlobalPeeringsResponse,
-  ListProjectsLocationsGlobalPeeringsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlobalPeeringsRequest,
-  output: ListProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface GetProjectsLocationsGlobalPeeringsRequest {
-  /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
-  name: string;
-}
-
-export const GetProjectsLocationsGlobalPeeringsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/global/peerings/{peeringsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsGlobalPeeringsRequest>;
-
-export type GetProjectsLocationsGlobalPeeringsResponse = Peering;
-export const GetProjectsLocationsGlobalPeeringsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Peering;
-
-export type GetProjectsLocationsGlobalPeeringsError = DefaultErrors;
-
-/** Gets details of a single Peering. */
-export const getProjectsLocationsGlobalPeerings: API.OperationMethod<
-  GetProjectsLocationsGlobalPeeringsRequest,
-  GetProjectsLocationsGlobalPeeringsResponse,
-  GetProjectsLocationsGlobalPeeringsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlobalPeeringsRequest,
-  output: GetProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
-}));
-
 export interface PatchProjectsLocationsGlobalPeeringsRequest {
   /** Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. */
   name: string;
@@ -3069,40 +2857,6 @@ export const patchProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalPeeringsRequest,
   output: PatchProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
-}));
-
-export interface DeleteProjectsLocationsGlobalPeeringsRequest {
-  /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
-  name: string;
-}
-
-export const DeleteProjectsLocationsGlobalPeeringsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/global/peerings/{peeringsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalPeeringsRequest>;
-
-export type DeleteProjectsLocationsGlobalPeeringsResponse = Operation;
-export const DeleteProjectsLocationsGlobalPeeringsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsGlobalPeeringsError = DefaultErrors;
-
-/** Deletes identified Peering. */
-export const deleteProjectsLocationsGlobalPeerings: API.OperationMethod<
-  DeleteProjectsLocationsGlobalPeeringsRequest,
-  DeleteProjectsLocationsGlobalPeeringsResponse,
-  DeleteProjectsLocationsGlobalPeeringsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGlobalPeeringsRequest,
-  output: DeleteProjectsLocationsGlobalPeeringsResponse,
   errors: [],
 }));
 
@@ -3180,6 +2934,40 @@ export const getIamPolicyProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsGlobalPeeringsRequest,
   output: GetIamPolicyProjectsLocationsGlobalPeeringsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsGlobalPeeringsRequest {
+  /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
+  name: string;
+}
+
+export const GetProjectsLocationsGlobalPeeringsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1beta1/projects/{projectsId}/locations/global/peerings/{peeringsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsGlobalPeeringsRequest>;
+
+export type GetProjectsLocationsGlobalPeeringsResponse = Peering;
+export const GetProjectsLocationsGlobalPeeringsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Peering;
+
+export type GetProjectsLocationsGlobalPeeringsError = DefaultErrors;
+
+/** Gets details of a single Peering. */
+export const getProjectsLocationsGlobalPeerings: API.OperationMethod<
+  GetProjectsLocationsGlobalPeeringsRequest,
+  GetProjectsLocationsGlobalPeeringsResponse,
+  GetProjectsLocationsGlobalPeeringsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsGlobalPeeringsRequest,
+  output: GetProjectsLocationsGlobalPeeringsResponse,
   errors: [],
 }));
 

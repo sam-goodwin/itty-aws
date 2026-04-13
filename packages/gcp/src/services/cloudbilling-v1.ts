@@ -37,19 +37,14 @@ export interface BillingAccount {
   currencyCode?: string;
 }
 
-export const BillingAccount: Schema.Schema<BillingAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      open: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      masterBillingAccount: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingAccount",
-  }) as any as Schema.Schema<BillingAccount>;
+export const BillingAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  open: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  masterBillingAccount: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "BillingAccount" });
 
 export interface ListBillingAccountsResponse {
   /** A list of billing accounts. */
@@ -58,15 +53,11 @@ export interface ListBillingAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListBillingAccountsResponse: Schema.Schema<ListBillingAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingAccounts: Schema.optional(Schema.Array(BillingAccount)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBillingAccountsResponse",
-  }) as any as Schema.Schema<ListBillingAccountsResponse>;
+export const ListBillingAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccounts: Schema.optional(Schema.Array(BillingAccount)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListBillingAccountsResponse" });
 
 export interface ProjectBillingInfo {
   /** Output only. The resource name for the `ProjectBillingInfo`; has the form `projects/{project_id}/billingInfo`. For example, the resource name for the billing information for project `tokyo-rain-123` would be `projects/tokyo-rain-123/billingInfo`. */
@@ -79,17 +70,12 @@ export interface ProjectBillingInfo {
   billingEnabled?: boolean;
 }
 
-export const ProjectBillingInfo: Schema.Schema<ProjectBillingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      billingAccountName: Schema.optional(Schema.String),
-      billingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ProjectBillingInfo",
-  }) as any as Schema.Schema<ProjectBillingInfo>;
+export const ProjectBillingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  billingAccountName: Schema.optional(Schema.String),
+  billingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ProjectBillingInfo" });
 
 export interface ListProjectBillingInfoResponse {
   /** A list of `ProjectBillingInfo` resources representing the projects associated with the billing account. */
@@ -98,15 +84,11 @@ export interface ListProjectBillingInfoResponse {
   nextPageToken?: string;
 }
 
-export const ListProjectBillingInfoResponse: Schema.Schema<ListProjectBillingInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectBillingInfo: Schema.optional(Schema.Array(ProjectBillingInfo)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListProjectBillingInfoResponse",
-  }) as any as Schema.Schema<ListProjectBillingInfoResponse>;
+export const ListProjectBillingInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectBillingInfo: Schema.optional(Schema.Array(ProjectBillingInfo)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListProjectBillingInfoResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -119,15 +101,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -138,14 +117,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -159,15 +135,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -176,15 +147,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -197,15 +163,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -214,57 +177,40 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface MoveBillingAccountRequest {
   /** Required. The resource name of the Organization to move the billing account under. Must be of the form `organizations/{organization_id}`. */
   destinationParent?: string;
 }
 
-export const MoveBillingAccountRequest: Schema.Schema<MoveBillingAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationParent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveBillingAccountRequest",
-  }) as any as Schema.Schema<MoveBillingAccountRequest>;
+export const MoveBillingAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationParent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MoveBillingAccountRequest" });
 
 export interface Service {
   /** The resource name for the service. Example: "services/6F81-5844-456A" */
@@ -277,15 +223,12 @@ export interface Service {
   businessEntityName?: string;
 }
 
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      serviceId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      businessEntityName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Service" }) as any as Schema.Schema<Service>;
+export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  businessEntityName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Service" });
 
 export interface ListServicesResponse {
   /** A list of services. */
@@ -294,15 +237,10 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(Schema.Array(Service)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListServicesResponse",
-  }) as any as Schema.Schema<ListServicesResponse>;
+export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  services: Schema.optional(Schema.Array(Service)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListServicesResponse" });
 
 export interface Category {
   /** The display name of the service this SKU belongs to. */
@@ -315,15 +253,12 @@ export interface Category {
   usageType?: string;
 }
 
-export const Category: Schema.Schema<Category> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceDisplayName: Schema.optional(Schema.String),
-      resourceFamily: Schema.optional(Schema.String),
-      resourceGroup: Schema.optional(Schema.String),
-      usageType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Category" }) as any as Schema.Schema<Category>;
+export const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceDisplayName: Schema.optional(Schema.String),
+  resourceFamily: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(Schema.String),
+  usageType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Category" });
 
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
@@ -334,14 +269,11 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Money" });
 
 export interface TierRate {
   /** Usage is priced at this rate only after this amount. Example: start_usage_amount of 10 indicates that the usage will be priced at the unit_price after the first 10 usage_units. */
@@ -350,13 +282,10 @@ export interface TierRate {
   unitPrice?: Money;
 }
 
-export const TierRate: Schema.Schema<TierRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startUsageAmount: Schema.optional(Schema.Number),
-      unitPrice: Schema.optional(Money),
-    }),
-  ).annotate({ identifier: "TierRate" }) as any as Schema.Schema<TierRate>;
+export const TierRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startUsageAmount: Schema.optional(Schema.Number),
+  unitPrice: Schema.optional(Money),
+}).annotate({ identifier: "TierRate" });
 
 export interface PricingExpression {
   /** The short hand for unit of usage this pricing is specified in. Example: usage_unit of "GiBy" means that usage is specified in "Gibi Byte". */
@@ -375,20 +304,15 @@ export interface PricingExpression {
   baseUnitConversionFactor?: number;
 }
 
-export const PricingExpression: Schema.Schema<PricingExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usageUnit: Schema.optional(Schema.String),
-      displayQuantity: Schema.optional(Schema.Number),
-      tieredRates: Schema.optional(Schema.Array(TierRate)),
-      usageUnitDescription: Schema.optional(Schema.String),
-      baseUnit: Schema.optional(Schema.String),
-      baseUnitDescription: Schema.optional(Schema.String),
-      baseUnitConversionFactor: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PricingExpression",
-  }) as any as Schema.Schema<PricingExpression>;
+export const PricingExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  usageUnit: Schema.optional(Schema.String),
+  displayQuantity: Schema.optional(Schema.Number),
+  tieredRates: Schema.optional(Schema.Array(TierRate)),
+  usageUnitDescription: Schema.optional(Schema.String),
+  baseUnit: Schema.optional(Schema.String),
+  baseUnitDescription: Schema.optional(Schema.String),
+  baseUnitConversionFactor: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PricingExpression" });
 
 export interface AggregationInfo {
   aggregationLevel?:
@@ -405,16 +329,11 @@ export interface AggregationInfo {
   aggregationCount?: number;
 }
 
-export const AggregationInfo: Schema.Schema<AggregationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregationLevel: Schema.optional(Schema.String),
-      aggregationInterval: Schema.optional(Schema.String),
-      aggregationCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AggregationInfo",
-  }) as any as Schema.Schema<AggregationInfo>;
+export const AggregationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aggregationLevel: Schema.optional(Schema.String),
+  aggregationInterval: Schema.optional(Schema.String),
+  aggregationCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AggregationInfo" });
 
 export interface PricingInfo {
   /** The timestamp from which this pricing was effective within the requested time range. This is guaranteed to be greater than or equal to the start_time field in the request and less than the end_time field in the request. If a time range was not specified in the request this field will be equivalent to a time within the last 12 hours, indicating the latest pricing info. */
@@ -429,18 +348,13 @@ export interface PricingInfo {
   currencyConversionRate?: number;
 }
 
-export const PricingInfo: Schema.Schema<PricingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectiveTime: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-      pricingExpression: Schema.optional(PricingExpression),
-      aggregationInfo: Schema.optional(AggregationInfo),
-      currencyConversionRate: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PricingInfo",
-  }) as any as Schema.Schema<PricingInfo>;
+export const PricingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  effectiveTime: Schema.optional(Schema.String),
+  summary: Schema.optional(Schema.String),
+  pricingExpression: Schema.optional(PricingExpression),
+  aggregationInfo: Schema.optional(AggregationInfo),
+  currencyConversionRate: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PricingInfo" });
 
 export interface GeoTaxonomy {
   /** The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL. */
@@ -454,15 +368,10 @@ export interface GeoTaxonomy {
   regions?: Array<string>;
 }
 
-export const GeoTaxonomy: Schema.Schema<GeoTaxonomy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      regions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GeoTaxonomy",
-  }) as any as Schema.Schema<GeoTaxonomy>;
+export const GeoTaxonomy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  regions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GeoTaxonomy" });
 
 export interface Sku {
   /** The resource name for the SKU. Example: "services/6F81-5844-456A/skus/D041-B8A1-6E0B" */
@@ -483,19 +392,16 @@ export interface Sku {
   geoTaxonomy?: GeoTaxonomy;
 }
 
-export const Sku: Schema.Schema<Sku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      skuId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      category: Schema.optional(Category),
-      serviceRegions: Schema.optional(Schema.Array(Schema.String)),
-      pricingInfo: Schema.optional(Schema.Array(PricingInfo)),
-      serviceProviderName: Schema.optional(Schema.String),
-      geoTaxonomy: Schema.optional(GeoTaxonomy),
-    }),
-  ).annotate({ identifier: "Sku" }) as any as Schema.Schema<Sku>;
+export const Sku = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  skuId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  category: Schema.optional(Category),
+  serviceRegions: Schema.optional(Schema.Array(Schema.String)),
+  pricingInfo: Schema.optional(Schema.Array(PricingInfo)),
+  serviceProviderName: Schema.optional(Schema.String),
+  geoTaxonomy: Schema.optional(GeoTaxonomy),
+}).annotate({ identifier: "Sku" });
 
 export interface ListSkusResponse {
   /** The list of public SKUs of the given service. */
@@ -504,15 +410,10 @@ export interface ListSkusResponse {
   nextPageToken?: string;
 }
 
-export const ListSkusResponse: Schema.Schema<ListSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skus: Schema.optional(Schema.Array(Sku)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSkusResponse",
-  }) as any as Schema.Schema<ListSkusResponse>;
+export const ListSkusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skus: Schema.optional(Schema.Array(Sku)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSkusResponse" });
 
 // ==========================================================================
 // Operations

@@ -964,6 +964,7 @@ export interface CreateImagePipelineRequest {
   schedule?: Schedule;
   status?: PipelineStatus;
   tags?: { [key: string]: string | undefined };
+  imageTags?: { [key: string]: string | undefined };
   clientToken: string;
   imageScanningConfiguration?: ImageScanningConfiguration;
   workflows?: WorkflowConfiguration[];
@@ -984,6 +985,7 @@ export const CreateImagePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       schedule: S.optional(Schedule),
       status: S.optional(PipelineStatus),
       tags: S.optional(TagMap),
+      imageTags: S.optional(TagMap),
       clientToken: S.String.pipe(T.IdempotencyToken()),
       imageScanningConfiguration: S.optional(ImageScanningConfiguration),
       workflows: S.optional(WorkflowConfigurationList),
@@ -2455,6 +2457,7 @@ export interface ImagePipeline {
   dateNextRun?: string;
   tags?: { [key: string]: string | undefined };
   imageScanningConfiguration?: ImageScanningConfiguration;
+  imageTags?: { [key: string]: string | undefined };
   executionRole?: string;
   workflows?: WorkflowConfiguration[];
   loggingConfiguration?: PipelineLoggingConfiguration;
@@ -2481,6 +2484,7 @@ export const ImagePipeline = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     dateNextRun: S.optional(S.String),
     tags: S.optional(TagMap),
     imageScanningConfiguration: S.optional(ImageScanningConfiguration),
+    imageTags: S.optional(TagMap),
     executionRole: S.optional(S.String),
     workflows: S.optional(WorkflowConfigurationList),
     loggingConfiguration: S.optional(PipelineLoggingConfiguration),
@@ -5391,6 +5395,7 @@ export interface UpdateImagePipelineRequest {
   workflows?: WorkflowConfiguration[];
   loggingConfiguration?: PipelineLoggingConfiguration;
   executionRole?: string;
+  imageTags?: { [key: string]: string | undefined };
 }
 export const UpdateImagePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -5410,6 +5415,7 @@ export const UpdateImagePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       workflows: S.optional(WorkflowConfigurationList),
       loggingConfiguration: S.optional(PipelineLoggingConfiguration),
       executionRole: S.optional(S.String),
+      imageTags: S.optional(TagMap),
     }).pipe(
       T.all(
         T.Http({ method: "PUT", uri: "/UpdateImagePipeline" }),

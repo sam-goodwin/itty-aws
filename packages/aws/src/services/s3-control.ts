@@ -1152,6 +1152,7 @@ export type BucketIdentifierString = string;
 export type Minutes = number;
 export type ReplicaKmsKeyID = string;
 export type DurationSeconds = number;
+export type AuditContext = string;
 export type AccessKeyId = string | redacted.Redacted<string>;
 export type SecretAccessKey = string | redacted.Redacted<string>;
 export type SessionToken = string | redacted.Redacted<string>;
@@ -5018,6 +5019,7 @@ export interface GetDataAccessRequest {
   DurationSeconds?: number;
   Privilege?: Privilege;
   TargetType?: S3PrefixType;
+  AuditContext?: string;
 }
 export const GetDataAccessRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5031,6 +5033,7 @@ export const GetDataAccessRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DurationSeconds: S.optional(S.Number).pipe(T.HttpQuery("durationSeconds")),
     Privilege: S.optional(Privilege).pipe(T.HttpQuery("privilege")),
     TargetType: S.optional(S3PrefixType).pipe(T.HttpQuery("targetType")),
+    AuditContext: S.optional(S.String).pipe(T.HttpQuery("auditContext")),
   }).pipe(
     T.all(
       ns,

@@ -12,6 +12,12 @@ export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   replicas: Schema.optional(Schema.Number),
   kind: Schema.optional(Schema.Literals(["mysql", "postgresql"])),
   major_version: Schema.optional(Schema.String),
+  storage: Schema.optional(
+    Schema.Struct({
+      minimum_storage_bytes: Schema.optional(Schema.Number),
+      maximum_storage_bytes: Schema.optional(Schema.Number),
+    }),
+  ),
 }).pipe(
   T.Http({ method: "POST", path: "/organizations/{organization}/databases" }),
 );

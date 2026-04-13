@@ -83,6 +83,7 @@ export const PatchV1DatabasesByDatabaseIdOutput =
           name: Schema.String,
         }),
       ),
+      source: Schema.Unknown,
     }),
   });
 export type PatchV1DatabasesByDatabaseIdOutput =

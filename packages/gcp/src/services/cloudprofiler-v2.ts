@@ -31,14 +31,11 @@ export interface Deployment {
   labels?: Record<string, string>;
 }
 
-export const Deployment: Schema.Schema<Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Deployment" }) as any as Schema.Schema<Deployment>;
+export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Deployment" });
 
 export interface CreateProfileRequest {
   /** Deployment details. */
@@ -57,15 +54,10 @@ export interface CreateProfileRequest {
   >;
 }
 
-export const CreateProfileRequest: Schema.Schema<CreateProfileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployment: Schema.optional(Deployment),
-      profileType: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CreateProfileRequest",
-  }) as any as Schema.Schema<CreateProfileRequest>;
+export const CreateProfileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deployment: Schema.optional(Deployment),
+  profileType: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CreateProfileRequest" });
 
 export interface Profile {
   /** Output only. Opaque, server-assigned, unique ID for this profile. */
@@ -93,18 +85,15 @@ export interface Profile {
   startTime?: string;
 }
 
-export const Profile: Schema.Schema<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      profileType: Schema.optional(Schema.String),
-      deployment: Schema.optional(Deployment),
-      duration: Schema.optional(Schema.String),
-      profileBytes: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Profile" }) as any as Schema.Schema<Profile>;
+export const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  profileType: Schema.optional(Schema.String),
+  deployment: Schema.optional(Deployment),
+  duration: Schema.optional(Schema.String),
+  profileBytes: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Profile" });
 
 export interface ListProfilesResponse {
   /** List of profiles fetched. */
@@ -115,16 +104,11 @@ export interface ListProfilesResponse {
   skippedProfiles?: number;
 }
 
-export const ListProfilesResponse: Schema.Schema<ListProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profiles: Schema.optional(Schema.Array(Profile)),
-      nextPageToken: Schema.optional(Schema.String),
-      skippedProfiles: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListProfilesResponse",
-  }) as any as Schema.Schema<ListProfilesResponse>;
+export const ListProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profiles: Schema.optional(Schema.Array(Profile)),
+  nextPageToken: Schema.optional(Schema.String),
+  skippedProfiles: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ListProfilesResponse" });
 
 // ==========================================================================
 // Operations

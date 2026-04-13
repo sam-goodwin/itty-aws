@@ -7,7 +7,17 @@ export const MachinesRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   timeout: Schema.optional(Schema.String),
-  signal: Schema.optional(Schema.String),
+  signal: Schema.optional(
+    Schema.Literals([
+      "SIGHUP",
+      "SIGINT",
+      "SIGQUIT",
+      "SIGKILL",
+      "SIGUSR1",
+      "SIGUSR2",
+      "SIGTERM",
+    ]),
+  ),
 }).pipe(
   T.Http({
     method: "POST",

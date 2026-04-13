@@ -734,9 +734,13 @@ export const CreateResourceV1ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -780,6 +784,15 @@ export const CreateResourceV1ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -993,6 +1006,119 @@ export const createResourceV1alpha3DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: CreateResourceV1alpha3DeviceTaintRuleOutput,
+  }));
+// Input Schema
+export const CreateResourceV1alpha3ResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRun: Schema.optional(Schema.String),
+    fieldValidation: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests",
+    }),
+  );
+export type CreateResourceV1alpha3ResourcePoolStatusRequestInput =
+  typeof CreateResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type CreateResourceV1alpha3ResourcePoolStatusRequestOutput =
+  typeof CreateResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * create a ResourcePoolStatusRequest
+ *
+ * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ */
+export const createResourceV1alpha3ResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateResourceV1alpha3ResourcePoolStatusRequestInput,
+    outputSchema: CreateResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const CreateResourceV1beta1DeviceClassInput =
@@ -1719,9 +1845,13 @@ export const CreateResourceV1beta1ResourceSliceOutput =
                     Schema.String,
                     Schema.Struct({
                       bool: Schema.optional(Schema.Boolean),
+                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
                       int: Schema.optional(Schema.Number),
+                      ints: Schema.optional(Schema.Array(Schema.Number)),
                       string: Schema.optional(Schema.String),
+                      strings: Schema.optional(Schema.Array(Schema.String)),
                       version: Schema.optional(Schema.String),
+                      versions: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
                 ),
@@ -1763,6 +1893,15 @@ export const CreateResourceV1beta1ResourceSliceOutput =
                           value: Schema.String,
                         }),
                       ),
+                    }),
+                  ),
+                ),
+                nodeAllocatableResourceMappings: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      allocationMultiplier: Schema.optional(Schema.String),
+                      capacityKey: Schema.optional(Schema.String),
                     }),
                   ),
                 ),
@@ -2718,9 +2857,13 @@ export const CreateResourceV1beta2ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -2764,6 +2907,15 @@ export const CreateResourceV1beta2ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -2912,6 +3064,11 @@ export const DeleteResourceV1CollectionDeviceClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -2975,6 +3132,11 @@ export const DeleteResourceV1CollectionNamespacedResourceClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -3038,6 +3200,11 @@ export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -3102,6 +3269,11 @@ export const DeleteResourceV1CollectionResourceSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -3846,9 +4018,13 @@ export const DeleteResourceV1ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -3892,6 +4068,15 @@ export const DeleteResourceV1ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -4039,6 +4224,11 @@ export const DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -4057,6 +4247,75 @@ export const deleteResourceV1alpha3CollectionDeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3CollectionDeviceTaintRuleInput,
     outputSchema: DeleteResourceV1alpha3CollectionDeviceTaintRuleOutput,
+  }));
+// Input Schema
+export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRun: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests",
+    }),
+  );
+export type DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput =
+  typeof DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.Number),
+    details: Schema.optional(
+      Schema.Struct({
+        causes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              field: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        group: Schema.optional(Schema.String),
+        kind: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        retryAfterSeconds: Schema.optional(Schema.Number),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        continue: Schema.optional(Schema.String),
+        remainingItemCount: Schema.optional(Schema.Number),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
+      }),
+    ),
+    reason: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  });
+export type DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput =
+  typeof DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * delete collection of ResourcePoolStatusRequest
+ *
+ * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ */
+export const deleteResourceV1alpha3CollectionResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeleteResourceV1alpha3CollectionResourcePoolStatusRequestInput,
+    outputSchema:
+      DeleteResourceV1alpha3CollectionResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const DeleteResourceV1alpha3DeviceTaintRuleInput =
@@ -4167,6 +4426,117 @@ export const deleteResourceV1alpha3DeviceTaintRule =
     outputSchema: DeleteResourceV1alpha3DeviceTaintRuleOutput,
   }));
 // Input Schema
+export const DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRun: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
+    }),
+  );
+export type DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
+  typeof DeleteResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type DeleteResourceV1alpha3ResourcePoolStatusRequestOutput =
+  typeof DeleteResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * delete a ResourcePoolStatusRequest
+ *
+ * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ */
+export const deleteResourceV1alpha3ResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeleteResourceV1alpha3ResourcePoolStatusRequestInput,
+    outputSchema: DeleteResourceV1alpha3ResourcePoolStatusRequestOutput,
+  }));
+// Input Schema
 export const DeleteResourceV1beta1CollectionDeviceClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
@@ -4210,6 +4580,11 @@ export const DeleteResourceV1beta1CollectionDeviceClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -4273,6 +4648,11 @@ export const DeleteResourceV1beta1CollectionNamespacedResourceClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -4336,6 +4716,11 @@ export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateOutpu
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -4401,6 +4786,11 @@ export const DeleteResourceV1beta1CollectionResourceSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -5138,9 +5528,13 @@ export const DeleteResourceV1beta1ResourceSliceOutput =
                     Schema.String,
                     Schema.Struct({
                       bool: Schema.optional(Schema.Boolean),
+                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
                       int: Schema.optional(Schema.Number),
+                      ints: Schema.optional(Schema.Array(Schema.Number)),
                       string: Schema.optional(Schema.String),
+                      strings: Schema.optional(Schema.Array(Schema.String)),
                       version: Schema.optional(Schema.String),
+                      versions: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
                 ),
@@ -5182,6 +5576,15 @@ export const DeleteResourceV1beta1ResourceSliceOutput =
                           value: Schema.String,
                         }),
                       ),
+                    }),
+                  ),
+                ),
+                nodeAllocatableResourceMappings: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      allocationMultiplier: Schema.optional(Schema.String),
+                      capacityKey: Schema.optional(Schema.String),
                     }),
                   ),
                 ),
@@ -5339,6 +5742,11 @@ export const DeleteResourceV1beta2CollectionDeviceClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -5402,6 +5810,11 @@ export const DeleteResourceV1beta2CollectionDeviceTaintRuleOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -5465,6 +5878,11 @@ export const DeleteResourceV1beta2CollectionNamespacedResourceClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -5528,6 +5946,11 @@ export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateOutpu
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -5593,6 +6016,11 @@ export const DeleteResourceV1beta2CollectionResourceSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
     reason: Schema.optional(Schema.String),
@@ -6444,9 +6872,13 @@ export const DeleteResourceV1beta2ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -6490,6 +6922,15 @@ export const DeleteResourceV1beta2ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -6899,6 +7340,11 @@ export const ListResourceV1DeviceClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -7235,6 +7681,11 @@ export const ListResourceV1NamespacedResourceClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -7487,6 +7938,11 @@ export const ListResourceV1NamespacedResourceClaimTemplateOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -7819,6 +8275,11 @@ export const ListResourceV1ResourceClaimForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -8071,6 +8532,11 @@ export const ListResourceV1ResourceClaimTemplateForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -8160,9 +8626,13 @@ export const ListResourceV1ResourceSliceOutput =
                     Schema.String,
                     Schema.Struct({
                       bool: Schema.optional(Schema.Boolean),
+                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
                       int: Schema.optional(Schema.Number),
+                      ints: Schema.optional(Schema.Array(Schema.Number)),
                       string: Schema.optional(Schema.String),
+                      strings: Schema.optional(Schema.Array(Schema.String)),
                       version: Schema.optional(Schema.String),
+                      versions: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
                 ),
@@ -8208,6 +8678,15 @@ export const ListResourceV1ResourceSliceOutput =
                   ),
                 ),
                 name: Schema.String,
+                nodeAllocatableResourceMappings: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      allocationMultiplier: Schema.optional(Schema.String),
+                      capacityKey: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
                 nodeName: Schema.optional(Schema.String),
                 nodeSelector: Schema.optional(
                   Schema.Struct({
@@ -8309,6 +8788,11 @@ export const ListResourceV1ResourceSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -8430,6 +8914,11 @@ export const ListResourceV1alpha3DeviceTaintRuleOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -8444,6 +8933,134 @@ export const listResourceV1alpha3DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ListResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ListResourceV1alpha3DeviceTaintRuleOutput,
+  }));
+// Input Schema
+export const ListResourceV1alpha3ResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests",
+    }),
+  );
+export type ListResourceV1alpha3ResourcePoolStatusRequestInput =
+  typeof ListResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const ListResourceV1alpha3ResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    items: Schema.Array(
+      Schema.Struct({
+        apiVersion: Schema.optional(Schema.String),
+        kind: Schema.optional(Schema.String),
+        metadata: Schema.Struct({
+          annotations: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          creationTimestamp: Schema.optional(Schema.String),
+          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+          deletionTimestamp: Schema.optional(Schema.String),
+          finalizers: Schema.optional(Schema.Array(Schema.String)),
+          generateName: Schema.optional(Schema.String),
+          generation: Schema.optional(Schema.Number),
+          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          managedFields: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.optional(Schema.String),
+                fieldsType: Schema.optional(Schema.String),
+                fieldsV1: Schema.optional(Schema.Unknown),
+                manager: Schema.optional(Schema.String),
+                operation: Schema.optional(Schema.String),
+                subresource: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          name: Schema.optional(Schema.String),
+          namespace: Schema.optional(Schema.String),
+          ownerReferences: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                apiVersion: Schema.String,
+                blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                controller: Schema.optional(Schema.Boolean),
+                kind: Schema.String,
+                name: Schema.String,
+                uid: Schema.String,
+              }),
+            ),
+          ),
+          resourceVersion: Schema.optional(Schema.String),
+          selfLink: Schema.optional(Schema.String),
+          uid: Schema.optional(Schema.String),
+        }),
+        spec: Schema.Struct({
+          driver: Schema.String,
+          limit: Schema.optional(Schema.Number),
+          poolName: Schema.optional(Schema.String),
+        }),
+        status: Schema.optional(
+          Schema.Struct({
+            conditions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  lastTransitionTime: Schema.String,
+                  message: Schema.String,
+                  observedGeneration: Schema.optional(Schema.Number),
+                  reason: Schema.String,
+                  status: Schema.String,
+                  type: Schema.String,
+                }),
+              ),
+            ),
+            poolCount: Schema.Number,
+            pools: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  allocatedDevices: Schema.optional(Schema.Number),
+                  availableDevices: Schema.optional(Schema.Number),
+                  driver: Schema.String,
+                  generation: Schema.Number,
+                  nodeName: Schema.optional(Schema.String),
+                  poolName: Schema.String,
+                  resourceSliceCount: Schema.optional(Schema.Number),
+                  totalDevices: Schema.optional(Schema.Number),
+                  unavailableDevices: Schema.optional(Schema.Number),
+                  validationError: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        continue: Schema.optional(Schema.String),
+        remainingItemCount: Schema.optional(Schema.Number),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
+      }),
+    ),
+  });
+export type ListResourceV1alpha3ResourcePoolStatusRequestOutput =
+  typeof ListResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * list or watch objects of kind ResourcePoolStatusRequest
+ */
+export const listResourceV1alpha3ResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListResourceV1alpha3ResourcePoolStatusRequestInput,
+    outputSchema: ListResourceV1alpha3ResourcePoolStatusRequestOutput,
   }));
 // Input Schema
 export const ListResourceV1beta1DeviceClassInput =
@@ -8545,6 +9162,11 @@ export const ListResourceV1beta1DeviceClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -8876,6 +9498,11 @@ export const ListResourceV1beta1NamespacedResourceClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -9122,6 +9749,11 @@ export const ListResourceV1beta1NamespacedResourceClaimTemplateOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -9453,6 +10085,11 @@ export const ListResourceV1beta1ResourceClaimForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -9699,6 +10336,11 @@ export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -9794,9 +10436,15 @@ export const ListResourceV1beta1ResourceSliceOutput =
                         Schema.String,
                         Schema.Struct({
                           bool: Schema.optional(Schema.Boolean),
+                          bools: Schema.optional(Schema.Array(Schema.Boolean)),
                           int: Schema.optional(Schema.Number),
+                          ints: Schema.optional(Schema.Array(Schema.Number)),
                           string: Schema.optional(Schema.String),
+                          strings: Schema.optional(Schema.Array(Schema.String)),
                           version: Schema.optional(Schema.String),
+                          versions: Schema.optional(
+                            Schema.Array(Schema.String),
+                          ),
                         }),
                       ),
                     ),
@@ -9840,6 +10488,15 @@ export const ListResourceV1beta1ResourceSliceOutput =
                               value: Schema.String,
                             }),
                           ),
+                        }),
+                      ),
+                    ),
+                    nodeAllocatableResourceMappings: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          allocationMultiplier: Schema.optional(Schema.String),
+                          capacityKey: Schema.optional(Schema.String),
                         }),
                       ),
                     ),
@@ -9947,6 +10604,11 @@ export const ListResourceV1beta1ResourceSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -10062,6 +10724,11 @@ export const ListResourceV1beta2DeviceClassOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -10182,6 +10849,11 @@ export const ListResourceV1beta2DeviceTaintRuleOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -10517,6 +11189,11 @@ export const ListResourceV1beta2NamespacedResourceClaimOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -10769,6 +11446,11 @@ export const ListResourceV1beta2NamespacedResourceClaimTemplateOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -11104,6 +11786,11 @@ export const ListResourceV1beta2ResourceClaimForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -11356,6 +12043,11 @@ export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -11449,9 +12141,13 @@ export const ListResourceV1beta2ResourceSliceOutput =
                     Schema.String,
                     Schema.Struct({
                       bool: Schema.optional(Schema.Boolean),
+                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
                       int: Schema.optional(Schema.Number),
+                      ints: Schema.optional(Schema.Array(Schema.Number)),
                       string: Schema.optional(Schema.String),
+                      strings: Schema.optional(Schema.Array(Schema.String)),
                       version: Schema.optional(Schema.String),
+                      versions: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
                 ),
@@ -11497,6 +12193,15 @@ export const ListResourceV1beta2ResourceSliceOutput =
                   ),
                 ),
                 name: Schema.String,
+                nodeAllocatableResourceMappings: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      allocationMultiplier: Schema.optional(Schema.String),
+                      capacityKey: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
                 nodeName: Schema.optional(Schema.String),
                 nodeSelector: Schema.optional(
                   Schema.Struct({
@@ -11598,6 +12303,11 @@ export const ListResourceV1beta2ResourceSliceOutput =
         remainingItemCount: Schema.optional(Schema.Number),
         resourceVersion: Schema.optional(Schema.String),
         selfLink: Schema.optional(Schema.String),
+        shardInfo: Schema.optional(
+          Schema.Struct({
+            selector: Schema.String,
+          }),
+        ),
       }),
     ),
   });
@@ -12660,9 +13370,13 @@ export const PatchResourceV1ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -12706,6 +13420,15 @@ export const PatchResourceV1ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -13029,6 +13752,232 @@ export const patchResourceV1alpha3DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusOutput,
+  }));
+// Input Schema
+export const PatchResourceV1alpha3ResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRun: Schema.optional(Schema.String),
+    fieldValidation: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
+    }),
+  );
+export type PatchResourceV1alpha3ResourcePoolStatusRequestInput =
+  typeof PatchResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type PatchResourceV1alpha3ResourcePoolStatusRequestOutput =
+  typeof PatchResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * partially update the specified ResourcePoolStatusRequest
+ *
+ * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ */
+export const patchResourceV1alpha3ResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestInput,
+    outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestOutput,
+  }));
+// Input Schema
+export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRun: Schema.optional(Schema.String),
+    fieldValidation: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
+    }),
+  );
+export type PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput =
+  typeof PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput.Type;
+
+// Output Schema
+export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
+  typeof PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput.Type;
+
+// The operation
+/**
+ * partially update status of the specified ResourcePoolStatusRequest
+ *
+ * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ */
+export const patchResourceV1alpha3ResourcePoolStatusRequestStatus =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusInput,
+    outputSchema: PatchResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
 export const PatchResourceV1beta1DeviceClassInput =
@@ -14066,9 +15015,13 @@ export const PatchResourceV1beta1ResourceSliceOutput =
                     Schema.String,
                     Schema.Struct({
                       bool: Schema.optional(Schema.Boolean),
+                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
                       int: Schema.optional(Schema.Number),
+                      ints: Schema.optional(Schema.Array(Schema.Number)),
                       string: Schema.optional(Schema.String),
+                      strings: Schema.optional(Schema.Array(Schema.String)),
                       version: Schema.optional(Schema.String),
+                      versions: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
                 ),
@@ -14110,6 +15063,15 @@ export const PatchResourceV1beta1ResourceSliceOutput =
                           value: Schema.String,
                         }),
                       ),
+                    }),
+                  ),
+                ),
+                nodeAllocatableResourceMappings: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      allocationMultiplier: Schema.optional(Schema.String),
+                      capacityKey: Schema.optional(Schema.String),
                     }),
                   ),
                 ),
@@ -15490,9 +16452,13 @@ export const PatchResourceV1beta2ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -15536,6 +16502,15 @@ export const PatchResourceV1beta2ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -16660,9 +17635,13 @@ export const ReadResourceV1ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -16706,6 +17685,15 @@ export const ReadResourceV1ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -17015,6 +18003,220 @@ export const readResourceV1alpha3DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusOutput,
+  }));
+// Input Schema
+export const ReadResourceV1alpha3ResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
+    }),
+  );
+export type ReadResourceV1alpha3ResourcePoolStatusRequestInput =
+  typeof ReadResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type ReadResourceV1alpha3ResourcePoolStatusRequestOutput =
+  typeof ReadResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * read the specified ResourcePoolStatusRequest
+ */
+export const readResourceV1alpha3ResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestInput,
+    outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestOutput,
+  }));
+// Input Schema
+export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
+    }),
+  );
+export type ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput =
+  typeof ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput.Type;
+
+// Output Schema
+export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
+  typeof ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput.Type;
+
+// The operation
+/**
+ * read status of the specified ResourcePoolStatusRequest
+ */
+export const readResourceV1alpha3ResourcePoolStatusRequestStatus =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusInput,
+    outputSchema: ReadResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
 export const ReadResourceV1beta1DeviceClassInput =
@@ -18025,9 +19227,13 @@ export const ReadResourceV1beta1ResourceSliceOutput =
                     Schema.String,
                     Schema.Struct({
                       bool: Schema.optional(Schema.Boolean),
+                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
                       int: Schema.optional(Schema.Number),
+                      ints: Schema.optional(Schema.Array(Schema.Number)),
                       string: Schema.optional(Schema.String),
+                      strings: Schema.optional(Schema.Array(Schema.String)),
                       version: Schema.optional(Schema.String),
+                      versions: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
                 ),
@@ -18069,6 +19275,15 @@ export const ReadResourceV1beta1ResourceSliceOutput =
                           value: Schema.String,
                         }),
                       ),
+                    }),
+                  ),
+                ),
+                nodeAllocatableResourceMappings: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      allocationMultiplier: Schema.optional(Schema.String),
+                      capacityKey: Schema.optional(Schema.String),
                     }),
                   ),
                 ),
@@ -19407,9 +20622,13 @@ export const ReadResourceV1beta2ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -19453,6 +20672,15 @@ export const ReadResourceV1beta2ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -20600,9 +21828,13 @@ export const ReplaceResourceV1ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -20646,6 +21878,15 @@ export const ReplaceResourceV1ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -20969,6 +22210,232 @@ export const replaceResourceV1alpha3DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput,
+  }));
+// Input Schema
+export const ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRun: Schema.optional(Schema.String),
+    fieldValidation: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}",
+    }),
+  );
+export type ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
+  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput =
+  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * replace the specified ResourcePoolStatusRequest
+ *
+ * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ */
+export const replaceResourceV1alpha3ResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestInput,
+    outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestOutput,
+  }));
+// Input Schema
+export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRun: Schema.optional(Schema.String),
+    fieldValidation: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
+    }),
+  );
+export type ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput =
+  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput.Type;
+
+// Output Schema
+export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.Struct({
+      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      creationTimestamp: Schema.optional(Schema.String),
+      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+      deletionTimestamp: Schema.optional(Schema.String),
+      finalizers: Schema.optional(Schema.Array(Schema.String)),
+      generateName: Schema.optional(Schema.String),
+      generation: Schema.optional(Schema.Number),
+      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      managedFields: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.optional(Schema.String),
+            fieldsType: Schema.optional(Schema.String),
+            fieldsV1: Schema.optional(Schema.Unknown),
+            manager: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            subresource: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      name: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      ownerReferences: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            apiVersion: Schema.String,
+            blockOwnerDeletion: Schema.optional(Schema.Boolean),
+            controller: Schema.optional(Schema.Boolean),
+            kind: Schema.String,
+            name: Schema.String,
+            uid: Schema.String,
+          }),
+        ),
+      ),
+      resourceVersion: Schema.optional(Schema.String),
+      selfLink: Schema.optional(Schema.String),
+      uid: Schema.optional(Schema.String),
+    }),
+    spec: Schema.Struct({
+      driver: Schema.String,
+      limit: Schema.optional(Schema.Number),
+      poolName: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        poolCount: Schema.Number,
+        pools: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              allocatedDevices: Schema.optional(Schema.Number),
+              availableDevices: Schema.optional(Schema.Number),
+              driver: Schema.String,
+              generation: Schema.Number,
+              nodeName: Schema.optional(Schema.String),
+              poolName: Schema.String,
+              resourceSliceCount: Schema.optional(Schema.Number),
+              totalDevices: Schema.optional(Schema.Number),
+              unavailableDevices: Schema.optional(Schema.Number),
+              validationError: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput =
+  typeof ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput.Type;
+
+// The operation
+/**
+ * replace status of the specified ResourcePoolStatusRequest
+ *
+ * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ */
+export const replaceResourceV1alpha3ResourcePoolStatusRequestStatus =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusInput,
+    outputSchema: ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusOutput,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1DeviceClassInput =
@@ -22006,9 +23473,13 @@ export const ReplaceResourceV1beta1ResourceSliceOutput =
                     Schema.String,
                     Schema.Struct({
                       bool: Schema.optional(Schema.Boolean),
+                      bools: Schema.optional(Schema.Array(Schema.Boolean)),
                       int: Schema.optional(Schema.Number),
+                      ints: Schema.optional(Schema.Array(Schema.Number)),
                       string: Schema.optional(Schema.String),
+                      strings: Schema.optional(Schema.Array(Schema.String)),
                       version: Schema.optional(Schema.String),
+                      versions: Schema.optional(Schema.Array(Schema.String)),
                     }),
                   ),
                 ),
@@ -22050,6 +23521,15 @@ export const ReplaceResourceV1beta1ResourceSliceOutput =
                           value: Schema.String,
                         }),
                       ),
+                    }),
+                  ),
+                ),
+                nodeAllocatableResourceMappings: Schema.optional(
+                  Schema.Record(
+                    Schema.String,
+                    Schema.Struct({
+                      allocationMultiplier: Schema.optional(Schema.String),
+                      capacityKey: Schema.optional(Schema.String),
                     }),
                   ),
                 ),
@@ -23430,9 +24910,13 @@ export const ReplaceResourceV1beta2ResourceSliceOutput =
                 Schema.String,
                 Schema.Struct({
                   bool: Schema.optional(Schema.Boolean),
+                  bools: Schema.optional(Schema.Array(Schema.Boolean)),
                   int: Schema.optional(Schema.Number),
+                  ints: Schema.optional(Schema.Array(Schema.Number)),
                   string: Schema.optional(Schema.String),
+                  strings: Schema.optional(Schema.Array(Schema.String)),
                   version: Schema.optional(Schema.String),
+                  versions: Schema.optional(Schema.Array(Schema.String)),
                 }),
               ),
             ),
@@ -23476,6 +24960,15 @@ export const ReplaceResourceV1beta2ResourceSliceOutput =
               ),
             ),
             name: Schema.String,
+            nodeAllocatableResourceMappings: Schema.optional(
+              Schema.Record(
+                Schema.String,
+                Schema.Struct({
+                  allocationMultiplier: Schema.optional(Schema.String),
+                  capacityKey: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
             nodeName: Schema.optional(Schema.String),
             nodeSelector: Schema.optional(
               Schema.Struct({
@@ -23929,6 +25422,64 @@ export const watchResourceV1alpha3DeviceTaintRuleList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: WatchResourceV1alpha3DeviceTaintRuleListInput,
     outputSchema: WatchResourceV1alpha3DeviceTaintRuleListOutput,
+  }));
+// Input Schema
+export const WatchResourceV1alpha3ResourcePoolStatusRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests/{name}",
+    }),
+  );
+export type WatchResourceV1alpha3ResourcePoolStatusRequestInput =
+  typeof WatchResourceV1alpha3ResourcePoolStatusRequestInput.Type;
+
+// Output Schema
+export const WatchResourceV1alpha3ResourcePoolStatusRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    object: Schema.Unknown,
+    type: Schema.String,
+  });
+export type WatchResourceV1alpha3ResourcePoolStatusRequestOutput =
+  typeof WatchResourceV1alpha3ResourcePoolStatusRequestOutput.Type;
+
+// The operation
+/**
+ * watch changes to an object of kind ResourcePoolStatusRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ */
+export const watchResourceV1alpha3ResourcePoolStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestInput,
+    outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestOutput,
+  }));
+// Input Schema
+export const WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests",
+    }),
+  );
+export type WatchResourceV1alpha3ResourcePoolStatusRequestListInput =
+  typeof WatchResourceV1alpha3ResourcePoolStatusRequestListInput.Type;
+
+// Output Schema
+export const WatchResourceV1alpha3ResourcePoolStatusRequestListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    object: Schema.Unknown,
+    type: Schema.String,
+  });
+export type WatchResourceV1alpha3ResourcePoolStatusRequestListOutput =
+  typeof WatchResourceV1alpha3ResourcePoolStatusRequestListOutput.Type;
+
+// The operation
+/**
+ * watch individual changes to a list of ResourcePoolStatusRequest. deprecated: use the 'watch' parameter with a list operation instead.
+ */
+export const watchResourceV1alpha3ResourcePoolStatusRequestList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListInput,
+    outputSchema: WatchResourceV1alpha3ResourcePoolStatusRequestListOutput,
   }));
 // Input Schema
 export const WatchResourceV1beta1DeviceClassInput =

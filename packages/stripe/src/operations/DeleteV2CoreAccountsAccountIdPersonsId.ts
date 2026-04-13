@@ -27,7 +27,7 @@ export type DeleteV2CoreAccountsAccountIdPersonsIdOutput =
 
 // The operation
 /**
- * Delete a Person
+ * Delete a person
  *
  * Delete a Person associated with an Account.
  *

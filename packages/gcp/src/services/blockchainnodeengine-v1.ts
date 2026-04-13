@@ -22,6 +22,12 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface GoogleProtobufEmpty {}
+
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
+
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
@@ -31,40 +37,34 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: Record<string, unknown>;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -73,29 +73,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
-
-export interface GoogleProtobufEmpty {}
-
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface GethDetails {
   /** Immutable. Blockchain garbage collection mode. */
@@ -106,36 +89,24 @@ export interface GethDetails {
     | (string & {});
 }
 
-export const GethDetails: Schema.Schema<GethDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      garbageCollectionMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GethDetails",
-  }) as any as Schema.Schema<GethDetails>;
+export const GethDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  garbageCollectionMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "GethDetails" });
 
 export interface EthereumEndpoints {
   /** Output only. The assigned URL for the node's Beacon API endpoint. */
   beaconApiEndpoint?: string;
-  /** Output only. The assigned URL for the node's Beacon Prometheus metrics endpoint. See [Prometheus Metrics](https://lighthouse-book.sigmaprime.io/advanced_metrics.html) for more details. */
-  beaconPrometheusMetricsApiEndpoint?: string;
   /** Output only. The assigned URL for the node's execution client's Prometheus metrics endpoint. */
   executionClientPrometheusMetricsApiEndpoint?: string;
+  /** Output only. The assigned URL for the node's Beacon Prometheus metrics endpoint. See [Prometheus Metrics](https://lighthouse-book.sigmaprime.io/advanced_metrics.html) for more details. */
+  beaconPrometheusMetricsApiEndpoint?: string;
 }
 
-export const EthereumEndpoints: Schema.Schema<EthereumEndpoints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      beaconApiEndpoint: Schema.optional(Schema.String),
-      beaconPrometheusMetricsApiEndpoint: Schema.optional(Schema.String),
-      executionClientPrometheusMetricsApiEndpoint: Schema.optional(
-        Schema.String,
-      ),
-    }),
-  ).annotate({
-    identifier: "EthereumEndpoints",
-  }) as any as Schema.Schema<EthereumEndpoints>;
+export const EthereumEndpoints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  beaconApiEndpoint: Schema.optional(Schema.String),
+  executionClientPrometheusMetricsApiEndpoint: Schema.optional(Schema.String),
+  beaconPrometheusMetricsApiEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "EthereumEndpoints" });
 
 export interface ValidatorConfig {
   /** URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client. */
@@ -146,28 +117,13 @@ export interface ValidatorConfig {
   beaconFeeRecipient?: string;
 }
 
-export const ValidatorConfig: Schema.Schema<ValidatorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mevRelayUrls: Schema.optional(Schema.Array(Schema.String)),
-      managedValidatorClient: Schema.optional(Schema.Boolean),
-      beaconFeeRecipient: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidatorConfig",
-  }) as any as Schema.Schema<ValidatorConfig>;
+export const ValidatorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mevRelayUrls: Schema.optional(Schema.Array(Schema.String)),
+  managedValidatorClient: Schema.optional(Schema.Boolean),
+  beaconFeeRecipient: Schema.optional(Schema.String),
+}).annotate({ identifier: "ValidatorConfig" });
 
 export interface EthereumDetails {
-  /** Details for the Geth execution client. */
-  gethDetails?: GethDetails;
-  /** Immutable. The Ethereum environment being accessed. */
-  network?:
-    | "NETWORK_UNSPECIFIED"
-    | "MAINNET"
-    | "TESTNET_GOERLI_PRATER"
-    | "TESTNET_SEPOLIA"
-    | "TESTNET_HOLESKY"
-    | (string & {});
   /** Immutable. The type of Ethereum node. */
   nodeType?:
     | "NODE_TYPE_UNSPECIFIED"
@@ -187,32 +143,37 @@ export interface EthereumDetails {
     | "LIGHTHOUSE"
     | "ERIGON_EMBEDDED_CONSENSUS_LAYER"
     | (string & {});
-  /** Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`. */
-  apiEnableAdmin?: boolean;
+  /** Details for the Geth execution client. */
+  gethDetails?: GethDetails;
   /** Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`. */
   apiEnableDebug?: boolean;
+  /** Immutable. The Ethereum environment being accessed. */
+  network?:
+    | "NETWORK_UNSPECIFIED"
+    | "MAINNET"
+    | "TESTNET_GOERLI_PRATER"
+    | "TESTNET_SEPOLIA"
+    | "TESTNET_HOLESKY"
+    | (string & {});
   /** Output only. Ethereum-specific endpoint information. */
   additionalEndpoints?: EthereumEndpoints;
+  /** Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`. */
+  apiEnableAdmin?: boolean;
   /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
   validatorConfig?: ValidatorConfig;
 }
 
-export const EthereumDetails: Schema.Schema<EthereumDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gethDetails: Schema.optional(GethDetails),
-      network: Schema.optional(Schema.String),
-      nodeType: Schema.optional(Schema.String),
-      executionClient: Schema.optional(Schema.String),
-      consensusClient: Schema.optional(Schema.String),
-      apiEnableAdmin: Schema.optional(Schema.Boolean),
-      apiEnableDebug: Schema.optional(Schema.Boolean),
-      additionalEndpoints: Schema.optional(EthereumEndpoints),
-      validatorConfig: Schema.optional(ValidatorConfig),
-    }),
-  ).annotate({
-    identifier: "EthereumDetails",
-  }) as any as Schema.Schema<EthereumDetails>;
+export const EthereumDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeType: Schema.optional(Schema.String),
+  executionClient: Schema.optional(Schema.String),
+  consensusClient: Schema.optional(Schema.String),
+  gethDetails: Schema.optional(GethDetails),
+  apiEnableDebug: Schema.optional(Schema.Boolean),
+  network: Schema.optional(Schema.String),
+  additionalEndpoints: Schema.optional(EthereumEndpoints),
+  apiEnableAdmin: Schema.optional(Schema.Boolean),
+  validatorConfig: Schema.optional(ValidatorConfig),
+}).annotate({ identifier: "EthereumDetails" });
 
 export interface EndpointInfo {
   /** Output only. The assigned URL for the node JSON-RPC API endpoint. */
@@ -221,15 +182,10 @@ export interface EndpointInfo {
   websocketsApiEndpoint?: string;
 }
 
-export const EndpointInfo: Schema.Schema<EndpointInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jsonRpcApiEndpoint: Schema.optional(Schema.String),
-      websocketsApiEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndpointInfo",
-  }) as any as Schema.Schema<EndpointInfo>;
+export const EndpointInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jsonRpcApiEndpoint: Schema.optional(Schema.String),
+  websocketsApiEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "EndpointInfo" });
 
 export interface ConnectionInfo {
   /** Output only. The endpoint information through which to interact with a blockchain node. */
@@ -238,31 +194,26 @@ export interface ConnectionInfo {
   serviceAttachment?: string;
 }
 
-export const ConnectionInfo: Schema.Schema<ConnectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpointInfo: Schema.optional(EndpointInfo),
-      serviceAttachment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectionInfo",
-  }) as any as Schema.Schema<ConnectionInfo>;
+export const ConnectionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpointInfo: Schema.optional(EndpointInfo),
+  serviceAttachment: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectionInfo" });
 
 export interface BlockchainNode {
   /** Ethereum-specific blockchain node details. */
   ethereumDetails?: EthereumDetails;
-  /** Output only. The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
-  name?: string;
-  /** Output only. The timestamp at which the blockchain node was first created. */
-  createTime?: string;
   /** Output only. The timestamp at which the blockchain node was last updated. */
   updateTime?: string;
+  /** Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: These nodes are deprecated, please use public endpoints instead. */
+  privateServiceConnectEnabled?: boolean;
+  /** Output only. The connection information used to interact with a blockchain node. */
+  connectionInfo?: ConnectionInfo;
+  /** Output only. The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
+  name?: string;
   /** User-provided key-value pairs. */
   labels?: Record<string, string>;
   /** Immutable. The blockchain type of the node. */
   blockchainType?: "BLOCKCHAIN_TYPE_UNSPECIFIED" | "ETHEREUM" | (string & {});
-  /** Output only. The connection information used to interact with a blockchain node. */
-  connectionInfo?: ConnectionInfo;
   /** Output only. A status representing the state of the node. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -275,46 +226,43 @@ export interface BlockchainNode {
     | "RECONCILING"
     | "SYNCING"
     | (string & {});
-  /** Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: These nodes are deprecated, please use public endpoints instead. */
-  privateServiceConnectEnabled?: boolean;
+  /** Output only. The timestamp at which the blockchain node was first created. */
+  createTime?: string;
 }
 
-export const BlockchainNode: Schema.Schema<BlockchainNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ethereumDetails: Schema.optional(EthereumDetails),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      blockchainType: Schema.optional(Schema.String),
-      connectionInfo: Schema.optional(ConnectionInfo),
-      state: Schema.optional(Schema.String),
-      privateServiceConnectEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BlockchainNode",
-  }) as any as Schema.Schema<BlockchainNode>;
+export const BlockchainNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ethereumDetails: Schema.optional(EthereumDetails),
+  updateTime: Schema.optional(Schema.String),
+  privateServiceConnectEnabled: Schema.optional(Schema.Boolean),
+  connectionInfo: Schema.optional(ConnectionInfo),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  blockchainType: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlockchainNode" });
 
 export interface ListBlockchainNodesResponse {
-  /** The list of nodes */
-  blockchainNodes?: Array<BlockchainNode>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: Array<string>;
+  /** The list of nodes */
+  blockchainNodes?: Array<BlockchainNode>;
 }
 
-export const ListBlockchainNodesResponse: Schema.Schema<ListBlockchainNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blockchainNodes: Schema.optional(Schema.Array(BlockchainNode)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBlockchainNodesResponse",
-  }) as any as Schema.Schema<ListBlockchainNodesResponse>;
+export const ListBlockchainNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    blockchainNodes: Schema.optional(Schema.Array(BlockchainNode)),
+  }).annotate({ identifier: "ListBlockchainNodesResponse" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -329,92 +277,79 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface OperationMetadata {
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
   /** Output only. Server-defined resource path for the target of the operation. */
   target?: string;
   /** Output only. Name of the verb executed by the operation. */
   verb?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have `Operation.error` value with a `google.rpc.Status.code` of `1`, corresponding to `Code.CANCELLED`. */
   requestedCancellation?: boolean;
   /** Output only. API version used to start the operation. */
   apiVersion?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
+
+export interface ListLocationsResponse {
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: Array<Location>;
+}
+
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
   /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
   extraLocationTypes?: string[];
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
     svc,
@@ -477,22 +412,22 @@ export const getProjectsLocations: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
   /** The standard list filter. */
   filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
+  /** The name of the operation's parent resource. */
+  name: string;
   /** The standard list page token. */
   pageToken?: string;
+  /** The standard list page size. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -630,25 +565,25 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsBlockchainNodesRequest {
-  /** Required. Parent value for `ListNodesRequest`. */
-  parent: string;
-  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
+  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Filtering results. */
   filter?: string;
   /** Hint for how to order the results. */
   orderBy?: string;
+  /** Required. Parent value for `ListNodesRequest`. */
+  parent: string;
 }
 
 export const ListProjectsLocationsBlockchainNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -715,23 +650,23 @@ export const getProjectsLocationsBlockchainNodes: API.OperationMethod<
 }));
 
 export interface CreateProjectsLocationsBlockchainNodesRequest {
-  /** Required. Value for parent. */
-  parent: string;
   /** Required. ID of the requesting object. */
   blockchainNodeId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Value for parent. */
+  parent: string;
   /** Request body */
   body?: BlockchainNode;
 }
 
 export const CreateProjectsLocationsBlockchainNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     blockchainNodeId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("blockchainNodeId"),
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BlockchainNode).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -761,21 +696,21 @@ export const createProjectsLocationsBlockchainNodes: API.OperationMethod<
 }));
 
 export interface PatchProjectsLocationsBlockchainNodesRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Output only. The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
   name: string;
   /** Required. Field mask is used to specify the fields to be overwritten in the Blockchain node resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Request body */
   body?: BlockchainNode;
 }
 
 export const PatchProjectsLocationsBlockchainNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(BlockchainNode).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -805,16 +740,16 @@ export const patchProjectsLocationsBlockchainNodes: API.OperationMethod<
 }));
 
 export interface DeleteProjectsLocationsBlockchainNodesRequest {
-  /** Required. The fully qualified name of the blockchain node to delete. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
-  name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. The fully qualified name of the blockchain node to delete. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
+  name: string;
 }
 
 export const DeleteProjectsLocationsBlockchainNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
       method: "DELETE",

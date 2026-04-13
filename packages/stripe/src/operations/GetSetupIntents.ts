@@ -87,6 +87,7 @@ export const GetSetupIntentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             "sofort",
             "swish",
             "twint",
+            "upi",
             "us_bank_account",
             "wechat_pay",
             "zip",

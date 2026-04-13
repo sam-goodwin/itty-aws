@@ -366,6 +366,9 @@ export type EfaSupportedFlag = boolean;
 export type MaximumEfaInterfaces = number;
 export type EncryptionInTransitSupported = boolean;
 export type EnaSrdSupported = boolean;
+export type DefaultTcpEstablishedTimeout = number;
+export type DefaultUdpTimeout = number;
+export type DefaultUdpStreamTimeout = number;
 export type SecondaryNetworkSupportedFlag = boolean;
 export type MaximumSecondaryNetworkInterfaces = number;
 export type Ipv4AddressesPerSecondaryInterface = number;
@@ -481,7 +484,9 @@ export type ImageName = string;
 export type MaximumDaysSinceDeprecatedValue = number;
 export type MaximumDaysSinceCreatedValue = number;
 export type Period = number;
+export type ConditionValue = string;
 export type MaxResults = number;
+export type GetCapacityManagerMonitoredTagKeysRequestMaxResults = number;
 export type GetCapacityReservationUsageRequestMaxResults = number;
 export type GetGroupsForCapacityReservationRequestMaxResults = number;
 export type EkPubKeyValue = string | redacted.Redacted<string>;
@@ -10125,6 +10130,27 @@ export const OnDemandOptionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "OnDemandOptionsRequest",
 }) as any as S.Schema<OnDemandOptionsRequest>;
+export type FleetReservationType =
+  | "interruptible-capacity-reservation"
+  | (string & {});
+export const FleetReservationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ReservationTypeListRequest = FleetReservationType[];
+export const ReservationTypeListRequest = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  FleetReservationType.pipe(T.XmlName("ReservationType")),
+);
+export interface ReservedCapacityOptionsRequest {
+  ReservationTypes?: FleetReservationType[];
+}
+export const ReservedCapacityOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ReservationTypes: S.optional(ReservationTypeListRequest).pipe(
+        T.XmlName("ReservationType"),
+      ),
+    }),
+  ).annotate({
+    identifier: "ReservedCapacityOptionsRequest",
+  }) as any as S.Schema<ReservedCapacityOptionsRequest>;
 export type FleetExcessCapacityTerminationPolicy =
   | "no-termination"
   | "termination"
@@ -10611,6 +10637,7 @@ export type DefaultTargetCapacityType =
   | "spot"
   | "on-demand"
   | "capacity-block"
+  | "reserved-capacity"
   | (string & {});
 export const DefaultTargetCapacityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type TargetCapacityUnitType =
@@ -10645,6 +10672,7 @@ export interface CreateFleetRequest {
   ClientToken?: string;
   SpotOptions?: SpotOptionsRequest;
   OnDemandOptions?: OnDemandOptionsRequest;
+  ReservedCapacityOptions?: ReservedCapacityOptionsRequest;
   ExcessCapacityTerminationPolicy?: FleetExcessCapacityTerminationPolicy;
   LaunchTemplateConfigs?: FleetLaunchTemplateConfigRequest[];
   TargetCapacitySpecification?: TargetCapacitySpecificationRequest;
@@ -10662,6 +10690,7 @@ export const CreateFleetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     SpotOptions: S.optional(SpotOptionsRequest),
     OnDemandOptions: S.optional(OnDemandOptionsRequest),
+    ReservedCapacityOptions: S.optional(ReservedCapacityOptionsRequest),
     ExcessCapacityTerminationPolicy: S.optional(
       FleetExcessCapacityTerminationPolicy,
     ),
@@ -11199,7 +11228,11 @@ export const LaunchTemplateAndOverridesResponse =
   ).annotate({
     identifier: "LaunchTemplateAndOverridesResponse",
   }) as any as S.Schema<LaunchTemplateAndOverridesResponse>;
-export type InstanceLifecycle = "spot" | "on-demand" | (string & {});
+export type InstanceLifecycle =
+  | "spot"
+  | "on-demand"
+  | "interruptible-capacity-reservation"
+  | (string & {});
 export const InstanceLifecycle = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateFleetError_ {
   LaunchTemplateAndOverrides?: LaunchTemplateAndOverridesResponse;
@@ -35290,6 +35323,24 @@ export const OnDemandOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OnDemandOptions",
 }) as any as S.Schema<OnDemandOptions>;
+export type ReservationTypeList = FleetReservationType[];
+export const ReservationTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  FleetReservationType.pipe(T.XmlName("item")),
+);
+export interface ReservedCapacityOptions {
+  ReservationTypes?: FleetReservationType[];
+}
+export const ReservedCapacityOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ReservationTypes: S.optional(ReservationTypeList).pipe(
+        T.XmlName("reservationTypeSet"),
+        T.Ec2QueryName("ReservationTypeSet"),
+      ),
+    }),
+).annotate({
+  identifier: "ReservedCapacityOptions",
+}) as any as S.Schema<ReservedCapacityOptions>;
 export interface DescribeFleetError {
   LaunchTemplateAndOverrides?: LaunchTemplateAndOverridesResponse;
   Lifecycle?: InstanceLifecycle;
@@ -35386,6 +35437,7 @@ export interface FleetData {
   ReplaceUnhealthyInstances?: boolean;
   SpotOptions?: SpotOptions;
   OnDemandOptions?: OnDemandOptions;
+  ReservedCapacityOptions?: ReservedCapacityOptions;
   Tags?: Tag[];
   Errors?: DescribeFleetError[];
   Instances?: DescribeFleetsInstances[];
@@ -35457,6 +35509,12 @@ export const FleetData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     OnDemandOptions: S.optional(OnDemandOptions)
       .pipe(T.XmlName("onDemandOptions"), T.Ec2QueryName("OnDemandOptions"))
       .annotate({ identifier: "OnDemandOptions" }),
+    ReservedCapacityOptions: S.optional(ReservedCapacityOptions)
+      .pipe(
+        T.XmlName("reservedCapacityOptions"),
+        T.Ec2QueryName("ReservedCapacityOptions"),
+      )
+      .annotate({ identifier: "ReservedCapacityOptions" }),
     Tags: S.optional(TagList).pipe(
       T.XmlName("tagSet"),
       T.Ec2QueryName("TagSet"),
@@ -40816,6 +40874,30 @@ export type FlexibleEnaQueuesSupport =
   | "supported"
   | (string & {});
 export const FlexibleEnaQueuesSupport = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DefaultConnectionTrackingConfiguration {
+  DefaultTcpEstablishedTimeout?: number;
+  DefaultUdpTimeout?: number;
+  DefaultUdpStreamTimeout?: number;
+}
+export const DefaultConnectionTrackingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DefaultTcpEstablishedTimeout: S.optional(S.Number).pipe(
+        T.XmlName("defaultTcpEstablishedTimeout"),
+        T.Ec2QueryName("DefaultTcpEstablishedTimeout"),
+      ),
+      DefaultUdpTimeout: S.optional(S.Number).pipe(
+        T.XmlName("defaultUdpTimeout"),
+        T.Ec2QueryName("DefaultUdpTimeout"),
+      ),
+      DefaultUdpStreamTimeout: S.optional(S.Number).pipe(
+        T.XmlName("defaultUdpStreamTimeout"),
+        T.Ec2QueryName("DefaultUdpStreamTimeout"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DefaultConnectionTrackingConfiguration",
+  }) as any as S.Schema<DefaultConnectionTrackingConfiguration>;
 export interface NetworkInfo {
   NetworkPerformance?: string;
   MaximumNetworkInterfaces?: number;
@@ -40832,6 +40914,7 @@ export interface NetworkInfo {
   EnaSrdSupported?: boolean;
   BandwidthWeightings?: BandwidthWeightingType[];
   FlexibleEnaQueuesSupport?: FlexibleEnaQueuesSupport;
+  ConnectionTrackingConfiguration?: DefaultConnectionTrackingConfiguration;
   SecondaryNetworkSupported?: boolean;
   MaximumSecondaryNetworkInterfaces?: number;
   Ipv4AddressesPerSecondaryInterface?: number;
@@ -40897,6 +40980,14 @@ export const NetworkInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       T.XmlName("flexibleEnaQueuesSupport"),
       T.Ec2QueryName("FlexibleEnaQueuesSupport"),
     ),
+    ConnectionTrackingConfiguration: S.optional(
+      DefaultConnectionTrackingConfiguration,
+    )
+      .pipe(
+        T.XmlName("connectionTrackingConfiguration"),
+        T.Ec2QueryName("ConnectionTrackingConfiguration"),
+      )
+      .annotate({ identifier: "DefaultConnectionTrackingConfiguration" }),
     SecondaryNetworkSupported: S.optional(S.Boolean).pipe(
       T.XmlName("secondaryNetworkSupported"),
       T.Ec2QueryName("SecondaryNetworkSupported"),
@@ -57424,6 +57515,7 @@ export type GroupBy =
   | "resource-region"
   | "availability-zone-id"
   | "account-id"
+  | "account-name"
   | "instance-family"
   | "instance-type"
   | "instance-platform"
@@ -57448,6 +57540,7 @@ export type FilterByDimension =
   | "resource-region"
   | "availability-zone-id"
   | "account-id"
+  | "account-name"
   | "instance-family"
   | "instance-type"
   | "instance-platform"
@@ -57545,10 +57638,34 @@ export type ReservationEndDateType = "limited" | "unlimited" | (string & {});
 export const ReservationEndDateType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CapacityTenancy = "default" | "dedicated" | (string & {});
 export const CapacityTenancy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CapacityManagerTagDimension {
+  Key?: string;
+  Value?: string;
+}
+export const CapacityManagerTagDimension =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Key: S.optional(S.String).pipe(T.XmlName("key"), T.Ec2QueryName("Key")),
+      Value: S.optional(S.String).pipe(
+        T.XmlName("value"),
+        T.Ec2QueryName("Value"),
+      ),
+    }),
+  ).annotate({
+    identifier: "CapacityManagerTagDimension",
+  }) as any as S.Schema<CapacityManagerTagDimension>;
+export type CapacityManagerTagDimensionSet = CapacityManagerTagDimension[];
+export const CapacityManagerTagDimensionSet =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    CapacityManagerTagDimension.pipe(T.XmlName("item")).annotate({
+      identifier: "CapacityManagerTagDimension",
+    }),
+  );
 export interface CapacityManagerDimension {
   ResourceRegion?: string;
   AvailabilityZoneId?: string;
   AccountId?: string;
+  AccountName?: string;
   InstanceFamily?: string;
   InstanceType?: string;
   InstancePlatform?: string;
@@ -57563,6 +57680,7 @@ export interface CapacityManagerDimension {
   ReservationState?: ReservationState;
   ReservationInstanceMatchCriteria?: string;
   ReservationUnusedFinancialOwner?: string;
+  Tags?: CapacityManagerTagDimension[];
 }
 export const CapacityManagerDimension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -57578,6 +57696,10 @@ export const CapacityManagerDimension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       AccountId: S.optional(S.String).pipe(
         T.XmlName("accountId"),
         T.Ec2QueryName("AccountId"),
+      ),
+      AccountName: S.optional(S.String).pipe(
+        T.XmlName("accountName"),
+        T.Ec2QueryName("AccountName"),
       ),
       InstanceFamily: S.optional(S.String).pipe(
         T.XmlName("instanceFamily"),
@@ -57640,6 +57762,10 @@ export const CapacityManagerDimension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ReservationUnusedFinancialOwner: S.optional(S.String).pipe(
         T.XmlName("reservationUnusedFinancialOwner"),
         T.Ec2QueryName("ReservationUnusedFinancialOwner"),
+      ),
+      Tags: S.optional(CapacityManagerTagDimensionSet).pipe(
+        T.XmlName("tagSet"),
+        T.Ec2QueryName("TagSet"),
       ),
     }),
 ).annotate({
@@ -57775,6 +57901,104 @@ export const GetCapacityManagerMetricDimensionsResult =
   ).annotate({
     identifier: "GetCapacityManagerMetricDimensionsResult",
   }) as any as S.Schema<GetCapacityManagerMetricDimensionsResult>;
+export interface GetCapacityManagerMonitoredTagKeysRequest {
+  MaxResults?: number;
+  NextToken?: string;
+  DryRun?: boolean;
+}
+export const GetCapacityManagerMonitoredTagKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetCapacityManagerMonitoredTagKeysRequest",
+  }) as any as S.Schema<GetCapacityManagerMonitoredTagKeysRequest>;
+export type CapacityManagerMonitoredTagKeyStatus =
+  | "activating"
+  | "activated"
+  | "deactivating"
+  | "suspended"
+  | (string & {});
+export const CapacityManagerMonitoredTagKeyStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CapacityManagerMonitoredTagKey {
+  TagKey?: string;
+  Status?: CapacityManagerMonitoredTagKeyStatus;
+  StatusMessage?: string;
+  CapacityManagerProvided?: boolean;
+  EarliestDatapointTimestamp?: Date;
+}
+export const CapacityManagerMonitoredTagKey =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TagKey: S.optional(S.String).pipe(
+        T.XmlName("tagKey"),
+        T.Ec2QueryName("TagKey"),
+      ),
+      Status: S.optional(CapacityManagerMonitoredTagKeyStatus).pipe(
+        T.XmlName("status"),
+        T.Ec2QueryName("Status"),
+      ),
+      StatusMessage: S.optional(S.String).pipe(
+        T.XmlName("statusMessage"),
+        T.Ec2QueryName("StatusMessage"),
+      ),
+      CapacityManagerProvided: S.optional(S.Boolean).pipe(
+        T.XmlName("capacityManagerProvided"),
+        T.Ec2QueryName("CapacityManagerProvided"),
+      ),
+      EarliestDatapointTimestamp: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(
+        T.XmlName("earliestDatapointTimestamp"),
+        T.Ec2QueryName("EarliestDatapointTimestamp"),
+      ),
+    }),
+  ).annotate({
+    identifier: "CapacityManagerMonitoredTagKey",
+  }) as any as S.Schema<CapacityManagerMonitoredTagKey>;
+export type CapacityManagerMonitoredTagKeyList =
+  CapacityManagerMonitoredTagKey[];
+export const CapacityManagerMonitoredTagKeyList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    CapacityManagerMonitoredTagKey.pipe(T.XmlName("item")).annotate({
+      identifier: "CapacityManagerMonitoredTagKey",
+    }),
+  );
+export interface GetCapacityManagerMonitoredTagKeysResult {
+  CapacityManagerTagKeys?: CapacityManagerMonitoredTagKey[];
+  NextToken?: string;
+}
+export const GetCapacityManagerMonitoredTagKeysResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CapacityManagerTagKeys: S.optional(
+        CapacityManagerMonitoredTagKeyList,
+      ).pipe(
+        T.XmlName("capacityManagerTagKeySet"),
+        T.Ec2QueryName("CapacityManagerTagKeySet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "GetCapacityManagerMonitoredTagKeysResult",
+  }) as any as S.Schema<GetCapacityManagerMonitoredTagKeysResult>;
 export interface GetCapacityReservationUsageRequest {
   CapacityReservationId?: string;
   NextToken?: string;
@@ -72909,6 +73133,53 @@ export const UnmonitorInstancesResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UnmonitorInstancesResult",
 }) as any as S.Schema<UnmonitorInstancesResult>;
+export interface UpdateCapacityManagerMonitoredTagKeysRequest {
+  ActivateTagKeys?: string[];
+  DeactivateTagKeys?: string[];
+  DryRun?: boolean;
+  ClientToken?: string;
+}
+export const UpdateCapacityManagerMonitoredTagKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ActivateTagKeys: S.optional(ValueStringList).pipe(
+        T.XmlName("ActivateTagKey"),
+      ),
+      DeactivateTagKeys: S.optional(ValueStringList).pipe(
+        T.XmlName("DeactivateTagKey"),
+      ),
+      DryRun: S.optional(S.Boolean),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateCapacityManagerMonitoredTagKeysRequest",
+  }) as any as S.Schema<UpdateCapacityManagerMonitoredTagKeysRequest>;
+export interface UpdateCapacityManagerMonitoredTagKeysResult {
+  CapacityManagerTagKeys?: CapacityManagerMonitoredTagKey[];
+}
+export const UpdateCapacityManagerMonitoredTagKeysResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CapacityManagerTagKeys: S.optional(
+        CapacityManagerMonitoredTagKeyList,
+      ).pipe(
+        T.XmlName("capacityManagerTagKeySet"),
+        T.Ec2QueryName("CapacityManagerTagKeySet"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "UpdateCapacityManagerMonitoredTagKeysResult",
+  }) as any as S.Schema<UpdateCapacityManagerMonitoredTagKeysResult>;
 export interface UpdateCapacityManagerOrganizationsAccessRequest {
   OrganizationsAccess?: boolean;
   DryRun?: boolean;
@@ -75253,8 +75524,10 @@ export type BundleInstanceError =
  * During bundling, only the root device volume (C:\) is bundled. Data on other instance
  * store volumes is not preserved.
  *
- * This action is not applicable for Linux/Unix instances or Windows instances that are
- * backed by Amazon EBS.
+ * This action is no longer supported. To create an AMI, use
+ * CreateImage.
+ * For more information, see
+ * Create an Amazon EBS-backed AMI in the *Amazon EC2 User Guide*.
  */
 export const bundleInstance: API.OperationMethod<
   BundleInstanceRequest,
@@ -89701,6 +89974,41 @@ export const getCapacityManagerMetricDimensions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type GetCapacityManagerMonitoredTagKeysError = CommonErrors;
+/**
+ * Retrieves the tag keys that are currently being monitored by EC2 Capacity Manager. Monitored tag keys are included as dimensions in capacity metric data, enabling you to group and filter metrics by tag values.
+ */
+export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
+  GetCapacityManagerMonitoredTagKeysRequest,
+  GetCapacityManagerMonitoredTagKeysResult,
+  GetCapacityManagerMonitoredTagKeysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetCapacityManagerMonitoredTagKeysRequest,
+  ) => stream.Stream<
+    GetCapacityManagerMonitoredTagKeysResult,
+    GetCapacityManagerMonitoredTagKeysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetCapacityManagerMonitoredTagKeysRequest,
+  ) => stream.Stream<
+    CapacityManagerMonitoredTagKey,
+    GetCapacityManagerMonitoredTagKeysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: GetCapacityManagerMonitoredTagKeysRequest,
+  output: GetCapacityManagerMonitoredTagKeysResult,
+  errors: [],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "CapacityManagerTagKeys",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type GetCapacityReservationUsageError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -95666,6 +95974,20 @@ export const unmonitorInstances: API.OperationMethod<
   input: UnmonitorInstancesRequest,
   output: UnmonitorInstancesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
+}));
+export type UpdateCapacityManagerMonitoredTagKeysError = CommonErrors;
+/**
+ * Activates or deactivates tag keys for monitoring by EC2 Capacity Manager. Activated tag keys are included as dimensions in capacity metric data, enabling you to group and filter metrics by tag values.
+ */
+export const updateCapacityManagerMonitoredTagKeys: API.OperationMethod<
+  UpdateCapacityManagerMonitoredTagKeysRequest,
+  UpdateCapacityManagerMonitoredTagKeysResult,
+  UpdateCapacityManagerMonitoredTagKeysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateCapacityManagerMonitoredTagKeysRequest,
+  output: UpdateCapacityManagerMonitoredTagKeysResult,
+  errors: [],
 }));
 export type UpdateCapacityManagerOrganizationsAccessError =
   | RequestLimitExceeded

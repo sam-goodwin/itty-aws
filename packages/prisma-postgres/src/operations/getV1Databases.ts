@@ -82,6 +82,7 @@ export const GetV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           name: Schema.String,
         }),
       ),
+      source: Schema.Unknown,
     }),
   ),
   pagination: Schema.Struct({

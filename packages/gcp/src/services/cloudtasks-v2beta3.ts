@@ -35,16 +35,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -53,15 +50,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface AppEngineRouting {
   /** App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string. */
@@ -74,59 +66,39 @@ export interface AppEngineRouting {
   host?: string;
 }
 
-export const AppEngineRouting: Schema.Schema<AppEngineRouting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      instance: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppEngineRouting",
-  }) as any as Schema.Schema<AppEngineRouting>;
+export const AppEngineRouting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  instance: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppEngineRouting" });
 
 export interface AppEngineHttpQueue {
   /** Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. */
   appEngineRoutingOverride?: AppEngineRouting;
 }
 
-export const AppEngineHttpQueue: Schema.Schema<AppEngineHttpQueue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appEngineRoutingOverride: Schema.optional(AppEngineRouting),
-    }),
-  ).annotate({
-    identifier: "AppEngineHttpQueue",
-  }) as any as Schema.Schema<AppEngineHttpQueue>;
+export const AppEngineHttpQueue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appEngineRoutingOverride: Schema.optional(AppEngineRouting),
+}).annotate({ identifier: "AppEngineHttpQueue" });
 
 export interface PathOverride {
   /** The URI path (e.g., /users/1234). Default is an empty string. */
   path?: string;
 }
 
-export const PathOverride: Schema.Schema<PathOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PathOverride",
-  }) as any as Schema.Schema<PathOverride>;
+export const PathOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "PathOverride" });
 
 export interface QueryOverride {
   /** The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string. */
   queryParams?: string;
 }
 
-export const QueryOverride: Schema.Schema<QueryOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryParams: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryOverride",
-  }) as any as Schema.Schema<QueryOverride>;
+export const QueryOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryParams: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryOverride" });
 
 export interface UriOverride {
   /** Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS). */
@@ -147,19 +119,14 @@ export interface UriOverride {
     | (string & {});
 }
 
-export const UriOverride: Schema.Schema<UriOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scheme: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.String),
-      pathOverride: Schema.optional(PathOverride),
-      queryOverride: Schema.optional(QueryOverride),
-      uriOverrideEnforceMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UriOverride",
-  }) as any as Schema.Schema<UriOverride>;
+export const UriOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheme: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.String),
+  pathOverride: Schema.optional(PathOverride),
+  queryOverride: Schema.optional(QueryOverride),
+  uriOverrideEnforceMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "UriOverride" });
 
 export interface Header {
   /** The Key of the header. */
@@ -168,27 +135,19 @@ export interface Header {
   value?: string;
 }
 
-export const Header: Schema.Schema<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Header" }) as any as Schema.Schema<Header>;
+export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Header" });
 
 export interface HeaderOverride {
   /** Header embodying a key and a value. Do not put business sensitive or personally identifying data in the HTTP Header Override Configuration or other similar fields in accordance with Section 12 (Resource Fields) of the [Service Specific Terms](https://cloud.google.com/terms/service-terms). */
   header?: Header;
 }
 
-export const HeaderOverride: Schema.Schema<HeaderOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      header: Schema.optional(Header),
-    }),
-  ).annotate({
-    identifier: "HeaderOverride",
-  }) as any as Schema.Schema<HeaderOverride>;
+export const HeaderOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  header: Schema.optional(Header),
+}).annotate({ identifier: "HeaderOverride" });
 
 export interface OAuthToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account. */
@@ -197,13 +156,10 @@ export interface OAuthToken {
   scope?: string;
 }
 
-export const OAuthToken: Schema.Schema<OAuthToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountEmail: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "OAuthToken" }) as any as Schema.Schema<OAuthToken>;
+export const OAuthToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountEmail: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+}).annotate({ identifier: "OAuthToken" });
 
 export interface OidcToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account. */
@@ -212,13 +168,10 @@ export interface OidcToken {
   audience?: string;
 }
 
-export const OidcToken: Schema.Schema<OidcToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountEmail: Schema.optional(Schema.String),
-      audience: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "OidcToken" }) as any as Schema.Schema<OidcToken>;
+export const OidcToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountEmail: Schema.optional(Schema.String),
+  audience: Schema.optional(Schema.String),
+}).annotate({ identifier: "OidcToken" });
 
 export interface HttpTarget {
   /** URI override. When specified, overrides the execution URI for all the tasks in the queue. */
@@ -242,16 +195,13 @@ export interface HttpTarget {
   oidcToken?: OidcToken;
 }
 
-export const HttpTarget: Schema.Schema<HttpTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriOverride: Schema.optional(UriOverride),
-      httpMethod: Schema.optional(Schema.String),
-      headerOverrides: Schema.optional(Schema.Array(HeaderOverride)),
-      oauthToken: Schema.optional(OAuthToken),
-      oidcToken: Schema.optional(OidcToken),
-    }),
-  ).annotate({ identifier: "HttpTarget" }) as any as Schema.Schema<HttpTarget>;
+export const HttpTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uriOverride: Schema.optional(UriOverride),
+  httpMethod: Schema.optional(Schema.String),
+  headerOverrides: Schema.optional(Schema.Array(HeaderOverride)),
+  oauthToken: Schema.optional(OAuthToken),
+  oidcToken: Schema.optional(OidcToken),
+}).annotate({ identifier: "HttpTarget" });
 
 export interface RateLimits {
   /** The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is created, Cloud Tasks will pick the default. * For App Engine queues, the maximum allowed value is 500. This field has the same meaning as [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate). */
@@ -262,14 +212,11 @@ export interface RateLimits {
   maxConcurrentDispatches?: number;
 }
 
-export const RateLimits: Schema.Schema<RateLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxDispatchesPerSecond: Schema.optional(Schema.Number),
-      maxBurstSize: Schema.optional(Schema.Number),
-      maxConcurrentDispatches: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "RateLimits" }) as any as Schema.Schema<RateLimits>;
+export const RateLimits = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxDispatchesPerSecond: Schema.optional(Schema.Number),
+  maxBurstSize: Schema.optional(Schema.Number),
+  maxConcurrentDispatches: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RateLimits" });
 
 export interface RetryConfig {
   /** Number of attempts per task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be >= -1. If unspecified when the queue is created, Cloud Tasks will pick the default. -1 indicates unlimited attempts. This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters). Note: Cloud Tasks stops retrying only when `max_attempts` and `max_retry_duration` are both satisfied. When the task has been attempted `max_attempts` times and when the `max_retry_duration` time has passed, no further attempts are made, and the task is deleted. If you want your task to retry infinitely, you must set `max_attempts` to -1 and `max_retry_duration` to 0. */
@@ -284,32 +231,23 @@ export interface RetryConfig {
   maxDoublings?: number;
 }
 
-export const RetryConfig: Schema.Schema<RetryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxAttempts: Schema.optional(Schema.Number),
-      maxRetryDuration: Schema.optional(Schema.String),
-      minBackoff: Schema.optional(Schema.String),
-      maxBackoff: Schema.optional(Schema.String),
-      maxDoublings: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RetryConfig",
-  }) as any as Schema.Schema<RetryConfig>;
+export const RetryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxAttempts: Schema.optional(Schema.Number),
+  maxRetryDuration: Schema.optional(Schema.String),
+  minBackoff: Schema.optional(Schema.String),
+  maxBackoff: Schema.optional(Schema.String),
+  maxDoublings: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RetryConfig" });
 
 export interface StackdriverLoggingConfig {
   /** Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged. */
   samplingRatio?: number;
 }
 
-export const StackdriverLoggingConfig: Schema.Schema<StackdriverLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      samplingRatio: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StackdriverLoggingConfig",
-  }) as any as Schema.Schema<StackdriverLoggingConfig>;
+export const StackdriverLoggingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    samplingRatio: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "StackdriverLoggingConfig" });
 
 export interface QueueStats {
   /** Output only. An estimation of the number of tasks in the queue, that is, the tasks in the queue that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a reply for, and the failed tasks that the queue is retrying. */
@@ -324,16 +262,13 @@ export interface QueueStats {
   effectiveExecutionRate?: number;
 }
 
-export const QueueStats: Schema.Schema<QueueStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tasksCount: Schema.optional(Schema.String),
-      oldestEstimatedArrivalTime: Schema.optional(Schema.String),
-      executedLastMinuteCount: Schema.optional(Schema.String),
-      concurrentDispatchesCount: Schema.optional(Schema.String),
-      effectiveExecutionRate: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "QueueStats" }) as any as Schema.Schema<QueueStats>;
+export const QueueStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tasksCount: Schema.optional(Schema.String),
+  oldestEstimatedArrivalTime: Schema.optional(Schema.String),
+  executedLastMinuteCount: Schema.optional(Schema.String),
+  concurrentDispatchesCount: Schema.optional(Schema.String),
+  effectiveExecutionRate: Schema.optional(Schema.Number),
+}).annotate({ identifier: "QueueStats" });
 
 export interface Queue {
   /** Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. */
@@ -367,23 +302,20 @@ export interface Queue {
   stats?: QueueStats;
 }
 
-export const Queue: Schema.Schema<Queue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      appEngineHttpQueue: Schema.optional(AppEngineHttpQueue),
-      httpTarget: Schema.optional(HttpTarget),
-      rateLimits: Schema.optional(RateLimits),
-      retryConfig: Schema.optional(RetryConfig),
-      state: Schema.optional(Schema.String),
-      purgeTime: Schema.optional(Schema.String),
-      taskTtl: Schema.optional(Schema.String),
-      tombstoneTtl: Schema.optional(Schema.String),
-      stackdriverLoggingConfig: Schema.optional(StackdriverLoggingConfig),
-      type: Schema.optional(Schema.String),
-      stats: Schema.optional(QueueStats),
-    }),
-  ).annotate({ identifier: "Queue" }) as any as Schema.Schema<Queue>;
+export const Queue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  appEngineHttpQueue: Schema.optional(AppEngineHttpQueue),
+  httpTarget: Schema.optional(HttpTarget),
+  rateLimits: Schema.optional(RateLimits),
+  retryConfig: Schema.optional(RetryConfig),
+  state: Schema.optional(Schema.String),
+  purgeTime: Schema.optional(Schema.String),
+  taskTtl: Schema.optional(Schema.String),
+  tombstoneTtl: Schema.optional(Schema.String),
+  stackdriverLoggingConfig: Schema.optional(StackdriverLoggingConfig),
+  type: Schema.optional(Schema.String),
+  stats: Schema.optional(QueueStats),
+}).annotate({ identifier: "Queue" });
 
 export interface ListQueuesResponse {
   /** The list of queues. */
@@ -392,71 +324,52 @@ export interface ListQueuesResponse {
   nextPageToken?: string;
 }
 
-export const ListQueuesResponse: Schema.Schema<ListQueuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queues: Schema.optional(Schema.Array(Queue)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListQueuesResponse",
-  }) as any as Schema.Schema<ListQueuesResponse>;
+export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queues: Schema.optional(Schema.Array(Queue)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListQueuesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface PurgeQueueRequest {}
 
-export const PurgeQueueRequest: Schema.Schema<PurgeQueueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PurgeQueueRequest",
-  }) as any as Schema.Schema<PurgeQueueRequest>;
+export const PurgeQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PurgeQueueRequest" });
 
 export interface PauseQueueRequest {}
 
-export const PauseQueueRequest: Schema.Schema<PauseQueueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PauseQueueRequest",
-  }) as any as Schema.Schema<PauseQueueRequest>;
+export const PauseQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PauseQueueRequest" });
 
 export interface ResumeQueueRequest {}
 
-export const ResumeQueueRequest: Schema.Schema<ResumeQueueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResumeQueueRequest",
-  }) as any as Schema.Schema<ResumeQueueRequest>;
+export const ResumeQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ResumeQueueRequest" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -469,15 +382,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -488,14 +398,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -506,56 +413,40 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface AppEngineHttpRequest {
   /** The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled). */
@@ -579,18 +470,13 @@ export interface AppEngineHttpRequest {
   body?: string;
 }
 
-export const AppEngineHttpRequest: Schema.Schema<AppEngineHttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpMethod: Schema.optional(Schema.String),
-      appEngineRouting: Schema.optional(AppEngineRouting),
-      relativeUri: Schema.optional(Schema.String),
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      body: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppEngineHttpRequest",
-  }) as any as Schema.Schema<AppEngineHttpRequest>;
+export const AppEngineHttpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpMethod: Schema.optional(Schema.String),
+  appEngineRouting: Schema.optional(AppEngineRouting),
+  relativeUri: Schema.optional(Schema.String),
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  body: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppEngineHttpRequest" });
 
 export interface HttpRequest {
   /** Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt. */
@@ -616,19 +502,14 @@ export interface HttpRequest {
   oidcToken?: OidcToken;
 }
 
-export const HttpRequest: Schema.Schema<HttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      httpMethod: Schema.optional(Schema.String),
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      body: Schema.optional(Schema.String),
-      oauthToken: Schema.optional(OAuthToken),
-      oidcToken: Schema.optional(OidcToken),
-    }),
-  ).annotate({
-    identifier: "HttpRequest",
-  }) as any as Schema.Schema<HttpRequest>;
+export const HttpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  httpMethod: Schema.optional(Schema.String),
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  body: Schema.optional(Schema.String),
+  oauthToken: Schema.optional(OAuthToken),
+  oidcToken: Schema.optional(OidcToken),
+}).annotate({ identifier: "HttpRequest" });
 
 export interface PullMessage {
   /** A data payload consumed by the worker to execute the task. */
@@ -637,15 +518,10 @@ export interface PullMessage {
   tag?: string;
 }
 
-export const PullMessage: Schema.Schema<PullMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PullMessage",
-  }) as any as Schema.Schema<PullMessage>;
+export const PullMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payload: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+}).annotate({ identifier: "PullMessage" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -656,16 +532,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Attempt {
   /** Output only. The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond. */
@@ -678,15 +551,12 @@ export interface Attempt {
   responseStatus?: Status;
 }
 
-export const Attempt: Schema.Schema<Attempt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scheduleTime: Schema.optional(Schema.String),
-      dispatchTime: Schema.optional(Schema.String),
-      responseTime: Schema.optional(Schema.String),
-      responseStatus: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Attempt" }) as any as Schema.Schema<Attempt>;
+export const Attempt = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheduleTime: Schema.optional(Schema.String),
+  dispatchTime: Schema.optional(Schema.String),
+  responseTime: Schema.optional(Schema.String),
+  responseStatus: Schema.optional(Status),
+}).annotate({ identifier: "Attempt" });
 
 export interface Task {
   /** Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters. */
@@ -715,23 +585,20 @@ export interface Task {
   view?: "VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const Task: Schema.Schema<Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      appEngineHttpRequest: Schema.optional(AppEngineHttpRequest),
-      httpRequest: Schema.optional(HttpRequest),
-      pullMessage: Schema.optional(PullMessage),
-      scheduleTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      dispatchDeadline: Schema.optional(Schema.String),
-      dispatchCount: Schema.optional(Schema.Number),
-      responseCount: Schema.optional(Schema.Number),
-      firstAttempt: Schema.optional(Attempt),
-      lastAttempt: Schema.optional(Attempt),
-      view: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Task" }) as any as Schema.Schema<Task>;
+export const Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  appEngineHttpRequest: Schema.optional(AppEngineHttpRequest),
+  httpRequest: Schema.optional(HttpRequest),
+  pullMessage: Schema.optional(PullMessage),
+  scheduleTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  dispatchDeadline: Schema.optional(Schema.String),
+  dispatchCount: Schema.optional(Schema.Number),
+  responseCount: Schema.optional(Schema.Number),
+  firstAttempt: Schema.optional(Attempt),
+  lastAttempt: Schema.optional(Attempt),
+  view: Schema.optional(Schema.String),
+}).annotate({ identifier: "Task" });
 
 export interface ListTasksResponse {
   /** The list of tasks. */
@@ -740,15 +607,10 @@ export interface ListTasksResponse {
   nextPageToken?: string;
 }
 
-export const ListTasksResponse: Schema.Schema<ListTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tasks: Schema.optional(Schema.Array(Task)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTasksResponse",
-  }) as any as Schema.Schema<ListTasksResponse>;
+export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tasks: Schema.optional(Schema.Array(Task)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTasksResponse" });
 
 export interface CreateTaskRequest {
   /** Required. The task to add. Task names have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can optionally specify a task name. If a name is not specified then the system will generate a random unique task id, which will be set in the task returned in the response. If schedule_time is not set or is in the past then Cloud Tasks will set it to the current time. Task De-duplication: Explicitly specifying a task ID enables task de-duplication. If a task's ID is identical to that of an existing task or a task that was deleted or executed recently then the call will fail with ALREADY_EXISTS. The IDs of deleted tasks are not immediately available for reuse. It can take up to 24 hours (or 9 days if the task's queue was created using a queue.yaml or queue.xml) for the task ID to be released and made available again. Because there is an extra lookup cost to identify duplicate task names, these CreateTask calls have significantly increased latency. Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task ids that are sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task ids to store and serve tasks efficiently. */
@@ -757,29 +619,19 @@ export interface CreateTaskRequest {
   responseView?: "VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const CreateTaskRequest: Schema.Schema<CreateTaskRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      task: Schema.optional(Task),
-      responseView: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateTaskRequest",
-  }) as any as Schema.Schema<CreateTaskRequest>;
+export const CreateTaskRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  task: Schema.optional(Task),
+  responseView: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateTaskRequest" });
 
 export interface RunTaskRequest {
   /** The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource. */
   responseView?: "VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const RunTaskRequest: Schema.Schema<RunTaskRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseView: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RunTaskRequest",
-  }) as any as Schema.Schema<RunTaskRequest>;
+export const RunTaskRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  responseView: Schema.optional(Schema.String),
+}).annotate({ identifier: "RunTaskRequest" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -790,44 +642,31 @@ export interface HttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "HttpBody" });
 
 export interface BufferTaskRequest {
   /** Optional. Body of the HTTP request. The body can take any generic value. The value is written to the HttpRequest of the [Task]. */
   body?: HttpBody;
 }
 
-export const BufferTaskRequest: Schema.Schema<BufferTaskRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(HttpBody),
-    }),
-  ).annotate({
-    identifier: "BufferTaskRequest",
-  }) as any as Schema.Schema<BufferTaskRequest>;
+export const BufferTaskRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(HttpBody),
+}).annotate({ identifier: "BufferTaskRequest" });
 
 export interface BufferTaskResponse {
   /** The created task. */
   task?: Task;
 }
 
-export const BufferTaskResponse: Schema.Schema<BufferTaskResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      task: Schema.optional(Task),
-    }),
-  ).annotate({
-    identifier: "BufferTaskResponse",
-  }) as any as Schema.Schema<BufferTaskResponse>;
+export const BufferTaskResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  task: Schema.optional(Task),
+}).annotate({ identifier: "BufferTaskResponse" });
 
 export interface CmekConfig {
   /** Output only. The config resource name which includes the project and location and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig` */
@@ -836,13 +675,10 @@ export interface CmekConfig {
   kmsKey?: string;
 }
 
-export const CmekConfig: Schema.Schema<CmekConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CmekConfig" }) as any as Schema.Schema<CmekConfig>;
+export const CmekConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "CmekConfig" });
 
 // ==========================================================================
 // Operations
@@ -881,7 +717,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -960,7 +796,7 @@ export const UpdateCmekConfigProjectsLocationsResponse =
 
 export type UpdateCmekConfigProjectsLocationsError = DefaultErrors;
 
-/** Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud Tasks location (Creates if the key does not already exist). All new tasks created in the location will be encrypted at-rest with the KMS-key provided in the config. */
+/** Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key associated with the Cloud Tasks location (Creates if the key does not already exist). All new tasks created in the location will be encrypted at-rest with the KMS-key provided in the config. */
 export const updateCmekConfigProjectsLocations: API.OperationMethod<
   UpdateCmekConfigProjectsLocationsRequest,
   UpdateCmekConfigProjectsLocationsResponse,

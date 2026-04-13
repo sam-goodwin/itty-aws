@@ -35,6 +35,7 @@ export const PostInvoiceitemsInvoiceitemInput =
       }),
     ),
     quantity: Schema.optional(Schema.Number),
+    quantity_decimal: Schema.optional(Schema.String),
     tax_behavior: Schema.optional(
       Schema.Literals(["exclusive", "inclusive", "unspecified"]),
     ),
@@ -86,6 +87,7 @@ export const PostInvoiceitemsInvoiceitemOutput =
       }),
     ),
     quantity: Schema.Number,
+    quantity_decimal: Schema.String,
     tax_rates: Schema.NullOr(
       Schema.Array(
         Schema.Struct({

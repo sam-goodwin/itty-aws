@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,58 +69,43 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface NetworkConfig {
   /** Required. Name of the VPC subnet in which to create Private Service Connect (PSC) endpoints for the Kafka brokers and bootstrap address. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} The subnet must be located in the same region as the Kafka cluster. The project may differ. Multiple subnets from the same parent network must not be specified. */
   subnet?: string;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subnet: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnet: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface AccessConfig {
   /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
   networkConfigs?: Array<NetworkConfig>;
 }
 
-export const AccessConfig: Schema.Schema<AccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkConfigs: Schema.optional(Schema.Array(NetworkConfig)),
-    }),
-  ).annotate({
-    identifier: "AccessConfig",
-  }) as any as Schema.Schema<AccessConfig>;
+export const AccessConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkConfigs: Schema.optional(Schema.Array(NetworkConfig)),
+}).annotate({ identifier: "AccessConfig" });
 
 export interface GcpConfig {
   /** Required. Access configuration for the Kafka cluster. */
@@ -135,13 +114,10 @@ export interface GcpConfig {
   kmsKey?: string;
 }
 
-export const GcpConfig: Schema.Schema<GcpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessConfig: Schema.optional(AccessConfig),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GcpConfig" }) as any as Schema.Schema<GcpConfig>;
+export const GcpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessConfig: Schema.optional(AccessConfig),
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcpConfig" });
 
 export interface CapacityConfig {
   /** Required. The number of vCPUs to provision for the cluster. Minimum: 3. */
@@ -150,15 +126,10 @@ export interface CapacityConfig {
   memoryBytes?: string;
 }
 
-export const CapacityConfig: Schema.Schema<CapacityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vcpuCount: Schema.optional(Schema.String),
-      memoryBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CapacityConfig",
-  }) as any as Schema.Schema<CapacityConfig>;
+export const CapacityConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vcpuCount: Schema.optional(Schema.String),
+  memoryBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "CapacityConfig" });
 
 export interface RebalanceConfig {
   /** Optional. The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. */
@@ -169,44 +140,28 @@ export interface RebalanceConfig {
     | (string & {});
 }
 
-export const RebalanceConfig: Schema.Schema<RebalanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RebalanceConfig",
-  }) as any as Schema.Schema<RebalanceConfig>;
+export const RebalanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.String),
+}).annotate({ identifier: "RebalanceConfig" });
 
 export interface CertificateAuthorityServiceConfig {
   /** Required. The name of the CA pool to pull CA certificates from. Structured like: projects/{project}/locations/{location}/caPools/{ca_pool}. The CA pool does not need to be in the same project or location as the Kafka cluster. */
   caPool?: string;
 }
 
-export const CertificateAuthorityServiceConfig: Schema.Schema<CertificateAuthorityServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caPool: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateAuthorityServiceConfig",
-  }) as any as Schema.Schema<CertificateAuthorityServiceConfig>;
+export const CertificateAuthorityServiceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caPool: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CertificateAuthorityServiceConfig" });
 
 export interface TrustConfig {
   /** Optional. Configuration for the Google Certificate Authority Service. Maximum 10. */
   casConfigs?: Array<CertificateAuthorityServiceConfig>;
 }
 
-export const TrustConfig: Schema.Schema<TrustConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      casConfigs: Schema.optional(
-        Schema.Array(CertificateAuthorityServiceConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "TrustConfig",
-  }) as any as Schema.Schema<TrustConfig>;
+export const TrustConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  casConfigs: Schema.optional(Schema.Array(CertificateAuthorityServiceConfig)),
+}).annotate({ identifier: "TrustConfig" });
 
 export interface TlsConfig {
   /** Optional. The configuration of the broker truststore. If specified, clients can use mTLS for authentication. */
@@ -215,27 +170,19 @@ export interface TlsConfig {
   sslPrincipalMappingRules?: string;
 }
 
-export const TlsConfig: Schema.Schema<TlsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trustConfig: Schema.optional(TrustConfig),
-      sslPrincipalMappingRules: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TlsConfig" }) as any as Schema.Schema<TlsConfig>;
+export const TlsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trustConfig: Schema.optional(TrustConfig),
+  sslPrincipalMappingRules: Schema.optional(Schema.String),
+}).annotate({ identifier: "TlsConfig" });
 
 export interface UpdateOptions {
   /** Optional. If true, allows an update operation that increases the total vCPU and/or memory allocation of the cluster to significantly decrease the per-broker vCPU and/or memory allocation. This can result in reduced performance and availability. By default, the update operation will fail if an upscale request results in a vCPU or memory allocation for the brokers that is smaller than 90% of the current broker size. */
   allowBrokerDownscaleOnClusterUpscale?: boolean;
 }
 
-export const UpdateOptions: Schema.Schema<UpdateOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowBrokerDownscaleOnClusterUpscale: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpdateOptions",
-  }) as any as Schema.Schema<UpdateOptions>;
+export const UpdateOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowBrokerDownscaleOnClusterUpscale: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UpdateOptions" });
 
 export interface BrokerDetails {
   /** Output only. The index of the broker. */
@@ -246,16 +193,11 @@ export interface BrokerDetails {
   rack?: string;
 }
 
-export const BrokerDetails: Schema.Schema<BrokerDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brokerIndex: Schema.optional(Schema.String),
-      nodeId: Schema.optional(Schema.String),
-      rack: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BrokerDetails",
-  }) as any as Schema.Schema<BrokerDetails>;
+export const BrokerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  brokerIndex: Schema.optional(Schema.String),
+  nodeId: Schema.optional(Schema.String),
+  rack: Schema.optional(Schema.String),
+}).annotate({ identifier: "BrokerDetails" });
 
 export interface Cluster {
   /** Required. Configuration properties for a Kafka cluster deployed to Google Cloud Platform. */
@@ -294,25 +236,22 @@ export interface Cluster {
   brokerDetails?: Array<BrokerDetails>;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpConfig: Schema.optional(GcpConfig),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      capacityConfig: Schema.optional(CapacityConfig),
-      rebalanceConfig: Schema.optional(RebalanceConfig),
-      state: Schema.optional(Schema.String),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      tlsConfig: Schema.optional(TlsConfig),
-      updateOptions: Schema.optional(UpdateOptions),
-      kafkaVersion: Schema.optional(Schema.String),
-      brokerDetails: Schema.optional(Schema.Array(BrokerDetails)),
-    }),
-  ).annotate({ identifier: "Cluster" }) as any as Schema.Schema<Cluster>;
+export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcpConfig: Schema.optional(GcpConfig),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  capacityConfig: Schema.optional(CapacityConfig),
+  rebalanceConfig: Schema.optional(RebalanceConfig),
+  state: Schema.optional(Schema.String),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  tlsConfig: Schema.optional(TlsConfig),
+  updateOptions: Schema.optional(UpdateOptions),
+  kafkaVersion: Schema.optional(Schema.String),
+  brokerDetails: Schema.optional(Schema.Array(BrokerDetails)),
+}).annotate({ identifier: "Cluster" });
 
 export interface ListClustersResponse {
   /** The list of Clusters in the requested parent. */
@@ -323,16 +262,11 @@ export interface ListClustersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusters: Schema.optional(Schema.Array(Cluster)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListClustersResponse",
-  }) as any as Schema.Schema<ListClustersResponse>;
+export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusters: Schema.optional(Schema.Array(Cluster)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListClustersResponse" });
 
 export interface Topic {
   /** Identifier. The name of the topic. The `topic` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
@@ -345,15 +279,12 @@ export interface Topic {
   configs?: Record<string, string>;
 }
 
-export const Topic: Schema.Schema<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      partitionCount: Schema.optional(Schema.Number),
-      replicationFactor: Schema.optional(Schema.Number),
-      configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Topic" }) as any as Schema.Schema<Topic>;
+export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  partitionCount: Schema.optional(Schema.Number),
+  replicationFactor: Schema.optional(Schema.Number),
+  configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Topic" });
 
 export interface ListTopicsResponse {
   /** The list of topics in the requested parent. The order of the topics is unspecified. */
@@ -362,15 +293,10 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topics: Schema.optional(Schema.Array(Topic)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicsResponse",
-  }) as any as Schema.Schema<ListTopicsResponse>;
+export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topics: Schema.optional(Schema.Array(Topic)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTopicsResponse" });
 
 export interface ConsumerPartitionMetadata {
   /** Required. The current offset for this partition, or 0 if no offset has been committed. */
@@ -379,31 +305,22 @@ export interface ConsumerPartitionMetadata {
   metadata?: string;
 }
 
-export const ConsumerPartitionMetadata: Schema.Schema<ConsumerPartitionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offset: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConsumerPartitionMetadata",
-  }) as any as Schema.Schema<ConsumerPartitionMetadata>;
+export const ConsumerPartitionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offset: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConsumerPartitionMetadata" });
 
 export interface ConsumerTopicMetadata {
   /** Optional. Metadata for this consumer group and topic for all partition indexes it has metadata for. */
   partitions?: Record<string, ConsumerPartitionMetadata>;
 }
 
-export const ConsumerTopicMetadata: Schema.Schema<ConsumerTopicMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitions: Schema.optional(
-        Schema.Record(Schema.String, ConsumerPartitionMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConsumerTopicMetadata",
-  }) as any as Schema.Schema<ConsumerTopicMetadata>;
+export const ConsumerTopicMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitions: Schema.optional(
+    Schema.Record(Schema.String, ConsumerPartitionMetadata),
+  ),
+}).annotate({ identifier: "ConsumerTopicMetadata" });
 
 export interface ConsumerGroup {
   /** Identifier. The name of the consumer group. The `consumer_group` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumer_group} */
@@ -412,17 +329,10 @@ export interface ConsumerGroup {
   topics?: Record<string, ConsumerTopicMetadata>;
 }
 
-export const ConsumerGroup: Schema.Schema<ConsumerGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      topics: Schema.optional(
-        Schema.Record(Schema.String, ConsumerTopicMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConsumerGroup",
-  }) as any as Schema.Schema<ConsumerGroup>;
+export const ConsumerGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  topics: Schema.optional(Schema.Record(Schema.String, ConsumerTopicMetadata)),
+}).annotate({ identifier: "ConsumerGroup" });
 
 export interface ListConsumerGroupsResponse {
   /** The list of consumer group in the requested parent. The order of the consumer groups is unspecified. */
@@ -431,15 +341,11 @@ export interface ListConsumerGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListConsumerGroupsResponse: Schema.Schema<ListConsumerGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumerGroups: Schema.optional(Schema.Array(ConsumerGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConsumerGroupsResponse",
-  }) as any as Schema.Schema<ListConsumerGroupsResponse>;
+export const ListConsumerGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumerGroups: Schema.optional(Schema.Array(ConsumerGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConsumerGroupsResponse" });
 
 export interface AclEntry {
   /** Required. The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix "User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users. */
@@ -452,15 +358,12 @@ export interface AclEntry {
   host?: string;
 }
 
-export const AclEntry: Schema.Schema<AclEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principal: Schema.optional(Schema.String),
-      permissionType: Schema.optional(Schema.String),
-      operation: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AclEntry" }) as any as Schema.Schema<AclEntry>;
+export const AclEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principal: Schema.optional(Schema.String),
+  permissionType: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+}).annotate({ identifier: "AclEntry" });
 
 export interface Acl {
   /** Identifier. The name for the acl. Represents a single Resource Pattern. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id} The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured like one of the following: For acls on the cluster: `cluster` For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`) */
@@ -477,17 +380,14 @@ export interface Acl {
   patternType?: string;
 }
 
-export const Acl: Schema.Schema<Acl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      aclEntries: Schema.optional(Schema.Array(AclEntry)),
-      etag: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-      patternType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Acl" }) as any as Schema.Schema<Acl>;
+export const Acl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  aclEntries: Schema.optional(Schema.Array(AclEntry)),
+  etag: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  patternType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Acl" });
 
 export interface ListAclsResponse {
   /** The list of acls in the requested parent. The order of the acls is unspecified. */
@@ -496,15 +396,10 @@ export interface ListAclsResponse {
   nextPageToken?: string;
 }
 
-export const ListAclsResponse: Schema.Schema<ListAclsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acls: Schema.optional(Schema.Array(Acl)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAclsResponse",
-  }) as any as Schema.Schema<ListAclsResponse>;
+export const ListAclsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  acls: Schema.optional(Schema.Array(Acl)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAclsResponse" });
 
 export interface AddAclEntryResponse {
   /** The updated acl. */
@@ -513,15 +408,10 @@ export interface AddAclEntryResponse {
   aclCreated?: boolean;
 }
 
-export const AddAclEntryResponse: Schema.Schema<AddAclEntryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acl: Schema.optional(Acl),
-      aclCreated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AddAclEntryResponse",
-  }) as any as Schema.Schema<AddAclEntryResponse>;
+export const AddAclEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  acl: Schema.optional(Acl),
+  aclCreated: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AddAclEntryResponse" });
 
 export interface RemoveAclEntryResponse {
   /** The updated acl. Returned if the removed acl entry was not the last entry in the acl. */
@@ -530,15 +420,12 @@ export interface RemoveAclEntryResponse {
   aclDeleted?: boolean;
 }
 
-export const RemoveAclEntryResponse: Schema.Schema<RemoveAclEntryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acl: Schema.optional(Acl),
-      aclDeleted: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RemoveAclEntryResponse",
-  }) as any as Schema.Schema<RemoveAclEntryResponse>;
+export const RemoveAclEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    acl: Schema.optional(Acl),
+    aclDeleted: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "RemoveAclEntryResponse" });
 
 export interface ConnectNetworkConfig {
   /** Required. VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses). */
@@ -549,30 +436,20 @@ export interface ConnectNetworkConfig {
   dnsDomainNames?: Array<string>;
 }
 
-export const ConnectNetworkConfig: Schema.Schema<ConnectNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primarySubnet: Schema.optional(Schema.String),
-      additionalSubnets: Schema.optional(Schema.Array(Schema.String)),
-      dnsDomainNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConnectNetworkConfig",
-  }) as any as Schema.Schema<ConnectNetworkConfig>;
+export const ConnectNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primarySubnet: Schema.optional(Schema.String),
+  additionalSubnets: Schema.optional(Schema.Array(Schema.String)),
+  dnsDomainNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ConnectNetworkConfig" });
 
 export interface ConnectAccessConfig {
   /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka Connect cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
   networkConfigs?: Array<ConnectNetworkConfig>;
 }
 
-export const ConnectAccessConfig: Schema.Schema<ConnectAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkConfigs: Schema.optional(Schema.Array(ConnectNetworkConfig)),
-    }),
-  ).annotate({
-    identifier: "ConnectAccessConfig",
-  }) as any as Schema.Schema<ConnectAccessConfig>;
+export const ConnectAccessConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkConfigs: Schema.optional(Schema.Array(ConnectNetworkConfig)),
+}).annotate({ identifier: "ConnectAccessConfig" });
 
 export interface ConnectGcpConfig {
   /** Required. Access configuration for the Kafka Connect cluster. */
@@ -581,15 +458,10 @@ export interface ConnectGcpConfig {
   secretPaths?: Array<string>;
 }
 
-export const ConnectGcpConfig: Schema.Schema<ConnectGcpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessConfig: Schema.optional(ConnectAccessConfig),
-      secretPaths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConnectGcpConfig",
-  }) as any as Schema.Schema<ConnectGcpConfig>;
+export const ConnectGcpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessConfig: Schema.optional(ConnectAccessConfig),
+  secretPaths: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ConnectGcpConfig" });
 
 export interface ConnectCluster {
   /** Required. Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform. */
@@ -622,24 +494,19 @@ export interface ConnectCluster {
   satisfiesPzs?: boolean;
 }
 
-export const ConnectCluster: Schema.Schema<ConnectCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpConfig: Schema.optional(ConnectGcpConfig),
-      name: Schema.optional(Schema.String),
-      kafkaCluster: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      capacityConfig: Schema.optional(CapacityConfig),
-      state: Schema.optional(Schema.String),
-      config: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConnectCluster",
-  }) as any as Schema.Schema<ConnectCluster>;
+export const ConnectCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcpConfig: Schema.optional(ConnectGcpConfig),
+  name: Schema.optional(Schema.String),
+  kafkaCluster: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  capacityConfig: Schema.optional(CapacityConfig),
+  state: Schema.optional(Schema.String),
+  config: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ConnectCluster" });
 
 export interface ListConnectClustersResponse {
   /** The list of Connect clusters in the requested parent. */
@@ -650,16 +517,12 @@ export interface ListConnectClustersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListConnectClustersResponse: Schema.Schema<ListConnectClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectClusters: Schema.optional(Schema.Array(ConnectCluster)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListConnectClustersResponse",
-  }) as any as Schema.Schema<ListConnectClustersResponse>;
+export const ListConnectClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectClusters: Schema.optional(Schema.Array(ConnectCluster)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListConnectClustersResponse" });
 
 export interface TaskRetryPolicy {
   /** Optional. The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay. */
@@ -670,16 +533,11 @@ export interface TaskRetryPolicy {
   taskRetryDisabled?: boolean;
 }
 
-export const TaskRetryPolicy: Schema.Schema<TaskRetryPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumBackoff: Schema.optional(Schema.String),
-      maximumBackoff: Schema.optional(Schema.String),
-      taskRetryDisabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TaskRetryPolicy",
-  }) as any as Schema.Schema<TaskRetryPolicy>;
+export const TaskRetryPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimumBackoff: Schema.optional(Schema.String),
+  maximumBackoff: Schema.optional(Schema.String),
+  taskRetryDisabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TaskRetryPolicy" });
 
 export interface Connector {
   /** Optional. Restarts the individual tasks of a Connector. */
@@ -700,15 +558,12 @@ export interface Connector {
     | (string & {});
 }
 
-export const Connector: Schema.Schema<Connector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskRestartPolicy: Schema.optional(TaskRetryPolicy),
-      name: Schema.optional(Schema.String),
-      configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Connector" }) as any as Schema.Schema<Connector>;
+export const Connector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  taskRestartPolicy: Schema.optional(TaskRetryPolicy),
+  name: Schema.optional(Schema.String),
+  configs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Connector" });
 
 export interface ListConnectorsResponse {
   /** The list of connectors in the requested parent. */
@@ -717,71 +572,63 @@ export interface ListConnectorsResponse {
   nextPageToken?: string;
 }
 
-export const ListConnectorsResponse: Schema.Schema<ListConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectors: Schema.optional(Schema.Array(Connector)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConnectorsResponse",
-  }) as any as Schema.Schema<ListConnectorsResponse>;
+export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    connectors: Schema.optional(Schema.Array(Connector)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListConnectorsResponse" });
 
 export interface PauseConnectorRequest {}
 
-export const PauseConnectorRequest: Schema.Schema<PauseConnectorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PauseConnectorRequest",
-  }) as any as Schema.Schema<PauseConnectorRequest>;
+export const PauseConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PauseConnectorRequest" });
 
 export interface PauseConnectorResponse {}
 
-export const PauseConnectorResponse: Schema.Schema<PauseConnectorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PauseConnectorResponse",
-  }) as any as Schema.Schema<PauseConnectorResponse>;
+export const PauseConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PauseConnectorResponse" });
 
 export interface ResumeConnectorRequest {}
 
-export const ResumeConnectorRequest: Schema.Schema<ResumeConnectorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResumeConnectorRequest",
-  }) as any as Schema.Schema<ResumeConnectorRequest>;
+export const ResumeConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ResumeConnectorRequest" });
 
 export interface ResumeConnectorResponse {}
 
-export const ResumeConnectorResponse: Schema.Schema<ResumeConnectorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResumeConnectorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumeConnectorResponse",
-  }) as any as Schema.Schema<ResumeConnectorResponse>;
+  });
 
 export interface RestartConnectorRequest {}
 
-export const RestartConnectorRequest: Schema.Schema<RestartConnectorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RestartConnectorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestartConnectorRequest",
-  }) as any as Schema.Schema<RestartConnectorRequest>;
+  });
 
 export interface RestartConnectorResponse {}
 
-export const RestartConnectorResponse: Schema.Schema<RestartConnectorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RestartConnectorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestartConnectorResponse",
-  }) as any as Schema.Schema<RestartConnectorResponse>;
+  });
 
 export interface StopConnectorRequest {}
 
-export const StopConnectorRequest: Schema.Schema<StopConnectorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopConnectorRequest",
-  }) as any as Schema.Schema<StopConnectorRequest>;
+export const StopConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopConnectorRequest" });
 
 export interface StopConnectorResponse {}
 
-export const StopConnectorResponse: Schema.Schema<StopConnectorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopConnectorResponse",
-  }) as any as Schema.Schema<StopConnectorResponse>;
+export const StopConnectorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopConnectorResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -796,16 +643,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -814,15 +658,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface SchemaRegistry {
   /** Identifier. The name of the schema registry instance. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` The instance name {schema_registry} can contain the following: * Up to 255 characters. * Letters (uppercase or lowercase), numbers, and underscores. */
@@ -831,29 +670,20 @@ export interface SchemaRegistry {
   contexts?: Array<string>;
 }
 
-export const SchemaRegistry: Schema.Schema<SchemaRegistry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      contexts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SchemaRegistry",
-  }) as any as Schema.Schema<SchemaRegistry>;
+export const SchemaRegistry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  contexts: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SchemaRegistry" });
 
 export interface ListSchemaRegistriesResponse {
   /** The schema registry instances. */
   schemaRegistries?: Array<SchemaRegistry>;
 }
 
-export const ListSchemaRegistriesResponse: Schema.Schema<ListSchemaRegistriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaRegistries: Schema.optional(Schema.Array(SchemaRegistry)),
-    }),
-  ).annotate({
-    identifier: "ListSchemaRegistriesResponse",
-  }) as any as Schema.Schema<ListSchemaRegistriesResponse>;
+export const ListSchemaRegistriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaRegistries: Schema.optional(Schema.Array(SchemaRegistry)),
+  }).annotate({ identifier: "ListSchemaRegistriesResponse" });
 
 export interface CreateSchemaRegistryRequest {
   /** Required. The schema registry instance ID to use for this schema registry. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (-). The maximum length is 63 characters. The ID must not start with a number. */
@@ -862,15 +692,11 @@ export interface CreateSchemaRegistryRequest {
   schemaRegistry?: SchemaRegistry;
 }
 
-export const CreateSchemaRegistryRequest: Schema.Schema<CreateSchemaRegistryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaRegistryId: Schema.optional(Schema.String),
-      schemaRegistry: Schema.optional(SchemaRegistry),
-    }),
-  ).annotate({
-    identifier: "CreateSchemaRegistryRequest",
-  }) as any as Schema.Schema<CreateSchemaRegistryRequest>;
+export const CreateSchemaRegistryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaRegistryId: Schema.optional(Schema.String),
+    schemaRegistry: Schema.optional(SchemaRegistry),
+  }).annotate({ identifier: "CreateSchemaRegistryRequest" });
 
 export interface Context {
   /** Identifier. The name of the context. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` The context name {context} can contain the following: * Up to 255 characters. * Allowed characters: letters (uppercase or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+`, `%`, and `~`. */
@@ -879,13 +705,10 @@ export interface Context {
   subjects?: Array<string>;
 }
 
-export const Context: Schema.Schema<Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      subjects: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Context" }) as any as Schema.Schema<Context>;
+export const Context = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  subjects: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Context" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -896,16 +719,13 @@ export interface HttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "HttpBody" });
 
 export interface SchemaReference {
   /** Required. The name of the reference. */
@@ -916,16 +736,11 @@ export interface SchemaReference {
   version?: number;
 }
 
-export const SchemaReference: Schema.Schema<SchemaReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SchemaReference",
-  }) as any as Schema.Schema<SchemaReference>;
+export const SchemaReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  subject: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SchemaReference" });
 
 export interface Managedkafka_Schema {
   /** Optional. The schema type of the schema. */
@@ -941,16 +756,11 @@ export interface Managedkafka_Schema {
   references?: Array<SchemaReference>;
 }
 
-export const Managedkafka_Schema: Schema.Schema<Managedkafka_Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaType: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-      references: Schema.optional(Schema.Array(SchemaReference)),
-    }),
-  ).annotate({
-    identifier: "Managedkafka_Schema",
-  }) as any as Schema.Schema<Managedkafka_Schema>;
+export const Managedkafka_Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schemaType: Schema.optional(Schema.String),
+  schema: Schema.optional(Schema.String),
+  references: Schema.optional(Schema.Array(SchemaReference)),
+}).annotate({ identifier: "Managedkafka_Schema" });
 
 export interface LookupVersionRequest {
   /** Optional. The schema type of the schema. */
@@ -970,18 +780,13 @@ export interface LookupVersionRequest {
   deleted?: boolean;
 }
 
-export const LookupVersionRequest: Schema.Schema<LookupVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaType: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-      references: Schema.optional(Schema.Array(SchemaReference)),
-      normalize: Schema.optional(Schema.Boolean),
-      deleted: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LookupVersionRequest",
-  }) as any as Schema.Schema<LookupVersionRequest>;
+export const LookupVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schemaType: Schema.optional(Schema.String),
+  schema: Schema.optional(Schema.String),
+  references: Schema.optional(Schema.Array(SchemaReference)),
+  normalize: Schema.optional(Schema.Boolean),
+  deleted: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LookupVersionRequest" });
 
 export interface SchemaVersion {
   /** Required. The subject of the version. */
@@ -1003,19 +808,14 @@ export interface SchemaVersion {
   references?: Array<SchemaReference>;
 }
 
-export const SchemaVersion: Schema.Schema<SchemaVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subject: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.Number),
-      schemaType: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-      references: Schema.optional(Schema.Array(SchemaReference)),
-    }),
-  ).annotate({
-    identifier: "SchemaVersion",
-  }) as any as Schema.Schema<SchemaVersion>;
+export const SchemaVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subject: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.Number),
+  schemaType: Schema.optional(Schema.String),
+  schema: Schema.optional(Schema.String),
+  references: Schema.optional(Schema.Array(SchemaReference)),
+}).annotate({ identifier: "SchemaVersion" });
 
 export interface CreateVersionRequest {
   /** Optional. The version to create. It is optional. If not specified, the version will be created with the max version ID of the subject increased by 1. If the version ID is specified, it will be used as the new version ID and must not be used by an existing version of the subject. */
@@ -1037,33 +837,23 @@ export interface CreateVersionRequest {
   normalize?: boolean;
 }
 
-export const CreateVersionRequest: Schema.Schema<CreateVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.Number),
-      schemaType: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-      references: Schema.optional(Schema.Array(SchemaReference)),
-      normalize: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateVersionRequest",
-  }) as any as Schema.Schema<CreateVersionRequest>;
+export const CreateVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.Number),
+  schemaType: Schema.optional(Schema.String),
+  schema: Schema.optional(Schema.String),
+  references: Schema.optional(Schema.Array(SchemaReference)),
+  normalize: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CreateVersionRequest" });
 
 export interface CreateVersionResponse {
   /** The unique identifier of the schema created. */
   id?: number;
 }
 
-export const CreateVersionResponse: Schema.Schema<CreateVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CreateVersionResponse",
-  }) as any as Schema.Schema<CreateVersionResponse>;
+export const CreateVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CreateVersionResponse" });
 
 export interface CheckCompatibilityRequest {
   /** Optional. The schema type of the schema. */
@@ -1081,17 +871,13 @@ export interface CheckCompatibilityRequest {
   verbose?: boolean;
 }
 
-export const CheckCompatibilityRequest: Schema.Schema<CheckCompatibilityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaType: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-      references: Schema.optional(Schema.Array(SchemaReference)),
-      verbose: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CheckCompatibilityRequest",
-  }) as any as Schema.Schema<CheckCompatibilityRequest>;
+export const CheckCompatibilityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaType: Schema.optional(Schema.String),
+    schema: Schema.optional(Schema.String),
+    references: Schema.optional(Schema.Array(SchemaReference)),
+    verbose: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CheckCompatibilityRequest" });
 
 export interface CheckCompatibilityResponse {
   /** The compatibility check result. If true, the schema is compatible with the resource. */
@@ -1100,15 +886,11 @@ export interface CheckCompatibilityResponse {
   messages?: Array<string>;
 }
 
-export const CheckCompatibilityResponse: Schema.Schema<CheckCompatibilityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      is_compatible: Schema.optional(Schema.Boolean),
-      messages: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CheckCompatibilityResponse",
-  }) as any as Schema.Schema<CheckCompatibilityResponse>;
+export const CheckCompatibilityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    is_compatible: Schema.optional(Schema.Boolean),
+    messages: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CheckCompatibilityResponse" });
 
 export interface SchemaConfig {
   /** Required. The compatibility type of the schema. The default value is BACKWARD. If unset in a SchemaSubject-level SchemaConfig, defaults to the global value. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
@@ -1127,16 +909,11 @@ export interface SchemaConfig {
   alias?: string;
 }
 
-export const SchemaConfig: Schema.Schema<SchemaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compatibility: Schema.optional(Schema.String),
-      normalize: Schema.optional(Schema.Boolean),
-      alias: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SchemaConfig",
-  }) as any as Schema.Schema<SchemaConfig>;
+export const SchemaConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compatibility: Schema.optional(Schema.String),
+  normalize: Schema.optional(Schema.Boolean),
+  alias: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchemaConfig" });
 
 export interface UpdateSchemaConfigRequest {
   /** Required. The compatibility type of the schemas. Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the compatibility field for the SchemaConfig. */
@@ -1153,41 +930,30 @@ export interface UpdateSchemaConfigRequest {
   normalize?: boolean;
 }
 
-export const UpdateSchemaConfigRequest: Schema.Schema<UpdateSchemaConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compatibility: Schema.optional(Schema.String),
-      normalize: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpdateSchemaConfigRequest",
-  }) as any as Schema.Schema<UpdateSchemaConfigRequest>;
+export const UpdateSchemaConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compatibility: Schema.optional(Schema.String),
+    normalize: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "UpdateSchemaConfigRequest" });
 
 export interface SchemaMode {
   /** Required. The mode type of a schema registry (READWRITE by default) or of a subject (unset by default, which means use the global schema registry setting). */
   mode?: "NONE" | "READONLY" | "READWRITE" | "IMPORT" | (string & {});
 }
 
-export const SchemaMode: Schema.Schema<SchemaMode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SchemaMode" }) as any as Schema.Schema<SchemaMode>;
+export const SchemaMode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchemaMode" });
 
 export interface UpdateSchemaModeRequest {
   /** Required. The mode type. */
   mode?: "NONE" | "READONLY" | "READWRITE" | "IMPORT" | (string & {});
 }
 
-export const UpdateSchemaModeRequest: Schema.Schema<UpdateSchemaModeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateSchemaModeRequest",
-  }) as any as Schema.Schema<UpdateSchemaModeRequest>;
+export const UpdateSchemaModeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateSchemaModeRequest" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -1206,20 +972,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Operations
@@ -1258,7 +1019,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,

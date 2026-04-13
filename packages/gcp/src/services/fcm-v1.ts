@@ -31,16 +31,11 @@ export interface Notification {
   image?: string;
 }
 
-export const Notification: Schema.Schema<Notification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      image: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Notification",
-  }) as any as Schema.Schema<Notification>;
+export const Notification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  image: Schema.optional(Schema.String),
+}).annotate({ identifier: "Notification" });
 
 export interface Color {
   /** The amount of red in the color as a value in the interval [0, 1]. */
@@ -53,15 +48,12 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      red: Schema.optional(Schema.Number),
-      green: Schema.optional(Schema.Number),
-      blue: Schema.optional(Schema.Number),
-      alpha: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Color" }) as any as Schema.Schema<Color>;
+export const Color = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  red: Schema.optional(Schema.Number),
+  green: Schema.optional(Schema.Number),
+  blue: Schema.optional(Schema.Number),
+  alpha: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Color" });
 
 export interface LightSettings {
   /** Required. Set `color` of the LED with [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto). */
@@ -72,16 +64,11 @@ export interface LightSettings {
   lightOffDuration?: string;
 }
 
-export const LightSettings: Schema.Schema<LightSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      color: Schema.optional(Color),
-      lightOnDuration: Schema.optional(Schema.String),
-      lightOffDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LightSettings",
-  }) as any as Schema.Schema<LightSettings>;
+export const LightSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  color: Schema.optional(Color),
+  lightOnDuration: Schema.optional(Schema.String),
+  lightOffDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "LightSettings" });
 
 export interface AndroidNotification {
   /** The notification's title. If present, it will override google.firebase.fcm.v1.Notification.title. */
@@ -116,7 +103,7 @@ export interface AndroidNotification {
   eventTime?: string;
   /** Set whether or not this notification is relevant only to the current device. Some notifications can be bridged to other devices for remote display, such as a Wear OS watch. This hint can be set to recommend this notification not be bridged. See [Wear OS guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging) */
   localOnly?: boolean;
-  /** Set the relative priority for this notification. Priority is an indication of how much of the user's attention should be consumed by this notification. Low-priority notifications may be hidden from the user in certain situations, while the user might be interrupted for a higher-priority notification. The effect of setting the same priorities may differ slightly on different platforms. Note this priority differs from `AndroidMessagePriority`. This priority is processed by the client after the message has been delivered, whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority) is an FCM concept that controls when the message is delivered. */
+  /** Set the relative priority for this notification. Priority is an indication of how much of the user's attention should be consumed by this notification. Low-priority notifications may be hidden from the user in certain situations, while the user might be interrupted for a higher-priority notification. This parameter affects notification priority only on devices running Android 7.1 (API level 25) and lower. On Android 8.0 (API level 26) and higher, priority is ignored in favor of channel [importance](https://developer.android.com/develop/ui/views/notifications/channels#importance). Note this priority differs from `AndroidMessagePriority`. This priority is processed by the client after the message has been delivered, whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority) is an FCM concept that controls when the message is delivered. */
   notificationPriority?:
     | "PRIORITY_UNSPECIFIED"
     | "PRIORITY_MIN"
@@ -146,8 +133,6 @@ export interface AndroidNotification {
   lightSettings?: LightSettings;
   /** Contains the URL of an image that is going to be displayed in a notification. If present, it will override google.firebase.fcm.v1.Notification.image. */
   image?: string;
-  /** If set, display notifications delivered to the device will be handled by the app instead of the proxy. */
-  bypassProxyNotification?: boolean;
   /** Setting to control when a notification may be proxied. */
   proxy?:
     | "PROXY_UNSPECIFIED"
@@ -157,59 +142,48 @@ export interface AndroidNotification {
     | (string & {});
 }
 
-export const AndroidNotification: Schema.Schema<AndroidNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      icon: Schema.optional(Schema.String),
-      color: Schema.optional(Schema.String),
-      sound: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-      clickAction: Schema.optional(Schema.String),
-      bodyLocKey: Schema.optional(Schema.String),
-      bodyLocArgs: Schema.optional(Schema.Array(Schema.String)),
-      titleLocKey: Schema.optional(Schema.String),
-      titleLocArgs: Schema.optional(Schema.Array(Schema.String)),
-      channelId: Schema.optional(Schema.String),
-      ticker: Schema.optional(Schema.String),
-      sticky: Schema.optional(Schema.Boolean),
-      eventTime: Schema.optional(Schema.String),
-      localOnly: Schema.optional(Schema.Boolean),
-      notificationPriority: Schema.optional(Schema.String),
-      defaultSound: Schema.optional(Schema.Boolean),
-      defaultVibrateTimings: Schema.optional(Schema.Boolean),
-      defaultLightSettings: Schema.optional(Schema.Boolean),
-      vibrateTimings: Schema.optional(Schema.Array(Schema.String)),
-      visibility: Schema.optional(Schema.String),
-      notificationCount: Schema.optional(Schema.Number),
-      lightSettings: Schema.optional(LightSettings),
-      image: Schema.optional(Schema.String),
-      bypassProxyNotification: Schema.optional(Schema.Boolean),
-      proxy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AndroidNotification",
-  }) as any as Schema.Schema<AndroidNotification>;
+export const AndroidNotification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  icon: Schema.optional(Schema.String),
+  color: Schema.optional(Schema.String),
+  sound: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+  clickAction: Schema.optional(Schema.String),
+  bodyLocKey: Schema.optional(Schema.String),
+  bodyLocArgs: Schema.optional(Schema.Array(Schema.String)),
+  titleLocKey: Schema.optional(Schema.String),
+  titleLocArgs: Schema.optional(Schema.Array(Schema.String)),
+  channelId: Schema.optional(Schema.String),
+  ticker: Schema.optional(Schema.String),
+  sticky: Schema.optional(Schema.Boolean),
+  eventTime: Schema.optional(Schema.String),
+  localOnly: Schema.optional(Schema.Boolean),
+  notificationPriority: Schema.optional(Schema.String),
+  defaultSound: Schema.optional(Schema.Boolean),
+  defaultVibrateTimings: Schema.optional(Schema.Boolean),
+  defaultLightSettings: Schema.optional(Schema.Boolean),
+  vibrateTimings: Schema.optional(Schema.Array(Schema.String)),
+  visibility: Schema.optional(Schema.String),
+  notificationCount: Schema.optional(Schema.Number),
+  lightSettings: Schema.optional(LightSettings),
+  image: Schema.optional(Schema.String),
+  proxy: Schema.optional(Schema.String),
+}).annotate({ identifier: "AndroidNotification" });
 
 export interface AndroidFcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
 
-export const AndroidFcmOptions: Schema.Schema<AndroidFcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AndroidFcmOptions",
-  }) as any as Schema.Schema<AndroidFcmOptions>;
+export const AndroidFcmOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  analyticsLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "AndroidFcmOptions" });
 
 export interface AndroidConfig {
   /** An identifier of a group of messages that can be collapsed, so that only the last message gets sent when delivery can be resumed. A maximum of 4 different collapse keys is allowed at any given time. */
   collapseKey?: string;
-  /** Message priority. Can take "normal" and "high" values. For more information, see [Setting the priority of a message](https://goo.gl/GjONJv). */
+  /** Message priority. Can take "normal" and "high" values. For more information, see [Setting the priority of a message](https://firebase.google.com/docs/cloud-messaging/customize-messages/setting-message-priority). */
   priority?: "NORMAL" | "HIGH" | (string & {});
   /** How long (in seconds) the message should be kept in FCM storage if the device is offline. The maximum time to live supported is 4 weeks, and the default value is 4 weeks if not set. Set it to 0 if want to send the message immediately. In JSON format, the Duration type is encoded as a string rather than an object, where the string ends in the suffix "s" (indicating seconds) and is preceded by the number of seconds, with nanoseconds expressed as fractional seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.000000001s". The ttl will be rounded down to the nearest second. */
   ttl?: string;
@@ -229,23 +203,18 @@ export interface AndroidConfig {
   restrictedSatelliteOk?: boolean;
 }
 
-export const AndroidConfig: Schema.Schema<AndroidConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collapseKey: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      restrictedPackageName: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      notification: Schema.optional(AndroidNotification),
-      fcmOptions: Schema.optional(AndroidFcmOptions),
-      directBootOk: Schema.optional(Schema.Boolean),
-      bandwidthConstrainedOk: Schema.optional(Schema.Boolean),
-      restrictedSatelliteOk: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AndroidConfig",
-  }) as any as Schema.Schema<AndroidConfig>;
+export const AndroidConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collapseKey: Schema.optional(Schema.String),
+  priority: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  restrictedPackageName: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  notification: Schema.optional(AndroidNotification),
+  fcmOptions: Schema.optional(AndroidFcmOptions),
+  directBootOk: Schema.optional(Schema.Boolean),
+  bandwidthConstrainedOk: Schema.optional(Schema.Boolean),
+  restrictedSatelliteOk: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AndroidConfig" });
 
 export interface WebpushFcmOptions {
   /** The link to open when the user clicks on the notification. For all URL values, HTTPS is required. */
@@ -254,15 +223,10 @@ export interface WebpushFcmOptions {
   analyticsLabel?: string;
 }
 
-export const WebpushFcmOptions: Schema.Schema<WebpushFcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      link: Schema.optional(Schema.String),
-      analyticsLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebpushFcmOptions",
-  }) as any as Schema.Schema<WebpushFcmOptions>;
+export const WebpushFcmOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  link: Schema.optional(Schema.String),
+  analyticsLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebpushFcmOptions" });
 
 export interface WebpushConfig {
   /** HTTP headers defined in webpush protocol. Refer to [Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for supported headers, e.g. "TTL": "15". */
@@ -275,19 +239,12 @@ export interface WebpushConfig {
   fcmOptions?: WebpushFcmOptions;
 }
 
-export const WebpushConfig: Schema.Schema<WebpushConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      notification: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      fcmOptions: Schema.optional(WebpushFcmOptions),
-    }),
-  ).annotate({
-    identifier: "WebpushConfig",
-  }) as any as Schema.Schema<WebpushConfig>;
+export const WebpushConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  notification: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  fcmOptions: Schema.optional(WebpushFcmOptions),
+}).annotate({ identifier: "WebpushConfig" });
 
 export interface ApnsFcmOptions {
   /** Label associated with the message's analytics data. */
@@ -296,15 +253,10 @@ export interface ApnsFcmOptions {
   image?: string;
 }
 
-export const ApnsFcmOptions: Schema.Schema<ApnsFcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsLabel: Schema.optional(Schema.String),
-      image: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApnsFcmOptions",
-  }) as any as Schema.Schema<ApnsFcmOptions>;
+export const ApnsFcmOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  analyticsLabel: Schema.optional(Schema.String),
+  image: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApnsFcmOptions" });
 
 export interface ApnsConfig {
   /** HTTP request headers defined in Apple Push Notification Service. Refer to [APNs request headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns) for supported headers such as `apns-expiration` and `apns-priority`. The backend sets a default value for `apns-expiration` of 30 days and a default value for `apns-priority` of 10 if not explicitly set. */
@@ -317,27 +269,21 @@ export interface ApnsConfig {
   liveActivityToken?: string;
 }
 
-export const ApnsConfig: Schema.Schema<ApnsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      fcmOptions: Schema.optional(ApnsFcmOptions),
-      liveActivityToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ApnsConfig" }) as any as Schema.Schema<ApnsConfig>;
+export const ApnsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  fcmOptions: Schema.optional(ApnsFcmOptions),
+  liveActivityToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApnsConfig" });
 
 export interface FcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
 
-export const FcmOptions: Schema.Schema<FcmOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FcmOptions" }) as any as Schema.Schema<FcmOptions>;
+export const FcmOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  analyticsLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "FcmOptions" });
 
 export interface Message {
   /** Output Only. The identifier of the message sent, in the format of `projects/* /messages/{message_id}`. */
@@ -362,21 +308,18 @@ export interface Message {
   fcmOptions?: FcmOptions;
 }
 
-export const Message: Schema.Schema<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      notification: Schema.optional(Notification),
-      android: Schema.optional(AndroidConfig),
-      webpush: Schema.optional(WebpushConfig),
-      apns: Schema.optional(ApnsConfig),
-      fcmOptions: Schema.optional(FcmOptions),
-    }),
-  ).annotate({ identifier: "Message" }) as any as Schema.Schema<Message>;
+export const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  condition: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  notification: Schema.optional(Notification),
+  android: Schema.optional(AndroidConfig),
+  webpush: Schema.optional(WebpushConfig),
+  apns: Schema.optional(ApnsConfig),
+  fcmOptions: Schema.optional(FcmOptions),
+}).annotate({ identifier: "Message" });
 
 export interface SendMessageRequest {
   /** Flag for testing the request without actually delivering the message. */
@@ -385,15 +328,10 @@ export interface SendMessageRequest {
   message?: Message;
 }
 
-export const SendMessageRequest: Schema.Schema<SendMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      message: Schema.optional(Message),
-    }),
-  ).annotate({
-    identifier: "SendMessageRequest",
-  }) as any as Schema.Schema<SendMessageRequest>;
+export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validateOnly: Schema.optional(Schema.Boolean),
+  message: Schema.optional(Message),
+}).annotate({ identifier: "SendMessageRequest" });
 
 // ==========================================================================
 // Operations

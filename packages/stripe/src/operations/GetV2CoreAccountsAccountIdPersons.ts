@@ -276,7 +276,7 @@ export type GetV2CoreAccountsAccountIdPersonsOutput =
 
 // The operation
 /**
- * List Persons
+ * List persons
  *
  * Returns a paginated list of Persons associated with an Account.
  *

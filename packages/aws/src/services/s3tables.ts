@@ -1454,6 +1454,50 @@ export interface IcebergSchema {
 export const IcebergSchema = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ fields: SchemaFieldList }),
 ).annotate({ identifier: "IcebergSchema" }) as any as S.Schema<IcebergSchema>;
+export type SchemaV2FieldType = "struct" | (string & {});
+export const SchemaV2FieldType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SchemaV2Field {
+  id: number;
+  name: string;
+  type: any;
+  required: boolean;
+  doc?: string;
+}
+export const SchemaV2Field = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    name: S.String,
+    type: S.Any,
+    required: S.Boolean,
+    doc: S.optional(S.String),
+  }),
+).annotate({ identifier: "SchemaV2Field" }) as any as S.Schema<SchemaV2Field>;
+export type SchemaV2FieldList = SchemaV2Field[];
+export const SchemaV2FieldList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SchemaV2Field);
+export type IntegerList = number[];
+export const IntegerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export interface IcebergSchemaV2 {
+  type: SchemaV2FieldType;
+  fields: SchemaV2Field[];
+  schemaId?: number;
+  identifierFieldIds?: number[];
+}
+export const IcebergSchemaV2 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SchemaV2FieldType,
+    fields: SchemaV2FieldList,
+    schemaId: S.optional(S.Number),
+    identifierFieldIds: S.optional(IntegerList),
+  }).pipe(
+    S.encodeKeys({
+      schemaId: "schema-id",
+      identifierFieldIds: "identifier-field-ids",
+    }),
+  ),
+).annotate({
+  identifier: "IcebergSchemaV2",
+}) as any as S.Schema<IcebergSchemaV2>;
 export interface IcebergPartitionField {
   sourceId: number;
   transform: string;
@@ -1526,14 +1570,16 @@ export const TableProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export interface IcebergMetadata {
-  schema: IcebergSchema;
+  schema?: IcebergSchema;
+  schemaV2?: IcebergSchemaV2;
   partitionSpec?: IcebergPartitionSpec;
   writeOrder?: IcebergSortOrder;
   properties?: { [key: string]: string | undefined };
 }
 export const IcebergMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    schema: IcebergSchema,
+    schema: S.optional(IcebergSchema),
+    schemaV2: S.optional(IcebergSchemaV2),
     partitionSpec: S.optional(IcebergPartitionSpec),
     writeOrder: S.optional(IcebergSortOrder),
     properties: S.optional(TableProperties),

@@ -86,13 +86,23 @@ const rules = T.EndpointResolver((p, _) => {
 //# Newtypes
 export type LargeBoundedString = string;
 export type ValidationExceptionReason = string;
+export type ImportFileEnrichmentJobID = string;
 export type MaxResultsType = number;
 export type PaginationToken = string;
+export type ImportFileEnrichmentStatus = string;
+export type EncryptionAlgorithm = string;
+export type Hash = string;
+export type S3BucketName = string;
 export type AccountID = string;
+export type S3KeyName = string;
 export type ARN = string;
 export type TagKey = string;
 export type TagValue = string;
 export type PositiveInteger = number;
+export type ClientIdempotencyToken = string;
+export type IpAssignmentStrategy = string;
+export type BoundedString = string;
+export type StrictlyPositiveInteger = number;
 export type ApplicationName = string;
 export type ApplicationDescription = string;
 export type ApplicationID = string;
@@ -100,18 +110,14 @@ export type ISO8601DatetimeString = string;
 export type ApplicationHealthStatus = string;
 export type ApplicationProgressStatus = string;
 export type WaveID = string;
-export type BoundedString = string;
-export type StrictlyPositiveInteger = number;
 export type SourceServerID = string;
 export type ConnectorName = string;
 export type SsmInstanceID = string;
-export type S3BucketName = string;
 export type CloudWatchLogGroupName = string;
 export type ConnectorID = string;
 export type S3Key = string;
 export type ExportID = string;
 export type ExportStatus = string;
-export type ClientIdempotencyToken = string;
 export type ImportID = string;
 export type ImportStatus = string;
 export type ImportErrorType = string;
@@ -146,7 +152,46 @@ export type DocumentVersion = string;
 export type OperatingSystemString = string;
 export type ActionDescription = string;
 export type ActionCategory = string;
+export type NetworkMigrationDefinitionName = string;
+export type NetworkMigrationDefinitionDescription = string;
+export type SourceEnvironment = string;
+export type TargetNetworkTopology = string;
+export type Cidr = string;
+export type TargetDeployment = string;
+export type ScopeTagKey = string;
+export type ScopeTagValue = string;
+export type NetworkMigrationDefinitionID = string;
+export type NetworkMigrationExecutionID = string;
+export type SegmentID = string;
+export type ConstructID = string;
+export type NetworkMigrationMapperSegmentConstructType = string;
+export type SegmentConstructName = string;
+export type SegmentConstructDescription = string;
+export type LogicalID = string;
+export type ConstructPropertyKey = string;
+export type MarshalledResourceDefinition = string;
+export type NetworkMigrationJobID = string;
+export type NetworkMigrationJobStatus = string;
+export type VpcID = string;
+export type AnalyzerType = string;
 export type SubnetID = string;
+export type NetworkMigrationAnalysisResultStatus = string;
+export type CodeGenerationOutputFormatType = string;
+export type CodeGenerationOutputFormatStatus = string;
+export type NetworkMigrationCodeGenerationSegmentType = string;
+export type NetworkMigrationCodeGenerationArtifactID = string;
+export type NetworkMigrationCodeGenerationArtifactType = string;
+export type NetworkMigrationCodeGenerationArtifactSubType = string;
+export type NetworkMigrationDeployedStackStatus = string;
+export type PhysicalID = string;
+export type NetworkMigrationFailedResourceStatus = string;
+export type ExecutionStatus = string;
+export type ExecutionStage = string;
+export type ExecutionStageActivity = string;
+export type NetworkMigrationMapperSegmentType = string;
+export type SegmentName = string;
+export type SegmentDescription = string;
+export type SecurityGroupMappingStrategy = string;
 export type SecurityGroupID = string;
 export type EC2InstanceType = string;
 export type ReplicationConfigurationDefaultLargeStagingDiskType = string;
@@ -213,6 +258,104 @@ export type ValidationExceptionFieldList = ValidationExceptionField[];
 export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   ValidationExceptionField,
 );
+export type ImportFileEnrichmentsIDsFilter = string[];
+export const ImportFileEnrichmentsIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListImportFileEnrichmentsFilters {
+  jobIDs?: string[];
+}
+export const ListImportFileEnrichmentsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobIDs: S.optional(ImportFileEnrichmentsIDsFilter) }),
+  ).annotate({
+    identifier: "ListImportFileEnrichmentsFilters",
+  }) as any as S.Schema<ListImportFileEnrichmentsFilters>;
+export interface ListImportFileEnrichmentsRequest {
+  filters?: ListImportFileEnrichmentsFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListImportFileEnrichmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filters: S.optional(ListImportFileEnrichmentsFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListImportFileEnrichments",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListImportFileEnrichmentsRequest",
+  }) as any as S.Schema<ListImportFileEnrichmentsRequest>;
+export interface Checksum {
+  encryptionAlgorithm?: string;
+  hash?: string;
+}
+export const Checksum = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptionAlgorithm: S.optional(S.String),
+    hash: S.optional(S.String),
+  }),
+).annotate({ identifier: "Checksum" }) as any as S.Schema<Checksum>;
+export interface EnrichmentTargetS3Configuration {
+  s3Bucket: string;
+  s3BucketOwner: string;
+  s3Key: string;
+}
+export const EnrichmentTargetS3Configuration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String, s3Key: S.String }),
+  ).annotate({
+    identifier: "EnrichmentTargetS3Configuration",
+  }) as any as S.Schema<EnrichmentTargetS3Configuration>;
+export interface ImportFileEnrichment {
+  jobID?: string;
+  createdAt?: Date;
+  endedAt?: Date;
+  status?: string;
+  statusDetails?: string;
+  checksum?: Checksum;
+  s3BucketTarget?: EnrichmentTargetS3Configuration;
+}
+export const ImportFileEnrichment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobID: S.optional(S.String),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    status: S.optional(S.String),
+    statusDetails: S.optional(S.String),
+    checksum: S.optional(Checksum),
+    s3BucketTarget: S.optional(EnrichmentTargetS3Configuration),
+  }),
+).annotate({
+  identifier: "ImportFileEnrichment",
+}) as any as S.Schema<ImportFileEnrichment>;
+export type ImportFileEnrichmentsList = ImportFileEnrichment[];
+export const ImportFileEnrichmentsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ImportFileEnrichment);
+export interface ListImportFileEnrichmentsResponse {
+  items?: ImportFileEnrichment[];
+  nextToken?: string;
+}
+export const ListImportFileEnrichmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(ImportFileEnrichmentsList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListImportFileEnrichmentsResponse",
+  }) as any as S.Schema<ListImportFileEnrichmentsResponse>;
 export interface ListManagedAccountsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -286,6 +429,72 @@ export const ListTagsForResourceResponse =
   ).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
+export interface EnrichmentSourceS3Configuration {
+  s3Bucket: string;
+  s3BucketOwner: string;
+  s3Key: string;
+}
+export const EnrichmentSourceS3Configuration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String, s3Key: S.String }),
+  ).annotate({
+    identifier: "EnrichmentSourceS3Configuration",
+  }) as any as S.Schema<EnrichmentSourceS3Configuration>;
+export interface StartImportFileEnrichmentRequest {
+  clientToken?: string;
+  s3BucketSource: EnrichmentSourceS3Configuration;
+  s3BucketTarget: EnrichmentTargetS3Configuration;
+  ipAssignmentStrategy?: string;
+}
+export const StartImportFileEnrichmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      s3BucketSource: EnrichmentSourceS3Configuration,
+      s3BucketTarget: EnrichmentTargetS3Configuration,
+      ipAssignmentStrategy: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/StartImportFileEnrichment",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartImportFileEnrichmentRequest",
+  }) as any as S.Schema<StartImportFileEnrichmentRequest>;
+export interface StartImportFileEnrichmentResponse {
+  jobID?: string;
+}
+export const StartImportFileEnrichmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "StartImportFileEnrichmentResponse",
+  }) as any as S.Schema<StartImportFileEnrichmentResponse>;
+export interface ErrorDetails {
+  message?: string;
+  code?: string;
+  resourceId?: string;
+  resourceType?: string;
+}
+export const ErrorDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  }),
+).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
+export type ConflictExceptionErrors = ErrorDetails[];
+export const ConflictExceptionErrors =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ErrorDetails);
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -411,23 +620,6 @@ export const Application = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     waveID: S.optional(S.String),
   }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
-export interface ErrorDetails {
-  message?: string;
-  code?: string;
-  resourceId?: string;
-  resourceType?: string;
-}
-export const ErrorDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  }),
-).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
-export type ConflictExceptionErrors = ErrorDetails[];
-export const ConflictExceptionErrors =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ErrorDetails);
 export interface DeleteApplicationRequest {
   applicationID: string;
   accountID?: string;
@@ -1923,6 +2115,1698 @@ export const RemoveTemplateActionResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "RemoveTemplateActionResponse",
   }) as any as S.Schema<RemoveTemplateActionResponse>;
+export interface SourceS3Configuration {
+  s3Bucket: string;
+  s3BucketOwner: string;
+  s3Key: string;
+}
+export const SourceS3Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String, s3Key: S.String }),
+).annotate({
+  identifier: "SourceS3Configuration",
+}) as any as S.Schema<SourceS3Configuration>;
+export interface SourceConfiguration {
+  sourceEnvironment: string;
+  sourceS3Configuration: SourceS3Configuration;
+}
+export const SourceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceEnvironment: S.String,
+    sourceS3Configuration: SourceS3Configuration,
+  }),
+).annotate({
+  identifier: "SourceConfiguration",
+}) as any as S.Schema<SourceConfiguration>;
+export type SourceConfigurationList = SourceConfiguration[];
+export const SourceConfigurationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SourceConfiguration);
+export interface TargetS3Configuration {
+  s3Bucket: string;
+  s3BucketOwner: string;
+}
+export const TargetS3Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ s3Bucket: S.String, s3BucketOwner: S.String }),
+).annotate({
+  identifier: "TargetS3Configuration",
+}) as any as S.Schema<TargetS3Configuration>;
+export interface TargetNetwork {
+  topology: string;
+  inboundCidr?: string;
+  outboundCidr?: string;
+  inspectionCidr?: string;
+}
+export const TargetNetwork = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    topology: S.String,
+    inboundCidr: S.optional(S.String),
+    outboundCidr: S.optional(S.String),
+    inspectionCidr: S.optional(S.String),
+  }),
+).annotate({ identifier: "TargetNetwork" }) as any as S.Schema<TargetNetwork>;
+export type ScopeTagsMap = { [key: string]: string | undefined };
+export const ScopeTagsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface CreateNetworkMigrationDefinitionRequest {
+  name: string;
+  description?: string;
+  sourceConfigurations?: SourceConfiguration[];
+  targetS3Configuration: TargetS3Configuration;
+  targetNetwork: TargetNetwork;
+  targetDeployment?: string;
+  tags?: { [key: string]: string | undefined };
+  scopeTags?: { [key: string]: string | undefined };
+}
+export const CreateNetworkMigrationDefinitionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      description: S.optional(S.String),
+      sourceConfigurations: S.optional(SourceConfigurationList),
+      targetS3Configuration: TargetS3Configuration,
+      targetNetwork: TargetNetwork,
+      targetDeployment: S.optional(S.String),
+      tags: S.optional(TagsMap),
+      scopeTags: S.optional(ScopeTagsMap),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/CreateNetworkMigrationDefinition",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateNetworkMigrationDefinitionRequest",
+  }) as any as S.Schema<CreateNetworkMigrationDefinitionRequest>;
+export interface NetworkMigrationDefinition {
+  arn?: string;
+  networkMigrationDefinitionID?: string;
+  name?: string;
+  description?: string;
+  sourceConfigurations?: SourceConfiguration[];
+  targetS3Configuration?: TargetS3Configuration;
+  targetNetwork?: TargetNetwork;
+  targetDeployment?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  tags?: { [key: string]: string | undefined };
+  scopeTags?: { [key: string]: string | undefined };
+}
+export const NetworkMigrationDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      arn: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      sourceConfigurations: S.optional(SourceConfigurationList),
+      targetS3Configuration: S.optional(TargetS3Configuration),
+      targetNetwork: S.optional(TargetNetwork),
+      targetDeployment: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      tags: S.optional(TagsMap),
+      scopeTags: S.optional(ScopeTagsMap),
+    }),
+).annotate({
+  identifier: "NetworkMigrationDefinition",
+}) as any as S.Schema<NetworkMigrationDefinition>;
+export interface TargetS3ConfigurationUpdate {
+  s3Bucket?: string;
+  s3BucketOwner?: string;
+}
+export const TargetS3ConfigurationUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      s3Bucket: S.optional(S.String),
+      s3BucketOwner: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "TargetS3ConfigurationUpdate",
+  }) as any as S.Schema<TargetS3ConfigurationUpdate>;
+export interface TargetNetworkUpdate {
+  topology?: string;
+  inboundCidr?: string;
+  outboundCidr?: string;
+  inspectionCidr?: string;
+}
+export const TargetNetworkUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    topology: S.optional(S.String),
+    inboundCidr: S.optional(S.String),
+    outboundCidr: S.optional(S.String),
+    inspectionCidr: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TargetNetworkUpdate",
+}) as any as S.Schema<TargetNetworkUpdate>;
+export interface UpdateNetworkMigrationDefinitionRequest {
+  networkMigrationDefinitionID: string;
+  name?: string;
+  description?: string;
+  sourceConfigurations?: SourceConfiguration[];
+  targetS3Configuration?: TargetS3ConfigurationUpdate;
+  targetNetwork?: TargetNetworkUpdate;
+  targetDeployment?: string;
+  scopeTags?: { [key: string]: string | undefined };
+}
+export const UpdateNetworkMigrationDefinitionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationDefinitionID: S.String,
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      sourceConfigurations: S.optional(SourceConfigurationList),
+      targetS3Configuration: S.optional(TargetS3ConfigurationUpdate),
+      targetNetwork: S.optional(TargetNetworkUpdate),
+      targetDeployment: S.optional(S.String),
+      scopeTags: S.optional(ScopeTagsMap),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/UpdateNetworkMigrationDefinition",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateNetworkMigrationDefinitionRequest",
+  }) as any as S.Schema<UpdateNetworkMigrationDefinitionRequest>;
+export interface DeleteNetworkMigrationDefinitionRequest {
+  networkMigrationDefinitionID: string;
+}
+export const DeleteNetworkMigrationDefinitionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ networkMigrationDefinitionID: S.String }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/DeleteNetworkMigrationDefinition",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteNetworkMigrationDefinitionRequest",
+  }) as any as S.Schema<DeleteNetworkMigrationDefinitionRequest>;
+export interface DeleteNetworkMigrationDefinitionResponse {}
+export const DeleteNetworkMigrationDefinitionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteNetworkMigrationDefinitionResponse",
+  }) as any as S.Schema<DeleteNetworkMigrationDefinitionResponse>;
+export type NetworkMigrationDefintionsIDsFilter = string[];
+export const NetworkMigrationDefintionsIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationDefinitionsRequestFilters {
+  networkMigrationDefinitionIDs?: string[];
+}
+export const ListNetworkMigrationDefinitionsRequestFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationDefinitionIDs: S.optional(
+        NetworkMigrationDefintionsIDsFilter,
+      ),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationDefinitionsRequestFilters",
+  }) as any as S.Schema<ListNetworkMigrationDefinitionsRequestFilters>;
+export interface ListNetworkMigrationDefinitionsRequest {
+  filters?: ListNetworkMigrationDefinitionsRequestFilters;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListNetworkMigrationDefinitionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filters: S.optional(ListNetworkMigrationDefinitionsRequestFilters),
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationDefinitions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationDefinitionsRequest",
+  }) as any as S.Schema<ListNetworkMigrationDefinitionsRequest>;
+export interface NetworkMigrationDefinitionSummary {
+  networkMigrationDefinitionID?: string;
+  name?: string;
+  sourceEnvironment?: string;
+  arn?: string;
+  tags?: { [key: string]: string | undefined };
+  scopeTags?: { [key: string]: string | undefined };
+}
+export const NetworkMigrationDefinitionSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationDefinitionID: S.optional(S.String),
+      name: S.optional(S.String),
+      sourceEnvironment: S.optional(S.String),
+      arn: S.optional(S.String),
+      tags: S.optional(TagsMap),
+      scopeTags: S.optional(ScopeTagsMap),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationDefinitionSummary",
+  }) as any as S.Schema<NetworkMigrationDefinitionSummary>;
+export type NetworkMigrationDefinitionSummariesList =
+  NetworkMigrationDefinitionSummary[];
+export const NetworkMigrationDefinitionSummariesList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationDefinitionSummary);
+export interface ListNetworkMigrationDefinitionsResponse {
+  items?: NetworkMigrationDefinitionSummary[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationDefinitionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationDefinitionSummariesList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationDefinitionsResponse",
+  }) as any as S.Schema<ListNetworkMigrationDefinitionsResponse>;
+export interface GetNetworkMigrationDefinitionRequest {
+  networkMigrationDefinitionID: string;
+}
+export const GetNetworkMigrationDefinitionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ networkMigrationDefinitionID: S.String }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/GetNetworkMigrationDefinition",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetNetworkMigrationDefinitionRequest",
+  }) as any as S.Schema<GetNetworkMigrationDefinitionRequest>;
+export interface GetNetworkMigrationMapperSegmentConstructRequest {
+  networkMigrationDefinitionID: string;
+  networkMigrationExecutionID: string;
+  segmentID: string;
+  constructID: string;
+}
+export const GetNetworkMigrationMapperSegmentConstructRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationDefinitionID: S.String,
+      networkMigrationExecutionID: S.String,
+      segmentID: S.String,
+      constructID: S.String,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/GetNetworkMigrationMapperSegmentConstruct",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetNetworkMigrationMapperSegmentConstructRequest",
+  }) as any as S.Schema<GetNetworkMigrationMapperSegmentConstructRequest>;
+export type ConstructProperties = { [key: string]: string | undefined };
+export const ConstructProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface NetworkMigrationMapperSegmentConstruct {
+  constructID?: string;
+  constructType?: string;
+  name?: string;
+  description?: string;
+  logicalID?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  properties?: { [key: string]: string | undefined };
+}
+export const NetworkMigrationMapperSegmentConstruct =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      constructID: S.optional(S.String),
+      constructType: S.optional(S.String),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      logicalID: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      properties: S.optional(ConstructProperties),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationMapperSegmentConstruct",
+  }) as any as S.Schema<NetworkMigrationMapperSegmentConstruct>;
+export interface GetNetworkMigrationMapperSegmentConstructResponse {
+  construct?: NetworkMigrationMapperSegmentConstruct;
+}
+export const GetNetworkMigrationMapperSegmentConstructResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ construct: S.optional(NetworkMigrationMapperSegmentConstruct) }),
+  ).annotate({
+    identifier: "GetNetworkMigrationMapperSegmentConstructResponse",
+  }) as any as S.Schema<GetNetworkMigrationMapperSegmentConstructResponse>;
+export type ListNetworkMigrationAnalysesIDsFilter = string[];
+export const ListNetworkMigrationAnalysesIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationAnalysesFilters {
+  jobIDs?: string[];
+}
+export const ListNetworkMigrationAnalysesFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobIDs: S.optional(ListNetworkMigrationAnalysesIDsFilter) }),
+  ).annotate({
+    identifier: "ListNetworkMigrationAnalysesFilters",
+  }) as any as S.Schema<ListNetworkMigrationAnalysesFilters>;
+export interface ListNetworkMigrationAnalysesRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationAnalysesFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationAnalysesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationAnalysesFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationAnalyses",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationAnalysesRequest",
+  }) as any as S.Schema<ListNetworkMigrationAnalysesRequest>;
+export interface NetworkMigrationAnalysisJobDetails {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  createdAt?: Date;
+  endedAt?: Date;
+  status?: string;
+  statusDetails?: string;
+}
+export const NetworkMigrationAnalysisJobDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      status: S.optional(S.String),
+      statusDetails: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationAnalysisJobDetails",
+  }) as any as S.Schema<NetworkMigrationAnalysisJobDetails>;
+export type NetworkMigrationAnalysesList = NetworkMigrationAnalysisJobDetails[];
+export const NetworkMigrationAnalysesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  NetworkMigrationAnalysisJobDetails,
+);
+export interface ListNetworkMigrationAnalysesResponse {
+  items?: NetworkMigrationAnalysisJobDetails[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationAnalysesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationAnalysesList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationAnalysesResponse",
+  }) as any as S.Schema<ListNetworkMigrationAnalysesResponse>;
+export type VpcIDsFilter = string[];
+export const VpcIDsFilter = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationAnalysisResultsFilters {
+  vpcIDs?: string[];
+}
+export const ListNetworkMigrationAnalysisResultsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ vpcIDs: S.optional(VpcIDsFilter) }),
+  ).annotate({
+    identifier: "ListNetworkMigrationAnalysisResultsFilters",
+  }) as any as S.Schema<ListNetworkMigrationAnalysisResultsFilters>;
+export interface ListNetworkMigrationAnalysisResultsRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationAnalysisResultsFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationAnalysisResultsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationAnalysisResultsFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationAnalysisResults",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationAnalysisResultsRequest",
+  }) as any as S.Schema<ListNetworkMigrationAnalysisResultsRequest>;
+export interface NetworkMigrationAnalysisResultSource {
+  vpcID?: string;
+  subnetID?: string;
+}
+export const NetworkMigrationAnalysisResultSource =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ vpcID: S.optional(S.String), subnetID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "NetworkMigrationAnalysisResultSource",
+  }) as any as S.Schema<NetworkMigrationAnalysisResultSource>;
+export interface NetworkMigrationAnalysisResultTarget {
+  vpcID?: string;
+  subnetID?: string;
+}
+export const NetworkMigrationAnalysisResultTarget =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ vpcID: S.optional(S.String), subnetID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "NetworkMigrationAnalysisResultTarget",
+  }) as any as S.Schema<NetworkMigrationAnalysisResultTarget>;
+export interface NetworkMigrationAnalysisResult {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  analyzerType?: string;
+  source?: NetworkMigrationAnalysisResultSource;
+  target?: NetworkMigrationAnalysisResultTarget;
+  status?: string;
+  analysisResult?: string;
+}
+export const NetworkMigrationAnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      analyzerType: S.optional(S.String),
+      source: S.optional(NetworkMigrationAnalysisResultSource),
+      target: S.optional(NetworkMigrationAnalysisResultTarget),
+      status: S.optional(S.String),
+      analysisResult: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationAnalysisResult",
+  }) as any as S.Schema<NetworkMigrationAnalysisResult>;
+export type NetworkMigrationAnalysisResultsList =
+  NetworkMigrationAnalysisResult[];
+export const NetworkMigrationAnalysisResultsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationAnalysisResult);
+export interface ListNetworkMigrationAnalysisResultsResponse {
+  items?: NetworkMigrationAnalysisResult[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationAnalysisResultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationAnalysisResultsList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationAnalysisResultsResponse",
+  }) as any as S.Schema<ListNetworkMigrationAnalysisResultsResponse>;
+export type ListNetworkMigrationCodeGenerationsIDsFilter = string[];
+export const ListNetworkMigrationCodeGenerationsIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationCodeGenerationsFilters {
+  jobIDs?: string[];
+}
+export const ListNetworkMigrationCodeGenerationsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobIDs: S.optional(ListNetworkMigrationCodeGenerationsIDsFilter),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationCodeGenerationsFilters",
+  }) as any as S.Schema<ListNetworkMigrationCodeGenerationsFilters>;
+export interface ListNetworkMigrationCodeGenerationsRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationCodeGenerationsFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationCodeGenerationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationCodeGenerationsFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationCodeGenerations",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationCodeGenerationsRequest",
+  }) as any as S.Schema<ListNetworkMigrationCodeGenerationsRequest>;
+export interface CodeGenerationOutputFormatStatusDetails {
+  status?: string;
+  statusDetailList?: string;
+}
+export const CodeGenerationOutputFormatStatusDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.optional(S.String),
+      statusDetailList: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CodeGenerationOutputFormatStatusDetails",
+  }) as any as S.Schema<CodeGenerationOutputFormatStatusDetails>;
+export type CodeGenerationOutputFormatStatusDetailsMap = {
+  [key: string]: CodeGenerationOutputFormatStatusDetails | undefined;
+};
+export const CodeGenerationOutputFormatStatusDetailsMap =
+  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+    S.String,
+    CodeGenerationOutputFormatStatusDetails.pipe(S.optional),
+  );
+export interface NetworkMigrationCodeGenerationJobDetails {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  createdAt?: Date;
+  endedAt?: Date;
+  status?: string;
+  statusDetails?: string;
+  codeGenerationOutputFormatStatusDetailsMap?: {
+    [key: string]: CodeGenerationOutputFormatStatusDetails | undefined;
+  };
+}
+export const NetworkMigrationCodeGenerationJobDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      status: S.optional(S.String),
+      statusDetails: S.optional(S.String),
+      codeGenerationOutputFormatStatusDetailsMap: S.optional(
+        CodeGenerationOutputFormatStatusDetailsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationCodeGenerationJobDetails",
+  }) as any as S.Schema<NetworkMigrationCodeGenerationJobDetails>;
+export type NetworkMigrationCodeGenerationsList =
+  NetworkMigrationCodeGenerationJobDetails[];
+export const NetworkMigrationCodeGenerationsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationCodeGenerationJobDetails);
+export interface ListNetworkMigrationCodeGenerationsResponse {
+  items?: NetworkMigrationCodeGenerationJobDetails[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationCodeGenerationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationCodeGenerationsList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationCodeGenerationsResponse",
+  }) as any as S.Schema<ListNetworkMigrationCodeGenerationsResponse>;
+export type ListNetworkMigrationCodeGenerationSegmentsIDsFilter = string[];
+export const ListNetworkMigrationCodeGenerationSegmentsIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationCodeGenerationSegmentsFilters {
+  segmentIDs?: string[];
+}
+export const ListNetworkMigrationCodeGenerationSegmentsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      segmentIDs: S.optional(
+        ListNetworkMigrationCodeGenerationSegmentsIDsFilter,
+      ),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationCodeGenerationSegmentsFilters",
+  }) as any as S.Schema<ListNetworkMigrationCodeGenerationSegmentsFilters>;
+export interface ListNetworkMigrationCodeGenerationSegmentsRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationCodeGenerationSegmentsFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationCodeGenerationSegmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationCodeGenerationSegmentsFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationCodeGenerationSegments",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationCodeGenerationSegmentsRequest",
+  }) as any as S.Schema<ListNetworkMigrationCodeGenerationSegmentsRequest>;
+export interface S3Configuration {
+  s3Bucket?: string;
+  s3BucketOwner?: string;
+  s3Key?: string;
+}
+export const S3Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    s3Bucket: S.optional(S.String),
+    s3BucketOwner: S.optional(S.String),
+    s3Key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "S3Configuration",
+}) as any as S.Schema<S3Configuration>;
+export interface NetworkMigrationCodeGenerationArtifact {
+  artifactID?: string;
+  artifactType?: string;
+  artifactSubType?: string;
+  logicalID?: string;
+  outputS3Configuration?: S3Configuration;
+  checksum?: Checksum;
+  createdAt?: Date;
+}
+export const NetworkMigrationCodeGenerationArtifact =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      artifactID: S.optional(S.String),
+      artifactType: S.optional(S.String),
+      artifactSubType: S.optional(S.String),
+      logicalID: S.optional(S.String),
+      outputS3Configuration: S.optional(S3Configuration),
+      checksum: S.optional(Checksum),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationCodeGenerationArtifact",
+  }) as any as S.Schema<NetworkMigrationCodeGenerationArtifact>;
+export type NetworkMigrationCodeGenerationArtifacts =
+  NetworkMigrationCodeGenerationArtifact[];
+export const NetworkMigrationCodeGenerationArtifacts =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationCodeGenerationArtifact);
+export interface NetworkMigrationCodeGenerationSegment {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  segmentID?: string;
+  segmentType?: string;
+  logicalID?: string;
+  mapperSegmentID?: string;
+  artifacts?: NetworkMigrationCodeGenerationArtifact[];
+  createdAt?: Date;
+}
+export const NetworkMigrationCodeGenerationSegment =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      segmentID: S.optional(S.String),
+      segmentType: S.optional(S.String),
+      logicalID: S.optional(S.String),
+      mapperSegmentID: S.optional(S.String),
+      artifacts: S.optional(NetworkMigrationCodeGenerationArtifacts),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationCodeGenerationSegment",
+  }) as any as S.Schema<NetworkMigrationCodeGenerationSegment>;
+export type NetworkMigrationCodeGenerationSegmentsList =
+  NetworkMigrationCodeGenerationSegment[];
+export const NetworkMigrationCodeGenerationSegmentsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationCodeGenerationSegment);
+export interface ListNetworkMigrationCodeGenerationSegmentsResponse {
+  items?: NetworkMigrationCodeGenerationSegment[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationCodeGenerationSegmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationCodeGenerationSegmentsList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationCodeGenerationSegmentsResponse",
+  }) as any as S.Schema<ListNetworkMigrationCodeGenerationSegmentsResponse>;
+export interface ListNetworkMigrationDeployedStacksRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationDeployedStacksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationDeployedStacks",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationDeployedStacksRequest",
+  }) as any as S.Schema<ListNetworkMigrationDeployedStacksRequest>;
+export interface NetworkMigrationFailedResourceDetails {
+  logicalID?: string;
+  status?: string;
+  statusReason?: string;
+}
+export const NetworkMigrationFailedResourceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      logicalID: S.optional(S.String),
+      status: S.optional(S.String),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationFailedResourceDetails",
+  }) as any as S.Schema<NetworkMigrationFailedResourceDetails>;
+export type NetworkMigrationFailedResourcesList =
+  NetworkMigrationFailedResourceDetails[];
+export const NetworkMigrationFailedResourcesList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationFailedResourceDetails);
+export interface NetworkMigrationDeployedStackDetails {
+  status?: string;
+  stackPhysicalID?: string;
+  stackLogicalID?: string;
+  segmentID?: string;
+  targetAccount?: string;
+  failedResources?: NetworkMigrationFailedResourceDetails[];
+}
+export const NetworkMigrationDeployedStackDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.optional(S.String),
+      stackPhysicalID: S.optional(S.String),
+      stackLogicalID: S.optional(S.String),
+      segmentID: S.optional(S.String),
+      targetAccount: S.optional(S.String),
+      failedResources: S.optional(NetworkMigrationFailedResourcesList),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationDeployedStackDetails",
+  }) as any as S.Schema<NetworkMigrationDeployedStackDetails>;
+export type NetworkMigrationDeployedStacksList =
+  NetworkMigrationDeployedStackDetails[];
+export const NetworkMigrationDeployedStacksList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationDeployedStackDetails);
+export interface ListNetworkMigrationDeployedStacksResponse {
+  items?: NetworkMigrationDeployedStackDetails[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationDeployedStacksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationDeployedStacksList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationDeployedStacksResponse",
+  }) as any as S.Schema<ListNetworkMigrationDeployedStacksResponse>;
+export type ListNetworkMigrationDeployerJobIDsFilters = string[];
+export const ListNetworkMigrationDeployerJobIDsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationDeployerJobFilters {
+  jobIDs?: string[];
+}
+export const ListNetworkMigrationDeployerJobFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobIDs: S.optional(ListNetworkMigrationDeployerJobIDsFilters) }),
+  ).annotate({
+    identifier: "ListNetworkMigrationDeployerJobFilters",
+  }) as any as S.Schema<ListNetworkMigrationDeployerJobFilters>;
+export interface ListNetworkMigrationDeploymentsRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationDeployerJobFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationDeployerJobFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationDeployments",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationDeploymentsRequest",
+  }) as any as S.Schema<ListNetworkMigrationDeploymentsRequest>;
+export interface NetworkMigrationDeployerJobDetails {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  createdAt?: Date;
+  endedAt?: Date;
+  status?: string;
+  statusDetails?: string;
+}
+export const NetworkMigrationDeployerJobDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      status: S.optional(S.String),
+      statusDetails: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationDeployerJobDetails",
+  }) as any as S.Schema<NetworkMigrationDeployerJobDetails>;
+export type NetworkMigrationDeployerJobList =
+  NetworkMigrationDeployerJobDetails[];
+export const NetworkMigrationDeployerJobList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationDeployerJobDetails);
+export interface ListNetworkMigrationDeployerJobResponse {
+  items?: NetworkMigrationDeployerJobDetails[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationDeployerJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationDeployerJobList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationDeployerJobResponse",
+  }) as any as S.Schema<ListNetworkMigrationDeployerJobResponse>;
+export type NetworkMigrationExecutionIDsFilter = string[];
+export const NetworkMigrationExecutionIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type NetworkMigrationExecutionStatusesFilter = string[];
+export const NetworkMigrationExecutionStatusesFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationExecutionRequestFilters {
+  networkMigrationExecutionIDs?: string[];
+  networkMigrationExecutionStatuses?: string[];
+}
+export const ListNetworkMigrationExecutionRequestFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionIDs: S.optional(
+        NetworkMigrationExecutionIDsFilter,
+      ),
+      networkMigrationExecutionStatuses: S.optional(
+        NetworkMigrationExecutionStatusesFilter,
+      ),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationExecutionRequestFilters",
+  }) as any as S.Schema<ListNetworkMigrationExecutionRequestFilters>;
+export interface ListNetworkMigrationExecutionsRequest {
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationExecutionRequestFilters;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListNetworkMigrationExecutionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationExecutionRequestFilters),
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationExecutions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationExecutionsRequest",
+  }) as any as S.Schema<ListNetworkMigrationExecutionsRequest>;
+export interface NetworkMigrationExecution {
+  networkMigrationDefinitionID?: string;
+  networkMigrationExecutionID?: string;
+  status?: string;
+  stage?: string;
+  activity?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  tags?: { [key: string]: string | undefined };
+}
+export const NetworkMigrationExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      networkMigrationDefinitionID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      status: S.optional(S.String),
+      stage: S.optional(S.String),
+      activity: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      tags: S.optional(TagsMap),
+    }),
+).annotate({
+  identifier: "NetworkMigrationExecution",
+}) as any as S.Schema<NetworkMigrationExecution>;
+export type NetworkMigrationExecutionsList = NetworkMigrationExecution[];
+export const NetworkMigrationExecutionsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationExecution);
+export interface ListNetworkMigrationExecutionsResponse {
+  items?: NetworkMigrationExecution[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationExecutionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationExecutionsList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationExecutionsResponse",
+  }) as any as S.Schema<ListNetworkMigrationExecutionsResponse>;
+export type ListNetworkMigrationMapperSegmentConstructsIDsFilter = string[];
+export const ListNetworkMigrationMapperSegmentConstructsIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type ListNetworkMigrationMapperSegmentConstructTypesFilter = string[];
+export const ListNetworkMigrationMapperSegmentConstructTypesFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationMapperSegmentConstructsFilters {
+  constructIDs?: string[];
+  constructTypes?: string[];
+}
+export const ListNetworkMigrationMapperSegmentConstructsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      constructIDs: S.optional(
+        ListNetworkMigrationMapperSegmentConstructsIDsFilter,
+      ),
+      constructTypes: S.optional(
+        ListNetworkMigrationMapperSegmentConstructTypesFilter,
+      ),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMapperSegmentConstructsFilters",
+  }) as any as S.Schema<ListNetworkMigrationMapperSegmentConstructsFilters>;
+export interface ListNetworkMigrationMapperSegmentConstructsRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  segmentID: string;
+  filters?: ListNetworkMigrationMapperSegmentConstructsFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationMapperSegmentConstructsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      segmentID: S.String,
+      filters: S.optional(ListNetworkMigrationMapperSegmentConstructsFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationMapperSegmentConstructs",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationMapperSegmentConstructsRequest",
+  }) as any as S.Schema<ListNetworkMigrationMapperSegmentConstructsRequest>;
+export type NetworkMigrationMapperSegmentConstructs =
+  NetworkMigrationMapperSegmentConstruct[];
+export const NetworkMigrationMapperSegmentConstructs =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationMapperSegmentConstruct);
+export interface ListNetworkMigrationMapperSegmentConstructsResponse {
+  items?: NetworkMigrationMapperSegmentConstruct[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationMapperSegmentConstructsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationMapperSegmentConstructs),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMapperSegmentConstructsResponse",
+  }) as any as S.Schema<ListNetworkMigrationMapperSegmentConstructsResponse>;
+export type ListNetworkMigrationMapperSegmentsIDsFilter = string[];
+export const ListNetworkMigrationMapperSegmentsIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationMapperSegmentsFilters {
+  segmentIDs?: string[];
+}
+export const ListNetworkMigrationMapperSegmentsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      segmentIDs: S.optional(ListNetworkMigrationMapperSegmentsIDsFilter),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMapperSegmentsFilters",
+  }) as any as S.Schema<ListNetworkMigrationMapperSegmentsFilters>;
+export interface ListNetworkMigrationMapperSegmentsRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationMapperSegmentsFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationMapperSegmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationMapperSegmentsFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationMapperSegments",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationMapperSegmentsRequest",
+  }) as any as S.Schema<ListNetworkMigrationMapperSegmentsRequest>;
+export type ReferencedSegmentsList = string[];
+export const ReferencedSegmentsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface NetworkMigrationMapperSegment {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  segmentID?: string;
+  segmentType?: string;
+  name?: string;
+  description?: string;
+  logicalID?: string;
+  checksum?: Checksum;
+  outputS3Configuration?: S3Configuration;
+  createdAt?: Date;
+  updatedAt?: Date;
+  scopeTags?: { [key: string]: string | undefined };
+  targetAccount?: string;
+  referencedSegments?: string[];
+}
+export const NetworkMigrationMapperSegment =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      segmentID: S.optional(S.String),
+      segmentType: S.optional(S.String),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      logicalID: S.optional(S.String),
+      checksum: S.optional(Checksum),
+      outputS3Configuration: S.optional(S3Configuration),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      scopeTags: S.optional(ScopeTagsMap),
+      targetAccount: S.optional(S.String),
+      referencedSegments: S.optional(ReferencedSegmentsList),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationMapperSegment",
+  }) as any as S.Schema<NetworkMigrationMapperSegment>;
+export type NetworkMigrationMapperSegmentsList =
+  NetworkMigrationMapperSegment[];
+export const NetworkMigrationMapperSegmentsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationMapperSegment);
+export interface ListNetworkMigrationMapperSegmentsResponse {
+  items?: NetworkMigrationMapperSegment[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationMapperSegmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationMapperSegmentsList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMapperSegmentsResponse",
+  }) as any as S.Schema<ListNetworkMigrationMapperSegmentsResponse>;
+export type ListNetworkMigrationMappingsIDsFilter = string[];
+export const ListNetworkMigrationMappingsIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationMappingsFilters {
+  jobIDs?: string[];
+}
+export const ListNetworkMigrationMappingsFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobIDs: S.optional(ListNetworkMigrationMappingsIDsFilter) }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMappingsFilters",
+  }) as any as S.Schema<ListNetworkMigrationMappingsFilters>;
+export interface ListNetworkMigrationMappingsRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationMappingsFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationMappingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationMappingsFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationMappings",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationMappingsRequest",
+  }) as any as S.Schema<ListNetworkMigrationMappingsRequest>;
+export interface NetworkMigrationMappingJobDetails {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  createdAt?: Date;
+  endedAt?: Date;
+  status?: string;
+  statusDetails?: string;
+}
+export const NetworkMigrationMappingJobDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      status: S.optional(S.String),
+      statusDetails: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationMappingJobDetails",
+  }) as any as S.Schema<NetworkMigrationMappingJobDetails>;
+export type NetworkMigrationMappingsList = NetworkMigrationMappingJobDetails[];
+export const NetworkMigrationMappingsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  NetworkMigrationMappingJobDetails,
+);
+export interface ListNetworkMigrationMappingsResponse {
+  items?: NetworkMigrationMappingJobDetails[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationMappingsList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMappingsResponse",
+  }) as any as S.Schema<ListNetworkMigrationMappingsResponse>;
+export type ListNetworkMigrationMappingUpdatesIDsFilter = string[];
+export const ListNetworkMigrationMappingUpdatesIDsFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListNetworkMigrationMappingUpdatesFilters {
+  jobIDs?: string[];
+}
+export const ListNetworkMigrationMappingUpdatesFilters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobIDs: S.optional(ListNetworkMigrationMappingUpdatesIDsFilter),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMappingUpdatesFilters",
+  }) as any as S.Schema<ListNetworkMigrationMappingUpdatesFilters>;
+export interface ListNetworkMigrationMappingUpdatesRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  filters?: ListNetworkMigrationMappingUpdatesFilters;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListNetworkMigrationMappingUpdatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      filters: S.optional(ListNetworkMigrationMappingUpdatesFilters),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/ListNetworkMigrationMappingUpdates",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListNetworkMigrationMappingUpdatesRequest",
+  }) as any as S.Schema<ListNetworkMigrationMappingUpdatesRequest>;
+export interface NetworkMigrationMappingUpdateJobDetails {
+  jobID?: string;
+  networkMigrationExecutionID?: string;
+  networkMigrationDefinitionID?: string;
+  createdAt?: Date;
+  endedAt?: Date;
+  status?: string;
+  statusDetails?: string;
+}
+export const NetworkMigrationMappingUpdateJobDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobID: S.optional(S.String),
+      networkMigrationExecutionID: S.optional(S.String),
+      networkMigrationDefinitionID: S.optional(S.String),
+      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      status: S.optional(S.String),
+      statusDetails: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkMigrationMappingUpdateJobDetails",
+  }) as any as S.Schema<NetworkMigrationMappingUpdateJobDetails>;
+export type NetworkMigrationMappingUpdatesList =
+  NetworkMigrationMappingUpdateJobDetails[];
+export const NetworkMigrationMappingUpdatesList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationMappingUpdateJobDetails);
+export interface ListNetworkMigrationMappingUpdatesResponse {
+  items?: NetworkMigrationMappingUpdateJobDetails[];
+  nextToken?: string;
+}
+export const ListNetworkMigrationMappingUpdatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      items: S.optional(NetworkMigrationMappingUpdatesList),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListNetworkMigrationMappingUpdatesResponse",
+  }) as any as S.Schema<ListNetworkMigrationMappingUpdatesResponse>;
+export interface StartNetworkMigrationAnalysisRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+}
+export const StartNetworkMigrationAnalysisRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/StartNetworkMigrationAnalysis",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartNetworkMigrationAnalysisRequest",
+  }) as any as S.Schema<StartNetworkMigrationAnalysisRequest>;
+export interface StartNetworkMigrationAnalysisResponse {
+  jobID?: string;
+}
+export const StartNetworkMigrationAnalysisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "StartNetworkMigrationAnalysisResponse",
+  }) as any as S.Schema<StartNetworkMigrationAnalysisResponse>;
+export type CodeGenerationOutputFormatTypes = string[];
+export const CodeGenerationOutputFormatTypes =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface StartNetworkMigrationCodeGenerationRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  codeGenerationOutputFormatTypes?: string[];
+}
+export const StartNetworkMigrationCodeGenerationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      codeGenerationOutputFormatTypes: S.optional(
+        CodeGenerationOutputFormatTypes,
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/StartNetworkMigrationCodeGeneration",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartNetworkMigrationCodeGenerationRequest",
+  }) as any as S.Schema<StartNetworkMigrationCodeGenerationRequest>;
+export interface StartNetworkMigrationCodeGenerationResponse {
+  jobID?: string;
+}
+export const StartNetworkMigrationCodeGenerationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "StartNetworkMigrationCodeGenerationResponse",
+  }) as any as S.Schema<StartNetworkMigrationCodeGenerationResponse>;
+export interface StartNetworkMigrationDeploymentRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+}
+export const StartNetworkMigrationDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/StartNetworkMigrationDeployment",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartNetworkMigrationDeploymentRequest",
+  }) as any as S.Schema<StartNetworkMigrationDeploymentRequest>;
+export interface StartNetworkMigrationDeployerJobResponse {
+  jobID?: string;
+}
+export const StartNetworkMigrationDeployerJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "StartNetworkMigrationDeployerJobResponse",
+  }) as any as S.Schema<StartNetworkMigrationDeployerJobResponse>;
+export interface StartNetworkMigrationMappingRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  securityGroupMappingStrategy?: string;
+}
+export const StartNetworkMigrationMappingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      securityGroupMappingStrategy: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/StartNetworkMigrationMapping",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartNetworkMigrationMappingRequest",
+  }) as any as S.Schema<StartNetworkMigrationMappingRequest>;
+export interface StartNetworkMigrationMappingResponse {
+  jobID?: string;
+}
+export const StartNetworkMigrationMappingResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "StartNetworkMigrationMappingResponse",
+  }) as any as S.Schema<StartNetworkMigrationMappingResponse>;
+export interface UpdateOperation {
+  properties?: { [key: string]: string | undefined };
+}
+export const UpdateOperation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ properties: S.optional(ConstructProperties) }),
+).annotate({
+  identifier: "UpdateOperation",
+}) as any as S.Schema<UpdateOperation>;
+export type OperationUnion = { update: UpdateOperation };
+export const OperationUnion = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ update: UpdateOperation }),
+]);
+export interface StartNetworkMigrationMappingUpdateConstruct {
+  segmentID: string;
+  constructID: string;
+  constructType: string;
+  operation?: OperationUnion;
+}
+export const StartNetworkMigrationMappingUpdateConstruct =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      segmentID: S.String,
+      constructID: S.String,
+      constructType: S.String,
+      operation: S.optional(OperationUnion),
+    }),
+  ).annotate({
+    identifier: "StartNetworkMigrationMappingUpdateConstruct",
+  }) as any as S.Schema<StartNetworkMigrationMappingUpdateConstruct>;
+export type StartNetworkMigrationMappingUpdateConstructs =
+  StartNetworkMigrationMappingUpdateConstruct[];
+export const StartNetworkMigrationMappingUpdateConstructs =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    StartNetworkMigrationMappingUpdateConstruct,
+  );
+export interface StartNetworkMigrationMappingUpdateSegment {
+  segmentID: string;
+  targetAccount?: string;
+  scopeTags?: { [key: string]: string | undefined };
+}
+export const StartNetworkMigrationMappingUpdateSegment =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      segmentID: S.String,
+      targetAccount: S.optional(S.String),
+      scopeTags: S.optional(ScopeTagsMap),
+    }),
+  ).annotate({
+    identifier: "StartNetworkMigrationMappingUpdateSegment",
+  }) as any as S.Schema<StartNetworkMigrationMappingUpdateSegment>;
+export type StartNetworkMigrationMappingUpdateSegments =
+  StartNetworkMigrationMappingUpdateSegment[];
+export const StartNetworkMigrationMappingUpdateSegments =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    StartNetworkMigrationMappingUpdateSegment,
+  );
+export interface StartNetworkMigrationMappingUpdateRequest {
+  networkMigrationExecutionID: string;
+  networkMigrationDefinitionID: string;
+  constructs?: StartNetworkMigrationMappingUpdateConstruct[];
+  segments?: StartNetworkMigrationMappingUpdateSegment[];
+}
+export const StartNetworkMigrationMappingUpdateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationExecutionID: S.String,
+      networkMigrationDefinitionID: S.String,
+      constructs: S.optional(StartNetworkMigrationMappingUpdateConstructs),
+      segments: S.optional(StartNetworkMigrationMappingUpdateSegments),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/StartNetworkMigrationMappingUpdate",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartNetworkMigrationMappingUpdateRequest",
+  }) as any as S.Schema<StartNetworkMigrationMappingUpdateRequest>;
+export interface StartNetworkMigrationMappingUpdateResponse {
+  jobID?: string;
+}
+export const StartNetworkMigrationMappingUpdateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobID: S.optional(S.String) }),
+  ).annotate({
+    identifier: "StartNetworkMigrationMappingUpdateResponse",
+  }) as any as S.Schema<StartNetworkMigrationMappingUpdateResponse>;
+export interface UpdateNetworkMigrationMapperSegmentRequest {
+  networkMigrationDefinitionID: string;
+  networkMigrationExecutionID: string;
+  segmentID: string;
+  scopeTags?: { [key: string]: string | undefined };
+}
+export const UpdateNetworkMigrationMapperSegmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkMigrationDefinitionID: S.String,
+      networkMigrationExecutionID: S.String,
+      segmentID: S.String,
+      scopeTags: S.optional(ScopeTagsMap),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/network-migration/UpdateNetworkMigrationMapperSegment",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateNetworkMigrationMapperSegmentRequest",
+  }) as any as S.Schema<UpdateNetworkMigrationMapperSegmentRequest>;
 export type ReplicationServersSecurityGroupsIDs = string[];
 export const ReplicationServersSecurityGroupsIDs =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
@@ -1942,6 +3826,7 @@ export interface CreateReplicationConfigurationTemplateRequest {
   useFipsEndpoint?: boolean;
   tags?: { [key: string]: string | undefined };
   internetProtocol?: string;
+  storeSnapshotOnLocalZone?: boolean;
 }
 export const CreateReplicationConfigurationTemplateRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1961,6 +3846,7 @@ export const CreateReplicationConfigurationTemplateRequest =
       useFipsEndpoint: S.optional(S.Boolean),
       tags: S.optional(TagsMap),
       internetProtocol: S.optional(S.String),
+      storeSnapshotOnLocalZone: S.optional(S.Boolean),
     }).pipe(
       T.all(
         T.Http({
@@ -1995,6 +3881,7 @@ export interface ReplicationConfigurationTemplate {
   useFipsEndpoint?: boolean;
   tags?: { [key: string]: string | undefined };
   internetProtocol?: string;
+  storeSnapshotOnLocalZone?: boolean;
 }
 export const ReplicationConfigurationTemplate =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2018,6 +3905,7 @@ export const ReplicationConfigurationTemplate =
       useFipsEndpoint: S.optional(S.Boolean),
       tags: S.optional(TagsMap),
       internetProtocol: S.optional(S.String),
+      storeSnapshotOnLocalZone: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "ReplicationConfigurationTemplate",
@@ -2039,6 +3927,7 @@ export interface UpdateReplicationConfigurationTemplateRequest {
   stagingAreaTags?: { [key: string]: string | undefined };
   useFipsEndpoint?: boolean;
   internetProtocol?: string;
+  storeSnapshotOnLocalZone?: boolean;
 }
 export const UpdateReplicationConfigurationTemplateRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2061,6 +3950,7 @@ export const UpdateReplicationConfigurationTemplateRequest =
       stagingAreaTags: S.optional(TagsMap),
       useFipsEndpoint: S.optional(S.Boolean),
       internetProtocol: S.optional(S.String),
+      storeSnapshotOnLocalZone: S.optional(S.Boolean),
     }).pipe(
       T.all(
         T.Http({
@@ -2807,6 +4697,7 @@ export interface ReplicationConfiguration {
   stagingAreaTags?: { [key: string]: string | undefined };
   useFipsEndpoint?: boolean;
   internetProtocol?: string;
+  storeSnapshotOnLocalZone?: boolean;
 }
 export const ReplicationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2830,6 +4721,7 @@ export const ReplicationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       stagingAreaTags: S.optional(TagsMap),
       useFipsEndpoint: S.optional(S.Boolean),
       internetProtocol: S.optional(S.String),
+      storeSnapshotOnLocalZone: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "ReplicationConfiguration",
@@ -3185,6 +5077,7 @@ export interface UpdateReplicationConfigurationRequest {
   useFipsEndpoint?: boolean;
   accountID?: string;
   internetProtocol?: string;
+  storeSnapshotOnLocalZone?: boolean;
 }
 export const UpdateReplicationConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3209,6 +5102,7 @@ export const UpdateReplicationConfigurationRequest =
       useFipsEndpoint: S.optional(S.Boolean),
       accountID: S.optional(S.String),
       internetProtocol: S.optional(S.String),
+      storeSnapshotOnLocalZone: S.optional(S.Boolean),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/UpdateReplicationConfiguration" }),
@@ -3779,6 +5673,41 @@ export const initializeService: API.OperationMethod<
   output: InitializeServiceResponse,
   errors: [AccessDeniedException, ValidationException],
 }));
+export type ListImportFileEnrichmentsError = ValidationException | CommonErrors;
+/**
+ * Lists import file enrichment jobs with optional filtering by job IDs.
+ */
+export const listImportFileEnrichments: API.OperationMethod<
+  ListImportFileEnrichmentsRequest,
+  ListImportFileEnrichmentsResponse,
+  ListImportFileEnrichmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImportFileEnrichmentsRequest,
+  ) => stream.Stream<
+    ListImportFileEnrichmentsResponse,
+    ListImportFileEnrichmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImportFileEnrichmentsRequest,
+  ) => stream.Stream<
+    ImportFileEnrichment,
+    ListImportFileEnrichmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListImportFileEnrichmentsRequest,
+  output: ListImportFileEnrichmentsResponse,
+  errors: [ValidationException],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
 export type ListManagedAccountsError =
   | UninitializedAccountException
   | ValidationException
@@ -3839,6 +5768,32 @@ export const listTagsForResource: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StartImportFileEnrichmentError =
+  | AccessDeniedException
+  | ConflictException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts an import file enrichment job to process and enrich network migration import files with additional metadata and IP assignment strategies.
+ */
+export const startImportFileEnrichment: API.OperationMethod<
+  StartImportFileEnrichmentRequest,
+  StartImportFileEnrichmentResponse,
+  StartImportFileEnrichmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartImportFileEnrichmentRequest,
+  output: StartImportFileEnrichmentResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
@@ -4676,6 +6631,789 @@ export const removeTemplateAction: API.OperationMethod<
   errors: [
     ResourceNotFoundException,
     UninitializedAccountException,
+    ValidationException,
+  ],
+}));
+export type CreateNetworkMigrationDefinitionError =
+  | ServiceQuotaExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new network migration definition that specifies the source and target network configuration for a migration.
+ */
+export const createNetworkMigrationDefinition: API.OperationMethod<
+  CreateNetworkMigrationDefinitionRequest,
+  NetworkMigrationDefinition,
+  CreateNetworkMigrationDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateNetworkMigrationDefinitionRequest,
+  output: NetworkMigrationDefinition,
+  errors: [ServiceQuotaExceededException, ValidationException],
+}));
+export type UpdateNetworkMigrationDefinitionError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing network migration definition with new source or target configurations.
+ */
+export const updateNetworkMigrationDefinition: API.OperationMethod<
+  UpdateNetworkMigrationDefinitionRequest,
+  NetworkMigrationDefinition,
+  UpdateNetworkMigrationDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateNetworkMigrationDefinitionRequest,
+  output: NetworkMigrationDefinition,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type DeleteNetworkMigrationDefinitionError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Deletes a network migration definition. This operation removes the migration definition and all associated metadata.
+ */
+export const deleteNetworkMigrationDefinition: API.OperationMethod<
+  DeleteNetworkMigrationDefinitionRequest,
+  DeleteNetworkMigrationDefinitionResponse,
+  DeleteNetworkMigrationDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteNetworkMigrationDefinitionRequest,
+  output: DeleteNetworkMigrationDefinitionResponse,
+  errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+}));
+export type ListNetworkMigrationDefinitionsError =
+  | AccessDeniedException
+  | CommonErrors;
+/**
+ * Lists all network migration definitions in the account, with optional filtering.
+ */
+export const listNetworkMigrationDefinitions: API.OperationMethod<
+  ListNetworkMigrationDefinitionsRequest,
+  ListNetworkMigrationDefinitionsResponse,
+  ListNetworkMigrationDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationDefinitionsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationDefinitionsResponse,
+    ListNetworkMigrationDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationDefinitionsRequest,
+  ) => stream.Stream<
+    NetworkMigrationDefinitionSummary,
+    ListNetworkMigrationDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationDefinitionsRequest,
+  output: ListNetworkMigrationDefinitionsResponse,
+  errors: [AccessDeniedException],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type GetNetworkMigrationDefinitionError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Retrieves the details of a network migration definition including source and target configurations.
+ */
+export const getNetworkMigrationDefinition: API.OperationMethod<
+  GetNetworkMigrationDefinitionRequest,
+  NetworkMigrationDefinition,
+  GetNetworkMigrationDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetNetworkMigrationDefinitionRequest,
+  output: NetworkMigrationDefinition,
+  errors: [AccessDeniedException, ResourceNotFoundException],
+}));
+export type GetNetworkMigrationMapperSegmentConstructError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about a specific construct within a mapper segment, including its properties and configuration data.
+ */
+export const getNetworkMigrationMapperSegmentConstruct: API.OperationMethod<
+  GetNetworkMigrationMapperSegmentConstructRequest,
+  GetNetworkMigrationMapperSegmentConstructResponse,
+  GetNetworkMigrationMapperSegmentConstructError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetNetworkMigrationMapperSegmentConstructRequest,
+  output: GetNetworkMigrationMapperSegmentConstructResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type ListNetworkMigrationAnalysesError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists network migration analysis jobs for a specified execution. Returns information about analysis job status and results.
+ */
+export const listNetworkMigrationAnalyses: API.OperationMethod<
+  ListNetworkMigrationAnalysesRequest,
+  ListNetworkMigrationAnalysesResponse,
+  ListNetworkMigrationAnalysesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationAnalysesRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationAnalysesResponse,
+    ListNetworkMigrationAnalysesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationAnalysesRequest,
+  ) => stream.Stream<
+    NetworkMigrationAnalysisJobDetails,
+    ListNetworkMigrationAnalysesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationAnalysesRequest,
+  output: ListNetworkMigrationAnalysesResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationAnalysisResultsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the results of network migration analyses, showing connectivity and compatibility findings for migrated resources.
+ */
+export const listNetworkMigrationAnalysisResults: API.OperationMethod<
+  ListNetworkMigrationAnalysisResultsRequest,
+  ListNetworkMigrationAnalysisResultsResponse,
+  ListNetworkMigrationAnalysisResultsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationAnalysisResultsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationAnalysisResultsResponse,
+    ListNetworkMigrationAnalysisResultsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationAnalysisResultsRequest,
+  ) => stream.Stream<
+    NetworkMigrationAnalysisResult,
+    ListNetworkMigrationAnalysisResultsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationAnalysisResultsRequest,
+  output: ListNetworkMigrationAnalysisResultsResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationCodeGenerationsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists network migration code generation jobs, which convert network mappings into infrastructure-as-code templates.
+ */
+export const listNetworkMigrationCodeGenerations: API.OperationMethod<
+  ListNetworkMigrationCodeGenerationsRequest,
+  ListNetworkMigrationCodeGenerationsResponse,
+  ListNetworkMigrationCodeGenerationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationCodeGenerationsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationCodeGenerationsResponse,
+    ListNetworkMigrationCodeGenerationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationCodeGenerationsRequest,
+  ) => stream.Stream<
+    NetworkMigrationCodeGenerationJobDetails,
+    ListNetworkMigrationCodeGenerationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationCodeGenerationsRequest,
+  output: ListNetworkMigrationCodeGenerationsResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationCodeGenerationSegmentsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists code generation segments, which represent individual infrastructure components generated as code templates.
+ */
+export const listNetworkMigrationCodeGenerationSegments: API.OperationMethod<
+  ListNetworkMigrationCodeGenerationSegmentsRequest,
+  ListNetworkMigrationCodeGenerationSegmentsResponse,
+  ListNetworkMigrationCodeGenerationSegmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationCodeGenerationSegmentsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationCodeGenerationSegmentsResponse,
+    ListNetworkMigrationCodeGenerationSegmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationCodeGenerationSegmentsRequest,
+  ) => stream.Stream<
+    NetworkMigrationCodeGenerationSegment,
+    ListNetworkMigrationCodeGenerationSegmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationCodeGenerationSegmentsRequest,
+  output: ListNetworkMigrationCodeGenerationSegmentsResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationDeployedStacksError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists CloudFormation stacks that have been deployed as part of the network migration.
+ */
+export const listNetworkMigrationDeployedStacks: API.OperationMethod<
+  ListNetworkMigrationDeployedStacksRequest,
+  ListNetworkMigrationDeployedStacksResponse,
+  ListNetworkMigrationDeployedStacksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationDeployedStacksRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationDeployedStacksResponse,
+    ListNetworkMigrationDeployedStacksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationDeployedStacksRequest,
+  ) => stream.Stream<
+    NetworkMigrationDeployedStackDetails,
+    ListNetworkMigrationDeployedStacksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationDeployedStacksRequest,
+  output: ListNetworkMigrationDeployedStacksResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationDeploymentsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists network migration deployment jobs and their current status.
+ */
+export const listNetworkMigrationDeployments: API.OperationMethod<
+  ListNetworkMigrationDeploymentsRequest,
+  ListNetworkMigrationDeployerJobResponse,
+  ListNetworkMigrationDeploymentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationDeploymentsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationDeployerJobResponse,
+    ListNetworkMigrationDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationDeploymentsRequest,
+  ) => stream.Stream<
+    NetworkMigrationDeployerJobDetails,
+    ListNetworkMigrationDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationDeploymentsRequest,
+  output: ListNetworkMigrationDeployerJobResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationExecutionsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Lists network migration execution instances for a given definition, showing the status and progress of each execution.
+ */
+export const listNetworkMigrationExecutions: API.OperationMethod<
+  ListNetworkMigrationExecutionsRequest,
+  ListNetworkMigrationExecutionsResponse,
+  ListNetworkMigrationExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationExecutionsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationExecutionsResponse,
+    ListNetworkMigrationExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationExecutionsRequest,
+  ) => stream.Stream<
+    NetworkMigrationExecution,
+    ListNetworkMigrationExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationExecutionsRequest,
+  output: ListNetworkMigrationExecutionsResponse,
+  errors: [AccessDeniedException, ResourceNotFoundException],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationMapperSegmentConstructsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists constructs within a mapper segment, representing individual infrastructure components like VPCs, subnets, or security groups.
+ */
+export const listNetworkMigrationMapperSegmentConstructs: API.OperationMethod<
+  ListNetworkMigrationMapperSegmentConstructsRequest,
+  ListNetworkMigrationMapperSegmentConstructsResponse,
+  ListNetworkMigrationMapperSegmentConstructsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationMapperSegmentConstructsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationMapperSegmentConstructsResponse,
+    ListNetworkMigrationMapperSegmentConstructsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationMapperSegmentConstructsRequest,
+  ) => stream.Stream<
+    NetworkMigrationMapperSegmentConstruct,
+    ListNetworkMigrationMapperSegmentConstructsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationMapperSegmentConstructsRequest,
+  output: ListNetworkMigrationMapperSegmentConstructsResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationMapperSegmentsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists mapper segments, which represent logical groupings of network resources to be migrated together.
+ */
+export const listNetworkMigrationMapperSegments: API.OperationMethod<
+  ListNetworkMigrationMapperSegmentsRequest,
+  ListNetworkMigrationMapperSegmentsResponse,
+  ListNetworkMigrationMapperSegmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationMapperSegmentsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationMapperSegmentsResponse,
+    ListNetworkMigrationMapperSegmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationMapperSegmentsRequest,
+  ) => stream.Stream<
+    NetworkMigrationMapperSegment,
+    ListNetworkMigrationMapperSegmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationMapperSegmentsRequest,
+  output: ListNetworkMigrationMapperSegmentsResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationMappingsError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists network migration mapping jobs, which analyze and create relationships between source and target network resources.
+ */
+export const listNetworkMigrationMappings: API.OperationMethod<
+  ListNetworkMigrationMappingsRequest,
+  ListNetworkMigrationMappingsResponse,
+  ListNetworkMigrationMappingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationMappingsRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationMappingsResponse,
+    ListNetworkMigrationMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationMappingsRequest,
+  ) => stream.Stream<
+    NetworkMigrationMappingJobDetails,
+    ListNetworkMigrationMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationMappingsRequest,
+  output: ListNetworkMigrationMappingsResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListNetworkMigrationMappingUpdatesError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists mapping update jobs, which apply customer modifications to the generated network mappings.
+ */
+export const listNetworkMigrationMappingUpdates: API.OperationMethod<
+  ListNetworkMigrationMappingUpdatesRequest,
+  ListNetworkMigrationMappingUpdatesResponse,
+  ListNetworkMigrationMappingUpdatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworkMigrationMappingUpdatesRequest,
+  ) => stream.Stream<
+    ListNetworkMigrationMappingUpdatesResponse,
+    ListNetworkMigrationMappingUpdatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworkMigrationMappingUpdatesRequest,
+  ) => stream.Stream<
+    NetworkMigrationMappingUpdateJobDetails,
+    ListNetworkMigrationMappingUpdatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNetworkMigrationMappingUpdatesRequest,
+  output: ListNetworkMigrationMappingUpdatesResponse,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type StartNetworkMigrationAnalysisError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a network migration analysis job to evaluate connectivity and compatibility of the migration mappings.
+ */
+export const startNetworkMigrationAnalysis: API.OperationMethod<
+  StartNetworkMigrationAnalysisRequest,
+  StartNetworkMigrationAnalysisResponse,
+  StartNetworkMigrationAnalysisError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartNetworkMigrationAnalysisRequest,
+  output: StartNetworkMigrationAnalysisResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StartNetworkMigrationCodeGenerationError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a code generation job to convert network migration mappings into infrastructure-as-code templates.
+ */
+export const startNetworkMigrationCodeGeneration: API.OperationMethod<
+  StartNetworkMigrationCodeGenerationRequest,
+  StartNetworkMigrationCodeGenerationResponse,
+  StartNetworkMigrationCodeGenerationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartNetworkMigrationCodeGenerationRequest,
+  output: StartNetworkMigrationCodeGenerationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StartNetworkMigrationDeploymentError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a deployment job to create the target network infrastructure based on the generated code templates.
+ */
+export const startNetworkMigrationDeployment: API.OperationMethod<
+  StartNetworkMigrationDeploymentRequest,
+  StartNetworkMigrationDeployerJobResponse,
+  StartNetworkMigrationDeploymentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartNetworkMigrationDeploymentRequest,
+  output: StartNetworkMigrationDeployerJobResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StartNetworkMigrationMappingError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts the network migration mapping process for a given network migration execution.
+ */
+export const startNetworkMigrationMapping: API.OperationMethod<
+  StartNetworkMigrationMappingRequest,
+  StartNetworkMigrationMappingResponse,
+  StartNetworkMigrationMappingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartNetworkMigrationMappingRequest,
+  output: StartNetworkMigrationMappingResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StartNetworkMigrationMappingUpdateError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a job to apply customer modifications to network migration mappings, such as changing properties.
+ */
+export const startNetworkMigrationMappingUpdate: API.OperationMethod<
+  StartNetworkMigrationMappingUpdateRequest,
+  StartNetworkMigrationMappingUpdateResponse,
+  StartNetworkMigrationMappingUpdateError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartNetworkMigrationMappingUpdateRequest,
+  output: StartNetworkMigrationMappingUpdateResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateNetworkMigrationMapperSegmentError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a mapper segment's configuration, such as changing its scope tags.
+ */
+export const updateNetworkMigrationMapperSegment: API.OperationMethod<
+  UpdateNetworkMigrationMapperSegmentRequest,
+  NetworkMigrationMapperSegment,
+  UpdateNetworkMigrationMapperSegmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateNetworkMigrationMapperSegmentRequest,
+  output: NetworkMigrationMapperSegment,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
     ValidationException,
   ],
 }));

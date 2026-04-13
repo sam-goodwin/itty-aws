@@ -10,11 +10,11 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
   activityName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -82,12 +82,12 @@ export type ActivityGetOutput = typeof ActivityGetOutput.Type;
 /**
  * Retrieve the activity in the module identified by module name and activity name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param moduleName - The name of module.
+ * @param moduleName - The module name.
  * @param activityName - The name of activity.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ActivityGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ActivityGetInput,
@@ -96,10 +96,10 @@ export const ActivityGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ActivityListByModuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     moduleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -112,62 +112,60 @@ export type ActivityListByModuleInput = typeof ActivityListByModuleInput.Type;
 // Output Schema
 export const ActivityListByModuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              definition: Schema.optional(Schema.String),
-              parameterSets: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    parameters: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          type: Schema.optional(Schema.String),
-                          isMandatory: Schema.optional(Schema.Boolean),
-                          isDynamic: Schema.optional(Schema.Boolean),
-                          position: Schema.optional(Schema.Number),
-                          valueFromPipeline: Schema.optional(Schema.Boolean),
-                          valueFromPipelineByPropertyName: Schema.optional(
-                            Schema.Boolean,
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            definition: Schema.optional(Schema.String),
+            parameterSets: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  parameters: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        type: Schema.optional(Schema.String),
+                        isMandatory: Schema.optional(Schema.Boolean),
+                        isDynamic: Schema.optional(Schema.Boolean),
+                        position: Schema.optional(Schema.Number),
+                        valueFromPipeline: Schema.optional(Schema.Boolean),
+                        valueFromPipelineByPropertyName: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        valueFromRemainingArguments: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        description: Schema.optional(Schema.String),
+                        validationSet: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              memberValue: Schema.optional(Schema.String),
+                            }),
                           ),
-                          valueFromRemainingArguments: Schema.optional(
-                            Schema.Boolean,
-                          ),
-                          description: Schema.optional(Schema.String),
-                          validationSet: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                memberValue: Schema.optional(Schema.String),
-                              }),
-                            ),
-                          ),
-                        }),
-                      ),
+                        ),
+                      }),
                     ),
-                  }),
-                ),
+                  ),
+                }),
               ),
-              outputTypes: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
+            ),
+            outputTypes: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                }),
               ),
-              creationTime: Schema.optional(Schema.String),
-              lastModifiedTime: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+            ),
+            creationTime: Schema.optional(Schema.String),
+            lastModifiedTime: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -177,11 +175,11 @@ export type ActivityListByModuleOutput = typeof ActivityListByModuleOutput.Type;
 /**
  * Retrieve a list of activities in the module identified by module name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param moduleName - The name of module.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param moduleName - The module name.
  */
 export const ActivityListByModule = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -225,10 +223,10 @@ export type AgentRegistrationInformationGetOutput =
 /**
  * Retrieve the automation agent registration information.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param api-version - Client Api Version.
  */
 export const AgentRegistrationInformationGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -271,10 +269,10 @@ export type AgentRegistrationInformationRegenerateKeyOutput =
 /**
  * Regenerate a primary or secondary agent registration key
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param api-version - Client Api Version.
  */
 export const AgentRegistrationInformationRegenerateKey =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -284,9 +282,9 @@ export const AgentRegistrationInformationRegenerateKey =
 // Input Schema
 export const AutomationAccountCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -310,10 +308,10 @@ export type AutomationAccountCreateOrUpdateOutput =
 /**
  * Create or update automation account.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const AutomationAccountCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -323,9 +321,9 @@ export const AutomationAccountCreateOrUpdate =
 // Input Schema
 export const AutomationAccountDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -346,10 +344,10 @@ export type AutomationAccountDeleteOutput =
 /**
  * Delete an automation account.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const AutomationAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -360,9 +358,9 @@ export const AutomationAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AutomationAccountGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -384,10 +382,10 @@ export type AutomationAccountGetOutput = typeof AutomationAccountGetOutput.Type;
 /**
  * Get information about an Automation Account.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const AutomationAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -411,13 +409,11 @@ export type AutomationAccountListInput = typeof AutomationAccountListInput.Type;
 // Output Schema
 export const AutomationAccountListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -430,8 +426,8 @@ export type AutomationAccountListOutput =
  *
  * Retrieve a list of accounts within a given subscription.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AutomationAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -442,8 +438,8 @@ export const AutomationAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const AutomationAccountListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -457,13 +453,11 @@ export type AutomationAccountListByResourceGroupInput =
 // Output Schema
 export const AutomationAccountListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -474,9 +468,9 @@ export type AutomationAccountListByResourceGroupOutput =
 /**
  * Retrieve a list of accounts within a given resource group.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AutomationAccountListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -486,9 +480,9 @@ export const AutomationAccountListByResourceGroup =
 // Input Schema
 export const AutomationAccountListDeletedRunbooksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -502,24 +496,22 @@ export type AutomationAccountListDeletedRunbooksInput =
 // Output Schema
 export const AutomationAccountListDeletedRunbooksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              runbookId: Schema.optional(Schema.String),
-              runbookType: Schema.optional(Schema.String),
-              runtime: Schema.optional(Schema.String),
-              runtimeEnvironment: Schema.optional(Schema.NullOr(Schema.String)),
-              creationTime: Schema.optional(Schema.String),
-              deletionTime: Schema.optional(Schema.String),
-            }),
-          ),
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            runbookId: Schema.optional(Schema.String),
+            runbookType: Schema.optional(Schema.String),
+            runtime: Schema.optional(Schema.String),
+            runtimeEnvironment: Schema.optional(Schema.NullOr(Schema.String)),
+            creationTime: Schema.optional(Schema.String),
+            deletionTime: Schema.optional(Schema.String),
+          }),
+        ),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -530,10 +522,10 @@ export type AutomationAccountListDeletedRunbooksOutput =
 /**
  * Retrieve the deleted runbooks for an automation account.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const AutomationAccountListDeletedRunbooks =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -543,9 +535,9 @@ export const AutomationAccountListDeletedRunbooks =
 // Input Schema
 export const AutomationAccountUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -569,10 +561,10 @@ export type AutomationAccountUpdateOutput =
 /**
  * Update an automation account.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const AutomationAccountUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -583,10 +575,10 @@ export const AutomationAccountUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CertificateCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -607,11 +599,11 @@ export type CertificateCreateOrUpdateOutput =
 /**
  * Create a certificate.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param certificateName - The parameters supplied to the create or update certificate operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param certificateName - The name of certificate.
  */
 export const CertificateCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -622,10 +614,10 @@ export const CertificateCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -644,11 +636,11 @@ export type CertificateDeleteOutput = typeof CertificateDeleteOutput.Type;
 /**
  * Delete the certificate.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const CertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificateDeleteInput,
@@ -656,10 +648,10 @@ export const CertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   certificateName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -679,11 +671,11 @@ export type CertificateGetOutput = typeof CertificateGetOutput.Type;
 /**
  * Retrieve the certificate identified by certificate name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param certificateName - The name of certificate.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const CertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificateGetInput,
@@ -692,9 +684,9 @@ export const CertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CertificateListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -708,7 +700,7 @@ export type CertificateListByAutomationAccountInput =
 // Output Schema
 export const CertificateListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type CertificateListByAutomationAccountOutput =
@@ -718,10 +710,10 @@ export type CertificateListByAutomationAccountOutput =
 /**
  * Retrieve a list of certificates.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const CertificateListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -731,10 +723,10 @@ export const CertificateListByAutomationAccount =
 // Input Schema
 export const CertificateUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     certificateName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -754,11 +746,11 @@ export type CertificateUpdateOutput = typeof CertificateUpdateOutput.Type;
 /**
  * Update a certificate.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param certificateName - The parameters supplied to the update certificate operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param certificateName - The name of certificate.
  */
 export const CertificateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificateUpdateInput,
@@ -767,10 +759,10 @@ export const CertificateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConnectionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -791,11 +783,11 @@ export type ConnectionCreateOrUpdateOutput =
 /**
  * Create or update a connection.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param connectionName - The parameters supplied to the create or update connection operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param connectionName - The name of connection.
  */
 export const ConnectionCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -805,10 +797,10 @@ export const ConnectionCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -826,11 +818,11 @@ export type ConnectionDeleteOutput = typeof ConnectionDeleteOutput.Type;
 /**
  * Delete the connection.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ConnectionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConnectionDeleteInput,
@@ -838,10 +830,10 @@ export const ConnectionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -861,11 +853,11 @@ export type ConnectionGetOutput = typeof ConnectionGetOutput.Type;
 /**
  * Retrieve the connection identified by connection name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param connectionName - The name of connection.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConnectionGetInput,
@@ -874,9 +866,9 @@ export const ConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConnectionListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -890,7 +882,7 @@ export type ConnectionListByAutomationAccountInput =
 // Output Schema
 export const ConnectionListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ConnectionListByAutomationAccountOutput =
@@ -900,10 +892,10 @@ export type ConnectionListByAutomationAccountOutput =
 /**
  * Retrieve a list of connections.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ConnectionListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -913,10 +905,10 @@ export const ConnectionListByAutomationAccount =
 // Input Schema
 export const ConnectionTypeCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionTypeName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -929,29 +921,7 @@ export type ConnectionTypeCreateOrUpdateInput =
 
 // Output Schema
 export const ConnectionTypeCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        isGlobal: Schema.optional(Schema.Boolean),
-        fieldDefinitions: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              isEncrypted: Schema.optional(Schema.Boolean),
-              isOptional: Schema.optional(Schema.Boolean),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        creationTime: Schema.optional(Schema.String),
-        lastModifiedTime: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type ConnectionTypeCreateOrUpdateOutput =
   typeof ConnectionTypeCreateOrUpdateOutput.Type;
 
@@ -959,11 +929,11 @@ export type ConnectionTypeCreateOrUpdateOutput =
 /**
  * Create a connection type.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param connectionTypeName - The parameters supplied to the create or update connection type operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param connectionTypeName - The name of connection type.
  */
 export const ConnectionTypeCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -973,10 +943,10 @@ export const ConnectionTypeCreateOrUpdate =
 // Input Schema
 export const ConnectionTypeDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionTypeName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -995,11 +965,11 @@ export type ConnectionTypeDeleteOutput = typeof ConnectionTypeDeleteOutput.Type;
 /**
  * Delete the connection type.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param connectionTypeName - The name of connection type.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ConnectionTypeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1010,10 +980,10 @@ export const ConnectionTypeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ConnectionTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     connectionTypeName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -1026,40 +996,18 @@ export type ConnectionTypeGetInput = typeof ConnectionTypeGetInput.Type;
 
 // Output Schema
 export const ConnectionTypeGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        isGlobal: Schema.optional(Schema.Boolean),
-        fieldDefinitions: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              isEncrypted: Schema.optional(Schema.Boolean),
-              isOptional: Schema.optional(Schema.Boolean),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        creationTime: Schema.optional(Schema.String),
-        lastModifiedTime: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type ConnectionTypeGetOutput = typeof ConnectionTypeGetOutput.Type;
 
 // The operation
 /**
  * Retrieve the connection type identified by connection type name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param connectionTypeName - The name of connection type.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ConnectionTypeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConnectionTypeGetInput,
@@ -1068,9 +1016,9 @@ export const ConnectionTypeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConnectionTypeListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1084,33 +1032,7 @@ export type ConnectionTypeListByAutomationAccountInput =
 // Output Schema
 export const ConnectionTypeListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              isGlobal: Schema.optional(Schema.Boolean),
-              fieldDefinitions: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    isEncrypted: Schema.optional(Schema.Boolean),
-                    isOptional: Schema.optional(Schema.Boolean),
-                    type: Schema.String,
-                  }),
-                ),
-              ),
-              creationTime: Schema.optional(Schema.String),
-              lastModifiedTime: Schema.optional(Schema.String),
-              description: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ConnectionTypeListByAutomationAccountOutput =
@@ -1120,10 +1042,10 @@ export type ConnectionTypeListByAutomationAccountOutput =
 /**
  * Retrieve a list of connection types.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ConnectionTypeListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1132,10 +1054,10 @@ export const ConnectionTypeListByAutomationAccount =
   }));
 // Input Schema
 export const ConnectionUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   connectionName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1155,11 +1077,11 @@ export type ConnectionUpdateOutput = typeof ConnectionUpdateOutput.Type;
 /**
  * Update a connection.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param connectionName - The parameters supplied to the update a connection operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param connectionName - The name of connection.
  */
 export const ConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConnectionUpdateInput,
@@ -1168,9 +1090,9 @@ export const ConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ConvertGraphRunbookContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1202,10 +1124,10 @@ export type ConvertGraphRunbookContentOutput =
 /**
  * Post operation to serialize or deserialize GraphRunbookContent
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const convertGraphRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1216,10 +1138,10 @@ export const convertGraphRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CredentialCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     credentialName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1240,11 +1162,11 @@ export type CredentialCreateOrUpdateOutput =
 /**
  * Create a credential.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param credentialName - The parameters supplied to the create or update credential operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param credentialName - The name of credential.
  */
 export const CredentialCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1254,10 +1176,10 @@ export const CredentialCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   credentialName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1275,11 +1197,11 @@ export type CredentialDeleteOutput = typeof CredentialDeleteOutput.Type;
 /**
  * Delete the credential.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const CredentialDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CredentialDeleteInput,
@@ -1287,10 +1209,10 @@ export const CredentialDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const CredentialGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   credentialName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1310,11 +1232,11 @@ export type CredentialGetOutput = typeof CredentialGetOutput.Type;
 /**
  * Retrieve the credential identified by credential name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param credentialName - The name of credential.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const CredentialGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CredentialGetInput,
@@ -1323,9 +1245,9 @@ export const CredentialGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CredentialListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1339,7 +1261,7 @@ export type CredentialListByAutomationAccountInput =
 // Output Schema
 export const CredentialListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type CredentialListByAutomationAccountOutput =
@@ -1349,10 +1271,10 @@ export type CredentialListByAutomationAccountOutput =
 /**
  * Retrieve a list of credentials.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const CredentialListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1361,10 +1283,10 @@ export const CredentialListByAutomationAccount =
   }));
 // Input Schema
 export const CredentialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   credentialName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1384,11 +1306,11 @@ export type CredentialUpdateOutput = typeof CredentialUpdateOutput.Type;
 /**
  * Update a credential.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param credentialName - The parameters supplied to the Update credential operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param credentialName - The name of credential.
  */
 export const CredentialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CredentialUpdateInput,
@@ -1437,8 +1359,8 @@ export type DeletedAutomationAccountsListBySubscriptionOutput =
 /**
  * Retrieve deleted automation account.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const deletedAutomationAccountsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1448,10 +1370,10 @@ export const deletedAutomationAccountsListBySubscription =
 // Input Schema
 export const DscConfigurationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1475,11 +1397,11 @@ export type DscConfigurationCreateOrUpdateOutput =
 /**
  * Create the configuration identified by configuration name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param configurationName - The create or update parameters for configuration.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param configurationName - The configuration name.
  */
 export const DscConfigurationCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1489,10 +1411,10 @@ export const DscConfigurationCreateOrUpdate =
 // Input Schema
 export const DscConfigurationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1513,11 +1435,11 @@ export type DscConfigurationDeleteOutput =
 /**
  * Delete the dsc configuration identified by configuration name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const DscConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1528,10 +1450,10 @@ export const DscConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DscConfigurationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1553,11 +1475,11 @@ export type DscConfigurationGetOutput = typeof DscConfigurationGetOutput.Type;
 /**
  * Retrieve the configuration identified by configuration name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const DscConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DscConfigurationGetInput,
@@ -1566,10 +1488,10 @@ export const DscConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DscConfigurationGetContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1582,7 +1504,7 @@ export type DscConfigurationGetContentInput =
 
 // Output Schema
 export const DscConfigurationGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type DscConfigurationGetContentOutput =
   typeof DscConfigurationGetContentOutput.Type;
 
@@ -1590,11 +1512,11 @@ export type DscConfigurationGetContentOutput =
 /**
  * Retrieve the configuration script identified by configuration name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param configurationName - The configuration name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const DscConfigurationGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1605,9 +1527,9 @@ export const DscConfigurationGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DscConfigurationListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.Number),
@@ -1643,10 +1565,10 @@ export type DscConfigurationListByAutomationAccountOutput =
 /**
  * Retrieve a list of configurations.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation.
  * @param $skip - The number of rows to skip.
  * @param $top - The number of rows to take.
@@ -1660,10 +1582,10 @@ export const DscConfigurationListByAutomationAccount =
 // Input Schema
 export const DscConfigurationUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1687,11 +1609,11 @@ export type DscConfigurationUpdateOutput =
 /**
  * Create the configuration identified by configuration name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param configurationName - The create or update parameters for configuration.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param configurationName - The configuration name.
  */
 export const DscConfigurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1702,10 +1624,10 @@ export const DscConfigurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DscNodeConfigurationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeConfigurationName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1726,11 +1648,11 @@ export type DscNodeConfigurationCreateOrUpdateOutput =
 /**
  * Create the node configuration identified by node configuration name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const DscNodeConfigurationCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1764,11 +1686,11 @@ export type DscNodeConfigurationDeleteOutput =
 /**
  * Delete the Dsc node configurations by node configuration.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
- * @param api-version - Client Api Version.
  */
 export const DscNodeConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1803,11 +1725,11 @@ export type DscNodeConfigurationGetOutput =
 /**
  * Retrieve the Dsc node configurations by node configuration.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param nodeConfigurationName - The Dsc node configuration name.
- * @param api-version - Client Api Version.
  */
 export const DscNodeConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1818,9 +1740,9 @@ export const DscNodeConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DscNodeConfigurationListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.Number),
@@ -1849,10 +1771,10 @@ export type DscNodeConfigurationListByAutomationAccountOutput =
 /**
  * Retrieve a list of dsc node configurations.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation.
  * @param $skip - The number of rows to skip.
  * @param $top - The number of rows to take.
@@ -1865,10 +1787,10 @@ export const DscNodeConfigurationListByAutomationAccount =
   }));
 // Input Schema
 export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1886,11 +1808,11 @@ export type DscNodeDeleteOutput = typeof DscNodeDeleteOutput.Type;
 /**
  * Delete the dsc node identified by node id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const DscNodeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DscNodeDeleteInput,
@@ -1898,10 +1820,10 @@ export const DscNodeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DscNodeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1919,11 +1841,11 @@ export type DscNodeGetOutput = typeof DscNodeGetOutput.Type;
 /**
  * Retrieve the dsc node identified by node id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param nodeId - The node id.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const DscNodeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DscNodeGetInput,
@@ -1932,14 +1854,14 @@ export const DscNodeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DscNodeListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
     $filter: Schema.optional(Schema.String),
     $skip: Schema.optional(Schema.Number),
     $top: Schema.optional(Schema.Number),
     $inlinecount: Schema.optional(Schema.String),
-    "api-version": Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -1963,14 +1885,14 @@ export type DscNodeListByAutomationAccountOutput =
 /**
  * Retrieve a list of dsc nodes.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
  * @param $skip - The number of rows to skip.
  * @param $top - The number of rows to take.
  * @param $inlinecount - Return total rows.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const DscNodeListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1979,10 +1901,10 @@ export const DscNodeListByAutomationAccount =
   }));
 // Input Schema
 export const DscNodeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2002,11 +1924,11 @@ export type DscNodeUpdateOutput = typeof DscNodeUpdateOutput.Type;
 /**
  * Update the dsc node.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param nodeId - Parameters supplied to the update dsc node.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param nodeId - The node id.
  */
 export const DscNodeUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DscNodeUpdateInput,
@@ -2014,11 +1936,11 @@ export const DscNodeUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const FieldsListByTypeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
   typeName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2039,6 +1961,7 @@ export const FieldsListByTypeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   },
 );
 export type FieldsListByTypeOutput = typeof FieldsListByTypeOutput.Type;
@@ -2047,12 +1970,12 @@ export type FieldsListByTypeOutput = typeof FieldsListByTypeOutput.Type;
 /**
  * Retrieve a list of fields of a given type identified by module name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param moduleName - The name of module.
+ * @param moduleName - The module name.
  * @param typeName - The name of type.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const FieldsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FieldsListByTypeInput,
@@ -2061,10 +1984,10 @@ export const FieldsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const HybridRunbookWorkerGroupCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2088,11 +2011,11 @@ export type HybridRunbookWorkerGroupCreateOutput =
 /**
  * Create a hybrid runbook worker group.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkerGroupCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2102,10 +2025,10 @@ export const HybridRunbookWorkerGroupCreate =
 // Input Schema
 export const HybridRunbookWorkerGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2126,11 +2049,11 @@ export type HybridRunbookWorkerGroupDeleteOutput =
 /**
  * Delete a hybrid runbook worker group.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkerGroupDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2140,10 +2063,10 @@ export const HybridRunbookWorkerGroupDelete =
 // Input Schema
 export const HybridRunbookWorkerGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2167,11 +2090,11 @@ export type HybridRunbookWorkerGroupGetOutput =
 /**
  * Retrieve a hybrid runbook worker group.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkerGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2182,11 +2105,11 @@ export const HybridRunbookWorkerGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const HybridRunbookWorkerGroupListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2199,13 +2122,11 @@ export type HybridRunbookWorkerGroupListByAutomationAccountInput =
 // Output Schema
 export const HybridRunbookWorkerGroupListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2216,11 +2137,11 @@ export type HybridRunbookWorkerGroupListByAutomationAccountOutput =
 /**
  * Retrieve a list of hybrid runbook worker groups.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkerGroupListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2230,10 +2151,10 @@ export const HybridRunbookWorkerGroupListByAutomationAccount =
 // Input Schema
 export const HybridRunbookWorkerGroupUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2257,11 +2178,11 @@ export type HybridRunbookWorkerGroupUpdateOutput =
 /**
  * Update a hybrid runbook worker group.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkerGroupUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2271,11 +2192,11 @@ export const HybridRunbookWorkerGroupUpdate =
 // Input Schema
 export const HybridRunbookWorkersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2299,12 +2220,12 @@ export type HybridRunbookWorkersCreateOutput =
 /**
  * Create a hybrid runbook worker.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2315,11 +2236,11 @@ export const HybridRunbookWorkersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const HybridRunbookWorkersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2340,12 +2261,12 @@ export type HybridRunbookWorkersDeleteOutput =
 /**
  * Delete a hybrid runbook worker.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2356,11 +2277,11 @@ export const HybridRunbookWorkersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const HybridRunbookWorkersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2384,12 +2305,12 @@ export type HybridRunbookWorkersGetOutput =
 /**
  * Retrieve a hybrid runbook worker.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2400,12 +2321,12 @@ export const HybridRunbookWorkersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2418,13 +2339,11 @@ export type HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
 // Output Schema
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -2435,12 +2354,12 @@ export type HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
 /**
  * Retrieve a list of hybrid runbook workers.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2450,11 +2369,11 @@ export const HybridRunbookWorkersListByHybridRunbookWorkerGroup =
 // Input Schema
 export const HybridRunbookWorkersMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2475,12 +2394,12 @@ export type HybridRunbookWorkersMoveOutput =
 /**
  * Move a hybrid worker to a different group.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkersMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2491,11 +2410,11 @@ export const HybridRunbookWorkersMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const HybridRunbookWorkersPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerGroupName: Schema.String.pipe(T.PathParam()),
     hybridRunbookWorkerId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2519,12 +2438,12 @@ export type HybridRunbookWorkersPatchOutput =
 /**
  * Update a hybrid runbook worker.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param hybridRunbookWorkerGroupName - The hybrid runbook worker group name
  * @param hybridRunbookWorkerId - The hybrid runbook worker id
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const HybridRunbookWorkersPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2555,11 +2474,11 @@ export type JobCreateOutput = typeof JobCreateOutput.Type;
 /**
  * Create a job of the runbook.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2589,11 +2508,11 @@ export type JobGetOutput = typeof JobGetOutput.Type;
 /**
  * Retrieve the job identified by job name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2625,11 +2544,11 @@ export type JobGetRunbookContentOutput = typeof JobGetRunbookContentOutput.Type;
 /**
  * Retrieve the runbook content of the job identified by job name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobGetRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2641,11 +2560,11 @@ export const JobGetRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const JobListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2658,7 +2577,7 @@ export type JobListByAutomationAccountInput =
 // Output Schema
 export const JobListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobListByAutomationAccountOutput =
@@ -2668,11 +2587,11 @@ export type JobListByAutomationAccountOutput =
 /**
  * Retrieve a list of jobs.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2683,10 +2602,10 @@ export const JobListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2704,11 +2623,11 @@ export type JobResumeOutput = typeof JobResumeOutput.Type;
 /**
  * Resume the job identified by jobName.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2718,10 +2637,10 @@ export const JobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobScheduleCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     jobScheduleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -2734,41 +2653,18 @@ export type JobScheduleCreateInput = typeof JobScheduleCreateInput.Type;
 
 // Output Schema
 export const JobScheduleCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.optional(
-      Schema.Struct({
-        jobScheduleId: Schema.optional(Schema.String),
-        schedule: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-          }),
-        ),
-        runbook: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-          }),
-        ),
-        runOn: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
-    ),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type JobScheduleCreateOutput = typeof JobScheduleCreateOutput.Type;
 
 // The operation
 /**
  * Create a job schedule.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const JobScheduleCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleCreateInput,
@@ -2777,10 +2673,10 @@ export const JobScheduleCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     jobScheduleId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -2799,11 +2695,11 @@ export type JobScheduleDeleteOutput = typeof JobScheduleDeleteOutput.Type;
 /**
  * Delete the job schedule identified by job schedule name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const JobScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleDeleteInput,
@@ -2811,10 +2707,10 @@ export const JobScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobScheduleId: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2825,39 +2721,20 @@ export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type JobScheduleGetInput = typeof JobScheduleGetInput.Type;
 
 // Output Schema
-export const JobScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  properties: Schema.optional(
-    Schema.Struct({
-      jobScheduleId: Schema.optional(Schema.String),
-      schedule: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-        }),
-      ),
-      runbook: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-        }),
-      ),
-      runOn: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ),
-});
+export const JobScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+);
 export type JobScheduleGetOutput = typeof JobScheduleGetOutput.Type;
 
 // The operation
 /**
  * Retrieve the job schedule identified by job schedule name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobScheduleId - The job schedule name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const JobScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JobScheduleGetInput,
@@ -2866,11 +2743,11 @@ export const JobScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobScheduleListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2883,34 +2760,7 @@ export type JobScheduleListByAutomationAccountInput =
 // Output Schema
 export const JobScheduleListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              jobScheduleId: Schema.optional(Schema.String),
-              schedule: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                }),
-              ),
-              runbook: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                }),
-              ),
-              runOn: Schema.optional(Schema.String),
-              parameters: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        }),
-      ),
-    ),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type JobScheduleListByAutomationAccountOutput =
@@ -2920,11 +2770,11 @@ export type JobScheduleListByAutomationAccountOutput =
 /**
  * Retrieve a list of job schedules.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const JobScheduleListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2933,10 +2783,10 @@ export const JobScheduleListByAutomationAccount =
   }));
 // Input Schema
 export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2954,11 +2804,11 @@ export type JobStopOutput = typeof JobStopOutput.Type;
 /**
  * Stop the job identified by jobName.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3011,12 +2861,12 @@ export type JobStreamGetOutput = typeof JobStreamGetOutput.Type;
 /**
  * Retrieve the job stream identified by job stream id.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
  * @param jobStreamId - The job stream id.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobStreamGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3026,12 +2876,12 @@ export const JobStreamGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const JobStreamListByJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3043,34 +2893,32 @@ export type JobStreamListByJobInput = typeof JobStreamListByJobInput.Type;
 // Output Schema
 export const JobStreamListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              jobStreamId: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-              streamType: Schema.optional(
-                Schema.Literals([
-                  "Progress",
-                  "Output",
-                  "Warning",
-                  "Error",
-                  "Debug",
-                  "Verbose",
-                  "Any",
-                ]),
-              ),
-              streamText: Schema.optional(Schema.String),
-              summary: Schema.optional(Schema.NullOr(Schema.String)),
-              value: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            jobStreamId: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+            streamType: Schema.optional(
+              Schema.Literals([
+                "Progress",
+                "Output",
+                "Warning",
+                "Error",
+                "Debug",
+                "Verbose",
+                "Any",
+              ]),
+            ),
+            streamText: Schema.optional(Schema.String),
+            summary: Schema.optional(Schema.NullOr(Schema.String)),
+            value: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3080,12 +2928,12 @@ export type JobStreamListByJobOutput = typeof JobStreamListByJobOutput.Type;
 /**
  * Retrieve a list of jobs streams identified by job name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobStreamListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3115,11 +2963,11 @@ export type JobSuspendOutput = typeof JobSuspendOutput.Type;
 /**
  * Suspend the job identified by job name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param jobName - The job name.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const JobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3129,9 +2977,9 @@ export const JobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const KeysListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3162,10 +3010,10 @@ export type KeysListByAutomationAccountOutput =
 /**
  * Retrieve the automation keys for an account.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const KeysListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3176,9 +3024,9 @@ export const KeysListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const LinkedWorkspaceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3199,10 +3047,10 @@ export type LinkedWorkspaceGetOutput = typeof LinkedWorkspaceGetOutput.Type;
 /**
  * Retrieve the linked workspace for the account id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const LinkedWorkspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LinkedWorkspaceGetInput,
@@ -3211,10 +3059,10 @@ export const LinkedWorkspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ModuleCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     moduleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3236,11 +3084,11 @@ export type ModuleCreateOrUpdateOutput = typeof ModuleCreateOrUpdateOutput.Type;
 /**
  * Create or Update the module identified by module name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param moduleName - The name of module.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param moduleName - The module name.
  */
 export const ModuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3250,10 +3098,10 @@ export const ModuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3271,11 +3119,11 @@ export type ModuleDeleteOutput = typeof ModuleDeleteOutput.Type;
 /**
  * Delete the module by name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ModuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModuleDeleteInput,
@@ -3283,10 +3131,10 @@ export const ModuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ModuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3307,11 +3155,11 @@ export type ModuleGetOutput = typeof ModuleGetOutput.Type;
 /**
  * Retrieve the module identified by module name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param moduleName - The module name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ModuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModuleGetInput,
@@ -3320,9 +3168,9 @@ export const ModuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ModuleListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3336,13 +3184,11 @@ export type ModuleListByAutomationAccountInput =
 // Output Schema
 export const ModuleListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3353,10 +3199,10 @@ export type ModuleListByAutomationAccountOutput =
 /**
  * Retrieve a list of modules.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ModuleListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3365,10 +3211,10 @@ export const ModuleListByAutomationAccount =
   }));
 // Input Schema
 export const ModuleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   moduleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3389,11 +3235,11 @@ export type ModuleUpdateOutput = typeof ModuleUpdateOutput.Type;
 /**
  * Update the module identified by module name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param moduleName - The name of module.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param moduleName - The module name.
  */
 export const ModuleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModuleUpdateInput,
@@ -3402,9 +3248,12 @@ export const ModuleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NodeCountInformationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
+    countType: Schema.Literals(["status", "nodeconfiguration"]).pipe(
+      T.PathParam(),
+    ),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3439,10 +3288,11 @@ export type NodeCountInformationGetOutput =
 /**
  * Retrieve counts for Dsc Nodes.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param countType - The type of counts to retrieve
  */
 export const NodeCountInformationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3452,11 +3302,11 @@ export const NodeCountInformationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const NodeReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   nodeId: Schema.String.pipe(T.PathParam()),
   reportId: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3536,12 +3386,12 @@ export type NodeReportsGetOutput = typeof NodeReportsGetOutput.Type;
 /**
  * Retrieve the Dsc node report data by node id and report id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param nodeId - The Dsc node id.
+ * @param nodeId - The node id.
  * @param reportId - The report id.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const NodeReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NodeReportsGetInput,
@@ -3550,11 +3400,11 @@ export const NodeReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NodeReportsGetContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeId: Schema.String.pipe(T.PathParam()),
     reportId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3566,7 +3416,7 @@ export type NodeReportsGetContentInput = typeof NodeReportsGetContentInput.Type;
 
 // Output Schema
 export const NodeReportsGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type NodeReportsGetContentOutput =
   typeof NodeReportsGetContentOutput.Type;
 
@@ -3574,12 +3424,12 @@ export type NodeReportsGetContentOutput =
 /**
  * Retrieve the Dsc node reports by node id and report id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param nodeId - The Dsc node id.
+ * @param nodeId - The node id.
  * @param reportId - The report id.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const NodeReportsGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3590,12 +3440,12 @@ export const NodeReportsGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const NodeReportsListByNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     nodeId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3607,72 +3457,70 @@ export type NodeReportsListByNodeInput = typeof NodeReportsListByNodeInput.Type;
 // Output Schema
 export const NodeReportsListByNodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          endTime: Schema.optional(Schema.NullOr(Schema.String)),
-          lastModifiedTime: Schema.optional(Schema.String),
-          startTime: Schema.optional(Schema.NullOr(Schema.String)),
-          type: Schema.optional(Schema.String),
-          reportId: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          refreshMode: Schema.optional(Schema.String),
-          rebootRequested: Schema.optional(Schema.String),
-          reportFormatVersion: Schema.optional(Schema.String),
-          configurationVersion: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          errors: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                errorSource: Schema.optional(Schema.String),
-                resourceId: Schema.optional(Schema.String),
-                errorCode: Schema.optional(Schema.String),
-                errorMessage: Schema.optional(Schema.String),
-                locale: Schema.optional(Schema.String),
-                errorDetails: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          resources: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                resourceId: Schema.optional(Schema.String),
-                sourceInfo: Schema.optional(Schema.String),
-                dependsOn: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      resourceId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                moduleName: Schema.optional(Schema.String),
-                moduleVersion: Schema.optional(Schema.String),
-                resourceName: Schema.optional(Schema.String),
-                error: Schema.optional(Schema.String),
-                status: Schema.optional(Schema.String),
-                durationInSeconds: Schema.optional(Schema.Number),
-                startDate: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          metaConfiguration: Schema.optional(
+    value: Schema.Array(
+      Schema.Struct({
+        endTime: Schema.optional(Schema.NullOr(Schema.String)),
+        lastModifiedTime: Schema.optional(Schema.String),
+        startTime: Schema.optional(Schema.NullOr(Schema.String)),
+        type: Schema.optional(Schema.String),
+        reportId: Schema.optional(Schema.String),
+        status: Schema.optional(Schema.String),
+        refreshMode: Schema.optional(Schema.String),
+        rebootRequested: Schema.optional(Schema.String),
+        reportFormatVersion: Schema.optional(Schema.String),
+        configurationVersion: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        errors: Schema.optional(
+          Schema.Array(
             Schema.Struct({
-              configurationModeFrequencyMins: Schema.optional(Schema.Number),
-              rebootNodeIfNeeded: Schema.optional(Schema.Boolean),
-              configurationMode: Schema.optional(Schema.String),
-              actionAfterReboot: Schema.optional(Schema.String),
-              certificateId: Schema.optional(Schema.String),
-              refreshFrequencyMins: Schema.optional(Schema.Number),
-              allowModuleOverwrite: Schema.optional(Schema.Boolean),
+              errorSource: Schema.optional(Schema.String),
+              resourceId: Schema.optional(Schema.String),
+              errorCode: Schema.optional(Schema.String),
+              errorMessage: Schema.optional(Schema.String),
+              locale: Schema.optional(Schema.String),
+              errorDetails: Schema.optional(Schema.String),
             }),
           ),
-          hostName: Schema.optional(Schema.String),
-          iPV4Addresses: Schema.optional(Schema.Array(Schema.String)),
-          iPV6Addresses: Schema.optional(Schema.Array(Schema.String)),
-          numberOfResources: Schema.optional(Schema.Number),
-          rawErrors: Schema.optional(Schema.String),
-        }),
-      ),
+        ),
+        resources: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              resourceId: Schema.optional(Schema.String),
+              sourceInfo: Schema.optional(Schema.String),
+              dependsOn: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    resourceId: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              moduleName: Schema.optional(Schema.String),
+              moduleVersion: Schema.optional(Schema.String),
+              resourceName: Schema.optional(Schema.String),
+              error: Schema.optional(Schema.String),
+              status: Schema.optional(Schema.String),
+              durationInSeconds: Schema.optional(Schema.Number),
+              startDate: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        metaConfiguration: Schema.optional(
+          Schema.Struct({
+            configurationModeFrequencyMins: Schema.optional(Schema.Number),
+            rebootNodeIfNeeded: Schema.optional(Schema.Boolean),
+            configurationMode: Schema.optional(Schema.String),
+            actionAfterReboot: Schema.optional(Schema.String),
+            certificateId: Schema.optional(Schema.String),
+            refreshFrequencyMins: Schema.optional(Schema.Number),
+            allowModuleOverwrite: Schema.optional(Schema.Boolean),
+          }),
+        ),
+        hostName: Schema.optional(Schema.String),
+        iPV4Addresses: Schema.optional(Schema.Array(Schema.String)),
+        iPV6Addresses: Schema.optional(Schema.Array(Schema.String)),
+        numberOfResources: Schema.optional(Schema.Number),
+        rawErrors: Schema.optional(Schema.String),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3683,12 +3531,12 @@ export type NodeReportsListByNodeOutput =
 /**
  * Retrieve the Dsc node report list by node id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param nodeId - The parameters supplied to the list operation.
+ * @param nodeId - The node id.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const NodeReportsListByNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3699,11 +3547,11 @@ export const NodeReportsListByNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ObjectDataTypesListFieldsByModuleAndTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     moduleName: Schema.String.pipe(T.PathParam()),
     typeName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3725,6 +3573,7 @@ export const ObjectDataTypesListFieldsByModuleAndTypeOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ObjectDataTypesListFieldsByModuleAndTypeOutput =
   typeof ObjectDataTypesListFieldsByModuleAndTypeOutput.Type;
@@ -3733,12 +3582,12 @@ export type ObjectDataTypesListFieldsByModuleAndTypeOutput =
 /**
  * Retrieve a list of fields of a given type identified by module name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param moduleName - The name of module.
+ * @param moduleName - The module name.
  * @param typeName - The name of type.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ObjectDataTypesListFieldsByModuleAndType =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3748,10 +3597,10 @@ export const ObjectDataTypesListFieldsByModuleAndType =
 // Input Schema
 export const ObjectDataTypesListFieldsByTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     typeName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3773,6 +3622,7 @@ export const ObjectDataTypesListFieldsByTypeOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type ObjectDataTypesListFieldsByTypeOutput =
   typeof ObjectDataTypesListFieldsByTypeOutput.Type;
@@ -3781,11 +3631,11 @@ export type ObjectDataTypesListFieldsByTypeOutput =
 /**
  * Retrieve a list of fields of a given type across all accessible modules.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param typeName - The name of type.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ObjectDataTypesListFieldsByType =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3802,58 +3652,57 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        display: Schema.optional(
-          Schema.Struct({
-            provider: Schema.optional(Schema.String),
-            resource: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-        origin: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Struct({
-            serviceSpecification: Schema.optional(
-              Schema.Struct({
-                metricSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      displayDescription: Schema.optional(Schema.String),
-                      unit: Schema.optional(Schema.String),
-                      aggregationType: Schema.optional(Schema.String),
-                      dimensions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            name: Schema.optional(Schema.String),
-                            displayName: Schema.optional(Schema.String),
-                          }),
-                        ),
+  value: Schema.Array(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      display: Schema.optional(
+        Schema.Struct({
+          provider: Schema.optional(Schema.String),
+          resource: Schema.optional(Schema.String),
+          operation: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
+      origin: Schema.optional(Schema.String),
+      properties: Schema.optional(
+        Schema.Struct({
+          serviceSpecification: Schema.optional(
+            Schema.Struct({
+              metricSpecifications: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    displayName: Schema.optional(Schema.String),
+                    displayDescription: Schema.optional(Schema.String),
+                    unit: Schema.optional(Schema.String),
+                    aggregationType: Schema.optional(Schema.String),
+                    dimensions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                          displayName: Schema.optional(Schema.String),
+                        }),
                       ),
-                    }),
-                  ),
+                    ),
+                  }),
                 ),
-                logSpecifications: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      displayName: Schema.optional(Schema.String),
-                      blobDuration: Schema.optional(Schema.String),
-                    }),
-                  ),
+              ),
+              logSpecifications: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    displayName: Schema.optional(Schema.String),
+                    blobDuration: Schema.optional(Schema.String),
+                  }),
                 ),
-              }),
-            ),
-          }),
-        ),
-      }),
-    ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    }),
   ),
+  nextLink: Schema.optional(Schema.String),
 });
 export type OperationsListOutput = typeof OperationsListOutput.Type;
 
@@ -3861,7 +3710,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 /**
  * Lists all of the available Automation REST API operations.
  *
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
@@ -3870,11 +3719,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3897,12 +3746,12 @@ export type PackageCreateOrUpdateOutput =
 /**
  * Create or update the package identified by package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
- * @param packageName - The name of Package.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param packageName - The Package name.
  */
 export const PackageCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3912,11 +3761,11 @@ export const PackageCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
   packageName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3934,12 +3783,12 @@ export type PackageDeleteOutput = typeof PackageDeleteOutput.Type;
 /**
  * Delete the package by name.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PackageDeleteInput,
@@ -3947,11 +3796,11 @@ export const PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
   packageName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3972,12 +3821,12 @@ export type PackageGetOutput = typeof PackageGetOutput.Type;
 /**
  * Retrieve the Package identified by Package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
  * @param packageName - The Package name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PackageGetInput,
@@ -3986,10 +3835,10 @@ export const PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const PackageListByRuntimeEnvironmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4003,13 +3852,11 @@ export type PackageListByRuntimeEnvironmentInput =
 // Output Schema
 export const PackageListByRuntimeEnvironmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4020,11 +3867,11 @@ export type PackageListByRuntimeEnvironmentOutput =
 /**
  * Retrieve the a list of Packages
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const PackageListByRuntimeEnvironment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4033,11 +3880,11 @@ export const PackageListByRuntimeEnvironment =
   }));
 // Input Schema
 export const PackageUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
   packageName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -4058,12 +3905,12 @@ export type PackageUpdateOutput = typeof PackageUpdateOutput.Type;
 /**
  * Update the Package identified by Package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
- * @param packageName - The name of Package.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param packageName - The Package name.
  */
 export const PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PackageUpdateInput,
@@ -4075,24 +3922,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
-    properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        groupIds: Schema.optional(Schema.Array(Schema.String)),
-        privateLinkServiceConnectionState: Schema.optional(
-          Schema.Struct({
-            status: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            actionsRequired: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4112,11 +3943,11 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Approve or reject a private endpoint connection with a given name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param properties - Resource properties.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4129,6 +3960,7 @@ export const PrivateEndpointConnectionsDeleteInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4149,10 +3981,11 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes a private endpoint connection with a given name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4165,6 +3998,7 @@ export const PrivateEndpointConnectionsGetInput =
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4185,10 +4019,11 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets a private endpoint connection.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4215,6 +4050,7 @@ export type PrivateEndpointConnectionsListByAutomationAccountInput =
 export const PrivateEndpointConnectionsListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListByAutomationAccountOutput =
   typeof PrivateEndpointConnectionsListByAutomationAccountOutput.Type;
@@ -4223,9 +4059,9 @@ export type PrivateEndpointConnectionsListByAutomationAccountOutput =
 /**
  * List all private endpoint connections on a Automation account.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
 export const PrivateEndpointConnectionsListByAutomationAccount =
@@ -4253,6 +4089,7 @@ export type PrivateLinkResourcesAutomationInput =
 export const PrivateLinkResourcesAutomationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesAutomationOutput =
   typeof PrivateLinkResourcesAutomationOutput.Type;
@@ -4261,9 +4098,9 @@ export type PrivateLinkResourcesAutomationOutput =
 /**
  * Gets the private link resources that need to be created for Automation account.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
- * @param api-version - Client Api Version.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  */
 export const PrivateLinkResourcesAutomation =
@@ -4274,10 +4111,10 @@ export const PrivateLinkResourcesAutomation =
 // Input Schema
 export const Python2PackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4301,11 +4138,11 @@ export type Python2PackageCreateOrUpdateOutput =
 /**
  * Create or Update the python 2 package identified by package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param packageName - The name of python package.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param packageName - The python package name.
  */
 export const Python2PackageCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4315,10 +4152,10 @@ export const Python2PackageCreateOrUpdate =
 // Input Schema
 export const Python2PackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4337,11 +4174,11 @@ export type Python2PackageDeleteOutput = typeof Python2PackageDeleteOutput.Type;
 /**
  * Delete the python 2 package by name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const Python2PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4352,10 +4189,10 @@ export const Python2PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const Python2PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -4378,11 +4215,11 @@ export type Python2PackageGetOutput = typeof Python2PackageGetOutput.Type;
 /**
  * Retrieve the python 2 package identified by package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const Python2PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: Python2PackageGetInput,
@@ -4391,9 +4228,9 @@ export const Python2PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const Python2PackageListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4407,13 +4244,11 @@ export type Python2PackageListByAutomationAccountInput =
 // Output Schema
 export const Python2PackageListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4424,10 +4259,10 @@ export type Python2PackageListByAutomationAccountOutput =
 /**
  * Retrieve a list of python 2 packages.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const Python2PackageListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4437,10 +4272,10 @@ export const Python2PackageListByAutomationAccount =
 // Input Schema
 export const Python2PackageUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4462,11 +4297,11 @@ export type Python2PackageUpdateOutput = typeof Python2PackageUpdateOutput.Type;
 /**
  * Update the python 2 package identified by package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param packageName - The name of python package.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param packageName - The python package name.
  */
 export const Python2PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4477,10 +4312,10 @@ export const Python2PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const Python3PackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4504,11 +4339,11 @@ export type Python3PackageCreateOrUpdateOutput =
 /**
  * Create or Update the python 3 package identified by package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param packageName - The name of python package.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param packageName - The python package name.
  */
 export const Python3PackageCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4518,10 +4353,10 @@ export const Python3PackageCreateOrUpdate =
 // Input Schema
 export const Python3PackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4540,11 +4375,11 @@ export type Python3PackageDeleteOutput = typeof Python3PackageDeleteOutput.Type;
 /**
  * Delete the python 3 package by name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const Python3PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4555,10 +4390,10 @@ export const Python3PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const Python3PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -4581,11 +4416,11 @@ export type Python3PackageGetOutput = typeof Python3PackageGetOutput.Type;
 /**
  * Retrieve the python 3 package identified by package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param packageName - The python package name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const Python3PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: Python3PackageGetInput,
@@ -4594,9 +4429,9 @@ export const Python3PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const Python3PackageListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4610,13 +4445,11 @@ export type Python3PackageListByAutomationAccountInput =
 // Output Schema
 export const Python3PackageListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4627,10 +4460,10 @@ export type Python3PackageListByAutomationAccountOutput =
 /**
  * Retrieve a list of python 3 packages.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const Python3PackageListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4640,10 +4473,10 @@ export const Python3PackageListByAutomationAccount =
 // Input Schema
 export const Python3PackageUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     packageName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -4665,11 +4498,11 @@ export type Python3PackageUpdateOutput = typeof Python3PackageUpdateOutput.Type;
 /**
  * Update the python 3 package identified by package name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param packageName - The name of python package.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param packageName - The python package name.
  */
 export const Python3PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4706,11 +4539,11 @@ export type RunbookCreateOrUpdateOutput =
 /**
  * Create the runbook identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4741,11 +4574,11 @@ export type RunbookDeleteOutput = typeof RunbookDeleteOutput.Type;
 /**
  * Delete the runbook by name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RunbookDeleteInput,
@@ -4802,11 +4635,11 @@ export type RunbookDraftGetOutput = typeof RunbookDraftGetOutput.Type;
 /**
  * Retrieve the runbook draft identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookDraftGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RunbookDraftGetInput,
@@ -4831,7 +4664,7 @@ export type RunbookDraftGetContentInput =
 
 // Output Schema
 export const RunbookDraftGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type RunbookDraftGetContentOutput =
   typeof RunbookDraftGetContentOutput.Type;
 
@@ -4839,11 +4672,11 @@ export type RunbookDraftGetContentOutput =
 /**
  * Retrieve the content of runbook draft identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookDraftGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4870,7 +4703,7 @@ export type RunbookDraftReplaceContentInput =
 
 // Output Schema
 export const RunbookDraftReplaceContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type RunbookDraftReplaceContentOutput =
   typeof RunbookDraftReplaceContentOutput.Type;
 
@@ -4878,11 +4711,11 @@ export type RunbookDraftReplaceContentOutput =
 /**
  * Replaces the runbook draft content.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookDraftReplaceContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4968,11 +4801,11 @@ export type RunbookDraftUndoEditOutput = typeof RunbookDraftUndoEditOutput.Type;
 /**
  * Undo draft edit to last known published state identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookDraftUndoEdit = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5006,11 +4839,11 @@ export type RunbookGetOutput = typeof RunbookGetOutput.Type;
 /**
  * Retrieve the runbook identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RunbookGetInput,
@@ -5035,18 +4868,18 @@ export type RunbookGetContentInput = typeof RunbookGetContentInput.Type;
 
 // Output Schema
 export const RunbookGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type RunbookGetContentOutput = typeof RunbookGetContentOutput.Type;
 
 // The operation
 /**
  * Retrieve the content of runbook identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RunbookGetContentInput,
@@ -5071,13 +4904,11 @@ export type RunbookListByAutomationAccountInput =
 // Output Schema
 export const RunbookListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5088,10 +4919,10 @@ export type RunbookListByAutomationAccountOutput =
 /**
  * Retrieve a list of runbooks.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param api-version - Client Api Version.
  */
 export const RunbookListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5121,11 +4952,11 @@ export type RunbookPublishOutput = typeof RunbookPublishOutput.Type;
 /**
  * Publish runbook draft.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param runbookName - The parameters supplied to the publish runbook operation.
- * @param api-version - Client Api Version.
+ * @param runbookName - The runbook name.
  */
 export const RunbookPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RunbookPublishInput,
@@ -5157,11 +4988,11 @@ export type RunbookUpdateOutput = typeof RunbookUpdateOutput.Type;
 /**
  * Update the runbook identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const RunbookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RunbookUpdateInput,
@@ -5170,10 +5001,10 @@ export const RunbookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RuntimeEnvironmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5197,11 +5028,11 @@ export type RuntimeEnvironmentsCreateOutput =
 /**
  * Create or update Runtime Environment
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const RuntimeEnvironmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5212,10 +5043,10 @@ export const RuntimeEnvironmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RuntimeEnvironmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5236,11 +5067,11 @@ export type RuntimeEnvironmentsDeleteOutput =
 /**
  * Delete the Runtime Environment.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const RuntimeEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5251,10 +5082,10 @@ export const RuntimeEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RuntimeEnvironmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5278,11 +5109,11 @@ export type RuntimeEnvironmentsGetOutput =
 /**
  * Get information about the Runtime Environment
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const RuntimeEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5309,13 +5140,11 @@ export type RuntimeEnvironmentsListByAutomationAccountInput =
 // Output Schema
 export const RuntimeEnvironmentsListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5326,10 +5155,10 @@ export type RuntimeEnvironmentsListByAutomationAccountOutput =
 /**
  * Retrieve a list of RuntimeEnvironments.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param api-version - Client Api Version.
  */
 export const RuntimeEnvironmentsListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5339,10 +5168,10 @@ export const RuntimeEnvironmentsListByAutomationAccount =
 // Input Schema
 export const RuntimeEnvironmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runtimeEnvironmentName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5366,11 +5195,11 @@ export type RuntimeEnvironmentsUpdateOutput =
 /**
  * Update an Runtime Environment.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runtimeEnvironmentName - The name of the Runtime Environment.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const RuntimeEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5381,10 +5210,10 @@ export const RuntimeEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ScheduleCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     scheduleName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5405,11 +5234,11 @@ export type ScheduleCreateOrUpdateOutput =
 /**
  * Create a schedule.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ScheduleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5419,10 +5248,10 @@ export const ScheduleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   scheduleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -5440,11 +5269,11 @@ export type ScheduleDeleteOutput = typeof ScheduleDeleteOutput.Type;
 /**
  * Delete the schedule identified by schedule name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScheduleDeleteInput,
@@ -5452,10 +5281,10 @@ export const ScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   scheduleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -5473,11 +5302,11 @@ export type ScheduleGetOutput = typeof ScheduleGetOutput.Type;
 /**
  * Retrieve the schedule identified by schedule name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScheduleGetInput,
@@ -5486,9 +5315,9 @@ export const ScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ScheduleListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -5502,7 +5331,7 @@ export type ScheduleListByAutomationAccountInput =
 // Output Schema
 export const ScheduleListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type ScheduleListByAutomationAccountOutput =
@@ -5512,10 +5341,10 @@ export type ScheduleListByAutomationAccountOutput =
 /**
  * Retrieve a list of schedules.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ScheduleListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5524,10 +5353,10 @@ export const ScheduleListByAutomationAccount =
   }));
 // Input Schema
 export const ScheduleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   scheduleName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -5547,11 +5376,11 @@ export type ScheduleUpdateOutput = typeof ScheduleUpdateOutput.Type;
 /**
  * Update the schedule identified by schedule name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param scheduleName - The schedule name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const ScheduleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScheduleUpdateInput,
@@ -5620,11 +5449,11 @@ export type SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
 /**
  * Get a single software update configuration machine run by Id.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param softwareUpdateConfigurationMachineRunId - The Id of the software update configuration machine run.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationMachineRunsGetById =
@@ -5654,46 +5483,44 @@ export type SoftwareUpdateConfigurationMachineRunsListInput =
 // Output Schema
 export const SoftwareUpdateConfigurationMachineRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              targetComputer: Schema.optional(Schema.String),
-              targetComputerType: Schema.optional(Schema.String),
-              softwareUpdateConfiguration: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                }),
-              ),
-              status: Schema.optional(Schema.String),
-              osType: Schema.optional(Schema.String),
-              correlationId: Schema.optional(Schema.String),
-              sourceComputerId: Schema.optional(Schema.String),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.NullOr(Schema.String)),
-              configuredDuration: Schema.optional(Schema.String),
-              job: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              creationTime: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              lastModifiedTime: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              error: Schema.optional(
-                Schema.Struct({
-                  code: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            targetComputer: Schema.optional(Schema.String),
+            targetComputerType: Schema.optional(Schema.String),
+            softwareUpdateConfiguration: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+              }),
+            ),
+            status: Schema.optional(Schema.String),
+            osType: Schema.optional(Schema.String),
+            correlationId: Schema.optional(Schema.String),
+            sourceComputerId: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.NullOr(Schema.String)),
+            configuredDuration: Schema.optional(Schema.String),
+            job: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            creationTime: Schema.optional(Schema.String),
+            createdBy: Schema.optional(Schema.String),
+            lastModifiedTime: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            error: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5704,10 +5531,10 @@ export type SoftwareUpdateConfigurationMachineRunsListOutput =
 /**
  * Return list of software update configuration machine runs
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  * @param $filter - The filter to apply on the operation. You can use the following filters: 'properties/osType', 'properties/status', 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
  * @param $skip - number of entries you skip before returning results
@@ -5786,11 +5613,11 @@ export type SoftwareUpdateConfigurationRunsGetByIdOutput =
 /**
  * Get a single software update configuration Run by Id.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param softwareUpdateConfigurationRunId - The Id of the software update configuration run.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationRunsGetById =
@@ -5820,51 +5647,49 @@ export type SoftwareUpdateConfigurationRunsListInput =
 // Output Schema
 export const SoftwareUpdateConfigurationRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              softwareUpdateConfiguration: Schema.optional(
-                Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                }),
-              ),
-              status: Schema.optional(Schema.String),
-              configuredDuration: Schema.optional(Schema.String),
-              osType: Schema.optional(Schema.String),
-              startTime: Schema.optional(Schema.String),
-              endTime: Schema.optional(Schema.NullOr(Schema.String)),
-              computerCount: Schema.optional(Schema.Number),
-              failedCount: Schema.optional(Schema.Number),
-              creationTime: Schema.optional(Schema.String),
-              createdBy: Schema.optional(Schema.String),
-              lastModifiedTime: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              tasks: Schema.optional(
-                Schema.Struct({
-                  preTask: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.optional(Schema.String),
-                      source: Schema.optional(Schema.String),
-                      jobId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  postTask: Schema.optional(
-                    Schema.Struct({
-                      status: Schema.optional(Schema.String),
-                      source: Schema.optional(Schema.String),
-                      jobId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            softwareUpdateConfiguration: Schema.optional(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+              }),
+            ),
+            status: Schema.optional(Schema.String),
+            configuredDuration: Schema.optional(Schema.String),
+            osType: Schema.optional(Schema.String),
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.NullOr(Schema.String)),
+            computerCount: Schema.optional(Schema.Number),
+            failedCount: Schema.optional(Schema.Number),
+            creationTime: Schema.optional(Schema.String),
+            createdBy: Schema.optional(Schema.String),
+            lastModifiedTime: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            tasks: Schema.optional(
+              Schema.Struct({
+                preTask: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(Schema.String),
+                    source: Schema.optional(Schema.String),
+                    jobId: Schema.optional(Schema.String),
+                  }),
+                ),
+                postTask: Schema.optional(
+                  Schema.Struct({
+                    status: Schema.optional(Schema.String),
+                    source: Schema.optional(Schema.String),
+                    jobId: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5875,10 +5700,10 @@ export type SoftwareUpdateConfigurationRunsListOutput =
 /**
  * Return list of software update configuration runs
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  * @param $filter - The filter to apply on the operation. You can use the following filters: 'properties/osType', 'properties/status', 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
  * @param $skip - Number of entries you skip before returning results
@@ -5908,170 +5733,7 @@ export type SoftwareUpdateConfigurationsCreateInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      updateConfiguration: Schema.Struct({
-        operatingSystem: Schema.Literals(["Windows", "Linux"]),
-        windows: Schema.optional(
-          Schema.Struct({
-            includedUpdateClassifications: Schema.optional(
-              Schema.Literals([
-                "Unclassified",
-                "Critical",
-                "Security",
-                "UpdateRollup",
-                "FeaturePack",
-                "ServicePack",
-                "Definition",
-                "Tools",
-                "Updates",
-              ]),
-            ),
-            excludedKbNumbers: Schema.optional(Schema.Array(Schema.String)),
-            includedKbNumbers: Schema.optional(Schema.Array(Schema.String)),
-            rebootSetting: Schema.optional(Schema.String),
-          }),
-        ),
-        linux: Schema.optional(
-          Schema.Struct({
-            includedPackageClassifications: Schema.optional(
-              Schema.Literals([
-                "Unclassified",
-                "Critical",
-                "Security",
-                "Other",
-              ]),
-            ),
-            excludedPackageNameMasks: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            includedPackageNameMasks: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            rebootSetting: Schema.optional(Schema.String),
-          }),
-        ),
-        duration: Schema.optional(Schema.String),
-        azureVirtualMachines: Schema.optional(Schema.Array(Schema.String)),
-        nonAzureComputerNames: Schema.optional(Schema.Array(Schema.String)),
-        targets: Schema.optional(
-          Schema.Struct({
-            azureQueries: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  scope: Schema.optional(Schema.Array(Schema.String)),
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  tagSettings: Schema.optional(
-                    Schema.Struct({
-                      tags: Schema.optional(
-                        Schema.Record(
-                          Schema.String,
-                          Schema.Array(Schema.String),
-                        ),
-                      ),
-                      filterOperator: Schema.optional(
-                        Schema.Literals(["All", "Any"]),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            nonAzureQueries: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  functionAlias: Schema.optional(Schema.String),
-                  workspaceId: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-      scheduleInfo: Schema.Struct({
-        startTime: Schema.optional(Schema.String),
-        startTimeOffsetMinutes: Schema.optional(Schema.Number),
-        expiryTime: Schema.optional(Schema.NullOr(Schema.String)),
-        expiryTimeOffsetMinutes: Schema.optional(Schema.Number),
-        isEnabled: Schema.optional(Schema.Boolean),
-        nextRun: Schema.optional(Schema.NullOr(Schema.String)),
-        nextRunOffsetMinutes: Schema.optional(Schema.Number),
-        interval: Schema.optional(Schema.Number),
-        frequency: Schema.optional(
-          Schema.Literals([
-            "OneTime",
-            "Day",
-            "Hour",
-            "Week",
-            "Month",
-            "Minute",
-          ]),
-        ),
-        timeZone: Schema.optional(Schema.String),
-        advancedSchedule: Schema.optional(
-          Schema.Struct({
-            weekDays: Schema.optional(Schema.Array(Schema.String)),
-            monthDays: Schema.optional(Schema.Array(Schema.Number)),
-            monthlyOccurrences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  occurrence: Schema.optional(Schema.Number),
-                  day: Schema.optional(
-                    Schema.Literals([
-                      "Monday",
-                      "Tuesday",
-                      "Wednesday",
-                      "Thursday",
-                      "Friday",
-                      "Saturday",
-                      "Sunday",
-                    ]),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        creationTime: Schema.optional(Schema.String),
-        lastModifiedTime: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
-      provisioningState: Schema.optional(Schema.String),
-      error: Schema.optional(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-        }),
-      ),
-      creationTime: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      lastModifiedTime: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      tasks: Schema.optional(
-        Schema.Struct({
-          preTask: Schema.optional(
-            Schema.Struct({
-              parameters: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              source: Schema.optional(Schema.String),
-            }),
-          ),
-          postTask: Schema.optional(
-            Schema.Struct({
-              parameters: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              source: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    }),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type SoftwareUpdateConfigurationsCreateOutput =
   typeof SoftwareUpdateConfigurationsCreateOutput.Type;
 
@@ -6079,11 +5741,11 @@ export type SoftwareUpdateConfigurationsCreateOutput =
 /**
  * Create a new software update configuration with the name given in the URI.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param softwareUpdateConfigurationName - The name of the software update configuration to be created.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationsCreate =
@@ -6118,11 +5780,11 @@ export type SoftwareUpdateConfigurationsDeleteOutput =
 /**
  * delete a specific software update configuration.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param softwareUpdateConfigurationName - The name of the software update configuration to be created.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationsDelete =
@@ -6149,170 +5811,7 @@ export type SoftwareUpdateConfigurationsGetByNameInput =
 
 // Output Schema
 export const SoftwareUpdateConfigurationsGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      updateConfiguration: Schema.Struct({
-        operatingSystem: Schema.Literals(["Windows", "Linux"]),
-        windows: Schema.optional(
-          Schema.Struct({
-            includedUpdateClassifications: Schema.optional(
-              Schema.Literals([
-                "Unclassified",
-                "Critical",
-                "Security",
-                "UpdateRollup",
-                "FeaturePack",
-                "ServicePack",
-                "Definition",
-                "Tools",
-                "Updates",
-              ]),
-            ),
-            excludedKbNumbers: Schema.optional(Schema.Array(Schema.String)),
-            includedKbNumbers: Schema.optional(Schema.Array(Schema.String)),
-            rebootSetting: Schema.optional(Schema.String),
-          }),
-        ),
-        linux: Schema.optional(
-          Schema.Struct({
-            includedPackageClassifications: Schema.optional(
-              Schema.Literals([
-                "Unclassified",
-                "Critical",
-                "Security",
-                "Other",
-              ]),
-            ),
-            excludedPackageNameMasks: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            includedPackageNameMasks: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            rebootSetting: Schema.optional(Schema.String),
-          }),
-        ),
-        duration: Schema.optional(Schema.String),
-        azureVirtualMachines: Schema.optional(Schema.Array(Schema.String)),
-        nonAzureComputerNames: Schema.optional(Schema.Array(Schema.String)),
-        targets: Schema.optional(
-          Schema.Struct({
-            azureQueries: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  scope: Schema.optional(Schema.Array(Schema.String)),
-                  locations: Schema.optional(Schema.Array(Schema.String)),
-                  tagSettings: Schema.optional(
-                    Schema.Struct({
-                      tags: Schema.optional(
-                        Schema.Record(
-                          Schema.String,
-                          Schema.Array(Schema.String),
-                        ),
-                      ),
-                      filterOperator: Schema.optional(
-                        Schema.Literals(["All", "Any"]),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            nonAzureQueries: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  functionAlias: Schema.optional(Schema.String),
-                  workspaceId: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-      scheduleInfo: Schema.Struct({
-        startTime: Schema.optional(Schema.String),
-        startTimeOffsetMinutes: Schema.optional(Schema.Number),
-        expiryTime: Schema.optional(Schema.NullOr(Schema.String)),
-        expiryTimeOffsetMinutes: Schema.optional(Schema.Number),
-        isEnabled: Schema.optional(Schema.Boolean),
-        nextRun: Schema.optional(Schema.NullOr(Schema.String)),
-        nextRunOffsetMinutes: Schema.optional(Schema.Number),
-        interval: Schema.optional(Schema.Number),
-        frequency: Schema.optional(
-          Schema.Literals([
-            "OneTime",
-            "Day",
-            "Hour",
-            "Week",
-            "Month",
-            "Minute",
-          ]),
-        ),
-        timeZone: Schema.optional(Schema.String),
-        advancedSchedule: Schema.optional(
-          Schema.Struct({
-            weekDays: Schema.optional(Schema.Array(Schema.String)),
-            monthDays: Schema.optional(Schema.Array(Schema.Number)),
-            monthlyOccurrences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  occurrence: Schema.optional(Schema.Number),
-                  day: Schema.optional(
-                    Schema.Literals([
-                      "Monday",
-                      "Tuesday",
-                      "Wednesday",
-                      "Thursday",
-                      "Friday",
-                      "Saturday",
-                      "Sunday",
-                    ]),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        creationTime: Schema.optional(Schema.String),
-        lastModifiedTime: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-      }),
-      provisioningState: Schema.optional(Schema.String),
-      error: Schema.optional(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-        }),
-      ),
-      creationTime: Schema.optional(Schema.String),
-      createdBy: Schema.optional(Schema.String),
-      lastModifiedTime: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      tasks: Schema.optional(
-        Schema.Struct({
-          preTask: Schema.optional(
-            Schema.Struct({
-              parameters: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              source: Schema.optional(Schema.String),
-            }),
-          ),
-          postTask: Schema.optional(
-            Schema.Struct({
-              parameters: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              source: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-    }),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type SoftwareUpdateConfigurationsGetByNameOutput =
   typeof SoftwareUpdateConfigurationsGetByNameOutput.Type;
 
@@ -6320,11 +5819,11 @@ export type SoftwareUpdateConfigurationsGetByNameOutput =
 /**
  * Get a single software update configuration by name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param softwareUpdateConfigurationName - The name of the software update configuration to be created.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  */
 export const SoftwareUpdateConfigurationsGetByName =
@@ -6495,10 +5994,10 @@ export type SoftwareUpdateConfigurationsListOutput =
 /**
  * Get all software update configurations for the account.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param api-version - Client Api Version.
  * @param clientRequestId - Identifies this specific client request.
  * @param $filter - The filter to apply on the operation.
  */
@@ -6510,10 +6009,10 @@ export const SoftwareUpdateConfigurationsList =
 // Input Schema
 export const SourceControlCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6534,11 +6033,11 @@ export type SourceControlCreateOrUpdateOutput =
 /**
  * Create a source control.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param sourceControlName - The source control name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param sourceControlName - The name of source control.
  */
 export const SourceControlCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6549,10 +6048,10 @@ export const SourceControlCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SourceControlDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6571,11 +6070,11 @@ export type SourceControlDeleteOutput = typeof SourceControlDeleteOutput.Type;
 /**
  * Delete the source control.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SourceControlDeleteInput,
@@ -6583,10 +6082,10 @@ export const SourceControlDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const SourceControlGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   sourceControlName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -6606,11 +6105,11 @@ export type SourceControlGetOutput = typeof SourceControlGetOutput.Type;
 /**
  * Retrieve the source control identified by source control name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param sourceControlName - The name of source control.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SourceControlGetInput,
@@ -6619,11 +6118,11 @@ export const SourceControlGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const SourceControlListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6636,7 +6135,7 @@ export type SourceControlListByAutomationAccountInput =
 // Output Schema
 export const SourceControlListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type SourceControlListByAutomationAccountOutput =
@@ -6646,11 +6145,11 @@ export type SourceControlListByAutomationAccountOutput =
 /**
  * Retrieve a list of source controls.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6660,11 +6159,11 @@ export const SourceControlListByAutomationAccount =
 // Input Schema
 export const SourceControlSyncJobCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6701,12 +6200,12 @@ export type SourceControlSyncJobCreateOutput =
 /**
  * Creates the sync job for a source control.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param sourceControlName - The source control name.
+ * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlSyncJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6717,11 +6216,11 @@ export const SourceControlSyncJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SourceControlSyncJobGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6757,12 +6256,12 @@ export type SourceControlSyncJobGetOutput =
 /**
  * Retrieve the source control sync job identified by job id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param sourceControlName - The source control name.
+ * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlSyncJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6773,12 +6272,12 @@ export const SourceControlSyncJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const SourceControlSyncJobListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6791,28 +6290,26 @@ export type SourceControlSyncJobListByAutomationAccountInput =
 // Output Schema
 export const SourceControlSyncJobListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              sourceControlSyncJobId: Schema.optional(Schema.String),
-              creationTime: Schema.optional(Schema.String),
-              provisioningState: Schema.optional(
-                Schema.Literals(["Completed", "Failed", "Running"]),
-              ),
-              startTime: Schema.optional(Schema.NullOr(Schema.String)),
-              endTime: Schema.optional(Schema.NullOr(Schema.String)),
-              syncType: Schema.optional(
-                Schema.Literals(["PartialSync", "FullSync"]),
-              ),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            sourceControlSyncJobId: Schema.optional(Schema.String),
+            creationTime: Schema.optional(Schema.String),
+            provisioningState: Schema.optional(
+              Schema.Literals(["Completed", "Failed", "Running"]),
+            ),
+            startTime: Schema.optional(Schema.NullOr(Schema.String)),
+            endTime: Schema.optional(Schema.NullOr(Schema.String)),
+            syncType: Schema.optional(
+              Schema.Literals(["PartialSync", "FullSync"]),
+            ),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6823,12 +6320,12 @@ export type SourceControlSyncJobListByAutomationAccountOutput =
 /**
  * Retrieve a list of source control sync jobs.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param sourceControlName - The source control name.
+ * @param sourceControlName - The name of source control.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlSyncJobListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6838,12 +6335,12 @@ export const SourceControlSyncJobListByAutomationAccount =
 // Input Schema
 export const SourceControlSyncJobStreamsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
     streamId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6876,13 +6373,13 @@ export type SourceControlSyncJobStreamsGetOutput =
 /**
  * Retrieve a sync job stream identified by stream id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param sourceControlName - The source control name.
+ * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
  * @param streamId - The id of the sync job stream.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlSyncJobStreamsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6892,13 +6389,13 @@ export const SourceControlSyncJobStreamsGet =
 // Input Schema
 export const SourceControlSyncJobStreamsListBySyncJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
     sourceControlSyncJobId: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6911,20 +6408,18 @@ export type SourceControlSyncJobStreamsListBySyncJobInput =
 // Output Schema
 export const SourceControlSyncJobStreamsListBySyncJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              sourceControlSyncJobStreamId: Schema.optional(Schema.String),
-              summary: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.NullOr(Schema.String)),
-              streamType: Schema.optional(Schema.Literals(["Error", "Output"])),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            sourceControlSyncJobStreamId: Schema.optional(Schema.String),
+            summary: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.NullOr(Schema.String)),
+            streamType: Schema.optional(Schema.Literals(["Error", "Output"])),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6935,13 +6430,13 @@ export type SourceControlSyncJobStreamsListBySyncJobOutput =
 /**
  * Retrieve a list of sync job streams identified by sync job id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param sourceControlName - The source control name.
+ * @param sourceControlName - The name of source control.
  * @param sourceControlSyncJobId - The source control sync job id.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const SourceControlSyncJobStreamsListBySyncJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6951,10 +6446,10 @@ export const SourceControlSyncJobStreamsListBySyncJob =
 // Input Schema
 export const SourceControlUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     sourceControlName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -6973,11 +6468,11 @@ export type SourceControlUpdateOutput = typeof SourceControlUpdateOutput.Type;
 /**
  * Update a source control.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param sourceControlName - The source control name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param sourceControlName - The name of source control.
  */
 export const SourceControlUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SourceControlUpdateInput,
@@ -6986,11 +6481,11 @@ export const SourceControlUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const StatisticsListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7014,6 +6509,7 @@ export const StatisticsListByAutomationAccountOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type StatisticsListByAutomationAccountOutput =
   typeof StatisticsListByAutomationAccountOutput.Type;
@@ -7022,11 +6518,11 @@ export type StatisticsListByAutomationAccountOutput =
 /**
  * Retrieve the statistics for the account.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const StatisticsListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7068,11 +6564,11 @@ export type TestJobCreateOutput = typeof TestJobCreateOutput.Type;
 /**
  * Create a test job of the runbook.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param runbookName - The parameters supplied to the create test job operation.
- * @param api-version - Client Api Version.
+ * @param runbookName - The runbook name.
  */
 export const TestJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TestJobCreateInput,
@@ -7113,11 +6609,11 @@ export type TestJobGetOutput = typeof TestJobGetOutput.Type;
 /**
  * Retrieve the test job for the specified runbook.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const TestJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TestJobGetInput,
@@ -7146,11 +6642,11 @@ export type TestJobResumeOutput = typeof TestJobResumeOutput.Type;
 /**
  * Resume the test job.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const TestJobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TestJobResumeInput,
@@ -7179,11 +6675,11 @@ export type TestJobStopOutput = typeof TestJobStopOutput.Type;
 /**
  * Stop the test job.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const TestJobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TestJobStopInput,
@@ -7238,12 +6734,12 @@ export type TestJobStreamsGetOutput = typeof TestJobStreamsGetOutput.Type;
 /**
  * Retrieve a test job stream of the test job identified by runbook name and stream id.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  * @param jobStreamId - The job stream id.
- * @param api-version - Client Api Version.
  */
 export const TestJobStreamsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TestJobStreamsGetInput,
@@ -7256,8 +6752,8 @@ export const TestJobStreamsListByTestJobInput =
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     runbookName: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7270,34 +6766,32 @@ export type TestJobStreamsListByTestJobInput =
 // Output Schema
 export const TestJobStreamsListByTestJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              jobStreamId: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-              streamType: Schema.optional(
-                Schema.Literals([
-                  "Progress",
-                  "Output",
-                  "Warning",
-                  "Error",
-                  "Debug",
-                  "Verbose",
-                  "Any",
-                ]),
-              ),
-              streamText: Schema.optional(Schema.String),
-              summary: Schema.optional(Schema.NullOr(Schema.String)),
-              value: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Struct({
+            jobStreamId: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+            streamType: Schema.optional(
+              Schema.Literals([
+                "Progress",
+                "Output",
+                "Warning",
+                "Error",
+                "Debug",
+                "Verbose",
+                "Any",
+              ]),
+            ),
+            streamText: Schema.optional(Schema.String),
+            summary: Schema.optional(Schema.NullOr(Schema.String)),
+            value: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7308,12 +6802,12 @@ export type TestJobStreamsListByTestJobOutput =
 /**
  * Retrieve a list of test job streams identified by runbook name.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
  * @param $filter - The filter to apply on the operation.
- * @param api-version - Client Api Version.
  */
 export const TestJobStreamsListByTestJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7344,11 +6838,11 @@ export type TestJobSuspendOutput = typeof TestJobSuspendOutput.Type;
 /**
  * Suspend the test job.
  *
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param runbookName - The runbook name.
- * @param api-version - Client Api Version.
  */
 export const TestJobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TestJobSuspendInput,
@@ -7357,9 +6851,9 @@ export const TestJobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const UsagesListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7390,6 +6884,7 @@ export const UsagesListByAutomationAccountOutput =
         }),
       ),
     ),
+    nextLink: Schema.optional(Schema.String),
   });
 export type UsagesListByAutomationAccountOutput =
   typeof UsagesListByAutomationAccountOutput.Type;
@@ -7398,10 +6893,10 @@ export type UsagesListByAutomationAccountOutput =
 /**
  * Retrieve the usage for the account id.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const UsagesListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7411,10 +6906,10 @@ export const UsagesListByAutomationAccount =
 // Input Schema
 export const VariableCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     variableName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7435,11 +6930,11 @@ export type VariableCreateOrUpdateOutput =
 /**
  * Create a variable.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param variableName - The variable name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param variableName - The name of variable.
  */
 export const VariableCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7449,10 +6944,10 @@ export const VariableCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   variableName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7470,11 +6965,11 @@ export type VariableDeleteOutput = typeof VariableDeleteOutput.Type;
 /**
  * Delete the variable.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const VariableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VariableDeleteInput,
@@ -7482,10 +6977,10 @@ export const VariableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const VariableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   variableName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7503,11 +6998,11 @@ export type VariableGetOutput = typeof VariableGetOutput.Type;
 /**
  * Retrieve the variable identified by variable name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param variableName - The name of variable.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const VariableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VariableGetInput,
@@ -7516,9 +7011,9 @@ export const VariableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const VariableListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7532,7 +7027,7 @@ export type VariableListByAutomationAccountInput =
 // Output Schema
 export const VariableListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type VariableListByAutomationAccountOutput =
@@ -7542,10 +7037,10 @@ export type VariableListByAutomationAccountOutput =
 /**
  * Retrieve a list of variables.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const VariableListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7554,10 +7049,10 @@ export const VariableListByAutomationAccount =
   }));
 // Input Schema
 export const VariableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   variableName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7577,11 +7072,11 @@ export type VariableUpdateOutput = typeof VariableUpdateOutput.Type;
 /**
  * Update a variable.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param variableName - The variable name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
+ * @param variableName - The name of variable.
  */
 export const VariableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VariableUpdateInput,
@@ -7590,10 +7085,10 @@ export const VariableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WatcherCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     watcherName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7631,11 +7126,11 @@ export type WatcherCreateOrUpdateOutput =
 /**
  * Create the watcher identified by watcher name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WatcherCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7645,10 +7140,10 @@ export const WatcherCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7666,11 +7161,11 @@ export type WatcherDeleteOutput = typeof WatcherDeleteOutput.Type;
 /**
  * Delete the watcher by name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WatcherDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatcherDeleteInput,
@@ -7678,10 +7173,10 @@ export const WatcherDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7717,11 +7212,11 @@ export type WatcherGetOutput = typeof WatcherGetOutput.Type;
 /**
  * Retrieve the watcher identified by watcher name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WatcherGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatcherGetInput,
@@ -7730,11 +7225,11 @@ export const WatcherGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WatcherListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7747,38 +7242,36 @@ export type WatcherListByAutomationAccountInput =
 // Output Schema
 export const WatcherListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7789,11 +7282,11 @@ export type WatcherListByAutomationAccountOutput =
 /**
  * Retrieve a list of watchers.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WatcherListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7802,10 +7295,10 @@ export const WatcherListByAutomationAccount =
   }));
 // Input Schema
 export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7823,11 +7316,11 @@ export type WatcherStartOutput = typeof WatcherStartOutput.Type;
 /**
  * Resume the watcher identified by watcher name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WatcherStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatcherStartInput,
@@ -7835,10 +7328,10 @@ export const WatcherStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7856,11 +7349,11 @@ export type WatcherStopOutput = typeof WatcherStopOutput.Type;
 /**
  * Resume the watcher identified by watcher name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WatcherStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatcherStopInput,
@@ -7868,10 +7361,10 @@ export const WatcherStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   watcherName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7907,11 +7400,11 @@ export type WatcherUpdateOutput = typeof WatcherUpdateOutput.Type;
 /**
  * Update the watcher identified by watcher name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param watcherName - The watcher name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WatcherUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatcherUpdateInput,
@@ -7920,10 +7413,10 @@ export const WatcherUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WebhookCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -7943,11 +7436,11 @@ export type WebhookCreateOrUpdateOutput =
 /**
  * Create the webhook identified by webhook name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7957,10 +7450,10 @@ export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -7978,11 +7471,11 @@ export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
 /**
  * Delete the webhook by name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebhookDeleteInput,
@@ -7991,9 +7484,9 @@ export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WebhookGenerateUriInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -8012,10 +7505,10 @@ export type WebhookGenerateUriOutput = typeof WebhookGenerateUriOutput.Type;
 /**
  * Generates a Uri for use in creating a webhook.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WebhookGenerateUri = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebhookGenerateUriInput,
@@ -8023,10 +7516,10 @@ export const WebhookGenerateUri = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -8044,11 +7537,11 @@ export type WebhookGetOutput = typeof WebhookGetOutput.Type;
 /**
  * Retrieve the webhook identified by webhook name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebhookGetInput,
@@ -8057,11 +7550,11 @@ export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const WebhookListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     automationAccountName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    $filter: Schema.optional(Schema.String),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8074,7 +7567,7 @@ export type WebhookListByAutomationAccountInput =
 // Output Schema
 export const WebhookListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.Array(Schema.Struct({})),
     nextLink: Schema.optional(Schema.String),
   });
 export type WebhookListByAutomationAccountOutput =
@@ -8084,11 +7577,11 @@ export type WebhookListByAutomationAccountOutput =
 /**
  * Retrieve a list of webhooks.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param $filter - The filter to apply on the operation.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WebhookListByAutomationAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8097,10 +7590,10 @@ export const WebhookListByAutomationAccount =
   }));
 // Input Schema
 export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
-  subscriptionId: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -8120,11 +7613,11 @@ export type WebhookUpdateOutput = typeof WebhookUpdateOutput.Type;
 /**
  * Update the webhook identified by webhook name.
  *
- * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param automationAccountName - The name of the automation account.
  * @param webhookName - The webhook name.
- * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
- * @param api-version - Client Api Version.
  */
 export const WebhookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebhookUpdateInput,

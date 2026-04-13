@@ -3919,7 +3919,7 @@ export type PostV2CoreAccountsIdOutput = typeof PostV2CoreAccountsIdOutput.Type;
 
 // The operation
 /**
- * Update an Account
+ * Update an account
  *
  * Updates the details of an Account.
  *

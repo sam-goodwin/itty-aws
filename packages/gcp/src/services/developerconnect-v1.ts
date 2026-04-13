@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface OAuthCredential {
   /** Required. A SecretManager resource containing the OAuth token that authorizes the connection. Format: `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
@@ -107,15 +96,10 @@ export interface OAuthCredential {
   username?: string;
 }
 
-export const OAuthCredential: Schema.Schema<OAuthCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthTokenSecretVersion: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OAuthCredential",
-  }) as any as Schema.Schema<OAuthCredential>;
+export const OAuthCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oauthTokenSecretVersion: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "OAuthCredential" });
 
 export interface GitHubConfig {
   /** Required. Immutable. The GitHub Application that was installed to the GitHub user or organization. */
@@ -134,31 +118,23 @@ export interface GitHubConfig {
   installationUri?: string;
 }
 
-export const GitHubConfig: Schema.Schema<GitHubConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubApp: Schema.optional(Schema.String),
-      authorizerCredential: Schema.optional(OAuthCredential),
-      appInstallationId: Schema.optional(Schema.String),
-      installationUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubConfig",
-  }) as any as Schema.Schema<GitHubConfig>;
+export const GitHubConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  githubApp: Schema.optional(Schema.String),
+  authorizerCredential: Schema.optional(OAuthCredential),
+  appInstallationId: Schema.optional(Schema.String),
+  installationUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitHubConfig" });
 
 export interface ServiceDirectoryConfig {
   /** Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
   service?: string;
 }
 
-export const ServiceDirectoryConfig: Schema.Schema<ServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceDirectoryConfig",
-  }) as any as Schema.Schema<ServiceDirectoryConfig>;
+export const ServiceDirectoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ServiceDirectoryConfig" });
 
 export interface GitHubEnterpriseConfig {
   /** Required. The URI of the GitHub Enterprise host this connection is for. */
@@ -185,24 +161,21 @@ export interface GitHubEnterpriseConfig {
   organization?: string;
 }
 
-export const GitHubEnterpriseConfig: Schema.Schema<GitHubEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostUri: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      appSlug: Schema.optional(Schema.String),
-      privateKeySecretVersion: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      appInstallationId: Schema.optional(Schema.String),
-      installationUri: Schema.optional(Schema.String),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      serverVersion: Schema.optional(Schema.String),
-      sslCaCertificate: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubEnterpriseConfig",
-  }) as any as Schema.Schema<GitHubEnterpriseConfig>;
+export const GitHubEnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hostUri: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    appSlug: Schema.optional(Schema.String),
+    privateKeySecretVersion: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    appInstallationId: Schema.optional(Schema.String),
+    installationUri: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    serverVersion: Schema.optional(Schema.String),
+    sslCaCertificate: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GitHubEnterpriseConfig" });
 
 export interface UserCredential {
   /** Required. A SecretManager resource containing the user token that authorizes the Developer Connect connection. Format: `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
@@ -211,15 +184,10 @@ export interface UserCredential {
   username?: string;
 }
 
-export const UserCredential: Schema.Schema<UserCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userTokenSecretVersion: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserCredential",
-  }) as any as Schema.Schema<UserCredential>;
+export const UserCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userTokenSecretVersion: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserCredential" });
 
 export interface GitLabConfig {
   /** Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
@@ -230,16 +198,11 @@ export interface GitLabConfig {
   authorizerCredential?: UserCredential;
 }
 
-export const GitLabConfig: Schema.Schema<GitLabConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      readAuthorizerCredential: Schema.optional(UserCredential),
-      authorizerCredential: Schema.optional(UserCredential),
-    }),
-  ).annotate({
-    identifier: "GitLabConfig",
-  }) as any as Schema.Schema<GitLabConfig>;
+export const GitLabConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webhookSecretSecretVersion: Schema.optional(Schema.String),
+  readAuthorizerCredential: Schema.optional(UserCredential),
+  authorizerCredential: Schema.optional(UserCredential),
+}).annotate({ identifier: "GitLabConfig" });
 
 export interface GitLabEnterpriseConfig {
   /** Required. The URI of the GitLab Enterprise host this connection is for. */
@@ -258,20 +221,17 @@ export interface GitLabEnterpriseConfig {
   serverVersion?: string;
 }
 
-export const GitLabEnterpriseConfig: Schema.Schema<GitLabEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostUri: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      readAuthorizerCredential: Schema.optional(UserCredential),
-      authorizerCredential: Schema.optional(UserCredential),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      sslCaCertificate: Schema.optional(Schema.String),
-      serverVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitLabEnterpriseConfig",
-  }) as any as Schema.Schema<GitLabEnterpriseConfig>;
+export const GitLabEnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hostUri: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    readAuthorizerCredential: Schema.optional(UserCredential),
+    authorizerCredential: Schema.optional(UserCredential),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    sslCaCertificate: Schema.optional(Schema.String),
+    serverVersion: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GitLabEnterpriseConfig" });
 
 export interface BitbucketDataCenterConfig {
   /** Required. The URI of the Bitbucket Data Center host this connection is for. */
@@ -290,20 +250,16 @@ export interface BitbucketDataCenterConfig {
   serverVersion?: string;
 }
 
-export const BitbucketDataCenterConfig: Schema.Schema<BitbucketDataCenterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostUri: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      readAuthorizerCredential: Schema.optional(UserCredential),
-      authorizerCredential: Schema.optional(UserCredential),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      sslCaCertificate: Schema.optional(Schema.String),
-      serverVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketDataCenterConfig",
-  }) as any as Schema.Schema<BitbucketDataCenterConfig>;
+export const BitbucketDataCenterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostUri: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    readAuthorizerCredential: Schema.optional(UserCredential),
+    authorizerCredential: Schema.optional(UserCredential),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    sslCaCertificate: Schema.optional(Schema.String),
+    serverVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketDataCenterConfig" });
 
 export interface BitbucketCloudConfig {
   /** Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform. */
@@ -316,31 +272,22 @@ export interface BitbucketCloudConfig {
   authorizerCredential?: UserCredential;
 }
 
-export const BitbucketCloudConfig: Schema.Schema<BitbucketCloudConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workspace: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      readAuthorizerCredential: Schema.optional(UserCredential),
-      authorizerCredential: Schema.optional(UserCredential),
-    }),
-  ).annotate({
-    identifier: "BitbucketCloudConfig",
-  }) as any as Schema.Schema<BitbucketCloudConfig>;
+export const BitbucketCloudConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workspace: Schema.optional(Schema.String),
+  webhookSecretSecretVersion: Schema.optional(Schema.String),
+  readAuthorizerCredential: Schema.optional(UserCredential),
+  authorizerCredential: Schema.optional(UserCredential),
+}).annotate({ identifier: "BitbucketCloudConfig" });
 
 export interface SecureSourceManagerInstanceConfig {
   /** Required. Immutable. Secure Source Manager instance resource, formatted as `projects/* /locations/* /instances/*` */
   instance?: string;
 }
 
-export const SecureSourceManagerInstanceConfig: Schema.Schema<SecureSourceManagerInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecureSourceManagerInstanceConfig",
-  }) as any as Schema.Schema<SecureSourceManagerInstanceConfig>;
+export const SecureSourceManagerInstanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SecureSourceManagerInstanceConfig" });
 
 export interface BasicAuthentication {
   /** The password SecretManager secret version to authenticate as. */
@@ -349,29 +296,20 @@ export interface BasicAuthentication {
   username?: string;
 }
 
-export const BasicAuthentication: Schema.Schema<BasicAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passwordSecretVersion: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BasicAuthentication",
-  }) as any as Schema.Schema<BasicAuthentication>;
+export const BasicAuthentication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  passwordSecretVersion: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "BasicAuthentication" });
 
 export interface BearerTokenAuthentication {
   /** Optional. The token SecretManager secret version to authenticate as. */
   tokenSecretVersion?: string;
 }
 
-export const BearerTokenAuthentication: Schema.Schema<BearerTokenAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenSecretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BearerTokenAuthentication",
-  }) as any as Schema.Schema<BearerTokenAuthentication>;
+export const BearerTokenAuthentication =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenSecretVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BearerTokenAuthentication" });
 
 export interface GenericHTTPEndpointConfig {
   /** Optional. Basic authentication with username and password. */
@@ -386,18 +324,14 @@ export interface GenericHTTPEndpointConfig {
   sslCaCertificate?: string;
 }
 
-export const GenericHTTPEndpointConfig: Schema.Schema<GenericHTTPEndpointConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      basicAuthentication: Schema.optional(BasicAuthentication),
-      bearerTokenAuthentication: Schema.optional(BearerTokenAuthentication),
-      hostUri: Schema.optional(Schema.String),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      sslCaCertificate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenericHTTPEndpointConfig",
-  }) as any as Schema.Schema<GenericHTTPEndpointConfig>;
+export const GenericHTTPEndpointConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    basicAuthentication: Schema.optional(BasicAuthentication),
+    bearerTokenAuthentication: Schema.optional(BearerTokenAuthentication),
+    hostUri: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    sslCaCertificate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenericHTTPEndpointConfig" });
 
 export interface InstallationState {
   /** Output only. Current step of the installation process. */
@@ -414,30 +348,20 @@ export interface InstallationState {
   actionUri?: string;
 }
 
-export const InstallationState: Schema.Schema<InstallationState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stage: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      actionUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InstallationState",
-  }) as any as Schema.Schema<InstallationState>;
+export const InstallationState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stage: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  actionUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstallationState" });
 
 export interface CryptoKeyConfig {
   /** Required. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/* /locations/* /keyRings/* /cryptoKeys/*`. */
   keyReference?: string;
 }
 
-export const CryptoKeyConfig: Schema.Schema<CryptoKeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyReference: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CryptoKeyConfig",
-  }) as any as Schema.Schema<CryptoKeyConfig>;
+export const CryptoKeyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyReference: Schema.optional(Schema.String),
+}).annotate({ identifier: "CryptoKeyConfig" });
 
 export interface GitProxyConfig {
   /** Optional. Setting this to true allows the git proxy to be used for performing git operations on the repositories linked in the connection. */
@@ -446,15 +370,10 @@ export interface GitProxyConfig {
   httpProxyBaseUri?: string;
 }
 
-export const GitProxyConfig: Schema.Schema<GitProxyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      httpProxyBaseUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitProxyConfig",
-  }) as any as Schema.Schema<GitProxyConfig>;
+export const GitProxyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  httpProxyBaseUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitProxyConfig" });
 
 export interface Connection {
   /** Configuration for connections to github.com. */
@@ -501,34 +420,31 @@ export interface Connection {
   gitProxyConfig?: GitProxyConfig;
 }
 
-export const Connection: Schema.Schema<Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubConfig: Schema.optional(GitHubConfig),
-      githubEnterpriseConfig: Schema.optional(GitHubEnterpriseConfig),
-      gitlabConfig: Schema.optional(GitLabConfig),
-      gitlabEnterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
-      bitbucketDataCenterConfig: Schema.optional(BitbucketDataCenterConfig),
-      bitbucketCloudConfig: Schema.optional(BitbucketCloudConfig),
-      secureSourceManagerInstanceConfig: Schema.optional(
-        SecureSourceManagerInstanceConfig,
-      ),
-      httpConfig: Schema.optional(GenericHTTPEndpointConfig),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      installationState: Schema.optional(InstallationState),
-      disabled: Schema.optional(Schema.Boolean),
-      reconciling: Schema.optional(Schema.Boolean),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      cryptoKeyConfig: Schema.optional(CryptoKeyConfig),
-      gitProxyConfig: Schema.optional(GitProxyConfig),
-    }),
-  ).annotate({ identifier: "Connection" }) as any as Schema.Schema<Connection>;
+export const Connection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  githubConfig: Schema.optional(GitHubConfig),
+  githubEnterpriseConfig: Schema.optional(GitHubEnterpriseConfig),
+  gitlabConfig: Schema.optional(GitLabConfig),
+  gitlabEnterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
+  bitbucketDataCenterConfig: Schema.optional(BitbucketDataCenterConfig),
+  bitbucketCloudConfig: Schema.optional(BitbucketCloudConfig),
+  secureSourceManagerInstanceConfig: Schema.optional(
+    SecureSourceManagerInstanceConfig,
+  ),
+  httpConfig: Schema.optional(GenericHTTPEndpointConfig),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  installationState: Schema.optional(InstallationState),
+  disabled: Schema.optional(Schema.Boolean),
+  reconciling: Schema.optional(Schema.Boolean),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  cryptoKeyConfig: Schema.optional(CryptoKeyConfig),
+  gitProxyConfig: Schema.optional(GitProxyConfig),
+}).annotate({ identifier: "Connection" });
 
 export interface ListConnectionsResponse {
   /** The list of Connection */
@@ -539,16 +455,12 @@ export interface ListConnectionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connections: Schema.optional(Schema.Array(Connection)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListConnectionsResponse",
-  }) as any as Schema.Schema<ListConnectionsResponse>;
+export const ListConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connections: Schema.optional(Schema.Array(Connection)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListConnectionsResponse" });
 
 export interface GitRepositoryLink {
   /** Identifier. Resource name of the repository, in the format `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
@@ -577,25 +489,20 @@ export interface GitRepositoryLink {
   gitProxyUri?: string;
 }
 
-export const GitRepositoryLink: Schema.Schema<GitRepositoryLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      cloneUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      webhookId: Schema.optional(Schema.String),
-      gitProxyUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitRepositoryLink",
-  }) as any as Schema.Schema<GitRepositoryLink>;
+export const GitRepositoryLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  cloneUri: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  webhookId: Schema.optional(Schema.String),
+  gitProxyUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitRepositoryLink" });
 
 export interface ListGitRepositoryLinksResponse {
   /** The list of GitRepositoryLinks */
@@ -606,23 +513,19 @@ export interface ListGitRepositoryLinksResponse {
   unreachable?: Array<string>;
 }
 
-export const ListGitRepositoryLinksResponse: Schema.Schema<ListGitRepositoryLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitRepositoryLinks: Schema.optional(Schema.Array(GitRepositoryLink)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListGitRepositoryLinksResponse",
-  }) as any as Schema.Schema<ListGitRepositoryLinksResponse>;
+export const ListGitRepositoryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitRepositoryLinks: Schema.optional(Schema.Array(GitRepositoryLink)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListGitRepositoryLinksResponse" });
 
 export interface FetchReadWriteTokenRequest {}
 
-export const FetchReadWriteTokenRequest: Schema.Schema<FetchReadWriteTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const FetchReadWriteTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchReadWriteTokenRequest",
-  }) as any as Schema.Schema<FetchReadWriteTokenRequest>;
+  });
 
 export interface FetchReadWriteTokenResponse {
   /** The token content. */
@@ -633,23 +536,18 @@ export interface FetchReadWriteTokenResponse {
   gitUsername?: string;
 }
 
-export const FetchReadWriteTokenResponse: Schema.Schema<FetchReadWriteTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      gitUsername: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchReadWriteTokenResponse",
-  }) as any as Schema.Schema<FetchReadWriteTokenResponse>;
+export const FetchReadWriteTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    gitUsername: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchReadWriteTokenResponse" });
 
 export interface FetchReadTokenRequest {}
 
-export const FetchReadTokenRequest: Schema.Schema<FetchReadTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "FetchReadTokenRequest",
-  }) as any as Schema.Schema<FetchReadTokenRequest>;
+export const FetchReadTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "FetchReadTokenRequest" });
 
 export interface FetchReadTokenResponse {
   /** The token content. */
@@ -660,30 +558,22 @@ export interface FetchReadTokenResponse {
   gitUsername?: string;
 }
 
-export const FetchReadTokenResponse: Schema.Schema<FetchReadTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      gitUsername: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchReadTokenResponse",
-  }) as any as Schema.Schema<FetchReadTokenResponse>;
+export const FetchReadTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    token: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    gitUsername: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "FetchReadTokenResponse" });
 
 export interface LinkableGitRepository {
   /** The clone uri of the repository. */
   cloneUri?: string;
 }
 
-export const LinkableGitRepository: Schema.Schema<LinkableGitRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloneUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LinkableGitRepository",
-  }) as any as Schema.Schema<LinkableGitRepository>;
+export const LinkableGitRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cloneUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "LinkableGitRepository" });
 
 export interface FetchLinkableGitRepositoriesResponse {
   /** The git repositories that can be linked to the connection. */
@@ -692,17 +582,13 @@ export interface FetchLinkableGitRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const FetchLinkableGitRepositoriesResponse: Schema.Schema<FetchLinkableGitRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkableGitRepositories: Schema.optional(
-        Schema.Array(LinkableGitRepository),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchLinkableGitRepositoriesResponse",
-  }) as any as Schema.Schema<FetchLinkableGitRepositoriesResponse>;
+export const FetchLinkableGitRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkableGitRepositories: Schema.optional(
+      Schema.Array(LinkableGitRepository),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchLinkableGitRepositoriesResponse" });
 
 export interface Installation {
   /** ID of the installation in GitHub. */
@@ -713,30 +599,21 @@ export interface Installation {
   type?: string;
 }
 
-export const Installation: Schema.Schema<Installation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Installation",
-  }) as any as Schema.Schema<Installation>;
+export const Installation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Installation" });
 
 export interface FetchGitHubInstallationsResponse {
   /** List of installations available to the OAuth user (for github.com) or all the installations (for GitHub enterprise). */
   installations?: Array<Installation>;
 }
 
-export const FetchGitHubInstallationsResponse: Schema.Schema<FetchGitHubInstallationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installations: Schema.optional(Schema.Array(Installation)),
-    }),
-  ).annotate({
-    identifier: "FetchGitHubInstallationsResponse",
-  }) as any as Schema.Schema<FetchGitHubInstallationsResponse>;
+export const FetchGitHubInstallationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installations: Schema.optional(Schema.Array(Installation)),
+  }).annotate({ identifier: "FetchGitHubInstallationsResponse" });
 
 export interface FetchGitRefsResponse {
   /** Name of the refs fetched. */
@@ -745,15 +622,54 @@ export interface FetchGitRefsResponse {
   nextPageToken?: string;
 }
 
-export const FetchGitRefsResponse: Schema.Schema<FetchGitRefsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refNames: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchGitRefsResponse",
-  }) as any as Schema.Schema<FetchGitRefsResponse>;
+export const FetchGitRefsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  refNames: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "FetchGitRefsResponse" });
+
+export interface CustomOAuthConfig {
+  /** Required. The scopes to be requested during OAuth. */
+  scopes?: Array<string>;
+  /** Required. The client ID of the OAuth application. */
+  clientId?: string;
+  /** Required. Input only. The client secret of the OAuth application. It will be provided as plain text, but encrypted and stored in developer connect. As INPUT_ONLY field, it will not be included in the output. */
+  clientSecret?: string;
+  /** Required. Immutable. The OAuth2 authorization server URL. */
+  authUri?: string;
+  /** Required. Immutable. The OAuth2 token request URL. */
+  tokenUri?: string;
+  /** Optional. Configuration for using Service Directory to connect to a private service. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+  /** Optional. SSL certificate to use for requests to a private service. */
+  sslCaCertificate?: string;
+  /** Optional. Disable PKCE for this OAuth config. PKCE is enabled by default. */
+  pkceDisabled?: boolean;
+  /** Required. The host URI of the OAuth application. */
+  hostUri?: string;
+  /** Required. The type of the SCM provider. */
+  scmProvider?:
+    | "SCM_PROVIDER_UNKNOWN"
+    | "GITHUB_ENTERPRISE"
+    | "GITLAB_ENTERPRISE"
+    | "BITBUCKET_DATA_CENTER"
+    | (string & {});
+  /** Output only. SCM server version installed at the host URI. */
+  serverVersion?: string;
+}
+
+export const CustomOAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  clientId: Schema.optional(Schema.String),
+  clientSecret: Schema.optional(Schema.String),
+  authUri: Schema.optional(Schema.String),
+  tokenUri: Schema.optional(Schema.String),
+  serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+  sslCaCertificate: Schema.optional(Schema.String),
+  pkceDisabled: Schema.optional(Schema.Boolean),
+  hostUri: Schema.optional(Schema.String),
+  scmProvider: Schema.optional(Schema.String),
+  serverVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomOAuthConfig" });
 
 export interface ProviderOAuthConfig {
   /** Optional. Immutable. Developer Connect provided OAuth. */
@@ -772,17 +688,26 @@ export interface ProviderOAuthConfig {
   scopes?: Array<string>;
 }
 
-export const ProviderOAuthConfig: Schema.Schema<ProviderOAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemProviderId: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProviderOAuthConfig",
-  }) as any as Schema.Schema<ProviderOAuthConfig>;
+export const ProviderOAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemProviderId: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ProviderOAuthConfig" });
+
+export interface ProxyConfig {
+  /** Optional. Setting this to true allows the git and http proxies to perform actions on behalf of the user configured under the account connector. */
+  enabled?: boolean;
+  /** Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-a-h-{shortRegion}.developerconnect.dev` Populated only when `enabled` is set to `true`. This endpoint is used by other Google services that integrate with Developer Connect. */
+  httpProxyBaseUri?: string;
+}
+
+export const ProxyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  httpProxyBaseUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProxyConfig" });
 
 export interface AccountConnector {
+  /** Custom OAuth config. */
+  customOauthConfig?: CustomOAuthConfig;
   /** Optional. Provider OAuth config. */
   providerOauthConfig?: ProviderOAuthConfig;
   /** Identifier. The resource name of the accountConnector, in the format `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`. */
@@ -799,23 +724,25 @@ export interface AccountConnector {
   labels?: Record<string, string>;
   /** Output only. Start OAuth flow by clicking on this URL. */
   oauthStartUri?: string;
+  /** Optional. Configuration for the http and git proxy features. */
+  proxyConfig?: ProxyConfig;
+  /** Output only. A system-assigned unique identifier for the Account Connector. */
+  uid?: string;
 }
 
-export const AccountConnector: Schema.Schema<AccountConnector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      providerOauthConfig: Schema.optional(ProviderOAuthConfig),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      oauthStartUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountConnector",
-  }) as any as Schema.Schema<AccountConnector>;
+export const AccountConnector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customOauthConfig: Schema.optional(CustomOAuthConfig),
+  providerOauthConfig: Schema.optional(ProviderOAuthConfig),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  oauthStartUri: Schema.optional(Schema.String),
+  proxyConfig: Schema.optional(ProxyConfig),
+  uid: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountConnector" });
 
 export interface ListAccountConnectorsResponse {
   /** The list of AccountConnectors */
@@ -826,23 +753,47 @@ export interface ListAccountConnectorsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListAccountConnectorsResponse: Schema.Schema<ListAccountConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountConnectors: Schema.optional(Schema.Array(AccountConnector)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAccountConnectorsResponse",
-  }) as any as Schema.Schema<ListAccountConnectorsResponse>;
+export const ListAccountConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountConnectors: Schema.optional(Schema.Array(AccountConnector)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAccountConnectorsResponse" });
+
+export interface UserRepository {
+  /** Output only. The user friendly repo name (e.g., myuser/myrepo) */
+  displayName?: string;
+  /** Output only. The Git proxy URL for this repo. For example: https://us-west1-git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only when `proxy_config.enabled` is set to `true` in the Account Connector. This URL is used by other Google services that integrate with Developer Connect. */
+  gitProxyUri?: string;
+  /** Output only. The git clone URL of the repo. For example: https://github.com/myuser/myrepo.git */
+  cloneUri?: string;
+}
+
+export const UserRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  gitProxyUri: Schema.optional(Schema.String),
+  cloneUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserRepository" });
+
+export interface FetchUserRepositoriesResponse {
+  /** The repositories that the user can access with this account connector. */
+  userRepos?: Array<UserRepository>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+}
+
+export const FetchUserRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userRepos: Schema.optional(Schema.Array(UserRepository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchUserRepositoriesResponse" });
 
 export interface FetchAccessTokenRequest {}
 
-export const FetchAccessTokenRequest: Schema.Schema<FetchAccessTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const FetchAccessTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchAccessTokenRequest",
-  }) as any as Schema.Schema<FetchAccessTokenRequest>;
+  });
 
 export interface ExchangeError {
   /** https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error */
@@ -851,15 +802,10 @@ export interface ExchangeError {
   description?: string;
 }
 
-export const ExchangeError: Schema.Schema<ExchangeError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExchangeError",
-  }) as any as Schema.Schema<ExchangeError>;
+export const ExchangeError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExchangeError" });
 
 export interface FetchAccessTokenResponse {
   /** The token content. */
@@ -872,17 +818,13 @@ export interface FetchAccessTokenResponse {
   exchangeError?: ExchangeError;
 }
 
-export const FetchAccessTokenResponse: Schema.Schema<FetchAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      exchangeError: Schema.optional(ExchangeError),
-    }),
-  ).annotate({
-    identifier: "FetchAccessTokenResponse",
-  }) as any as Schema.Schema<FetchAccessTokenResponse>;
+export const FetchAccessTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    exchangeError: Schema.optional(ExchangeError),
+  }).annotate({ identifier: "FetchAccessTokenResponse" });
 
 export interface User {
   /** Identifier. Resource name of the user, in the format `projects/* /locations/* /accountConnectors/* /users/*`. */
@@ -895,15 +837,12 @@ export interface User {
   lastTokenRequestTime?: string;
 }
 
-export const User: Schema.Schema<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      lastTokenRequestTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
+export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  lastTokenRequestTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "User" });
 
 export interface ListUsersResponse {
   /** The list of Users */
@@ -914,16 +853,11 @@ export interface ListUsersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      users: Schema.optional(Schema.Array(User)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListUsersResponse",
-  }) as any as Schema.Schema<ListUsersResponse>;
+export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  users: Schema.optional(Schema.Array(User)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListUsersResponse" });
 
 export interface StartOAuthResponse {
   /** The ID of the system provider. */
@@ -952,46 +886,33 @@ export interface StartOAuthResponse {
   authUri?: string;
 }
 
-export const StartOAuthResponse: Schema.Schema<StartOAuthResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemProviderId: Schema.optional(Schema.String),
-      ticket: Schema.optional(Schema.String),
-      codeChallenge: Schema.optional(Schema.String),
-      codeChallengeMethod: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      authUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartOAuthResponse",
-  }) as any as Schema.Schema<StartOAuthResponse>;
+export const StartOAuthResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemProviderId: Schema.optional(Schema.String),
+  ticket: Schema.optional(Schema.String),
+  codeChallenge: Schema.optional(Schema.String),
+  codeChallengeMethod: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  authUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "StartOAuthResponse" });
 
 export interface FinishOAuthResponse {
   /** The error resulted from exchanging OAuth tokens from the service provider. */
   exchangeError?: ExchangeError;
 }
 
-export const FinishOAuthResponse: Schema.Schema<FinishOAuthResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exchangeError: Schema.optional(ExchangeError),
-    }),
-  ).annotate({
-    identifier: "FinishOAuthResponse",
-  }) as any as Schema.Schema<FinishOAuthResponse>;
+export const FinishOAuthResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exchangeError: Schema.optional(ExchangeError),
+}).annotate({ identifier: "FinishOAuthResponse" });
 
 export interface Projects {
   /** Optional. The project IDs. Format: {project} */
   projectIds?: Array<string>;
 }
 
-export const Projects: Schema.Schema<Projects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Projects" }) as any as Schema.Schema<Projects>;
+export const Projects = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Projects" });
 
 export interface GKEWorkload {
   /** Required. Immutable. The name of the GKE cluster. Format: `projects/{project}/locations/{location}/clusters/{cluster}`. */
@@ -1000,29 +921,19 @@ export interface GKEWorkload {
   deployment?: string;
 }
 
-export const GKEWorkload: Schema.Schema<GKEWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Schema.String),
-      deployment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GKEWorkload",
-  }) as any as Schema.Schema<GKEWorkload>;
+export const GKEWorkload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cluster: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+}).annotate({ identifier: "GKEWorkload" });
 
 export interface GoogleCloudRun {
   /** Required. Immutable. The name of the Cloud Run service. Format: `projects/{project}/locations/{location}/services/{service}`. */
   serviceUri?: string;
 }
 
-export const GoogleCloudRun: Schema.Schema<GoogleCloudRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRun",
-  }) as any as Schema.Schema<GoogleCloudRun>;
+export const GoogleCloudRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleCloudRun" });
 
 export interface AppHubWorkload {
   /** Required. Output only. Immutable. The name of the App Hub Workload. Format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. */
@@ -1033,16 +944,11 @@ export interface AppHubWorkload {
   environment?: string;
 }
 
-export const AppHubWorkload: Schema.Schema<AppHubWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workload: Schema.optional(Schema.String),
-      criticality: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppHubWorkload",
-  }) as any as Schema.Schema<AppHubWorkload>;
+export const AppHubWorkload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workload: Schema.optional(Schema.String),
+  criticality: Schema.optional(Schema.String),
+  environment: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppHubWorkload" });
 
 export interface AppHubService {
   /** Required. Output only. Immutable. The name of the App Hub Service. Format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. */
@@ -1053,16 +959,11 @@ export interface AppHubService {
   environment?: string;
 }
 
-export const AppHubService: Schema.Schema<AppHubService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apphubService: Schema.optional(Schema.String),
-      criticality: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppHubService",
-  }) as any as Schema.Schema<AppHubService>;
+export const AppHubService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apphubService: Schema.optional(Schema.String),
+  criticality: Schema.optional(Schema.String),
+  environment: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppHubService" });
 
 export interface RuntimeConfig {
   /** Output only. Google Kubernetes Engine runtime. */
@@ -1079,19 +980,14 @@ export interface RuntimeConfig {
   state?: "STATE_UNSPECIFIED" | "LINKED" | "UNLINKED" | (string & {});
 }
 
-export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gkeWorkload: Schema.optional(GKEWorkload),
-      googleCloudRun: Schema.optional(GoogleCloudRun),
-      appHubWorkload: Schema.optional(AppHubWorkload),
-      appHubService: Schema.optional(AppHubService),
-      uri: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeConfig",
-  }) as any as Schema.Schema<RuntimeConfig>;
+export const RuntimeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gkeWorkload: Schema.optional(GKEWorkload),
+  googleCloudRun: Schema.optional(GoogleCloudRun),
+  appHubWorkload: Schema.optional(AppHubWorkload),
+  appHubService: Schema.optional(AppHubService),
+  uri: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeConfig" });
 
 export interface GoogleArtifactRegistry {
   /** Required. The host project of Artifact Registry. */
@@ -1100,29 +996,23 @@ export interface GoogleArtifactRegistry {
   artifactRegistryPackage?: string;
 }
 
-export const GoogleArtifactRegistry: Schema.Schema<GoogleArtifactRegistry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleArtifactRegistry",
-  }) as any as Schema.Schema<GoogleArtifactRegistry>;
+export const GoogleArtifactRegistry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    projectId: Schema.optional(Schema.String),
+    artifactRegistryPackage: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GoogleArtifactRegistry" });
 
 export interface GoogleArtifactAnalysis {
   /** Required. The project id of the project where the provenance is stored. */
   projectId?: string;
 }
 
-export const GoogleArtifactAnalysis: Schema.Schema<GoogleArtifactAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleArtifactAnalysis",
-  }) as any as Schema.Schema<GoogleArtifactAnalysis>;
+export const GoogleArtifactAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    projectId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GoogleArtifactAnalysis" });
 
 export interface ArtifactConfig {
   /** Optional. Set if the artifact is stored in Artifact registry. */
@@ -1133,16 +1023,11 @@ export interface ArtifactConfig {
   uri?: string;
 }
 
-export const ArtifactConfig: Schema.Schema<ArtifactConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleArtifactRegistry: Schema.optional(GoogleArtifactRegistry),
-      googleArtifactAnalysis: Schema.optional(GoogleArtifactAnalysis),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ArtifactConfig",
-  }) as any as Schema.Schema<ArtifactConfig>;
+export const ArtifactConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleArtifactRegistry: Schema.optional(GoogleArtifactRegistry),
+  googleArtifactAnalysis: Schema.optional(GoogleArtifactAnalysis),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ArtifactConfig" });
 
 export interface InsightsConfig {
   /** Optional. The name of the App Hub Application. Format: projects/{project}/locations/{location}/applications/{application} */
@@ -1176,25 +1061,20 @@ export interface InsightsConfig {
   errors?: Array<Status>;
 }
 
-export const InsightsConfig: Schema.Schema<InsightsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appHubApplication: Schema.optional(Schema.String),
-      projects: Schema.optional(Projects),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      runtimeConfigs: Schema.optional(Schema.Array(RuntimeConfig)),
-      artifactConfigs: Schema.optional(Schema.Array(ArtifactConfig)),
-      state: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reconciling: Schema.optional(Schema.Boolean),
-      errors: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "InsightsConfig",
-  }) as any as Schema.Schema<InsightsConfig>;
+export const InsightsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appHubApplication: Schema.optional(Schema.String),
+  projects: Schema.optional(Projects),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  runtimeConfigs: Schema.optional(Schema.Array(RuntimeConfig)),
+  artifactConfigs: Schema.optional(Schema.Array(ArtifactConfig)),
+  state: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  reconciling: Schema.optional(Schema.Boolean),
+  errors: Schema.optional(Schema.Array(Status)),
+}).annotate({ identifier: "InsightsConfig" });
 
 export interface ListInsightsConfigsResponse {
   /** The list of InsightsConfigs. */
@@ -1205,16 +1085,12 @@ export interface ListInsightsConfigsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListInsightsConfigsResponse: Schema.Schema<ListInsightsConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insightsConfigs: Schema.optional(Schema.Array(InsightsConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInsightsConfigsResponse",
-  }) as any as Schema.Schema<ListInsightsConfigsResponse>;
+export const ListInsightsConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insightsConfigs: Schema.optional(Schema.Array(InsightsConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListInsightsConfigsResponse" });
 
 export interface ArtifactDeployment {
   /** Output only. Unique identifier of `ArtifactDeployment`. */
@@ -1233,20 +1109,15 @@ export interface ArtifactDeployment {
   containerStatusSummary?: string;
 }
 
-export const ArtifactDeployment: Schema.Schema<ArtifactDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      artifactReference: Schema.optional(Schema.String),
-      artifactAlias: Schema.optional(Schema.String),
-      sourceCommitUris: Schema.optional(Schema.Array(Schema.String)),
-      deployTime: Schema.optional(Schema.String),
-      undeployTime: Schema.optional(Schema.String),
-      containerStatusSummary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ArtifactDeployment",
-  }) as any as Schema.Schema<ArtifactDeployment>;
+export const ArtifactDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  artifactReference: Schema.optional(Schema.String),
+  artifactAlias: Schema.optional(Schema.String),
+  sourceCommitUris: Schema.optional(Schema.Array(Schema.String)),
+  deployTime: Schema.optional(Schema.String),
+  undeployTime: Schema.optional(Schema.String),
+  containerStatusSummary: Schema.optional(Schema.String),
+}).annotate({ identifier: "ArtifactDeployment" });
 
 export interface DeploymentEvent {
   /** Identifier. The name of the DeploymentEvent. This name is provided by Developer Connect insights. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid} */
@@ -1273,22 +1144,17 @@ export interface DeploymentEvent {
   undeployTime?: string;
 }
 
-export const DeploymentEvent: Schema.Schema<DeploymentEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      runtimeConfig: Schema.optional(RuntimeConfig),
-      runtimeDeploymentUri: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      artifactDeployments: Schema.optional(Schema.Array(ArtifactDeployment)),
-      deployTime: Schema.optional(Schema.String),
-      undeployTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeploymentEvent",
-  }) as any as Schema.Schema<DeploymentEvent>;
+export const DeploymentEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  runtimeConfig: Schema.optional(RuntimeConfig),
+  runtimeDeploymentUri: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  artifactDeployments: Schema.optional(Schema.Array(ArtifactDeployment)),
+  deployTime: Schema.optional(Schema.String),
+  undeployTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeploymentEvent" });
 
 export interface ListDeploymentEventsResponse {
   /** The list of DeploymentEvents. */
@@ -1297,15 +1163,11 @@ export interface ListDeploymentEventsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeploymentEventsResponse: Schema.Schema<ListDeploymentEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentEvents: Schema.optional(Schema.Array(DeploymentEvent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDeploymentEventsResponse",
-  }) as any as Schema.Schema<ListDeploymentEventsResponse>;
+export const ListDeploymentEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentEvents: Schema.optional(Schema.Array(DeploymentEvent)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDeploymentEventsResponse" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -1316,86 +1178,63 @@ export interface HttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "HttpBody" });
 
 export interface ProcessGitHubEnterpriseWebhookRequest {
   /** Required. HTTP request body. */
   body?: HttpBody;
 }
 
-export const ProcessGitHubEnterpriseWebhookRequest: Schema.Schema<ProcessGitHubEnterpriseWebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(HttpBody),
-    }),
-  ).annotate({
-    identifier: "ProcessGitHubEnterpriseWebhookRequest",
-  }) as any as Schema.Schema<ProcessGitHubEnterpriseWebhookRequest>;
+export const ProcessGitHubEnterpriseWebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessGitHubEnterpriseWebhookRequest" });
 
 export interface ProcessGitLabEnterpriseWebhookRequest {
   /** Required. HTTP request body. */
   body?: HttpBody;
 }
 
-export const ProcessGitLabEnterpriseWebhookRequest: Schema.Schema<ProcessGitLabEnterpriseWebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(HttpBody),
-    }),
-  ).annotate({
-    identifier: "ProcessGitLabEnterpriseWebhookRequest",
-  }) as any as Schema.Schema<ProcessGitLabEnterpriseWebhookRequest>;
+export const ProcessGitLabEnterpriseWebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessGitLabEnterpriseWebhookRequest" });
 
 export interface ProcessGitLabWebhookRequest {
   /** Required. HTTP request body. */
   body?: HttpBody;
 }
 
-export const ProcessGitLabWebhookRequest: Schema.Schema<ProcessGitLabWebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(HttpBody),
-    }),
-  ).annotate({
-    identifier: "ProcessGitLabWebhookRequest",
-  }) as any as Schema.Schema<ProcessGitLabWebhookRequest>;
+export const ProcessGitLabWebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessGitLabWebhookRequest" });
 
 export interface ProcessBitbucketDataCenterWebhookRequest {
   /** Required. HTTP request body. */
   body?: HttpBody;
 }
 
-export const ProcessBitbucketDataCenterWebhookRequest: Schema.Schema<ProcessBitbucketDataCenterWebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(HttpBody),
-    }),
-  ).annotate({
-    identifier: "ProcessBitbucketDataCenterWebhookRequest",
-  }) as any as Schema.Schema<ProcessBitbucketDataCenterWebhookRequest>;
+export const ProcessBitbucketDataCenterWebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessBitbucketDataCenterWebhookRequest" });
 
 export interface ProcessBitbucketCloudWebhookRequest {
   /** Required. HTTP request body. */
   body?: HttpBody;
 }
 
-export const ProcessBitbucketCloudWebhookRequest: Schema.Schema<ProcessBitbucketCloudWebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(HttpBody),
-    }),
-  ).annotate({
-    identifier: "ProcessBitbucketCloudWebhookRequest",
-  }) as any as Schema.Schema<ProcessBitbucketCloudWebhookRequest>;
+export const ProcessBitbucketCloudWebhookRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessBitbucketCloudWebhookRequest" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -1410,16 +1249,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1428,15 +1264,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -1455,20 +1286,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Operations
@@ -1507,7 +1333,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2802,6 +2628,55 @@ export const deleteProjectsLocationsAccountConnectors: API.OperationMethod<
   input: DeleteProjectsLocationsAccountConnectorsRequest,
   output: DeleteProjectsLocationsAccountConnectorsResponse,
   errors: [],
+}));
+
+export interface FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest {
+  /** Required. The name of the Account Connector resource in the format: `projects/* /locations/* /accountConnectors/*`. */
+  accountConnector: string;
+  /** Optional. Number of results to return in the list. Defaults to 20. */
+  pageSize?: number;
+  /** Optional. Page start. */
+  pageToken?: string;
+  /** Optional. The name of the repository. When specified, only the UserRepository with this name will be returned if the repository is accessible under this Account Connector for the calling user. */
+  repository?: string;
+}
+
+export const FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    repository: Schema.optional(Schema.String).pipe(T.HttpQuery("repository")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/accountConnectors/{accountConnectorsId}:fetchUserRepositories",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
+
+export type FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
+  FetchUserRepositoriesResponse;
+export const FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchUserRepositoriesResponse;
+
+export type FetchUserRepositoriesProjectsLocationsAccountConnectorsError =
+  DefaultErrors;
+
+/** FetchUserRepositories returns a list of UserRepos that are available for an account connector resource. */
+export const fetchUserRepositoriesProjectsLocationsAccountConnectors: API.PaginatedOperationMethod<
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
+  output: FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest {

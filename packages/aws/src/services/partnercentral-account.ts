@@ -65,7 +65,7 @@ export type TagValue = string;
 export type Catalog = string;
 export type Email = string;
 export type ClientToken = string;
-export type UnicodeString = string;
+export type UnicodeStringIncludingNewLine = string;
 export type SensitiveUnicodeString = string | redacted.Redacted<string>;
 export type ParticipantIdentifier = string;
 export type ConnectionInvitationId = string;
@@ -76,6 +76,7 @@ export type MaxResults = number;
 export type ConnectionArn = string;
 export type AwsAccountId = string;
 export type PartnerProfileId = string;
+export type UnicodeString = string;
 export type SellerProfileId = string;
 export type ConnectionPreferencesArn = string;
 export type Revision = number;
@@ -133,10 +134,18 @@ export const BusinessVerificationDetails =
   }) as any as S.Schema<BusinessVerificationDetails>;
 export interface BusinessVerificationResponse {
   BusinessVerificationDetails: BusinessVerificationDetails;
+  CompletionUrl?: string;
+  CompletionUrlExpiresAt?: Date;
 }
 export const BusinessVerificationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ BusinessVerificationDetails: BusinessVerificationDetails }),
+    S.Struct({
+      BusinessVerificationDetails: BusinessVerificationDetails,
+      CompletionUrl: S.optional(S.String),
+      CompletionUrlExpiresAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
   ).annotate({
     identifier: "BusinessVerificationResponse",
   }) as any as S.Schema<BusinessVerificationResponse>;
@@ -319,6 +328,9 @@ export const SendEmailVerificationCodeResponse =
 export type ServiceQuotaExceededExceptionReason =
   | "LIMIT_EXCEEDED_NUMBER_OF_EMAIL"
   | "LIMIT_EXCEEDED_NUMBER_OF_DOMAIN"
+  | "LIMIT_EXCEEDED_NUMBER_OF_CONNECTION_INVITATION_PER_DAY"
+  | "LIMIT_EXCEEDED_NUMBER_OF_ACTIVE_CONNECTION"
+  | "LIMIT_EXCEEDED_NUMBER_OF_OPEN_CONNECTION_INVITATION"
   | (string & {});
 export const ServiceQuotaExceededExceptionReason =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -1928,6 +1940,7 @@ export type CreateConnectionInvitationError =
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -1947,6 +1960,7 @@ export const createConnectionInvitation: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
@@ -2027,6 +2041,7 @@ export type AcceptConnectionInvitationError =
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -2046,6 +2061,7 @@ export const acceptConnectionInvitation: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],

@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface GitSource {
   /** Optional. Repository URL. Example: 'https://github.com/kubernetes/examples.git' */
@@ -109,28 +98,41 @@ export interface GitSource {
   ref?: string;
 }
 
-export const GitSource: Schema.Schema<GitSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repo: Schema.optional(Schema.String),
-      directory: Schema.optional(Schema.String),
-      ref: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GitSource" }) as any as Schema.Schema<GitSource>;
+export const GitSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repo: Schema.optional(Schema.String),
+  directory: Schema.optional(Schema.String),
+  ref: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitSource" });
 
 export interface TerraformVariable {
   /** Optional. Input variable value. */
   inputValue?: unknown;
 }
 
-export const TerraformVariable: Schema.Schema<TerraformVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "TerraformVariable",
-  }) as any as Schema.Schema<TerraformVariable>;
+export const TerraformVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputValue: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "TerraformVariable" });
+
+export interface DeploymentSource {
+  /** Required. The resource name of the source Deployment to import the output from. Format: projects/{project}/locations/{location}/deployments/{deployment} The source deployment must be in the same project and location. */
+  deployment?: string;
+  /** Required. The name of the output variable in the source deployment's latest successfully applied revision. */
+  outputName?: string;
+}
+
+export const DeploymentSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deployment: Schema.optional(Schema.String),
+  outputName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeploymentSource" });
+
+export interface ExternalValueSource {
+  /** A source from a Deployment. */
+  deploymentSource?: DeploymentSource;
+}
+
+export const ExternalValueSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deploymentSource: Schema.optional(DeploymentSource),
+}).annotate({ identifier: "ExternalValueSource" });
 
 export interface TerraformBlueprint {
   /** URI of an object in Google Cloud Storage. Format: `gs://{bucket}/{object}` URI may also specify an object version for zipped objects. Format: `gs://{bucket}/{object}#{version}` */
@@ -139,20 +141,18 @@ export interface TerraformBlueprint {
   gitSource?: GitSource;
   /** Optional. Input variable values for the Terraform blueprint. */
   inputValues?: Record<string, TerraformVariable>;
+  /** Optional. Map of input variable names in this blueprint to configurations for importing values from external sources. */
+  externalValues?: Record<string, ExternalValueSource>;
 }
 
-export const TerraformBlueprint: Schema.Schema<TerraformBlueprint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(Schema.String),
-      gitSource: Schema.optional(GitSource),
-      inputValues: Schema.optional(
-        Schema.Record(Schema.String, TerraformVariable),
-      ),
-    }),
-  ).annotate({
-    identifier: "TerraformBlueprint",
-  }) as any as Schema.Schema<TerraformBlueprint>;
+export const TerraformBlueprint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsSource: Schema.optional(Schema.String),
+  gitSource: Schema.optional(GitSource),
+  inputValues: Schema.optional(Schema.Record(Schema.String, TerraformVariable)),
+  externalValues: Schema.optional(
+    Schema.Record(Schema.String, ExternalValueSource),
+  ),
+}).annotate({ identifier: "TerraformBlueprint" });
 
 export interface TerraformOutput {
   /** Identifies whether Terraform has set this output as a potential sensitive value. */
@@ -161,15 +161,10 @@ export interface TerraformOutput {
   value?: unknown;
 }
 
-export const TerraformOutput: Schema.Schema<TerraformOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sensitive: Schema.optional(Schema.Boolean),
-      value: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "TerraformOutput",
-  }) as any as Schema.Schema<TerraformOutput>;
+export const TerraformOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sensitive: Schema.optional(Schema.Boolean),
+  value: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "TerraformOutput" });
 
 export interface ApplyResults {
   /** Location of a blueprint copy and other manifests in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
@@ -180,16 +175,11 @@ export interface ApplyResults {
   outputs?: Record<string, TerraformOutput>;
 }
 
-export const ApplyResults: Schema.Schema<ApplyResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      artifacts: Schema.optional(Schema.String),
-      outputs: Schema.optional(Schema.Record(Schema.String, TerraformOutput)),
-    }),
-  ).annotate({
-    identifier: "ApplyResults",
-  }) as any as Schema.Schema<ApplyResults>;
+export const ApplyResults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  artifacts: Schema.optional(Schema.String),
+  outputs: Schema.optional(Schema.Record(Schema.String, TerraformOutput)),
+}).annotate({ identifier: "ApplyResults" });
 
 export interface TerraformError {
   /** Address of the resource associated with the error, e.g. `google_compute_network.vpc_network`. */
@@ -202,17 +192,12 @@ export interface TerraformError {
   error?: Status;
 }
 
-export const TerraformError: Schema.Schema<TerraformError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceAddress: Schema.optional(Schema.String),
-      httpResponseCode: Schema.optional(Schema.Number),
-      errorDescription: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "TerraformError",
-  }) as any as Schema.Schema<TerraformError>;
+export const TerraformError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceAddress: Schema.optional(Schema.String),
+  httpResponseCode: Schema.optional(Schema.Number),
+  errorDescription: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "TerraformError" });
 
 export interface ProviderConfig {
   /** Optional. ProviderSource specifies the source type of the provider. */
@@ -222,14 +207,9 @@ export interface ProviderConfig {
     | (string & {});
 }
 
-export const ProviderConfig: Schema.Schema<ProviderConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProviderConfig",
-  }) as any as Schema.Schema<ProviderConfig>;
+export const ProviderConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProviderConfig" });
 
 export interface Deployment {
   /** A blueprint described using Terraform's HashiCorp Configuration Language as a root module. */
@@ -312,35 +292,32 @@ export interface Deployment {
   providerConfig?: ProviderConfig;
 }
 
-export const Deployment: Schema.Schema<Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      terraformBlueprint: Schema.optional(TerraformBlueprint),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      latestRevision: Schema.optional(Schema.String),
-      stateDetail: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      deleteResults: Schema.optional(ApplyResults),
-      deleteBuild: Schema.optional(Schema.String),
-      deleteLogs: Schema.optional(Schema.String),
-      tfErrors: Schema.optional(Schema.Array(TerraformError)),
-      errorLogs: Schema.optional(Schema.String),
-      artifactsGcsBucket: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      importExistingResources: Schema.optional(Schema.Boolean),
-      workerPool: Schema.optional(Schema.String),
-      lockState: Schema.optional(Schema.String),
-      tfVersionConstraint: Schema.optional(Schema.String),
-      tfVersion: Schema.optional(Schema.String),
-      quotaValidation: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      providerConfig: Schema.optional(ProviderConfig),
-    }),
-  ).annotate({ identifier: "Deployment" }) as any as Schema.Schema<Deployment>;
+export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  terraformBlueprint: Schema.optional(TerraformBlueprint),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+  latestRevision: Schema.optional(Schema.String),
+  stateDetail: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+  deleteResults: Schema.optional(ApplyResults),
+  deleteBuild: Schema.optional(Schema.String),
+  deleteLogs: Schema.optional(Schema.String),
+  tfErrors: Schema.optional(Schema.Array(TerraformError)),
+  errorLogs: Schema.optional(Schema.String),
+  artifactsGcsBucket: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  importExistingResources: Schema.optional(Schema.Boolean),
+  workerPool: Schema.optional(Schema.String),
+  lockState: Schema.optional(Schema.String),
+  tfVersionConstraint: Schema.optional(Schema.String),
+  tfVersion: Schema.optional(Schema.String),
+  quotaValidation: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  providerConfig: Schema.optional(ProviderConfig),
+}).annotate({ identifier: "Deployment" });
 
 export interface ListDeploymentsResponse {
   /** List of Deployments. */
@@ -351,16 +328,12 @@ export interface ListDeploymentsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListDeploymentsResponse: Schema.Schema<ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(Schema.Array(Deployment)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListDeploymentsResponse",
-  }) as any as Schema.Schema<ListDeploymentsResponse>;
+export const ListDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(Deployment)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListDeploymentsResponse" });
 
 export interface Revision {
   /** Output only. A blueprint described using Terraform's HashiCorp Configuration Language as a root module. */
@@ -428,32 +401,29 @@ export interface Revision {
   providerConfig?: ProviderConfig;
 }
 
-export const Revision: Schema.Schema<Revision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      terraformBlueprint: Schema.optional(TerraformBlueprint),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      applyResults: Schema.optional(ApplyResults),
-      stateDetail: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      build: Schema.optional(Schema.String),
-      logs: Schema.optional(Schema.String),
-      tfErrors: Schema.optional(Schema.Array(TerraformError)),
-      errorLogs: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      importExistingResources: Schema.optional(Schema.Boolean),
-      workerPool: Schema.optional(Schema.String),
-      tfVersionConstraint: Schema.optional(Schema.String),
-      tfVersion: Schema.optional(Schema.String),
-      quotaValidationResults: Schema.optional(Schema.String),
-      quotaValidation: Schema.optional(Schema.String),
-      providerConfig: Schema.optional(ProviderConfig),
-    }),
-  ).annotate({ identifier: "Revision" }) as any as Schema.Schema<Revision>;
+export const Revision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  terraformBlueprint: Schema.optional(TerraformBlueprint),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  applyResults: Schema.optional(ApplyResults),
+  stateDetail: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+  build: Schema.optional(Schema.String),
+  logs: Schema.optional(Schema.String),
+  tfErrors: Schema.optional(Schema.Array(TerraformError)),
+  errorLogs: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  importExistingResources: Schema.optional(Schema.Boolean),
+  workerPool: Schema.optional(Schema.String),
+  tfVersionConstraint: Schema.optional(Schema.String),
+  tfVersion: Schema.optional(Schema.String),
+  quotaValidationResults: Schema.optional(Schema.String),
+  quotaValidation: Schema.optional(Schema.String),
+  providerConfig: Schema.optional(ProviderConfig),
+}).annotate({ identifier: "Revision" });
 
 export interface ListRevisionsResponse {
   /** List of Revisions. */
@@ -464,16 +434,11 @@ export interface ListRevisionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListRevisionsResponse: Schema.Schema<ListRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisions: Schema.optional(Schema.Array(Revision)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListRevisionsResponse",
-  }) as any as Schema.Schema<ListRevisionsResponse>;
+export const ListRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  revisions: Schema.optional(Schema.Array(Revision)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListRevisionsResponse" });
 
 export interface ResourceTerraformInfo {
   /** TF resource address that uniquely identifies this resource within this deployment. */
@@ -484,30 +449,20 @@ export interface ResourceTerraformInfo {
   id?: string;
 }
 
-export const ResourceTerraformInfo: Schema.Schema<ResourceTerraformInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceTerraformInfo",
-  }) as any as Schema.Schema<ResourceTerraformInfo>;
+export const ResourceTerraformInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  address: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceTerraformInfo" });
 
 export interface ResourceCAIInfo {
   /** CAI resource name in the format following https://cloud.google.com/apis/design/resource_names#full_resource_name */
   fullResourceName?: string;
 }
 
-export const ResourceCAIInfo: Schema.Schema<ResourceCAIInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceCAIInfo",
-  }) as any as Schema.Schema<ResourceCAIInfo>;
+export const ResourceCAIInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fullResourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceCAIInfo" });
 
 export interface Resource {
   /** Output only. Resource name. Format: `projects/{project}/locations/{location}/deployments/{deployment}/revisions/{revision}/resources/{resource}` */
@@ -535,16 +490,13 @@ export interface Resource {
     | (string & {});
 }
 
-export const Resource: Schema.Schema<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      terraformInfo: Schema.optional(ResourceTerraformInfo),
-      caiAssets: Schema.optional(Schema.Record(Schema.String, ResourceCAIInfo)),
-      intent: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Resource" }) as any as Schema.Schema<Resource>;
+export const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  terraformInfo: Schema.optional(ResourceTerraformInfo),
+  caiAssets: Schema.optional(Schema.Record(Schema.String, ResourceCAIInfo)),
+  intent: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Resource" });
 
 export interface ListResourcesResponse {
   /** List of Resources. */
@@ -555,98 +507,75 @@ export interface ListResourcesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListResourcesResponse: Schema.Schema<ListResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Resource)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListResourcesResponse",
-  }) as any as Schema.Schema<ListResourcesResponse>;
+export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(Schema.Array(Resource)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListResourcesResponse" });
 
 export interface ExportDeploymentStatefileRequest {
   /** Optional. If this flag is set to true, the exported deployment state file will be the draft state. This will enable the draft file to be validated before copying it over to the working state on unlock. */
   draft?: boolean;
 }
 
-export const ExportDeploymentStatefileRequest: Schema.Schema<ExportDeploymentStatefileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      draft: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExportDeploymentStatefileRequest",
-  }) as any as Schema.Schema<ExportDeploymentStatefileRequest>;
+export const ExportDeploymentStatefileRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    draft: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ExportDeploymentStatefileRequest" });
 
 export interface Statefile {
   /** Output only. Cloud Storage signed URI used for downloading or uploading the state file. */
   signedUri?: string;
 }
 
-export const Statefile: Schema.Schema<Statefile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signedUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Statefile" }) as any as Schema.Schema<Statefile>;
+export const Statefile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signedUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Statefile" });
 
 export interface ExportRevisionStatefileRequest {}
 
-export const ExportRevisionStatefileRequest: Schema.Schema<ExportRevisionStatefileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ExportRevisionStatefileRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportRevisionStatefileRequest",
-  }) as any as Schema.Schema<ExportRevisionStatefileRequest>;
+  });
 
 export interface ImportStatefileRequest {
   /** Required. Lock ID of the lock file to verify that the user who is importing the state file previously locked the Deployment. */
   lockId?: string;
 }
 
-export const ImportStatefileRequest: Schema.Schema<ImportStatefileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lockId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportStatefileRequest",
-  }) as any as Schema.Schema<ImportStatefileRequest>;
+export const ImportStatefileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    lockId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ImportStatefileRequest" });
 
 export interface DeleteStatefileRequest {
   /** Required. Lock ID of the lock file to verify that the user who is deleting the state file previously locked the Deployment. */
   lockId?: string;
 }
 
-export const DeleteStatefileRequest: Schema.Schema<DeleteStatefileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lockId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteStatefileRequest",
-  }) as any as Schema.Schema<DeleteStatefileRequest>;
+export const DeleteStatefileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    lockId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DeleteStatefileRequest" });
 
 export interface LockDeploymentRequest {}
 
-export const LockDeploymentRequest: Schema.Schema<LockDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "LockDeploymentRequest",
-  }) as any as Schema.Schema<LockDeploymentRequest>;
+export const LockDeploymentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "LockDeploymentRequest" });
 
 export interface UnlockDeploymentRequest {
   /** Required. Lock ID of the lock file to be unlocked. */
   lockId?: string;
 }
 
-export const UnlockDeploymentRequest: Schema.Schema<UnlockDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lockId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnlockDeploymentRequest",
-  }) as any as Schema.Schema<UnlockDeploymentRequest>;
+export const UnlockDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lockId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UnlockDeploymentRequest" });
 
 export interface LockInfo {
   /** Unique ID for the lock to be overridden with generation ID in the backend. */
@@ -663,17 +592,14 @@ export interface LockInfo {
   createTime?: string;
 }
 
-export const LockInfo: Schema.Schema<LockInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lockId: Schema.optional(Schema.String),
-      operation: Schema.optional(Schema.String),
-      info: Schema.optional(Schema.String),
-      who: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LockInfo" }) as any as Schema.Schema<LockInfo>;
+export const LockInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lockId: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  info: Schema.optional(Schema.String),
+  who: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "LockInfo" });
 
 export interface PreviewArtifacts {
   /** Output only. Location of a blueprint copy and other content in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
@@ -682,15 +608,10 @@ export interface PreviewArtifacts {
   artifacts?: string;
 }
 
-export const PreviewArtifacts: Schema.Schema<PreviewArtifacts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      artifacts: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PreviewArtifacts",
-  }) as any as Schema.Schema<PreviewArtifacts>;
+export const PreviewArtifacts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  artifacts: Schema.optional(Schema.String),
+}).annotate({ identifier: "PreviewArtifacts" });
 
 export interface Preview {
   /** The terraform blueprint to preview. */
@@ -759,32 +680,29 @@ export interface Preview {
   providerConfig?: ProviderConfig;
 }
 
-export const Preview: Schema.Schema<Preview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      terraformBlueprint: Schema.optional(TerraformBlueprint),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      deployment: Schema.optional(Schema.String),
-      previewMode: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      artifactsGcsBucket: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      errorStatus: Schema.optional(Status),
-      build: Schema.optional(Schema.String),
-      tfErrors: Schema.optional(Schema.Array(TerraformError)),
-      errorLogs: Schema.optional(Schema.String),
-      previewArtifacts: Schema.optional(PreviewArtifacts),
-      logs: Schema.optional(Schema.String),
-      tfVersion: Schema.optional(Schema.String),
-      tfVersionConstraint: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      providerConfig: Schema.optional(ProviderConfig),
-    }),
-  ).annotate({ identifier: "Preview" }) as any as Schema.Schema<Preview>;
+export const Preview = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  terraformBlueprint: Schema.optional(TerraformBlueprint),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+  previewMode: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  artifactsGcsBucket: Schema.optional(Schema.String),
+  workerPool: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+  errorStatus: Schema.optional(Status),
+  build: Schema.optional(Schema.String),
+  tfErrors: Schema.optional(Schema.Array(TerraformError)),
+  errorLogs: Schema.optional(Schema.String),
+  previewArtifacts: Schema.optional(PreviewArtifacts),
+  logs: Schema.optional(Schema.String),
+  tfVersion: Schema.optional(Schema.String),
+  tfVersionConstraint: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  providerConfig: Schema.optional(ProviderConfig),
+}).annotate({ identifier: "Preview" });
 
 export interface ListPreviewsResponse {
   /** List of Previews. */
@@ -795,23 +713,18 @@ export interface ListPreviewsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListPreviewsResponse: Schema.Schema<ListPreviewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previews: Schema.optional(Schema.Array(Preview)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListPreviewsResponse",
-  }) as any as Schema.Schema<ListPreviewsResponse>;
+export const ListPreviewsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previews: Schema.optional(Schema.Array(Preview)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListPreviewsResponse" });
 
 export interface ExportPreviewResultRequest {}
 
-export const ExportPreviewResultRequest: Schema.Schema<ExportPreviewResultRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ExportPreviewResultRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportPreviewResultRequest",
-  }) as any as Schema.Schema<ExportPreviewResultRequest>;
+  });
 
 export interface PreviewResult {
   /** Output only. Plan binary signed URL */
@@ -820,29 +733,20 @@ export interface PreviewResult {
   jsonSignedUri?: string;
 }
 
-export const PreviewResult: Schema.Schema<PreviewResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      binarySignedUri: Schema.optional(Schema.String),
-      jsonSignedUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PreviewResult",
-  }) as any as Schema.Schema<PreviewResult>;
+export const PreviewResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  binarySignedUri: Schema.optional(Schema.String),
+  jsonSignedUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "PreviewResult" });
 
 export interface ExportPreviewResultResponse {
   /** Output only. Signed URLs for accessing the plan files. */
   result?: PreviewResult;
 }
 
-export const ExportPreviewResultResponse: Schema.Schema<ExportPreviewResultResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(PreviewResult),
-    }),
-  ).annotate({
-    identifier: "ExportPreviewResultResponse",
-  }) as any as Schema.Schema<ExportPreviewResultResponse>;
+export const ExportPreviewResultResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(PreviewResult),
+  }).annotate({ identifier: "ExportPreviewResultResponse" });
 
 export interface TerraformVersion {
   /** Identifier. The version name is in the format: 'projects/{project_id}/locations/{location}/terraformVersions/{terraform_version}'. */
@@ -862,18 +766,13 @@ export interface TerraformVersion {
   obsoleteTime?: string;
 }
 
-export const TerraformVersion: Schema.Schema<TerraformVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      supportTime: Schema.optional(Schema.String),
-      deprecateTime: Schema.optional(Schema.String),
-      obsoleteTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TerraformVersion",
-  }) as any as Schema.Schema<TerraformVersion>;
+export const TerraformVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  supportTime: Schema.optional(Schema.String),
+  deprecateTime: Schema.optional(Schema.String),
+  obsoleteTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TerraformVersion" });
 
 export interface ListTerraformVersionsResponse {
   /** List of TerraformVersions. */
@@ -884,16 +783,12 @@ export interface ListTerraformVersionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListTerraformVersionsResponse: Schema.Schema<ListTerraformVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      terraformVersions: Schema.optional(Schema.Array(TerraformVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTerraformVersionsResponse",
-  }) as any as Schema.Schema<ListTerraformVersionsResponse>;
+export const ListTerraformVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    terraformVersions: Schema.optional(Schema.Array(TerraformVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListTerraformVersionsResponse" });
 
 export interface ResourceChangeTerraformInfo {
   /** Output only. TF resource address that uniquely identifies the resource. */
@@ -908,18 +803,14 @@ export interface ResourceChangeTerraformInfo {
   actions?: Array<string>;
 }
 
-export const ResourceChangeTerraformInfo: Schema.Schema<ResourceChangeTerraformInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-      actions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResourceChangeTerraformInfo",
-  }) as any as Schema.Schema<ResourceChangeTerraformInfo>;
+export const ResourceChangeTerraformInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+    actions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ResourceChangeTerraformInfo" });
 
 export interface PropertyChange {
   /** Output only. The path of the property change. */
@@ -934,18 +825,13 @@ export interface PropertyChange {
   after?: unknown;
 }
 
-export const PropertyChange: Schema.Schema<PropertyChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-      before: Schema.optional(Schema.Unknown),
-      afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-      after: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "PropertyChange",
-  }) as any as Schema.Schema<PropertyChange>;
+export const PropertyChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+  before: Schema.optional(Schema.Unknown),
+  afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+  after: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "PropertyChange" });
 
 export interface ResourceChange {
   /** Identifier. The name of the resource change. Format: 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'. */
@@ -965,17 +851,12 @@ export interface ResourceChange {
   propertyChanges?: Array<PropertyChange>;
 }
 
-export const ResourceChange: Schema.Schema<ResourceChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      terraformInfo: Schema.optional(ResourceChangeTerraformInfo),
-      intent: Schema.optional(Schema.String),
-      propertyChanges: Schema.optional(Schema.Array(PropertyChange)),
-    }),
-  ).annotate({
-    identifier: "ResourceChange",
-  }) as any as Schema.Schema<ResourceChange>;
+export const ResourceChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  terraformInfo: Schema.optional(ResourceChangeTerraformInfo),
+  intent: Schema.optional(Schema.String),
+  propertyChanges: Schema.optional(Schema.Array(PropertyChange)),
+}).annotate({ identifier: "ResourceChange" });
 
 export interface ListResourceChangesResponse {
   /** List of ResourceChanges. */
@@ -986,16 +867,12 @@ export interface ListResourceChangesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListResourceChangesResponse: Schema.Schema<ListResourceChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceChanges: Schema.optional(Schema.Array(ResourceChange)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListResourceChangesResponse",
-  }) as any as Schema.Schema<ListResourceChangesResponse>;
+export const ListResourceChangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceChanges: Schema.optional(Schema.Array(ResourceChange)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListResourceChangesResponse" });
 
 export interface ResourceDriftTerraformInfo {
   /** Output only. The address of the drifted resource. */
@@ -1008,17 +885,13 @@ export interface ResourceDriftTerraformInfo {
   provider?: string;
 }
 
-export const ResourceDriftTerraformInfo: Schema.Schema<ResourceDriftTerraformInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceDriftTerraformInfo",
-  }) as any as Schema.Schema<ResourceDriftTerraformInfo>;
+export const ResourceDriftTerraformInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResourceDriftTerraformInfo" });
 
 export interface PropertyDrift {
   /** Output only. The path of the property drift. */
@@ -1033,18 +906,13 @@ export interface PropertyDrift {
   after?: unknown;
 }
 
-export const PropertyDrift: Schema.Schema<PropertyDrift> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-      before: Schema.optional(Schema.Unknown),
-      afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
-      after: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "PropertyDrift",
-  }) as any as Schema.Schema<PropertyDrift>;
+export const PropertyDrift = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  beforeSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+  before: Schema.optional(Schema.Unknown),
+  afterSensitivePaths: Schema.optional(Schema.Array(Schema.String)),
+  after: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "PropertyDrift" });
 
 export interface ResourceDrift {
   /** Identifier. The name of the resource drift. Format: 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'. */
@@ -1055,16 +923,11 @@ export interface ResourceDrift {
   propertyDrifts?: Array<PropertyDrift>;
 }
 
-export const ResourceDrift: Schema.Schema<ResourceDrift> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      terraformInfo: Schema.optional(ResourceDriftTerraformInfo),
-      propertyDrifts: Schema.optional(Schema.Array(PropertyDrift)),
-    }),
-  ).annotate({
-    identifier: "ResourceDrift",
-  }) as any as Schema.Schema<ResourceDrift>;
+export const ResourceDrift = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  terraformInfo: Schema.optional(ResourceDriftTerraformInfo),
+  propertyDrifts: Schema.optional(Schema.Array(PropertyDrift)),
+}).annotate({ identifier: "ResourceDrift" });
 
 export interface ListResourceDriftsResponse {
   /** List of ResourceDrifts. */
@@ -1075,16 +938,12 @@ export interface ListResourceDriftsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListResourceDriftsResponse: Schema.Schema<ListResourceDriftsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceDrifts: Schema.optional(Schema.Array(ResourceDrift)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListResourceDriftsResponse",
-  }) as any as Schema.Schema<ListResourceDriftsResponse>;
+export const ListResourceDriftsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceDrifts: Schema.optional(Schema.Array(ResourceDrift)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListResourceDriftsResponse" });
 
 export interface AutoMigrationConfig {
   /** Identifier. The name of the AutoMigrationConfig. Format: 'projects/{project_id}/locations/{location}/AutoMigrationConfig'. */
@@ -1095,16 +954,176 @@ export interface AutoMigrationConfig {
   autoMigrationEnabled?: boolean;
 }
 
-export const AutoMigrationConfig: Schema.Schema<AutoMigrationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      autoMigrationEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AutoMigrationConfig",
-  }) as any as Schema.Schema<AutoMigrationConfig>;
+export const AutoMigrationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  autoMigrationEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AutoMigrationConfig" });
+
+export interface DeploymentUnit {
+  /** The id of the deployment unit. Must be unique within the deployment group. */
+  id?: string;
+  /** Optional. The name of the deployment to be provisioned. Format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */
+  deployment?: string;
+  /** Required. The IDs of the deployment units within the deployment group that this unit depends on. */
+  dependencies?: Array<string>;
+}
+
+export const DeploymentUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+  dependencies: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DeploymentUnit" });
+
+export interface DeploymentGroup {
+  /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name?: string;
+  /** Output only. Time when the deployment group was created. */
+  createTime?: string;
+  /** Output only. Time when the deployment group was last updated. */
+  updateTime?: string;
+  /** Optional. User-defined metadata for the deployment group. */
+  labels?: Record<string, string>;
+  /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployment group during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
+  annotations?: Record<string, string>;
+  /** Output only. Current state of the deployment group. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "ACTIVE"
+    | "UPDATING"
+    | "DELETING"
+    | "FAILED"
+    | "SUSPENDED"
+    | "DELETED"
+    | (string & {});
+  /** Output only. Additional information regarding the current state. */
+  stateDescription?: string;
+  /** The deployment units of the deployment group in a DAG like structure. When a deployment group is being provisioned, the deployment units are deployed in a DAG order. The provided units must be in a DAG order, otherwise an error will be returned. */
+  deploymentUnits?: Array<DeploymentUnit>;
+  /** Output only. The provisioning state of the deployment group. */
+  provisioningState?:
+    | "PROVISIONING_STATE_UNSPECIFIED"
+    | "PROVISIONING"
+    | "PROVISIONED"
+    | "FAILED_TO_PROVISION"
+    | "DEPROVISIONING"
+    | "DEPROVISIONED"
+    | "FAILED_TO_DEPROVISION"
+    | (string & {});
+  /** Output only. Additional information regarding the current provisioning state. */
+  provisioningStateDescription?: string;
+  /** Output only. The error status of the deployment group provisioning or deprovisioning. */
+  provisioningError?: Status;
+}
+
+export const DeploymentGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+  stateDescription: Schema.optional(Schema.String),
+  deploymentUnits: Schema.optional(Schema.Array(DeploymentUnit)),
+  provisioningState: Schema.optional(Schema.String),
+  provisioningStateDescription: Schema.optional(Schema.String),
+  provisioningError: Schema.optional(Status),
+}).annotate({ identifier: "DeploymentGroup" });
+
+export interface ListDeploymentGroupsResponse {
+  /** The deployment groups from the specified collection. */
+  deploymentGroups?: Array<DeploymentGroup>;
+  /** Token to be supplied to the next ListDeploymentGroups request via `page_token` to obtain the next set of results. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentGroups: Schema.optional(Schema.Array(DeploymentGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListDeploymentGroupsResponse" });
+
+export interface DeploymentSpec {
+  /** Required. The id of the deployment to be created which doesn't include the project id and location. */
+  deploymentId?: string;
+  /** Required. The deployment to be created. */
+  deployment?: Deployment;
+}
+
+export const DeploymentSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deploymentId: Schema.optional(Schema.String),
+  deployment: Schema.optional(Deployment),
+}).annotate({ identifier: "DeploymentSpec" });
+
+export interface ProvisionDeploymentGroupRequest {
+  /** Optional. The deployment specs of the deployment units to be created within the same project and location of the deployment group. The key is the unit ID, and the value is the `DeploymentSpec`. Provisioning will fail if a `deployment_spec` has a `deployment_id` that matches an existing deployment in the same project and location. If an existing deployment was part of the last successful revision but is no longer in the current DeploymentGroup's `deployment_units`, it will be recreated if included in `deployment_specs`. */
+  deploymentSpecs?: Record<string, DeploymentSpec>;
+}
+
+export const ProvisionDeploymentGroupRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentSpecs: Schema.optional(
+      Schema.Record(Schema.String, DeploymentSpec),
+    ),
+  }).annotate({ identifier: "ProvisionDeploymentGroupRequest" });
+
+export interface DeprovisionDeploymentGroupRequest {
+  /** Optional. If set to true, this option is propagated to the deletion of each deployment in the group. This corresponds to the 'force' field in DeleteDeploymentRequest. */
+  force?: boolean;
+  /** Optional. Policy on how resources within each deployment should be handled during deletion. This policy is applied globally to the deletion of all deployments in this group. This corresponds to the 'delete_policy' field in DeleteDeploymentRequest. */
+  deletePolicy?:
+    | "DELETE_POLICY_UNSPECIFIED"
+    | "DELETE"
+    | "ABANDON"
+    | (string & {});
+}
+
+export const DeprovisionDeploymentGroupRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    force: Schema.optional(Schema.Boolean),
+    deletePolicy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeprovisionDeploymentGroupRequest" });
+
+export interface DeploymentGroupRevision {
+  /** Identifier. The name of the deployment group revision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'. */
+  name?: string;
+  /** Output only. The snapshot of the deployment group at this revision. */
+  snapshot?: DeploymentGroup;
+  /** Output only. Time when the deployment group revision was created. */
+  createTime?: string;
+  /** Output only. The alternative IDs of the deployment group revision. */
+  alternativeIds?: Array<string>;
+}
+
+export const DeploymentGroupRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    snapshot: Schema.optional(DeploymentGroup),
+    createTime: Schema.optional(Schema.String),
+    alternativeIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DeploymentGroupRevision" });
+
+export interface ListDeploymentGroupRevisionsResponse {
+  /** The deployment group revisions from the specified collection. */
+  deploymentGroupRevisions?: Array<DeploymentGroupRevision>;
+  /** Token to be supplied to the next ListDeploymentGroupRevisions request via `page_token` to obtain the next set of results. */
+  nextPageToken?: string;
+  /** Unordered list. Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListDeploymentGroupRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentGroupRevisions: Schema.optional(
+      Schema.Array(DeploymentGroupRevision),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListDeploymentGroupRevisionsResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -1119,16 +1138,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1137,15 +1153,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -1158,15 +1169,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1177,14 +1185,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -1198,15 +1203,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -1215,15 +1215,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1236,15 +1231,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1253,43 +1245,30 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface DeploymentOperationMetadata {
   /** The current step the deployment operation is running. */
@@ -1316,17 +1295,13 @@ export interface DeploymentOperationMetadata {
   logs?: string;
 }
 
-export const DeploymentOperationMetadata: Schema.Schema<DeploymentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      applyResults: Schema.optional(ApplyResults),
-      build: Schema.optional(Schema.String),
-      logs: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeploymentOperationMetadata",
-  }) as any as Schema.Schema<DeploymentOperationMetadata>;
+export const DeploymentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    applyResults: Schema.optional(ApplyResults),
+    build: Schema.optional(Schema.String),
+    logs: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeploymentOperationMetadata" });
 
 export interface PreviewOperationMetadata {
   /** The current step the preview operation is running. */
@@ -1351,23 +1326,128 @@ export interface PreviewOperationMetadata {
   build?: string;
 }
 
-export const PreviewOperationMetadata: Schema.Schema<PreviewOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      previewArtifacts: Schema.optional(PreviewArtifacts),
-      logs: Schema.optional(Schema.String),
-      build: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PreviewOperationMetadata",
-  }) as any as Schema.Schema<PreviewOperationMetadata>;
+export const PreviewOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    previewArtifacts: Schema.optional(PreviewArtifacts),
+    logs: Schema.optional(Schema.String),
+    build: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PreviewOperationMetadata" });
+
+export interface DeploymentOperationSummary {
+  /** Output only. The current step the deployment operation is running. */
+  deploymentStep?:
+    | "DEPLOYMENT_STEP_UNSPECIFIED"
+    | "PREPARING_STORAGE_BUCKET"
+    | "DOWNLOADING_BLUEPRINT"
+    | "RUNNING_TF_INIT"
+    | "RUNNING_TF_PLAN"
+    | "RUNNING_TF_APPLY"
+    | "RUNNING_TF_DESTROY"
+    | "RUNNING_TF_VALIDATE"
+    | "UNLOCKING_DEPLOYMENT"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "VALIDATING_REPOSITORY"
+    | "RUNNING_QUOTA_VALIDATION"
+    | (string & {});
+  /** Output only. Cloud Build instance UUID associated with this operation. */
+  build?: string;
+  /** Output only. Location of Deployment operations logs in `gs://{bucket}/{object}` format. */
+  logs?: string;
+  /** Output only. Location of Deployment operations content in `gs://{bucket}/{object}` format. */
+  content?: string;
+  /** Output only. Location of Deployment operations artifacts in `gs://{bucket}/{object}` format. */
+  artifacts?: string;
+}
+
+export const DeploymentOperationSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentStep: Schema.optional(Schema.String),
+    build: Schema.optional(Schema.String),
+    logs: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    artifacts: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeploymentOperationSummary" });
+
+export interface DeploymentUnitProgress {
+  /** Output only. The unit id of the deployment unit to be provisioned. */
+  unitId?: string;
+  /** Output only. The name of the deployment to be provisioned. Format: 'projects/{project}/locations/{location}/deployments/{deployment}'. */
+  deployment?: string;
+  /** Output only. The current step of the deployment unit provisioning. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "QUEUED"
+    | "APPLYING_DEPLOYMENT"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "ABORTED"
+    | "SKIPPED"
+    | "DELETING_DEPLOYMENT"
+    | "PREVIEWING_DEPLOYMENT"
+    | (string & {});
+  /** Output only. Additional information regarding the current state. */
+  stateDescription?: string;
+  /** Output only. The summary of the deployment operation. */
+  deploymentOperationSummary?: DeploymentOperationSummary;
+  /** Output only. Holds the error status of the deployment unit provisioning. */
+  error?: Status;
+  /** Output only. The intent of the deployment unit. */
+  intent?:
+    | "INTENT_UNSPECIFIED"
+    | "CREATE_DEPLOYMENT"
+    | "UPDATE_DEPLOYMENT"
+    | "DELETE_DEPLOYMENT"
+    | "RECREATE_DEPLOYMENT"
+    | "CLEAN_UP"
+    | "UNCHANGED"
+    | (string & {});
+}
+
+export const DeploymentUnitProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unitId: Schema.optional(Schema.String),
+    deployment: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    stateDescription: Schema.optional(Schema.String),
+    deploymentOperationSummary: Schema.optional(DeploymentOperationSummary),
+    error: Schema.optional(Status),
+    intent: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DeploymentUnitProgress" });
+
+export interface ProvisionDeploymentGroupOperationMetadata {
+  /** Output only. The current step of the deployment group operation. */
+  step?:
+    | "PROVISION_DEPLOYMENT_GROUP_STEP_UNSPECIFIED"
+    | "VALIDATING_DEPLOYMENT_GROUP"
+    | "ASSOCIATING_DEPLOYMENTS_TO_DEPLOYMENT_GROUP"
+    | "PROVISIONING_DEPLOYMENT_UNITS"
+    | "DISASSOCIATING_DEPLOYMENTS_FROM_DEPLOYMENT_GROUP"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "DEPROVISIONING_DEPLOYMENT_UNITS"
+    | (string & {});
+  /** Output only. Progress information for each deployment unit within the operation. */
+  deploymentUnitProgresses?: Array<DeploymentUnitProgress>;
+}
+
+export const ProvisionDeploymentGroupOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    deploymentUnitProgresses: Schema.optional(
+      Schema.Array(DeploymentUnitProgress),
+    ),
+  }).annotate({ identifier: "ProvisionDeploymentGroupOperationMetadata" });
 
 export interface OperationMetadata {
   /** Output only. Metadata about the deployment operation state. */
   deploymentMetadata?: DeploymentOperationMetadata;
   /** Output only. Metadata about the preview operation state. */
   previewMetadata?: PreviewOperationMetadata;
+  /** Output only. Metadata about ProvisionDeploymentGroup operation state. */
+  provisionDeploymentGroupMetadata?: ProvisionDeploymentGroupOperationMetadata;
   /** Output only. Time when the operation was created. */
   createTime?: string;
   /** Output only. Time when the operation finished running. */
@@ -1384,22 +1464,20 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentMetadata: Schema.optional(DeploymentOperationMetadata),
-      previewMetadata: Schema.optional(PreviewOperationMetadata),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deploymentMetadata: Schema.optional(DeploymentOperationMetadata),
+  previewMetadata: Schema.optional(PreviewOperationMetadata),
+  provisionDeploymentGroupMetadata: Schema.optional(
+    ProvisionDeploymentGroupOperationMetadata,
+  ),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Operations
@@ -1514,7 +1592,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors;
 
-/** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -2956,4 +3034,385 @@ export const getProjectsLocationsTerraformVersions: API.OperationMethod<
   input: GetProjectsLocationsTerraformVersionsRequest,
   output: GetProjectsLocationsTerraformVersionsResponse,
   errors: [],
+}));
+
+export interface GetProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of the deployment group to retrieve. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+}
+
+export const GetProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentGroupsRequest>;
+
+export type GetProjectsLocationsDeploymentGroupsResponse = DeploymentGroup;
+export const GetProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeploymentGroup;
+
+export type GetProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Get a DeploymentGroup for a given project and location. */
+export const getProjectsLocationsDeploymentGroups: API.OperationMethod<
+  GetProjectsLocationsDeploymentGroupsRequest,
+  GetProjectsLocationsDeploymentGroupsResponse,
+  GetProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsDeploymentGroupsRequest,
+  output: GetProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The parent in whose context the Deployment Group is created. The parent value is in the format: 'projects/{project_id}/locations/{location}' */
+  parent: string;
+  /** Required. The deployment group ID. */
+  deploymentGroupId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: DeploymentGroup;
+}
+
+export const CreateProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    deploymentGroupId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("deploymentGroupId"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(DeploymentGroup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentGroupsRequest>;
+
+export type CreateProjectsLocationsDeploymentGroupsResponse = Operation;
+export const CreateProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Creates a DeploymentGroup The newly created DeploymentGroup will be in the `CREATING` state and can be retrieved via Get and List calls. */
+export const createProjectsLocationsDeploymentGroups: API.OperationMethod<
+  CreateProjectsLocationsDeploymentGroupsRequest,
+  CreateProjectsLocationsDeploymentGroupsResponse,
+  CreateProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsDeploymentGroupsRequest,
+  output: CreateProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface PatchProjectsLocationsDeploymentGroupsRequest {
+  /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+  /** Optional. Field mask used to specify the fields to be overwritten in the Deployment Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Request body */
+  body?: DeploymentGroup;
+}
+
+export const PatchProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(DeploymentGroup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<PatchProjectsLocationsDeploymentGroupsRequest>;
+
+export type PatchProjectsLocationsDeploymentGroupsResponse = Operation;
+export const PatchProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Updates a DeploymentGroup */
+export const patchProjectsLocationsDeploymentGroups: API.OperationMethod<
+  PatchProjectsLocationsDeploymentGroupsRequest,
+  PatchProjectsLocationsDeploymentGroupsResponse,
+  PatchProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsDeploymentGroupsRequest,
+  output: PatchProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface DeleteProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of DeploymentGroup in the format projects/{project_id}/locations/{location_id}/deploymentGroups/{deploymentGroup} */
+  name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Optional. If set to true, any revisions for this deployment group will also be deleted. (Otherwise, the request will only work if the deployment group has no revisions.) */
+  force?: boolean;
+  /** Optional. Policy on how to handle referenced deployments when deleting the DeploymentGroup. If unspecified, the default behavior is to fail the deletion if any deployments currently referenced in the `deployment_units` of the DeploymentGroup or in the latest revision are not deleted. */
+  deploymentReferencePolicy?:
+    | "DEPLOYMENT_REFERENCE_POLICY_UNSPECIFIED"
+    | "FAIL_IF_ANY_REFERENCES_EXIST"
+    | "FAIL_IF_METADATA_REFERENCES_EXIST"
+    | "IGNORE_DEPLOYMENT_REFERENCES"
+    | (string & {});
+}
+
+export const DeleteProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    deploymentReferencePolicy: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("deploymentReferencePolicy"),
+    ),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentGroupsRequest>;
+
+export type DeleteProjectsLocationsDeploymentGroupsResponse = Operation;
+export const DeleteProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Deletes a DeploymentGroup */
+export const deleteProjectsLocationsDeploymentGroups: API.OperationMethod<
+  DeleteProjectsLocationsDeploymentGroupsRequest,
+  DeleteProjectsLocationsDeploymentGroupsResponse,
+  DeleteProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsDeploymentGroupsRequest,
+  output: DeleteProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The parent, which owns this collection of deployment groups. Format: 'projects/{project_id}/locations/{location}'. */
+  parent: string;
+  /** Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
+  pageSize?: number;
+  /** Optional. Token returned by previous call to 'ListDeploymentGroups' which specifies the position in the list from where to continue listing the deployment groups. */
+  pageToken?: string;
+  /** Optional. Lists the DeploymentGroups that match the filter expression. A filter expression filters the deployment groups listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deploymentGroups/bar" - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - DeploymentGroups in CREATING state. state=CREATING */
+  filter?: string;
+  /** Optional. Field to use to sort the list. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentGroupsRequest>;
+
+export type ListProjectsLocationsDeploymentGroupsResponse =
+  ListDeploymentGroupsResponse;
+export const ListProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDeploymentGroupsResponse;
+
+export type ListProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** List DeploymentGroups for a given project and location. */
+export const listProjectsLocationsDeploymentGroups: API.PaginatedOperationMethod<
+  ListProjectsLocationsDeploymentGroupsRequest,
+  ListProjectsLocationsDeploymentGroupsResponse,
+  ListProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsDeploymentGroupsRequest,
+  output: ListProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ProvisionProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of the deployment group to provision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+  /** Request body */
+  body?: ProvisionDeploymentGroupRequest;
+}
+
+export const ProvisionProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ProvisionDeploymentGroupRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}:provision",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ProvisionProjectsLocationsDeploymentGroupsRequest>;
+
+export type ProvisionProjectsLocationsDeploymentGroupsResponse = Operation;
+export const ProvisionProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ProvisionProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Provisions a deployment group. NOTE: As a first step of this operation, Infra Manager will automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup` call), along with their actuated resources. */
+export const provisionProjectsLocationsDeploymentGroups: API.OperationMethod<
+  ProvisionProjectsLocationsDeploymentGroupsRequest,
+  ProvisionProjectsLocationsDeploymentGroupsResponse,
+  ProvisionProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ProvisionProjectsLocationsDeploymentGroupsRequest,
+  output: ProvisionProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface DeprovisionProjectsLocationsDeploymentGroupsRequest {
+  /** Required. The name of the deployment group to deprovision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  name: string;
+  /** Request body */
+  body?: DeprovisionDeploymentGroupRequest;
+}
+
+export const DeprovisionProjectsLocationsDeploymentGroupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DeprovisionDeploymentGroupRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}:deprovision",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeprovisionProjectsLocationsDeploymentGroupsRequest>;
+
+export type DeprovisionProjectsLocationsDeploymentGroupsResponse = Operation;
+export const DeprovisionProjectsLocationsDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeprovisionProjectsLocationsDeploymentGroupsError = DefaultErrors;
+
+/** Deprovisions a deployment group. NOTE: As a first step of this operation, Infra Manager will automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup` call), along with their actuated resources. */
+export const deprovisionProjectsLocationsDeploymentGroups: API.OperationMethod<
+  DeprovisionProjectsLocationsDeploymentGroupsRequest,
+  DeprovisionProjectsLocationsDeploymentGroupsResponse,
+  DeprovisionProjectsLocationsDeploymentGroupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeprovisionProjectsLocationsDeploymentGroupsRequest,
+  output: DeprovisionProjectsLocationsDeploymentGroupsResponse,
+  errors: [],
+}));
+
+export interface GetProjectsLocationsDeploymentGroupsRevisionsRequest {
+  /** Required. The name of the deployment group revision to retrieve. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'. */
+  name: string;
+}
+
+export const GetProjectsLocationsDeploymentGroupsRevisionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}/revisions/{revisionsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentGroupsRevisionsRequest>;
+
+export type GetProjectsLocationsDeploymentGroupsRevisionsResponse =
+  DeploymentGroupRevision;
+export const GetProjectsLocationsDeploymentGroupsRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeploymentGroupRevision;
+
+export type GetProjectsLocationsDeploymentGroupsRevisionsError = DefaultErrors;
+
+/** Gets details about a DeploymentGroupRevision. */
+export const getProjectsLocationsDeploymentGroupsRevisions: API.OperationMethod<
+  GetProjectsLocationsDeploymentGroupsRevisionsRequest,
+  GetProjectsLocationsDeploymentGroupsRevisionsResponse,
+  GetProjectsLocationsDeploymentGroupsRevisionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsDeploymentGroupsRevisionsRequest,
+  output: GetProjectsLocationsDeploymentGroupsRevisionsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsDeploymentGroupsRevisionsRequest {
+  /** Required. The parent, which owns this collection of deployment group revisions. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
+  parent: string;
+  /** Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, a sensible default will be used by the server. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. Token returned by previous call to 'ListDeploymentGroupRevisions' which specifies the position in the list from where to continue listing the deployment group revisions. All other parameters provided to `ListDeploymentGroupRevisions` must match the call that provided the page token. */
+  pageToken?: string;
+}
+
+export const ListProjectsLocationsDeploymentGroupsRevisionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentGroups/{deploymentGroupsId}/revisions",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentGroupsRevisionsRequest>;
+
+export type ListProjectsLocationsDeploymentGroupsRevisionsResponse =
+  ListDeploymentGroupRevisionsResponse;
+export const ListProjectsLocationsDeploymentGroupsRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDeploymentGroupRevisionsResponse;
+
+export type ListProjectsLocationsDeploymentGroupsRevisionsError = DefaultErrors;
+
+/** Lists DeploymentGroupRevisions in a given DeploymentGroup. */
+export const listProjectsLocationsDeploymentGroupsRevisions: API.PaginatedOperationMethod<
+  ListProjectsLocationsDeploymentGroupsRevisionsRequest,
+  ListProjectsLocationsDeploymentGroupsRevisionsResponse,
+  ListProjectsLocationsDeploymentGroupsRevisionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsDeploymentGroupsRevisionsRequest,
+  output: ListProjectsLocationsDeploymentGroupsRevisionsResponse,
+  errors: [],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

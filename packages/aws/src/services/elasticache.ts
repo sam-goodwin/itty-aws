@@ -1766,6 +1766,7 @@ export interface CreateServerlessCacheRequest {
   SubnetIds?: string[];
   SnapshotRetentionLimit?: number;
   DailySnapshotTime?: string;
+  NetworkType?: NetworkType;
 }
 export const CreateServerlessCacheRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1783,6 +1784,7 @@ export const CreateServerlessCacheRequest =
       SubnetIds: S.optional(SubnetIdsList),
       SnapshotRetentionLimit: S.optional(S.Number),
       DailySnapshotTime: S.optional(S.String),
+      NetworkType: S.optional(NetworkType),
     }).pipe(
       T.all(
         ns,
@@ -1815,6 +1817,7 @@ export interface ServerlessCache {
   SubnetIds?: string[];
   SnapshotRetentionLimit?: number;
   DailySnapshotTime?: string;
+  NetworkType?: NetworkType;
 }
 export const ServerlessCache = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1837,6 +1840,7 @@ export const ServerlessCache = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SubnetIds: S.optional(SubnetIdsList),
     SnapshotRetentionLimit: S.optional(S.Number),
     DailySnapshotTime: S.optional(S.String),
+    NetworkType: S.optional(NetworkType),
   }),
 ).annotate({
   identifier: "ServerlessCache",

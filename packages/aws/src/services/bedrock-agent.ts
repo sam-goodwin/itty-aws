@@ -569,12 +569,14 @@ export interface ToolSpecification {
   name: string;
   description?: string;
   inputSchema: ToolInputSchema;
+  strict?: boolean;
 }
 export const ToolSpecification = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
     inputSchema: ToolInputSchema,
+    strict: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "ToolSpecification",

@@ -23,133 +23,52 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: Record<string, string>;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
+export interface OperationMetadata {
+  /** Specifies if cancellation was requested for the operation. */
+  cancelRequested?: boolean;
+  /** The time the operation finished running. */
+  endTime?: string;
+  /** Target of the operation - for example projects/project-1/connectivityTests/test-1 */
+  target?: string;
+  /** The time the operation was created. */
+  createTime?: string;
+  /** Human-readable status of the operation, if any. */
+  statusDetail?: string;
+  /** Name of the verb executed by the operation. */
+  verb?: string;
+  /** API version. */
+  apiVersion?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
-
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
-
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
-
-export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
-
-export interface SchedulingConfig {
-  /** Defines whether the node is preemptible. */
-  preemptible?: boolean;
-  /** Whether the node is created under a reservation. */
-  reserved?: boolean;
-}
-
-export const SchedulingConfig: Schema.Schema<SchedulingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preemptible: Schema.optional(Schema.Boolean),
-      reserved: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SchedulingConfig",
-  }) as any as Schema.Schema<SchedulingConfig>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cancelRequested: Schema.optional(Schema.Boolean),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface NetworkEndpoint {
   /** The IP address of this network endpoint. */
@@ -158,17 +77,42 @@ export interface NetworkEndpoint {
   port?: number;
 }
 
-export const NetworkEndpoint: Schema.Schema<NetworkEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddress: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "NetworkEndpoint",
-  }) as any as Schema.Schema<NetworkEndpoint>;
+export const NetworkEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+}).annotate({ identifier: "NetworkEndpoint" });
+
+export interface TensorFlowVersion {
+  /** the tensorflow version. */
+  version?: string;
+  /** The resource name. */
+  name?: string;
+}
+
+export const TensorFlowVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "TensorFlowVersion" });
+
+export interface ListTensorFlowVersionsResponse {
+  /** The next page token or empty if none. */
+  nextPageToken?: string;
+  /** The listed nodes. */
+  tensorflowVersions?: Array<TensorFlowVersion>;
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
+}
+
+export const ListTensorFlowVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    tensorflowVersions: Schema.optional(Schema.Array(TensorFlowVersion)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListTensorFlowVersionsResponse" });
 
 export interface Symptom {
+  /** Detailed information of the current Symptom. */
+  details?: string;
   /** Timestamp when the Symptom is created. */
   createTime?: string;
   /** Type of the Symptom. */
@@ -181,33 +125,122 @@ export interface Symptom {
     | "HBM_OUT_OF_MEMORY"
     | "PROJECT_ABUSE"
     | (string & {});
-  /** Detailed information of the current Symptom. */
-  details?: string;
   /** A string used to uniquely distinguish a worker within a TPU node. */
   workerId?: string;
 }
 
-export const Symptom: Schema.Schema<Symptom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      symptomType: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-      workerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Symptom" }) as any as Schema.Schema<Symptom>;
+export const Symptom = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  symptomType: Schema.optional(Schema.String),
+  workerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Symptom" });
+
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: Array<Record<string, unknown>>;
+}
+
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
+
+export interface StopNodeRequest {}
+
+export const StopNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopNodeRequest" });
+
+export interface Operation {
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+}
+
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
+
+export interface SchedulingConfig {
+  /** Defines whether the node is preemptible. */
+  preemptible?: boolean;
+  /** Whether the node is created under a reservation. */
+  reserved?: boolean;
+}
+
+export const SchedulingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preemptible: Schema.optional(Schema.Boolean),
+  reserved: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SchedulingConfig" });
 
 export interface Node {
-  /** Output only. Immutable. The name of the TPU */
-  name?: string;
   /** The user-supplied description of the TPU. Maximum of 512 characters. */
   description?: string;
   /** Required. The type of hardware accelerators associated with this node. */
   acceleratorType?: string;
+  /** Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first. */
+  networkEndpoints?: Array<NetworkEndpoint>;
+  /** The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block. */
+  cidrBlock?: string;
   /** Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances. */
   ipAddress?: string;
+  /** The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used. */
+  network?: string;
+  /** The scheduling options for this node. */
+  schedulingConfig?: SchedulingConfig;
+  /** Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy. */
+  healthDescription?: string;
+  /** Resource labels to represent user-provided metadata. */
+  labels?: Record<string, string>;
+  /** Output only. The Symptoms that have occurred to the TPU Node. */
+  symptoms?: Array<Symptom>;
+  /** Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled. */
+  useServiceNetworking?: boolean;
+  /** Output only. Immutable. The name of the TPU */
+  name?: string;
   /** Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances. */
   port?: string;
+  /** Required. The version of Tensorflow running in the Node. */
+  tensorflowVersion?: string;
+  /** Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data. */
+  serviceAccount?: string;
+  /** Output only. The API version that created this Node. */
+  apiVersion?:
+    | "API_VERSION_UNSPECIFIED"
+    | "V1_ALPHA1"
+    | "V1"
+    | "V2_ALPHA1"
+    | (string & {});
+  /** Output only. The time when the node was created. */
+  createTime?: string;
+  /** The health status of the TPU node. */
+  health?:
+    | "HEALTH_UNSPECIFIED"
+    | "HEALTHY"
+    | "DEPRECATED_UNHEALTHY"
+    | "TIMEOUT"
+    | "UNHEALTHY_TENSORFLOW"
+    | "UNHEALTHY_MAINTENANCE"
+    | (string & {});
   /** Output only. The current state for the TPU Node. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -227,155 +260,76 @@ export interface Node {
     | "UNHIDING"
     | "UNKNOWN"
     | (string & {});
-  /** Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy. */
-  healthDescription?: string;
-  /** Required. The version of Tensorflow running in the Node. */
-  tensorflowVersion?: string;
-  /** The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used. */
-  network?: string;
-  /** The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block. */
-  cidrBlock?: string;
-  /** Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data. */
-  serviceAccount?: string;
-  /** Output only. The time when the node was created. */
-  createTime?: string;
-  /** The scheduling options for this node. */
-  schedulingConfig?: SchedulingConfig;
-  /** Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first. */
-  networkEndpoints?: Array<NetworkEndpoint>;
-  /** The health status of the TPU node. */
-  health?:
-    | "HEALTH_UNSPECIFIED"
-    | "HEALTHY"
-    | "DEPRECATED_UNHEALTHY"
-    | "TIMEOUT"
-    | "UNHEALTHY_TENSORFLOW"
-    | "UNHEALTHY_MAINTENANCE"
-    | (string & {});
-  /** Resource labels to represent user-provided metadata. */
-  labels?: Record<string, string>;
-  /** Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled. */
-  useServiceNetworking?: boolean;
-  /** Output only. The API version that created this Node. */
-  apiVersion?:
-    | "API_VERSION_UNSPECIFIED"
-    | "V1_ALPHA1"
-    | "V1"
-    | "V2_ALPHA1"
-    | (string & {});
-  /** Output only. The Symptoms that have occurred to the TPU Node. */
-  symptoms?: Array<Symptom>;
 }
 
-export const Node: Schema.Schema<Node> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      acceleratorType: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      healthDescription: Schema.optional(Schema.String),
-      tensorflowVersion: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      cidrBlock: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      schedulingConfig: Schema.optional(SchedulingConfig),
-      networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
-      health: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      useServiceNetworking: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      symptoms: Schema.optional(Schema.Array(Symptom)),
-    }),
-  ).annotate({ identifier: "Node" }) as any as Schema.Schema<Node>;
+export const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  acceleratorType: Schema.optional(Schema.String),
+  networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
+  cidrBlock: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  schedulingConfig: Schema.optional(SchedulingConfig),
+  healthDescription: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  symptoms: Schema.optional(Schema.Array(Symptom)),
+  useServiceNetworking: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.String),
+  tensorflowVersion: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  health: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Node" });
 
 export interface ListNodesResponse {
-  /** The listed nodes. */
-  nodes?: Array<Node>;
   /** The next page token or empty if none. */
   nextPageToken?: string;
+  /** The listed nodes. */
+  nodes?: Array<Node>;
   /** Locations that could not be reached. */
   unreachable?: Array<string>;
 }
 
-export const ListNodesResponse: Schema.Schema<ListNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodes: Schema.optional(Schema.Array(Node)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListNodesResponse",
-  }) as any as Schema.Schema<ListNodesResponse>;
+export const ListNodesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  nodes: Schema.optional(Schema.Array(Node)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListNodesResponse" });
 
 export interface ReimageNodeRequest {
   /** The version for reimage to create. */
   tensorflowVersion?: string;
 }
 
-export const ReimageNodeRequest: Schema.Schema<ReimageNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tensorflowVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReimageNodeRequest",
-  }) as any as Schema.Schema<ReimageNodeRequest>;
+export const ReimageNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tensorflowVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReimageNodeRequest" });
 
-export interface StopNodeRequest {}
-
-export const StopNodeRequest: Schema.Schema<StopNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopNodeRequest",
-  }) as any as Schema.Schema<StopNodeRequest>;
-
-export interface StartNodeRequest {}
-
-export const StartNodeRequest: Schema.Schema<StartNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartNodeRequest",
-  }) as any as Schema.Schema<StartNodeRequest>;
-
-export interface TensorFlowVersion {
-  /** The resource name. */
-  name?: string;
-  /** the tensorflow version. */
-  version?: string;
-}
-
-export const TensorFlowVersion: Schema.Schema<TensorFlowVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TensorFlowVersion",
-  }) as any as Schema.Schema<TensorFlowVersion>;
-
-export interface ListTensorFlowVersionsResponse {
-  /** The listed nodes. */
-  tensorflowVersions?: Array<TensorFlowVersion>;
-  /** The next page token or empty if none. */
+export interface ListOperationsResponse {
+  /** The standard List next-page token. */
   nextPageToken?: string;
-  /** Locations that could not be reached. */
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: Array<Operation>;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: Array<string>;
 }
 
-export const ListTensorFlowVersionsResponse: Schema.Schema<ListTensorFlowVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tensorflowVersions: Schema.optional(Schema.Array(TensorFlowVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTensorFlowVersionsResponse",
-  }) as any as Schema.Schema<ListTensorFlowVersionsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
+
+export interface StartNodeRequest {}
+
+export const StartNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartNodeRequest" });
 
 export interface AcceleratorType {
   /** The resource name. */
@@ -384,94 +338,71 @@ export interface AcceleratorType {
   type?: string;
 }
 
-export const AcceleratorType: Schema.Schema<AcceleratorType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AcceleratorType",
-  }) as any as Schema.Schema<AcceleratorType>;
+export const AcceleratorType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "AcceleratorType" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: Array<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
+
+export interface Empty {}
+
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListAcceleratorTypesResponse {
+  /** Locations that could not be reached. */
+  unreachable?: Array<string>;
   /** The listed nodes. */
   acceleratorTypes?: Array<AcceleratorType>;
   /** The next page token or empty if none. */
   nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: Array<string>;
 }
 
-export const ListAcceleratorTypesResponse: Schema.Schema<ListAcceleratorTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAcceleratorTypesResponse",
-  }) as any as Schema.Schema<ListAcceleratorTypesResponse>;
-
-export interface OperationMetadata {
-  /** The time the operation was created. */
-  createTime?: string;
-  /** The time the operation finished running. */
-  endTime?: string;
-  /** Target of the operation - for example projects/project-1/connectivityTests/test-1 */
-  target?: string;
-  /** Name of the verb executed by the operation. */
-  verb?: string;
-  /** Human-readable status of the operation, if any. */
-  statusDetail?: string;
-  /** Specifies if cancellation was requested for the operation. */
-  cancelRequested?: boolean;
-  /** API version. */
-  apiVersion?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const ListAcceleratorTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAcceleratorTypesResponse" });
 
 // ==========================================================================
 // Operations
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/projects/{projectsId}/locations" }),
     svc,
@@ -533,51 +464,50 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list filter. */
+export interface ListProjectsLocationsAcceleratorTypesRequest {
+  /** List filter. */
   filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list page token. */
+  /** Required. The parent resource name. */
+  parent: string;
+  /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
+  /** Sort results. */
+  orderBy?: string;
+  /** The maximum number of items to return. */
+  pageSize?: number;
 }
 
-export const ListProjectsLocationsOperationsRequest =
+export const ListProjectsLocationsAcceleratorTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
-export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export type ListProjectsLocationsAcceleratorTypesResponse =
+  ListAcceleratorTypesResponse;
+export const ListProjectsLocationsAcceleratorTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAcceleratorTypesResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsAcceleratorTypesError = DefaultErrors;
 
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
+/** Lists accelerator types supported by this API. */
+export const listProjectsLocationsAcceleratorTypes: API.PaginatedOperationMethod<
+  ListProjectsLocationsAcceleratorTypesRequest,
+  ListProjectsLocationsAcceleratorTypesResponse,
+  ListProjectsLocationsAcceleratorTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
+  input: ListProjectsLocationsAcceleratorTypesRequest,
+  output: ListProjectsLocationsAcceleratorTypesResponse,
   errors: [],
   pagination: {
     inputToken: "pageToken",
@@ -585,122 +515,91 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
+export interface GetProjectsLocationsAcceleratorTypesRequest {
+  /** Required. The resource name. */
   name: string;
 }
 
-export const GetProjectsLocationsOperationsRequest =
+export const GetProjectsLocationsAcceleratorTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes/{acceleratorTypesId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
 
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type GetProjectsLocationsAcceleratorTypesResponse = AcceleratorType;
+export const GetProjectsLocationsAcceleratorTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AcceleratorType;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsAcceleratorTypesError = DefaultErrors;
 
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
+/** Gets AcceleratorType. */
+export const getProjectsLocationsAcceleratorTypes: API.OperationMethod<
+  GetProjectsLocationsAcceleratorTypesRequest,
+  GetProjectsLocationsAcceleratorTypesResponse,
+  GetProjectsLocationsAcceleratorTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
+  input: GetProjectsLocationsAcceleratorTypesRequest,
+  output: GetProjectsLocationsAcceleratorTypesResponse,
   errors: [],
 }));
 
-export interface DeleteProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be deleted. */
+export interface StartProjectsLocationsNodesRequest {
+  /** The resource name. */
   name: string;
+  /** Request body */
+  body?: StartNodeRequest;
 }
 
-export const DeleteProjectsLocationsOperationsRequest =
+export const StartProjectsLocationsNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
-
-export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
-
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
-export const deleteProjectsLocationsOperations: API.OperationMethod<
-  DeleteProjectsLocationsOperationsRequest,
-  DeleteProjectsLocationsOperationsResponse,
-  DeleteProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
-}));
-
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-}
-
-export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(StartNodeRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:start",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Schema<StartProjectsLocationsNodesRequest>;
 
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type StartProjectsLocationsNodesResponse = Operation;
+export const StartProjectsLocationsNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type StartProjectsLocationsNodesError = DefaultErrors;
 
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
+/** Starts a node. */
+export const startProjectsLocationsNodes: API.OperationMethod<
+  StartProjectsLocationsNodesRequest,
+  StartProjectsLocationsNodesResponse,
+  StartProjectsLocationsNodesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
+  input: StartProjectsLocationsNodesRequest,
+  output: StartProjectsLocationsNodesResponse,
   errors: [],
 }));
 
 export interface ListProjectsLocationsNodesRequest {
-  /** Required. The parent resource name. */
-  parent: string;
   /** The maximum number of items to return. */
   pageSize?: number;
+  /** Required. The parent resource name. */
+  parent: string;
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
 
 export const ListProjectsLocationsNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({
@@ -763,87 +662,6 @@ export const getProjectsLocationsNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNodesRequest,
   output: GetProjectsLocationsNodesResponse,
-  errors: [],
-}));
-
-export interface CreateProjectsLocationsNodesRequest {
-  /** Required. The parent resource name. */
-  parent: string;
-  /** The unqualified resource name. */
-  nodeId?: string;
-  /** Idempotent request UUID. */
-  requestId?: string;
-  /** Request body */
-  body?: Node;
-}
-
-export const CreateProjectsLocationsNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    nodeId: Schema.optional(Schema.String).pipe(T.HttpQuery("nodeId")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Node).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/nodes",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNodesRequest>;
-
-export type CreateProjectsLocationsNodesResponse = Operation;
-export const CreateProjectsLocationsNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsNodesError = DefaultErrors;
-
-/** Creates a node. */
-export const createProjectsLocationsNodes: API.OperationMethod<
-  CreateProjectsLocationsNodesRequest,
-  CreateProjectsLocationsNodesResponse,
-  CreateProjectsLocationsNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsNodesRequest,
-  output: CreateProjectsLocationsNodesResponse,
-  errors: [],
-}));
-
-export interface DeleteProjectsLocationsNodesRequest {
-  /** Required. The resource name. */
-  name: string;
-  /** Idempotent request UUID. */
-  requestId?: string;
-}
-
-export const DeleteProjectsLocationsNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsNodesRequest>;
-
-export type DeleteProjectsLocationsNodesResponse = Operation;
-export const DeleteProjectsLocationsNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsNodesError = DefaultErrors;
-
-/** Deletes a node. */
-export const deleteProjectsLocationsNodes: API.OperationMethod<
-  DeleteProjectsLocationsNodesRequest,
-  DeleteProjectsLocationsNodesResponse,
-  DeleteProjectsLocationsNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsNodesRequest,
-  output: DeleteProjectsLocationsNodesResponse,
   errors: [],
 }));
 
@@ -923,64 +741,107 @@ export const stopProjectsLocationsNodes: API.OperationMethod<
   errors: [],
 }));
 
-export interface StartProjectsLocationsNodesRequest {
-  /** The resource name. */
+export interface DeleteProjectsLocationsNodesRequest {
+  /** Required. The resource name. */
   name: string;
-  /** Request body */
-  body?: StartNodeRequest;
+  /** Idempotent request UUID. */
+  requestId?: string;
 }
 
-export const StartProjectsLocationsNodesRequest =
+export const DeleteProjectsLocationsNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(StartNodeRequest).pipe(T.HttpBody()),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsNodesRequest>;
+
+export type DeleteProjectsLocationsNodesResponse = Operation;
+export const DeleteProjectsLocationsNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsNodesError = DefaultErrors;
+
+/** Deletes a node. */
+export const deleteProjectsLocationsNodes: API.OperationMethod<
+  DeleteProjectsLocationsNodesRequest,
+  DeleteProjectsLocationsNodesResponse,
+  DeleteProjectsLocationsNodesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsNodesRequest,
+  output: DeleteProjectsLocationsNodesResponse,
+  errors: [],
+}));
+
+export interface CreateProjectsLocationsNodesRequest {
+  /** Required. The parent resource name. */
+  parent: string;
+  /** The unqualified resource name. */
+  nodeId?: string;
+  /** Idempotent request UUID. */
+  requestId?: string;
+  /** Request body */
+  body?: Node;
+}
+
+export const CreateProjectsLocationsNodesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    nodeId: Schema.optional(Schema.String).pipe(T.HttpQuery("nodeId")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Node).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:start",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/nodes",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<StartProjectsLocationsNodesRequest>;
+  ) as unknown as Schema.Schema<CreateProjectsLocationsNodesRequest>;
 
-export type StartProjectsLocationsNodesResponse = Operation;
-export const StartProjectsLocationsNodesResponse =
+export type CreateProjectsLocationsNodesResponse = Operation;
+export const CreateProjectsLocationsNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartProjectsLocationsNodesError = DefaultErrors;
+export type CreateProjectsLocationsNodesError = DefaultErrors;
 
-/** Starts a node. */
-export const startProjectsLocationsNodes: API.OperationMethod<
-  StartProjectsLocationsNodesRequest,
-  StartProjectsLocationsNodesResponse,
-  StartProjectsLocationsNodesError,
+/** Creates a node. */
+export const createProjectsLocationsNodes: API.OperationMethod<
+  CreateProjectsLocationsNodesRequest,
+  CreateProjectsLocationsNodesResponse,
+  CreateProjectsLocationsNodesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartProjectsLocationsNodesRequest,
-  output: StartProjectsLocationsNodesResponse,
+  input: CreateProjectsLocationsNodesRequest,
+  output: CreateProjectsLocationsNodesResponse,
   errors: [],
 }));
 
 export interface ListProjectsLocationsTensorflowVersionsRequest {
-  /** Required. The parent resource name. */
-  parent: string;
-  /** The maximum number of items to return. */
-  pageSize?: number;
-  /** The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
   /** List filter. */
   filter?: string;
+  /** Required. The parent resource name. */
+  parent: string;
+  /** The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
   /** Sort results. */
   orderBy?: string;
+  /** The maximum number of items to return. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsTensorflowVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1046,50 +907,120 @@ export const getProjectsLocationsTensorflowVersions: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListProjectsLocationsAcceleratorTypesRequest {
-  /** Required. The parent resource name. */
-  parent: string;
-  /** The maximum number of items to return. */
-  pageSize?: number;
-  /** The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-  /** List filter. */
-  filter?: string;
-  /** Sort results. */
-  orderBy?: string;
+export interface DeleteProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
 }
 
-export const ListProjectsLocationsAcceleratorTypesRequest =
+export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+    }),
+    svc,
+  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+
+export type DeleteProjectsLocationsOperationsResponse = Empty;
+export const DeleteProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
+export const deleteProjectsLocationsOperations: API.OperationMethod<
+  DeleteProjectsLocationsOperationsRequest,
+  DeleteProjectsLocationsOperationsResponse,
+  DeleteProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: DeleteProjectsLocationsOperationsResponse,
+  errors: [],
+}));
+
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+}
+
+export const CancelProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelProjectsLocationsOperationsError = DefaultErrors;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
+  errors: [],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list filter. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations",
     }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
+  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type ListProjectsLocationsAcceleratorTypesResponse =
-  ListAcceleratorTypesResponse;
-export const ListProjectsLocationsAcceleratorTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAcceleratorTypesResponse;
+export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsAcceleratorTypesError = DefaultErrors;
+export type ListProjectsLocationsOperationsError = DefaultErrors;
 
-/** Lists accelerator types supported by this API. */
-export const listProjectsLocationsAcceleratorTypes: API.PaginatedOperationMethod<
-  ListProjectsLocationsAcceleratorTypesRequest,
-  ListProjectsLocationsAcceleratorTypesResponse,
-  ListProjectsLocationsAcceleratorTypesError,
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAcceleratorTypesRequest,
-  output: ListProjectsLocationsAcceleratorTypesResponse,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
   errors: [],
   pagination: {
     inputToken: "pageToken",
@@ -1097,36 +1028,36 @@ export const listProjectsLocationsAcceleratorTypes: API.PaginatedOperationMethod
   },
 }));
 
-export interface GetProjectsLocationsAcceleratorTypesRequest {
-  /** Required. The resource name. */
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
   name: string;
 }
 
-export const GetProjectsLocationsAcceleratorTypesRequest =
+export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes/{acceleratorTypesId}",
+      path: "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
+  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
-export type GetProjectsLocationsAcceleratorTypesResponse = AcceleratorType;
-export const GetProjectsLocationsAcceleratorTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AcceleratorType;
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsAcceleratorTypesError = DefaultErrors;
+export type GetProjectsLocationsOperationsError = DefaultErrors;
 
-/** Gets AcceleratorType. */
-export const getProjectsLocationsAcceleratorTypes: API.OperationMethod<
-  GetProjectsLocationsAcceleratorTypesRequest,
-  GetProjectsLocationsAcceleratorTypesResponse,
-  GetProjectsLocationsAcceleratorTypesError,
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAcceleratorTypesRequest,
-  output: GetProjectsLocationsAcceleratorTypesResponse,
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
   errors: [],
 }));

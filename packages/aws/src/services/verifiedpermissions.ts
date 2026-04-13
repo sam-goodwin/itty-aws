@@ -118,6 +118,7 @@ export type Namespace = string | redacted.Redacted<string>;
 export type StaticPolicyDescription = string | redacted.Redacted<string>;
 export type PolicyStatement = string | redacted.Redacted<string>;
 export type PolicyTemplateId = string;
+export type PolicyName = string;
 export type UserPoolArn = string;
 export type ClientId = string | redacted.Redacted<string>;
 export type GroupEntityType = string | redacted.Redacted<string>;
@@ -130,6 +131,8 @@ export type IdentitySourceId = string;
 export type DiscoveryUrl = string;
 export type ListIdentitySourcesMaxResults = number;
 export type PolicyTemplateDescription = string | redacted.Redacted<string>;
+export type PolicyTemplateName = string;
+export type Alias = string;
 
 //# Schemas
 export interface ListTagsForResourceInput {
@@ -162,6 +165,7 @@ export type ResourceType =
   | "POLICY"
   | "POLICY_TEMPLATE"
   | "SCHEMA"
+  | "POLICY_STORE_ALIAS"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface TagResourceInput {
@@ -1194,6 +1198,7 @@ export interface BatchGetPolicyOutputItem {
   definition: PolicyDefinitionDetail;
   createdDate: Date;
   lastUpdatedDate: Date;
+  name?: string;
 }
 export const BatchGetPolicyOutputItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1204,6 +1209,7 @@ export const BatchGetPolicyOutputItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       definition: PolicyDefinitionDetail,
       createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      name: S.optional(S.String),
     }),
 ).annotate({
   identifier: "BatchGetPolicyOutputItem",
@@ -1215,6 +1221,7 @@ export const BatchGetPolicyOutputList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export type BatchGetPolicyErrorCode =
   | "POLICY_STORE_NOT_FOUND"
   | "POLICY_NOT_FOUND"
+  | "POLICY_STORE_ALIAS_NOT_FOUND"
   | (string & {});
 export const BatchGetPolicyErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface BatchGetPolicyErrorItem {
@@ -1949,12 +1956,14 @@ export interface CreatePolicyInput {
   clientToken?: string;
   policyStoreId: string;
   definition: PolicyDefinition;
+  name?: string;
 }
 export const CreatePolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     policyStoreId: S.String,
     definition: PolicyDefinition,
+    name: S.optional(S.String),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2012,6 +2021,7 @@ export interface GetPolicyOutput {
   createdDate: Date;
   lastUpdatedDate: Date;
   effect?: PolicyEffect;
+  name?: string;
 }
 export const GetPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2025,6 +2035,7 @@ export const GetPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     effect: S.optional(PolicyEffect),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GetPolicyOutput",
@@ -2050,12 +2061,14 @@ export interface UpdatePolicyInput {
   policyStoreId: string;
   policyId: string;
   definition?: UpdatePolicyDefinition;
+  name?: string;
 }
 export const UpdatePolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     policyStoreId: S.String,
     policyId: S.String,
     definition: S.optional(UpdatePolicyDefinition),
+    name: S.optional(S.String),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2185,6 +2198,7 @@ export interface PolicyItem {
   createdDate: Date;
   lastUpdatedDate: Date;
   effect?: PolicyEffect;
+  name?: string;
 }
 export const PolicyItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2198,6 +2212,7 @@ export const PolicyItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     effect: S.optional(PolicyEffect),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "PolicyItem" }) as any as S.Schema<PolicyItem>;
 export type PolicyList = PolicyItem[];
@@ -2216,6 +2231,7 @@ export interface CreatePolicyTemplateInput {
   policyStoreId: string;
   description?: string | redacted.Redacted<string>;
   statement: string | redacted.Redacted<string>;
+  name?: string;
 }
 export const CreatePolicyTemplateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2224,6 +2240,7 @@ export const CreatePolicyTemplateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       policyStoreId: S.String,
       description: S.optional(SensitiveString),
       statement: SensitiveString,
+      name: S.optional(S.String),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2266,6 +2283,7 @@ export interface GetPolicyTemplateOutput {
   statement: string | redacted.Redacted<string>;
   createdDate: Date;
   lastUpdatedDate: Date;
+  name?: string;
 }
 export const GetPolicyTemplateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2276,6 +2294,7 @@ export const GetPolicyTemplateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       statement: SensitiveString,
       createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      name: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GetPolicyTemplateOutput",
@@ -2285,6 +2304,7 @@ export interface UpdatePolicyTemplateInput {
   policyTemplateId: string;
   description?: string | redacted.Redacted<string>;
   statement: string | redacted.Redacted<string>;
+  name?: string;
 }
 export const UpdatePolicyTemplateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2293,6 +2313,7 @@ export const UpdatePolicyTemplateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       policyTemplateId: S.String,
       description: S.optional(SensitiveString),
       statement: SensitiveString,
+      name: S.optional(S.String),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2357,6 +2378,7 @@ export interface PolicyTemplateItem {
   description?: string | redacted.Redacted<string>;
   createdDate: Date;
   lastUpdatedDate: Date;
+  name?: string;
 }
 export const PolicyTemplateItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2365,6 +2387,7 @@ export const PolicyTemplateItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     description: S.optional(SensitiveString),
     createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PolicyTemplateItem",
@@ -2385,6 +2408,142 @@ export const ListPolicyTemplatesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListPolicyTemplatesOutput",
 }) as any as S.Schema<ListPolicyTemplatesOutput>;
+export interface CreatePolicyStoreAliasInput {
+  aliasName: string;
+  policyStoreId: string;
+}
+export const CreatePolicyStoreAliasInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ aliasName: S.String, policyStoreId: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "CreatePolicyStoreAliasInput",
+  }) as any as S.Schema<CreatePolicyStoreAliasInput>;
+export interface CreatePolicyStoreAliasOutput {
+  aliasName: string;
+  policyStoreId: string;
+  aliasArn: string;
+  createdAt: Date;
+}
+export const CreatePolicyStoreAliasOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      aliasName: S.String,
+      policyStoreId: S.String,
+      aliasArn: S.String,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+  ).annotate({
+    identifier: "CreatePolicyStoreAliasOutput",
+  }) as any as S.Schema<CreatePolicyStoreAliasOutput>;
+export interface GetPolicyStoreAliasInput {
+  aliasName: string;
+}
+export const GetPolicyStoreAliasInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ aliasName: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetPolicyStoreAliasInput",
+}) as any as S.Schema<GetPolicyStoreAliasInput>;
+export type AliasState = "Active" | "PendingDeletion" | (string & {});
+export const AliasState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetPolicyStoreAliasOutput {
+  aliasName: string;
+  policyStoreId: string;
+  aliasArn: string;
+  createdAt: Date;
+  state: AliasState;
+}
+export const GetPolicyStoreAliasOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      aliasName: S.String,
+      policyStoreId: S.String,
+      aliasArn: S.String,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      state: AliasState,
+    }),
+).annotate({
+  identifier: "GetPolicyStoreAliasOutput",
+}) as any as S.Schema<GetPolicyStoreAliasOutput>;
+export interface DeletePolicyStoreAliasInput {
+  aliasName: string;
+}
+export const DeletePolicyStoreAliasInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ aliasName: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeletePolicyStoreAliasInput",
+  }) as any as S.Schema<DeletePolicyStoreAliasInput>;
+export interface DeletePolicyStoreAliasOutput {}
+export const DeletePolicyStoreAliasOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeletePolicyStoreAliasOutput",
+  }) as any as S.Schema<DeletePolicyStoreAliasOutput>;
+export interface PolicyStoreAliasFilter {
+  policyStoreId?: string;
+}
+export const PolicyStoreAliasFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ policyStoreId: S.optional(S.String) }),
+).annotate({
+  identifier: "PolicyStoreAliasFilter",
+}) as any as S.Schema<PolicyStoreAliasFilter>;
+export interface ListPolicyStoreAliasesInput {
+  nextToken?: string;
+  maxResults?: number;
+  filter?: PolicyStoreAliasFilter;
+}
+export const ListPolicyStoreAliasesInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+      filter: S.optional(PolicyStoreAliasFilter),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListPolicyStoreAliasesInput",
+  }) as any as S.Schema<ListPolicyStoreAliasesInput>;
+export interface PolicyStoreAliasItem {
+  aliasName: string;
+  policyStoreId: string;
+  aliasArn: string;
+  createdAt: Date;
+  state: AliasState;
+}
+export const PolicyStoreAliasItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    aliasName: S.String,
+    policyStoreId: S.String,
+    aliasArn: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    state: AliasState,
+  }),
+).annotate({
+  identifier: "PolicyStoreAliasItem",
+}) as any as S.Schema<PolicyStoreAliasItem>;
+export type PolicyStoreAliasList = PolicyStoreAliasItem[];
+export const PolicyStoreAliasList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(PolicyStoreAliasItem);
+export interface ListPolicyStoreAliasesOutput {
+  nextToken?: string;
+  policyStoreAliases: PolicyStoreAliasItem[];
+}
+export const ListPolicyStoreAliasesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      policyStoreAliases: PolicyStoreAliasList,
+    }),
+  ).annotate({
+    identifier: "ListPolicyStoreAliasesOutput",
+  }) as any as S.Schema<ListPolicyStoreAliasesOutput>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
@@ -3119,6 +3278,99 @@ export const listPolicyTemplates: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "policyTemplates",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type CreatePolicyStoreAliasError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | CommonErrors;
+/**
+ * Creates a policy store alias for the specified policy store. A policy store alias is an alternative identifier that you can use to reference a policy store in API operations.
+ *
+ * This operation is idempotent. If multiple CreatePolicyStoreAlias requests are made where the `aliasName` and `policyStoreId` fields are the same between the requests, subsequent requests will be ignored. For each duplicate CreatePolicyStoreAlias request, a Success response will be returned and a new policy store alias will not be created.
+ *
+ * Verified Permissions is * eventually consistent *. It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+ */
+export const createPolicyStoreAlias: API.OperationMethod<
+  CreatePolicyStoreAliasInput,
+  CreatePolicyStoreAliasOutput,
+  CreatePolicyStoreAliasError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreatePolicyStoreAliasInput,
+  output: CreatePolicyStoreAliasOutput,
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+  ],
+}));
+export type GetPolicyStoreAliasError = ResourceNotFoundException | CommonErrors;
+/**
+ * Retrieves details about the specified policy store alias.
+ */
+export const getPolicyStoreAlias: API.OperationMethod<
+  GetPolicyStoreAliasInput,
+  GetPolicyStoreAliasOutput,
+  GetPolicyStoreAliasError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPolicyStoreAliasInput,
+  output: GetPolicyStoreAliasOutput,
+  errors: [ResourceNotFoundException],
+}));
+export type DeletePolicyStoreAliasError = InvalidStateException | CommonErrors;
+/**
+ * Deletes the specified policy store alias.
+ *
+ * This operation is idempotent. If you specify a policy store alias that does not exist, the request response will still return a successful HTTP 200 status code.
+ *
+ * When a policy store alias is deleted, it enters the `PendingDeletion` state. When a policy store alias is in the `PendingDeletion` state, new policy store aliases cannot be created with the same name. If the policy store alias is used in an API that has a `policyStoreId` field, the operation will fail with a `ResourceNotFound` exception.
+ */
+export const deletePolicyStoreAlias: API.OperationMethod<
+  DeletePolicyStoreAliasInput,
+  DeletePolicyStoreAliasOutput,
+  DeletePolicyStoreAliasError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeletePolicyStoreAliasInput,
+  output: DeletePolicyStoreAliasOutput,
+  errors: [InvalidStateException],
+}));
+export type ListPolicyStoreAliasesError = CommonErrors;
+/**
+ * Returns a paginated list of all policy store aliases in the calling Amazon Web Services account.
+ */
+export const listPolicyStoreAliases: API.OperationMethod<
+  ListPolicyStoreAliasesInput,
+  ListPolicyStoreAliasesOutput,
+  ListPolicyStoreAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyStoreAliasesInput,
+  ) => stream.Stream<
+    ListPolicyStoreAliasesOutput,
+    ListPolicyStoreAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyStoreAliasesInput,
+  ) => stream.Stream<
+    PolicyStoreAliasItem,
+    ListPolicyStoreAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPolicyStoreAliasesInput,
+  output: ListPolicyStoreAliasesOutput,
+  errors: [],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "policyStoreAliases",
     pageSize: "maxResults",
   } as const,
 }));

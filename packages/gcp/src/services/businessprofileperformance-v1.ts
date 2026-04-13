@@ -23,24 +23,20 @@ const svc = T.Service({
 // ==========================================================================
 
 export interface Businessprofileperformance_Date {
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
 }
 
-export const Businessprofileperformance_Date: Schema.Schema<Businessprofileperformance_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Businessprofileperformance_Date",
-  }) as any as Schema.Schema<Businessprofileperformance_Date>;
+export const Businessprofileperformance_Date =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Businessprofileperformance_Date" });
 
 export interface DatedValue {
   /** The date that the datapoint corresponds to. This represents a month value if the day field is not set. */
@@ -49,46 +45,37 @@ export interface DatedValue {
   value?: string;
 }
 
-export const DatedValue: Schema.Schema<DatedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Businessprofileperformance_Date),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DatedValue" }) as any as Schema.Schema<DatedValue>;
+export const DatedValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Businessprofileperformance_Date),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatedValue" });
 
 export interface TimeSeries {
   /** List of datapoints in the timeseries, where each datapoint is a date-value pair. */
   datedValues?: Array<DatedValue>;
 }
 
-export const TimeSeries: Schema.Schema<TimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datedValues: Schema.optional(Schema.Array(DatedValue)),
-    }),
-  ).annotate({ identifier: "TimeSeries" }) as any as Schema.Schema<TimeSeries>;
+export const TimeSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datedValues: Schema.optional(Schema.Array(DatedValue)),
+}).annotate({ identifier: "TimeSeries" });
 
 export interface TimeOfDay {
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  minutes?: number;
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  minutes?: number;
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface DailySubEntityType {
   /** Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE. */
@@ -106,21 +93,12 @@ export interface DailySubEntityType {
   timeOfDay?: TimeOfDay;
 }
 
-export const DailySubEntityType: Schema.Schema<DailySubEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dayOfWeek: Schema.optional(Schema.String),
-      timeOfDay: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "DailySubEntityType",
-  }) as any as Schema.Schema<DailySubEntityType>;
+export const DailySubEntityType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dayOfWeek: Schema.optional(Schema.String),
+  timeOfDay: Schema.optional(TimeOfDay),
+}).annotate({ identifier: "DailySubEntityType" });
 
 export interface DailyMetricTimeSeries {
-  /** List of datapoints where each datapoint is a date-value pair. */
-  timeSeries?: TimeSeries;
-  /** The DailySubEntityType that the TimeSeries represents. Will not be present when breakdown does not exist. */
-  dailySubEntityType?: DailySubEntityType;
   /** The DailyMetric that the TimeSeries represents. */
   dailyMetric?:
     | "DAILY_METRIC_UNKNOWN"
@@ -136,50 +114,27 @@ export interface DailyMetricTimeSeries {
     | "BUSINESS_FOOD_ORDERS"
     | "BUSINESS_FOOD_MENU_CLICKS"
     | (string & {});
+  /** The DailySubEntityType that the TimeSeries represents. Will not be present when breakdown does not exist. */
+  dailySubEntityType?: DailySubEntityType;
+  /** List of datapoints where each datapoint is a date-value pair. */
+  timeSeries?: TimeSeries;
 }
 
-export const DailyMetricTimeSeries: Schema.Schema<DailyMetricTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeSeries: Schema.optional(TimeSeries),
-      dailySubEntityType: Schema.optional(DailySubEntityType),
-      dailyMetric: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DailyMetricTimeSeries",
-  }) as any as Schema.Schema<DailyMetricTimeSeries>;
+export const DailyMetricTimeSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dailyMetric: Schema.optional(Schema.String),
+  dailySubEntityType: Schema.optional(DailySubEntityType),
+  timeSeries: Schema.optional(TimeSeries),
+}).annotate({ identifier: "DailyMetricTimeSeries" });
 
 export interface MultiDailyMetricTimeSeries {
   /** List of DailyMetric-TimeSeries pairs. */
   dailyMetricTimeSeries?: Array<DailyMetricTimeSeries>;
 }
 
-export const MultiDailyMetricTimeSeries: Schema.Schema<MultiDailyMetricTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailyMetricTimeSeries: Schema.optional(
-        Schema.Array(DailyMetricTimeSeries),
-      ),
-    }),
-  ).annotate({
-    identifier: "MultiDailyMetricTimeSeries",
-  }) as any as Schema.Schema<MultiDailyMetricTimeSeries>;
-
-export interface FetchMultiDailyMetricsTimeSeriesResponse {
-  /** DailyMetrics and their corresponding time series. */
-  multiDailyMetricTimeSeries?: Array<MultiDailyMetricTimeSeries>;
-}
-
-export const FetchMultiDailyMetricsTimeSeriesResponse: Schema.Schema<FetchMultiDailyMetricsTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multiDailyMetricTimeSeries: Schema.optional(
-        Schema.Array(MultiDailyMetricTimeSeries),
-      ),
-    }),
-  ).annotate({
-    identifier: "FetchMultiDailyMetricsTimeSeriesResponse",
-  }) as any as Schema.Schema<FetchMultiDailyMetricsTimeSeriesResponse>;
+export const MultiDailyMetricTimeSeries =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dailyMetricTimeSeries: Schema.optional(Schema.Array(DailyMetricTimeSeries)),
+  }).annotate({ identifier: "MultiDailyMetricTimeSeries" });
 
 export interface InsightsValue {
   /** Represents the actual value. */
@@ -188,63 +143,57 @@ export interface InsightsValue {
   threshold?: string;
 }
 
-export const InsightsValue: Schema.Schema<InsightsValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      threshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsightsValue",
-  }) as any as Schema.Schema<InsightsValue>;
+export const InsightsValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  threshold: Schema.optional(Schema.String),
+}).annotate({ identifier: "InsightsValue" });
 
 export interface SearchKeywordCount {
-  /** The lower-cased string that the user entered. */
-  searchKeyword?: string;
   /** One of either: 1) The sum of the number of unique users that used the keyword in a month, aggregated for each month requested. 2) A threshold that indicates that the actual value is below this threshold. */
   insightsValue?: InsightsValue;
+  /** The lower-cased string that the user entered. */
+  searchKeyword?: string;
 }
 
-export const SearchKeywordCount: Schema.Schema<SearchKeywordCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchKeyword: Schema.optional(Schema.String),
-      insightsValue: Schema.optional(InsightsValue),
-    }),
-  ).annotate({
-    identifier: "SearchKeywordCount",
-  }) as any as Schema.Schema<SearchKeywordCount>;
+export const SearchKeywordCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  insightsValue: Schema.optional(InsightsValue),
+  searchKeyword: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchKeywordCount" });
+
+export interface ListSearchKeywordImpressionsMonthlyResponse {
+  /** Search terms which have been used to find a business. */
+  searchKeywordsCounts?: Array<SearchKeywordCount>;
+  /** A token indicating the last paginated result returned. This can be used by succeeding requests to get the next "page" of keywords. It will only be present when there are more results to be returned. */
+  nextPageToken?: string;
+}
+
+export const ListSearchKeywordImpressionsMonthlyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchKeywordsCounts: Schema.optional(Schema.Array(SearchKeywordCount)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSearchKeywordImpressionsMonthlyResponse" });
 
 export interface GetDailyMetricsTimeSeriesResponse {
   /** The daily time series. */
   timeSeries?: TimeSeries;
 }
 
-export const GetDailyMetricsTimeSeriesResponse: Schema.Schema<GetDailyMetricsTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeSeries: Schema.optional(TimeSeries),
-    }),
-  ).annotate({
-    identifier: "GetDailyMetricsTimeSeriesResponse",
-  }) as any as Schema.Schema<GetDailyMetricsTimeSeriesResponse>;
+export const GetDailyMetricsTimeSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeSeries: Schema.optional(TimeSeries),
+  }).annotate({ identifier: "GetDailyMetricsTimeSeriesResponse" });
 
-export interface ListSearchKeywordImpressionsMonthlyResponse {
-  /** A token indicating the last paginated result returned. This can be used by succeeding requests to get the next "page" of keywords. It will only be present when there are more results to be returned. */
-  nextPageToken?: string;
-  /** Search terms which have been used to find a business. */
-  searchKeywordsCounts?: Array<SearchKeywordCount>;
+export interface FetchMultiDailyMetricsTimeSeriesResponse {
+  /** DailyMetrics and their corresponding time series. */
+  multiDailyMetricTimeSeries?: Array<MultiDailyMetricTimeSeries>;
 }
 
-export const ListSearchKeywordImpressionsMonthlyResponse: Schema.Schema<ListSearchKeywordImpressionsMonthlyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      searchKeywordsCounts: Schema.optional(Schema.Array(SearchKeywordCount)),
-    }),
-  ).annotate({
-    identifier: "ListSearchKeywordImpressionsMonthlyResponse",
-  }) as any as Schema.Schema<ListSearchKeywordImpressionsMonthlyResponse>;
+export const FetchMultiDailyMetricsTimeSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    multiDailyMetricTimeSeries: Schema.optional(
+      Schema.Array(MultiDailyMetricTimeSeries),
+    ),
+  }).annotate({ identifier: "FetchMultiDailyMetricsTimeSeriesResponse" });
 
 // ==========================================================================
 // Operations
@@ -252,15 +201,9 @@ export const ListSearchKeywordImpressionsMonthlyResponse: Schema.Schema<ListSear
 
 export interface FetchMultiDailyMetricsTimeSeriesLocationsRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  "dailyRange.startDate.year"?: number;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "dailyRange.endDate.year"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  "dailyRange.startDate.day"?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "dailyRange.endDate.day"?: number;
-  /** Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. */
-  location: string;
   /** Required. The metrics to retrieve time series for. */
   dailyMetrics?:
     | "DAILY_METRIC_UNKNOWN"
@@ -280,23 +223,22 @@ export interface FetchMultiDailyMetricsTimeSeriesLocationsRequest {
   "dailyRange.startDate.month"?: number;
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "dailyRange.endDate.month"?: number;
+  /** Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. */
+  location: string;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  "dailyRange.startDate.year"?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  "dailyRange.startDate.day"?: number;
 }
 
 export const FetchMultiDailyMetricsTimeSeriesLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "dailyRange.startDate.year": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailyRange.startDate.year"),
-    ),
     "dailyRange.endDate.year": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("dailyRange.endDate.year"),
-    ),
-    "dailyRange.startDate.day": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailyRange.startDate.day"),
     ),
     "dailyRange.endDate.day": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("dailyRange.endDate.day"),
     ),
-    location: Schema.String.pipe(T.HttpPath("location")),
     dailyMetrics: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("dailyMetrics"),
     ),
@@ -305,6 +247,13 @@ export const FetchMultiDailyMetricsTimeSeriesLocationsRequest =
     ),
     "dailyRange.endDate.month": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("dailyRange.endDate.month"),
+    ),
+    location: Schema.String.pipe(T.HttpPath("location")),
+    "dailyRange.startDate.year": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailyRange.startDate.year"),
+    ),
+    "dailyRange.startDate.day": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailyRange.startDate.day"),
     ),
   }).pipe(
     T.Http({
@@ -334,20 +283,10 @@ export const fetchMultiDailyMetricsTimeSeriesLocations: API.OperationMethod<
 }));
 
 export interface GetDailyMetricsTimeSeriesLocationsRequest {
-  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
-  "dailySubEntityType.timeOfDay.seconds"?: number;
-  /** Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. */
-  name: string;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  "dailyRange.startDate.year"?: number;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  "dailyRange.endDate.year"?: number;
-  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
-  "dailySubEntityType.timeOfDay.nanos"?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  "dailyRange.endDate.month"?: number;
+  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  "dailySubEntityType.timeOfDay.hours"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  "dailyRange.endDate.day"?: number;
+  "dailyRange.startDate.day"?: number;
   /** Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE. */
   "dailySubEntityType.dayOfWeek"?:
     | "DAY_OF_WEEK_UNSPECIFIED"
@@ -359,10 +298,22 @@ export interface GetDailyMetricsTimeSeriesLocationsRequest {
     | "SATURDAY"
     | "SUNDAY"
     | (string & {});
+  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
+  "dailySubEntityType.timeOfDay.seconds"?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  "dailyRange.endDate.year"?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  "dailyRange.endDate.day"?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  "dailyRange.endDate.month"?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  "dailyRange.startDate.year"?: number;
+  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
+  "dailySubEntityType.timeOfDay.nanos"?: number;
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "dailyRange.startDate.month"?: number;
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  "dailySubEntityType.timeOfDay.minutes"?: number;
+  /** Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. */
+  name: string;
   /** Required. The metric to retrieve time series. */
   dailyMetric?:
     | "DAILY_METRIC_UNKNOWN"
@@ -378,50 +329,48 @@ export interface GetDailyMetricsTimeSeriesLocationsRequest {
     | "BUSINESS_FOOD_ORDERS"
     | "BUSINESS_FOOD_MENU_CLICKS"
     | (string & {});
-  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  "dailySubEntityType.timeOfDay.hours"?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  "dailyRange.startDate.day"?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  "dailySubEntityType.timeOfDay.minutes"?: number;
 }
 
 export const GetDailyMetricsTimeSeriesLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "dailySubEntityType.timeOfDay.seconds": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailySubEntityType.timeOfDay.seconds"),
-    ),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    "dailyRange.startDate.year": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailyRange.startDate.year"),
-    ),
-    "dailyRange.endDate.year": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailyRange.endDate.year"),
-    ),
-    "dailySubEntityType.timeOfDay.nanos": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailySubEntityType.timeOfDay.nanos"),
-    ),
-    "dailyRange.endDate.month": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailyRange.endDate.month"),
-    ),
-    "dailyRange.endDate.day": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailyRange.endDate.day"),
-    ),
-    "dailySubEntityType.dayOfWeek": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("dailySubEntityType.dayOfWeek"),
-    ),
-    "dailyRange.startDate.month": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailyRange.startDate.month"),
-    ),
-    "dailySubEntityType.timeOfDay.minutes": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("dailySubEntityType.timeOfDay.minutes"),
-    ),
-    dailyMetric: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("dailyMetric"),
-    ),
     "dailySubEntityType.timeOfDay.hours": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("dailySubEntityType.timeOfDay.hours"),
     ),
     "dailyRange.startDate.day": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("dailyRange.startDate.day"),
+    ),
+    "dailySubEntityType.dayOfWeek": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("dailySubEntityType.dayOfWeek"),
+    ),
+    "dailySubEntityType.timeOfDay.seconds": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailySubEntityType.timeOfDay.seconds"),
+    ),
+    "dailyRange.endDate.year": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailyRange.endDate.year"),
+    ),
+    "dailyRange.endDate.day": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailyRange.endDate.day"),
+    ),
+    "dailyRange.endDate.month": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailyRange.endDate.month"),
+    ),
+    "dailyRange.startDate.year": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailyRange.startDate.year"),
+    ),
+    "dailySubEntityType.timeOfDay.nanos": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailySubEntityType.timeOfDay.nanos"),
+    ),
+    "dailyRange.startDate.month": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailyRange.startDate.month"),
+    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    dailyMetric: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("dailyMetric"),
+    ),
+    "dailySubEntityType.timeOfDay.minutes": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("dailySubEntityType.timeOfDay.minutes"),
     ),
   }).pipe(
     T.Http({
@@ -451,49 +400,49 @@ export const getDailyMetricsTimeSeriesLocations: API.OperationMethod<
 }));
 
 export interface ListLocationsSearchkeywordsImpressionsMonthlyRequest {
-  /** Optional. A token indicating the next paginated result to be returned. */
-  pageToken?: string;
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "monthlyRange.startMonth.month"?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "monthlyRange.startMonth.day"?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  "monthlyRange.endMonth.month"?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  "monthlyRange.endMonth.year"?: number;
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "monthlyRange.startMonth.year"?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  "monthlyRange.endMonth.day"?: number;
   /** Optional. The number of results requested. The default page size is 100. Page size can be set to a maximum of 100. */
   pageSize?: number;
   /** Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. */
   parent: string;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  "monthlyRange.endMonth.year"?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  "monthlyRange.endMonth.month"?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  "monthlyRange.endMonth.day"?: number;
+  /** Optional. A token indicating the next paginated result to be returned. */
+  pageToken?: string;
 }
 
 export const ListLocationsSearchkeywordsImpressionsMonthlyRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     "monthlyRange.startMonth.month": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("monthlyRange.startMonth.month"),
     ),
     "monthlyRange.startMonth.day": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("monthlyRange.startMonth.day"),
     ),
-    "monthlyRange.endMonth.month": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("monthlyRange.endMonth.month"),
+    "monthlyRange.endMonth.year": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("monthlyRange.endMonth.year"),
     ),
     "monthlyRange.startMonth.year": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("monthlyRange.startMonth.year"),
     ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    "monthlyRange.endMonth.month": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("monthlyRange.endMonth.month"),
+    ),
     "monthlyRange.endMonth.day": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("monthlyRange.endMonth.day"),
     ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    "monthlyRange.endMonth.year": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("monthlyRange.endMonth.year"),
-    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({
       method: "GET",

@@ -97,6 +97,7 @@ export type StandardTierRetainRuleCount = number;
 export type StandardTierRetainRuleInterval = number;
 export type Count = number;
 export type AvailabilityZone = string;
+export type AvailabilityZoneId = string;
 export type TargetRegion = string;
 export type Target = string;
 export type Encrypted = boolean;
@@ -240,11 +241,16 @@ export type AvailabilityZoneList = string[];
 export const AvailabilityZoneList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
 );
+export type AvailabilityZoneIdList = string[];
+export const AvailabilityZoneIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
 export interface FastRestoreRule {
   Count?: number;
   Interval?: number;
   IntervalUnit?: RetentionIntervalUnitValues;
   AvailabilityZones?: string[];
+  AvailabilityZoneIds?: string[];
 }
 export const FastRestoreRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -252,6 +258,7 @@ export const FastRestoreRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Interval: S.optional(S.Number),
     IntervalUnit: S.optional(RetentionIntervalUnitValues),
     AvailabilityZones: S.optional(AvailabilityZoneList),
+    AvailabilityZoneIds: S.optional(AvailabilityZoneIdList),
   }),
 ).annotate({
   identifier: "FastRestoreRule",
@@ -789,9 +796,6 @@ export interface GetLifecyclePolicyResponse {
         VariableTags: (Tag & { Key: string; Value: string })[];
         CreateRule: CreateRule & {
           Scripts: (Script & { ExecutionHandler: ExecutionHandler })[];
-        };
-        FastRestoreRule: FastRestoreRule & {
-          AvailabilityZones: AvailabilityZoneList;
         };
         CrossRegionCopyRules: (CrossRegionCopyRule & {
           Encrypted: Encrypted;

@@ -40,6 +40,7 @@ export const PostV1ProjectsByProjectIdComputeServicesOutput =
       }),
       projectId: Schema.String,
       latestVersionId: Schema.NullOr(Schema.String),
+      serviceEndpointDomain: Schema.String,
       createdAt: Schema.String,
     }),
   });

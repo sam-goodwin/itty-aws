@@ -7,6 +7,7 @@ export const SendSolanaTransactionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals(["solana", "solana-devnet"]),
     transaction: Schema.String,
+    useCdpSponsor: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "POST", path: "/v2/solana/accounts/send/transaction" }),
   );

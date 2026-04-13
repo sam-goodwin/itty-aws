@@ -464,6 +464,23 @@ export const CreateEventActionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateEventActionResponse",
 }) as any as S.Schema<CreateEventActionResponse>;
+export interface Tag {
+  Key: string;
+  Value: string;
+}
+export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: S.String, Value: S.String }),
+).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+export type ListOfTag = Tag[];
+export const ListOfTag = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export interface AssetConfiguration {
+  Tags?: Tag[];
+}
+export const AssetConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(ListOfTag) }),
+).annotate({
+  identifier: "AssetConfiguration",
+}) as any as S.Schema<AssetConfiguration>;
 export interface ExportAssetToSignedUrlRequestDetails {
   AssetId: string;
   DataSetId: string;
@@ -780,11 +797,16 @@ export const RequestDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RequestDetails" }) as any as S.Schema<RequestDetails>;
 export interface CreateJobRequest {
+  AssetConfiguration?: AssetConfiguration;
   Details: RequestDetails;
   Type: string;
 }
 export const CreateJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Details: RequestDetails, Type: S.String }).pipe(
+  S.Struct({
+    AssetConfiguration: S.optional(AssetConfiguration),
+    Details: RequestDetails,
+    Type: S.String,
+  }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v1/jobs" }),
       svc,
@@ -1055,6 +1077,7 @@ export type ListOfJobError = JobError[];
 export const ListOfJobError = /*@__PURE__*/ /*#__PURE__*/ S.Array(JobError);
 export interface CreateJobResponse {
   Arn?: string;
+  AssetConfiguration?: AssetConfiguration;
   CreatedAt?: Date;
   Details?: ResponseDetails;
   Errors?: JobError[];
@@ -1066,6 +1089,7 @@ export interface CreateJobResponse {
 export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
+    AssetConfiguration: S.optional(AssetConfiguration),
     CreatedAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -1468,6 +1492,7 @@ export interface GetAssetResponse {
   Name?: string;
   RevisionId?: string;
   SourceId?: string;
+  Tags?: { [key: string]: string | undefined };
   UpdatedAt?: Date;
 }
 export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1483,6 +1508,7 @@ export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Name: S.optional(S.String),
     RevisionId: S.optional(S.String),
     SourceId: S.optional(S.String),
+    Tags: S.optional(MapOf__string),
     UpdatedAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -1659,6 +1685,7 @@ export const GetJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetJobRequest" }) as any as S.Schema<GetJobRequest>;
 export interface GetJobResponse {
   Arn?: string;
+  AssetConfiguration?: AssetConfiguration;
   CreatedAt?: Date;
   Details?: ResponseDetails;
   Errors?: JobError[];
@@ -1670,6 +1697,7 @@ export interface GetJobResponse {
 export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
+    AssetConfiguration: S.optional(AssetConfiguration),
     CreatedAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -2096,6 +2124,7 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListJobsRequest>;
 export interface JobEntry {
   Arn: string;
+  AssetConfiguration?: AssetConfiguration;
   CreatedAt: Date;
   Details: ResponseDetails;
   Errors?: JobError[];
@@ -2107,6 +2136,7 @@ export interface JobEntry {
 export const JobEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
+    AssetConfiguration: S.optional(AssetConfiguration),
     CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     Details: ResponseDetails,
     Errors: S.optional(ListOfJobError),
@@ -2971,8 +3001,7 @@ export type CancelJobError =
   | ValidationException
   | CommonErrors;
 /**
- * This operation cancels a job. Jobs can be cancelled only when they are in the WAITING
- * state.
+ * This operation cancels a job. Jobs can be cancelled only when they are in the WAITING state.
  */
 export const cancelJob: API.OperationMethod<
   CancelJobRequest,
@@ -3484,8 +3513,7 @@ export type ListDataSetRevisionsError =
   | ValidationException
   | CommonErrors;
 /**
- * This operation lists a data set's revisions sorted by CreatedAt in descending
- * order.
+ * This operation lists a data set's revisions sorted by CreatedAt in descending order.
  */
 export const listDataSetRevisions: API.OperationMethod<
   ListDataSetRevisionsRequest,
@@ -3530,8 +3558,7 @@ export type ListDataSetsError =
   | ValidationException
   | CommonErrors;
 /**
- * This operation lists your data sets. When listing by origin OWNED, results are sorted by
- * CreatedAt in descending order. When listing by origin ENTITLED, there is no order.
+ * This operation lists your data sets. When listing by origin OWNED, results are sorted by CreatedAt in descending order. When listing by origin ENTITLED, there is no order.
  */
 export const listDataSets: API.OperationMethod<
   ListDataSetsRequest,
@@ -3713,8 +3740,7 @@ export type ListRevisionAssetsError =
   | ValidationException
   | CommonErrors;
 /**
- * This operation lists a revision's assets sorted alphabetically in descending
- * order.
+ * This operation lists a revision's assets sorted alphabetically in descending order.
  */
 export const listRevisionAssets: API.OperationMethod<
   ListRevisionAssetsRequest,
@@ -3802,8 +3828,7 @@ export type SendApiAssetError =
   | ValidationException
   | CommonErrors;
 /**
- * This operation invokes an API Gateway API asset. The request is proxied to the
- * provider’s API Gateway API.
+ * This operation invokes an API Gateway API asset. The request is proxied to the provider’s API Gateway API.
  */
 export const sendApiAsset: API.OperationMethod<
   SendApiAssetRequest,

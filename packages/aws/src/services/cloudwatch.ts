@@ -154,6 +154,10 @@ export type DatapointsToAlarm = number;
 export type Threshold = number;
 export type TreatMissingData = string;
 export type EvaluateLowSampleCountPercentile = string;
+export type Query = string;
+export type PendingPeriod = number;
+export type RecoveryPeriod = number;
+export type EvaluationInterval = number;
 export type MaxReturnedResultsCount = number;
 export type AnomalyDetectorMetricTimezone = string;
 export type PeriodicSpikes = boolean;
@@ -791,6 +795,24 @@ export type EvaluationState =
   | "EVALUATION_ERROR"
   | (string & {});
 export const EvaluationState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AlarmPromQLCriteria {
+  Query?: string;
+  PendingPeriod?: number;
+  RecoveryPeriod?: number;
+}
+export const AlarmPromQLCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Query: S.optional(S.String),
+    PendingPeriod: S.optional(S.Number),
+    RecoveryPeriod: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AlarmPromQLCriteria",
+}) as any as S.Schema<AlarmPromQLCriteria>;
+export type EvaluationCriteria = { PromQLCriteria: AlarmPromQLCriteria };
+export const EvaluationCriteria = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ PromQLCriteria: AlarmPromQLCriteria }),
+]);
 export interface MetricAlarm {
   AlarmName?: string;
   AlarmArn?: string;
@@ -821,6 +843,8 @@ export interface MetricAlarm {
   ThresholdMetricId?: string;
   EvaluationState?: EvaluationState;
   StateTransitionedTimestamp?: Date;
+  EvaluationCriteria?: EvaluationCriteria;
+  EvaluationInterval?: number;
 }
 export const MetricAlarm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -859,6 +883,8 @@ export const MetricAlarm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     StateTransitionedTimestamp: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
+    EvaluationCriteria: S.optional(EvaluationCriteria),
+    EvaluationInterval: S.optional(S.Number),
   }),
 ).annotate({ identifier: "MetricAlarm" }) as any as S.Schema<MetricAlarm>;
 export type MetricAlarms = MetricAlarm[];
@@ -1845,6 +1871,33 @@ export const GetMetricWidgetImageOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetMetricWidgetImageOutput",
 }) as any as S.Schema<GetMetricWidgetImageOutput>;
+export interface GetOTelEnrichmentInput {}
+export const GetOTelEnrichmentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetOTelEnrichmentInput",
+}) as any as S.Schema<GetOTelEnrichmentInput>;
+export type OTelEnrichmentStatus = "Running" | "Stopped" | (string & {});
+export const OTelEnrichmentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetOTelEnrichmentOutput {
+  Status: OTelEnrichmentStatus;
+}
+export const GetOTelEnrichmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Status: S.optional(OTelEnrichmentStatus) }).pipe(ns),
+).annotate({
+  identifier: "GetOTelEnrichmentOutput",
+}) as any as S.Schema<GetOTelEnrichmentOutput>;
 export type AlarmMuteRuleStatuses = AlarmMuteRuleStatus[];
 export const AlarmMuteRuleStatuses =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(AlarmMuteRuleStatus);
@@ -2467,6 +2520,8 @@ export interface PutMetricAlarmInput {
   Metrics?: MetricDataQuery[];
   Tags?: Tag[];
   ThresholdMetricId?: string;
+  EvaluationCriteria?: EvaluationCriteria;
+  EvaluationInterval?: number;
 }
 export const PutMetricAlarmInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2492,6 +2547,8 @@ export const PutMetricAlarmInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Metrics: S.optional(MetricDataQueries),
     Tags: S.optional(TagList),
     ThresholdMetricId: S.optional(S.String),
+    EvaluationCriteria: S.optional(EvaluationCriteria),
+    EvaluationInterval: S.optional(S.Number),
   }).pipe(
     T.all(
       ns,
@@ -2723,6 +2780,29 @@ export const StartMetricStreamsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StartMetricStreamsOutput",
 }) as any as S.Schema<StartMetricStreamsOutput>;
+export interface StartOTelEnrichmentInput {}
+export const StartOTelEnrichmentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "StartOTelEnrichmentInput",
+}) as any as S.Schema<StartOTelEnrichmentInput>;
+export interface StartOTelEnrichmentOutput {}
+export const StartOTelEnrichmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StartOTelEnrichmentOutput",
+}) as any as S.Schema<StartOTelEnrichmentOutput>;
 export interface StopMetricStreamsInput {
   Names?: string[];
 }
@@ -2748,6 +2828,29 @@ export const StopMetricStreamsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StopMetricStreamsOutput",
 }) as any as S.Schema<StopMetricStreamsOutput>;
+export interface StopOTelEnrichmentInput {}
+export const StopOTelEnrichmentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "StopOTelEnrichmentInput",
+}) as any as S.Schema<StopOTelEnrichmentInput>;
+export interface StopOTelEnrichmentOutput {}
+export const StopOTelEnrichmentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StopOTelEnrichmentOutput",
+}) as any as S.Schema<StopOTelEnrichmentOutput>;
 export interface TagResourceInput {
   ResourceARN?: string;
   Tags?: Tag[];
@@ -3657,6 +3760,23 @@ export const getMetricWidgetImage: API.OperationMethod<
   output: GetMetricWidgetImageOutput,
   errors: [],
 }));
+export type GetOTelEnrichmentError = CommonErrors;
+/**
+ * Returns the current status of vended metric enrichment for the account, including
+ * whether CloudWatch vended metrics are enriched with resource ARN and resource tag
+ * labels and queryable using PromQL. For the list of supported resources, see
+ * Supported AWS infrastructure metrics.
+ */
+export const getOTelEnrichment: API.OperationMethod<
+  GetOTelEnrichmentInput,
+  GetOTelEnrichmentOutput,
+  GetOTelEnrichmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOTelEnrichmentInput,
+  output: GetOTelEnrichmentOutput,
+  errors: [],
+}));
 export type ListAlarmMuteRulesError =
   | InvalidNextToken
   | ResourceNotFoundException
@@ -3917,7 +4037,7 @@ export type PutAlarmMuteRuleError = LimitExceededFault | CommonErrors;
  *
  * To create or update a mute rule, you must have the `cloudwatch:PutAlarmMuteRule` permission on two types of resources: the alarm mute rule resource itself, and each alarm that the rule targets.
  *
- * For example, If you want to allow a user to create mute rules that target only specific alarms named "WebServerCPUAlarm" and "DatabaseConnectionAlarm", you would create an IAM policy with one statement granting `cloudwatch:PutAlarmMuteRule` on the alarm mute rule resource (`arn:aws:cloudwatch:[REGION]:123456789012:alarm-mute:*`), and another statement granting `cloudwatch:PutAlarmMuteRule` on the targeted alarm resources (`arn:aws:cloudwatch:[REGION]:123456789012:alarm:WebServerCPUAlarm` and `arn:aws:cloudwatch:[REGION]:123456789012:alarm:DatabaseConnectionAlarm`).
+ * For example, If you want to allow a user to create mute rules that target only specific alarms named "WebServerCPUAlarm" and "DatabaseConnectionAlarm", you would create an IAM policy with one statement granting `cloudwatch:PutAlarmMuteRule` on the alarm mute rule resource (`arn:aws:cloudwatch:[REGION]:123456789012:alarm-mute-rule:*`), and another statement granting `cloudwatch:PutAlarmMuteRule` on the targeted alarm resources (`arn:aws:cloudwatch:[REGION]:123456789012:alarm:WebServerCPUAlarm` and `arn:aws:cloudwatch:[REGION]:123456789012:alarm:DatabaseConnectionAlarm`).
  *
  * You can also use IAM policy conditions to allow targeting alarms based on resource tags. For example, you can restrict users to create/update mute rules to only target alarms that have a specific tag key-value pair, such as `Team=TeamA`.
  */
@@ -4125,14 +4245,15 @@ export const putManagedInsightRules: API.OperationMethod<
 export type PutMetricAlarmError = LimitExceededFault | CommonErrors;
 /**
  * Creates or updates an alarm and associates it with the specified metric, metric
- * math expression, anomaly detection model, or Metrics Insights query. For more
+ * math expression, anomaly detection model, Metrics Insights query, or PromQL query. For more
  * information about using a Metrics Insights query for an alarm, see Create
  * alarms on Metrics Insights queries.
  *
  * Alarms based on anomaly detection models cannot have Auto Scaling actions.
  *
  * When this operation creates an alarm, the alarm state is immediately set to
- * `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
+ * `INSUFFICIENT_DATA`. For PromQL alarms, the alarm state is instead
+ * immediately set to `OK`. The alarm is then evaluated and its state is set
  * appropriately. Any actions associated with the new state are then executed.
  *
  * When you update an existing alarm, its state is left unchanged, but the update
@@ -4376,6 +4497,28 @@ export const startMetricStreams: API.OperationMethod<
     MissingRequiredParameterException,
   ],
 }));
+export type StartOTelEnrichmentError = CommonErrors;
+/**
+ * Enables enrichment and PromQL access for CloudWatch vended metrics for
+ * supported AWS resources in the account. Once enabled, metrics that
+ * contain a resource identifier dimension (for example, EC2
+ * `CPUUtilization` with an `InstanceId` dimension) are enriched
+ * with resource ARN and resource tag labels and become queryable using
+ * PromQL.
+ *
+ * Before calling this operation, you must enable resource tags on telemetry for
+ * your account. For more information, see Enable resource tags on telemetry.
+ */
+export const startOTelEnrichment: API.OperationMethod<
+  StartOTelEnrichmentInput,
+  StartOTelEnrichmentOutput,
+  StartOTelEnrichmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartOTelEnrichmentInput,
+  output: StartOTelEnrichmentOutput,
+  errors: [],
+}));
 export type StopMetricStreamsError =
   | InternalServiceFault
   | InvalidParameterValueException
@@ -4397,6 +4540,23 @@ export const stopMetricStreams: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+}));
+export type StopOTelEnrichmentError = CommonErrors;
+/**
+ * Disables enrichment and PromQL access for CloudWatch vended metrics for
+ * supported AWS resources in the account. After disabling, these metrics
+ * are no longer enriched with resource ARN and resource tag labels, and cannot be
+ * queried using PromQL.
+ */
+export const stopOTelEnrichment: API.OperationMethod<
+  StopOTelEnrichmentInput,
+  StopOTelEnrichmentOutput,
+  StopOTelEnrichmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StopOTelEnrichmentInput,
+  output: StopOTelEnrichmentOutput,
+  errors: [],
 }));
 export type TagResourceError =
   | ConcurrentModificationException
