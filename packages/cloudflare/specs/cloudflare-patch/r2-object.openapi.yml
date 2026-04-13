@@ -8,6 +8,112 @@ servers:
 x-distilled-service: r2
 paths:
   /accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}:
+    get:
+      operationId: getObject
+      summary: Download an object from an R2 bucket.
+      description: Downloads an object from an R2 bucket.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+      parameters:
+        - $ref: "#/components/parameters/BucketName"
+        - $ref: "#/components/parameters/ObjectName"
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/Jurisdiction"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    put:
+      operationId: putObject
+      summary: Upload an object to an R2 bucket.
+      description: Uploads an object to an R2 bucket.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+      parameters:
+        - $ref: "#/components/parameters/BucketName"
+        - $ref: "#/components/parameters/ObjectName"
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/Jurisdiction"
+        - name: content-type
+          in: header
+          required: false
+          description: MIME type of the object.
+          schema:
+            type: string
+        - name: content-disposition
+          in: header
+          required: false
+          description: Content disposition of the object.
+          schema:
+            type: string
+        - name: content-encoding
+          in: header
+          required: false
+          description: Content encoding of the object.
+          schema:
+            type: string
+        - name: content-language
+          in: header
+          required: false
+          description: Content language of the object.
+          schema:
+            type: string
+        - name: content-length
+          in: header
+          required: false
+          description: Content length of the object in bytes.
+          schema:
+            type: string
+        - name: cache-control
+          in: header
+          required: false
+          description: Cache control directives for the object.
+          schema:
+            type: string
+        - name: expires
+          in: header
+          required: false
+          description: Expiration date of the object.
+          schema:
+            type: string
+        - name: cf-r2-storage-class
+          in: header
+          required: false
+          description: Storage class for the object.
+          schema:
+            type: string
+            enum:
+              - Standard
+              - InfrequentAccess
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
     delete:
       operationId: deleteObject
       summary: Delete an object from an R2 bucket.
@@ -21,35 +127,47 @@ paths:
         NoRoute:
           - code: 10015
       parameters:
-        - name: bucketName
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: objectName
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: account_id
-          in: path
-          required: true
-          description: Account ID.
-          schema:
-            type: string
-        - name: cf-r2-jurisdiction
-          in: header
-          required: false
-          description: Jurisdiction where objects in this bucket are guaranteed to be stored.
-          schema:
-            type: string
-            enum:
-              - default
-              - eu
-              - fedramp
+        - $ref: "#/components/parameters/BucketName"
+        - $ref: "#/components/parameters/ObjectName"
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/Jurisdiction"
       responses:
         "200":
           description: Success
           content:
             application/json:
               schema: {}
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Account ID.
+      schema:
+        type: string
+    BucketName:
+      name: bucketName
+      in: path
+      required: true
+      description: Name of the R2 bucket.
+      schema:
+        type: string
+    ObjectName:
+      name: objectName
+      in: path
+      required: true
+      description: Key (name) of the object.
+      schema:
+        type: string
+    Jurisdiction:
+      name: cf-r2-jurisdiction
+      in: header
+      required: false
+      description: Jurisdiction where objects in this bucket are guaranteed to be stored.
+      schema:
+        type: string
+        enum:
+          - default
+          - eu
+          - fedramp

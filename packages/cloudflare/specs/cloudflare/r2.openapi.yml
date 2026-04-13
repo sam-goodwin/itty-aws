@@ -1,7 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare R2 API
+  title: Cloudflare R2 Object API
   version: 0.0.0
+  description: R2 object operations not exposed in the Cloudflare TypeScript SDK.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: r2
@@ -2486,6 +2487,159 @@ paths:
         InvalidRoute:
           - code: 7003
   /accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}:
+    get:
+      operationId: getObject
+      summary: Download an object from an R2 bucket.
+      description: Downloads an object from an R2 bucket.
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          description: Name of the R2 bucket.
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          description: Key (name) of the object.
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be
+            stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+    put:
+      operationId: putObject
+      summary: Upload an object to an R2 bucket.
+      description: Uploads an object to an R2 bucket.
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          description: Name of the R2 bucket.
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          description: Key (name) of the object.
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be
+            stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+        - name: content-type
+          in: header
+          required: false
+          description: MIME type of the object.
+          schema:
+            type: string
+        - name: content-disposition
+          in: header
+          required: false
+          description: Content disposition of the object.
+          schema:
+            type: string
+        - name: content-encoding
+          in: header
+          required: false
+          description: Content encoding of the object.
+          schema:
+            type: string
+        - name: content-language
+          in: header
+          required: false
+          description: Content language of the object.
+          schema:
+            type: string
+        - name: content-length
+          in: header
+          required: false
+          description: Content length of the object in bytes.
+          schema:
+            type: string
+        - name: cache-control
+          in: header
+          required: false
+          description: Cache control directives for the object.
+          schema:
+            type: string
+        - name: expires
+          in: header
+          required: false
+          description: Expiration date of the object.
+          schema:
+            type: string
+        - name: cf-r2-storage-class
+          in: header
+          required: false
+          description: Storage class for the object.
+          schema:
+            type: string
+            enum:
+              - Standard
+              - InfrequentAccess
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Success
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
     delete:
       operationId: deleteObject
       summary: Delete an object from an R2 bucket.
@@ -2494,11 +2648,13 @@ paths:
         - name: bucketName
           in: path
           required: true
+          description: Name of the R2 bucket.
           schema:
             type: string
         - name: objectName
           in: path
           required: true
+          description: Key (name) of the object.
           schema:
             type: string
         - name: account_id
