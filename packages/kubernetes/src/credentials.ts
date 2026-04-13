@@ -1,7 +1,7 @@
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 export interface Config {
@@ -23,7 +23,7 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends ServiceMap.Service<Credentials, Config>()(
+export class Credentials extends Context.Service<Credentials, Config>()(
   "KubernetesCredentials",
 ) {}
 

@@ -10,7 +10,7 @@ import {
   Option,
   Ref,
   Schema as S,
-  ServiceMap,
+  Context,
 } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
@@ -27,7 +27,7 @@ import {
 //todo(pear): swap out for effect platform path
 import path from "pathe";
 
-class SdkFile extends ServiceMap.Service<
+class SdkFile extends Context.Service<
   SdkFile,
   {
     map: MutableHashMap.MutableHashMap<
@@ -101,7 +101,7 @@ class SdkFile extends ServiceMap.Service<
   }
 >()("SdkFile") {}
 
-class ModelService extends ServiceMap.Service<ModelService, SmithyModel>()(
+class ModelService extends Context.Service<ModelService, SmithyModel>()(
   "ModelService",
 ) {}
 

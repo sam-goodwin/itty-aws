@@ -325,9 +325,9 @@ export const make = <Op extends Operation<any, any, any>>(
     },
     asEffect() {
       return Effect.map(
-        Effect.services(),
-        (sm) => (input: Operation.Input<Op>) =>
-          outerFn(input).pipe(Effect.provide(sm)),
+        Effect.context(),
+        (context) => (input: Operation.Input<Op>) =>
+          Effect.provideContext(outerFn(input), context),
       );
     },
   };

@@ -1759,7 +1759,7 @@ exports[`JSON Schema Generation > Complex Nested Structures > DescribeInstancesR
           "$ref": "#/definitions/InstanceNetworkPerformanceOptions",
         },
         "Operator": {
-          "$ref": "#/definitions/OperatorResponse3",
+          "$ref": "#/definitions/OperatorResponse",
         },
         "OutpostArn": {
           "anyOf": [
@@ -2399,7 +2399,7 @@ exports[`JSON Schema Generation > Complex Nested Structures > DescribeInstancesR
           ],
         },
         "Operator": {
-          "$ref": "#/definitions/OperatorResponse2",
+          "$ref": "#/definitions/OperatorResponse",
         },
         "OwnerId": {
           "anyOf": [
@@ -2552,16 +2552,6 @@ exports[`JSON Schema Generation > Complex Nested Structures > DescribeInstancesR
         },
       },
       "type": "object",
-    },
-    "InstanceNetworkInterfaceAssociation2": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation1",
-        },
-        {
-          "type": "null",
-        },
-      ],
     },
     "InstanceNetworkInterfaceAttachment": {
       "anyOf": [
@@ -2748,7 +2738,7 @@ exports[`JSON Schema Generation > Complex Nested Structures > DescribeInstancesR
       "additionalProperties": false,
       "properties": {
         "Association": {
-          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation2",
+          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation",
         },
         "Primary": {
           "anyOf": [
@@ -3156,26 +3146,6 @@ exports[`JSON Schema Generation > Complex Nested Structures > DescribeInstancesR
         },
       },
       "type": "object",
-    },
-    "OperatorResponse2": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/OperatorResponse1",
-        },
-        {
-          "type": "null",
-        },
-      ],
-    },
-    "OperatorResponse3": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/OperatorResponse1",
-        },
-        {
-          "type": "null",
-        },
-      ],
     },
     "Placement": {
       "anyOf": [
@@ -4411,7 +4381,7 @@ exports[`JSON Schema Generation > Complex Nested Structures > Instance - dozens 
           "$ref": "#/definitions/InstanceNetworkPerformanceOptions",
         },
         "Operator": {
-          "$ref": "#/definitions/OperatorResponse3",
+          "$ref": "#/definitions/OperatorResponse",
         },
         "OutpostArn": {
           "anyOf": [
@@ -5051,7 +5021,7 @@ exports[`JSON Schema Generation > Complex Nested Structures > Instance - dozens 
           ],
         },
         "Operator": {
-          "$ref": "#/definitions/OperatorResponse2",
+          "$ref": "#/definitions/OperatorResponse",
         },
         "OwnerId": {
           "anyOf": [
@@ -5204,16 +5174,6 @@ exports[`JSON Schema Generation > Complex Nested Structures > Instance - dozens 
         },
       },
       "type": "object",
-    },
-    "InstanceNetworkInterfaceAssociation2": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation1",
-        },
-        {
-          "type": "null",
-        },
-      ],
     },
     "InstanceNetworkInterfaceAttachment": {
       "anyOf": [
@@ -5400,7 +5360,7 @@ exports[`JSON Schema Generation > Complex Nested Structures > Instance - dozens 
       "additionalProperties": false,
       "properties": {
         "Association": {
-          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation2",
+          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation",
         },
         "Primary": {
           "anyOf": [
@@ -5809,26 +5769,6 @@ exports[`JSON Schema Generation > Complex Nested Structures > Instance - dozens 
       },
       "type": "object",
     },
-    "OperatorResponse2": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/OperatorResponse1",
-        },
-        {
-          "type": "null",
-        },
-      ],
-    },
-    "OperatorResponse3": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/OperatorResponse1",
-        },
-        {
-          "type": "null",
-        },
-      ],
-    },
     "Placement": {
       "anyOf": [
         {
@@ -6112,15 +6052,12 @@ exports[`JSON Schema Generation > Cyclic Types > AttributeValue - self-referenti
     "AttributeValue": {
       "$ref": "#/definitions/Union_",
     },
-    "AttributeValue1": {
-      "$ref": "#/definitions/Union_",
-    },
     "Blob": {
       "type": "string",
     },
     "ListAttributeValue": {
       "items": {
-        "$ref": "#/definitions/AttributeValue1",
+        "$ref": "#/definitions/AttributeValue",
       },
       "type": "array",
     },
@@ -7549,7 +7486,7 @@ exports[`JSON Schema Generation > Edge Cases > Reservation - deeply nested optio
           "$ref": "#/definitions/InstanceNetworkPerformanceOptions",
         },
         "Operator": {
-          "$ref": "#/definitions/OperatorResponse3",
+          "$ref": "#/definitions/OperatorResponse",
         },
         "OutpostArn": {
           "anyOf": [
@@ -8189,7 +8126,7 @@ exports[`JSON Schema Generation > Edge Cases > Reservation - deeply nested optio
           ],
         },
         "Operator": {
-          "$ref": "#/definitions/OperatorResponse2",
+          "$ref": "#/definitions/OperatorResponse",
         },
         "OwnerId": {
           "anyOf": [
@@ -8342,16 +8279,6 @@ exports[`JSON Schema Generation > Edge Cases > Reservation - deeply nested optio
         },
       },
       "type": "object",
-    },
-    "InstanceNetworkInterfaceAssociation2": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation1",
-        },
-        {
-          "type": "null",
-        },
-      ],
     },
     "InstanceNetworkInterfaceAttachment": {
       "anyOf": [
@@ -8538,7 +8465,7 @@ exports[`JSON Schema Generation > Edge Cases > Reservation - deeply nested optio
       "additionalProperties": false,
       "properties": {
         "Association": {
-          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation2",
+          "$ref": "#/definitions/InstanceNetworkInterfaceAssociation",
         },
         "Primary": {
           "anyOf": [
@@ -8946,26 +8873,6 @@ exports[`JSON Schema Generation > Edge Cases > Reservation - deeply nested optio
         },
       },
       "type": "object",
-    },
-    "OperatorResponse2": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/OperatorResponse1",
-        },
-        {
-          "type": "null",
-        },
-      ],
-    },
-    "OperatorResponse3": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/OperatorResponse1",
-        },
-        {
-          "type": "null",
-        },
-      ],
     },
     "Placement": {
       "anyOf": [
@@ -10726,12 +10633,6 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
     "AttributeValue2": {
       "$ref": "#/definitions/Union_",
     },
-    "AttributeValue3": {
-      "$ref": "#/definitions/Union_",
-    },
-    "AttributeValue4": {
-      "$ref": "#/definitions/Union_",
-    },
     "Blob": {
       "type": "string",
     },
@@ -10742,7 +10643,7 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
           "anyOf": [
             {
               "items": {
-                "$ref": "#/definitions/AttributeValue3",
+                "$ref": "#/definitions/AttributeValue",
               },
               "type": "array",
             },
@@ -10872,7 +10773,7 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
               "additionalProperties": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/AttributeValue4",
+                    "$ref": "#/definitions/AttributeValue",
                   },
                   {
                     "type": "null",
@@ -11099,12 +11000,6 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
     "AttributeValue2": {
       "$ref": "#/definitions/Union_",
     },
-    "AttributeValue3": {
-      "$ref": "#/definitions/Union_",
-    },
-    "AttributeValue4": {
-      "$ref": "#/definitions/Union_",
-    },
     "Blob": {
       "type": "string",
     },
@@ -11194,7 +11089,7 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
               "additionalProperties": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/AttributeValue3",
+                    "$ref": "#/definitions/AttributeValue",
                   },
                   {
                     "type": "null",
@@ -11234,7 +11129,7 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
               "additionalProperties": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/AttributeValue4",
+                    "$ref": "#/definitions/AttributeValue",
                   },
                   {
                     "type": "null",
@@ -11549,12 +11444,6 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
     "AttributeValue2": {
       "$ref": "#/definitions/Union_",
     },
-    "AttributeValue3": {
-      "$ref": "#/definitions/Union_",
-    },
-    "AttributeValue4": {
-      "$ref": "#/definitions/Union_",
-    },
     "Blob": {
       "type": "string",
     },
@@ -11644,7 +11533,7 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
               "additionalProperties": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/AttributeValue3",
+                    "$ref": "#/definitions/AttributeValue",
                   },
                   {
                     "type": "null",
@@ -11684,7 +11573,7 @@ exports[`JSON Schema Generation > Protocol-Specific Schemas > awsJson1_0 (Dynamo
               "additionalProperties": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/AttributeValue4",
+                    "$ref": "#/definitions/AttributeValue",
                   },
                   {
                     "type": "null",

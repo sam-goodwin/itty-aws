@@ -3,7 +3,7 @@
  */
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 export {
   type Options,
   type Factory,
@@ -19,9 +19,7 @@ import type { Policy } from "@distilled.cloud/core/retry";
 /**
  * Context tag for configuring retry behavior of Supabase API calls.
  */
-export class Retry extends ServiceMap.Service<Retry, Policy>()(
-  "SupabaseRetry",
-) {}
+export class Retry extends Context.Service<Retry, Policy>()("SupabaseRetry") {}
 
 /**
  * Provides a custom retry policy to all Supabase API calls.

@@ -5,7 +5,7 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 
 export const DEFAULT_API_BASE_URL = "https://api.cloudflare.com/client/v4";
 
@@ -71,7 +71,7 @@ export class OAuthRefreshError extends Data.TaggedError(
 
 export type CredentialsError = ConfigError | OAuthRefreshError;
 
-export class Credentials extends ServiceMap.Service<
+export class Credentials extends Context.Service<
   Credentials,
   Effect.Effect<ResolvedCredentials, CredentialsError, any>
 >()("CloudflareCredentials") {}

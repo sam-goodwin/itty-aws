@@ -22,7 +22,7 @@ import { pipe } from "effect/Function";
 import * as Layer from "effect/Layer";
 import * as Ref from "effect/Ref";
 import * as Schedule from "effect/Schedule";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 import { isThrottling, isTransientError } from "./category.ts";
 
 // ============================================================================
@@ -69,7 +69,7 @@ export type Policy = Options | Factory;
  * ```
  */
 export const makeRetryService = (name: string) =>
-  ServiceMap.Service<any, Policy>()(name);
+  Context.Service<any, Policy>()(name);
 
 /**
  * Provides a custom retry policy for API calls.
