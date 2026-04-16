@@ -3715,6 +3715,19 @@
     },
     "VirtualizationType": {
       "add": ["nested-virtualization"]
+    },
+    "State": {
+      "replace": [
+        "pendingAcceptance",
+        "pending",
+        "available",
+        "deleting",
+        "deleted",
+        "rejected",
+        "failed",
+        "expired",
+        "partial"
+      ]
     }
   }
 }

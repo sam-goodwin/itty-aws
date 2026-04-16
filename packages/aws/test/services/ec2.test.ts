@@ -1,8 +1,13 @@
 import { expect } from "@effect/vitest";
-import { Effect } from "effect";
+import { Effect, Schedule } from "effect";
 import {
   // Account & Region
   describeAccountAttributes,
+  // VPC & VPC Endpoints (for state casing regression test)
+  createVpc,
+  createVpcEndpoint,
+  deleteVpc,
+  deleteVpcEndpoints,
   // Elastic IPs
   describeAddresses,
   describeAddressesAttribute,
@@ -171,7 +176,7 @@ import {
   listImagesInRecycleBin,
   listSnapshotsInRecycleBin,
 } from "../../src/services/ec2.ts";
-import { test } from "../test.ts";
+import { test, testRunId } from "../test.ts";
 
 // ----------------------------------------------------------------------------
 // Account & Region
@@ -435,6 +440,110 @@ test(
   }),
 );
 
+// Regression for alchemy-run/alchemy-effect#59.
+//
+// The Smithy model declares `com.amazonaws.ec2#State` (used by VpcEndpoint.State
+// and VpcEndpointConnection.VpcEndpointState) with PascalCase enum values
+// ("PendingAcceptance", "Pending", "Available", "Deleting", "Deleted", ...).
+// AWS, however, returns the state in lowercase on the wire ("available",
+// "pending", "deleted", ...). Consumers comparing `ep.State === "Available"`
+// silently get `false`, which caused alchemy-effect's waitForVpcEndpointAvailable
+// loop to never terminate. This test locks in the real API contract so the
+// generated type alias can mirror reality via an enum patch in
+// `patches/ec2.json`.
+test(
+  "VpcEndpoint.State is returned in lowercase by AWS (not PascalCase per Smithy)",
+  { timeout: 300_000 },
+  Effect.gen(function* () {
+    const vpcResult = yield* createVpc({
+      CidrBlock: "10.0.0.0/16",
+      TagSpecifications: [
+        {
+          ResourceType: "vpc",
+          Tags: [
+            { Key: "Name", Value: `distilled-ec2-vpc-state-${testRunId}` },
+          ],
+        },
+      ],
+    });
+    const vpcId = vpcResult.Vpc!.VpcId!;
+    expect(vpcId).toBeDefined();
+
+    yield* Effect.ensuring(
+      Effect.gen(function* () {
+        const created = yield* createVpcEndpoint({
+          VpcEndpointType: "Gateway",
+          VpcId: vpcId,
+          // Test framework pins Region to us-east-1
+          ServiceName: "com.amazonaws.us-east-1.s3",
+          TagSpecifications: [
+            {
+              ResourceType: "vpc-endpoint",
+              Tags: [
+                {
+                  Key: "Name",
+                  Value: `distilled-ec2-vpce-state-${testRunId}`,
+                },
+              ],
+            },
+          ],
+        });
+        const ep = created.VpcEndpoint!;
+        const vpcEndpointId = ep.VpcEndpointId!;
+        expect(vpcEndpointId).toBeDefined();
+
+        yield* Effect.ensuring(
+          Effect.gen(function* () {
+            // The state returned at creation time is already the real
+            // wire-format value - lowercase, never PascalCase.
+            expect(ep.State).toBeDefined();
+            expect(ep.State).toMatch(/^(pending|available)$/);
+            // Spell out the negation to make the bug explicit: the Smithy
+            // model's PascalCase "Pending" / "Available" are NOT what comes
+            // back on the wire, so equality checks against them silently fail.
+            expect(ep.State).not.toBe("Pending");
+            expect(ep.State).not.toBe("Available");
+
+            // Wait for the endpoint to transition to "available" so we also
+            // cover the steady-state casing (the alchemy-effect bug manifested
+            // in a polling loop that compared against "Available").
+            yield* Effect.gen(function* () {
+              const { VpcEndpoints } = yield* describeVpcEndpoints({
+                VpcEndpointIds: [vpcEndpointId],
+              });
+              const current = VpcEndpoints?.[0];
+              if (current?.State !== "available") {
+                return yield* Effect.fail("not available yet" as const);
+              }
+              expect(current.State).toBe("available");
+            }).pipe(
+              Effect.retry({
+                while: (err) => err === "not available yet",
+                schedule: Schedule.spaced("3 seconds").pipe(
+                  Schedule.both(Schedule.recurs(40)),
+                ),
+              }),
+            );
+          }),
+          deleteVpcEndpoints({ VpcEndpointIds: [vpcEndpointId] }).pipe(
+            Effect.ignore,
+          ),
+        );
+      }),
+      // Deleting the VPC fails while the endpoint is still attached; the
+      // endpoint deletion is async, so retry with a short schedule.
+      deleteVpc({ VpcId: vpcId }).pipe(
+        Effect.retry({
+          schedule: Schedule.spaced("3 seconds").pipe(
+            Schedule.both(Schedule.recurs(20)),
+          ),
+        }),
+        Effect.ignore,
+      ),
+    );
+  }),
+);
+
 // ----------------------------------------------------------------------------
 // VPC Peering
 // ----------------------------------------------------------------------------
@@ -652,8 +761,6 @@ test(
     expect(result.InstanceCreditSpecifications).toBeDefined();
   }),
 );
-
-
 
 // ----------------------------------------------------------------------------
 // Images & AMIs

@@ -24387,15 +24387,15 @@ export const CreateVpcEndpointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   identifier: "CreateVpcEndpointRequest",
 }) as any as S.Schema<CreateVpcEndpointRequest>;
 export type State =
-  | "PendingAcceptance"
-  | "Pending"
-  | "Available"
-  | "Deleting"
-  | "Deleted"
-  | "Rejected"
-  | "Failed"
-  | "Expired"
-  | "Partial"
+  | "pendingAcceptance"
+  | "pending"
+  | "available"
+  | "deleting"
+  | "deleted"
+  | "rejected"
+  | "failed"
+  | "expired"
+  | "partial"
   | (string & {});
 export const State = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface SecurityGroupIdentifier {
