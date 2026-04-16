@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.10.2](https://github.com/alchemy-run/distilled/releases/tag/v0.10.2) (2026-04-16)
+
+### Bug Fixes
+
+- **aws**: patch VpcEndpoint.State to be lowercase - by Michael (Pear) [(e103480)](https://github.com/alchemy-run/distilled/commit/e103480a69e0e05ed383c461011993a818e76864)
+- **cloudflare**: queue push message fails with InvalidMessageBody - by @john-royal in [#195](https://github.com/alchemy-run/distilled/pull/195) [(a1d38e6)](https://github.com/alchemy-run/distilled/commit/a1d38e61c06f54056721a446e1f3155c403a969c)
+- **cloudflare**: add missing InvalidCredential error code for r2 data catalog - by @john-royal in [#194](https://github.com/alchemy-run/distilled/pull/194) [(7f7dc71)](https://github.com/alchemy-run/distilled/commit/7f7dc714fb3ae186891c3433a79568a16831bbbc)
+
 ## [v0.10.1](https://github.com/alchemy-run/distilled/releases/tag/v0.10.1) (2026-04-13)
 
 ### Features
