@@ -27,6 +27,7 @@ import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { ChildProcess, ChildProcessSpawner } from "effect/unstable/process";
 import { Argument, Command, Flag } from "effect/unstable/cli";
+import { AgentStatsAccumulator, runAgent } from "./lib/agent.ts";
 
 // ============================================================================
 // Error Types
@@ -115,168 +116,6 @@ const execInteractive = (
   });
 
 // ============================================================================
-// Opencode Helper
-// ============================================================================
-
-interface OpencodeResult {
-  readonly stdout: string;
-  readonly sessionId: string | undefined;
-  readonly killed: boolean;
-}
-
-/**
- * Run opencode with inactivity timeout detection and session ID extraction.
- *
- * Uses node:child_process directly because the inactivity timer pattern
- * (reset on each chunk of output) doesn't map cleanly to Effect streams.
- * Wrapped in Effect.async for composability.
- */
-const runOpencode = (
-  prompt: string,
-  opts?: {
-    cwd?: string;
-    model?: string;
-    inactivityTimeoutMs?: number;
-    sessionId?: string;
-  },
-): Effect.Effect<OpencodeResult, CommandError, never> =>
-  Effect.callback<OpencodeResult, CommandError>((resume) => {
-    const model = opts?.model ?? "anthropic/claude-opus-4-6";
-    const inactivityTimeoutMs = opts?.inactivityTimeoutMs ?? 8 * 60 * 1000;
-
-    // Build args: use --session to continue an existing session, or start fresh
-    const args = ["run", "--format", "json", "--model", model];
-    if (opts?.sessionId) {
-      args.push("--session", opts.sessionId);
-    }
-    args.push(prompt);
-
-    const cp = spawn("opencode", args, {
-      cwd: opts?.cwd,
-      stdio: ["ignore", "pipe", "pipe"],
-      shell: process.platform === "win32",
-    });
-    let stdout = "";
-    let stderr = "";
-    let killed = false;
-    let sessionId: string | undefined;
-
-    // Reset this timer every time we get output
-    let inactivityTimer = setTimeout(onInactive, inactivityTimeoutMs);
-
-    function onInactive() {
-      killed = true;
-      console.error(
-        `\n⚠️  opencode has produced no output for ${inactivityTimeoutMs / 1000}s — killing stuck process`,
-      );
-      cp.kill("SIGTERM");
-      setTimeout(() => {
-        try {
-          cp.kill("SIGKILL");
-        } catch {}
-      }, 5000);
-    }
-
-    function resetInactivityTimer() {
-      clearTimeout(inactivityTimer);
-      inactivityTimer = setTimeout(onInactive, inactivityTimeoutMs);
-    }
-
-    cp.stdout.on("data", (d: Buffer) => {
-      const chunk = d.toString();
-      stdout += chunk;
-      resetInactivityTimer();
-
-      // Parse JSON events and print human-readable output
-      for (const line of chunk.split("\n")) {
-        if (!line.trim()) continue;
-        try {
-          const event = JSON.parse(line);
-
-          // Extract sessionID from first event that has one
-          if (!sessionId && event.sessionID) {
-            sessionId = event.sessionID;
-          }
-
-          // Print human-readable output based on event type
-          switch (event.type) {
-            case "text":
-              if (event.part?.text) {
-                process.stdout.write(event.part.text);
-              }
-              break;
-            case "tool_use":
-              if (event.part?.tool) {
-                const tool = event.part.tool;
-                const status = event.part.state?.status ?? "";
-                const title = event.part.state?.title ?? "";
-                if (status === "completed") {
-                  console.log(`\n  🔧 ${tool}: ${title}`);
-                } else if (status === "running") {
-                  console.log(`\n  ⏳ ${tool}: ${title || "(running)"}`);
-                }
-              }
-              break;
-            case "step_finish":
-              // Print cost/token info if available
-              if (event.part?.tokens) {
-                const t = event.part.tokens;
-                const cost = event.part.cost;
-                if (cost > 0) {
-                  console.log(
-                    `\n  📊 tokens: ${t.total} (in: ${t.input}, out: ${t.output}, cached: ${t.cache?.read ?? 0}) | cost: $${cost.toFixed(4)}`,
-                  );
-                }
-              }
-              break;
-          }
-        } catch {
-          // Not JSON — print as-is
-          if (line.trim()) {
-            process.stdout.write(line);
-          }
-        }
-      }
-    });
-    cp.stderr.on("data", (d: Buffer) => {
-      stderr += d.toString();
-      process.stderr.write(d);
-      resetInactivityTimer();
-    });
-    cp.on("close", (code: number) => {
-      clearTimeout(inactivityTimer);
-      if (killed) {
-        // Resolve with killed=true so caller can resume the session
-        resume(Effect.succeed({ stdout, sessionId, killed: true }));
-      } else if (code === 0) {
-        resume(Effect.succeed({ stdout, sessionId, killed: false }));
-      } else {
-        resume(
-          Effect.fail(
-            new CommandError({
-              command: `opencode ${args.join(" ")}`,
-              code,
-              stderr,
-            }),
-          ),
-        );
-      }
-    });
-    cp.on("error", (err) => {
-      clearTimeout(inactivityTimer);
-      resume(
-        Effect.fail(
-          new CommandError({
-            command: `opencode ${args.join(" ")}`,
-            code: 1,
-            stderr: String(err),
-          }),
-        ),
-      );
-    });
-  });
-
-// ============================================================================
 // Utilities
 // ============================================================================
 
@@ -308,7 +147,11 @@ const writeIfNotExists = (
 const hasGeneratedOperations = (
   root: string,
   name: string,
-): Effect.Effect<boolean, PlatformError.PlatformError, FileSystem.FileSystem | Path.Path> =>
+): Effect.Effect<
+  boolean,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
@@ -340,11 +183,9 @@ const registerNpmPackage = (
     yield* Console.log(`\n📦 Registering npm package: ${pkgName}@0.0.0`);
 
     // Check if package already exists on npm
-    const { code, stdout } = yield* exec(
-      "npm",
-      ["view", pkgName, "version"],
-      { ignoreError: true },
-    );
+    const { code, stdout } = yield* exec("npm", ["view", pkgName, "version"], {
+      ignoreError: true,
+    });
 
     if (code === 0 && stdout.trim().length > 0) {
       yield* Console.log(
@@ -431,7 +272,10 @@ const setupSpecsGitSubmodule = (
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
-    const submodulePath = `packages/${name}/specs/${repoUrl.split("/").pop()?.replace(/\.git$/, "")}`;
+    const submodulePath = `packages/${name}/specs/${repoUrl
+      .split("/")
+      .pop()
+      ?.replace(/\.git$/, "")}`;
 
     yield* Console.log(
       `\n🔗 Adding git submodule: ${repoUrl} → ${submodulePath}`,
@@ -491,9 +335,7 @@ const setupSpecMirrorRepo = (
     );
 
     if (repoExists === 0) {
-      yield* Console.log(
-        `⚠️  Repo ${repoFullName} already exists on GitHub`,
-      );
+      yield* Console.log(`⚠️  Repo ${repoFullName} already exists on GitHub`);
     } else {
       yield* Console.log(`Creating GitHub repo: ${repoFullName}`);
       yield* exec("gh", [
@@ -815,12 +657,7 @@ jobs:
     if (hasRemote !== 0) {
       yield* exec(
         "git",
-        [
-          "remote",
-          "add",
-          "origin",
-          `https://github.com/${repoFullName}.git`,
-        ],
+        ["remote", "add", "origin", `https://github.com/${repoFullName}.git`],
         { cwd: tmpDir },
       );
     }
@@ -907,7 +744,11 @@ const scaffoldPackage = (
   root: string,
   name: string,
   specInfo: SpecInfo,
-): Effect.Effect<void, PlatformError.PlatformError, FileSystem.FileSystem | Path.Path> =>
+): Effect.Effect<
+  void,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
@@ -1363,7 +1204,11 @@ throw new Error(
 const updateTestYml = (
   root: string,
   name: string,
-): Effect.Effect<void, PlatformError.PlatformError, FileSystem.FileSystem | Path.Path> =>
+): Effect.Effect<
+  void,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
@@ -1371,9 +1216,7 @@ const updateTestYml = (
     let content = yield* fs.readFileString(testYmlPath);
 
     if (content.includes(`ci-${name}:`)) {
-      yield* Console.log(
-        `\n⚠️  test.yml already has ci-${name}, skipping`,
-      );
+      yield* Console.log(`\n⚠️  test.yml already has ci-${name}, skipping`);
       return;
     }
 
@@ -1424,7 +1267,11 @@ const updateTestYml = (
 const updatePkgPrYml = (
   root: string,
   name: string,
-): Effect.Effect<void, PlatformError.PlatformError, FileSystem.FileSystem | Path.Path> =>
+): Effect.Effect<
+  void,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
@@ -1438,9 +1285,7 @@ const updatePkgPrYml = (
       return;
     }
 
-    yield* Console.log(
-      `\n📝 Updating pkg-pr.yml with pkg-pr-${name} job`,
-    );
+    yield* Console.log(`\n📝 Updating pkg-pr.yml with pkg-pr-${name} job`);
 
     const outputsMatch = content.match(
       /(      supabase: \$\{\{ steps\.changes\.outputs\.supabase \}\})/,
@@ -1489,7 +1334,11 @@ const updatePkgPrYml = (
 const updateReleaseYml = (
   root: string,
   name: string,
-): Effect.Effect<void, PlatformError.PlatformError, FileSystem.FileSystem | Path.Path> =>
+): Effect.Effect<
+  void,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
@@ -1522,7 +1371,7 @@ const updateReleaseYml = (
   });
 
 // ============================================================================
-// Step 5: Run Generation & OpenCode for SDK Refinement
+// Step 5: Run Generation & Claude Agent for SDK Refinement
 // ============================================================================
 
 const installAndGenerate = (
@@ -1562,26 +1411,27 @@ const installAndGenerate = (
       yield* Console.log("  ✅ Operations generated successfully");
     } else {
       yield* Console.log(
-        "  ⚠️  Operations directory is empty (only index.ts) — opencode will write the generator for the spec format found in the submodule",
+        "  ⚠️  Operations directory is empty (only index.ts) — the Claude agent will write the generator for the spec format found in the submodule",
       );
     }
   });
 
-const refineWithOpencode = (
+const refineWithClaude = (
   root: string,
   name: string,
   specInfo: SpecInfo,
+  stats: AgentStatsAccumulator,
 ): Effect.Effect<
   void,
-  SdkError,
-  ChildProcessSpawner.ChildProcessSpawner | FileSystem.FileSystem | Path.Path
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
 > =>
   Effect.gen(function* () {
     const capitalName = capitalize(name);
     const operationsEmpty = !(yield* hasGeneratedOperations(root, name));
 
     yield* Console.log(
-      `\n🤖 Calling opencode to refine ${capitalName} SDK...`,
+      `\n🤖 Calling Claude agent to refine ${capitalName} SDK...`,
     );
 
     const specLocations =
@@ -1711,69 +1561,70 @@ If any fail, fix and retry until all pass.
 - Use .ai-workspace/ for scratch files
 `.trim();
 
+    const systemPromptAppend =
+      "You are refining a newly scaffolded SDK package. Your job is to study the " +
+      "vendor spec in the submodule, write a working generator, and update the " +
+      "credentials/client/errors files to match the real API. Only modify files " +
+      "within the target package. Do not create tests. Do not modify packages/core/ " +
+      "or CI workflow files.";
+
+    const maxAttempts = 5;
     let attempt = 0;
     let sessionId: string | undefined;
 
-    while (true) {
+    while (attempt < maxAttempts) {
       attempt++;
 
-      // On first attempt, send the full initial prompt.
-      // On retries, continue the same session with a nudge to keep going.
       const isRetry = sessionId !== undefined;
       const hasOps = yield* hasGeneratedOperations(root, name);
       const prompt = isRetry
-        ? `You were interrupted or timed out. Continue where you left off.${
+        ? `Continue where you left off.${
             !hasOps
               ? ` The operations directory at packages/${name}/src/operations/ is still empty (only index.ts). You MUST get operations generated before you're done.`
               : ""
           } Pick up from whatever step you were on and finish all remaining steps through Step 6 (final verification).`
         : initialPrompt;
 
-      const result = yield* runOpencode(prompt, {
-        model: "anthropic/claude-opus-4-6",
-        sessionId,
-        cwd: root,
-      }).pipe(
-        Effect.catch((err: CommandError) =>
+      const result = yield* runAgent(
+        {
+          prompt,
+          cwd: root,
+          systemPromptAppend,
+          ...(sessionId ? { resume: sessionId } : {}),
+        },
+        stats,
+      ).pipe(
+        Effect.catch((err) =>
           Effect.gen(function* () {
-            yield* Console.error(`\n⚠️  opencode failed: ${err.stderr}`);
+            yield* Console.error(`\n⚠️  Claude agent failed: ${err.message}`);
             return {
-              stdout: "",
-              sessionId: undefined,
-              killed: false,
-            } as OpencodeResult;
+              sessionId: sessionId ?? "",
+              durationMs: 0,
+              costUsd: 0,
+              turns: 0,
+            };
           }),
         ),
       );
 
-      // Capture session ID so retries continue the same conversation
       if (result.sessionId) {
         sessionId = result.sessionId;
       }
 
-      if (result.killed) {
-        yield* Console.log(
-          `\n🔄 opencode got stuck (attempt ${attempt}), resuming session ${sessionId ?? "(unknown)"}...`,
-        );
-        continue;
-      }
-
-      // opencode exited 0 — but did it actually produce operations?
       const hasOpsNow = yield* hasGeneratedOperations(root, name);
       if (hasOpsNow) {
         yield* Console.log(
-          `✅ OpenCode refinement complete — operations generated successfully`,
+          `✅ Claude refinement complete — operations generated successfully`,
         );
-        break;
+        return;
       }
 
-      // If we got here from an error (no sessionId captured), break
-      if (!result.sessionId && !sessionId) {
+      if (!sessionId) {
         break;
       }
 
       yield* Console.log(
-        `\n🔄 opencode exited successfully but operations directory is still empty (attempt ${attempt}), resuming session ${sessionId ?? "(unknown)"}...`,
+        `\n🔄 Operations directory still empty (attempt ${attempt}/${maxAttempts}), resuming session ${sessionId}...`,
       );
     }
 
@@ -1842,8 +1693,9 @@ const createSdk = Command.make(
       // Step 5: Install dependencies and run generator
       yield* installAndGenerate(root, config.name);
 
-      // Step 6: Refine with opencode
-      yield* refineWithOpencode(root, config.name, specInfo);
+      // Step 6: Refine with Claude agent
+      const stats = new AgentStatsAccumulator();
+      yield* refineWithClaude(root, config.name, specInfo, stats);
 
       yield* Console.log(`
 ✨ SDK package created successfully!
@@ -1859,6 +1711,7 @@ Next steps:
   4. Run tests: cd packages/${config.name} && bun run test
   5. Update the website: add the new SDK card to www/distilled.cloud/index.html (SDK section)
 `);
+      stats.print();
     }),
 ).pipe(
   Command.withDescription(
