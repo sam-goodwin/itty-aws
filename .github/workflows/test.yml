@@ -24,6 +24,7 @@ jobs:
       prisma-postgres: ${{ steps.changes.outputs.prisma-postgres }}
       stripe: ${{ steps.changes.outputs.stripe }}
       supabase: ${{ steps.changes.outputs.supabase }}
+      axiom: ${{ steps.changes.outputs.axiom }}
       azure: ${{ steps.changes.outputs.azure }}
       kubernetes: ${{ steps.changes.outputs.kubernetes }}
       coinbase: ${{ steps.changes.outputs.coinbase }}
@@ -61,6 +62,9 @@ jobs:
               - 'packages/core/**'
             supabase:
               - 'packages/supabase/**'
+              - 'packages/core/**'
+            axiom:
+              - 'packages/axiom/**'
               - 'packages/core/**'
             azure:
               - 'packages/azure/**'
@@ -343,3 +347,23 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/azure
+
+  ci-axiom:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.axiom == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/axiom
+      - run: bun run test
+        working-directory: packages/axiom
+        env:
+          AXIOM_ORG_ID: ${{ secrets.AXIOM_ORG_ID }}
+          AXIOM_TOKEN: ${{ secrets.AXIOM_TOKEN }} 

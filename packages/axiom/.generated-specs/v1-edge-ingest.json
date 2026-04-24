@@ -1,0 +1,369 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "A public and stable API for interacting with axiom services",
+    "title": "Axiom",
+    "termsOfService": "http://axiom.co/terms",
+    "contact": {
+      "name": "Axiom support team",
+      "url": "https://axiom.co",
+      "email": "hello@axiom.co"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.axiom.co"
+    }
+  ],
+  "paths": {
+    "/v1/ingest/{dataset-id}": {
+      "post": {
+        "security": [
+          {
+            "Auth": [
+              "ingest|create"
+            ]
+          }
+        ],
+        "tags": [
+          "ingest"
+        ],
+        "operationId": "ingestToDataset",
+        "parameters": [
+          {
+            "name": "dataset-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The name of the field to use as the timestamp. If not specified, the timestamp will be the time the event was received by Axiom.",
+            "name": "timestamp-field",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The date-time format of the timestamp field. The reference time is `Mon Jan 2 15:04:05 -0700 MST 2006`, as specified in https://pkg.go.dev/time/?tab=doc#Parse",
+            "name": "timestamp-format",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The delimiter to use when parsing CSV data. If not specified, the default delimiter is `,`.",
+            "name": "csv-delimiter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A list of optional comma separated fields to use for CSV ingestion. If not specified, the first line of the CSV will be used as the field names.",
+            "name": "X-Axiom-CSV-Fields",
+            "in": "header",
+            "style": "simple",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "description": "An optional JSON encoded object with additional labels to add to all events in the request",
+            "name": "X-Axiom-Event-Labels",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Data you want to send to Axiom.\nSupported formats: JSON, NDJSON, CSV.\nUpload the data in a file or send it in the payload of the request.",
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "application/nd-json": {
+              "schema": {
+                "description": "Data you want to send to Axiom.\nSupported formats: JSON, NDJSON, CSV.\nUpload the data in a file or send it in the payload of the request.",
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "text/csv": {
+              "schema": {
+                "description": "Data you want to send to Axiom.\nSupported formats: JSON, NDJSON, CSV.\nUpload the data in a file or send it in the payload of the request.",
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "application/x-ndjson": {
+              "schema": {
+                "description": "Data you want to send to Axiom.\nSupported formats: JSON, NDJSON, CSV.\nUpload the data in a file or send it in the payload of the request.",
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "IngestResult",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestStatus"
+                }
+              }
+            }
+          }
+        },
+        "x-axiom-limit-requests": true,
+        "x-axiom-nocompress": true,
+        "x-axiom-not-suspended": true,
+        "x-axiom-trace-sampling": "0.01"
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Limit": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 100
+        }
+      },
+      "Offset": {
+        "name": "offset",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "default": 0
+        }
+      }
+    },
+    "requestBodies": {
+      "ingestDatasetOpenTelemetryLogsPayload": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "Data you want to send to Axiom.\nSupported formats: JSON, Protobuf.\nUpload the data in a file or send it in the payload of the request.",
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "application/x-protobuf": {
+            "schema": {
+              "description": "Data you want to send to Axiom.\nSupported formats: JSON, Protobuf.\nUpload the data in a file or send it in the payload of the request.",
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        },
+        "required": true
+      }
+    },
+    "securitySchemes": {
+      "Auth": {
+        "description": "Authenticate using an API token or personal access token (PAT). Include the token as a Bearer token: `Authorization: Bearer <token>`. For more information, see [Tokens](/reference/tokens).",
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+            "tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+            "scopes": {}
+          }
+        }
+      },
+      "Shared": {
+        "type": "apiKey",
+        "name": "tk",
+        "in": "query"
+      }
+    },
+    "schemas": {
+      "FirehoseIngestStatus": {
+        "description": "AWS Firehose HTTP endpoint response format",
+        "type": "object",
+        "required": [
+          "requestId",
+          "timestamp"
+        ],
+        "properties": {
+          "errorMessage": {
+            "description": "For failed requests, a message explaining the failure. If a request fails after exhausting all retries, the last instance of the error message is copied to error output S3 bucket if configured.",
+            "type": "string",
+            "maxLength": 8192,
+            "minLength": 0
+          },
+          "requestId": {
+            "description": "Must match the requestId in the request.",
+            "type": "string"
+          },
+          "timestamp": {
+            "description": "The timestamp (milliseconds since epoch) at which the server processed this request.",
+            "type": "integer"
+          }
+        }
+      },
+      "IngestFailure": {
+        "type": "object",
+        "required": [
+          "error",
+          "timestamp"
+        ],
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "IngestStatus": {
+        "type": "object",
+        "required": [
+          "ingested",
+          "failed",
+          "processedBytes",
+          "blocksCreated",
+          "walLength"
+        ],
+        "properties": {
+          "blocksCreated": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "failed": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "failures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IngestFailure"
+            }
+          },
+          "ingested": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "processedBytes": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "walLength": {
+            "type": "integer",
+            "format": "uint32"
+          }
+        }
+      },
+      "OTELResponse": {
+        "description": "The response from the ingest API according to the OpenTelemetry specification.",
+        "type": "string",
+        "format": "binary"
+      },
+      "elasticHealth": {
+        "type": "object",
+        "properties": {
+          "cluster_name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "elasticLicenseInfo": {
+        "type": "object",
+        "properties": {
+          "expiry_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "expiry_date_in_millis": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "issue_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "issue_date_in_millis": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issued_to": {
+            "type": "string"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "max_nodes": {
+            "type": "integer"
+          },
+          "start_date_in_millis": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          }
+        }
+      },
+      "elasticLicenseResponse": {
+        "type": "object",
+        "properties": {
+          "license": {
+            "$ref": "#/components/schemas/elasticLicenseInfo"
+          }
+        }
+      },
+      "elasticVersion": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
