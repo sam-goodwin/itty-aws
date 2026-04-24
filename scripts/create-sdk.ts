@@ -745,6 +745,7 @@ const scaffoldPackage = (
   root: string,
   name: string,
   specInfo: SpecInfo,
+  userNote?: string,
 ): Effect.Effect<
   void,
   PlatformError.PlatformError,
@@ -1198,7 +1199,7 @@ throw new Error(
 `,
     );
 
-    yield* initMetadata(root, name, `packages/${name}`);
+    yield* initMetadata(root, name, `packages/${name}`, userNote);
     yield* Console.log(
       "  ✅ All source files scaffolded (category, traits, sensitive, errors, credentials, client, retry, index, operations/index, scripts/generate) + metadata skeleton",
     );
@@ -1428,6 +1429,7 @@ const refineWithClaude = (
   name: string,
   specInfo: SpecInfo,
   stats: AgentStatsAccumulator,
+  userNote?: string,
 ): Effect.Effect<
   void,
   PlatformError.PlatformError,
@@ -1448,12 +1450,26 @@ const refineWithClaude = (
 
     const envVarName = `${name.toUpperCase().replace(/-/g, "_")}_API_KEY`;
 
+    const note = userNote?.trim() ?? "";
+    const userNoteSection = note
+      ? `
+## ⚡ USER NOTE — HIGHEST PRIORITY
+
+The human who ran the pipeline left this guidance. Treat it as directive; it
+often resolves ambiguity the spec alone can't (spec path inside the submodule,
+scope restrictions, preferred auth, etc.):
+
+> ${note.split("\n").join("\n> ")}
+
+`
+      : "";
+
     const initialPrompt = `
 You are refining a newly scaffolded SDK package for ${capitalName} at packages/${name}/.
 
 The package has been scaffolded with boilerplate files and the code generator has been run.
 
-${metadataPromptSection(name)}
+${userNoteSection}${metadataPromptSection(name)}
 
 ## Step 0: Understand the spec source
 
@@ -1664,17 +1680,25 @@ const createSdk = Command.make(
         "Publish a 0.0.0 placeholder to npm as @distilled.cloud/<name>",
       ),
     ),
+    note: Flag.string("note").pipe(
+      Flag.withDefault(""),
+      Flag.withDescription(
+        "Free-form guidance for the Claude agent — e.g. the path to the spec within the submodule, scope restrictions, or any context the spec itself doesn't make obvious. Saved to metadata.json and injected into the refinement prompt.",
+      ),
+    ),
   },
   (config) =>
     Effect.gen(function* () {
       const path = yield* Path.Path;
       const root = path.resolve(import.meta.dir, "..");
+      const note = config.note.trim();
 
       yield* Console.log(`\n🚀 Creating SDK: @distilled.cloud/${config.name}`);
       yield* Console.log(
         `   Specs: ${config.specs.length > 0 ? Array.from(config.specs).join(", ") : "(none)"}`,
       );
       yield* Console.log(`   Register package: ${config.registerPackage}`);
+      if (note) yield* Console.log(`   Note: ${note}`);
 
       // Step 1: Register npm package
       if (config.registerPackage) {
@@ -1689,7 +1713,7 @@ const createSdk = Command.make(
       );
 
       // Step 3: Scaffold the SDK package
-      yield* scaffoldPackage(root, config.name, specInfo);
+      yield* scaffoldPackage(root, config.name, specInfo, note);
 
       // Step 4: Update CI workflows
       yield* updateTestYml(root, config.name);
@@ -1701,7 +1725,7 @@ const createSdk = Command.make(
 
       // Step 6: Refine with Claude agent
       const stats = new AgentStatsAccumulator();
-      yield* refineWithClaude(root, config.name, specInfo, stats);
+      yield* refineWithClaude(root, config.name, specInfo, stats, note);
 
       yield* Console.log(`
 ✨ SDK package created successfully!
