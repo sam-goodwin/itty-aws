@@ -25,6 +25,11 @@ import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
 import { AgentError, AgentStatsAccumulator, BOLD, CYAN, DIM, GREEN, RED, RESET, YELLOW, runAgent } from "./lib/agent.ts";
+import {
+  ensureMetadataDir,
+  metadataPromptSection,
+  metadataRelPath,
+} from "./lib/metadata.ts";
 
 // ============================================================================
 // Prompt Construction
@@ -90,6 +95,8 @@ For each operation you MUST generate BOTH:
 
 **CRITICAL: Every test file MUST have error tests. A file with only happy path tests
 is INCOMPLETE and UNACCEPTABLE.**
+
+${metadataPromptSection(provider)}
 
 ## Repository Structure
 
@@ -539,18 +546,24 @@ by the test, and cleaned up by the test. There is NO production data at risk.
 // Phase 1: Research Prompt
 // ============================================================================
 
-function buildResearchPrompt(provider: string, root: string, manifestPath: string): string {
+function buildResearchPrompt(provider: string): string {
   const pkgDir = `packages/${provider}`;
+  const metaPath = metadataRelPath(provider);
 
   return `
 You are a test generation agent for the ${provider} SDK. Your task right now is
 RESEARCH ONLY — do NOT write any test files yet.
 
+${metadataPromptSection(provider)}
+
 ## Your Task
 
-Study the SDK thoroughly and produce a JSON manifest of all operations that need tests.
+Study the SDK thoroughly and update \`${metaPath}\` with a complete manifest of
+all operations that need tests. Read the file first — earlier pipeline stages
+may have already filled in \`layout\`, \`baseUrl\`, \`authScheme\`, \`envVars\`, etc.
+If they have, trust those values and skip re-discovering them.
 
-### Step 1: Read the test infrastructure
+### Step 1: Read the test infrastructure (only if metadata doesn't cover it)
 1. Read ${pkgDir}/tests/setup.ts or ${pkgDir}/test/test.ts (the test helper)
 2. Read at least 2 existing test files to understand the exact patterns
 3. Read ${pkgDir}/src/errors.ts to understand all error classes
@@ -558,12 +571,23 @@ Study the SDK thoroughly and produce a JSON manifest of all operations that need
 5. Read ${pkgDir}/src/credentials.ts to understand auth
 
 ### Step 2: List ALL operations
-Read ${pkgDir}/src/operations/index.ts or list ${pkgDir}/src/services/ to enumerate
-every single operation in the SDK.
+Check BOTH directories (SDKs use one or the other, not both):
+- \`${pkgDir}/src/operations/\` — flat per-operation files (Neon, PlanetScale, Stripe, etc.)
+- \`${pkgDir}/src/services/\` — grouped per-service files (Cloudflare, AWS). Each
+  service file exports multiple operations (e.g. \`createBucket\`, \`listBuckets\`).
+
+Read the appropriate index (\`operations/index.ts\` or \`services/index.ts\`) AND
+inspect individual files to enumerate every single operation. For services-style
+SDKs, extract each exported operation from each service file — treat the service
+name as a grouping, but still emit one manifest entry per operation.
+
+Update the metadata file's \`layout\` key to \`"operations"\` or \`"services"\` based
+on what you find.
 
 ### Step 3: For each operation, determine:
 - The operation name (export name)
-- The source file path
+- The source file path — \`src/operations/<name>.ts\` or \`src/services/<serviceName>.ts\`
+  (the same service file may be referenced by multiple operations)
 - The HTTP method (GET, POST, PUT, PATCH, DELETE)
 - What non-generic errors it can produce (from \`errors: [...]\` array if present,
   or from the client-level matchError for SDKs without per-operation errors)
@@ -572,26 +596,31 @@ every single operation in the SDK.
   Example: \`tests/getProject.test.ts\`, \`tests/createProject.test.ts\`, \`test/createBucket.test.ts\`
 
 ### Step 4: Write the manifest
-Write a JSON file to ${manifestPath} with this structure:
+Update \`${metaPath}\` — specifically the \`operations\` array — with entries like:
 
 \`\`\`json
-[
-  {
-    "name": "getProject",
-    "file": "src/operations/getProject.ts",
-    "httpMethod": "GET",
-    "errors": ["NotFound", "BadRequest"],
-    "testFile": "tests/getProject.test.ts"
-  },
-  {
-    "name": "createProject",
-    "file": "src/operations/createProject.ts",
-    "httpMethod": "POST",
-    "errors": ["BadRequest", "Conflict"],
-    "testFile": "tests/createProject.test.ts"
-  }
-]
+{
+  "operations": [
+    {
+      "name": "getProject",
+      "file": "src/operations/getProject.ts",
+      "httpMethod": "GET",
+      "errors": ["NotFound", "BadRequest"],
+      "testFile": "tests/getProject.test.ts"
+    },
+    {
+      "name": "createProject",
+      "file": "src/operations/createProject.ts",
+      "httpMethod": "POST",
+      "errors": ["BadRequest", "Conflict"],
+      "testFile": "tests/createProject.test.ts"
+    }
+  ]
+}
 \`\`\`
+
+PRESERVE all other keys in the metadata file — only replace the \`operations\`
+array. Use Read → parse → modify → Write, not blind overwrite.
 
 IMPORTANT: Each operation gets its OWN test file. Do NOT group operations together.
 
@@ -602,8 +631,7 @@ for any operation that takes an ID).
 Include EVERY operation. Do not skip any.
 
 ### Rules
-- Do NOT write any test files yet — only the manifest
-- Make sure .ai-workspace/ directory exists before writing
+- Do NOT write any test files yet — only update the metadata file
 - One test file per operation — do NOT group multiple operations into one file
 `.trim();
 }
@@ -820,24 +848,25 @@ const generateTests = Command.make(
         }, stats);
       } else {
         // All operations mode — two phases:
-        // Phase 1: research & produce manifest
+        // Phase 1: research & populate shared metadata file
         // Phase 2: resume session per-operation
         const pkgDir = `packages/${config.provider}`;
-        const manifestPath = `.ai-workspace/${config.provider}-test-manifest.json`;
+        yield* ensureMetadataDir(root);
+        const manifestPath = metadataRelPath(config.provider);
 
         yield* Console.log(
           `${DIM}Phase 1: Researching SDK and building operation manifest...${RESET}\n`,
         );
 
         const researchResult = yield* runAgent({
-          prompt: buildResearchPrompt(config.provider, root, manifestPath),
+          prompt: buildResearchPrompt(config.provider),
           cwd: root,
           systemPromptAppend,
         }, stats);
 
         const sessionId = researchResult.sessionId;
 
-        // Read the manifest
+        // Read the metadata file
         const manifestRaw = yield* fs
           .readFileString(path.join(root, manifestPath))
           .pipe(

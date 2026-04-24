@@ -24,6 +24,7 @@ import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command } from "effect/unstable/cli";
 import { AgentError, AgentStatsAccumulator, BOLD, GREEN, RESET, runAgent } from "./lib/agent.ts";
+import { metadataPromptSection } from "./lib/metadata.ts";
 
 // ============================================================================
 // Prompt Construction
@@ -39,6 +40,11 @@ Your goal is to discover undocumented API errors by examining the SDK's operatio
 making real API requests that trigger error conditions, and then patching the SDK
 to add typed error classes for any errors that currently fall through to the
 Unknown*Error fallback.
+
+${metadataPromptSection(name)}
+
+When you discover a new typed error, append its class name to the \`errorClasses\`
+array in the metadata file so downstream agents (test generation) know to cover it.
 
 ## Repository Structure
 

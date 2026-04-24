@@ -30,6 +30,7 @@ import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
 import { AgentError, AgentStatsAccumulator, BOLD, DIM, GREEN, RESET, YELLOW, runAgent } from "./lib/agent.ts";
+import { metadataPromptSection } from "./lib/metadata.ts";
 
 // ============================================================================
 // Prompt Construction
@@ -43,6 +44,8 @@ You are a code generation agent. Your job is to create a nuke script for the
 ${provider} SDK that can list and delete all resources in a cloud account.
 
 The generated script should be written to: ${pkgDir}/scripts/nuke.ts
+
+${metadataPromptSection(provider)}
 
 ## Repository Structure
 

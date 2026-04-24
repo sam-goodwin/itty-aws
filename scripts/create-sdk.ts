@@ -28,6 +28,7 @@ import * as Path from "effect/Path";
 import { ChildProcess, ChildProcessSpawner } from "effect/unstable/process";
 import { Argument, Command, Flag } from "effect/unstable/cli";
 import { AgentStatsAccumulator, runAgent } from "./lib/agent.ts";
+import { initMetadata, metadataPromptSection } from "./lib/metadata.ts";
 
 // ============================================================================
 // Error Types
@@ -1009,7 +1010,8 @@ import * as Layer from "effect/Layer";
 import * as ServiceMap from "effect/ServiceMap";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
-export const DEFAULT_API_BASE_URL = "https://api.${name}.com";
+// TODO: set this to the real base URL after reading the vendor spec/docs.
+export const DEFAULT_API_BASE_URL = "";
 
 export interface Config {
   readonly apiKey: string;
@@ -1092,9 +1094,13 @@ const matchError = (
 export const API = makeAPI({
   credentials: Credentials as any,
   getBaseUrl: (creds: any) => creds.apiBaseUrl,
-  getAuthHeaders: (creds: any) => ({
-    Authorization: \\\`Bearer \\\${creds.apiKey}\\\`,
-  }),
+  // TODO: implement auth headers for the real API. Read the vendor spec/docs
+  // and replace this with the correct scheme (Bearer, X-API-Key, OAuth, etc).
+  getAuthHeaders: (_creds: any): Record<string, string> => {
+    throw new Error(
+      "${capitalName} auth headers not yet implemented — update client.ts",
+    );
+  },
   matchError,
   ParseError: ${capitalName}ParseError as any,
 });
@@ -1192,8 +1198,9 @@ throw new Error(
 `,
     );
 
+    yield* initMetadata(root, name, `packages/${name}`);
     yield* Console.log(
-      "  ✅ All source files scaffolded (category, traits, sensitive, errors, credentials, client, retry, index, operations/index, scripts/generate)",
+      "  ✅ All source files scaffolded (category, traits, sensitive, errors, credentials, client, retry, index, operations/index, scripts/generate) + metadata skeleton",
     );
   });
 
@@ -1446,6 +1453,8 @@ You are refining a newly scaffolded SDK package for ${capitalName} at packages/$
 
 The package has been scaffolded with boilerplate files and the code generator has been run.
 
+${metadataPromptSection(name)}
+
 ## Step 0: Understand the spec source
 
 The spec submodules are at:
@@ -1568,11 +1577,10 @@ If any fail, fix and retry until all pass.
       "within the target package. Do not create tests. Do not modify packages/core/ " +
       "or CI workflow files.";
 
-    const maxAttempts = 5;
     let attempt = 0;
     let sessionId: string | undefined;
 
-    while (attempt < maxAttempts) {
+    while (true) {
       attempt++;
 
       const isRetry = sessionId !== undefined;
@@ -1602,6 +1610,7 @@ If any fail, fix and retry until all pass.
               durationMs: 0,
               costUsd: 0,
               turns: 0,
+              stalled: false,
             };
           }),
         ),
@@ -1620,18 +1629,15 @@ If any fail, fix and retry until all pass.
       }
 
       if (!sessionId) {
-        break;
+        yield* Console.log(
+          `\n⚠️  Claude agent failed before a session was created — aborting refinement`,
+        );
+        return;
       }
 
+      const stalledSuffix = result.stalled ? " (stalled)" : "";
       yield* Console.log(
-        `\n🔄 Operations directory still empty (attempt ${attempt}/${maxAttempts}), resuming session ${sessionId}...`,
-      );
-    }
-
-    const finalHasOps = yield* hasGeneratedOperations(root, name);
-    if (!finalHasOps) {
-      yield* Console.log(
-        `\n⚠️  Operations directory is still empty after refinement — you may need to manually check the spec path in packages/${name}/scripts/generate.ts`,
+        `\n🔄 Operations directory still empty after attempt ${attempt}${stalledSuffix}, resuming session ${sessionId}...`,
       );
     }
   });
