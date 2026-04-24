@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const CreateOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -28,4 +29,5 @@ export type CreateOrgUserOutput = typeof CreateOrgUserOutput.Type;
 export const createOrgUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateOrgUserInput,
   outputSchema: CreateOrgUserOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

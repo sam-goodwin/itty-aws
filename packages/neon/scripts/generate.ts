@@ -18,6 +18,6 @@ generateFromOpenAPI({
   traitsImport: "../traits",
   sensitiveImport: "../sensitive",
   errorsImport: "../errors",
-  includeOperationErrors: false, // Neon handles errors globally by HTTP status
+  includeOperationErrors: true,
   skipDeprecated: true,
 });

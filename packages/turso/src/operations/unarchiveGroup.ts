@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const UnarchiveGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -41,4 +42,5 @@ export type UnarchiveGroupOutput = typeof UnarchiveGroupOutput.Type;
 export const unarchiveGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UnarchiveGroupInput,
   outputSchema: UnarchiveGroupOutput,
+  errors: [NotFound] as const,
 }));

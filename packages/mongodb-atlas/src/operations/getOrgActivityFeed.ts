@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetOrgActivityFeedInput =
@@ -36,4 +37,5 @@ export type GetOrgActivityFeedOutput = typeof GetOrgActivityFeedOutput.Type;
 export const getOrgActivityFeed = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetOrgActivityFeedInput,
   outputSchema: GetOrgActivityFeedOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

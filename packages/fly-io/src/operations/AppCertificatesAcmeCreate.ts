@@ -1,6 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors";
 
 // Input Schema
 export const AppCertificatesAcmeCreateInput =
@@ -100,5 +106,6 @@ export const AppCertificatesAcmeCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: AppCertificatesAcmeCreateInput,
     outputSchema: AppCertificatesAcmeCreateOutput,
+    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
   }),
 );

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetRestorePointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -34,4 +35,5 @@ export type V1GetRestorePointOutput = typeof V1GetRestorePointOutput.Type;
 export const v1GetRestorePoint = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetRestorePointInput,
   outputSchema: V1GetRestorePointOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

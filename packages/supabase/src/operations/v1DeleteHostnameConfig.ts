@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1DeleteHostnameConfigInput =
@@ -28,5 +29,6 @@ export const v1DeleteHostnameConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1DeleteHostnameConfigInput,
     outputSchema: V1DeleteHostnameConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

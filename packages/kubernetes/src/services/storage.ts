@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateStorageV1CSIDriverInput =
@@ -103,6 +104,7 @@ export const createStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateStorageV1CSIDriverInput,
     outputSchema: CreateStorageV1CSIDriverOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -192,6 +194,7 @@ export const createStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateStorageV1CSINodeInput,
     outputSchema: CreateStorageV1CSINodeOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -291,6 +294,7 @@ export const createStorageV1NamespacedCSIStorageCapacity =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: CreateStorageV1NamespacedCSIStorageCapacityOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateStorageV1StorageClassInput =
@@ -387,6 +391,7 @@ export const createStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateStorageV1StorageClassInput,
     outputSchema: CreateStorageV1StorageClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -819,6 +824,7 @@ export const createStorageV1VolumeAttachment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateStorageV1VolumeAttachmentInput,
     outputSchema: CreateStorageV1VolumeAttachmentOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateStorageV1VolumeAttributesClassInput =
@@ -900,6 +906,7 @@ export const createStorageV1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateStorageV1VolumeAttributesClassInput,
     outputSchema: CreateStorageV1VolumeAttributesClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateStorageV1beta1VolumeAttributesClassInput =
@@ -981,6 +988,7 @@ export const createStorageV1beta1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateStorageV1beta1VolumeAttributesClassInput,
     outputSchema: CreateStorageV1beta1VolumeAttributesClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteStorageV1CSIDriverInput =
@@ -1078,6 +1086,7 @@ export const deleteStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteStorageV1CSIDriverInput,
     outputSchema: DeleteStorageV1CSIDriverOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -1170,6 +1179,7 @@ export const deleteStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteStorageV1CSINodeInput,
     outputSchema: DeleteStorageV1CSINodeOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -1641,6 +1651,7 @@ export const deleteStorageV1NamespacedCSIStorageCapacity =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: DeleteStorageV1NamespacedCSIStorageCapacityOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteStorageV1StorageClassInput =
@@ -1738,6 +1749,7 @@ export const deleteStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteStorageV1StorageClassInput,
     outputSchema: DeleteStorageV1StorageClassOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -2168,6 +2180,7 @@ export const deleteStorageV1VolumeAttachment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1VolumeAttachmentInput,
     outputSchema: DeleteStorageV1VolumeAttachmentOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteStorageV1VolumeAttributesClassInput =
@@ -2247,6 +2260,7 @@ export const deleteStorageV1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1VolumeAttributesClassInput,
     outputSchema: DeleteStorageV1VolumeAttributesClassOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteStorageV1beta1CollectionVolumeAttributesClassInput =
@@ -2394,6 +2408,7 @@ export const deleteStorageV1beta1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteStorageV1beta1VolumeAttributesClassInput,
     outputSchema: DeleteStorageV1beta1VolumeAttributesClassOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetStorageAPIGroupInput =
@@ -3818,6 +3833,7 @@ export const patchStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchStorageV1CSIDriverInput,
     outputSchema: PatchStorageV1CSIDriverOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -3911,6 +3927,7 @@ export const patchStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchStorageV1CSINodeInput,
     outputSchema: PatchStorageV1CSINodeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -4010,6 +4027,7 @@ export const patchStorageV1NamespacedCSIStorageCapacity =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: PatchStorageV1NamespacedCSIStorageCapacityOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchStorageV1StorageClassInput =
@@ -4109,6 +4127,7 @@ export const patchStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchStorageV1StorageClassInput,
     outputSchema: PatchStorageV1StorageClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -4541,6 +4560,7 @@ export const patchStorageV1VolumeAttachment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1VolumeAttachmentInput,
     outputSchema: PatchStorageV1VolumeAttachmentOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchStorageV1VolumeAttachmentStatusInput =
@@ -4972,6 +4992,7 @@ export const patchStorageV1VolumeAttachmentStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1VolumeAttachmentStatusInput,
     outputSchema: PatchStorageV1VolumeAttachmentStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchStorageV1VolumeAttributesClassInput =
@@ -5053,6 +5074,7 @@ export const patchStorageV1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1VolumeAttributesClassInput,
     outputSchema: PatchStorageV1VolumeAttributesClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchStorageV1beta1VolumeAttributesClassInput =
@@ -5134,6 +5156,7 @@ export const patchStorageV1beta1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchStorageV1beta1VolumeAttributesClassInput,
     outputSchema: PatchStorageV1beta1VolumeAttributesClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadStorageV1CSIDriverInput =
@@ -5227,6 +5250,7 @@ export const readStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadStorageV1CSIDriverInput,
     outputSchema: ReadStorageV1CSIDriverOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -5310,6 +5334,7 @@ export const readStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadStorageV1CSINodeInput,
     outputSchema: ReadStorageV1CSINodeOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -5403,6 +5428,7 @@ export const readStorageV1NamespacedCSIStorageCapacity =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: ReadStorageV1NamespacedCSIStorageCapacityOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadStorageV1StorageClassInput =
@@ -5496,6 +5522,7 @@ export const readStorageV1StorageClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadStorageV1StorageClassInput,
     outputSchema: ReadStorageV1StorageClassOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -5922,6 +5949,7 @@ export const readStorageV1VolumeAttachment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1VolumeAttachmentInput,
     outputSchema: ReadStorageV1VolumeAttachmentOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadStorageV1VolumeAttachmentStatusInput =
@@ -6347,6 +6375,7 @@ export const readStorageV1VolumeAttachmentStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1VolumeAttachmentStatusInput,
     outputSchema: ReadStorageV1VolumeAttachmentStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadStorageV1VolumeAttributesClassInput =
@@ -6422,6 +6451,7 @@ export const readStorageV1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1VolumeAttributesClassInput,
     outputSchema: ReadStorageV1VolumeAttributesClassOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadStorageV1beta1VolumeAttributesClassInput =
@@ -6497,6 +6527,7 @@ export const readStorageV1beta1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadStorageV1beta1VolumeAttributesClassInput,
     outputSchema: ReadStorageV1beta1VolumeAttributesClassOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceStorageV1CSIDriverInput =
@@ -6596,6 +6627,7 @@ export const replaceStorageV1CSIDriver = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReplaceStorageV1CSIDriverInput,
     outputSchema: ReplaceStorageV1CSIDriverOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -6687,6 +6719,7 @@ export const replaceStorageV1CSINode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReplaceStorageV1CSINodeInput,
     outputSchema: ReplaceStorageV1CSINodeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -6786,6 +6819,7 @@ export const replaceStorageV1NamespacedCSIStorageCapacity =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1NamespacedCSIStorageCapacityInput,
     outputSchema: ReplaceStorageV1NamespacedCSIStorageCapacityOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceStorageV1StorageClassInput =
@@ -6885,6 +6919,7 @@ export const replaceStorageV1StorageClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1StorageClassInput,
     outputSchema: ReplaceStorageV1StorageClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceStorageV1VolumeAttachmentInput =
@@ -7316,6 +7351,7 @@ export const replaceStorageV1VolumeAttachment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1VolumeAttachmentInput,
     outputSchema: ReplaceStorageV1VolumeAttachmentOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceStorageV1VolumeAttachmentStatusInput =
@@ -7747,6 +7783,7 @@ export const replaceStorageV1VolumeAttachmentStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1VolumeAttachmentStatusInput,
     outputSchema: ReplaceStorageV1VolumeAttachmentStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceStorageV1VolumeAttributesClassInput =
@@ -7828,6 +7865,7 @@ export const replaceStorageV1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1VolumeAttributesClassInput,
     outputSchema: ReplaceStorageV1VolumeAttributesClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceStorageV1beta1VolumeAttributesClassInput =
@@ -7909,6 +7947,7 @@ export const replaceStorageV1beta1VolumeAttributesClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStorageV1beta1VolumeAttributesClassInput,
     outputSchema: ReplaceStorageV1beta1VolumeAttributesClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchStorageV1CSIDriverInput =

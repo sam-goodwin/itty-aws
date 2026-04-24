@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetVanitySubdomainConfigInput =
@@ -31,5 +32,6 @@ export const v1GetVanitySubdomainConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetVanitySubdomainConfigInput,
     outputSchema: V1GetVanitySubdomainConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

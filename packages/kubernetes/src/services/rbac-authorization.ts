@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateRbacAuthorizationV1ClusterRoleInput =
@@ -119,6 +120,7 @@ export const createRbacAuthorizationV1ClusterRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateRbacAuthorizationV1ClusterRoleInput,
     outputSchema: CreateRbacAuthorizationV1ClusterRoleOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateRbacAuthorizationV1ClusterRoleBindingInput =
@@ -213,6 +215,7 @@ export const createRbacAuthorizationV1ClusterRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateRbacAuthorizationV1ClusterRoleBindingInput,
     outputSchema: CreateRbacAuthorizationV1ClusterRoleBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateRbacAuthorizationV1NamespacedRoleInput =
@@ -303,6 +306,7 @@ export const createRbacAuthorizationV1NamespacedRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: CreateRbacAuthorizationV1NamespacedRoleOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateRbacAuthorizationV1NamespacedRoleBindingInput =
@@ -397,6 +401,7 @@ export const createRbacAuthorizationV1NamespacedRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateRbacAuthorizationV1NamespacedRoleBindingInput,
     outputSchema: CreateRbacAuthorizationV1NamespacedRoleBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteRbacAuthorizationV1ClusterRoleInput =
@@ -465,6 +470,7 @@ export const deleteRbacAuthorizationV1ClusterRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteRbacAuthorizationV1ClusterRoleInput,
     outputSchema: DeleteRbacAuthorizationV1ClusterRoleOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteRbacAuthorizationV1ClusterRoleBindingInput =
@@ -533,6 +539,7 @@ export const deleteRbacAuthorizationV1ClusterRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteRbacAuthorizationV1ClusterRoleBindingInput,
     outputSchema: DeleteRbacAuthorizationV1ClusterRoleBindingOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteRbacAuthorizationV1CollectionClusterRoleInput =
@@ -874,6 +881,7 @@ export const deleteRbacAuthorizationV1NamespacedRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: DeleteRbacAuthorizationV1NamespacedRoleOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteRbacAuthorizationV1NamespacedRoleBindingInput =
@@ -942,6 +950,7 @@ export const deleteRbacAuthorizationV1NamespacedRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteRbacAuthorizationV1NamespacedRoleBindingInput,
     outputSchema: DeleteRbacAuthorizationV1NamespacedRoleBindingOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetRbacAuthorizationAPIGroupInput =
@@ -1803,6 +1812,7 @@ export const patchRbacAuthorizationV1ClusterRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchRbacAuthorizationV1ClusterRoleInput,
     outputSchema: PatchRbacAuthorizationV1ClusterRoleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchRbacAuthorizationV1ClusterRoleBindingInput =
@@ -1897,6 +1907,7 @@ export const patchRbacAuthorizationV1ClusterRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchRbacAuthorizationV1ClusterRoleBindingInput,
     outputSchema: PatchRbacAuthorizationV1ClusterRoleBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchRbacAuthorizationV1NamespacedRoleInput =
@@ -1987,6 +1998,7 @@ export const patchRbacAuthorizationV1NamespacedRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: PatchRbacAuthorizationV1NamespacedRoleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchRbacAuthorizationV1NamespacedRoleBindingInput =
@@ -2081,6 +2093,7 @@ export const patchRbacAuthorizationV1NamespacedRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchRbacAuthorizationV1NamespacedRoleBindingInput,
     outputSchema: PatchRbacAuthorizationV1NamespacedRoleBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadRbacAuthorizationV1ClusterRoleInput =
@@ -2187,6 +2200,7 @@ export const readRbacAuthorizationV1ClusterRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadRbacAuthorizationV1ClusterRoleInput,
     outputSchema: ReadRbacAuthorizationV1ClusterRoleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadRbacAuthorizationV1ClusterRoleBindingInput =
@@ -2275,6 +2289,7 @@ export const readRbacAuthorizationV1ClusterRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadRbacAuthorizationV1ClusterRoleBindingInput,
     outputSchema: ReadRbacAuthorizationV1ClusterRoleBindingOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadRbacAuthorizationV1NamespacedRoleInput =
@@ -2359,6 +2374,7 @@ export const readRbacAuthorizationV1NamespacedRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: ReadRbacAuthorizationV1NamespacedRoleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadRbacAuthorizationV1NamespacedRoleBindingInput =
@@ -2447,6 +2463,7 @@ export const readRbacAuthorizationV1NamespacedRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadRbacAuthorizationV1NamespacedRoleBindingInput,
     outputSchema: ReadRbacAuthorizationV1NamespacedRoleBindingOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceRbacAuthorizationV1ClusterRoleInput =
@@ -2559,6 +2576,7 @@ export const replaceRbacAuthorizationV1ClusterRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceRbacAuthorizationV1ClusterRoleInput,
     outputSchema: ReplaceRbacAuthorizationV1ClusterRoleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingInput =
@@ -2653,6 +2671,7 @@ export const replaceRbacAuthorizationV1ClusterRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceRbacAuthorizationV1ClusterRoleBindingInput,
     outputSchema: ReplaceRbacAuthorizationV1ClusterRoleBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceRbacAuthorizationV1NamespacedRoleInput =
@@ -2743,6 +2762,7 @@ export const replaceRbacAuthorizationV1NamespacedRole =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceRbacAuthorizationV1NamespacedRoleInput,
     outputSchema: ReplaceRbacAuthorizationV1NamespacedRoleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingInput =
@@ -2837,6 +2857,7 @@ export const replaceRbacAuthorizationV1NamespacedRoleBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceRbacAuthorizationV1NamespacedRoleBindingInput,
     outputSchema: ReplaceRbacAuthorizationV1NamespacedRoleBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchRbacAuthorizationV1ClusterRoleInput =

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetProjectFunctionCombinedStatsInput =
@@ -36,4 +37,5 @@ export const v1GetProjectFunctionCombinedStats =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: V1GetProjectFunctionCombinedStatsInput,
     outputSchema: V1GetProjectFunctionCombinedStatsOutput,
+    errors: [BadRequest, Forbidden] as const,
   }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const UpdateGroupEncryptionAtRestInput =
@@ -40,5 +41,6 @@ export const updateGroupEncryptionAtRest = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UpdateGroupEncryptionAtRestInput,
     outputSchema: UpdateGroupEncryptionAtRestOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }),
 );

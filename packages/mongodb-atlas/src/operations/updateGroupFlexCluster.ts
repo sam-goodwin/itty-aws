@@ -1,6 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
+  Conflict,
+} from "../errors";
 
 // Input Schema
 export const UpdateGroupFlexClusterInput =
@@ -41,5 +48,12 @@ export const updateGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UpdateGroupFlexClusterInput,
     outputSchema: UpdateGroupFlexClusterOutput,
+    errors: [
+      BadRequest,
+      PaymentRequired,
+      Forbidden,
+      NotFound,
+      Conflict,
+    ] as const,
   }),
 );

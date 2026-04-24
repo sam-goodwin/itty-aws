@@ -1,6 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
+  Conflict,
+} from "../errors";
 
 // Input Schema
 export const DeleteOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -28,4 +35,5 @@ export type DeleteOrgOutput = typeof DeleteOrgOutput.Type;
 export const deleteOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteOrgInput,
   outputSchema: DeleteOrgOutput,
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict] as const,
 }));

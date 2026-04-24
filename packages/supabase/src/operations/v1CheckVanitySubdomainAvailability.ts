@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1CheckVanitySubdomainAvailabilityInput =
@@ -34,4 +35,5 @@ export const v1CheckVanitySubdomainAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: V1CheckVanitySubdomainAvailabilityInput,
     outputSchema: V1CheckVanitySubdomainAvailabilityOutput,
+    errors: [BadRequest, Forbidden] as const,
   }));

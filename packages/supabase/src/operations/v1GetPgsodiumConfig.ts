@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetPgsodiumConfigInput =
@@ -25,4 +26,5 @@ export type V1GetPgsodiumConfigOutput = typeof V1GetPgsodiumConfigOutput.Type;
 export const v1GetPgsodiumConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetPgsodiumConfigInput,
   outputSchema: V1GetPgsodiumConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

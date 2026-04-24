@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1UpdateHostnameConfigInput =
@@ -74,5 +75,6 @@ export const v1UpdateHostnameConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1UpdateHostnameConfigInput,
     outputSchema: V1UpdateHostnameConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

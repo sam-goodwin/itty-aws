@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateBatchV1NamespacedCronJobInput =
@@ -2745,6 +2746,7 @@ export const createBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateBatchV1NamespacedCronJobInput,
     outputSchema: CreateBatchV1NamespacedCronJobOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateBatchV1NamespacedJobInput =
@@ -5326,6 +5328,7 @@ export const createBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateBatchV1NamespacedJobInput,
     outputSchema: CreateBatchV1NamespacedJobOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -5531,6 +5534,7 @@ export const deleteBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteBatchV1NamespacedCronJobInput,
     outputSchema: DeleteBatchV1NamespacedCronJobOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteBatchV1NamespacedJobInput =
@@ -5599,6 +5603,7 @@ export const deleteBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteBatchV1NamespacedJobInput,
     outputSchema: DeleteBatchV1NamespacedJobOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -19663,6 +19668,7 @@ export const patchBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedCronJobInput,
     outputSchema: PatchBatchV1NamespacedCronJobOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchBatchV1NamespacedCronJobStatusInput =
@@ -22401,6 +22407,7 @@ export const patchBatchV1NamespacedCronJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedCronJobStatusInput,
     outputSchema: PatchBatchV1NamespacedCronJobStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchBatchV1NamespacedJobInput =
@@ -24982,6 +24989,7 @@ export const patchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchBatchV1NamespacedJobInput,
     outputSchema: PatchBatchV1NamespacedJobOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -27564,6 +27572,7 @@ export const patchBatchV1NamespacedJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchBatchV1NamespacedJobStatusInput,
     outputSchema: PatchBatchV1NamespacedJobStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadBatchV1NamespacedCronJobInput =
@@ -30296,6 +30305,7 @@ export const readBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedCronJobInput,
     outputSchema: ReadBatchV1NamespacedCronJobOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadBatchV1NamespacedCronJobStatusInput =
@@ -33028,6 +33038,7 @@ export const readBatchV1NamespacedCronJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedCronJobStatusInput,
     outputSchema: ReadBatchV1NamespacedCronJobStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadBatchV1NamespacedJobInput =
@@ -35603,6 +35614,7 @@ export const readBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadBatchV1NamespacedJobInput,
     outputSchema: ReadBatchV1NamespacedJobOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -38179,6 +38191,7 @@ export const readBatchV1NamespacedJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadBatchV1NamespacedJobStatusInput,
     outputSchema: ReadBatchV1NamespacedJobStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceBatchV1NamespacedCronJobInput =
@@ -40917,6 +40930,7 @@ export const replaceBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedCronJobInput,
     outputSchema: ReplaceBatchV1NamespacedCronJobOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceBatchV1NamespacedCronJobStatusInput =
@@ -43655,6 +43669,7 @@ export const replaceBatchV1NamespacedCronJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedCronJobStatusInput,
     outputSchema: ReplaceBatchV1NamespacedCronJobStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceBatchV1NamespacedJobInput =
@@ -46236,6 +46251,7 @@ export const replaceBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReplaceBatchV1NamespacedJobInput,
     outputSchema: ReplaceBatchV1NamespacedJobOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -48818,6 +48834,7 @@ export const replaceBatchV1NamespacedJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceBatchV1NamespacedJobStatusInput,
     outputSchema: ReplaceBatchV1NamespacedJobStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchBatchV1CronJobListForAllNamespacesInput =

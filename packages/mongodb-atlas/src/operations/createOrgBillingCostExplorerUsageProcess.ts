@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateOrgBillingCostExplorerUsageProcessInput =
@@ -35,4 +36,5 @@ export const createOrgBillingCostExplorerUsageProcess =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateOrgBillingCostExplorerUsageProcessInput,
     outputSchema: CreateOrgBillingCostExplorerUsageProcessOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

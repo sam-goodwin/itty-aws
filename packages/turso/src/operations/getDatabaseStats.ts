@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const GetDatabaseStatsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -44,4 +45,5 @@ export type GetDatabaseStatsOutput = typeof GetDatabaseStatsOutput.Type;
 export const getDatabaseStats = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseStatsInput,
   outputSchema: GetDatabaseStatsOutput,
+  errors: [NotFound] as const,
 }));

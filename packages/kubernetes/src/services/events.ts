@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateEventsV1NamespacedEventInput =
@@ -130,6 +131,7 @@ export const createEventsV1NamespacedEvent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateEventsV1NamespacedEventInput,
     outputSchema: CreateEventsV1NamespacedEventOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteEventsV1CollectionNamespacedEventInput =
@@ -266,6 +268,7 @@ export const deleteEventsV1NamespacedEvent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteEventsV1NamespacedEventInput,
     outputSchema: DeleteEventsV1NamespacedEventOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetEventsAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -748,6 +751,7 @@ export const patchEventsV1NamespacedEvent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchEventsV1NamespacedEventInput,
     outputSchema: PatchEventsV1NamespacedEventOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadEventsV1NamespacedEventInput =
@@ -865,6 +869,7 @@ export const readEventsV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadEventsV1NamespacedEventInput,
     outputSchema: ReadEventsV1NamespacedEventOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -989,6 +994,7 @@ export const replaceEventsV1NamespacedEvent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceEventsV1NamespacedEventInput,
     outputSchema: ReplaceEventsV1NamespacedEventOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchEventsV1EventListForAllNamespacesInput =

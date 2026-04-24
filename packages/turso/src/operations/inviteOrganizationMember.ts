@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest } from "../errors";
 
 // Input Schema
 export const InviteOrganizationMemberInput =
@@ -62,5 +63,6 @@ export const inviteOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: InviteOrganizationMemberInput,
     outputSchema: InviteOrganizationMemberOutput,
+    errors: [BadRequest] as const,
   }),
 );

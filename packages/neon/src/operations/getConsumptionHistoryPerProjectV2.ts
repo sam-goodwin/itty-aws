@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetConsumptionHistoryPerProjectV2Input =
@@ -117,4 +118,5 @@ export const getConsumptionHistoryPerProjectV2 =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetConsumptionHistoryPerProjectV2Input,
     outputSchema: GetConsumptionHistoryPerProjectV2Output,
+    errors: [Forbidden, NotFound] as const,
   }));

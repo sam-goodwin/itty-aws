@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const AppCertificatesShowInput =
@@ -98,4 +99,5 @@ export type AppCertificatesShowOutput = typeof AppCertificatesShowOutput.Type;
 export const AppCertificatesShow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppCertificatesShowInput,
   outputSchema: AppCertificatesShowOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

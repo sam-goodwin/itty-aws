@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["*.ts"],
+  "include": ["*.ts", "lib/*.ts"],
   "compilerOptions": {
     "outDir": "../.ai-workspace/scripts-lib",
     "rootDir": ".",

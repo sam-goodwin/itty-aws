@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const UpdateGroupStreamConnectionInput =
@@ -43,5 +44,6 @@ export const updateGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UpdateGroupStreamConnectionInput,
     outputSchema: UpdateGroupStreamConnectionOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }),
 );

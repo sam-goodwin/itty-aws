@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupHostFtsMetricIndexMeasurementsInput =
@@ -53,4 +54,5 @@ export const listGroupHostFtsMetricIndexMeasurements =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ListGroupHostFtsMetricIndexMeasurementsInput,
     outputSchema: ListGroupHostFtsMetricIndexMeasurementsOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

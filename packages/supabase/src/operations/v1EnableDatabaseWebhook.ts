@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1EnableDatabaseWebhookInput =
@@ -31,5 +32,6 @@ export const v1EnableDatabaseWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1EnableDatabaseWebhookInput,
     outputSchema: V1EnableDatabaseWebhookOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

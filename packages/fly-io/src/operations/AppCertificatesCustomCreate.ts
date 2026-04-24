@@ -1,6 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  Forbidden,
+  NotFound,
+  UnprocessableEntity,
+} from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -103,5 +109,6 @@ export const AppCertificatesCustomCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: AppCertificatesCustomCreateInput,
     outputSchema: AppCertificatesCustomCreateOutput,
+    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
   }),
 );

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const GetDatabaseInstanceInput =
@@ -44,4 +45,5 @@ export type GetDatabaseInstanceOutput = typeof GetDatabaseInstanceOutput.Type;
 export const getDatabaseInstance = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetDatabaseInstanceInput,
   outputSchema: GetDatabaseInstanceOutput,
+  errors: [NotFound] as const,
 }));

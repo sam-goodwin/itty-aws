@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -22,4 +23,5 @@ export type V1RevokeTokenOutput = typeof V1RevokeTokenOutput.Type;
 export const v1RevokeToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1RevokeTokenInput,
   outputSchema: V1RevokeTokenOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

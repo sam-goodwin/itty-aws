@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupProcessesInput =
@@ -38,4 +39,5 @@ export type ListGroupProcessesOutput = typeof ListGroupProcessesOutput.Type;
 export const listGroupProcesses = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListGroupProcessesInput,
   outputSchema: ListGroupProcessesOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

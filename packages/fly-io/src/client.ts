@@ -18,10 +18,9 @@ import {
 export { UnknownFlyIoError } from "./errors.ts";
 import { Credentials } from "./credentials.ts";
 
-// API Error Response Schema
+// API Error Response Schema — Fly.io returns { "error": "..." }
 const ApiErrorResponse = Schema.Struct({
-  code: Schema.optional(Schema.String),
-  message: Schema.String,
+  error: Schema.String,
 });
 
 /**
@@ -35,12 +34,11 @@ const matchError = (
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
     const ErrorClass = (HTTP_STATUS_MAP as any)[status];
     if (ErrorClass) {
-      return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
+      return Effect.fail(new ErrorClass({ message: parsed.error }));
     }
     return Effect.fail(
       new UnknownFlyIoError({
-        code: parsed.code,
-        message: parsed.message,
+        message: parsed.error,
         body: errorBody,
       }),
     );

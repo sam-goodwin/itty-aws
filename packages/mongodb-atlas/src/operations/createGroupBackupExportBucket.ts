@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupBackupExportBucketInput =
@@ -39,4 +40,5 @@ export const createGroupBackupExportBucket =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupBackupExportBucketInput,
     outputSchema: CreateGroupBackupExportBucketOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

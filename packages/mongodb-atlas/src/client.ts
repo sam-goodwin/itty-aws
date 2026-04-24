@@ -10,18 +10,28 @@ import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
 import {
   HTTP_STATUS_MAP,
+  PaymentRequired,
   UnknownMongodbAtlasError,
   MongodbAtlasParseError,
 } from "./errors.ts";
+
+// Extend the core status map with Atlas-specific error classes
+const STATUS_MAP: Record<number, any> = {
+  ...HTTP_STATUS_MAP,
+  402: PaymentRequired,
+};
 
 // Re-export for backwards compatibility
 export { UnknownMongodbAtlasError } from "./errors.ts";
 import { Credentials } from "./credentials.ts";
 
-// API Error Response Schema
+// MongoDB Atlas API Error Response Schema
+// Matches the ApiError model: { error: int, errorCode: string, reason?: string, detail?: string }
 const ApiErrorResponse = Schema.Struct({
-  code: Schema.optional(Schema.String),
-  message: Schema.String,
+  error: Schema.Number,
+  errorCode: Schema.String,
+  reason: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
 });
 
 /**
@@ -33,14 +43,17 @@ const matchError = (
 ): Effect.Effect<never, unknown> => {
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
-    const ErrorClass = (HTTP_STATUS_MAP as any)[status];
+    const ErrorClass = STATUS_MAP[status];
     if (ErrorClass) {
-      return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
+      return Effect.fail(
+        new ErrorClass({ message: parsed.detail ?? parsed.reason ?? "" }),
+      );
     }
     return Effect.fail(
       new UnknownMongodbAtlasError({
-        code: parsed.code,
-        message: parsed.message,
+        errorCode: parsed.errorCode,
+        reason: parsed.reason,
+        detail: parsed.detail,
         body: errorBody,
       }),
     );
@@ -56,7 +69,7 @@ export const API = makeAPI({
   credentials: Credentials as any,
   getBaseUrl: (creds: any) => creds.apiBaseUrl,
   getAuthHeaders: (creds: any) => ({
-    Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
+    Authorization: `Bearer ${Redacted.value(creds.accessToken)}`,
   }),
   matchError,
   ParseError: MongodbAtlasParseError as any,

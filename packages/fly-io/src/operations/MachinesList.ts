@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const MachinesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -949,4 +950,5 @@ export type MachinesListOutput = typeof MachinesListOutput.Type;
 export const MachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MachinesListInput,
   outputSchema: MachinesListOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

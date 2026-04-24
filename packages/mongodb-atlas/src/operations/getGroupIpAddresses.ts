@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupIpAddressesInput =
@@ -36,4 +37,5 @@ export type GetGroupIpAddressesOutput = typeof GetGroupIpAddressesOutput.Type;
 export const getGroupIpAddresses = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetGroupIpAddressesInput,
   outputSchema: GetGroupIpAddressesOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

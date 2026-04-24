@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateStoragemigrationV1beta1StorageVersionMigrationInput =
@@ -111,6 +112,7 @@ export const createStoragemigrationV1beta1StorageVersionMigration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: CreateStoragemigrationV1beta1StorageVersionMigrationOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationInput =
@@ -249,6 +251,7 @@ export const deleteStoragemigrationV1beta1StorageVersionMigration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: DeleteStoragemigrationV1beta1StorageVersionMigrationOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetStoragemigrationAPIGroupInput =
@@ -561,6 +564,7 @@ export const patchStoragemigrationV1beta1StorageVersionMigration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: PatchStoragemigrationV1beta1StorageVersionMigrationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput =
@@ -666,6 +670,7 @@ export const patchStoragemigrationV1beta1StorageVersionMigrationStatus =
     inputSchema: PatchStoragemigrationV1beta1StorageVersionMigrationStatusInput,
     outputSchema:
       PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadStoragemigrationV1beta1StorageVersionMigrationInput =
@@ -764,6 +769,7 @@ export const readStoragemigrationV1beta1StorageVersionMigration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: ReadStoragemigrationV1beta1StorageVersionMigrationOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput =
@@ -863,6 +869,7 @@ export const readStoragemigrationV1beta1StorageVersionMigrationStatus =
     inputSchema: ReadStoragemigrationV1beta1StorageVersionMigrationStatusInput,
     outputSchema:
       ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationInput =
@@ -967,6 +974,7 @@ export const replaceStoragemigrationV1beta1StorageVersionMigration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceStoragemigrationV1beta1StorageVersionMigrationInput,
     outputSchema: ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput =
@@ -1073,6 +1081,7 @@ export const replaceStoragemigrationV1beta1StorageVersionMigrationStatus =
       ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput,
     outputSchema:
       ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchStoragemigrationV1beta1StorageVersionMigrationInput =

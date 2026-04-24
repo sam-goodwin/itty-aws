@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupPeersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39,4 +40,5 @@ export type ListGroupPeersOutput = typeof ListGroupPeersOutput.Type;
 export const listGroupPeers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListGroupPeersInput,
   outputSchema: ListGroupPeersOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -366,7 +366,12 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       const E extends readonly ApiErrorClass[] = readonly [],
     >(
       configFn: () => OperationConfig<I, O, E>,
-    ): any => {
+    ): OperationMethod<
+      Schema.Schema.Type<I>,
+      Schema.Schema.Type<O>,
+      InstanceType<E[number]>,
+      any
+    > => {
       const opConfig = configFn();
       // Support both input/output and inputSchema/outputSchema aliases
       const inputSchema = (opConfig.inputSchema ?? opConfig.input)!;
@@ -590,7 +595,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
         },
       };
 
-      return Object.assign(fn, Proto);
+      return Object.assign(fn, Proto) as any;
     },
 
     makePaginated: <
@@ -600,7 +605,12 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
     >(
       configFn: () => PaginatedOperationConfig<I, O, E>,
       paginateFn?: PaginationStrategy,
-    ): any => {
+    ): PaginatedOperationMethod<
+      Schema.Schema.Type<I>,
+      Schema.Schema.Type<O>,
+      InstanceType<E[number]>,
+      any
+    > => {
       const opConfig = configFn();
       const pagination = opConfig.pagination!;
 
@@ -617,7 +627,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
       // Stream all pages
       const pagesFn = (input: Omit<Input, string>) =>
-        paginate(baseFn, input, pagination);
+        paginate(baseFn as any, input, pagination);
 
       // Stream individual items
       const itemsFn = (input: Omit<Input, string>) =>
@@ -633,7 +643,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       result.pages = pagesFn;
       result.items = itemsFn;
 
-      return result;
+      return result as any;
     },
   };
 };

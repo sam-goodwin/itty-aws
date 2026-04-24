@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1ShutdownRealtimeInput =
@@ -27,4 +28,5 @@ export type V1ShutdownRealtimeOutput = typeof V1ShutdownRealtimeOutput.Type;
 export const v1ShutdownRealtime = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1ShutdownRealtimeInput,
   outputSchema: V1ShutdownRealtimeOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -11,6 +11,7 @@ import { makeAPI } from "@distilled.cloud/core/client";
 import {
   HTTP_STATUS_MAP,
   STRIPE_HTTP_STATUS_MAP,
+  ApiError,
   CardError,
   IdempotencyError,
   InvalidRequestError,
@@ -36,6 +37,7 @@ const StripeErrorInner = Schema.Struct({
   network_advice_code: Schema.optional(Schema.String),
   network_decline_code: Schema.optional(Schema.String),
   payment_method_type: Schema.optional(Schema.String),
+  request_log_url: Schema.optional(Schema.String),
 });
 
 const StripeErrorResponse = Schema.Struct({
@@ -72,6 +74,7 @@ const matchError = (
             network_advice_code: err.network_advice_code,
             network_decline_code: err.network_decline_code,
             payment_method_type: err.payment_method_type,
+            request_log_url: err.request_log_url,
           }),
         );
       case "idempotency_error":
@@ -80,6 +83,7 @@ const matchError = (
             message: err.message,
             code: err.code,
             doc_url: err.doc_url,
+            request_log_url: err.request_log_url,
           }),
         );
       case "invalid_request_error":
@@ -89,6 +93,17 @@ const matchError = (
             code: err.code,
             param: err.param,
             doc_url: err.doc_url,
+            request_log_url: err.request_log_url,
+          }),
+        );
+      case "api_error":
+        return Effect.fail(
+          new ApiError({
+            message: err.message,
+            code: err.code,
+            param: err.param,
+            doc_url: err.doc_url,
+            request_log_url: err.request_log_url,
           }),
         );
     }
@@ -106,6 +121,9 @@ const matchError = (
           ...(err.charge !== undefined ? { charge: err.charge } : {}),
           ...(err.param !== undefined ? { param: err.param } : {}),
           ...(err.doc_url !== undefined ? { doc_url: err.doc_url } : {}),
+          ...(err.request_log_url !== undefined
+            ? { request_log_url: err.request_log_url }
+            : {}),
         }),
       );
     }

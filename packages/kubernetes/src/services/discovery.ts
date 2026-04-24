@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateDiscoveryV1NamespacedEndpointSliceInput =
@@ -146,6 +147,7 @@ export const createDiscoveryV1NamespacedEndpointSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: CreateDiscoveryV1NamespacedEndpointSliceOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput =
@@ -282,6 +284,7 @@ export const deleteDiscoveryV1NamespacedEndpointSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: DeleteDiscoveryV1NamespacedEndpointSliceOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetDiscoveryAPIGroupInput =
@@ -814,6 +817,7 @@ export const patchDiscoveryV1NamespacedEndpointSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: PatchDiscoveryV1NamespacedEndpointSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadDiscoveryV1NamespacedEndpointSliceInput =
@@ -947,6 +951,7 @@ export const readDiscoveryV1NamespacedEndpointSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ReadDiscoveryV1NamespacedEndpointSliceOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceDiscoveryV1NamespacedEndpointSliceInput =
@@ -1086,6 +1091,7 @@ export const replaceDiscoveryV1NamespacedEndpointSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceDiscoveryV1NamespacedEndpointSliceInput,
     outputSchema: ReplaceDiscoveryV1NamespacedEndpointSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchDiscoveryV1EndpointSliceListForAllNamespacesInput =

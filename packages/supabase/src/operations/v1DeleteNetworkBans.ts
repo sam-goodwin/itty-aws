@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1DeleteNetworkBansInput =
@@ -28,4 +29,5 @@ export type V1DeleteNetworkBansOutput = typeof V1DeleteNetworkBansOutput.Type;
 export const v1DeleteNetworkBans = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteNetworkBansInput,
   outputSchema: V1DeleteNetworkBansOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

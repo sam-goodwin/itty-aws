@@ -143,15 +143,162 @@ jobs:
       - name: Run aws-nuke
         run: aws-nuke run --config packages/aws/nuke-config.yml --no-alias-check --no-dry-run
 
+  # ── Fly.io ──
+  nuke-fly-io:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.fly-io)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/fly-io
+        env:
+          FLY_IO_API_KEY: ${{ secrets.FLY_IO_API_KEY }}
+
+  # ── Kubernetes ──
+  nuke-kubernetes:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.kubernetes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/kubernetes
+        env:
+          KUBERNETES_TOKEN: ${{ secrets.KUBERNETES_TOKEN }}
+          KUBERNETES_API_URL: ${{ secrets.KUBERNETES_API_URL }}
+
+  # ── MongoDB Atlas ──
+  nuke-mongodb-atlas:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.mongodb-atlas)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/mongodb-atlas
+        env:
+          MONGODB_ATLAS_CLIENT_ID: ${{ secrets.MONGODB_ATLAS_CLIENT_ID }}
+          MONGODB_ATLAS_CLIENT_SECRET: ${{ secrets.MONGODB_ATLAS_CLIENT_SECRET }}
+
+  # ── Neon ──
+  nuke-neon:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.neon)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/neon
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+
+  # ── Prisma Postgres ──
+  nuke-prisma-postgres:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.prisma-postgres)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/prisma-postgres
+        env:
+          PRISMA_POSTGRES_API_TOKEN: ${{ secrets.PRISMA_POSTGRES_API_TOKEN }}
+
+  # ── Stripe ──
+  nuke-stripe:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.stripe)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/stripe
+        env:
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+
+  # ── Supabase ──
+  nuke-supabase:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.supabase)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/supabase
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
   # ── Cloudflare ──
   # nuke-cloudflare:
   #   needs: gate
   #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.cloudflare)
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - run: |
-  #         echo "Nuking Cloudflare test resources..."
-  #         # TODO: add Cloudflare nuke logic
+  #     - uses: actions/checkout@v6
+  #     - uses: oven-sh/setup-bun@v2
+  #       with:
+  #         bun-version: latest
+  #     - run: bun install --frozen-lockfile
+  #     - run: bun run build
+  #       working-directory: packages/core
+  #     - name: Run nuke script
+  #       run: bun scripts/nuke.ts
+  #       working-directory: packages/cloudflare
+  #       env:
+  #         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  #         CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+  #         CLOUDFLARE_API_EMAIL: ${{ secrets.CLOUDFLARE_API_EMAIL }}
+  #         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
   # ── Coinbase ──
   # nuke-coinbase:
@@ -159,19 +306,7 @@ jobs:
   #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.coinbase)
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - run: |
-  #         echo "Nuking Coinbase test resources..."
-  #         # TODO: add Coinbase nuke logic
-
-  # ── Fly.io ──
-  # nuke-fly-io:
-  #   needs: gate
-  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.fly-io)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: |
-  #         echo "Nuking Fly.io test resources..."
-  #         # TODO: add Fly.io nuke logic
+  #     - TODO: no nuke script yet — run `bun run generate-nuke coinbase`
 
   # ── GCP ──
   # nuke-gcp:
@@ -179,39 +314,7 @@ jobs:
   #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.gcp)
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - run: |
-  #         echo "Nuking GCP test resources..."
-  #         # TODO: add GCP nuke logic
-
-  # ── Kubernetes ──
-  # nuke-kubernetes:
-  #   needs: gate
-  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.kubernetes)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: |
-  #         echo "Nuking Kubernetes test resources..."
-  #         # TODO: add Kubernetes nuke logic
-
-  # ── MongoDB Atlas ──
-  # nuke-mongodb-atlas:
-  #   needs: gate
-  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.mongodb-atlas)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: |
-  #         echo "Nuking MongoDB Atlas test resources..."
-  #         # TODO: add MongoDB Atlas nuke logic
-
-  # ── Neon ──
-  # nuke-neon:
-  #   needs: gate
-  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.neon)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: |
-  #         echo "Nuking Neon test resources..."
-  #         # TODO: add Neon nuke logic
+  #     - TODO: no nuke script yet — run `bun run generate-nuke gcp`
 
   # ── PlanetScale ──
   # nuke-planetscale:
@@ -219,39 +322,7 @@ jobs:
   #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.planetscale)
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - run: |
-  #         echo "Nuking PlanetScale test resources..."
-  #         # TODO: add PlanetScale nuke logic
-
-  # ── Prisma Postgres ──
-  # nuke-prisma-postgres:
-  #   needs: gate
-  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.prisma-postgres)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: |
-  #         echo "Nuking Prisma Postgres test resources..."
-  #         # TODO: add Prisma Postgres nuke logic
-
-  # ── Stripe ──
-  # nuke-stripe:
-  #   needs: gate
-  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.stripe)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: |
-  #         echo "Nuking Stripe test resources..."
-  #         # TODO: add Stripe nuke logic
-
-  # ── Supabase ──
-  # nuke-supabase:
-  #   needs: gate
-  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.supabase)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: |
-  #         echo "Nuking Supabase test resources..."
-  #         # TODO: add Supabase nuke logic
+  #     - TODO: no nuke script yet — run `bun run generate-nuke planetscale`
 
   # ── Turso ──
   # nuke-turso:
@@ -259,6 +330,4 @@ jobs:
   #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.turso)
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - run: |
-  #         echo "Nuking Turso test resources..."
-  #         # TODO: add Turso nuke logic
+  #     - TODO: no nuke script yet — run `bun run generate-nuke turso`

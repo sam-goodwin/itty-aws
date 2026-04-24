@@ -32,7 +32,9 @@ const matchError = (
 ): Effect.Effect<never, unknown> => {
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
-    const ErrorClass = (HTTP_STATUS_MAP as any)[status];
+    // Supabase returns 406 for some "not found" conditions (e.g. snippets)
+    const effectiveStatus = status === 406 ? 404 : status;
+    const ErrorClass = (HTTP_STATUS_MAP as any)[effectiveStatus];
     if (ErrorClass) {
       return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
     }

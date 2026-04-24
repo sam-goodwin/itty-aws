@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const DeleteGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -66,4 +67,5 @@ export type DeleteGroupLimitOutput = typeof DeleteGroupLimitOutput.Type;
 export const deleteGroupLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupLimitInput,
   outputSchema: DeleteGroupLimitOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

@@ -73,7 +73,6 @@
     "@types/node": "catalog:",
     "dotenv": "catalog:",
     "typescript": "^5.9.3",
-    "vite": "catalog:",
     "vitest": "catalog:"
   },
   "peerDependencies": {

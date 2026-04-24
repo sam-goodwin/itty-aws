@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1UpdatePostgresConfigInput =
@@ -87,5 +88,6 @@ export const v1UpdatePostgresConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1UpdatePostgresConfigInput,
     outputSchema: V1UpdatePostgresConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

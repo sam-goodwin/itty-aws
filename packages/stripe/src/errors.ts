@@ -40,6 +40,7 @@ export class PaymentError extends Schema.TaggedErrorClass<PaymentError>()(
     charge: Schema.optional(Schema.String),
     param: Schema.optional(Schema.String),
     doc_url: Schema.optional(Schema.String),
+    request_log_url: Schema.optional(Schema.String),
   },
 ).pipe(Category.withBadRequestError) {}
 
@@ -60,6 +61,7 @@ export class CardError extends Schema.TaggedErrorClass<CardError>()(
     network_advice_code: Schema.optional(Schema.String),
     network_decline_code: Schema.optional(Schema.String),
     payment_method_type: Schema.optional(Schema.String),
+    request_log_url: Schema.optional(Schema.String),
   },
 ).pipe(Category.withBadRequestError) {}
 
@@ -74,6 +76,7 @@ export class IdempotencyError extends Schema.TaggedErrorClass<IdempotencyError>(
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
     doc_url: Schema.optional(Schema.String),
+    request_log_url: Schema.optional(Schema.String),
   },
 ).pipe(Category.withConflictError) {}
 
@@ -88,8 +91,21 @@ export class InvalidRequestError extends Schema.TaggedErrorClass<InvalidRequestE
     code: Schema.optional(Schema.String),
     param: Schema.optional(Schema.String),
     doc_url: Schema.optional(Schema.String),
+    request_log_url: Schema.optional(Schema.String),
   },
 ).pipe(Category.withBadRequestError) {}
+
+/**
+ * API error — returned when something goes wrong on Stripe's end (HTTP 500+).
+ * Stripe error type: "api_error"
+ */
+export class ApiError extends Schema.TaggedErrorClass<ApiError>()("ApiError", {
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  param: Schema.optional(Schema.String),
+  doc_url: Schema.optional(Schema.String),
+  request_log_url: Schema.optional(Schema.String),
+}).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**
  * External dependency failed — returned when an external dependency fails (HTTP 424).

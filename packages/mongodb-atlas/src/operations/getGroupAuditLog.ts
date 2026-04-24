@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupAuditLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -31,4 +32,5 @@ export type GetGroupAuditLogOutput = typeof GetGroupAuditLogOutput.Type;
 export const getGroupAuditLog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetGroupAuditLogInput,
   outputSchema: GetGroupAuditLogOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

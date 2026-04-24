@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetFederationSettingConnectedOrgConfigInput =
@@ -37,4 +38,5 @@ export const getFederationSettingConnectedOrgConfig =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetFederationSettingConnectedOrgConfigInput,
     outputSchema: GetFederationSettingConnectedOrgConfigOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

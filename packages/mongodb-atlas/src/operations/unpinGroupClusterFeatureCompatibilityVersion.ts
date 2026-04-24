@@ -1,6 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
+  Conflict,
+} from "../errors";
 
 // Input Schema
 export const UnpinGroupClusterFeatureCompatibilityVersionInput =
@@ -41,4 +48,11 @@ export const unpinGroupClusterFeatureCompatibilityVersion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: UnpinGroupClusterFeatureCompatibilityVersionInput,
     outputSchema: UnpinGroupClusterFeatureCompatibilityVersionOutput,
+    errors: [
+      BadRequest,
+      PaymentRequired,
+      Forbidden,
+      NotFound,
+      Conflict,
+    ] as const,
   }));

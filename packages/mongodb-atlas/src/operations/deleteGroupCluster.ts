@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const DeleteGroupClusterInput =
@@ -40,4 +41,5 @@ export type DeleteGroupClusterOutput = typeof DeleteGroupClusterOutput.Type;
 export const deleteGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupClusterInput,
   outputSchema: DeleteGroupClusterOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

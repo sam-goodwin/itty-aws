@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const GetSystemStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -25,4 +26,5 @@ export type GetSystemStatusOutput = typeof GetSystemStatusOutput.Type;
 export const getSystemStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetSystemStatusInput,
   outputSchema: GetSystemStatusOutput,
+  errors: [Forbidden] as const,
 }));

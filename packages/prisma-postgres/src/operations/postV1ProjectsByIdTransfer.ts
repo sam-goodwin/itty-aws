@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const PostV1ProjectsByIdTransferInput =
@@ -27,5 +28,6 @@ export const postV1ProjectsByIdTransfer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PostV1ProjectsByIdTransferInput,
     outputSchema: PostV1ProjectsByIdTransferOutput,
+    errors: [NotFound, UnprocessableEntity] as const,
   }),
 );

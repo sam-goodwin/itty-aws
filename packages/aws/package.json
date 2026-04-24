@@ -98,6 +98,7 @@
     "@types/node": "catalog:",
     "archiver": "catalog:",
     "dedent": "catalog:",
+    "dotenv": "catalog:",
     "pathe": "catalog:",
     "vitest": "catalog:"
   },

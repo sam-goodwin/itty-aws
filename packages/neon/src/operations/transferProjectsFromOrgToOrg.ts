@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const TransferProjectsFromOrgToOrgInput =
@@ -35,4 +36,5 @@ export const transferProjectsFromOrgToOrg =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: TransferProjectsFromOrgToOrgInput,
     outputSchema: TransferProjectsFromOrgToOrgOutput,
+    errors: [UnprocessableEntity] as const,
   }));

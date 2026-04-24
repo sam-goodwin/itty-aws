@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const DeleteGroupServiceAccountAccessListEntryInput =
@@ -43,4 +44,5 @@ export const deleteGroupServiceAccountAccessListEntry =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupServiceAccountAccessListEntryInput,
     outputSchema: DeleteGroupServiceAccountAccessListEntryOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

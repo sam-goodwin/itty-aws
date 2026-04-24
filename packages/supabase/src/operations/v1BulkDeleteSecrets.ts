@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1BulkDeleteSecretsInput =
@@ -25,4 +26,5 @@ export type V1BulkDeleteSecretsOutput = typeof V1BulkDeleteSecretsOutput.Type;
 export const v1BulkDeleteSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1BulkDeleteSecretsInput,
   outputSchema: V1BulkDeleteSecretsOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

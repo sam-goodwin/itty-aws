@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const GetV1WorkspacesByWorkspaceIdIntegrationsInput =
@@ -56,4 +57,5 @@ export const getV1WorkspacesByWorkspaceIdIntegrations =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetV1WorkspacesByWorkspaceIdIntegrationsInput,
     outputSchema: GetV1WorkspacesByWorkspaceIdIntegrationsOutput,
+    errors: [NotFound, UnprocessableEntity] as const,
   }));

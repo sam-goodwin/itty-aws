@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateCertificatesV1CertificateSigningRequestInput =
@@ -115,6 +116,7 @@ export const createCertificatesV1CertificateSigningRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCertificatesV1CertificateSigningRequestInput,
     outputSchema: CreateCertificatesV1CertificateSigningRequestOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCertificatesV1alpha1ClusterTrustBundleInput =
@@ -198,6 +200,7 @@ export const createCertificatesV1alpha1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: CreateCertificatesV1alpha1ClusterTrustBundleOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCertificatesV1beta1ClusterTrustBundleInput =
@@ -281,6 +284,7 @@ export const createCertificatesV1beta1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: CreateCertificatesV1beta1ClusterTrustBundleOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCertificatesV1beta1NamespacedPodCertificateRequestInput =
@@ -397,6 +401,7 @@ export const createCertificatesV1beta1NamespacedPodCertificateRequest =
     inputSchema: CreateCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema:
       CreateCertificatesV1beta1NamespacedPodCertificateRequestOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteCertificatesV1CertificateSigningRequestInput =
@@ -465,6 +470,7 @@ export const deleteCertificatesV1CertificateSigningRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1CertificateSigningRequestInput,
     outputSchema: DeleteCertificatesV1CertificateSigningRequestOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCertificatesV1CollectionCertificateSigningRequestInput =
@@ -601,6 +607,7 @@ export const deleteCertificatesV1alpha1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: DeleteCertificatesV1alpha1ClusterTrustBundleOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCertificatesV1alpha1CollectionClusterTrustBundleInput =
@@ -737,6 +744,7 @@ export const deleteCertificatesV1beta1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: DeleteCertificatesV1beta1ClusterTrustBundleOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCertificatesV1beta1CollectionClusterTrustBundleInput =
@@ -944,6 +952,7 @@ export const deleteCertificatesV1beta1NamespacedPodCertificateRequest =
     inputSchema: DeleteCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema:
       DeleteCertificatesV1beta1NamespacedPodCertificateRequestOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetCertificatesAPIGroupInput =
@@ -1804,6 +1813,7 @@ export const patchCertificatesV1CertificateSigningRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1CertificateSigningRequestInput,
     outputSchema: PatchCertificatesV1CertificateSigningRequestOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1CertificateSigningRequestApprovalInput =
@@ -1912,6 +1922,7 @@ export const patchCertificatesV1CertificateSigningRequestApproval =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1CertificateSigningRequestApprovalInput,
     outputSchema: PatchCertificatesV1CertificateSigningRequestApprovalOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1CertificateSigningRequestStatusInput =
@@ -2020,6 +2031,7 @@ export const patchCertificatesV1CertificateSigningRequestStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1CertificateSigningRequestStatusInput,
     outputSchema: PatchCertificatesV1CertificateSigningRequestStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1alpha1ClusterTrustBundleInput =
@@ -2103,6 +2115,7 @@ export const patchCertificatesV1alpha1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: PatchCertificatesV1alpha1ClusterTrustBundleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1beta1ClusterTrustBundleInput =
@@ -2186,6 +2199,7 @@ export const patchCertificatesV1beta1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: PatchCertificatesV1beta1ClusterTrustBundleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestInput =
@@ -2301,6 +2315,7 @@ export const patchCertificatesV1beta1NamespacedPodCertificateRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema: PatchCertificatesV1beta1NamespacedPodCertificateRequestOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
@@ -2418,6 +2433,7 @@ export const patchCertificatesV1beta1NamespacedPodCertificateRequestStatus =
       PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusInput,
     outputSchema:
       PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1CertificateSigningRequestInput =
@@ -2520,6 +2536,7 @@ export const readCertificatesV1CertificateSigningRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1CertificateSigningRequestInput,
     outputSchema: ReadCertificatesV1CertificateSigningRequestOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1CertificateSigningRequestApprovalInput =
@@ -2622,6 +2639,7 @@ export const readCertificatesV1CertificateSigningRequestApproval =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1CertificateSigningRequestApprovalInput,
     outputSchema: ReadCertificatesV1CertificateSigningRequestApprovalOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1CertificateSigningRequestStatusInput =
@@ -2724,6 +2742,7 @@ export const readCertificatesV1CertificateSigningRequestStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1CertificateSigningRequestStatusInput,
     outputSchema: ReadCertificatesV1CertificateSigningRequestStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1alpha1ClusterTrustBundleInput =
@@ -2801,6 +2820,7 @@ export const readCertificatesV1alpha1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: ReadCertificatesV1alpha1ClusterTrustBundleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1beta1ClusterTrustBundleInput =
@@ -2878,6 +2898,7 @@ export const readCertificatesV1beta1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: ReadCertificatesV1beta1ClusterTrustBundleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestInput =
@@ -2987,6 +3008,7 @@ export const readCertificatesV1beta1NamespacedPodCertificateRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema: ReadCertificatesV1beta1NamespacedPodCertificateRequestOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
@@ -3098,6 +3120,7 @@ export const readCertificatesV1beta1NamespacedPodCertificateRequestStatus =
       ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusInput,
     outputSchema:
       ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1CertificateSigningRequestInput =
@@ -3206,6 +3229,7 @@ export const replaceCertificatesV1CertificateSigningRequest =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1CertificateSigningRequestInput,
     outputSchema: ReplaceCertificatesV1CertificateSigningRequestOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1CertificateSigningRequestApprovalInput =
@@ -3314,6 +3338,7 @@ export const replaceCertificatesV1CertificateSigningRequestApproval =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1CertificateSigningRequestApprovalInput,
     outputSchema: ReplaceCertificatesV1CertificateSigningRequestApprovalOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1CertificateSigningRequestStatusInput =
@@ -3422,6 +3447,7 @@ export const replaceCertificatesV1CertificateSigningRequestStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1CertificateSigningRequestStatusInput,
     outputSchema: ReplaceCertificatesV1CertificateSigningRequestStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1alpha1ClusterTrustBundleInput =
@@ -3505,6 +3531,7 @@ export const replaceCertificatesV1alpha1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1alpha1ClusterTrustBundleInput,
     outputSchema: ReplaceCertificatesV1alpha1ClusterTrustBundleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1beta1ClusterTrustBundleInput =
@@ -3588,6 +3615,7 @@ export const replaceCertificatesV1beta1ClusterTrustBundle =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCertificatesV1beta1ClusterTrustBundleInput,
     outputSchema: ReplaceCertificatesV1beta1ClusterTrustBundleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput =
@@ -3704,6 +3732,7 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequest =
     inputSchema: ReplaceCertificatesV1beta1NamespacedPodCertificateRequestInput,
     outputSchema:
       ReplaceCertificatesV1beta1NamespacedPodCertificateRequestOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput =
@@ -3821,6 +3850,7 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequestStatus =
       ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusInput,
     outputSchema:
       ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchCertificatesV1CertificateSigningRequestInput =

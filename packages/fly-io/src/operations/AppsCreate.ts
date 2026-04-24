@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const AppsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -24,4 +25,5 @@ export type AppsCreateOutput = typeof AppsCreateOutput.Type;
 export const AppsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateInput,
   outputSchema: AppsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

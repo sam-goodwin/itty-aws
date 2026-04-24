@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1UpdateStorageConfigInput =
@@ -62,5 +63,6 @@ export const v1UpdateStorageConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1UpdateStorageConfigInput,
     outputSchema: V1UpdateStorageConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

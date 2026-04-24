@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupClusterGlobalWriteManagedNamespaceInput =
@@ -41,4 +42,5 @@ export const createGroupClusterGlobalWriteManagedNamespace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterGlobalWriteManagedNamespaceInput,
     outputSchema: CreateGroupClusterGlobalWriteManagedNamespaceOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

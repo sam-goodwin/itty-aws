@@ -27,12 +27,19 @@ export type { DefaultErrors } from "@distilled.cloud/core/errors";
 import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
+// Payment Required - billing/quota limit (402)
+export class PaymentRequired extends Schema.TaggedErrorClass<PaymentRequired>()(
+  "PaymentRequired",
+  { message: Schema.String },
+).pipe(Category.withBadRequestError) {}
+
 // Unknown Mongodb-atlas error - returned when an error code is not recognized
 export class UnknownMongodbAtlasError extends Schema.TaggedErrorClass<UnknownMongodbAtlasError>()(
   "UnknownMongodbAtlasError",
   {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
     body: Schema.Unknown,
   },
 ).pipe(Category.withServerError) {}

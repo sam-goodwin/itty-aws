@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetDatabaseDiskInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -27,4 +28,5 @@ export type V1GetDatabaseDiskOutput = typeof V1GetDatabaseDiskOutput.Type;
 export const v1GetDatabaseDisk = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetDatabaseDiskInput,
   outputSchema: V1GetDatabaseDiskOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const V1ListAllOrganizationsInput =
@@ -32,5 +33,6 @@ export const v1ListAllOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1ListAllOrganizationsInput,
     outputSchema: V1ListAllOrganizationsOutput,
+    errors: [Forbidden] as const,
   }),
 );

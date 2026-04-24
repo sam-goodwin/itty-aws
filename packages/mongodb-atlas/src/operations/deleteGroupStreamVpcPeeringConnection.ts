@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const DeleteGroupStreamVpcPeeringConnectionInput =
@@ -39,4 +40,5 @@ export const deleteGroupStreamVpcPeeringConnection =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupStreamVpcPeeringConnectionInput,
     outputSchema: DeleteGroupStreamVpcPeeringConnectionOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

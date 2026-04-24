@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupServiceAccountInput =
@@ -39,5 +40,6 @@ export const createGroupServiceAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateGroupServiceAccountInput,
     outputSchema: CreateGroupServiceAccountOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

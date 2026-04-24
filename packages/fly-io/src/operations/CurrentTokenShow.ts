@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const CurrentTokenShowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -37,4 +38,5 @@ export type CurrentTokenShowOutput = typeof CurrentTokenShowOutput.Type;
 export const CurrentTokenShow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CurrentTokenShowInput,
   outputSchema: CurrentTokenShowOutput,
+  errors: [Forbidden] as const,
 }));

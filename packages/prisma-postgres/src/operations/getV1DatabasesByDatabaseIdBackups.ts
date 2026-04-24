@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const GetV1DatabasesByDatabaseIdBackupsInput =
@@ -47,4 +48,5 @@ export const getV1DatabasesByDatabaseIdBackups =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetV1DatabasesByDatabaseIdBackupsInput,
     outputSchema: GetV1DatabasesByDatabaseIdBackupsOutput,
+    errors: [NotFound, UnprocessableEntity] as const,
   }));

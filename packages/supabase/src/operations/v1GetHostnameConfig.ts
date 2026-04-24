@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetHostnameConfigInput =
@@ -67,4 +68,5 @@ export type V1GetHostnameConfigOutput = typeof V1GetHostnameConfigOutput.Type;
 export const v1GetHostnameConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetHostnameConfigInput,
   outputSchema: V1GetHostnameConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

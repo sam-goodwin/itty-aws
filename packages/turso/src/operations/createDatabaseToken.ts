@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, NotFound } from "../errors";
 
 // Input Schema
 export const CreateDatabaseTokenInput =
@@ -49,4 +50,5 @@ export type CreateDatabaseTokenOutput = typeof CreateDatabaseTokenOutput.Type;
 export const createDatabaseToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateDatabaseTokenInput,
   outputSchema: CreateDatabaseTokenOutput,
+  errors: [BadRequest, NotFound] as const,
 }));

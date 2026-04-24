@@ -18,6 +18,14 @@ generateFromOpenAPI({
   traitsImport: "../traits",
   sensitiveImport: "../sensitive",
   errorsImport: "../errors",
-  includeOperationErrors: false, // Mongodb-atlas handles errors globally by HTTP status
+  includeOperationErrors: true,
+  statusToErrorClass: {
+    "400": "BadRequest",
+    "402": "PaymentRequired",
+    "403": "Forbidden",
+    "404": "NotFound",
+    "409": "Conflict",
+    "422": "UnprocessableEntity",
+  },
   skipDeprecated: true,
 });

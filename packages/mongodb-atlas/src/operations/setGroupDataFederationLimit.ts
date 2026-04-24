@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const SetGroupDataFederationLimitInput =
@@ -54,5 +55,6 @@ export const setGroupDataFederationLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: SetGroupDataFederationLimitInput,
     outputSchema: SetGroupDataFederationLimitOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

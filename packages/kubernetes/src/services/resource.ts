@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateResourceV1DeviceClassInput =
@@ -109,6 +110,7 @@ export const createResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateResourceV1DeviceClassInput,
     outputSchema: CreateResourceV1DeviceClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -425,6 +427,7 @@ export const createResourceV1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1NamespacedResourceClaimOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1NamespacedResourceClaimTemplateInput =
@@ -661,6 +664,7 @@ export const createResourceV1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1NamespacedResourceClaimTemplateOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1ResourceSliceInput =
@@ -896,6 +900,7 @@ export const createResourceV1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1ResourceSliceInput,
     outputSchema: CreateResourceV1ResourceSliceOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1alpha3DeviceTaintRuleInput =
@@ -1006,6 +1011,7 @@ export const createResourceV1alpha3DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: CreateResourceV1alpha3DeviceTaintRuleOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1alpha3ResourcePoolStatusRequestInput =
@@ -1224,6 +1230,7 @@ export const createResourceV1beta1DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1DeviceClassInput,
     outputSchema: CreateResourceV1beta1DeviceClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta1NamespacedResourceClaimInput =
@@ -1535,6 +1542,7 @@ export const createResourceV1beta1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1beta1NamespacedResourceClaimOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta1NamespacedResourceClaimTemplateInput =
@@ -1767,6 +1775,7 @@ export const createResourceV1beta1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1beta1NamespacedResourceClaimTemplateOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta1ResourceSliceInput =
@@ -2015,6 +2024,7 @@ export const createResourceV1beta1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta1ResourceSliceInput,
     outputSchema: CreateResourceV1beta1ResourceSliceOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2DeviceClassInput =
@@ -2120,6 +2130,7 @@ export const createResourceV1beta2DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2DeviceClassInput,
     outputSchema: CreateResourceV1beta2DeviceClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2DeviceTaintRuleInput =
@@ -2230,6 +2241,7 @@ export const createResourceV1beta2DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2DeviceTaintRuleInput,
     outputSchema: CreateResourceV1beta2DeviceTaintRuleOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2NamespacedResourceClaimInput =
@@ -2545,6 +2557,7 @@ export const createResourceV1beta2NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: CreateResourceV1beta2NamespacedResourceClaimOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2NamespacedResourceClaimTemplateInput =
@@ -2781,6 +2794,7 @@ export const createResourceV1beta2NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: CreateResourceV1beta2NamespacedResourceClaimTemplateOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateResourceV1beta2ResourceSliceInput =
@@ -3019,6 +3033,7 @@ export const createResourceV1beta2ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateResourceV1beta2ResourceSliceInput,
     outputSchema: CreateResourceV1beta2ResourceSliceOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteResourceV1CollectionDeviceClassInput =
@@ -3395,6 +3410,7 @@ export const deleteResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteResourceV1DeviceClassInput,
     outputSchema: DeleteResourceV1DeviceClassOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -3709,6 +3725,7 @@ export const deleteResourceV1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1NamespacedResourceClaimTemplateInput =
@@ -3943,6 +3960,7 @@ export const deleteResourceV1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1ResourceSliceInput =
@@ -4179,6 +4197,7 @@ export const deleteResourceV1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1ResourceSliceInput,
     outputSchema: DeleteResourceV1ResourceSliceOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1alpha3CollectionDeviceTaintRuleInput =
@@ -4424,6 +4443,7 @@ export const deleteResourceV1alpha3DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1alpha3DeviceTaintRuleOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1alpha3ResourcePoolStatusRequestInput =
@@ -4912,6 +4932,7 @@ export const deleteResourceV1beta1DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1DeviceClassInput,
     outputSchema: DeleteResourceV1beta1DeviceClassOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta1NamespacedResourceClaimInput =
@@ -5221,6 +5242,7 @@ export const deleteResourceV1beta1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta1NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta1NamespacedResourceClaimTemplateInput =
@@ -5451,6 +5473,7 @@ export const deleteResourceV1beta1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1beta1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta1ResourceSliceInput =
@@ -5697,6 +5720,7 @@ export const deleteResourceV1beta1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta1ResourceSliceInput,
     outputSchema: DeleteResourceV1beta1ResourceSliceOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2CollectionDeviceClassInput =
@@ -6142,6 +6166,7 @@ export const deleteResourceV1beta2DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2DeviceClassInput,
     outputSchema: DeleteResourceV1beta2DeviceClassOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2DeviceTaintRuleInput =
@@ -6250,6 +6275,7 @@ export const deleteResourceV1beta2DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2DeviceTaintRuleInput,
     outputSchema: DeleteResourceV1beta2DeviceTaintRuleOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2NamespacedResourceClaimInput =
@@ -6563,6 +6589,7 @@ export const deleteResourceV1beta2NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: DeleteResourceV1beta2NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2NamespacedResourceClaimTemplateInput =
@@ -6797,6 +6824,7 @@ export const deleteResourceV1beta2NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: DeleteResourceV1beta2NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteResourceV1beta2ResourceSliceInput =
@@ -7033,6 +7061,7 @@ export const deleteResourceV1beta2ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteResourceV1beta2ResourceSliceInput,
     outputSchema: DeleteResourceV1beta2ResourceSliceOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetResourceAPIGroupInput =
@@ -12427,6 +12456,7 @@ export const patchResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchResourceV1DeviceClassInput,
     outputSchema: PatchResourceV1DeviceClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -12743,6 +12773,7 @@ export const patchResourceV1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1NamespacedResourceClaimStatusInput =
@@ -13058,6 +13089,7 @@ export const patchResourceV1NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1NamespacedResourceClaimTemplateInput =
@@ -13294,6 +13326,7 @@ export const patchResourceV1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1ResourceSliceInput =
@@ -13532,6 +13565,7 @@ export const patchResourceV1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1ResourceSliceInput,
     outputSchema: PatchResourceV1ResourceSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1alpha3DeviceTaintRuleInput =
@@ -13642,6 +13676,7 @@ export const patchResourceV1alpha3DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1alpha3DeviceTaintRuleStatusInput =
@@ -13752,6 +13787,7 @@ export const patchResourceV1alpha3DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1alpha3DeviceTaintRuleStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1alpha3ResourcePoolStatusRequestInput =
@@ -14083,6 +14119,7 @@ export const patchResourceV1beta1DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1DeviceClassInput,
     outputSchema: PatchResourceV1beta1DeviceClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1NamespacedResourceClaimInput =
@@ -14394,6 +14431,7 @@ export const patchResourceV1beta1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1NamespacedResourceClaimStatusInput =
@@ -14705,6 +14743,7 @@ export const patchResourceV1beta1NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1NamespacedResourceClaimTemplateInput =
@@ -14937,6 +14976,7 @@ export const patchResourceV1beta1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1beta1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta1ResourceSliceInput =
@@ -15185,6 +15225,7 @@ export const patchResourceV1beta1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta1ResourceSliceInput,
     outputSchema: PatchResourceV1beta1ResourceSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2DeviceClassInput =
@@ -15290,6 +15331,7 @@ export const patchResourceV1beta2DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceClassInput,
     outputSchema: PatchResourceV1beta2DeviceClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2DeviceTaintRuleInput =
@@ -15400,6 +15442,7 @@ export const patchResourceV1beta2DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2DeviceTaintRuleStatusInput =
@@ -15510,6 +15553,7 @@ export const patchResourceV1beta2DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: PatchResourceV1beta2DeviceTaintRuleStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2NamespacedResourceClaimInput =
@@ -15825,6 +15869,7 @@ export const patchResourceV1beta2NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2NamespacedResourceClaimStatusInput =
@@ -16140,6 +16185,7 @@ export const patchResourceV1beta2NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2NamespacedResourceClaimTemplateInput =
@@ -16376,6 +16422,7 @@ export const patchResourceV1beta2NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: PatchResourceV1beta2NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchResourceV1beta2ResourceSliceInput =
@@ -16614,6 +16661,7 @@ export const patchResourceV1beta2ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchResourceV1beta2ResourceSliceInput,
     outputSchema: PatchResourceV1beta2ResourceSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadResourceV1DeviceClassInput =
@@ -16713,6 +16761,7 @@ export const readResourceV1DeviceClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadResourceV1DeviceClassInput,
     outputSchema: ReadResourceV1DeviceClassOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -17023,6 +17072,7 @@ export const readResourceV1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1NamespacedResourceClaimStatusInput =
@@ -17332,6 +17382,7 @@ export const readResourceV1NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1NamespacedResourceClaimTemplateInput =
@@ -17562,6 +17613,7 @@ export const readResourceV1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1ResourceSliceInput =
@@ -17794,6 +17846,7 @@ export const readResourceV1ResourceSlice = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadResourceV1ResourceSliceInput,
     outputSchema: ReadResourceV1ResourceSliceOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -17899,6 +17952,7 @@ export const readResourceV1alpha3DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1alpha3DeviceTaintRuleStatusInput =
@@ -18003,6 +18057,7 @@ export const readResourceV1alpha3DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1alpha3DeviceTaintRuleStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1alpha3ResourcePoolStatusRequestInput =
@@ -18316,6 +18371,7 @@ export const readResourceV1beta1DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1DeviceClassInput,
     outputSchema: ReadResourceV1beta1DeviceClassOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1NamespacedResourceClaimInput =
@@ -18621,6 +18677,7 @@ export const readResourceV1beta1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1NamespacedResourceClaimStatusInput =
@@ -18926,6 +18983,7 @@ export const readResourceV1beta1NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1NamespacedResourceClaimTemplateInput =
@@ -19152,6 +19210,7 @@ export const readResourceV1beta1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1beta1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta1ResourceSliceInput =
@@ -19394,6 +19453,7 @@ export const readResourceV1beta1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta1ResourceSliceInput,
     outputSchema: ReadResourceV1beta1ResourceSliceOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2DeviceClassInput =
@@ -19493,6 +19553,7 @@ export const readResourceV1beta2DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceClassInput,
     outputSchema: ReadResourceV1beta2DeviceClassOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2DeviceTaintRuleInput =
@@ -19597,6 +19658,7 @@ export const readResourceV1beta2DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2DeviceTaintRuleStatusInput =
@@ -19701,6 +19763,7 @@ export const readResourceV1beta2DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: ReadResourceV1beta2DeviceTaintRuleStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2NamespacedResourceClaimInput =
@@ -20010,6 +20073,7 @@ export const readResourceV1beta2NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2NamespacedResourceClaimStatusInput =
@@ -20319,6 +20383,7 @@ export const readResourceV1beta2NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2NamespacedResourceClaimTemplateInput =
@@ -20549,6 +20614,7 @@ export const readResourceV1beta2NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ReadResourceV1beta2NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadResourceV1beta2ResourceSliceInput =
@@ -20781,6 +20847,7 @@ export const readResourceV1beta2ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadResourceV1beta2ResourceSliceInput,
     outputSchema: ReadResourceV1beta2ResourceSliceOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1DeviceClassInput =
@@ -20886,6 +20953,7 @@ export const replaceResourceV1DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1DeviceClassInput,
     outputSchema: ReplaceResourceV1DeviceClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimInput =
@@ -21201,6 +21269,7 @@ export const replaceResourceV1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimStatusInput =
@@ -21516,6 +21585,7 @@ export const replaceResourceV1NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1NamespacedResourceClaimTemplateInput =
@@ -21752,6 +21822,7 @@ export const replaceResourceV1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1ResourceSliceInput =
@@ -21990,6 +22061,7 @@ export const replaceResourceV1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1ResourceSliceInput,
     outputSchema: ReplaceResourceV1ResourceSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleInput =
@@ -22100,6 +22172,7 @@ export const replaceResourceV1alpha3DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1alpha3DeviceTaintRuleStatusInput =
@@ -22210,6 +22283,7 @@ export const replaceResourceV1alpha3DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusInput,
     outputSchema: ReplaceResourceV1alpha3DeviceTaintRuleStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1alpha3ResourcePoolStatusRequestInput =
@@ -22541,6 +22615,7 @@ export const replaceResourceV1beta1DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1DeviceClassInput,
     outputSchema: ReplaceResourceV1beta1DeviceClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimInput =
@@ -22852,6 +22927,7 @@ export const replaceResourceV1beta1NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimStatusInput =
@@ -23163,6 +23239,7 @@ export const replaceResourceV1beta1NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput =
@@ -23395,6 +23472,7 @@ export const replaceResourceV1beta1NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1beta1NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta1ResourceSliceInput =
@@ -23643,6 +23721,7 @@ export const replaceResourceV1beta1ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta1ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta1ResourceSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2DeviceClassInput =
@@ -23748,6 +23827,7 @@ export const replaceResourceV1beta2DeviceClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceClassInput,
     outputSchema: ReplaceResourceV1beta2DeviceClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleInput =
@@ -23858,6 +23938,7 @@ export const replaceResourceV1beta2DeviceTaintRule =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceTaintRuleInput,
     outputSchema: ReplaceResourceV1beta2DeviceTaintRuleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2DeviceTaintRuleStatusInput =
@@ -23968,6 +24049,7 @@ export const replaceResourceV1beta2DeviceTaintRuleStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2DeviceTaintRuleStatusInput,
     outputSchema: ReplaceResourceV1beta2DeviceTaintRuleStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimInput =
@@ -24283,6 +24365,7 @@ export const replaceResourceV1beta2NamespacedResourceClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimStatusInput =
@@ -24598,6 +24681,7 @@ export const replaceResourceV1beta2NamespacedResourceClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimStatusInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput =
@@ -24834,6 +24918,7 @@ export const replaceResourceV1beta2NamespacedResourceClaimTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2NamespacedResourceClaimTemplateInput,
     outputSchema: ReplaceResourceV1beta2NamespacedResourceClaimTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceResourceV1beta2ResourceSliceInput =
@@ -25072,6 +25157,7 @@ export const replaceResourceV1beta2ResourceSlice =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceResourceV1beta2ResourceSliceInput,
     outputSchema: ReplaceResourceV1beta2ResourceSliceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchResourceV1DeviceClassInput =

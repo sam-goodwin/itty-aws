@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1ApplyAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -31,4 +32,5 @@ export type V1ApplyAMigrationOutput = typeof V1ApplyAMigrationOutput.Type;
 export const v1ApplyAMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1ApplyAMigrationInput,
   outputSchema: V1ApplyAMigrationOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

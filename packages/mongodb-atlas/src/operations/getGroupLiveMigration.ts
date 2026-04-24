@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupLiveMigrationInput =
@@ -40,5 +41,6 @@ export const getGroupLiveMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetGroupLiveMigrationInput,
     outputSchema: GetGroupLiveMigrationOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

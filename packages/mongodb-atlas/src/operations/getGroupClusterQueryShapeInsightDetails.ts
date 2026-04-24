@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupClusterQueryShapeInsightDetailsInput =
@@ -55,4 +56,5 @@ export const getGroupClusterQueryShapeInsightDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetGroupClusterQueryShapeInsightDetailsInput,
     outputSchema: GetGroupClusterQueryShapeInsightDetailsOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

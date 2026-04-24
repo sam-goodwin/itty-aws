@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const PatchV1ProjectsByIdInput =
@@ -39,4 +40,5 @@ export type PatchV1ProjectsByIdOutput = typeof PatchV1ProjectsByIdOutput.Type;
 export const patchV1ProjectsById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PatchV1ProjectsByIdInput,
   outputSchema: PatchV1ProjectsByIdOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetProjectClaimTokenInput =
@@ -31,5 +32,6 @@ export const v1GetProjectClaimToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetProjectClaimTokenInput,
     outputSchema: V1GetProjectClaimTokenOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

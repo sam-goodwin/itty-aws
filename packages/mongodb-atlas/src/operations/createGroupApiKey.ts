@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -33,4 +34,5 @@ export type CreateGroupApiKeyOutput = typeof CreateGroupApiKeyOutput.Type;
 export const createGroupApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupApiKeyInput,
   outputSchema: CreateGroupApiKeyOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

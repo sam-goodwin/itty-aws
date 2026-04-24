@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const ConnectCoreV1DeleteNamespacedPodProxyInput =
@@ -1011,6 +1012,7 @@ export const createCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateCoreV1NamespaceInput,
     outputSchema: CreateCoreV1NamespaceOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -1091,6 +1093,7 @@ export const createCoreV1NamespacedBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedBindingInput,
     outputSchema: CreateCoreV1NamespacedBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedConfigMapInput =
@@ -1173,6 +1176,7 @@ export const createCoreV1NamespacedConfigMap =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedConfigMapInput,
     outputSchema: CreateCoreV1NamespacedConfigMapOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedEndpointsInput =
@@ -1308,6 +1312,7 @@ export const createCoreV1NamespacedEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedEndpointsInput,
     outputSchema: CreateCoreV1NamespacedEndpointsOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedEventInput =
@@ -1422,6 +1427,7 @@ export const createCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateCoreV1NamespacedEventInput,
     outputSchema: CreateCoreV1NamespacedEventOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -1522,6 +1528,7 @@ export const createCoreV1NamespacedLimitRange =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedLimitRangeInput,
     outputSchema: CreateCoreV1NamespacedLimitRangeOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPersistentVolumeClaimInput =
@@ -1683,6 +1690,7 @@ export const createCoreV1NamespacedPersistentVolumeClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: CreateCoreV1NamespacedPersistentVolumeClaimOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPodInput =
@@ -4506,6 +4514,7 @@ export const createCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateCoreV1NamespacedPodInput,
     outputSchema: CreateCoreV1NamespacedPodOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -4589,6 +4598,7 @@ export const createCoreV1NamespacedPodBinding =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodBindingInput,
     outputSchema: CreateCoreV1NamespacedPodBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPodEvictionInput =
@@ -4681,6 +4691,7 @@ export const createCoreV1NamespacedPodEviction =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodEvictionInput,
     outputSchema: CreateCoreV1NamespacedPodEvictionOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedPodTemplateInput =
@@ -7119,6 +7130,7 @@ export const createCoreV1NamespacedPodTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedPodTemplateInput,
     outputSchema: CreateCoreV1NamespacedPodTemplateOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedReplicationControllerInput =
@@ -9690,6 +9702,7 @@ export const createCoreV1NamespacedReplicationController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedReplicationControllerInput,
     outputSchema: CreateCoreV1NamespacedReplicationControllerOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedResourceQuotaInput =
@@ -9794,6 +9807,7 @@ export const createCoreV1NamespacedResourceQuota =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedResourceQuotaInput,
     outputSchema: CreateCoreV1NamespacedResourceQuotaOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedSecretInput =
@@ -9874,6 +9888,7 @@ export const createCoreV1NamespacedSecret =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedSecretInput,
     outputSchema: CreateCoreV1NamespacedSecretOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedServiceInput =
@@ -10031,6 +10046,7 @@ export const createCoreV1NamespacedService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceInput,
     outputSchema: CreateCoreV1NamespacedServiceOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedServiceAccountInput =
@@ -10131,6 +10147,7 @@ export const createCoreV1NamespacedServiceAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceAccountInput,
     outputSchema: CreateCoreV1NamespacedServiceAccountOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NamespacedServiceAccountTokenInput =
@@ -10224,6 +10241,7 @@ export const createCoreV1NamespacedServiceAccountToken =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1NamespacedServiceAccountTokenInput,
     outputSchema: CreateCoreV1NamespacedServiceAccountTokenOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10464,6 +10482,7 @@ export type CreateCoreV1NodeOutput = typeof CreateCoreV1NodeOutput.Type;
 export const createCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateCoreV1NodeInput,
   outputSchema: CreateCoreV1NodeOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
 }));
 // Input Schema
 export const CreateCoreV1PersistentVolumeInput =
@@ -10863,6 +10882,7 @@ export const createCoreV1PersistentVolume =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoreV1PersistentVolumeInput,
     outputSchema: CreateCoreV1PersistentVolumeOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteCoreV1CollectionNamespacedConfigMapInput =
@@ -11862,6 +11882,7 @@ export const deleteCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteCoreV1NamespaceInput,
     outputSchema: DeleteCoreV1NamespaceOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -11931,6 +11952,7 @@ export const deleteCoreV1NamespacedConfigMap =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedConfigMapInput,
     outputSchema: DeleteCoreV1NamespacedConfigMapOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedEndpointsInput =
@@ -11999,6 +12021,7 @@ export const deleteCoreV1NamespacedEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedEndpointsInput,
     outputSchema: DeleteCoreV1NamespacedEndpointsOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedEventInput =
@@ -12067,6 +12090,7 @@ export const deleteCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteCoreV1NamespacedEventInput,
     outputSchema: DeleteCoreV1NamespacedEventOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -12136,6 +12160,7 @@ export const deleteCoreV1NamespacedLimitRange =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedLimitRangeInput,
     outputSchema: DeleteCoreV1NamespacedLimitRangeOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedPersistentVolumeClaimInput =
@@ -12295,6 +12320,7 @@ export const deleteCoreV1NamespacedPersistentVolumeClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: DeleteCoreV1NamespacedPersistentVolumeClaimOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedPodInput =
@@ -15119,6 +15145,7 @@ export const deleteCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteCoreV1NamespacedPodInput,
     outputSchema: DeleteCoreV1NamespacedPodOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -17556,6 +17583,7 @@ export const deleteCoreV1NamespacedPodTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedPodTemplateInput,
     outputSchema: DeleteCoreV1NamespacedPodTemplateOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedReplicationControllerInput =
@@ -17624,6 +17652,7 @@ export const deleteCoreV1NamespacedReplicationController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedReplicationControllerInput,
     outputSchema: DeleteCoreV1NamespacedReplicationControllerOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedResourceQuotaInput =
@@ -17726,6 +17755,7 @@ export const deleteCoreV1NamespacedResourceQuota =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedResourceQuotaInput,
     outputSchema: DeleteCoreV1NamespacedResourceQuotaOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedSecretInput =
@@ -17794,6 +17824,7 @@ export const deleteCoreV1NamespacedSecret =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedSecretInput,
     outputSchema: DeleteCoreV1NamespacedSecretOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedServiceInput =
@@ -17952,6 +17983,7 @@ export const deleteCoreV1NamespacedService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedServiceInput,
     outputSchema: DeleteCoreV1NamespacedServiceOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NamespacedServiceAccountInput =
@@ -18050,6 +18082,7 @@ export const deleteCoreV1NamespacedServiceAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1NamespacedServiceAccountInput,
     outputSchema: DeleteCoreV1NamespacedServiceAccountOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -18110,6 +18143,7 @@ export type DeleteCoreV1NodeOutput = typeof DeleteCoreV1NodeOutput.Type;
 export const deleteCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteCoreV1NodeInput,
   outputSchema: DeleteCoreV1NodeOutput,
+  errors: [NotFound, Conflict] as const,
 }));
 // Input Schema
 export const DeleteCoreV1PersistentVolumeInput =
@@ -18509,6 +18543,7 @@ export const deleteCoreV1PersistentVolume =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoreV1PersistentVolumeInput,
     outputSchema: DeleteCoreV1PersistentVolumeOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetAPIVersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -38408,6 +38443,7 @@ export const patchCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchCoreV1NamespaceInput,
     outputSchema: PatchCoreV1NamespaceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -38506,6 +38542,7 @@ export const patchCoreV1NamespaceStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchCoreV1NamespaceStatusInput,
     outputSchema: PatchCoreV1NamespaceStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -38589,6 +38626,7 @@ export const patchCoreV1NamespacedConfigMap =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedConfigMapInput,
     outputSchema: PatchCoreV1NamespacedConfigMapOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedEndpointsInput =
@@ -38724,6 +38762,7 @@ export const patchCoreV1NamespacedEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedEndpointsInput,
     outputSchema: PatchCoreV1NamespacedEndpointsOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedEventInput =
@@ -38841,6 +38880,7 @@ export const patchCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchCoreV1NamespacedEventInput,
     outputSchema: PatchCoreV1NamespacedEventOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -38941,6 +38981,7 @@ export const patchCoreV1NamespacedLimitRange =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedLimitRangeInput,
     outputSchema: PatchCoreV1NamespacedLimitRangeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPersistentVolumeClaimInput =
@@ -39102,6 +39143,7 @@ export const patchCoreV1NamespacedPersistentVolumeClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: PatchCoreV1NamespacedPersistentVolumeClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPersistentVolumeClaimStatusInput =
@@ -39263,6 +39305,7 @@ export const patchCoreV1NamespacedPersistentVolumeClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: PatchCoreV1NamespacedPersistentVolumeClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodInput =
@@ -42089,6 +42132,7 @@ export const patchCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchCoreV1NamespacedPodInput,
     outputSchema: PatchCoreV1NamespacedPodOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -44916,6 +44960,7 @@ export const patchCoreV1NamespacedPodEphemeralcontainers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: PatchCoreV1NamespacedPodEphemeralcontainersOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodResizeInput =
@@ -47742,6 +47787,7 @@ export const patchCoreV1NamespacedPodResize =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodResizeInput,
     outputSchema: PatchCoreV1NamespacedPodResizeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodStatusInput =
@@ -50568,6 +50614,7 @@ export const patchCoreV1NamespacedPodStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodStatusInput,
     outputSchema: PatchCoreV1NamespacedPodStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedPodTemplateInput =
@@ -53006,6 +53053,7 @@ export const patchCoreV1NamespacedPodTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedPodTemplateInput,
     outputSchema: PatchCoreV1NamespacedPodTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedReplicationControllerInput =
@@ -55577,6 +55625,7 @@ export const patchCoreV1NamespacedReplicationController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedReplicationControllerScaleInput =
@@ -55667,6 +55716,7 @@ export const patchCoreV1NamespacedReplicationControllerScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedReplicationControllerStatusInput =
@@ -58238,6 +58288,7 @@ export const patchCoreV1NamespacedReplicationControllerStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: PatchCoreV1NamespacedReplicationControllerStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedResourceQuotaInput =
@@ -58342,6 +58393,7 @@ export const patchCoreV1NamespacedResourceQuota =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedResourceQuotaInput,
     outputSchema: PatchCoreV1NamespacedResourceQuotaOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedResourceQuotaStatusInput =
@@ -58446,6 +58498,7 @@ export const patchCoreV1NamespacedResourceQuotaStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: PatchCoreV1NamespacedResourceQuotaStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedSecretInput =
@@ -58529,6 +58582,7 @@ export const patchCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchCoreV1NamespacedSecretInput,
     outputSchema: PatchCoreV1NamespacedSecretOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -58690,6 +58744,7 @@ export const patchCoreV1NamespacedService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceInput,
     outputSchema: PatchCoreV1NamespacedServiceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedServiceAccountInput =
@@ -58790,6 +58845,7 @@ export const patchCoreV1NamespacedServiceAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceAccountInput,
     outputSchema: PatchCoreV1NamespacedServiceAccountOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NamespacedServiceStatusInput =
@@ -58950,6 +59006,7 @@ export const patchCoreV1NamespacedServiceStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1NamespacedServiceStatusInput,
     outputSchema: PatchCoreV1NamespacedServiceStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -59184,6 +59241,7 @@ export type PatchCoreV1NodeOutput = typeof PatchCoreV1NodeOutput.Type;
 export const patchCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PatchCoreV1NodeInput,
   outputSchema: PatchCoreV1NodeOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
 }));
 // Input Schema
 export const PatchCoreV1NodeStatusInput =
@@ -59426,6 +59484,7 @@ export const patchCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchCoreV1NodeStatusInput,
     outputSchema: PatchCoreV1NodeStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -59828,6 +59887,7 @@ export const patchCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchCoreV1PersistentVolumeInput,
     outputSchema: PatchCoreV1PersistentVolumeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -60233,6 +60293,7 @@ export const patchCoreV1PersistentVolumeStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoreV1PersistentVolumeStatusInput,
     outputSchema: PatchCoreV1PersistentVolumeStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadCoreV1ComponentStatusInput =
@@ -60313,6 +60374,7 @@ export const readCoreV1ComponentStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1ComponentStatusInput,
     outputSchema: ReadCoreV1ComponentStatusOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -60402,6 +60464,7 @@ export type ReadCoreV1NamespaceOutput = typeof ReadCoreV1NamespaceOutput.Type;
 export const readCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReadCoreV1NamespaceInput,
   outputSchema: ReadCoreV1NamespaceOutput,
+  errors: [NotFound] as const,
 }));
 // Input Schema
 export const ReadCoreV1NamespaceStatusInput =
@@ -60493,6 +60556,7 @@ export const readCoreV1NamespaceStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1NamespaceStatusInput,
     outputSchema: ReadCoreV1NamespaceStatusOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -60570,6 +60634,7 @@ export const readCoreV1NamespacedConfigMap =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedConfigMapInput,
     outputSchema: ReadCoreV1NamespacedConfigMapOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedEndpointsInput =
@@ -60699,6 +60764,7 @@ export const readCoreV1NamespacedEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedEndpointsInput,
     outputSchema: ReadCoreV1NamespacedEndpointsOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedEventInput =
@@ -60810,6 +60876,7 @@ export const readCoreV1NamespacedEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1NamespacedEventInput,
     outputSchema: ReadCoreV1NamespacedEventOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -60904,6 +60971,7 @@ export const readCoreV1NamespacedLimitRange =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedLimitRangeInput,
     outputSchema: ReadCoreV1NamespacedLimitRangeOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPersistentVolumeClaimInput =
@@ -61059,6 +61127,7 @@ export const readCoreV1NamespacedPersistentVolumeClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ReadCoreV1NamespacedPersistentVolumeClaimOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPersistentVolumeClaimStatusInput =
@@ -61214,6 +61283,7 @@ export const readCoreV1NamespacedPersistentVolumeClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: ReadCoreV1NamespacedPersistentVolumeClaimStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodInput =
@@ -64034,6 +64104,7 @@ export const readCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1NamespacedPodInput,
     outputSchema: ReadCoreV1NamespacedPodOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -66855,6 +66926,7 @@ export const readCoreV1NamespacedPodEphemeralcontainers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: ReadCoreV1NamespacedPodEphemeralcontainersOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodLogInput =
@@ -66881,6 +66953,7 @@ export const readCoreV1NamespacedPodLog = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1NamespacedPodLogInput,
     outputSchema: ReadCoreV1NamespacedPodLogOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -69702,6 +69775,7 @@ export const readCoreV1NamespacedPodResize =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodResizeInput,
     outputSchema: ReadCoreV1NamespacedPodResizeOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodStatusInput =
@@ -72522,6 +72596,7 @@ export const readCoreV1NamespacedPodStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodStatusInput,
     outputSchema: ReadCoreV1NamespacedPodStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedPodTemplateInput =
@@ -74954,6 +75029,7 @@ export const readCoreV1NamespacedPodTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedPodTemplateInput,
     outputSchema: ReadCoreV1NamespacedPodTemplateOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedReplicationControllerInput =
@@ -77519,6 +77595,7 @@ export const readCoreV1NamespacedReplicationController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedReplicationControllerScaleInput =
@@ -77603,6 +77680,7 @@ export const readCoreV1NamespacedReplicationControllerScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerScaleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedReplicationControllerStatusInput =
@@ -80168,6 +80246,7 @@ export const readCoreV1NamespacedReplicationControllerStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: ReadCoreV1NamespacedReplicationControllerStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedResourceQuotaInput =
@@ -80266,6 +80345,7 @@ export const readCoreV1NamespacedResourceQuota =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedResourceQuotaInput,
     outputSchema: ReadCoreV1NamespacedResourceQuotaOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedResourceQuotaStatusInput =
@@ -80364,6 +80444,7 @@ export const readCoreV1NamespacedResourceQuotaStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: ReadCoreV1NamespacedResourceQuotaStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedSecretInput =
@@ -80441,6 +80522,7 @@ export const readCoreV1NamespacedSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1NamespacedSecretInput,
     outputSchema: ReadCoreV1NamespacedSecretOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -80596,6 +80678,7 @@ export const readCoreV1NamespacedService = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1NamespacedServiceInput,
     outputSchema: ReadCoreV1NamespacedServiceOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -80691,6 +80774,7 @@ export const readCoreV1NamespacedServiceAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedServiceAccountInput,
     outputSchema: ReadCoreV1NamespacedServiceAccountOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NamespacedServiceStatusInput =
@@ -80845,6 +80929,7 @@ export const readCoreV1NamespacedServiceStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1NamespacedServiceStatusInput,
     outputSchema: ReadCoreV1NamespacedServiceStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -81075,6 +81160,7 @@ export type ReadCoreV1NodeOutput = typeof ReadCoreV1NodeOutput.Type;
 export const readCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReadCoreV1NodeInput,
   outputSchema: ReadCoreV1NodeOutput,
+  errors: [NotFound] as const,
 }));
 // Input Schema
 export const ReadCoreV1NodeStatusInput =
@@ -81312,6 +81398,7 @@ export const readCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1NodeStatusInput,
     outputSchema: ReadCoreV1NodeStatusOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -81708,6 +81795,7 @@ export const readCoreV1PersistentVolume = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadCoreV1PersistentVolumeInput,
     outputSchema: ReadCoreV1PersistentVolumeOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -82104,6 +82192,7 @@ export const readCoreV1PersistentVolumeStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoreV1PersistentVolumeStatusInput,
     outputSchema: ReadCoreV1PersistentVolumeStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespaceInput =
@@ -82199,6 +82288,7 @@ export const replaceCoreV1Namespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReplaceCoreV1NamespaceInput,
     outputSchema: ReplaceCoreV1NamespaceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -82291,6 +82381,7 @@ export const replaceCoreV1NamespaceFinalize =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespaceFinalizeInput,
     outputSchema: ReplaceCoreV1NamespaceFinalizeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespaceStatusInput =
@@ -82386,6 +82477,7 @@ export const replaceCoreV1NamespaceStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespaceStatusInput,
     outputSchema: ReplaceCoreV1NamespaceStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedConfigMapInput =
@@ -82468,6 +82560,7 @@ export const replaceCoreV1NamespacedConfigMap =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedConfigMapInput,
     outputSchema: ReplaceCoreV1NamespacedConfigMapOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedEndpointsInput =
@@ -82603,6 +82696,7 @@ export const replaceCoreV1NamespacedEndpoints =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedEndpointsInput,
     outputSchema: ReplaceCoreV1NamespacedEndpointsOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedEventInput =
@@ -82720,6 +82814,7 @@ export const replaceCoreV1NamespacedEvent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedEventInput,
     outputSchema: ReplaceCoreV1NamespacedEventOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedLimitRangeInput =
@@ -82819,6 +82914,7 @@ export const replaceCoreV1NamespacedLimitRange =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedLimitRangeInput,
     outputSchema: ReplaceCoreV1NamespacedLimitRangeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimInput =
@@ -82980,6 +83076,7 @@ export const replaceCoreV1NamespacedPersistentVolumeClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimInput,
     outputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput =
@@ -83141,6 +83238,7 @@ export const replaceCoreV1NamespacedPersistentVolumeClaimStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimStatusInput,
     outputSchema: ReplaceCoreV1NamespacedPersistentVolumeClaimStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodInput =
@@ -85967,6 +86065,7 @@ export const replaceCoreV1NamespacedPod = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReplaceCoreV1NamespacedPodInput,
     outputSchema: ReplaceCoreV1NamespacedPodOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -88794,6 +88893,7 @@ export const replaceCoreV1NamespacedPodEphemeralcontainers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodEphemeralcontainersInput,
     outputSchema: ReplaceCoreV1NamespacedPodEphemeralcontainersOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodResizeInput =
@@ -91620,6 +91720,7 @@ export const replaceCoreV1NamespacedPodResize =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodResizeInput,
     outputSchema: ReplaceCoreV1NamespacedPodResizeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodStatusInput =
@@ -94446,6 +94547,7 @@ export const replaceCoreV1NamespacedPodStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodStatusInput,
     outputSchema: ReplaceCoreV1NamespacedPodStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedPodTemplateInput =
@@ -96884,6 +96986,7 @@ export const replaceCoreV1NamespacedPodTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedPodTemplateInput,
     outputSchema: ReplaceCoreV1NamespacedPodTemplateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedReplicationControllerInput =
@@ -99455,6 +99558,7 @@ export const replaceCoreV1NamespacedReplicationController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedReplicationControllerScaleInput =
@@ -99545,6 +99649,7 @@ export const replaceCoreV1NamespacedReplicationControllerScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerScaleInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedReplicationControllerStatusInput =
@@ -102116,6 +102221,7 @@ export const replaceCoreV1NamespacedReplicationControllerStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedReplicationControllerStatusInput,
     outputSchema: ReplaceCoreV1NamespacedReplicationControllerStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedResourceQuotaInput =
@@ -102220,6 +102326,7 @@ export const replaceCoreV1NamespacedResourceQuota =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedResourceQuotaInput,
     outputSchema: ReplaceCoreV1NamespacedResourceQuotaOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedResourceQuotaStatusInput =
@@ -102324,6 +102431,7 @@ export const replaceCoreV1NamespacedResourceQuotaStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedResourceQuotaStatusInput,
     outputSchema: ReplaceCoreV1NamespacedResourceQuotaStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedSecretInput =
@@ -102407,6 +102515,7 @@ export const replaceCoreV1NamespacedSecret =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedSecretInput,
     outputSchema: ReplaceCoreV1NamespacedSecretOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedServiceInput =
@@ -102567,6 +102676,7 @@ export const replaceCoreV1NamespacedService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceInput,
     outputSchema: ReplaceCoreV1NamespacedServiceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedServiceAccountInput =
@@ -102667,6 +102777,7 @@ export const replaceCoreV1NamespacedServiceAccount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceAccountInput,
     outputSchema: ReplaceCoreV1NamespacedServiceAccountOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NamespacedServiceStatusInput =
@@ -102827,6 +102938,7 @@ export const replaceCoreV1NamespacedServiceStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1NamespacedServiceStatusInput,
     outputSchema: ReplaceCoreV1NamespacedServiceStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1NodeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -103068,6 +103180,7 @@ export type ReplaceCoreV1NodeOutput = typeof ReplaceCoreV1NodeOutput.Type;
 export const replaceCoreV1Node = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ReplaceCoreV1NodeInput,
   outputSchema: ReplaceCoreV1NodeOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
 }));
 // Input Schema
 export const ReplaceCoreV1NodeStatusInput =
@@ -103311,6 +103424,7 @@ export const replaceCoreV1NodeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReplaceCoreV1NodeStatusInput,
     outputSchema: ReplaceCoreV1NodeStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -103711,6 +103825,7 @@ export const replaceCoreV1PersistentVolume =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1PersistentVolumeInput,
     outputSchema: ReplaceCoreV1PersistentVolumeOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoreV1PersistentVolumeStatusInput =
@@ -104112,6 +104227,7 @@ export const replaceCoreV1PersistentVolumeStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoreV1PersistentVolumeStatusInput,
     outputSchema: ReplaceCoreV1PersistentVolumeStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchCoreV1ConfigMapListForAllNamespacesInput =

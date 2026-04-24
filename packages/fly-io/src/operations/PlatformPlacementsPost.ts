@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const PlatformPlacementsPostInput =
@@ -56,5 +57,6 @@ export const PlatformPlacementsPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PlatformPlacementsPostInput,
     outputSchema: PlatformPlacementsPostOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

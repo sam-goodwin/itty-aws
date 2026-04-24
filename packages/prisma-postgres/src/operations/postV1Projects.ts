@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { UnprocessableEntity } from "../errors";
 import { SensitiveString, SensitiveNullableString } from "../sensitive";
 
 // Input Schema
@@ -159,4 +160,5 @@ export type PostV1ProjectsOutput = typeof PostV1ProjectsOutput.Type;
 export const postV1Projects = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PostV1ProjectsInput,
   outputSchema: PostV1ProjectsOutput,
+  errors: [UnprocessableEntity] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const MachinesCreateLeaseInput =
@@ -41,4 +42,5 @@ export type MachinesCreateLeaseOutput = typeof MachinesCreateLeaseOutput.Type;
 export const MachinesCreateLease = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MachinesCreateLeaseInput,
   outputSchema: MachinesCreateLeaseOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const ListGroupFlexClustersInput =
@@ -44,5 +45,6 @@ export const listGroupFlexClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ListGroupFlexClustersInput,
     outputSchema: ListGroupFlexClustersOutput,
+    errors: [Forbidden, NotFound, Conflict] as const,
   }),
 );

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -53,4 +54,5 @@ export type V1GetABranchConfigOutput = typeof V1GetABranchConfigOutput.Type;
 export const v1GetABranchConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetABranchConfigInput,
   outputSchema: V1GetABranchConfigOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

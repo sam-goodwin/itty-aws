@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetOrgNonCompliantResourcesInput =
@@ -37,5 +38,6 @@ export const getOrgNonCompliantResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetOrgNonCompliantResourcesInput,
     outputSchema: GetOrgNonCompliantResourcesOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

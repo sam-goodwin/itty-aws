@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1UndoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -24,4 +25,5 @@ export type V1UndoOutput = typeof V1UndoOutput.Type;
 export const v1Undo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1UndoInput,
   outputSchema: V1UndoOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const CreateGroupStreamProcessorInput =
@@ -41,5 +42,6 @@ export const createGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateGroupStreamProcessorInput,
     outputSchema: CreateGroupStreamProcessorOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }),
 );

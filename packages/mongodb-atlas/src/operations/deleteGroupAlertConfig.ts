@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const DeleteGroupAlertConfigInput =
@@ -42,5 +43,6 @@ export const deleteGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteGroupAlertConfigInput,
     outputSchema: DeleteGroupAlertConfigOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

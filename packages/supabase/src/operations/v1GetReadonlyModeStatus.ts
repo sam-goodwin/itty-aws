@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetReadonlyModeStatusInput =
@@ -30,5 +31,6 @@ export const v1GetReadonlyModeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetReadonlyModeStatusInput,
     outputSchema: V1GetReadonlyModeStatusOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

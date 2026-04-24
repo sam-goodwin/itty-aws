@@ -1,19 +1,17 @@
-import { loadEnv } from "vite";
-import { defineConfig } from "vitest/config";
+import { config } from "dotenv";
+import { resolve } from "path";
 
-export default defineConfig(({ mode }) => {
-  const env = { ...loadEnv(mode, "../..", ""), ...loadEnv(mode, ".", "") };
+config({ path: resolve(__dirname, "../../.env") });
+config({ path: resolve(__dirname, ".env") });
 
-  return {
-    test: {
-      include: ["test/**/*.test.ts"],
-      testTimeout: 120000,
-      env,
+export default {
+  test: {
+    include: ["test/**/*.test.ts"],
+    testTimeout: 120000,
+  },
+  resolve: {
+    alias: {
+      "~": new URL("./src", import.meta.url).pathname,
     },
-    resolve: {
-      alias: {
-        "~": new URL("./src", import.meta.url).pathname,
-      },
-    },
-  };
-});
+  },
+};

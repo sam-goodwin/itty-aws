@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1DeleteProjectTpaIntegrationInput =
@@ -42,4 +43,5 @@ export const v1DeleteProjectTpaIntegration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: V1DeleteProjectTpaIntegrationInput,
     outputSchema: V1DeleteProjectTpaIntegrationOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

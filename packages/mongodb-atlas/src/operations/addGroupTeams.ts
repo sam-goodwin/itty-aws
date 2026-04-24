@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const AddGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -31,4 +32,5 @@ export type AddGroupTeamsOutput = typeof AddGroupTeamsOutput.Type;
 export const addGroupTeams = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AddGroupTeamsInput,
   outputSchema: AddGroupTeamsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

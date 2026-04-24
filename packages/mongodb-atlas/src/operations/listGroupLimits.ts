@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const ListGroupLimitsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -31,4 +32,5 @@ export type ListGroupLimitsOutput = typeof ListGroupLimitsOutput.Type;
 export const listGroupLimits = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListGroupLimitsInput,
   outputSchema: ListGroupLimitsOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const DeleteV1DatabasesByDatabaseIdInput =
@@ -26,4 +27,5 @@ export const deleteV1DatabasesByDatabaseId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1DatabasesByDatabaseIdInput,
     outputSchema: DeleteV1DatabasesByDatabaseIdOutput,
+    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
   }));

@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreatePolicyV1NamespacedPodDisruptionBudgetInput =
@@ -133,6 +134,7 @@ export const createPolicyV1NamespacedPodDisruptionBudget =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreatePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: CreatePolicyV1NamespacedPodDisruptionBudgetOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput =
@@ -269,6 +271,7 @@ export const deletePolicyV1NamespacedPodDisruptionBudget =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeletePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: DeletePolicyV1NamespacedPodDisruptionBudgetOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetPolicyAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -759,6 +762,7 @@ export const patchPolicyV1NamespacedPodDisruptionBudget =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput =
@@ -885,6 +889,7 @@ export const patchPolicyV1NamespacedPodDisruptionBudgetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadPolicyV1NamespacedPodDisruptionBudgetInput =
@@ -1005,6 +1010,7 @@ export const readPolicyV1NamespacedPodDisruptionBudget =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
@@ -1125,6 +1131,7 @@ export const readPolicyV1NamespacedPodDisruptionBudgetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
@@ -1251,6 +1258,7 @@ export const replacePolicyV1NamespacedPodDisruptionBudget =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
@@ -1377,6 +1385,7 @@ export const replacePolicyV1NamespacedPodDisruptionBudgetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchPolicyV1NamespacedPodDisruptionBudgetInput =

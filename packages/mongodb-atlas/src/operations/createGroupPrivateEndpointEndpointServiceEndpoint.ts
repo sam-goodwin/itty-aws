@@ -1,6 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
+  Conflict,
+} from "../errors";
 
 // Input Schema
 export const CreateGroupPrivateEndpointEndpointServiceEndpointInput =
@@ -43,4 +50,11 @@ export const createGroupPrivateEndpointEndpointServiceEndpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointInput,
     outputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointOutput,
+    errors: [
+      BadRequest,
+      PaymentRequired,
+      Forbidden,
+      NotFound,
+      Conflict,
+    ] as const,
   }));

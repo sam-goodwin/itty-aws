@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateSchedulingV1PriorityClassInput =
@@ -90,6 +91,7 @@ export const createSchedulingV1PriorityClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateSchedulingV1PriorityClassInput,
     outputSchema: CreateSchedulingV1PriorityClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateSchedulingV1alpha2NamespacedPodGroupInput =
@@ -236,6 +238,7 @@ export const createSchedulingV1alpha2NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateSchedulingV1alpha2NamespacedPodGroupInput,
     outputSchema: CreateSchedulingV1alpha2NamespacedPodGroupOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateSchedulingV1alpha2NamespacedWorkloadInput =
@@ -360,6 +363,7 @@ export const createSchedulingV1alpha2NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateSchedulingV1alpha2NamespacedWorkloadInput,
     outputSchema: CreateSchedulingV1alpha2NamespacedWorkloadOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteSchedulingV1CollectionPriorityClassInput =
@@ -496,6 +500,7 @@ export const deleteSchedulingV1PriorityClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1PriorityClassInput,
     outputSchema: DeleteSchedulingV1PriorityClassOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteSchedulingV1alpha2CollectionNamespacedPodGroupInput =
@@ -700,6 +705,7 @@ export const deleteSchedulingV1alpha2NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1alpha2NamespacedPodGroupInput,
     outputSchema: DeleteSchedulingV1alpha2NamespacedPodGroupOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteSchedulingV1alpha2NamespacedWorkloadInput =
@@ -768,6 +774,7 @@ export const deleteSchedulingV1alpha2NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteSchedulingV1alpha2NamespacedWorkloadInput,
     outputSchema: DeleteSchedulingV1alpha2NamespacedWorkloadOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetSchedulingAPIGroupInput =
@@ -1679,6 +1686,7 @@ export const patchSchedulingV1PriorityClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1PriorityClassInput,
     outputSchema: PatchSchedulingV1PriorityClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchSchedulingV1alpha2NamespacedPodGroupInput =
@@ -1825,6 +1833,7 @@ export const patchSchedulingV1alpha2NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1alpha2NamespacedPodGroupInput,
     outputSchema: PatchSchedulingV1alpha2NamespacedPodGroupOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchSchedulingV1alpha2NamespacedPodGroupStatusInput =
@@ -1971,6 +1980,7 @@ export const patchSchedulingV1alpha2NamespacedPodGroupStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1alpha2NamespacedPodGroupStatusInput,
     outputSchema: PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchSchedulingV1alpha2NamespacedWorkloadInput =
@@ -2095,6 +2105,7 @@ export const patchSchedulingV1alpha2NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulingV1alpha2NamespacedWorkloadInput,
     outputSchema: PatchSchedulingV1alpha2NamespacedWorkloadOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadSchedulingV1PriorityClassInput =
@@ -2172,6 +2183,7 @@ export const readSchedulingV1PriorityClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1PriorityClassInput,
     outputSchema: ReadSchedulingV1PriorityClassOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadSchedulingV1alpha2NamespacedPodGroupInput =
@@ -2312,6 +2324,7 @@ export const readSchedulingV1alpha2NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1alpha2NamespacedPodGroupInput,
     outputSchema: ReadSchedulingV1alpha2NamespacedPodGroupOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadSchedulingV1alpha2NamespacedPodGroupStatusInput =
@@ -2452,6 +2465,7 @@ export const readSchedulingV1alpha2NamespacedPodGroupStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1alpha2NamespacedPodGroupStatusInput,
     outputSchema: ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadSchedulingV1alpha2NamespacedWorkloadInput =
@@ -2570,6 +2584,7 @@ export const readSchedulingV1alpha2NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadSchedulingV1alpha2NamespacedWorkloadInput,
     outputSchema: ReadSchedulingV1alpha2NamespacedWorkloadOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceSchedulingV1PriorityClassInput =
@@ -2653,6 +2668,7 @@ export const replaceSchedulingV1PriorityClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1PriorityClassInput,
     outputSchema: ReplaceSchedulingV1PriorityClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceSchedulingV1alpha2NamespacedPodGroupInput =
@@ -2799,6 +2815,7 @@ export const replaceSchedulingV1alpha2NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupInput,
     outputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput =
@@ -2945,6 +2962,7 @@ export const replaceSchedulingV1alpha2NamespacedPodGroupStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput,
     outputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceSchedulingV1alpha2NamespacedWorkloadInput =
@@ -3069,6 +3087,7 @@ export const replaceSchedulingV1alpha2NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceSchedulingV1alpha2NamespacedWorkloadInput,
     outputSchema: ReplaceSchedulingV1alpha2NamespacedWorkloadOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchSchedulingV1PriorityClassInput =

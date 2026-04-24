@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const CreateGroupDatabaseUserCertInput =
@@ -43,5 +44,6 @@ export const createGroupDatabaseUserCert = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateGroupDatabaseUserCertInput,
     outputSchema: CreateGroupDatabaseUserCertOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }),
 );

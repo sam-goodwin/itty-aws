@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupStreamConnectionsInput =
@@ -45,5 +46,6 @@ export const listGroupStreamConnections = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ListGroupStreamConnectionsInput,
     outputSchema: ListGroupStreamConnectionsOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

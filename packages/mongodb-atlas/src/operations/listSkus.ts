@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const ListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -31,4 +32,5 @@ export type ListSkusOutput = typeof ListSkusOutput.Type;
 export const listSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListSkusInput,
   outputSchema: ListSkusOutput,
+  errors: [Forbidden] as const,
 }));

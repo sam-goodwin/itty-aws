@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, NotFound } from "../errors";
 
 // Input Schema
 export const RemoveLocationFromGroupInput =
@@ -48,5 +49,6 @@ export const removeLocationFromGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: RemoveLocationFromGroupInput,
     outputSchema: RemoveLocationFromGroupOutput,
+    errors: [BadRequest, NotFound] as const,
   }),
 );

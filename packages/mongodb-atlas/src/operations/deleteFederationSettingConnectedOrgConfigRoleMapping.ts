@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
@@ -39,4 +40,5 @@ export const deleteFederationSettingConnectedOrgConfigRoleMapping =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteFederationSettingConnectedOrgConfigRoleMappingInput,
     outputSchema: DeleteFederationSettingConnectedOrgConfigRoleMappingOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupCloudProviderAccessInput =
@@ -39,4 +40,5 @@ export const createGroupCloudProviderAccess =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupCloudProviderAccessInput,
     outputSchema: CreateGroupCloudProviderAccessOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

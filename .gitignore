@@ -2,6 +2,7 @@
 node_modules
 **/*.tsbuildinfo
 lib/
+!scripts/lib
 .env
 pnpm-workspace.yaml
 .ai-workspace

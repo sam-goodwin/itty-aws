@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1RunAQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -24,4 +25,5 @@ export type V1RunAQueryOutput = typeof V1RunAQueryOutput.Type;
 export const v1RunAQuery = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1RunAQueryInput,
   outputSchema: V1RunAQueryOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

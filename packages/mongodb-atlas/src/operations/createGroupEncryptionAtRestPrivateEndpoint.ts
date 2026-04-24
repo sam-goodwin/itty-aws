@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupEncryptionAtRestPrivateEndpointInput =
@@ -41,4 +42,5 @@ export const createGroupEncryptionAtRestPrivateEndpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupEncryptionAtRestPrivateEndpointInput,
     outputSchema: CreateGroupEncryptionAtRestPrivateEndpointOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

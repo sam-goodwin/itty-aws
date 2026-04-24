@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ValidateGroupLiveMigrationsInput =
@@ -39,5 +40,6 @@ export const validateGroupLiveMigrations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ValidateGroupLiveMigrationsInput,
     outputSchema: ValidateGroupLiveMigrationsOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

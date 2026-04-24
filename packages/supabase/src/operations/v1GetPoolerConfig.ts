@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -41,4 +42,5 @@ export type V1GetPoolerConfigOutput = typeof V1GetPoolerConfigOutput.Type;
 export const v1GetPoolerConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetPoolerConfigInput,
   outputSchema: V1GetPoolerConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));
