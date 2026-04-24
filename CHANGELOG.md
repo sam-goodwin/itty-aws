@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.11.0](https://github.com/alchemy-run/distilled/releases/tag/v0.11.0) (2026-04-24)
+
+### Features
+
+- **axiom**: create axiom sdk - by Michael K in [#196](https://github.com/alchemy-run/distilled/pull/196) [(d4dd820)](https://github.com/alchemy-run/distilled/commit/d4dd8200c7cbffe95faa00182e2f354bbcbb7c67)
+- **scripts**: add --note flag for free-form pipeline nudges - by Michael (Pear) [(0e7db26)](https://github.com/alchemy-run/distilled/commit/0e7db264227a55f35b83ce0b1a188495ec858e75)
+
+### Bug Fixes
+
+- **scripts**: detect nested + services-layout generated operations - by Michael (Pear) [(347aed8)](https://github.com/alchemy-run/distilled/commit/347aed87119942662f79f01fbadcb578ed2c9e49)
+- **scripts**: spawn child scripts via process.execPath on Windows - by Michael (Pear) [(e6ecd52)](https://github.com/alchemy-run/distilled/commit/e6ecd5225b1f525058f1f3b10b9792cdaf55b1e4)
+
 ## [v0.10.2](https://github.com/alchemy-run/distilled/releases/tag/v0.10.2) (2026-04-16)
 
 ### Bug Fixes
