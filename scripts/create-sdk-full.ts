@@ -59,13 +59,19 @@ const runStage = (
     );
 
     const code = yield* Effect.callback<number, never>((resume) => {
-      const cp = spawn("bun", [scriptPath, ...args], {
+      // Use the currently running bun executable directly — avoids cmd.exe on
+      // Windows, which would try to interpret shell metacharacters (<, >, &)
+      // inside user-supplied args like --note.
+      const cp = spawn(process.execPath, [scriptPath, ...args], {
         cwd,
         stdio: "inherit",
-        shell: process.platform === "win32",
+        shell: false,
       });
       cp.on("close", (c: number | null) => resume(Effect.succeed(c ?? 1)));
-      cp.on("error", () => resume(Effect.succeed(1)));
+      cp.on("error", (err) => {
+        console.error(`spawn error: ${err.message}`);
+        resume(Effect.succeed(1));
+      });
     });
 
     if (code !== 0) {
