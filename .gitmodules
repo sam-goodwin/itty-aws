@@ -83,3 +83,6 @@
 	url = https://github.com/Azure/azure-rest-api-specs
 	shallow = true
 	ignore = dirty
+[submodule "packages/axiom/specs/docs"]
+	path = packages/axiom/specs/docs
+	url = https://github.com/axiomhq/docs.git

@@ -143,7 +143,55 @@ const writeIfNotExists = (
   });
 
 /**
- * Check if the operations directory has generated files (more than just index.ts).
+ * Recursively count `.ts` files (excluding top-level `index.ts`) inside a
+ * directory. Returns 0 if the directory doesn't exist.
+ */
+const countGeneratedTsFiles = (
+  dir: string,
+): Effect.Effect<
+  number,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
+  Effect.gen(function* () {
+    const path = yield* Path.Path;
+    const fs = yield* FileSystem.FileSystem;
+    const exists = yield* fs.exists(dir);
+    if (!exists) return 0;
+
+    const walk = (
+      cur: string,
+      isTop: boolean,
+    ): Effect.Effect<
+      number,
+      PlatformError.PlatformError,
+      FileSystem.FileSystem | Path.Path
+    > =>
+      Effect.gen(function* () {
+        const entries = yield* fs.readDirectory(cur);
+        let count = 0;
+        for (const entry of entries) {
+          const full = path.join(cur, entry);
+          const stat = yield* fs.stat(full);
+          if (stat.type === "Directory") {
+            count += yield* walk(full, false);
+          } else if (entry.endsWith(".ts")) {
+            if (isTop && entry === "index.ts") continue;
+            count += 1;
+          }
+        }
+        return count;
+      });
+
+    return yield* walk(dir, true);
+  });
+
+/**
+ * Check that the generator actually produced operations.
+ *
+ * Accepts both layouts (`src/operations/` for OpenAPI-style SDKs and
+ * `src/services/` for grouped SDKs like Cloudflare/AWS) and recurses into
+ * subdirectories so version-scoped layouts like `operations/v2/*.ts` count.
  */
 const hasGeneratedOperations = (
   root: string,
@@ -155,14 +203,15 @@ const hasGeneratedOperations = (
 > =>
   Effect.gen(function* () {
     const path = yield* Path.Path;
-    const fs = yield* FileSystem.FileSystem;
-    const opsDir = path.join(root, "packages", name, "src", "operations");
-    const exists = yield* fs.exists(opsDir);
-    if (!exists) return false;
-
-    const files = yield* fs.readDirectory(opsDir);
-    const tsFiles = files.filter((f: string) => f.endsWith(".ts"));
-    return tsFiles.length > 1;
+    const pkgSrc = path.join(root, "packages", name, "src");
+    const opsCount = yield* countGeneratedTsFiles(
+      path.join(pkgSrc, "operations"),
+    );
+    if (opsCount > 0) return true;
+    const servicesCount = yield* countGeneratedTsFiles(
+      path.join(pkgSrc, "services"),
+    );
+    return servicesCount > 0;
   });
 
 // ============================================================================
