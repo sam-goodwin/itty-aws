@@ -69,6 +69,29 @@ const matchError = (
 };
 
 /**
+ * Axiom's backend (Go) serializes nil slices and omitted optional fields as
+ * JSON `null`. The generated output schemas model these as `Schema.optional(…)`
+ * which accepts only the value or `undefined`, so `null` trips decoding.
+ *
+ * Recursively drop explicit `null` properties before decoding so optional
+ * fields simply get treated as absent. Keys that are genuinely nullable in
+ * the API should be patched to `Schema.NullOr(…)` in the spec — this hook
+ * exists for the far more common "Go nil slice" case.
+ */
+const stripNulls = (value: unknown): unknown => {
+  if (Array.isArray(value)) return value.map(stripNulls);
+  if (value && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      if (v === null) continue;
+      out[k] = stripNulls(v);
+    }
+    return out;
+  }
+  return value;
+};
+
+/**
  * Axiom API client.
  */
 export const API = makeAPI({
@@ -85,4 +108,5 @@ export const API = makeAPI({
   },
   matchError,
   ParseError: AxiomParseError as any,
+  transformResponse: stripNulls,
 });

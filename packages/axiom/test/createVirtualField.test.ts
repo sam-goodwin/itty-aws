@@ -20,17 +20,12 @@ describe("createVirtualField", () => {
           description: "createVirtualField test fixture",
         });
 
-        // The generated createVirtualField input schema is Struct({}) so TS
-        // rejects real virtual-field fields. We cast through `unknown` to
-        // send a realistic payload; `buildRequestParts` will only include
-        // fields the schema knows about, so this test doubles as a signal
-        // that the input schema needs to be broadened.
         const field = yield* createVirtualField({
           dataset: datasetName,
           name: fieldName,
           description: "createVirtualField happy path",
           expression: "1 + 1",
-        } as unknown as Record<string, never>);
+        });
 
         expect(typeof field.id).toBe("string");
         expect(field.id.length).toBeGreaterThan(0);
@@ -56,18 +51,7 @@ describe("createVirtualField", () => {
     { timeout: 60_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when required virtual-field fields are missing",
-    async () => {
-      // Empty body violates required fields (dataset, name, expression).
-      // Axiom surfaces this as 422, which the SDK's matchError maps to the
-      // typed UnprocessableEntity class.
-      const error = await runEffect(
-        createVirtualField({} as Record<string, never>).pipe(Effect.flip),
-      );
-
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
+  // Removed: the client-side schema requires dataset/name/expression, so
+  // `createVirtualField({})` fails at encode time before any request is
+  // sent. Server-side 422 is not reachable without bypassing the schema.
 });

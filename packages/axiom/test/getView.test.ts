@@ -1,6 +1,8 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
+import { createDataset } from "../src/operations/v2/createDataset";
 import { createView } from "../src/operations/v2/createView";
+import { deleteDataset } from "../src/operations/v2/deleteDataset";
 import { deleteView } from "../src/operations/v2/deleteView";
 import { getView } from "../src/operations/v2/getView";
 import { runEffect, testRunId } from "./setup";
@@ -9,24 +11,24 @@ describe("getView", () => {
   it(
     "fetches a view by id and returns its configuration",
     async () => {
-      const viewName = `distilled-axiom-getview-${testRunId}`;
-      let createdId: string | undefined;
+      const datasetName = `distilled-ax-gvds-${testRunId}`;
+      const viewName = `distilled-ax-gvview-${testRunId}`;
 
       const effect = Effect.gen(function* () {
-        // The generated createView input schema is Struct({}); cast through
-        // `unknown` to send a realistic payload. The output schema omits
-        // `id`, so read it via a second unknown-cast.
-        const created = yield* createView({
+        yield* createDataset({
+          name: datasetName,
+          description: "getView test fixture",
+        });
+
+        yield* createView({
           name: viewName,
           description: "getView happy path",
-          aplQuery: "['_traces'] | limit 10",
-        } as unknown as Record<string, never>);
+          aplQuery: `['${datasetName}'] | limit 10`,
+        });
 
-        const viewId = (created as unknown as { id?: string }).id;
-        expect(typeof viewId).toBe("string");
-        createdId = viewId;
-
-        const fetched = yield* getView({ id: viewId as string });
+        // Views are addressed by name on api.axiom.co — the generated
+        // `id` path param is really the view's name.
+        const fetched = yield* getView({ id: viewName });
 
         expect(fetched.name).toBe(viewName);
         expect(typeof fetched.aplQuery).toBe("string");
@@ -34,9 +36,10 @@ describe("getView", () => {
       }).pipe(
         Effect.ensuring(
           Effect.gen(function* () {
-            if (createdId !== undefined) {
-              yield* deleteView({ id: createdId }).pipe(Effect.ignore);
-            }
+            yield* deleteView({ id: viewName }).pipe(Effect.ignore);
+            yield* deleteDataset({ dataset_id: datasetName }).pipe(
+              Effect.ignore,
+            );
           }),
         ),
       );

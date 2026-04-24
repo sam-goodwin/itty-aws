@@ -4,9 +4,14 @@ import * as T from "../../traits";
 import { UnprocessableEntity } from "../../errors";
 
 // Input Schema
-export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "POST", path: "/v2/views" }));
+export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aplQuery: Schema.String,
+  datasets: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  name: Schema.String,
+  sharedByOrg: Schema.optional(Schema.String),
+  sharedByOrgName: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "POST", path: "/v2/views" }));
 export type CreateViewInput = typeof CreateViewInput.Type;
 
 // Output Schema

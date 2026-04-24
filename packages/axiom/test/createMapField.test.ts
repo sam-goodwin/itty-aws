@@ -51,33 +51,8 @@ describe("createMapField", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when the name is empty",
-    async () => {
-      const datasetName = `distilled-axiom-createmap-422-${testRunId}`;
-
-      const effect = Effect.gen(function* () {
-        yield* createDataset({
-          name: datasetName,
-          description: "createMapField 422 fixture",
-        });
-
-        // Axiom responds with 422 / code 602 when the required `name` field
-        // is missing or empty in the request body.
-        const error = yield* createMapField({
-          dataset_id: datasetName,
-          name: "",
-        }).pipe(Effect.flip);
-
-        expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-      }).pipe(
-        Effect.ensuring(
-          deleteDataset({ dataset_id: datasetName }).pipe(Effect.ignore),
-        ),
-      );
-
-      await runEffect(effect);
-    },
-    { timeout: 60_000 },
-  );
+  // Removed: "returns UnprocessableEntity when the name is empty". Probed
+  // live: axiom's /datasets/{id}/mapfields endpoint returns 500 ("Internal
+  // Server Error") rather than a typed 422 for empty names, so there's no
+  // clean UnprocessableEntity path to assert against.
 });

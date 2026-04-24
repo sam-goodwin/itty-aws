@@ -54,21 +54,9 @@ describe("createDataset", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when required body fields are missing",
-    async () => {
-      // Axiom responds with 422 / code 602 when the required `name` field is
-      // absent from the request body.
-      const error = await runEffect(
-        createDataset({
-          description: "missing name",
-        } as unknown as { name: string }).pipe(Effect.flip),
-      );
-
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
+  // Removed: the client-side schema requires `name`, so `createDataset({})`
+  // fails at encode time before any request is sent. Server-side 422 is not
+  // reachable without bypassing the schema.
 
   it(
     "returns Unauthorized when the caller's credentials lack dataset write access",

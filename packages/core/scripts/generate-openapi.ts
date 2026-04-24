@@ -78,7 +78,7 @@ interface Parameter2 {
   required?: boolean;
   description?: string;
   default?: unknown;
-  enum?: string[];
+  enum?: (string | number | boolean)[];
   schema?: SchemaObject;
 }
 
@@ -131,7 +131,8 @@ interface ParameterObject3 {
 
 interface RequestBody3 {
   required?: boolean;
-  content: Record<string, MediaType3>;
+  content?: Record<string, MediaType3>;
+  $ref?: string;
 }
 
 interface ResponseObject3 {
@@ -151,7 +152,7 @@ interface SchemaObject {
   properties?: Record<string, SchemaObject>;
   items?: SchemaObject;
   required?: string[];
-  enum?: string[];
+  enum?: (string | number | boolean)[];
   additionalProperties?: boolean | SchemaObject;
   description?: string;
   default?: unknown;
@@ -221,6 +222,17 @@ function operationIdToFunctionName(operationId: string): string {
 
 function escapeStringLiteral(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/`/g, "\\`");
+}
+
+function renderEnumLiterals(
+  values: readonly (string | number | boolean)[],
+  type: string | undefined,
+): string {
+  const isNumeric = type === "integer" || type === "number";
+  const literals = values
+    .map((v) => (isNumeric ? String(v) : `"${escapeStringLiteral(String(v))}"`))
+    .join(", ");
+  return `Schema.Literals([${literals}])`;
 }
 
 // ============================================================================
@@ -391,8 +403,7 @@ function openApiTypeToEffectSchema(
 
   // Handle enum
   if (prop.enum && prop.enum.length > 0) {
-    const literals = prop.enum.map((v) => `"${escapeStringLiteral(String(v))}"`).join(", ");
-    const baseSchema = `Schema.Literals([${literals}])`;
+    const baseSchema = renderEnumLiterals(prop.enum, prop.type);
     return isNullable(prop) ? `Schema.NullOr(${baseSchema})` : baseSchema;
   }
 
@@ -561,7 +572,7 @@ interface ParameterInfo {
   type?: string;
   required?: boolean;
   description?: string;
-  enum?: string[];
+  enum?: (string | number | boolean)[];
   schema?: SchemaObject;
 }
 
@@ -646,7 +657,7 @@ function generateInputSchemaSwagger(
   // Path parameters
   for (const param of pathParams) {
     const baseSchema = param.enum
-      ? `Schema.Literals([${param.enum.map((v) => `"${escapeStringLiteral(String(v))}"`).join(", ")}])`
+      ? renderEnumLiterals(param.enum, param.type)
       : param.type === "integer"
         ? "Schema.Number"
         : "Schema.String";
@@ -655,14 +666,13 @@ function generateInputSchemaSwagger(
 
   // Query parameters
   for (const param of queryParams) {
-    let schema =
-      param.type === "integer" || param.type === "number"
+    let schema = param.enum
+      ? renderEnumLiterals(param.enum, param.type)
+      : param.type === "integer" || param.type === "number"
         ? "Schema.Number"
         : param.type === "boolean"
           ? "Schema.Boolean"
-          : param.enum
-            ? `Schema.Literals([${param.enum.map((v) => `"${escapeStringLiteral(String(v))}"`).join(", ")}])`
-            : "Schema.String";
+          : "Schema.String";
 
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
@@ -745,10 +755,14 @@ function generateInputSchema3(
   method: string,
   pathTemplate: string,
   parameters: ParameterObject3[],
-  requestBody: RequestBody3 | undefined,
+  requestBodyParam: RequestBody3 | undefined,
   spec: OpenAPI3Spec,
   ctx?: SchemaGenerationContext,
 ): { inputSchemaCode: string; inputSchemaName: string } {
+  // Resolve top-level $ref (e.g. #/components/requestBodies/Foo).
+  const requestBody = requestBodyParam?.$ref
+    ? (resolveRef(spec as any, requestBodyParam.$ref) as RequestBody3)
+    : requestBodyParam;
   const inputSchemaName = `${toPascalCase(operationId)}Input`;
   const pathParams = parameters.filter((p) => p.in === "path");
   const queryParams = parameters.filter((p) => p.in === "query");
@@ -763,7 +777,7 @@ function generateInputSchema3(
     const schema = param.schema;
     const baseSchema =
       schema?.enum && schema.enum.length > 0
-        ? `Schema.Literals([${schema.enum.map((v) => `"${escapeStringLiteral(String(v))}"`).join(", ")}])`
+        ? renderEnumLiterals(schema.enum, schema.type)
         : schema?.type === "integer" || schema?.type === "number"
           ? "Schema.Number"
           : "Schema.String";
@@ -776,12 +790,12 @@ function generateInputSchema3(
     usedNames.add(param.name);
     const schema = param.schema;
     let schemaStr =
-      schema?.type === "integer" || schema?.type === "number"
-        ? "Schema.Number"
-        : schema?.type === "boolean"
-          ? "Schema.Boolean"
-          : schema?.enum && schema.enum.length > 0
-            ? `Schema.Literals([${schema.enum.map((v) => `"${escapeStringLiteral(String(v))}"`).join(", ")}])`
+      schema?.enum && schema.enum.length > 0
+        ? renderEnumLiterals(schema.enum, schema.type)
+        : schema?.type === "integer" || schema?.type === "number"
+          ? "Schema.Number"
+          : schema?.type === "boolean"
+            ? "Schema.Boolean"
             : "Schema.String";
 
     if (!param.required) {

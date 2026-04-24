@@ -14,10 +14,12 @@ export const GetUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     email: Schema.String,
     id: Schema.String,
     name: Schema.String,
-    role: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    }),
+    role: Schema.optional(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+      }),
+    ),
   }),
 );
 export type GetUsersOutput = typeof GetUsersOutput.Type;

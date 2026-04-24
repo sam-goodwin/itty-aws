@@ -11,10 +11,10 @@ const minimalDashboard = (name: string, owner: string) => ({
   owner,
   charts: [],
   layout: [],
-  refreshTime: "60" as const,
-  schemaVersion: "2" as const,
-  timeWindowStart: "now-1h",
-  timeWindowEnd: "now",
+  refreshTime: 60 as const,
+  schemaVersion: 2 as const,
+  timeWindowStart: "qr-now-1h",
+  timeWindowEnd: "qr-now",
 });
 
 describe("getDashboard", () => {

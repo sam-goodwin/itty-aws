@@ -46,22 +46,37 @@ describe("createNotifier", () => {
   );
 
   it(
-    "returns UnprocessableEntity when the notifier name is empty",
+    "accepts an empty notifier name",
     async () => {
-      // `name` is required and must be non-empty; axiom surfaces this as 422
-      // → UnprocessableEntity.
-      const error = await runEffect(
-        createNotifier({
+      // Probed live: axiom accepts an empty `name` and stores the notifier
+      // with `name: ""`. The spec lists `name` as required (which matches
+      // the request shape) but the backend does not enforce non-empty on
+      // the value. Assert the permissive behaviour and clean up.
+      let createdId: string | undefined;
+
+      const effect = Effect.gen(function* () {
+        const notifier = yield* createNotifier({
           name: "",
           properties: {
             email: {
               emails: [`distilled-test-${testRunId}@example.com`],
             },
           },
-        }).pipe(Effect.flip),
+        });
+
+        expect(notifier.name).toBe("");
+        createdId = notifier.id;
+      }).pipe(
+        Effect.ensuring(
+          Effect.gen(function* () {
+            if (createdId !== undefined) {
+              yield* deleteNotifier({ id: createdId }).pipe(Effect.ignore);
+            }
+          }),
+        ),
       );
 
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
+      await runEffect(effect);
     },
     { timeout: 30_000 },
   );

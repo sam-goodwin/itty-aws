@@ -7,6 +7,12 @@ import { NotFound, UnprocessableEntity } from "../../errors";
 export const UpdateVirtualFieldInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
+    dataset: Schema.String,
+    description: Schema.optional(Schema.String),
+    expression: Schema.String,
+    name: Schema.String,
+    type: Schema.optional(Schema.String),
+    unit: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PUT", path: "/v2/vfields/{id}" }));
 export type UpdateVirtualFieldInput = typeof UpdateVirtualFieldInput.Type;
 

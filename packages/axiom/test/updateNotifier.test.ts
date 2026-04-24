@@ -83,53 +83,7 @@ describe("updateNotifier", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when the notifier name is empty",
-    async () => {
-      // `name` is required and must be non-empty; axiom surfaces this as 422.
-      const initialName = `distilled-axiom-upduneproc-${testRunId}`;
-      let createdId: string | undefined;
-
-      const effect = Effect.gen(function* () {
-        const created = yield* createNotifier({
-          name: initialName,
-          properties: {
-            email: {
-              emails: [`distilled-test-${testRunId}@example.com`],
-            },
-          },
-        });
-
-        if (created.id === undefined) {
-          throw new Error(
-            "createNotifier did not return an id; cannot test updateNotifier UnprocessableEntity path.",
-          );
-        }
-        createdId = created.id;
-
-        const error = yield* updateNotifier({
-          id: created.id,
-          name: "",
-          properties: {
-            email: {
-              emails: [`distilled-test-${testRunId}@example.com`],
-            },
-          },
-        }).pipe(Effect.flip);
-
-        expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-      }).pipe(
-        Effect.ensuring(
-          Effect.gen(function* () {
-            if (createdId !== undefined) {
-              yield* deleteNotifier({ id: createdId }).pipe(Effect.ignore);
-            }
-          }),
-        ),
-      );
-
-      await runEffect(effect);
-    },
-    { timeout: 60_000 },
-  );
+  // Removed: "returns UnprocessableEntity when the notifier name is empty".
+  // Probed live: axiom accepts an empty notifier `name` and stores the
+  // record — see createNotifier.test.ts for the same observation.
 });

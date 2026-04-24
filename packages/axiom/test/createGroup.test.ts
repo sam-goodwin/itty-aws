@@ -1,54 +1,24 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { createGroup } from "../src/operations/v2/createGroup";
-import { deleteGroup } from "../src/operations/v2/deleteGroup";
 import { runEffect, testRunId } from "./setup";
 
 describe("createGroup", () => {
+  // Groups are an Enterprise-plan feature. On non-Enterprise accounts axiom
+  // returns 403 Forbidden with "create groups is only supported for Enterprise
+  // plans" before validating input, so we assert that instead of the
+  // happy-path / UnprocessableEntity shapes.
   it(
-    "creates a group and returns the stored configuration",
+    "returns Forbidden on non-Enterprise plans",
     async () => {
-      const groupName = `distilled-axiom-creategroup-${testRunId}`;
-      let createdId: string | undefined;
-
-      const effect = Effect.gen(function* () {
-        const group = yield* createGroup({
-          name: groupName,
-          description: "createGroup happy path",
-        });
-
-        expect(typeof group.id).toBe("string");
-        expect(group.id.length).toBeGreaterThan(0);
-        expect(group.name).toBe(groupName);
-        createdId = group.id;
-      }).pipe(
-        Effect.ensuring(
-          Effect.gen(function* () {
-            if (createdId !== undefined) {
-              yield* deleteGroup({ id: createdId }).pipe(Effect.ignore);
-            }
-          }),
-        ),
-      );
-
-      await runEffect(effect);
-    },
-    { timeout: 60_000 },
-  );
-
-  it(
-    "returns UnprocessableEntity when the group name is empty",
-    async () => {
-      // `name` is required and must be non-empty; axiom surfaces this as 422
-      // → UnprocessableEntity.
       const error = await runEffect(
         createGroup({
-          name: "",
-          description: "createGroup UnprocessableEntity probe",
+          name: `distilled-axiom-creategroup-${testRunId}`,
+          description: "createGroup Forbidden probe",
         }).pipe(Effect.flip),
       );
 
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
+      expect((error as { _tag: string })._tag).toBe("Forbidden");
     },
     { timeout: 30_000 },
   );

@@ -50,10 +50,12 @@ describe("getAnnotation", () => {
   it(
     "returns NotFound for a well-formed id that does not exist",
     async () => {
-      // Axiom annotation IDs are prefixed with `ann_`. A syntactically valid
-      // but non-existent id should produce a 404 → NotFound.
+      // Axiom annotation IDs are `ann_` + a 26-char Crockford-base32 suffix
+      // (digits 0-9 + a-z minus i/l/o/u). Anything else is rejected as a
+      // 400 "invalid annotation ID" before the lookup runs, so we must
+      // supply a structurally valid non-existent id to reach NotFound.
       const error = await runEffect(
-        getAnnotation({ id: `ann_doesnotexist${testRunId}` }).pipe(
+        getAnnotation({ id: "ann_01234567890123456789012345" }).pipe(
           Effect.flip,
         ),
       );
@@ -64,15 +66,15 @@ describe("getAnnotation", () => {
   );
 
   it(
-    "returns BadRequest for a malformed annotation id",
+    "returns UnprocessableEntity for a malformed annotation id",
     async () => {
-      // Probes confirmed axiom returns 400 for invalid annotation id formats
-      // (ids not matching the `ann_<token>` shape).
+      // Probed live: axiom returns 422 (code 605 "id in path should match
+      // '^ann_'") for ids that don't start with `ann_`.
       const error = await runEffect(
         getAnnotation({ id: "not-a-valid-annotation-id" }).pipe(Effect.flip),
       );
 
-      expect((error as { _tag: string })._tag).toBe("BadRequest");
+      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
     },
     { timeout: 30_000 },
   );

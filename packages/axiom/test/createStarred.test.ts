@@ -20,11 +20,6 @@ describe("createStarred", () => {
           description: "createStarred test fixture",
         });
 
-        // The generated createStarred input schema is Struct({}) so TS
-        // rejects real starred-query fields. We cast through `unknown` to
-        // send a realistic APL query payload; `buildRequestParts` will only
-        // include fields the schema knows about, so this test doubles as a
-        // signal that the input schema needs to be broadened.
         const starred = yield* createStarred({
           name: queryName,
           dataset: datasetName,
@@ -34,7 +29,7 @@ describe("createStarred", () => {
             apl: `['${datasetName}'] | summarize count()`,
           },
           who: "user",
-        } as unknown as Record<string, never>);
+        });
 
         expect(typeof starred.id).toBe("string");
         expect(starred.id.length).toBeGreaterThan(0);
@@ -59,18 +54,7 @@ describe("createStarred", () => {
     { timeout: 60_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when required starred-query fields are missing",
-    async () => {
-      // Empty body violates required fields (name, kind, query, who, etc.).
-      // Axiom surfaces this as 422, which the SDK's matchError maps to the
-      // typed UnprocessableEntity class.
-      const error = await runEffect(
-        createStarred({} as Record<string, never>).pipe(Effect.flip),
-      );
-
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
+  // Removed: the client-side schema now requires kind/name/query/who/
+  // metadata, so `createStarred({})` fails at encode time before any request
+  // is sent. Server-side 422 is not reachable without bypassing the schema.
 });

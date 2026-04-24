@@ -1,44 +1,54 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
+import { createDataset } from "../src/operations/v2/createDataset";
 import { createView } from "../src/operations/v2/createView";
+import { deleteDataset } from "../src/operations/v2/deleteDataset";
 import { deleteView } from "../src/operations/v2/deleteView";
+import { getViews } from "../src/operations/v2/getViews";
 import { runEffect, testRunId } from "./setup";
 
 describe("createView", () => {
   it(
     "creates a view with an APL query and returns the stored record",
     async () => {
-      const viewName = `distilled-axiom-view-${testRunId}`;
+      const datasetName = `distilled-ax-cvds-${testRunId}`;
+      const viewName = `distilled-ax-cvview-${testRunId}`;
       let createdId: string | undefined;
 
+      // Axiom validates the APL query's dataset at create time, so we need a
+      // real dataset before creating a view against it.
       const effect = Effect.gen(function* () {
-        // The generated createView input schema is Struct({}) so TS rejects
-        // real view fields. Cast through `unknown` to send a realistic
-        // payload; `buildRequestParts` only serialises fields the schema
-        // knows about — a signal the input schema needs to be broadened —
-        // but the underlying POST accepts the full body. Similarly the
-        // output schema omits `id`, which axiom does return; we read it via
-        // an unknown-cast for cleanup.
+        yield* createDataset({
+          name: datasetName,
+          description: "createView test fixture",
+        });
+
         const view = yield* createView({
           name: viewName,
           description: "createView happy path",
-          aplQuery: "['_traces'] | limit 10",
-        } as unknown as Record<string, never>);
+          aplQuery: `['${datasetName}'] | limit 10`,
+        });
 
         expect(view.name).toBe(viewName);
         expect(typeof view.aplQuery).toBe("string");
         expect(view.aplQuery.length).toBeGreaterThan(0);
 
-        const maybeId = (view as unknown as { id?: string }).id;
-        if (typeof maybeId === "string" && maybeId.length > 0) {
-          createdId = maybeId;
-        }
+        // The create response schema omits `id`, so we discover the created
+        // view by listing — needed for cleanup.
+        const views = yield* getViews({});
+        const match = views.find((v) => v.name === viewName) as
+          | { id?: string }
+          | undefined;
+        if (match?.id) createdId = match.id;
       }).pipe(
         Effect.ensuring(
           Effect.gen(function* () {
             if (createdId !== undefined) {
               yield* deleteView({ id: createdId }).pipe(Effect.ignore);
             }
+            yield* deleteDataset({ dataset_id: datasetName }).pipe(
+              Effect.ignore,
+            );
           }),
         ),
       );
@@ -48,18 +58,7 @@ describe("createView", () => {
     { timeout: 60_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when required view fields are missing",
-    async () => {
-      // Empty body violates required fields (name, aplQuery). Axiom surfaces
-      // this as 422, which the SDK's matchError maps to the typed
-      // UnprocessableEntity class.
-      const error = await runEffect(
-        createView({} as Record<string, never>).pipe(Effect.flip),
-      );
-
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
+  // Removed: the client-side schema requires `name` and `aplQuery`, so
+  // `createView({})` fails at encode time before any request is sent.
+  // Server-side 422 is not reachable without bypassing the schema.
 });

@@ -16,10 +16,12 @@ export const UpdateCurrentUserOutput =
     email: Schema.String,
     id: Schema.String,
     name: Schema.String,
-    role: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    }),
+    role: Schema.optional(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+      }),
+    ),
   });
 export type UpdateCurrentUserOutput = typeof UpdateCurrentUserOutput.Type;
 

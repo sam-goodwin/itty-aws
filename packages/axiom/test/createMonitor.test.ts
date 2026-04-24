@@ -21,11 +21,6 @@ describe("createMonitor", () => {
           description: "createMonitor test fixture",
         });
 
-        // The generated input schema is Struct({}) so TS rejects real monitor
-        // fields. We cast through `unknown` to send a realistic Threshold
-        // monitor body; `buildRequestParts` will only include fields the
-        // schema knows about, so this test doubles as a signal that the
-        // input schema needs to be broadened.
         const monitor = yield* createMonitor({
           name: monitorName,
           description: "createMonitor happy path",
@@ -38,7 +33,7 @@ describe("createMonitor", () => {
           notifierIds: [],
           alertOnNoData: false,
           resolvable: true,
-        } as unknown as Record<string, never>);
+        });
 
         expect(typeof monitor.id).toBe("string");
         expect(monitor.id.length).toBeGreaterThan(0);
@@ -67,18 +62,7 @@ describe("createMonitor", () => {
     { timeout: 60_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when required monitor fields are missing",
-    async () => {
-      // Empty body violates required fields (name, type, query fields, etc.).
-      // Axiom surfaces this as 422, which the SDK's matchError maps to the
-      // typed UnprocessableEntity class.
-      const error = await runEffect(
-        createMonitor({} as Record<string, never>).pipe(Effect.flip),
-      );
-
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
+  // Removed: the client-side schema requires `name` and `type`, so
+  // `createMonitor({})` fails at encode time before any request is sent.
+  // Server-side 422 is not reachable without bypassing the schema.
 });

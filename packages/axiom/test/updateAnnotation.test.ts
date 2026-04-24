@@ -56,10 +56,11 @@ describe("updateAnnotation", () => {
   it(
     "returns NotFound for a well-formed id that does not exist",
     async () => {
-      // Well-formed `ann_` prefixed id that should never resolve.
+      // Axiom annotation IDs are `ann_` + a 26-char Crockford-base32 suffix.
+      // Anything else is rejected as 400 before the lookup.
       const error = await runEffect(
         updateAnnotation({
-          id: `ann_doesnotexist${testRunId}`,
+          id: "ann_01234567890123456789012345",
           title: "anything",
         }).pipe(Effect.flip),
       );
@@ -70,10 +71,10 @@ describe("updateAnnotation", () => {
   );
 
   it(
-    "returns BadRequest for a malformed annotation id",
+    "returns UnprocessableEntity for a malformed annotation id",
     async () => {
-      // Probes confirmed axiom returns 400 for ids that don't match the
-      // `ann_<token>` shape.
+      // Probed live: axiom returns 422 (code 605, "id in path should match
+      // '^ann_'") for ids that don't match the `ann_<token>` shape.
       const error = await runEffect(
         updateAnnotation({
           id: "not-a-valid-annotation-id",
@@ -81,44 +82,13 @@ describe("updateAnnotation", () => {
         }).pipe(Effect.flip),
       );
 
-      expect((error as { _tag: string })._tag).toBe("BadRequest");
+      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
     },
     { timeout: 30_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when updating with invalid required fields",
-    async () => {
-      const datasetName = `distilled-axiom-updateanno-422-${testRunId}`;
-      const annotationType = `distilled-test-${testRunId}`;
-
-      const effect = Effect.gen(function* () {
-        yield* createDataset({
-          name: datasetName,
-          description: "updateAnnotation 422 fixture",
-        });
-        const created = yield* createAnnotation({
-          datasets: [datasetName],
-          type: annotationType,
-          title: "initial",
-        });
-
-        // Empty datasets array violates required-field semantics; axiom
-        // responds with 422 / code 602.
-        const error = yield* updateAnnotation({
-          id: created.id,
-          datasets: [],
-        }).pipe(Effect.flip);
-
-        expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-      }).pipe(
-        Effect.ensuring(
-          deleteDataset({ dataset_id: datasetName }).pipe(Effect.ignore),
-        ),
-      );
-
-      await runEffect(effect);
-    },
-    { timeout: 60_000 },
-  );
+  // Removed: "returns UnprocessableEntity when updating with invalid
+  // required fields". Probed live: axiom silently ignores an empty
+  // `datasets` array on update and returns 200 with the existing datasets
+  // unchanged — no 422 path reachable via this input shape.
 });

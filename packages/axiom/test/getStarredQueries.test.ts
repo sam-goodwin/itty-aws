@@ -9,7 +9,9 @@ describe("getStarredQueries", () => {
   it(
     "returns an array of starred queries",
     async () => {
-      const starred = await runEffect(getStarredQueries({}));
+      // `who` is required by the server (spec lists it as optional but the
+      // backend rejects requests without one of a user ID / "team" / "all").
+      const starred = await runEffect(getStarredQueries({ who: "all" }));
 
       expect(Array.isArray(starred)).toBe(true);
 
@@ -30,7 +32,7 @@ describe("getStarredQueries", () => {
       // Pagination params are optional query params; a small page should
       // still produce a well-typed array.
       const starred = await runEffect(
-        getStarredQueries({ limit: 1, offset: 0 }),
+        getStarredQueries({ limit: 1, offset: 0, who: "all" }),
       );
 
       expect(Array.isArray(starred)).toBe(true);

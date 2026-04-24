@@ -63,7 +63,7 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queryRegion: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.String),
   variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).pipe(T.Http({ method: "POST", path: "/v1/query/_apl?format=tabular" }));
+}).pipe(T.Http({ method: "POST", path: "/v1/datasets/_apl?format=tabular" }));
 export type QueryAplInput = typeof QueryAplInput.Type;
 
 // Output Schema

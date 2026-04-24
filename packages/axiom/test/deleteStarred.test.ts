@@ -21,11 +21,6 @@ describe("deleteStarred", () => {
           description: "deleteStarred test fixture",
         });
 
-        // The generated createStarred input schema is empty, so we cast
-        // through `unknown` to send a realistic APL starred-query body.
-        // Fields not declared on the input schema will be stripped by
-        // `buildRequestParts` — this test also doubles as a signal that
-        // the createStarred input schema needs to be broadened.
         const created = yield* createStarred({
           name: queryName,
           dataset: datasetName,
@@ -35,7 +30,7 @@ describe("deleteStarred", () => {
             apl: `['${datasetName}'] | summarize count()`,
           },
           who: "user",
-        } as unknown as Record<string, never>);
+        });
 
         createdId = created.id;
 

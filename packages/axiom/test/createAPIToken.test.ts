@@ -5,6 +5,11 @@ import { deleteAPIToken } from "../src/operations/v2/deleteAPIToken";
 import { runEffect, testRunId } from "./setup";
 
 describe("createAPIToken", () => {
+  const cleanup = (id: string | undefined) =>
+    id === undefined
+      ? Effect.void
+      : deleteAPIToken({ id }).pipe(Effect.ignore);
+
   it(
     "creates an API token with org capabilities and returns the stored configuration",
     async () => {
@@ -41,20 +46,30 @@ describe("createAPIToken", () => {
   );
 
   it(
-    "returns UnprocessableEntity when the token name is empty",
+    "accepts an empty token name",
     async () => {
-      // `name` is required and must be non-empty; axiom surfaces this as 422
-      // → UnprocessableEntity.
-      const error = await runEffect(
-        createAPIToken({
+      // Probed live: axiom accepts an empty `name` and stores the token
+      // with `name: ""`. The generated spec lists `name` as required which
+      // matches the request shape, but the backend does not enforce
+      // non-empty on the actual value. Assert the permissive behaviour so
+      // we catch a regression either way — make sure we clean up the
+      // stored token.
+      let createdId: string | undefined;
+
+      const effect = Effect.gen(function* () {
+        const token = yield* createAPIToken({
           name: "",
           orgCapabilities: {
             datasets: ["read"],
           },
-        }).pipe(Effect.flip),
-      );
+        });
 
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
+        expect(token.name).toBe("");
+        expect(typeof token.id).toBe("string");
+        createdId = token.id;
+      }).pipe(Effect.ensuring(Effect.suspend(() => cleanup(createdId))));
+
+      await runEffect(effect);
     },
     { timeout: 30_000 },
   );

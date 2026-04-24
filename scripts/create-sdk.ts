@@ -948,29 +948,14 @@ const scaffoldPackage = (
         tsconfigPath,
         JSON.stringify(
           {
+            extends: "../../tsconfig.base.json",
             include: ["src/**/*.ts"],
             compilerOptions: {
-              lib: ["ESNext"],
-              target: "ESNext",
-              module: "Preserve",
-              moduleDetection: "force",
-              allowJs: true,
-              moduleResolution: "bundler",
-              verbatimModuleSyntax: true,
-              rewriteRelativeImportExtensions: true,
-              noEmit: false,
-              composite: true,
               outDir: "./lib",
               rootDir: "./src",
-              declaration: true,
-              declarationMap: true,
-              sourceMap: true,
-              strict: true,
-              skipLibCheck: true,
-              noFallthroughCasesInSwitch: true,
-              noUnusedLocals: false,
-              noUnusedParameters: false,
-              noPropertyAccessFromIndexSignature: false,
+              paths: {
+                "~/*": ["./src/*"],
+              },
             },
           },
           null,
@@ -981,6 +966,56 @@ const scaffoldPackage = (
     } else {
       yield* Console.log("  ⚠️  tsconfig.json already exists, skipping");
     }
+
+    // --- tsconfig.test.json ---
+    const tsconfigTestPath = path.join(pkgDir, "tsconfig.test.json");
+    const tsconfigTestExists = yield* fs.exists(tsconfigTestPath);
+    if (!tsconfigTestExists) {
+      yield* fs.writeFileString(
+        tsconfigTestPath,
+        JSON.stringify(
+          {
+            extends: "../../tsconfig.base.json",
+            include: ["src/**/*.ts", "test/**/*.ts"],
+            compilerOptions: {
+              rootDir: ".",
+              noEmit: true,
+              paths: {
+                "~/*": ["./src/*"],
+              },
+            },
+          },
+          null,
+          2,
+        ),
+      );
+      yield* Console.log("  ✅ tsconfig.test.json");
+    } else {
+      yield* Console.log("  ⚠️  tsconfig.test.json already exists, skipping");
+    }
+
+    // --- vitest.config.ts ---
+    yield* writeIfNotExists(
+      path.join(pkgDir, "vitest.config.ts"),
+      `import { config } from "dotenv";
+import { resolve } from "path";
+
+config({ path: resolve(__dirname, "../../.env") });
+config({ path: resolve(__dirname, ".env") });
+
+export default {
+  test: {
+    include: ["test/**/*.test.ts"],
+    testTimeout: 120000,
+  },
+  resolve: {
+    alias: {
+      "~": new URL("./src", import.meta.url).pathname,
+    },
+  },
+};
+`,
+    );
 
     // --- Source files ---
     yield* writeIfNotExists(

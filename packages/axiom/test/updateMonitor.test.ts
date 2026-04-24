@@ -1,6 +1,9 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
-import { getMonitors } from "../src/operations/v2/getMonitors";
+import { createDataset } from "../src/operations/v2/createDataset";
+import { createMonitor } from "../src/operations/v2/createMonitor";
+import { deleteDataset } from "../src/operations/v2/deleteDataset";
+import { deleteMonitor } from "../src/operations/v2/deleteMonitor";
 import { updateMonitor } from "../src/operations/v2/updateMonitor";
 import { runEffect, testRunId } from "./setup";
 
@@ -8,42 +11,57 @@ describe("updateMonitor", () => {
   it(
     "updates an existing monitor and returns the refreshed record",
     async () => {
-      // The generated updateMonitor input schema only exposes `id` and
-      // strips any extra fields during encoding. We still need a real
-      // monitor to target, so we discover one via getMonitors.
+      const datasetName = `distilled-axiom-upmon-${testRunId}`;
+      const monitorName = `distilled-axiom-upmon-${testRunId}`;
+      let createdId: string | undefined;
+
       const effect = Effect.gen(function* () {
-        const monitors = yield* getMonitors({});
+        yield* createDataset({
+          name: datasetName,
+          description: "updateMonitor test fixture",
+        });
 
-        if (monitors.length === 0) {
-          throw new Error(
-            "Test prerequisite: axiom org must have at least one monitor; the generated input schema is incomplete so this test cannot create its own fixture.",
-          );
-        }
+        const monitor = yield* createMonitor({
+          name: monitorName,
+          description: "updateMonitor initial",
+          type: "Threshold",
+          aplQuery: `['${datasetName}'] | summarize count()`,
+          intervalMinutes: 5,
+          rangeMinutes: 5,
+          operator: "Above",
+          threshold: 1,
+          notifierIds: [],
+          alertOnNoData: false,
+          resolvable: true,
+        });
+        createdId = monitor.id;
 
-        const target = monitors[0]!;
-
-        // Cast through `unknown` to send a realistic body. Fields that are
-        // not declared on the input schema are stripped by
-        // `buildRequestParts`; this test also doubles as a signal that the
-        // updateMonitor input schema needs to be broadened.
         const updated = yield* updateMonitor({
-          id: target.id,
-          name: target.name,
+          id: monitor.id,
+          name: monitor.name,
           description: `updated by distilled test ${testRunId}`,
-          type: target.type,
-          aplQuery: target.aplQuery ?? "",
-          intervalMinutes: target.intervalMinutes ?? 5,
-          rangeMinutes: target.rangeMinutes ?? 5,
-          operator: target.operator ?? "Above",
-          threshold: target.threshold ?? 1,
-        } as unknown as { id: string });
+          type: monitor.type,
+          aplQuery: monitor.aplQuery ?? `['${datasetName}']`,
+          intervalMinutes: monitor.intervalMinutes ?? 5,
+          rangeMinutes: monitor.rangeMinutes ?? 5,
+          operator: monitor.operator ?? "Above",
+          threshold: (monitor.threshold ?? 1) + 1,
+        });
 
-        expect(updated.id).toBe(target.id);
-        expect(typeof updated.name).toBe("string");
-        expect(["Threshold", "MatchEvent", "AnomalyDetection"]).toContain(
-          updated.type,
-        );
-      });
+        expect(updated.id).toBe(monitor.id);
+        expect(updated.description).toContain("updated by distilled test");
+      }).pipe(
+        Effect.ensuring(
+          Effect.gen(function* () {
+            if (createdId !== undefined) {
+              yield* deleteMonitor({ id: createdId }).pipe(Effect.ignore);
+            }
+            yield* deleteDataset({ dataset_id: datasetName }).pipe(
+              Effect.ignore,
+            );
+          }),
+        ),
+      );
 
       await runEffect(effect);
     },
@@ -54,10 +72,18 @@ describe("updateMonitor", () => {
     "returns NotFound for a well-formed monitor id that does not exist",
     async () => {
       // Axiom monitor ids are prefixed with `mon_`. A syntactically valid
-      // but non-existent id should produce a 404 → NotFound.
+      // but non-existent id should produce a 404 → NotFound. Provide a full
+      // body so the request passes client-side schema validation.
       const error = await runEffect(
-        updateMonitor({ id: `mon_doesnotexist${testRunId}` } as unknown as {
-          id: string;
+        updateMonitor({
+          id: `mon_doesnotexist${testRunId}`,
+          name: `distilled-axiom-upmon-nf-${testRunId}`,
+          type: "Threshold",
+          aplQuery: "['_traces']",
+          intervalMinutes: 5,
+          rangeMinutes: 5,
+          operator: "Above",
+          threshold: 1,
         }).pipe(Effect.flip),
       );
 
@@ -66,30 +92,7 @@ describe("updateMonitor", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when required body fields are missing",
-    async () => {
-      // PUT /v2/monitors/{id} requires a full monitor payload (name, type,
-      // query, etc.). The generated schema sends an empty body, which
-      // should yield 422 → UnprocessableEntity for any existing monitor.
-      const effect = Effect.gen(function* () {
-        const monitors = yield* getMonitors({});
-        if (monitors.length === 0) {
-          throw new Error(
-            "Test prerequisite: axiom org must have at least one monitor to probe UnprocessableEntity against.",
-          );
-        }
-
-        const target = monitors[0]!;
-        const error = yield* updateMonitor({ id: target.id }).pipe(
-          Effect.flip,
-        );
-
-        expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-      });
-
-      await runEffect(effect);
-    },
-    { timeout: 30_000 },
-  );
+  // Removed: the client-side schema requires name/type, so
+  // `updateMonitor({ id })` fails at encode time before any request is
+  // sent. Server-side 422 is not reachable without bypassing the schema.
 });

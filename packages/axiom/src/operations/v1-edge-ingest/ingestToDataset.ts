@@ -9,7 +9,7 @@ export const IngestToDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   "timestamp-field": Schema.optional(Schema.String),
   "timestamp-format": Schema.optional(Schema.String),
   "csv-delimiter": Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v1/ingest/{dataset-id}" }));
+}).pipe(T.Http({ method: "POST", path: "/v1/datasets/{dataset-id}/ingest" }));
 export type IngestToDatasetInput = typeof IngestToDatasetInput.Type;
 
 // Output Schema

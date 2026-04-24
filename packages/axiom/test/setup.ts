@@ -1,10 +1,6 @@
-import { config } from "dotenv";
 import { Effect, Layer } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { CredentialsFromEnv } from "../src/credentials";
-
-// Load environment variables from .env file at the repo root.
-config();
 
 // Main layer providing credentials and HTTP client for all tests.
 export const MainLayer = Layer.merge(CredentialsFromEnv, FetchHttpClient.layer);

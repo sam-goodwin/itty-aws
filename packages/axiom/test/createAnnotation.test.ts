@@ -81,10 +81,12 @@ describe("createAnnotation", () => {
   );
 
   it(
-    "returns UnprocessableEntity when required fields are missing",
+    "returns BadRequest when the datasets array is empty",
     async () => {
-      // Axiom returns 422 with code:602 for missing required body fields.
-      // `datasets` is required; an empty array violates this.
+      // Probed live: axiom returns 400 "invalid annotation: need at least
+      // one dataset" rather than a 422. Earlier tests assumed 422 for
+      // missing-field semantics, but the validator actually surfaces this
+      // one as a BadRequest.
       const error = await runEffect(
         createAnnotation({
           datasets: [],
@@ -92,7 +94,7 @@ describe("createAnnotation", () => {
         }).pipe(Effect.flip),
       );
 
-      expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
+      expect((error as { _tag: string })._tag).toBe("BadRequest");
     },
     { timeout: 30_000 },
   );

@@ -57,36 +57,10 @@ describe("updateDataset", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "returns UnprocessableEntity for a semantically invalid retentionDays",
-    async () => {
-      const datasetName = `distilled-axiom-updateds-422-${testRunId}`;
-
-      const effect = Effect.gen(function* () {
-        yield* createDataset({
-          name: datasetName,
-          description: "updateDataset 422 fixture",
-        });
-
-        // A negative retention period is syntactically a valid number but
-        // semantically invalid; axiom responds with 422 / code 602.
-        const error = yield* updateDataset({
-          dataset_id: datasetName,
-          retentionDays: -1,
-          useRetentionPeriod: true,
-        }).pipe(Effect.flip);
-
-        expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-      }).pipe(
-        Effect.ensuring(
-          deleteDataset({ dataset_id: datasetName }).pipe(Effect.ignore),
-        ),
-      );
-
-      await runEffect(effect);
-    },
-    { timeout: 60_000 },
-  );
+  // Removed: "returns UnprocessableEntity for a semantically invalid
+  // retentionDays". Probed live: axiom accepts a negative retentionDays
+  // value and stores it verbatim (200 OK). There is no simple body-shape
+  // input that triggers 422 on this endpoint.
 
   it(
     "returns Unauthorized when the caller's credentials lack dataset write access",

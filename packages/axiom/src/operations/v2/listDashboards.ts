@@ -33,8 +33,8 @@ export const ListDashboardsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           static: Schema.optional(Schema.Boolean),
         }),
       ),
-      refreshTime: Schema.Literals(["15", "60", "300"]),
-      schemaVersion: Schema.Literals(["2"]),
+      refreshTime: Schema.Literals([15, 60, 300]),
+      schemaVersion: Schema.Literals([2]),
       against: Schema.optional(
         Schema.Literals([
           "-1h",
@@ -61,7 +61,7 @@ export const ListDashboardsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     uid: Schema.String,
     updatedAt: Schema.String,
     updatedBy: Schema.String,
-    version: Schema.Number,
+    version: Schema.Unknown,
   }),
 );
 export type ListDashboardsOutput = typeof ListDashboardsOutput.Type;

@@ -1,7 +1,7 @@
 import { Effect, Layer, Redacted } from "effect";
 import { FetchHttpClient } from "effect/unstable/http";
 import { describe, expect, it } from "vitest";
-import { Credentials } from "../src/client";
+import { Credentials } from "../src/credentials";
 import { createDataset } from "../src/operations/v2/createDataset";
 import { deleteDataset } from "../src/operations/v2/deleteDataset";
 import { queryApl } from "../src/operations/v1-edge-query/queryApl";

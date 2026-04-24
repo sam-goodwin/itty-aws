@@ -32,8 +32,8 @@ export const GetDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         static: Schema.optional(Schema.Boolean),
       }),
     ),
-    refreshTime: Schema.Literals(["15", "60", "300"]),
-    schemaVersion: Schema.Literals(["2"]),
+    refreshTime: Schema.Literals([15, 60, 300]),
+    schemaVersion: Schema.Literals([2]),
     against: Schema.optional(
       Schema.Literals([
         "-1h",
@@ -60,7 +60,7 @@ export const GetDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uid: Schema.String,
   updatedAt: Schema.String,
   updatedBy: Schema.String,
-  version: Schema.Number,
+  version: Schema.Unknown,
 });
 export type GetDashboardOutput = typeof GetDashboardOutput.Type;
 

@@ -1,6 +1,8 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
+import { createDataset } from "../src/operations/v2/createDataset";
 import { createView } from "../src/operations/v2/createView";
+import { deleteDataset } from "../src/operations/v2/deleteDataset";
 import { deleteView } from "../src/operations/v2/deleteView";
 import { getView } from "../src/operations/v2/getView";
 import { runEffect, testRunId } from "./setup";
@@ -9,37 +11,37 @@ describe("deleteView", () => {
   it(
     "deletes an existing view and subsequent fetches return NotFound",
     async () => {
-      const viewName = `distilled-axiom-delview-${testRunId}`;
-      let createdId: string | undefined;
-      let deleted = false;
+      const datasetName = `distilled-ax-dvds-${testRunId}`;
+      const viewName = `distilled-ax-dvview-${testRunId}`;
 
       const effect = Effect.gen(function* () {
-        // createView's generated input schema is Struct({}); cast through
-        // `unknown` to send a realistic payload. Its output schema omits
-        // `id`, so extract it via an unknown-cast.
-        const created = yield* createView({
+        yield* createDataset({
+          name: datasetName,
+          description: "deleteView test fixture",
+        });
+
+        yield* createView({
           name: viewName,
           description: "deleteView happy path",
-          aplQuery: "['_traces'] | limit 10",
-        } as unknown as Record<string, never>);
+          aplQuery: `['${datasetName}'] | limit 10`,
+        });
 
-        const viewId = (created as unknown as { id?: string }).id;
-        expect(typeof viewId).toBe("string");
-        createdId = viewId;
+        // Views are addressed by name on api.axiom.co — the generated `id`
+        // path param is really the view's name.
+        yield* deleteView({ id: viewName });
 
-        yield* deleteView({ id: viewId as string });
-        deleted = true;
-
-        const afterDelete = yield* getView({ id: viewId as string }).pipe(
+        const afterDelete = yield* getView({ id: viewName }).pipe(
           Effect.flip,
         );
         expect((afterDelete as { _tag: string })._tag).toBe("NotFound");
       }).pipe(
         Effect.ensuring(
           Effect.gen(function* () {
-            if (createdId !== undefined && !deleted) {
-              yield* deleteView({ id: createdId }).pipe(Effect.ignore);
-            }
+            // Best-effort cleanup if an earlier step failed mid-flight.
+            yield* deleteView({ id: viewName }).pipe(Effect.ignore);
+            yield* deleteDataset({ dataset_id: datasetName }).pipe(
+              Effect.ignore,
+            );
           }),
         ),
       );

@@ -25,8 +25,8 @@ export const UpdateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         static: Schema.optional(Schema.Boolean),
       }),
     ),
-    refreshTime: Schema.Literals(["15", "60", "300"]),
-    schemaVersion: Schema.Literals(["2"]),
+    refreshTime: Schema.Literals([15, 60, 300]),
+    schemaVersion: Schema.Literals([2]),
     against: Schema.optional(
       Schema.Literals([
         "-1h",
@@ -51,7 +51,7 @@ export const UpdateDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   message: Schema.optional(Schema.String),
   overwrite: Schema.optional(Schema.Boolean),
-  version: Schema.optional(Schema.Number),
+  version: Schema.optional(Schema.Unknown),
 }).pipe(T.Http({ method: "PUT", path: "/v2/dashboards/uid/{uid}" }));
 export type UpdateDashboardInput = typeof UpdateDashboardInput.Type;
 
@@ -79,8 +79,8 @@ export const UpdateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           static: Schema.optional(Schema.Boolean),
         }),
       ),
-      refreshTime: Schema.Literals(["15", "60", "300"]),
-      schemaVersion: Schema.Literals(["2"]),
+      refreshTime: Schema.Literals([15, 60, 300]),
+      schemaVersion: Schema.Literals([2]),
       against: Schema.optional(
         Schema.Literals([
           "-1h",
@@ -107,7 +107,7 @@ export const UpdateDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uid: Schema.String,
     updatedAt: Schema.String,
     updatedBy: Schema.String,
-    version: Schema.Number,
+    version: Schema.Unknown,
   }),
   overwritten: Schema.optional(Schema.Boolean),
   status: Schema.Literals(["created", "updated"]),

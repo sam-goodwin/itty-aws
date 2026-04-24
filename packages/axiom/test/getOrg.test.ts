@@ -42,15 +42,16 @@ describe("getOrg", () => {
   );
 
   it(
-    "returns NotFound for an org id that does not exist",
+    "returns InternalServerError for an org id that does not exist",
     async () => {
-      // A syntactically-valid but non-existent org id should produce a 404
-      // → NotFound.
+      // Probed live: axiom's /v2/orgs/{id} returns 500 (not 404) when the
+      // id does not exist. Document the observed behaviour rather than
+      // pretending 404 is reachable.
       const error = await runEffect(
         getOrg({ id: `doesnotexist-${testRunId}` }).pipe(Effect.flip),
       );
 
-      expect((error as { _tag: string })._tag).toBe("NotFound");
+      expect((error as { _tag: string })._tag).toBe("InternalServerError");
     },
     { timeout: 30_000 },
   );

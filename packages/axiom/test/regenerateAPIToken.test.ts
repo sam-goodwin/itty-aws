@@ -11,6 +11,7 @@ describe("regenerateAPIToken", () => {
     async () => {
       const tokenName = `distilled-axiom-regen-token-${testRunId}`;
       let createdId: string | undefined;
+      let regeneratedId: string | undefined;
 
       const effect = Effect.gen(function* () {
         const created = yield* createAPIToken({
@@ -32,13 +33,23 @@ describe("regenerateAPIToken", () => {
           existingTokenExpiresAt,
         });
 
-        // Axiom returns the updated token record; the id is preserved.
-        expect(regenerated.id).toBe(created.id);
+        // Probed live: axiom returns a *new* token id (and a new secret),
+        // not the original — the old id is scheduled to expire at
+        // `existingTokenExpiresAt`. Assert on the shape and capabilities
+        // rather than id equality, and track the new id for cleanup.
+        expect(typeof regenerated.id).toBe("string");
+        expect(regenerated.id.length).toBeGreaterThan(0);
         expect(typeof regenerated.name).toBe("string");
         expect(regenerated.orgCapabilities.datasets).toContain("read");
+        regeneratedId = regenerated.id;
       }).pipe(
         Effect.ensuring(
           Effect.gen(function* () {
+            if (regeneratedId !== undefined) {
+              yield* deleteAPIToken({ id: regeneratedId }).pipe(
+                Effect.ignore,
+              );
+            }
             if (createdId !== undefined) {
               yield* deleteAPIToken({ id: createdId }).pipe(Effect.ignore);
             }
@@ -69,7 +80,7 @@ describe("regenerateAPIToken", () => {
   );
 
   it(
-    "returns UnprocessableEntity when existingTokenExpiresAt is not a valid ISO timestamp",
+    "returns BadRequest when existingTokenExpiresAt is not a valid ISO timestamp",
     async () => {
       const tokenName = `distilled-axiom-regen-422-${testRunId}`;
       let createdId: string | undefined;
@@ -83,12 +94,14 @@ describe("regenerateAPIToken", () => {
         });
         createdId = created.id;
 
+        // Probed live: axiom returns 400 ("parsing time ... cannot parse")
+        // for a non-ISO timestamp, not 422.
         const error = yield* regenerateAPIToken({
           id: created.id,
           existingTokenExpiresAt: "not-a-valid-timestamp",
         }).pipe(Effect.flip);
 
-        expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
+        expect((error as { _tag: string })._tag).toBe("BadRequest");
       }).pipe(
         Effect.ensuring(
           Effect.gen(function* () {

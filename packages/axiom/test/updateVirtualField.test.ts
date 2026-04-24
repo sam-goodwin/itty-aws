@@ -21,17 +21,12 @@ describe("updateVirtualField", () => {
           description: "updateVirtualField test fixture",
         });
 
-        // The generated create/update virtual field input schemas are
-        // Struct({}) / Struct({id}); cast through `unknown` to send a
-        // realistic payload. `buildRequestParts` only serialises fields
-        // the schema knows about — a signal the input schema needs to be
-        // broadened — but the underlying PUT accepts the full body.
         const created = yield* createVirtualField({
           dataset: datasetName,
           name: fieldName,
           description: "initial",
           expression: "1 + 1",
-        } as unknown as Record<string, never>);
+        });
         createdId = created.id;
 
         const updated = yield* updateVirtualField({
@@ -40,7 +35,7 @@ describe("updateVirtualField", () => {
           name: fieldName,
           description: "updated",
           expression: "2 + 2",
-        } as unknown as { id: string });
+        });
 
         expect(updated.id).toBe(created.id);
         expect(updated.dataset).toBe(datasetName);
@@ -73,7 +68,7 @@ describe("updateVirtualField", () => {
           dataset: `distilled-axiom-upvf-${testRunId}`,
           name: `distilled_axiom_upvf_${testRunId}`,
           expression: "1 + 1",
-        } as unknown as { id: string }).pipe(Effect.flip),
+        }).pipe(Effect.flip),
       );
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
@@ -81,49 +76,8 @@ describe("updateVirtualField", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "returns UnprocessableEntity when required update fields are missing",
-    async () => {
-      const datasetName = `distilled-axiom-upvf-422-${testRunId}`;
-      const fieldName = `distilled_axiom_upvf_422_${testRunId}`;
-      let createdId: string | undefined;
-
-      const effect = Effect.gen(function* () {
-        yield* createDataset({
-          name: datasetName,
-          description: "updateVirtualField 422 fixture",
-        });
-
-        const created = yield* createVirtualField({
-          dataset: datasetName,
-          name: fieldName,
-          description: "initial",
-          expression: "1 + 1",
-        } as unknown as Record<string, never>);
-        createdId = created.id;
-
-        // Sending only the `id` (no dataset/name/expression) violates the
-        // required update body; axiom surfaces this as 422.
-        const error = yield* updateVirtualField({ id: created.id }).pipe(
-          Effect.flip,
-        );
-
-        expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
-      }).pipe(
-        Effect.ensuring(
-          Effect.gen(function* () {
-            if (createdId !== undefined) {
-              yield* deleteVirtualField({ id: createdId }).pipe(Effect.ignore);
-            }
-            yield* deleteDataset({ dataset_id: datasetName }).pipe(
-              Effect.ignore,
-            );
-          }),
-        ),
-      );
-
-      await runEffect(effect);
-    },
-    { timeout: 60_000 },
-  );
+  // Removed: the client-side schema requires dataset/name/expression on
+  // update, so `updateVirtualField({ id })` fails at encode time before any
+  // request is sent. Server-side 422 is not reachable without bypassing the
+  // schema.
 });

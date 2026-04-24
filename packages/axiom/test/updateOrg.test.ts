@@ -9,8 +9,9 @@ describe("updateOrg", () => {
     "renames the caller's org and restores the original name",
     async () => {
       // Discover the caller's first org, rename it, then restore the
-      // original name so the test is net-neutral.
-      const renamed = `distilled-axiom-updorg-${testRunId}`;
+      // original name so the test is net-neutral. Org names are capped at
+      // 30 characters (spaces included), so keep the suffix short.
+      const renamed = `dist-up-${testRunId}`;
       let originalName: string | undefined;
       let orgId: string | undefined;
 
@@ -51,18 +52,19 @@ describe("updateOrg", () => {
   );
 
   it(
-    "returns NotFound for an org id that does not exist",
+    "returns InternalServerError for an org id that does not exist",
     async () => {
-      // A syntactically-valid but non-existent org id should produce a 404
-      // → NotFound.
+      // Probed live: axiom's /v2/orgs/{id} returns 500 (not 404) when the
+      // id does not exist. Document the observed behaviour rather than
+      // pretending 404 is reachable.
       const error = await runEffect(
         updateOrg({
           id: `doesnotexist-${testRunId}`,
-          name: `distilled-axiom-updorg-nf-${testRunId}`,
+          name: `dist-upd-nf-${testRunId}`,
         }).pipe(Effect.flip),
       );
 
-      expect((error as { _tag: string })._tag).toBe("NotFound");
+      expect((error as { _tag: string })._tag).toBe("InternalServerError");
     },
     { timeout: 30_000 },
   );
