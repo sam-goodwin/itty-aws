@@ -46,21 +46,55 @@ export const ensureMetadataDir = (
  * Write the initial metadata skeleton if the file doesn't already exist.
  * Called by create-sdk after scaffolding so downstream agents have something
  * to read and append to.
+ *
+ * `userNote`, if provided, is stored under the `userNote` key and surfaced
+ * to every downstream agent as high-priority guidance from the human. If
+ * the metadata file already exists, a new non-empty `userNote` will be
+ * merged in (not lost) and older `userNote` content is appended to `notes`.
  */
 export const initMetadata = (
   root: string,
   name: string,
   pkgDir: string,
+  userNote?: string,
 ): Effect.Effect<void, never, FileSystem.FileSystem | Path.Path> =>
   Effect.gen(function* () {
     const fs = yield* FileSystem.FileSystem;
     yield* ensureMetadataDir(root);
     const p = yield* metadataPath(root, name);
+    const note = userNote?.trim() ?? "";
     const exists = yield* fs.exists(p).pipe(Effect.orElseSucceed(() => false));
-    if (exists) return;
+    if (exists) {
+      if (!note) return;
+      // Merge the new note into the existing file without losing other keys.
+      const raw = yield* fs
+        .readFileString(p)
+        .pipe(Effect.orElseSucceed(() => "{}"));
+      let parsed: Record<string, unknown> = {};
+      try {
+        parsed = JSON.parse(raw) as Record<string, unknown>;
+      } catch {
+        parsed = {};
+      }
+      const previous =
+        typeof parsed.userNote === "string" ? parsed.userNote : "";
+      if (previous && previous !== note) {
+        const notesArr = Array.isArray(parsed.notes)
+          ? (parsed.notes as unknown[])
+          : [];
+        notesArr.push(`[previous userNote] ${previous}`);
+        parsed.notes = notesArr;
+      }
+      parsed.userNote = note;
+      yield* fs
+        .writeFileString(p, JSON.stringify(parsed, null, 2))
+        .pipe(Effect.ignore);
+      return;
+    }
     const skeleton = {
       name,
       pkgDir,
+      userNote: note || null,
       // Populated by later stages. Free-form — Claude may add more keys.
       layout: null, // "operations" | "services"
       testDir: null, // "tests" | "test"
@@ -95,6 +129,11 @@ auth scheme. That saves time and tokens.
 As you discover new facts (or correct stale ones), update the file. Use the
 Read and Write tools. The file is JSON and uses these well-known keys:
 
+- \`userNote\`: **HIGH PRIORITY guidance from the human who ran the pipeline.**
+  If this is non-null, read it before anything else and treat it as a directive.
+  It often contains things like "the spec is at path X in the submodule" or
+  "only include operations under scope Y" that you would otherwise have to
+  guess. Never overwrite or ignore it.
 - \`layout\`: \`"operations"\` (flat, e.g. Neon) or \`"services"\` (grouped, e.g. Cloudflare)
 - \`testDir\`: \`"tests"\` or \`"test"\` — whichever directory the SDK uses
 - \`framework\`: \`"vitest-runEffect"\` (Neon-style) or \`"vitest-effect"\` (Cloudflare-style)

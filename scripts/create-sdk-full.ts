@@ -29,6 +29,7 @@ import { Console, Data, Effect } from "effect";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
 import { BOLD, DIM, GREEN, RED, RESET, YELLOW } from "./lib/agent.ts";
+import { initMetadata } from "./lib/metadata.ts";
 
 // ============================================================================
 // Errors
@@ -99,6 +100,12 @@ const createSdkFull = Command.make(
         "Publish a 0.0.0 placeholder to npm as @distilled.cloud/<name>",
       ),
     ),
+    note: Flag.string("note").pipe(
+      Flag.withDefault(""),
+      Flag.withDescription(
+        "Free-form guidance forwarded to every pipeline stage via metadata.json (e.g. 'the spec for this SDK is at restapi/versions/query in the submodule').",
+      ),
+    ),
     skipCreate: Flag.boolean("skip-create").pipe(
       Flag.withDefault(false),
       Flag.withDescription("Skip the create-sdk stage"),
@@ -145,6 +152,22 @@ const createSdkFull = Command.make(
             : (eff) => eff,
         );
 
+      const note = config.note.trim();
+
+      // If the create-sdk stage is skipped but a note was supplied, write it
+      // into the existing metadata file so downstream stages still see it.
+      if (config.skipCreate && note) {
+        yield* initMetadata(
+          root,
+          config.name,
+          `packages/${config.name}`,
+          note,
+        );
+        yield* Console.log(
+          `${DIM}ℹ Wrote userNote to .ai-workspace/${config.name}-metadata.json${RESET}`,
+        );
+      }
+
       // Stage 1: create-sdk
       if (!config.skipCreate) {
         const createArgs = [config.name];
@@ -152,6 +175,7 @@ const createSdkFull = Command.make(
           createArgs.push("--specs", spec);
         }
         if (config.registerPackage) createArgs.push("--register-package");
+        if (note) createArgs.push("--note", note);
         yield* runOrContinue("create-sdk", "create-sdk.ts", createArgs);
       } else {
         yield* Console.log(`${DIM}⏭  Skipping create-sdk${RESET}`);
@@ -197,6 +221,12 @@ const createSdkFull = Command.make(
       command:
         "bun scripts/create-sdk-full.ts stripe --specs https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
       description: "Full pipeline from an OpenAPI URL",
+    },
+    {
+      command:
+        "bun scripts/create-sdk-full.ts axiom-query --specs https://github.com/axiomhq/docs.git --note 'The API spec lives at restapi/versions/<version>/ inside the submodule. This SDK should cover the query service only — ignore ingest, dashboards, etc.'",
+      description:
+        "Nudge the agent when one repo contains many services or the spec is in a subdirectory",
     },
     {
       command:
