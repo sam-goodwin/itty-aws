@@ -3,6 +3,9 @@
     "InvalidRoute": [{ "code": 7003 }],
     "InvalidTokenName": [
       { "code": 400, "message": { "includes": "name must have a length" } }
+    ],
+    "PermissionGroupNotFound": [
+      { "code": 1001, "message": { "includes": "Permission group" } }
     ]
   },
   "response": {

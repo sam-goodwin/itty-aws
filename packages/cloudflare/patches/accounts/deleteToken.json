@@ -1,6 +1,7 @@
 {
   "errors": {
     "InvalidRoute": [{ "code": 7003 }],
-    "MethodNotAllowed": [{ "code": 7001 }]
+    "MethodNotAllowed": [{ "code": 7001 }],
+    "TokenNotFound": [{ "code": 1003 }]
   }
 }

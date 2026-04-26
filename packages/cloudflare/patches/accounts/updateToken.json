@@ -1,6 +1,10 @@
 {
   "errors": {
     "InvalidRoute": [{ "code": 7003 }],
-    "MethodNotAllowed": [{ "code": 7001 }]
+    "MethodNotAllowed": [{ "code": 7001 }],
+    "TokenNotFound": [{ "code": 1003 }],
+    "PermissionGroupNotFound": [
+      { "code": 1001, "message": { "includes": "Permission group" } }
+    ]
   }
 }

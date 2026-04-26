@@ -2622,6 +2622,8 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        TokenNotFound:
+          - code: 1003
     put:
       operationId: updateToken
       description: "Update an existing token.  @example ```ts const token = await
@@ -2835,6 +2837,12 @@ paths:
           - code: 7003
         MethodNotAllowed:
           - code: 7001
+        TokenNotFound:
+          - code: 1003
+        PermissionGroupNotFound:
+          - code: 1001
+            message:
+              includes: Permission group
     delete:
       operationId: deleteToken
       description: "Destroy an Account Owned API token.  @example ```ts const token =
@@ -2871,6 +2879,8 @@ paths:
           - code: 7003
         MethodNotAllowed:
           - code: 7001
+        TokenNotFound:
+          - code: 1003
   /accounts/{account_id}/tokens:
     get:
       operationId: listTokens
@@ -3208,6 +3218,10 @@ paths:
           - code: 400
             message:
               includes: name must have a length
+        PermissionGroupNotFound:
+          - code: 1001
+            message:
+              includes: Permission group
   /accounts/{account_id}/tokens/verify:
     get:
       operationId: verifyToken
@@ -3345,3 +3359,5 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        TokenNotFound:
+          - code: 1003

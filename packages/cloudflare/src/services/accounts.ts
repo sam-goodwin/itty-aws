@@ -10,7 +10,9 @@ import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
-import { type DefaultErrors } from "../errors.ts";
+import {
+  type DefaultErrors,
+} from "../errors.ts";
 
 // =============================================================================
 // Errors
@@ -20,97 +22,97 @@ export class AccountCreationForbidden extends Schema.TaggedErrorClass<AccountCre
   "AccountCreationForbidden",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(AccountCreationForbidden, [{ code: 1002 }]);
+T.applyErrorMatchers(AccountCreationForbidden, [{"code":1002}]);
 
 export class AccountNameTooLong extends Schema.TaggedErrorClass<AccountNameTooLong>()(
   "AccountNameTooLong",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(AccountNameTooLong, [
-  { code: 1001, message: { includes: "too long" } },
-]);
+T.applyErrorMatchers(AccountNameTooLong, [{"code":1001,"message":{"includes":"too long"}}]);
 
 export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
   "BadRequest",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(BadRequest, [{ code: 400 }]);
+T.applyErrorMatchers(BadRequest, [{"code":400}]);
 
 export class EndpointNotFound extends Schema.TaggedErrorClass<EndpointNotFound>()(
   "EndpointNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(EndpointNotFound, [{ code: 1199 }]);
+T.applyErrorMatchers(EndpointNotFound, [{"code":1199}]);
 
 export class InvalidAccountName extends Schema.TaggedErrorClass<InvalidAccountName>()(
   "InvalidAccountName",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(InvalidAccountName, [
-  { code: 1001, message: { includes: "invalid character" } },
-]);
+T.applyErrorMatchers(InvalidAccountName, [{"code":1001,"message":{"includes":"invalid character"}}]);
 
 export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
   "InvalidRoute",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
+T.applyErrorMatchers(InvalidRoute, [{"code":7003}]);
 
 export class InvalidTokenName extends Schema.TaggedErrorClass<InvalidTokenName>()(
   "InvalidTokenName",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(InvalidTokenName, [
-  { code: 400, message: { includes: "name must have a length" } },
-]);
+T.applyErrorMatchers(InvalidTokenName, [{"code":400,"message":{"includes":"name must have a length"}}]);
 
 export class JsonDecodeFailure extends Schema.TaggedErrorClass<JsonDecodeFailure>()(
   "JsonDecodeFailure",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(JsonDecodeFailure, [{ code: 1198 }]);
+T.applyErrorMatchers(JsonDecodeFailure, [{"code":1198}]);
 
 export class MemberNotFound extends Schema.TaggedErrorClass<MemberNotFound>()(
   "MemberNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(MemberNotFound, [{ code: 1003 }]);
+T.applyErrorMatchers(MemberNotFound, [{"code":1003}]);
 
 export class MethodNotAllowed extends Schema.TaggedErrorClass<MethodNotAllowed>()(
   "MethodNotAllowed",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(MethodNotAllowed, [
-  { code: 7001 },
-  { code: 10000 },
-  { code: 10405 },
-]);
+T.applyErrorMatchers(MethodNotAllowed, [{"code":7001},{"code":10000},{"code":10405}]);
 
 export class MissingAuthenticationToken extends Schema.TaggedErrorClass<MissingAuthenticationToken>()(
   "MissingAuthenticationToken",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(MissingAuthenticationToken, [{ code: 1001 }]);
+T.applyErrorMatchers(MissingAuthenticationToken, [{"code":1001}]);
 
 export class MissingName extends Schema.TaggedErrorClass<MissingName>()(
   "MissingName",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(MissingName, [{ code: 1001 }]);
+T.applyErrorMatchers(MissingName, [{"code":1001}]);
+
+export class PermissionGroupNotFound extends Schema.TaggedErrorClass<PermissionGroupNotFound>()(
+  "PermissionGroupNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PermissionGroupNotFound, [{"code":1001,"message":{"includes":"Permission group"}}]);
+
+export class TokenNotFound extends Schema.TaggedErrorClass<TokenNotFound>()(
+  "TokenNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TokenNotFound, [{"code":1003}]);
 
 export class UpdateAccountTypeNotSupported extends Schema.TaggedErrorClass<UpdateAccountTypeNotSupported>()(
   "UpdateAccountTypeNotSupported",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(UpdateAccountTypeNotSupported, [
-  { code: 1001, message: { includes: "account type is not supported" } },
-]);
+T.applyErrorMatchers(UpdateAccountTypeNotSupported, [{"code":1001,"message":{"includes":"account type is not supported"}}]);
 
 export class ValidationError extends Schema.TaggedErrorClass<ValidationError>()(
   "ValidationError",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(ValidationError, [{ code: 1001 }]);
+T.applyErrorMatchers(ValidationError, [{"code":1001}]);
 
 // =============================================================================
 // Account
@@ -122,10 +124,9 @@ export interface GetAccountRequest {
 }
 
 export const GetAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}" }),
-) as unknown as Schema.Schema<GetAccountRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}" })) as unknown as Schema.Schema<GetAccountRequest>;
 
 export interface GetAccountResponse {
   /** Identifier */
@@ -136,15 +137,9 @@ export interface GetAccountResponse {
   /** Timestamp for the creation of the account */
   createdOn?: string | null;
   /** Parent container details */
-  managedBy?: {
-    parentOrgId?: string | null;
-    parentOrgName?: string | null;
-  } | null;
+  managedBy?: { parentOrgId?: string | null; parentOrgName?: string | null } | null;
   /** Account settings */
-  settings?: {
-    abuseContactEmail?: string | null;
-    enforceTwofactor?: boolean | null;
-  } | null;
+  settings?: { abuseContactEmail?: string | null; enforceTwofactor?: boolean | null } | null;
 }
 
 export const GetAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -152,58 +147,19 @@ export const GetAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   type: Schema.Literals(["standard", "enterprise"]),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  managedBy: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        parentOrgId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        parentOrgName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          parentOrgId: "parent_org_id",
-          parentOrgName: "parent_org_name",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  settings: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        abuseContactEmail: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enforceTwofactor: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          abuseContactEmail: "abuse_contact_email",
-          enforceTwofactor: "enforce_twofactor",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      name: "name",
-      type: "type",
-      createdOn: "created_on",
-      managedBy: "managed_by",
-      settings: "settings",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetAccountResponse>;
+  managedBy: Schema.optional(Schema.Union([Schema.Struct({
+  parentOrgId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  parentOrgName: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+}).pipe(Schema.encodeKeys({ parentOrgId: "parent_org_id", parentOrgName: "parent_org_name" })), Schema.Null])),
+  settings: Schema.optional(Schema.Union([Schema.Struct({
+  abuseContactEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  enforceTwofactor: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+}).pipe(Schema.encodeKeys({ abuseContactEmail: "abuse_contact_email", enforceTwofactor: "enforce_twofactor" })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", name: "name", type: "type", createdOn: "created_on", managedBy: "managed_by", settings: "settings" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetAccountResponse>;
 
-export type GetAccountError = DefaultErrors | InvalidRoute;
+export type GetAccountError =
+  | DefaultErrors
+  | InvalidRoute;
 
 export const getAccount: API.OperationMethod<
   GetAccountRequest,
@@ -216,109 +172,43 @@ export const getAccount: API.OperationMethod<
   errors: [InvalidRoute],
 }));
 
-export interface ListAccountsRequest {}
+export interface ListAccountsRequest {
+}
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
-  T.Http({ method: "GET", path: "/accounts" }),
-) as unknown as Schema.Schema<ListAccountsRequest>;
+export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts" })) as unknown as Schema.Schema<ListAccountsRequest>;
 
 export interface ListAccountsResponse {
-  result: {
-    id: string;
-    name: string;
-    type: "standard" | "enterprise";
-    createdOn?: string | null;
-    managedBy?: {
-      parentOrgId?: string | null;
-      parentOrgName?: string | null;
-    } | null;
-    settings?: {
-      abuseContactEmail?: string | null;
-      enforceTwofactor?: boolean | null;
-    } | null;
-  }[];
-  resultInfo: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  };
+  result: ({ id: string; name: string; type: "standard" | "enterprise"; createdOn?: string | null; managedBy?: { parentOrgId?: string | null; parentOrgName?: string | null } | null; settings?: { abuseContactEmail?: string | null; enforceTwofactor?: boolean | null } | null })[];
+  resultInfo: { count?: number | null; page?: number | null; perPage?: number | null; totalCount?: number | null };
 }
 
 export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      type: Schema.Literals(["standard", "enterprise"]),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      managedBy: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            parentOrgId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            parentOrgName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              parentOrgId: "parent_org_id",
-              parentOrgName: "parent_org_name",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            abuseContactEmail: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            enforceTwofactor: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              abuseContactEmail: "abuse_contact_email",
-              enforceTwofactor: "enforce_twofactor",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        name: "name",
-        type: "type",
-        createdOn: "created_on",
-        managedBy: "managed_by",
-        settings: "settings",
-      }),
-    ),
-  ),
+  result: Schema.Array(Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  type: Schema.Literals(["standard", "enterprise"]),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  managedBy: Schema.optional(Schema.Union([Schema.Struct({
+    parentOrgId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    parentOrgName: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  }).pipe(Schema.encodeKeys({ parentOrgId: "parent_org_id", parentOrgName: "parent_org_name" })), Schema.Null])),
+  settings: Schema.optional(Schema.Union([Schema.Struct({
+    abuseContactEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enforceTwofactor: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }).pipe(Schema.encodeKeys({ abuseContactEmail: "abuse_contact_email", enforceTwofactor: "enforce_twofactor" })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", name: "name", type: "type", createdOn: "created_on", managedBy: "managed_by", settings: "settings" }))),
   resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-) as unknown as Schema.Schema<ListAccountsResponse>;
+  count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null]))
+}).pipe(Schema.encodeKeys({ count: "count", page: "page", perPage: "per_page", totalCount: "total_count" }))
+}).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })) as unknown as Schema.Schema<ListAccountsResponse>;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError =
+  | DefaultErrors;
 
 export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
@@ -349,14 +239,11 @@ export interface CreateAccountRequest {
 export const CreateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   type: Schema.optional(Schema.Literals(["standard", "enterprise"])),
-  unit: Schema.optional(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ),
-}).pipe(
-  T.Http({ method: "POST", path: "/accounts" }),
-) as unknown as Schema.Schema<CreateAccountRequest>;
+  unit: Schema.optional(Schema.Struct({
+  id: Schema.optional(Schema.String)
+}))
+})
+  .pipe(T.Http({ method: "POST", path: "/accounts" })) as unknown as Schema.Schema<CreateAccountRequest>;
 
 export interface CreateAccountResponse {
   /** Identifier */
@@ -367,15 +254,9 @@ export interface CreateAccountResponse {
   /** Timestamp for the creation of the account */
   createdOn?: string | null;
   /** Parent container details */
-  managedBy?: {
-    parentOrgId?: string | null;
-    parentOrgName?: string | null;
-  } | null;
+  managedBy?: { parentOrgId?: string | null; parentOrgName?: string | null } | null;
   /** Account settings */
-  settings?: {
-    abuseContactEmail?: string | null;
-    enforceTwofactor?: boolean | null;
-  } | null;
+  settings?: { abuseContactEmail?: string | null; enforceTwofactor?: boolean | null } | null;
 }
 
 export const CreateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -383,56 +264,15 @@ export const CreateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   type: Schema.Literals(["standard", "enterprise"]),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  managedBy: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        parentOrgId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        parentOrgName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          parentOrgId: "parent_org_id",
-          parentOrgName: "parent_org_name",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  settings: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        abuseContactEmail: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enforceTwofactor: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          abuseContactEmail: "abuse_contact_email",
-          enforceTwofactor: "enforce_twofactor",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      name: "name",
-      type: "type",
-      createdOn: "created_on",
-      managedBy: "managed_by",
-      settings: "settings",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateAccountResponse>;
+  managedBy: Schema.optional(Schema.Union([Schema.Struct({
+  parentOrgId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  parentOrgName: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+}).pipe(Schema.encodeKeys({ parentOrgId: "parent_org_id", parentOrgName: "parent_org_name" })), Schema.Null])),
+  settings: Schema.optional(Schema.Union([Schema.Struct({
+  abuseContactEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  enforceTwofactor: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+}).pipe(Schema.encodeKeys({ abuseContactEmail: "abuse_contact_email", enforceTwofactor: "enforce_twofactor" })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", name: "name", type: "type", createdOn: "created_on", managedBy: "managed_by", settings: "settings" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<CreateAccountResponse>;
 
 export type CreateAccountError =
   | DefaultErrors
@@ -471,27 +311,12 @@ export const UpdateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   type: Schema.optional(Schema.Literals(["standard", "enterprise"])),
   managedBy: Schema.optional(Schema.Unknown),
-  settings: Schema.optional(
-    Schema.Struct({
-      abuseContactEmail: Schema.optional(Schema.String),
-      enforceTwofactor: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        abuseContactEmail: "abuse_contact_email",
-        enforceTwofactor: "enforce_twofactor",
-      }),
-    ),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    id: "id",
-    name: "name",
-    type: "type",
-    managedBy: "managed_by",
-    settings: "settings",
-  }),
-  T.Http({ method: "PUT", path: "/accounts/{account_id}" }),
-) as unknown as Schema.Schema<UpdateAccountRequest>;
+  settings: Schema.optional(Schema.Struct({
+  abuseContactEmail: Schema.optional(Schema.String),
+  enforceTwofactor: Schema.optional(Schema.Boolean)
+}).pipe(Schema.encodeKeys({ abuseContactEmail: "abuse_contact_email", enforceTwofactor: "enforce_twofactor" })))
+})
+  .pipe(Schema.encodeKeys({ id: "id", name: "name", type: "type", managedBy: "managed_by", settings: "settings" }), T.Http({ method: "PUT", path: "/accounts/{account_id}" })) as unknown as Schema.Schema<UpdateAccountRequest>;
 
 export interface UpdateAccountResponse {
   /** Identifier */
@@ -502,15 +327,9 @@ export interface UpdateAccountResponse {
   /** Timestamp for the creation of the account */
   createdOn?: string | null;
   /** Parent container details */
-  managedBy?: {
-    parentOrgId?: string | null;
-    parentOrgName?: string | null;
-  } | null;
+  managedBy?: { parentOrgId?: string | null; parentOrgName?: string | null } | null;
   /** Account settings */
-  settings?: {
-    abuseContactEmail?: string | null;
-    enforceTwofactor?: boolean | null;
-  } | null;
+  settings?: { abuseContactEmail?: string | null; enforceTwofactor?: boolean | null } | null;
 }
 
 export const UpdateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -518,56 +337,15 @@ export const UpdateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   type: Schema.Literals(["standard", "enterprise"]),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  managedBy: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        parentOrgId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        parentOrgName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          parentOrgId: "parent_org_id",
-          parentOrgName: "parent_org_name",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  settings: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        abuseContactEmail: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enforceTwofactor: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          abuseContactEmail: "abuse_contact_email",
-          enforceTwofactor: "enforce_twofactor",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      name: "name",
-      type: "type",
-      createdOn: "created_on",
-      managedBy: "managed_by",
-      settings: "settings",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateAccountResponse>;
+  managedBy: Schema.optional(Schema.Union([Schema.Struct({
+  parentOrgId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  parentOrgName: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+}).pipe(Schema.encodeKeys({ parentOrgId: "parent_org_id", parentOrgName: "parent_org_name" })), Schema.Null])),
+  settings: Schema.optional(Schema.Union([Schema.Struct({
+  abuseContactEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  enforceTwofactor: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+}).pipe(Schema.encodeKeys({ abuseContactEmail: "abuse_contact_email", enforceTwofactor: "enforce_twofactor" })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", name: "name", type: "type", createdOn: "created_on", managedBy: "managed_by", settings: "settings" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<UpdateAccountResponse>;
 
 export type UpdateAccountError =
   | DefaultErrors
@@ -585,13 +363,7 @@ export const updateAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountRequest,
   output: UpdateAccountResponse,
-  errors: [
-    InvalidAccountName,
-    AccountNameTooLong,
-    UpdateAccountTypeNotSupported,
-    InvalidRoute,
-    MethodNotAllowed,
-  ],
+  errors: [InvalidAccountName, AccountNameTooLong, UpdateAccountTypeNotSupported, InvalidRoute, MethodNotAllowed],
 }));
 
 export interface DeleteAccountRequest {
@@ -600,10 +372,9 @@ export interface DeleteAccountRequest {
 }
 
 export const DeleteAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "/accounts/{account_id}" }),
-) as unknown as Schema.Schema<DeleteAccountRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "DELETE", path: "/accounts/{account_id}" })) as unknown as Schema.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {
   /** Identifier */
@@ -611,10 +382,8 @@ export interface DeleteAccountResponse {
 }
 
 export const DeleteAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<DeleteAccountResponse>;
+  id: Schema.String
+}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<DeleteAccountResponse>;
 
 export type DeleteAccountError =
   | DefaultErrors
@@ -631,6 +400,7 @@ export const deleteAccount: API.OperationMethod<
   output: DeleteAccountResponse,
   errors: [InvalidRoute, MethodNotAllowed],
 }));
+
 
 // =============================================================================
 // LogAudit
@@ -652,9 +422,7 @@ export interface ListLogAuditsRequest {
   /** Query param: */
   actionType?: { not?: ("create" | "delete" | "view" | "update")[] };
   /** Query param: */
-  actorContext?: {
-    not?: ("api_key" | "api_token" | "dash" | "oauth" | "origin_ca_key")[];
-  };
+  actorContext?: { not?: ("api_key" | "api_token" | "dash" | "oauth" | "origin_ca_key")[] };
   /** Query param: */
   actorEmail?: { not?: string[] };
   /** Query param: */
@@ -699,337 +467,133 @@ export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   before: Schema.String.pipe(T.HttpQuery("before")),
   since: Schema.String.pipe(T.HttpQuery("since")),
-  id: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("id")),
-  accountName: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("account_name")),
-  actionResult: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(
-        Schema.Array(Schema.Literals(["success", "failure"])),
-      ),
-    }),
-  ).pipe(T.HttpQuery("action_result")),
-  actionType: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(
-        Schema.Array(Schema.Literals(["create", "delete", "view", "update"])),
-      ),
-    }),
-  ).pipe(T.HttpQuery("action_type")),
-  actorContext: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(
-        Schema.Array(
-          Schema.Literals([
-            "api_key",
-            "api_token",
-            "dash",
-            "oauth",
-            "origin_ca_key",
-          ]),
-        ),
-      ),
-    }),
-  ).pipe(T.HttpQuery("actor_context")),
-  actorEmail: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("actor_email")),
-  actorId: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("actor_id")),
-  actorIpAddress: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("actor_ip_address")),
-  actorTokenId: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("actor_token_id")),
-  actorTokenName: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("actor_token_name")),
-  actorType: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(
-        Schema.Array(
-          Schema.Literals(["account", "cloudflare_admin", "system", "user"]),
-        ),
-      ),
-    }),
-  ).pipe(T.HttpQuery("actor_type")),
-  auditLogId: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("audit_log_id")),
-  direction: Schema.optional(Schema.Literals(["desc", "asc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
+  id: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("id")),
+  accountName: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("account_name")),
+  actionResult: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.Literals(["success", "failure"])))
+})).pipe(T.HttpQuery("action_result")),
+  actionType: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.Literals(["create", "delete", "view", "update"])))
+})).pipe(T.HttpQuery("action_type")),
+  actorContext: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.Literals(["api_key", "api_token", "dash", "oauth", "origin_ca_key"])))
+})).pipe(T.HttpQuery("actor_context")),
+  actorEmail: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("actor_email")),
+  actorId: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("actor_id")),
+  actorIpAddress: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("actor_ip_address")),
+  actorTokenId: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("actor_token_id")),
+  actorTokenName: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("actor_token_name")),
+  actorType: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.Literals(["account", "cloudflare_admin", "system", "user"])))
+})).pipe(T.HttpQuery("actor_type")),
+  auditLogId: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("audit_log_id")),
+  direction: Schema.optional(Schema.Literals(["desc", "asc"])).pipe(T.HttpQuery("direction")),
   limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-  rawCfRayId: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("raw_cf_ray_id")),
-  rawMethod: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("raw_method")),
-  rawStatusCode: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).pipe(T.HttpQuery("raw_status_code")),
-  rawUri: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("raw_uri")),
-  resourceId: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("resource_id")),
-  resourceProduct: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("resource_product")),
-  resourceScope: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(
-        Schema.Array(Schema.Literals(["accounts", "user", "zones"])),
-      ),
-    }),
-  ).pipe(T.HttpQuery("resource_scope")),
-  resourceType: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("resource_type")),
-  zoneId: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("zone_id")),
-  zoneName: Schema.optional(
-    Schema.Struct({
-      not: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).pipe(T.HttpQuery("zone_name")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/logs/audit" }),
-) as unknown as Schema.Schema<ListLogAuditsRequest>;
+  rawCfRayId: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("raw_cf_ray_id")),
+  rawMethod: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("raw_method")),
+  rawStatusCode: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.Number))
+})).pipe(T.HttpQuery("raw_status_code")),
+  rawUri: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("raw_uri")),
+  resourceId: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("resource_id")),
+  resourceProduct: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("resource_product")),
+  resourceScope: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.Literals(["accounts", "user", "zones"])))
+})).pipe(T.HttpQuery("resource_scope")),
+  resourceType: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("resource_type")),
+  zoneId: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("zone_id")),
+  zoneName: Schema.optional(Schema.Struct({
+  not: Schema.optional(Schema.Array(Schema.String))
+})).pipe(T.HttpQuery("zone_name"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/logs/audit" })) as unknown as Schema.Schema<ListLogAuditsRequest>;
 
 export interface ListLogAuditsResponse {
-  result: {
-    id?: string | null;
-    account?: { id?: string | null; name?: string | null } | null;
-    action?: {
-      description?: string | null;
-      result?: string | null;
-      time?: string | null;
-      type?: string | null;
-    } | null;
-    actor?: {
-      id?: string | null;
-      context?:
-        | "api_key"
-        | "api_token"
-        | "dash"
-        | "oauth"
-        | "origin_ca_key"
-        | null;
-      email?: string | null;
-      ipAddress?: string | null;
-      tokenId?: string | null;
-      tokenName?: string | null;
-      type?: "account" | "cloudflare_admin" | "system" | "user" | null;
-    } | null;
-    raw?: {
-      cfRayId?: string | null;
-      method?: string | null;
-      statusCode?: number | null;
-      uri?: string | null;
-      userAgent?: string | null;
-    } | null;
-    resource?: {
-      id?: string | null;
-      product?: string | null;
-      request?: unknown | null;
-      response?: unknown | null;
-      scope?: unknown | null;
-      type?: string | null;
-    } | null;
-    zone?: { id?: string | null; name?: string | null } | null;
-  }[];
+  result: ({ id?: string | null; account?: { id?: string | null; name?: string | null } | null; action?: { description?: string | null; result?: string | null; time?: string | null; type?: string | null } | null; actor?: { id?: string | null; context?: "api_key" | "api_token" | "dash" | "oauth" | "origin_ca_key" | null; email?: string | null; ipAddress?: string | null; tokenId?: string | null; tokenName?: string | null; type?: "account" | "cloudflare_admin" | "system" | "user" | null } | null; raw?: { cfRayId?: string | null; method?: string | null; statusCode?: number | null; uri?: string | null; userAgent?: string | null } | null; resource?: { id?: string | null; product?: string | null; request?: unknown | null; response?: unknown | null; scope?: unknown | null; type?: string | null } | null; zone?: { id?: string | null; name?: string | null } | null })[];
   resultInfo: { cursors?: { after?: string | null } | null };
 }
 
 export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      account: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      action: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            description: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            result: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            time: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      actor: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            context: Schema.optional(
-              Schema.Union([
-                Schema.Literals([
-                  "api_key",
-                  "api_token",
-                  "dash",
-                  "oauth",
-                  "origin_ca_key",
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            ipAddress: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tokenId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tokenName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Literals([
-                  "account",
-                  "cloudflare_admin",
-                  "system",
-                  "user",
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              context: "context",
-              email: "email",
-              ipAddress: "ip_address",
-              tokenId: "token_id",
-              tokenName: "token_name",
-              type: "type",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      raw: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            cfRayId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            method: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            statusCode: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            uri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            userAgent: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              cfRayId: "cf_ray_id",
-              method: "method",
-              statusCode: "status_code",
-              uri: "uri",
-              userAgent: "user_agent",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      resource: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            product: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            request: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-            response: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-            scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-            type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      zone: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }),
-  ),
+  result: Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  account: Schema.optional(Schema.Union([Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  }), Schema.Null])),
+  action: Schema.optional(Schema.Union([Schema.Struct({
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    result: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    time: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  }), Schema.Null])),
+  actor: Schema.optional(Schema.Union([Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    context: Schema.optional(Schema.Union([Schema.Literals(["api_key", "api_token", "dash", "oauth", "origin_ca_key"]), Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    ipAddress: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tokenName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(Schema.Union([Schema.Literals(["account", "cloudflare_admin", "system", "user"]), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ id: "id", context: "context", email: "email", ipAddress: "ip_address", tokenId: "token_id", tokenName: "token_name", type: "type" })), Schema.Null])),
+  raw: Schema.optional(Schema.Union([Schema.Struct({
+    cfRayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    method: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    uri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    userAgent: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  }).pipe(Schema.encodeKeys({ cfRayId: "cf_ray_id", method: "method", statusCode: "status_code", uri: "uri", userAgent: "user_agent" })), Schema.Null])),
+  resource: Schema.optional(Schema.Union([Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    product: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    request: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    response: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  }), Schema.Null])),
+  zone: Schema.optional(Schema.Union([Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  }), Schema.Null]))
+})),
   resultInfo: Schema.Struct({
-    cursors: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-) as unknown as Schema.Schema<ListLogAuditsResponse>;
+  cursors: Schema.optional(Schema.Union([Schema.Struct({
+    after: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  }), Schema.Null]))
+})
+}).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })) as unknown as Schema.Schema<ListLogAuditsResponse>;
 
-export type ListLogAuditsError = DefaultErrors;
+export type ListLogAuditsError =
+  | DefaultErrors;
 
 export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsRequest,
@@ -1048,6 +612,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
   } as const,
 }));
 
+
 // =============================================================================
 // Member
 // =============================================================================
@@ -1060,10 +625,9 @@ export interface GetMemberRequest {
 
 export const GetMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   memberId: Schema.String.pipe(T.HttpPath("memberId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/members/{memberId}" }),
-) as unknown as Schema.Schema<GetMemberRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/members/{memberId}" })) as unknown as Schema.Schema<GetMemberRequest>;
 
 export interface GetMemberResponse {
   /** Membership identifier tag. */
@@ -1071,312 +635,97 @@ export interface GetMemberResponse {
   /** The contact email address of the user. */
   email?: string | null;
   /** Access policy for the membership */
-  policies?:
-    | {
-        id?: string | null;
-        access?: "allow" | "deny" | null;
-        permissionGroups?: { id: string }[] | null;
-        resourceGroups?: { id: string }[] | null;
-      }[]
-    | null;
+  policies?: ({ id?: string | null; access?: "allow" | "deny" | null; permissionGroups?: { id: string }[] | null; resourceGroups?: { id: string }[] | null })[] | null;
   /** Roles assigned to this Member. */
-  roles?:
-    | {
-        id: string;
-        description: string;
-        name: string;
-        permissions: {
-          analytics?: { read?: boolean | null; write?: boolean | null } | null;
-          billing?: { read?: boolean | null; write?: boolean | null } | null;
-          cachePurge?: { read?: boolean | null; write?: boolean | null } | null;
-          dns?: { read?: boolean | null; write?: boolean | null } | null;
-          dnsRecords?: { read?: boolean | null; write?: boolean | null } | null;
-          lb?: { read?: boolean | null; write?: boolean | null } | null;
-          logs?: { read?: boolean | null; write?: boolean | null } | null;
-          organization?: {
-            read?: boolean | null;
-            write?: boolean | null;
-          } | null;
-          ssl?: { read?: boolean | null; write?: boolean | null } | null;
-          waf?: { read?: boolean | null; write?: boolean | null } | null;
-          zoneSettings?: {
-            read?: boolean | null;
-            write?: boolean | null;
-          } | null;
-          zones?: { read?: boolean | null; write?: boolean | null } | null;
-        };
-      }[]
-    | null;
+  roles?: ({ id: string; description: string; name: string; permissions: { analytics?: { read?: boolean | null; write?: boolean | null } | null; billing?: { read?: boolean | null; write?: boolean | null } | null; cachePurge?: { read?: boolean | null; write?: boolean | null } | null; dns?: { read?: boolean | null; write?: boolean | null } | null; dnsRecords?: { read?: boolean | null; write?: boolean | null } | null; lb?: { read?: boolean | null; write?: boolean | null } | null; logs?: { read?: boolean | null; write?: boolean | null } | null; organization?: { read?: boolean | null; write?: boolean | null } | null; ssl?: { read?: boolean | null; write?: boolean | null } | null; waf?: { read?: boolean | null; write?: boolean | null } | null; zoneSettings?: { read?: boolean | null; write?: boolean | null } | null; zones?: { read?: boolean | null; write?: boolean | null } | null } })[] | null;
   /** A member's status in the account. */
   status?: "accepted" | "pending" | null;
   /** Details of the user associated to the membership. */
-  user?: {
-    email: string;
-    id?: string | null;
-    firstName?: string | null;
-    lastName?: string | null;
-    twoFactorAuthenticationEnabled?: boolean | null;
-  } | null;
+  user?: { email: string; id?: string | null; firstName?: string | null; lastName?: string | null; twoFactorAuthenticationEnabled?: boolean | null } | null;
 }
 
 export const GetMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
-          ),
-          permissionGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          resourceGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            access: "access",
-            permissionGroups: "permission_groups",
-            resourceGroups: "resource_groups",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  roles: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          description: Schema.String,
-          name: Schema.String,
-          permissions: Schema.Struct({
-            analytics: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            billing: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            cachePurge: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            dns: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            dnsRecords: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            lb: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            organization: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            ssl: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            waf: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            zoneSettings: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            zones: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              analytics: "analytics",
-              billing: "billing",
-              cachePurge: "cache_purge",
-              dns: "dns",
-              dnsRecords: "dns_records",
-              lb: "lb",
-              logs: "logs",
-              organization: "organization",
-              ssl: "ssl",
-              waf: "waf",
-              zoneSettings: "zone_settings",
-              zones: "zones",
-            }),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  status: Schema.optional(
-    Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
-  ),
-  user: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        email: Schema.String,
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        twoFactorAuthenticationEnabled: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          email: "email",
-          id: "id",
-          firstName: "first_name",
-          lastName: "last_name",
-          twoFactorAuthenticationEnabled: "two_factor_authentication_enabled",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<GetMemberResponse>;
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  access: Schema.optional(Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null])),
+  permissionGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String
+  })), Schema.Null])),
+  resourceGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String
+  })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", access: "access", permissionGroups: "permission_groups", resourceGroups: "resource_groups" }))), Schema.Null])),
+  roles: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  name: Schema.String,
+  permissions: Schema.Struct({
+    analytics: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    billing: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    cachePurge: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dns: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dnsRecords: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    lb: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    logs: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    organization: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    ssl: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    waf: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zoneSettings: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zones: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ analytics: "analytics", billing: "billing", cachePurge: "cache_purge", dns: "dns", dnsRecords: "dns_records", lb: "lb", logs: "logs", organization: "organization", ssl: "ssl", waf: "waf", zoneSettings: "zone_settings", zones: "zones" }))
+})), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null])),
+  user: Schema.optional(Schema.Union([Schema.Struct({
+  email: Schema.String,
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  twoFactorAuthenticationEnabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+}).pipe(Schema.encodeKeys({ email: "email", id: "id", firstName: "first_name", lastName: "last_name", twoFactorAuthenticationEnabled: "two_factor_authentication_enabled" })), Schema.Null]))
+}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetMemberResponse>;
 
-export type GetMemberError = DefaultErrors | MemberNotFound | InvalidRoute;
+export type GetMemberError =
+  | DefaultErrors
+  | MemberNotFound
+  | InvalidRoute;
 
 export const getMember: API.OperationMethod<
   GetMemberRequest,
@@ -1402,369 +751,105 @@ export interface ListMembersRequest {
 
 export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
-  order: Schema.optional(
-    Schema.Literals([
-      "user.first_name",
-      "user.last_name",
-      "user.email",
-      "status",
-    ]),
-  ).pipe(T.HttpQuery("order")),
-  status: Schema.optional(
-    Schema.Literals(["accepted", "pending", "rejected"]),
-  ).pipe(T.HttpQuery("status")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/members" }),
-) as unknown as Schema.Schema<ListMembersRequest>;
+  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(T.HttpQuery("direction")),
+  order: Schema.optional(Schema.Literals(["user.first_name", "user.last_name", "user.email", "status"])).pipe(T.HttpQuery("order")),
+  status: Schema.optional(Schema.Literals(["accepted", "pending", "rejected"])).pipe(T.HttpQuery("status"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/members" })) as unknown as Schema.Schema<ListMembersRequest>;
 
 export interface ListMembersResponse {
-  result: {
-    id?: string | null;
-    email?: string | null;
-    policies?:
-      | {
-          id?: string | null;
-          access?: "allow" | "deny" | null;
-          permissionGroups?: { id: string }[] | null;
-          resourceGroups?: { id: string }[] | null;
-        }[]
-      | null;
-    roles?:
-      | {
-          id: string;
-          description: string;
-          name: string;
-          permissions: {
-            analytics?: {
-              read?: boolean | null;
-              write?: boolean | null;
-            } | null;
-            billing?: { read?: boolean | null; write?: boolean | null } | null;
-            cachePurge?: {
-              read?: boolean | null;
-              write?: boolean | null;
-            } | null;
-            dns?: { read?: boolean | null; write?: boolean | null } | null;
-            dnsRecords?: {
-              read?: boolean | null;
-              write?: boolean | null;
-            } | null;
-            lb?: { read?: boolean | null; write?: boolean | null } | null;
-            logs?: { read?: boolean | null; write?: boolean | null } | null;
-            organization?: {
-              read?: boolean | null;
-              write?: boolean | null;
-            } | null;
-            ssl?: { read?: boolean | null; write?: boolean | null } | null;
-            waf?: { read?: boolean | null; write?: boolean | null } | null;
-            zoneSettings?: {
-              read?: boolean | null;
-              write?: boolean | null;
-            } | null;
-            zones?: { read?: boolean | null; write?: boolean | null } | null;
-          };
-        }[]
-      | null;
-    status?: "accepted" | "pending" | null;
-    user?: {
-      email: string;
-      id?: string | null;
-      firstName?: string | null;
-      lastName?: string | null;
-      twoFactorAuthenticationEnabled?: boolean | null;
-    } | null;
-  }[];
-  resultInfo: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  };
+  result: ({ id?: string | null; email?: string | null; policies?: ({ id?: string | null; access?: "allow" | "deny" | null; permissionGroups?: { id: string }[] | null; resourceGroups?: { id: string }[] | null })[] | null; roles?: ({ id: string; description: string; name: string; permissions: { analytics?: { read?: boolean | null; write?: boolean | null } | null; billing?: { read?: boolean | null; write?: boolean | null } | null; cachePurge?: { read?: boolean | null; write?: boolean | null } | null; dns?: { read?: boolean | null; write?: boolean | null } | null; dnsRecords?: { read?: boolean | null; write?: boolean | null } | null; lb?: { read?: boolean | null; write?: boolean | null } | null; logs?: { read?: boolean | null; write?: boolean | null } | null; organization?: { read?: boolean | null; write?: boolean | null } | null; ssl?: { read?: boolean | null; write?: boolean | null } | null; waf?: { read?: boolean | null; write?: boolean | null } | null; zoneSettings?: { read?: boolean | null; write?: boolean | null } | null; zones?: { read?: boolean | null; write?: boolean | null } | null } })[] | null; status?: "accepted" | "pending" | null; user?: { email: string; id?: string | null; firstName?: string | null; lastName?: string | null; twoFactorAuthenticationEnabled?: boolean | null } | null })[];
+  resultInfo: { count?: number | null; page?: number | null; perPage?: number | null; totalCount?: number | null };
 }
 
 export const ListMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              access: Schema.optional(
-                Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
-              ),
-              permissionGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              resourceGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                access: "access",
-                permissionGroups: "permission_groups",
-                resourceGroups: "resource_groups",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      roles: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              description: Schema.String,
-              name: Schema.String,
-              permissions: Schema.Struct({
-                analytics: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                billing: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                cachePurge: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                dns: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                dnsRecords: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                lb: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                logs: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                organization: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                ssl: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                waf: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                zoneSettings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                zones: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      read: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      write: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  analytics: "analytics",
-                  billing: "billing",
-                  cachePurge: "cache_purge",
-                  dns: "dns",
-                  dnsRecords: "dns_records",
-                  lb: "lb",
-                  logs: "logs",
-                  organization: "organization",
-                  ssl: "ssl",
-                  waf: "waf",
-                  zoneSettings: "zone_settings",
-                  zones: "zones",
-                }),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
-      ),
-      user: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            email: Schema.String,
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            firstName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            lastName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            twoFactorAuthenticationEnabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              email: "email",
-              id: "id",
-              firstName: "first_name",
-              lastName: "last_name",
-              twoFactorAuthenticationEnabled:
-                "two_factor_authentication_enabled",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }),
-  ),
+  result: Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    access: Schema.optional(Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null])),
+    permissionGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+      id: Schema.String
+    })), Schema.Null])),
+    resourceGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+      id: Schema.String
+    })), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ id: "id", access: "access", permissionGroups: "permission_groups", resourceGroups: "resource_groups" }))), Schema.Null])),
+  roles: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String,
+    description: Schema.String,
+    name: Schema.String,
+    permissions: Schema.Struct({
+      analytics: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      billing: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      cachePurge: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      dns: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      dnsRecords: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      lb: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      logs: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      organization: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      ssl: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      waf: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      zoneSettings: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null])),
+      zones: Schema.optional(Schema.Union([Schema.Struct({
+        read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+      }), Schema.Null]))
+    }).pipe(Schema.encodeKeys({ analytics: "analytics", billing: "billing", cachePurge: "cache_purge", dns: "dns", dnsRecords: "dns_records", lb: "lb", logs: "logs", organization: "organization", ssl: "ssl", waf: "waf", zoneSettings: "zone_settings", zones: "zones" }))
+  })), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null])),
+  user: Schema.optional(Schema.Union([Schema.Struct({
+    email: Schema.String,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    twoFactorAuthenticationEnabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }).pipe(Schema.encodeKeys({ email: "email", id: "id", firstName: "first_name", lastName: "last_name", twoFactorAuthenticationEnabled: "two_factor_authentication_enabled" })), Schema.Null]))
+})),
   resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-) as unknown as Schema.Schema<ListMembersResponse>;
+  count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null]))
+}).pipe(Schema.encodeKeys({ count: "count", page: "page", perPage: "per_page", totalCount: "total_count" }))
+}).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })) as unknown as Schema.Schema<ListMembersResponse>;
 
-export type ListMembersError = DefaultErrors;
+export type ListMembersError =
+  | DefaultErrors;
 
 export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
@@ -1799,10 +884,9 @@ export const CreateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   email: Schema.String,
   roles: Schema.Array(Schema.String),
-  status: Schema.optional(Schema.Literals(["accepted", "pending"])),
-}).pipe(
-  T.Http({ method: "POST", path: "/accounts/{account_id}/members" }),
-) as unknown as Schema.Schema<CreateMemberRequest>;
+  status: Schema.optional(Schema.Literals(["accepted", "pending"]))
+})
+  .pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/members" })) as unknown as Schema.Schema<CreateMemberRequest>;
 
 export interface CreateMemberResponse {
   /** Membership identifier tag. */
@@ -1810,312 +894,97 @@ export interface CreateMemberResponse {
   /** The contact email address of the user. */
   email?: string | null;
   /** Access policy for the membership */
-  policies?:
-    | {
-        id?: string | null;
-        access?: "allow" | "deny" | null;
-        permissionGroups?: { id: string }[] | null;
-        resourceGroups?: { id: string }[] | null;
-      }[]
-    | null;
+  policies?: ({ id?: string | null; access?: "allow" | "deny" | null; permissionGroups?: { id: string }[] | null; resourceGroups?: { id: string }[] | null })[] | null;
   /** Roles assigned to this Member. */
-  roles?:
-    | {
-        id: string;
-        description: string;
-        name: string;
-        permissions: {
-          analytics?: { read?: boolean | null; write?: boolean | null } | null;
-          billing?: { read?: boolean | null; write?: boolean | null } | null;
-          cachePurge?: { read?: boolean | null; write?: boolean | null } | null;
-          dns?: { read?: boolean | null; write?: boolean | null } | null;
-          dnsRecords?: { read?: boolean | null; write?: boolean | null } | null;
-          lb?: { read?: boolean | null; write?: boolean | null } | null;
-          logs?: { read?: boolean | null; write?: boolean | null } | null;
-          organization?: {
-            read?: boolean | null;
-            write?: boolean | null;
-          } | null;
-          ssl?: { read?: boolean | null; write?: boolean | null } | null;
-          waf?: { read?: boolean | null; write?: boolean | null } | null;
-          zoneSettings?: {
-            read?: boolean | null;
-            write?: boolean | null;
-          } | null;
-          zones?: { read?: boolean | null; write?: boolean | null } | null;
-        };
-      }[]
-    | null;
+  roles?: ({ id: string; description: string; name: string; permissions: { analytics?: { read?: boolean | null; write?: boolean | null } | null; billing?: { read?: boolean | null; write?: boolean | null } | null; cachePurge?: { read?: boolean | null; write?: boolean | null } | null; dns?: { read?: boolean | null; write?: boolean | null } | null; dnsRecords?: { read?: boolean | null; write?: boolean | null } | null; lb?: { read?: boolean | null; write?: boolean | null } | null; logs?: { read?: boolean | null; write?: boolean | null } | null; organization?: { read?: boolean | null; write?: boolean | null } | null; ssl?: { read?: boolean | null; write?: boolean | null } | null; waf?: { read?: boolean | null; write?: boolean | null } | null; zoneSettings?: { read?: boolean | null; write?: boolean | null } | null; zones?: { read?: boolean | null; write?: boolean | null } | null } })[] | null;
   /** A member's status in the account. */
   status?: "accepted" | "pending" | null;
   /** Details of the user associated to the membership. */
-  user?: {
-    email: string;
-    id?: string | null;
-    firstName?: string | null;
-    lastName?: string | null;
-    twoFactorAuthenticationEnabled?: boolean | null;
-  } | null;
+  user?: { email: string; id?: string | null; firstName?: string | null; lastName?: string | null; twoFactorAuthenticationEnabled?: boolean | null } | null;
 }
 
 export const CreateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
-          ),
-          permissionGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          resourceGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            access: "access",
-            permissionGroups: "permission_groups",
-            resourceGroups: "resource_groups",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  roles: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          description: Schema.String,
-          name: Schema.String,
-          permissions: Schema.Struct({
-            analytics: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            billing: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            cachePurge: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            dns: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            dnsRecords: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            lb: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            organization: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            ssl: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            waf: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            zoneSettings: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            zones: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              analytics: "analytics",
-              billing: "billing",
-              cachePurge: "cache_purge",
-              dns: "dns",
-              dnsRecords: "dns_records",
-              lb: "lb",
-              logs: "logs",
-              organization: "organization",
-              ssl: "ssl",
-              waf: "waf",
-              zoneSettings: "zone_settings",
-              zones: "zones",
-            }),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  status: Schema.optional(
-    Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
-  ),
-  user: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        email: Schema.String,
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        twoFactorAuthenticationEnabled: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          email: "email",
-          id: "id",
-          firstName: "first_name",
-          lastName: "last_name",
-          twoFactorAuthenticationEnabled: "two_factor_authentication_enabled",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<CreateMemberResponse>;
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  access: Schema.optional(Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null])),
+  permissionGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String
+  })), Schema.Null])),
+  resourceGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String
+  })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", access: "access", permissionGroups: "permission_groups", resourceGroups: "resource_groups" }))), Schema.Null])),
+  roles: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  name: Schema.String,
+  permissions: Schema.Struct({
+    analytics: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    billing: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    cachePurge: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dns: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dnsRecords: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    lb: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    logs: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    organization: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    ssl: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    waf: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zoneSettings: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zones: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ analytics: "analytics", billing: "billing", cachePurge: "cache_purge", dns: "dns", dnsRecords: "dns_records", lb: "lb", logs: "logs", organization: "organization", ssl: "ssl", waf: "waf", zoneSettings: "zone_settings", zones: "zones" }))
+})), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null])),
+  user: Schema.optional(Schema.Union([Schema.Struct({
+  email: Schema.String,
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  twoFactorAuthenticationEnabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+}).pipe(Schema.encodeKeys({ email: "email", id: "id", firstName: "first_name", lastName: "last_name", twoFactorAuthenticationEnabled: "two_factor_authentication_enabled" })), Schema.Null]))
+}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<CreateMemberResponse>;
 
-export type CreateMemberError = DefaultErrors | InvalidRoute | ValidationError;
+export type CreateMemberError =
+  | DefaultErrors
+  | InvalidRoute
+  | ValidationError;
 
 export const createMember: API.OperationMethod<
   CreateMemberRequest,
@@ -2139,16 +1008,11 @@ export interface UpdateMemberRequest {
 export const UpdateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   memberId: Schema.String.pipe(T.HttpPath("memberId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  roles: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-      }),
-    ),
-  ),
-}).pipe(
-  T.Http({ method: "PUT", path: "/accounts/{account_id}/members/{memberId}" }),
-) as unknown as Schema.Schema<UpdateMemberRequest>;
+  roles: Schema.optional(Schema.Array(Schema.Struct({
+  id: Schema.String
+})))
+})
+  .pipe(T.Http({ method: "PUT", path: "/accounts/{account_id}/members/{memberId}" })) as unknown as Schema.Schema<UpdateMemberRequest>;
 
 export interface UpdateMemberResponse {
   /** Membership identifier tag. */
@@ -2156,310 +1020,92 @@ export interface UpdateMemberResponse {
   /** The contact email address of the user. */
   email?: string | null;
   /** Access policy for the membership */
-  policies?:
-    | {
-        id?: string | null;
-        access?: "allow" | "deny" | null;
-        permissionGroups?: { id: string }[] | null;
-        resourceGroups?: { id: string }[] | null;
-      }[]
-    | null;
+  policies?: ({ id?: string | null; access?: "allow" | "deny" | null; permissionGroups?: { id: string }[] | null; resourceGroups?: { id: string }[] | null })[] | null;
   /** Roles assigned to this Member. */
-  roles?:
-    | {
-        id: string;
-        description: string;
-        name: string;
-        permissions: {
-          analytics?: { read?: boolean | null; write?: boolean | null } | null;
-          billing?: { read?: boolean | null; write?: boolean | null } | null;
-          cachePurge?: { read?: boolean | null; write?: boolean | null } | null;
-          dns?: { read?: boolean | null; write?: boolean | null } | null;
-          dnsRecords?: { read?: boolean | null; write?: boolean | null } | null;
-          lb?: { read?: boolean | null; write?: boolean | null } | null;
-          logs?: { read?: boolean | null; write?: boolean | null } | null;
-          organization?: {
-            read?: boolean | null;
-            write?: boolean | null;
-          } | null;
-          ssl?: { read?: boolean | null; write?: boolean | null } | null;
-          waf?: { read?: boolean | null; write?: boolean | null } | null;
-          zoneSettings?: {
-            read?: boolean | null;
-            write?: boolean | null;
-          } | null;
-          zones?: { read?: boolean | null; write?: boolean | null } | null;
-        };
-      }[]
-    | null;
+  roles?: ({ id: string; description: string; name: string; permissions: { analytics?: { read?: boolean | null; write?: boolean | null } | null; billing?: { read?: boolean | null; write?: boolean | null } | null; cachePurge?: { read?: boolean | null; write?: boolean | null } | null; dns?: { read?: boolean | null; write?: boolean | null } | null; dnsRecords?: { read?: boolean | null; write?: boolean | null } | null; lb?: { read?: boolean | null; write?: boolean | null } | null; logs?: { read?: boolean | null; write?: boolean | null } | null; organization?: { read?: boolean | null; write?: boolean | null } | null; ssl?: { read?: boolean | null; write?: boolean | null } | null; waf?: { read?: boolean | null; write?: boolean | null } | null; zoneSettings?: { read?: boolean | null; write?: boolean | null } | null; zones?: { read?: boolean | null; write?: boolean | null } | null } })[] | null;
   /** A member's status in the account. */
   status?: "accepted" | "pending" | null;
   /** Details of the user associated to the membership. */
-  user?: {
-    email: string;
-    id?: string | null;
-    firstName?: string | null;
-    lastName?: string | null;
-    twoFactorAuthenticationEnabled?: boolean | null;
-  } | null;
+  user?: { email: string; id?: string | null; firstName?: string | null; lastName?: string | null; twoFactorAuthenticationEnabled?: boolean | null } | null;
 }
 
 export const UpdateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          access: Schema.optional(
-            Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null]),
-          ),
-          permissionGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          resourceGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            access: "access",
-            permissionGroups: "permission_groups",
-            resourceGroups: "resource_groups",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  roles: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          description: Schema.String,
-          name: Schema.String,
-          permissions: Schema.Struct({
-            analytics: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            billing: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            cachePurge: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            dns: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            dnsRecords: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            lb: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            organization: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            ssl: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            waf: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            zoneSettings: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            zones: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  read: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  write: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              analytics: "analytics",
-              billing: "billing",
-              cachePurge: "cache_purge",
-              dns: "dns",
-              dnsRecords: "dns_records",
-              lb: "lb",
-              logs: "logs",
-              organization: "organization",
-              ssl: "ssl",
-              waf: "waf",
-              zoneSettings: "zone_settings",
-              zones: "zones",
-            }),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  status: Schema.optional(
-    Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null]),
-  ),
-  user: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        email: Schema.String,
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        twoFactorAuthenticationEnabled: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          email: "email",
-          id: "id",
-          firstName: "first_name",
-          lastName: "last_name",
-          twoFactorAuthenticationEnabled: "two_factor_authentication_enabled",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<UpdateMemberResponse>;
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  access: Schema.optional(Schema.Union([Schema.Literals(["allow", "deny"]), Schema.Null])),
+  permissionGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String
+  })), Schema.Null])),
+  resourceGroups: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String
+  })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", access: "access", permissionGroups: "permission_groups", resourceGroups: "resource_groups" }))), Schema.Null])),
+  roles: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  name: Schema.String,
+  permissions: Schema.Struct({
+    analytics: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    billing: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    cachePurge: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dns: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dnsRecords: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    lb: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    logs: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    organization: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    ssl: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    waf: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zoneSettings: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zones: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ analytics: "analytics", billing: "billing", cachePurge: "cache_purge", dns: "dns", dnsRecords: "dns_records", lb: "lb", logs: "logs", organization: "organization", ssl: "ssl", waf: "waf", zoneSettings: "zone_settings", zones: "zones" }))
+})), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.Null])),
+  user: Schema.optional(Schema.Union([Schema.Struct({
+  email: Schema.String,
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  twoFactorAuthenticationEnabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+}).pipe(Schema.encodeKeys({ email: "email", id: "id", firstName: "first_name", lastName: "last_name", twoFactorAuthenticationEnabled: "two_factor_authentication_enabled" })), Schema.Null]))
+}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<UpdateMemberResponse>;
 
 export type UpdateMemberError =
   | DefaultErrors
@@ -2487,13 +1133,9 @@ export interface DeleteMemberRequest {
 
 export const DeleteMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   memberId: Schema.String.pipe(T.HttpPath("memberId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/members/{memberId}",
-  }),
-) as unknown as Schema.Schema<DeleteMemberRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "DELETE", path: "/accounts/{account_id}/members/{memberId}" })) as unknown as Schema.Schema<DeleteMemberRequest>;
 
 export interface DeleteMemberResponse {
   /** Identifier */
@@ -2501,12 +1143,13 @@ export interface DeleteMemberResponse {
 }
 
 export const DeleteMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<DeleteMemberResponse>;
+  id: Schema.String
+}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<DeleteMemberResponse>;
 
-export type DeleteMemberError = DefaultErrors | MemberNotFound | InvalidRoute;
+export type DeleteMemberError =
+  | DefaultErrors
+  | MemberNotFound
+  | InvalidRoute;
 
 export const deleteMember: API.OperationMethod<
   DeleteMemberRequest,
@@ -2518,6 +1161,7 @@ export const deleteMember: API.OperationMethod<
   output: DeleteMemberResponse,
   errors: [MemberNotFound, InvalidRoute],
 }));
+
 
 // =============================================================================
 // Role
@@ -2531,10 +1175,9 @@ export interface GetRoleRequest {
 
 export const GetRoleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   roleId: Schema.String.pipe(T.HttpPath("roleId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/roles/{roleId}" }),
-) as unknown as Schema.Schema<GetRoleRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/roles/{roleId}" })) as unknown as Schema.Schema<GetRoleRequest>;
 
 export interface GetRoleResponse {
   /** Role identifier tag. */
@@ -2543,20 +1186,7 @@ export interface GetRoleResponse {
   description: string;
   /** Role name. */
   name: string;
-  permissions: {
-    analytics?: { read?: boolean | null; write?: boolean | null } | null;
-    billing?: { read?: boolean | null; write?: boolean | null } | null;
-    cachePurge?: { read?: boolean | null; write?: boolean | null } | null;
-    dns?: { read?: boolean | null; write?: boolean | null } | null;
-    dnsRecords?: { read?: boolean | null; write?: boolean | null } | null;
-    lb?: { read?: boolean | null; write?: boolean | null } | null;
-    logs?: { read?: boolean | null; write?: boolean | null } | null;
-    organization?: { read?: boolean | null; write?: boolean | null } | null;
-    ssl?: { read?: boolean | null; write?: boolean | null } | null;
-    waf?: { read?: boolean | null; write?: boolean | null } | null;
-    zoneSettings?: { read?: boolean | null; write?: boolean | null } | null;
-    zones?: { read?: boolean | null; write?: boolean | null } | null;
-  };
+  permissions: { analytics?: { read?: boolean | null; write?: boolean | null } | null; billing?: { read?: boolean | null; write?: boolean | null } | null; cachePurge?: { read?: boolean | null; write?: boolean | null } | null; dns?: { read?: boolean | null; write?: boolean | null } | null; dnsRecords?: { read?: boolean | null; write?: boolean | null } | null; lb?: { read?: boolean | null; write?: boolean | null } | null; logs?: { read?: boolean | null; write?: boolean | null } | null; organization?: { read?: boolean | null; write?: boolean | null } | null; ssl?: { read?: boolean | null; write?: boolean | null } | null; waf?: { read?: boolean | null; write?: boolean | null } | null; zoneSettings?: { read?: boolean | null; write?: boolean | null } | null; zones?: { read?: boolean | null; write?: boolean | null } | null };
 }
 
 export const GetRoleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2564,133 +1194,60 @@ export const GetRoleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.String,
   name: Schema.String,
   permissions: Schema.Struct({
-    analytics: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    billing: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    cachePurge: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    dns: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    dnsRecords: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    lb: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    logs: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    organization: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    ssl: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    waf: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    zoneSettings: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    zones: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      analytics: "analytics",
-      billing: "billing",
-      cachePurge: "cache_purge",
-      dns: "dns",
-      dnsRecords: "dns_records",
-      lb: "lb",
-      logs: "logs",
-      organization: "organization",
-      ssl: "ssl",
-      waf: "waf",
-      zoneSettings: "zone_settings",
-      zones: "zones",
-    }),
-  ),
+  analytics: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  billing: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  cachePurge: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  dns: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  dnsRecords: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  lb: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  logs: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  organization: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  ssl: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  waf: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  zoneSettings: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null])),
+  zones: Schema.optional(Schema.Union([Schema.Struct({
+    read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+  }), Schema.Null]))
+}).pipe(Schema.encodeKeys({ analytics: "analytics", billing: "billing", cachePurge: "cache_purge", dns: "dns", dnsRecords: "dns_records", lb: "lb", logs: "logs", organization: "organization", ssl: "ssl", waf: "waf", zoneSettings: "zone_settings", zones: "zones" }))
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetRoleResponse>;
 
-export type GetRoleError = DefaultErrors | InvalidRoute;
+export type GetRoleError =
+  | DefaultErrors
+  | InvalidRoute;
 
 export const getRole: API.OperationMethod<
   GetRoleRequest,
@@ -2709,238 +1266,81 @@ export interface ListRolesRequest {
 }
 
 export const ListRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/roles" }),
-) as unknown as Schema.Schema<ListRolesRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/roles" })) as unknown as Schema.Schema<ListRolesRequest>;
 
 export interface ListRolesResponse {
-  result: {
-    id: string;
-    description: string;
-    name: string;
-    permissions: {
-      analytics?: { read?: boolean | null; write?: boolean | null } | null;
-      billing?: { read?: boolean | null; write?: boolean | null } | null;
-      cachePurge?: { read?: boolean | null; write?: boolean | null } | null;
-      dns?: { read?: boolean | null; write?: boolean | null } | null;
-      dnsRecords?: { read?: boolean | null; write?: boolean | null } | null;
-      lb?: { read?: boolean | null; write?: boolean | null } | null;
-      logs?: { read?: boolean | null; write?: boolean | null } | null;
-      organization?: { read?: boolean | null; write?: boolean | null } | null;
-      ssl?: { read?: boolean | null; write?: boolean | null } | null;
-      waf?: { read?: boolean | null; write?: boolean | null } | null;
-      zoneSettings?: { read?: boolean | null; write?: boolean | null } | null;
-      zones?: { read?: boolean | null; write?: boolean | null } | null;
-    };
-  }[];
-  resultInfo: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  };
+  result: ({ id: string; description: string; name: string; permissions: { analytics?: { read?: boolean | null; write?: boolean | null } | null; billing?: { read?: boolean | null; write?: boolean | null } | null; cachePurge?: { read?: boolean | null; write?: boolean | null } | null; dns?: { read?: boolean | null; write?: boolean | null } | null; dnsRecords?: { read?: boolean | null; write?: boolean | null } | null; lb?: { read?: boolean | null; write?: boolean | null } | null; logs?: { read?: boolean | null; write?: boolean | null } | null; organization?: { read?: boolean | null; write?: boolean | null } | null; ssl?: { read?: boolean | null; write?: boolean | null } | null; waf?: { read?: boolean | null; write?: boolean | null } | null; zoneSettings?: { read?: boolean | null; write?: boolean | null } | null; zones?: { read?: boolean | null; write?: boolean | null } | null } })[];
+  resultInfo: { count?: number | null; page?: number | null; perPage?: number | null; totalCount?: number | null };
 }
 
 export const ListRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      description: Schema.String,
-      name: Schema.String,
-      permissions: Schema.Struct({
-        analytics: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        billing: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        cachePurge: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        dns: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        dnsRecords: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        lb: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        logs: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        organization: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        ssl: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        waf: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        zoneSettings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        zones: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          analytics: "analytics",
-          billing: "billing",
-          cachePurge: "cache_purge",
-          dns: "dns",
-          dnsRecords: "dns_records",
-          lb: "lb",
-          logs: "logs",
-          organization: "organization",
-          ssl: "ssl",
-          waf: "waf",
-          zoneSettings: "zone_settings",
-          zones: "zones",
-        }),
-      ),
-    }),
-  ),
+  result: Schema.Array(Schema.Struct({
+  id: Schema.String,
+  description: Schema.String,
+  name: Schema.String,
+  permissions: Schema.Struct({
+    analytics: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    billing: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    cachePurge: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dns: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    dnsRecords: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    lb: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    logs: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    organization: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    ssl: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    waf: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zoneSettings: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null])),
+    zones: Schema.optional(Schema.Union([Schema.Struct({
+      read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
+    }), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ analytics: "analytics", billing: "billing", cachePurge: "cache_purge", dns: "dns", dnsRecords: "dns_records", lb: "lb", logs: "logs", organization: "organization", ssl: "ssl", waf: "waf", zoneSettings: "zone_settings", zones: "zones" }))
+})),
   resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-) as unknown as Schema.Schema<ListRolesResponse>;
+  count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null]))
+}).pipe(Schema.encodeKeys({ count: "count", page: "page", perPage: "per_page", totalCount: "total_count" }))
+}).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })) as unknown as Schema.Schema<ListRolesResponse>;
 
-export type ListRolesError = DefaultErrors;
+export type ListRolesError =
+  | DefaultErrors;
 
 export const listRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
@@ -2960,6 +1360,7 @@ export const listRoles: API.PaginatedOperationMethod<
   } as const,
 }));
 
+
 // =============================================================================
 // Subscription
 // =============================================================================
@@ -2969,155 +1370,38 @@ export interface GetSubscriptionRequest {
   accountId: string;
 }
 
-export const GetSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/subscriptions" }),
-) as unknown as Schema.Schema<GetSubscriptionRequest>;
+export const GetSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/subscriptions" })) as unknown as Schema.Schema<GetSubscriptionRequest>;
 
 export interface GetSubscriptionResponse {
-  result: {
-    id?: string | null;
-    currency?: string | null;
-    currentPeriodEnd?: string | null;
-    currentPeriodStart?: string | null;
-    frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
-    price?: number | null;
-    ratePlan?: {
-      id?:
-        | "free"
-        | "lite"
-        | "pro"
-        | "pro_plus"
-        | "business"
-        | "enterprise"
-        | "partners_free"
-        | "partners_pro"
-        | "partners_business"
-        | "partners_enterprise"
-        | null;
-      currency?: string | null;
-      externallyManaged?: boolean | null;
-      isContract?: boolean | null;
-      publicName?: string | null;
-      scope?: string | null;
-      sets?: string[] | null;
-    } | null;
-    state?:
-      | "Trial"
-      | "Provisioned"
-      | "Paid"
-      | "AwaitingPayment"
-      | "Cancelled"
-      | "Failed"
-      | "Expired"
-      | null;
-  }[];
+  result: ({ id?: string | null; currency?: string | null; currentPeriodEnd?: string | null; currentPeriodStart?: string | null; frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null; price?: number | null; ratePlan?: { id?: "free" | "lite" | "pro" | "pro_plus" | "business" | "enterprise" | "partners_free" | "partners_pro" | "partners_business" | "partners_enterprise" | null; currency?: string | null; externallyManaged?: boolean | null; isContract?: boolean | null; publicName?: string | null; scope?: string | null; sets?: string[] | null } | null; state?: "Trial" | "Provisioned" | "Paid" | "AwaitingPayment" | "Cancelled" | "Failed" | "Expired" | null })[];
 }
 
-export const GetSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        currentPeriodEnd: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        currentPeriodStart: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        frequency: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-            Schema.Null,
-          ]),
-        ),
-        price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        ratePlan: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              id: Schema.optional(
-                Schema.Union([
-                  Schema.Literals([
-                    "free",
-                    "lite",
-                    "pro",
-                    "pro_plus",
-                    "business",
-                    "enterprise",
-                    "partners_free",
-                    "partners_pro",
-                    "partners_business",
-                    "partners_enterprise",
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              currency: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              externallyManaged: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              isContract: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              publicName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              scope: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              sets: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                currency: "currency",
-                externallyManaged: "externally_managed",
-                isContract: "is_contract",
-                publicName: "public_name",
-                scope: "scope",
-                sets: "sets",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        state: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "Trial",
-              "Provisioned",
-              "Paid",
-              "AwaitingPayment",
-              "Cancelled",
-              "Failed",
-              "Expired",
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          currentPeriodEnd: "current_period_end",
-          currentPeriodStart: "current_period_start",
-          frequency: "frequency",
-          price: "price",
-          ratePlan: "rate_plan",
-          state: "state",
-        }),
-      ),
-    ),
-  }) as unknown as Schema.Schema<GetSubscriptionResponse>;
+export const GetSubscriptionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodEnd: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodStart: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  frequency: Schema.optional(Schema.Union([Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]), Schema.Null])),
+  price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  ratePlan: Schema.optional(Schema.Union([Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Literals(["free", "lite", "pro", "pro_plus", "business", "enterprise", "partners_free", "partners_pro", "partners_business", "partners_enterprise"]), Schema.Null])),
+    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    externallyManaged: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isContract: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    publicName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sets: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ id: "id", currency: "currency", externallyManaged: "externally_managed", isContract: "is_contract", publicName: "public_name", scope: "scope", sets: "sets" })), Schema.Null])),
+  state: Schema.optional(Schema.Union([Schema.Literals(["Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired"]), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", currency: "currency", currentPeriodEnd: "current_period_end", currentPeriodStart: "current_period_start", frequency: "frequency", price: "price", ratePlan: "rate_plan", state: "state" })))
+}) as unknown as Schema.Schema<GetSubscriptionResponse>;
 
-export type GetSubscriptionError = DefaultErrors;
+export type GetSubscriptionError =
+  | DefaultErrors;
 
 export const getSubscription: API.PaginatedOperationMethod<
   GetSubscriptionRequest,
@@ -3140,71 +1424,23 @@ export interface CreateSubscriptionRequest {
   /** Body param: How often the subscription is renewed automatically. */
   frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
   /** Body param: The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise";
-    currency?: string;
-    externallyManaged?: boolean;
-    isContract?: boolean;
-    publicName?: string;
-    scope?: string;
-    sets?: string[];
-  };
+  ratePlan?: { id?: "free" | "lite" | "pro" | "pro_plus" | "business" | "enterprise" | "partners_free" | "partners_pro" | "partners_business" | "partners_enterprise"; currency?: string; externallyManaged?: boolean; isContract?: boolean; publicName?: string; scope?: string; sets?: string[] };
 }
 
-export const CreateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    frequency: Schema.optional(
-      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-    ),
-    ratePlan: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
-          ]),
-        ),
-        currency: Schema.optional(Schema.String),
-        externallyManaged: Schema.optional(Schema.Boolean),
-        isContract: Schema.optional(Schema.Boolean),
-        publicName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        sets: Schema.optional(Schema.Array(Schema.String)),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          externallyManaged: "externally_managed",
-          isContract: "is_contract",
-          publicName: "public_name",
-          scope: "scope",
-          sets: "sets",
-        }),
-      ),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
-    T.Http({ method: "POST", path: "/accounts/{account_id}/subscriptions" }),
-  ) as unknown as Schema.Schema<CreateSubscriptionRequest>;
+export const CreateSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  frequency: Schema.optional(Schema.Literals(["weekly", "monthly", "quarterly", "yearly"])),
+  ratePlan: Schema.optional(Schema.Struct({
+  id: Schema.optional(Schema.Literals(["free", "lite", "pro", "pro_plus", "business", "enterprise", "partners_free", "partners_pro", "partners_business", "partners_enterprise"])),
+  currency: Schema.optional(Schema.String),
+  externallyManaged: Schema.optional(Schema.Boolean),
+  isContract: Schema.optional(Schema.Boolean),
+  publicName: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  sets: Schema.optional(Schema.Array(Schema.String))
+}).pipe(Schema.encodeKeys({ id: "id", currency: "currency", externallyManaged: "externally_managed", isContract: "is_contract", publicName: "public_name", scope: "scope", sets: "sets" })))
+})
+  .pipe(Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }), T.Http({ method: "POST", path: "/accounts/{account_id}/subscriptions" })) as unknown as Schema.Schema<CreateSubscriptionRequest>;
 
 export interface CreateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -3220,133 +1456,29 @@ export interface CreateSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise"
-      | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    isContract?: boolean | null;
-    publicName?: string | null;
-    scope?: string | null;
-    sets?: string[] | null;
-  } | null;
+  ratePlan?: { id?: "free" | "lite" | "pro" | "pro_plus" | "business" | "enterprise" | "partners_free" | "partners_pro" | "partners_business" | "partners_enterprise" | null; currency?: string | null; externallyManaged?: boolean | null; isContract?: boolean | null; publicName?: string | null; scope?: string | null; sets?: string[] | null } | null;
   /** The state that the subscription is in. */
-  state?:
-    | "Trial"
-    | "Provisioned"
-    | "Paid"
-    | "AwaitingPayment"
-    | "Cancelled"
-    | "Failed"
-    | "Expired"
-    | null;
+  state?: "Trial" | "Provisioned" | "Paid" | "AwaitingPayment" | "Cancelled" | "Failed" | "Expired" | null;
 }
 
-export const CreateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currentPeriodEnd: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    currentPeriodStart: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    frequency: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-        Schema.Null,
-      ]),
-    ),
-    price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          externallyManaged: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isContract: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          publicName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            currency: "currency",
-            externallyManaged: "externally_managed",
-            isContract: "is_contract",
-            publicName: "public_name",
-            scope: "scope",
-            sets: "sets",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    state: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "Trial",
-          "Provisioned",
-          "Paid",
-          "AwaitingPayment",
-          "Cancelled",
-          "Failed",
-          "Expired",
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        currency: "currency",
-        currentPeriodEnd: "current_period_end",
-        currentPeriodStart: "current_period_start",
-        frequency: "frequency",
-        price: "price",
-        ratePlan: "rate_plan",
-        state: "state",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateSubscriptionResponse>;
+export const CreateSubscriptionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodEnd: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodStart: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  frequency: Schema.optional(Schema.Union([Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]), Schema.Null])),
+  price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  ratePlan: Schema.optional(Schema.Union([Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.Literals(["free", "lite", "pro", "pro_plus", "business", "enterprise", "partners_free", "partners_pro", "partners_business", "partners_enterprise"]), Schema.Null])),
+  currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  externallyManaged: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isContract: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  publicName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  sets: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", currency: "currency", externallyManaged: "externally_managed", isContract: "is_contract", publicName: "public_name", scope: "scope", sets: "sets" })), Schema.Null])),
+  state: Schema.optional(Schema.Union([Schema.Literals(["Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired"]), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", currency: "currency", currentPeriodEnd: "current_period_end", currentPeriodStart: "current_period_start", frequency: "frequency", price: "price", ratePlan: "rate_plan", state: "state" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<CreateSubscriptionResponse>;
 
 export type CreateSubscriptionError =
   | DefaultErrors
@@ -3371,77 +1503,24 @@ export interface UpdateSubscriptionRequest {
   /** Body param: How often the subscription is renewed automatically. */
   frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
   /** Body param: The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise";
-    currency?: string;
-    externallyManaged?: boolean;
-    isContract?: boolean;
-    publicName?: string;
-    scope?: string;
-    sets?: string[];
-  };
+  ratePlan?: { id?: "free" | "lite" | "pro" | "pro_plus" | "business" | "enterprise" | "partners_free" | "partners_pro" | "partners_business" | "partners_enterprise"; currency?: string; externallyManaged?: boolean; isContract?: boolean; publicName?: string; scope?: string; sets?: string[] };
 }
 
-export const UpdateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionIdentifier: Schema.String.pipe(
-      T.HttpPath("subscriptionIdentifier"),
-    ),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    frequency: Schema.optional(
-      Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-    ),
-    ratePlan: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
-          ]),
-        ),
-        currency: Schema.optional(Schema.String),
-        externallyManaged: Schema.optional(Schema.Boolean),
-        isContract: Schema.optional(Schema.Boolean),
-        publicName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        sets: Schema.optional(Schema.Array(Schema.String)),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          externallyManaged: "externally_managed",
-          isContract: "is_contract",
-          publicName: "public_name",
-          scope: "scope",
-          sets: "sets",
-        }),
-      ),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}",
-    }),
-  ) as unknown as Schema.Schema<UpdateSubscriptionRequest>;
+export const UpdateSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionIdentifier: Schema.String.pipe(T.HttpPath("subscriptionIdentifier")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  frequency: Schema.optional(Schema.Literals(["weekly", "monthly", "quarterly", "yearly"])),
+  ratePlan: Schema.optional(Schema.Struct({
+  id: Schema.optional(Schema.Literals(["free", "lite", "pro", "pro_plus", "business", "enterprise", "partners_free", "partners_pro", "partners_business", "partners_enterprise"])),
+  currency: Schema.optional(Schema.String),
+  externallyManaged: Schema.optional(Schema.Boolean),
+  isContract: Schema.optional(Schema.Boolean),
+  publicName: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  sets: Schema.optional(Schema.Array(Schema.String))
+}).pipe(Schema.encodeKeys({ id: "id", currency: "currency", externallyManaged: "externally_managed", isContract: "is_contract", publicName: "public_name", scope: "scope", sets: "sets" })))
+})
+  .pipe(Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }), T.Http({ method: "PUT", path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}" })) as unknown as Schema.Schema<UpdateSubscriptionRequest>;
 
 export interface UpdateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -3457,133 +1536,29 @@ export interface UpdateSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise"
-      | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    isContract?: boolean | null;
-    publicName?: string | null;
-    scope?: string | null;
-    sets?: string[] | null;
-  } | null;
+  ratePlan?: { id?: "free" | "lite" | "pro" | "pro_plus" | "business" | "enterprise" | "partners_free" | "partners_pro" | "partners_business" | "partners_enterprise" | null; currency?: string | null; externallyManaged?: boolean | null; isContract?: boolean | null; publicName?: string | null; scope?: string | null; sets?: string[] | null } | null;
   /** The state that the subscription is in. */
-  state?:
-    | "Trial"
-    | "Provisioned"
-    | "Paid"
-    | "AwaitingPayment"
-    | "Cancelled"
-    | "Failed"
-    | "Expired"
-    | null;
+  state?: "Trial" | "Provisioned" | "Paid" | "AwaitingPayment" | "Cancelled" | "Failed" | "Expired" | null;
 }
 
-export const UpdateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    currentPeriodEnd: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    currentPeriodStart: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    frequency: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
-        Schema.Null,
-      ]),
-    ),
-    price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          externallyManaged: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isContract: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          publicName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            currency: "currency",
-            externallyManaged: "externally_managed",
-            isContract: "is_contract",
-            publicName: "public_name",
-            scope: "scope",
-            sets: "sets",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    state: Schema.optional(
-      Schema.Union([
-        Schema.Literals([
-          "Trial",
-          "Provisioned",
-          "Paid",
-          "AwaitingPayment",
-          "Cancelled",
-          "Failed",
-          "Expired",
-        ]),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        currency: "currency",
-        currentPeriodEnd: "current_period_end",
-        currentPeriodStart: "current_period_start",
-        frequency: "frequency",
-        price: "price",
-        ratePlan: "rate_plan",
-        state: "state",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateSubscriptionResponse>;
+export const UpdateSubscriptionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodEnd: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  currentPeriodStart: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  frequency: Schema.optional(Schema.Union([Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]), Schema.Null])),
+  price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  ratePlan: Schema.optional(Schema.Union([Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.Literals(["free", "lite", "pro", "pro_plus", "business", "enterprise", "partners_free", "partners_pro", "partners_business", "partners_enterprise"]), Schema.Null])),
+  currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  externallyManaged: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  isContract: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  publicName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  sets: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", currency: "currency", externallyManaged: "externally_managed", isContract: "is_contract", publicName: "public_name", scope: "scope", sets: "sets" })), Schema.Null])),
+  state: Schema.optional(Schema.Union([Schema.Literals(["Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired"]), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", currency: "currency", currentPeriodEnd: "current_period_end", currentPeriodStart: "current_period_start", frequency: "frequency", price: "price", ratePlan: "rate_plan", state: "state" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<UpdateSubscriptionResponse>;
 
 export type UpdateSubscriptionError =
   | DefaultErrors
@@ -3608,32 +1583,20 @@ export interface DeleteSubscriptionRequest {
   accountId: string;
 }
 
-export const DeleteSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionIdentifier: Schema.String.pipe(
-      T.HttpPath("subscriptionIdentifier"),
-    ),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}",
-    }),
-  ) as unknown as Schema.Schema<DeleteSubscriptionRequest>;
+export const DeleteSubscriptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionIdentifier: Schema.String.pipe(T.HttpPath("subscriptionIdentifier")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "DELETE", path: "/accounts/{account_id}/subscriptions/{subscriptionIdentifier}" })) as unknown as Schema.Schema<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {
   /** Subscription identifier tag. */
   subscriptionId?: string | null;
 }
 
-export const DeleteSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(Schema.encodeKeys({ subscriptionId: "subscription_id" }))
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
+export const DeleteSubscriptionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+}).pipe(Schema.encodeKeys({ subscriptionId: "subscription_id" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
 
 export type DeleteSubscriptionError =
   | DefaultErrors
@@ -3651,6 +1614,7 @@ export const deleteSubscription: API.OperationMethod<
   errors: [InvalidRoute, EndpointNotFound],
 }));
 
+
 // =============================================================================
 // Token
 // =============================================================================
@@ -3663,17 +1627,14 @@ export interface GetTokenRequest {
 
 export const GetTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/{tokenId}" }),
-) as unknown as Schema.Schema<GetTokenRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/{tokenId}" })) as unknown as Schema.Schema<GetTokenRequest>;
 
 export interface GetTokenResponse {
   /** Token identifier tag. */
   id?: string | null;
-  condition?: {
-    requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-  } | null;
+  condition?: { requestIp?: { in?: string[] | null; notIn?: string[] | null } | null } | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string | null;
   /** The time on which the token was created. */
@@ -3687,112 +1648,45 @@ export interface GetTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?:
-    | {
-        id: string;
-        effect: "allow" | "deny";
-        permissionGroups: {
-          id: string;
-          meta?: { key?: string | null; value?: string | null } | null;
-          name?: string | null;
-        }[];
-        resources: Record<string, unknown>;
-      }[]
-    | null;
+  policies?: ({ id: string; effect: "allow" | "deny"; permissionGroups: ({ id: string; meta?: { key?: string | null; value?: string | null } | null; name?: string | null })[]; resources: Record<string, unknown> })[] | null;
   /** Status of the token. */
   status?: "active" | "disabled" | "expired" | null;
 }
 
 export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  condition: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        requestIp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              in: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              notIn: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-      Schema.Null,
-    ]),
-  ),
+  condition: Schema.optional(Schema.Union([Schema.Struct({
+  requestIp: Schema.optional(Schema.Union([Schema.Struct({
+    in: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null])),
+    notIn: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ requestIp: "request_ip" })), Schema.Null])),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
-          permissionGroups: Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              meta: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    key: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    value: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-          ),
-          resources: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            effect: "effect",
-            permissionGroups: "permission_groups",
-            resources: "resources",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["active", "disabled", "expired"]),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      condition: "condition",
-      expiresOn: "expires_on",
-      issuedOn: "issued_on",
-      lastUsedOn: "last_used_on",
-      modifiedOn: "modified_on",
-      name: "name",
-      notBefore: "not_before",
-      policies: "policies",
-      status: "status",
-    }),
-  )
-  .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetTokenResponse>;
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.String,
+  effect: Schema.Literals(["allow", "deny"]),
+  permissionGroups: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    meta: Schema.optional(Schema.Union([Schema.Struct({
+      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+    }), Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  })),
+  resources: Schema.Record(Schema.String, Schema.Unknown)
+}).pipe(Schema.encodeKeys({ id: "id", effect: "effect", permissionGroups: "permission_groups", resources: "resources" }))), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["active", "disabled", "expired"]), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", condition: "condition", expiresOn: "expires_on", issuedOn: "issued_on", lastUsedOn: "last_used_on", modifiedOn: "modified_on", name: "name", notBefore: "not_before", policies: "policies", status: "status" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetTokenResponse>;
 
-export type GetTokenError = DefaultErrors | InvalidRoute;
+export type GetTokenError =
+  | DefaultErrors
+  | InvalidRoute
+  | TokenNotFound;
 
 export const getToken: API.OperationMethod<
   GetTokenRequest,
@@ -3802,7 +1696,7 @@ export const getToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTokenRequest,
   output: GetTokenResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, TokenNotFound],
 }));
 
 export interface ListTokensRequest {
@@ -3814,156 +1708,55 @@ export interface ListTokensRequest {
 
 export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
-    T.HttpQuery("direction"),
-  ),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/tokens" }),
-) as unknown as Schema.Schema<ListTokensRequest>;
+  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(T.HttpQuery("direction"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tokens" })) as unknown as Schema.Schema<ListTokensRequest>;
 
 export interface ListTokensResponse {
-  result: {
-    id?: string | null;
-    condition?: {
-      requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-    } | null;
-    expiresOn?: string | null;
-    issuedOn?: string | null;
-    lastUsedOn?: string | null;
-    modifiedOn?: string | null;
-    name?: string | null;
-    notBefore?: string | null;
-    policies?:
-      | {
-          id: string;
-          effect: "allow" | "deny";
-          permissionGroups: {
-            id: string;
-            meta?: { key?: string | null; value?: string | null } | null;
-            name?: string | null;
-          }[];
-          resources: Record<string, unknown>;
-        }[]
-      | null;
-    status?: "active" | "disabled" | "expired" | null;
-  }[];
-  resultInfo: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  };
+  result: ({ id?: string | null; condition?: { requestIp?: { in?: string[] | null; notIn?: string[] | null } | null } | null; expiresOn?: string | null; issuedOn?: string | null; lastUsedOn?: string | null; modifiedOn?: string | null; name?: string | null; notBefore?: string | null; policies?: ({ id: string; effect: "allow" | "deny"; permissionGroups: ({ id: string; meta?: { key?: string | null; value?: string | null } | null; name?: string | null })[]; resources: Record<string, unknown> })[] | null; status?: "active" | "disabled" | "expired" | null })[];
+  resultInfo: { count?: number | null; page?: number | null; perPage?: number | null; totalCount?: number | null };
 }
 
 export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      condition: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            requestIp: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  in: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  notIn: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-          Schema.Null,
-        ]),
-      ),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              effect: Schema.Literals(["allow", "deny"]),
-              permissionGroups: Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  meta: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        key: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        value: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              ),
-              resources: Schema.Record(Schema.String, Schema.Unknown),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                effect: "effect",
-                permissionGroups: "permission_groups",
-                resources: "resources",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["active", "disabled", "expired"]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        condition: "condition",
-        expiresOn: "expires_on",
-        issuedOn: "issued_on",
-        lastUsedOn: "last_used_on",
-        modifiedOn: "modified_on",
-        name: "name",
-        notBefore: "not_before",
-        policies: "policies",
-        status: "status",
-      }),
-    ),
-  ),
+  result: Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  condition: Schema.optional(Schema.Union([Schema.Struct({
+    requestIp: Schema.optional(Schema.Union([Schema.Struct({
+      in: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null])),
+      notIn: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
+    }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })), Schema.Null])),
+  expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+    id: Schema.String,
+    effect: Schema.Literals(["allow", "deny"]),
+    permissionGroups: Schema.Array(Schema.Struct({
+      id: Schema.String,
+      meta: Schema.optional(Schema.Union([Schema.Struct({
+        key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        value: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+      }), Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+    })),
+    resources: Schema.Record(Schema.String, Schema.Unknown)
+  }).pipe(Schema.encodeKeys({ id: "id", effect: "effect", permissionGroups: "permission_groups", resources: "resources" }))), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["active", "disabled", "expired"]), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", condition: "condition", expiresOn: "expires_on", issuedOn: "issued_on", lastUsedOn: "last_used_on", modifiedOn: "modified_on", name: "name", notBefore: "not_before", policies: "policies", status: "status" }))),
   resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
-) as unknown as Schema.Schema<ListTokensResponse>;
+  count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null]))
+}).pipe(Schema.encodeKeys({ count: "count", page: "page", perPage: "per_page", totalCount: "total_count" }))
+}).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })) as unknown as Schema.Schema<ListTokensResponse>;
 
-export type ListTokensError = DefaultErrors;
+export type ListTokensError =
+  | DefaultErrors;
 
 export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
@@ -3989,11 +1782,7 @@ export interface CreateTokenRequest {
   /** Body param: Token name. */
   name: string;
   /** Body param: List of access policies assigned to the token. */
-  policies: {
-    effect: "allow" | "deny";
-    permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
-    resources: Record<string, unknown>;
-  }[];
+  policies: ({ effect: "allow" | "deny"; permissionGroups: { id: string; meta?: { key?: string; value?: string } }[]; resources: Record<string, unknown> })[];
   /** Body param: */
   condition?: { requestIp?: { in?: string[]; notIn?: string[] } };
   /** Body param: The expiration time on or after which the JWT MUST NOT be accepted for processing. */
@@ -4005,58 +1794,32 @@ export interface CreateTokenRequest {
 export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
-  policies: Schema.Array(
-    Schema.Struct({
-      effect: Schema.Literals(["allow", "deny"]),
-      permissionGroups: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          meta: Schema.optional(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      resources: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(
-      Schema.encodeKeys({
-        effect: "effect",
-        permissionGroups: "permission_groups",
-        resources: "resources",
-      }),
-    ),
-  ),
-  condition: Schema.optional(
-    Schema.Struct({
-      requestIp: Schema.optional(
-        Schema.Struct({
-          in: Schema.optional(Schema.Array(Schema.String)),
-          notIn: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-      ),
-    }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-  ),
+  policies: Schema.Array(Schema.Struct({
+  effect: Schema.Literals(["allow", "deny"]),
+  permissionGroups: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    meta: Schema.optional(Schema.Struct({
+      key: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String)
+    }))
+  })),
+  resources: Schema.Record(Schema.String, Schema.Unknown)
+}).pipe(Schema.encodeKeys({ effect: "effect", permissionGroups: "permission_groups", resources: "resources" }))),
+  condition: Schema.optional(Schema.Struct({
+  requestIp: Schema.optional(Schema.Struct({
+    in: Schema.optional(Schema.Array(Schema.String)),
+    notIn: Schema.optional(Schema.Array(Schema.String))
+  }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })))
+}).pipe(Schema.encodeKeys({ requestIp: "request_ip" }))),
   expiresOn: Schema.optional(Schema.String),
-  notBefore: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    name: "name",
-    policies: "policies",
-    condition: "condition",
-    expiresOn: "expires_on",
-    notBefore: "not_before",
-  }),
-  T.Http({ method: "POST", path: "/accounts/{account_id}/tokens" }),
-) as unknown as Schema.Schema<CreateTokenRequest>;
+  notBefore: Schema.optional(Schema.String)
+})
+  .pipe(Schema.encodeKeys({ name: "name", policies: "policies", condition: "condition", expiresOn: "expires_on", notBefore: "not_before" }), T.Http({ method: "POST", path: "/accounts/{account_id}/tokens" })) as unknown as Schema.Schema<CreateTokenRequest>;
 
 export interface CreateTokenResponse {
   /** Token identifier tag. */
   id?: string | null;
-  condition?: {
-    requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-  } | null;
+  condition?: { requestIp?: { in?: string[] | null; notIn?: string[] | null } | null } | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string | null;
   /** The time on which the token was created. */
@@ -4070,18 +1833,7 @@ export interface CreateTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?:
-    | {
-        id: string;
-        effect: "allow" | "deny";
-        permissionGroups: {
-          id: string;
-          meta?: { key?: string | null; value?: string | null } | null;
-          name?: string | null;
-        }[];
-        resources: Record<string, unknown>;
-      }[]
-    | null;
+  policies?: ({ id: string; effect: "allow" | "deny"; permissionGroups: ({ id: string; meta?: { key?: string | null; value?: string | null } | null; name?: string | null })[]; resources: Record<string, unknown> })[] | null;
   /** Status of the token. */
   status?: "active" | "disabled" | "expired" | null;
   /** The token value. */
@@ -4090,98 +1842,40 @@ export interface CreateTokenResponse {
 
 export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  condition: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        requestIp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              in: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              notIn: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-      Schema.Null,
-    ]),
-  ),
+  condition: Schema.optional(Schema.Union([Schema.Struct({
+  requestIp: Schema.optional(Schema.Union([Schema.Struct({
+    in: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null])),
+    notIn: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ requestIp: "request_ip" })), Schema.Null])),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
-          permissionGroups: Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              meta: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    key: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    value: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-          ),
-          resources: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            effect: "effect",
-            permissionGroups: "permission_groups",
-            resources: "resources",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["active", "disabled", "expired"]),
-      Schema.Null,
-    ]),
-  ),
-  value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      condition: "condition",
-      expiresOn: "expires_on",
-      issuedOn: "issued_on",
-      lastUsedOn: "last_used_on",
-      modifiedOn: "modified_on",
-      name: "name",
-      notBefore: "not_before",
-      policies: "policies",
-      status: "status",
-      value: "value",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateTokenResponse>;
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.String,
+  effect: Schema.Literals(["allow", "deny"]),
+  permissionGroups: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    meta: Schema.optional(Schema.Union([Schema.Struct({
+      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+    }), Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  })),
+  resources: Schema.Record(Schema.String, Schema.Unknown)
+}).pipe(Schema.encodeKeys({ id: "id", effect: "effect", permissionGroups: "permission_groups", resources: "resources" }))), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["active", "disabled", "expired"]), Schema.Null])),
+  value: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", condition: "condition", expiresOn: "expires_on", issuedOn: "issued_on", lastUsedOn: "last_used_on", modifiedOn: "modified_on", name: "name", notBefore: "not_before", policies: "policies", status: "status", value: "value" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<CreateTokenResponse>;
 
-export type CreateTokenError = DefaultErrors | InvalidRoute | InvalidTokenName;
+export type CreateTokenError =
+  | DefaultErrors
+  | InvalidRoute
+  | InvalidTokenName
+  | PermissionGroupNotFound;
 
 export const createToken: API.OperationMethod<
   CreateTokenRequest,
@@ -4191,7 +1885,7 @@ export const createToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
-  errors: [InvalidRoute, InvalidTokenName],
+  errors: [InvalidRoute, InvalidTokenName, PermissionGroupNotFound],
 }));
 
 export interface UpdateTokenRequest {
@@ -4201,11 +1895,7 @@ export interface UpdateTokenRequest {
   /** Body param: Token name. */
   name: string;
   /** Body param: List of access policies assigned to the token. */
-  policies: {
-    effect: "allow" | "deny";
-    permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
-    resources: Record<string, unknown>;
-  }[];
+  policies: ({ effect: "allow" | "deny"; permissionGroups: { id: string; meta?: { key?: string; value?: string } }[]; resources: Record<string, unknown> })[];
   /** Body param: */
   condition?: { requestIp?: { in?: string[]; notIn?: string[] } };
   /** Body param: The expiration time on or after which the JWT MUST NOT be accepted for processing. */
@@ -4220,60 +1910,33 @@ export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   name: Schema.String,
-  policies: Schema.Array(
-    Schema.Struct({
-      effect: Schema.Literals(["allow", "deny"]),
-      permissionGroups: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          meta: Schema.optional(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      resources: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(
-      Schema.encodeKeys({
-        effect: "effect",
-        permissionGroups: "permission_groups",
-        resources: "resources",
-      }),
-    ),
-  ),
-  condition: Schema.optional(
-    Schema.Struct({
-      requestIp: Schema.optional(
-        Schema.Struct({
-          in: Schema.optional(Schema.Array(Schema.String)),
-          notIn: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-      ),
-    }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-  ),
+  policies: Schema.Array(Schema.Struct({
+  effect: Schema.Literals(["allow", "deny"]),
+  permissionGroups: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    meta: Schema.optional(Schema.Struct({
+      key: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String)
+    }))
+  })),
+  resources: Schema.Record(Schema.String, Schema.Unknown)
+}).pipe(Schema.encodeKeys({ effect: "effect", permissionGroups: "permission_groups", resources: "resources" }))),
+  condition: Schema.optional(Schema.Struct({
+  requestIp: Schema.optional(Schema.Struct({
+    in: Schema.optional(Schema.Array(Schema.String)),
+    notIn: Schema.optional(Schema.Array(Schema.String))
+  }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })))
+}).pipe(Schema.encodeKeys({ requestIp: "request_ip" }))),
   expiresOn: Schema.optional(Schema.String),
   notBefore: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.Literals(["active", "disabled", "expired"])),
-}).pipe(
-  Schema.encodeKeys({
-    name: "name",
-    policies: "policies",
-    condition: "condition",
-    expiresOn: "expires_on",
-    notBefore: "not_before",
-    status: "status",
-  }),
-  T.Http({ method: "PUT", path: "/accounts/{account_id}/tokens/{tokenId}" }),
-) as unknown as Schema.Schema<UpdateTokenRequest>;
+  status: Schema.optional(Schema.Literals(["active", "disabled", "expired"]))
+})
+  .pipe(Schema.encodeKeys({ name: "name", policies: "policies", condition: "condition", expiresOn: "expires_on", notBefore: "not_before", status: "status" }), T.Http({ method: "PUT", path: "/accounts/{account_id}/tokens/{tokenId}" })) as unknown as Schema.Schema<UpdateTokenRequest>;
 
 export interface UpdateTokenResponse {
   /** Token identifier tag. */
   id?: string | null;
-  condition?: {
-    requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-  } | null;
+  condition?: { requestIp?: { in?: string[] | null; notIn?: string[] | null } | null } | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string | null;
   /** The time on which the token was created. */
@@ -4287,114 +1950,47 @@ export interface UpdateTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?:
-    | {
-        id: string;
-        effect: "allow" | "deny";
-        permissionGroups: {
-          id: string;
-          meta?: { key?: string | null; value?: string | null } | null;
-          name?: string | null;
-        }[];
-        resources: Record<string, unknown>;
-      }[]
-    | null;
+  policies?: ({ id: string; effect: "allow" | "deny"; permissionGroups: ({ id: string; meta?: { key?: string | null; value?: string | null } | null; name?: string | null })[]; resources: Record<string, unknown> })[] | null;
   /** Status of the token. */
   status?: "active" | "disabled" | "expired" | null;
 }
 
 export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  condition: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        requestIp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              in: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              notIn: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-      Schema.Null,
-    ]),
-  ),
+  condition: Schema.optional(Schema.Union([Schema.Struct({
+  requestIp: Schema.optional(Schema.Union([Schema.Struct({
+    in: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null])),
+    notIn: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
+  }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })), Schema.Null]))
+}).pipe(Schema.encodeKeys({ requestIp: "request_ip" })), Schema.Null])),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
-          permissionGroups: Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              meta: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    key: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    value: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-          ),
-          resources: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            effect: "effect",
-            permissionGroups: "permission_groups",
-            resources: "resources",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["active", "disabled", "expired"]),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      condition: "condition",
-      expiresOn: "expires_on",
-      issuedOn: "issued_on",
-      lastUsedOn: "last_used_on",
-      modifiedOn: "modified_on",
-      name: "name",
-      notBefore: "not_before",
-      policies: "policies",
-      status: "status",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateTokenResponse>;
+  policies: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+  id: Schema.String,
+  effect: Schema.Literals(["allow", "deny"]),
+  permissionGroups: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    meta: Schema.optional(Schema.Union([Schema.Struct({
+      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+    }), Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+  })),
+  resources: Schema.Record(Schema.String, Schema.Unknown)
+}).pipe(Schema.encodeKeys({ id: "id", effect: "effect", permissionGroups: "permission_groups", resources: "resources" }))), Schema.Null])),
+  status: Schema.optional(Schema.Union([Schema.Literals(["active", "disabled", "expired"]), Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", condition: "condition", expiresOn: "expires_on", issuedOn: "issued_on", lastUsedOn: "last_used_on", modifiedOn: "modified_on", name: "name", notBefore: "not_before", policies: "policies", status: "status" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<UpdateTokenResponse>;
 
-export type UpdateTokenError = DefaultErrors | InvalidRoute | MethodNotAllowed;
+export type UpdateTokenError =
+  | DefaultErrors
+  | InvalidRoute
+  | MethodNotAllowed
+  | TokenNotFound
+  | PermissionGroupNotFound;
 
 export const updateToken: API.OperationMethod<
   UpdateTokenRequest,
@@ -4404,7 +2000,7 @@ export const updateToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTokenRequest,
   output: UpdateTokenResponse,
-  errors: [InvalidRoute, MethodNotAllowed],
+  errors: [InvalidRoute, MethodNotAllowed, TokenNotFound, PermissionGroupNotFound],
 }));
 
 export interface DeleteTokenRequest {
@@ -4415,10 +2011,9 @@ export interface DeleteTokenRequest {
 
 export const DeleteTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "/accounts/{account_id}/tokens/{tokenId}" }),
-) as unknown as Schema.Schema<DeleteTokenRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "DELETE", path: "/accounts/{account_id}/tokens/{tokenId}" })) as unknown as Schema.Schema<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {
   /** Identifier */
@@ -4426,12 +2021,14 @@ export interface DeleteTokenResponse {
 }
 
 export const DeleteTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<DeleteTokenResponse>;
+  id: Schema.String
+}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<DeleteTokenResponse>;
 
-export type DeleteTokenError = DefaultErrors | InvalidRoute | MethodNotAllowed;
+export type DeleteTokenError =
+  | DefaultErrors
+  | InvalidRoute
+  | MethodNotAllowed
+  | TokenNotFound;
 
 export const deleteToken: API.OperationMethod<
   DeleteTokenRequest,
@@ -4441,7 +2038,7 @@ export const deleteToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
-  errors: [InvalidRoute, MethodNotAllowed],
+  errors: [InvalidRoute, MethodNotAllowed, TokenNotFound],
 }));
 
 export interface VerifyTokenRequest {
@@ -4450,10 +2047,9 @@ export interface VerifyTokenRequest {
 }
 
 export const VerifyTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/verify" }),
-) as unknown as Schema.Schema<VerifyTokenRequest>;
+  accountId: Schema.String.pipe(T.HttpPath("account_id"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/verify" })) as unknown as Schema.Schema<VerifyTokenRequest>;
 
 export interface VerifyTokenResponse {
   /** Token identifier tag. */
@@ -4470,19 +2066,8 @@ export const VerifyTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   status: Schema.Literals(["active", "disabled", "expired"]),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      status: "status",
-      expiresOn: "expires_on",
-      notBefore: "not_before",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<VerifyTokenResponse>;
+  notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
+}).pipe(Schema.encodeKeys({ id: "id", status: "status", expiresOn: "expires_on", notBefore: "not_before" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<VerifyTokenResponse>;
 
 export type VerifyTokenError =
   | DefaultErrors
@@ -4500,6 +2085,7 @@ export const verifyToken: API.OperationMethod<
   errors: [MissingAuthenticationToken, InvalidRoute],
 }));
 
+
 // =============================================================================
 // TokenPermissionGroup
 // =============================================================================
@@ -4513,55 +2099,24 @@ export interface GetTokenPermissionGroupRequest {
   scope?: string;
 }
 
-export const GetTokenPermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/tokens/permission_groups",
-    }),
-  ) as unknown as Schema.Schema<GetTokenPermissionGroupRequest>;
+export const GetTokenPermissionGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/permission_groups" })) as unknown as Schema.Schema<GetTokenPermissionGroupRequest>;
 
-export type GetTokenPermissionGroupResponse = {
-  id?: string | null;
-  name?: string | null;
-  scopes?:
-    | (
-        | "com.cloudflare.api.account"
-        | "com.cloudflare.api.account.zone"
-        | "com.cloudflare.api.user"
-        | "com.cloudflare.edge.r2.bucket"
-      )[]
-    | null;
-}[];
+export type GetTokenPermissionGroupResponse = ({ id?: string | null; name?: string | null; scopes?: ("com.cloudflare.api.account" | "com.cloudflare.api.account.zone" | "com.cloudflare.api.user" | "com.cloudflare.edge.r2.bucket")[] | null })[];
 
-export const GetTokenPermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      scopes: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Literals([
-              "com.cloudflare.api.account",
-              "com.cloudflare.api.account.zone",
-              "com.cloudflare.api.user",
-              "com.cloudflare.edge.r2.bucket",
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }),
-  ).pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetTokenPermissionGroupResponse>;
+export const GetTokenPermissionGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  scopes: Schema.optional(Schema.Union([Schema.Array(Schema.Literals(["com.cloudflare.api.account", "com.cloudflare.api.account.zone", "com.cloudflare.api.user", "com.cloudflare.edge.r2.bucket"])), Schema.Null]))
+})).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetTokenPermissionGroupResponse>;
 
-export type GetTokenPermissionGroupError = DefaultErrors | InvalidRoute;
+export type GetTokenPermissionGroupError =
+  | DefaultErrors
+  | InvalidRoute;
 
 export const getTokenPermissionGroup: API.OperationMethod<
   GetTokenPermissionGroupRequest,
@@ -4583,57 +2138,27 @@ export interface ListTokenPermissionGroupsRequest {
   scope?: string;
 }
 
-export const ListTokenPermissionGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/tokens/permission_groups",
-    }),
-  ) as unknown as Schema.Schema<ListTokenPermissionGroupsRequest>;
+export const ListTokenPermissionGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope"))
+})
+  .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/permission_groups" })) as unknown as Schema.Schema<ListTokenPermissionGroupsRequest>;
 
 export interface ListTokenPermissionGroupsResponse {
-  result: {
-    id?: string | null;
-    name?: string | null;
-    scopes?:
-      | (
-          | "com.cloudflare.api.account"
-          | "com.cloudflare.api.account.zone"
-          | "com.cloudflare.api.user"
-          | "com.cloudflare.edge.r2.bucket"
-        )[]
-      | null;
-  }[];
+  result: ({ id?: string | null; name?: string | null; scopes?: ("com.cloudflare.api.account" | "com.cloudflare.api.account.zone" | "com.cloudflare.api.user" | "com.cloudflare.edge.r2.bucket")[] | null })[];
 }
 
-export const ListTokenPermissionGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scopes: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Literals([
-                "com.cloudflare.api.account",
-                "com.cloudflare.api.account.zone",
-                "com.cloudflare.api.user",
-                "com.cloudflare.edge.r2.bucket",
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ),
-  }) as unknown as Schema.Schema<ListTokenPermissionGroupsResponse>;
+export const ListTokenPermissionGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  scopes: Schema.optional(Schema.Union([Schema.Array(Schema.Literals(["com.cloudflare.api.account", "com.cloudflare.api.account.zone", "com.cloudflare.api.user", "com.cloudflare.edge.r2.bucket"])), Schema.Null]))
+}))
+}) as unknown as Schema.Schema<ListTokenPermissionGroupsResponse>;
 
-export type ListTokenPermissionGroupsError = DefaultErrors;
+export type ListTokenPermissionGroupsError =
+  | DefaultErrors;
 
 export const listTokenPermissionGroups: API.PaginatedOperationMethod<
   ListTokenPermissionGroupsRequest,
@@ -4650,6 +2175,7 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
   } as const,
 }));
 
+
 // =============================================================================
 // TokenValue
 // =============================================================================
@@ -4665,22 +2191,18 @@ export interface PutTokenValueRequest {
 export const PutTokenValueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  body: Schema.Unknown.pipe(T.HttpBody()),
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "/accounts/{account_id}/tokens/{tokenId}/value",
-  }),
-) as unknown as Schema.Schema<PutTokenValueRequest>;
+  body: Schema.Unknown.pipe(T.HttpBody())
+})
+  .pipe(T.Http({ method: "PUT", path: "/accounts/{account_id}/tokens/{tokenId}/value" })) as unknown as Schema.Schema<PutTokenValueRequest>;
 
 export type PutTokenValueResponse = string;
 
-export const PutTokenValueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutTokenValueResponse>;
+export const PutTokenValueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PutTokenValueResponse>;
 
-export type PutTokenValueError = DefaultErrors | InvalidRoute;
+export type PutTokenValueError =
+  | DefaultErrors
+  | InvalidRoute
+  | TokenNotFound;
 
 export const putTokenValue: API.OperationMethod<
   PutTokenValueRequest,
@@ -4690,5 +2212,5 @@ export const putTokenValue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutTokenValueRequest,
   output: PutTokenValueResponse,
-  errors: [InvalidRoute],
+  errors: [InvalidRoute, TokenNotFound],
 }));
