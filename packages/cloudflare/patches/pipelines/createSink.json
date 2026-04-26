@@ -1,0 +1,13 @@
+{
+  "errors": {
+    "SinkAuthFailed": [
+      { "code": 1012, "message": { "includes": "could not authenticate" } }
+    ],
+    "InvalidSinkConfig": [
+      { "code": 1012 }
+    ],
+    "SinkAlreadyExists": [
+      { "code": 1003 }
+    ]
+  }
+}

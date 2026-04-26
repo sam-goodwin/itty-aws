@@ -13,6 +13,44 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
+  "InvalidRoute",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
+
+export class InvalidTokenName extends Schema.TaggedErrorClass<InvalidTokenName>()(
+  "InvalidTokenName",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidTokenName, [
+  { code: 400, message: { includes: "name must have a length" } },
+]);
+
+export class MethodNotAllowed extends Schema.TaggedErrorClass<MethodNotAllowed>()(
+  "MethodNotAllowed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(MethodNotAllowed, [{ code: 7001 }]);
+
+export class PermissionGroupNotFound extends Schema.TaggedErrorClass<PermissionGroupNotFound>()(
+  "PermissionGroupNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PermissionGroupNotFound, [
+  { code: 1001, message: { includes: "Permission group" } },
+]);
+
+export class TokenNotFound extends Schema.TaggedErrorClass<TokenNotFound>()(
+  "TokenNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(TokenNotFound, [{ code: 1003 }]);
+
+// =============================================================================
 // AuditLog
 // =============================================================================
 
@@ -1260,7 +1298,7 @@ export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetTokenResponse>;
 
-export type GetTokenError = DefaultErrors;
+export type GetTokenError = DefaultErrors | InvalidRoute | TokenNotFound;
 
 export const getToken: API.OperationMethod<
   GetTokenRequest,
@@ -1270,7 +1308,7 @@ export const getToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTokenRequest,
   output: GetTokenResponse,
-  errors: [],
+  errors: [InvalidRoute, TokenNotFound],
 }));
 
 export interface ListTokensRequest {}
@@ -1637,7 +1675,11 @@ export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateTokenResponse>;
 
-export type CreateTokenError = DefaultErrors;
+export type CreateTokenError =
+  | DefaultErrors
+  | InvalidRoute
+  | InvalidTokenName
+  | PermissionGroupNotFound;
 
 export const createToken: API.OperationMethod<
   CreateTokenRequest,
@@ -1647,7 +1689,7 @@ export const createToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
-  errors: [],
+  errors: [InvalidRoute, InvalidTokenName, PermissionGroupNotFound],
 }));
 
 export interface UpdateTokenRequest {
@@ -1846,7 +1888,12 @@ export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateTokenResponse>;
 
-export type UpdateTokenError = DefaultErrors;
+export type UpdateTokenError =
+  | DefaultErrors
+  | InvalidRoute
+  | MethodNotAllowed
+  | TokenNotFound
+  | PermissionGroupNotFound;
 
 export const updateToken: API.OperationMethod<
   UpdateTokenRequest,
@@ -1856,7 +1903,12 @@ export const updateToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTokenRequest,
   output: UpdateTokenResponse,
-  errors: [],
+  errors: [
+    InvalidRoute,
+    MethodNotAllowed,
+    TokenNotFound,
+    PermissionGroupNotFound,
+  ],
 }));
 
 export interface DeleteTokenRequest {
@@ -1880,7 +1932,11 @@ export const DeleteTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteTokenResponse>;
 
-export type DeleteTokenError = DefaultErrors;
+export type DeleteTokenError =
+  | DefaultErrors
+  | InvalidRoute
+  | MethodNotAllowed
+  | TokenNotFound;
 
 export const deleteToken: API.OperationMethod<
   DeleteTokenRequest,
@@ -1890,7 +1946,7 @@ export const deleteToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
-  errors: [],
+  errors: [InvalidRoute, MethodNotAllowed, TokenNotFound],
 }));
 
 export interface VerifyTokenRequest {}
@@ -2030,7 +2086,7 @@ export const PutTokenValueResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutTokenValueResponse>;
 
-export type PutTokenValueError = DefaultErrors;
+export type PutTokenValueError = DefaultErrors | InvalidRoute | TokenNotFound;
 
 export const putTokenValue: API.OperationMethod<
   PutTokenValueRequest,
@@ -2040,7 +2096,7 @@ export const putTokenValue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutTokenValueRequest,
   output: PutTokenValueResponse,
-  errors: [],
+  errors: [InvalidRoute, TokenNotFound],
 }));
 
 // =============================================================================

@@ -17,11 +17,23 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
+export class InvalidSinkConfig extends Schema.TaggedErrorClass<InvalidSinkConfig>()(
+  "InvalidSinkConfig",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidSinkConfig, [{ code: 1012 }]);
+
 export class InvalidSinkId extends Schema.TaggedErrorClass<InvalidSinkId>()(
   "InvalidSinkId",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(InvalidSinkId, [{ code: 2 }]);
+
+export class InvalidSql extends Schema.TaggedErrorClass<InvalidSql>()(
+  "InvalidSql",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidSql, [{ code: 1014 }]);
 
 export class InvalidStreamId extends Schema.TaggedErrorClass<InvalidStreamId>()(
   "InvalidStreamId",
@@ -35,11 +47,31 @@ export class InvalidStreamName extends Schema.TaggedErrorClass<InvalidStreamName
 ) {}
 T.applyErrorMatchers(InvalidStreamName, [{ code: 2 }]);
 
+export class PipelineAlreadyExists extends Schema.TaggedErrorClass<PipelineAlreadyExists>()(
+  "PipelineAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(PipelineAlreadyExists, [{ code: 1003 }]);
+
 export class PipelineNotExists extends Schema.TaggedErrorClass<PipelineNotExists>()(
   "PipelineNotExists",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(PipelineNotExists, [{ code: 1000 }]);
+
+export class SinkAlreadyExists extends Schema.TaggedErrorClass<SinkAlreadyExists>()(
+  "SinkAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SinkAlreadyExists, [{ code: 1003 }]);
+
+export class SinkAuthFailed extends Schema.TaggedErrorClass<SinkAuthFailed>()(
+  "SinkAuthFailed",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(SinkAuthFailed, [
+  { code: 1012, message: { includes: "could not authenticate" } },
+]);
 
 export class SinkNotFound extends Schema.TaggedErrorClass<SinkNotFound>()(
   "SinkNotFound",
@@ -63,7 +95,9 @@ export class TableNotFound extends Schema.TaggedErrorClass<TableNotFound>()(
   "TableNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(TableNotFound, [{ code: 1014 }]);
+T.applyErrorMatchers(TableNotFound, [
+  { code: 1014, message: { includes: "not found" } },
+]);
 
 // =============================================================================
 // Pipeline
@@ -3328,7 +3362,11 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateSinkResponse>;
 
-export type CreateSinkError = DefaultErrors;
+export type CreateSinkError =
+  | DefaultErrors
+  | SinkAuthFailed
+  | InvalidSinkConfig
+  | SinkAlreadyExists;
 
 export const createSink: API.OperationMethod<
   CreateSinkRequest,
@@ -3338,7 +3376,7 @@ export const createSink: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSinkRequest,
   output: CreateSinkResponse,
-  errors: [],
+  errors: [SinkAuthFailed, InvalidSinkConfig, SinkAlreadyExists],
 }));
 
 export interface DeleteSinkRequest {
@@ -3466,7 +3504,10 @@ export const ValidateSqlPipelineResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ValidateSqlPipelineResponse>;
 
-export type ValidateSqlPipelineError = DefaultErrors | TableNotFound;
+export type ValidateSqlPipelineError =
+  | DefaultErrors
+  | TableNotFound
+  | InvalidSql;
 
 export const validateSqlPipeline: API.OperationMethod<
   ValidateSqlPipelineRequest,
@@ -3476,7 +3517,7 @@ export const validateSqlPipeline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateSqlPipelineRequest,
   output: ValidateSqlPipelineResponse,
-  errors: [TableNotFound],
+  errors: [TableNotFound, InvalidSql],
 }));
 
 // =============================================================================
@@ -5863,7 +5904,7 @@ export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetV1PipelineResponse>;
 
-export type GetV1PipelineError = DefaultErrors;
+export type GetV1PipelineError = DefaultErrors | PipelineNotExists;
 
 export const getV1Pipeline: API.OperationMethod<
   GetV1PipelineRequest,
@@ -5873,7 +5914,7 @@ export const getV1Pipeline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetV1PipelineRequest,
   output: GetV1PipelineResponse,
-  errors: [],
+  errors: [PipelineNotExists],
 }));
 
 export interface ListV1PipelineRequest {
@@ -6030,7 +6071,11 @@ export const CreateV1PipelineResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateV1PipelineResponse>;
 
-export type CreateV1PipelineError = DefaultErrors;
+export type CreateV1PipelineError =
+  | DefaultErrors
+  | TableNotFound
+  | InvalidSql
+  | PipelineAlreadyExists;
 
 export const createV1Pipeline: API.OperationMethod<
   CreateV1PipelineRequest,
@@ -6040,7 +6085,7 @@ export const createV1Pipeline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateV1PipelineRequest,
   output: CreateV1PipelineResponse,
-  errors: [],
+  errors: [TableNotFound, InvalidSql, PipelineAlreadyExists],
 }));
 
 export interface DeleteV1PipelineRequest {
@@ -6065,7 +6110,7 @@ export type DeleteV1PipelineResponse = unknown;
 export const DeleteV1PipelineResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteV1PipelineResponse>;
 
-export type DeleteV1PipelineError = DefaultErrors;
+export type DeleteV1PipelineError = DefaultErrors | PipelineNotExists;
 
 export const deleteV1Pipeline: API.OperationMethod<
   DeleteV1PipelineRequest,
@@ -6075,5 +6120,5 @@ export const deleteV1Pipeline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteV1PipelineRequest,
   output: DeleteV1PipelineResponse,
-  errors: [],
+  errors: [PipelineNotExists],
 }));

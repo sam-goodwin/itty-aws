@@ -802,6 +802,11 @@ paths:
                       - expired
                     description: Status of the token.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        TokenNotFound:
+          - code: 1003
     put:
       operationId: updateToken
       description: "Update an existing token.  @example ```ts const token = await
@@ -1002,6 +1007,17 @@ paths:
                       - expired
                     description: Status of the token.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 7001
+        TokenNotFound:
+          - code: 1003
+        PermissionGroupNotFound:
+          - code: 1001
+            message:
+              includes: Permission group
     delete:
       operationId: deleteToken
       description: Destroy a token.  @example ```ts const token = await
@@ -1026,6 +1042,13 @@ paths:
                 required:
                   - id
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 7001
+        TokenNotFound:
+          - code: 1003
   /user/tokens:
     get:
       operationId: listTokens
@@ -1321,6 +1344,17 @@ paths:
                     type: string
                     description: The token value.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        InvalidTokenName:
+          - code: 400
+            message:
+              includes: name must have a length
+        PermissionGroupNotFound:
+          - code: 1001
+            message:
+              includes: Permission group
   /user/tokens/verify:
     get:
       operationId: verifyToken
@@ -1404,6 +1438,11 @@ paths:
               schema:
                 type: string
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        TokenNotFound:
+          - code: 1003
   /user:
     get:
       operationId: getUser

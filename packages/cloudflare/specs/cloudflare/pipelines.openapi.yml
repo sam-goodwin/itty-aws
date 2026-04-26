@@ -2641,6 +2641,15 @@ paths:
                   - name
                   - type
       x-distilled-response-path: result
+      x-distilled-errors:
+        SinkAuthFailed:
+          - code: 1012
+            message:
+              includes: could not authenticate
+        InvalidSinkConfig:
+          - code: 1012
+        SinkAlreadyExists:
+          - code: 1003
   /accounts/{account_id}/pipelines/v1/validate_sql:
     post:
       operationId: validateSqlPipeline
@@ -2729,6 +2738,10 @@ paths:
       x-distilled-response-path: result
       x-distilled-errors:
         TableNotFound:
+          - code: 1014
+            message:
+              includes: not found
+        InvalidSql:
           - code: 1014
   /accounts/{account_id}/pipelines/v1/streams/{streamId}:
     get:
@@ -4357,6 +4370,9 @@ paths:
                   - status
                   - tables
       x-distilled-response-path: result
+      x-distilled-errors:
+        PipelineNotExists:
+          - code: 1000
     delete:
       operationId: deleteV1Pipeline
       description: "Delete Pipeline in Account.  @example ```ts await
@@ -4377,6 +4393,9 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-errors:
+        PipelineNotExists:
+          - code: 1000
   /accounts/{account_id}/pipelines/v1/pipelines:
     get:
       operationId: listV1Pipeline
@@ -4484,3 +4503,12 @@ paths:
                   - sql
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        TableNotFound:
+          - code: 1014
+            message:
+              includes: not found
+        InvalidSql:
+          - code: 1014
+        PipelineAlreadyExists:
+          - code: 1003

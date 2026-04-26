@@ -5,6 +5,9 @@
     ],
     "InvalidSql": [
       { "code": 1014 }
+    ],
+    "PipelineAlreadyExists": [
+      { "code": 1003 }
     ]
   }
 }
