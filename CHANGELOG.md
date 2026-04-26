@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.12.4](https://github.com/alchemy-run/distilled/releases/tag/v0.12.4) (2026-04-26)
+
+### Bug Fixes
+
+- **cloudflare**: Pipeline, Sinks and User API Token errors - by Sam Goodwin [(998905c)](https://github.com/alchemy-run/distilled/commit/998905c7c190cedf6f181b9a11238b7932ba2f6c)
+- **cloudflare**: DatabaseAlreadyExists, SubdomainAlreadyExists, InstanceAlreadyExists - by Sam Goodwin [(e72aeec)](https://github.com/alchemy-run/distilled/commit/e72aeecf564b68696d6b7e5ce849722009384c85)
+
 ## [v0.12.3](https://github.com/alchemy-run/distilled/releases/tag/v0.12.3) (2026-04-26)
 
 ### Bug Fixes
