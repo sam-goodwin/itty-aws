@@ -189,6 +189,8 @@ paths:
           - code: 7003
         InvalidProperty:
           - code: 7400
+        DatabaseAlreadyExists:
+          - code: 7502
   /accounts/{account_id}/d1/database/{databaseId}:
     get:
       operationId: getDatabase

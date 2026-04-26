@@ -479,6 +479,8 @@ paths:
       x-distilled-errors:
         WorkflowNotFound:
           - code: 10200
+        InstanceAlreadyExists:
+          - code: 10405
         InvalidRoute:
           - code: 7003
         InvalidBody:
@@ -558,6 +560,8 @@ paths:
       x-distilled-errors:
         WorkflowNotFound:
           - code: 10200
+        InstanceAlreadyExists:
+          - code: 10405
         InvalidRoute:
           - code: 7003
         InvalidBody:

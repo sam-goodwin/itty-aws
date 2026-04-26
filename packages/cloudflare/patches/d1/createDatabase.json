@@ -1,6 +1,7 @@
 {
   "errors": {
     "InvalidObjectIdentifier": [{ "code": 7003 }],
-    "InvalidProperty": [{ "code": 7400 }]
+    "InvalidProperty": [{ "code": 7400 }],
+    "DatabaseAlreadyExists": [{ "code": 7502 }]
   }
 }

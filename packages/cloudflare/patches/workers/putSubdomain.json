@@ -1,5 +1,6 @@
 {
   "errors": {
+    "SubdomainAlreadyExists": [{ "code": 10036 }],
     "InvalidRoute": [{ "code": 7003 }]
   }
 }

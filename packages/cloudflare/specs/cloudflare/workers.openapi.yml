@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare WORKERS API
+  title: Cloudflare Workers API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -15576,6 +15576,8 @@ paths:
                   - subdomain
       x-distilled-response-path: result
       x-distilled-errors:
+        SubdomainAlreadyExists:
+          - code: 10036
         InvalidRoute:
           - code: 7003
     delete:
