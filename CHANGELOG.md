@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.12.3](https://github.com/alchemy-run/distilled/releases/tag/v0.12.3) (2026-04-26)
+
+### Bug Fixes
+
+- **cloudflare**: EventNotificationConfigNotFound for BucketEventNotifications - by Sam Goodwin [(a27917e)](https://github.com/alchemy-run/distilled/commit/a27917edc9881985af6a2d2b728e7a26ad9a3381)
+- **cloudflare**: ConsumerNotFound, ConsumerAlreadyExists, WorkerNotFound, QueueNotFound for Queues - by Sam Goodwin [(f58e332)](https://github.com/alchemy-run/distilled/commit/f58e33296bc548129fed2d711f641b10f7cd2cba)
+
 ## [v0.12.2](https://github.com/alchemy-run/distilled/releases/tag/v0.12.2) (2026-04-26)
 
 ### Bug Fixes
