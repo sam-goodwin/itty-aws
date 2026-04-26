@@ -2,6 +2,7 @@
   "errors": {
     "InvalidRequestBody": [{ "code": 10026 }],
     "QueueNotFound": [{ "code": 11000 }],
+    "ConsumerNotFound": [{ "code": 11006 }],
     "InvalidRoute": [{ "code": 7003 }]
   }
 }

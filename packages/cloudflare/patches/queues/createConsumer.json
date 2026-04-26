@@ -2,6 +2,8 @@
   "errors": {
     "InvalidRequestBody": [{ "code": 10026 }],
     "QueueNotFound": [{ "code": 11000 }],
+    "ConsumerAlreadyExists": [{ "code": 11004 }],
+    "WorkerNotFound": [{ "code": 10007 }],
     "InvalidRoute": [{ "code": 7003 }]
   },
   "request": {

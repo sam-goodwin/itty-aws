@@ -2,6 +2,10 @@
   "errors": {
     "InvalidRequestBody": [{ "code": 10026 }],
     "InvalidQueueId": [{ "code": 10107 }],
+    "QueueNotFound": [
+      { "code": 11000 },
+      { "code": 0, "message": { "includes": "Queue does not exist" } }
+    ],
     "InvalidRoute": [{ "code": 7003 }]
   }
 }

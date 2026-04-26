@@ -114,6 +114,8 @@ paths:
           - code: 10026
         QueueNotFound:
           - code: 11000
+        ConsumerNotFound:
+          - code: 11006
         InvalidRoute:
           - code: 7003
     put:
@@ -265,6 +267,11 @@ paths:
           - code: 10026
         QueueNotFound:
           - code: 11000
+        ConsumerNotFound:
+          - code: 10105
+          - code: 11006
+        WorkerNotFound:
+          - code: 10007
         InvalidRoute:
           - code: 7003
     delete:
@@ -331,6 +338,8 @@ paths:
           - code: 10026
         QueueNotFound:
           - code: 11000
+        ConsumerNotFound:
+          - code: 11006
         InvalidRoute:
           - code: 7003
   /accounts/{account_id}/queues/{queueId}/consumers:
@@ -584,6 +593,10 @@ paths:
           - code: 10026
         QueueNotFound:
           - code: 11000
+        ConsumerAlreadyExists:
+          - code: 11004
+        WorkerNotFound:
+          - code: 10007
         InvalidRoute:
           - code: 7003
   /accounts/{account_id}/queues/{queueId}/messages/batch:
@@ -758,6 +771,11 @@ paths:
           - code: 10026
         InvalidQueueId:
           - code: 10107
+        QueueNotFound:
+          - code: 11000
+          - code: 0
+            message:
+              includes: Queue does not exist
         InvalidRoute:
           - code: 7003
   /accounts/{account_id}/queues/{queueId}/messages:
@@ -916,6 +934,11 @@ paths:
           - code: 10026
         InvalidQueueId:
           - code: 10107
+        QueueNotFound:
+          - code: 11000
+          - code: 0
+            message:
+              includes: Queue does not exist
         InvalidRoute:
           - code: 7003
   /accounts/{account_id}/queues/{queueId}/purge:
