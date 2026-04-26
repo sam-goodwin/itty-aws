@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.12.0](https://github.com/alchemy-run/distilled/releases/tag/v0.12.0) (2026-04-26)
+
+### Bug Fixes
+
+- **cloudflare**: more error tags - by Michael (Pear) [(2379bd3)](https://github.com/alchemy-run/distilled/commit/2379bd3a83539c8000f94e67386b35c2aee02002)
+
 ## [v0.11.0](https://github.com/alchemy-run/distilled/releases/tag/v0.11.0) (2026-04-24)
 
 ### Features
