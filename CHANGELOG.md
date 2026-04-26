@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.12.2](https://github.com/alchemy-run/distilled/releases/tag/v0.12.2) (2026-04-26)
+
+### Bug Fixes
+
+- **cloudflare**: TokenNotFound and PermissionGroupNotFound - by Sam Goodwin [(1cbbc12)](https://github.com/alchemy-run/distilled/commit/1cbbc12f63f15352e692a75a7865138ea7f23ac4)
+
 ## [v0.12.1](https://github.com/alchemy-run/distilled/releases/tag/v0.12.1) (2026-04-26)
 
 *No significant changes*
