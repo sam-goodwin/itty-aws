@@ -1,6 +1,7 @@
 {
   "errors": {
     "BucketNotFound": [{ "code": 10085 }],
+    "EventNotificationConfigNotFound": [{ "code": 11011 }],
     "QueueNotFound": [{ "code": 11000 }],
     "InvalidRoute": [{ "code": 7003 }]
   }

@@ -1,7 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare R2 API
+  title: Cloudflare R2 Object API
   version: 0.0.0
+  description: R2 object operations not exposed in the Cloudflare TypeScript SDK.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: r2
@@ -1406,6 +1407,8 @@ paths:
           - code: 10085
         NoEventNotificationConfig:
           - code: 11015
+        EventNotificationConfigNotFound:
+          - code: 11011
         QueueNotFound:
           - code: 11000
         InvalidRoute:
@@ -1495,6 +1498,9 @@ paths:
           - code: 10085
         InvalidEventNotificationConfig:
           - code: 11014
+          - code: 11019
+        EventNotificationRuleConflict:
+          - code: 11020
         QueueNotFound:
           - code: 11000
         InvalidRoute:
@@ -1544,6 +1550,8 @@ paths:
       x-distilled-errors:
         BucketNotFound:
           - code: 10085
+        EventNotificationConfigNotFound:
+          - code: 11011
         QueueNotFound:
           - code: 11000
         InvalidRoute:

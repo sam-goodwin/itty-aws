@@ -1,7 +1,8 @@
 {
   "errors": {
     "BucketNotFound": [{ "code": 10085 }],
-    "InvalidEventNotificationConfig": [{ "code": 11014 }],
+    "InvalidEventNotificationConfig": [{ "code": 11014 }, { "code": 11019 }],
+    "EventNotificationRuleConflict": [{ "code": 11020 }],
     "QueueNotFound": [{ "code": 11000 }],
     "InvalidRoute": [{ "code": 7003 }]
   }
