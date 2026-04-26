@@ -1,6 +1,5 @@
 {
   "errors": {
-    "InvalidMessageBody": [{ "code": 10207 }],
     "InvalidQueueId": [{ "code": 10107 }],
     "InvalidRoute": [{ "code": 7003 }]
   }

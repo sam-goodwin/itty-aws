@@ -22,6 +22,12 @@ export class InvalidMessageBody extends Schema.TaggedErrorClass<InvalidMessageBo
 ) {}
 T.applyErrorMatchers(InvalidMessageBody, [{ code: 10207 }, { code: 10013 }]);
 
+export class InvalidQueueId extends Schema.TaggedErrorClass<InvalidQueueId>()(
+  "InvalidQueueId",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidQueueId, [{ code: 10107 }]);
+
 export class InvalidQueueName extends Schema.TaggedErrorClass<InvalidQueueName>()(
   "InvalidQueueName",
   { code: Schema.Number, message: Schema.String },
@@ -33,6 +39,24 @@ export class InvalidRequestBody extends Schema.TaggedErrorClass<InvalidRequestBo
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(InvalidRequestBody, [{ code: 10026 }]);
+
+export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
+  "InvalidRoute",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
+
+export class QueueAlreadyExists extends Schema.TaggedErrorClass<QueueAlreadyExists>()(
+  "QueueAlreadyExists",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(QueueAlreadyExists, [{ code: 11009 }]);
+
+export class QueueNotFound extends Schema.TaggedErrorClass<QueueNotFound>()(
+  "QueueNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(QueueNotFound, [{ code: 11000 }]);
 
 export class UnrecognizedEventType extends Schema.TaggedErrorClass<UnrecognizedEventType>()(
   "UnrecognizedEventType",
@@ -187,7 +211,11 @@ export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetConsumerResponse>;
 
-export type GetConsumerError = DefaultErrors | InvalidRequestBody;
+export type GetConsumerError =
+  | DefaultErrors
+  | InvalidRequestBody
+  | QueueNotFound
+  | InvalidRoute;
 
 export const getConsumer: API.OperationMethod<
   GetConsumerRequest,
@@ -197,7 +225,7 @@ export const getConsumer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConsumerRequest,
   output: GetConsumerResponse,
-  errors: [InvalidRequestBody],
+  errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
 }));
 
 export interface ListConsumersRequest {
@@ -344,7 +372,11 @@ export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListConsumersResponse>;
 
-export type ListConsumersError = DefaultErrors | InvalidRequestBody;
+export type ListConsumersError =
+  | DefaultErrors
+  | InvalidRequestBody
+  | QueueNotFound
+  | InvalidRoute;
 
 export const listConsumers: API.PaginatedOperationMethod<
   ListConsumersRequest,
@@ -354,7 +386,7 @@ export const listConsumers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConsumersRequest,
   output: ListConsumersResponse,
-  errors: [InvalidRequestBody],
+  errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
   pagination: {
     mode: "single",
     items: "result",
@@ -540,7 +572,11 @@ export const CreateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateConsumerResponse>;
 
-export type CreateConsumerError = DefaultErrors | InvalidRequestBody;
+export type CreateConsumerError =
+  | DefaultErrors
+  | InvalidRequestBody
+  | QueueNotFound
+  | InvalidRoute;
 
 export const createConsumer: API.OperationMethod<
   CreateConsumerRequest,
@@ -550,7 +586,7 @@ export const createConsumer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConsumerRequest,
   output: CreateConsumerResponse,
-  errors: [InvalidRequestBody],
+  errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
 }));
 
 export interface UpdateConsumerRequest {
@@ -734,7 +770,11 @@ export const UpdateConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<UpdateConsumerResponse>;
 
-export type UpdateConsumerError = DefaultErrors | InvalidRequestBody;
+export type UpdateConsumerError =
+  | DefaultErrors
+  | InvalidRequestBody
+  | QueueNotFound
+  | InvalidRoute;
 
 export const updateConsumer: API.OperationMethod<
   UpdateConsumerRequest,
@@ -744,7 +784,7 @@ export const updateConsumer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConsumerRequest,
   output: UpdateConsumerResponse,
-  errors: [InvalidRequestBody],
+  errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
 }));
 
 export interface DeleteConsumerRequest {
@@ -819,7 +859,11 @@ export const DeleteConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ) as unknown as Schema.Schema<DeleteConsumerResponse>;
 
-export type DeleteConsumerError = DefaultErrors | InvalidRequestBody;
+export type DeleteConsumerError =
+  | DefaultErrors
+  | InvalidRequestBody
+  | QueueNotFound
+  | InvalidRoute;
 
 export const deleteConsumer: API.OperationMethod<
   DeleteConsumerRequest,
@@ -829,7 +873,7 @@ export const deleteConsumer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConsumerRequest,
   output: DeleteConsumerResponse,
-  errors: [InvalidRequestBody],
+  errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
 }));
 
 // =============================================================================
@@ -943,7 +987,11 @@ export const BulkPushMessagesResponse =
     success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
   }) as unknown as Schema.Schema<BulkPushMessagesResponse>;
 
-export type BulkPushMessagesError = DefaultErrors | InvalidMessageBody;
+export type BulkPushMessagesError =
+  | DefaultErrors
+  | InvalidMessageBody
+  | InvalidQueueId
+  | InvalidRoute;
 
 export const bulkPushMessages: API.OperationMethod<
   BulkPushMessagesRequest,
@@ -953,7 +1001,7 @@ export const bulkPushMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkPushMessagesRequest,
   output: BulkPushMessagesResponse,
-  errors: [InvalidMessageBody],
+  errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
 }));
 
 export interface PullMessageRequest {
@@ -1040,7 +1088,11 @@ export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PullMessageResponse>;
 
-export type PullMessageError = DefaultErrors | InvalidRequestBody;
+export type PullMessageError =
+  | DefaultErrors
+  | InvalidRequestBody
+  | InvalidQueueId
+  | InvalidRoute;
 
 export const pullMessage: API.OperationMethod<
   PullMessageRequest,
@@ -1050,7 +1102,7 @@ export const pullMessage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PullMessageRequest,
   output: PullMessageResponse,
-  errors: [InvalidRequestBody],
+  errors: [InvalidRequestBody, InvalidQueueId, InvalidRoute],
 }));
 
 export interface PushMessageRequest {
@@ -1135,7 +1187,11 @@ export const PushMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
 }) as unknown as Schema.Schema<PushMessageResponse>;
 
-export type PushMessageError = DefaultErrors | InvalidMessageBody;
+export type PushMessageError =
+  | DefaultErrors
+  | InvalidMessageBody
+  | InvalidQueueId
+  | InvalidRoute;
 
 export const pushMessage: API.OperationMethod<
   PushMessageRequest,
@@ -1145,7 +1201,7 @@ export const pushMessage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PushMessageRequest,
   output: PushMessageResponse,
-  errors: [InvalidMessageBody],
+  errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
 }));
 
 export interface AckMessageRequest {
@@ -1206,7 +1262,11 @@ export const AckMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<AckMessageResponse>;
 
-export type AckMessageError = DefaultErrors | InvalidRequestBody;
+export type AckMessageError =
+  | DefaultErrors
+  | InvalidRequestBody
+  | InvalidQueueId
+  | InvalidRoute;
 
 export const ackMessage: API.OperationMethod<
   AckMessageRequest,
@@ -1216,7 +1276,7 @@ export const ackMessage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AckMessageRequest,
   output: AckMessageResponse,
-  errors: [InvalidRequestBody],
+  errors: [InvalidRequestBody, InvalidQueueId, InvalidRoute],
 }));
 
 // =============================================================================
@@ -1482,7 +1542,7 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<StartPurgeResponse>;
 
-export type StartPurgeError = DefaultErrors;
+export type StartPurgeError = DefaultErrors | InvalidQueueId | InvalidRoute;
 
 export const startPurge: API.OperationMethod<
   StartPurgeRequest,
@@ -1492,7 +1552,7 @@ export const startPurge: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartPurgeRequest,
   output: StartPurgeResponse,
-  errors: [],
+  errors: [InvalidQueueId, InvalidRoute],
 }));
 
 export interface StatusPurgeRequest {
@@ -1527,7 +1587,7 @@ export const StatusPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<StatusPurgeResponse>;
 
-export type StatusPurgeError = DefaultErrors;
+export type StatusPurgeError = DefaultErrors | InvalidQueueId | InvalidRoute;
 
 export const statusPurge: API.OperationMethod<
   StatusPurgeRequest,
@@ -1537,7 +1597,7 @@ export const statusPurge: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StatusPurgeRequest,
   output: StatusPurgeResponse,
-  errors: [],
+  errors: [InvalidQueueId, InvalidRoute],
 }));
 
 // =============================================================================
@@ -1792,7 +1852,7 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   )
   .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetQueueResponse>;
 
-export type GetQueueError = DefaultErrors;
+export type GetQueueError = DefaultErrors | QueueNotFound | InvalidRoute;
 
 export const getQueue: API.OperationMethod<
   GetQueueRequest,
@@ -1802,7 +1862,7 @@ export const getQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
-  errors: [],
+  errors: [QueueNotFound, InvalidRoute],
 }));
 
 export interface ListQueuesRequest {
@@ -2059,7 +2119,7 @@ export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }) as unknown as Schema.Schema<ListQueuesResponse>;
 
-export type ListQueuesError = DefaultErrors;
+export type ListQueuesError = DefaultErrors | InvalidRoute;
 
 export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
@@ -2069,7 +2129,7 @@ export const listQueues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
-  errors: [],
+  errors: [InvalidRoute],
   pagination: {
     mode: "single",
     items: "result",
@@ -2328,7 +2388,11 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateQueueResponse>;
 
-export type CreateQueueError = DefaultErrors;
+export type CreateQueueError =
+  | DefaultErrors
+  | QueueAlreadyExists
+  | InvalidQueueName
+  | InvalidRoute;
 
 export const createQueue: API.OperationMethod<
   CreateQueueRequest,
@@ -2338,7 +2402,7 @@ export const createQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
-  errors: [],
+  errors: [QueueAlreadyExists, InvalidQueueName, InvalidRoute],
 }));
 
 export interface UpdateQueueRequest {
@@ -2614,7 +2678,11 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UpdateQueueResponse>;
 
-export type UpdateQueueError = DefaultErrors | InvalidQueueName;
+export type UpdateQueueError =
+  | DefaultErrors
+  | InvalidQueueName
+  | QueueNotFound
+  | InvalidRoute;
 
 export const updateQueue: API.OperationMethod<
   UpdateQueueRequest,
@@ -2624,7 +2692,7 @@ export const updateQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,
-  errors: [InvalidQueueName],
+  errors: [InvalidQueueName, QueueNotFound, InvalidRoute],
 }));
 
 export interface PatchQueueRequest {
@@ -2900,7 +2968,7 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchQueueResponse>;
 
-export type PatchQueueError = DefaultErrors;
+export type PatchQueueError = DefaultErrors | QueueNotFound | InvalidRoute;
 
 export const patchQueue: API.OperationMethod<
   PatchQueueRequest,
@@ -2910,7 +2978,7 @@ export const patchQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchQueueRequest,
   output: PatchQueueResponse,
-  errors: [],
+  errors: [QueueNotFound, InvalidRoute],
 }));
 
 export interface DeleteQueueRequest {
@@ -2978,7 +3046,7 @@ export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
 }) as unknown as Schema.Schema<DeleteQueueResponse>;
 
-export type DeleteQueueError = DefaultErrors;
+export type DeleteQueueError = DefaultErrors | QueueNotFound | InvalidRoute;
 
 export const deleteQueue: API.OperationMethod<
   DeleteQueueRequest,
@@ -2988,7 +3056,7 @@ export const deleteQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
-  errors: [],
+  errors: [QueueNotFound, InvalidRoute],
 }));
 
 // =============================================================================

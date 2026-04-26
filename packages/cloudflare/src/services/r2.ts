@@ -30,17 +30,35 @@ export class BucketNotFound extends Schema.TaggedErrorClass<BucketNotFound>()(
 ) {}
 T.applyErrorMatchers(BucketNotFound, [{ code: 10085 }]);
 
+export class DomainNotFound extends Schema.TaggedErrorClass<DomainNotFound>()(
+  "DomainNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DomainNotFound, [{ code: 10053 }]);
+
 export class InvalidBucketName extends Schema.TaggedErrorClass<InvalidBucketName>()(
   "InvalidBucketName",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(InvalidBucketName, [{ code: 10005 }]);
 
+export class InvalidEventNotificationConfig extends Schema.TaggedErrorClass<InvalidEventNotificationConfig>()(
+  "InvalidEventNotificationConfig",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidEventNotificationConfig, [{ code: 11014 }]);
+
 export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
   "InvalidRoute",
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
+
+export class InvalidUpstreamCredentials extends Schema.TaggedErrorClass<InvalidUpstreamCredentials>()(
+  "InvalidUpstreamCredentials",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidUpstreamCredentials, [{ code: 10063 }]);
 
 export class NoCorsConfiguration extends Schema.TaggedErrorClass<NoCorsConfiguration>()(
   "NoCorsConfiguration",
@@ -65,6 +83,12 @@ export class NoSuchBucket extends Schema.TaggedErrorClass<NoSuchBucket>()(
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(NoSuchBucket, [{ code: 10006 }]);
+
+export class QueueNotFound extends Schema.TaggedErrorClass<QueueNotFound>()(
+  "QueueNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(QueueNotFound, [{ code: 11000 }]);
 
 // =============================================================================
 // AllSuperSlurperJob
@@ -911,7 +935,11 @@ export const GetBucketDomainCustomResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetBucketDomainCustomResponse>;
 
-export type GetBucketDomainCustomError = DefaultErrors;
+export type GetBucketDomainCustomError =
+  | DefaultErrors
+  | DomainNotFound
+  | NoSuchBucket
+  | InvalidRoute;
 
 export const getBucketDomainCustom: API.OperationMethod<
   GetBucketDomainCustomRequest,
@@ -921,7 +949,7 @@ export const getBucketDomainCustom: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketDomainCustomRequest,
   output: GetBucketDomainCustomResponse,
-  errors: [],
+  errors: [DomainNotFound, NoSuchBucket, InvalidRoute],
 }));
 
 export interface ListBucketDomainCustomsRequest {
@@ -1439,7 +1467,12 @@ export const GetBucketEventNotificationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetBucketEventNotificationResponse>;
 
-export type GetBucketEventNotificationError = DefaultErrors;
+export type GetBucketEventNotificationError =
+  | DefaultErrors
+  | BucketNotFound
+  | NoEventNotificationConfig
+  | QueueNotFound
+  | InvalidRoute;
 
 export const getBucketEventNotification: API.OperationMethod<
   GetBucketEventNotificationRequest,
@@ -1449,7 +1482,12 @@ export const getBucketEventNotification: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketEventNotificationRequest,
   output: GetBucketEventNotificationResponse,
-  errors: [],
+  errors: [
+    BucketNotFound,
+    NoEventNotificationConfig,
+    QueueNotFound,
+    InvalidRoute,
+  ],
 }));
 
 export interface ListBucketEventNotificationsRequest {
@@ -1640,7 +1678,12 @@ export const PutBucketEventNotificationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutBucketEventNotificationResponse>;
 
-export type PutBucketEventNotificationError = DefaultErrors;
+export type PutBucketEventNotificationError =
+  | DefaultErrors
+  | BucketNotFound
+  | InvalidEventNotificationConfig
+  | QueueNotFound
+  | InvalidRoute;
 
 export const putBucketEventNotification: API.OperationMethod<
   PutBucketEventNotificationRequest,
@@ -1650,7 +1693,12 @@ export const putBucketEventNotification: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketEventNotificationRequest,
   output: PutBucketEventNotificationResponse,
-  errors: [],
+  errors: [
+    BucketNotFound,
+    InvalidEventNotificationConfig,
+    QueueNotFound,
+    InvalidRoute,
+  ],
 }));
 
 export interface DeleteBucketEventNotificationRequest {
@@ -1684,7 +1732,11 @@ export const DeleteBucketEventNotificationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteBucketEventNotificationResponse>;
 
-export type DeleteBucketEventNotificationError = DefaultErrors;
+export type DeleteBucketEventNotificationError =
+  | DefaultErrors
+  | BucketNotFound
+  | QueueNotFound
+  | InvalidRoute;
 
 export const deleteBucketEventNotification: API.OperationMethod<
   DeleteBucketEventNotificationRequest,
@@ -1694,7 +1746,7 @@ export const deleteBucketEventNotification: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketEventNotificationRequest,
   output: DeleteBucketEventNotificationResponse,
-  errors: [],
+  errors: [BucketNotFound, QueueNotFound, InvalidRoute],
 }));
 
 // =============================================================================
@@ -2465,7 +2517,10 @@ export const PutBucketSippyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PutBucketSippyResponse>;
 
-export type PutBucketSippyError = DefaultErrors;
+export type PutBucketSippyError =
+  | DefaultErrors
+  | InvalidUpstreamCredentials
+  | InvalidRoute;
 
 export const putBucketSippy: API.OperationMethod<
   PutBucketSippyRequest,
@@ -2475,7 +2530,7 @@ export const putBucketSippy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketSippyRequest,
   output: PutBucketSippyResponse,
-  errors: [],
+  errors: [InvalidUpstreamCredentials, InvalidRoute],
 }));
 
 export interface DeleteBucketSippyRequest {

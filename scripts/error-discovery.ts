@@ -22,7 +22,7 @@ import { BunRuntime, BunServices } from "@effect/platform-bun";
 import { Console, Effect } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
-import { Argument, Command } from "effect/unstable/cli";
+import { Argument, Command, Flag } from "effect/unstable/cli";
 import { AgentError, AgentStatsAccumulator, BOLD, GREEN, RESET, runAgent } from "./lib/agent.ts";
 import { metadataPromptSection } from "./lib/metadata.ts";
 
@@ -30,8 +30,30 @@ import { metadataPromptSection } from "./lib/metadata.ts";
 // Prompt Construction
 // ============================================================================
 
-function buildPrompt(name: string, root: string): string {
+function buildPrompt(
+  name: string,
+  root: string,
+  services: readonly string[],
+): string {
   const pkgDir = `packages/${name}`;
+
+  const serviceScope = services.length > 0
+    ? `
+
+## SCOPE RESTRICTION
+
+You MUST restrict this run to the following service(s) ONLY:
+${services.map((s) => `  - ${s}`).join("\n")}
+
+Concretely:
+- Only inspect operations under ${pkgDir}/src/services/{${services.join(",")}}.ts
+  (or, for SDKs with per-service operation directories, only those directories).
+- Only write/run tests that exercise these services.
+- Only add patches under paths scoped to these services
+  (e.g. for cloudflare: ${pkgDir}/patches/{${services.join(",")}}/...).
+- Ignore all other services even if you notice gaps in them — they are out of scope.
+`
+    : "";
 
   return `
 You are an error discovery agent for the ${name} SDK in the Distilled monorepo.
@@ -45,7 +67,7 @@ ${metadataPromptSection(name)}
 
 When you discover a new typed error, append its class name to the \`errorClasses\`
 array in the metadata file so downstream agents (test generation) know to cover it.
-
+${serviceScope}
 ## Repository Structure
 
 The monorepo root is: ${root}
@@ -139,7 +161,11 @@ Based on the raw error responses you observe:
 // Package Validation
 // ============================================================================
 
-const validatePackage = (root: string, name: string) =>
+const validatePackage = (
+  root: string,
+  name: string,
+  services: readonly string[],
+) =>
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
@@ -173,6 +199,26 @@ const validatePackage = (root: string, name: string) =>
         message: `Package "${name}" has no operations/ or services/ directory — run code generation first.`,
       });
     }
+
+    if (services.length > 0) {
+      if (!hasServices) {
+        return yield* new AgentError({
+          message: `--service filter is only supported for SDKs with a src/services/ directory; package "${name}" has none.`,
+        });
+      }
+      const entries = yield* fs.readDirectory(servicesDir);
+      const available = new Set(
+        entries
+          .filter((e) => e.endsWith(".ts") && e !== "index.ts")
+          .map((e) => e.replace(/\.ts$/, "")),
+      );
+      const missing = services.filter((s) => !available.has(s));
+      if (missing.length > 0) {
+        return yield* new AgentError({
+          message: `Unknown service(s) for "${name}": ${missing.join(", ")}. Available: ${[...available].sort().join(", ")}`,
+        });
+      }
+    }
   });
 
 // ============================================================================
@@ -187,22 +233,31 @@ const errorDiscovery = Command.make(
         "SDK package name (e.g. neon, cloudflare, stripe)",
       ),
     ),
+    services: Flag.string("service").pipe(
+      Flag.withDescription(
+        "Restrict discovery to specific service(s) within the SDK (repeatable). Only supported for SDKs with a src/services/ directory (e.g. cloudflare). Pass the service file basename, e.g. --service r2 --service workers.",
+      ),
+      Flag.atLeast(0),
+    ),
   },
   (config) =>
     Effect.gen(function* () {
       const path = yield* Path.Path;
       const root = path.resolve(import.meta.dir, "..");
+      const services = config.services ?? [];
 
       yield* Console.log(
-        `\n${BOLD}Error Discovery: @distilled.cloud/${config.name}${RESET}`,
+        `\n${BOLD}Error Discovery: @distilled.cloud/${config.name}${RESET}${
+          services.length > 0 ? ` (services: ${services.join(", ")})` : ""
+        }`,
       );
 
-      yield* validatePackage(root, config.name);
+      yield* validatePackage(root, config.name, services);
 
       const stats = new AgentStatsAccumulator();
 
       yield* runAgent({
-        prompt: buildPrompt(config.name, root),
+        prompt: buildPrompt(config.name, root, services),
         cwd: root,
         systemPromptAppend:
           "You are an error discovery agent. Your job is to find undocumented API errors " +
@@ -228,6 +283,11 @@ const errorDiscovery = Command.make(
     {
       command: "bun scripts/error-discovery.ts cloudflare",
       description: "Discover errors in the Cloudflare SDK",
+    },
+    {
+      command:
+        "bun scripts/error-discovery.ts cloudflare --service r2 --service workers",
+      description: "Discover errors only in Cloudflare's R2 and Workers services",
     },
     {
       command: "bun scripts/error-discovery.ts stripe",

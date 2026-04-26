@@ -112,6 +112,10 @@ paths:
       x-distilled-errors:
         InvalidRequestBody:
           - code: 10026
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     put:
       operationId: updateConsumer
       description: "Updates the consumer for a queue, or creates one if it does not
@@ -259,6 +263,10 @@ paths:
       x-distilled-errors:
         InvalidRequestBody:
           - code: 10026
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     delete:
       operationId: deleteConsumer
       description: "Deletes the consumer for a queue.  @example ```ts const consumer =
@@ -321,6 +329,10 @@ paths:
       x-distilled-errors:
         InvalidRequestBody:
           - code: 10026
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues/{queueId}/consumers:
     get:
       operationId: listConsumers
@@ -422,6 +434,10 @@ paths:
       x-distilled-errors:
         InvalidRequestBody:
           - code: 10026
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     post:
       operationId: createConsumer
       description: "Creates a new consumer for a Queue  @example ```ts const consumer
@@ -566,6 +582,10 @@ paths:
       x-distilled-errors:
         InvalidRequestBody:
           - code: 10026
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues/{queueId}/messages/batch:
     post:
       operationId: bulkPushMessages
@@ -664,6 +684,10 @@ paths:
         InvalidMessageBody:
           - code: 10207
           - code: 10013
+        InvalidQueueId:
+          - code: 10107
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues/{queueId}/messages/pull:
     post:
       operationId: pullMessage
@@ -732,6 +756,10 @@ paths:
       x-distilled-errors:
         InvalidRequestBody:
           - code: 10026
+        InvalidQueueId:
+          - code: 10107
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues/{queueId}/messages:
     post:
       operationId: pushMessage
@@ -808,6 +836,10 @@ paths:
       x-distilled-errors:
         InvalidMessageBody:
           - code: 10207
+        InvalidQueueId:
+          - code: 10107
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues/{queueId}/messages/ack:
     post:
       operationId: ackMessage
@@ -882,6 +914,10 @@ paths:
       x-distilled-errors:
         InvalidRequestBody:
           - code: 10026
+        InvalidQueueId:
+          - code: 10107
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues/{queueId}/purge:
     post:
       operationId: startPurge
@@ -1040,6 +1076,11 @@ paths:
                         description: Number of seconds after which an unconsumed message will be
                           delayed.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidQueueId:
+          - code: 10107
+        InvalidRoute:
+          - code: 7003
     get:
       operationId: statusPurge
       description: "Get details about a Queue's purge status.  @example ```ts const
@@ -1073,6 +1114,11 @@ paths:
                     type: string
                     description: Timestamp when the last purge operation started.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidQueueId:
+          - code: 10107
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues/{queueId}:
     get:
       operationId: getQueue
@@ -1220,6 +1266,11 @@ paths:
                         description: Number of seconds after which an unconsumed message will be
                           delayed.
       x-distilled-response-path: result
+      x-distilled-errors:
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     put:
       operationId: updateQueue
       description: "Updates a Queue. Note that this endpoint does not support partial
@@ -1395,6 +1446,10 @@ paths:
       x-distilled-errors:
         InvalidQueueName:
           - code: 11003
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     patch:
       operationId: patchQueue
       description: "Updates a Queue.  @example ```ts const queue = await
@@ -1565,6 +1620,11 @@ paths:
                         description: Number of seconds after which an unconsumed message will be
                           delayed.
       x-distilled-response-path: result
+      x-distilled-errors:
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     delete:
       operationId: deleteQueue
       description: "Deletes a queue  @example ```ts const queue = await
@@ -1618,6 +1678,11 @@ paths:
                     enum:
                       - true
                     description: Indicates if the API call was successful or not.
+      x-distilled-errors:
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/queues:
     get:
       operationId: listQueues
@@ -1761,6 +1826,9 @@ paths:
                         description: Number of seconds after which an unconsumed message will be
                           delayed.
       x-distilled-pagination-class: QueuesSinglePage
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
     post:
       operationId: createQueue
       description: "Create a new queue  @example ```ts const queue = await
@@ -1914,6 +1982,13 @@ paths:
                         description: Number of seconds after which an unconsumed message will be
                           delayed.
       x-distilled-response-path: result
+      x-distilled-errors:
+        QueueAlreadyExists:
+          - code: 11009
+        InvalidQueueName:
+          - code: 11003
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}:
     get:
       operationId: getSubscription

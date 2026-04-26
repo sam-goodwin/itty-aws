@@ -1,8 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare R2 Object API
+  title: Cloudflare R2 API
   version: 0.0.0
-  description: R2 object operations not exposed in the Cloudflare TypeScript SDK.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: r2
@@ -827,6 +826,13 @@ paths:
                   - enabled
                   - status
       x-distilled-response-path: result
+      x-distilled-errors:
+        DomainNotFound:
+          - code: 10053
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
     put:
       operationId: updateBucketDomainCustom
       description: "Edit the configuration for a custom domain on an existing R2
@@ -1395,6 +1401,15 @@ paths:
                       required:
                         - actions
       x-distilled-response-path: result
+      x-distilled-errors:
+        BucketNotFound:
+          - code: 10085
+        NoEventNotificationConfig:
+          - code: 11015
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     put:
       operationId: putBucketEventNotification
       description: "Create event notification rule.  @example ```ts const
@@ -1475,6 +1490,15 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        BucketNotFound:
+          - code: 10085
+        InvalidEventNotificationConfig:
+          - code: 11014
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
     delete:
       operationId: deleteBucketEventNotification
       description: "Delete an event notification rule.  If no body is provided, all
@@ -1517,6 +1541,13 @@ paths:
             application/json:
               schema: {}
       x-distilled-response-path: result
+      x-distilled-errors:
+        BucketNotFound:
+          - code: 10085
+        QueueNotFound:
+          - code: 11000
+        InvalidRoute:
+          - code: 7003
   /accounts/{account_id}/event_notifications/r2/{bucketName}/configuration:
     get:
       operationId: listBucketEventNotifications
@@ -2440,6 +2471,11 @@ paths:
                         description: Region where the bucket resides (AWS only).
                     description: Details about the configured source bucket.
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidUpstreamCredentials:
+          - code: 10063
+        InvalidRoute:
+          - code: 7003
     delete:
       operationId: deleteBucketSippy
       description: "Disables Sippy on this bucket.  @example ```ts const sippy = await

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "InvalidUpstreamCredentials": [{ "code": 10063 }],
+    "InvalidRoute": [{ "code": 7003 }]
+  }
+}

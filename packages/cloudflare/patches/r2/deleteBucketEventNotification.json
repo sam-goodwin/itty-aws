@@ -1,6 +1,6 @@
 {
   "errors": {
-    "InvalidRequestBody": [{ "code": 10026 }],
+    "BucketNotFound": [{ "code": 10085 }],
     "QueueNotFound": [{ "code": 11000 }],
     "InvalidRoute": [{ "code": 7003 }]
   }

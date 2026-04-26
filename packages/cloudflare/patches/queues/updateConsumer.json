@@ -1,5 +1,7 @@
 {
   "errors": {
-    "InvalidRequestBody": [{ "code": 10026 }]
+    "InvalidRequestBody": [{ "code": 10026 }],
+    "QueueNotFound": [{ "code": 11000 }],
+    "InvalidRoute": [{ "code": 7003 }]
   }
 }
