@@ -3,11 +3,11 @@
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "outDir": "./lib",
-    "rootDir": "./src",
+    "rootDir": "./src"
   },
   "references": [
     {
-      "path": "../core",
-    },
-  ],
+      "path": "../core"
+    }
+  ]
 }
