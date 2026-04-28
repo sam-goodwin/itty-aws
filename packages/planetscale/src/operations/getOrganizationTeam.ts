@@ -1,12 +1,12 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
 import {
   BadRequest,
   Forbidden,
   NotFound,
   UnprocessableEntity,
-} from "../errors";
+} from "../errors.ts";
 
 // Input Schema
 export const GetOrganizationTeamInput =

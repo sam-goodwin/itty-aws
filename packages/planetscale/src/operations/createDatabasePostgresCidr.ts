@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
-import { Forbidden, NotFound, UnprocessableEntity } from "../errors";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateDatabasePostgresCidrInput =
