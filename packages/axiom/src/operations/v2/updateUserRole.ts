@@ -15,10 +15,12 @@ export const UpdateUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
-  role: Schema.optional(Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-  })),
+  role: Schema.optional(
+    Schema.Struct({
+      id: Schema.String,
+      name: Schema.String,
+    }),
+  ),
 });
 export type UpdateUserRoleOutput = typeof UpdateUserRoleOutput.Type;
 

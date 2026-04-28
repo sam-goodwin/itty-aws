@@ -16,7 +16,12 @@ export const GetDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.String,
   edgeDeployment: Schema.optional(Schema.String),
   id: Schema.String,
-  kind: Schema.Literals(["otel:metrics:v1", "otel:traces:v1", "otel:logs:v1", "axiom:events:v1"]),
+  kind: Schema.Literals([
+    "otel:metrics:v1",
+    "otel:traces:v1",
+    "otel:logs:v1",
+    "axiom:events:v1",
+  ]),
   mapFields: Schema.optional(Schema.Array(Schema.String)),
   name: Schema.String,
   retentionDays: Schema.optional(Schema.Number),

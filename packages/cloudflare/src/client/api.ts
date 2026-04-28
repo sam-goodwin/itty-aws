@@ -308,7 +308,7 @@ const matchError = (
     return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage));
   }
 
-  // Heuristic fallback: 
+  // Heuristic fallback:
   // Map by HTTP status as a last resort (e.g. envelope with status 401/403).
   if (status === 401) {
     return Effect.fail(new Unauthorized({ message: errorMessage }));

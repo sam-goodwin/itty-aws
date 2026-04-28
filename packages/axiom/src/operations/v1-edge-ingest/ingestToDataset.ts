@@ -16,10 +16,14 @@ export type IngestToDatasetInput = typeof IngestToDatasetInput.Type;
 export const IngestToDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   blocksCreated: Schema.Number,
   failed: Schema.Number,
-  failures: Schema.optional(Schema.Array(Schema.Struct({
-    error: Schema.String,
-    timestamp: Schema.String,
-  }))),
+  failures: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        error: Schema.String,
+        timestamp: Schema.String,
+      }),
+    ),
+  ),
   ingested: Schema.Number,
   processedBytes: Schema.Number,
   walLength: Schema.Number,

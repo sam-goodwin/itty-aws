@@ -10,7 +10,9 @@ export const GetMapFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetMapFieldsInput = typeof GetMapFieldsInput.Type;
 
 // Output Schema
-export const GetMapFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.String);
+export const GetMapFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  Schema.String,
+);
 export type GetMapFieldsOutput = typeof GetMapFieldsOutput.Type;
 
 // The operation

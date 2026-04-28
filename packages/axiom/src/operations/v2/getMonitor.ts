@@ -26,7 +26,15 @@ export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   notifierIds: Schema.optional(Schema.Array(Schema.String)),
   notifyByGroup: Schema.optional(Schema.Boolean),
   notifyEveryRun: Schema.optional(Schema.Boolean),
-  operator: Schema.optional(Schema.Literals(["Below", "BelowOrEqual", "Above", "AboveOrEqual", "AboveOrBelow"])),
+  operator: Schema.optional(
+    Schema.Literals([
+      "Below",
+      "BelowOrEqual",
+      "Above",
+      "AboveOrEqual",
+      "AboveOrBelow",
+    ]),
+  ),
   rangeMinutes: Schema.optional(Schema.Number),
   resolvable: Schema.optional(Schema.Boolean),
   secondDelay: Schema.optional(Schema.Number),

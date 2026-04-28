@@ -16,16 +16,18 @@ export const CreateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateAnnotationInput = typeof CreateAnnotationInput.Type;
 
 // Output Schema
-export const CreateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  datasets: Schema.Array(Schema.String),
-  description: Schema.optional(Schema.String),
-  endTime: Schema.optional(Schema.NullOr(Schema.String)),
-  id: Schema.String,
-  time: Schema.String,
-  title: Schema.optional(Schema.String),
-  type: Schema.String,
-  url: Schema.optional(Schema.String),
-});
+export const CreateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    datasets: Schema.Array(Schema.String),
+    description: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.NullOr(Schema.String)),
+    id: Schema.String,
+    time: Schema.String,
+    title: Schema.optional(Schema.String),
+    type: Schema.String,
+    url: Schema.optional(Schema.String),
+  },
+);
 export type CreateAnnotationOutput = typeof CreateAnnotationOutput.Type;
 
 // The operation

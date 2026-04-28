@@ -4,9 +4,11 @@ import * as T from "../../traits";
 import { NotFound } from "../../errors";
 
 // Input Schema
-export const RemoveUserFromOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/users/{id}" }));
+export const RemoveUserFromOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.String.pipe(T.PathParam()),
+  },
+).pipe(T.Http({ method: "DELETE", path: "/v2/users/{id}" }));
 export type RemoveUserFromOrgInput = typeof RemoveUserFromOrgInput.Type;
 
 // Output Schema

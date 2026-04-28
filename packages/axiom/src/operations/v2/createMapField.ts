@@ -7,7 +7,9 @@ import { NotFound, UnprocessableEntity } from "../../errors";
 export const CreateMapFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/v2/datasets/{dataset_id}/mapfields" }));
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/datasets/{dataset_id}/mapfields" }),
+);
 export type CreateMapFieldInput = typeof CreateMapFieldInput.Type;
 
 // Output Schema
