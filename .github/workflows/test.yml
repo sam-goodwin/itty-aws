@@ -37,51 +37,71 @@ jobs:
         id: changes
         with:
           filters: |
+            root: &root
+              - 'package.json'
+              - 'bun.lock'
+              - '.github/workflows/test.yml'
             core:
+              - *root
               - 'packages/core/**'
             aws:
+              - *root
               - 'packages/aws/**'
               - 'packages/core/**'
             cloudflare:
+              - *root
               - 'packages/cloudflare/**'
               - 'packages/core/**'
             gcp:
+              - *root
               - 'packages/gcp/**'
               - 'packages/core/**'
             neon:
+              - *root
               - 'packages/neon/**'
               - 'packages/core/**'
             planetscale:
+              - *root
               - 'packages/planetscale/**'
               - 'packages/core/**'
             prisma-postgres:
+              - *root
               - 'packages/prisma-postgres/**'
               - 'packages/core/**'
             stripe:
+              - *root
               - 'packages/stripe/**'
               - 'packages/core/**'
             supabase:
+              - *root
               - 'packages/supabase/**'
               - 'packages/core/**'
             axiom:
+              - *root
               - 'packages/axiom/**'
               - 'packages/core/**'
             azure:
+              - *root
               - 'packages/azure/**'
               - 'packages/core/**'
             kubernetes:
+              - *root
               - 'packages/kubernetes/**'
               - 'packages/core/**'
             coinbase:
+              - *root
               - 'packages/coinbase/**'
               - 'packages/core/**'
             mongodb-atlas:
+              - *root
               - 'packages/mongodb-atlas/**'
               - 'packages/core/**'
             fly-io:
+              - *root
               - 'packages/fly-io/**'
               - 'packages/core/**'
             turso:
+              - *root
               - 'packages/turso/**'
               - 'packages/core/**'
 
