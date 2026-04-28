@@ -86,3 +86,6 @@
 [submodule "packages/axiom/specs/docs"]
 	path = packages/axiom/specs/docs
 	url = https://github.com/axiomhq/docs.git
+[submodule "packages/posthog/specs/distilled-spec-posthog"]
+	path = packages/posthog/specs/distilled-spec-posthog
+	url = https://github.com/alchemy-run/distilled-spec-posthog.git

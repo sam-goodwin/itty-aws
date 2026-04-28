@@ -47,6 +47,23 @@ class CommandError extends Data.TaggedError("CommandError")<{
 // Shell Helpers
 // ============================================================================
 
+// Quote an arg for cmd.exe (shell: true on Windows doesn't quote args itself).
+const quoteForCmd = (arg: string): string => {
+  if (arg === "") return '""';
+  if (!/[\s"&|<>^%()!]/.test(arg)) return arg;
+  return arg
+    .split("%")
+    .map((part) => {
+      if (part === "") return "";
+      const escaped = part
+        .replace(/(\\*)"/g, '$1$1\\"')
+        .replace(/(\\+)$/, "$1$1");
+      return `"${escaped}"`;
+    })
+    .join("^%");
+};
+
+
 /**
  * Run a shell command, capturing stdout/stderr. Fails with CommandError on non-zero exit
  * unless ignoreError is set.
@@ -62,9 +79,11 @@ const exec = (
 > =>
   Effect.gen(function* () {
     const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-    const command = ChildProcess.make(cmd, args, {
+    const useShell = process.platform === "win32";
+    const finalArgs = useShell ? args.map(quoteForCmd) : args;
+    const command = ChildProcess.make(cmd, finalArgs, {
       cwd: opts?.cwd,
-      shell: process.platform === "win32",
+      shell: useShell,
       stdin: "ignore",
     });
 
@@ -82,8 +101,19 @@ const exec = (
     const code = exitCode as number;
 
     if (code !== 0 && !opts?.ignoreError) {
+      const fullCommand = `${cmd} ${args.join(" ")}`;
+      yield* Console.error(
+        `\n✗ Command failed (exit ${code}): ${fullCommand}` +
+          (opts?.cwd ? `\n  cwd: ${opts.cwd}` : "") +
+          (stdout.trim() ? `\n--- stdout ---\n${stdout.trimEnd()}` : "") +
+          (stderr.trim() ? `\n--- stderr ---\n${stderr.trimEnd()}` : "") +
+          (!stdout.trim() && !stderr.trim()
+            ? "\n  (no output captured on stdout or stderr)"
+            : "") +
+          "\n",
+      );
       return yield* new CommandError({
-        command: `${cmd} ${args.join(" ")}`,
+        command: fullCommand,
         code,
         stderr,
       });
@@ -468,6 +498,7 @@ bun run fetch-specs
           },
           dependencies: {
             "@typescript/native-preview": "catalog:",
+            yaml: "^2.6.0",
           },
           devDependencies: {
             oxfmt: "catalog:",
@@ -542,6 +573,16 @@ if (!existsSync(SPECS_DIR)) {
   mkdirSync(SPECS_DIR, { recursive: true });
 }
 
+import YAML from "yaml";
+
+function parseSpec(body: string): unknown {
+  try {
+    return JSON.parse(body);
+  } catch {
+    return YAML.parse(body);
+  }
+}
+
 async function main() {
   console.log(\`Fetching OpenAPI spec from \${OPENAPI_SPEC_URL}...\`);
 
@@ -553,7 +594,7 @@ async function main() {
     );
   }
 
-  const spec = await response.json();
+  const spec = parseSpec(await response.text());
 
   console.log(\`Writing spec to \${OUTPUT_PATH}...\`);
   await Bun.write(OUTPUT_PATH, JSON.stringify(spec, null, 2));
@@ -593,6 +634,16 @@ if (!existsSync(SPECS_DIR)) {
   mkdirSync(SPECS_DIR, { recursive: true });
 }
 
+import YAML from "yaml";
+
+function parseSpec(body: string): unknown {
+  try {
+    return JSON.parse(body);
+  } catch {
+    return YAML.parse(body);
+  }
+}
+
 async function fetchSpec(url: string, outputPath: string) {
   console.log(\`Fetching spec from \${url}...\`);
   const response = await fetch(url);
@@ -601,7 +652,7 @@ async function fetchSpec(url: string, outputPath: string) {
       \`Failed to fetch spec from \${url}: \${response.status} \${response.statusText}\`,
     );
   }
-  const spec = await response.json();
+  const spec = parseSpec(await response.text());
   console.log(\`Writing spec to \${outputPath}...\`);
   await Bun.write(outputPath, JSON.stringify(spec, null, 2));
 }

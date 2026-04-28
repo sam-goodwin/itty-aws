@@ -1,0 +1,234 @@
+import * as Schema from "effect/Schema";
+import { API } from "../../client";
+import * as T from "../../traits";
+import { BadRequest, Forbidden, NotFound } from "../../errors";
+
+// Input Schema
+export const ExperimentsEndCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Number.pipe(T.PathParam()),
+    project_id: Schema.String.pipe(T.PathParam()),
+    conclusion: Schema.optional(Schema.Unknown),
+    conclusion_comment: Schema.optional(Schema.NullOr(Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/projects/{project_id}/experiments/{id}/end/",
+    }),
+  );
+export type ExperimentsEndCreateInput = typeof ExperimentsEndCreateInput.Type;
+
+// Output Schema
+export const ExperimentsEndCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Number,
+    name: Schema.String,
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    start_date: Schema.optional(Schema.NullOr(Schema.String)),
+    end_date: Schema.optional(Schema.NullOr(Schema.String)),
+    feature_flag_key: Schema.String,
+    feature_flag: Schema.Struct({
+      id: Schema.Number,
+      team_id: Schema.Number,
+      name: Schema.optional(Schema.String),
+      key: Schema.String,
+      filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      deleted: Schema.optional(Schema.Boolean),
+      active: Schema.optional(Schema.Boolean),
+      ensure_experience_continuity: Schema.optional(
+        Schema.NullOr(Schema.Boolean),
+      ),
+      has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      version: Schema.optional(Schema.NullOr(Schema.Number)),
+      evaluation_runtime: Schema.optional(Schema.Unknown),
+      bucketing_identifier: Schema.optional(Schema.Unknown),
+      evaluation_contexts: Schema.Array(Schema.String),
+    }),
+    holdout: Schema.Struct({
+      id: Schema.Number,
+      name: Schema.String,
+      description: Schema.optional(Schema.NullOr(Schema.String)),
+      filters: Schema.optional(Schema.Unknown),
+      created_by: Schema.Struct({
+        id: Schema.Number,
+        uuid: Schema.String,
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.String,
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.NullOr(
+          Schema.Record(Schema.String, Schema.Unknown),
+        ),
+        role_at_organization: Schema.optional(Schema.Unknown),
+      }),
+      created_at: Schema.String,
+      updated_at: Schema.String,
+    }),
+    holdout_id: Schema.optional(Schema.NullOr(Schema.Number)),
+    exposure_cohort: Schema.NullOr(Schema.Number),
+    parameters: Schema.optional(
+      Schema.Struct({
+        feature_flag_variants: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+                name: Schema.optional(Schema.NullOr(Schema.String)),
+                rollout_percentage: Schema.optional(
+                  Schema.NullOr(Schema.Number),
+                ),
+                split_percent: Schema.optional(Schema.NullOr(Schema.Number)),
+              }),
+            ),
+          ),
+        ),
+        minimum_detectable_effect: Schema.optional(
+          Schema.NullOr(Schema.Number),
+        ),
+        rollout_percentage: Schema.optional(Schema.NullOr(Schema.Number)),
+      }),
+    ),
+    secondary_metrics: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    saved_metrics: Schema.Array(
+      Schema.Struct({
+        id: Schema.Number,
+        experiment: Schema.Number,
+        saved_metric: Schema.Number,
+        metadata: Schema.optional(Schema.Unknown),
+        created_at: Schema.String,
+        query: Schema.Unknown,
+        name: Schema.String,
+      }),
+    ),
+    saved_metrics_ids: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.Unknown)),
+    ),
+    filters: Schema.optional(Schema.Unknown),
+    archived: Schema.optional(Schema.Boolean),
+    deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    created_by: Schema.Struct({
+      id: Schema.Number,
+      uuid: Schema.String,
+      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+      first_name: Schema.optional(Schema.String),
+      last_name: Schema.optional(Schema.String),
+      email: Schema.String,
+      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      hedgehog_config: Schema.NullOr(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      role_at_organization: Schema.optional(Schema.Unknown),
+    }),
+    created_at: Schema.String,
+    updated_at: Schema.String,
+    type: Schema.optional(Schema.Unknown),
+    exposure_criteria: Schema.optional(
+      Schema.Struct({
+        exposure_config: Schema.optional(
+          Schema.Struct({
+            event: Schema.String,
+            kind: Schema.optional(
+              Schema.Literals(["ExperimentEventExposureConfig"]),
+            ),
+            properties: Schema.Array(
+              Schema.Struct({
+                key: Schema.String,
+                label: Schema.optional(Schema.NullOr(Schema.String)),
+                operator: Schema.optional(
+                  Schema.Literals([
+                    "exact",
+                    "is_not",
+                    "icontains",
+                    "not_icontains",
+                    "regex",
+                    "not_regex",
+                    "gt",
+                    "gte",
+                    "lt",
+                    "lte",
+                    "is_set",
+                    "is_not_set",
+                    "is_date_exact",
+                    "is_date_before",
+                    "is_date_after",
+                    "between",
+                    "not_between",
+                    "min",
+                    "max",
+                    "in",
+                    "not_in",
+                    "is_cleaned_path_exact",
+                    "flag_evaluates_to",
+                    "semver_eq",
+                    "semver_neq",
+                    "semver_gt",
+                    "semver_gte",
+                    "semver_lt",
+                    "semver_lte",
+                    "semver_tilde",
+                    "semver_caret",
+                    "semver_wildcard",
+                    "icontains_multi",
+                    "not_icontains_multi",
+                  ]),
+                ),
+                type: Schema.optional(Schema.Literals(["event"])),
+                value: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          }),
+        ),
+        filterTestAccounts: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      }),
+    ),
+    metrics: Schema.optional(Schema.Struct({})),
+    metrics_secondary: Schema.optional(Schema.Struct({})),
+    stats_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    scheduling_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    allow_unknown_events: Schema.optional(Schema.Boolean),
+    _create_in_folder: Schema.optional(Schema.String),
+    conclusion: Schema.optional(Schema.Unknown),
+    conclusion_comment: Schema.optional(Schema.NullOr(Schema.String)),
+    primary_metrics_ordered_uuids: Schema.optional(
+      Schema.NullOr(Schema.Unknown),
+    ),
+    secondary_metrics_ordered_uuids: Schema.optional(
+      Schema.NullOr(Schema.Unknown),
+    ),
+    only_count_matured_users: Schema.optional(Schema.Boolean),
+    update_feature_flag_params: Schema.optional(Schema.Boolean),
+    status: Schema.Unknown,
+    user_access_level: Schema.NullOr(Schema.String),
+  });
+export type ExperimentsEndCreateOutput = typeof ExperimentsEndCreateOutput.Type;
+
+// The operation
+/**
+ * End a running experiment without shipping a variant.
+ * Sets end_date to now and marks the experiment as stopped. The feature
+ * flag is NOT modified — users continue to see their assigned variants
+ * and exposure events ($feature_flag_called) continue to be recorded.
+ * However, only data up to end_date is included in experiment results.
+ * Use this when:
+ * - You want to freeze the results window without changing which variant
+ * users see.
+ * - A variant was already shipped manually via the feature flag UI and
+ * the experiment just needs to be marked complete.
+ * The end_date can be adjusted after ending via PATCH if it needs to be
+ * backdated (e.g. to match when the flag was actually paused).
+ * Other options:
+ * - Use ship_variant to end the experiment AND roll out a single variant to 100%% of users.
+ * - Use pause to deactivate the flag without ending the experiment (stops variant assignment but does not freeze results).
+ * Returns 400 if the experiment is not running.
+ *
+ * @param id - A unique integer value identifying this experiment.
+ * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ */
+export const experimentsEndCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ExperimentsEndCreateInput,
+    outputSchema: ExperimentsEndCreateOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
+  }),
+);
