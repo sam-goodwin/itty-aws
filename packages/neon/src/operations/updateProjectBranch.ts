@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
-import { BadRequest, NotFound } from "../errors";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UpdateProjectBranchInput =

@@ -1,3 +1,3 @@
-export * from "./usersSignalAutonomyRetrieve";
-export * from "./usersSignalAutonomyCreate";
-export * from "./usersSignalAutonomyDestroy";
+export * from "./usersSignalAutonomyRetrieve.ts";
+export * from "./usersSignalAutonomyCreate.ts";
+export * from "./usersSignalAutonomyDestroy.ts";

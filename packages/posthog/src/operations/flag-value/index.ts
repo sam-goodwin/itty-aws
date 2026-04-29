@@ -1,1 +1,1 @@
-export * from "./flagValueValuesRetrieve";
+export * from "./flagValueValuesRetrieve.ts";

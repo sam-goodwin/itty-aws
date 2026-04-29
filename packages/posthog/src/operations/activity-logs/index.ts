@@ -1,1 +1,1 @@
-export * from "./activityLogList";
+export * from "./activityLogList.ts";

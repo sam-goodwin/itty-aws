@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
-import { UnprocessableEntity } from "../errors";
-import { SensitiveString, SensitiveNullableString } from "../sensitive";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { UnprocessableEntity } from "../errors.ts";
+import { SensitiveString, SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV1ProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

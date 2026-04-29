@@ -1,2 +1,2 @@
-export * from "./heatmapsList";
-export * from "./heatmapsEventsRetrieve";
+export * from "./heatmapsList.ts";
+export * from "./heatmapsEventsRetrieve.ts";

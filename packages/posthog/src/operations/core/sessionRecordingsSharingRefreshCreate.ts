@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
-import { API } from "../../client";
-import * as T from "../../traits";
-import { BadRequest, Forbidden, NotFound } from "../../errors";
-import { SensitiveNullableString } from "../../sensitive";
+import { API } from "../../client.ts";
+import * as T from "../../traits.ts";
+import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
+import { SensitiveNullableString } from "../../sensitive.ts";
 
 // Input Schema
 export const SessionRecordingsSharingRefreshCreateInput =

@@ -1,2 +1,2 @@
-export * from "./userHomeSettingsRetrieve";
-export * from "./userHomeSettingsPartialUpdate";
+export * from "./userHomeSettingsRetrieve.ts";
+export * from "./userHomeSettingsPartialUpdate.ts";

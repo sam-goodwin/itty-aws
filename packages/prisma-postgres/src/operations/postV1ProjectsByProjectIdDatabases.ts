@@ -1,13 +1,13 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
 import {
   BadRequest,
   Forbidden,
   NotFound,
   UnprocessableEntity,
 } from "../errors";
-import { SensitiveString, SensitiveNullableString } from "../sensitive";
+import { SensitiveString, SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV1ProjectsByProjectIdDatabasesInput =

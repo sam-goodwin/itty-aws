@@ -1,1 +1,1 @@
-export * from "./integrationsEnvironmentMappingPartialUpdate";
+export * from "./integrationsEnvironmentMappingPartialUpdate.ts";

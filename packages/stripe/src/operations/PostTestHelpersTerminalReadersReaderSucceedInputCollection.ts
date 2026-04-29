@@ -1,6 +1,6 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
 
 // Input Schema
 export const PostTestHelpersTerminalReadersReaderSucceedInputCollectionInput =

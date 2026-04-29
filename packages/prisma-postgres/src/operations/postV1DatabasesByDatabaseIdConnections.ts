@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
-import { NotFound, UnprocessableEntity } from "../errors";
-import { SensitiveString } from "../sensitive";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { NotFound, UnprocessableEntity } from "../errors.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV1DatabasesByDatabaseIdConnectionsInput =

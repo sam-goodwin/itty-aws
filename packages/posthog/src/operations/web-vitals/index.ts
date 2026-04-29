@@ -1,1 +1,1 @@
-export * from "./webVitalsRetrieve";
+export * from "./webVitalsRetrieve.ts";

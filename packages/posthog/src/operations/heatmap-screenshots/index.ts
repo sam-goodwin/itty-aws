@@ -1,1 +1,1 @@
-export * from "./heatmapScreenshotsContentRetrieve";
+export * from "./heatmapScreenshotsContentRetrieve.ts";

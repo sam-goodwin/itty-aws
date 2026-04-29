@@ -1,2 +1,2 @@
-export * from "./sessionsPropertyDefinitionsRetrieve";
-export * from "./sessionsValuesRetrieve";
+export * from "./sessionsPropertyDefinitionsRetrieve.ts";
+export * from "./sessionsValuesRetrieve.ts";

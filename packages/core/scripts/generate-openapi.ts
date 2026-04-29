@@ -1014,11 +1014,11 @@ export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));`;
 
   let imports = `import * as Schema from "effect/Schema";
-import { API } from "${clientImport}";
-import * as T from "${traitsImport}";`;
+import { API } from "${clientImport}.ts";
+import * as T from "${traitsImport}.ts";`;
 
   if (hasErrors) {
-    imports += `\nimport { ${operationErrors.join(", ")} } from "${errorsImportPath}";`;
+    imports += `\nimport { ${operationErrors.join(", ")} } from "${errorsImportPath}.ts";`;
   }
 
   const sensitiveTypesToImport: string[] = [];
@@ -1029,7 +1029,7 @@ import * as T from "${traitsImport}";`;
     sensitiveTypesToImport.push("SensitiveNullableString");
   }
   if (sensitiveTypesToImport.length > 0) {
-    imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}";`;
+    imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}.ts";`;
   }
 
   return [
@@ -1298,7 +1298,7 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
   // Write barrel file
   const barrelPath = path.join(outputDir, "index.ts");
   const barrelContent =
-    operations.map((op) => `export * from "./${op.functionName}";`).join("\n") +
+    operations.map((op) => `export * from "./${op.functionName}.ts";`).join("\n") +
     "\n";
   fs.writeFileSync(barrelPath, barrelContent);
 }
@@ -1345,11 +1345,11 @@ export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));`;
 
   let imports = `import * as Schema from "effect/Schema";
-import { API } from "${clientImport}";
-import * as T from "${traitsImport}";`;
+import { API } from "${clientImport}.ts";
+import * as T from "${traitsImport}.ts";`;
 
   if (hasErrors) {
-    imports += `\nimport { ${operationErrors.join(", ")} } from "${errorsImportPath}";`;
+    imports += `\nimport { ${operationErrors.join(", ")} } from "${errorsImportPath}.ts";`;
   }
 
   const sensitiveTypesToImport: string[] = [];
@@ -1360,7 +1360,7 @@ import * as T from "${traitsImport}";`;
     sensitiveTypesToImport.push("SensitiveNullableString");
   }
   if (sensitiveTypesToImport.length > 0) {
-    imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}";`;
+    imports += `\nimport { ${sensitiveTypesToImport.join(", ")} } from "${sensitiveImportPath}.ts";`;
   }
 
   return [

@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
-import { UnprocessableEntity } from "../errors";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const GetV1DatabasesByDatabaseIdConnectionsInput =

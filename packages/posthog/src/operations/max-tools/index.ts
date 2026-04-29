@@ -1,1 +1,1 @@
-export * from "./maxToolsCreateAndQueryInsightCreate";
+export * from "./maxToolsCreateAndQueryInsightCreate.ts";

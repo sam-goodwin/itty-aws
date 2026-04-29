@@ -1,2 +1,2 @@
-export * from "./insightsThresholdsList";
-export * from "./insightsThresholdsRetrieve";
+export * from "./insightsThresholdsList.ts";
+export * from "./insightsThresholdsRetrieve.ts";

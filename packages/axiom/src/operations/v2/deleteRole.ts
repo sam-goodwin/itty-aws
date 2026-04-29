@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
-import { API } from "../../client";
-import * as T from "../../traits";
-import { NotFound } from "../../errors";
+import { API } from "../../client.ts";
+import * as T from "../../traits.ts";
+import { NotFound } from "../../errors.ts";
 
 // Input Schema
 export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

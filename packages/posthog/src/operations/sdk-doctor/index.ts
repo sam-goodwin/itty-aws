@@ -1,1 +1,1 @@
-export * from "./sdkDoctorReportRetrieve";
+export * from "./sdkDoctorReportRetrieve.ts";

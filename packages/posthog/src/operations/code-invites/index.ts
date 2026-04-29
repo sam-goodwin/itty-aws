@@ -1,2 +1,2 @@
-export * from "./codeInvitesCheckAccessRetrieve";
-export * from "./codeInvitesRedeemCreate";
+export * from "./codeInvitesCheckAccessRetrieve.ts";
+export * from "./codeInvitesRedeemCreate.ts";

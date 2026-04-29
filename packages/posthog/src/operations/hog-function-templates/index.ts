@@ -1,3 +1,3 @@
-export * from "./hogFunctionTemplatesList";
-export * from "./hogFunctionTemplatesRetrieve";
-export * from "./publicHogFunctionTemplatesList";
+export * from "./hogFunctionTemplatesList.ts";
+export * from "./hogFunctionTemplatesRetrieve.ts";
+export * from "./publicHogFunctionTemplatesList.ts";

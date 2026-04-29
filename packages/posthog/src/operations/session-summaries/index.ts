@@ -1,2 +1,2 @@
-export * from "./createSessionSummaries";
-export * from "./createSessionSummariesIndividually";
+export * from "./createSessionSummaries.ts";
+export * from "./createSessionSummariesIndividually.ts";

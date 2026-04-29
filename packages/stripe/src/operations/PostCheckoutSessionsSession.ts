@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
-import { SensitiveNullableString } from "../sensitive";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import { SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostCheckoutSessionsSessionInput =

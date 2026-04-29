@@ -1,1 +1,1 @@
-export * from "./queryApl";
+export * from "./queryApl.ts";

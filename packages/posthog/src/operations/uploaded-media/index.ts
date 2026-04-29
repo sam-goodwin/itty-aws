@@ -1,1 +1,1 @@
-export * from "./uploadedMediaCreate";
+export * from "./uploadedMediaCreate.ts";

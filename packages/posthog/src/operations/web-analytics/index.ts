@@ -1,1 +1,1 @@
-export * from "./webAnalyticsWeeklyDigest";
+export * from "./webAnalyticsWeeklyDigest.ts";

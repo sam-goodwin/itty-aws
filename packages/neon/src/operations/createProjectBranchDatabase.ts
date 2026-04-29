@@ -1,7 +1,12 @@
 import * as Schema from "effect/Schema";
-import { API } from "../client";
-import * as T from "../traits";
-import { BadRequest, NotFound, Conflict, UnprocessableEntity } from "../errors";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+import {
+  BadRequest,
+  NotFound,
+  Conflict,
+  UnprocessableEntity,
+} from "../errors.ts";
 
 // Input Schema
 export const CreateProjectBranchDatabaseInput =

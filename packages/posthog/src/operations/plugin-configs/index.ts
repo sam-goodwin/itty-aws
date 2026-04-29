@@ -1,1 +1,1 @@
-export * from "./pluginConfigsLogsList";
+export * from "./pluginConfigsLogsList.ts";
