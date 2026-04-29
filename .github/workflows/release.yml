@@ -347,3 +347,10 @@ jobs:
           else
             bunx changelogithub --to "${TAG}"
           fi
+
+      - name: Notify Discord
+        if: success()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          VERSION: ${{ needs.bump.outputs.version }}
+        run: bun scripts/discord-notify.ts "v${VERSION}"
