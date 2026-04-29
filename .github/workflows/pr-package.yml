@@ -10,7 +10,8 @@ on:
   push:
     branches: [main]
   pull_request:
-    types: [opened, synchronize, reopened, closed]
+    # `labeled` so adding the `force-ci` label re-triggers the run.
+    types: [opened, synchronize, reopened, closed, labeled]
 
 permissions:
   contents: read
@@ -26,8 +27,16 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     outputs:
-      packages: ${{ steps.changes.outputs.changes }}
+      # The `force-ci` PR label replaces the diff-derived list with every
+      # package, bypassing the paths-filter directory check.
+      packages: ${{ steps.force.outputs.packages || steps.changes.outputs.changes }}
     steps:
+      - id: force
+        if: contains(github.event.pull_request.labels.*.name, 'force-ci')
+        run: |
+          set -euo pipefail
+          all='["core","aws","cloudflare","gcp","neon","planetscale","prisma-postgres","stripe","supabase","posthog","axiom","azure","kubernetes","coinbase","mongodb-atlas","fly-io","turso"]'
+          echo "packages=${all}" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v4
         id: changes

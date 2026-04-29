@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+    # `labeled` so adding the `force-ci` label re-triggers the run.
+    types: [opened, synchronize, reopened, labeled]
   workflow_dispatch:
 
 concurrency:
@@ -15,24 +17,29 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      core: ${{ steps.changes.outputs.core }}
-      aws: ${{ steps.changes.outputs.aws }}
-      cloudflare: ${{ steps.changes.outputs.cloudflare }}
-      gcp: ${{ steps.changes.outputs.gcp }}
-      neon: ${{ steps.changes.outputs.neon }}
-      planetscale: ${{ steps.changes.outputs.planetscale }}
-      prisma-postgres: ${{ steps.changes.outputs.prisma-postgres }}
-      stripe: ${{ steps.changes.outputs.stripe }}
-      supabase: ${{ steps.changes.outputs.supabase }}
-      posthog: ${{ steps.changes.outputs.posthog }}
-      axiom: ${{ steps.changes.outputs.axiom }}
-      azure: ${{ steps.changes.outputs.azure }}
-      kubernetes: ${{ steps.changes.outputs.kubernetes }}
-      coinbase: ${{ steps.changes.outputs.coinbase }}
-      mongodb-atlas: ${{ steps.changes.outputs.mongodb-atlas }}
-      fly-io: ${{ steps.changes.outputs.fly-io }}
-      turso: ${{ steps.changes.outputs.turso }}
+      # The `force-ci` PR label flips every output to 'true', bypassing the
+      # paths-filter directory check so the full matrix runs.
+      core: ${{ steps.force.outputs.all || steps.changes.outputs.core }}
+      aws: ${{ steps.force.outputs.all || steps.changes.outputs.aws }}
+      cloudflare: ${{ steps.force.outputs.all || steps.changes.outputs.cloudflare }}
+      gcp: ${{ steps.force.outputs.all || steps.changes.outputs.gcp }}
+      neon: ${{ steps.force.outputs.all || steps.changes.outputs.neon }}
+      planetscale: ${{ steps.force.outputs.all || steps.changes.outputs.planetscale }}
+      prisma-postgres: ${{ steps.force.outputs.all || steps.changes.outputs.prisma-postgres }}
+      stripe: ${{ steps.force.outputs.all || steps.changes.outputs.stripe }}
+      supabase: ${{ steps.force.outputs.all || steps.changes.outputs.supabase }}
+      posthog: ${{ steps.force.outputs.all || steps.changes.outputs.posthog }}
+      axiom: ${{ steps.force.outputs.all || steps.changes.outputs.axiom }}
+      azure: ${{ steps.force.outputs.all || steps.changes.outputs.azure }}
+      kubernetes: ${{ steps.force.outputs.all || steps.changes.outputs.kubernetes }}
+      coinbase: ${{ steps.force.outputs.all || steps.changes.outputs.coinbase }}
+      mongodb-atlas: ${{ steps.force.outputs.all || steps.changes.outputs.mongodb-atlas }}
+      fly-io: ${{ steps.force.outputs.all || steps.changes.outputs.fly-io }}
+      turso: ${{ steps.force.outputs.all || steps.changes.outputs.turso }}
     steps:
+      - id: force
+        if: contains(github.event.pull_request.labels.*.name, 'force-ci')
+        run: echo "all=true" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v4
         id: changes
