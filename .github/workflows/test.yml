@@ -37,6 +37,7 @@ jobs:
       fly-io: ${{ steps.force.outputs.all || steps.changes.outputs.fly-io }}
       turso: ${{ steps.force.outputs.all || steps.changes.outputs.turso }}
       typesense: ${{ steps.force.outputs.all || steps.changes.outputs.typesense }}
+      workos: ${{ steps.force.outputs.all || steps.changes.outputs.workos }}
     steps:
       - id: force
         if: contains(github.event.pull_request.labels.*.name, 'force-ci')

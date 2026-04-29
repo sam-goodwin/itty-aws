@@ -95,6 +95,9 @@ jobs:
             typesense:
               - 'packages/typesense/**'
               - 'packages/core/**'
+            workos:
+              - 'packages/workos/**'
+              - 'packages/core/**'
 
   # ── Compute tags once so every matrix job + the comment use the same set. ─
   tags:
