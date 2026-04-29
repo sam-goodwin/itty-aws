@@ -1922,6 +1922,7 @@ const createSdk = Command.make(
       yield* updateTestYml(root, config.name);
       yield* updatePkgPrYml(root, config.name);
       yield* updateReleaseYml(root, config.name);
+      yield* updateNukeYml(root, config.name);
 
       // Step 5: Install dependencies and run generator
       yield* installAndGenerate(root, config.name);

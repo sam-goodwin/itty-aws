@@ -63,6 +63,10 @@ on:
         description: "Turso"
         type: boolean
         default: false
+      workos:
+        description: "WorkOS"
+        type: boolean
+        default: false
 
 jobs:
   # ── Gate: decide whether to proceed ──
@@ -103,7 +107,8 @@ jobs:
              && "${{ inputs.prisma-postgres }}" != "true" \
              && "${{ inputs.stripe }}" != "true" \
              && "${{ inputs.supabase }}" != "true" \
-             && "${{ inputs.turso }}" != "true" ]]; then
+             && "${{ inputs.turso }}" != "true" \
+             && "${{ inputs.workos }}" != "true" ]]; then
             echo "::error::You must select at least one SDK to nuke (or choose 'all')"
             exit 1
           fi
