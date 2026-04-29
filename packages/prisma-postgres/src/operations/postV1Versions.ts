@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const PostV1VersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -37,4 +38,5 @@ export type PostV1VersionsOutput = typeof PostV1VersionsOutput.Type;
 export const postV1Versions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PostV1VersionsInput,
   outputSchema: PostV1VersionsOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
 }));

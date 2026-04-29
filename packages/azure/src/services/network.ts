@@ -7575,11 +7575,9 @@ export const FirewallPolicyIdpsSignaturesListOutput =
       Schema.Array(
         Schema.Struct({
           signatureId: Schema.optional(Schema.Number),
-          mode: Schema.optional(Schema.Literals(["0", "1", "2"])),
-          severity: Schema.optional(Schema.Literals(["1", "2", "3"])),
-          direction: Schema.optional(
-            Schema.Literals(["0", "1", "2", "3", "4", "5"]),
-          ),
+          mode: Schema.optional(Schema.Literals([0, 1, 2])),
+          severity: Schema.optional(Schema.Literals([1, 2, 3])),
+          direction: Schema.optional(Schema.Literals([0, 1, 2, 3, 4, 5])),
           group: Schema.optional(Schema.String),
           description: Schema.optional(Schema.String),
           protocol: Schema.optional(Schema.String),

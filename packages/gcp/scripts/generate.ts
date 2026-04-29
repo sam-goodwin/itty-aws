@@ -320,10 +320,10 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   lines.push("");
   lines.push('import * as Schema from "effect/Schema";');
   lines.push('import * as API from "../client/api.ts";');
-  lines.push('import * as T from "../traits";');
+  lines.push('import * as T from "../traits.ts";');
   lines.push("__CATEGORY_IMPORT__");
-  lines.push('import type { Credentials } from "../credentials";');
-  lines.push('import type { DefaultErrors } from "../errors";');
+  lines.push('import type { Credentials } from "../credentials.ts";');
+  lines.push('import type { DefaultErrors } from "../errors.ts";');
   lines.push('import type * as HttpClient from "effect/unstable/http/HttpClient";');
   lines.push("");
 
@@ -456,7 +456,7 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   let code = lines.join("\n") + "\n";
   // Only include the category import if it's actually used
   if (code.includes("C.with")) {
-    code = code.replace("__CATEGORY_IMPORT__", 'import * as C from "../category";');
+    code = code.replace("__CATEGORY_IMPORT__", 'import * as C from "../category.ts";');
   } else {
     code = code.replace("__CATEGORY_IMPORT__\n", "");
   }

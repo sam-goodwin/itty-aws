@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetV1ComputeServicesByComputeServiceIdInput =
@@ -44,4 +45,5 @@ export const getV1ComputeServicesByComputeServiceId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetV1ComputeServicesByComputeServiceIdInput,
     outputSchema: GetV1ComputeServicesByComputeServiceIdOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

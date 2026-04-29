@@ -15,7 +15,7 @@ export const SupportedX402PaymentKindsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kinds: Schema.Array(
       Schema.Struct({
-        x402Version: Schema.Literals(["1", "2"]),
+        x402Version: Schema.Literals([1, 2]),
         scheme: Schema.Literals(["exact", "upto"]),
         network: Schema.Literals([
           "base-sepolia",

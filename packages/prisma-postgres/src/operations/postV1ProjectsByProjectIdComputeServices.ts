@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const PostV1ProjectsByProjectIdComputeServicesInput =
@@ -58,4 +59,5 @@ export const postV1ProjectsByProjectIdComputeServices =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PostV1ProjectsByProjectIdComputeServicesInput,
     outputSchema: PostV1ProjectsByProjectIdComputeServicesOutput,
+    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
   }));

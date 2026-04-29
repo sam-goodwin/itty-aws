@@ -6,7 +6,7 @@ import {
   Forbidden,
   NotFound,
   UnprocessableEntity,
-} from "../errors";
+} from "../errors.ts";
 
 // Input Schema
 export const AppCertificatesAcmeCreateInput =

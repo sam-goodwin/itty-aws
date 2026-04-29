@@ -6,7 +6,7 @@ import {
   Forbidden,
   NotFound,
   UnprocessableEntity,
-} from "../errors";
+} from "../errors.ts";
 import { SensitiveString, SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema

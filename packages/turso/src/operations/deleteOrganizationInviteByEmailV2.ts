@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteOrganizationInviteByEmailV2Input =
@@ -34,4 +35,5 @@ export const deleteOrganizationInviteByEmailV2 =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrganizationInviteByEmailV2Input,
     outputSchema: DeleteOrganizationInviteByEmailV2Output,
+    errors: [NotFound] as const,
   }));

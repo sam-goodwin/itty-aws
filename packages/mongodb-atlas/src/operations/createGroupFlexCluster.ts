@@ -7,7 +7,7 @@ import {
   Forbidden,
   NotFound,
   Conflict,
-} from "../errors";
+} from "../errors.ts";
 
 // Input Schema
 export const CreateGroupFlexClusterInput =

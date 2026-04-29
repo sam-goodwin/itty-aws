@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const UpdateGroupPrivateEndpointEndpointServiceInput =
@@ -41,4 +42,5 @@ export const updateGroupPrivateEndpointEndpointService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupPrivateEndpointEndpointServiceInput,
     outputSchema: UpdateGroupPrivateEndpointEndpointServiceOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

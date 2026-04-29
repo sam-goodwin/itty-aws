@@ -354,7 +354,7 @@ export type ServersListGatewayStatusInput =
 // Output Schema
 export const ServersListGatewayStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(Schema.Literals(["0"])),
+    status: Schema.optional(Schema.Literals([0])),
   });
 export type ServersListGatewayStatusOutput =
   typeof ServersListGatewayStatusOutput.Type;

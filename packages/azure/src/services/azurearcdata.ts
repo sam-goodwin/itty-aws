@@ -2290,9 +2290,7 @@ export const SqlServerInstancesCreateInput =
           Schema.Struct({
             retentionPeriodDays: Schema.optional(Schema.Number),
             fullBackupDays: Schema.optional(Schema.Number),
-            differentialBackupHours: Schema.optional(
-              Schema.Literals(["12", "24"]),
-            ),
+            differentialBackupHours: Schema.optional(Schema.Literals([12, 24])),
             transactionLogBackupMinutes: Schema.optional(Schema.Number),
           }),
         ),
@@ -3556,9 +3554,7 @@ export const SqlServerInstancesUpdateInput =
           Schema.Struct({
             retentionPeriodDays: Schema.optional(Schema.Number),
             fullBackupDays: Schema.optional(Schema.Number),
-            differentialBackupHours: Schema.optional(
-              Schema.Literals(["12", "24"]),
-            ),
+            differentialBackupHours: Schema.optional(Schema.Literals([12, 24])),
             transactionLogBackupMinutes: Schema.optional(Schema.Number),
           }),
         ),

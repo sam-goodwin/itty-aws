@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const DeleteV1VersionsByVersionIdInput =
@@ -27,5 +28,6 @@ export const deleteV1VersionsByVersionId = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteV1VersionsByVersionIdInput,
     outputSchema: DeleteV1VersionsByVersionIdOutput,
+    errors: [Forbidden, NotFound, Conflict] as const,
   }),
 );

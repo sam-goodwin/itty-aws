@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { Forbidden } from "../errors.ts";
 
 // Input Schema
 export const V1GetDatabaseOpenapiInput =
@@ -30,5 +31,6 @@ export const v1GetDatabaseOpenapi = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetDatabaseOpenapiInput,
     outputSchema: V1GetDatabaseOpenapiOutput,
+    errors: [Forbidden] as const,
   }),
 );

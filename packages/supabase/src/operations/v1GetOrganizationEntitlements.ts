@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { Forbidden } from "../errors.ts";
 
 // Input Schema
 export const V1GetOrganizationEntitlementsInput =
@@ -99,4 +100,5 @@ export const v1GetOrganizationEntitlements =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: V1GetOrganizationEntitlementsInput,
     outputSchema: V1GetOrganizationEntitlementsOutput,
+    errors: [Forbidden] as const,
   }));

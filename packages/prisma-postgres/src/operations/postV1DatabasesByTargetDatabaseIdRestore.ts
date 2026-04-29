@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotFound, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const PostV1DatabasesByTargetDatabaseIdRestoreInput =
@@ -113,4 +114,5 @@ export const postV1DatabasesByTargetDatabaseIdRestore =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PostV1DatabasesByTargetDatabaseIdRestoreInput,
     outputSchema: PostV1DatabasesByTargetDatabaseIdRestoreOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
