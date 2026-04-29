@@ -1418,60 +1418,51 @@ const updatePkgPrYml = (
   Effect.gen(function* () {
     const path = yield* Path.Path;
     const fs = yield* FileSystem.FileSystem;
-    const ymlPath = path.join(root, ".github", "workflows", "pkg-pr.yml");
+    const ymlPath = path.join(root, ".github", "workflows", "pr-package.yml");
     let content = yield* fs.readFileString(ymlPath);
 
-    if (content.includes(`pkg-pr-${name}:`)) {
+    // The new pr-package.yml uses a matrix driven by the paths-filter output,
+    // so adding a package only requires registering it in the force-ci "all"
+    // array and adding a paths-filter entry.
+    const filterHeader = `            ${name}:`;
+    if (content.includes(filterHeader)) {
       yield* Console.log(
-        `\n⚠️  pkg-pr.yml already has pkg-pr-${name}, skipping`,
+        `\n⚠️  pr-package.yml already has filter for ${name}, skipping`,
       );
       return;
     }
 
-    yield* Console.log(`\n📝 Updating pkg-pr.yml with pkg-pr-${name} job`);
+    yield* Console.log(`\n📝 Updating pr-package.yml with ${name}`);
 
-    const outputsMatch = content.match(
-      /(      supabase: \$\{\{ steps\.changes\.outputs\.supabase \}\})/,
-    );
-    if (outputsMatch) {
-      content = content.replace(
-        outputsMatch[1],
-        `${outputsMatch[1]}\n      ${name}: \${{ steps.changes.outputs.${name} }}`,
-      );
+    // Append to the force-ci "all" JSON array.
+    const allMatch = content.match(/(\s+all=')(\[[^\]]+\])(')/);
+    if (allMatch) {
+      const arr: string[] = JSON.parse(allMatch[2]);
+      if (!arr.includes(name)) {
+        arr.push(name);
+        content = content.replace(
+          allMatch[0],
+          `${allMatch[1]}${JSON.stringify(arr)}${allMatch[3]}`,
+        );
+      }
     }
 
-    const filtersMatch = content.match(
-      /(            supabase:\n              - 'packages\/supabase\/\*\*')/,
-    );
-    if (filtersMatch) {
+    // Append a paths-filter entry after the last existing filter. The pattern
+    // matches a filter block ending with `'packages/core/**'` so we can splice
+    // the new entry in right after it; using the supabase filter as an anchor
+    // is brittle, so we anchor on the last occurrence instead.
+    const filterEntry = `\n            ${name}:\n              - *root\n              - 'packages/${name}/**'\n              - 'packages/core/**'`;
+    const lastFilterRegex = /(\n            [a-z0-9-]+:\n              - \*root\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*\n            [a-z0-9-]+:\n              - \*root\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
+    const lastFilterMatch = content.match(lastFilterRegex);
+    if (lastFilterMatch) {
       content = content.replace(
-        filtersMatch[1],
-        `${filtersMatch[1]}\n            ${name}:\n              - 'packages/${name}/**'`,
+        lastFilterMatch[0],
+        `${lastFilterMatch[0]}${filterEntry}`,
       );
     }
-
-    const newJob = `
-  pkg-pr-${name}:
-    needs: [detect-changes, pkg-pr-supabase]
-    if: \${{ !failure() && needs.detect-changes.outputs.${name} == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-      - run: bun install
-      - run: bun run build
-        working-directory: packages/core
-      - run: bun run build
-        working-directory: packages/${name}
-      - run: bun scripts/generate-pnpm-workspace.yaml.ts
-      - run: bun add -D pnpm && bunx pkg-pr-new publish --pnpm ./packages/${name}`;
-
-    content = content.trimEnd() + "\n" + newJob + "\n";
 
     yield* fs.writeFileString(ymlPath, content);
-    yield* Console.log(`  ✅ Added pkg-pr-${name} job to pkg-pr.yml`);
+    yield* Console.log(`  ✅ Added ${name} to pr-package.yml`);
   });
 
 const updateReleaseYml = (
@@ -1488,29 +1479,48 @@ const updateReleaseYml = (
     const ymlPath = path.join(root, ".github", "workflows", "release.yml");
     let content = yield* fs.readFileString(ymlPath);
 
-    const pkgArrayMatch = content.match(/PACKAGES=\(([^)]+)\)/);
-    if (pkgArrayMatch) {
-      const pkgs = pkgArrayMatch[1].trim().split(/\s+/);
-      if (pkgs.includes(name)) {
-        yield* Console.log(
-          `\n⚠️  release.yml already includes ${name}, skipping`,
-        );
-        return;
-      }
+    const matrixLine = `          - ${name}\n`;
+    const artifactLine = `    packages/${name}/package.json\n`;
+    const alreadyInMatrix = content.includes(matrixLine);
+    const alreadyInArtifacts = content.includes(artifactLine);
+
+    if (alreadyInMatrix && alreadyInArtifacts) {
+      yield* Console.log(
+        `\n⚠️  release.yml already includes ${name}, skipping`,
+      );
+      return;
     }
 
     yield* Console.log(`\n📝 Updating release.yml with ${name}`);
 
-    content = content.replace(
-      /PACKAGES=\(([^)]+)\)/,
-      (_match: string, pkgList: string) => {
-        const trimmed = pkgList.trim();
-        return `PACKAGES=(${trimmed} ${name})`;
-      },
-    );
+    // Insert into BUMP_ARTIFACT_PATHS (sorted alphabetically by path). The
+    // block is bounded by the literal `bun.lock` line, so we splice in before
+    // it and rely on a follow-up sort pass to keep ordering tidy if needed.
+    if (!alreadyInArtifacts) {
+      const artifactsAnchor = "    bun.lock\n";
+      if (content.includes(artifactsAnchor)) {
+        content = content.replace(
+          artifactsAnchor,
+          `${artifactLine}${artifactsAnchor}`,
+        );
+      }
+    }
+
+    // Insert into the publish-sdk matrix list. Anchor on the `steps:` line
+    // that follows the matrix block so we splice before it.
+    if (!alreadyInMatrix) {
+      const matrixEndAnchor = /(    strategy:[\s\S]*?package:\n(?:          - [a-z0-9-]+\n)+)(    steps:)/;
+      const m = content.match(matrixEndAnchor);
+      if (m) {
+        content = content.replace(
+          matrixEndAnchor,
+          `$1${matrixLine}$2`,
+        );
+      }
+    }
 
     yield* fs.writeFileString(ymlPath, content);
-    yield* Console.log(`  ✅ Added ${name} to release.yml PACKAGES`);
+    yield* Console.log(`  ✅ Added ${name} to release.yml`);
   });
 
 // ============================================================================

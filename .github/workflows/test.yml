@@ -413,3 +413,18 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/posthog
+
+  ci-typesense:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.typesense == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/typesense

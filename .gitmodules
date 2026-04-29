@@ -89,3 +89,6 @@
 [submodule "packages/posthog/specs/distilled-spec-posthog"]
 	path = packages/posthog/specs/distilled-spec-posthog
 	url = https://github.com/alchemy-run/distilled-spec-posthog.git
+[submodule "packages/typesense/specs/typesense-api-spec"]
+	path = packages/typesense/specs/typesense-api-spec
+	url = https://github.com/typesense/typesense-api-spec

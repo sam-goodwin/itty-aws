@@ -42,6 +42,7 @@ env:
     packages/stripe/package.json
     packages/supabase/package.json
     packages/turso/package.json
+    packages/typesense/package.json
     bun.lock
     CHANGELOG.md
 
@@ -254,6 +255,7 @@ jobs:
           - stripe
           - supabase
           - turso
+          - typesense
     steps:
       - uses: actions/checkout@v6
         with:

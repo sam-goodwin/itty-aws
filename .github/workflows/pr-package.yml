@@ -35,7 +35,7 @@ jobs:
         if: contains(github.event.pull_request.labels.*.name, 'force-ci')
         run: |
           set -euo pipefail
-          all='["core","aws","cloudflare","gcp","neon","planetscale","prisma-postgres","stripe","supabase","posthog","axiom","azure","kubernetes","coinbase","mongodb-atlas","fly-io","turso"]'
+          all='["core","aws","cloudflare","gcp","neon","planetscale","prisma-postgres","stripe","supabase","posthog","axiom","azure","kubernetes","coinbase","mongodb-atlas","fly-io","turso","typesense"]'
           echo "packages=${all}" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v4
@@ -111,6 +111,10 @@ jobs:
             turso:
               - *root
               - 'packages/turso/**'
+              - 'packages/core/**'
+            typesense:
+              - *root
+              - 'packages/typesense/**'
               - 'packages/core/**'
 
   # ── Compute tags once so every matrix job + the comment use the same set. ─

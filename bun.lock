@@ -327,6 +327,24 @@
         "effect": "catalog:",
       },
     },
+    "packages/typesense": {
+      "name": "@distilled.cloud/typesense",
+      "version": "0.2.0-alpha",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+        "effect": "catalog:",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
+        "yaml": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "www/distilled.cloud": {
       "name": "@distilled.cloud/website",
       "dependencies": {
@@ -467,6 +485,8 @@
     "@distilled.cloud/supabase": ["@distilled.cloud/supabase@workspace:packages/supabase"],
 
     "@distilled.cloud/turso": ["@distilled.cloud/turso@workspace:packages/turso"],
+
+    "@distilled.cloud/typesense": ["@distilled.cloud/typesense@workspace:packages/typesense"],
 
     "@distilled.cloud/website": ["@distilled.cloud/website@workspace:www/distilled.cloud"],
 
