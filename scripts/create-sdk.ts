@@ -1008,6 +1008,7 @@ const scaffoldPackage = (
                 "~/*": ["./src/*"],
               },
             },
+            references: [{ path: "../core" }],
           },
           null,
           2,
