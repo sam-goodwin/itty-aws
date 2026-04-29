@@ -286,9 +286,7 @@ jobs:
 
       - run: bun install
 
-      - run: bun run build
-        working-directory: packages/core
-
+      # `tsgo -b` follows project references, so building the leaf builds core.
       - run: bun run build
         working-directory: packages/${{ matrix.package }}
 

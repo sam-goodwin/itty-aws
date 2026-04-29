@@ -172,10 +172,9 @@ jobs:
 
       - run: bun install --frozen-lockfile
 
-      - run: bun run build
-        working-directory: packages/core
-
-      - if: matrix.package != 'core'
+      # `tsgo -b` follows project references, so building the leaf package also
+      # builds core. gcp is too large for GH runners — pack it source-only.
+      - if: matrix.package != 'gcp'
         run: bun run build
         working-directory: packages/${{ matrix.package }}
 
@@ -201,7 +200,9 @@ jobs:
   # ── PR-only: sticky comment with install URLs pinned to this commit. ──────
   comment:
     needs: [detect-changes, tags, publish]
-    if: github.event_name == 'pull_request' && needs.detect-changes.outputs.packages != '[]'
+    # `always()` so a single matrix failure (e.g. gcp) doesn't drop the comment
+    # for every other package that did publish.
+    if: always() && github.event_name == 'pull_request' && needs.detect-changes.outputs.packages != '[]' && needs.tags.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
