@@ -221,11 +221,12 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           SHORT_SHA: ${{ needs.tags.outputs.short }}
           PACKAGES: ${{ needs.detect-changes.outputs.packages }}
-          HOST: ${{ env.PR_PACKAGE_HOST }}
         run: |
           set -euo pipefail
           MARKER="<!-- pr-package-comment -->"
 
+          # pkg.distilled.cloud auto-prefixes the `@distilled.cloud/` scope, so
+          # the unscoped directory name is enough on the install URL.
           {
             echo "$MARKER"
             echo
@@ -235,7 +236,7 @@ jobs:
               name=$(node -p "require('./packages/${dir}/package.json').name")
               echo "**${name}**"
               echo '```sh'
-              echo "bun add https://${HOST}/${name}/${SHORT_SHA}"
+              echo "bun add https://pkg.distilled.cloud/${dir}/${SHORT_SHA}"
               echo '```'
               echo
             done
