@@ -345,6 +345,24 @@
         "effect": "catalog:",
       },
     },
+    "packages/workos": {
+      "name": "@distilled.cloud/workos",
+      "version": "0.2.0-alpha",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+        "effect": "catalog:",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
+        "yaml": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "www/distilled.cloud": {
       "name": "@distilled.cloud/website",
       "dependencies": {
@@ -489,6 +507,8 @@
     "@distilled.cloud/typesense": ["@distilled.cloud/typesense@workspace:packages/typesense"],
 
     "@distilled.cloud/website": ["@distilled.cloud/website@workspace:www/distilled.cloud"],
+
+    "@distilled.cloud/workos": ["@distilled.cloud/workos@workspace:packages/workos"],
 
     "@effect/platform-bun": ["@effect/platform-bun@4.0.0-beta.58", "", { "dependencies": { "@effect/platform-node-shared": "^4.0.0-beta.58" }, "peerDependencies": { "effect": "^4.0.0-beta.58" } }, "sha512-OifaM5k3WQs3gwvPrBDYgIy0MdWYvq14XMdbSEoVu+ZQ36NGjJNujUNgOrnUJR8d/aHlFT0RNVjwHWf/bz6xtA=="],
 

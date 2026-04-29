@@ -43,6 +43,7 @@ env:
     packages/supabase/package.json
     packages/turso/package.json
     packages/typesense/package.json
+    packages/workos/package.json
     bun.lock
     CHANGELOG.md
 
@@ -256,6 +257,7 @@ jobs:
           - supabase
           - turso
           - typesense
+          - workos
     steps:
       - uses: actions/checkout@v6
         with:

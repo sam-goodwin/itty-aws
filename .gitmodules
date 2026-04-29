@@ -92,3 +92,6 @@
 [submodule "packages/typesense/specs/typesense-api-spec"]
 	path = packages/typesense/specs/typesense-api-spec
 	url = https://github.com/typesense/typesense-api-spec
+[submodule "packages/workos/specs/openapi-spec"]
+	path = packages/workos/specs/openapi-spec
+	url = https://github.com/workos/openapi-spec
