@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const DeleteConversationModelInput =
@@ -30,5 +31,6 @@ export const deleteConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteConversationModelInput,
     outputSchema: DeleteConversationModelOutput,
+    errors: [NotFound] as const,
   }),
 );

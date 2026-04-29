@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { BadRequest, NotFound } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
@@ -38,5 +39,6 @@ export const updateConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UpdateConversationModelInput,
     outputSchema: UpdateConversationModelOutput,
+    errors: [BadRequest, NotFound] as const,
   }),
 );

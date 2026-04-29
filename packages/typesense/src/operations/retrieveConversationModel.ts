@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const RetrieveConversationModelInput =
@@ -28,5 +29,6 @@ export const retrieveConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: RetrieveConversationModelInput,
     outputSchema: RetrieveConversationModelOutput,
+    errors: [NotFound] as const,
   }),
 );
