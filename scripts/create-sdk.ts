@@ -1366,19 +1366,22 @@ const updateTestYml = (
 
     yield* Console.log(`\n📝 Updating test.yml with ci-${name} job`);
 
-    const outputsMatch = content.match(
-      /(      supabase: \$\{\{ steps\.changes\.outputs\.supabase \}\})/,
-    );
+    // Match the LAST output line in the detect-changes outputs block. The
+    // current format is `name: ${{ steps.force.outputs.all || steps.changes.outputs.name }}`
+    // (with the force-ci escape hatch). The negative lookahead pins to the
+    // tail of the block so we splice after the last entry regardless of name.
+    const outputLineRegex = /(      [a-z0-9-]+: \$\{\{ steps\.force\.outputs\.all \|\| steps\.changes\.outputs\.[a-z0-9-]+ \}\})(?![\s\S]*      [a-z0-9-]+: \$\{\{ steps\.force\.outputs\.all \|\| steps\.changes\.outputs)/;
+    const outputsMatch = content.match(outputLineRegex);
     if (outputsMatch) {
       content = content.replace(
         outputsMatch[1],
-        `${outputsMatch[1]}\n      ${name}: \${{ steps.changes.outputs.${name} }}`,
+        `${outputsMatch[1]}\n      ${name}: \${{ steps.force.outputs.all || steps.changes.outputs.${name} }}`,
       );
     }
 
-    const filtersMatch = content.match(
-      /(            supabase:\n              - 'packages\/supabase\/\*\*'\n              - 'packages\/core\/\*\*')/,
-    );
+    // Splice after the last paths-filter block.
+    const filtersRegex = /(            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
+    const filtersMatch = content.match(filtersRegex);
     if (filtersMatch) {
       content = content.replace(
         filtersMatch[1],
@@ -1448,12 +1451,11 @@ const updatePkgPrYml = (
       }
     }
 
-    // Append a paths-filter entry after the last existing filter. The pattern
-    // matches a filter block ending with `'packages/core/**'` so we can splice
-    // the new entry in right after it; using the supabase filter as an anchor
-    // is brittle, so we anchor on the last occurrence instead.
-    const filterEntry = `\n            ${name}:\n              - *root\n              - 'packages/${name}/**'\n              - 'packages/core/**'`;
-    const lastFilterRegex = /(\n            [a-z0-9-]+:\n              - \*root\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*\n            [a-z0-9-]+:\n              - \*root\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
+    // Append a paths-filter entry after the last existing filter. We anchor on
+    // the last block ending with `'packages/core/**'` (negative lookahead pins
+    // to the tail).
+    const filterEntry = `\n            ${name}:\n              - 'packages/${name}/**'\n              - 'packages/core/**'`;
+    const lastFilterRegex = /(\n            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*\n            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
     const lastFilterMatch = content.match(lastFilterRegex);
     if (lastFilterMatch) {
       content = content.replace(
@@ -1522,6 +1524,61 @@ const updateReleaseYml = (
 
     yield* fs.writeFileString(ymlPath, content);
     yield* Console.log(`  ✅ Added ${name} to release.yml`);
+  });
+
+const updateNukeYml = (
+  root: string,
+  name: string,
+): Effect.Effect<
+  void,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
+  Effect.gen(function* () {
+    const path = yield* Path.Path;
+    const fs = yield* FileSystem.FileSystem;
+    const ymlPath = path.join(root, ".github", "workflows", "nuke.yml");
+    const exists = yield* fs.exists(ymlPath);
+    if (!exists) {
+      yield* Console.log(`\n⚠️  nuke.yml not found, skipping`);
+      return;
+    }
+    let content = yield* fs.readFileString(ymlPath);
+
+    const inputHeader = `      ${name}:`;
+    if (content.includes(inputHeader)) {
+      yield* Console.log(`\n⚠️  nuke.yml already has input for ${name}, skipping`);
+      return;
+    }
+
+    yield* Console.log(`\n📝 Updating nuke.yml with ${name} input`);
+
+    // Splice a workflow_dispatch input after the last existing one. The block
+    // ends with the `jobs:` key, so anchor on the last input + `default: false`.
+    const lastInputRegex = /(      [a-z0-9-]+:\n        description: "[^"]+"\n        type: boolean\n        default: false\n)(?![\s\S]*      [a-z0-9-]+:\n        description: "[^"]+"\n        type: boolean\n        default: false\n)/;
+    const description = name
+      .split("-")
+      .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+      .join(" ");
+    const newInput = `      ${name}:\n        description: "${description}"\n        type: boolean\n        default: false\n`;
+    const m = content.match(lastInputRegex);
+    if (m) {
+      content = content.replace(lastInputRegex, `$1${newInput}`);
+    }
+
+    // Also append to the validate-inputs check so the workflow doesn't reject
+    // a run that selected only this SDK.
+    const validateRegex = /(\s+&& "\$\{\{ inputs\.[a-z0-9-]+ \}\}" != "true" \\)\n(             \]\];)/;
+    const vMatch = content.match(validateRegex);
+    if (vMatch) {
+      content = content.replace(
+        validateRegex,
+        `$1\n             && "\${{ inputs.${name} }}" != "true" \\\n$2`,
+      );
+    }
+
+    yield* fs.writeFileString(ymlPath, content);
+    yield* Console.log(`  ✅ Added ${name} to nuke.yml`);
   });
 
 // ============================================================================
