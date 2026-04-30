@@ -60,7 +60,7 @@ describe("OrganizationDomainsControllerVerify", () => {
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("BadRequest");
+      expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

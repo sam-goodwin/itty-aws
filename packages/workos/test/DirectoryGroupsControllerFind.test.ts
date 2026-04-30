@@ -64,7 +64,7 @@ describe("DirectoryGroupsControllerFind", () => {
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

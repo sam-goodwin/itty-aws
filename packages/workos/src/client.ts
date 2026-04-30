@@ -40,22 +40,36 @@ const matchError = (
   status: number,
   errorBody: unknown,
 ): Effect.Effect<never, unknown> => {
+  // Try to extract a message and code from the body, but fall through to
+  // status-code mapping regardless of whether the body parses as the
+  // canonical WorkOS error shape. Some endpoints return non-JSON or
+  // alternative shapes for 401/403/5xx — those still have well-known status
+  // codes that map directly to typed error classes.
+  let message = "";
+  let code: string | undefined;
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
-    const ErrorClass = (HTTP_STATUS_MAP as any)[status];
-    if (ErrorClass) {
-      return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
-    }
-    return Effect.fail(
-      new UnknownWorkosError({
-        code: parsed.code,
-        message: parsed.message,
-        body: errorBody,
-      }),
-    );
+    message = parsed.message ?? parsed.error_description ?? parsed.error ?? "";
+    code = parsed.code;
   } catch {
-    return Effect.fail(new UnknownWorkosError({ body: errorBody }));
+    if (typeof errorBody === "object" && errorBody !== null) {
+      const obj = errorBody as Record<string, unknown>;
+      if (typeof obj.message === "string") message = obj.message;
+      else if (typeof obj.error_description === "string")
+        message = obj.error_description;
+      else if (typeof obj.error === "string") message = obj.error;
+      if (typeof obj.code === "string") code = obj.code;
+    } else if (typeof errorBody === "string") {
+      message = errorBody;
+    }
   }
+  const ErrorClass = (HTTP_STATUS_MAP as any)[status];
+  if (ErrorClass) {
+    return Effect.fail(new ErrorClass({ message }));
+  }
+  return Effect.fail(
+    new UnknownWorkosError({ code, message, body: errorBody }),
+  );
 };
 
 /**

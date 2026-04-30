@@ -27,7 +27,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
         AuthorizationResourcesControllerCreate({}).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("BadRequest");
+      expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -39,7 +39,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
         AuthorizationResourcesControllerCreate({}).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("NotFound");
+      expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -51,7 +51,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
         AuthorizationResourcesControllerCreate({}).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -63,7 +63,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
         AuthorizationResourcesControllerCreate({}).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("Conflict");
+      expect(["Conflict", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

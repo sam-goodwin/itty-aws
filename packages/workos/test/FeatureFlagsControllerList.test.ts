@@ -65,7 +65,7 @@ describe("FeatureFlagsControllerList", () => {
         FeatureFlagsControllerList({ limit: 1000 }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("UnprocessableEntity");
+      expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

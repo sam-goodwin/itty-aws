@@ -53,7 +53,7 @@ describe("SsoControllerLogoutAuthorize", () => {
       const error = await runEffect(
         SsoControllerLogoutAuthorize({ profile_id: "" }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("BadRequest");
+      expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

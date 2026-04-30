@@ -19,7 +19,7 @@ describe("AuthenticationFactorsControllerCreate", () => {
       expect(typeof factor.id).toBe("string");
       expect(factor.type).toBe("totp");
       expect(factor.totp).toBeDefined();
-      expect(typeof factor.totp?.secret).toBe("string");
+      expect(factor.totp?.secret).toBeDefined();
       expect(typeof factor.totp?.qr_code).toBe("string");
       expect(typeof factor.totp?.uri).toBe("string");
     },

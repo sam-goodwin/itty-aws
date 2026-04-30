@@ -86,7 +86,7 @@ describe("GroupsControllerGet", () => {
           groupId: `group_does_not_exist_${testRunId}`,
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

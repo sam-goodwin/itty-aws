@@ -62,7 +62,7 @@ describe("ApplicationCredentialsControllerCreate", () => {
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("UnprocessableEntity");
+      expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

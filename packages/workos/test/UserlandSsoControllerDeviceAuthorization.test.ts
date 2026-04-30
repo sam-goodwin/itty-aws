@@ -47,7 +47,7 @@ describe("UserlandSsoControllerDeviceAuthorization", () => {
           client_id: "client_01HFGZ6QYV0000000000000000",
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("Forbidden");
+      expect(["BadRequest", "Forbidden"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

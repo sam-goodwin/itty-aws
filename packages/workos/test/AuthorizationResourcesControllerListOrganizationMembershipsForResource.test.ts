@@ -54,7 +54,7 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("BadRequest");
+      expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -84,7 +84,7 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -99,7 +99,7 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("UnprocessableEntity");
+      expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

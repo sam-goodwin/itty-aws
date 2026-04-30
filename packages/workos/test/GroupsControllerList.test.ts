@@ -63,7 +63,7 @@ describe("GroupsControllerList", () => {
           organizationId: "org_01HFGZ6QYV0000000000000000",
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

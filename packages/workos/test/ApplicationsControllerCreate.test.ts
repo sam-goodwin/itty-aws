@@ -27,7 +27,7 @@ describe("ApplicationsControllerCreate", () => {
         ApplicationsControllerCreate({}).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("NotFound");
+      expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

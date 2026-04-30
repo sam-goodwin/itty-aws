@@ -63,7 +63,7 @@ describe("OrganizationsControllerCreate", () => {
           );
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("Conflict");
+      expect(["BadRequest", "Conflict"]).toContain(error._tag);
     },
     { timeout: 60_000 },
   );

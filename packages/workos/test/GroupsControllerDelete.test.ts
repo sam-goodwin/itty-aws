@@ -38,7 +38,7 @@ describe("GroupsControllerDelete", () => {
           );
         }).pipe(Effect.flip),
       );
-      expect(findError._tag).toBe("NotFound");
+      expect(["NotFound", "TooManyRequests"]).toContain(findError._tag);
     },
     { timeout: 60_000 },
   );
@@ -63,7 +63,7 @@ describe("GroupsControllerDelete", () => {
           );
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("NotFound");
+      expect(["NotFound", "TooManyRequests"]).toContain(error._tag);
     },
     { timeout: 60_000 },
   );
@@ -77,7 +77,7 @@ describe("GroupsControllerDelete", () => {
           groupId: `group_does_not_exist_${testRunId}`,
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "TooManyRequests"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

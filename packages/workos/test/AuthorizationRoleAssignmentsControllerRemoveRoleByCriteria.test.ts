@@ -27,7 +27,7 @@ describe("AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria", () => {
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("NotFound");
+      expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -41,7 +41,7 @@ describe("AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria", () => {
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

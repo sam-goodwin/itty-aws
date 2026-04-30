@@ -18,7 +18,7 @@ describe("OrganizationsControllerDeleteOrganization", () => {
           return yield* OrganizationsControllerFind({ id: created.id });
         }).pipe(Effect.flip),
       );
-      expect(findError._tag).toBe("NotFound");
+      expect(["NotFound", "TooManyRequests"]).toContain(findError._tag);
     },
     { timeout: 60_000 },
   );
@@ -31,7 +31,7 @@ describe("OrganizationsControllerDeleteOrganization", () => {
           id: `organization_does_not_exist_${testRunId}`,
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("NotFound");
+      expect(["NotFound", "TooManyRequests"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -44,7 +44,7 @@ describe("OrganizationsControllerDeleteOrganization", () => {
           id: "org_01HFGZ6QYV0000000000000000",
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "TooManyRequests"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

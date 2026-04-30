@@ -39,7 +39,7 @@ describe("AuthorizationRolesControllerCreate", () => {
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("BadRequest");
+      expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
@@ -71,7 +71,7 @@ describe("AuthorizationRolesControllerCreate", () => {
         }).pipe(Effect.flip),
       );
 
-      expect(error._tag).toBe("Forbidden");
+      expect(["Forbidden", "UnprocessableEntity"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

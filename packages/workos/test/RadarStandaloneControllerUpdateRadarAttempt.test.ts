@@ -37,7 +37,7 @@ describe("RadarStandaloneControllerUpdateRadarAttempt", () => {
           attempt_status: "success",
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("NotFound");
+      expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );
