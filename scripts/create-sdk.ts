@@ -1322,6 +1322,8 @@ export { SensitiveString, SensitiveNullableString } from "./sensitive.ts";
  * actual spec format found in the specs/ submodule(s).
  *
  * If the spec is OpenAPI, use generateFromOpenAPI from @distilled.cloud/core/openapi/generate.
+ * If the spec is GraphQL (introspection JSON), use generateFromGraphQL from
+ * @distilled.cloud/core/graphql/generate.
  * If it's another format (TypeScript SDK, Smithy, protobuf, Go types, etc.),
  * write a custom generator. See packages/cloudflare/ and packages/aws/ for examples
  * of non-OpenAPI generators.
@@ -1683,6 +1685,7 @@ Each submodule is a cloned git repo that IS the authoritative source for this SD
 
 The submodule could contain ANY of these formats:
 - An OpenAPI 3.x or Swagger 2.0 spec (JSON or YAML)
+- A GraphQL schema — either an introspection JSON (the result of \`__schema\` query, has top-level \`data.__schema\` or \`__schema\`) OR an SDL file (.graphql / .gql)
 - A TypeScript SDK source (like packages/cloudflare/ uses)
 - Smithy models (like packages/aws/ uses)
 - Go types, protobuf definitions, or other IDL formats
@@ -1691,10 +1694,11 @@ The submodule could contain ANY of these formats:
 
 **CRITICAL: Do NOT assume OpenAPI. Do NOT try to fetch an OpenAPI spec from the internet.** The submodule IS the spec source. Your job is to figure out what format it's in and write a generator that works with THAT format.
 
-Your FIRST action must be to recursively list the contents of every submodule directory under packages/${name}/specs/ to understand the structure. Use \`find\` or \`ls -R\` on each submodule. Look for .json, .yaml, .yml, .ts, .go, .proto, .smithy, and .md files. Read the first few lines of candidates to understand what they contain.
+Your FIRST action must be to recursively list the contents of every submodule directory under packages/${name}/specs/ to understand the structure. Use \`find\` or \`ls -R\` on each submodule. Look for .json, .yaml, .yml, .ts, .go, .proto, .graphql, .gql, .smithy, and .md files. Read the first few lines of candidates to understand what they contain.
 
 After you understand the format:
 - If it's OpenAPI → use \`generateFromOpenAPI\` from \`@distilled.cloud/core/openapi/generate\`
+- If it's a GraphQL introspection JSON or live endpoint → use \`generateFromGraphQL\` from \`@distilled.cloud/core/graphql/generate\` (one operation per Query field + one per Mutation field). If the submodule only has SDL (.graphql), use \`introspectEndpoint\` from the same module against a live endpoint to produce introspection JSON, OR pre-convert SDL to introspection JSON via any GraphQL tool — the generator only consumes introspection JSON.
 - If it's a TypeScript SDK → study packages/cloudflare/scripts/generate.ts for how to extract types from TS source
 - If it's Smithy models → study packages/aws/scripts/generate.ts
 - If it's something else → write a custom generator that parses the format and generates Effect operations
@@ -1720,6 +1724,7 @@ After you figure out the spec format in Step 0:
 The scaffolded generate.ts is a placeholder that throws an error. Based on what you found in Step 0, **rewrite it entirely** with a working generator for the spec format you found.
 
 - If OpenAPI: use \`generateFromOpenAPI\` from \`@distilled.cloud/core/openapi/generate\` (see packages/neon/scripts/generate.ts for an example)
+- If GraphQL: use \`generateFromGraphQL\` from \`@distilled.cloud/core/graphql/generate\`. Pass \`schemaPath\` pointing to an introspection JSON file. The generator emits one operation file per Query field and per Mutation field, baking the GraphQL document into the input schema via the \`T.GraphQLOp\` trait — the runtime client wraps variables and unwraps \`data.<operationName>\` automatically.
 - If TypeScript SDK: study packages/cloudflare/scripts/generate.ts
 - If Smithy: study packages/aws/scripts/generate.ts
 - If something else: write a custom generator

@@ -44,6 +44,7 @@ env:
     packages/turso/package.json
     packages/typesense/package.json
     packages/workos/package.json
+    packages/eas/package.json
     bun.lock
     CHANGELOG.md
 
@@ -258,6 +259,7 @@ jobs:
           - turso
           - typesense
           - workos
+          - eas
     steps:
       - uses: actions/checkout@v6
         with:

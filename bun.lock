@@ -140,6 +140,23 @@
         "effect": "catalog:",
       },
     },
+    "packages/eas": {
+      "name": "@distilled.cloud/eas",
+      "version": "0.2.0-alpha",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+        "effect": "catalog:",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/fly-io": {
       "name": "@distilled.cloud/fly-io",
       "version": "0.15.2",
@@ -481,6 +498,8 @@
     "@distilled.cloud/coinbase": ["@distilled.cloud/coinbase@workspace:packages/coinbase"],
 
     "@distilled.cloud/core": ["@distilled.cloud/core@workspace:packages/core"],
+
+    "@distilled.cloud/eas": ["@distilled.cloud/eas@workspace:packages/eas"],
 
     "@distilled.cloud/fly-io": ["@distilled.cloud/fly-io@workspace:packages/fly-io"],
 

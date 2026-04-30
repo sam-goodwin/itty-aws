@@ -377,6 +377,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       const inputSchema = (opConfig.inputSchema ?? opConfig.input)!;
       const outputSchema = (opConfig.outputSchema ?? opConfig.output)!;
       const responsePath = Traits.getResponsePath(outputSchema.ast);
+      const graphqlOp = Traits.getGraphQLOp(inputSchema.ast);
       type Input = Schema.Schema.Type<I>;
 
       // Read HTTP trait from input schema annotations
@@ -406,6 +407,20 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             input as Record<string, unknown>,
             inputSchema,
           );
+
+          // GraphQL: wrap variables in the standard GraphQL request envelope.
+          // All input fields become `variables`; `query` and `operationName`
+          // come from the trait (baked in at generation time).
+          if (graphqlOp) {
+            parts = {
+              ...parts,
+              body: {
+                query: graphqlOp.query,
+                operationName: graphqlOp.operationName,
+                variables: parts.body ?? {},
+              },
+            };
+          }
 
           if (config.transformRequestParts) {
             parts = config.transformRequestParts({
@@ -537,6 +552,34 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           let responseBody = config.transformResponse
             ? config.transformResponse(rawBody)
             : rawBody;
+
+          // GraphQL: surface errors[] (returned with HTTP 200) via matchError,
+          // then unwrap `data.<operationName>` for schema decoding.
+          if (graphqlOp) {
+            const envelope = responseBody as
+              | { data?: Record<string, unknown> | null; errors?: unknown[] }
+              | null
+              | undefined;
+            if (
+              envelope &&
+              Array.isArray(envelope.errors) &&
+              envelope.errors.length > 0
+            ) {
+              return yield* config.matchError(
+                response.status,
+                envelope,
+                opConfig.errors,
+              );
+            }
+            const data = envelope?.data;
+            if (data && typeof data === "object") {
+              responseBody = (data as Record<string, unknown>)[
+                graphqlOp.operationName
+              ];
+            } else {
+              responseBody = data;
+            }
+          }
 
           // Some APIs return a JSON *string* (double-encoded JSON). `response.json`
           // then yields a string, `getPath` bails out, and we would decode the wrong

@@ -236,6 +236,45 @@ export const httpBodySymbol = Symbol.for("@distilled.cloud/http-body");
  */
 export const HttpBody = () => makeAnnotation(httpBodySymbol, true);
 
+/** Symbol for GraphQL operation metadata (query string + operation name) */
+export const graphqlOpSymbol = Symbol.for("@distilled.cloud/graphql-op");
+
+/** GraphQL operation type */
+export type GraphQLOpType = "query" | "mutation";
+
+/** GraphQL operation trait configuration */
+export interface GraphQLOpTrait {
+  /** The full GraphQL operation document (e.g., `query getUser($id: ID!) { ... }`) */
+  query: string;
+  /** The operation name — used to extract the response from `data.<operationName>` */
+  operationName: string;
+  /** Whether this is a query or a mutation */
+  type: GraphQLOpType;
+}
+
+/**
+ * GraphQLOp trait - declares an operation as GraphQL. When present, the client
+ * wraps the request body as `{ query, operationName, variables: <inputs> }` and
+ * extracts the response from `data.<operationName>`. The Http trait's path is
+ * still used as the GraphQL endpoint (typically `/graphql`).
+ *
+ * @example
+ * ```ts
+ * const GetUserInput = Schema.Struct({
+ *   id: Schema.String,
+ * }).pipe(
+ *   T.Http({ method: "POST", path: "/graphql" }),
+ *   T.GraphQLOp({
+ *     query: "query getUser($id: ID!) { user(id: $id) { id name } }",
+ *     operationName: "getUser",
+ *     type: "query",
+ *   }),
+ * );
+ * ```
+ */
+export const GraphQLOp = (trait: GraphQLOpTrait) =>
+  makeAnnotation(graphqlOpSymbol, trait);
+
 /** Symbol for response body path transformation */
 export const responsePathSymbol = Symbol.for("@distilled.cloud/response-path");
 
@@ -338,6 +377,12 @@ export const getHttpTrait = (ast: AST.AST): HttpTrait | undefined =>
 
 export const getResponsePath = (ast: AST.AST): string | undefined =>
   getAnnotation<string>(ast, responsePathSymbol);
+
+/**
+ * Get GraphQL operation trait from a schema's AST.
+ */
+export const getGraphQLOp = (ast: AST.AST): GraphQLOpTrait | undefined =>
+  getAnnotation<GraphQLOpTrait>(ast, graphqlOpSymbol);
 
 /**
  * Check if a PropertySignature has the pathParam annotation.

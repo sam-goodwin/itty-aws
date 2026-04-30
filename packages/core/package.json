@@ -56,6 +56,10 @@
     "./openapi/generate": {
       "bun": "./scripts/generate-openapi.ts",
       "default": "./scripts/generate-openapi.ts"
+    },
+    "./graphql/generate": {
+      "bun": "./scripts/generate-graphql.ts",
+      "default": "./scripts/generate-graphql.ts"
     }
   },
   "scripts": {

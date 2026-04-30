@@ -38,6 +38,7 @@ jobs:
       turso: ${{ steps.force.outputs.all || steps.changes.outputs.turso }}
       typesense: ${{ steps.force.outputs.all || steps.changes.outputs.typesense }}
       workos: ${{ steps.force.outputs.all || steps.changes.outputs.workos }}
+      eas: ${{ steps.force.outputs.all || steps.changes.outputs.eas }}
     steps:
       - id: force
         if: contains(github.event.pull_request.labels.*.name, 'force-ci')
@@ -102,6 +103,9 @@ jobs:
               - 'packages/core/**'
             typesense:
               - 'packages/typesense/**'
+              - 'packages/core/**'
+            eas:
+              - 'packages/eas/**'
               - 'packages/core/**'
 
   ci-core:
@@ -431,3 +435,18 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/workos
+
+  ci-eas:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.eas == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/eas

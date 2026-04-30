@@ -67,6 +67,10 @@ on:
         description: "WorkOS"
         type: boolean
         default: false
+      eas:
+        description: "Eas"
+        type: boolean
+        default: false
 
 jobs:
   # ── Gate: decide whether to proceed ──
