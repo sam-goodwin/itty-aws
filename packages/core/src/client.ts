@@ -25,8 +25,10 @@
  * const result = yield* fn({ organization: "my-org" });
  * ```
  */
+import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import { pipeArguments } from "effect/Pipeable";
+import * as Schedule from "effect/Schedule";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
@@ -41,6 +43,7 @@ import {
   type PaginatedTrait,
   type PaginationStrategy,
 } from "./pagination.ts";
+import * as Category from "./category.ts";
 import * as Traits from "./traits.ts";
 import { getPath } from "./traits.ts";
 
@@ -388,7 +391,20 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
       const method = httpTrait.method;
 
-      const fn = (input: Input): Effect.Effect<any, any, any> =>
+      // Capped exponential backoff bounded to 8 attempts so a
+      // pathologically rate-limited endpoint can't hang a test run.
+      // Effect 4's `Schedule.exponential(base, factor)` already produces
+      // delays of base, base*factor, base*factor^2, ...; combined with
+      // `Schedule.both(Schedule.recurs(8))` to cap retries. We don't
+      // currently honour Retry-After (would require a per-attempt Ref);
+      // the exponential ramp is conservative enough for the rate limits
+      // we hit in practice.
+      const throttlingRetrySchedule = Schedule.both(
+        Schedule.exponential(Duration.seconds(1), 2),
+        Schedule.recurs(8),
+      );
+
+      const innerFn = (input: Input): Effect.Effect<any, any, any> =>
         Effect.gen(function* () {
           const credentials = yield* config.credentials as any;
           const creds = isEffectLike(credentials)
@@ -578,6 +594,20 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             ),
           );
         });
+
+      // Auto-retry whenever the SDK's matchError returns a typed error
+      // tagged with the throttling category (e.g. `TooManyRequests`,
+      // or any SDK-specific subclass marked with `withThrottlingError`
+      // / `withRetryable({ throttling: true })`). After retries are
+      // exhausted the original typed error propagates to the caller as
+      // usual.
+      const fn = (input: Input): Effect.Effect<any, any, any> =>
+        innerFn(input).pipe(
+          Effect.retry({
+            schedule: throttlingRetrySchedule,
+            while: (e) => Category.isThrottling(e),
+          }),
+        );
 
       const Proto = {
         [Symbol.iterator]() {
