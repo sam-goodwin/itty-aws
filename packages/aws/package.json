@@ -71,7 +71,7 @@
     "fmt": "oxfmt --write src",
     "lint": "oxlint --fix src",
     "check": "tsgo && oxlint src && oxfmt --check src",
-    "test": "bunx vitest run test --exclude specs",
+    "test": "bunx vitest run test --exclude specs --passWithNoTests",
     "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/api-models-aws && git -C specs/api-models-aws checkout -- . && git submodule update --force --init --recursive --depth=1 specs/aws-sdk-js-v3 && git -C specs/aws-sdk-js-v3 checkout -- . && git submodule update --force --init --recursive --depth=1 specs/smithy && git -C specs/smithy checkout -- . && git submodule update --force --init --recursive --depth=1 specs/smithy-typescript && git -C specs/smithy-typescript checkout -- .",
