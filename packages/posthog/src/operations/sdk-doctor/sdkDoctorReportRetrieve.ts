@@ -20,45 +20,57 @@ export type SdkDoctorReportRetrieveInput =
 // Output Schema
 export const SdkDoctorReportRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    overall_health: Schema.Literals(["healthy", "needs_attention"]),
-    health: Schema.Literals(["success", "warning", "danger"]),
-    needs_updating_count: Schema.Number,
-    team_sdk_count: Schema.Number,
-    sdks: Schema.Array(
-      Schema.Struct({
-        lib: Schema.String,
-        readable_name: Schema.String,
-        latest_version: Schema.String,
-        needs_updating: Schema.Boolean,
-        is_outdated: Schema.Boolean,
-        is_old: Schema.Boolean,
-        severity: Schema.Literals(["none", "warning", "danger"]),
-        reason: Schema.String,
-        banners: Schema.Array(Schema.String),
-        releases: Schema.Array(
-          Schema.Struct({
-            version: Schema.String,
-            count: Schema.Number,
-            max_timestamp: Schema.String,
-            release_date: Schema.NullOr(Schema.String),
-            days_since_release: Schema.NullOr(Schema.Number),
-            released_ago: Schema.NullOr(Schema.String),
-            is_outdated: Schema.Boolean,
-            is_old: Schema.Boolean,
-            needs_updating: Schema.Boolean,
-            is_current_or_newer: Schema.Boolean,
-            status_reason: Schema.String,
-            sql_query: Schema.String,
-            activity_page_url: Schema.String,
-          }),
-        ),
-        outdated_traffic_alerts: Schema.Array(
-          Schema.Struct({
-            version: Schema.String,
-            threshold_percent: Schema.Number,
-          }),
-        ),
-      }),
+    overall_health: Schema.optional(
+      Schema.Literals(["healthy", "needs_attention"]),
+    ),
+    health: Schema.optional(Schema.Literals(["success", "warning", "danger"])),
+    needs_updating_count: Schema.optional(Schema.Number),
+    team_sdk_count: Schema.optional(Schema.Number),
+    sdks: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          lib: Schema.optional(Schema.String),
+          readable_name: Schema.optional(Schema.String),
+          latest_version: Schema.optional(Schema.String),
+          needs_updating: Schema.optional(Schema.Boolean),
+          is_outdated: Schema.optional(Schema.Boolean),
+          is_old: Schema.optional(Schema.Boolean),
+          severity: Schema.optional(
+            Schema.Literals(["none", "warning", "danger"]),
+          ),
+          reason: Schema.optional(Schema.String),
+          banners: Schema.optional(Schema.Array(Schema.String)),
+          releases: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                version: Schema.optional(Schema.String),
+                count: Schema.optional(Schema.Number),
+                max_timestamp: Schema.optional(Schema.String),
+                release_date: Schema.optional(Schema.NullOr(Schema.String)),
+                days_since_release: Schema.optional(
+                  Schema.NullOr(Schema.Number),
+                ),
+                released_ago: Schema.optional(Schema.NullOr(Schema.String)),
+                is_outdated: Schema.optional(Schema.Boolean),
+                is_old: Schema.optional(Schema.Boolean),
+                needs_updating: Schema.optional(Schema.Boolean),
+                is_current_or_newer: Schema.optional(Schema.Boolean),
+                status_reason: Schema.optional(Schema.String),
+                sql_query: Schema.optional(Schema.String),
+                activity_page_url: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          outdated_traffic_alerts: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                version: Schema.optional(Schema.String),
+                threshold_percent: Schema.optional(Schema.Number),
+              }),
+            ),
+          ),
+        }),
+      ),
     ),
   });
 export type SdkDoctorReportRetrieveOutput =

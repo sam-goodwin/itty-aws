@@ -20,11 +20,11 @@ export type WebExperimentsRetrieveInput =
 // Output Schema
 export const WebExperimentsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
-    name: Schema.String,
+    id: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    feature_flag_key: Schema.String,
-    variants: Schema.Unknown,
+    feature_flag_key: Schema.optional(Schema.String),
+    variants: Schema.optional(Schema.Unknown),
   });
 export type WebExperimentsRetrieveOutput =
   typeof WebExperimentsRetrieveOutput.Type;

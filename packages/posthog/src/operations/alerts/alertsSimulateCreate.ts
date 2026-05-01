@@ -7,8 +7,8 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const AlertsSimulateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    insight: Schema.Number,
-    detector_config: Schema.Unknown,
+    insight: Schema.optional(Schema.Number),
+    detector_config: Schema.optional(Schema.Unknown),
     series_index: Schema.optional(Schema.Number),
     date_from: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
@@ -22,28 +22,28 @@ export type AlertsSimulateCreateInput = typeof AlertsSimulateCreateInput.Type;
 // Output Schema
 export const AlertsSimulateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(Schema.Number),
-    dates: Schema.Array(Schema.String),
-    scores: Schema.Array(Schema.NullOr(Schema.Number)),
-    triggered_indices: Schema.Array(Schema.Number),
-    triggered_dates: Schema.Array(Schema.String),
-    interval: Schema.NullOr(Schema.String),
-    total_points: Schema.Number,
-    anomaly_count: Schema.Number,
+    data: Schema.optional(Schema.Array(Schema.Number)),
+    dates: Schema.optional(Schema.Array(Schema.String)),
+    scores: Schema.optional(Schema.Array(Schema.NullOr(Schema.Number))),
+    triggered_indices: Schema.optional(Schema.Array(Schema.Number)),
+    triggered_dates: Schema.optional(Schema.Array(Schema.String)),
+    interval: Schema.optional(Schema.NullOr(Schema.String)),
+    total_points: Schema.optional(Schema.Number),
+    anomaly_count: Schema.optional(Schema.Number),
     sub_detector_scores: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
     breakdown_results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          label: Schema.String,
-          data: Schema.Array(Schema.Number),
-          dates: Schema.Array(Schema.String),
-          scores: Schema.Array(Schema.NullOr(Schema.Number)),
-          triggered_indices: Schema.Array(Schema.Number),
-          triggered_dates: Schema.Array(Schema.String),
-          total_points: Schema.Number,
-          anomaly_count: Schema.Number,
+          label: Schema.optional(Schema.String),
+          data: Schema.optional(Schema.Array(Schema.Number)),
+          dates: Schema.optional(Schema.Array(Schema.String)),
+          scores: Schema.optional(Schema.Array(Schema.NullOr(Schema.Number))),
+          triggered_indices: Schema.optional(Schema.Array(Schema.Number)),
+          triggered_dates: Schema.optional(Schema.Array(Schema.String)),
+          total_points: Schema.optional(Schema.Number),
+          anomaly_count: Schema.optional(Schema.Number),
           sub_detector_scores: Schema.optional(
             Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
           ),

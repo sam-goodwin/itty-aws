@@ -8,10 +8,10 @@ export const WebExperimentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    name: Schema.String,
+    name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    feature_flag_key: Schema.String,
-    variants: Schema.Unknown,
+    feature_flag_key: Schema.optional(Schema.String),
+    variants: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -23,11 +23,11 @@ export type WebExperimentsUpdateInput = typeof WebExperimentsUpdateInput.Type;
 // Output Schema
 export const WebExperimentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
-    name: Schema.String,
+    id: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    feature_flag_key: Schema.String,
-    variants: Schema.Unknown,
+    feature_flag_key: Schema.optional(Schema.String),
+    variants: Schema.optional(Schema.Unknown),
   });
 export type WebExperimentsUpdateOutput = typeof WebExperimentsUpdateOutput.Type;
 

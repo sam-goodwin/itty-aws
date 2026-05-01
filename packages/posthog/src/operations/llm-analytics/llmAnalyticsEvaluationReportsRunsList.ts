@@ -22,26 +22,30 @@ export type LlmAnalyticsEvaluationReportsRunsListInput =
 // Output Schema
 export const LlmAnalyticsEvaluationReportsRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        report: Schema.String,
-        content: Schema.Unknown,
-        metadata: Schema.Unknown,
-        period_start: Schema.String,
-        period_end: Schema.String,
-        delivery_status: Schema.Literals([
-          "pending",
-          "delivered",
-          "partial_failure",
-          "failed",
-        ]),
-        delivery_errors: Schema.Unknown,
-        created_at: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          report: Schema.optional(Schema.String),
+          content: Schema.optional(Schema.Unknown),
+          metadata: Schema.optional(Schema.Unknown),
+          period_start: Schema.optional(Schema.String),
+          period_end: Schema.optional(Schema.String),
+          delivery_status: Schema.optional(
+            Schema.Literals([
+              "pending",
+              "delivered",
+              "partial_failure",
+              "failed",
+            ]),
+          ),
+          delivery_errors: Schema.optional(Schema.Unknown),
+          created_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type LlmAnalyticsEvaluationReportsRunsListOutput =

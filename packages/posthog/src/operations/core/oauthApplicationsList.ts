@@ -20,19 +20,21 @@ export type OauthApplicationsListInput = typeof OauthApplicationsListInput.Type;
 // Output Schema
 export const OauthApplicationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.optional(Schema.String),
-        client_id: Schema.optional(Schema.String),
-        redirect_uris_list: Schema.Array(Schema.String),
-        is_verified: Schema.optional(Schema.Boolean),
-        created: Schema.String,
-        updated: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          client_id: Schema.optional(Schema.String),
+          redirect_uris_list: Schema.optional(Schema.Array(Schema.String)),
+          is_verified: Schema.optional(Schema.Boolean),
+          created: Schema.optional(Schema.String),
+          updated: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type OauthApplicationsListOutput =

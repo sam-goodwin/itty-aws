@@ -9,8 +9,8 @@ export const ErrorTrackingSuppressionRulesCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
       Schema.Struct({
-        type: Schema.Literals(["AND", "OR"]),
-        values: Schema.Array(Schema.Unknown),
+        type: Schema.optional(Schema.Literals(["AND", "OR"])),
+        values: Schema.optional(Schema.Array(Schema.Unknown)),
       }),
     ),
     sampling_rate: Schema.optional(Schema.Number),
@@ -26,13 +26,13 @@ export type ErrorTrackingSuppressionRulesCreateInput =
 // Output Schema
 export const ErrorTrackingSuppressionRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    filters: Schema.Unknown,
-    order_key: Schema.Number,
+    id: Schema.optional(Schema.String),
+    filters: Schema.optional(Schema.Unknown),
+    order_key: Schema.optional(Schema.Number),
     disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
     sampling_rate: Schema.optional(Schema.Number),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type ErrorTrackingSuppressionRulesCreateOutput =
   typeof ErrorTrackingSuppressionRulesCreateOutput.Type;

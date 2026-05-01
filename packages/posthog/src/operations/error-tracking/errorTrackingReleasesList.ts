@@ -21,19 +21,21 @@ export type ErrorTrackingReleasesListInput =
 // Output Schema
 export const ErrorTrackingReleasesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        hash_id: Schema.String,
-        team_id: Schema.Number,
-        created_at: Schema.String,
-        metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        version: Schema.String,
-        project: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          hash_id: Schema.optional(Schema.String),
+          team_id: Schema.optional(Schema.Number),
+          created_at: Schema.optional(Schema.String),
+          metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          version: Schema.optional(Schema.String),
+          project: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type ErrorTrackingReleasesListOutput =

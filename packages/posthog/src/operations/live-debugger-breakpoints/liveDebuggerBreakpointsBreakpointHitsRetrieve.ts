@@ -22,20 +22,24 @@ export type LiveDebuggerBreakpointsBreakpointHitsRetrieveInput =
 // Output Schema
 export const LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        lineNumber: Schema.Number,
-        functionName: Schema.String,
-        timestamp: Schema.String,
-        variables: Schema.Record(Schema.String, Schema.Unknown),
-        stackTrace: Schema.Array(Schema.Unknown),
-        breakpoint_id: Schema.String,
-        filename: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          lineNumber: Schema.optional(Schema.Number),
+          functionName: Schema.optional(Schema.String),
+          timestamp: Schema.optional(Schema.String),
+          variables: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          stackTrace: Schema.optional(Schema.Array(Schema.Unknown)),
+          breakpoint_id: Schema.optional(Schema.String),
+          filename: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-    count: Schema.Number,
-    has_more: Schema.Boolean,
+    count: Schema.optional(Schema.Number),
+    has_more: Schema.optional(Schema.Boolean),
   });
 export type LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput =
   typeof LiveDebuggerBreakpointsBreakpointHitsRetrieveOutput.Type;

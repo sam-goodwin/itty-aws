@@ -26,13 +26,15 @@ export type LogsAttributesRetrieveInput =
 // Output Schema
 export const LogsAttributesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        propertyFilterType: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          propertyFilterType: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
   });
 export type LogsAttributesRetrieveOutput =
   typeof LogsAttributesRetrieveOutput.Type;

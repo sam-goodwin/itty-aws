@@ -8,23 +8,27 @@ export const DataColorThemesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    name: Schema.String,
+    name: Schema.optional(Schema.String),
     colors: Schema.optional(Schema.Unknown),
-    is_global: Schema.Boolean,
-    created_at: Schema.NullOr(Schema.String),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    is_global: Schema.optional(Schema.Boolean),
+    created_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -36,24 +40,28 @@ export type DataColorThemesUpdateInput = typeof DataColorThemesUpdateInput.Type;
 // Output Schema
 export const DataColorThemesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
-    name: Schema.String,
+    id: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
     colors: Schema.optional(Schema.Unknown),
-    is_global: Schema.Boolean,
-    created_at: Schema.NullOr(Schema.String),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    is_global: Schema.optional(Schema.Boolean),
+    created_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
+    ),
   });
 export type DataColorThemesUpdateOutput =
   typeof DataColorThemesUpdateOutput.Type;

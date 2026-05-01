@@ -8,12 +8,12 @@ export const ErrorTrackingReleasesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    hash_id: Schema.String,
-    team_id: Schema.Number,
-    created_at: Schema.String,
+    hash_id: Schema.optional(Schema.String),
+    team_id: Schema.optional(Schema.Number),
+    created_at: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    version: Schema.String,
-    project: Schema.String,
+    version: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -26,13 +26,13 @@ export type ErrorTrackingReleasesUpdateInput =
 // Output Schema
 export const ErrorTrackingReleasesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    hash_id: Schema.String,
-    team_id: Schema.Number,
-    created_at: Schema.String,
+    id: Schema.optional(Schema.String),
+    hash_id: Schema.optional(Schema.String),
+    team_id: Schema.optional(Schema.Number),
+    created_at: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    version: Schema.String,
-    project: Schema.String,
+    version: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
   });
 export type ErrorTrackingReleasesUpdateOutput =
   typeof ErrorTrackingReleasesUpdateOutput.Type;

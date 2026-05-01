@@ -18,37 +18,43 @@ export type InvitesListInput = typeof InvitesListInput.Type;
 
 // Output Schema
 export const InvitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.Number,
+  count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      target_email: Schema.String,
-      first_name: Schema.optional(Schema.String),
-      emailing_attempt_made: Schema.Boolean,
-      level: Schema.optional(Schema.Literals([1, 8, 15])),
-      is_expired: Schema.Boolean,
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        target_email: Schema.optional(Schema.String),
         first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+        emailing_attempt_made: Schema.optional(Schema.Boolean),
+        level: Schema.optional(Schema.Literals([1, 8, 15])),
+        is_expired: Schema.optional(Schema.Boolean),
+        created_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
+          ),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.NullOr(Schema.String)),
+        private_project_access: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        send_email: Schema.optional(Schema.Boolean),
+        combine_pending_invites: Schema.optional(Schema.Boolean),
       }),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-      message: Schema.optional(Schema.NullOr(Schema.String)),
-      private_project_access: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      send_email: Schema.optional(Schema.Boolean),
-      combine_pending_invites: Schema.optional(Schema.Boolean),
-    }),
+    ),
   ),
 });
 export type InvitesListOutput = typeof InvitesListOutput.Type;

@@ -8,12 +8,12 @@ export const GroupsTypesMetricsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    name: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     format: Schema.optional(Schema.Literals(["numeric", "currency"])),
     interval: Schema.optional(Schema.Number),
     display: Schema.optional(Schema.Literals(["number", "sparkline"])),
-    filters: Schema.Unknown,
+    filters: Schema.optional(Schema.Unknown),
     math: Schema.optional(Schema.Literals(["count", "sum"])),
     math_property: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
@@ -28,12 +28,12 @@ export type GroupsTypesMetricsCreateInput =
 // Output Schema
 export const GroupsTypesMetricsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     format: Schema.optional(Schema.Literals(["numeric", "currency"])),
     interval: Schema.optional(Schema.Number),
     display: Schema.optional(Schema.Literals(["number", "sparkline"])),
-    filters: Schema.Unknown,
+    filters: Schema.optional(Schema.Unknown),
     math: Schema.optional(Schema.Literals(["count", "sum"])),
     math_property: Schema.optional(Schema.NullOr(Schema.String)),
   });

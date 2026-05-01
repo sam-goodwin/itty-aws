@@ -25,12 +25,12 @@ export type FileSystemShortcutPartialUpdateInput =
 // Output Schema
 export const FileSystemShortcutPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    path: Schema.String,
+    id: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
   });
 export type FileSystemShortcutPartialUpdateOutput =
   typeof FileSystemShortcutPartialUpdateOutput.Type;

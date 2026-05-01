@@ -8,7 +8,7 @@ export const LogsAlertsDestinationsDeleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    hog_function_ids: Schema.Array(Schema.String),
+    hog_function_ids: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",

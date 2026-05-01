@@ -8,23 +8,27 @@ export const TasksStagedArtifactsFinalizeUploadCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    artifacts: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        type: Schema.Literals([
-          "plan",
-          "context",
-          "reference",
-          "output",
-          "artifact",
-          "tree_snapshot",
-          "user_attachment",
-        ]),
-        source: Schema.optional(Schema.String),
-        storage_path: Schema.String,
-        content_type: Schema.optional(Schema.String),
-      }),
+    artifacts: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(
+            Schema.Literals([
+              "plan",
+              "context",
+              "reference",
+              "output",
+              "artifact",
+              "tree_snapshot",
+              "user_attachment",
+            ]),
+          ),
+          source: Schema.optional(Schema.String),
+          storage_path: Schema.optional(Schema.String),
+          content_type: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   }).pipe(
     T.Http({
@@ -38,17 +42,19 @@ export type TasksStagedArtifactsFinalizeUploadCreateInput =
 // Output Schema
 export const TasksStagedArtifactsFinalizeUploadCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    artifacts: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.String,
-        type: Schema.String,
-        source: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.Number),
-        content_type: Schema.optional(Schema.String),
-        storage_path: Schema.String,
-        uploaded_at: Schema.String,
-      }),
+    artifacts: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          source: Schema.optional(Schema.String),
+          size: Schema.optional(Schema.Number),
+          content_type: Schema.optional(Schema.String),
+          storage_path: Schema.optional(Schema.String),
+          uploaded_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type TasksStagedArtifactsFinalizeUploadCreateOutput =

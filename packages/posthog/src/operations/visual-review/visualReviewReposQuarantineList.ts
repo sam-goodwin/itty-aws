@@ -24,28 +24,30 @@ export type VisualReviewReposQuarantineListInput =
 // Output Schema
 export const VisualReviewReposQuarantineListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        created_by: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.Number,
-              first_name: Schema.String,
-              email: Schema.String,
-            }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          created_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.Number),
+                first_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+              }),
+            ),
           ),
-        ),
-        id: Schema.String,
-        identifier: Schema.String,
-        run_type: Schema.String,
-        reason: Schema.String,
-        expires_at: Schema.NullOr(Schema.String),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-      }),
+          id: Schema.optional(Schema.String),
+          identifier: Schema.optional(Schema.String),
+          run_type: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          expires_at: Schema.optional(Schema.NullOr(Schema.String)),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type VisualReviewReposQuarantineListOutput =

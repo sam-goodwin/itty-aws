@@ -27,12 +27,14 @@ export type HogFlowsMetricsRetrieveInput =
 // Output Schema
 export const HogFlowsMetricsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    labels: Schema.Array(Schema.String),
-    series: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        values: Schema.Array(Schema.Number),
-      }),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    series: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          values: Schema.optional(Schema.Array(Schema.Number)),
+        }),
+      ),
     ),
   });
 export type HogFlowsMetricsRetrieveOutput =

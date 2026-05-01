@@ -9,8 +9,8 @@ export const PersonsUpdatePropertyCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
-    key: Schema.String,
-    value: Schema.Unknown,
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",

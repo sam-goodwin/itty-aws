@@ -20,12 +20,14 @@ export type IntegrationsGithubReposRefreshCreateInput =
 // Output Schema
 export const IntegrationsGithubReposRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    repositories: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        name: Schema.String,
-        full_name: Schema.String,
-      }),
+    repositories: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          name: Schema.optional(Schema.String),
+          full_name: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type IntegrationsGithubReposRefreshCreateOutput =

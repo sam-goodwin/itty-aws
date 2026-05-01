@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LlmAnalyticsEvaluationSummaryCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    evaluation_id: Schema.String,
+    evaluation_id: Schema.optional(Schema.String),
     filter: Schema.optional(Schema.Literals(["all", "pass", "fail", "na"])),
     generation_ids: Schema.optional(Schema.Array(Schema.String)),
     force_refresh: Schema.optional(Schema.Boolean),
@@ -23,38 +23,46 @@ export type LlmAnalyticsEvaluationSummaryCreateInput =
 // Output Schema
 export const LlmAnalyticsEvaluationSummaryCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    overall_assessment: Schema.String,
-    pass_patterns: Schema.Array(
+    overall_assessment: Schema.optional(Schema.String),
+    pass_patterns: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          title: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          frequency: Schema.optional(Schema.String),
+          example_generation_ids: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
+    fail_patterns: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          title: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          frequency: Schema.optional(Schema.String),
+          example_generation_ids: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
+    na_patterns: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          title: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          frequency: Schema.optional(Schema.String),
+          example_generation_ids: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    ),
+    recommendations: Schema.optional(Schema.Array(Schema.String)),
+    statistics: Schema.optional(
       Schema.Struct({
-        title: Schema.String,
-        description: Schema.String,
-        frequency: Schema.String,
-        example_generation_ids: Schema.Array(Schema.String),
+        total_analyzed: Schema.optional(Schema.Number),
+        pass_count: Schema.optional(Schema.Number),
+        fail_count: Schema.optional(Schema.Number),
+        na_count: Schema.optional(Schema.Number),
       }),
     ),
-    fail_patterns: Schema.Array(
-      Schema.Struct({
-        title: Schema.String,
-        description: Schema.String,
-        frequency: Schema.String,
-        example_generation_ids: Schema.Array(Schema.String),
-      }),
-    ),
-    na_patterns: Schema.Array(
-      Schema.Struct({
-        title: Schema.String,
-        description: Schema.String,
-        frequency: Schema.String,
-        example_generation_ids: Schema.Array(Schema.String),
-      }),
-    ),
-    recommendations: Schema.Array(Schema.String),
-    statistics: Schema.Struct({
-      total_analyzed: Schema.Number,
-      pass_count: Schema.Number,
-      fail_count: Schema.Number,
-      na_count: Schema.Number,
-    }),
   });
 export type LlmAnalyticsEvaluationSummaryCreateOutput =
   typeof LlmAnalyticsEvaluationSummaryCreateOutput.Type;

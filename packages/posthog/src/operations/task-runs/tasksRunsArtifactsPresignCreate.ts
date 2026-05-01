@@ -9,7 +9,7 @@ export const TasksRunsArtifactsPresignCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
-    storage_path: Schema.String,
+    storage_path: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -22,8 +22,8 @@ export type TasksRunsArtifactsPresignCreateInput =
 // Output Schema
 export const TasksRunsArtifactsPresignCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    url: Schema.String,
-    expires_in: Schema.Number,
+    url: Schema.optional(Schema.String),
+    expires_in: Schema.optional(Schema.Number),
   });
 export type TasksRunsArtifactsPresignCreateOutput =
   typeof TasksRunsArtifactsPresignCreateOutput.Type;

@@ -7,12 +7,14 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const PersistedFolderCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    type: Schema.Literals(["home", "pinned", "custom_products"]),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["home", "pinned", "custom_products"]),
+    ),
     protocol: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -24,12 +26,14 @@ export type PersistedFolderCreateInput = typeof PersistedFolderCreateInput.Type;
 // Output Schema
 export const PersistedFolderCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    type: Schema.Literals(["home", "pinned", "custom_products"]),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["home", "pinned", "custom_products"]),
+    ),
     protocol: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type PersistedFolderCreateOutput =
   typeof PersistedFolderCreateOutput.Type;

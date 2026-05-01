@@ -20,12 +20,14 @@ export type FlagValueValuesRetrieveInput =
 // Output Schema
 export const FlagValueValuesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        name: Schema.Unknown,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
-    refreshing: Schema.Boolean,
+    refreshing: Schema.optional(Schema.Boolean),
   });
 export type FlagValueValuesRetrieveOutput =
   typeof FlagValueValuesRetrieveOutput.Type;

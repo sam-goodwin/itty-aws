@@ -26,10 +26,10 @@ export type FeatureFlagsVersionsRetrieveInput =
 // Output Schema
 export const FeatureFlagsVersionsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
-    key: Schema.String,
+    id: Schema.optional(Schema.Number),
+    key: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    filters: Schema.Record(Schema.String, Schema.Unknown),
+    filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     active: Schema.optional(Schema.Boolean),
     deleted: Schema.optional(Schema.Boolean),
     version: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -45,10 +45,10 @@ export const FeatureFlagsVersionsRetrieveOutput =
     bucketing_identifier: Schema.optional(Schema.Unknown),
     last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
-    created_by: Schema.NullOr(Schema.Number),
-    is_historical: Schema.Boolean,
-    version_timestamp: Schema.NullOr(Schema.String),
-    modified_by: Schema.NullOr(Schema.Number),
+    created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+    is_historical: Schema.optional(Schema.Boolean),
+    version_timestamp: Schema.optional(Schema.NullOr(Schema.String)),
+    modified_by: Schema.optional(Schema.NullOr(Schema.Number)),
   });
 export type FeatureFlagsVersionsRetrieveOutput =
   typeof FeatureFlagsVersionsRetrieveOutput.Type;

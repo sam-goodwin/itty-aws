@@ -7,18 +7,22 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const VisualReviewRunsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    repo_id: Schema.String,
-    run_type: Schema.String,
-    commit_sha: Schema.String,
-    branch: Schema.String,
-    snapshots: Schema.Array(
-      Schema.Struct({
-        identifier: Schema.String,
-        content_hash: Schema.String,
-        width: Schema.optional(Schema.NullOr(Schema.Number)),
-        height: Schema.optional(Schema.NullOr(Schema.Number)),
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
+    repo_id: Schema.optional(Schema.String),
+    run_type: Schema.optional(Schema.String),
+    commit_sha: Schema.optional(Schema.String),
+    branch: Schema.optional(Schema.String),
+    snapshots: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          identifier: Schema.optional(Schema.String),
+          content_hash: Schema.optional(Schema.String),
+          width: Schema.optional(Schema.NullOr(Schema.Number)),
+          height: Schema.optional(Schema.NullOr(Schema.Number)),
+          metadata: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+        }),
+      ),
     ),
     pr_number: Schema.optional(Schema.NullOr(Schema.Number)),
     baseline_hashes: Schema.optional(
@@ -40,13 +44,15 @@ export type VisualReviewRunsCreateInput =
 // Output Schema
 export const VisualReviewRunsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    run_id: Schema.String,
-    uploads: Schema.Array(
-      Schema.Struct({
-        content_hash: Schema.String,
-        url: Schema.String,
-        fields: Schema.Record(Schema.String, Schema.String),
-      }),
+    run_id: Schema.optional(Schema.String),
+    uploads: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          content_hash: Schema.optional(Schema.String),
+          url: Schema.optional(Schema.String),
+          fields: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        }),
+      ),
     ),
   });
 export type VisualReviewRunsCreateOutput =

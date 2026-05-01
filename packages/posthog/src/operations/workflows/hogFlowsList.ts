@@ -19,46 +19,56 @@ export type HogFlowsListInput = typeof HogFlowsListInput.Type;
 
 // Output Schema
 export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.Number,
+  count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.NullOr(Schema.String),
-      description: Schema.String,
-      version: Schema.Number,
-      status: Schema.Literals(["draft", "active", "archived"]),
-      created_at: Schema.String,
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.NullOr(Schema.String)),
+        description: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.Number),
+        status: Schema.optional(
+          Schema.Literals(["draft", "active", "archived"]),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        created_at: Schema.optional(Schema.String),
+        created_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+        updated_at: Schema.optional(Schema.String),
+        trigger: Schema.optional(Schema.Unknown),
+        trigger_masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        conversion: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        exit_condition: Schema.optional(
+          Schema.Literals([
+            "exit_on_conversion",
+            "exit_on_trigger_not_matched",
+            "exit_on_trigger_not_matched_or_conversion",
+            "exit_only_at_end",
+          ]),
+        ),
+        edges: Schema.optional(Schema.Unknown),
+        actions: Schema.optional(Schema.Unknown),
+        abort_action: Schema.optional(Schema.NullOr(Schema.String)),
+        variables: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        billable_action_types: Schema.optional(Schema.NullOr(Schema.Unknown)),
       }),
-      updated_at: Schema.String,
-      trigger: Schema.Unknown,
-      trigger_masking: Schema.NullOr(Schema.Unknown),
-      conversion: Schema.NullOr(Schema.Unknown),
-      exit_condition: Schema.Literals([
-        "exit_on_conversion",
-        "exit_on_trigger_not_matched",
-        "exit_on_trigger_not_matched_or_conversion",
-        "exit_only_at_end",
-      ]),
-      edges: Schema.Unknown,
-      actions: Schema.Unknown,
-      abort_action: Schema.NullOr(Schema.String),
-      variables: Schema.NullOr(Schema.Unknown),
-      billable_action_types: Schema.NullOr(Schema.Unknown),
-    }),
+    ),
   ),
 });
 export type HogFlowsListOutput = typeof HogFlowsListOutput.Type;

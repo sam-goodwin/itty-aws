@@ -7,14 +7,14 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const ConversationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    content: Schema.NullOr(Schema.String),
-    conversation: Schema.String,
+    content: Schema.optional(Schema.NullOr(Schema.String)),
+    conversation: Schema.optional(Schema.String),
     contextual_tools: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
     ui_context: Schema.optional(Schema.Unknown),
     billing_context: Schema.optional(Schema.Unknown),
-    trace_id: Schema.String,
+    trace_id: Schema.optional(Schema.String),
     session_id: Schema.optional(Schema.String),
     agent_mode: Schema.optional(
       Schema.Literals([
@@ -44,14 +44,14 @@ export type ConversationsCreateInput = typeof ConversationsCreateInput.Type;
 // Output Schema
 export const ConversationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    content: Schema.NullOr(Schema.String),
-    conversation: Schema.String,
+    content: Schema.optional(Schema.NullOr(Schema.String)),
+    conversation: Schema.optional(Schema.String),
     contextual_tools: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
     ui_context: Schema.optional(Schema.Unknown),
     billing_context: Schema.optional(Schema.Unknown),
-    trace_id: Schema.String,
+    trace_id: Schema.optional(Schema.String),
     session_id: Schema.optional(Schema.String),
     agent_mode: Schema.optional(
       Schema.Literals([

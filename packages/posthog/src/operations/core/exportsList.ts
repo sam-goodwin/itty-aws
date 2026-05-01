@@ -13,31 +13,35 @@ export type ExportsListInput = typeof ExportsListInput.Type;
 
 // Output Schema
 export const ExportsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.Number,
+  count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      id: Schema.Number,
-      dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
-      insight: Schema.optional(Schema.NullOr(Schema.Number)),
-      export_format: Schema.Literals([
-        "image/png",
-        "application/pdf",
-        "text/csv",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        "video/webm",
-        "video/mp4",
-        "image/gif",
-        "application/json",
-      ]),
-      created_at: Schema.String,
-      has_content: Schema.Boolean,
-      export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      filename: Schema.String,
-      expires_after: Schema.NullOr(Schema.String),
-      exception: Schema.NullOr(Schema.String),
-    }),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
+        insight: Schema.optional(Schema.NullOr(Schema.Number)),
+        export_format: Schema.optional(
+          Schema.Literals([
+            "image/png",
+            "application/pdf",
+            "text/csv",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "video/webm",
+            "video/mp4",
+            "image/gif",
+            "application/json",
+          ]),
+        ),
+        created_at: Schema.optional(Schema.String),
+        has_content: Schema.optional(Schema.Boolean),
+        export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        filename: Schema.optional(Schema.String),
+        expires_after: Schema.optional(Schema.NullOr(Schema.String)),
+        exception: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+    ),
   ),
 });
 export type ExportsListOutput = typeof ExportsListOutput.Type;

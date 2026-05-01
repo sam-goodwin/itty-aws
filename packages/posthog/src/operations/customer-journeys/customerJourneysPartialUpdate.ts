@@ -26,13 +26,13 @@ export type CustomerJourneysPartialUpdateInput =
 // Output Schema
 export const CustomerJourneysPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    insight: Schema.Number,
-    name: Schema.String,
+    id: Schema.optional(Schema.String),
+    insight: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
-    created_by: Schema.NullOr(Schema.Number),
-    updated_at: Schema.NullOr(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type CustomerJourneysPartialUpdateOutput =
   typeof CustomerJourneysPartialUpdateOutput.Type;

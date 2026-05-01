@@ -24,13 +24,13 @@ export const PersonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   results: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        id: Schema.Number,
-        name: Schema.String,
-        distinct_ids: Schema.Array(Schema.String),
+        id: Schema.optional(Schema.Number),
+        name: Schema.optional(Schema.String),
+        distinct_ids: Schema.optional(Schema.Array(Schema.String)),
         properties: Schema.optional(Schema.Unknown),
-        created_at: Schema.String,
-        uuid: Schema.String,
-        last_seen_at: Schema.NullOr(Schema.String),
+        created_at: Schema.optional(Schema.String),
+        uuid: Schema.optional(Schema.String),
+        last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
   ),

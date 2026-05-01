@@ -6,7 +6,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 // Input Schema
 export const CohortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
-  id: Schema.Number,
+  id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   description: Schema.optional(Schema.String),
   groups: Schema.optional(Schema.Unknown),
@@ -14,39 +14,47 @@ export const CohortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   filters: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
-        properties: Schema.Struct({
-          type: Schema.Literals(["AND", "OR"]),
-          values: Schema.Array(Schema.Unknown),
-        }),
+        properties: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(Schema.Literals(["AND", "OR"])),
+            values: Schema.optional(Schema.Array(Schema.Unknown)),
+          }),
+        ),
       }),
     ),
   ),
   query: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  version: Schema.NullOr(Schema.Number),
-  pending_version: Schema.NullOr(Schema.Number),
-  is_calculating: Schema.Boolean,
-  created_by: Schema.Struct({
-    id: Schema.Number,
-    uuid: Schema.String,
-    distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-    first_name: Schema.optional(Schema.String),
-    last_name: Schema.optional(Schema.String),
-    email: Schema.String,
-    is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    hedgehog_config: Schema.NullOr(
-      Schema.Record(Schema.String, Schema.Unknown),
+  version: Schema.optional(Schema.NullOr(Schema.Number)),
+  pending_version: Schema.optional(Schema.NullOr(Schema.Number)),
+  is_calculating: Schema.optional(Schema.Boolean),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(Schema.Unknown),
+      }),
     ),
-    role_at_organization: Schema.optional(Schema.Unknown),
-  }),
-  created_at: Schema.NullOr(Schema.String),
-  last_calculation: Schema.NullOr(Schema.String),
-  last_backfill_person_properties_at: Schema.NullOr(Schema.String),
-  errors_calculating: Schema.Number,
-  last_error_message: Schema.NullOr(Schema.String),
-  count: Schema.NullOr(Schema.Number),
+  ),
+  created_at: Schema.optional(Schema.NullOr(Schema.String)),
+  last_calculation: Schema.optional(Schema.NullOr(Schema.String)),
+  last_backfill_person_properties_at: Schema.optional(
+    Schema.NullOr(Schema.String),
+  ),
+  errors_calculating: Schema.optional(Schema.Number),
+  last_error_message: Schema.optional(Schema.NullOr(Schema.String)),
+  count: Schema.optional(Schema.NullOr(Schema.Number)),
   is_static: Schema.optional(Schema.Boolean),
   cohort_type: Schema.optional(Schema.Unknown),
-  experiment_set: Schema.Array(Schema.Number),
+  experiment_set: Schema.optional(Schema.Array(Schema.Number)),
   _create_in_folder: Schema.optional(Schema.String),
   _create_static_person_ids: Schema.optional(Schema.Array(Schema.String)),
 }).pipe(
@@ -56,7 +64,7 @@ export type CohortsCreateInput = typeof CohortsCreateInput.Type;
 
 // Output Schema
 export const CohortsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.Number,
+  id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   description: Schema.optional(Schema.String),
   groups: Schema.optional(Schema.Unknown),
@@ -64,39 +72,47 @@ export const CohortsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   filters: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
-        properties: Schema.Struct({
-          type: Schema.Literals(["AND", "OR"]),
-          values: Schema.Array(Schema.Unknown),
-        }),
+        properties: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(Schema.Literals(["AND", "OR"])),
+            values: Schema.optional(Schema.Array(Schema.Unknown)),
+          }),
+        ),
       }),
     ),
   ),
   query: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  version: Schema.NullOr(Schema.Number),
-  pending_version: Schema.NullOr(Schema.Number),
-  is_calculating: Schema.Boolean,
-  created_by: Schema.Struct({
-    id: Schema.Number,
-    uuid: Schema.String,
-    distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-    first_name: Schema.optional(Schema.String),
-    last_name: Schema.optional(Schema.String),
-    email: Schema.String,
-    is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    hedgehog_config: Schema.NullOr(
-      Schema.Record(Schema.String, Schema.Unknown),
+  version: Schema.optional(Schema.NullOr(Schema.Number)),
+  pending_version: Schema.optional(Schema.NullOr(Schema.Number)),
+  is_calculating: Schema.optional(Schema.Boolean),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(Schema.Unknown),
+      }),
     ),
-    role_at_organization: Schema.optional(Schema.Unknown),
-  }),
-  created_at: Schema.NullOr(Schema.String),
-  last_calculation: Schema.NullOr(Schema.String),
-  last_backfill_person_properties_at: Schema.NullOr(Schema.String),
-  errors_calculating: Schema.Number,
-  last_error_message: Schema.NullOr(Schema.String),
-  count: Schema.NullOr(Schema.Number),
+  ),
+  created_at: Schema.optional(Schema.NullOr(Schema.String)),
+  last_calculation: Schema.optional(Schema.NullOr(Schema.String)),
+  last_backfill_person_properties_at: Schema.optional(
+    Schema.NullOr(Schema.String),
+  ),
+  errors_calculating: Schema.optional(Schema.Number),
+  last_error_message: Schema.optional(Schema.NullOr(Schema.String)),
+  count: Schema.optional(Schema.NullOr(Schema.Number)),
   is_static: Schema.optional(Schema.Boolean),
   cohort_type: Schema.optional(Schema.Unknown),
-  experiment_set: Schema.Array(Schema.Number),
+  experiment_set: Schema.optional(Schema.Array(Schema.Number)),
   _create_in_folder: Schema.optional(Schema.String),
   _create_static_person_ids: Schema.optional(Schema.Array(Schema.String)),
 });

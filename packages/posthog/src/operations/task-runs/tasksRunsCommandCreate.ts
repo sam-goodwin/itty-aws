@@ -9,14 +9,16 @@ export const TasksRunsCommandCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
-    jsonrpc: Schema.Literals(["2.0"]),
-    method: Schema.Literals([
-      "user_message",
-      "cancel",
-      "close",
-      "permission_response",
-      "set_config_option",
-    ]),
+    jsonrpc: Schema.optional(Schema.Literals(["2.0"])),
+    method: Schema.optional(
+      Schema.Literals([
+        "user_message",
+        "cancel",
+        "close",
+        "permission_response",
+        "set_config_option",
+      ]),
+    ),
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).pipe(
     T.Http({
@@ -30,7 +32,7 @@ export type TasksRunsCommandCreateInput =
 // Output Schema
 export const TasksRunsCommandCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jsonrpc: Schema.String,
+    jsonrpc: Schema.optional(Schema.String),
     id: Schema.optional(Schema.Unknown),
     result: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),

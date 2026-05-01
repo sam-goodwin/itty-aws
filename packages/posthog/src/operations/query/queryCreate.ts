@@ -54,7 +54,7 @@ export const QueryCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.NullOr(Schema.Number),
                   ),
                   normalize_url: Schema.optional(Schema.NullOr(Schema.Boolean)),
-                  property: Schema.Unknown,
+                  property: Schema.optional(Schema.Unknown),
                   type: Schema.optional(
                     Schema.Literals([
                       "cohort",
@@ -82,7 +82,7 @@ export const QueryCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   limit_context: Schema.optional(Schema.Literals(["posthog_ai", "null"])),
   name: Schema.optional(Schema.NullOr(Schema.String)),
-  query: Schema.Unknown,
+  query: Schema.optional(Schema.Unknown),
   refresh: Schema.optional(
     Schema.Literals([
       "async",

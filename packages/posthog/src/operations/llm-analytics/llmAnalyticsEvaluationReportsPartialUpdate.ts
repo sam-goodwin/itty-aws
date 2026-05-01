@@ -37,24 +37,24 @@ export type LlmAnalyticsEvaluationReportsPartialUpdateInput =
 // Output Schema
 export const LlmAnalyticsEvaluationReportsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    evaluation: Schema.String,
+    id: Schema.optional(Schema.String),
+    evaluation: Schema.optional(Schema.String),
     frequency: Schema.optional(Schema.Literals(["scheduled", "every_n"])),
     rrule: Schema.optional(Schema.String),
     starts_at: Schema.optional(Schema.NullOr(Schema.String)),
     timezone_name: Schema.optional(Schema.String),
-    next_delivery_date: Schema.NullOr(Schema.String),
+    next_delivery_date: Schema.optional(Schema.NullOr(Schema.String)),
     delivery_targets: Schema.optional(Schema.Unknown),
     max_sample_size: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
     deleted: Schema.optional(Schema.Boolean),
-    last_delivered_at: Schema.NullOr(Schema.String),
+    last_delivered_at: Schema.optional(Schema.NullOr(Schema.String)),
     report_prompt_guidance: Schema.optional(Schema.String),
     trigger_threshold: Schema.optional(Schema.NullOr(Schema.Number)),
     cooldown_minutes: Schema.optional(Schema.Number),
     daily_run_cap: Schema.optional(Schema.Number),
-    created_by: Schema.NullOr(Schema.Number),
-    created_at: Schema.String,
+    created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+    created_at: Schema.optional(Schema.String),
   });
 export type LlmAnalyticsEvaluationReportsPartialUpdateOutput =
   typeof LlmAnalyticsEvaluationReportsPartialUpdateOutput.Type;

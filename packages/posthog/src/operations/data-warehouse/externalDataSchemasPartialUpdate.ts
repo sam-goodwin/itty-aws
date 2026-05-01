@@ -40,21 +40,23 @@ export type ExternalDataSchemasPartialUpdateInput =
 // Output Schema
 export const ExternalDataSchemasPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    label: Schema.NullOr(Schema.String),
-    table: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.NullOr(Schema.String)),
+    table: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
     should_sync: Schema.optional(Schema.Boolean),
-    last_synced_at: Schema.NullOr(Schema.String),
-    latest_error: Schema.NullOr(Schema.String),
-    incremental: Schema.Boolean,
-    status: Schema.NullOr(Schema.String),
+    last_synced_at: Schema.optional(Schema.NullOr(Schema.String)),
+    latest_error: Schema.optional(Schema.NullOr(Schema.String)),
+    incremental: Schema.optional(Schema.Boolean),
+    status: Schema.optional(Schema.NullOr(Schema.String)),
     sync_type: Schema.optional(Schema.Unknown),
     incremental_field: Schema.optional(Schema.NullOr(Schema.String)),
     incremental_field_type: Schema.optional(Schema.Unknown),
     sync_frequency: Schema.optional(Schema.Unknown),
     sync_time_of_day: Schema.optional(Schema.NullOr(Schema.String)),
-    description: Schema.NullOr(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
     primary_key_columns: Schema.optional(
       Schema.NullOr(Schema.Array(Schema.String)),
     ),

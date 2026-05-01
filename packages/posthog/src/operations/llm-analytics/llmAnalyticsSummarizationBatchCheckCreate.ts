@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LlmAnalyticsSummarizationBatchCheckCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    trace_ids: Schema.Array(Schema.String),
+    trace_ids: Schema.optional(Schema.Array(Schema.String)),
     mode: Schema.optional(Schema.Literals(["minimal", "detailed"])),
     model: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
@@ -22,12 +22,14 @@ export type LlmAnalyticsSummarizationBatchCheckCreateInput =
 // Output Schema
 export const LlmAnalyticsSummarizationBatchCheckCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    summaries: Schema.Array(
-      Schema.Struct({
-        trace_id: Schema.String,
-        title: Schema.String,
-        cached: Schema.optional(Schema.Boolean),
-      }),
+    summaries: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          trace_id: Schema.optional(Schema.String),
+          title: Schema.optional(Schema.String),
+          cached: Schema.optional(Schema.Boolean),
+        }),
+      ),
     ),
   });
 export type LlmAnalyticsSummarizationBatchCheckCreateOutput =

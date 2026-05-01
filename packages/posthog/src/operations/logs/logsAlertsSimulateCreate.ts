@@ -7,14 +7,14 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LogsAlertsSimulateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    filters: Schema.Unknown,
-    threshold_count: Schema.Number,
-    threshold_operator: Schema.Literals(["above", "below"]),
-    window_minutes: Schema.Number,
+    filters: Schema.optional(Schema.Unknown),
+    threshold_count: Schema.optional(Schema.Number),
+    threshold_operator: Schema.optional(Schema.Literals(["above", "below"])),
+    window_minutes: Schema.optional(Schema.Number),
     evaluation_periods: Schema.optional(Schema.Number),
     datapoints_to_alarm: Schema.optional(Schema.Number),
     cooldown_minutes: Schema.optional(Schema.Number),
-    date_from: Schema.String,
+    date_from: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -27,21 +27,23 @@ export type LogsAlertsSimulateCreateInput =
 // Output Schema
 export const LogsAlertsSimulateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    buckets: Schema.Array(
-      Schema.Struct({
-        timestamp: Schema.String,
-        count: Schema.Number,
-        threshold_breached: Schema.Boolean,
-        state: Schema.String,
-        notification: Schema.String,
-        reason: Schema.String,
-      }),
+    buckets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          timestamp: Schema.optional(Schema.String),
+          count: Schema.optional(Schema.Number),
+          threshold_breached: Schema.optional(Schema.Boolean),
+          state: Schema.optional(Schema.String),
+          notification: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-    fire_count: Schema.Number,
-    resolve_count: Schema.Number,
-    total_buckets: Schema.Number,
-    threshold_count: Schema.Number,
-    threshold_operator: Schema.String,
+    fire_count: Schema.optional(Schema.Number),
+    resolve_count: Schema.optional(Schema.Number),
+    total_buckets: Schema.optional(Schema.Number),
+    threshold_count: Schema.optional(Schema.Number),
+    threshold_operator: Schema.optional(Schema.String),
   });
 export type LogsAlertsSimulateCreateOutput =
   typeof LogsAlertsSimulateCreateOutput.Type;

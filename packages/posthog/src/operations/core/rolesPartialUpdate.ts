@@ -11,19 +11,21 @@ export const RolesPartialUpdateInput =
     name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
-      Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-        role_at_organization: Schema.optional(Schema.Unknown),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
     members: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -40,24 +42,30 @@ export type RolesPartialUpdateInput = typeof RolesPartialUpdateInput.Type;
 // Output Schema
 export const RolesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    members: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    is_default: Schema.Boolean,
+    ),
+    members: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    is_default: Schema.optional(Schema.Boolean),
   });
 export type RolesPartialUpdateOutput = typeof RolesPartialUpdateOutput.Type;
 

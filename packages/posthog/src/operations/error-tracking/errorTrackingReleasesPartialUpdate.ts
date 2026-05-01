@@ -26,13 +26,13 @@ export type ErrorTrackingReleasesPartialUpdateInput =
 // Output Schema
 export const ErrorTrackingReleasesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    hash_id: Schema.String,
-    team_id: Schema.Number,
-    created_at: Schema.String,
+    id: Schema.optional(Schema.String),
+    hash_id: Schema.optional(Schema.String),
+    team_id: Schema.optional(Schema.Number),
+    created_at: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    version: Schema.String,
-    project: Schema.String,
+    version: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
   });
 export type ErrorTrackingReleasesPartialUpdateOutput =
   typeof ErrorTrackingReleasesPartialUpdateOutput.Type;

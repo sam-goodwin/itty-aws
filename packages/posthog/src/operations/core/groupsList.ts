@@ -16,13 +16,15 @@ export type GroupsListInput = typeof GroupsListInput.Type;
 export const GroupsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      group_type_index: Schema.Number,
-      group_key: Schema.String,
-      group_properties: Schema.optional(Schema.Unknown),
-      created_at: Schema.String,
-    }),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        group_type_index: Schema.optional(Schema.Number),
+        group_key: Schema.optional(Schema.String),
+        group_properties: Schema.optional(Schema.Unknown),
+        created_at: Schema.optional(Schema.String),
+      }),
+    ),
   ),
 });
 export type GroupsListOutput = typeof GroupsListOutput.Type;

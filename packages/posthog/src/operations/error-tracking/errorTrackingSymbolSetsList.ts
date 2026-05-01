@@ -21,20 +21,24 @@ export type ErrorTrackingSymbolSetsListInput =
 // Output Schema
 export const ErrorTrackingSymbolSetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        ref: Schema.String,
-        team_id: Schema.Number,
-        created_at: Schema.String,
-        last_used: Schema.optional(Schema.NullOr(Schema.String)),
-        storage_ptr: Schema.optional(Schema.NullOr(Schema.String)),
-        failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
-        release: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          ref: Schema.optional(Schema.String),
+          team_id: Schema.optional(Schema.Number),
+          created_at: Schema.optional(Schema.String),
+          last_used: Schema.optional(Schema.NullOr(Schema.String)),
+          storage_ptr: Schema.optional(Schema.NullOr(Schema.String)),
+          failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
+          release: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+        }),
+      ),
     ),
   });
 export type ErrorTrackingSymbolSetsListOutput =

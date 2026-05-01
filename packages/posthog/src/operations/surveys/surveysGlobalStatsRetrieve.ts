@@ -21,8 +21,8 @@ export type SurveysGlobalStatsRetrieveInput =
 // Output Schema
 export const SurveysGlobalStatsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stats: Schema.Record(Schema.String, Schema.Unknown),
-    rates: Schema.Record(Schema.String, Schema.Unknown),
+    stats: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    rates: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   });
 export type SurveysGlobalStatsRetrieveOutput =
   typeof SurveysGlobalStatsRetrieveOutput.Type;

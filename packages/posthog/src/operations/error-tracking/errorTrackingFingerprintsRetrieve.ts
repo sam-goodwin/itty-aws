@@ -20,10 +20,10 @@ export type ErrorTrackingFingerprintsRetrieveInput =
 // Output Schema
 export const ErrorTrackingFingerprintsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    fingerprint: Schema.String,
-    issue_id: Schema.String,
-    created_at: Schema.String,
+    id: Schema.optional(Schema.String),
+    fingerprint: Schema.optional(Schema.String),
+    issue_id: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
   });
 export type ErrorTrackingFingerprintsRetrieveOutput =
   typeof ErrorTrackingFingerprintsRetrieveOutput.Type;

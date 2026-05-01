@@ -22,52 +22,54 @@ export type FeatureFlagsActivityRetrieveInput =
 // Output Schema
 export const FeatureFlagsActivityRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        user: Schema.NullOr(Schema.Unknown),
-        activity: Schema.String,
-        scope: Schema.String,
-        item_id: Schema.String,
-        detail: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            changes: Schema.optional(
-              Schema.Array(
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          user: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          activity: Schema.optional(Schema.String),
+          scope: Schema.optional(Schema.String),
+          item_id: Schema.optional(Schema.String),
+          detail: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              changes: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    action: Schema.optional(Schema.String),
+                    field: Schema.optional(Schema.String),
+                    before: Schema.optional(Schema.Unknown),
+                    after: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+              merge: Schema.optional(
                 Schema.Struct({
-                  type: Schema.String,
-                  action: Schema.String,
-                  field: Schema.String,
-                  before: Schema.Unknown,
-                  after: Schema.Unknown,
+                  type: Schema.optional(Schema.String),
+                  source: Schema.optional(Schema.Unknown),
+                  target: Schema.optional(Schema.Unknown),
                 }),
               ),
-            ),
-            merge: Schema.optional(
-              Schema.Struct({
-                type: Schema.String,
-                source: Schema.Unknown,
-                target: Schema.Unknown,
-              }),
-            ),
-            trigger: Schema.optional(
-              Schema.Struct({
-                job_type: Schema.String,
-                job_id: Schema.String,
-                payload: Schema.Unknown,
-              }),
-            ),
-            name: Schema.String,
-            short_id: Schema.String,
-            type: Schema.String,
-          }),
-        ),
-        created_at: Schema.String,
-      }),
+              trigger: Schema.optional(
+                Schema.Struct({
+                  job_type: Schema.optional(Schema.String),
+                  job_id: Schema.optional(Schema.String),
+                  payload: Schema.optional(Schema.Unknown),
+                }),
+              ),
+              name: Schema.optional(Schema.String),
+              short_id: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+          created_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-    next: Schema.NullOr(Schema.String),
-    previous: Schema.NullOr(Schema.String),
-    total_count: Schema.Number,
+    next: Schema.optional(Schema.NullOr(Schema.String)),
+    previous: Schema.optional(Schema.NullOr(Schema.String)),
+    total_count: Schema.optional(Schema.Number),
   });
 export type FeatureFlagsActivityRetrieveOutput =
   typeof FeatureFlagsActivityRetrieveOutput.Type;

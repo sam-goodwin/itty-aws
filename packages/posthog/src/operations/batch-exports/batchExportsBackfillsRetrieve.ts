@@ -21,34 +21,38 @@ export type BatchExportsBackfillsRetrieveInput =
 // Output Schema
 export const BatchExportsBackfillsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    progress: Schema.NullOr(
-      Schema.Struct({
-        total_runs: Schema.optional(Schema.NullOr(Schema.Number)),
-        finished_runs: Schema.optional(Schema.NullOr(Schema.Number)),
-        progress: Schema.optional(Schema.NullOr(Schema.Number)),
-      }),
+    id: Schema.optional(Schema.String),
+    progress: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          total_runs: Schema.optional(Schema.NullOr(Schema.Number)),
+          finished_runs: Schema.optional(Schema.NullOr(Schema.Number)),
+          progress: Schema.optional(Schema.NullOr(Schema.Number)),
+        }),
+      ),
     ),
     start_at: Schema.optional(Schema.NullOr(Schema.String)),
     end_at: Schema.optional(Schema.NullOr(Schema.String)),
-    status: Schema.Literals([
-      "Cancelled",
-      "Completed",
-      "ContinuedAsNew",
-      "Failed",
-      "FailedRetryable",
-      "Terminated",
-      "TimedOut",
-      "Running",
-      "Starting",
-    ]),
-    created_at: Schema.String,
+    status: Schema.optional(
+      Schema.Literals([
+        "Cancelled",
+        "Completed",
+        "ContinuedAsNew",
+        "Failed",
+        "FailedRetryable",
+        "Terminated",
+        "TimedOut",
+        "Running",
+        "Starting",
+      ]),
+    ),
+    created_at: Schema.optional(Schema.String),
     finished_at: Schema.optional(Schema.NullOr(Schema.String)),
-    last_updated_at: Schema.String,
+    last_updated_at: Schema.optional(Schema.String),
     total_records_count: Schema.optional(Schema.NullOr(Schema.Number)),
     adjusted_start_at: Schema.optional(Schema.NullOr(Schema.String)),
-    team: Schema.Number,
-    batch_export: Schema.String,
+    team: Schema.optional(Schema.Number),
+    batch_export: Schema.optional(Schema.String),
   });
 export type BatchExportsBackfillsRetrieveOutput =
   typeof BatchExportsBackfillsRetrieveOutput.Type;

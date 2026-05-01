@@ -19,20 +19,24 @@ export type InsightVariablesListInput = typeof InsightVariablesListInput.Type;
 // Output Schema
 export const InsightVariablesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        type: Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
-        default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        created_by: Schema.NullOr(Schema.Number),
-        created_at: Schema.String,
-        code_name: Schema.NullOr(Schema.String),
-        values: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(
+            Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
+          ),
+          default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+          created_at: Schema.optional(Schema.String),
+          code_name: Schema.optional(Schema.NullOr(Schema.String)),
+          values: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
   });
 export type InsightVariablesListOutput = typeof InsightVariablesListOutput.Type;

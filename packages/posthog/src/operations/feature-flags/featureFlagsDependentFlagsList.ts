@@ -21,9 +21,9 @@ export type FeatureFlagsDependentFlagsListInput =
 export const FeatureFlagsDependentFlagsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
-      id: Schema.Number,
-      key: Schema.String,
-      name: Schema.String,
+      id: Schema.optional(Schema.Number),
+      key: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
     }),
   );
 export type FeatureFlagsDependentFlagsListOutput =

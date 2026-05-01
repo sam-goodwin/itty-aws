@@ -19,19 +19,21 @@ export const DatasetItemsPartialUpdateInput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_by: Schema.optional(
-      Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-        role_at_organization: Schema.optional(Schema.Unknown),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
     team: Schema.optional(Schema.Number),
   }).pipe(
@@ -46,8 +48,8 @@ export type DatasetItemsPartialUpdateInput =
 // Output Schema
 export const DatasetItemsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    dataset: Schema.String,
+    id: Schema.optional(Schema.String),
+    dataset: Schema.optional(Schema.String),
     input: Schema.optional(Schema.NullOr(Schema.Unknown)),
     output: Schema.optional(Schema.NullOr(Schema.Unknown)),
     metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
@@ -55,22 +57,26 @@ export const DatasetItemsPartialUpdateOutput =
     ref_timestamp: Schema.optional(Schema.NullOr(Schema.String)),
     ref_source_id: Schema.optional(Schema.NullOr(Schema.String)),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    created_at: Schema.String,
-    updated_at: Schema.NullOr(Schema.String),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    team: Schema.Number,
+    ),
+    team: Schema.optional(Schema.Number),
   });
 export type DatasetItemsPartialUpdateOutput =
   typeof DatasetItemsPartialUpdateOutput.Type;

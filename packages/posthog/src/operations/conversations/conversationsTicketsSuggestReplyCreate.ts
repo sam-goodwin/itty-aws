@@ -20,7 +20,7 @@ export type ConversationsTicketsSuggestReplyCreateInput =
 // Output Schema
 export const ConversationsTicketsSuggestReplyCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    suggestion: Schema.String,
+    suggestion: Schema.optional(Schema.String),
   });
 export type ConversationsTicketsSuggestReplyCreateOutput =
   typeof ConversationsTicketsSuggestReplyCreateOutput.Type;

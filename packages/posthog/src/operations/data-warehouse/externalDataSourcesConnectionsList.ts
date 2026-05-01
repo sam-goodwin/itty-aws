@@ -22,15 +22,17 @@ export type ExternalDataSourcesConnectionsListInput =
 // Output Schema
 export const ExternalDataSourcesConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        prefix: Schema.NullOr(Schema.String),
-        engine: Schema.Unknown,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          prefix: Schema.optional(Schema.NullOr(Schema.String)),
+          engine: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
   });
 export type ExternalDataSourcesConnectionsListOutput =

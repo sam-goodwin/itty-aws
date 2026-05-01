@@ -22,23 +22,25 @@ export const ErrorTrackingIssuesAssignPartialUpdateInput =
     first_seen: Schema.optional(Schema.String),
     assignee: Schema.optional(
       Schema.Struct({
-        id: Schema.Unknown,
-        type: Schema.String,
+        id: Schema.optional(Schema.Unknown),
+        type: Schema.optional(Schema.String),
       }),
     ),
     external_issues: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          id: Schema.String,
-          integration: Schema.Struct({
-            id: Schema.Number,
-            kind: Schema.String,
-            display_name: Schema.String,
-          }),
-          integration_id: Schema.Number,
-          config: Schema.Unknown,
-          issue: Schema.String,
-          external_url: Schema.String,
+          id: Schema.optional(Schema.String),
+          integration: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              kind: Schema.optional(Schema.String),
+              display_name: Schema.optional(Schema.String),
+            }),
+          ),
+          integration_id: Schema.optional(Schema.Number),
+          config: Schema.optional(Schema.Unknown),
+          issue: Schema.optional(Schema.String),
+          external_url: Schema.optional(Schema.String),
         }),
       ),
     ),

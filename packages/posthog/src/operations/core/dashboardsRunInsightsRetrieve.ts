@@ -25,17 +25,21 @@ export type DashboardsRunInsightsRetrieveInput =
 // Output Schema
 export const DashboardsRunInsightsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        insight: Schema.Struct({
-          id: Schema.Number,
-          short_id: Schema.String,
-          name: Schema.NullOr(Schema.String),
-          derived_name: Schema.NullOr(Schema.String),
-          result: Schema.Unknown,
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          insight: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              short_id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.NullOr(Schema.String)),
+              derived_name: Schema.optional(Schema.NullOr(Schema.String)),
+              result: Schema.optional(Schema.Unknown),
+            }),
+          ),
         }),
-      }),
+      ),
     ),
   });
 export type DashboardsRunInsightsRetrieveOutput =

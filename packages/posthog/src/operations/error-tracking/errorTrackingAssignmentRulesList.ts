@@ -21,24 +21,28 @@ export type ErrorTrackingAssignmentRulesListInput =
 // Output Schema
 export const ErrorTrackingAssignmentRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        filters: Schema.Unknown,
-        assignee: Schema.NullOr(
-          Schema.Struct({
-            type: Schema.optional(Schema.Literals(["user", "role"])),
-            id: Schema.optional(Schema.Unknown),
-          }),
-        ),
-        order_key: Schema.Number,
-        disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          filters: Schema.optional(Schema.Unknown),
+          assignee: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                type: Schema.optional(Schema.Literals(["user", "role"])),
+                id: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          ),
+          order_key: Schema.optional(Schema.Number),
+          disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type ErrorTrackingAssignmentRulesListOutput =

@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LlmAnalyticsSentimentCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    ids: Schema.Array(Schema.String),
+    ids: Schema.optional(Schema.Array(Schema.String)),
     analysis_level: Schema.optional(Schema.Literals(["trace", "generation"])),
     force_refresh: Schema.optional(Schema.Boolean),
     date_from: Schema.optional(Schema.NullOr(Schema.String)),
@@ -24,22 +24,28 @@ export type LlmAnalyticsSentimentCreateInput =
 // Output Schema
 export const LlmAnalyticsSentimentCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Record(
-      Schema.String,
-      Schema.Struct({
-        label: Schema.String,
-        score: Schema.Number,
-        scores: Schema.Record(Schema.String, Schema.Number),
-        messages: Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            label: Schema.String,
-            score: Schema.Number,
-            scores: Schema.Record(Schema.String, Schema.Number),
-          }),
-        ),
-        message_count: Schema.Number,
-      }),
+    results: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        Schema.Struct({
+          label: Schema.optional(Schema.String),
+          score: Schema.optional(Schema.Number),
+          scores: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+          messages: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                label: Schema.optional(Schema.String),
+                score: Schema.optional(Schema.Number),
+                scores: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Number),
+                ),
+              }),
+            ),
+          ),
+          message_count: Schema.optional(Schema.Number),
+        }),
+      ),
     ),
   });
 export type LlmAnalyticsSentimentCreateOutput =

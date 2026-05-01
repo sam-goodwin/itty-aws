@@ -20,8 +20,8 @@ export type FeatureFlagsStatusRetrieveInput =
 // Output Schema
 export const FeatureFlagsStatusRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.String,
-    reason: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
   });
 export type FeatureFlagsStatusRetrieveOutput =
   typeof FeatureFlagsStatusRetrieveOutput.Type;

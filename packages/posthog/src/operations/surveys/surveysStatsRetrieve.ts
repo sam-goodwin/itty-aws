@@ -21,11 +21,11 @@ export type SurveysStatsRetrieveInput = typeof SurveysStatsRetrieveInput.Type;
 // Output Schema
 export const SurveysStatsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    survey_id: Schema.String,
-    start_date: Schema.NullOr(Schema.String),
-    end_date: Schema.NullOr(Schema.String),
-    stats: Schema.Record(Schema.String, Schema.Unknown),
-    rates: Schema.Record(Schema.String, Schema.Unknown),
+    survey_id: Schema.optional(Schema.String),
+    start_date: Schema.optional(Schema.NullOr(Schema.String)),
+    end_date: Schema.optional(Schema.NullOr(Schema.String)),
+    stats: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    rates: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   });
 export type SurveysStatsRetrieveOutput = typeof SurveysStatsRetrieveOutput.Type;
 

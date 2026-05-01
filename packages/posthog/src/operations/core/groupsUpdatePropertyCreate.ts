@@ -10,7 +10,7 @@ export const GroupsUpdatePropertyCreateInput =
     group_key: Schema.String,
     group_type_index: Schema.Number,
     group_properties: Schema.optional(Schema.Unknown),
-    created_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",

@@ -8,7 +8,7 @@ export const LogsAlertsDestinationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    type: Schema.Literals(["slack", "webhook"]),
+    type: Schema.optional(Schema.Literals(["slack", "webhook"])),
     slack_workspace_id: Schema.optional(Schema.Number),
     slack_channel_id: Schema.optional(Schema.String),
     slack_channel_name: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export type LogsAlertsDestinationsCreateInput =
 // Output Schema
 export const LogsAlertsDestinationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hog_function_ids: Schema.Array(Schema.String),
+    hog_function_ids: Schema.optional(Schema.Array(Schema.String)),
   });
 export type LogsAlertsDestinationsCreateOutput =
   typeof LogsAlertsDestinationsCreateOutput.Type;

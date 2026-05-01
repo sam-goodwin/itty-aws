@@ -21,7 +21,7 @@ export type TasksRunsConnectionTokenRetrieveInput =
 // Output Schema
 export const TasksRunsConnectionTokenRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    token: Schema.String,
+    token: Schema.optional(Schema.String),
   });
 export type TasksRunsConnectionTokenRetrieveOutput =
   typeof TasksRunsConnectionTokenRetrieveOutput.Type;

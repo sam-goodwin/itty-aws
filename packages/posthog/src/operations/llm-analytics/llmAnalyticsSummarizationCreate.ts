@@ -28,23 +28,29 @@ export type LlmAnalyticsSummarizationCreateInput =
 // Output Schema
 export const LlmAnalyticsSummarizationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    summary: Schema.Struct({
-      title: Schema.String,
-      flow_diagram: Schema.String,
-      summary_bullets: Schema.Array(
-        Schema.Struct({
-          text: Schema.String,
-          line_refs: Schema.String,
-        }),
-      ),
-      interesting_notes: Schema.Array(
-        Schema.Struct({
-          text: Schema.String,
-          line_refs: Schema.String,
-        }),
-      ),
-    }),
-    text_repr: Schema.String,
+    summary: Schema.optional(
+      Schema.Struct({
+        title: Schema.optional(Schema.String),
+        flow_diagram: Schema.optional(Schema.String),
+        summary_bullets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              text: Schema.optional(Schema.String),
+              line_refs: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        interesting_notes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              text: Schema.optional(Schema.String),
+              line_refs: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    text_repr: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Unknown),
   });
 export type LlmAnalyticsSummarizationCreateOutput =

@@ -30,10 +30,10 @@ export const PersonsDeletionStatusListOutput =
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          person_uuid: Schema.String,
-          created_at: Schema.String,
-          status: Schema.String,
-          delete_verified_at: Schema.NullOr(Schema.String),
+          person_uuid: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          delete_verified_at: Schema.optional(Schema.NullOr(Schema.String)),
         }),
       ),
     ),

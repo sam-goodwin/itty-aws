@@ -19,10 +19,10 @@ export type VisualReviewRunsCountsRetrieveInput =
 // Output Schema
 export const VisualReviewRunsCountsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    needs_review: Schema.Number,
-    clean: Schema.Number,
-    processing: Schema.Number,
-    stale: Schema.Number,
+    needs_review: Schema.optional(Schema.Number),
+    clean: Schema.optional(Schema.Number),
+    processing: Schema.optional(Schema.Number),
+    stale: Schema.optional(Schema.Number),
   });
 export type VisualReviewRunsCountsRetrieveOutput =
   typeof VisualReviewRunsCountsRetrieveOutput.Type;

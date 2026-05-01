@@ -20,27 +20,35 @@ export type FeatureFlagsLocalEvaluationRetrieveInput =
 // Output Schema
 export const FeatureFlagsLocalEvaluationRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    flags: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        team_id: Schema.Number,
-        name: Schema.optional(Schema.String),
-        key: Schema.String,
-        filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        deleted: Schema.optional(Schema.Boolean),
-        active: Schema.optional(Schema.Boolean),
-        ensure_experience_continuity: Schema.optional(
-          Schema.NullOr(Schema.Boolean),
-        ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
-        evaluation_contexts: Schema.Array(Schema.String),
-      }),
+    flags: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          team_id: Schema.optional(Schema.Number),
+          name: Schema.optional(Schema.String),
+          key: Schema.optional(Schema.String),
+          filters: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          deleted: Schema.optional(Schema.Boolean),
+          active: Schema.optional(Schema.Boolean),
+          ensure_experience_continuity: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
+          ),
+          has_encrypted_payloads: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
+          ),
+          version: Schema.optional(Schema.NullOr(Schema.Number)),
+          evaluation_runtime: Schema.optional(Schema.Unknown),
+          bucketing_identifier: Schema.optional(Schema.Unknown),
+          evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
     ),
-    group_type_mapping: Schema.Record(Schema.String, Schema.String),
-    cohorts: Schema.Record(Schema.String, Schema.Unknown),
+    group_type_mapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    cohorts: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   });
 export type FeatureFlagsLocalEvaluationRetrieveOutput =
   typeof FeatureFlagsLocalEvaluationRetrieveOutput.Type;

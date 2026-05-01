@@ -7,15 +7,15 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const ProjectSecretApiKeysCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    label: Schema.String,
-    value: Schema.String,
-    mask_value: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    created_by: Schema.NullOr(Schema.Number),
-    last_used_at: Schema.NullOr(Schema.String),
-    last_rolled_at: Schema.NullOr(Schema.String),
-    scopes: Schema.Array(Schema.String),
+    id: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    mask_value: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+    last_rolled_at: Schema.optional(Schema.NullOr(Schema.String)),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -28,15 +28,15 @@ export type ProjectSecretApiKeysCreateInput =
 // Output Schema
 export const ProjectSecretApiKeysCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    label: Schema.String,
-    value: Schema.String,
-    mask_value: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    created_by: Schema.NullOr(Schema.Number),
-    last_used_at: Schema.NullOr(Schema.String),
-    last_rolled_at: Schema.NullOr(Schema.String),
-    scopes: Schema.Array(Schema.String),
+    id: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    mask_value: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+    last_rolled_at: Schema.optional(Schema.NullOr(Schema.String)),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ProjectSecretApiKeysCreateOutput =
   typeof ProjectSecretApiKeysCreateOutput.Type;

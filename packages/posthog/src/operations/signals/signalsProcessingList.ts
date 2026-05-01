@@ -20,13 +20,15 @@ export type SignalsProcessingListInput = typeof SignalsProcessingListInput.Type;
 // Output Schema
 export const SignalsProcessingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        paused_until: Schema.NullOr(Schema.String),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          paused_until: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
     ),
   });
 export type SignalsProcessingListOutput =

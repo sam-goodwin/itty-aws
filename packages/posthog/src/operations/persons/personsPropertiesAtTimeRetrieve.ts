@@ -25,28 +25,34 @@ export type PersonsPropertiesAtTimeRetrieveInput =
 // Output Schema
 export const PersonsPropertiesAtTimeRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
-    name: Schema.String,
-    distinct_ids: Schema.Array(Schema.String),
-    properties: Schema.Record(Schema.String, Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
-    uuid: Schema.String,
-    last_seen_at: Schema.NullOr(Schema.String),
-    point_in_time_metadata: Schema.Struct({
-      queried_timestamp: Schema.String,
-      include_set_once: Schema.Boolean,
-      distinct_id_used: Schema.NullOr(Schema.String),
-      person_id_used: Schema.NullOr(Schema.String),
-      query_mode: Schema.String,
-      distinct_ids_queried: Schema.Array(Schema.String),
-      distinct_ids_count: Schema.Number,
-    }),
+    id: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    distinct_ids: Schema.optional(Schema.Array(Schema.String)),
+    properties: Schema.optional(
+      Schema.Record(Schema.String, Schema.NullOr(Schema.String)),
+    ),
+    created_at: Schema.optional(Schema.String),
+    uuid: Schema.optional(Schema.String),
+    last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
+    point_in_time_metadata: Schema.optional(
+      Schema.Struct({
+        queried_timestamp: Schema.optional(Schema.String),
+        include_set_once: Schema.optional(Schema.Boolean),
+        distinct_id_used: Schema.optional(Schema.NullOr(Schema.String)),
+        person_id_used: Schema.optional(Schema.NullOr(Schema.String)),
+        query_mode: Schema.optional(Schema.String),
+        distinct_ids_queried: Schema.optional(Schema.Array(Schema.String)),
+        distinct_ids_count: Schema.optional(Schema.Number),
+      }),
+    ),
     debug: Schema.optional(
       Schema.Struct({
-        query: Schema.String,
-        params: Schema.Record(Schema.String, Schema.Unknown),
-        events_found: Schema.Number,
-        events: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        query: Schema.optional(Schema.String),
+        params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        events_found: Schema.optional(Schema.Number),
+        events: Schema.optional(
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
         error: Schema.optional(Schema.String),
       }),
     ),

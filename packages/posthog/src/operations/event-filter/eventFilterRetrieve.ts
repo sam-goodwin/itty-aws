@@ -18,12 +18,12 @@ export type EventFilterRetrieveInput = typeof EventFilterRetrieveInput.Type;
 // Output Schema
 export const EventFilterRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
+    id: Schema.optional(Schema.String),
     mode: Schema.optional(Schema.Literals(["disabled", "dry_run", "live"])),
     filter_tree: Schema.optional(Schema.NullOr(Schema.Unknown)),
     test_cases: Schema.optional(Schema.Unknown),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type EventFilterRetrieveOutput = typeof EventFilterRetrieveOutput.Type;
 

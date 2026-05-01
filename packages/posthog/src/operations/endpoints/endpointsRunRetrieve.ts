@@ -19,7 +19,7 @@ export type EndpointsRunRetrieveInput = typeof EndpointsRunRetrieveInput.Type;
 // Output Schema
 export const EndpointsRunRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String,
+    name: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(Schema.Unknown)),
     columns: Schema.optional(Schema.Array(Schema.String)),
     hasMore: Schema.optional(Schema.Boolean),

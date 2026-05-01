@@ -22,8 +22,8 @@ export type LlmSkillsNameFilesRetrieveInput =
 // Output Schema
 export const LlmSkillsNameFilesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    path: Schema.String,
-    content: Schema.String,
+    path: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
     content_type: Schema.optional(Schema.String),
   });
 export type LlmSkillsNameFilesRetrieveOutput =

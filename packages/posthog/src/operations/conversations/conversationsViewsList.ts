@@ -21,30 +21,40 @@ export type ConversationsViewsListInput =
 // Output Schema
 export const ConversationsViewsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        short_id: Schema.String,
-        name: Schema.String,
-        filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        created_at: Schema.String,
-        created_by: Schema.Struct({
-          id: Schema.Number,
-          uuid: Schema.String,
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.String,
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.NullOr(
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          short_id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          filters: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          created_at: Schema.optional(Schema.String),
+          created_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.Number),
+                uuid: Schema.optional(Schema.String),
+                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+                first_name: Schema.optional(Schema.String),
+                last_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+                is_email_verified: Schema.optional(
+                  Schema.NullOr(Schema.Boolean),
+                ),
+                hedgehog_config: Schema.optional(
+                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                role_at_organization: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          ),
         }),
-      }),
+      ),
     ),
   });
 export type ConversationsViewsListOutput =

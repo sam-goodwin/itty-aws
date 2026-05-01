@@ -7,13 +7,15 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LlmAnalyticsTextReprCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    event_type: Schema.Literals([
-      "$ai_generation",
-      "$ai_span",
-      "$ai_embedding",
-      "$ai_trace",
-    ]),
-    data: Schema.Unknown,
+    event_type: Schema.optional(
+      Schema.Literals([
+        "$ai_generation",
+        "$ai_span",
+        "$ai_embedding",
+        "$ai_trace",
+      ]),
+    ),
+    data: Schema.optional(Schema.Unknown),
     options: Schema.optional(
       Schema.Struct({
         max_length: Schema.optional(Schema.Number),
@@ -40,16 +42,18 @@ export type LlmAnalyticsTextReprCreateInput =
 // Output Schema
 export const LlmAnalyticsTextReprCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    text: Schema.String,
-    metadata: Schema.Struct({
-      event_type: Schema.optional(Schema.String),
-      event_id: Schema.optional(Schema.String),
-      trace_id: Schema.optional(Schema.String),
-      rendering: Schema.String,
-      char_count: Schema.Number,
-      truncated: Schema.Boolean,
-      error: Schema.optional(Schema.String),
-    }),
+    text: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        event_type: Schema.optional(Schema.String),
+        event_id: Schema.optional(Schema.String),
+        trace_id: Schema.optional(Schema.String),
+        rendering: Schema.optional(Schema.String),
+        char_count: Schema.optional(Schema.Number),
+        truncated: Schema.optional(Schema.Boolean),
+        error: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type LlmAnalyticsTextReprCreateOutput =
   typeof LlmAnalyticsTextReprCreateOutput.Type;

@@ -20,24 +20,28 @@ export type LegalDocumentsListInput = typeof LegalDocumentsListInput.Type;
 // Output Schema
 export const LegalDocumentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        document_type: Schema.String,
-        company_name: Schema.String,
-        representative_email: Schema.String,
-        status: Schema.String,
-        created_by: Schema.NullOr(
-          Schema.Struct({
-            first_name: Schema.String,
-            email: Schema.String,
-          }),
-        ),
-        created_at: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          document_type: Schema.optional(Schema.String),
+          company_name: Schema.optional(Schema.String),
+          representative_email: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          created_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                first_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          created_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type LegalDocumentsListOutput = typeof LegalDocumentsListOutput.Type;

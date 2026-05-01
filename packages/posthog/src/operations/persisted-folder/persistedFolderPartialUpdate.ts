@@ -27,12 +27,14 @@ export type PersistedFolderPartialUpdateInput =
 // Output Schema
 export const PersistedFolderPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    type: Schema.Literals(["home", "pinned", "custom_products"]),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["home", "pinned", "custom_products"]),
+    ),
     protocol: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type PersistedFolderPartialUpdateOutput =
   typeof PersistedFolderPartialUpdateOutput.Type;

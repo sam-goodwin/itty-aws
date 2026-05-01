@@ -9,7 +9,7 @@ export const PersonsDeletePropertyCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
-    $unset: Schema.String,
+    $unset: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",

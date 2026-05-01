@@ -7,9 +7,9 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const PropertyDefinitionsBulkUpdateTagsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    ids: Schema.Array(Schema.Number),
-    action: Schema.Literals(["add", "remove", "set"]),
-    tags: Schema.Array(Schema.String),
+    ids: Schema.optional(Schema.Array(Schema.Number)),
+    action: Schema.optional(Schema.Literals(["add", "remove", "set"])),
+    tags: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -22,17 +22,21 @@ export type PropertyDefinitionsBulkUpdateTagsCreateInput =
 // Output Schema
 export const PropertyDefinitionsBulkUpdateTagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updated: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        tags: Schema.Array(Schema.String),
-      }),
+    updated: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          tags: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
     ),
-    skipped: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        reason: Schema.String,
-      }),
+    skipped: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          reason: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type PropertyDefinitionsBulkUpdateTagsCreateOutput =

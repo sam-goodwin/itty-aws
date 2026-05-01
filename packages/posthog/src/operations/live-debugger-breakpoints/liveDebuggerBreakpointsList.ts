@@ -23,20 +23,22 @@ export type LiveDebuggerBreakpointsListInput =
 // Output Schema
 export const LiveDebuggerBreakpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        repository: Schema.optional(Schema.NullOr(Schema.String)),
-        filename: Schema.String,
-        line_number: Schema.Number,
-        enabled: Schema.optional(Schema.Boolean),
-        condition: Schema.optional(Schema.NullOr(Schema.String)),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          repository: Schema.optional(Schema.NullOr(Schema.String)),
+          filename: Schema.optional(Schema.String),
+          line_number: Schema.optional(Schema.Number),
+          enabled: Schema.optional(Schema.Boolean),
+          condition: Schema.optional(Schema.NullOr(Schema.String)),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type LiveDebuggerBreakpointsListOutput =

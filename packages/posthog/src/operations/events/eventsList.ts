@@ -26,29 +26,35 @@ export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   results: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        id: Schema.String,
-        distinct_id: Schema.String,
-        properties: Schema.Record(Schema.String, Schema.Unknown),
-        event: Schema.String,
-        timestamp: Schema.String,
-        person: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-        elements: Schema.Array(
-          Schema.Struct({
-            event: Schema.String,
-            text: Schema.optional(Schema.NullOr(Schema.String)),
-            tag_name: Schema.optional(Schema.NullOr(Schema.String)),
-            attr_class: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.String)),
-            ),
-            href: Schema.optional(Schema.NullOr(Schema.String)),
-            attr_id: Schema.optional(Schema.NullOr(Schema.String)),
-            nth_child: Schema.optional(Schema.NullOr(Schema.Number)),
-            nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
-            attributes: Schema.optional(Schema.Unknown),
-            order: Schema.optional(Schema.NullOr(Schema.Number)),
-          }),
+        id: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Record(Schema.String, Schema.Unknown),
         ),
-        elements_chain: Schema.String,
+        event: Schema.optional(Schema.String),
+        timestamp: Schema.optional(Schema.String),
+        person: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        elements: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              event: Schema.optional(Schema.String),
+              text: Schema.optional(Schema.NullOr(Schema.String)),
+              tag_name: Schema.optional(Schema.NullOr(Schema.String)),
+              attr_class: Schema.optional(
+                Schema.NullOr(Schema.Array(Schema.String)),
+              ),
+              href: Schema.optional(Schema.NullOr(Schema.String)),
+              attr_id: Schema.optional(Schema.NullOr(Schema.String)),
+              nth_child: Schema.optional(Schema.NullOr(Schema.Number)),
+              nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
+              attributes: Schema.optional(Schema.Unknown),
+              order: Schema.optional(Schema.NullOr(Schema.Number)),
+            }),
+          ),
+        ),
+        elements_chain: Schema.optional(Schema.String),
       }),
     ),
   ),

@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const HogFlowsUserBlastRadiusCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    filters: Schema.Record(Schema.String, Schema.Unknown),
+    filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     group_type_index: Schema.optional(Schema.NullOr(Schema.Number)),
   }).pipe(
     T.Http({
@@ -21,8 +21,8 @@ export type HogFlowsUserBlastRadiusCreateInput =
 // Output Schema
 export const HogFlowsUserBlastRadiusCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    affected: Schema.Number,
-    total: Schema.Number,
+    affected: Schema.optional(Schema.Number),
+    total: Schema.optional(Schema.Number),
   });
 export type HogFlowsUserBlastRadiusCreateOutput =
   typeof HogFlowsUserBlastRadiusCreateOutput.Type;

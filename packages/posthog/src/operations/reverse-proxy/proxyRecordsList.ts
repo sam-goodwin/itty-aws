@@ -17,27 +17,31 @@ export type ProxyRecordsListInput = typeof ProxyRecordsListInput.Type;
 // Output Schema
 export const ProxyRecordsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        domain: Schema.String,
-        target_cname: Schema.String,
-        status: Schema.Literals([
-          "waiting",
-          "issuing",
-          "valid",
-          "warning",
-          "erroring",
-          "deleting",
-          "timed_out",
-        ]),
-        message: Schema.NullOr(Schema.String),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        created_by: Schema.Number,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          domain: Schema.optional(Schema.String),
+          target_cname: Schema.optional(Schema.String),
+          status: Schema.optional(
+            Schema.Literals([
+              "waiting",
+              "issuing",
+              "valid",
+              "warning",
+              "erroring",
+              "deleting",
+              "timed_out",
+            ]),
+          ),
+          message: Schema.optional(Schema.NullOr(Schema.String)),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+          created_by: Schema.optional(Schema.Number),
+        }),
+      ),
     ),
-    max_proxy_records: Schema.Number,
+    max_proxy_records: Schema.optional(Schema.Number),
   }),
 );
 export type ProxyRecordsListOutput = typeof ProxyRecordsListOutput.Type;

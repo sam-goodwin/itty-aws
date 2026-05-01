@@ -20,13 +20,15 @@ export type LlmAnalyticsClusteringJobsRetrieveInput =
 // Output Schema
 export const LlmAnalyticsClusteringJobsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    analysis_level: Schema.Literals(["trace", "generation", "evaluation"]),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    analysis_level: Schema.optional(
+      Schema.Literals(["trace", "generation", "evaluation"]),
+    ),
     event_filters: Schema.optional(Schema.Unknown),
     enabled: Schema.optional(Schema.Boolean),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type LlmAnalyticsClusteringJobsRetrieveOutput =
   typeof LlmAnalyticsClusteringJobsRetrieveOutput.Type;

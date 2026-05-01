@@ -18,29 +18,31 @@ export type McpServersListInput = typeof McpServersListInput.Type;
 
 // Output Schema
 export const McpServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.Number,
+  count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      url: Schema.String,
-      docs_url: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      auth_type: Schema.optional(Schema.Literals(["api_key", "oauth"])),
-      icon_key: Schema.optional(Schema.String),
-      category: Schema.optional(
-        Schema.Literals([
-          "business",
-          "data",
-          "design",
-          "dev",
-          "infra",
-          "productivity",
-        ]),
-      ),
-    }),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        docs_url: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        auth_type: Schema.optional(Schema.Literals(["api_key", "oauth"])),
+        icon_key: Schema.optional(Schema.String),
+        category: Schema.optional(
+          Schema.Literals([
+            "business",
+            "data",
+            "design",
+            "dev",
+            "infra",
+            "productivity",
+          ]),
+        ),
+      }),
+    ),
   ),
 });
 export type McpServersListOutput = typeof McpServersListOutput.Type;

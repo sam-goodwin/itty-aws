@@ -19,8 +19,8 @@ export type SignalsProcessingPauseDestroyInput =
 // Output Schema
 export const SignalsProcessingPauseDestroyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.String,
-    paused_until: Schema.String,
+    status: Schema.optional(Schema.String),
+    paused_until: Schema.optional(Schema.String),
   });
 export type SignalsProcessingPauseDestroyOutput =
   typeof SignalsProcessingPauseDestroyOutput.Type;

@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LlmAnalyticsTranslateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    text: Schema.String,
+    text: Schema.optional(Schema.String),
     target_language: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

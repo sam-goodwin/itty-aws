@@ -58,7 +58,7 @@ export const EndpointsRunCreateInput =
                     normalize_url: Schema.optional(
                       Schema.NullOr(Schema.Boolean),
                     ),
-                    property: Schema.Unknown,
+                    property: Schema.optional(Schema.Unknown),
                     type: Schema.optional(
                       Schema.Literals([
                         "cohort",
@@ -104,7 +104,7 @@ export type EndpointsRunCreateInput = typeof EndpointsRunCreateInput.Type;
 // Output Schema
 export const EndpointsRunCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String,
+    name: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(Schema.Unknown)),
     columns: Schema.optional(Schema.Array(Schema.String)),
     hasMore: Schema.optional(Schema.Boolean),

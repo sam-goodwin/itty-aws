@@ -22,15 +22,17 @@ export type LiveDebuggerBreakpointsActiveRetrieveInput =
 // Output Schema
 export const LiveDebuggerBreakpointsActiveRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    breakpoints: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        repository: Schema.optional(Schema.NullOr(Schema.String)),
-        filename: Schema.String,
-        line_number: Schema.Number,
-        enabled: Schema.Boolean,
-        condition: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
+    breakpoints: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          repository: Schema.optional(Schema.NullOr(Schema.String)),
+          filename: Schema.optional(Schema.String),
+          line_number: Schema.optional(Schema.Number),
+          enabled: Schema.optional(Schema.Boolean),
+          condition: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
     ),
   });
 export type LiveDebuggerBreakpointsActiveRetrieveOutput =

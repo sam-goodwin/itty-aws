@@ -7,9 +7,9 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const EvaluationRunsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    evaluation_id: Schema.String,
-    target_event_id: Schema.String,
-    timestamp: Schema.String,
+    evaluation_id: Schema.optional(Schema.String),
+    target_event_id: Schema.optional(Schema.String),
+    timestamp: Schema.optional(Schema.String),
     event: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(

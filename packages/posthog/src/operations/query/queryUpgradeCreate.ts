@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const QueryUpgradeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    query: Schema.Unknown,
+    query: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
@@ -19,7 +19,7 @@ export type QueryUpgradeCreateInput = typeof QueryUpgradeCreateInput.Type;
 // Output Schema
 export const QueryUpgradeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    query: Schema.Unknown,
+    query: Schema.optional(Schema.Unknown),
   });
 export type QueryUpgradeCreateOutput = typeof QueryUpgradeCreateOutput.Type;
 

@@ -9,7 +9,7 @@ export const TasksRunsArtifactsDownloadCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
-    storage_path: Schema.String,
+    storage_path: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",

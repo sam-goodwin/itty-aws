@@ -23,7 +23,7 @@ export type ErrorTrackingGitProviderFileLinksResolveGithubRetrieveInput =
 // Output Schema
 export const ErrorTrackingGitProviderFileLinksResolveGithubRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    found: Schema.Boolean,
+    found: Schema.optional(Schema.Boolean),
     url: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
   });

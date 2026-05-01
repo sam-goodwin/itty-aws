@@ -24,13 +24,15 @@ export type VisualReviewReposPartialUpdateInput =
 // Output Schema
 export const VisualReviewReposPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    team_id: Schema.Number,
-    repo_external_id: Schema.Number,
-    repo_full_name: Schema.String,
-    baseline_file_paths: Schema.Record(Schema.String, Schema.String),
-    enable_pr_comments: Schema.Boolean,
-    created_at: Schema.String,
+    id: Schema.optional(Schema.String),
+    team_id: Schema.optional(Schema.Number),
+    repo_external_id: Schema.optional(Schema.Number),
+    repo_full_name: Schema.optional(Schema.String),
+    baseline_file_paths: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    enable_pr_comments: Schema.optional(Schema.Boolean),
+    created_at: Schema.optional(Schema.String),
   });
 export type VisualReviewReposPartialUpdateOutput =
   typeof VisualReviewReposPartialUpdateOutput.Type;

@@ -25,12 +25,14 @@ export type ProductToursGenerateCreateInput =
 // Output Schema
 export const ProductToursGenerateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    steps: Schema.Array(
-      Schema.Struct({
-        step_id: Schema.String,
-        title: Schema.String,
-        description: Schema.String,
-      }),
+    steps: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          step_id: Schema.optional(Schema.String),
+          title: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type ProductToursGenerateCreateOutput =

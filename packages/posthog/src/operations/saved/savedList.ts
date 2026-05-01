@@ -13,41 +13,51 @@ export type SavedListInput = typeof SavedListInput.Type;
 
 // Output Schema
 export const SavedListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.Number,
+  count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      short_id: Schema.String,
-      name: Schema.optional(Schema.NullOr(Schema.String)),
-      url: Schema.String,
-      data_url: Schema.optional(Schema.NullOr(Schema.String)),
-      target_widths: Schema.optional(Schema.Unknown),
-      type: Schema.optional(
-        Schema.Literals(["screenshot", "iframe", "recording"]),
-      ),
-      status: Schema.Literals(["processing", "completed", "failed"]),
-      has_content: Schema.Boolean,
-      snapshots: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      deleted: Schema.optional(Schema.Boolean),
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        short_id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.NullOr(Schema.String)),
+        url: Schema.optional(Schema.String),
+        data_url: Schema.optional(Schema.NullOr(Schema.String)),
+        target_widths: Schema.optional(Schema.Unknown),
+        type: Schema.optional(
+          Schema.Literals(["screenshot", "iframe", "recording"]),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        status: Schema.optional(
+          Schema.Literals(["processing", "completed", "failed"]),
+        ),
+        has_content: Schema.optional(Schema.Boolean),
+        snapshots: Schema.optional(
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        deleted: Schema.optional(Schema.Boolean),
+        created_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        exception: Schema.optional(Schema.NullOr(Schema.String)),
       }),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-      exception: Schema.NullOr(Schema.String),
-    }),
+    ),
   ),
 });
 export type SavedListOutput = typeof SavedListOutput.Type;

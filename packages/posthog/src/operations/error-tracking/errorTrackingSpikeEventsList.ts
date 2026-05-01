@@ -21,21 +21,25 @@ export type ErrorTrackingSpikeEventsListInput =
 // Output Schema
 export const ErrorTrackingSpikeEventsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        issue: Schema.Struct({
-          id: Schema.String,
-          name: Schema.NullOr(Schema.String),
-          description: Schema.NullOr(Schema.String),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          issue: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.NullOr(Schema.String)),
+              description: Schema.optional(Schema.NullOr(Schema.String)),
+            }),
+          ),
+          detected_at: Schema.optional(Schema.String),
+          computed_baseline: Schema.optional(Schema.Number),
+          current_bucket_value: Schema.optional(Schema.Number),
         }),
-        detected_at: Schema.String,
-        computed_baseline: Schema.Number,
-        current_bucket_value: Schema.Number,
-      }),
+      ),
     ),
   });
 export type ErrorTrackingSpikeEventsListOutput =

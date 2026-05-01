@@ -20,9 +20,9 @@ export type EndpointsMaterializationStatusRetrieveInput =
 // Output Schema
 export const EndpointsMaterializationStatusRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String,
+    name: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-    can_materialize: Schema.Boolean,
+    can_materialize: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.NullOr(Schema.String)),
     last_materialized_at: Schema.optional(Schema.NullOr(Schema.String)),
     error: Schema.optional(Schema.String),

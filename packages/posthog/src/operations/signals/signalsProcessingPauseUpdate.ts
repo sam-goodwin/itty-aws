@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const SignalsProcessingPauseUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    timestamp: Schema.String,
+    timestamp: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -20,8 +20,8 @@ export type SignalsProcessingPauseUpdateInput =
 // Output Schema
 export const SignalsProcessingPauseUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.String,
-    paused_until: Schema.String,
+    status: Schema.optional(Schema.String),
+    paused_until: Schema.optional(Schema.String),
   });
 export type SignalsProcessingPauseUpdateOutput =
   typeof SignalsProcessingPauseUpdateOutput.Type;

@@ -9,8 +9,8 @@ export const VisualReviewReposQuarantineCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     run_type: Schema.String.pipe(T.PathParam()),
-    identifier: Schema.String,
-    reason: Schema.String,
+    identifier: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
@@ -27,19 +27,19 @@ export const VisualReviewReposQuarantineCreateOutput =
     created_by: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
-          id: Schema.Number,
-          first_name: Schema.String,
-          email: Schema.String,
+          id: Schema.optional(Schema.Number),
+          first_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
         }),
       ),
     ),
-    id: Schema.String,
-    identifier: Schema.String,
-    run_type: Schema.String,
-    reason: Schema.String,
-    expires_at: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    id: Schema.optional(Schema.String),
+    identifier: Schema.optional(Schema.String),
+    run_type: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    expires_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type VisualReviewReposQuarantineCreateOutput =
   typeof VisualReviewReposQuarantineCreateOutput.Type;

@@ -13,25 +13,29 @@ export const AnnotationsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     creation_type: Schema.optional(Schema.Literals(["USR", "GIT"])),
     dashboard_item: Schema.optional(Schema.NullOr(Schema.Number)),
     dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    dashboard_name: Schema.NullOr(Schema.String),
-    insight_short_id: Schema.NullOr(Schema.String),
-    insight_name: Schema.NullOr(Schema.String),
-    insight_derived_name: Schema.NullOr(Schema.String),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    dashboard_name: Schema.optional(Schema.NullOr(Schema.String)),
+    insight_short_id: Schema.optional(Schema.NullOr(Schema.String)),
+    insight_name: Schema.optional(Schema.NullOr(Schema.String)),
+    insight_derived_name: Schema.optional(Schema.NullOr(Schema.String)),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    created_at: Schema.NullOr(Schema.String),
-    updated_at: Schema.String,
+    ),
+    created_at: Schema.optional(Schema.NullOr(Schema.String)),
+    updated_at: Schema.optional(Schema.String),
     deleted: Schema.optional(Schema.Boolean),
     scope: Schema.optional(
       Schema.Literals([
@@ -54,31 +58,35 @@ export type AnnotationsUpdateInput = typeof AnnotationsUpdateInput.Type;
 // Output Schema
 export const AnnotationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
+    id: Schema.optional(Schema.Number),
     content: Schema.optional(Schema.NullOr(Schema.String)),
     date_marker: Schema.optional(Schema.NullOr(Schema.String)),
     creation_type: Schema.optional(Schema.Literals(["USR", "GIT"])),
     dashboard_item: Schema.optional(Schema.NullOr(Schema.Number)),
     dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    dashboard_name: Schema.NullOr(Schema.String),
-    insight_short_id: Schema.NullOr(Schema.String),
-    insight_name: Schema.NullOr(Schema.String),
-    insight_derived_name: Schema.NullOr(Schema.String),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    dashboard_name: Schema.optional(Schema.NullOr(Schema.String)),
+    insight_short_id: Schema.optional(Schema.NullOr(Schema.String)),
+    insight_name: Schema.optional(Schema.NullOr(Schema.String)),
+    insight_derived_name: Schema.optional(Schema.NullOr(Schema.String)),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    created_at: Schema.NullOr(Schema.String),
-    updated_at: Schema.String,
+    ),
+    created_at: Schema.optional(Schema.NullOr(Schema.String)),
+    updated_at: Schema.optional(Schema.String),
     deleted: Schema.optional(Schema.Boolean),
     scope: Schema.optional(
       Schema.Literals([

@@ -8,9 +8,9 @@ import { SensitiveString } from "../../sensitive.ts";
 export const McpServerInstallationsInstallCustomCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    name: Schema.String,
-    url: Schema.String,
-    auth_type: Schema.Literals(["api_key", "oauth"]),
+    name: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    auth_type: Schema.optional(Schema.Literals(["api_key", "oauth"])),
     api_key: Schema.optional(SensitiveString),
     description: Schema.optional(Schema.String),
     client_id: Schema.optional(Schema.String),
@@ -31,7 +31,7 @@ export type McpServerInstallationsInstallCustomCreateInput =
 // Output Schema
 export const McpServerInstallationsInstallCustomCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    redirect_url: Schema.String,
+    redirect_url: Schema.optional(Schema.String),
   });
 export type McpServerInstallationsInstallCustomCreateOutput =
   typeof McpServerInstallationsInstallCustomCreateOutput.Type;

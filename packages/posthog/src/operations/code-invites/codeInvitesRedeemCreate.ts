@@ -6,7 +6,7 @@ import { BadRequest, Forbidden } from "../../errors.ts";
 // Input Schema
 export const CodeInvitesRedeemCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.String,
+    code: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/api/code/invites/redeem/" }));
 export type CodeInvitesRedeemCreateInput =
   typeof CodeInvitesRedeemCreateInput.Type;

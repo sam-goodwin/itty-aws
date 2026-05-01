@@ -7,15 +7,17 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const ErrorTrackingGroupingRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    filters: Schema.Struct({
-      type: Schema.Literals(["AND", "OR"]),
-      values: Schema.Array(Schema.Unknown),
-    }),
+    filters: Schema.optional(
+      Schema.Struct({
+        type: Schema.optional(Schema.Literals(["AND", "OR"])),
+        values: Schema.optional(Schema.Array(Schema.Unknown)),
+      }),
+    ),
     assignee: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
-          type: Schema.Literals(["user", "role"]),
-          id: Schema.Unknown,
+          type: Schema.optional(Schema.Literals(["user", "role"])),
+          id: Schema.optional(Schema.Unknown),
         }),
       ),
     ),
@@ -32,20 +34,24 @@ export type ErrorTrackingGroupingRulesCreateInput =
 // Output Schema
 export const ErrorTrackingGroupingRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    filters: Schema.Unknown,
-    assignee: Schema.NullOr(
-      Schema.Struct({
-        type: Schema.optional(Schema.Literals(["user", "role"])),
-        id: Schema.optional(Schema.Unknown),
-      }),
+    id: Schema.optional(Schema.String),
+    filters: Schema.optional(Schema.Unknown),
+    assignee: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.optional(Schema.Literals(["user", "role"])),
+          id: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    issue: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-    order_key: Schema.Number,
+    issue: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    order_key: Schema.optional(Schema.Number),
     disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type ErrorTrackingGroupingRulesCreateOutput =
   typeof ErrorTrackingGroupingRulesCreateOutput.Type;

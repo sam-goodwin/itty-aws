@@ -20,19 +20,21 @@ export type CustomerProfileConfigsRetrieveInput =
 // Output Schema
 export const CustomerProfileConfigsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    scope: Schema.Literals([
-      "person",
-      "group_0",
-      "group_1",
-      "group_2",
-      "group_3",
-      "group_4",
-    ]),
+    id: Schema.optional(Schema.String),
+    scope: Schema.optional(
+      Schema.Literals([
+        "person",
+        "group_0",
+        "group_1",
+        "group_2",
+        "group_3",
+        "group_4",
+      ]),
+    ),
     content: Schema.optional(Schema.NullOr(Schema.Unknown)),
     sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    created_at: Schema.String,
-    updated_at: Schema.NullOr(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type CustomerProfileConfigsRetrieveOutput =
   typeof CustomerProfileConfigsRetrieveOutput.Type;

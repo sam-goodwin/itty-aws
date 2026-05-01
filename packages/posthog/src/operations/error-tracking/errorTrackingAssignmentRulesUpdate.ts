@@ -11,16 +11,16 @@ export const ErrorTrackingAssignmentRulesUpdateInput =
     filters: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
-          type: Schema.Literals(["AND", "OR"]),
-          values: Schema.Array(Schema.Unknown),
+          type: Schema.optional(Schema.Literals(["AND", "OR"])),
+          values: Schema.optional(Schema.Array(Schema.Unknown)),
         }),
       ),
     ),
     assignee: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
-          type: Schema.Literals(["user", "role"]),
-          id: Schema.Unknown,
+          type: Schema.optional(Schema.Literals(["user", "role"])),
+          id: Schema.optional(Schema.Unknown),
         }),
       ),
     ),

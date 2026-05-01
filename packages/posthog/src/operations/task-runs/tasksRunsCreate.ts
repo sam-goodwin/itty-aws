@@ -41,8 +41,8 @@ export type TasksRunsCreateInput = typeof TasksRunsCreateInput.Type;
 
 // Output Schema
 export const TasksRunsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  task: Schema.String,
+  id: Schema.optional(Schema.String),
+  task: Schema.optional(Schema.String),
   stage: Schema.optional(Schema.NullOr(Schema.String)),
   branch: Schema.optional(Schema.NullOr(Schema.String)),
   status: Schema.optional(
@@ -56,29 +56,31 @@ export const TasksRunsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   environment: Schema.optional(Schema.Literals(["local", "cloud"])),
-  runtime_adapter: Schema.Unknown,
-  provider: Schema.Unknown,
-  model: Schema.NullOr(Schema.String),
-  reasoning_effort: Schema.Unknown,
-  log_url: Schema.NullOr(Schema.String),
+  runtime_adapter: Schema.optional(Schema.Unknown),
+  provider: Schema.optional(Schema.Unknown),
+  model: Schema.optional(Schema.NullOr(Schema.String)),
+  reasoning_effort: Schema.optional(Schema.Unknown),
+  log_url: Schema.optional(Schema.NullOr(Schema.String)),
   error_message: Schema.optional(Schema.NullOr(Schema.String)),
   output: Schema.optional(Schema.NullOr(Schema.Unknown)),
   state: Schema.optional(Schema.Unknown),
-  artifacts: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.String,
-      type: Schema.String,
-      source: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.Number),
-      content_type: Schema.optional(Schema.String),
-      storage_path: Schema.String,
-      uploaded_at: Schema.String,
-    }),
+  artifacts: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        source: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.Number),
+        content_type: Schema.optional(Schema.String),
+        storage_path: Schema.optional(Schema.String),
+        uploaded_at: Schema.optional(Schema.String),
+      }),
+    ),
   ),
-  created_at: Schema.String,
-  updated_at: Schema.String,
-  completed_at: Schema.NullOr(Schema.String),
+  created_at: Schema.optional(Schema.String),
+  updated_at: Schema.optional(Schema.String),
+  completed_at: Schema.optional(Schema.NullOr(Schema.String)),
 });
 export type TasksRunsCreateOutput = typeof TasksRunsCreateOutput.Type;
 

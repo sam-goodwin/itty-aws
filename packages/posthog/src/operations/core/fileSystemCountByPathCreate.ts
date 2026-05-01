@@ -7,16 +7,16 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const FileSystemCountByPathCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    path: Schema.String,
-    depth: Schema.NullOr(Schema.Number),
+    id: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    depth: Schema.optional(Schema.NullOr(Schema.Number)),
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
     meta: Schema.optional(Schema.NullOr(Schema.Unknown)),
     shortcut: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    created_at: Schema.String,
-    last_viewed_at: Schema.NullOr(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",

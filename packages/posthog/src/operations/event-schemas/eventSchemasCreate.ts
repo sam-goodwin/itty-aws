@@ -7,57 +7,67 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const EventSchemasCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    event_definition: Schema.String,
-    property_group: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-            property_type: Schema.Literals([
-              "DateTime",
-              "String",
-              "Numeric",
-              "Boolean",
-              "Object",
-            ]),
-            is_required: Schema.optional(Schema.Boolean),
-            is_optional_in_types: Schema.optional(Schema.Boolean),
-            description: Schema.optional(Schema.String),
-            created_at: Schema.String,
-            updated_at: Schema.String,
-          }),
+    id: Schema.optional(Schema.String),
+    event_definition: Schema.optional(Schema.String),
+    property_group: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              property_type: Schema.optional(
+                Schema.Literals([
+                  "DateTime",
+                  "String",
+                  "Numeric",
+                  "Boolean",
+                  "Object",
+                ]),
+              ),
+              is_required: Schema.optional(Schema.Boolean),
+              is_optional_in_types: Schema.optional(Schema.Boolean),
+              description: Schema.optional(Schema.String),
+              created_at: Schema.optional(Schema.String),
+              updated_at: Schema.optional(Schema.String),
+            }),
+          ),
         ),
-      ),
-      events: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          name: Schema.String,
-        }),
-      ),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+        events: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+            }),
+          ),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        created_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
       }),
-    }),
-    property_group_id: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    ),
+    property_group_id: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -69,57 +79,67 @@ export type EventSchemasCreateInput = typeof EventSchemasCreateInput.Type;
 // Output Schema
 export const EventSchemasCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    event_definition: Schema.String,
-    property_group: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            name: Schema.String,
-            property_type: Schema.Literals([
-              "DateTime",
-              "String",
-              "Numeric",
-              "Boolean",
-              "Object",
-            ]),
-            is_required: Schema.optional(Schema.Boolean),
-            is_optional_in_types: Schema.optional(Schema.Boolean),
-            description: Schema.optional(Schema.String),
-            created_at: Schema.String,
-            updated_at: Schema.String,
-          }),
+    id: Schema.optional(Schema.String),
+    event_definition: Schema.optional(Schema.String),
+    property_group: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              property_type: Schema.optional(
+                Schema.Literals([
+                  "DateTime",
+                  "String",
+                  "Numeric",
+                  "Boolean",
+                  "Object",
+                ]),
+              ),
+              is_required: Schema.optional(Schema.Boolean),
+              is_optional_in_types: Schema.optional(Schema.Boolean),
+              description: Schema.optional(Schema.String),
+              created_at: Schema.optional(Schema.String),
+              updated_at: Schema.optional(Schema.String),
+            }),
+          ),
         ),
-      ),
-      events: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          name: Schema.String,
-        }),
-      ),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+        events: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+            }),
+          ),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        created_by: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
       }),
-    }),
-    property_group_id: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    ),
+    property_group_id: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type EventSchemasCreateOutput = typeof EventSchemasCreateOutput.Type;
 

@@ -19,7 +19,7 @@ export type EventFilterMetricsTotalsRetrieveInput =
 // Output Schema
 export const EventFilterMetricsTotalsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    totals: Schema.Record(Schema.String, Schema.Number),
+    totals: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
   });
 export type EventFilterMetricsTotalsRetrieveOutput =
   typeof EventFilterMetricsTotalsRetrieveOutput.Type;

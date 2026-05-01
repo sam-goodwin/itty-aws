@@ -8,11 +8,13 @@ export const PersistedFolderUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    type: Schema.Literals(["home", "pinned", "custom_products"]),
+    type: Schema.optional(
+      Schema.Literals(["home", "pinned", "custom_products"]),
+    ),
     protocol: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -24,12 +26,14 @@ export type PersistedFolderUpdateInput = typeof PersistedFolderUpdateInput.Type;
 // Output Schema
 export const PersistedFolderUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    type: Schema.Literals(["home", "pinned", "custom_products"]),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["home", "pinned", "custom_products"]),
+    ),
     protocol: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type PersistedFolderUpdateOutput =
   typeof PersistedFolderUpdateOutput.Type;

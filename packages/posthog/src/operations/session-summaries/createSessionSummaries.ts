@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const CreateSessionSummariesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    session_ids: Schema.Array(Schema.String),
+    session_ids: Schema.optional(Schema.Array(Schema.String)),
     focus_area: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -21,7 +21,7 @@ export type CreateSessionSummariesInput =
 // Output Schema
 export const CreateSessionSummariesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    session_ids: Schema.Array(Schema.String),
+    session_ids: Schema.optional(Schema.Array(Schema.String)),
     focus_area: Schema.optional(Schema.String),
   });
 export type CreateSessionSummariesOutput =

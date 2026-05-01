@@ -7,12 +7,12 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const FileSystemShortcutCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    path: Schema.String,
+    id: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -25,12 +25,12 @@ export type FileSystemShortcutCreateInput =
 // Output Schema
 export const FileSystemShortcutCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    path: Schema.String,
+    id: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
   });
 export type FileSystemShortcutCreateOutput =
   typeof FileSystemShortcutCreateOutput.Type;

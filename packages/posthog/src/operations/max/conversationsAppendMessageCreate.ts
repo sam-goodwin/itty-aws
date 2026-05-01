@@ -8,7 +8,7 @@ export const ConversationsAppendMessageCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    content: Schema.String,
+    content: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -21,7 +21,7 @@ export type ConversationsAppendMessageCreateInput =
 // Output Schema
 export const ConversationsAppendMessageCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    content: Schema.String,
+    content: Schema.optional(Schema.String),
   });
 export type ConversationsAppendMessageCreateOutput =
   typeof ConversationsAppendMessageCreateOutput.Type;

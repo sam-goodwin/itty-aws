@@ -20,14 +20,14 @@ export type LiveDebuggerBreakpointsRetrieveInput =
 // Output Schema
 export const LiveDebuggerBreakpointsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
+    id: Schema.optional(Schema.String),
     repository: Schema.optional(Schema.NullOr(Schema.String)),
-    filename: Schema.String,
-    line_number: Schema.Number,
+    filename: Schema.optional(Schema.String),
+    line_number: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
     condition: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type LiveDebuggerBreakpointsRetrieveOutput =
   typeof LiveDebuggerBreakpointsRetrieveOutput.Type;

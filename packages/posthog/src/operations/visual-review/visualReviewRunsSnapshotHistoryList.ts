@@ -23,17 +23,19 @@ export type VisualReviewRunsSnapshotHistoryListInput =
 // Output Schema
 export const VisualReviewRunsSnapshotHistoryListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        run_id: Schema.String,
-        result: Schema.String,
-        branch: Schema.String,
-        commit_sha: Schema.String,
-        created_at: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          run_id: Schema.optional(Schema.String),
+          result: Schema.optional(Schema.String),
+          branch: Schema.optional(Schema.String),
+          commit_sha: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type VisualReviewRunsSnapshotHistoryListOutput =

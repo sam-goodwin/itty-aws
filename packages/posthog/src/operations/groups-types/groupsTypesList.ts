@@ -14,8 +14,8 @@ export type GroupsTypesListInput = typeof GroupsTypesListInput.Type;
 // Output Schema
 export const GroupsTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
-    group_type: Schema.String,
-    group_type_index: Schema.Number,
+    group_type: Schema.optional(Schema.String),
+    group_type_index: Schema.optional(Schema.Number),
     name_singular: Schema.optional(Schema.NullOr(Schema.String)),
     name_plural: Schema.optional(Schema.NullOr(Schema.String)),
     detail_dashboard: Schema.optional(Schema.NullOr(Schema.Number)),

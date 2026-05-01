@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const EvaluationsTestHogCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    source: Schema.String,
+    source: Schema.optional(Schema.String),
     sample_count: Schema.optional(Schema.Number),
     allows_na: Schema.optional(Schema.Boolean),
     conditions: Schema.optional(
@@ -25,16 +25,18 @@ export type EvaluationsTestHogCreateInput =
 // Output Schema
 export const EvaluationsTestHogCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        event_uuid: Schema.String,
-        trace_id: Schema.optional(Schema.NullOr(Schema.String)),
-        input_preview: Schema.String,
-        output_preview: Schema.String,
-        result: Schema.NullOr(Schema.Boolean),
-        reasoning: Schema.NullOr(Schema.String),
-        error: Schema.NullOr(Schema.String),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          event_uuid: Schema.optional(Schema.String),
+          trace_id: Schema.optional(Schema.NullOr(Schema.String)),
+          input_preview: Schema.optional(Schema.String),
+          output_preview: Schema.optional(Schema.String),
+          result: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          reasoning: Schema.optional(Schema.NullOr(Schema.String)),
+          error: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
     ),
     message: Schema.optional(Schema.String),
   });

@@ -35,49 +35,65 @@ export type PropertyDefinitionsListInput =
 // Output Schema
 export const PropertyDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        description: Schema.optional(Schema.NullOr(Schema.String)),
-        tags: Schema.optional(Schema.Array(Schema.Unknown)),
-        is_numerical: Schema.Boolean,
-        updated_at: Schema.String,
-        updated_by: Schema.Struct({
-          id: Schema.Number,
-          uuid: Schema.String,
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.String,
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.NullOr(
-            Schema.Record(Schema.String, Schema.Unknown),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.NullOr(Schema.String)),
+          tags: Schema.optional(Schema.Array(Schema.Unknown)),
+          is_numerical: Schema.optional(Schema.Boolean),
+          updated_at: Schema.optional(Schema.String),
+          updated_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.Number),
+                uuid: Schema.optional(Schema.String),
+                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+                first_name: Schema.optional(Schema.String),
+                last_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+                is_email_verified: Schema.optional(
+                  Schema.NullOr(Schema.Boolean),
+                ),
+                hedgehog_config: Schema.optional(
+                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                role_at_organization: Schema.optional(Schema.Unknown),
+              }),
+            ),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
-        is_seen_on_filtered_events: Schema.NullOr(Schema.Boolean),
-        property_type: Schema.optional(Schema.Unknown),
-        verified: Schema.optional(Schema.Boolean),
-        verified_at: Schema.NullOr(Schema.String),
-        verified_by: Schema.Struct({
-          id: Schema.Number,
-          uuid: Schema.String,
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.String,
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.NullOr(
-            Schema.Record(Schema.String, Schema.Unknown),
+          is_seen_on_filtered_events: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          property_type: Schema.optional(Schema.Unknown),
+          verified: Schema.optional(Schema.Boolean),
+          verified_at: Schema.optional(Schema.NullOr(Schema.String)),
+          verified_by: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.optional(Schema.Number),
+                uuid: Schema.optional(Schema.String),
+                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+                first_name: Schema.optional(Schema.String),
+                last_name: Schema.optional(Schema.String),
+                email: Schema.optional(Schema.String),
+                is_email_verified: Schema.optional(
+                  Schema.NullOr(Schema.Boolean),
+                ),
+                hedgehog_config: Schema.optional(
+                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                role_at_organization: Schema.optional(Schema.Unknown),
+              }),
+            ),
+          ),
+          hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
         }),
-        hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      }),
+      ),
     ),
   });
 export type PropertyDefinitionsListOutput =

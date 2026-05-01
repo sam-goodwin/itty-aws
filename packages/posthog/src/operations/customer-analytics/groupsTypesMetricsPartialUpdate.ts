@@ -28,12 +28,12 @@ export type GroupsTypesMetricsPartialUpdateInput =
 // Output Schema
 export const GroupsTypesMetricsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     format: Schema.optional(Schema.Literals(["numeric", "currency"])),
     interval: Schema.optional(Schema.Number),
     display: Schema.optional(Schema.Literals(["number", "sparkline"])),
-    filters: Schema.Unknown,
+    filters: Schema.optional(Schema.Unknown),
     math: Schema.optional(Schema.Literals(["count", "sum"])),
     math_property: Schema.optional(Schema.NullOr(Schema.String)),
   });

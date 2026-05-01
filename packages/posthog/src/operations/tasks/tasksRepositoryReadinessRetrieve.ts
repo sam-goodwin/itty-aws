@@ -22,61 +22,73 @@ export type TasksRepositoryReadinessRetrieveInput =
 // Output Schema
 export const TasksRepositoryReadinessRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    repository: Schema.String,
-    classification: Schema.String,
-    excluded: Schema.Boolean,
-    coreSuggestions: Schema.Struct({
-      state: Schema.Literals([
-        "needs_setup",
-        "detected",
-        "waiting_for_data",
-        "ready",
-        "not_applicable",
-        "unknown",
-      ]),
-      estimated: Schema.Boolean,
-      reason: Schema.String,
-      evidence: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-    replayInsights: Schema.Struct({
-      state: Schema.Literals([
-        "needs_setup",
-        "detected",
-        "waiting_for_data",
-        "ready",
-        "not_applicable",
-        "unknown",
-      ]),
-      estimated: Schema.Boolean,
-      reason: Schema.String,
-      evidence: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-    errorInsights: Schema.Struct({
-      state: Schema.Literals([
-        "needs_setup",
-        "detected",
-        "waiting_for_data",
-        "ready",
-        "not_applicable",
-        "unknown",
-      ]),
-      estimated: Schema.Boolean,
-      reason: Schema.String,
-      evidence: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-    overall: Schema.String,
-    evidenceTaskCount: Schema.Number,
-    windowDays: Schema.Number,
-    generatedAt: Schema.String,
-    cacheAgeSeconds: Schema.Number,
+    repository: Schema.optional(Schema.String),
+    classification: Schema.optional(Schema.String),
+    excluded: Schema.optional(Schema.Boolean),
+    coreSuggestions: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(
+          Schema.Literals([
+            "needs_setup",
+            "detected",
+            "waiting_for_data",
+            "ready",
+            "not_applicable",
+            "unknown",
+          ]),
+        ),
+        estimated: Schema.optional(Schema.Boolean),
+        reason: Schema.optional(Schema.String),
+        evidence: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      }),
+    ),
+    replayInsights: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(
+          Schema.Literals([
+            "needs_setup",
+            "detected",
+            "waiting_for_data",
+            "ready",
+            "not_applicable",
+            "unknown",
+          ]),
+        ),
+        estimated: Schema.optional(Schema.Boolean),
+        reason: Schema.optional(Schema.String),
+        evidence: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      }),
+    ),
+    errorInsights: Schema.optional(
+      Schema.Struct({
+        state: Schema.optional(
+          Schema.Literals([
+            "needs_setup",
+            "detected",
+            "waiting_for_data",
+            "ready",
+            "not_applicable",
+            "unknown",
+          ]),
+        ),
+        estimated: Schema.optional(Schema.Boolean),
+        reason: Schema.optional(Schema.String),
+        evidence: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      }),
+    ),
+    overall: Schema.optional(Schema.String),
+    evidenceTaskCount: Schema.optional(Schema.Number),
+    windowDays: Schema.optional(Schema.Number),
+    generatedAt: Schema.optional(Schema.String),
+    cacheAgeSeconds: Schema.optional(Schema.Number),
     scan: Schema.optional(
       Schema.Struct({
-        filesScanned: Schema.Number,
-        detectedFilesCount: Schema.Number,
-        eventNameCount: Schema.Number,
-        foundPosthogInit: Schema.Boolean,
-        foundPosthogCapture: Schema.Boolean,
-        foundErrorSignal: Schema.Boolean,
+        filesScanned: Schema.optional(Schema.Number),
+        detectedFilesCount: Schema.optional(Schema.Number),
+        eventNameCount: Schema.optional(Schema.Number),
+        foundPosthogInit: Schema.optional(Schema.Boolean),
+        foundPosthogCapture: Schema.optional(Schema.Boolean),
+        foundErrorSignal: Schema.optional(Schema.Boolean),
       }),
     ),
   });

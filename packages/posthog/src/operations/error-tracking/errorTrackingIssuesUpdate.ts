@@ -19,30 +19,38 @@ export const ErrorTrackingIssuesUpdateInput =
     ),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    first_seen: Schema.String,
-    assignee: Schema.Struct({
-      id: Schema.Unknown,
-      type: Schema.String,
-    }),
-    external_issues: Schema.Array(
+    first_seen: Schema.optional(Schema.String),
+    assignee: Schema.optional(
       Schema.Struct({
-        id: Schema.String,
-        integration: Schema.Struct({
-          id: Schema.Number,
-          kind: Schema.String,
-          display_name: Schema.String,
-        }),
-        integration_id: Schema.Number,
-        config: Schema.Unknown,
-        issue: Schema.String,
-        external_url: Schema.String,
+        id: Schema.optional(Schema.Unknown),
+        type: Schema.optional(Schema.String),
       }),
     ),
-    cohort: Schema.NullOr(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        name: Schema.optional(Schema.String),
-      }),
+    external_issues: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          integration: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              kind: Schema.optional(Schema.String),
+              display_name: Schema.optional(Schema.String),
+            }),
+          ),
+          integration_id: Schema.optional(Schema.Number),
+          config: Schema.optional(Schema.Unknown),
+          issue: Schema.optional(Schema.String),
+          external_url: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    cohort: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   }).pipe(
     T.Http({
@@ -56,7 +64,7 @@ export type ErrorTrackingIssuesUpdateInput =
 // Output Schema
 export const ErrorTrackingIssuesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
+    id: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals([
         "archived",
@@ -68,30 +76,38 @@ export const ErrorTrackingIssuesUpdateOutput =
     ),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    first_seen: Schema.String,
-    assignee: Schema.Struct({
-      id: Schema.Unknown,
-      type: Schema.String,
-    }),
-    external_issues: Schema.Array(
+    first_seen: Schema.optional(Schema.String),
+    assignee: Schema.optional(
       Schema.Struct({
-        id: Schema.String,
-        integration: Schema.Struct({
-          id: Schema.Number,
-          kind: Schema.String,
-          display_name: Schema.String,
-        }),
-        integration_id: Schema.Number,
-        config: Schema.Unknown,
-        issue: Schema.String,
-        external_url: Schema.String,
+        id: Schema.optional(Schema.Unknown),
+        type: Schema.optional(Schema.String),
       }),
     ),
-    cohort: Schema.NullOr(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        name: Schema.optional(Schema.String),
-      }),
+    external_issues: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          integration: Schema.optional(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              kind: Schema.optional(Schema.String),
+              display_name: Schema.optional(Schema.String),
+            }),
+          ),
+          integration_id: Schema.optional(Schema.Number),
+          config: Schema.optional(Schema.Unknown),
+          issue: Schema.optional(Schema.String),
+          external_url: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    cohort: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type ErrorTrackingIssuesUpdateOutput =

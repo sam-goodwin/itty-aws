@@ -20,19 +20,23 @@ export type VisualReviewReposListInput = typeof VisualReviewReposListInput.Type;
 // Output Schema
 export const VisualReviewReposListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        team_id: Schema.Number,
-        repo_external_id: Schema.Number,
-        repo_full_name: Schema.String,
-        baseline_file_paths: Schema.Record(Schema.String, Schema.String),
-        enable_pr_comments: Schema.Boolean,
-        created_at: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          team_id: Schema.optional(Schema.Number),
+          repo_external_id: Schema.optional(Schema.Number),
+          repo_full_name: Schema.optional(Schema.String),
+          baseline_file_paths: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          enable_pr_comments: Schema.optional(Schema.Boolean),
+          created_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type VisualReviewReposListOutput =

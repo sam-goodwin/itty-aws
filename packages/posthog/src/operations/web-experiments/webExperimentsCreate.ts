@@ -7,11 +7,11 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const WebExperimentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.Number,
-    name: Schema.String,
+    id: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    feature_flag_key: Schema.String,
-    variants: Schema.Unknown,
+    feature_flag_key: Schema.optional(Schema.String),
+    variants: Schema.optional(Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
@@ -23,11 +23,11 @@ export type WebExperimentsCreateInput = typeof WebExperimentsCreateInput.Type;
 // Output Schema
 export const WebExperimentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
-    name: Schema.String,
+    id: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    feature_flag_key: Schema.String,
-    variants: Schema.Unknown,
+    feature_flag_key: Schema.optional(Schema.String),
+    variants: Schema.optional(Schema.Unknown),
   });
 export type WebExperimentsCreateOutput = typeof WebExperimentsCreateOutput.Type;
 

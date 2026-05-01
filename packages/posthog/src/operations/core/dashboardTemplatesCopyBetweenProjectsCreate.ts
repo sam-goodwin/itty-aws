@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const DashboardTemplatesCopyBetweenProjectsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    source_template_id: Schema.String,
+    source_template_id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -20,7 +20,7 @@ export type DashboardTemplatesCopyBetweenProjectsCreateInput =
 // Output Schema
 export const DashboardTemplatesCopyBetweenProjectsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
+    id: Schema.optional(Schema.String),
     template_name: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_description: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
@@ -28,22 +28,26 @@ export const DashboardTemplatesCopyBetweenProjectsCreateOutput =
     tiles: Schema.optional(Schema.NullOr(Schema.Unknown)),
     variables: Schema.optional(Schema.NullOr(Schema.Unknown)),
     deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    created_at: Schema.NullOr(Schema.String),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
+    ),
     image_url: Schema.optional(Schema.NullOr(Schema.String)),
-    team_id: Schema.NullOr(Schema.Number),
+    team_id: Schema.optional(Schema.NullOr(Schema.Number)),
     scope: Schema.optional(Schema.Unknown),
     availability_contexts: Schema.optional(
       Schema.NullOr(Schema.Array(Schema.String)),

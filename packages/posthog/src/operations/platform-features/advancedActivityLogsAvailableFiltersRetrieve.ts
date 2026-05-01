@@ -19,13 +19,25 @@ export type AdvancedActivityLogsAvailableFiltersRetrieveInput =
 // Output Schema
 export const AdvancedActivityLogsAvailableFiltersRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    static_filters: Schema.Struct({
-      users: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      scopes: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      activities: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      clients: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-    detail_fields: Schema.Record(Schema.String, Schema.Unknown),
+    static_filters: Schema.optional(
+      Schema.Struct({
+        users: Schema.optional(
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        scopes: Schema.optional(
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        activities: Schema.optional(
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        clients: Schema.optional(
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+      }),
+    ),
+    detail_fields: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
   });
 export type AdvancedActivityLogsAvailableFiltersRetrieveOutput =
   typeof AdvancedActivityLogsAvailableFiltersRetrieveOutput.Type;

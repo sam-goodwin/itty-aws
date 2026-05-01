@@ -7,8 +7,10 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const MaxToolsCreateAndQueryInsightCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    query: Schema.String,
-    insight_type: Schema.Literals(["trends", "funnel", "retention", "sql"]),
+    query: Schema.optional(Schema.String),
+    insight_type: Schema.optional(
+      Schema.Literals(["trends", "funnel", "retention", "sql"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",

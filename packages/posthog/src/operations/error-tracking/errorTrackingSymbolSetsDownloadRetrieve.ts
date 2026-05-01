@@ -20,7 +20,7 @@ export type ErrorTrackingSymbolSetsDownloadRetrieveInput =
 // Output Schema
 export const ErrorTrackingSymbolSetsDownloadRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    url: Schema.String,
+    url: Schema.optional(Schema.String),
   });
 export type ErrorTrackingSymbolSetsDownloadRetrieveOutput =
   typeof ErrorTrackingSymbolSetsDownloadRetrieveOutput.Type;

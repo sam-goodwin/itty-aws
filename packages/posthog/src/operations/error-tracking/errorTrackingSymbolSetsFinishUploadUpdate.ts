@@ -8,13 +8,15 @@ export const ErrorTrackingSymbolSetsFinishUploadUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    ref: Schema.String,
-    team_id: Schema.Number,
-    created_at: Schema.String,
+    ref: Schema.optional(Schema.String),
+    team_id: Schema.optional(Schema.Number),
+    created_at: Schema.optional(Schema.String),
     last_used: Schema.optional(Schema.NullOr(Schema.String)),
     storage_ptr: Schema.optional(Schema.NullOr(Schema.String)),
     failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
-    release: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    release: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",

@@ -8,7 +8,7 @@ import { SensitiveString } from "../../sensitive.ts";
 export const McpServerInstallationsInstallTemplateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    template_id: Schema.String,
+    template_id: Schema.optional(Schema.String),
     api_key: Schema.optional(SensitiveString),
     install_source: Schema.optional(
       Schema.Literals(["posthog", "posthog-code"]),
@@ -26,7 +26,7 @@ export type McpServerInstallationsInstallTemplateCreateInput =
 // Output Schema
 export const McpServerInstallationsInstallTemplateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    redirect_url: Schema.String,
+    redirect_url: Schema.optional(Schema.String),
   });
 export type McpServerInstallationsInstallTemplateCreateOutput =
   typeof McpServerInstallationsInstallTemplateCreateOutput.Type;

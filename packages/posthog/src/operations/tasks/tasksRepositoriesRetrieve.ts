@@ -19,7 +19,7 @@ export type TasksRepositoriesRetrieveInput =
 // Output Schema
 export const TasksRepositoriesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    repositories: Schema.Array(Schema.String),
+    repositories: Schema.optional(Schema.Array(Schema.String)),
   });
 export type TasksRepositoriesRetrieveOutput =
   typeof TasksRepositoriesRetrieveOutput.Type;

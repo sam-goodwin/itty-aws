@@ -19,21 +19,25 @@ export type HealthIssuesListInput = typeof HealthIssuesListInput.Type;
 // Output Schema
 export const HealthIssuesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        kind: Schema.String,
-        severity: Schema.Literals(["critical", "warning", "info"]),
-        status: Schema.Literals(["active", "resolved"]),
-        dismissed: Schema.optional(Schema.Boolean),
-        payload: Schema.Unknown,
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        resolved_at: Schema.NullOr(Schema.String),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          kind: Schema.optional(Schema.String),
+          severity: Schema.optional(
+            Schema.Literals(["critical", "warning", "info"]),
+          ),
+          status: Schema.optional(Schema.Literals(["active", "resolved"])),
+          dismissed: Schema.optional(Schema.Boolean),
+          payload: Schema.optional(Schema.Unknown),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+          resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
     ),
   },
 );

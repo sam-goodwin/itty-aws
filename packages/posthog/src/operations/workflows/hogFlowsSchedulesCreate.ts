@@ -15,7 +15,7 @@ export const HogFlowsSchedulesCreateInput =
     updated_at: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
-    version: Schema.Number,
+    version: Schema.optional(Schema.Number),
     status: Schema.optional(Schema.Literals(["draft", "active", "archived"])),
     trigger: Schema.optional(Schema.Unknown),
     trigger_masking: Schema.optional(
@@ -23,7 +23,7 @@ export const HogFlowsSchedulesCreateInput =
         Schema.Struct({
           ttl: Schema.optional(Schema.NullOr(Schema.Number)),
           threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-          hash: Schema.String,
+          hash: Schema.optional(Schema.String),
           bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
         }),
       ),
@@ -38,53 +38,55 @@ export const HogFlowsSchedulesCreateInput =
       ]),
     ),
     edges: Schema.optional(Schema.Unknown),
-    actions: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        description: Schema.optional(Schema.String),
-        on_error: Schema.optional(Schema.Unknown),
-        created_at: Schema.optional(Schema.Number),
-        updated_at: Schema.optional(Schema.Number),
-        filters: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              source: Schema.optional(
-                Schema.Literals([
-                  "events",
-                  "person-updates",
-                  "data-warehouse-table",
-                ]),
-              ),
-              actions: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              events: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              data_warehouse: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              properties: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              transpiled: Schema.optional(Schema.Unknown),
-              filter_test_accounts: Schema.optional(Schema.Boolean),
-              bytecode_error: Schema.optional(Schema.String),
-            }),
+    actions: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          on_error: Schema.optional(Schema.Unknown),
+          created_at: Schema.optional(Schema.Number),
+          updated_at: Schema.optional(Schema.Number),
+          filters: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                source: Schema.optional(
+                  Schema.Literals([
+                    "events",
+                    "person-updates",
+                    "data-warehouse-table",
+                  ]),
+                ),
+                actions: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                events: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                data_warehouse: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                properties: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                transpiled: Schema.optional(Schema.Unknown),
+                filter_test_accounts: Schema.optional(Schema.Boolean),
+                bytecode_error: Schema.optional(Schema.String),
+              }),
+            ),
           ),
-        ),
-        type: Schema.String,
-        config: Schema.Unknown,
-        output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+          type: Schema.optional(Schema.String),
+          config: Schema.optional(Schema.Unknown),
+          output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
-    abort_action: Schema.NullOr(Schema.String),
+    abort_action: Schema.optional(Schema.NullOr(Schema.String)),
     variables: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.String)),
     ),
-    billable_action_types: Schema.NullOr(Schema.Unknown),
+    billable_action_types: Schema.optional(Schema.NullOr(Schema.Unknown)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -97,21 +99,25 @@ export type HogFlowsSchedulesCreateInput =
 // Output Schema
 export const HogFlowsSchedulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        rrule: Schema.String,
-        starts_at: Schema.String,
-        timezone: Schema.optional(Schema.String),
-        variables: Schema.optional(Schema.Unknown),
-        status: Schema.Literals(["active", "paused", "completed"]),
-        next_run_at: Schema.NullOr(Schema.String),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          rrule: Schema.optional(Schema.String),
+          starts_at: Schema.optional(Schema.String),
+          timezone: Schema.optional(Schema.String),
+          variables: Schema.optional(Schema.Unknown),
+          status: Schema.optional(
+            Schema.Literals(["active", "paused", "completed"]),
+          ),
+          next_run_at: Schema.optional(Schema.NullOr(Schema.String)),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type HogFlowsSchedulesCreateOutput =

@@ -8,11 +8,11 @@ export const FileSystemShortcutUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    path: Schema.String,
+    path: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -25,12 +25,12 @@ export type FileSystemShortcutUpdateInput =
 // Output Schema
 export const FileSystemShortcutUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    path: Schema.String,
+    id: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
   });
 export type FileSystemShortcutUpdateOutput =
   typeof FileSystemShortcutUpdateOutput.Type;

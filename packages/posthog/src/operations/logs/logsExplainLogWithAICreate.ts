@@ -7,8 +7,8 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LogsExplainLogWithAICreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    uuid: Schema.String,
-    timestamp: Schema.String,
+    uuid: Schema.optional(Schema.String),
+    timestamp: Schema.optional(Schema.String),
     force_refresh: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -22,8 +22,8 @@ export type LogsExplainLogWithAICreateInput =
 // Output Schema
 export const LogsExplainLogWithAICreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uuid: Schema.String,
-    timestamp: Schema.String,
+    uuid: Schema.optional(Schema.String),
+    timestamp: Schema.optional(Schema.String),
     force_refresh: Schema.optional(Schema.Boolean),
   });
 export type LogsExplainLogWithAICreateOutput =

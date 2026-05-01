@@ -10,30 +10,34 @@ export const HogFlowsBatchJobsCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
-    version: Schema.Number,
+    version: Schema.optional(Schema.Number),
     status: Schema.optional(Schema.Literals(["draft", "active", "archived"])),
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    updated_at: Schema.String,
+    ),
+    updated_at: Schema.optional(Schema.String),
     trigger: Schema.optional(Schema.Unknown),
     trigger_masking: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
           ttl: Schema.optional(Schema.NullOr(Schema.Number)),
           threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-          hash: Schema.String,
+          hash: Schema.optional(Schema.String),
           bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
         }),
       ),
@@ -48,53 +52,55 @@ export const HogFlowsBatchJobsCreateInput =
       ]),
     ),
     edges: Schema.optional(Schema.Unknown),
-    actions: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        description: Schema.optional(Schema.String),
-        on_error: Schema.optional(Schema.Unknown),
-        created_at: Schema.optional(Schema.Number),
-        updated_at: Schema.optional(Schema.Number),
-        filters: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              source: Schema.optional(
-                Schema.Literals([
-                  "events",
-                  "person-updates",
-                  "data-warehouse-table",
-                ]),
-              ),
-              actions: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              events: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              data_warehouse: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              properties: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              transpiled: Schema.optional(Schema.Unknown),
-              filter_test_accounts: Schema.optional(Schema.Boolean),
-              bytecode_error: Schema.optional(Schema.String),
-            }),
+    actions: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          on_error: Schema.optional(Schema.Unknown),
+          created_at: Schema.optional(Schema.Number),
+          updated_at: Schema.optional(Schema.Number),
+          filters: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                source: Schema.optional(
+                  Schema.Literals([
+                    "events",
+                    "person-updates",
+                    "data-warehouse-table",
+                  ]),
+                ),
+                actions: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                events: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                data_warehouse: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                properties: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                transpiled: Schema.optional(Schema.Unknown),
+                filter_test_accounts: Schema.optional(Schema.Boolean),
+                bytecode_error: Schema.optional(Schema.String),
+              }),
+            ),
           ),
-        ),
-        type: Schema.String,
-        config: Schema.Unknown,
-        output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+          type: Schema.optional(Schema.String),
+          config: Schema.optional(Schema.Unknown),
+          output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
-    abort_action: Schema.NullOr(Schema.String),
+    abort_action: Schema.optional(Schema.NullOr(Schema.String)),
     variables: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.String)),
     ),
-    billable_action_types: Schema.NullOr(Schema.Unknown),
+    billable_action_types: Schema.optional(Schema.NullOr(Schema.Unknown)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -107,33 +113,37 @@ export type HogFlowsBatchJobsCreateInput =
 // Output Schema
 export const HogFlowsBatchJobsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
+    id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
-    version: Schema.Number,
+    version: Schema.optional(Schema.Number),
     status: Schema.optional(Schema.Literals(["draft", "active", "archived"])),
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    updated_at: Schema.String,
+    ),
+    updated_at: Schema.optional(Schema.String),
     trigger: Schema.optional(Schema.Unknown),
     trigger_masking: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
           ttl: Schema.optional(Schema.NullOr(Schema.Number)),
           threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-          hash: Schema.String,
+          hash: Schema.optional(Schema.String),
           bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
         }),
       ),
@@ -148,53 +158,55 @@ export const HogFlowsBatchJobsCreateOutput =
       ]),
     ),
     edges: Schema.optional(Schema.Unknown),
-    actions: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        description: Schema.optional(Schema.String),
-        on_error: Schema.optional(Schema.Unknown),
-        created_at: Schema.optional(Schema.Number),
-        updated_at: Schema.optional(Schema.Number),
-        filters: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              source: Schema.optional(
-                Schema.Literals([
-                  "events",
-                  "person-updates",
-                  "data-warehouse-table",
-                ]),
-              ),
-              actions: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              events: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              data_warehouse: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              properties: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              transpiled: Schema.optional(Schema.Unknown),
-              filter_test_accounts: Schema.optional(Schema.Boolean),
-              bytecode_error: Schema.optional(Schema.String),
-            }),
+    actions: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          on_error: Schema.optional(Schema.Unknown),
+          created_at: Schema.optional(Schema.Number),
+          updated_at: Schema.optional(Schema.Number),
+          filters: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                source: Schema.optional(
+                  Schema.Literals([
+                    "events",
+                    "person-updates",
+                    "data-warehouse-table",
+                  ]),
+                ),
+                actions: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                events: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                data_warehouse: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                properties: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                transpiled: Schema.optional(Schema.Unknown),
+                filter_test_accounts: Schema.optional(Schema.Boolean),
+                bytecode_error: Schema.optional(Schema.String),
+              }),
+            ),
           ),
-        ),
-        type: Schema.String,
-        config: Schema.Unknown,
-        output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+          type: Schema.optional(Schema.String),
+          config: Schema.optional(Schema.Unknown),
+          output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
-    abort_action: Schema.NullOr(Schema.String),
+    abort_action: Schema.optional(Schema.NullOr(Schema.String)),
     variables: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.String)),
     ),
-    billable_action_types: Schema.NullOr(Schema.Unknown),
+    billable_action_types: Schema.optional(Schema.NullOr(Schema.Unknown)),
   });
 export type HogFlowsBatchJobsCreateOutput =
   typeof HogFlowsBatchJobsCreateOutput.Type;

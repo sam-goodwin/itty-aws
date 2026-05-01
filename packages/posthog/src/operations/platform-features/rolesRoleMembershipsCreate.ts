@@ -8,45 +8,55 @@ export const RolesRoleMembershipsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     role_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    organization_member: Schema.Struct({
-      id: Schema.String,
-      user: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+    id: Schema.optional(Schema.String),
+    organization_member: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        user: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
+          ),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        level: Schema.optional(Schema.Literals([1, 8, 15])),
+        joined_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        is_2fa_enabled: Schema.optional(Schema.Boolean),
+        has_social_auth: Schema.optional(Schema.Boolean),
+        last_login: Schema.optional(Schema.String),
       }),
-      level: Schema.optional(Schema.Literals([1, 8, 15])),
-      joined_at: Schema.String,
-      updated_at: Schema.String,
-      is_2fa_enabled: Schema.Boolean,
-      has_social_auth: Schema.Boolean,
-      last_login: Schema.String,
-    }),
-    user: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    user: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    joined_at: Schema.String,
-    updated_at: Schema.String,
-    user_uuid: Schema.String,
+    ),
+    joined_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    user_uuid: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -59,46 +69,56 @@ export type RolesRoleMembershipsCreateInput =
 // Output Schema
 export const RolesRoleMembershipsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    role_id: Schema.String,
-    organization_member: Schema.Struct({
-      id: Schema.String,
-      user: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+    id: Schema.optional(Schema.String),
+    role_id: Schema.optional(Schema.String),
+    organization_member: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        user: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.Number),
+              uuid: Schema.optional(Schema.String),
+              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+              first_name: Schema.optional(Schema.String),
+              last_name: Schema.optional(Schema.String),
+              email: Schema.optional(Schema.String),
+              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+              hedgehog_config: Schema.optional(
+                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              role_at_organization: Schema.optional(Schema.Unknown),
+            }),
+          ),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        level: Schema.optional(Schema.Literals([1, 8, 15])),
+        joined_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        is_2fa_enabled: Schema.optional(Schema.Boolean),
+        has_social_auth: Schema.optional(Schema.Boolean),
+        last_login: Schema.optional(Schema.String),
       }),
-      level: Schema.optional(Schema.Literals([1, 8, 15])),
-      joined_at: Schema.String,
-      updated_at: Schema.String,
-      is_2fa_enabled: Schema.Boolean,
-      has_social_auth: Schema.Boolean,
-      last_login: Schema.String,
-    }),
-    user: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    user: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    joined_at: Schema.String,
-    updated_at: Schema.String,
-    user_uuid: Schema.String,
+    ),
+    joined_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    user_uuid: Schema.optional(Schema.String),
   });
 export type RolesRoleMembershipsCreateOutput =
   typeof RolesRoleMembershipsCreateOutput.Type;

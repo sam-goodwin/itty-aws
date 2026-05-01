@@ -21,13 +21,15 @@ export type LogsValuesRetrieveInput = typeof LogsValuesRetrieveInput.Type;
 // Output Schema
 export const LogsValuesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+        }),
+      ),
     ),
-    refreshing: Schema.Boolean,
+    refreshing: Schema.optional(Schema.Boolean),
   });
 export type LogsValuesRetrieveOutput = typeof LogsValuesRetrieveOutput.Type;
 

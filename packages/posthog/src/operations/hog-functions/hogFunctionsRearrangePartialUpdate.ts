@@ -21,49 +21,55 @@ export type HogFunctionsRearrangePartialUpdateInput =
 export const HogFunctionsRearrangePartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
-      id: Schema.String,
+      id: Schema.optional(Schema.String),
       type: Schema.optional(Schema.Unknown),
       name: Schema.optional(Schema.NullOr(Schema.String)),
       description: Schema.optional(Schema.String),
-      created_at: Schema.String,
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
+      created_at: Schema.optional(Schema.String),
+      created_by: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            id: Schema.optional(Schema.Number),
+            uuid: Schema.optional(Schema.String),
+            distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+            first_name: Schema.optional(Schema.String),
+            last_name: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+            is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            hedgehog_config: Schema.optional(
+              Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+            ),
+            role_at_organization: Schema.optional(Schema.Unknown),
+          }),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
-      }),
-      updated_at: Schema.String,
+      ),
+      updated_at: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
       deleted: Schema.optional(Schema.Boolean),
       hog: Schema.optional(Schema.String),
-      bytecode: Schema.NullOr(Schema.Unknown),
-      transpiled: Schema.NullOr(Schema.String),
+      bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+      transpiled: Schema.optional(Schema.NullOr(Schema.String)),
       inputs_schema: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            type: Schema.Literals([
-              "string",
-              "number",
-              "boolean",
-              "dictionary",
-              "choice",
-              "json",
-              "integration",
-              "integration_field",
-              "email",
-              "native_email",
-              "posthog_assignee",
-              "posthog_ticket_tags",
-              "posthog_business_hours",
-            ]),
-            key: Schema.String,
+            type: Schema.optional(
+              Schema.Literals([
+                "string",
+                "number",
+                "boolean",
+                "dictionary",
+                "choice",
+                "json",
+                "integration",
+                "integration_field",
+                "email",
+                "native_email",
+                "posthog_assignee",
+                "posthog_ticket_tags",
+                "posthog_business_hours",
+              ]),
+            ),
+            key: Schema.optional(Schema.String),
             label: Schema.optional(Schema.String),
             choices: Schema.optional(
               Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -88,9 +94,9 @@ export const HogFunctionsRearrangePartialUpdateOutput =
           Schema.Struct({
             value: Schema.optional(Schema.Unknown),
             templating: Schema.optional(Schema.Literals(["hog", "liquid"])),
-            bytecode: Schema.Array(Schema.Unknown),
-            order: Schema.Number,
-            transpiled: Schema.Unknown,
+            bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
+            order: Schema.optional(Schema.Number),
+            transpiled: Schema.optional(Schema.Unknown),
           }),
         ),
       ),
@@ -124,9 +130,9 @@ export const HogFunctionsRearrangePartialUpdateOutput =
       masking: Schema.optional(
         Schema.NullOr(
           Schema.Struct({
-            ttl: Schema.Number,
+            ttl: Schema.optional(Schema.Number),
             threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-            hash: Schema.String,
+            hash: Schema.optional(Schema.String),
             bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
           }),
         ),
@@ -139,22 +145,24 @@ export const HogFunctionsRearrangePartialUpdateOutput =
               inputs_schema: Schema.optional(
                 Schema.Array(
                   Schema.Struct({
-                    type: Schema.Literals([
-                      "string",
-                      "number",
-                      "boolean",
-                      "dictionary",
-                      "choice",
-                      "json",
-                      "integration",
-                      "integration_field",
-                      "email",
-                      "native_email",
-                      "posthog_assignee",
-                      "posthog_ticket_tags",
-                      "posthog_business_hours",
-                    ]),
-                    key: Schema.String,
+                    type: Schema.optional(
+                      Schema.Literals([
+                        "string",
+                        "number",
+                        "boolean",
+                        "dictionary",
+                        "choice",
+                        "json",
+                        "integration",
+                        "integration_field",
+                        "email",
+                        "native_email",
+                        "posthog_assignee",
+                        "posthog_ticket_tags",
+                        "posthog_business_hours",
+                      ]),
+                    ),
+                    key: Schema.optional(Schema.String),
                     label: Schema.optional(Schema.String),
                     choices: Schema.optional(
                       Schema.Array(
@@ -183,9 +191,9 @@ export const HogFunctionsRearrangePartialUpdateOutput =
                     templating: Schema.optional(
                       Schema.Literals(["hog", "liquid"]),
                     ),
-                    bytecode: Schema.Array(Schema.Unknown),
-                    order: Schema.Number,
-                    transpiled: Schema.Unknown,
+                    bytecode: Schema.optional(Schema.Array(Schema.Unknown)),
+                    order: Schema.optional(Schema.Number),
+                    transpiled: Schema.optional(Schema.Unknown),
                   }),
                 ),
               ),
@@ -221,49 +229,53 @@ export const HogFunctionsRearrangePartialUpdateOutput =
         ),
       ),
       icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-      template: Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        description: Schema.optional(Schema.NullOr(Schema.String)),
-        code: Schema.String,
-        code_language: Schema.optional(Schema.String),
-        inputs_schema: Schema.Unknown,
-        type: Schema.String,
-        status: Schema.optional(Schema.String),
-        category: Schema.optional(Schema.Unknown),
-        free: Schema.optional(Schema.Boolean),
-        icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-        filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        mapping_templates: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                include_by_default: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                use_all_events_by_default: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              }),
+      template: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.NullOr(Schema.String)),
+          code: Schema.optional(Schema.String),
+          code_language: Schema.optional(Schema.String),
+          inputs_schema: Schema.optional(Schema.Unknown),
+          type: Schema.optional(Schema.String),
+          status: Schema.optional(Schema.String),
+          category: Schema.optional(Schema.Unknown),
+          free: Schema.optional(Schema.Boolean),
+          icon_url: Schema.optional(Schema.NullOr(Schema.String)),
+          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          mapping_templates: Schema.optional(
+            Schema.NullOr(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  include_by_default: Schema.optional(
+                    Schema.NullOr(Schema.Boolean),
+                  ),
+                  use_all_events_by_default: Schema.optional(
+                    Schema.NullOr(Schema.Boolean),
+                  ),
+                  filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                }),
+              ),
             ),
           ),
-        ),
-      }),
-      template_id: Schema.optional(Schema.NullOr(Schema.String)),
-      status: Schema.NullOr(
-        Schema.Struct({
-          state: Schema.Literals([0, 1, 2, 3, 11, 12]),
-          tokens: Schema.Number,
         }),
+      ),
+      template_id: Schema.optional(Schema.NullOr(Schema.String)),
+      status: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            state: Schema.optional(Schema.Literals([0, 1, 2, 3, 11, 12])),
+            tokens: Schema.optional(Schema.Number),
+          }),
+        ),
       ),
       execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
       _create_in_folder: Schema.optional(Schema.String),
-      batch_export_id: Schema.NullOr(Schema.String),
+      batch_export_id: Schema.optional(Schema.NullOr(Schema.String)),
     }),
   );
 export type HogFunctionsRearrangePartialUpdateOutput =

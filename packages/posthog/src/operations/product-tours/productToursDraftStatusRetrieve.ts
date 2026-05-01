@@ -20,8 +20,8 @@ export type ProductToursDraftStatusRetrieveInput =
 // Output Schema
 export const ProductToursDraftStatusRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updated_at: Schema.String,
-    has_draft: Schema.Boolean,
+    updated_at: Schema.optional(Schema.String),
+    has_draft: Schema.optional(Schema.Boolean),
   });
 export type ProductToursDraftStatusRetrieveOutput =
   typeof ProductToursDraftStatusRetrieveOutput.Type;

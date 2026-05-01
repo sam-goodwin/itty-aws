@@ -7,11 +7,11 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const ObjectMediaPreviewsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.NullOr(Schema.String),
-    media_url: Schema.String,
-    media_type: Schema.String,
+    id: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+    media_url: Schema.optional(Schema.String),
+    media_type: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Unknown),
     uploaded_media_id: Schema.optional(Schema.NullOr(Schema.String)),
     exported_asset_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -28,11 +28,11 @@ export type ObjectMediaPreviewsCreateInput =
 // Output Schema
 export const ObjectMediaPreviewsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.NullOr(Schema.String),
-    media_url: Schema.String,
-    media_type: Schema.String,
+    id: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+    media_url: Schema.optional(Schema.String),
+    media_type: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Unknown),
     uploaded_media_id: Schema.optional(Schema.NullOr(Schema.String)),
     exported_asset_id: Schema.optional(Schema.NullOr(Schema.String)),

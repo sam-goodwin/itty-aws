@@ -20,13 +20,13 @@ export type HogFunctionTemplatesRetrieveInput =
 // Output Schema
 export const HogFunctionTemplatesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    code: Schema.String,
+    code: Schema.optional(Schema.String),
     code_language: Schema.optional(Schema.String),
-    inputs_schema: Schema.Unknown,
-    type: Schema.String,
+    inputs_schema: Schema.optional(Schema.Unknown),
+    type: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     category: Schema.optional(Schema.Unknown),
     free: Schema.optional(Schema.Boolean),
@@ -37,7 +37,7 @@ export const HogFunctionTemplatesRetrieveOutput =
       Schema.NullOr(
         Schema.Array(
           Schema.Struct({
-            name: Schema.String,
+            name: Schema.optional(Schema.String),
             include_by_default: Schema.optional(Schema.NullOr(Schema.Boolean)),
             use_all_events_by_default: Schema.optional(
               Schema.NullOr(Schema.Boolean),

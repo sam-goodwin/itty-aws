@@ -22,9 +22,9 @@ export type ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateInput =
 // Output Schema
 export const ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    snooze_duration_minutes: Schema.Number,
-    multiplier: Schema.Number,
-    threshold: Schema.Number,
+    snooze_duration_minutes: Schema.optional(Schema.Number),
+    multiplier: Schema.optional(Schema.Number),
+    threshold: Schema.optional(Schema.Number),
   });
 export type ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput =
   typeof ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateOutput.Type;

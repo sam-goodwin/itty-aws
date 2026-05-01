@@ -21,21 +21,23 @@ export type ProjectSecretApiKeysListInput =
 // Output Schema
 export const ProjectSecretApiKeysListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        label: Schema.String,
-        value: Schema.String,
-        mask_value: Schema.NullOr(Schema.String),
-        created_at: Schema.String,
-        created_by: Schema.NullOr(Schema.Number),
-        last_used_at: Schema.NullOr(Schema.String),
-        last_rolled_at: Schema.NullOr(Schema.String),
-        scopes: Schema.Array(Schema.String),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+          mask_value: Schema.optional(Schema.NullOr(Schema.String)),
+          created_at: Schema.optional(Schema.String),
+          created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+          last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+          last_rolled_at: Schema.optional(Schema.NullOr(Schema.String)),
+          scopes: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
     ),
   });
 export type ProjectSecretApiKeysListOutput =

@@ -8,9 +8,9 @@ export const ActionsBulkUpdateTagsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
-    ids: Schema.Array(Schema.Number),
-    action: Schema.Literals(["add", "remove", "set"]),
-    tags: Schema.Array(Schema.String),
+    ids: Schema.optional(Schema.Array(Schema.Number)),
+    action: Schema.optional(Schema.Literals(["add", "remove", "set"])),
+    tags: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -23,17 +23,21 @@ export type ActionsBulkUpdateTagsCreateInput =
 // Output Schema
 export const ActionsBulkUpdateTagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updated: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        tags: Schema.Array(Schema.String),
-      }),
+    updated: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          tags: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
     ),
-    skipped: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        reason: Schema.String,
-      }),
+    skipped: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          reason: Schema.optional(Schema.String),
+        }),
+      ),
     ),
   });
 export type ActionsBulkUpdateTagsCreateOutput =

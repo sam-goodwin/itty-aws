@@ -14,25 +14,27 @@ export type ExportsRetrieveInput = typeof ExportsRetrieveInput.Type;
 
 // Output Schema
 export const ExportsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.Number,
+  id: Schema.optional(Schema.Number),
   dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
   insight: Schema.optional(Schema.NullOr(Schema.Number)),
-  export_format: Schema.Literals([
-    "image/png",
-    "application/pdf",
-    "text/csv",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "video/webm",
-    "video/mp4",
-    "image/gif",
-    "application/json",
-  ]),
-  created_at: Schema.String,
-  has_content: Schema.Boolean,
+  export_format: Schema.optional(
+    Schema.Literals([
+      "image/png",
+      "application/pdf",
+      "text/csv",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "video/webm",
+      "video/mp4",
+      "image/gif",
+      "application/json",
+    ]),
+  ),
+  created_at: Schema.optional(Schema.String),
+  has_content: Schema.optional(Schema.Boolean),
   export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  filename: Schema.String,
-  expires_after: Schema.NullOr(Schema.String),
-  exception: Schema.NullOr(Schema.String),
+  filename: Schema.optional(Schema.String),
+  expires_after: Schema.optional(Schema.NullOr(Schema.String)),
+  exception: Schema.optional(Schema.NullOr(Schema.String)),
 });
 export type ExportsRetrieveOutput = typeof ExportsRetrieveOutput.Type;
 

@@ -20,17 +20,19 @@ export type WebExperimentsListInput = typeof WebExperimentsListInput.Type;
 // Output Schema
 export const WebExperimentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        name: Schema.String,
-        created_at: Schema.optional(Schema.String),
-        feature_flag_key: Schema.String,
-        variants: Schema.Unknown,
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          name: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+          feature_flag_key: Schema.optional(Schema.String),
+          variants: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
   });
 export type WebExperimentsListOutput = typeof WebExperimentsListOutput.Type;

@@ -7,15 +7,19 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const SubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.Number,
+    id: Schema.optional(Schema.Number),
     dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
     insight: Schema.optional(Schema.NullOr(Schema.Number)),
-    insight_short_id: Schema.NullOr(Schema.String),
-    resource_name: Schema.NullOr(Schema.String),
+    insight_short_id: Schema.optional(Schema.NullOr(Schema.String)),
+    resource_name: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_export_insights: Schema.optional(Schema.Array(Schema.Number)),
-    target_type: Schema.Literals(["email", "slack", "webhook"]),
-    target_value: Schema.String,
-    frequency: Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+    target_type: Schema.optional(
+      Schema.Literals(["email", "slack", "webhook"]),
+    ),
+    target_value: Schema.optional(Schema.String),
+    frequency: Schema.optional(
+      Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+    ),
     interval: Schema.optional(Schema.Number),
     byweekday: Schema.optional(
       Schema.NullOr(
@@ -34,26 +38,30 @@ export const SubscriptionsCreateInput =
     ),
     bysetpos: Schema.optional(Schema.NullOr(Schema.Number)),
     count: Schema.optional(Schema.NullOr(Schema.Number)),
-    start_date: Schema.String,
+    start_date: Schema.optional(Schema.String),
     until_date: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
+    ),
     deleted: Schema.optional(Schema.Boolean),
     title: Schema.optional(Schema.NullOr(Schema.String)),
-    summary: Schema.String,
-    next_delivery_date: Schema.NullOr(Schema.String),
+    summary: Schema.optional(Schema.String),
+    next_delivery_date: Schema.optional(Schema.NullOr(Schema.String)),
     integration_id: Schema.optional(Schema.NullOr(Schema.Number)),
     invite_message: Schema.optional(Schema.NullOr(Schema.String)),
     summary_enabled: Schema.optional(Schema.Boolean),
@@ -69,15 +77,19 @@ export type SubscriptionsCreateInput = typeof SubscriptionsCreateInput.Type;
 // Output Schema
 export const SubscriptionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
+    id: Schema.optional(Schema.Number),
     dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
     insight: Schema.optional(Schema.NullOr(Schema.Number)),
-    insight_short_id: Schema.NullOr(Schema.String),
-    resource_name: Schema.NullOr(Schema.String),
+    insight_short_id: Schema.optional(Schema.NullOr(Schema.String)),
+    resource_name: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_export_insights: Schema.optional(Schema.Array(Schema.Number)),
-    target_type: Schema.Literals(["email", "slack", "webhook"]),
-    target_value: Schema.String,
-    frequency: Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+    target_type: Schema.optional(
+      Schema.Literals(["email", "slack", "webhook"]),
+    ),
+    target_value: Schema.optional(Schema.String),
+    frequency: Schema.optional(
+      Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+    ),
     interval: Schema.optional(Schema.Number),
     byweekday: Schema.optional(
       Schema.NullOr(
@@ -96,26 +108,30 @@ export const SubscriptionsCreateOutput =
     ),
     bysetpos: Schema.optional(Schema.NullOr(Schema.Number)),
     count: Schema.optional(Schema.NullOr(Schema.Number)),
-    start_date: Schema.String,
+    start_date: Schema.optional(Schema.String),
     until_date: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
+    ),
     deleted: Schema.optional(Schema.Boolean),
     title: Schema.optional(Schema.NullOr(Schema.String)),
-    summary: Schema.String,
-    next_delivery_date: Schema.NullOr(Schema.String),
+    summary: Schema.optional(Schema.String),
+    next_delivery_date: Schema.optional(Schema.NullOr(Schema.String)),
     integration_id: Schema.optional(Schema.NullOr(Schema.Number)),
     invite_message: Schema.optional(Schema.NullOr(Schema.String)),
     summary_enabled: Schema.optional(Schema.Boolean),

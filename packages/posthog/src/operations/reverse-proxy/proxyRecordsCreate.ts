@@ -7,22 +7,24 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const ProxyRecordsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    domain: Schema.String,
-    target_cname: Schema.String,
-    status: Schema.Literals([
-      "waiting",
-      "issuing",
-      "valid",
-      "warning",
-      "erroring",
-      "deleting",
-      "timed_out",
-    ]),
-    message: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    created_by: Schema.Number,
+    id: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    target_cname: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Literals([
+        "waiting",
+        "issuing",
+        "valid",
+        "warning",
+        "erroring",
+        "deleting",
+        "timed_out",
+      ]),
+    ),
+    message: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -34,22 +36,24 @@ export type ProxyRecordsCreateInput = typeof ProxyRecordsCreateInput.Type;
 // Output Schema
 export const ProxyRecordsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    domain: Schema.String,
-    target_cname: Schema.String,
-    status: Schema.Literals([
-      "waiting",
-      "issuing",
-      "valid",
-      "warning",
-      "erroring",
-      "deleting",
-      "timed_out",
-    ]),
-    message: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    created_by: Schema.Number,
+    id: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    target_cname: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Literals([
+        "waiting",
+        "issuing",
+        "valid",
+        "warning",
+        "erroring",
+        "deleting",
+        "timed_out",
+      ]),
+    ),
+    message: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    created_by: Schema.optional(Schema.Number),
   });
 export type ProxyRecordsCreateOutput = typeof ProxyRecordsCreateOutput.Type;
 

@@ -15,20 +15,24 @@ export type HeatmapsListInput = typeof HeatmapsListInput.Type;
 
 // Output Schema
 export const HeatmapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.Number,
+  count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      results: Schema.Array(
-        Schema.Struct({
-          count: Schema.Number,
-          pointer_y: Schema.Number,
-          pointer_relative_x: Schema.Number,
-          pointer_target_fixed: Schema.Boolean,
-        }),
-      ),
-    }),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        results: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              count: Schema.optional(Schema.Number),
+              pointer_y: Schema.optional(Schema.Number),
+              pointer_relative_x: Schema.optional(Schema.Number),
+              pointer_target_fixed: Schema.optional(Schema.Boolean),
+            }),
+          ),
+        ),
+      }),
+    ),
   ),
 });
 export type HeatmapsListOutput = typeof HeatmapsListOutput.Type;

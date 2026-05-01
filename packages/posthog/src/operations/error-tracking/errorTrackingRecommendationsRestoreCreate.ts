@@ -20,14 +20,14 @@ export type ErrorTrackingRecommendationsRestoreCreateInput =
 // Output Schema
 export const ErrorTrackingRecommendationsRestoreCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    type: Schema.String,
-    meta: Schema.Unknown,
-    computed_at: Schema.NullOr(Schema.String),
-    dismissed_at: Schema.NullOr(Schema.String),
-    next_refresh_at: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    meta: Schema.optional(Schema.Unknown),
+    computed_at: Schema.optional(Schema.NullOr(Schema.String)),
+    dismissed_at: Schema.optional(Schema.NullOr(Schema.String)),
+    next_refresh_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type ErrorTrackingRecommendationsRestoreCreateOutput =
   typeof ErrorTrackingRecommendationsRestoreCreateOutput.Type;

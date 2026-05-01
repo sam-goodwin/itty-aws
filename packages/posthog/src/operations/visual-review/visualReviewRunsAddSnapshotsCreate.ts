@@ -8,14 +8,18 @@ export const VisualReviewRunsAddSnapshotsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    snapshots: Schema.Array(
-      Schema.Struct({
-        identifier: Schema.String,
-        content_hash: Schema.String,
-        width: Schema.optional(Schema.NullOr(Schema.Number)),
-        height: Schema.optional(Schema.NullOr(Schema.Number)),
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
+    snapshots: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          identifier: Schema.optional(Schema.String),
+          content_hash: Schema.optional(Schema.String),
+          width: Schema.optional(Schema.NullOr(Schema.Number)),
+          height: Schema.optional(Schema.NullOr(Schema.Number)),
+          metadata: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+        }),
+      ),
     ),
     baseline_hashes: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -32,13 +36,15 @@ export type VisualReviewRunsAddSnapshotsCreateInput =
 // Output Schema
 export const VisualReviewRunsAddSnapshotsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    added: Schema.Number,
-    uploads: Schema.Array(
-      Schema.Struct({
-        content_hash: Schema.String,
-        url: Schema.String,
-        fields: Schema.Record(Schema.String, Schema.String),
-      }),
+    added: Schema.optional(Schema.Number),
+    uploads: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          content_hash: Schema.optional(Schema.String),
+          url: Schema.optional(Schema.String),
+          fields: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        }),
+      ),
     ),
   });
 export type VisualReviewRunsAddSnapshotsCreateOutput =

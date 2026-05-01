@@ -15,21 +15,23 @@ export type ElementsListInput = typeof ElementsListInput.Type;
 
 // Output Schema
 export const ElementsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.Number,
+  count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.Array(
-    Schema.Struct({
-      text: Schema.optional(Schema.NullOr(Schema.String)),
-      tag_name: Schema.optional(Schema.NullOr(Schema.String)),
-      attr_class: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
-      href: Schema.optional(Schema.NullOr(Schema.String)),
-      attr_id: Schema.optional(Schema.NullOr(Schema.String)),
-      nth_child: Schema.optional(Schema.NullOr(Schema.Number)),
-      nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
-      attributes: Schema.optional(Schema.Unknown),
-      order: Schema.optional(Schema.NullOr(Schema.Number)),
-    }),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        text: Schema.optional(Schema.NullOr(Schema.String)),
+        tag_name: Schema.optional(Schema.NullOr(Schema.String)),
+        attr_class: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+        href: Schema.optional(Schema.NullOr(Schema.String)),
+        attr_id: Schema.optional(Schema.NullOr(Schema.String)),
+        nth_child: Schema.optional(Schema.NullOr(Schema.Number)),
+        nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
+        attributes: Schema.optional(Schema.Unknown),
+        order: Schema.optional(Schema.NullOr(Schema.Number)),
+      }),
+    ),
   ),
 });
 export type ElementsListOutput = typeof ElementsListOutput.Type;

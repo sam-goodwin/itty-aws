@@ -24,9 +24,9 @@ export type IntegrationsGithubBranchesRetrieveInput =
 // Output Schema
 export const IntegrationsGithubBranchesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    branches: Schema.Array(Schema.String),
+    branches: Schema.optional(Schema.Array(Schema.String)),
     default_branch: Schema.optional(Schema.NullOr(Schema.String)),
-    has_more: Schema.Boolean,
+    has_more: Schema.optional(Schema.Boolean),
   });
 export type IntegrationsGithubBranchesRetrieveOutput =
   typeof IntegrationsGithubBranchesRetrieveOutput.Type;

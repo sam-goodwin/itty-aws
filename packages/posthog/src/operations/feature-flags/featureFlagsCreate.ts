@@ -26,12 +26,14 @@ export const FeatureFlagsCreateInput =
         multivariate: Schema.optional(
           Schema.NullOr(
             Schema.Struct({
-              variants: Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  name: Schema.optional(Schema.String),
-                  rollout_percentage: Schema.Number,
-                }),
+              variants: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.String),
+                    rollout_percentage: Schema.optional(Schema.Number),
+                  }),
+                ),
               ),
             }),
           ),
@@ -60,59 +62,67 @@ export type FeatureFlagsCreateInput = typeof FeatureFlagsCreateInput.Type;
 // Output Schema
 export const FeatureFlagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Number,
+    id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
-    key: Schema.String,
+    key: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     deleted: Schema.optional(Schema.Boolean),
     active: Schema.optional(Schema.Boolean),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
+    ),
     created_at: Schema.optional(Schema.String),
-    updated_at: Schema.NullOr(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
     version: Schema.optional(Schema.Number),
-    last_modified_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    last_modified_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
+    ),
     ensure_experience_continuity: Schema.optional(
       Schema.NullOr(Schema.Boolean),
     ),
-    experiment_set: Schema.Array(Schema.Number),
-    experiment_set_metadata: Schema.Array(
-      Schema.Record(Schema.String, Schema.Unknown),
+    experiment_set: Schema.optional(Schema.Array(Schema.Number)),
+    experiment_set_metadata: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
-    surveys: Schema.Record(Schema.String, Schema.Unknown),
-    features: Schema.Record(Schema.String, Schema.Unknown),
+    surveys: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    features: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     rollback_conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
     performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    can_edit: Schema.Boolean,
+    can_edit: Schema.optional(Schema.Boolean),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
     evaluation_contexts: Schema.optional(Schema.Array(Schema.Unknown)),
-    usage_dashboard: Schema.Number,
+    usage_dashboard: Schema.optional(Schema.Number),
     analytics_dashboards: Schema.optional(Schema.Array(Schema.Number)),
     has_enriched_analytics: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    user_access_level: Schema.NullOr(Schema.String),
+    user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
     creation_context: Schema.optional(
       Schema.Literals([
         "feature_flags",
@@ -125,13 +135,13 @@ export const FeatureFlagsCreateOutput =
     ),
     is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
     has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    status: Schema.String,
+    status: Schema.optional(Schema.String),
     evaluation_runtime: Schema.optional(Schema.Unknown),
     bucketing_identifier: Schema.optional(Schema.Unknown),
     last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
     _create_in_folder: Schema.optional(Schema.String),
     _should_create_usage_dashboard: Schema.optional(Schema.Boolean),
-    is_used_in_replay_settings: Schema.Boolean,
+    is_used_in_replay_settings: Schema.optional(Schema.Boolean),
   });
 export type FeatureFlagsCreateOutput = typeof FeatureFlagsCreateOutput.Type;
 

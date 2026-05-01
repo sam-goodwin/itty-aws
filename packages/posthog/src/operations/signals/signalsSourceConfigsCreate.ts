@@ -7,30 +7,34 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const SignalsSourceConfigsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    source_product: Schema.Literals([
-      "session_replay",
-      "llm_analytics",
-      "github",
-      "linear",
-      "zendesk",
-      "conversations",
-      "error_tracking",
-    ]),
-    source_type: Schema.Literals([
-      "session_analysis_cluster",
-      "evaluation",
-      "issue",
-      "ticket",
-      "issue_created",
-      "issue_reopened",
-      "issue_spiking",
-    ]),
+    id: Schema.optional(Schema.String),
+    source_product: Schema.optional(
+      Schema.Literals([
+        "session_replay",
+        "llm_analytics",
+        "github",
+        "linear",
+        "zendesk",
+        "conversations",
+        "error_tracking",
+      ]),
+    ),
+    source_type: Schema.optional(
+      Schema.Literals([
+        "session_analysis_cluster",
+        "evaluation",
+        "issue",
+        "ticket",
+        "issue_created",
+        "issue_reopened",
+        "issue_spiking",
+      ]),
+    ),
     enabled: Schema.optional(Schema.Boolean),
     config: Schema.optional(Schema.Unknown),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    status: Schema.NullOr(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -43,30 +47,34 @@ export type SignalsSourceConfigsCreateInput =
 // Output Schema
 export const SignalsSourceConfigsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    source_product: Schema.Literals([
-      "session_replay",
-      "llm_analytics",
-      "github",
-      "linear",
-      "zendesk",
-      "conversations",
-      "error_tracking",
-    ]),
-    source_type: Schema.Literals([
-      "session_analysis_cluster",
-      "evaluation",
-      "issue",
-      "ticket",
-      "issue_created",
-      "issue_reopened",
-      "issue_spiking",
-    ]),
+    id: Schema.optional(Schema.String),
+    source_product: Schema.optional(
+      Schema.Literals([
+        "session_replay",
+        "llm_analytics",
+        "github",
+        "linear",
+        "zendesk",
+        "conversations",
+        "error_tracking",
+      ]),
+    ),
+    source_type: Schema.optional(
+      Schema.Literals([
+        "session_analysis_cluster",
+        "evaluation",
+        "issue",
+        "ticket",
+        "issue_created",
+        "issue_reopened",
+        "issue_spiking",
+      ]),
+    ),
     enabled: Schema.optional(Schema.Boolean),
     config: Schema.optional(Schema.Unknown),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    status: Schema.NullOr(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type SignalsSourceConfigsCreateOutput =
   typeof SignalsSourceConfigsCreateOutput.Type;

@@ -21,29 +21,33 @@ export type LogsAlertsEventsListInput = typeof LogsAlertsEventsListInput.Type;
 // Output Schema
 export const LogsAlertsEventsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        created_at: Schema.String,
-        kind: Schema.Literals([
-          "check",
-          "reset",
-          "enable",
-          "disable",
-          "snooze",
-          "unsnooze",
-          "threshold_change",
-        ]),
-        state_before: Schema.String,
-        state_after: Schema.String,
-        threshold_breached: Schema.Boolean,
-        result_count: Schema.NullOr(Schema.Number),
-        error_message: Schema.NullOr(Schema.String),
-        query_duration_ms: Schema.NullOr(Schema.Number),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+          kind: Schema.optional(
+            Schema.Literals([
+              "check",
+              "reset",
+              "enable",
+              "disable",
+              "snooze",
+              "unsnooze",
+              "threshold_change",
+            ]),
+          ),
+          state_before: Schema.optional(Schema.String),
+          state_after: Schema.optional(Schema.String),
+          threshold_breached: Schema.optional(Schema.Boolean),
+          result_count: Schema.optional(Schema.NullOr(Schema.Number)),
+          error_message: Schema.optional(Schema.NullOr(Schema.String)),
+          query_duration_ms: Schema.optional(Schema.NullOr(Schema.Number)),
+        }),
+      ),
     ),
   });
 export type LogsAlertsEventsListOutput = typeof LogsAlertsEventsListOutput.Type;

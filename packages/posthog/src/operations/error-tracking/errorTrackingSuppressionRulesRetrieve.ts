@@ -20,13 +20,13 @@ export type ErrorTrackingSuppressionRulesRetrieveInput =
 // Output Schema
 export const ErrorTrackingSuppressionRulesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    filters: Schema.Unknown,
-    order_key: Schema.Number,
+    id: Schema.optional(Schema.String),
+    filters: Schema.optional(Schema.Unknown),
+    order_key: Schema.optional(Schema.Number),
     disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
     sampling_rate: Schema.optional(Schema.Number),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type ErrorTrackingSuppressionRulesRetrieveOutput =
   typeof ErrorTrackingSuppressionRulesRetrieveOutput.Type;

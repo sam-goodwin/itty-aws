@@ -20,20 +20,24 @@ export type ErrorTrackingGroupingRulesRetrieveInput =
 // Output Schema
 export const ErrorTrackingGroupingRulesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    filters: Schema.Unknown,
-    assignee: Schema.NullOr(
-      Schema.Struct({
-        type: Schema.optional(Schema.Literals(["user", "role"])),
-        id: Schema.optional(Schema.Unknown),
-      }),
+    id: Schema.optional(Schema.String),
+    filters: Schema.optional(Schema.Unknown),
+    assignee: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.optional(Schema.Literals(["user", "role"])),
+          id: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    issue: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-    order_key: Schema.Number,
+    issue: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    order_key: Schema.optional(Schema.Number),
     disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type ErrorTrackingGroupingRulesRetrieveOutput =
   typeof ErrorTrackingGroupingRulesRetrieveOutput.Type;

@@ -27,7 +27,7 @@ export type HogFunctionsMetricsTotalsRetrieveInput =
 // Output Schema
 export const HogFunctionsMetricsTotalsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    totals: Schema.Record(Schema.String, Schema.Number),
+    totals: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
   });
 export type HogFunctionsMetricsTotalsRetrieveOutput =
   typeof HogFunctionsMetricsTotalsRetrieveOutput.Type;

@@ -7,13 +7,15 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const InsightVariablesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.String,
-    name: Schema.String,
-    type: Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
+    ),
     default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    created_by: Schema.NullOr(Schema.Number),
-    created_at: Schema.String,
-    code_name: Schema.NullOr(Schema.String),
+    created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+    created_at: Schema.optional(Schema.String),
+    code_name: Schema.optional(Schema.NullOr(Schema.String)),
     values: Schema.optional(Schema.NullOr(Schema.Unknown)),
   }).pipe(
     T.Http({
@@ -27,13 +29,15 @@ export type InsightVariablesCreateInput =
 // Output Schema
 export const InsightVariablesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    type: Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
+    ),
     default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    created_by: Schema.NullOr(Schema.Number),
-    created_at: Schema.String,
-    code_name: Schema.NullOr(Schema.String),
+    created_by: Schema.optional(Schema.NullOr(Schema.Number)),
+    created_at: Schema.optional(Schema.String),
+    code_name: Schema.optional(Schema.NullOr(Schema.String)),
     values: Schema.optional(Schema.NullOr(Schema.Unknown)),
   });
 export type InsightVariablesCreateOutput =

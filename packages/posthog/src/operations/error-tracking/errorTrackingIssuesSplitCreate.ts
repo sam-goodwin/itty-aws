@@ -11,7 +11,7 @@ export const ErrorTrackingIssuesSplitCreateInput =
     fingerprints: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          fingerprint: Schema.String,
+          fingerprint: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           description: Schema.optional(Schema.String),
         }),
@@ -29,8 +29,8 @@ export type ErrorTrackingIssuesSplitCreateInput =
 // Output Schema
 export const ErrorTrackingIssuesSplitCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    success: Schema.Boolean,
-    new_issue_ids: Schema.Array(Schema.String),
+    success: Schema.optional(Schema.Boolean),
+    new_issue_ids: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ErrorTrackingIssuesSplitCreateOutput =
   typeof ErrorTrackingIssuesSplitCreateOutput.Type;

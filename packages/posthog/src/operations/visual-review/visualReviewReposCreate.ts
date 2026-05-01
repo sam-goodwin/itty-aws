@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const VisualReviewReposCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    repo_full_name: Schema.String,
+    repo_full_name: Schema.optional(Schema.String),
     repo_external_id: Schema.optional(Schema.NullOr(Schema.Number)),
   }).pipe(
     T.Http({
@@ -21,13 +21,15 @@ export type VisualReviewReposCreateInput =
 // Output Schema
 export const VisualReviewReposCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    team_id: Schema.Number,
-    repo_external_id: Schema.Number,
-    repo_full_name: Schema.String,
-    baseline_file_paths: Schema.Record(Schema.String, Schema.String),
-    enable_pr_comments: Schema.Boolean,
-    created_at: Schema.String,
+    id: Schema.optional(Schema.String),
+    team_id: Schema.optional(Schema.Number),
+    repo_external_id: Schema.optional(Schema.Number),
+    repo_full_name: Schema.optional(Schema.String),
+    baseline_file_paths: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    enable_pr_comments: Schema.optional(Schema.Boolean),
+    created_at: Schema.optional(Schema.String),
   });
 export type VisualReviewReposCreateOutput =
   typeof VisualReviewReposCreateOutput.Type;

@@ -20,9 +20,9 @@ export type ErrorTrackingSpikeDetectionConfigListInput =
 export const ErrorTrackingSpikeDetectionConfigListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
-      snooze_duration_minutes: Schema.Number,
-      multiplier: Schema.Number,
-      threshold: Schema.Number,
+      snooze_duration_minutes: Schema.optional(Schema.Number),
+      multiplier: Schema.optional(Schema.Number),
+      threshold: Schema.optional(Schema.Number),
     }),
   );
 export type ErrorTrackingSpikeDetectionConfigListOutput =

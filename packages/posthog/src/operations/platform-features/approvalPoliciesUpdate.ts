@@ -8,29 +8,33 @@ export const ApprovalPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    action_key: Schema.String,
+    action_key: Schema.optional(Schema.String),
     conditions: Schema.optional(Schema.Unknown),
-    approver_config: Schema.Unknown,
+    approver_config: Schema.optional(Schema.Unknown),
     allow_self_approve: Schema.optional(Schema.Boolean),
     bypass_org_membership_levels: Schema.optional(Schema.Unknown),
     bypass_roles: Schema.optional(Schema.Array(Schema.String)),
     expires_after: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    created_at: Schema.String,
-    updated_at: Schema.NullOr(Schema.String),
+    ),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43,30 +47,34 @@ export type ApprovalPoliciesUpdateInput =
 // Output Schema
 export const ApprovalPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    action_key: Schema.String,
+    id: Schema.optional(Schema.String),
+    action_key: Schema.optional(Schema.String),
     conditions: Schema.optional(Schema.Unknown),
-    approver_config: Schema.Unknown,
+    approver_config: Schema.optional(Schema.Unknown),
     allow_self_approve: Schema.optional(Schema.Boolean),
     bypass_org_membership_levels: Schema.optional(Schema.Unknown),
     bypass_roles: Schema.optional(Schema.Array(Schema.String)),
     expires_after: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
-    created_by: Schema.Struct({
-      id: Schema.Number,
-      uuid: Schema.String,
-      distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      email: Schema.String,
-      is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      hedgehog_config: Schema.NullOr(
-        Schema.Record(Schema.String, Schema.Unknown),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       ),
-      role_at_organization: Schema.optional(Schema.Unknown),
-    }),
-    created_at: Schema.String,
-    updated_at: Schema.NullOr(Schema.String),
+    ),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type ApprovalPoliciesUpdateOutput =
   typeof ApprovalPoliciesUpdateOutput.Type;

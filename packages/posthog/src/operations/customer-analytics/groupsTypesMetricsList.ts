@@ -22,20 +22,22 @@ export type GroupsTypesMetricsListInput =
 // Output Schema
 export const GroupsTypesMetricsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        format: Schema.optional(Schema.Literals(["numeric", "currency"])),
-        interval: Schema.optional(Schema.Number),
-        display: Schema.optional(Schema.Literals(["number", "sparkline"])),
-        filters: Schema.Unknown,
-        math: Schema.optional(Schema.Literals(["count", "sum"])),
-        math_property: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          format: Schema.optional(Schema.Literals(["numeric", "currency"])),
+          interval: Schema.optional(Schema.Number),
+          display: Schema.optional(Schema.Literals(["number", "sparkline"])),
+          filters: Schema.optional(Schema.Unknown),
+          math: Schema.optional(Schema.Literals(["count", "sum"])),
+          math_property: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
     ),
   });
 export type GroupsTypesMetricsListOutput =

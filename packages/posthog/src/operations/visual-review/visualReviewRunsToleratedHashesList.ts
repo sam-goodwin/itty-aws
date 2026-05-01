@@ -23,19 +23,21 @@ export type VisualReviewRunsToleratedHashesListInput =
 // Output Schema
 export const VisualReviewRunsToleratedHashesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    count: Schema.Number,
+    count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        alternate_hash: Schema.String,
-        baseline_hash: Schema.String,
-        reason: Schema.String,
-        diff_percentage: Schema.NullOr(Schema.Number),
-        created_at: Schema.String,
-        source_run_id: Schema.NullOr(Schema.String),
-      }),
+    results: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          alternate_hash: Schema.optional(Schema.String),
+          baseline_hash: Schema.optional(Schema.String),
+          reason: Schema.optional(Schema.String),
+          diff_percentage: Schema.optional(Schema.NullOr(Schema.Number)),
+          created_at: Schema.optional(Schema.String),
+          source_run_id: Schema.optional(Schema.NullOr(Schema.String)),
+        }),
+      ),
     ),
   });
 export type VisualReviewRunsToleratedHashesListOutput =

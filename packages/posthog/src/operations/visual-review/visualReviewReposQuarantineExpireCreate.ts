@@ -9,8 +9,8 @@ export const VisualReviewReposQuarantineExpireCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     run_type: Schema.String.pipe(T.PathParam()),
-    identifier: Schema.String,
-    reason: Schema.String,
+    identifier: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({

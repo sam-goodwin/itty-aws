@@ -6,25 +6,27 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 // Input Schema
 export const ExportsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
-  id: Schema.Number,
+  id: Schema.optional(Schema.Number),
   dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
   insight: Schema.optional(Schema.NullOr(Schema.Number)),
-  export_format: Schema.Literals([
-    "image/png",
-    "application/pdf",
-    "text/csv",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "video/webm",
-    "video/mp4",
-    "image/gif",
-    "application/json",
-  ]),
-  created_at: Schema.String,
-  has_content: Schema.Boolean,
+  export_format: Schema.optional(
+    Schema.Literals([
+      "image/png",
+      "application/pdf",
+      "text/csv",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "video/webm",
+      "video/mp4",
+      "image/gif",
+      "application/json",
+    ]),
+  ),
+  created_at: Schema.optional(Schema.String),
+  has_content: Schema.optional(Schema.Boolean),
   export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  filename: Schema.String,
-  expires_after: Schema.NullOr(Schema.String),
-  exception: Schema.NullOr(Schema.String),
+  filename: Schema.optional(Schema.String),
+  expires_after: Schema.optional(Schema.NullOr(Schema.String)),
+  exception: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/exports/" }),
 );
@@ -32,25 +34,27 @@ export type ExportsCreateInput = typeof ExportsCreateInput.Type;
 
 // Output Schema
 export const ExportsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.Number,
+  id: Schema.optional(Schema.Number),
   dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
   insight: Schema.optional(Schema.NullOr(Schema.Number)),
-  export_format: Schema.Literals([
-    "image/png",
-    "application/pdf",
-    "text/csv",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "video/webm",
-    "video/mp4",
-    "image/gif",
-    "application/json",
-  ]),
-  created_at: Schema.String,
-  has_content: Schema.Boolean,
+  export_format: Schema.optional(
+    Schema.Literals([
+      "image/png",
+      "application/pdf",
+      "text/csv",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "video/webm",
+      "video/mp4",
+      "image/gif",
+      "application/json",
+    ]),
+  ),
+  created_at: Schema.optional(Schema.String),
+  has_content: Schema.optional(Schema.Boolean),
   export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  filename: Schema.String,
-  expires_after: Schema.NullOr(Schema.String),
-  exception: Schema.NullOr(Schema.String),
+  filename: Schema.optional(Schema.String),
+  expires_after: Schema.optional(Schema.NullOr(Schema.String)),
+  exception: Schema.optional(Schema.NullOr(Schema.String)),
 });
 export type ExportsCreateOutput = typeof ExportsCreateOutput.Type;
 

@@ -15,7 +15,7 @@ export type ActionsRetrieveInput = typeof ActionsRetrieveInput.Type;
 
 // Output Schema
 export const ActionsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.Number,
+  id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   description: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Array(Schema.Unknown)),
@@ -29,7 +29,7 @@ export const ActionsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.NullOr(Schema.Array(Schema.Unknown)),
         ),
         selector: Schema.optional(Schema.NullOr(Schema.String)),
-        selector_regex: Schema.NullOr(Schema.String),
+        selector_regex: Schema.optional(Schema.NullOr(Schema.String)),
         tag_name: Schema.optional(Schema.NullOr(Schema.String)),
         text: Schema.optional(Schema.NullOr(Schema.String)),
         text_matching: Schema.optional(Schema.Unknown),
@@ -40,30 +40,34 @@ export const ActionsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  created_at: Schema.String,
-  created_by: Schema.Struct({
-    id: Schema.Number,
-    uuid: Schema.String,
-    distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-    first_name: Schema.optional(Schema.String),
-    last_name: Schema.optional(Schema.String),
-    email: Schema.String,
-    is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    hedgehog_config: Schema.NullOr(
-      Schema.Record(Schema.String, Schema.Unknown),
+  created_at: Schema.optional(Schema.String),
+  created_by: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(Schema.Unknown),
+      }),
     ),
-    role_at_organization: Schema.optional(Schema.Unknown),
-  }),
+  ),
   deleted: Schema.optional(Schema.Boolean),
-  is_calculating: Schema.Boolean,
+  is_calculating: Schema.optional(Schema.Boolean),
   last_calculated_at: Schema.optional(Schema.String),
-  team_id: Schema.Number,
-  is_action: Schema.Boolean,
-  bytecode_error: Schema.NullOr(Schema.String),
+  team_id: Schema.optional(Schema.Number),
+  is_action: Schema.optional(Schema.Boolean),
+  bytecode_error: Schema.optional(Schema.NullOr(Schema.String)),
   pinned_at: Schema.optional(Schema.NullOr(Schema.String)),
-  creation_context: Schema.NullOr(Schema.String),
+  creation_context: Schema.optional(Schema.NullOr(Schema.String)),
   _create_in_folder: Schema.optional(Schema.String),
-  user_access_level: Schema.NullOr(Schema.String),
+  user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
 });
 export type ActionsRetrieveOutput = typeof ActionsRetrieveOutput.Type;
 

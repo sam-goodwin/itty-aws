@@ -9,7 +9,7 @@ export const TasksRunsRelayMessageCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
-    text: Schema.String,
+    text: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -22,7 +22,7 @@ export type TasksRunsRelayMessageCreateInput =
 // Output Schema
 export const TasksRunsRelayMessageCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.String,
+    status: Schema.optional(Schema.String),
     relay_id: Schema.optional(Schema.String),
   });
 export type TasksRunsRelayMessageCreateOutput =

@@ -7,8 +7,8 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const GroupsTypesSetDefaultColumnsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    group_type: Schema.String,
-    group_type_index: Schema.Number,
+    group_type: Schema.optional(Schema.String),
+    group_type_index: Schema.optional(Schema.Number),
     name_singular: Schema.optional(Schema.NullOr(Schema.String)),
     name_plural: Schema.optional(Schema.NullOr(Schema.String)),
     detail_dashboard: Schema.optional(Schema.NullOr(Schema.Number)),

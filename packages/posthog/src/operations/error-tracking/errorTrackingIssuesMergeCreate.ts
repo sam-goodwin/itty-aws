@@ -8,7 +8,7 @@ export const ErrorTrackingIssuesMergeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    ids: Schema.Array(Schema.String),
+    ids: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -21,7 +21,7 @@ export type ErrorTrackingIssuesMergeCreateInput =
 // Output Schema
 export const ErrorTrackingIssuesMergeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    success: Schema.Boolean,
+    success: Schema.optional(Schema.Boolean),
   });
 export type ErrorTrackingIssuesMergeCreateOutput =
   typeof ErrorTrackingIssuesMergeCreateOutput.Type;

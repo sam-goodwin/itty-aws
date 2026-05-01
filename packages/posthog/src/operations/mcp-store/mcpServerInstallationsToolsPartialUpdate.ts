@@ -24,18 +24,18 @@ export type McpServerInstallationsToolsPartialUpdateInput =
 // Output Schema
 export const McpServerInstallationsToolsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    tool_name: Schema.String,
-    display_name: Schema.String,
-    description: Schema.String,
-    input_schema: Schema.Unknown,
+    id: Schema.optional(Schema.String),
+    tool_name: Schema.optional(Schema.String),
+    display_name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    input_schema: Schema.optional(Schema.Unknown),
     approval_state: Schema.optional(
       Schema.Literals(["approved", "needs_approval", "do_not_use"]),
     ),
-    last_seen_at: Schema.String,
-    removed_at: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.NullOr(Schema.String),
+    last_seen_at: Schema.optional(Schema.String),
+    removed_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type McpServerInstallationsToolsPartialUpdateOutput =
   typeof McpServerInstallationsToolsPartialUpdateOutput.Type;
