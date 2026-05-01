@@ -16,14 +16,14 @@ export type UserlandUsersControllerGetEmailVerificationInput =
 // Output Schema
 export const UserlandUsersControllerGetEmailVerificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    user_id: Schema.String,
-    email: Schema.String,
-    expires_at: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    code: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    user_id: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    expires_at: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
   });
 export type UserlandUsersControllerGetEmailVerificationOutput =
   typeof UserlandUsersControllerGetEmailVerificationOutput.Type;

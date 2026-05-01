@@ -8,7 +8,7 @@ export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsInp
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
-    permissions: Schema.Array(Schema.String),
+    permissions: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",

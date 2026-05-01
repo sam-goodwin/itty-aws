@@ -16,10 +16,10 @@ export type OrganizationDomainsControllerVerifyInput =
 // Output Schema
 export const OrganizationDomainsControllerVerifyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    organization_id: Schema.String,
-    domain: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
     state: Schema.optional(
       Schema.Literals([
         "failed",
@@ -32,8 +32,8 @@ export const OrganizationDomainsControllerVerifyOutput =
     verification_prefix: Schema.optional(Schema.String),
     verification_token: Schema.optional(Schema.String),
     verification_strategy: Schema.optional(Schema.Literals(["dns", "manual"])),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type OrganizationDomainsControllerVerifyOutput =
   typeof OrganizationDomainsControllerVerifyOutput.Type;

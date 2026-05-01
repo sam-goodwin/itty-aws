@@ -19,7 +19,7 @@ export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput =
 // Output Schema
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    url: Schema.String,
+    url: Schema.optional(Schema.String),
   });
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput =
   typeof DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput.Type;

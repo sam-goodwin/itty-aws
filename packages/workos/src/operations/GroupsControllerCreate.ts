@@ -12,7 +12,7 @@ import {
 export const GroupsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
-    name: Schema.String,
+    name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({ method: "POST", path: "/organizations/{organizationId}/groups" }),
@@ -23,13 +23,13 @@ export type GroupsControllerCreateInput =
 // Output Schema
 export const GroupsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    organization_id: Schema.String,
-    name: Schema.String,
-    description: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type GroupsControllerCreateOutput =
   typeof GroupsControllerCreateOutput.Type;

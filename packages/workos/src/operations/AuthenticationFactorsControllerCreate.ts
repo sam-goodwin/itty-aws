@@ -19,9 +19,11 @@ export type AuthenticationFactorsControllerCreateInput =
 // Output Schema
 export const AuthenticationFactorsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    type: Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    type: Schema.optional(
+      Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
+    ),
     user_id: Schema.optional(Schema.String),
     sms: Schema.optional(
       Schema.Struct({
@@ -37,8 +39,8 @@ export const AuthenticationFactorsControllerCreateOutput =
         uri: Schema.String,
       }),
     ),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type AuthenticationFactorsControllerCreateOutput =
   typeof AuthenticationFactorsControllerCreateOutput.Type;

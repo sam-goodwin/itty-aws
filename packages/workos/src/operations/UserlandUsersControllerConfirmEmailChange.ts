@@ -12,7 +12,7 @@ import {
 export const UserlandUsersControllerConfirmEmailChangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-    code: Schema.String,
+    code: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",

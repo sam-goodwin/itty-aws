@@ -20,26 +20,28 @@ export type DataIntegrationsUserManagementControllerGetUserDataIntegrationsInput
 // Output Schema
 export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    data: Schema.Array(
-      Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        name: Schema.String,
-        description: Schema.NullOr(Schema.String),
-        slug: Schema.String,
-        integration_type: Schema.String,
-        credentials_type: Schema.String,
-        scopes: Schema.Unknown,
-        ownership: Schema.Literals(["userland_user", "organization"]),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        integrationType: Schema.String,
-        credentialsType: Schema.String,
-        createdAt: Schema.String,
-        updatedAt: Schema.String,
-        connected_account: Schema.Unknown,
-      }),
+    object: Schema.optional(Schema.String),
+    data: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.String,
+          id: Schema.String,
+          name: Schema.String,
+          description: Schema.NullOr(Schema.String),
+          slug: Schema.String,
+          integration_type: Schema.String,
+          credentials_type: Schema.String,
+          scopes: Schema.Unknown,
+          ownership: Schema.Literals(["userland_user", "organization"]),
+          created_at: Schema.String,
+          updated_at: Schema.String,
+          integrationType: Schema.String,
+          credentialsType: Schema.String,
+          createdAt: Schema.String,
+          updatedAt: Schema.String,
+          connected_account: Schema.Unknown,
+        }),
+      ),
     ),
   });
 export type DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutput =

@@ -20,13 +20,13 @@ export type ApplicationCredentialsControllerCreateInput =
 // Output Schema
 export const ApplicationCredentialsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    secret_hint: Schema.String,
-    last_used_at: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    secret: SensitiveString,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    secret_hint: Schema.optional(Schema.String),
+    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    secret: Schema.optional(SensitiveString),
   });
 export type ApplicationCredentialsControllerCreateOutput =
   typeof ApplicationCredentialsControllerCreateOutput.Type;

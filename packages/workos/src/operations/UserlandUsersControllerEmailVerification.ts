@@ -7,7 +7,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 export const UserlandUsersControllerEmailVerificationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-    code: Schema.String,
+    code: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -20,21 +20,23 @@ export type UserlandUsersControllerEmailVerificationInput =
 // Output Schema
 export const UserlandUsersControllerEmailVerificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user: Schema.Struct({
-      object: Schema.String,
-      id: Schema.String,
-      first_name: Schema.NullOr(Schema.String),
-      last_name: Schema.NullOr(Schema.String),
-      profile_picture_url: Schema.NullOr(Schema.String),
-      email: Schema.String,
-      email_verified: Schema.Boolean,
-      external_id: Schema.NullOr(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      last_sign_in_at: Schema.NullOr(Schema.String),
-      locale: Schema.optional(Schema.NullOr(Schema.String)),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-    }),
+    user: Schema.optional(
+      Schema.Struct({
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        first_name: Schema.optional(Schema.NullOr(Schema.String)),
+        last_name: Schema.optional(Schema.NullOr(Schema.String)),
+        profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
+        email: Schema.optional(Schema.String),
+        email_verified: Schema.optional(Schema.Boolean),
+        external_id: Schema.optional(Schema.NullOr(Schema.String)),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
+        locale: Schema.optional(Schema.NullOr(Schema.String)),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type UserlandUsersControllerEmailVerificationOutput =
   typeof UserlandUsersControllerEmailVerificationOutput.Type;

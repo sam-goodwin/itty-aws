@@ -19,21 +19,23 @@ export type UserlandUserInvitesControllerGetByTokenInput =
 // Output Schema
 export const UserlandUserInvitesControllerGetByTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    email: Schema.String,
-    state: Schema.Literals(["pending", "accepted", "expired", "revoked"]),
-    accepted_at: Schema.NullOr(Schema.String),
-    revoked_at: Schema.NullOr(Schema.String),
-    expires_at: Schema.String,
-    organization_id: Schema.NullOr(Schema.String),
-    inviter_user_id: Schema.NullOr(Schema.String),
-    accepted_user_id: Schema.NullOr(Schema.String),
-    role_slug: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    token: Schema.String,
-    accept_invitation_url: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    state: Schema.optional(
+      Schema.Literals(["pending", "accepted", "expired", "revoked"]),
+    ),
+    accepted_at: Schema.optional(Schema.NullOr(Schema.String)),
+    revoked_at: Schema.optional(Schema.NullOr(Schema.String)),
+    expires_at: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
+    inviter_user_id: Schema.optional(Schema.NullOr(Schema.String)),
+    accepted_user_id: Schema.optional(Schema.NullOr(Schema.String)),
+    role_slug: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    accept_invitation_url: Schema.optional(Schema.String),
   });
 export type UserlandUserInvitesControllerGetByTokenOutput =
   typeof UserlandUserInvitesControllerGetByTokenOutput.Type;

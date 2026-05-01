@@ -20,20 +20,26 @@ export type EventsControllerListInput = typeof EventsControllerListInput.Type;
 // Output Schema
 export const EventsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    data: Schema.Array(
+    object: Schema.optional(Schema.String),
+    data: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.String,
+          id: Schema.String,
+          event: Schema.String,
+          data: Schema.Record(Schema.String, Schema.Unknown),
+          created_at: Schema.String,
+          context: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+        }),
+      ),
+    ),
+    list_metadata: Schema.optional(
       Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        event: Schema.String,
-        data: Schema.Record(Schema.String, Schema.Unknown),
-        created_at: Schema.String,
-        context: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        after: Schema.NullOr(Schema.String),
       }),
     ),
-    list_metadata: Schema.Struct({
-      after: Schema.NullOr(Schema.String),
-    }),
   });
 export type EventsControllerListOutput = typeof EventsControllerListOutput.Type;
 

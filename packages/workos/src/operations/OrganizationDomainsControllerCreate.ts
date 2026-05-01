@@ -6,8 +6,8 @@ import { Conflict } from "../errors.ts";
 // Input Schema
 export const OrganizationDomainsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domain: Schema.String,
-    organization_id: Schema.String,
+    domain: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/organization_domains" }));
 export type OrganizationDomainsControllerCreateInput =
   typeof OrganizationDomainsControllerCreateInput.Type;

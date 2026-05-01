@@ -9,14 +9,16 @@ export const AuditLogValidatorVersionsControllerCreateInput =
     actionName: Schema.String.pipe(T.PathParam()),
     actor: Schema.optional(
       Schema.Struct({
-        metadata: Schema.Unknown,
-      }),
-    ),
-    targets: Schema.Array(
-      Schema.Struct({
-        type: Schema.String,
         metadata: Schema.optional(Schema.Unknown),
       }),
+    ),
+    targets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          metadata: Schema.optional(Schema.Unknown),
+        }),
+      ),
     ),
     metadata: Schema.optional(Schema.Unknown),
   }).pipe(
@@ -31,21 +33,25 @@ export type AuditLogValidatorVersionsControllerCreateInput =
 // Output Schema
 export const AuditLogValidatorVersionsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    version: Schema.Number,
+    object: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
     actor: Schema.optional(
       Schema.Struct({
         metadata: Schema.Record(Schema.String, Schema.Unknown),
       }),
     ),
-    targets: Schema.Array(
-      Schema.Struct({
-        type: Schema.String,
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
+    targets: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.String,
+          metadata: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+        }),
+      ),
     ),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    created_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
   });
 export type AuditLogValidatorVersionsControllerCreateOutput =
   typeof AuditLogValidatorVersionsControllerCreateOutput.Type;

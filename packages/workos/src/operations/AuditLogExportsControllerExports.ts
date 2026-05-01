@@ -6,9 +6,9 @@ import { BadRequest, NotFound } from "../errors.ts";
 // Input Schema
 export const AuditLogExportsControllerExportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.String,
-    range_start: Schema.String,
-    range_end: Schema.String,
+    organization_id: Schema.optional(Schema.String),
+    range_start: Schema.optional(Schema.String),
+    range_end: Schema.optional(Schema.String),
     actions: Schema.optional(Schema.Array(Schema.String)),
     actors: Schema.optional(Schema.Array(Schema.String)),
     actor_names: Schema.optional(Schema.Array(Schema.String)),
@@ -21,12 +21,12 @@ export type AuditLogExportsControllerExportsInput =
 // Output Schema
 export const AuditLogExportsControllerExportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    state: Schema.Literals(["pending", "ready", "error"]),
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.Literals(["pending", "ready", "error"])),
     url: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type AuditLogExportsControllerExportsOutput =
   typeof AuditLogExportsControllerExportsOutput.Type;

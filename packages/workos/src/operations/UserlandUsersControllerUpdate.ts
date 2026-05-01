@@ -14,19 +14,19 @@ export type UserlandUsersControllerUpdateInput =
 // Output Schema
 export const UserlandUsersControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    first_name: Schema.NullOr(Schema.String),
-    last_name: Schema.NullOr(Schema.String),
-    profile_picture_url: Schema.NullOr(Schema.String),
-    email: Schema.String,
-    email_verified: Schema.Boolean,
-    external_id: Schema.NullOr(Schema.String),
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    first_name: Schema.optional(Schema.NullOr(Schema.String)),
+    last_name: Schema.optional(Schema.NullOr(Schema.String)),
+    profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
+    email: Schema.optional(Schema.String),
+    email_verified: Schema.optional(Schema.Boolean),
+    external_id: Schema.optional(Schema.NullOr(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    last_sign_in_at: Schema.NullOr(Schema.String),
+    last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
     locale: Schema.optional(Schema.NullOr(Schema.String)),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type UserlandUsersControllerUpdateOutput =
   typeof UserlandUsersControllerUpdateOutput.Type;

@@ -19,7 +19,7 @@ export type AuthorizationControllerCheckInput =
 // Output Schema
 export const AuthorizationControllerCheckOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authorized: Schema.Boolean,
+    authorized: Schema.optional(Schema.Boolean),
   });
 export type AuthorizationControllerCheckOutput =
   typeof AuthorizationControllerCheckOutput.Type;

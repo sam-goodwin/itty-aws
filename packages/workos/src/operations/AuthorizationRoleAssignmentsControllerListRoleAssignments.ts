@@ -23,27 +23,35 @@ export type AuthorizationRoleAssignmentsControllerListRoleAssignmentsInput =
 // Output Schema
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    data: Schema.Array(
+    object: Schema.optional(Schema.String),
+    data: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          role: Schema.optional(
+            Schema.Struct({
+              slug: Schema.optional(Schema.String),
+            }),
+          ),
+          resource: Schema.optional(
+            Schema.Struct({
+              id: Schema.String,
+              external_id: Schema.String,
+              resource_type_slug: Schema.String,
+            }),
+          ),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    list_metadata: Schema.optional(
       Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        role: Schema.Struct({
-          slug: Schema.String,
-        }),
-        resource: Schema.Struct({
-          id: Schema.String,
-          external_id: Schema.String,
-          resource_type_slug: Schema.String,
-        }),
-        created_at: Schema.String,
-        updated_at: Schema.String,
+        before: Schema.NullOr(Schema.String),
+        after: Schema.NullOr(Schema.String),
       }),
     ),
-    list_metadata: Schema.Struct({
-      before: Schema.NullOr(Schema.String),
-      after: Schema.NullOr(Schema.String),
-    }),
   });
 export type AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
   typeof AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput.Type;

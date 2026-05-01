@@ -18,15 +18,15 @@ export type AuthorizationPermissionsControllerUpdateInput =
 // Output Schema
 export const AuthorizationPermissionsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    slug: Schema.String,
-    name: Schema.String,
-    description: Schema.NullOr(Schema.String),
-    system: Schema.Boolean,
-    resource_type_slug: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    slug: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    system: Schema.optional(Schema.Boolean),
+    resource_type_slug: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type AuthorizationPermissionsControllerUpdateOutput =
   typeof AuthorizationPermissionsControllerUpdateOutput.Type;

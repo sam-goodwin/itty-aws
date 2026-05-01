@@ -17,14 +17,14 @@ export type UserlandUsersControllerGetPasswordResetInput =
 // Output Schema
 export const UserlandUsersControllerGetPasswordResetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    user_id: Schema.String,
-    email: Schema.String,
-    expires_at: Schema.String,
-    created_at: Schema.String,
-    password_reset_token: SensitiveString,
-    password_reset_url: SensitiveString,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    user_id: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    expires_at: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    password_reset_token: Schema.optional(SensitiveString),
+    password_reset_url: Schema.optional(SensitiveString),
   });
 export type UserlandUsersControllerGetPasswordResetOutput =
   typeof UserlandUsersControllerGetPasswordResetOutput.Type;

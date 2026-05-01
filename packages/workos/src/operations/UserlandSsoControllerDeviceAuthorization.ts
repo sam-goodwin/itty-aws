@@ -16,11 +16,11 @@ export type UserlandSsoControllerDeviceAuthorizationInput =
 // Output Schema
 export const UserlandSsoControllerDeviceAuthorizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    device_code: Schema.String,
-    user_code: Schema.String,
-    verification_uri: Schema.String,
+    device_code: Schema.optional(Schema.String),
+    user_code: Schema.optional(Schema.String),
+    verification_uri: Schema.optional(Schema.String),
     verification_uri_complete: Schema.optional(Schema.String),
-    expires_in: Schema.Number,
+    expires_in: Schema.optional(Schema.Number),
     interval: Schema.optional(Schema.Number),
   });
 export type UserlandSsoControllerDeviceAuthorizationOutput =

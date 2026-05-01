@@ -6,7 +6,7 @@ import { BadRequest } from "../errors.ts";
 // Input Schema
 export const UserlandSessionsControllerRevokeSessionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    session_id: Schema.String,
+    session_id: Schema.optional(Schema.String),
     return_to: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/user_management/sessions/revoke" }));
 export type UserlandSessionsControllerRevokeSessionInput =

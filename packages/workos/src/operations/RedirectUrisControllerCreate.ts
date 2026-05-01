@@ -6,7 +6,7 @@ import { BadRequest, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const RedirectUrisControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uri: Schema.String,
+    uri: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/user_management/redirect_uris" }));
 export type RedirectUrisControllerCreateInput =
   typeof RedirectUrisControllerCreateInput.Type;
@@ -14,12 +14,12 @@ export type RedirectUrisControllerCreateInput =
 // Output Schema
 export const RedirectUrisControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    uri: Schema.String,
-    default: Schema.Boolean,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    default: Schema.optional(Schema.Boolean),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type RedirectUrisControllerCreateOutput =
   typeof RedirectUrisControllerCreateOutput.Type;

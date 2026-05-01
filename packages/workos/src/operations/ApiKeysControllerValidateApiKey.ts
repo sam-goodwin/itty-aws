@@ -6,7 +6,7 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const ApiKeysControllerValidateApiKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.String,
+    value: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/api_keys/validations" }));
 export type ApiKeysControllerValidateApiKeyInput =
   typeof ApiKeysControllerValidateApiKeyInput.Type;
@@ -14,7 +14,7 @@ export type ApiKeysControllerValidateApiKeyInput =
 // Output Schema
 export const ApiKeysControllerValidateApiKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    api_key: Schema.Unknown,
+    api_key: Schema.optional(Schema.Unknown),
   });
 export type ApiKeysControllerValidateApiKeyOutput =
   typeof ApiKeysControllerValidateApiKeyOutput.Type;

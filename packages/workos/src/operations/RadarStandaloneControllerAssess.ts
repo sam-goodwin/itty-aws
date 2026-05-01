@@ -38,9 +38,9 @@ export type RadarStandaloneControllerAssessInput =
 // Output Schema
 export const RadarStandaloneControllerAssessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    verdict: Schema.Literals(["allow", "block", "challenge"]),
-    reason: Schema.String,
-    attempt_id: Schema.String,
+    verdict: Schema.optional(Schema.Literals(["allow", "block", "challenge"])),
+    reason: Schema.optional(Schema.String),
+    attempt_id: Schema.optional(Schema.String),
     control: Schema.optional(
       Schema.Literals([
         "bot_detection",

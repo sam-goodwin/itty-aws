@@ -21,16 +21,18 @@ export type AuthorizationOrganizationRolePermissionsControllerRemovePermissionIn
 // Output Schema
 export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    slug: Schema.String,
-    object: Schema.String,
-    id: Schema.String,
-    name: Schema.String,
-    description: Schema.NullOr(Schema.String),
-    type: Schema.Literals(["EnvironmentRole", "OrganizationRole"]),
-    resource_type_slug: Schema.String,
-    permissions: Schema.Array(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    slug: Schema.optional(Schema.String),
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    type: Schema.optional(
+      Schema.Literals(["EnvironmentRole", "OrganizationRole"]),
+    ),
+    resource_type_slug: Schema.optional(Schema.String),
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput =
   typeof AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput.Type;

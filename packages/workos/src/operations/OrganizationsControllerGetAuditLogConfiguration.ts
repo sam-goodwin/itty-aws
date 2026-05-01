@@ -19,9 +19,9 @@ export type OrganizationsControllerGetAuditLogConfigurationInput =
 // Output Schema
 export const OrganizationsControllerGetAuditLogConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.String,
-    retention_period_in_days: Schema.Number,
-    state: Schema.Literals(["active", "inactive", "disabled"]),
+    organization_id: Schema.optional(Schema.String),
+    retention_period_in_days: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.Literals(["active", "inactive", "disabled"])),
     log_stream: Schema.optional(
       Schema.Struct({
         id: Schema.String,

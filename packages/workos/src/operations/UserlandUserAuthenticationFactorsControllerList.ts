@@ -23,32 +23,38 @@ export type UserlandUserAuthenticationFactorsControllerListInput =
 // Output Schema
 export const UserlandUserAuthenticationFactorsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    data: Schema.Array(
+    object: Schema.optional(Schema.String),
+    data: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          type: Schema.optional(
+            Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
+          ),
+          user_id: Schema.optional(Schema.String),
+          sms: Schema.optional(
+            Schema.Struct({
+              phone_number: Schema.String,
+            }),
+          ),
+          totp: Schema.optional(
+            Schema.Struct({
+              issuer: Schema.String,
+              user: Schema.String,
+            }),
+          ),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    list_metadata: Schema.optional(
       Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        type: Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
-        user_id: Schema.optional(Schema.String),
-        sms: Schema.optional(
-          Schema.Struct({
-            phone_number: Schema.String,
-          }),
-        ),
-        totp: Schema.optional(
-          Schema.Struct({
-            issuer: Schema.String,
-            user: Schema.String,
-          }),
-        ),
-        created_at: Schema.String,
-        updated_at: Schema.String,
+        before: Schema.NullOr(Schema.String),
+        after: Schema.NullOr(Schema.String),
       }),
     ),
-    list_metadata: Schema.Struct({
-      before: Schema.NullOr(Schema.String),
-      after: Schema.NullOr(Schema.String),
-    }),
   });
 export type UserlandUserAuthenticationFactorsControllerListOutput =
   typeof UserlandUserAuthenticationFactorsControllerListOutput.Type;

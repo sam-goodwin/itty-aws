@@ -19,48 +19,56 @@ export type OrganizationsControllerListInput =
 // Output Schema
 export const OrganizationsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    data: Schema.Array(
+    object: Schema.optional(Schema.String),
+    data: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          domains: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                object: Schema.String,
+                id: Schema.String,
+                organization_id: Schema.String,
+                domain: Schema.String,
+                state: Schema.optional(
+                  Schema.Literals([
+                    "failed",
+                    "legacy_verified",
+                    "pending",
+                    "unverified",
+                    "verified",
+                  ]),
+                ),
+                verification_prefix: Schema.optional(Schema.String),
+                verification_token: Schema.optional(Schema.String),
+                verification_strategy: Schema.optional(
+                  Schema.Literals(["dns", "manual"]),
+                ),
+                created_at: Schema.String,
+                updated_at: Schema.String,
+              }),
+            ),
+          ),
+          metadata: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          external_id: Schema.optional(Schema.NullOr(Schema.String)),
+          stripe_customer_id: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+          allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
+        }),
+      ),
+    ),
+    list_metadata: Schema.optional(
       Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        name: Schema.String,
-        domains: Schema.Array(
-          Schema.Struct({
-            object: Schema.String,
-            id: Schema.String,
-            organization_id: Schema.String,
-            domain: Schema.String,
-            state: Schema.optional(
-              Schema.Literals([
-                "failed",
-                "legacy_verified",
-                "pending",
-                "unverified",
-                "verified",
-              ]),
-            ),
-            verification_prefix: Schema.optional(Schema.String),
-            verification_token: Schema.optional(Schema.String),
-            verification_strategy: Schema.optional(
-              Schema.Literals(["dns", "manual"]),
-            ),
-            created_at: Schema.String,
-            updated_at: Schema.String,
-          }),
-        ),
-        metadata: Schema.Record(Schema.String, Schema.String),
-        external_id: Schema.NullOr(Schema.String),
-        stripe_customer_id: Schema.optional(Schema.String),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
+        before: Schema.NullOr(Schema.String),
+        after: Schema.NullOr(Schema.String),
       }),
     ),
-    list_metadata: Schema.Struct({
-      before: Schema.NullOr(Schema.String),
-      after: Schema.NullOr(Schema.String),
-    }),
   });
 export type OrganizationsControllerListOutput =
   typeof OrganizationsControllerListOutput.Type;

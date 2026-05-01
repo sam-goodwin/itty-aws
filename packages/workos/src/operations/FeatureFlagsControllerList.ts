@@ -17,26 +17,30 @@ export type FeatureFlagsControllerListInput =
 // Output Schema
 export const FeatureFlagsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    data: Schema.Array(
+    object: Schema.optional(Schema.String),
+    data: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          slug: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.NullOr(Schema.String)),
+          owner: Schema.optional(Schema.Unknown),
+          tags: Schema.optional(Schema.Array(Schema.String)),
+          enabled: Schema.optional(Schema.Boolean),
+          default_value: Schema.optional(Schema.Boolean),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    list_metadata: Schema.optional(
       Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        slug: Schema.String,
-        name: Schema.String,
-        description: Schema.NullOr(Schema.String),
-        owner: Schema.Unknown,
-        tags: Schema.Array(Schema.String),
-        enabled: Schema.Boolean,
-        default_value: Schema.Boolean,
-        created_at: Schema.String,
-        updated_at: Schema.String,
+        before: Schema.NullOr(Schema.String),
+        after: Schema.NullOr(Schema.String),
       }),
     ),
-    list_metadata: Schema.Struct({
-      before: Schema.NullOr(Schema.String),
-      after: Schema.NullOr(Schema.String),
-    }),
   });
 export type FeatureFlagsControllerListOutput =
   typeof FeatureFlagsControllerListOutput.Type;

@@ -6,7 +6,7 @@ import { Conflict, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CorsOriginsControllerCreateCorsOriginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    origin: Schema.String,
+    origin: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/user_management/cors_origins" }));
 export type CorsOriginsControllerCreateCorsOriginInput =
   typeof CorsOriginsControllerCreateCorsOriginInput.Type;
@@ -14,11 +14,11 @@ export type CorsOriginsControllerCreateCorsOriginInput =
 // Output Schema
 export const CorsOriginsControllerCreateCorsOriginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    origin: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    origin: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type CorsOriginsControllerCreateCorsOriginOutput =
   typeof CorsOriginsControllerCreateCorsOriginOutput.Type;

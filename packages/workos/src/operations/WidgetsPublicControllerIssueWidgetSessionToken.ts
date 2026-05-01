@@ -6,7 +6,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const WidgetsPublicControllerIssueWidgetSessionTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.String,
+    organization_id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
     scopes: Schema.optional(
       Schema.Array(
@@ -27,7 +27,7 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenInput =
 // Output Schema
 export const WidgetsPublicControllerIssueWidgetSessionTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    token: Schema.String,
+    token: Schema.optional(Schema.String),
   });
 export type WidgetsPublicControllerIssueWidgetSessionTokenOutput =
   typeof WidgetsPublicControllerIssueWidgetSessionTokenOutput.Type;

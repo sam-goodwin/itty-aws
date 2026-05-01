@@ -6,25 +6,29 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const ExternalAuthControllerCompleteLoginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    external_auth_id: Schema.String,
-    user: Schema.Struct({
-      id: Schema.String,
-      email: Schema.String,
-      first_name: Schema.optional(Schema.String),
-      last_name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
+    external_auth_id: Schema.optional(Schema.String),
+    user: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      }),
+    ),
     user_consent_options: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          claim: Schema.String,
-          type: Schema.String,
-          label: Schema.String,
-          choices: Schema.Array(
-            Schema.Struct({
-              value: Schema.optional(Schema.String),
-              label: Schema.optional(Schema.String),
-            }),
+          claim: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          label: Schema.optional(Schema.String),
+          choices: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                value: Schema.optional(Schema.String),
+                label: Schema.optional(Schema.String),
+              }),
+            ),
           ),
         }),
       ),
@@ -36,7 +40,7 @@ export type ExternalAuthControllerCompleteLoginInput =
 // Output Schema
 export const ExternalAuthControllerCompleteLoginOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    redirect_uri: Schema.String,
+    redirect_uri: Schema.optional(Schema.String),
   });
 export type ExternalAuthControllerCompleteLoginOutput =
   typeof ExternalAuthControllerCompleteLoginOutput.Type;

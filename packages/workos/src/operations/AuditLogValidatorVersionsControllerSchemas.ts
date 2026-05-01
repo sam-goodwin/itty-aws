@@ -30,25 +30,27 @@ export const AuditLogValidatorVersionsControllerSchemasOutput =
     data: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          object: Schema.String,
-          version: Schema.Number,
+          object: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.Number),
           actor: Schema.optional(
             Schema.Struct({
               metadata: Schema.Record(Schema.String, Schema.Unknown),
             }),
           ),
-          targets: Schema.Array(
-            Schema.Struct({
-              type: Schema.String,
-              metadata: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-            }),
+          targets: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                type: Schema.String,
+                metadata: Schema.optional(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+              }),
+            ),
           ),
           metadata: Schema.optional(
             Schema.Record(Schema.String, Schema.Unknown),
           ),
-          created_at: Schema.String,
+          created_at: Schema.optional(Schema.String),
         }),
       ),
     ),

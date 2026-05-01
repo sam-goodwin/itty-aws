@@ -32,7 +32,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateOutput =
     created_at: Schema.String,
     updated_at: Schema.String,
     role: Schema.Struct({
-      slug: Schema.String,
+      slug: Schema.optional(Schema.String),
     }),
   });
 export type UserlandUserOrganizationMembershipsControllerDeactivateOutput =

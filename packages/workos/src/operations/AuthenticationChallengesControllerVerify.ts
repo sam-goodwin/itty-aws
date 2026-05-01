@@ -15,16 +15,18 @@ export type AuthenticationChallengesControllerVerifyInput =
 // Output Schema
 export const AuthenticationChallengesControllerVerifyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    challenge: Schema.Struct({
-      object: Schema.String,
-      id: Schema.String,
-      expires_at: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      authentication_factor_id: Schema.String,
-      created_at: Schema.String,
-      updated_at: Schema.String,
-    }),
-    valid: Schema.Boolean,
+    challenge: Schema.optional(
+      Schema.Struct({
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        expires_at: Schema.optional(Schema.String),
+        code: Schema.optional(Schema.String),
+        authentication_factor_id: Schema.optional(Schema.String),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+      }),
+    ),
+    valid: Schema.optional(Schema.Boolean),
   });
 export type AuthenticationChallengesControllerVerifyOutput =
   typeof AuthenticationChallengesControllerVerifyOutput.Type;

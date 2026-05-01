@@ -15,13 +15,13 @@ export type AuthenticationFactorsControllerChallengeInput =
 // Output Schema
 export const AuthenticationFactorsControllerChallengeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
-    authentication_factor_id: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    authentication_factor_id: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type AuthenticationFactorsControllerChallengeOutput =
   typeof AuthenticationFactorsControllerChallengeOutput.Type;

@@ -24,7 +24,7 @@ export type RadarStandaloneControllerUpdateRadarListInput =
 // Output Schema
 export const RadarStandaloneControllerUpdateRadarListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.String,
+    message: Schema.optional(Schema.String),
   });
 export type RadarStandaloneControllerUpdateRadarListOutput =
   typeof RadarStandaloneControllerUpdateRadarListOutput.Type;

@@ -16,16 +16,16 @@ export type AuthorizationResourcesControllerFindByIdInput =
 // Output Schema
 export const AuthorizationResourcesControllerFindByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    name: Schema.String,
-    description: Schema.NullOr(Schema.String),
-    organization_id: Schema.String,
-    parent_resource_id: Schema.NullOr(Schema.String),
-    id: Schema.String,
-    external_id: Schema.String,
-    resource_type_slug: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    organization_id: Schema.optional(Schema.String),
+    parent_resource_id: Schema.optional(Schema.NullOr(Schema.String)),
+    id: Schema.optional(Schema.String),
+    external_id: Schema.optional(Schema.String),
+    resource_type_slug: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type AuthorizationResourcesControllerFindByIdOutput =
   typeof AuthorizationResourcesControllerFindByIdOutput.Type;

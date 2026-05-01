@@ -48,7 +48,7 @@ export type PortalSessionsControllerCreateInput =
 // Output Schema
 export const PortalSessionsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    link: Schema.String,
+    link: Schema.optional(Schema.String),
   });
 export type PortalSessionsControllerCreateOutput =
   typeof PortalSessionsControllerCreateOutput.Type;

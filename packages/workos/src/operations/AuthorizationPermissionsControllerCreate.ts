@@ -11,8 +11,8 @@ import {
 // Input Schema
 export const AuthorizationPermissionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    slug: Schema.String,
-    name: Schema.String,
+    slug: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
     resource_type_slug: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/authorization/permissions" }));

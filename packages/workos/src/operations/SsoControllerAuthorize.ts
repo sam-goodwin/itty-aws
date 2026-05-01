@@ -41,7 +41,7 @@ export type SsoControllerAuthorizeInput =
 // Output Schema
 export const SsoControllerAuthorizeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    url: Schema.String,
+    url: Schema.optional(Schema.String),
   });
 export type SsoControllerAuthorizeOutput =
   typeof SsoControllerAuthorizeOutput.Type;

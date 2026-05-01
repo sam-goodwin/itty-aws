@@ -14,17 +14,19 @@ export type SsoControllerJsonWebKeySetInput =
 // Output Schema
 export const SsoControllerJsonWebKeySetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keys: Schema.Array(
-      Schema.Struct({
-        alg: Schema.String,
-        kty: Schema.String,
-        use: Schema.String,
-        x5c: Schema.Array(Schema.String),
-        n: Schema.String,
-        e: Schema.String,
-        kid: Schema.String,
-        "x5t#S256": Schema.String,
-      }),
+    keys: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          alg: Schema.String,
+          kty: Schema.String,
+          use: Schema.String,
+          x5c: Schema.Array(Schema.String),
+          n: Schema.String,
+          e: Schema.String,
+          kid: Schema.String,
+          "x5t#S256": Schema.String,
+        }),
+      ),
     ),
   });
 export type SsoControllerJsonWebKeySetOutput =

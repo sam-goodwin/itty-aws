@@ -16,7 +16,7 @@ export type AuditLogsRetentionControllerAuditLogsRetentionInput =
 // Output Schema
 export const AuditLogsRetentionControllerAuditLogsRetentionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    retention_period_in_days: Schema.NullOr(Schema.Number),
+    retention_period_in_days: Schema.optional(Schema.NullOr(Schema.Number)),
   });
 export type AuditLogsRetentionControllerAuditLogsRetentionOutput =
   typeof AuditLogsRetentionControllerAuditLogsRetentionOutput.Type;

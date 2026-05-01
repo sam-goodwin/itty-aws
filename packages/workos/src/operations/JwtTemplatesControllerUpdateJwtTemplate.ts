@@ -6,7 +6,7 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const JwtTemplatesControllerUpdateJwtTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    content: Schema.String,
+    content: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "PUT", path: "/user_management/jwt_template" }));
 export type JwtTemplatesControllerUpdateJwtTemplateInput =
   typeof JwtTemplatesControllerUpdateJwtTemplateInput.Type;
@@ -14,10 +14,10 @@ export type JwtTemplatesControllerUpdateJwtTemplateInput =
 // Output Schema
 export const JwtTemplatesControllerUpdateJwtTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    content: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type JwtTemplatesControllerUpdateJwtTemplateOutput =
   typeof JwtTemplatesControllerUpdateJwtTemplateOutput.Type;

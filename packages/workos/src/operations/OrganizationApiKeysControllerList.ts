@@ -20,27 +20,33 @@ export type OrganizationApiKeysControllerListInput =
 // Output Schema
 export const OrganizationApiKeysControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    data: Schema.Array(
-      Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        owner: Schema.Struct({
-          type: Schema.String,
-          id: Schema.String,
+    object: Schema.optional(Schema.String),
+    data: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          owner: Schema.optional(
+            Schema.Struct({
+              type: Schema.String,
+              id: Schema.String,
+            }),
+          ),
+          name: Schema.optional(Schema.String),
+          obfuscated_value: Schema.optional(Schema.String),
+          last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+          permissions: Schema.optional(Schema.Array(Schema.String)),
+          created_at: Schema.optional(Schema.String),
+          updated_at: Schema.optional(Schema.String),
         }),
-        name: Schema.String,
-        obfuscated_value: Schema.String,
-        last_used_at: Schema.NullOr(Schema.String),
-        permissions: Schema.Array(Schema.String),
-        created_at: Schema.String,
-        updated_at: Schema.String,
+      ),
+    ),
+    list_metadata: Schema.optional(
+      Schema.Struct({
+        before: Schema.NullOr(Schema.String),
+        after: Schema.NullOr(Schema.String),
       }),
     ),
-    list_metadata: Schema.Struct({
-      before: Schema.NullOr(Schema.String),
-      after: Schema.NullOr(Schema.String),
-    }),
   });
 export type OrganizationApiKeysControllerListOutput =
   typeof OrganizationApiKeysControllerListOutput.Type;

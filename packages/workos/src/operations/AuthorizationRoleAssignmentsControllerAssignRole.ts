@@ -19,18 +19,22 @@ export type AuthorizationRoleAssignmentsControllerAssignRoleInput =
 // Output Schema
 export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    role: Schema.Struct({
-      slug: Schema.String,
-    }),
-    resource: Schema.Struct({
-      id: Schema.String,
-      external_id: Schema.String,
-      resource_type_slug: Schema.String,
-    }),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    role: Schema.optional(
+      Schema.Struct({
+        slug: Schema.optional(Schema.String),
+      }),
+    ),
+    resource: Schema.optional(
+      Schema.Struct({
+        id: Schema.String,
+        external_id: Schema.String,
+        resource_type_slug: Schema.String,
+      }),
+    ),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type AuthorizationRoleAssignmentsControllerAssignRoleOutput =
   typeof AuthorizationRoleAssignmentsControllerAssignRoleOutput.Type;

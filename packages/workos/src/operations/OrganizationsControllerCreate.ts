@@ -12,8 +12,8 @@ export const OrganizationsControllerCreateInput =
     domain_data: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          domain: Schema.String,
-          state: Schema.Literals(["pending", "verified"]),
+          domain: Schema.optional(Schema.String),
+          state: Schema.optional(Schema.Literals(["pending", "verified"])),
         }),
       ),
     ),
@@ -28,38 +28,40 @@ export type OrganizationsControllerCreateInput =
 // Output Schema
 export const OrganizationsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    name: Schema.String,
-    domains: Schema.Array(
-      Schema.Struct({
-        object: Schema.String,
-        id: Schema.String,
-        organization_id: Schema.String,
-        domain: Schema.String,
-        state: Schema.optional(
-          Schema.Literals([
-            "failed",
-            "legacy_verified",
-            "pending",
-            "unverified",
-            "verified",
-          ]),
-        ),
-        verification_prefix: Schema.optional(Schema.String),
-        verification_token: Schema.optional(Schema.String),
-        verification_strategy: Schema.optional(
-          Schema.Literals(["dns", "manual"]),
-        ),
-        created_at: Schema.String,
-        updated_at: Schema.String,
-      }),
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    domains: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          object: Schema.String,
+          id: Schema.String,
+          organization_id: Schema.String,
+          domain: Schema.String,
+          state: Schema.optional(
+            Schema.Literals([
+              "failed",
+              "legacy_verified",
+              "pending",
+              "unverified",
+              "verified",
+            ]),
+          ),
+          verification_prefix: Schema.optional(Schema.String),
+          verification_token: Schema.optional(Schema.String),
+          verification_strategy: Schema.optional(
+            Schema.Literals(["dns", "manual"]),
+          ),
+          created_at: Schema.String,
+          updated_at: Schema.String,
+        }),
+      ),
     ),
-    metadata: Schema.Record(Schema.String, Schema.String),
-    external_id: Schema.NullOr(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    external_id: Schema.optional(Schema.NullOr(Schema.String)),
     stripe_customer_id: Schema.optional(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
   });
 export type OrganizationsControllerCreateOutput =

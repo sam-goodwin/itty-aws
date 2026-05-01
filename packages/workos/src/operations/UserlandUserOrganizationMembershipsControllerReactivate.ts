@@ -19,21 +19,23 @@ export type UserlandUserOrganizationMembershipsControllerReactivateInput =
 // Output Schema
 export const UserlandUserOrganizationMembershipsControllerReactivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    user_id: Schema.String,
-    organization_id: Schema.String,
-    status: Schema.Literals(["active", "inactive", "pending"]),
-    directory_managed: Schema.Boolean,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    user_id: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.Literals(["active", "inactive", "pending"])),
+    directory_managed: Schema.optional(Schema.Boolean),
     organization_name: Schema.optional(Schema.String),
     custom_attributes: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    role: Schema.Struct({
-      slug: Schema.String,
-    }),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
+    role: Schema.optional(
+      Schema.Struct({
+        slug: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type UserlandUserOrganizationMembershipsControllerReactivateOutput =
   typeof UserlandUserOrganizationMembershipsControllerReactivateOutput.Type;

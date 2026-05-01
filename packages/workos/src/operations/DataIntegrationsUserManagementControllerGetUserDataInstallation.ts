@@ -21,18 +21,16 @@ export type DataIntegrationsUserManagementControllerGetUserDataInstallationInput
 // Output Schema
 export const DataIntegrationsUserManagementControllerGetUserDataInstallationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    user_id: Schema.NullOr(Schema.String),
-    organization_id: Schema.NullOr(Schema.String),
-    scopes: Schema.Array(Schema.String),
-    state: Schema.Literals([
-      "connected",
-      "needs_reauthorization",
-      "disconnected",
-    ]),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    user_id: Schema.optional(Schema.NullOr(Schema.String)),
+    organization_id: Schema.optional(Schema.NullOr(Schema.String)),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    state: Schema.optional(
+      Schema.Literals(["connected", "needs_reauthorization", "disconnected"]),
+    ),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type DataIntegrationsUserManagementControllerGetUserDataInstallationOutput =
   typeof DataIntegrationsUserManagementControllerGetUserDataInstallationOutput.Type;

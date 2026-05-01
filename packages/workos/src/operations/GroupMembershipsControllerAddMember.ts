@@ -8,7 +8,7 @@ export const GroupMembershipsControllerAddMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
-    organization_membership_id: Schema.String,
+    organization_membership_id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -21,13 +21,13 @@ export type GroupMembershipsControllerAddMemberInput =
 // Output Schema
 export const GroupMembershipsControllerAddMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    organization_id: Schema.String,
-    name: Schema.String,
-    description: Schema.NullOr(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type GroupMembershipsControllerAddMemberOutput =
   typeof GroupMembershipsControllerAddMemberOutput.Type;

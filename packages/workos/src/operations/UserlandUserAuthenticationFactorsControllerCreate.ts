@@ -8,7 +8,7 @@ import { SensitiveString } from "../sensitive.ts";
 export const UserlandUserAuthenticationFactorsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userlandUserId: Schema.String.pipe(T.PathParam()),
-    type: Schema.String,
+    type: Schema.optional(Schema.String),
     totp_issuer: Schema.optional(Schema.String),
     totp_user: Schema.optional(Schema.String),
     totp_secret: Schema.optional(SensitiveString),
@@ -24,37 +24,43 @@ export type UserlandUserAuthenticationFactorsControllerCreateInput =
 // Output Schema
 export const UserlandUserAuthenticationFactorsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authentication_factor: Schema.Struct({
-      object: Schema.String,
-      id: Schema.String,
-      type: Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
-      user_id: Schema.optional(Schema.String),
-      sms: Schema.optional(
-        Schema.Struct({
-          phone_number: Schema.String,
-        }),
-      ),
-      totp: Schema.optional(
-        Schema.Struct({
-          issuer: Schema.String,
-          user: Schema.String,
-          secret: SensitiveString,
-          qr_code: Schema.String,
-          uri: Schema.String,
-        }),
-      ),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-    }),
-    authentication_challenge: Schema.Struct({
-      object: Schema.String,
-      id: Schema.String,
-      expires_at: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      authentication_factor_id: Schema.String,
-      created_at: Schema.String,
-      updated_at: Schema.String,
-    }),
+    authentication_factor: Schema.optional(
+      Schema.Struct({
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        type: Schema.optional(
+          Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
+        ),
+        user_id: Schema.optional(Schema.String),
+        sms: Schema.optional(
+          Schema.Struct({
+            phone_number: Schema.String,
+          }),
+        ),
+        totp: Schema.optional(
+          Schema.Struct({
+            issuer: Schema.String,
+            user: Schema.String,
+            secret: SensitiveString,
+            qr_code: Schema.String,
+            uri: Schema.String,
+          }),
+        ),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+      }),
+    ),
+    authentication_challenge: Schema.optional(
+      Schema.Struct({
+        object: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        expires_at: Schema.optional(Schema.String),
+        code: Schema.optional(Schema.String),
+        authentication_factor_id: Schema.optional(Schema.String),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type UserlandUserAuthenticationFactorsControllerCreateOutput =
   typeof UserlandUserAuthenticationFactorsControllerCreateOutput.Type;

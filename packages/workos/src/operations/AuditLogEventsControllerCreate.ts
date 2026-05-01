@@ -6,31 +6,39 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const AuditLogEventsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.String,
-    event: Schema.Struct({
-      action: Schema.String,
-      occurred_at: Schema.String,
-      actor: Schema.Struct({
-        id: Schema.String,
-        type: Schema.String,
-        name: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String),
+    event: Schema.optional(
+      Schema.Struct({
+        action: Schema.optional(Schema.String),
+        occurred_at: Schema.optional(Schema.String),
+        actor: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            metadata: Schema.optional(Schema.Unknown),
+          }),
+        ),
+        targets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              metadata: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+        context: Schema.optional(
+          Schema.Struct({
+            location: Schema.optional(Schema.String),
+            user_agent: Schema.optional(Schema.String),
+          }),
+        ),
         metadata: Schema.optional(Schema.Unknown),
+        version: Schema.optional(Schema.Number),
       }),
-      targets: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          type: Schema.String,
-          name: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.Unknown),
-        }),
-      ),
-      context: Schema.Struct({
-        location: Schema.String,
-        user_agent: Schema.optional(Schema.String),
-      }),
-      metadata: Schema.optional(Schema.Unknown),
-      version: Schema.optional(Schema.Number),
-    }),
+    ),
   }).pipe(T.Http({ method: "POST", path: "/audit_logs/events" }));
 export type AuditLogEventsControllerCreateInput =
   typeof AuditLogEventsControllerCreateInput.Type;
@@ -38,7 +46,7 @@ export type AuditLogEventsControllerCreateInput =
 // Output Schema
 export const AuditLogEventsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    success: Schema.Boolean,
+    success: Schema.optional(Schema.Boolean),
   });
 export type AuditLogEventsControllerCreateOutput =
   typeof AuditLogEventsControllerCreateOutput.Type;

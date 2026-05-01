@@ -14,17 +14,17 @@ export type DirectoryGroupsControllerFindInput =
 // Output Schema
 export const DirectoryGroupsControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    idp_id: Schema.String,
-    directory_id: Schema.String,
-    organization_id: Schema.String,
-    name: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    idp_id: Schema.optional(Schema.String),
+    directory_id: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     raw_attributes: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type DirectoryGroupsControllerFindOutput =
   typeof DirectoryGroupsControllerFindOutput.Type;

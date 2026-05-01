@@ -14,7 +14,7 @@ export const ApplicationsControllerUpdateInput =
       Schema.NullOr(
         Schema.Array(
           Schema.Struct({
-            uri: Schema.String,
+            uri: Schema.optional(Schema.String),
             default: Schema.optional(Schema.NullOr(Schema.Boolean)),
           }),
         ),

@@ -14,8 +14,8 @@ export type SsoControllerLogoutAuthorizeInput =
 // Output Schema
 export const SsoControllerLogoutAuthorizeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    logout_url: Schema.String,
-    logout_token: Schema.String,
+    logout_url: Schema.optional(Schema.String),
+    logout_token: Schema.optional(Schema.String),
   });
 export type SsoControllerLogoutAuthorizeOutput =
   typeof SsoControllerLogoutAuthorizeOutput.Type;

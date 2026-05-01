@@ -100,14 +100,14 @@ export type WebhookEndpointsControllerUpdateInput =
 // Output Schema
 export const WebhookEndpointsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.String,
-    id: Schema.String,
-    endpoint_url: Schema.String,
-    secret: SensitiveString,
-    status: Schema.Literals(["enabled", "disabled"]),
-    events: Schema.Array(Schema.String),
-    created_at: Schema.String,
-    updated_at: Schema.String,
+    object: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    endpoint_url: Schema.optional(Schema.String),
+    secret: Schema.optional(SensitiveString),
+    status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
+    events: Schema.optional(Schema.Array(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    updated_at: Schema.optional(Schema.String),
   });
 export type WebhookEndpointsControllerUpdateOutput =
   typeof WebhookEndpointsControllerUpdateOutput.Type;
