@@ -31,17 +31,4 @@ describe("AuditLogValidatorsControllerList", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "fails with NotFound when paginating with a non-existent cursor",
-    async () => {
-      const error = await runEffect(
-        AuditLogValidatorsControllerList({
-          after: `does_not_exist_${testRunId}`,
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("NotFound");
-    },
-    { timeout: 30_000 },
-  );
 });

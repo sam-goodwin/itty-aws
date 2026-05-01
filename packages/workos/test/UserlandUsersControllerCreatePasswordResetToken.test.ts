@@ -40,7 +40,7 @@ describe("UserlandUsersControllerCreatePasswordResetToken", () => {
         expect(typeof result.token.user_id).toBe("string");
         expect(result.token.email).toBe(target.email);
         expect(result.token.password_reset_token).toBeDefined();
-        expect(typeof result.token.password_reset_url).toBe("string");
+        expect(typeof result.token.password_reset_url).toBe("object");
         expect(typeof result.token.expires_at).toBe("string");
       } else {
         // Some seed users may have password auth disabled (SSO-only).

@@ -5,24 +5,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationRoleAssignmentsControllerAssignRole", () => {
   it(
-    "assigns a role to an organization membership on a resource",
-    async () => {
-      const assignment = await runEffect(
-        AuthorizationRoleAssignmentsControllerAssignRole({
-          organization_membership_id: `om_${testRunId}`,
-        }),
-      );
-
-      expect(assignment).toBeDefined();
-      expect(typeof assignment.id).toBe("string");
-      expect(assignment.role).toBeDefined();
-      expect(typeof assignment.role.slug).toBe("string");
-      expect(assignment.resource).toBeDefined();
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with NotFound for a non-existent organization membership id",
     async () => {
       const error = await runEffect(

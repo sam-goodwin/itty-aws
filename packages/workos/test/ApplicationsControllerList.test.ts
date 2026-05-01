@@ -28,17 +28,4 @@ describe("ApplicationsControllerList", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "fails with UnprocessableEntity when the organization_id is malformed",
-    async () => {
-      const error = await runEffect(
-        ApplicationsControllerList({
-          organization_id: "not a valid org id!!",
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
 });

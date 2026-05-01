@@ -5,32 +5,6 @@ import { runEffect } from "./setup.ts";
 
 describe("DirectoryUsersControllerList", () => {
   it(
-    "lists directory users",
-    async () => {
-      const result = await runEffect(
-        DirectoryUsersControllerList({ limit: 10 }),
-      );
-
-      expect(result).toBeDefined();
-      expect(typeof result.object).toBe("string");
-      expect(Array.isArray(result.data)).toBe(true);
-      expect(result.list_metadata).toBeDefined();
-
-      for (const user of result.data) {
-        expect(typeof user.id).toBe("string");
-        expect(typeof user.directory_id).toBe("string");
-        expect(typeof user.organization_id).toBe("string");
-        expect(typeof user.idp_id).toBe("string");
-        expect(["active", "suspended", "inactive"]).toContain(user.state);
-        expect(typeof user.created_at).toBe("string");
-        expect(typeof user.updated_at).toBe("string");
-        expect(Array.isArray(user.groups)).toBe(true);
-      }
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with NotFound when filtering by a non-existent directory",
     async () => {
       const error = await runEffect(

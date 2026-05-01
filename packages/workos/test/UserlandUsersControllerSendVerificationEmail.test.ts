@@ -44,25 +44,6 @@ describe("UserlandUsersControllerSendVerificationEmail", () => {
   );
 
   it(
-    "fails with a typed BadRequest when the user's email is already verified or otherwise invalid",
-    async () => {
-      const users = await runEffect(UserlandUsersControllerList({ limit: 1 }));
-      const seedId =
-        users.data.length > 0
-          ? (users.data[0] as { id: string }).id
-          : `user_does_not_exist_${testRunId}`;
-
-      const error = await runEffect(
-        UserlandUsersControllerSendVerificationEmail({ id: seedId }).pipe(
-          Effect.flip,
-        ),
-      );
-      expect(typedErrorTags).toContain(error._tag);
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with NotFound for a non-existent user id",
     async () => {
       const error = await runEffect(

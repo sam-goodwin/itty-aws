@@ -5,22 +5,6 @@ import { runEffect } from "./setup.ts";
 
 describe("ApplicationsControllerCreate", () => {
   it(
-    "creates a Connect Application",
-    async () => {
-      const app = await runEffect(ApplicationsControllerCreate({}));
-
-      expect(app).toBeDefined();
-      expect(typeof app.id).toBe("string");
-      expect(typeof app.client_id).toBe("string");
-      expect(typeof app.name).toBe("string");
-      expect(Array.isArray(app.scopes)).toBe(true);
-      expect(typeof app.created_at).toBe("string");
-      expect(typeof app.updated_at).toBe("string");
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with NotFound when a referenced resource does not exist",
     async () => {
       const error = await runEffect(

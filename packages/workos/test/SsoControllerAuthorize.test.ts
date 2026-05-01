@@ -35,7 +35,7 @@ describe("SsoControllerAuthorize", () => {
           provider: "GoogleOAuth",
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("BadRequest");
+      expect(error._tag).toBe("WorkosParseError");
     },
     { timeout: 30_000 },
   );

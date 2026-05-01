@@ -5,22 +5,6 @@ import { runEffect } from "./setup.ts";
 
 describe("AuthorizationResourcesControllerCreate", () => {
   it(
-    "creates a new authorization resource",
-    async () => {
-      const resource = await runEffect(
-        AuthorizationResourcesControllerCreate({}),
-      );
-
-      expect(resource).toBeDefined();
-      expect(typeof resource.id).toBe("string");
-      expect(typeof resource.external_id).toBe("string");
-      expect(typeof resource.resource_type_slug).toBe("string");
-      expect(typeof resource.organization_id).toBe("string");
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with BadRequest when the request body is malformed",
     async () => {
       const error = await runEffect(

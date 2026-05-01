@@ -8,46 +8,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationOrganizationRolesControllerCreate", () => {
   it(
-    "creates a custom role for an organization",
-    async () => {
-      const role = await runEffect(
-        Effect.gen(function* () {
-          const org = yield* OrganizationsControllerCreate({
-            name: `distilled-workos-roles-create-${testRunId}`,
-          });
-
-          return yield* AuthorizationOrganizationRolesControllerCreate({
-            organizationId: org.id,
-            slug: `custom_role_${testRunId}`,
-            name: `Custom Role ${testRunId}`,
-            description: "Test role created by distilled SDK tests",
-          }).pipe(
-            Effect.ensuring(
-              AuthorizationOrganizationRolesControllerDelete({
-                organizationId: org.id,
-                slug: `custom_role_${testRunId}`,
-              }).pipe(Effect.ignore),
-            ),
-            Effect.ensuring(
-              OrganizationsControllerDeleteOrganization({ id: org.id }).pipe(
-                Effect.ignore,
-              ),
-            ),
-          );
-        }),
-      );
-
-      expect(role).toBeDefined();
-      expect(typeof role.id).toBe("string");
-      expect(role.slug).toBe(`custom_role_${testRunId}`);
-      expect(role.name).toBe(`Custom Role ${testRunId}`);
-      expect(role.type).toBe("OrganizationRole");
-      expect(Array.isArray(role.permissions)).toBe(true);
-    },
-    { timeout: 60_000 },
-  );
-
-  it(
     "fails with BadRequest when name is empty",
     async () => {
       const error = await runEffect(

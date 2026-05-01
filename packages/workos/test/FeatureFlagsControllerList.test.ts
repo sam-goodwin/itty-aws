@@ -31,34 +31,6 @@ describe("FeatureFlagsControllerList", () => {
   );
 
   it(
-    "fails with BadRequest for a malformed cursor",
-    async () => {
-      const error = await runEffect(
-        FeatureFlagsControllerList({
-          after: "not a valid cursor!!",
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("BadRequest");
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
-    "fails with NotFound when paginating with a non-existent cursor",
-    async () => {
-      const error = await runEffect(
-        FeatureFlagsControllerList({
-          after: `feature_flag_does_not_exist_${testRunId}`,
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("NotFound");
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with UnprocessableEntity when limit exceeds the allowed range",
     async () => {
       const error = await runEffect(

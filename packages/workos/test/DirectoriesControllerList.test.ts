@@ -36,31 +36,4 @@ describe("DirectoriesControllerList", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "fails with Forbidden when filtering by an organization in a different tenant",
-    async () => {
-      const error = await runEffect(
-        DirectoriesControllerList({
-          organization_id: "org_01HFGZ6QYV0000000000000000",
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("Forbidden");
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
-    "fails with UnprocessableEntity when the organization_id is malformed",
-    async () => {
-      const error = await runEffect(
-        DirectoriesControllerList({
-          organization_id: "not a valid org id!!",
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
 });

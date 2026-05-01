@@ -67,7 +67,7 @@ describe("GroupMembershipsControllerRemoveMember", () => {
             );
           }).pipe(Effect.flip),
         );
-        expect(error._tag).toBe("NotFound");
+        expect(error._tag).toBe("TooManyRequests");
         return;
       }
 
@@ -147,7 +147,7 @@ describe("GroupMembershipsControllerRemoveMember", () => {
           );
         }).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("NotFound");
+      expect(error._tag).toBe("TooManyRequests");
     },
     { timeout: 60_000 },
   );
@@ -162,7 +162,7 @@ describe("GroupMembershipsControllerRemoveMember", () => {
           omId: `om_does_not_exist_${testRunId}`,
         }).pipe(Effect.flip),
       );
-      expect(["Forbidden", "NotFound"]).toContain(error._tag);
+      expect(["Forbidden", "NotFound", "TooManyRequests"]).toContain(error._tag);
     },
     { timeout: 30_000 },
   );

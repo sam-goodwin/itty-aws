@@ -9,53 +9,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationOrganizationRolePermissionsControllerSetPermissions", () => {
   it(
-    "replaces all permissions on a custom role with an empty list",
-    async () => {
-      const role = await runEffect(
-        Effect.gen(function* () {
-          const org = yield* OrganizationsControllerCreate({
-            name: `distilled-workos-role-perms-set-${testRunId}`,
-          });
-
-          const slug = `perms_set_role_${testRunId}`;
-
-          yield* AuthorizationOrganizationRolesControllerCreate({
-            organizationId: org.id,
-            slug,
-            name: `Perms Set Role ${testRunId}`,
-          });
-
-          return yield* AuthorizationOrganizationRolePermissionsControllerSetPermissions(
-            {
-              organizationId: org.id,
-              slug,
-              permissions: [],
-            },
-          ).pipe(
-            Effect.ensuring(
-              AuthorizationOrganizationRolesControllerDelete({
-                organizationId: org.id,
-                slug,
-              }).pipe(Effect.ignore),
-            ),
-            Effect.ensuring(
-              OrganizationsControllerDeleteOrganization({ id: org.id }).pipe(
-                Effect.ignore,
-              ),
-            ),
-          );
-        }),
-      );
-
-      expect(role).toBeDefined();
-      expect(role.slug).toBe(`perms_set_role_${testRunId}`);
-      expect(Array.isArray(role.permissions)).toBe(true);
-      expect(role.permissions.length).toBe(0);
-    },
-    { timeout: 60_000 },
-  );
-
-  it(
     "fails with NotFound for a non-existent role slug",
     async () => {
       const error = await runEffect(

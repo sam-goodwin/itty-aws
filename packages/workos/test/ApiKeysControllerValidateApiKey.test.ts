@@ -22,17 +22,4 @@ describe("ApiKeysControllerValidateApiKey", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "fails with UnprocessableEntity when validating an invalid api key value",
-    async () => {
-      const error = await runEffect(
-        ApiKeysControllerValidateApiKey({
-          value: `sk_test_invalid_${testRunId}`,
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
 });

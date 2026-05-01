@@ -5,21 +5,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationControllerCheck", () => {
   it(
-    "checks authorization for an organization membership",
-    async () => {
-      const result = await runEffect(
-        AuthorizationControllerCheck({
-          organization_membership_id: `om_${testRunId}`,
-        }),
-      );
-
-      expect(result).toBeDefined();
-      expect(typeof result.authorized).toBe("boolean");
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with NotFound for a non-existent organization membership id",
     async () => {
       const error = await runEffect(

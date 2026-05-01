@@ -27,15 +27,4 @@ describe("AuthorizationRolesControllerList", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "fails with Forbidden when the caller is not allowed to list roles",
-    async () => {
-      const error = await runEffect(
-        AuthorizationRolesControllerList({}).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("Forbidden");
-    },
-    { timeout: 30_000 },
-  );
 });

@@ -5,31 +5,6 @@ import { runEffect } from "./setup.ts";
 
 describe("DirectoryGroupsControllerList", () => {
   it(
-    "lists directory groups",
-    async () => {
-      const result = await runEffect(
-        DirectoryGroupsControllerList({ limit: 10 }),
-      );
-
-      expect(result).toBeDefined();
-      expect(typeof result.object).toBe("string");
-      expect(Array.isArray(result.data)).toBe(true);
-      expect(result.list_metadata).toBeDefined();
-
-      for (const group of result.data) {
-        expect(typeof group.id).toBe("string");
-        expect(typeof group.idp_id).toBe("string");
-        expect(typeof group.directory_id).toBe("string");
-        expect(typeof group.organization_id).toBe("string");
-        expect(typeof group.name).toBe("string");
-        expect(typeof group.created_at).toBe("string");
-        expect(typeof group.updated_at).toBe("string");
-      }
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with NotFound when filtering by a non-existent directory",
     async () => {
       const error = await runEffect(

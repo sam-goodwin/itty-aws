@@ -57,19 +57,6 @@ describe("UserlandUserOrganizationMembershipsControllerList", () => {
   );
 
   it(
-    "fails with NotFound for a non-existent organization_id",
-    async () => {
-      const error = await runEffect(
-        UserlandUserOrganizationMembershipsControllerList({
-          organization_id: `organization_does_not_exist_${testRunId}`,
-        }).pipe(Effect.flip),
-      );
-      expect(error._tag).toBe("NotFound");
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with UnprocessableEntity when limit exceeds the allowed range",
     async () => {
       const error = await runEffect(

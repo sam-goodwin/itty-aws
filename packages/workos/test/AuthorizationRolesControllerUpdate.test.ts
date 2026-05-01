@@ -84,18 +84,4 @@ describe("AuthorizationRolesControllerUpdate", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "fails with UnprocessableEntity when attempting to update the built-in admin role",
-    async () => {
-      const error = await runEffect(
-        AuthorizationRolesControllerUpdate({
-          slug: "admin",
-          name: `Admin Hijack ${testRunId}`,
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
 });

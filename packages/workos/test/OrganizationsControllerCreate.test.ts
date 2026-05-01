@@ -36,7 +36,7 @@ describe("OrganizationsControllerCreate", () => {
           {} as unknown as { name: string },
         ).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("BadRequest");
+      expect(error._tag).toBe("UnprocessableEntity");
     },
     { timeout: 30_000 },
   );

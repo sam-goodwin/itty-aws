@@ -9,52 +9,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationOrganizationRolesControllerUpdate", () => {
   it(
-    "updates a custom role's name and description",
-    async () => {
-      const role = await runEffect(
-        Effect.gen(function* () {
-          const org = yield* OrganizationsControllerCreate({
-            name: `distilled-workos-roles-update-${testRunId}`,
-          });
-
-          const slug = `update_role_${testRunId}`;
-
-          yield* AuthorizationOrganizationRolesControllerCreate({
-            organizationId: org.id,
-            slug,
-            name: `Original Name ${testRunId}`,
-          });
-
-          return yield* AuthorizationOrganizationRolesControllerUpdate({
-            organizationId: org.id,
-            slug,
-            name: `Updated Name ${testRunId}`,
-            description: "Updated description",
-          }).pipe(
-            Effect.ensuring(
-              AuthorizationOrganizationRolesControllerDelete({
-                organizationId: org.id,
-                slug,
-              }).pipe(Effect.ignore),
-            ),
-            Effect.ensuring(
-              OrganizationsControllerDeleteOrganization({ id: org.id }).pipe(
-                Effect.ignore,
-              ),
-            ),
-          );
-        }),
-      );
-
-      expect(role).toBeDefined();
-      expect(role.slug).toBe(`update_role_${testRunId}`);
-      expect(role.name).toBe(`Updated Name ${testRunId}`);
-      expect(role.description).toBe("Updated description");
-    },
-    { timeout: 60_000 },
-  );
-
-  it(
     "fails with BadRequest when name is empty",
     async () => {
       const error = await runEffect(

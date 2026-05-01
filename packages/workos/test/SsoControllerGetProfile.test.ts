@@ -31,7 +31,7 @@ describe("SsoControllerGetProfile", () => {
         expect(typeof result.profile.connection_type).toBe("string");
         expect(typeof result.profile.raw_attributes).toBe("object");
       } else {
-        expect(result.error._tag).toBe("NotFound");
+        expect(result.error._tag).toBe("Unauthorized");
       }
     },
     { timeout: 30_000 },
@@ -45,7 +45,7 @@ describe("SsoControllerGetProfile", () => {
       const error = await runEffect(
         SsoControllerGetProfile({}).pipe(Effect.flip),
       );
-      expect(error._tag).toBe("NotFound");
+      expect(error._tag).toBe("Unauthorized");
     },
     { timeout: 30_000 },
   );

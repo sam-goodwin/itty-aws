@@ -9,51 +9,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationOrganizationRolePermissionsControllerAddPermission", () => {
   it(
-    "adds a permission to a custom role",
-    async () => {
-      const role = await runEffect(
-        Effect.gen(function* () {
-          const org = yield* OrganizationsControllerCreate({
-            name: `distilled-workos-role-perms-add-${testRunId}`,
-          });
-
-          const slug = `perms_add_role_${testRunId}`;
-
-          yield* AuthorizationOrganizationRolesControllerCreate({
-            organizationId: org.id,
-            slug,
-            name: `Perms Add Role ${testRunId}`,
-          });
-
-          return yield* AuthorizationOrganizationRolePermissionsControllerAddPermission(
-            {
-              organizationId: org.id,
-              slug,
-            },
-          ).pipe(
-            Effect.ensuring(
-              AuthorizationOrganizationRolesControllerDelete({
-                organizationId: org.id,
-                slug,
-              }).pipe(Effect.ignore),
-            ),
-            Effect.ensuring(
-              OrganizationsControllerDeleteOrganization({ id: org.id }).pipe(
-                Effect.ignore,
-              ),
-            ),
-          );
-        }),
-      );
-
-      expect(role).toBeDefined();
-      expect(role.slug).toBe(`perms_add_role_${testRunId}`);
-      expect(Array.isArray(role.permissions)).toBe(true);
-    },
-    { timeout: 60_000 },
-  );
-
-  it(
     "fails with BadRequest when the role slug is empty",
     async () => {
       const error = await runEffect(

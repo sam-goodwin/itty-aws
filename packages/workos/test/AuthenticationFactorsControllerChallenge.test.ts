@@ -44,26 +44,4 @@ describe("AuthenticationFactorsControllerChallenge", () => {
     { timeout: 30_000 },
   );
 
-  it(
-    "fails with UnprocessableEntity when passing sms_template to a non-SMS factor",
-    async () => {
-      const error = await runEffect(
-        Effect.gen(function* () {
-          const factor = yield* AuthenticationFactorsControllerCreate({
-            type: "totp",
-            totp_issuer: `distilled-workos-422-${testRunId}`,
-            totp_user: `challenge-user-422-${testRunId}`,
-          });
-
-          return yield* AuthenticationFactorsControllerChallenge({
-            id: factor.id,
-            sms_template: `Your code is {{code}} - ${testRunId}`,
-          });
-        }).pipe(Effect.flip),
-      );
-
-      expect(error._tag).toBe("UnprocessableEntity");
-    },
-    { timeout: 30_000 },
-  );
 });

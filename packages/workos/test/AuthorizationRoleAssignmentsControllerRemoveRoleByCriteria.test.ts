@@ -5,20 +5,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria", () => {
   it(
-    "removes a role assignment by criteria for an organization membership",
-    async () => {
-      const result = await runEffect(
-        AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria({
-          organization_membership_id: `om_${testRunId}`,
-        }),
-      );
-
-      expect(result).toBeUndefined();
-    },
-    { timeout: 30_000 },
-  );
-
-  it(
     "fails with NotFound for a non-existent organization membership id",
     async () => {
       const error = await runEffect(

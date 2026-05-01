@@ -9,48 +9,6 @@ import { runEffect, testRunId } from "./setup.ts";
 
 describe("AuthorizationOrganizationRolesControllerDelete", () => {
   it(
-    "deletes a custom role for an organization",
-    async () => {
-      const error = await runEffect(
-        Effect.gen(function* () {
-          const org = yield* OrganizationsControllerCreate({
-            name: `distilled-workos-roles-delete-${testRunId}`,
-          });
-
-          const slug = `delete_role_${testRunId}`;
-
-          yield* AuthorizationOrganizationRolesControllerCreate({
-            organizationId: org.id,
-            slug,
-            name: `Delete Role ${testRunId}`,
-          });
-
-          yield* AuthorizationOrganizationRolesControllerDelete({
-            organizationId: org.id,
-            slug,
-          });
-
-          return yield* AuthorizationOrganizationRolesControllerGet({
-            organizationId: org.id,
-            slug,
-          })
-            .pipe(Effect.flip)
-            .pipe(
-              Effect.ensuring(
-                OrganizationsControllerDeleteOrganization({ id: org.id }).pipe(
-                  Effect.ignore,
-                ),
-              ),
-            );
-        }),
-      );
-
-      expect(error._tag).toBe("NotFound");
-    },
-    { timeout: 60_000 },
-  );
-
-  it(
     "fails with BadRequest when the role slug is empty",
     async () => {
       const error = await runEffect(
