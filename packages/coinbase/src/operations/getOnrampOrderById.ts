@@ -31,7 +31,7 @@ export const GetOnrampOrderByIdOutput =
         }),
       ),
       exchangeRate: Schema.String,
-      destinationAddress: Schema.Struct({}),
+      destinationAddress: Schema.String,
       destinationNetwork: Schema.String,
       status: Schema.Literals([
         "ONRAMP_ORDER_STATUS_PENDING_AUTH",

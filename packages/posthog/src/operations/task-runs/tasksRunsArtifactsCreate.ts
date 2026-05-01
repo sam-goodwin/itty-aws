@@ -12,10 +12,18 @@ export const TasksRunsArtifactsCreateInput =
     artifacts: Schema.Array(
       Schema.Struct({
         name: Schema.String,
-        type: Schema.Struct({}),
+        type: Schema.Literals([
+          "plan",
+          "context",
+          "reference",
+          "output",
+          "artifact",
+          "tree_snapshot",
+          "user_attachment",
+        ]),
         source: Schema.optional(Schema.String),
         content: Schema.String,
-        content_encoding: Schema.optional(Schema.Struct({})),
+        content_encoding: Schema.optional(Schema.Literals(["utf-8", "base64"])),
         content_type: Schema.optional(Schema.String),
       }),
     ),

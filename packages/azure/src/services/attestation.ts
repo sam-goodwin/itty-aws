@@ -27,8 +27,23 @@ export type AttestationProvidersCreateInput =
 // Output Schema
 export const AttestationProvidersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationProvidersCreateOutput =
   typeof AttestationProvidersCreateOutput.Type;
@@ -104,8 +119,23 @@ export type AttestationProvidersGetInput =
 // Output Schema
 export const AttestationProvidersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationProvidersGetOutput =
   typeof AttestationProvidersGetOutput.Type;
@@ -143,8 +173,23 @@ export type AttestationProvidersGetDefaultByLocationInput =
 // Output Schema
 export const AttestationProvidersGetDefaultByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationProvidersGetDefaultByLocationOutput =
   typeof AttestationProvidersGetDefaultByLocationOutput.Type;
@@ -196,8 +241,33 @@ export const AttestationProvidersListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
@@ -253,8 +323,33 @@ export const AttestationProvidersListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
@@ -309,8 +404,33 @@ export const AttestationProvidersListDefaultOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
@@ -349,8 +469,23 @@ export type AttestationProvidersUpdateInput =
 // Output Schema
 export const AttestationProvidersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type AttestationProvidersUpdateOutput =
   typeof AttestationProvidersUpdateOutput.Type;

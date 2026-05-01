@@ -32,12 +32,14 @@ export const HogFlowsSchedulesPartialUpdateInput =
     updated_at: Schema.optional(Schema.String),
     trigger: Schema.optional(Schema.Unknown),
     trigger_masking: Schema.optional(
-      Schema.Struct({
-        ttl: Schema.optional(Schema.NullOr(Schema.Number)),
-        threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-        hash: Schema.String,
-        bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          ttl: Schema.optional(Schema.NullOr(Schema.Number)),
+          threshold: Schema.optional(Schema.NullOr(Schema.Number)),
+          hash: Schema.String,
+          bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
     conversion: Schema.optional(Schema.NullOr(Schema.Unknown)),
     exit_condition: Schema.optional(
@@ -59,25 +61,33 @@ export const HogFlowsSchedulesPartialUpdateInput =
           created_at: Schema.optional(Schema.Number),
           updated_at: Schema.optional(Schema.Number),
           filters: Schema.optional(
-            Schema.Struct({
-              source: Schema.optional(Schema.Struct({})),
-              actions: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              events: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              data_warehouse: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              properties: Schema.optional(
-                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-              transpiled: Schema.optional(Schema.Unknown),
-              filter_test_accounts: Schema.optional(Schema.Boolean),
-              bytecode_error: Schema.optional(Schema.String),
-            }),
+            Schema.NullOr(
+              Schema.Struct({
+                source: Schema.optional(
+                  Schema.Literals([
+                    "events",
+                    "person-updates",
+                    "data-warehouse-table",
+                  ]),
+                ),
+                actions: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                events: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                data_warehouse: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                properties: Schema.optional(
+                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+                ),
+                bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                transpiled: Schema.optional(Schema.Unknown),
+                filter_test_accounts: Schema.optional(Schema.Boolean),
+                bytecode_error: Schema.optional(Schema.String),
+              }),
+            ),
           ),
           type: Schema.String,
           config: Schema.Unknown,
@@ -124,12 +134,14 @@ export const HogFlowsSchedulesPartialUpdateOutput =
     updated_at: Schema.String,
     trigger: Schema.optional(Schema.Unknown),
     trigger_masking: Schema.optional(
-      Schema.Struct({
-        ttl: Schema.optional(Schema.NullOr(Schema.Number)),
-        threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-        hash: Schema.String,
-        bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          ttl: Schema.optional(Schema.NullOr(Schema.Number)),
+          threshold: Schema.optional(Schema.NullOr(Schema.Number)),
+          hash: Schema.String,
+          bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
     conversion: Schema.optional(Schema.NullOr(Schema.Unknown)),
     exit_condition: Schema.optional(
@@ -150,25 +162,33 @@ export const HogFlowsSchedulesPartialUpdateOutput =
         created_at: Schema.optional(Schema.Number),
         updated_at: Schema.optional(Schema.Number),
         filters: Schema.optional(
-          Schema.Struct({
-            source: Schema.optional(Schema.Struct({})),
-            actions: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            events: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            data_warehouse: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            properties: Schema.optional(
-              Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-            ),
-            bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            transpiled: Schema.optional(Schema.Unknown),
-            filter_test_accounts: Schema.optional(Schema.Boolean),
-            bytecode_error: Schema.optional(Schema.String),
-          }),
+          Schema.NullOr(
+            Schema.Struct({
+              source: Schema.optional(
+                Schema.Literals([
+                  "events",
+                  "person-updates",
+                  "data-warehouse-table",
+                ]),
+              ),
+              actions: Schema.optional(
+                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              events: Schema.optional(
+                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              data_warehouse: Schema.optional(
+                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              properties: Schema.optional(
+                Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+              ),
+              bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+              transpiled: Schema.optional(Schema.Unknown),
+              filter_test_accounts: Schema.optional(Schema.Boolean),
+              bytecode_error: Schema.optional(Schema.String),
+            }),
+          ),
         ),
         type: Schema.String,
         config: Schema.Unknown,

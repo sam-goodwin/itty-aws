@@ -21,7 +21,11 @@ export type ApplicationsCreateInput = typeof ApplicationsCreateInput.Type;
 
 // Output Schema
 export const ApplicationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApplicationsCreateOutput = typeof ApplicationsCreateOutput.Type;
 
 // The operation
@@ -66,9 +70,11 @@ export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
 
 // Output Schema
-export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
 
 // The operation
@@ -129,7 +135,15 @@ export type ApplicationsListByClusterInput =
 // Output Schema
 export const ApplicationsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApplicationsListByClusterOutput =
@@ -158,8 +172,9 @@ export type ClustersCreateInput = typeof ClustersCreateInput.Type;
 
 // Output Schema
 export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
 
@@ -248,8 +263,9 @@ export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ClustersGetOutput = typeof ClustersGetOutput.Type;
 
@@ -344,8 +360,9 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
   ),
@@ -378,8 +395,9 @@ export const ClustersListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -462,8 +480,9 @@ export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
 

@@ -83,8 +83,9 @@ export type ClustersCreateOrUpdateInput =
 // Output Schema
 export const ClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ClustersCreateOrUpdateOutput =
   typeof ClustersCreateOrUpdateOutput.Type;
@@ -151,8 +152,9 @@ export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ClustersGetOutput = typeof ClustersGetOutput.Type;
 
@@ -187,8 +189,9 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
   ),
@@ -228,8 +231,9 @@ export const ClustersListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -267,8 +271,9 @@ export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
 
@@ -304,7 +309,11 @@ export type DataExportsCreateOrUpdateInput =
 
 // Output Schema
 export const DataExportsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DataExportsCreateOrUpdateOutput =
   typeof DataExportsCreateOrUpdateOutput.Type;
 
@@ -375,9 +384,11 @@ export const DataExportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataExportsGetInput = typeof DataExportsGetInput.Type;
 
 // Output Schema
-export const DataExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const DataExportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DataExportsGetOutput = typeof DataExportsGetOutput.Type;
 
 // The operation
@@ -413,7 +424,15 @@ export type DataExportsListByWorkspaceInput =
 // Output Schema
 export const DataExportsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type DataExportsListByWorkspaceOutput =
   typeof DataExportsListByWorkspaceOutput.Type;
@@ -452,7 +471,11 @@ export type DataSourcesCreateOrUpdateInput =
 
 // Output Schema
 export const DataSourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DataSourcesCreateOrUpdateOutput =
   typeof DataSourcesCreateOrUpdateOutput.Type;
 
@@ -523,9 +546,11 @@ export const DataSourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DataSourcesGetInput = typeof DataSourcesGetInput.Type;
 
 // Output Schema
-export const DataSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const DataSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DataSourcesGetOutput = typeof DataSourcesGetOutput.Type;
 
 // The operation
@@ -563,7 +588,15 @@ export type DataSourcesListByWorkspaceInput =
 // Output Schema
 export const DataSourcesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type DataSourcesListByWorkspaceOutput =
@@ -605,8 +638,9 @@ export const DeletedWorkspacesListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -648,8 +682,9 @@ export const DeletedWorkspacesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -840,7 +875,11 @@ export type LinkedServicesCreateOrUpdateInput =
 
 // Output Schema
 export const LinkedServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type LinkedServicesCreateOrUpdateOutput =
   typeof LinkedServicesCreateOrUpdateOutput.Type;
 
@@ -877,7 +916,11 @@ export type LinkedServicesDeleteInput = typeof LinkedServicesDeleteInput.Type;
 
 // Output Schema
 export const LinkedServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type LinkedServicesDeleteOutput = typeof LinkedServicesDeleteOutput.Type;
 
 // The operation
@@ -915,7 +958,11 @@ export type LinkedServicesGetInput = typeof LinkedServicesGetInput.Type;
 
 // Output Schema
 export const LinkedServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type LinkedServicesGetOutput = typeof LinkedServicesGetOutput.Type;
 
 // The operation
@@ -951,7 +998,15 @@ export type LinkedServicesListByWorkspaceInput =
 // Output Schema
 export const LinkedServicesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type LinkedServicesListByWorkspaceOutput =
   typeof LinkedServicesListByWorkspaceOutput.Type;
@@ -988,7 +1043,11 @@ export type LinkedStorageAccountsCreateOrUpdateInput =
 
 // Output Schema
 export const LinkedStorageAccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type LinkedStorageAccountsCreateOrUpdateOutput =
   typeof LinkedStorageAccountsCreateOrUpdateOutput.Type;
 
@@ -1061,7 +1120,11 @@ export type LinkedStorageAccountsGetInput =
 
 // Output Schema
 export const LinkedStorageAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type LinkedStorageAccountsGetOutput =
   typeof LinkedStorageAccountsGetOutput.Type;
 
@@ -1099,7 +1162,15 @@ export type LinkedStorageAccountsListByWorkspaceInput =
 // Output Schema
 export const LinkedStorageAccountsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type LinkedStorageAccountsListByWorkspaceOutput =
   typeof LinkedStorageAccountsListByWorkspaceOutput.Type;
@@ -1318,7 +1389,25 @@ export const QueriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueriesGetInput = typeof QueriesGetInput.Type;
 
 // Output Schema
-export const QueriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const QueriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type QueriesGetOutput = typeof QueriesGetOutput.Type;
 
 // The operation
@@ -1348,7 +1437,27 @@ export type QueriesListInput = typeof QueriesListInput.Type;
 
 // Output Schema
 export const QueriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(Schema.Struct({})),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
   nextLink: Schema.optional(Schema.String),
 });
 export type QueriesListOutput = typeof QueriesListOutput.Type;
@@ -1379,7 +1488,25 @@ export const QueriesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueriesPutInput = typeof QueriesPutInput.Type;
 
 // Output Schema
-export const QueriesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const QueriesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type QueriesPutOutput = typeof QueriesPutOutput.Type;
 
 // The operation
@@ -1409,7 +1536,27 @@ export type QueriesSearchInput = typeof QueriesSearchInput.Type;
 
 // Output Schema
 export const QueriesSearchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(Schema.Struct({})),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
   nextLink: Schema.optional(Schema.String),
 });
 export type QueriesSearchOutput = typeof QueriesSearchOutput.Type;
@@ -1440,9 +1587,25 @@ export const QueriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueriesUpdateInput = typeof QueriesUpdateInput.Type;
 
 // Output Schema
-export const QueriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const QueriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type QueriesUpdateOutput = typeof QueriesUpdateOutput.Type;
 
 // The operation
@@ -1475,8 +1638,23 @@ export type QueryPacksCreateOrUpdateInput =
 // Output Schema
 export const QueryPacksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type QueryPacksCreateOrUpdateOutput =
   typeof QueryPacksCreateOrUpdateOutput.Type;
@@ -1513,8 +1691,23 @@ export type QueryPacksCreateOrUpdateWithoutNameInput =
 // Output Schema
 export const QueryPacksCreateOrUpdateWithoutNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type QueryPacksCreateOrUpdateWithoutNameOutput =
   typeof QueryPacksCreateOrUpdateWithoutNameOutput.Type;
@@ -1576,8 +1769,23 @@ export type QueryPacksGetInput = typeof QueryPacksGetInput.Type;
 
 // Output Schema
 export const QueryPacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type QueryPacksGetOutput = typeof QueryPacksGetOutput.Type;
 
@@ -1609,8 +1817,23 @@ export type QueryPacksListInput = typeof QueryPacksListInput.Type;
 export const QueryPacksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      location: Schema.String,
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
     }),
   ),
   nextLink: Schema.optional(Schema.String),
@@ -1648,8 +1871,33 @@ export const QueryPacksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -1687,8 +1935,23 @@ export type QueryPacksUpdateTagsInput = typeof QueryPacksUpdateTagsInput.Type;
 // Output Schema
 export const QueryPacksUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type QueryPacksUpdateTagsOutput = typeof QueryPacksUpdateTagsOutput.Type;
 
@@ -1725,7 +1988,11 @@ export type SavedSearchesCreateOrUpdateInput =
 
 // Output Schema
 export const SavedSearchesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SavedSearchesCreateOrUpdateOutput =
   typeof SavedSearchesCreateOrUpdateOutput.Type;
 
@@ -1797,7 +2064,11 @@ export type SavedSearchesGetInput = typeof SavedSearchesGetInput.Type;
 
 // Output Schema
 export const SavedSearchesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type SavedSearchesGetOutput = typeof SavedSearchesGetOutput.Type;
 
@@ -1834,7 +2105,15 @@ export type SavedSearchesListByWorkspaceInput =
 // Output Schema
 export const SavedSearchesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type SavedSearchesListByWorkspaceOutput =
   typeof SavedSearchesListByWorkspaceOutput.Type;
@@ -2035,7 +2314,11 @@ export type StorageInsightConfigsCreateOrUpdateInput =
 
 // Output Schema
 export const StorageInsightConfigsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type StorageInsightConfigsCreateOrUpdateOutput =
   typeof StorageInsightConfigsCreateOrUpdateOutput.Type;
 
@@ -2112,7 +2395,11 @@ export type StorageInsightConfigsGetInput =
 
 // Output Schema
 export const StorageInsightConfigsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type StorageInsightConfigsGetOutput =
   typeof StorageInsightConfigsGetOutput.Type;
 
@@ -2151,7 +2438,15 @@ export type StorageInsightConfigsListByWorkspaceInput =
 // Output Schema
 export const StorageInsightConfigsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     "@odata.nextLink": Schema.optional(Schema.String),
   });
 export type StorageInsightConfigsListByWorkspaceOutput =
@@ -2189,7 +2484,25 @@ export type SummaryLogsCreateOrUpdateInput =
 
 // Output Schema
 export const SummaryLogsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type SummaryLogsCreateOrUpdateOutput =
   typeof SummaryLogsCreateOrUpdateOutput.Type;
 
@@ -2256,9 +2569,25 @@ export const SummaryLogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SummaryLogsGetInput = typeof SummaryLogsGetInput.Type;
 
 // Output Schema
-export const SummaryLogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const SummaryLogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type SummaryLogsGetOutput = typeof SummaryLogsGetOutput.Type;
 
 // The operation
@@ -2293,7 +2622,39 @@ export type SummaryLogsListByWorkspaceInput =
 // Output Schema
 export const SummaryLogsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SummaryLogsListByWorkspaceOutput =
@@ -2461,7 +2822,11 @@ export type TablesCreateOrUpdateInput = typeof TablesCreateOrUpdateInput.Type;
 
 // Output Schema
 export const TablesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TablesCreateOrUpdateOutput = typeof TablesCreateOrUpdateOutput.Type;
 
 // The operation
@@ -2529,7 +2894,11 @@ export const TablesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TablesGetInput = typeof TablesGetInput.Type;
 
 // Output Schema
-export const TablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const TablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TablesGetOutput = typeof TablesGetOutput.Type;
 
 // The operation
@@ -2564,7 +2933,15 @@ export type TablesListByWorkspaceInput = typeof TablesListByWorkspaceInput.Type;
 // Output Schema
 export const TablesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type TablesListByWorkspaceOutput =
   typeof TablesListByWorkspaceOutput.Type;
@@ -2633,7 +3010,11 @@ export const TablesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TablesUpdateInput = typeof TablesUpdateInput.Type;
 
 // Output Schema
-export const TablesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const TablesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TablesUpdateOutput = typeof TablesUpdateOutput.Type;
 
 // The operation
@@ -2791,8 +3172,9 @@ export type WorkspacesCreateOrUpdateInput =
 // Output Schema
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type WorkspacesCreateOrUpdateOutput =
   typeof WorkspacesCreateOrUpdateOutput.Type;
@@ -2929,8 +3311,9 @@ export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
 
 // Output Schema
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 
@@ -2963,7 +3346,25 @@ export type WorkspacesGetNSPInput = typeof WorkspacesGetNSPInput.Type;
 
 // Output Schema
 export const WorkspacesGetNSPOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
 );
 export type WorkspacesGetNSPOutput = typeof WorkspacesGetNSPOutput.Type;
 
@@ -2997,8 +3398,9 @@ export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
   ),
@@ -3037,8 +3439,9 @@ export const WorkspacesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -3078,7 +3481,39 @@ export type WorkspacesListNSPInput = typeof WorkspacesListNSPInput.Type;
 // Output Schema
 export const WorkspacesListNSPOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspacesListNSPOutput = typeof WorkspacesListNSPOutput.Type;
@@ -3150,8 +3585,9 @@ export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
 // Output Schema
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 );
 export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;

@@ -9,16 +9,20 @@ export const ErrorTrackingAssignmentRulesUpdateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals(["AND", "OR"]),
-        values: Schema.Array(Schema.Unknown),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.Literals(["AND", "OR"]),
+          values: Schema.Array(Schema.Unknown),
+        }),
+      ),
     ),
     assignee: Schema.optional(
-      Schema.Struct({
-        type: Schema.Struct({}),
-        id: Schema.Unknown,
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.Literals(["user", "role"]),
+          id: Schema.Unknown,
+        }),
+      ),
     ),
   }).pipe(
     T.Http({

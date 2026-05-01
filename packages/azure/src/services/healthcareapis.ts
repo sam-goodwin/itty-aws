@@ -276,7 +276,10 @@ export const FhirDestinationsListByIotConnectorOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          etag: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -558,7 +561,10 @@ export type IotConnectorFhirDestinationCreateOrUpdateInput =
 // Output Schema
 export const IotConnectorFhirDestinationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   });
 export type IotConnectorFhirDestinationCreateOrUpdateOutput =
   typeof IotConnectorFhirDestinationCreateOrUpdateOutput.Type;
@@ -624,7 +630,10 @@ export type IotConnectorFhirDestinationGetInput =
 // Output Schema
 export const IotConnectorFhirDestinationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
   });
 export type IotConnectorFhirDestinationGetOutput =
   typeof IotConnectorFhirDestinationGetOutput.Type;
@@ -1069,25 +1078,9 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -1158,25 +1151,9 @@ export type PrivateEndpointConnectionsGetInput =
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
@@ -1214,30 +1191,9 @@ export const PrivateEndpointConnectionsListByServiceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              privateEndpoint: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              privateLinkServiceConnectionState: Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals(["Pending", "Approved", "Rejected"]),
-                ),
-                description: Schema.optional(Schema.String),
-                actionsRequired: Schema.optional(Schema.String),
-              }),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Creating",
-                  "Deleting",
-                  "Failed",
-                ]),
-              ),
-            }),
-          ),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1275,13 +1231,9 @@ export type PrivateLinkResourcesGetInput =
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.optional(Schema.String),
-        requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-        requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
@@ -1320,13 +1272,9 @@ export const PrivateLinkResourcesListByServiceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              groupId: Schema.optional(Schema.String),
-              requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-              requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1665,25 +1613,9 @@ export type WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
 // Output Schema
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput.Type;
@@ -1753,25 +1685,9 @@ export type WorkspacePrivateEndpointConnectionsGetInput =
 // Output Schema
 export const WorkspacePrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        privateEndpoint: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-          }),
-        ),
-        privateLinkServiceConnectionState: Schema.Struct({
-          status: Schema.optional(
-            Schema.Literals(["Pending", "Approved", "Rejected"]),
-          ),
-          description: Schema.optional(Schema.String),
-          actionsRequired: Schema.optional(Schema.String),
-        }),
-        provisioningState: Schema.optional(
-          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
-        ),
-      }),
-    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type WorkspacePrivateEndpointConnectionsGetOutput =
   typeof WorkspacePrivateEndpointConnectionsGetOutput.Type;
@@ -1809,30 +1725,9 @@ export const WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              privateEndpoint: Schema.optional(
-                Schema.Struct({
-                  id: Schema.optional(Schema.String),
-                }),
-              ),
-              privateLinkServiceConnectionState: Schema.Struct({
-                status: Schema.optional(
-                  Schema.Literals(["Pending", "Approved", "Rejected"]),
-                ),
-                description: Schema.optional(Schema.String),
-                actionsRequired: Schema.optional(Schema.String),
-              }),
-              provisioningState: Schema.optional(
-                Schema.Literals([
-                  "Succeeded",
-                  "Creating",
-                  "Deleting",
-                  "Failed",
-                ]),
-              ),
-            }),
-          ),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1870,13 +1765,9 @@ export type WorkspacePrivateLinkResourcesGetInput =
 // Output Schema
 export const WorkspacePrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
-      Schema.Struct({
-        groupId: Schema.optional(Schema.String),
-        requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-        requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type WorkspacePrivateLinkResourcesGetOutput =
   typeof WorkspacePrivateLinkResourcesGetOutput.Type;
@@ -1914,13 +1805,9 @@ export const WorkspacePrivateLinkResourcesListByWorkspaceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          properties: Schema.optional(
-            Schema.Struct({
-              groupId: Schema.optional(Schema.String),
-              requiredMembers: Schema.optional(Schema.Array(Schema.String)),
-              requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1956,7 +1843,10 @@ export type WorkspacesCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+  });
 export type WorkspacesCreateOrUpdateOutput =
   typeof WorkspacesCreateOrUpdateOutput.Type;
 
@@ -2013,9 +1903,10 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
 
 // Output Schema
-export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.optional(Schema.String),
+});
 export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 
 // The operation
@@ -2047,7 +1938,14 @@ export type WorkspacesListByResourceGroupInput =
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type WorkspacesListByResourceGroupOutput =
   typeof WorkspacesListByResourceGroupOutput.Type;
@@ -2082,7 +1980,14 @@ export type WorkspacesListBySubscriptionInput =
 export const WorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type WorkspacesListBySubscriptionOutput =
   typeof WorkspacesListBySubscriptionOutput.Type;
@@ -2113,7 +2018,10 @@ export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
 
 // Output Schema
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.optional(Schema.String),
+  },
 );
 export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
 

@@ -9,7 +9,9 @@ export const InsightVariablesPartialUpdateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.Struct({})),
+    type: Schema.optional(
+      Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
+    ),
     default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     created_at: Schema.optional(Schema.String),
@@ -29,7 +31,7 @@ export const InsightVariablesPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
-    type: Schema.Struct({}),
+    type: Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
     default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
     created_by: Schema.NullOr(Schema.Number),
     created_at: Schema.String,

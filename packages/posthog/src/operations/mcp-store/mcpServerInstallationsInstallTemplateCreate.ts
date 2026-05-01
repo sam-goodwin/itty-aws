@@ -10,7 +10,9 @@ export const McpServerInstallationsInstallTemplateCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     template_id: Schema.String,
     api_key: Schema.optional(SensitiveString),
-    install_source: Schema.optional(Schema.Struct({})),
+    install_source: Schema.optional(
+      Schema.Literals(["posthog", "posthog-code"]),
+    ),
     posthog_code_callback_url: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

@@ -10,7 +10,9 @@ export const SurveysPartialUpdateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.Struct({})),
+    type: Schema.optional(
+      Schema.Literals(["popover", "widget", "external_survey", "api"]),
+    ),
     schedule: Schema.optional(Schema.Unknown),
     linked_flag: Schema.optional(
       Schema.Struct({
@@ -73,103 +75,131 @@ export const SurveysPartialUpdateInput =
       }),
     ),
     targeting_flag_filters: Schema.optional(
-      Schema.Struct({
-        groups: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(Schema.Array(Schema.Unknown)),
-              rollout_percentage: Schema.optional(Schema.Number),
-              variant: Schema.optional(Schema.NullOr(Schema.String)),
-              aggregation_group_type_index: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-            }),
-          ),
-        ),
-        multivariate: Schema.optional(
-          Schema.Struct({
-            variants: Schema.Array(
+      Schema.NullOr(
+        Schema.Struct({
+          groups: Schema.optional(
+            Schema.Array(
               Schema.Struct({
-                key: Schema.String,
-                name: Schema.optional(Schema.String),
-                rollout_percentage: Schema.Number,
+                properties: Schema.optional(Schema.Array(Schema.Unknown)),
+                rollout_percentage: Schema.optional(Schema.Number),
+                variant: Schema.optional(Schema.NullOr(Schema.String)),
+                aggregation_group_type_index: Schema.optional(
+                  Schema.NullOr(Schema.Number),
+                ),
               }),
             ),
-          }),
-        ),
-        aggregation_group_type_index: Schema.optional(
-          Schema.NullOr(Schema.Number),
-        ),
-        payloads: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        super_groups: Schema.optional(
-          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        feature_enrollment: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      }),
+          ),
+          multivariate: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                variants: Schema.Array(
+                  Schema.Struct({
+                    key: Schema.String,
+                    name: Schema.optional(Schema.String),
+                    rollout_percentage: Schema.Number,
+                  }),
+                ),
+              }),
+            ),
+          ),
+          aggregation_group_type_index: Schema.optional(
+            Schema.NullOr(Schema.Number),
+          ),
+          payloads: Schema.optional(
+            Schema.Record(Schema.String, Schema.String),
+          ),
+          super_groups: Schema.optional(
+            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          feature_enrollment: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        }),
+      ),
     ),
     remove_targeting_flag: Schema.optional(Schema.NullOr(Schema.Boolean)),
     questions: Schema.optional(Schema.NullOr(Schema.Array(Schema.Unknown))),
     conditions: Schema.optional(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-        selector: Schema.optional(Schema.String),
-        seenSurveyWaitPeriodInDays: Schema.optional(Schema.Number),
-        urlMatchType: Schema.optional(Schema.Struct({})),
-        events: Schema.optional(
-          Schema.Struct({
-            repeatedActivation: Schema.optional(Schema.Boolean),
-            values: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                }),
+      Schema.NullOr(
+        Schema.Struct({
+          url: Schema.optional(Schema.String),
+          selector: Schema.optional(Schema.String),
+          seenSurveyWaitPeriodInDays: Schema.optional(Schema.Number),
+          urlMatchType: Schema.optional(
+            Schema.Literals([
+              "exact",
+              "is_not",
+              "icontains",
+              "not_icontains",
+              "regex",
+              "not_regex",
+            ]),
+          ),
+          events: Schema.optional(
+            Schema.Struct({
+              repeatedActivation: Schema.optional(Schema.Boolean),
+              values: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                  }),
+                ),
               ),
-            ),
-          }),
-        ),
-        deviceTypes: Schema.optional(
-          Schema.Array(Schema.Literals(["Desktop", "Mobile", "Tablet"])),
-        ),
-        deviceTypesMatchType: Schema.optional(Schema.Struct({})),
-        linkedFlagVariant: Schema.optional(Schema.String),
-      }),
+            }),
+          ),
+          deviceTypes: Schema.optional(
+            Schema.Array(Schema.Literals(["Desktop", "Mobile", "Tablet"])),
+          ),
+          deviceTypesMatchType: Schema.optional(
+            Schema.Literals([
+              "exact",
+              "is_not",
+              "icontains",
+              "not_icontains",
+              "regex",
+              "not_regex",
+            ]),
+          ),
+          linkedFlagVariant: Schema.optional(Schema.String),
+        }),
+      ),
     ),
     appearance: Schema.optional(
-      Schema.Struct({
-        backgroundColor: Schema.optional(Schema.String),
-        submitButtonColor: Schema.optional(Schema.String),
-        textColor: Schema.optional(Schema.String),
-        submitButtonText: Schema.optional(Schema.String),
-        submitButtonTextColor: Schema.optional(Schema.String),
-        descriptionTextColor: Schema.optional(Schema.String),
-        ratingButtonColor: Schema.optional(Schema.String),
-        ratingButtonActiveColor: Schema.optional(Schema.String),
-        ratingButtonHoverColor: Schema.optional(Schema.String),
-        whiteLabel: Schema.optional(Schema.Boolean),
-        autoDisappear: Schema.optional(Schema.Boolean),
-        displayThankYouMessage: Schema.optional(Schema.Boolean),
-        thankYouMessageHeader: Schema.optional(Schema.String),
-        thankYouMessageDescription: Schema.optional(Schema.String),
-        thankYouMessageDescriptionContentType: Schema.optional(
-          Schema.Literals(["html", "text"]),
-        ),
-        thankYouMessageCloseButtonText: Schema.optional(Schema.String),
-        borderColor: Schema.optional(Schema.String),
-        placeholder: Schema.optional(Schema.String),
-        shuffleQuestions: Schema.optional(Schema.Boolean),
-        surveyPopupDelaySeconds: Schema.optional(Schema.Number),
-        widgetType: Schema.optional(
-          Schema.Literals(["button", "tab", "selector"]),
-        ),
-        widgetSelector: Schema.optional(Schema.String),
-        widgetLabel: Schema.optional(Schema.String),
-        widgetColor: Schema.optional(Schema.String),
-        fontFamily: Schema.optional(Schema.String),
-        maxWidth: Schema.optional(Schema.String),
-        zIndex: Schema.optional(Schema.String),
-        disabledButtonOpacity: Schema.optional(Schema.String),
-        boxPadding: Schema.optional(Schema.String),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          backgroundColor: Schema.optional(Schema.String),
+          submitButtonColor: Schema.optional(Schema.String),
+          textColor: Schema.optional(Schema.String),
+          submitButtonText: Schema.optional(Schema.String),
+          submitButtonTextColor: Schema.optional(Schema.String),
+          descriptionTextColor: Schema.optional(Schema.String),
+          ratingButtonColor: Schema.optional(Schema.String),
+          ratingButtonActiveColor: Schema.optional(Schema.String),
+          ratingButtonHoverColor: Schema.optional(Schema.String),
+          whiteLabel: Schema.optional(Schema.Boolean),
+          autoDisappear: Schema.optional(Schema.Boolean),
+          displayThankYouMessage: Schema.optional(Schema.Boolean),
+          thankYouMessageHeader: Schema.optional(Schema.String),
+          thankYouMessageDescription: Schema.optional(Schema.String),
+          thankYouMessageDescriptionContentType: Schema.optional(
+            Schema.Literals(["html", "text"]),
+          ),
+          thankYouMessageCloseButtonText: Schema.optional(Schema.String),
+          borderColor: Schema.optional(Schema.String),
+          placeholder: Schema.optional(Schema.String),
+          shuffleQuestions: Schema.optional(Schema.Boolean),
+          surveyPopupDelaySeconds: Schema.optional(Schema.Number),
+          widgetType: Schema.optional(
+            Schema.Literals(["button", "tab", "selector"]),
+          ),
+          widgetSelector: Schema.optional(Schema.String),
+          widgetLabel: Schema.optional(Schema.String),
+          widgetColor: Schema.optional(Schema.String),
+          fontFamily: Schema.optional(Schema.String),
+          maxWidth: Schema.optional(Schema.String),
+          zIndex: Schema.optional(Schema.String),
+          disabledButtonOpacity: Schema.optional(Schema.String),
+          boxPadding: Schema.optional(Schema.String),
+        }),
+      ),
     ),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(

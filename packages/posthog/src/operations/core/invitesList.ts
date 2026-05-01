@@ -27,7 +27,7 @@ export const InvitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       target_email: Schema.String,
       first_name: Schema.optional(Schema.String),
       emailing_attempt_made: Schema.Boolean,
-      level: Schema.optional(Schema.Struct({})),
+      level: Schema.optional(Schema.Literals([1, 8, 15])),
       is_expired: Schema.Boolean,
       created_by: Schema.Struct({
         id: Schema.Number,

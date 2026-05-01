@@ -26,7 +26,7 @@ export const PrepareUserOperationInput =
         overrideGasLimit: Schema.optional(Schema.String),
       }),
     ),
-    paymasterUrl: Schema.optional(Schema.Struct({})),
+    paymasterUrl: Schema.optional(Schema.String),
     dataSuffix: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

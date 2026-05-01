@@ -7,8 +7,8 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LlmAnalyticsSummarizationCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    summarize_type: Schema.optional(Schema.Struct({})),
-    mode: Schema.optional(Schema.Struct({})),
+    summarize_type: Schema.optional(Schema.Literals(["trace", "event"])),
+    mode: Schema.optional(Schema.Literals(["minimal", "detailed"])),
     data: Schema.optional(Schema.Unknown),
     force_refresh: Schema.optional(Schema.Boolean),
     model: Schema.optional(Schema.NullOr(Schema.String)),

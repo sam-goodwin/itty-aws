@@ -12,7 +12,7 @@ export const ErrorTrackingAssignmentRulesCreateInput =
       values: Schema.Array(Schema.Unknown),
     }),
     assignee: Schema.Struct({
-      type: Schema.Struct({}),
+      type: Schema.Literals(["user", "role"]),
       id: Schema.Unknown,
     }),
   }).pipe(

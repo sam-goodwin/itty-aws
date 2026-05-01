@@ -24,7 +24,7 @@ export const CreateSpendPermissionInput =
     end: Schema.String,
     salt: Schema.optional(Schema.String),
     extraData: Schema.optional(Schema.String),
-    paymasterUrl: Schema.optional(Schema.Struct({})),
+    paymasterUrl: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",

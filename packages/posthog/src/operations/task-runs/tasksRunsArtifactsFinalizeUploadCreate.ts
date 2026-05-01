@@ -13,7 +13,15 @@ export const TasksRunsArtifactsFinalizeUploadCreateInput =
       Schema.Struct({
         id: Schema.String,
         name: Schema.String,
-        type: Schema.Struct({}),
+        type: Schema.Literals([
+          "plan",
+          "context",
+          "reference",
+          "output",
+          "artifact",
+          "tree_snapshot",
+          "user_attachment",
+        ]),
         source: Schema.optional(Schema.String),
         storage_path: Schema.String,
         content_type: Schema.optional(Schema.String),

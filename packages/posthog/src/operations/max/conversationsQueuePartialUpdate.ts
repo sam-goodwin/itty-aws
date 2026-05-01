@@ -10,7 +10,9 @@ export const ConversationsQueuePartialUpdateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     queue_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.Struct({})),
+    status: Schema.optional(
+      Schema.Literals(["idle", "in_progress", "canceling"]),
+    ),
     title: Schema.optional(Schema.NullOr(Schema.String)),
     user: Schema.optional(
       Schema.Struct({
@@ -29,7 +31,9 @@ export const ConversationsQueuePartialUpdateInput =
     ),
     created_at: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-    type: Schema.optional(Schema.Struct({})),
+    type: Schema.optional(
+      Schema.Literals(["assistant", "tool_call", "deep_research", "slack"]),
+    ),
     is_internal: Schema.optional(Schema.NullOr(Schema.Boolean)),
     slack_thread_key: Schema.optional(Schema.NullOr(Schema.String)),
     slack_workspace_domain: Schema.optional(Schema.NullOr(Schema.String)),
@@ -55,7 +59,7 @@ export type ConversationsQueuePartialUpdateInput =
 export const ConversationsQueuePartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    status: Schema.Struct({}),
+    status: Schema.Literals(["idle", "in_progress", "canceling"]),
     title: Schema.NullOr(Schema.String),
     user: Schema.Struct({
       id: Schema.Number,
@@ -72,7 +76,7 @@ export const ConversationsQueuePartialUpdateOutput =
     }),
     created_at: Schema.NullOr(Schema.String),
     updated_at: Schema.NullOr(Schema.String),
-    type: Schema.Struct({}),
+    type: Schema.Literals(["assistant", "tool_call", "deep_research", "slack"]),
     is_internal: Schema.NullOr(Schema.Boolean),
     slack_thread_key: Schema.NullOr(Schema.String),
     slack_workspace_domain: Schema.NullOr(Schema.String),

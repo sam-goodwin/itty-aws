@@ -24,96 +24,112 @@ export const WebAnalyticsWeeklyDigestOutput =
     visitors: Schema.Struct({
       current: Schema.Number,
       previous: Schema.NullOr(Schema.Number),
-      change: Schema.Struct({
-        percent: Schema.Number,
-        direction: Schema.Struct({}),
-        color: Schema.String,
-        text: Schema.String,
-        long_text: Schema.String,
-      }),
+      change: Schema.NullOr(
+        Schema.Struct({
+          percent: Schema.Number,
+          direction: Schema.Literals(["Up", "Down"]),
+          color: Schema.String,
+          text: Schema.String,
+          long_text: Schema.String,
+        }),
+      ),
     }),
     pageviews: Schema.Struct({
       current: Schema.Number,
       previous: Schema.NullOr(Schema.Number),
-      change: Schema.Struct({
-        percent: Schema.Number,
-        direction: Schema.Struct({}),
-        color: Schema.String,
-        text: Schema.String,
-        long_text: Schema.String,
-      }),
+      change: Schema.NullOr(
+        Schema.Struct({
+          percent: Schema.Number,
+          direction: Schema.Literals(["Up", "Down"]),
+          color: Schema.String,
+          text: Schema.String,
+          long_text: Schema.String,
+        }),
+      ),
     }),
     sessions: Schema.Struct({
       current: Schema.Number,
       previous: Schema.NullOr(Schema.Number),
-      change: Schema.Struct({
-        percent: Schema.Number,
-        direction: Schema.Struct({}),
-        color: Schema.String,
-        text: Schema.String,
-        long_text: Schema.String,
-      }),
+      change: Schema.NullOr(
+        Schema.Struct({
+          percent: Schema.Number,
+          direction: Schema.Literals(["Up", "Down"]),
+          color: Schema.String,
+          text: Schema.String,
+          long_text: Schema.String,
+        }),
+      ),
     }),
     bounce_rate: Schema.Struct({
       current: Schema.Number,
       previous: Schema.NullOr(Schema.Number),
-      change: Schema.Struct({
-        percent: Schema.Number,
-        direction: Schema.Struct({}),
-        color: Schema.String,
-        text: Schema.String,
-        long_text: Schema.String,
-      }),
+      change: Schema.NullOr(
+        Schema.Struct({
+          percent: Schema.Number,
+          direction: Schema.Literals(["Up", "Down"]),
+          color: Schema.String,
+          text: Schema.String,
+          long_text: Schema.String,
+        }),
+      ),
     }),
     avg_session_duration: Schema.Struct({
       current: Schema.String,
       previous: Schema.NullOr(Schema.String),
-      change: Schema.Struct({
-        percent: Schema.Number,
-        direction: Schema.Struct({}),
-        color: Schema.String,
-        text: Schema.String,
-        long_text: Schema.String,
-      }),
+      change: Schema.NullOr(
+        Schema.Struct({
+          percent: Schema.Number,
+          direction: Schema.Literals(["Up", "Down"]),
+          color: Schema.String,
+          text: Schema.String,
+          long_text: Schema.String,
+        }),
+      ),
     }),
     top_pages: Schema.Array(
       Schema.Struct({
         host: Schema.String,
         path: Schema.String,
         visitors: Schema.Number,
-        change: Schema.Struct({
-          percent: Schema.Number,
-          direction: Schema.Struct({}),
-          color: Schema.String,
-          text: Schema.String,
-          long_text: Schema.String,
-        }),
+        change: Schema.NullOr(
+          Schema.Struct({
+            percent: Schema.Number,
+            direction: Schema.Literals(["Up", "Down"]),
+            color: Schema.String,
+            text: Schema.String,
+            long_text: Schema.String,
+          }),
+        ),
       }),
     ),
     top_sources: Schema.Array(
       Schema.Struct({
         name: Schema.String,
         visitors: Schema.Number,
-        change: Schema.Struct({
-          percent: Schema.Number,
-          direction: Schema.Struct({}),
-          color: Schema.String,
-          text: Schema.String,
-          long_text: Schema.String,
-        }),
+        change: Schema.NullOr(
+          Schema.Struct({
+            percent: Schema.Number,
+            direction: Schema.Literals(["Up", "Down"]),
+            color: Schema.String,
+            text: Schema.String,
+            long_text: Schema.String,
+          }),
+        ),
       }),
     ),
     goals: Schema.Array(
       Schema.Struct({
         name: Schema.String,
         conversions: Schema.Number,
-        change: Schema.Struct({
-          percent: Schema.Number,
-          direction: Schema.Struct({}),
-          color: Schema.String,
-          text: Schema.String,
-          long_text: Schema.String,
-        }),
+        change: Schema.NullOr(
+          Schema.Struct({
+            percent: Schema.Number,
+            direction: Schema.Literals(["Up", "Down"]),
+            color: Schema.String,
+            text: Schema.String,
+            long_text: Schema.String,
+          }),
+        ),
       }),
     ),
     dashboard_url: Schema.String,

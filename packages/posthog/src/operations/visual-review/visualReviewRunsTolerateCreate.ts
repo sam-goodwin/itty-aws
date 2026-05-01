@@ -22,38 +22,46 @@ export type VisualReviewRunsTolerateCreateInput =
 export const VisualReviewRunsTolerateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     current_artifact: Schema.optional(
-      Schema.Struct({
-        id: Schema.String,
-        content_hash: Schema.String,
-        width: Schema.NullOr(Schema.Number),
-        height: Schema.NullOr(Schema.Number),
-        download_url: Schema.NullOr(Schema.String),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.String,
+          content_hash: Schema.String,
+          width: Schema.NullOr(Schema.Number),
+          height: Schema.NullOr(Schema.Number),
+          download_url: Schema.NullOr(Schema.String),
+        }),
+      ),
     ),
     baseline_artifact: Schema.optional(
-      Schema.Struct({
-        id: Schema.String,
-        content_hash: Schema.String,
-        width: Schema.NullOr(Schema.Number),
-        height: Schema.NullOr(Schema.Number),
-        download_url: Schema.NullOr(Schema.String),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.String,
+          content_hash: Schema.String,
+          width: Schema.NullOr(Schema.Number),
+          height: Schema.NullOr(Schema.Number),
+          download_url: Schema.NullOr(Schema.String),
+        }),
+      ),
     ),
     diff_artifact: Schema.optional(
-      Schema.Struct({
-        id: Schema.String,
-        content_hash: Schema.String,
-        width: Schema.NullOr(Schema.Number),
-        height: Schema.NullOr(Schema.Number),
-        download_url: Schema.NullOr(Schema.String),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.String,
+          content_hash: Schema.String,
+          width: Schema.NullOr(Schema.Number),
+          height: Schema.NullOr(Schema.Number),
+          download_url: Schema.NullOr(Schema.String),
+        }),
+      ),
     ),
     reviewed_by: Schema.optional(
-      Schema.Struct({
-        id: Schema.Number,
-        first_name: Schema.String,
-        email: Schema.String,
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.Number,
+          first_name: Schema.String,
+          email: Schema.String,
+        }),
+      ),
     ),
     id: Schema.String,
     identifier: Schema.String,

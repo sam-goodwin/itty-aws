@@ -25,7 +25,11 @@ export type AccessPolicyAssignmentCreateUpdateInput =
 
 // Output Schema
 export const AccessPolicyAssignmentCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AccessPolicyAssignmentCreateUpdateOutput =
   typeof AccessPolicyAssignmentCreateUpdateOutput.Type;
 
@@ -93,7 +97,11 @@ export type AccessPolicyAssignmentGetInput =
 
 // Output Schema
 export const AccessPolicyAssignmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AccessPolicyAssignmentGetOutput =
   typeof AccessPolicyAssignmentGetOutput.Type;
 
@@ -129,7 +137,15 @@ export type AccessPolicyAssignmentListInput =
 // Output Schema
 export const AccessPolicyAssignmentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type AccessPolicyAssignmentListOutput =
@@ -163,9 +179,11 @@ export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
 
 // Output Schema
-export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DatabasesCreateOutput = typeof DatabasesCreateOutput.Type;
 
 // The operation
@@ -348,7 +366,11 @@ export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesGetInput = typeof DatabasesGetInput.Type;
 
 // Output Schema
-export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
 
 // The operation
@@ -410,7 +432,15 @@ export type DatabasesListByClusterInput =
 // Output Schema
 export const DatabasesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type DatabasesListByClusterOutput =
@@ -517,9 +547,11 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
 
 // Output Schema
-export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
 
 // The operation
@@ -912,8 +944,9 @@ export type RedisEnterpriseCreateInput = typeof RedisEnterpriseCreateInput.Type;
 // Output Schema
 export const RedisEnterpriseCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type RedisEnterpriseCreateOutput =
   typeof RedisEnterpriseCreateOutput.Type;
@@ -983,8 +1016,9 @@ export type RedisEnterpriseGetInput = typeof RedisEnterpriseGetInput.Type;
 // Output Schema
 export const RedisEnterpriseGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type RedisEnterpriseGetOutput = typeof RedisEnterpriseGetOutput.Type;
 
@@ -1019,8 +1053,9 @@ export const RedisEnterpriseListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1060,8 +1095,9 @@ export const RedisEnterpriseListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1143,8 +1179,9 @@ export type RedisEnterpriseUpdateInput = typeof RedisEnterpriseUpdateInput.Type;
 // Output Schema
 export const RedisEnterpriseUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type RedisEnterpriseUpdateOutput =
   typeof RedisEnterpriseUpdateOutput.Type;

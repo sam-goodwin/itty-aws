@@ -32,7 +32,9 @@ export const DashboardsMoveTilePartialUpdateInput =
     last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
     is_shared: Schema.optional(Schema.Boolean),
     deleted: Schema.optional(Schema.Boolean),
-    creation_mode: Schema.optional(Schema.Struct({})),
+    creation_mode: Schema.optional(
+      Schema.Literals(["default", "template", "duplicate", "unlisted"]),
+    ),
     filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     variables: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
@@ -40,9 +42,9 @@ export const DashboardsMoveTilePartialUpdateInput =
     breakdown_colors: Schema.optional(Schema.Unknown),
     data_color_theme_id: Schema.optional(Schema.NullOr(Schema.Number)),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
-    restriction_level: Schema.optional(Schema.Struct({})),
-    effective_restriction_level: Schema.optional(Schema.Struct({})),
-    effective_privilege_level: Schema.optional(Schema.Struct({})),
+    restriction_level: Schema.optional(Schema.Literals([21, 37])),
+    effective_restriction_level: Schema.optional(Schema.Literals([21, 37])),
+    effective_privilege_level: Schema.optional(Schema.Literals([21, 37])),
     user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
     access_control_version: Schema.optional(Schema.String),
     last_refresh: Schema.optional(Schema.NullOr(Schema.String)),

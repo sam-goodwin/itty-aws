@@ -28,7 +28,7 @@ export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.NullOr(Schema.String),
       description: Schema.String,
       version: Schema.Number,
-      status: Schema.Struct({}),
+      status: Schema.Literals(["draft", "active", "archived"]),
       created_at: Schema.String,
       created_by: Schema.Struct({
         id: Schema.Number,
@@ -47,7 +47,12 @@ export const HogFlowsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       trigger: Schema.Unknown,
       trigger_masking: Schema.NullOr(Schema.Unknown),
       conversion: Schema.NullOr(Schema.Unknown),
-      exit_condition: Schema.Struct({}),
+      exit_condition: Schema.Literals([
+        "exit_on_conversion",
+        "exit_on_trigger_not_matched",
+        "exit_on_trigger_not_matched_or_conversion",
+        "exit_only_at_end",
+      ]),
       edges: Schema.Unknown,
       actions: Schema.Unknown,
       abort_action: Schema.NullOr(Schema.String),

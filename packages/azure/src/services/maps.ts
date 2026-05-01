@@ -26,8 +26,9 @@ export type AccountsCreateOrUpdateInput =
 // Output Schema
 export const AccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type AccountsCreateOrUpdateOutput =
   typeof AccountsCreateOrUpdateOutput.Type;
@@ -90,8 +91,9 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 
@@ -128,8 +130,9 @@ export const AccountsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -172,8 +175,9 @@ export const AccountsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -320,8 +324,9 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 
@@ -355,8 +360,9 @@ export type CreatorsCreateOrUpdateInput =
 // Output Schema
 export const CreatorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type CreatorsCreateOrUpdateOutput =
   typeof CreatorsCreateOrUpdateOutput.Type;
@@ -419,8 +425,9 @@ export type CreatorsGetInput = typeof CreatorsGetInput.Type;
 
 // Output Schema
 export const CreatorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type CreatorsGetOutput = typeof CreatorsGetOutput.Type;
 
@@ -456,8 +463,9 @@ export const CreatorsListByAccountOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -495,8 +503,9 @@ export type CreatorsUpdateInput = typeof CreatorsUpdateInput.Type;
 
 // Output Schema
 export const CreatorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type CreatorsUpdateOutput = typeof CreatorsUpdateOutput.Type;
 

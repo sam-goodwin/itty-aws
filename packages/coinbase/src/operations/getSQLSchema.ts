@@ -22,7 +22,7 @@ export const GetSQLSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               name: Schema.optional(Schema.String),
               type: Schema.optional(Schema.String),
               nullable: Schema.optional(Schema.Boolean),
-              description: Schema.optional(Schema.Struct({})),
+              description: Schema.optional(Schema.String),
               indexOrder: Schema.optional(Schema.Number),
             }),
           ),

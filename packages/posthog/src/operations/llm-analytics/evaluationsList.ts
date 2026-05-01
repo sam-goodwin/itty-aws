@@ -31,11 +31,11 @@ export const EvaluationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.String,
       description: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
-      status: Schema.Struct({}),
+      status: Schema.Literals(["active", "paused", "error"]),
       status_reason: Schema.Unknown,
-      evaluation_type: Schema.Struct({}),
+      evaluation_type: Schema.Literals(["llm_judge", "hog"]),
       evaluation_config: Schema.optional(Schema.Unknown),
-      output_type: Schema.Struct({}),
+      output_type: Schema.Literals(["boolean"]),
       output_config: Schema.optional(
         Schema.Struct({
           allows_na: Schema.optional(Schema.Boolean),
@@ -43,19 +43,21 @@ export const EvaluationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       conditions: Schema.optional(Schema.Unknown),
       model_configuration: Schema.optional(
-        Schema.Struct({
-          provider: Schema.Literals([
-            "openai",
-            "anthropic",
-            "gemini",
-            "openrouter",
-            "fireworks",
-            "azure_openai",
-          ]),
-          model: Schema.String,
-          provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),
-          provider_key_name: Schema.NullOr(Schema.String),
-        }),
+        Schema.NullOr(
+          Schema.Struct({
+            provider: Schema.Literals([
+              "openai",
+              "anthropic",
+              "gemini",
+              "openrouter",
+              "fireworks",
+              "azure_openai",
+            ]),
+            model: Schema.String,
+            provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),
+            provider_key_name: Schema.NullOr(Schema.String),
+          }),
+        ),
       ),
       created_at: Schema.String,
       updated_at: Schema.String,

@@ -44,13 +44,15 @@ export const AlertsPartialUpdateInput =
       }),
     ),
     condition: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals([
-          "absolute_value",
-          "relative_increase",
-          "relative_decrease",
-        ]),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.Literals([
+            "absolute_value",
+            "relative_increase",
+            "relative_decrease",
+          ]),
+        }),
+      ),
     ),
     state: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -63,7 +65,12 @@ export const AlertsPartialUpdateInput =
           id: Schema.String,
           created_at: Schema.String,
           calculated_value: Schema.NullOr(Schema.Number),
-          state: Schema.Struct({}),
+          state: Schema.Literals([
+            "Firing",
+            "Not firing",
+            "Errored",
+            "Snoozed",
+          ]),
           targets_notified: Schema.Boolean,
           anomaly_scores: Schema.NullOr(Schema.Unknown),
           triggered_points: Schema.NullOr(Schema.Unknown),
@@ -81,30 +88,40 @@ export const AlertsPartialUpdateInput =
     ),
     checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
     config: Schema.optional(
-      Schema.Struct({
-        check_ongoing_interval: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        series_index: Schema.Number,
-        type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          check_ongoing_interval: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
+          ),
+          series_index: Schema.Number,
+          type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
+        }),
+      ),
     ),
-    detector_config: Schema.optional(Schema.Struct({})),
-    calculation_interval: Schema.optional(Schema.Struct({})),
+    detector_config: Schema.optional(Schema.Unknown),
+    calculation_interval: Schema.optional(
+      Schema.Literals(["hourly", "daily", "weekly", "monthly"]),
+    ),
     snoozed_until: Schema.optional(Schema.NullOr(Schema.String)),
     skip_weekend: Schema.optional(Schema.NullOr(Schema.Boolean)),
     schedule_restriction: Schema.optional(
-      Schema.Struct({
-        blocked_windows: Schema.Array(
-          Schema.Struct({
-            start: Schema.String,
-            end: Schema.String,
-          }),
-        ),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          blocked_windows: Schema.Array(
+            Schema.Struct({
+              start: Schema.String,
+              end: Schema.String,
+            }),
+          ),
+        }),
+      ),
     ),
     last_value: Schema.optional(Schema.NullOr(Schema.Number)),
     investigation_agent_enabled: Schema.optional(Schema.Boolean),
     investigation_gates_notifications: Schema.optional(Schema.Boolean),
-    investigation_inconclusive_action: Schema.optional(Schema.Struct({})),
+    investigation_inconclusive_action: Schema.optional(
+      Schema.Literals(["notify", "suppress"]),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -149,13 +166,15 @@ export const AlertsPartialUpdateOutput =
       }),
     }),
     condition: Schema.optional(
-      Schema.Struct({
-        type: Schema.Literals([
-          "absolute_value",
-          "relative_increase",
-          "relative_decrease",
-        ]),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.Literals([
+            "absolute_value",
+            "relative_increase",
+            "relative_decrease",
+          ]),
+        }),
+      ),
     ),
     state: Schema.String,
     enabled: Schema.optional(Schema.Boolean),
@@ -167,7 +186,7 @@ export const AlertsPartialUpdateOutput =
         id: Schema.String,
         created_at: Schema.String,
         calculated_value: Schema.NullOr(Schema.Number),
-        state: Schema.Struct({}),
+        state: Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
         targets_notified: Schema.Boolean,
         anomaly_scores: Schema.NullOr(Schema.Unknown),
         triggered_points: Schema.NullOr(Schema.Unknown),
@@ -184,30 +203,40 @@ export const AlertsPartialUpdateOutput =
     ),
     checks_total: Schema.NullOr(Schema.Number),
     config: Schema.optional(
-      Schema.Struct({
-        check_ongoing_interval: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        series_index: Schema.Number,
-        type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          check_ongoing_interval: Schema.optional(
+            Schema.NullOr(Schema.Boolean),
+          ),
+          series_index: Schema.Number,
+          type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
+        }),
+      ),
     ),
-    detector_config: Schema.optional(Schema.Struct({})),
-    calculation_interval: Schema.optional(Schema.Struct({})),
+    detector_config: Schema.optional(Schema.Unknown),
+    calculation_interval: Schema.optional(
+      Schema.Literals(["hourly", "daily", "weekly", "monthly"]),
+    ),
     snoozed_until: Schema.optional(Schema.NullOr(Schema.String)),
     skip_weekend: Schema.optional(Schema.NullOr(Schema.Boolean)),
     schedule_restriction: Schema.optional(
-      Schema.Struct({
-        blocked_windows: Schema.Array(
-          Schema.Struct({
-            start: Schema.String,
-            end: Schema.String,
-          }),
-        ),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          blocked_windows: Schema.Array(
+            Schema.Struct({
+              start: Schema.String,
+              end: Schema.String,
+            }),
+          ),
+        }),
+      ),
     ),
     last_value: Schema.NullOr(Schema.Number),
     investigation_agent_enabled: Schema.optional(Schema.Boolean),
     investigation_gates_notifications: Schema.optional(Schema.Boolean),
-    investigation_inconclusive_action: Schema.optional(Schema.Struct({})),
+    investigation_inconclusive_action: Schema.optional(
+      Schema.Literals(["notify", "suppress"]),
+    ),
   });
 export type AlertsPartialUpdateOutput = typeof AlertsPartialUpdateOutput.Type;
 

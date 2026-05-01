@@ -8,7 +8,7 @@ export const LlmAnalyticsEvaluationSummaryCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     evaluation_id: Schema.String,
-    filter: Schema.optional(Schema.Struct({})),
+    filter: Schema.optional(Schema.Literals(["all", "pass", "fail", "na"])),
     generation_ids: Schema.optional(Schema.Array(Schema.String)),
     force_refresh: Schema.optional(Schema.Boolean),
   }).pipe(

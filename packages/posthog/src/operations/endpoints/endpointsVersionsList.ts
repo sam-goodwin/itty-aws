@@ -82,19 +82,21 @@ export const EndpointsVersionsListOutput =
         endpoint_is_active: Schema.Boolean,
         version_created_at: Schema.String,
         version_updated_at: Schema.NullOr(Schema.String),
-        version_created_by: Schema.Struct({
-          id: Schema.Number,
-          uuid: Schema.String,
-          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.String),
-          last_name: Schema.optional(Schema.String),
-          email: Schema.String,
-          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          hedgehog_config: Schema.NullOr(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          role_at_organization: Schema.optional(Schema.Unknown),
-        }),
+        version_created_by: Schema.NullOr(
+          Schema.Struct({
+            id: Schema.Number,
+            uuid: Schema.String,
+            distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+            first_name: Schema.optional(Schema.String),
+            last_name: Schema.optional(Schema.String),
+            email: Schema.String,
+            is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            hedgehog_config: Schema.NullOr(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            role_at_organization: Schema.optional(Schema.Unknown),
+          }),
+        ),
       }),
     ),
   });

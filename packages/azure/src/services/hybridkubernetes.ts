@@ -26,8 +26,9 @@ export type ConnectedClusterCreateInput =
 // Output Schema
 export const ConnectedClusterCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConnectedClusterCreateOutput =
   typeof ConnectedClusterCreateOutput.Type;
@@ -102,8 +103,9 @@ export type ConnectedClusterGetInput = typeof ConnectedClusterGetInput.Type;
 // Output Schema
 export const ConnectedClusterGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConnectedClusterGetOutput = typeof ConnectedClusterGetOutput.Type;
 
@@ -142,8 +144,9 @@ export const ConnectedClusterListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -187,8 +190,9 @@ export const ConnectedClusterListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -282,8 +286,9 @@ export type ConnectedClusterUpdateInput =
 // Output Schema
 export const ConnectedClusterUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConnectedClusterUpdateOutput =
   typeof ConnectedClusterUpdateOutput.Type;

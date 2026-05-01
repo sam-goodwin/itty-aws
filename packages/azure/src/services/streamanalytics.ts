@@ -26,8 +26,9 @@ export type ClustersCreateOrUpdateInput =
 // Output Schema
 export const ClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ClustersCreateOrUpdateOutput =
   typeof ClustersCreateOrUpdateOutput.Type;
@@ -92,8 +93,9 @@ export type ClustersGetInput = typeof ClustersGetInput.Type;
 
 // Output Schema
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ClustersGetOutput = typeof ClustersGetOutput.Type;
 
@@ -130,8 +132,9 @@ export const ClustersListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -174,8 +177,9 @@ export const ClustersListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -271,8 +275,9 @@ export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
 
 // Output Schema
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
 
@@ -1091,7 +1096,11 @@ export type PrivateEndpointsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PrivateEndpointsCreateOrUpdateOutput =
   typeof PrivateEndpointsCreateOrUpdateOutput.Type;
 
@@ -1165,7 +1174,11 @@ export type PrivateEndpointsGetInput = typeof PrivateEndpointsGetInput.Type;
 
 // Output Schema
 export const PrivateEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PrivateEndpointsGetOutput = typeof PrivateEndpointsGetOutput.Type;
 
 // The operation
@@ -1200,7 +1213,15 @@ export type PrivateEndpointsListByClusterInput =
 // Output Schema
 export const PrivateEndpointsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointsListByClusterOutput =
@@ -1239,8 +1260,9 @@ export type StreamingJobsCreateOrReplaceInput =
 // Output Schema
 export const StreamingJobsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type StreamingJobsCreateOrReplaceOutput =
   typeof StreamingJobsCreateOrReplaceOutput.Type;
@@ -1312,8 +1334,9 @@ export type StreamingJobsGetInput = typeof StreamingJobsGetInput.Type;
 // Output Schema
 export const StreamingJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 );
 export type StreamingJobsGetOutput = typeof StreamingJobsGetOutput.Type;
@@ -1353,8 +1376,9 @@ export const StreamingJobsListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1396,8 +1420,9 @@ export const StreamingJobsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1535,8 +1560,9 @@ export type StreamingJobsUpdateInput = typeof StreamingJobsUpdateInput.Type;
 // Output Schema
 export const StreamingJobsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type StreamingJobsUpdateOutput = typeof StreamingJobsUpdateOutput.Type;
 

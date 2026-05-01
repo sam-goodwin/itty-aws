@@ -32,7 +32,7 @@ export const SubscriptionsDeliveriesRetrieveOutput =
     exported_asset_ids: Schema.Array(Schema.Number),
     content_snapshot: Schema.Unknown,
     recipient_results: Schema.Unknown,
-    status: Schema.Struct({}),
+    status: Schema.Literals(["starting", "completed", "failed", "skipped"]),
     error: Schema.NullOr(Schema.Unknown),
     created_at: Schema.String,
     last_updated_at: Schema.String,

@@ -21,8 +21,23 @@ export type AccountsCreateInput = typeof AccountsCreateInput.Type;
 
 // Output Schema
 export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
 });
 export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
 
@@ -93,8 +108,23 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
 });
 export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 
@@ -127,8 +157,33 @@ export const AccountsListByResourceGroupOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdAt: Schema.optional(Schema.String),
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+          }),
+        ),
+        type: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -168,8 +223,33 @@ export const AccountsListBySubscriptionOutput =
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
-        location: Schema.optional(Schema.String),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdAt: Schema.optional(Schema.String),
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+          }),
+        ),
+        type: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -203,8 +283,23 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+    }),
+  ),
+  type: Schema.optional(Schema.String),
 });
 export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 

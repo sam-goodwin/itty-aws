@@ -20,8 +20,8 @@ export type SdkDoctorReportRetrieveInput =
 // Output Schema
 export const SdkDoctorReportRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    overall_health: Schema.Struct({}),
-    health: Schema.Struct({}),
+    overall_health: Schema.Literals(["healthy", "needs_attention"]),
+    health: Schema.Literals(["success", "warning", "danger"]),
     needs_updating_count: Schema.Number,
     team_sdk_count: Schema.Number,
     sdks: Schema.Array(
@@ -32,7 +32,7 @@ export const SdkDoctorReportRetrieveOutput =
         needs_updating: Schema.Boolean,
         is_outdated: Schema.Boolean,
         is_old: Schema.Boolean,
-        severity: Schema.Struct({}),
+        severity: Schema.Literals(["none", "warning", "danger"]),
         reason: Schema.String,
         banners: Schema.Array(Schema.String),
         releases: Schema.Array(

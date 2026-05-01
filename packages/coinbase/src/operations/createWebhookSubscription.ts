@@ -6,11 +6,11 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const CreateWebhookSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.Struct({})),
+    description: Schema.optional(Schema.String),
     eventTypes: Schema.Array(Schema.String),
     isEnabled: Schema.Boolean,
     target: Schema.Struct({
-      url: Schema.Struct({}),
+      url: Schema.String,
       headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -24,7 +24,7 @@ export const CreateWebhookSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
     updatedAt: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.Struct({})),
+    description: Schema.optional(Schema.String),
     eventTypes: Schema.Array(Schema.String),
     isEnabled: Schema.Boolean,
     metadata: Schema.optional(
@@ -35,7 +35,7 @@ export const CreateWebhookSubscriptionOutput =
     secret: SensitiveString,
     subscriptionId: Schema.String,
     target: Schema.Struct({
-      url: Schema.Struct({}),
+      url: Schema.String,
       headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),

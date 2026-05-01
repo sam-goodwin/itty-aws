@@ -94,28 +94,65 @@ export const EdgeZonesProductsListOutput =
             summary: Schema.optional(Schema.NullOr(Schema.String)),
             longSummary: Schema.optional(Schema.NullOr(Schema.String)),
             description: Schema.optional(Schema.NullOr(Schema.String)),
-            offerType: Schema.optional(Schema.Struct({})),
+            offerType: Schema.optional(
+              Schema.Literals([
+                "None",
+                "DevService",
+                "ManagedApplication",
+                "VirtualMachine",
+                "AzureApplication",
+                "Container",
+                "SaaS",
+                "SolutionTemplate",
+                "IotEdgeModules",
+                "ManagedServices",
+                "ContainerApps",
+                "VisualStudioExtension",
+                "DynamicsOps",
+                "DynamicsCE",
+                "DynamicsBC",
+                "PowerBI",
+                "ConsultingServices",
+                "CosellOnly",
+                "CoreVirtualMachine",
+                "PowerBIVisuals",
+                "Office365",
+                "AADApps",
+              ]),
+            ),
             isPrivate: Schema.optional(Schema.Boolean),
             isPreview: Schema.optional(Schema.Boolean),
             isStopSell: Schema.optional(Schema.Boolean),
             stopSellInfo: Schema.optional(
-              Schema.Struct({
-                startDate: Schema.optional(Schema.NullOr(Schema.String)),
-                reason: Schema.optional(Schema.Struct({})),
-                alternativeOfferId: Schema.optional(
-                  Schema.NullOr(Schema.String),
-                ),
-                alternativePlanId: Schema.optional(
-                  Schema.NullOr(Schema.String),
-                ),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  startDate: Schema.optional(Schema.NullOr(Schema.String)),
+                  reason: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Literals([
+                        "EndOfSupport",
+                        "SecurityIssue",
+                        "Other",
+                      ]),
+                    ),
+                  ),
+                  alternativeOfferId: Schema.optional(
+                    Schema.NullOr(Schema.String),
+                  ),
+                  alternativePlanId: Schema.optional(
+                    Schema.NullOr(Schema.String),
+                  ),
+                }),
+              ),
             ),
             fulfillBeforeChargeEligible: Schema.optional(Schema.Boolean),
             marketingMaterial: Schema.optional(
-              Schema.Struct({
-                path: Schema.optional(Schema.NullOr(Schema.String)),
-                learnUri: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  path: Schema.optional(Schema.NullOr(Schema.String)),
+                  learnUri: Schema.optional(Schema.NullOr(Schema.String)),
+                }),
+              ),
             ),
             markets: Schema.optional(
               Schema.NullOr(Schema.Array(Schema.String)),
@@ -127,7 +164,7 @@ export const EdgeZonesProductsListOutput =
             ocpSolutionId: Schema.optional(Schema.NullOr(Schema.String)),
             legalTermsUri: Schema.optional(Schema.NullOr(Schema.String)),
             cspLegalTermsUri: Schema.optional(Schema.NullOr(Schema.String)),
-            legalTermsType: Schema.optional(Schema.Struct({})),
+            legalTermsType: Schema.optional(Schema.Literals(["None", "EA"])),
             privacyPolicyUri: Schema.optional(Schema.NullOr(Schema.String)),
             helpLink: Schema.optional(Schema.NullOr(Schema.String)),
             supportUri: Schema.optional(Schema.NullOr(Schema.String)),
@@ -179,36 +216,42 @@ export const EdgeZonesProductsListOutput =
             ),
             hasPrices: Schema.optional(Schema.NullOr(Schema.Boolean)),
             duration: Schema.optional(
-              Schema.Struct({
-                durationValue: Schema.optional(Schema.Number),
-                durationUnit: Schema.optional(Schema.Struct({})),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  durationValue: Schema.optional(Schema.Number),
+                  durationUnit: Schema.optional(
+                    Schema.Literals(["Days", "Hours", "Weeks", "Months"]),
+                  ),
+                }),
+              ),
             ),
             marketPricingDetails: Schema.optional(
               Schema.NullOr(
                 Schema.Array(
                   Schema.Struct({
                     pricing: Schema.optional(
-                      Schema.Struct({
-                        currencyCode: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        planPrices: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Array(
-                              Schema.Struct({
-                                planId: Schema.optional(
-                                  Schema.NullOr(Schema.String),
-                                ),
-                                currencyDecorator: Schema.optional(
-                                  Schema.Struct({}),
-                                ),
-                                price: Schema.optional(Schema.Number),
-                              }),
+                      Schema.NullOr(
+                        Schema.Struct({
+                          currencyCode: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          planPrices: Schema.optional(
+                            Schema.NullOr(
+                              Schema.Array(
+                                Schema.Struct({
+                                  planId: Schema.optional(
+                                    Schema.NullOr(Schema.String),
+                                  ),
+                                  currencyDecorator: Schema.optional(
+                                    Schema.Literals([0, 1]),
+                                  ),
+                                  price: Schema.optional(Schema.Number),
+                                }),
+                              ),
                             ),
                           ),
-                        ),
-                      }),
+                        }),
+                      ),
                     ),
                     marketCode: Schema.optional(Schema.NullOr(Schema.String)),
                     marketStates: Schema.optional(
@@ -219,30 +262,36 @@ export const EdgeZonesProductsListOutput =
               ),
             ),
             startingPrice: Schema.optional(
-              Schema.Struct({
-                market: Schema.String,
-                termUnits: Schema.optional(Schema.NullOr(Schema.String)),
-                meterUnits: Schema.optional(Schema.NullOr(Schema.String)),
-                minTermPrice: Schema.optional(Schema.NullOr(Schema.Number)),
-                minMeterPrice: Schema.optional(Schema.NullOr(Schema.Number)),
-                currency: Schema.String,
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  market: Schema.String,
+                  termUnits: Schema.optional(Schema.NullOr(Schema.String)),
+                  meterUnits: Schema.optional(Schema.NullOr(Schema.String)),
+                  minTermPrice: Schema.optional(Schema.NullOr(Schema.Number)),
+                  minMeterPrice: Schema.optional(Schema.NullOr(Schema.Number)),
+                  currency: Schema.String,
+                }),
+              ),
             ),
             pricing: Schema.optional(
-              Schema.Struct({
-                currencyCode: Schema.optional(Schema.NullOr(Schema.String)),
-                planPrices: Schema.optional(
-                  Schema.NullOr(
-                    Schema.Array(
-                      Schema.Struct({
-                        planId: Schema.optional(Schema.NullOr(Schema.String)),
-                        currencyDecorator: Schema.optional(Schema.Struct({})),
-                        price: Schema.optional(Schema.Number),
-                      }),
+              Schema.NullOr(
+                Schema.Struct({
+                  currencyCode: Schema.optional(Schema.NullOr(Schema.String)),
+                  planPrices: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Array(
+                        Schema.Struct({
+                          planId: Schema.optional(Schema.NullOr(Schema.String)),
+                          currencyDecorator: Schema.optional(
+                            Schema.Literals([0, 1]),
+                          ),
+                          price: Schema.optional(Schema.Number),
+                        }),
+                      ),
                     ),
                   ),
-                ),
-              }),
+                }),
+              ),
             ),
             solutionAreas: Schema.optional(
               Schema.NullOr(Schema.Array(Schema.String)),
@@ -280,62 +329,91 @@ export const EdgeZonesProductsListOutput =
                   Schema.Struct({
                     name: Schema.optional(Schema.NullOr(Schema.String)),
                     uri: Schema.optional(Schema.NullOr(Schema.String)),
-                    type: Schema.optional(Schema.Struct({})),
+                    type: Schema.optional(
+                      Schema.Literals([
+                        "Template",
+                        "Fragment",
+                        "Custom",
+                        "Metadata",
+                      ]),
+                    ),
                   }),
                 ),
               ),
             ),
             metadata: Schema.optional(
-              Schema.Struct({
-                leadGeneration: Schema.optional(
-                  Schema.Struct({
-                    productId: Schema.optional(Schema.NullOr(Schema.String)),
-                    leadGenEnabled: Schema.optional(
-                      Schema.NullOr(Schema.Boolean),
-                    ),
-                  }),
-                ),
-                testDrive: Schema.optional(
-                  Schema.Struct({
-                    description: Schema.optional(Schema.NullOr(Schema.String)),
-                    userManual: Schema.optional(Schema.NullOr(Schema.String)),
-                    testDriveDuration: Schema.optional(
-                      Schema.NullOr(Schema.String),
-                    ),
-                    accessInformation: Schema.optional(
-                      Schema.NullOr(Schema.String),
-                    ),
-                    orchestrationType: Schema.optional(
-                      Schema.NullOr(Schema.String),
-                    ),
-                    labId: Schema.optional(Schema.NullOr(Schema.String)),
-                    demoId: Schema.optional(Schema.NullOr(Schema.String)),
-                    video: Schema.optional(
+              Schema.NullOr(
+                Schema.Struct({
+                  leadGeneration: Schema.optional(
+                    Schema.NullOr(
                       Schema.Struct({
-                        caption: Schema.optional(Schema.NullOr(Schema.String)),
-                        uri: Schema.optional(Schema.NullOr(Schema.String)),
-                        videoPurpose: Schema.optional(
+                        productId: Schema.optional(
                           Schema.NullOr(Schema.String),
                         ),
-                        previewImage: Schema.optional(
-                          Schema.Struct({
-                            caption: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            uri: Schema.optional(Schema.NullOr(Schema.String)),
-                            imagePurpose: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                          }),
+                        leadGenEnabled: Schema.optional(
+                          Schema.NullOr(Schema.Boolean),
                         ),
                       }),
                     ),
-                    powerBiDashboardLink: Schema.optional(
-                      Schema.NullOr(Schema.String),
+                  ),
+                  testDrive: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        description: Schema.optional(
+                          Schema.NullOr(Schema.String),
+                        ),
+                        userManual: Schema.optional(
+                          Schema.NullOr(Schema.String),
+                        ),
+                        testDriveDuration: Schema.optional(
+                          Schema.NullOr(Schema.String),
+                        ),
+                        accessInformation: Schema.optional(
+                          Schema.NullOr(Schema.String),
+                        ),
+                        orchestrationType: Schema.optional(
+                          Schema.NullOr(Schema.String),
+                        ),
+                        labId: Schema.optional(Schema.NullOr(Schema.String)),
+                        demoId: Schema.optional(Schema.NullOr(Schema.String)),
+                        video: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Struct({
+                              caption: Schema.optional(
+                                Schema.NullOr(Schema.String),
+                              ),
+                              uri: Schema.optional(
+                                Schema.NullOr(Schema.String),
+                              ),
+                              videoPurpose: Schema.optional(
+                                Schema.NullOr(Schema.String),
+                              ),
+                              previewImage: Schema.optional(
+                                Schema.NullOr(
+                                  Schema.Struct({
+                                    caption: Schema.optional(
+                                      Schema.NullOr(Schema.String),
+                                    ),
+                                    uri: Schema.optional(
+                                      Schema.NullOr(Schema.String),
+                                    ),
+                                    imagePurpose: Schema.optional(
+                                      Schema.NullOr(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                              ),
+                            }),
+                          ),
+                        ),
+                        powerBiDashboardLink: Schema.optional(
+                          Schema.NullOr(Schema.String),
+                        ),
+                      }),
                     ),
-                  }),
-                ),
-              }),
+                  ),
+                }),
+              ),
             ),
             properties: Schema.optional(
               Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
@@ -368,13 +446,17 @@ export const EdgeZonesProductsListOutput =
                     uri: Schema.optional(Schema.NullOr(Schema.String)),
                     videoPurpose: Schema.optional(Schema.NullOr(Schema.String)),
                     previewImage: Schema.optional(
-                      Schema.Struct({
-                        caption: Schema.optional(Schema.NullOr(Schema.String)),
-                        uri: Schema.optional(Schema.NullOr(Schema.String)),
-                        imagePurpose: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                      }),
+                      Schema.NullOr(
+                        Schema.Struct({
+                          caption: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          uri: Schema.optional(Schema.NullOr(Schema.String)),
+                          imagePurpose: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                        }),
+                      ),
                     ),
                   }),
                 ),
@@ -389,20 +471,22 @@ export const EdgeZonesProductsListOutput =
                     summary: Schema.optional(Schema.NullOr(Schema.String)),
                     description: Schema.optional(Schema.NullOr(Schema.String)),
                     restrictedAudience: Schema.optional(
-                      Schema.Struct({
-                        subscriptions: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
-                        ),
-                        tenants: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
-                        ),
-                        users: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
-                        ),
-                        groups: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
-                        ),
-                      }),
+                      Schema.NullOr(
+                        Schema.Struct({
+                          subscriptions: Schema.optional(
+                            Schema.NullOr(Schema.Array(Schema.String)),
+                          ),
+                          tenants: Schema.optional(
+                            Schema.NullOr(Schema.Array(Schema.String)),
+                          ),
+                          users: Schema.optional(
+                            Schema.NullOr(Schema.Array(Schema.String)),
+                          ),
+                          groups: Schema.optional(
+                            Schema.NullOr(Schema.Array(Schema.String)),
+                          ),
+                        }),
+                      ),
                     ),
                     skuId: Schema.optional(Schema.NullOr(Schema.String)),
                     planId: Schema.optional(Schema.NullOr(Schema.String)),
@@ -410,46 +494,66 @@ export const EdgeZonesProductsListOutput =
                     keywords: Schema.optional(
                       Schema.NullOr(Schema.Array(Schema.String)),
                     ),
-                    type: Schema.optional(Schema.Struct({})),
+                    type: Schema.optional(
+                      Schema.Literals([
+                        "None",
+                        "DevService",
+                        "ManagedApplication",
+                        "VirtualMachine",
+                        "AzureApplication",
+                        "Container",
+                        "SaaS",
+                        "SolutionTemplate",
+                        "IotEdgeModules",
+                        "ManagedServices",
+                        "ContainerApps",
+                        "VisualStudioExtension",
+                        "DynamicsOps",
+                        "DynamicsCE",
+                        "DynamicsBC",
+                        "PowerBI",
+                        "ConsultingServices",
+                        "CosellOnly",
+                        "CoreVirtualMachine",
+                        "PowerBIVisuals",
+                        "Office365",
+                        "AADApps",
+                      ]),
+                    ),
                     leadGeneration: Schema.optional(
-                      Schema.Struct({
-                        productId: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        leadGenEnabled: Schema.optional(
-                          Schema.NullOr(Schema.Boolean),
-                        ),
-                      }),
+                      Schema.NullOr(
+                        Schema.Struct({
+                          productId: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          leadGenEnabled: Schema.optional(
+                            Schema.NullOr(Schema.Boolean),
+                          ),
+                        }),
+                      ),
                     ),
                     testDrive: Schema.optional(
-                      Schema.Struct({
-                        description: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        userManual: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        testDriveDuration: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        accessInformation: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        orchestrationType: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        labId: Schema.optional(Schema.NullOr(Schema.String)),
-                        demoId: Schema.optional(Schema.NullOr(Schema.String)),
-                        video: Schema.optional(
-                          Schema.Struct({
-                            caption: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            uri: Schema.optional(Schema.NullOr(Schema.String)),
-                            videoPurpose: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            previewImage: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Struct({
+                          description: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          userManual: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          testDriveDuration: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          accessInformation: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          orchestrationType: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          labId: Schema.optional(Schema.NullOr(Schema.String)),
+                          demoId: Schema.optional(Schema.NullOr(Schema.String)),
+                          video: Schema.optional(
+                            Schema.NullOr(
                               Schema.Struct({
                                 caption: Schema.optional(
                                   Schema.NullOr(Schema.String),
@@ -457,17 +561,32 @@ export const EdgeZonesProductsListOutput =
                                 uri: Schema.optional(
                                   Schema.NullOr(Schema.String),
                                 ),
-                                imagePurpose: Schema.optional(
+                                videoPurpose: Schema.optional(
                                   Schema.NullOr(Schema.String),
+                                ),
+                                previewImage: Schema.optional(
+                                  Schema.NullOr(
+                                    Schema.Struct({
+                                      caption: Schema.optional(
+                                        Schema.NullOr(Schema.String),
+                                      ),
+                                      uri: Schema.optional(
+                                        Schema.NullOr(Schema.String),
+                                      ),
+                                      imagePurpose: Schema.optional(
+                                        Schema.NullOr(Schema.String),
+                                      ),
+                                    }),
+                                  ),
                                 ),
                               }),
                             ),
-                          }),
-                        ),
-                        powerBiDashboardLink: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                      }),
+                          ),
+                          powerBiDashboardLink: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                        }),
+                      ),
                     ),
                     availabilities: Schema.optional(
                       Schema.NullOr(
@@ -495,48 +614,66 @@ export const EdgeZonesProductsListOutput =
                               Schema.NullOr(Schema.String),
                             ),
                             meter: Schema.optional(
-                              Schema.Struct({
-                                meterId: Schema.optional(
-                                  Schema.NullOr(Schema.String),
-                                ),
-                                partNumber: Schema.optional(
-                                  Schema.NullOr(Schema.String),
-                                ),
-                                consumptionResourceId: Schema.optional(
-                                  Schema.NullOr(Schema.String),
-                                ),
-                                price: Schema.optional(
-                                  Schema.Struct({
-                                    currencyCode: Schema.optional(
-                                      Schema.NullOr(Schema.String),
-                                    ),
-                                    isPIRequired: Schema.optional(
-                                      Schema.Boolean,
-                                    ),
-                                    listPrice: Schema.optional(Schema.Number),
-                                    msrp: Schema.optional(Schema.Number),
-                                  }),
-                                ),
-                                type: Schema.optional(
-                                  Schema.NullOr(Schema.String),
-                                ),
-                                includedQuantityProperties: Schema.optional(
-                                  Schema.NullOr(
-                                    Schema.Array(
+                              Schema.NullOr(
+                                Schema.Struct({
+                                  meterId: Schema.optional(
+                                    Schema.NullOr(Schema.String),
+                                  ),
+                                  partNumber: Schema.optional(
+                                    Schema.NullOr(Schema.String),
+                                  ),
+                                  consumptionResourceId: Schema.optional(
+                                    Schema.NullOr(Schema.String),
+                                  ),
+                                  price: Schema.optional(
+                                    Schema.NullOr(
                                       Schema.Struct({
-                                        termId: Schema.optional(
+                                        currencyCode: Schema.optional(
                                           Schema.NullOr(Schema.String),
                                         ),
-                                        quantity: Schema.optional(
-                                          Schema.NullOr(Schema.String),
+                                        isPIRequired: Schema.optional(
+                                          Schema.Boolean,
                                         ),
+                                        listPrice: Schema.optional(
+                                          Schema.Number,
+                                        ),
+                                        msrp: Schema.optional(Schema.Number),
                                       }),
                                     ),
                                   ),
-                                ),
-                              }),
+                                  type: Schema.optional(
+                                    Schema.NullOr(Schema.String),
+                                  ),
+                                  includedQuantityProperties: Schema.optional(
+                                    Schema.NullOr(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          termId: Schema.optional(
+                                            Schema.NullOr(Schema.String),
+                                          ),
+                                          quantity: Schema.optional(
+                                            Schema.NullOr(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                  ),
+                                }),
+                              ),
                             ),
-                            pricingAudience: Schema.optional(Schema.Struct({})),
+                            pricingAudience: Schema.optional(
+                              Schema.Literals([
+                                "None",
+                                "DirectCommercial",
+                                "PartnerCommercial",
+                                "Custom",
+                                "IndirectCommercial",
+                                "IndirectGov",
+                                "DirectChk",
+                                "DirectBlue",
+                                "DirectRock",
+                              ]),
+                            ),
                             terms: Schema.optional(
                               Schema.NullOr(
                                 Schema.Array(
@@ -562,28 +699,32 @@ export const EdgeZonesProductsListOutput =
                                       Schema.NullOr(Schema.String),
                                     ),
                                     prorationPolicy: Schema.optional(
-                                      Schema.Struct({
-                                        minimumProratedUnits: Schema.optional(
-                                          Schema.NullOr(Schema.String),
-                                        ),
-                                      }),
+                                      Schema.NullOr(
+                                        Schema.Struct({
+                                          minimumProratedUnits: Schema.optional(
+                                            Schema.NullOr(Schema.String),
+                                          ),
+                                        }),
+                                      ),
                                     ),
                                     termDescription: Schema.optional(
                                       Schema.NullOr(Schema.String),
                                     ),
                                     price: Schema.optional(
-                                      Schema.Struct({
-                                        currencyCode: Schema.optional(
-                                          Schema.NullOr(Schema.String),
-                                        ),
-                                        isPIRequired: Schema.optional(
-                                          Schema.Boolean,
-                                        ),
-                                        listPrice: Schema.optional(
-                                          Schema.Number,
-                                        ),
-                                        msrp: Schema.optional(Schema.Number),
-                                      }),
+                                      Schema.NullOr(
+                                        Schema.Struct({
+                                          currencyCode: Schema.optional(
+                                            Schema.NullOr(Schema.String),
+                                          ),
+                                          isPIRequired: Schema.optional(
+                                            Schema.Boolean,
+                                          ),
+                                          listPrice: Schema.optional(
+                                            Schema.Number,
+                                          ),
+                                          msrp: Schema.optional(Schema.Number),
+                                        }),
+                                      ),
                                     ),
                                     renewTermId: Schema.optional(
                                       Schema.NullOr(Schema.String),
@@ -592,33 +733,37 @@ export const EdgeZonesProductsListOutput =
                                       Schema.NullOr(Schema.String),
                                     ),
                                     billingPlan: Schema.optional(
-                                      Schema.Struct({
-                                        billingPeriod: Schema.optional(
-                                          Schema.NullOr(Schema.String),
-                                        ),
-                                        title: Schema.optional(
-                                          Schema.NullOr(Schema.String),
-                                        ),
-                                        description: Schema.optional(
-                                          Schema.NullOr(Schema.String),
-                                        ),
-                                        price: Schema.optional(
-                                          Schema.Struct({
-                                            currencyCode: Schema.optional(
-                                              Schema.NullOr(Schema.String),
+                                      Schema.NullOr(
+                                        Schema.Struct({
+                                          billingPeriod: Schema.optional(
+                                            Schema.NullOr(Schema.String),
+                                          ),
+                                          title: Schema.optional(
+                                            Schema.NullOr(Schema.String),
+                                          ),
+                                          description: Schema.optional(
+                                            Schema.NullOr(Schema.String),
+                                          ),
+                                          price: Schema.optional(
+                                            Schema.NullOr(
+                                              Schema.Struct({
+                                                currencyCode: Schema.optional(
+                                                  Schema.NullOr(Schema.String),
+                                                ),
+                                                isPIRequired: Schema.optional(
+                                                  Schema.Boolean,
+                                                ),
+                                                listPrice: Schema.optional(
+                                                  Schema.Number,
+                                                ),
+                                                msrp: Schema.optional(
+                                                  Schema.Number,
+                                                ),
+                                              }),
                                             ),
-                                            isPIRequired: Schema.optional(
-                                              Schema.Boolean,
-                                            ),
-                                            listPrice: Schema.optional(
-                                              Schema.Number,
-                                            ),
-                                            msrp: Schema.optional(
-                                              Schema.Number,
-                                            ),
-                                          }),
-                                        ),
-                                      }),
+                                          ),
+                                        }),
+                                      ),
                                     ),
                                     renewToTermBillingPlan: Schema.optional(
                                       Schema.NullOr(Schema.String),
@@ -628,14 +773,16 @@ export const EdgeZonesProductsListOutput =
                               ),
                             ),
                             piFilter: Schema.optional(
-                              Schema.Struct({
-                                exclusionProperties: Schema.optional(
-                                  Schema.NullOr(Schema.Array(Schema.String)),
-                                ),
-                                inclusionProperties: Schema.optional(
-                                  Schema.NullOr(Schema.Array(Schema.String)),
-                                ),
-                              }),
+                              Schema.NullOr(
+                                Schema.Struct({
+                                  exclusionProperties: Schema.optional(
+                                    Schema.NullOr(Schema.Array(Schema.String)),
+                                  ),
+                                  inclusionProperties: Schema.optional(
+                                    Schema.NullOr(Schema.Array(Schema.String)),
+                                  ),
+                                }),
+                              ),
                             ),
                             isStopSell: Schema.optional(Schema.Boolean),
                             hasFreeTrials: Schema.optional(Schema.Boolean),
@@ -683,20 +830,24 @@ export const EdgeZonesProductsListOutput =
                       Schema.NullOr(Schema.Array(Schema.String)),
                     ),
                     metadata: Schema.optional(
-                      Schema.Struct({
-                        properties: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Record(Schema.String, Schema.Unknown),
+                      Schema.NullOr(
+                        Schema.Struct({
+                          properties: Schema.optional(
+                            Schema.NullOr(
+                              Schema.Record(Schema.String, Schema.Unknown),
+                            ),
                           ),
-                        ),
-                      }),
+                        }),
+                      ),
                     ),
                     operatingSystem: Schema.optional(
-                      Schema.Struct({
-                        family: Schema.optional(Schema.NullOr(Schema.String)),
-                        type: Schema.optional(Schema.NullOr(Schema.String)),
-                        name: Schema.optional(Schema.NullOr(Schema.String)),
-                      }),
+                      Schema.NullOr(
+                        Schema.Struct({
+                          family: Schema.optional(Schema.NullOr(Schema.String)),
+                          type: Schema.optional(Schema.NullOr(Schema.String)),
+                          name: Schema.optional(Schema.NullOr(Schema.String)),
+                        }),
+                      ),
                     ),
                     uiDefinitionUri: Schema.optional(
                       Schema.NullOr(Schema.String),
@@ -707,7 +858,14 @@ export const EdgeZonesProductsListOutput =
                           Schema.Struct({
                             name: Schema.optional(Schema.NullOr(Schema.String)),
                             uri: Schema.optional(Schema.NullOr(Schema.String)),
-                            type: Schema.optional(Schema.Struct({})),
+                            type: Schema.optional(
+                              Schema.Literals([
+                                "Template",
+                                "Fragment",
+                                "Custom",
+                                "Metadata",
+                              ]),
+                            ),
                           }),
                         ),
                       ),
@@ -722,18 +880,28 @@ export const EdgeZonesProductsListOutput =
                     isPayg: Schema.optional(Schema.Boolean),
                     isStopSell: Schema.optional(Schema.Boolean),
                     stopSellInfo: Schema.optional(
-                      Schema.Struct({
-                        startDate: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        reason: Schema.optional(Schema.Struct({})),
-                        alternativeOfferId: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        alternativePlanId: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                      }),
+                      Schema.NullOr(
+                        Schema.Struct({
+                          startDate: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          reason: Schema.optional(
+                            Schema.NullOr(
+                              Schema.Literals([
+                                "EndOfSupport",
+                                "SecurityIssue",
+                                "Other",
+                              ]),
+                            ),
+                          ),
+                          alternativeOfferId: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                          alternativePlanId: Schema.optional(
+                            Schema.NullOr(Schema.String),
+                          ),
+                        }),
+                      ),
                     ),
                     altStackReference: Schema.optional(
                       Schema.NullOr(Schema.String),
@@ -745,7 +913,16 @@ export const EdgeZonesProductsListOutput =
                     architectureType: Schema.optional(
                       Schema.NullOr(Schema.String),
                     ),
-                    cspState: Schema.optional(Schema.Struct({})),
+                    cspState: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Literals([
+                          "OptIn",
+                          "OptOut",
+                          "Terminated",
+                          "SelectiveOptIn",
+                        ]),
+                      ),
+                    ),
                     resourceProviderNamespace: Schema.optional(
                       Schema.NullOr(Schema.String),
                     ),
@@ -758,7 +935,11 @@ export const EdgeZonesProductsListOutput =
                     serviceIdentifier: Schema.optional(
                       Schema.NullOr(Schema.String),
                     ),
-                    vmSecurityType: Schema.optional(Schema.Struct({})),
+                    vmSecurityType: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Literals(["None", "Trusted", "Confidential"]),
+                      ),
+                    ),
                     displayRank: Schema.optional(Schema.NullOr(Schema.String)),
                     billingComponents: Schema.optional(
                       Schema.NullOr(
@@ -839,39 +1020,43 @@ export const EdgeZonesProductsListOutput =
             ),
             resourceGroupName: Schema.optional(Schema.NullOr(Schema.String)),
             definitionTemplates: Schema.optional(
-              Schema.Struct({
-                uiDefinitionFileUri: Schema.optional(
-                  Schema.NullOr(Schema.String),
-                ),
-                defaultDeploymentTemplateId: Schema.optional(
-                  Schema.NullOr(Schema.String),
-                ),
-                deploymentTemplateFileUris: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-                ),
-                deploymentFragmentFileUris: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-                ),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  uiDefinitionFileUri: Schema.optional(
+                    Schema.NullOr(Schema.String),
+                  ),
+                  defaultDeploymentTemplateId: Schema.optional(
+                    Schema.NullOr(Schema.String),
+                  ),
+                  deploymentTemplateFileUris: Schema.optional(
+                    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+                  ),
+                  deploymentFragmentFileUris: Schema.optional(
+                    Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+                  ),
+                }),
+              ),
             ),
             additionalProperties: Schema.optional(
               Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
             ),
             restrictedAudience: Schema.optional(
-              Schema.Struct({
-                subscriptions: Schema.optional(
-                  Schema.NullOr(Schema.Array(Schema.String)),
-                ),
-                tenants: Schema.optional(
-                  Schema.NullOr(Schema.Array(Schema.String)),
-                ),
-                users: Schema.optional(
-                  Schema.NullOr(Schema.Array(Schema.String)),
-                ),
-                groups: Schema.optional(
-                  Schema.NullOr(Schema.Array(Schema.String)),
-                ),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  subscriptions: Schema.optional(
+                    Schema.NullOr(Schema.Array(Schema.String)),
+                  ),
+                  tenants: Schema.optional(
+                    Schema.NullOr(Schema.Array(Schema.String)),
+                  ),
+                  users: Schema.optional(
+                    Schema.NullOr(Schema.Array(Schema.String)),
+                  ),
+                  groups: Schema.optional(
+                    Schema.NullOr(Schema.Array(Schema.String)),
+                  ),
+                }),
+              ),
             ),
             isDeleted: Schema.optional(Schema.Boolean),
             isThirdParty: Schema.optional(Schema.Boolean),
@@ -894,7 +1079,9 @@ export const EdgeZonesProductsListOutput =
             isReseller: Schema.optional(Schema.Boolean),
             ttl: Schema.optional(Schema.NullOr(Schema.Number)),
             isExcludedFromSearch: Schema.optional(Schema.Boolean),
-            applicableStoreFronts: Schema.optional(Schema.Struct({})),
+            applicableStoreFronts: Schema.optional(
+              Schema.NullOr(Schema.Literals([0, 1, 2, 4, 8])),
+            ),
             offerVersion: Schema.optional(Schema.NullOr(Schema.String)),
             isMicrosoftProduct: Schema.optional(Schema.NullOr(Schema.Boolean)),
             productOwnershipSellingMotion: Schema.optional(
@@ -911,7 +1098,7 @@ export const EdgeZonesProductsListOutput =
                 ),
               ),
             ),
-            offerEnvironment: Schema.optional(Schema.Struct({})),
+            offerEnvironment: Schema.optional(Schema.Literals([1, 2, 3, 4, 5])),
             linkedAddIns: Schema.optional(
               Schema.NullOr(Schema.Array(Schema.String)),
             ),
@@ -938,15 +1125,19 @@ export const EdgeZonesProductsListOutput =
             ),
             isCoreVm: Schema.optional(Schema.NullOr(Schema.Boolean)),
             m365CertificationInfo: Schema.optional(
-              Schema.Struct({
-                m365CertificationType: Schema.optional(Schema.Struct({})),
-                m365CertificationDetailsUrl: Schema.optional(
-                  Schema.NullOr(Schema.String),
-                ),
-                m365CertificationId: Schema.optional(
-                  Schema.NullOr(Schema.String),
-                ),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  m365CertificationType: Schema.optional(
+                    Schema.Literals([0, 1, 2, 3]),
+                  ),
+                  m365CertificationDetailsUrl: Schema.optional(
+                    Schema.NullOr(Schema.String),
+                  ),
+                  m365CertificationId: Schema.optional(
+                    Schema.NullOr(Schema.String),
+                  ),
+                }),
+              ),
             ),
             downloadLink: Schema.optional(Schema.NullOr(Schema.String)),
             downloadSampleLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -958,7 +1149,9 @@ export const EdgeZonesProductsListOutput =
                 Schema.Record(
                   Schema.String,
                   Schema.Struct({
-                    pricingOptions: Schema.optional(Schema.Struct({})),
+                    pricingOptions: Schema.optional(
+                      Schema.Literals([0, 1, 2, 4, 8]),
+                    ),
                     hasPrices: Schema.optional(Schema.NullOr(Schema.Boolean)),
                   }),
                 ),
@@ -966,142 +1159,156 @@ export const EdgeZonesProductsListOutput =
             ),
             hasRIPlans: Schema.optional(Schema.Boolean),
             enrichedData: Schema.optional(
-              Schema.Struct({
-                tags: Schema.optional(
-                  Schema.NullOr(Schema.Array(Schema.String)),
-                ),
-                popularity: Schema.optional(
-                  Schema.Struct({
-                    appSourceCs: Schema.optional(Schema.Number),
-                    appSourceApps: Schema.optional(Schema.Number),
-                    ampCs: Schema.optional(Schema.Number),
-                    ampApps: Schema.optional(Schema.Number),
-                    azurePortalApps: Schema.optional(Schema.Number),
-                  }),
-                ),
-                rating: Schema.optional(
-                  Schema.Struct({
-                    appSource: Schema.optional(
+              Schema.NullOr(
+                Schema.Struct({
+                  tags: Schema.optional(
+                    Schema.NullOr(Schema.Array(Schema.String)),
+                  ),
+                  popularity: Schema.optional(
+                    Schema.NullOr(
                       Schema.Struct({
-                        totalRatings: Schema.optional(Schema.Number),
-                        source: Schema.optional(
-                          Schema.Literals([
-                            "None",
-                            "AppSource",
-                            "Amp",
-                            "Ibiza",
-                            "G2",
-                            "Internal",
-                            "All",
-                          ]),
-                        ),
-                        averageRating: Schema.optional(Schema.Number),
-                        createdAt: Schema.optional(Schema.String),
-                        externalOfferReference: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        starsDistribution: Schema.optional(
+                        appSourceCs: Schema.optional(Schema.Number),
+                        appSourceApps: Schema.optional(Schema.Number),
+                        ampCs: Schema.optional(Schema.Number),
+                        ampApps: Schema.optional(Schema.Number),
+                        azurePortalApps: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                  ),
+                  rating: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        appSource: Schema.optional(
                           Schema.NullOr(
-                            Schema.Record(Schema.String, Schema.Number),
+                            Schema.Struct({
+                              totalRatings: Schema.optional(Schema.Number),
+                              source: Schema.optional(
+                                Schema.Literals([
+                                  "None",
+                                  "AppSource",
+                                  "Amp",
+                                  "Ibiza",
+                                  "G2",
+                                  "Internal",
+                                  "All",
+                                ]),
+                              ),
+                              averageRating: Schema.optional(Schema.Number),
+                              createdAt: Schema.optional(Schema.String),
+                              externalOfferReference: Schema.optional(
+                                Schema.NullOr(Schema.String),
+                              ),
+                              starsDistribution: Schema.optional(
+                                Schema.NullOr(
+                                  Schema.Record(Schema.String, Schema.Number),
+                                ),
+                              ),
+                              buckets: Schema.optional(
+                                Schema.NullOr(Schema.Array(Schema.String)),
+                              ),
+                            }),
                           ),
                         ),
-                        buckets: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
+                        amp: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Struct({
+                              totalRatings: Schema.optional(Schema.Number),
+                              source: Schema.optional(
+                                Schema.Literals([
+                                  "None",
+                                  "AppSource",
+                                  "Amp",
+                                  "Ibiza",
+                                  "G2",
+                                  "Internal",
+                                  "All",
+                                ]),
+                              ),
+                              averageRating: Schema.optional(Schema.Number),
+                              createdAt: Schema.optional(Schema.String),
+                              externalOfferReference: Schema.optional(
+                                Schema.NullOr(Schema.String),
+                              ),
+                              starsDistribution: Schema.optional(
+                                Schema.NullOr(
+                                  Schema.Record(Schema.String, Schema.Number),
+                                ),
+                              ),
+                              buckets: Schema.optional(
+                                Schema.NullOr(Schema.Array(Schema.String)),
+                              ),
+                            }),
+                          ),
+                        ),
+                        azurePortal: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Struct({
+                              totalRatings: Schema.optional(Schema.Number),
+                              source: Schema.optional(
+                                Schema.Literals([
+                                  "None",
+                                  "AppSource",
+                                  "Amp",
+                                  "Ibiza",
+                                  "G2",
+                                  "Internal",
+                                  "All",
+                                ]),
+                              ),
+                              averageRating: Schema.optional(Schema.Number),
+                              createdAt: Schema.optional(Schema.String),
+                              externalOfferReference: Schema.optional(
+                                Schema.NullOr(Schema.String),
+                              ),
+                              starsDistribution: Schema.optional(
+                                Schema.NullOr(
+                                  Schema.Record(Schema.String, Schema.Number),
+                                ),
+                              ),
+                              buckets: Schema.optional(
+                                Schema.NullOr(Schema.Array(Schema.String)),
+                              ),
+                            }),
+                          ),
+                        ),
+                        g2: Schema.optional(
+                          Schema.NullOr(
+                            Schema.Struct({
+                              totalRatings: Schema.optional(Schema.Number),
+                              source: Schema.optional(
+                                Schema.Literals([
+                                  "None",
+                                  "AppSource",
+                                  "Amp",
+                                  "Ibiza",
+                                  "G2",
+                                  "Internal",
+                                  "All",
+                                ]),
+                              ),
+                              averageRating: Schema.optional(Schema.Number),
+                              createdAt: Schema.optional(Schema.String),
+                              externalOfferReference: Schema.optional(
+                                Schema.NullOr(Schema.String),
+                              ),
+                              starsDistribution: Schema.optional(
+                                Schema.NullOr(
+                                  Schema.Record(Schema.String, Schema.Number),
+                                ),
+                              ),
+                              buckets: Schema.optional(
+                                Schema.NullOr(Schema.Array(Schema.String)),
+                              ),
+                            }),
+                          ),
                         ),
                       }),
                     ),
-                    amp: Schema.optional(
-                      Schema.Struct({
-                        totalRatings: Schema.optional(Schema.Number),
-                        source: Schema.optional(
-                          Schema.Literals([
-                            "None",
-                            "AppSource",
-                            "Amp",
-                            "Ibiza",
-                            "G2",
-                            "Internal",
-                            "All",
-                          ]),
-                        ),
-                        averageRating: Schema.optional(Schema.Number),
-                        createdAt: Schema.optional(Schema.String),
-                        externalOfferReference: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        starsDistribution: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Record(Schema.String, Schema.Number),
-                          ),
-                        ),
-                        buckets: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
-                        ),
-                      }),
-                    ),
-                    azurePortal: Schema.optional(
-                      Schema.Struct({
-                        totalRatings: Schema.optional(Schema.Number),
-                        source: Schema.optional(
-                          Schema.Literals([
-                            "None",
-                            "AppSource",
-                            "Amp",
-                            "Ibiza",
-                            "G2",
-                            "Internal",
-                            "All",
-                          ]),
-                        ),
-                        averageRating: Schema.optional(Schema.Number),
-                        createdAt: Schema.optional(Schema.String),
-                        externalOfferReference: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        starsDistribution: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Record(Schema.String, Schema.Number),
-                          ),
-                        ),
-                        buckets: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
-                        ),
-                      }),
-                    ),
-                    g2: Schema.optional(
-                      Schema.Struct({
-                        totalRatings: Schema.optional(Schema.Number),
-                        source: Schema.optional(
-                          Schema.Literals([
-                            "None",
-                            "AppSource",
-                            "Amp",
-                            "Ibiza",
-                            "G2",
-                            "Internal",
-                            "All",
-                          ]),
-                        ),
-                        averageRating: Schema.optional(Schema.Number),
-                        createdAt: Schema.optional(Schema.String),
-                        externalOfferReference: Schema.optional(
-                          Schema.NullOr(Schema.String),
-                        ),
-                        starsDistribution: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Record(Schema.String, Schema.Number),
-                          ),
-                        ),
-                        buckets: Schema.optional(
-                          Schema.NullOr(Schema.Array(Schema.String)),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                isAzureBenefitEligible: Schema.optional(Schema.Boolean),
-                isSolutionMap: Schema.optional(Schema.Boolean),
-              }),
+                  ),
+                  isAzureBenefitEligible: Schema.optional(Schema.Boolean),
+                  isSolutionMap: Schema.optional(Schema.Boolean),
+                }),
+              ),
             ),
             capabilities: Schema.optional(
               Schema.NullOr(

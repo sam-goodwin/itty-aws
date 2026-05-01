@@ -13,9 +13,13 @@ export const SubscriptionsPartialUpdateInput =
     insight_short_id: Schema.optional(Schema.NullOr(Schema.String)),
     resource_name: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_export_insights: Schema.optional(Schema.Array(Schema.Number)),
-    target_type: Schema.optional(Schema.Struct({})),
+    target_type: Schema.optional(
+      Schema.Literals(["email", "slack", "webhook"]),
+    ),
     target_value: Schema.optional(Schema.String),
-    frequency: Schema.optional(Schema.Struct({})),
+    frequency: Schema.optional(
+      Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
+    ),
     interval: Schema.optional(Schema.Number),
     byweekday: Schema.optional(
       Schema.NullOr(
@@ -78,9 +82,9 @@ export const SubscriptionsPartialUpdateOutput =
     insight_short_id: Schema.NullOr(Schema.String),
     resource_name: Schema.NullOr(Schema.String),
     dashboard_export_insights: Schema.optional(Schema.Array(Schema.Number)),
-    target_type: Schema.Struct({}),
+    target_type: Schema.Literals(["email", "slack", "webhook"]),
     target_value: Schema.String,
-    frequency: Schema.Struct({}),
+    frequency: Schema.Literals(["daily", "weekly", "monthly", "yearly"]),
     interval: Schema.optional(Schema.Number),
     byweekday: Schema.optional(
       Schema.NullOr(

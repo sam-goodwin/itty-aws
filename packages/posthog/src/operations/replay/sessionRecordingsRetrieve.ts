@@ -55,10 +55,12 @@ export const SessionRecordingsRetrieveOutput =
     ongoing: Schema.Boolean,
     activity_score: Schema.NullOr(Schema.Number),
     has_summary: Schema.Boolean,
-    summary_outcome: Schema.Struct({
-      description: Schema.optional(Schema.NullOr(Schema.String)),
-      success: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    }),
+    summary_outcome: Schema.NullOr(
+      Schema.Struct({
+        description: Schema.optional(Schema.NullOr(Schema.String)),
+        success: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      }),
+    ),
     external_references: Schema.Array(
       Schema.Record(Schema.String, Schema.Unknown),
     ),

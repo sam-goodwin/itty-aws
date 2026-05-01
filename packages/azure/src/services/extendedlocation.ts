@@ -26,8 +26,9 @@ export type CustomLocationsCreateOrUpdateInput =
 // Output Schema
 export const CustomLocationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type CustomLocationsCreateOrUpdateOutput =
   typeof CustomLocationsCreateOrUpdateOutput.Type;
@@ -100,8 +101,9 @@ export type CustomLocationsGetInput = typeof CustomLocationsGetInput.Type;
 // Output Schema
 export const CustomLocationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type CustomLocationsGetOutput = typeof CustomLocationsGetOutput.Type;
 
@@ -141,8 +143,9 @@ export const CustomLocationsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -186,8 +189,9 @@ export const CustomLocationsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -228,7 +232,15 @@ export type CustomLocationsListEnabledResourceTypesInput =
 export const CustomLocationsListEnabledResourceTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type CustomLocationsListEnabledResourceTypesOutput =
   typeof CustomLocationsListEnabledResourceTypesOutput.Type;
@@ -312,8 +324,9 @@ export type CustomLocationsUpdateInput = typeof CustomLocationsUpdateInput.Type;
 // Output Schema
 export const CustomLocationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type CustomLocationsUpdateOutput =
   typeof CustomLocationsUpdateOutput.Type;

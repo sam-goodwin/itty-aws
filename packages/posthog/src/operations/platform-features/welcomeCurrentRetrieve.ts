@@ -20,10 +20,12 @@ export type WelcomeCurrentRetrieveInput =
 export const WelcomeCurrentRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_name: Schema.String,
-    inviter: Schema.Struct({
-      name: Schema.String,
-      email: Schema.String,
-    }),
+    inviter: Schema.NullOr(
+      Schema.Struct({
+        name: Schema.String,
+        email: Schema.String,
+      }),
+    ),
     team_members: Schema.Array(
       Schema.Struct({
         name: Schema.String,

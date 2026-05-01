@@ -28,7 +28,15 @@ export type AllPoliciesListByServiceInput =
 // Output Schema
 export const AllPoliciesListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type AllPoliciesListByServiceOutput =
@@ -59,26 +67,85 @@ export const ApiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
-        sourceApiId: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        serviceUrl: Schema.optional(Schema.String),
-        path: Schema.String,
-        protocols: Schema.optional(
-          Schema.Array(Schema.Literals(["http", "https", "ws", "wss"])),
-        ),
-        apiVersionSet: Schema.optional(
+        description: Schema.optional(Schema.String),
+        authenticationSettings: Schema.optional(
           Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            versioningScheme: Schema.optional(
-              Schema.Literals(["Segment", "Query", "Header"]),
+            oAuth2: Schema.optional(
+              Schema.Struct({
+                authorizationServerId: Schema.optional(Schema.String),
+                scope: Schema.optional(Schema.String),
+              }),
             ),
-            versionQueryName: Schema.optional(Schema.String),
-            versionHeaderName: Schema.optional(Schema.String),
+            openid: Schema.optional(
+              Schema.Struct({
+                openidProviderId: Schema.optional(Schema.String),
+                bearerTokenSendingMethods: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals(["authorizationHeader", "query"]),
+                  ),
+                ),
+              }),
+            ),
+            oAuth2AuthenticationSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  authorizationServerId: Schema.optional(Schema.String),
+                  scope: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            openidAuthenticationSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  openidProviderId: Schema.optional(Schema.String),
+                  bearerTokenSendingMethods: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals(["authorizationHeader", "query"]),
+                    ),
+                  ),
+                }),
+              ),
+            ),
           }),
         ),
-        provisioningState: Schema.optional(Schema.String),
+        subscriptionKeyParameterNames: Schema.optional(
+          Schema.Struct({
+            header: Schema.optional(Schema.String),
+            query: Schema.optional(Schema.String),
+          }),
+        ),
+        type: Schema.optional(
+          Schema.Literals([
+            "http",
+            "soap",
+            "websocket",
+            "graphql",
+            "odata",
+            "grpc",
+          ]),
+        ),
+        apiRevision: Schema.optional(Schema.String),
+        apiVersion: Schema.optional(Schema.String),
+        isCurrent: Schema.optional(Schema.Boolean),
+        isOnline: Schema.optional(Schema.Boolean),
+        apiRevisionDescription: Schema.optional(Schema.String),
+        apiVersionDescription: Schema.optional(Schema.String),
+        apiVersionSetId: Schema.optional(Schema.String),
+        subscriptionRequired: Schema.optional(Schema.Boolean),
+        termsOfServiceUrl: Schema.optional(Schema.String),
+        contact: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            url: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+          }),
+        ),
+        license: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            url: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
   },
@@ -92,7 +159,11 @@ export type ApiCreateOrUpdateInput = typeof ApiCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiCreateOrUpdateOutput = typeof ApiCreateOrUpdateOutput.Type;
 
 // The operation
@@ -332,7 +403,11 @@ export type ApiDiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const ApiDiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiDiagnosticCreateOrUpdateOutput =
   typeof ApiDiagnosticCreateOrUpdateOutput.Type;
 
@@ -411,7 +486,11 @@ export type ApiDiagnosticGetInput = typeof ApiDiagnosticGetInput.Type;
 
 // Output Schema
 export const ApiDiagnosticGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type ApiDiagnosticGetOutput = typeof ApiDiagnosticGetOutput.Type;
 
@@ -453,7 +532,15 @@ export type ApiDiagnosticListByServiceInput =
 // Output Schema
 export const ApiDiagnosticListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -663,7 +750,11 @@ export type ApiDiagnosticUpdateInput = typeof ApiDiagnosticUpdateInput.Type;
 
 // Output Schema
 export const ApiDiagnosticUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiDiagnosticUpdateOutput = typeof ApiDiagnosticUpdateOutput.Type;
 
 // The operation
@@ -702,7 +793,11 @@ export type ApiGatewayConfigConnectionCreateOrUpdateInput =
 
 // Output Schema
 export const ApiGatewayConfigConnectionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiGatewayConfigConnectionCreateOrUpdateOutput =
   typeof ApiGatewayConfigConnectionCreateOrUpdateOutput.Type;
 
@@ -779,7 +874,11 @@ export type ApiGatewayConfigConnectionGetInput =
 
 // Output Schema
 export const ApiGatewayConfigConnectionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiGatewayConfigConnectionGetOutput =
   typeof ApiGatewayConfigConnectionGetOutput.Type;
 
@@ -817,7 +916,13 @@ export type ApiGatewayConfigConnectionListByGatewayInput =
 // Output Schema
 export const ApiGatewayConfigConnectionListByGatewayOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApiGatewayConfigConnectionListByGatewayOutput =
@@ -1081,7 +1186,11 @@ export const ApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiGetInput = typeof ApiGetInput.Type;
 
 // Output Schema
-export const ApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiGetOutput = typeof ApiGetOutput.Type;
 
 // The operation
@@ -1126,7 +1235,11 @@ export type ApiIssueAttachmentCreateOrUpdateInput =
 
 // Output Schema
 export const ApiIssueAttachmentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiIssueAttachmentCreateOrUpdateOutput =
   typeof ApiIssueAttachmentCreateOrUpdateOutput.Type;
 
@@ -1213,7 +1326,11 @@ export type ApiIssueAttachmentGetInput = typeof ApiIssueAttachmentGetInput.Type;
 
 // Output Schema
 export const ApiIssueAttachmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiIssueAttachmentGetOutput =
   typeof ApiIssueAttachmentGetOutput.Type;
 
@@ -1259,7 +1376,15 @@ export type ApiIssueAttachmentListByServiceInput =
 // Output Schema
 export const ApiIssueAttachmentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1313,7 +1438,11 @@ export type ApiIssueCommentCreateOrUpdateInput =
 
 // Output Schema
 export const ApiIssueCommentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiIssueCommentCreateOrUpdateOutput =
   typeof ApiIssueCommentCreateOrUpdateOutput.Type;
 
@@ -1399,7 +1528,11 @@ export type ApiIssueCommentGetInput = typeof ApiIssueCommentGetInput.Type;
 
 // Output Schema
 export const ApiIssueCommentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiIssueCommentGetOutput = typeof ApiIssueCommentGetOutput.Type;
 
 // The operation
@@ -1442,7 +1575,15 @@ export type ApiIssueCommentListByServiceInput =
 // Output Schema
 export const ApiIssueCommentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1503,7 +1644,11 @@ export type ApiIssueCreateOrUpdateInput =
 
 // Output Schema
 export const ApiIssueCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiIssueCreateOrUpdateOutput =
   typeof ApiIssueCreateOrUpdateOutput.Type;
 
@@ -1580,7 +1725,11 @@ export const ApiIssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiIssueGetInput = typeof ApiIssueGetInput.Type;
 
 // Output Schema
-export const ApiIssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ApiIssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiIssueGetOutput = typeof ApiIssueGetOutput.Type;
 
 // The operation
@@ -1622,7 +1771,15 @@ export type ApiIssueListByServiceInput = typeof ApiIssueListByServiceInput.Type;
 // Output Schema
 export const ApiIssueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -1675,9 +1832,11 @@ export const ApiIssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiIssueUpdateInput = typeof ApiIssueUpdateInput.Type;
 
 // Output Schema
-export const ApiIssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ApiIssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiIssueUpdateOutput = typeof ApiIssueUpdateOutput.Type;
 
 // The operation
@@ -1719,7 +1878,15 @@ export type ApiListByServiceInput = typeof ApiListByServiceInput.Type;
 // Output Schema
 export const ApiListByServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   },
@@ -2747,7 +2914,11 @@ export type ApiManagementWorkspaceLinkGetInput =
 
 // Output Schema
 export const ApiManagementWorkspaceLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiManagementWorkspaceLinkGetOutput =
   typeof ApiManagementWorkspaceLinkGetOutput.Type;
 
@@ -2785,7 +2956,13 @@ export type ApiManagementWorkspaceLinksListByServiceInput =
 // Output Schema
 export const ApiManagementWorkspaceLinksListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ApiManagementWorkspaceLinksListByServiceOutput =
@@ -3034,7 +3211,11 @@ export type ApiOperationCreateOrUpdateInput =
 
 // Output Schema
 export const ApiOperationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiOperationCreateOrUpdateOutput =
   typeof ApiOperationCreateOrUpdateOutput.Type;
 
@@ -3111,9 +3292,11 @@ export const ApiOperationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiOperationGetInput = typeof ApiOperationGetInput.Type;
 
 // Output Schema
-export const ApiOperationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ApiOperationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiOperationGetOutput = typeof ApiOperationGetOutput.Type;
 
 // The operation
@@ -3154,7 +3337,15 @@ export type ApiOperationListByApiInput = typeof ApiOperationListByApiInput.Type;
 // Output Schema
 export const ApiOperationListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3210,7 +3401,11 @@ export type ApiOperationPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const ApiOperationPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiOperationPolicyCreateOrUpdateOutput =
   typeof ApiOperationPolicyCreateOrUpdateOutput.Type;
 
@@ -3298,7 +3493,11 @@ export type ApiOperationPolicyGetInput = typeof ApiOperationPolicyGetInput.Type;
 
 // Output Schema
 export const ApiOperationPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiOperationPolicyGetOutput =
   typeof ApiOperationPolicyGetOutput.Type;
 
@@ -3342,7 +3541,15 @@ export type ApiOperationPolicyListByOperationInput =
 // Output Schema
 export const ApiOperationPolicyListByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3593,7 +3800,11 @@ export type ApiOperationUpdateInput = typeof ApiOperationUpdateInput.Type;
 
 // Output Schema
 export const ApiOperationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiOperationUpdateOutput = typeof ApiOperationUpdateOutput.Type;
 
 // The operation
@@ -3641,7 +3852,11 @@ export type ApiPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const ApiPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiPolicyCreateOrUpdateOutput =
   typeof ApiPolicyCreateOrUpdateOutput.Type;
 
@@ -3718,7 +3933,11 @@ export const ApiPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiPolicyGetInput = typeof ApiPolicyGetInput.Type;
 
 // Output Schema
-export const ApiPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ApiPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiPolicyGetOutput = typeof ApiPolicyGetOutput.Type;
 
 // The operation
@@ -3756,7 +3975,15 @@ export type ApiPolicyListByApiInput = typeof ApiPolicyListByApiInput.Type;
 // Output Schema
 export const ApiPolicyListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3798,7 +4025,15 @@ export type ApiProductListByApisInput = typeof ApiProductListByApisInput.Type;
 // Output Schema
 export const ApiProductListByApisOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -3851,7 +4086,11 @@ export type ApiReleaseCreateOrUpdateInput =
 
 // Output Schema
 export const ApiReleaseCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiReleaseCreateOrUpdateOutput =
   typeof ApiReleaseCreateOrUpdateOutput.Type;
 
@@ -3927,9 +4166,11 @@ export const ApiReleaseGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiReleaseGetInput = typeof ApiReleaseGetInput.Type;
 
 // Output Schema
-export const ApiReleaseGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ApiReleaseGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiReleaseGetOutput = typeof ApiReleaseGetOutput.Type;
 
 // The operation
@@ -3970,7 +4211,15 @@ export type ApiReleaseListByServiceInput =
 // Output Schema
 export const ApiReleaseListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4022,7 +4271,11 @@ export type ApiReleaseUpdateInput = typeof ApiReleaseUpdateInput.Type;
 
 // Output Schema
 export const ApiReleaseUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type ApiReleaseUpdateOutput = typeof ApiReleaseUpdateOutput.Type;
 
@@ -4136,7 +4389,11 @@ export type ApiSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const ApiSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiSchemaCreateOrUpdateOutput =
   typeof ApiSchemaCreateOrUpdateOutput.Type;
 
@@ -4214,7 +4471,11 @@ export const ApiSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiSchemaGetInput = typeof ApiSchemaGetInput.Type;
 
 // Output Schema
-export const ApiSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ApiSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiSchemaGetOutput = typeof ApiSchemaGetOutput.Type;
 
 // The operation
@@ -4254,7 +4515,15 @@ export type ApiSchemaListByApiInput = typeof ApiSchemaListByApiInput.Type;
 // Output Schema
 export const ApiSchemaListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4304,7 +4573,11 @@ export type ApiTagDescriptionCreateOrUpdateInput =
 
 // Output Schema
 export const ApiTagDescriptionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiTagDescriptionCreateOrUpdateOutput =
   typeof ApiTagDescriptionCreateOrUpdateOutput.Type;
 
@@ -4387,7 +4660,11 @@ export type ApiTagDescriptionGetInput = typeof ApiTagDescriptionGetInput.Type;
 
 // Output Schema
 export const ApiTagDescriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiTagDescriptionGetOutput = typeof ApiTagDescriptionGetOutput.Type;
 
 // The operation
@@ -4430,7 +4707,15 @@ export type ApiTagDescriptionListByServiceInput =
 // Output Schema
 export const ApiTagDescriptionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4552,7 +4837,11 @@ export const ApiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiUpdateInput = typeof ApiUpdateInput.Type;
 
 // Output Schema
-export const ApiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ApiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiUpdateOutput = typeof ApiUpdateOutput.Type;
 
 // The operation
@@ -4597,7 +4886,11 @@ export type ApiVersionSetCreateOrUpdateInput =
 
 // Output Schema
 export const ApiVersionSetCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiVersionSetCreateOrUpdateOutput =
   typeof ApiVersionSetCreateOrUpdateOutput.Type;
 
@@ -4672,7 +4965,11 @@ export type ApiVersionSetGetInput = typeof ApiVersionSetGetInput.Type;
 
 // Output Schema
 export const ApiVersionSetGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type ApiVersionSetGetOutput = typeof ApiVersionSetGetOutput.Type;
 
@@ -4712,7 +5009,15 @@ export type ApiVersionSetListByServiceInput =
 // Output Schema
 export const ApiVersionSetListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -4762,7 +5067,11 @@ export type ApiVersionSetUpdateInput = typeof ApiVersionSetUpdateInput.Type;
 
 // Output Schema
 export const ApiVersionSetUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiVersionSetUpdateOutput = typeof ApiVersionSetUpdateOutput.Type;
 
 // The operation
@@ -4810,7 +5119,11 @@ export type ApiWikiCreateOrUpdateInput = typeof ApiWikiCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ApiWikiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ApiWikiCreateOrUpdateOutput =
   typeof ApiWikiCreateOrUpdateOutput.Type;
 
@@ -4882,7 +5195,11 @@ export const ApiWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiWikiGetInput = typeof ApiWikiGetInput.Type;
 
 // Output Schema
-export const ApiWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ApiWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiWikiGetOutput = typeof ApiWikiGetOutput.Type;
 
 // The operation
@@ -4919,7 +5236,15 @@ export type ApiWikisListInput = typeof ApiWikisListInput.Type;
 
 // Output Schema
 export const ApiWikisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
   nextLink: Schema.optional(Schema.String),
 });
 export type ApiWikisListOutput = typeof ApiWikisListOutput.Type;
@@ -4968,9 +5293,11 @@ export const ApiWikiUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ApiWikiUpdateInput = typeof ApiWikiUpdateInput.Type;
 
 // Output Schema
-export const ApiWikiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ApiWikiUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ApiWikiUpdateOutput = typeof ApiWikiUpdateOutput.Type;
 
 // The operation
@@ -5017,7 +5344,11 @@ export type AuthorizationAccessPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationAccessPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationAccessPolicyCreateOrUpdateOutput =
   typeof AuthorizationAccessPolicyCreateOrUpdateOutput.Type;
 
@@ -5104,7 +5435,11 @@ export type AuthorizationAccessPolicyGetInput =
 
 // Output Schema
 export const AuthorizationAccessPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationAccessPolicyGetOutput =
   typeof AuthorizationAccessPolicyGetOutput.Type;
 
@@ -5149,7 +5484,15 @@ export type AuthorizationAccessPolicyListByAuthorizationInput =
 // Output Schema
 export const AuthorizationAccessPolicyListByAuthorizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5255,7 +5598,11 @@ export type AuthorizationCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationCreateOrUpdateOutput =
   typeof AuthorizationCreateOrUpdateOutput.Type;
 
@@ -5334,7 +5681,11 @@ export type AuthorizationGetInput = typeof AuthorizationGetInput.Type;
 
 // Output Schema
 export const AuthorizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type AuthorizationGetOutput = typeof AuthorizationGetOutput.Type;
 
@@ -5376,7 +5727,15 @@ export type AuthorizationListByAuthorizationProviderInput =
 // Output Schema
 export const AuthorizationListByAuthorizationProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5486,7 +5845,11 @@ export type AuthorizationProviderCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationProviderCreateOrUpdateOutput =
   typeof AuthorizationProviderCreateOrUpdateOutput.Type;
 
@@ -5566,7 +5929,11 @@ export type AuthorizationProviderGetInput =
 
 // Output Schema
 export const AuthorizationProviderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationProviderGetOutput =
   typeof AuthorizationProviderGetOutput.Type;
 
@@ -5608,7 +5975,15 @@ export type AuthorizationProviderListByServiceInput =
 // Output Schema
 export const AuthorizationProviderListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type AuthorizationProviderListByServiceOutput =
@@ -5688,7 +6063,11 @@ export type AuthorizationServerCreateOrUpdateInput =
 
 // Output Schema
 export const AuthorizationServerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationServerCreateOrUpdateOutput =
   typeof AuthorizationServerCreateOrUpdateOutput.Type;
 
@@ -5768,7 +6147,11 @@ export type AuthorizationServerGetInput =
 
 // Output Schema
 export const AuthorizationServerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationServerGetOutput =
   typeof AuthorizationServerGetOutput.Type;
 
@@ -5810,7 +6193,15 @@ export type AuthorizationServerListByServiceInput =
 // Output Schema
 export const AuthorizationServerListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -5933,7 +6324,11 @@ export type AuthorizationServerUpdateInput =
 
 // Output Schema
 export const AuthorizationServerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AuthorizationServerUpdateOutput =
   typeof AuthorizationServerUpdateOutput.Type;
 
@@ -6081,7 +6476,11 @@ export type BackendCreateOrUpdateInput = typeof BackendCreateOrUpdateInput.Type;
 
 // Output Schema
 export const BackendCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type BackendCreateOrUpdateOutput =
   typeof BackendCreateOrUpdateOutput.Type;
 
@@ -6153,7 +6552,11 @@ export const BackendGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BackendGetInput = typeof BackendGetInput.Type;
 
 // Output Schema
-export const BackendGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const BackendGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type BackendGetOutput = typeof BackendGetOutput.Type;
 
 // The operation
@@ -6191,7 +6594,15 @@ export type BackendListByServiceInput = typeof BackendListByServiceInput.Type;
 // Output Schema
 export const BackendListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6374,9 +6785,11 @@ export const BackendUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type BackendUpdateInput = typeof BackendUpdateInput.Type;
 
 // Output Schema
-export const BackendUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const BackendUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type BackendUpdateOutput = typeof BackendUpdateOutput.Type;
 
 // The operation
@@ -6421,7 +6834,11 @@ export type CacheCreateOrUpdateInput = typeof CacheCreateOrUpdateInput.Type;
 
 // Output Schema
 export const CacheCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type CacheCreateOrUpdateOutput = typeof CacheCreateOrUpdateOutput.Type;
 
 // The operation
@@ -6490,7 +6907,11 @@ export const CacheGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheGetInput = typeof CacheGetInput.Type;
 
 // Output Schema
-export const CacheGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const CacheGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CacheGetOutput = typeof CacheGetOutput.Type;
 
 // The operation
@@ -6527,7 +6948,15 @@ export type CacheListByServiceInput = typeof CacheListByServiceInput.Type;
 // Output Schema
 export const CacheListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6572,7 +7001,11 @@ export const CacheUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CacheUpdateInput = typeof CacheUpdateInput.Type;
 
 // Output Schema
-export const CacheUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const CacheUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CacheUpdateOutput = typeof CacheUpdateOutput.Type;
 
 // The operation
@@ -6622,7 +7055,11 @@ export type CertificateCreateOrUpdateInput =
 
 // Output Schema
 export const CertificateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type CertificateCreateOrUpdateOutput =
   typeof CertificateCreateOrUpdateOutput.Type;
 
@@ -6696,9 +7133,11 @@ export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CertificateGetInput = typeof CertificateGetInput.Type;
 
 // Output Schema
-export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type CertificateGetOutput = typeof CertificateGetOutput.Type;
 
 // The operation
@@ -6738,7 +7177,15 @@ export type CertificateListByServiceInput =
 // Output Schema
 export const CertificateListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -6783,7 +7230,11 @@ export type CertificateRefreshSecretInput =
 
 // Output Schema
 export const CertificateRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type CertificateRefreshSecretOutput =
   typeof CertificateRefreshSecretOutput.Type;
 
@@ -6824,7 +7275,11 @@ export type ContentItemCreateOrUpdateInput =
 
 // Output Schema
 export const ContentItemCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ContentItemCreateOrUpdateOutput =
   typeof ContentItemCreateOrUpdateOutput.Type;
 
@@ -6902,9 +7357,11 @@ export const ContentItemGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ContentItemGetInput = typeof ContentItemGetInput.Type;
 
 // Output Schema
-export const ContentItemGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ContentItemGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ContentItemGetOutput = typeof ContentItemGetOutput.Type;
 
 // The operation
@@ -6942,7 +7399,15 @@ export type ContentItemListByServiceInput =
 // Output Schema
 export const ContentItemListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ContentItemListByServiceOutput =
@@ -6992,7 +7457,11 @@ export type ContentTypeCreateOrUpdateInput =
 
 // Output Schema
 export const ContentTypeCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ContentTypeCreateOrUpdateOutput =
   typeof ContentTypeCreateOrUpdateOutput.Type;
 
@@ -7066,9 +7535,11 @@ export const ContentTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ContentTypeGetInput = typeof ContentTypeGetInput.Type;
 
 // Output Schema
-export const ContentTypeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ContentTypeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ContentTypeGetOutput = typeof ContentTypeGetOutput.Type;
 
 // The operation
@@ -7104,7 +7575,15 @@ export type ContentTypeListByServiceInput =
 // Output Schema
 export const ContentTypeListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ContentTypeListByServiceOutput =
@@ -7143,7 +7622,11 @@ export type DeletedServicesGetByNameInput =
 
 // Output Schema
 export const DeletedServicesGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DeletedServicesGetByNameOutput =
   typeof DeletedServicesGetByNameOutput.Type;
 
@@ -7179,7 +7662,15 @@ export type DeletedServicesListBySubscriptionInput =
 // Output Schema
 export const DeletedServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type DeletedServicesListBySubscriptionOutput =
@@ -7416,7 +7907,11 @@ export type DiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const DiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DiagnosticCreateOrUpdateOutput =
   typeof DiagnosticCreateOrUpdateOutput.Type;
 
@@ -7488,9 +7983,11 @@ export const DiagnosticGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DiagnosticGetInput = typeof DiagnosticGetInput.Type;
 
 // Output Schema
-export const DiagnosticGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const DiagnosticGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type DiagnosticGetOutput = typeof DiagnosticGetOutput.Type;
 
 // The operation
@@ -7529,7 +8026,15 @@ export type DiagnosticListByServiceInput =
 // Output Schema
 export const DiagnosticListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -7736,7 +8241,11 @@ export type DiagnosticUpdateInput = typeof DiagnosticUpdateInput.Type;
 
 // Output Schema
 export const DiagnosticUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type DiagnosticUpdateOutput = typeof DiagnosticUpdateOutput.Type;
 
@@ -7781,7 +8290,11 @@ export type DocumentationCreateOrUpdateInput =
 
 // Output Schema
 export const DocumentationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DocumentationCreateOrUpdateOutput =
   typeof DocumentationCreateOrUpdateOutput.Type;
 
@@ -7856,7 +8369,11 @@ export type DocumentationGetInput = typeof DocumentationGetInput.Type;
 
 // Output Schema
 export const DocumentationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type DocumentationGetOutput = typeof DocumentationGetOutput.Type;
 
@@ -7896,7 +8413,15 @@ export type DocumentationListByServiceInput =
 // Output Schema
 export const DocumentationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type DocumentationListByServiceOutput =
@@ -7944,7 +8469,11 @@ export type DocumentationUpdateInput = typeof DocumentationUpdateInput.Type;
 
 // Output Schema
 export const DocumentationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DocumentationUpdateOutput = typeof DocumentationUpdateOutput.Type;
 
 // The operation
@@ -8014,7 +8543,11 @@ export type EmailTemplateCreateOrUpdateInput =
 
 // Output Schema
 export const EmailTemplateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type EmailTemplateCreateOrUpdateOutput =
   typeof EmailTemplateCreateOrUpdateOutput.Type;
 
@@ -8119,7 +8652,11 @@ export type EmailTemplateGetInput = typeof EmailTemplateGetInput.Type;
 
 // Output Schema
 export const EmailTemplateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type EmailTemplateGetOutput = typeof EmailTemplateGetOutput.Type;
 
@@ -8159,7 +8696,15 @@ export type EmailTemplateListByServiceInput =
 // Output Schema
 export const EmailTemplateListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8234,7 +8779,11 @@ export type EmailTemplateUpdateInput = typeof EmailTemplateUpdateInput.Type;
 
 // Output Schema
 export const EmailTemplateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type EmailTemplateUpdateOutput = typeof EmailTemplateUpdateOutput.Type;
 
 // The operation
@@ -8278,7 +8827,11 @@ export type GatewayApiCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GatewayApiCreateOrUpdateOutput =
   typeof GatewayApiCreateOrUpdateOutput.Type;
 
@@ -8358,7 +8911,15 @@ export type GatewayApiListByServiceInput =
 // Output Schema
 export const GatewayApiListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -8409,7 +8970,11 @@ export type GatewayCertificateAuthorityCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayCertificateAuthorityCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GatewayCertificateAuthorityCreateOrUpdateOutput =
   typeof GatewayCertificateAuthorityCreateOrUpdateOutput.Type;
 
@@ -8492,7 +9057,11 @@ export type GatewayCertificateAuthorityGetInput =
 
 // Output Schema
 export const GatewayCertificateAuthorityGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GatewayCertificateAuthorityGetOutput =
   typeof GatewayCertificateAuthorityGetOutput.Type;
 
@@ -8535,7 +9104,15 @@ export type GatewayCertificateAuthorityListByServiceInput =
 // Output Schema
 export const GatewayCertificateAuthorityListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type GatewayCertificateAuthorityListByServiceOutput =
@@ -8590,7 +9167,11 @@ export type GatewayCreateOrUpdateInput = typeof GatewayCreateOrUpdateInput.Type;
 
 // Output Schema
 export const GatewayCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GatewayCreateOrUpdateOutput =
   typeof GatewayCreateOrUpdateOutput.Type;
 
@@ -8706,7 +9287,11 @@ export const GatewayGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayGetInput = typeof GatewayGetInput.Type;
 
 // Output Schema
-export const GatewayGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const GatewayGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type GatewayGetOutput = typeof GatewayGetOutput.Type;
 
 // The operation
@@ -8753,7 +9338,11 @@ export type GatewayHostnameConfigurationCreateOrUpdateInput =
 
 // Output Schema
 export const GatewayHostnameConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GatewayHostnameConfigurationCreateOrUpdateOutput =
   typeof GatewayHostnameConfigurationCreateOrUpdateOutput.Type;
 
@@ -8836,7 +9425,11 @@ export type GatewayHostnameConfigurationGetInput =
 
 // Output Schema
 export const GatewayHostnameConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GatewayHostnameConfigurationGetOutput =
   typeof GatewayHostnameConfigurationGetOutput.Type;
 
@@ -8879,7 +9472,15 @@ export type GatewayHostnameConfigurationListByServiceInput =
 // Output Schema
 export const GatewayHostnameConfigurationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type GatewayHostnameConfigurationListByServiceOutput =
@@ -8962,7 +9563,15 @@ export type GatewayListByServiceInput = typeof GatewayListByServiceInput.Type;
 // Output Schema
 export const GatewayListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9174,9 +9783,11 @@ export const GatewayUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GatewayUpdateInput = typeof GatewayUpdateInput.Type;
 
 // Output Schema
-export const GatewayUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const GatewayUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type GatewayUpdateOutput = typeof GatewayUpdateOutput.Type;
 
 // The operation
@@ -9223,7 +9834,11 @@ export type GlobalSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const GlobalSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GlobalSchemaCreateOrUpdateOutput =
   typeof GlobalSchemaCreateOrUpdateOutput.Type;
 
@@ -9296,9 +9911,11 @@ export const GlobalSchemaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GlobalSchemaGetInput = typeof GlobalSchemaGetInput.Type;
 
 // Output Schema
-export const GlobalSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const GlobalSchemaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type GlobalSchemaGetOutput = typeof GlobalSchemaGetOutput.Type;
 
 // The operation
@@ -9337,7 +9954,15 @@ export type GlobalSchemaListByServiceInput =
 // Output Schema
 export const GlobalSchemaListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9389,7 +10014,11 @@ export type GraphQLApiResolverCreateOrUpdateInput =
 
 // Output Schema
 export const GraphQLApiResolverCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GraphQLApiResolverCreateOrUpdateOutput =
   typeof GraphQLApiResolverCreateOrUpdateOutput.Type;
 
@@ -9472,7 +10101,11 @@ export type GraphQLApiResolverGetInput = typeof GraphQLApiResolverGetInput.Type;
 
 // Output Schema
 export const GraphQLApiResolverGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GraphQLApiResolverGetOutput =
   typeof GraphQLApiResolverGetOutput.Type;
 
@@ -9516,7 +10149,15 @@ export type GraphQLApiResolverListByApiInput =
 // Output Schema
 export const GraphQLApiResolverListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9571,7 +10212,11 @@ export type GraphQLApiResolverPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const GraphQLApiResolverPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GraphQLApiResolverPolicyCreateOrUpdateOutput =
   typeof GraphQLApiResolverPolicyCreateOrUpdateOutput.Type;
 
@@ -9659,7 +10304,11 @@ export type GraphQLApiResolverPolicyGetInput =
 
 // Output Schema
 export const GraphQLApiResolverPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GraphQLApiResolverPolicyGetOutput =
   typeof GraphQLApiResolverPolicyGetOutput.Type;
 
@@ -9703,7 +10352,15 @@ export type GraphQLApiResolverPolicyListByResolverInput =
 // Output Schema
 export const GraphQLApiResolverPolicyListByResolverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9753,7 +10410,11 @@ export type GraphQLApiResolverUpdateInput =
 
 // Output Schema
 export const GraphQLApiResolverUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GraphQLApiResolverUpdateOutput =
   typeof GraphQLApiResolverUpdateOutput.Type;
 
@@ -9804,7 +10465,11 @@ export type GroupCreateOrUpdateInput = typeof GroupCreateOrUpdateInput.Type;
 
 // Output Schema
 export const GroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type GroupCreateOrUpdateOutput = typeof GroupCreateOrUpdateOutput.Type;
 
 // The operation
@@ -9873,7 +10538,11 @@ export const GroupGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupGetInput = typeof GroupGetInput.Type;
 
 // Output Schema
-export const GroupGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const GroupGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type GroupGetOutput = typeof GroupGetOutput.Type;
 
 // The operation
@@ -9911,7 +10580,15 @@ export type GroupListByServiceInput = typeof GroupListByServiceInput.Type;
 // Output Schema
 export const GroupListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -9957,7 +10634,11 @@ export const GroupUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupUpdateInput = typeof GroupUpdateInput.Type;
 
 // Output Schema
-export const GroupUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const GroupUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type GroupUpdateOutput = typeof GroupUpdateOutput.Type;
 
 // The operation
@@ -9993,9 +10674,11 @@ export const GroupUserCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GroupUserCreateInput = typeof GroupUserCreateInput.Type;
 
 // Output Schema
-export const GroupUserCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const GroupUserCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type GroupUserCreateOutput = typeof GroupUserCreateOutput.Type;
 
 // The operation
@@ -10068,7 +10751,15 @@ export type GroupUserListInput = typeof GroupUserListInput.Type;
 
 // Output Schema
 export const GroupUserListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
 });
@@ -10139,7 +10830,11 @@ export type IdentityProviderCreateOrUpdateInput =
 
 // Output Schema
 export const IdentityProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IdentityProviderCreateOrUpdateOutput =
   typeof IdentityProviderCreateOrUpdateOutput.Type;
 
@@ -10232,7 +10927,11 @@ export type IdentityProviderGetInput = typeof IdentityProviderGetInput.Type;
 
 // Output Schema
 export const IdentityProviderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IdentityProviderGetOutput = typeof IdentityProviderGetOutput.Type;
 
 // The operation
@@ -10268,7 +10967,15 @@ export type IdentityProviderListByServiceInput =
 // Output Schema
 export const IdentityProviderListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -10385,7 +11092,11 @@ export type IdentityProviderUpdateInput =
 
 // Output Schema
 export const IdentityProviderUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IdentityProviderUpdateOutput =
   typeof IdentityProviderUpdateOutput.Type;
 
@@ -10423,7 +11134,11 @@ export const IssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type IssueGetInput = typeof IssueGetInput.Type;
 
 // Output Schema
-export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IssueGetOutput = typeof IssueGetOutput.Type;
 
 // The operation
@@ -10461,7 +11176,15 @@ export type IssueListByServiceInput = typeof IssueListByServiceInput.Type;
 // Output Schema
 export const IssueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -10516,7 +11239,11 @@ export type LoggerCreateOrUpdateInput = typeof LoggerCreateOrUpdateInput.Type;
 
 // Output Schema
 export const LoggerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type LoggerCreateOrUpdateOutput = typeof LoggerCreateOrUpdateOutput.Type;
 
 // The operation
@@ -10587,7 +11314,11 @@ export const LoggerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LoggerGetInput = typeof LoggerGetInput.Type;
 
 // Output Schema
-export const LoggerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const LoggerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type LoggerGetOutput = typeof LoggerGetOutput.Type;
 
 // The operation
@@ -10625,7 +11356,15 @@ export type LoggerListByServiceInput = typeof LoggerListByServiceInput.Type;
 // Output Schema
 export const LoggerListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -10677,7 +11416,11 @@ export const LoggerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LoggerUpdateInput = typeof LoggerUpdateInput.Type;
 
 // Output Schema
-export const LoggerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const LoggerUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type LoggerUpdateOutput = typeof LoggerUpdateOutput.Type;
 
 // The operation
@@ -10721,7 +11464,11 @@ export type NamedValueCreateOrUpdateInput =
 
 // Output Schema
 export const NamedValueCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type NamedValueCreateOrUpdateOutput =
   typeof NamedValueCreateOrUpdateOutput.Type;
 
@@ -10793,9 +11540,11 @@ export const NamedValueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NamedValueGetInput = typeof NamedValueGetInput.Type;
 
 // Output Schema
-export const NamedValueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const NamedValueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type NamedValueGetOutput = typeof NamedValueGetOutput.Type;
 
 // The operation
@@ -10835,7 +11584,15 @@ export type NamedValueListByServiceInput =
 // Output Schema
 export const NamedValueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -10917,7 +11674,11 @@ export type NamedValueRefreshSecretInput =
 
 // Output Schema
 export const NamedValueRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type NamedValueRefreshSecretOutput =
   typeof NamedValueRefreshSecretOutput.Type;
 
@@ -10960,7 +11721,11 @@ export type NamedValueUpdateInput = typeof NamedValueUpdateInput.Type;
 
 // Output Schema
 export const NamedValueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type NamedValueUpdateOutput = typeof NamedValueUpdateOutput.Type;
 
@@ -11116,7 +11881,11 @@ export type NotificationCreateOrUpdateInput =
 
 // Output Schema
 export const NotificationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type NotificationCreateOrUpdateOutput =
   typeof NotificationCreateOrUpdateOutput.Type;
 
@@ -11161,9 +11930,11 @@ export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type NotificationGetInput = typeof NotificationGetInput.Type;
 
 // Output Schema
-export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type NotificationGetOutput = typeof NotificationGetOutput.Type;
 
 // The operation
@@ -11201,7 +11972,15 @@ export type NotificationListByServiceInput =
 // Output Schema
 export const NotificationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -11253,7 +12032,11 @@ export type NotificationRecipientEmailCreateOrUpdateInput =
 
 // Output Schema
 export const NotificationRecipientEmailCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type NotificationRecipientEmailCreateOrUpdateOutput =
   typeof NotificationRecipientEmailCreateOrUpdateOutput.Type;
 
@@ -11349,7 +12132,15 @@ export type NotificationRecipientEmailListByNotificationInput =
 // Output Schema
 export const NotificationRecipientEmailListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -11399,7 +12190,11 @@ export type NotificationRecipientUserCreateOrUpdateInput =
 
 // Output Schema
 export const NotificationRecipientUserCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type NotificationRecipientUserCreateOrUpdateOutput =
   typeof NotificationRecipientUserCreateOrUpdateOutput.Type;
 
@@ -11495,7 +12290,15 @@ export type NotificationRecipientUserListByNotificationInput =
 // Output Schema
 export const NotificationRecipientUserListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -11547,7 +12350,11 @@ export type OpenIdConnectProviderCreateOrUpdateInput =
 
 // Output Schema
 export const OpenIdConnectProviderCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type OpenIdConnectProviderCreateOrUpdateOutput =
   typeof OpenIdConnectProviderCreateOrUpdateOutput.Type;
 
@@ -11627,7 +12434,11 @@ export type OpenIdConnectProviderGetInput =
 
 // Output Schema
 export const OpenIdConnectProviderGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type OpenIdConnectProviderGetOutput =
   typeof OpenIdConnectProviderGetOutput.Type;
 
@@ -11669,7 +12480,15 @@ export type OpenIdConnectProviderListByServiceInput =
 // Output Schema
 export const OpenIdConnectProviderListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -11763,7 +12582,11 @@ export type OpenIdConnectProviderUpdateInput =
 
 // Output Schema
 export const OpenIdConnectProviderUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type OpenIdConnectProviderUpdateOutput =
   typeof OpenIdConnectProviderUpdateOutput.Type;
 
@@ -12271,7 +13094,11 @@ export type PolicyCreateOrUpdateInput = typeof PolicyCreateOrUpdateInput.Type;
 
 // Output Schema
 export const PolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PolicyCreateOrUpdateOutput = typeof PolicyCreateOrUpdateOutput.Type;
 
 // The operation
@@ -12348,7 +13175,15 @@ export type PolicyDescriptionListByServiceInput =
 // Output Schema
 export const PolicyDescriptionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
   });
 export type PolicyDescriptionListByServiceOutput =
@@ -12396,7 +13231,11 @@ export type PolicyFragmentCreateOrUpdateInput =
 
 // Output Schema
 export const PolicyFragmentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PolicyFragmentCreateOrUpdateOutput =
   typeof PolicyFragmentCreateOrUpdateOutput.Type;
 
@@ -12475,7 +13314,11 @@ export type PolicyFragmentGetInput = typeof PolicyFragmentGetInput.Type;
 
 // Output Schema
 export const PolicyFragmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PolicyFragmentGetOutput = typeof PolicyFragmentGetOutput.Type;
 
 // The operation
@@ -12516,7 +13359,15 @@ export type PolicyFragmentListByServiceInput =
 // Output Schema
 export const PolicyFragmentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -12564,7 +13415,15 @@ export type PolicyFragmentListReferencesInput =
 // Output Schema
 export const PolicyFragmentListReferencesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -12605,7 +13464,11 @@ export const PolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PolicyGetInput = typeof PolicyGetInput.Type;
 
 // Output Schema
-export const PolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const PolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PolicyGetOutput = typeof PolicyGetOutput.Type;
 
 // The operation
@@ -12641,7 +13504,15 @@ export type PolicyListByServiceInput = typeof PolicyListByServiceInput.Type;
 // Output Schema
 export const PolicyListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -12685,7 +13556,11 @@ export type PolicyRestrictionCreateOrUpdateInput =
 
 // Output Schema
 export const PolicyRestrictionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PolicyRestrictionCreateOrUpdateOutput =
   typeof PolicyRestrictionCreateOrUpdateOutput.Type;
 
@@ -12764,7 +13639,11 @@ export type PolicyRestrictionGetInput = typeof PolicyRestrictionGetInput.Type;
 
 // Output Schema
 export const PolicyRestrictionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PolicyRestrictionGetOutput = typeof PolicyRestrictionGetOutput.Type;
 
 // The operation
@@ -12802,7 +13681,15 @@ export type PolicyRestrictionListByServiceInput =
 // Output Schema
 export const PolicyRestrictionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type PolicyRestrictionListByServiceOutput =
@@ -12847,7 +13734,11 @@ export type PolicyRestrictionUpdateInput =
 
 // Output Schema
 export const PolicyRestrictionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PolicyRestrictionUpdateOutput =
   typeof PolicyRestrictionUpdateOutput.Type;
 
@@ -12887,7 +13778,11 @@ export type PolicyRestrictionValidationsByServiceInput =
 
 // Output Schema
 export const PolicyRestrictionValidationsByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PolicyRestrictionValidationsByServiceOutput =
   typeof PolicyRestrictionValidationsByServiceOutput.Type;
 
@@ -12966,7 +13861,11 @@ export type PortalConfigCreateOrUpdateInput =
 
 // Output Schema
 export const PortalConfigCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PortalConfigCreateOrUpdateOutput =
   typeof PortalConfigCreateOrUpdateOutput.Type;
 
@@ -13004,9 +13903,11 @@ export const PortalConfigGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PortalConfigGetInput = typeof PortalConfigGetInput.Type;
 
 // Output Schema
-export const PortalConfigGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const PortalConfigGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type PortalConfigGetOutput = typeof PortalConfigGetOutput.Type;
 
 // The operation
@@ -13042,7 +13943,15 @@ export type PortalConfigListByServiceInput =
 // Output Schema
 export const PortalConfigListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type PortalConfigListByServiceOutput =
@@ -13123,7 +14032,11 @@ export type PortalConfigUpdateInput = typeof PortalConfigUpdateInput.Type;
 
 // Output Schema
 export const PortalConfigUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PortalConfigUpdateOutput = typeof PortalConfigUpdateOutput.Type;
 
 // The operation
@@ -13174,7 +14087,11 @@ export type PortalRevisionCreateOrUpdateInput =
 
 // Output Schema
 export const PortalRevisionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PortalRevisionCreateOrUpdateOutput =
   typeof PortalRevisionCreateOrUpdateOutput.Type;
 
@@ -13213,7 +14130,11 @@ export type PortalRevisionGetInput = typeof PortalRevisionGetInput.Type;
 
 // Output Schema
 export const PortalRevisionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PortalRevisionGetOutput = typeof PortalRevisionGetOutput.Type;
 
 // The operation
@@ -13252,7 +14173,15 @@ export type PortalRevisionListByServiceInput =
 // Output Schema
 export const PortalRevisionListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type PortalRevisionListByServiceOutput =
@@ -13313,7 +14242,11 @@ export type PortalRevisionUpdateInput = typeof PortalRevisionUpdateInput.Type;
 
 // Output Schema
 export const PortalRevisionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PortalRevisionUpdateOutput = typeof PortalRevisionUpdateOutput.Type;
 
 // The operation
@@ -13626,7 +14559,11 @@ export type ProductApiCreateOrUpdateInput =
 
 // Output Schema
 export const ProductApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductApiCreateOrUpdateOutput =
   typeof ProductApiCreateOrUpdateOutput.Type;
 
@@ -13707,7 +14644,11 @@ export type ProductApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const ProductApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductApiLinkCreateOrUpdateOutput =
   typeof ProductApiLinkCreateOrUpdateOutput.Type;
 
@@ -13787,7 +14728,11 @@ export type ProductApiLinkGetInput = typeof ProductApiLinkGetInput.Type;
 
 // Output Schema
 export const ProductApiLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductApiLinkGetOutput = typeof ProductApiLinkGetOutput.Type;
 
 // The operation
@@ -13828,7 +14773,15 @@ export type ProductApiLinkListByProductInput =
 // Output Schema
 export const ProductApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13877,7 +14830,15 @@ export type ProductApiListByProductInput =
 // Output Schema
 export const ProductApiListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -13931,7 +14892,11 @@ export type ProductCreateOrUpdateInput = typeof ProductCreateOrUpdateInput.Type;
 
 // Output Schema
 export const ProductCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductCreateOrUpdateOutput =
   typeof ProductCreateOrUpdateOutput.Type;
 
@@ -14005,7 +14970,11 @@ export const ProductGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductGetInput = typeof ProductGetInput.Type;
 
 // Output Schema
-export const ProductGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ProductGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ProductGetOutput = typeof ProductGetOutput.Type;
 
 // The operation
@@ -14042,7 +15011,11 @@ export type ProductGroupCreateOrUpdateInput =
 
 // Output Schema
 export const ProductGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductGroupCreateOrUpdateOutput =
   typeof ProductGroupCreateOrUpdateOutput.Type;
 
@@ -14124,7 +15097,11 @@ export type ProductGroupLinkCreateOrUpdateInput =
 
 // Output Schema
 export const ProductGroupLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductGroupLinkCreateOrUpdateOutput =
   typeof ProductGroupLinkCreateOrUpdateOutput.Type;
 
@@ -14205,7 +15182,11 @@ export type ProductGroupLinkGetInput = typeof ProductGroupLinkGetInput.Type;
 
 // Output Schema
 export const ProductGroupLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductGroupLinkGetOutput = typeof ProductGroupLinkGetOutput.Type;
 
 // The operation
@@ -14246,7 +15227,15 @@ export type ProductGroupLinkListByProductInput =
 // Output Schema
 export const ProductGroupLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14294,7 +15283,15 @@ export type ProductGroupListByProductInput =
 // Output Schema
 export const ProductGroupListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14343,7 +15340,15 @@ export type ProductListByServiceInput = typeof ProductListByServiceInput.Type;
 // Output Schema
 export const ProductListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14559,7 +15564,11 @@ export type ProductPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const ProductPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductPolicyCreateOrUpdateOutput =
   typeof ProductPolicyCreateOrUpdateOutput.Type;
 
@@ -14639,7 +15648,11 @@ export type ProductPolicyGetInput = typeof ProductPolicyGetInput.Type;
 
 // Output Schema
 export const ProductPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type ProductPolicyGetOutput = typeof ProductPolicyGetOutput.Type;
 
@@ -14679,7 +15692,15 @@ export type ProductPolicyListByProductInput =
 // Output Schema
 export const ProductPolicyListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14725,7 +15746,15 @@ export type ProductSubscriptionsListInput =
 // Output Schema
 export const ProductSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -14777,9 +15806,11 @@ export const ProductUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductUpdateInput = typeof ProductUpdateInput.Type;
 
 // Output Schema
-export const ProductUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ProductUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ProductUpdateOutput = typeof ProductUpdateOutput.Type;
 
 // The operation
@@ -14828,7 +15859,11 @@ export type ProductWikiCreateOrUpdateInput =
 
 // Output Schema
 export const ProductWikiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductWikiCreateOrUpdateOutput =
   typeof ProductWikiCreateOrUpdateOutput.Type;
 
@@ -14902,9 +15937,11 @@ export const ProductWikiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ProductWikiGetInput = typeof ProductWikiGetInput.Type;
 
 // Output Schema
-export const ProductWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ProductWikiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ProductWikiGetOutput = typeof ProductWikiGetOutput.Type;
 
 // The operation
@@ -14942,7 +15979,15 @@ export type ProductWikisListInput = typeof ProductWikisListInput.Type;
 // Output Schema
 export const ProductWikisListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   },
 );
@@ -14995,7 +16040,11 @@ export type ProductWikiUpdateInput = typeof ProductWikiUpdateInput.Type;
 
 // Output Schema
 export const ProductWikiUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ProductWikiUpdateOutput = typeof ProductWikiUpdateOutput.Type;
 
 // The operation
@@ -15942,7 +16991,11 @@ export type SubscriptionCreateOrUpdateInput =
 
 // Output Schema
 export const SubscriptionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SubscriptionCreateOrUpdateOutput =
   typeof SubscriptionCreateOrUpdateOutput.Type;
 
@@ -16019,9 +17072,11 @@ export const SubscriptionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SubscriptionGetInput = typeof SubscriptionGetInput.Type;
 
 // Output Schema
-export const SubscriptionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const SubscriptionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type SubscriptionGetOutput = typeof SubscriptionGetOutput.Type;
 
 // The operation
@@ -16058,7 +17113,15 @@ export type SubscriptionListInput = typeof SubscriptionListInput.Type;
 // Output Schema
 export const SubscriptionListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   },
@@ -16241,7 +17304,11 @@ export type SubscriptionUpdateInput = typeof SubscriptionUpdateInput.Type;
 
 // Output Schema
 export const SubscriptionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SubscriptionUpdateOutput = typeof SubscriptionUpdateOutput.Type;
 
 // The operation
@@ -16289,7 +17356,11 @@ export type TagApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const TagApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagApiLinkCreateOrUpdateOutput =
   typeof TagApiLinkCreateOrUpdateOutput.Type;
 
@@ -16363,9 +17434,11 @@ export const TagApiLinkGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagApiLinkGetInput = typeof TagApiLinkGetInput.Type;
 
 // Output Schema
-export const TagApiLinkGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const TagApiLinkGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TagApiLinkGetOutput = typeof TagApiLinkGetOutput.Type;
 
 // The operation
@@ -16406,7 +17479,15 @@ export type TagApiLinkListByProductInput =
 // Output Schema
 export const TagApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -16449,9 +17530,11 @@ export const TagAssignToApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagAssignToApiInput = typeof TagAssignToApiInput.Type;
 
 // Output Schema
-export const TagAssignToApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const TagAssignToApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TagAssignToApiOutput = typeof TagAssignToApiOutput.Type;
 
 // The operation
@@ -16489,7 +17572,11 @@ export type TagAssignToOperationInput = typeof TagAssignToOperationInput.Type;
 
 // Output Schema
 export const TagAssignToOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagAssignToOperationOutput = typeof TagAssignToOperationOutput.Type;
 
 // The operation
@@ -16529,7 +17616,11 @@ export type TagAssignToProductInput = typeof TagAssignToProductInput.Type;
 
 // Output Schema
 export const TagAssignToProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagAssignToProductOutput = typeof TagAssignToProductOutput.Type;
 
 // The operation
@@ -16571,7 +17662,11 @@ export type TagCreateOrUpdateInput = typeof TagCreateOrUpdateInput.Type;
 
 // Output Schema
 export const TagCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagCreateOrUpdateOutput = typeof TagCreateOrUpdateOutput.Type;
 
 // The operation
@@ -16757,7 +17852,11 @@ export const TagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagGetInput = typeof TagGetInput.Type;
 
 // Output Schema
-export const TagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const TagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TagGetOutput = typeof TagGetOutput.Type;
 
 // The operation
@@ -16791,7 +17890,11 @@ export const TagGetByApiInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagGetByApiInput = typeof TagGetByApiInput.Type;
 
 // Output Schema
-export const TagGetByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const TagGetByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TagGetByApiOutput = typeof TagGetByApiOutput.Type;
 
 // The operation
@@ -16830,7 +17933,11 @@ export type TagGetByOperationInput = typeof TagGetByOperationInput.Type;
 
 // Output Schema
 export const TagGetByOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagGetByOperationOutput = typeof TagGetByOperationOutput.Type;
 
 // The operation
@@ -16866,9 +17973,11 @@ export const TagGetByProductInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagGetByProductInput = typeof TagGetByProductInput.Type;
 
 // Output Schema
-export const TagGetByProductOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const TagGetByProductOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TagGetByProductOutput = typeof TagGetByProductOutput.Type;
 
 // The operation
@@ -16906,7 +18015,15 @@ export type TagListByApiInput = typeof TagListByApiInput.Type;
 
 // Output Schema
 export const TagListByApiOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
 });
@@ -16952,7 +18069,15 @@ export type TagListByOperationInput = typeof TagListByOperationInput.Type;
 // Output Schema
 export const TagListByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -16997,7 +18122,15 @@ export type TagListByProductInput = typeof TagListByProductInput.Type;
 // Output Schema
 export const TagListByProductOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   },
@@ -17042,7 +18175,15 @@ export type TagListByServiceInput = typeof TagListByServiceInput.Type;
 // Output Schema
 export const TagListByServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   },
@@ -17091,7 +18232,11 @@ export type TagOperationLinkCreateOrUpdateInput =
 
 // Output Schema
 export const TagOperationLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagOperationLinkCreateOrUpdateOutput =
   typeof TagOperationLinkCreateOrUpdateOutput.Type;
 
@@ -17172,7 +18317,11 @@ export type TagOperationLinkGetInput = typeof TagOperationLinkGetInput.Type;
 
 // Output Schema
 export const TagOperationLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagOperationLinkGetOutput = typeof TagOperationLinkGetOutput.Type;
 
 // The operation
@@ -17213,7 +18362,15 @@ export type TagOperationLinkListByProductInput =
 // Output Schema
 export const TagOperationLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -17263,7 +18420,11 @@ export type TagProductLinkCreateOrUpdateInput =
 
 // Output Schema
 export const TagProductLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagProductLinkCreateOrUpdateOutput =
   typeof TagProductLinkCreateOrUpdateOutput.Type;
 
@@ -17343,7 +18504,11 @@ export type TagProductLinkGetInput = typeof TagProductLinkGetInput.Type;
 
 // Output Schema
 export const TagProductLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TagProductLinkGetOutput = typeof TagProductLinkGetOutput.Type;
 
 // The operation
@@ -17384,7 +18549,15 @@ export type TagProductLinkListByProductInput =
 // Output Schema
 export const TagProductLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -17594,7 +18767,11 @@ export const TagUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TagUpdateInput = typeof TagUpdateInput.Type;
 
 // Output Schema
-export const TagUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const TagUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TagUpdateOutput = typeof TagUpdateOutput.Type;
 
 // The operation
@@ -17639,7 +18816,11 @@ export type TenantAccessCreateInput = typeof TenantAccessCreateInput.Type;
 
 // Output Schema
 export const TenantAccessCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TenantAccessCreateOutput = typeof TenantAccessCreateOutput.Type;
 
 // The operation
@@ -17674,9 +18855,11 @@ export const TenantAccessGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TenantAccessGetInput = typeof TenantAccessGetInput.Type;
 
 // Output Schema
-export const TenantAccessGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const TenantAccessGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type TenantAccessGetOutput = typeof TenantAccessGetOutput.Type;
 
 // The operation
@@ -17789,7 +18972,15 @@ export type TenantAccessListByServiceInput =
 // Output Schema
 export const TenantAccessListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -17956,7 +19147,11 @@ export type TenantAccessUpdateInput = typeof TenantAccessUpdateInput.Type;
 
 // Output Schema
 export const TenantAccessUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TenantAccessUpdateOutput = typeof TenantAccessUpdateOutput.Type;
 
 // The operation
@@ -18000,7 +19195,11 @@ export type TenantConfigurationDeployInput =
 
 // Output Schema
 export const TenantConfigurationDeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TenantConfigurationDeployOutput =
   typeof TenantConfigurationDeployOutput.Type;
 
@@ -18040,7 +19239,11 @@ export type TenantConfigurationGetSyncStateInput =
 
 // Output Schema
 export const TenantConfigurationGetSyncStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TenantConfigurationGetSyncStateOutput =
   typeof TenantConfigurationGetSyncStateOutput.Type;
 
@@ -18084,7 +19287,11 @@ export type TenantConfigurationSaveInput =
 
 // Output Schema
 export const TenantConfigurationSaveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TenantConfigurationSaveOutput =
   typeof TenantConfigurationSaveOutput.Type;
 
@@ -18130,7 +19337,11 @@ export type TenantConfigurationValidateInput =
 
 // Output Schema
 export const TenantConfigurationValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type TenantConfigurationValidateOutput =
   typeof TenantConfigurationValidateOutput.Type;
 
@@ -18226,7 +19437,11 @@ export type UserCreateOrUpdateInput = typeof UserCreateOrUpdateInput.Type;
 
 // Output Schema
 export const UserCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type UserCreateOrUpdateOutput = typeof UserCreateOrUpdateOutput.Type;
 
 // The operation
@@ -18339,7 +19554,11 @@ export const UserGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UserGetInput = typeof UserGetInput.Type;
 
 // Output Schema
-export const UserGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const UserGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type UserGetOutput = typeof UserGetOutput.Type;
 
 // The operation
@@ -18424,7 +19643,15 @@ export type UserGroupListInput = typeof UserGroupListInput.Type;
 
 // Output Schema
 export const UserGroupListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
   count: Schema.optional(Schema.Number),
   nextLink: Schema.optional(Schema.String),
 });
@@ -18516,7 +19743,15 @@ export type UserListByServiceInput = typeof UserListByServiceInput.Type;
 // Output Schema
 export const UserListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -18558,7 +19793,11 @@ export type UserSubscriptionGetInput = typeof UserSubscriptionGetInput.Type;
 
 // Output Schema
 export const UserSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type UserSubscriptionGetOutput = typeof UserSubscriptionGetOutput.Type;
 
 // The operation
@@ -18598,7 +19837,15 @@ export type UserSubscriptionListInput = typeof UserSubscriptionListInput.Type;
 // Output Schema
 export const UserSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -18655,7 +19902,11 @@ export const UserUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UserUpdateInput = typeof UserUpdateInput.Type;
 
 // Output Schema
-export const UserUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const UserUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type UserUpdateOutput = typeof UserUpdateOutput.Type;
 
 // The operation
@@ -18685,26 +19936,85 @@ export const WorkspaceApiCreateOrUpdateInput =
     "api-version": Schema.String,
     properties: Schema.optional(
       Schema.Struct({
-        sourceApiId: Schema.optional(Schema.String),
-        displayName: Schema.optional(Schema.String),
-        serviceUrl: Schema.optional(Schema.String),
-        path: Schema.String,
-        protocols: Schema.optional(
-          Schema.Array(Schema.Literals(["http", "https", "ws", "wss"])),
-        ),
-        apiVersionSet: Schema.optional(
+        description: Schema.optional(Schema.String),
+        authenticationSettings: Schema.optional(
           Schema.Struct({
-            id: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            versioningScheme: Schema.optional(
-              Schema.Literals(["Segment", "Query", "Header"]),
+            oAuth2: Schema.optional(
+              Schema.Struct({
+                authorizationServerId: Schema.optional(Schema.String),
+                scope: Schema.optional(Schema.String),
+              }),
             ),
-            versionQueryName: Schema.optional(Schema.String),
-            versionHeaderName: Schema.optional(Schema.String),
+            openid: Schema.optional(
+              Schema.Struct({
+                openidProviderId: Schema.optional(Schema.String),
+                bearerTokenSendingMethods: Schema.optional(
+                  Schema.Array(
+                    Schema.Literals(["authorizationHeader", "query"]),
+                  ),
+                ),
+              }),
+            ),
+            oAuth2AuthenticationSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  authorizationServerId: Schema.optional(Schema.String),
+                  scope: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            openidAuthenticationSettings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  openidProviderId: Schema.optional(Schema.String),
+                  bearerTokenSendingMethods: Schema.optional(
+                    Schema.Array(
+                      Schema.Literals(["authorizationHeader", "query"]),
+                    ),
+                  ),
+                }),
+              ),
+            ),
           }),
         ),
-        provisioningState: Schema.optional(Schema.String),
+        subscriptionKeyParameterNames: Schema.optional(
+          Schema.Struct({
+            header: Schema.optional(Schema.String),
+            query: Schema.optional(Schema.String),
+          }),
+        ),
+        type: Schema.optional(
+          Schema.Literals([
+            "http",
+            "soap",
+            "websocket",
+            "graphql",
+            "odata",
+            "grpc",
+          ]),
+        ),
+        apiRevision: Schema.optional(Schema.String),
+        apiVersion: Schema.optional(Schema.String),
+        isCurrent: Schema.optional(Schema.Boolean),
+        isOnline: Schema.optional(Schema.Boolean),
+        apiRevisionDescription: Schema.optional(Schema.String),
+        apiVersionDescription: Schema.optional(Schema.String),
+        apiVersionSetId: Schema.optional(Schema.String),
+        subscriptionRequired: Schema.optional(Schema.Boolean),
+        termsOfServiceUrl: Schema.optional(Schema.String),
+        contact: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            url: Schema.optional(Schema.String),
+            email: Schema.optional(Schema.String),
+          }),
+        ),
+        license: Schema.optional(
+          Schema.Struct({
+            name: Schema.optional(Schema.String),
+            url: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
   }).pipe(
@@ -18718,7 +20028,11 @@ export type WorkspaceApiCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiCreateOrUpdateOutput =
   typeof WorkspaceApiCreateOrUpdateOutput.Type;
 
@@ -18966,7 +20280,11 @@ export type WorkspaceApiDiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiDiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiDiagnosticCreateOrUpdateOutput =
   typeof WorkspaceApiDiagnosticCreateOrUpdateOutput.Type;
 
@@ -19053,7 +20371,11 @@ export type WorkspaceApiDiagnosticGetInput =
 
 // Output Schema
 export const WorkspaceApiDiagnosticGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiDiagnosticGetOutput =
   typeof WorkspaceApiDiagnosticGetOutput.Type;
 
@@ -19099,7 +20421,15 @@ export type WorkspaceApiDiagnosticListByWorkspaceInput =
 // Output Schema
 export const WorkspaceApiDiagnosticListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -19311,7 +20641,11 @@ export type WorkspaceApiDiagnosticUpdateInput =
 
 // Output Schema
 export const WorkspaceApiDiagnosticUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiDiagnosticUpdateOutput =
   typeof WorkspaceApiDiagnosticUpdateOutput.Type;
 
@@ -19351,9 +20685,11 @@ export const WorkspaceApiGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceApiGetInput = typeof WorkspaceApiGetInput.Type;
 
 // Output Schema
-export const WorkspaceApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const WorkspaceApiGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspaceApiGetOutput = typeof WorkspaceApiGetOutput.Type;
 
 // The operation
@@ -19396,7 +20732,15 @@ export type WorkspaceApiListByServiceInput =
 // Output Schema
 export const WorkspaceApiListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -19654,7 +20998,11 @@ export type WorkspaceApiOperationCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiOperationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiOperationCreateOrUpdateOutput =
   typeof WorkspaceApiOperationCreateOrUpdateOutput.Type;
 
@@ -19742,7 +21090,11 @@ export type WorkspaceApiOperationGetInput =
 
 // Output Schema
 export const WorkspaceApiOperationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiOperationGetOutput =
   typeof WorkspaceApiOperationGetOutput.Type;
 
@@ -19789,7 +21141,15 @@ export type WorkspaceApiOperationListByApiInput =
 // Output Schema
 export const WorkspaceApiOperationListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -19846,7 +21206,11 @@ export type WorkspaceApiOperationPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiOperationPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiOperationPolicyCreateOrUpdateOutput =
   typeof WorkspaceApiOperationPolicyCreateOrUpdateOutput.Type;
 
@@ -19938,7 +21302,11 @@ export type WorkspaceApiOperationPolicyGetInput =
 
 // Output Schema
 export const WorkspaceApiOperationPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiOperationPolicyGetOutput =
   typeof WorkspaceApiOperationPolicyGetOutput.Type;
 
@@ -19983,7 +21351,15 @@ export type WorkspaceApiOperationPolicyListByOperationInput =
 // Output Schema
 export const WorkspaceApiOperationPolicyListByOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20237,7 +21613,11 @@ export type WorkspaceApiOperationUpdateInput =
 
 // Output Schema
 export const WorkspaceApiOperationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiOperationUpdateOutput =
   typeof WorkspaceApiOperationUpdateOutput.Type;
 
@@ -20290,7 +21670,11 @@ export type WorkspaceApiPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiPolicyCreateOrUpdateOutput =
   typeof WorkspaceApiPolicyCreateOrUpdateOutput.Type;
 
@@ -20378,7 +21762,11 @@ export type WorkspaceApiPolicyGetInput = typeof WorkspaceApiPolicyGetInput.Type;
 
 // Output Schema
 export const WorkspaceApiPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiPolicyGetOutput =
   typeof WorkspaceApiPolicyGetOutput.Type;
 
@@ -20422,7 +21810,15 @@ export type WorkspaceApiPolicyListByApiInput =
 // Output Schema
 export const WorkspaceApiPolicyListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20475,7 +21871,11 @@ export type WorkspaceApiReleaseCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiReleaseCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiReleaseCreateOrUpdateOutput =
   typeof WorkspaceApiReleaseCreateOrUpdateOutput.Type;
 
@@ -20563,7 +21963,11 @@ export type WorkspaceApiReleaseGetInput =
 
 // Output Schema
 export const WorkspaceApiReleaseGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiReleaseGetOutput =
   typeof WorkspaceApiReleaseGetOutput.Type;
 
@@ -20609,7 +22013,15 @@ export type WorkspaceApiReleaseListByServiceInput =
 // Output Schema
 export const WorkspaceApiReleaseListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -20664,7 +22076,11 @@ export type WorkspaceApiReleaseUpdateInput =
 
 // Output Schema
 export const WorkspaceApiReleaseUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiReleaseUpdateOutput =
   typeof WorkspaceApiReleaseUpdateOutput.Type;
 
@@ -20783,7 +22199,11 @@ export type WorkspaceApiSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiSchemaCreateOrUpdateOutput =
   typeof WorkspaceApiSchemaCreateOrUpdateOutput.Type;
 
@@ -20872,7 +22292,11 @@ export type WorkspaceApiSchemaGetInput = typeof WorkspaceApiSchemaGetInput.Type;
 
 // Output Schema
 export const WorkspaceApiSchemaGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiSchemaGetOutput =
   typeof WorkspaceApiSchemaGetOutput.Type;
 
@@ -20918,7 +22342,15 @@ export type WorkspaceApiSchemaListByApiInput =
 // Output Schema
 export const WorkspaceApiSchemaListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21047,7 +22479,11 @@ export type WorkspaceApiUpdateInput = typeof WorkspaceApiUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceApiUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiUpdateOutput = typeof WorkspaceApiUpdateOutput.Type;
 
 // The operation
@@ -21094,7 +22530,11 @@ export type WorkspaceApiVersionSetCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceApiVersionSetCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiVersionSetCreateOrUpdateOutput =
   typeof WorkspaceApiVersionSetCreateOrUpdateOutput.Type;
 
@@ -21177,7 +22617,11 @@ export type WorkspaceApiVersionSetGetInput =
 
 // Output Schema
 export const WorkspaceApiVersionSetGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiVersionSetGetOutput =
   typeof WorkspaceApiVersionSetGetOutput.Type;
 
@@ -21221,7 +22665,15 @@ export type WorkspaceApiVersionSetListByServiceInput =
 // Output Schema
 export const WorkspaceApiVersionSetListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21273,7 +22725,11 @@ export type WorkspaceApiVersionSetUpdateInput =
 
 // Output Schema
 export const WorkspaceApiVersionSetUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceApiVersionSetUpdateOutput =
   typeof WorkspaceApiVersionSetUpdateOutput.Type;
 
@@ -21423,7 +22879,11 @@ export type WorkspaceBackendCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceBackendCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceBackendCreateOrUpdateOutput =
   typeof WorkspaceBackendCreateOrUpdateOutput.Type;
 
@@ -21506,7 +22966,11 @@ export type WorkspaceBackendGetInput = typeof WorkspaceBackendGetInput.Type;
 
 // Output Schema
 export const WorkspaceBackendGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceBackendGetOutput = typeof WorkspaceBackendGetOutput.Type;
 
 // The operation
@@ -21547,7 +23011,15 @@ export type WorkspaceBackendListByWorkspaceInput =
 // Output Schema
 export const WorkspaceBackendListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21700,7 +23172,11 @@ export type WorkspaceBackendUpdateInput =
 
 // Output Schema
 export const WorkspaceBackendUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceBackendUpdateOutput =
   typeof WorkspaceBackendUpdateOutput.Type;
 
@@ -21755,7 +23231,11 @@ export type WorkspaceCertificateCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceCertificateCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceCertificateCreateOrUpdateOutput =
   typeof WorkspaceCertificateCreateOrUpdateOutput.Type;
 
@@ -21839,7 +23319,11 @@ export type WorkspaceCertificateGetInput =
 
 // Output Schema
 export const WorkspaceCertificateGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceCertificateGetOutput =
   typeof WorkspaceCertificateGetOutput.Type;
 
@@ -21884,7 +23368,15 @@ export type WorkspaceCertificateListByWorkspaceInput =
 // Output Schema
 export const WorkspaceCertificateListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -21930,7 +23422,11 @@ export type WorkspaceCertificateRefreshSecretInput =
 
 // Output Schema
 export const WorkspaceCertificateRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceCertificateRefreshSecretOutput =
   typeof WorkspaceCertificateRefreshSecretOutput.Type;
 
@@ -21975,7 +23471,11 @@ export type WorkspaceCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceCreateOrUpdateOutput =
   typeof WorkspaceCreateOrUpdateOutput.Type;
 
@@ -22216,7 +23716,11 @@ export type WorkspaceDiagnosticCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceDiagnosticCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceDiagnosticCreateOrUpdateOutput =
   typeof WorkspaceDiagnosticCreateOrUpdateOutput.Type;
 
@@ -22300,7 +23804,11 @@ export type WorkspaceDiagnosticGetInput =
 
 // Output Schema
 export const WorkspaceDiagnosticGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceDiagnosticGetOutput =
   typeof WorkspaceDiagnosticGetOutput.Type;
 
@@ -22344,7 +23852,15 @@ export type WorkspaceDiagnosticListByWorkspaceInput =
 // Output Schema
 export const WorkspaceDiagnosticListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -22554,7 +24070,11 @@ export type WorkspaceDiagnosticUpdateInput =
 
 // Output Schema
 export const WorkspaceDiagnosticUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceDiagnosticUpdateOutput =
   typeof WorkspaceDiagnosticUpdateOutput.Type;
 
@@ -22593,7 +24113,11 @@ export const WorkspaceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceGetInput = typeof WorkspaceGetInput.Type;
 
 // Output Schema
-export const WorkspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const WorkspaceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspaceGetOutput = typeof WorkspaceGetOutput.Type;
 
 // The operation
@@ -22639,7 +24163,11 @@ export type WorkspaceGlobalSchemaCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceGlobalSchemaCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceGlobalSchemaCreateOrUpdateOutput =
   typeof WorkspaceGlobalSchemaCreateOrUpdateOutput.Type;
 
@@ -22723,7 +24251,11 @@ export type WorkspaceGlobalSchemaGetInput =
 
 // Output Schema
 export const WorkspaceGlobalSchemaGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceGlobalSchemaGetOutput =
   typeof WorkspaceGlobalSchemaGetOutput.Type;
 
@@ -22767,7 +24299,15 @@ export type WorkspaceGlobalSchemaListByServiceInput =
 // Output Schema
 export const WorkspaceGlobalSchemaListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -22822,7 +24362,11 @@ export type WorkspaceGroupCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceGroupCreateOrUpdateOutput =
   typeof WorkspaceGroupCreateOrUpdateOutput.Type;
 
@@ -22904,7 +24448,11 @@ export type WorkspaceGroupGetInput = typeof WorkspaceGroupGetInput.Type;
 
 // Output Schema
 export const WorkspaceGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceGroupGetOutput = typeof WorkspaceGroupGetOutput.Type;
 
 // The operation
@@ -22945,7 +24493,15 @@ export type WorkspaceGroupListByServiceInput =
 // Output Schema
 export const WorkspaceGroupListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23000,7 +24556,11 @@ export type WorkspaceGroupUpdateInput = typeof WorkspaceGroupUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceGroupUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceGroupUpdateOutput = typeof WorkspaceGroupUpdateOutput.Type;
 
 // The operation
@@ -23043,7 +24603,11 @@ export type WorkspaceGroupUserCreateInput =
 
 // Output Schema
 export const WorkspaceGroupUserCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceGroupUserCreateOutput =
   typeof WorkspaceGroupUserCreateOutput.Type;
 
@@ -23132,7 +24696,15 @@ export type WorkspaceGroupUserListInput =
 // Output Schema
 export const WorkspaceGroupUserListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23181,7 +24753,15 @@ export type WorkspaceListByServiceInput =
 // Output Schema
 export const WorkspaceListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23241,7 +24821,11 @@ export type WorkspaceLoggerCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceLoggerCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceLoggerCreateOrUpdateOutput =
   typeof WorkspaceLoggerCreateOrUpdateOutput.Type;
 
@@ -23323,7 +24907,11 @@ export type WorkspaceLoggerGetInput = typeof WorkspaceLoggerGetInput.Type;
 
 // Output Schema
 export const WorkspaceLoggerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceLoggerGetOutput = typeof WorkspaceLoggerGetOutput.Type;
 
 // The operation
@@ -23364,7 +24952,15 @@ export type WorkspaceLoggerListByWorkspaceInput =
 // Output Schema
 export const WorkspaceLoggerListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23424,7 +25020,11 @@ export type WorkspaceLoggerUpdateInput = typeof WorkspaceLoggerUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceLoggerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceLoggerUpdateOutput =
   typeof WorkspaceLoggerUpdateOutput.Type;
 
@@ -23473,7 +25073,11 @@ export type WorkspaceNamedValueCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNamedValueCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNamedValueCreateOrUpdateOutput =
   typeof WorkspaceNamedValueCreateOrUpdateOutput.Type;
 
@@ -23557,7 +25161,11 @@ export type WorkspaceNamedValueGetInput =
 
 // Output Schema
 export const WorkspaceNamedValueGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNamedValueGetOutput =
   typeof WorkspaceNamedValueGetOutput.Type;
 
@@ -23604,7 +25212,15 @@ export type WorkspaceNamedValueListByServiceInput =
 // Output Schema
 export const WorkspaceNamedValueListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23692,7 +25308,11 @@ export type WorkspaceNamedValueRefreshSecretInput =
 
 // Output Schema
 export const WorkspaceNamedValueRefreshSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNamedValueRefreshSecretOutput =
   typeof WorkspaceNamedValueRefreshSecretOutput.Type;
 
@@ -23738,7 +25358,11 @@ export type WorkspaceNamedValueUpdateInput =
 
 // Output Schema
 export const WorkspaceNamedValueUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNamedValueUpdateOutput =
   typeof WorkspaceNamedValueUpdateOutput.Type;
 
@@ -23789,7 +25413,11 @@ export type WorkspaceNotificationCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNotificationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNotificationCreateOrUpdateOutput =
   typeof WorkspaceNotificationCreateOrUpdateOutput.Type;
 
@@ -23838,7 +25466,11 @@ export type WorkspaceNotificationGetInput =
 
 // Output Schema
 export const WorkspaceNotificationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNotificationGetOutput =
   typeof WorkspaceNotificationGetOutput.Type;
 
@@ -23881,7 +25513,15 @@ export type WorkspaceNotificationListByServiceInput =
 // Output Schema
 export const WorkspaceNotificationListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -23934,7 +25574,11 @@ export type WorkspaceNotificationRecipientEmailCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientEmailCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNotificationRecipientEmailCreateOrUpdateOutput =
   typeof WorkspaceNotificationRecipientEmailCreateOrUpdateOutput.Type;
 
@@ -24034,7 +25678,15 @@ export type WorkspaceNotificationRecipientEmailListByNotificationInput =
 // Output Schema
 export const WorkspaceNotificationRecipientEmailListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24086,7 +25738,11 @@ export type WorkspaceNotificationRecipientUserCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceNotificationRecipientUserCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceNotificationRecipientUserCreateOrUpdateOutput =
   typeof WorkspaceNotificationRecipientUserCreateOrUpdateOutput.Type;
 
@@ -24186,7 +25842,15 @@ export type WorkspaceNotificationRecipientUserListByNotificationInput =
 // Output Schema
 export const WorkspaceNotificationRecipientUserListByNotificationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24237,7 +25901,11 @@ export type WorkspacePolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspacePolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspacePolicyCreateOrUpdateOutput =
   typeof WorkspacePolicyCreateOrUpdateOutput.Type;
 
@@ -24328,7 +25996,11 @@ export type WorkspacePolicyFragmentCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspacePolicyFragmentCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspacePolicyFragmentCreateOrUpdateOutput =
   typeof WorkspacePolicyFragmentCreateOrUpdateOutput.Type;
 
@@ -24412,7 +26084,11 @@ export type WorkspacePolicyFragmentGetInput =
 
 // Output Schema
 export const WorkspacePolicyFragmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspacePolicyFragmentGetOutput =
   typeof WorkspacePolicyFragmentGetOutput.Type;
 
@@ -24458,7 +26134,15 @@ export type WorkspacePolicyFragmentListByServiceInput =
 // Output Schema
 export const WorkspacePolicyFragmentListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24507,7 +26191,15 @@ export type WorkspacePolicyFragmentListReferencesInput =
 // Output Schema
 export const WorkspacePolicyFragmentListReferencesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24552,7 +26244,11 @@ export type WorkspacePolicyGetInput = typeof WorkspacePolicyGetInput.Type;
 
 // Output Schema
 export const WorkspacePolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspacePolicyGetOutput = typeof WorkspacePolicyGetOutput.Type;
 
 // The operation
@@ -24591,7 +26287,15 @@ export type WorkspacePolicyListByApiInput =
 // Output Schema
 export const WorkspacePolicyListByApiOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24640,7 +26344,11 @@ export type WorkspaceProductApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductApiLinkCreateOrUpdateOutput =
   typeof WorkspaceProductApiLinkCreateOrUpdateOutput.Type;
 
@@ -24725,7 +26433,11 @@ export type WorkspaceProductApiLinkGetInput =
 
 // Output Schema
 export const WorkspaceProductApiLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductApiLinkGetOutput =
   typeof WorkspaceProductApiLinkGetOutput.Type;
 
@@ -24771,7 +26483,15 @@ export type WorkspaceProductApiLinkListByProductInput =
 // Output Schema
 export const WorkspaceProductApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -24827,7 +26547,11 @@ export type WorkspaceProductCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductCreateOrUpdateOutput =
   typeof WorkspaceProductCreateOrUpdateOutput.Type;
 
@@ -24912,7 +26636,11 @@ export type WorkspaceProductGetInput = typeof WorkspaceProductGetInput.Type;
 
 // Output Schema
 export const WorkspaceProductGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductGetOutput = typeof WorkspaceProductGetOutput.Type;
 
 // The operation
@@ -24956,7 +26684,11 @@ export type WorkspaceProductGroupLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductGroupLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductGroupLinkCreateOrUpdateOutput =
   typeof WorkspaceProductGroupLinkCreateOrUpdateOutput.Type;
 
@@ -25041,7 +26773,11 @@ export type WorkspaceProductGroupLinkGetInput =
 
 // Output Schema
 export const WorkspaceProductGroupLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductGroupLinkGetOutput =
   typeof WorkspaceProductGroupLinkGetOutput.Type;
 
@@ -25086,7 +26822,15 @@ export type WorkspaceProductGroupLinkListByProductInput =
 // Output Schema
 export const WorkspaceProductGroupLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -25137,7 +26881,15 @@ export type WorkspaceProductListByServiceInput =
 // Output Schema
 export const WorkspaceProductListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -25193,7 +26945,11 @@ export type WorkspaceProductPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceProductPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductPolicyCreateOrUpdateOutput =
   typeof WorkspaceProductPolicyCreateOrUpdateOutput.Type;
 
@@ -25281,7 +27037,11 @@ export type WorkspaceProductPolicyGetInput =
 
 // Output Schema
 export const WorkspaceProductPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductPolicyGetOutput =
   typeof WorkspaceProductPolicyGetOutput.Type;
 
@@ -25325,7 +27085,15 @@ export type WorkspaceProductPolicyListByProductInput =
 // Output Schema
 export const WorkspaceProductPolicyListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -25378,7 +27146,11 @@ export type WorkspaceProductUpdateInput =
 
 // Output Schema
 export const WorkspaceProductUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceProductUpdateOutput =
   typeof WorkspaceProductUpdateOutput.Type;
 
@@ -25443,7 +27215,11 @@ export type WorkspaceSubscriptionCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceSubscriptionCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceSubscriptionCreateOrUpdateOutput =
   typeof WorkspaceSubscriptionCreateOrUpdateOutput.Type;
 
@@ -25531,7 +27307,11 @@ export type WorkspaceSubscriptionGetInput =
 
 // Output Schema
 export const WorkspaceSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceSubscriptionGetOutput =
   typeof WorkspaceSubscriptionGetOutput.Type;
 
@@ -25575,7 +27355,15 @@ export type WorkspaceSubscriptionListInput =
 // Output Schema
 export const WorkspaceSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -25768,7 +27556,11 @@ export type WorkspaceSubscriptionUpdateInput =
 
 // Output Schema
 export const WorkspaceSubscriptionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceSubscriptionUpdateOutput =
   typeof WorkspaceSubscriptionUpdateOutput.Type;
 
@@ -25821,7 +27613,11 @@ export type WorkspaceTagApiLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagApiLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagApiLinkCreateOrUpdateOutput =
   typeof WorkspaceTagApiLinkCreateOrUpdateOutput.Type;
 
@@ -25907,7 +27703,11 @@ export type WorkspaceTagApiLinkGetInput =
 
 // Output Schema
 export const WorkspaceTagApiLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagApiLinkGetOutput =
   typeof WorkspaceTagApiLinkGetOutput.Type;
 
@@ -25953,7 +27753,15 @@ export type WorkspaceTagApiLinkListByProductInput =
 // Output Schema
 export const WorkspaceTagApiLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -26004,7 +27812,11 @@ export type WorkspaceTagCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagCreateOrUpdateOutput =
   typeof WorkspaceTagCreateOrUpdateOutput.Type;
 
@@ -26081,9 +27893,11 @@ export const WorkspaceTagGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceTagGetInput = typeof WorkspaceTagGetInput.Type;
 
 // Output Schema
-export const WorkspaceTagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const WorkspaceTagGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspaceTagGetOutput = typeof WorkspaceTagGetOutput.Type;
 
 // The operation
@@ -26125,7 +27939,15 @@ export type WorkspaceTagListByServiceInput =
 // Output Schema
 export const WorkspaceTagListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -26178,7 +28000,11 @@ export type WorkspaceTagOperationLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagOperationLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagOperationLinkCreateOrUpdateOutput =
   typeof WorkspaceTagOperationLinkCreateOrUpdateOutput.Type;
 
@@ -26263,7 +28089,11 @@ export type WorkspaceTagOperationLinkGetInput =
 
 // Output Schema
 export const WorkspaceTagOperationLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagOperationLinkGetOutput =
   typeof WorkspaceTagOperationLinkGetOutput.Type;
 
@@ -26308,7 +28138,15 @@ export type WorkspaceTagOperationLinkListByProductInput =
 // Output Schema
 export const WorkspaceTagOperationLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -26360,7 +28198,11 @@ export type WorkspaceTagProductLinkCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceTagProductLinkCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagProductLinkCreateOrUpdateOutput =
   typeof WorkspaceTagProductLinkCreateOrUpdateOutput.Type;
 
@@ -26445,7 +28287,11 @@ export type WorkspaceTagProductLinkGetInput =
 
 // Output Schema
 export const WorkspaceTagProductLinkGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagProductLinkGetOutput =
   typeof WorkspaceTagProductLinkGetOutput.Type;
 
@@ -26491,7 +28337,15 @@ export type WorkspaceTagProductLinkListByProductInput =
 // Output Schema
 export const WorkspaceTagProductLinkListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     count: Schema.optional(Schema.Number),
     nextLink: Schema.optional(Schema.String),
   });
@@ -26541,7 +28395,11 @@ export type WorkspaceTagUpdateInput = typeof WorkspaceTagUpdateInput.Type;
 
 // Output Schema
 export const WorkspaceTagUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceTagUpdateOutput = typeof WorkspaceTagUpdateOutput.Type;
 
 // The operation
@@ -26583,9 +28441,11 @@ export const WorkspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WorkspaceUpdateInput = typeof WorkspaceUpdateInput.Type;
 
 // Output Schema
-export const WorkspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const WorkspaceUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type WorkspaceUpdateOutput = typeof WorkspaceUpdateOutput.Type;
 
 // The operation

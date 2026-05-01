@@ -26,8 +26,9 @@ export type AzureBareMetalInstancesGetInput =
 // Output Schema
 export const AzureBareMetalInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type AzureBareMetalInstancesGetOutput =
   typeof AzureBareMetalInstancesGetOutput.Type;
@@ -69,8 +70,9 @@ export const AzureBareMetalInstancesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -114,8 +116,9 @@ export const AzureBareMetalInstancesListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -156,8 +159,9 @@ export type AzureBareMetalInstancesUpdateInput =
 // Output Schema
 export const AzureBareMetalInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type AzureBareMetalInstancesUpdateOutput =
   typeof AzureBareMetalInstancesUpdateOutput.Type;
@@ -195,8 +199,9 @@ export type AzureBareMetalStorageInstancesCreateInput =
 // Output Schema
 export const AzureBareMetalStorageInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type AzureBareMetalStorageInstancesCreateOutput =
   typeof AzureBareMetalStorageInstancesCreateOutput.Type;
@@ -266,8 +271,9 @@ export type AzureBareMetalStorageInstancesGetInput =
 // Output Schema
 export const AzureBareMetalStorageInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type AzureBareMetalStorageInstancesGetOutput =
   typeof AzureBareMetalStorageInstancesGetOutput.Type;
@@ -308,8 +314,9 @@ export const AzureBareMetalStorageInstancesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -353,8 +360,9 @@ export const AzureBareMetalStorageInstancesListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -395,8 +403,9 @@ export type AzureBareMetalStorageInstancesUpdateInput =
 // Output Schema
 export const AzureBareMetalStorageInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type AzureBareMetalStorageInstancesUpdateOutput =
   typeof AzureBareMetalStorageInstancesUpdateOutput.Type;

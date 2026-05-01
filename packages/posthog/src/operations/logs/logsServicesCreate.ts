@@ -25,8 +25,26 @@ export const LogsServicesCreateInput =
         Schema.Array(
           Schema.Struct({
             key: Schema.String,
-            type: Schema.Struct({}),
-            operator: Schema.Struct({}),
+            type: Schema.Literals([
+              "log",
+              "log_attribute",
+              "log_resource_attribute",
+            ]),
+            operator: Schema.Literals([
+              "exact",
+              "is_not",
+              "icontains",
+              "not_icontains",
+              "regex",
+              "not_regex",
+              "gt",
+              "lt",
+              "is_date_exact",
+              "is_date_before",
+              "is_date_after",
+              "is_set",
+              "is_not_set",
+            ]),
             value: Schema.optional(Schema.NullOr(Schema.Unknown)),
           }),
         ),

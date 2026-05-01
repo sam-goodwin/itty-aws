@@ -75,7 +75,7 @@ export const LlmAnalyticsTraceReviewsCreateOutput =
         definition_archived: Schema.Boolean,
         definition_version_id: Schema.String,
         definition_version: Schema.Number,
-        definition_config: Schema.Struct({}),
+        definition_config: Schema.Unknown,
         categorical_values: Schema.NullOr(Schema.Array(Schema.String)),
         numeric_value: Schema.NullOr(Schema.String),
         boolean_value: Schema.NullOr(Schema.Boolean),

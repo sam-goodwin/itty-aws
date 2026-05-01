@@ -8,7 +8,7 @@ export const IntegrationsEnvironmentMappingPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
-    kind: Schema.optional(Schema.Struct({})),
+    kind: Schema.optional(Schema.Literals(["vercel"])),
     integration_id: Schema.optional(Schema.NullOr(Schema.String)),
     config: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
@@ -41,7 +41,7 @@ export type IntegrationsEnvironmentMappingPartialUpdateInput =
 export const IntegrationsEnvironmentMappingPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    kind: Schema.Struct({}),
+    kind: Schema.Literals(["vercel"]),
     integration_id: Schema.NullOr(Schema.String),
     config: Schema.Unknown,
     created_at: Schema.String,

@@ -7,7 +7,7 @@ export const CreateOnrampSessionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purchaseCurrency: Schema.String,
     destinationNetwork: Schema.String,
-    destinationAddress: Schema.Struct({}),
+    destinationAddress: Schema.String,
     paymentAmount: Schema.optional(Schema.String),
     purchaseAmount: Schema.optional(Schema.String),
     paymentCurrency: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const CreateOnrampSessionInput =
     ),
     country: Schema.optional(Schema.String),
     subdivision: Schema.optional(Schema.String),
-    redirectUrl: Schema.optional(Schema.Struct({})),
+    redirectUrl: Schema.optional(Schema.String),
     clientIp: Schema.optional(Schema.String),
     partnerUserRef: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "POST", path: "/v2/onramp/sessions" }));
@@ -33,7 +33,7 @@ export type CreateOnrampSessionInput = typeof CreateOnrampSessionInput.Type;
 export const CreateOnrampSessionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.Struct({
-      onrampUrl: Schema.Struct({}),
+      onrampUrl: Schema.String,
     }),
     quote: Schema.optional(
       Schema.Struct({

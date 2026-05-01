@@ -23,8 +23,9 @@ export type ConfigurationStoresCreateInput =
 // Output Schema
 export const ConfigurationStoresCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationStoresCreateOutput =
   typeof ConfigurationStoresCreateOutput.Type;
@@ -80,8 +81,9 @@ export type ConfigurationStoresGetInput =
 // Output Schema
 export const ConfigurationStoresGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationStoresGetOutput =
   typeof ConfigurationStoresGetOutput.Type;
@@ -155,8 +157,9 @@ export const ConfigurationStoresListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -196,8 +199,9 @@ export const ConfigurationStoresListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -384,8 +388,9 @@ export type ConfigurationStoresUpdateInput =
 // Output Schema
 export const ConfigurationStoresUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationStoresUpdateOutput =
   typeof ConfigurationStoresUpdateOutput.Type;

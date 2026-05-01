@@ -12,10 +12,12 @@ export const ErrorTrackingGroupingRulesCreateInput =
       values: Schema.Array(Schema.Unknown),
     }),
     assignee: Schema.optional(
-      Schema.Struct({
-        type: Schema.Struct({}),
-        id: Schema.Unknown,
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          type: Schema.Literals(["user", "role"]),
+          id: Schema.Unknown,
+        }),
+      ),
     ),
     description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(

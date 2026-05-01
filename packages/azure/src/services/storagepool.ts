@@ -22,8 +22,9 @@ export type DiskPoolsCreateOrUpdateInput =
 // Output Schema
 export const DiskPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type DiskPoolsCreateOrUpdateOutput =
   typeof DiskPoolsCreateOrUpdateOutput.Type;
@@ -97,8 +98,9 @@ export type DiskPoolsGetInput = typeof DiskPoolsGetInput.Type;
 
 // Output Schema
 export const DiskPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type DiskPoolsGetOutput = typeof DiskPoolsGetOutput.Type;
 
@@ -126,8 +128,9 @@ export const DiskPoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -160,8 +163,9 @@ export const DiskPoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -265,8 +269,9 @@ export type DiskPoolsUpdateInput = typeof DiskPoolsUpdateInput.Type;
 
 // Output Schema
 export const DiskPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type DiskPoolsUpdateOutput = typeof DiskPoolsUpdateOutput.Type;
 
@@ -354,7 +359,11 @@ export type IscsiTargetsCreateOrUpdateInput =
 
 // Output Schema
 export const IscsiTargetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IscsiTargetsCreateOrUpdateOutput =
   typeof IscsiTargetsCreateOrUpdateOutput.Type;
 
@@ -402,9 +411,11 @@ export const IscsiTargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type IscsiTargetsGetInput = typeof IscsiTargetsGetInput.Type;
 
 // Output Schema
-export const IscsiTargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const IscsiTargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type IscsiTargetsGetOutput = typeof IscsiTargetsGetOutput.Type;
 
 // The operation
@@ -429,7 +440,13 @@ export type IscsiTargetsListByDiskPoolInput =
 // Output Schema
 export const IscsiTargetsListByDiskPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type IscsiTargetsListByDiskPoolOutput =
@@ -457,7 +474,11 @@ export type IscsiTargetsUpdateInput = typeof IscsiTargetsUpdateInput.Type;
 
 // Output Schema
 export const IscsiTargetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IscsiTargetsUpdateOutput = typeof IscsiTargetsUpdateOutput.Type;
 
 // The operation

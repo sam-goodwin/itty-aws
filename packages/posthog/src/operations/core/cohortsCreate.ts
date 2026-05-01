@@ -12,12 +12,14 @@ export const CohortsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groups: Schema.optional(Schema.Unknown),
   deleted: Schema.optional(Schema.Boolean),
   filters: Schema.optional(
-    Schema.Struct({
-      properties: Schema.Struct({
-        type: Schema.Struct({}),
-        values: Schema.Array(Schema.Unknown),
+    Schema.NullOr(
+      Schema.Struct({
+        properties: Schema.Struct({
+          type: Schema.Literals(["AND", "OR"]),
+          values: Schema.Array(Schema.Unknown),
+        }),
       }),
-    }),
+    ),
   ),
   query: Schema.optional(Schema.NullOr(Schema.Unknown)),
   version: Schema.NullOr(Schema.Number),
@@ -60,12 +62,14 @@ export const CohortsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groups: Schema.optional(Schema.Unknown),
   deleted: Schema.optional(Schema.Boolean),
   filters: Schema.optional(
-    Schema.Struct({
-      properties: Schema.Struct({
-        type: Schema.Struct({}),
-        values: Schema.Array(Schema.Unknown),
+    Schema.NullOr(
+      Schema.Struct({
+        properties: Schema.Struct({
+          type: Schema.Literals(["AND", "OR"]),
+          values: Schema.Array(Schema.Unknown),
+        }),
       }),
-    }),
+    ),
   ),
   query: Schema.optional(Schema.NullOr(Schema.Unknown)),
   version: Schema.NullOr(Schema.Number),

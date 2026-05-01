@@ -277,7 +277,11 @@ export type ConfigurationProfileAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ConfigurationProfileAssignmentsCreateOrUpdateOutput =
   typeof ConfigurationProfileAssignmentsCreateOrUpdateOutput.Type;
 
@@ -349,7 +353,11 @@ export type ConfigurationProfileAssignmentsGetInput =
 
 // Output Schema
 export const ConfigurationProfileAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ConfigurationProfileAssignmentsGetOutput =
   typeof ConfigurationProfileAssignmentsGetOutput.Type;
 
@@ -385,7 +393,15 @@ export type ConfigurationProfileAssignmentsListInput =
 // Output Schema
 export const ConfigurationProfileAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type ConfigurationProfileAssignmentsListOutput =
   typeof ConfigurationProfileAssignmentsListOutput.Type;
@@ -421,7 +437,15 @@ export type ConfigurationProfileAssignmentsListByClusterNameInput =
 // Output Schema
 export const ConfigurationProfileAssignmentsListByClusterNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type ConfigurationProfileAssignmentsListByClusterNameOutput =
   typeof ConfigurationProfileAssignmentsListByClusterNameOutput.Type;
@@ -457,7 +481,15 @@ export type ConfigurationProfileAssignmentsListByMachineNameInput =
 // Output Schema
 export const ConfigurationProfileAssignmentsListByMachineNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type ConfigurationProfileAssignmentsListByMachineNameOutput =
   typeof ConfigurationProfileAssignmentsListByMachineNameOutput.Type;
@@ -492,7 +524,15 @@ export type ConfigurationProfileAssignmentsListBySubscriptionInput =
 // Output Schema
 export const ConfigurationProfileAssignmentsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type ConfigurationProfileAssignmentsListBySubscriptionOutput =
   typeof ConfigurationProfileAssignmentsListBySubscriptionOutput.Type;
@@ -527,7 +567,15 @@ export type ConfigurationProfileAssignmentsListByVirtualMachinesInput =
 // Output Schema
 export const ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
   typeof ConfigurationProfileAssignmentsListByVirtualMachinesOutput.Type;
@@ -563,7 +611,11 @@ export type ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
   typeof ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput.Type;
 
@@ -635,7 +687,11 @@ export type ConfigurationProfileHCIAssignmentsGetInput =
 
 // Output Schema
 export const ConfigurationProfileHCIAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ConfigurationProfileHCIAssignmentsGetOutput =
   typeof ConfigurationProfileHCIAssignmentsGetOutput.Type;
 
@@ -671,7 +727,11 @@ export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
 
 // Output Schema
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
   typeof ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput.Type;
 
@@ -743,7 +803,11 @@ export type ConfigurationProfileHCRPAssignmentsGetInput =
 
 // Output Schema
 export const ConfigurationProfileHCRPAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ConfigurationProfileHCRPAssignmentsGetOutput =
   typeof ConfigurationProfileHCRPAssignmentsGetOutput.Type;
 
@@ -780,8 +844,9 @@ export type ConfigurationProfilesCreateOrUpdateInput =
 // Output Schema
 export const ConfigurationProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationProfilesCreateOrUpdateOutput =
   typeof ConfigurationProfilesCreateOrUpdateOutput.Type;
@@ -856,8 +921,9 @@ export type ConfigurationProfilesGetInput =
 // Output Schema
 export const ConfigurationProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationProfilesGetOutput =
   typeof ConfigurationProfilesGetOutput.Type;
@@ -898,8 +964,9 @@ export const ConfigurationProfilesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -940,8 +1007,9 @@ export const ConfigurationProfilesListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -980,8 +1048,9 @@ export type ConfigurationProfilesUpdateInput =
 // Output Schema
 export const ConfigurationProfilesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationProfilesUpdateOutput =
   typeof ConfigurationProfilesUpdateOutput.Type;
@@ -1021,8 +1090,9 @@ export type ConfigurationProfilesVersionsCreateOrUpdateInput =
 // Output Schema
 export const ConfigurationProfilesVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationProfilesVersionsCreateOrUpdateOutput =
   typeof ConfigurationProfilesVersionsCreateOrUpdateOutput.Type;
@@ -1100,8 +1170,9 @@ export type ConfigurationProfilesVersionsGetInput =
 // Output Schema
 export const ConfigurationProfilesVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ConfigurationProfilesVersionsGetOutput =
   typeof ConfigurationProfilesVersionsGetOutput.Type;
@@ -1143,8 +1214,9 @@ export const ConfigurationProfilesVersionsListChildResourcesOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1182,9 +1254,11 @@ export const HCIReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HCIReportsGetInput = typeof HCIReportsGetInput.Type;
 
 // Output Schema
-export const HCIReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const HCIReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type HCIReportsGetOutput = typeof HCIReportsGetOutput.Type;
 
 // The operation
@@ -1220,7 +1294,15 @@ export type HCIReportsListByConfigurationProfileAssignmentsInput =
 // Output Schema
 export const HCIReportsListByConfigurationProfileAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type HCIReportsListByConfigurationProfileAssignmentsOutput =
   typeof HCIReportsListByConfigurationProfileAssignmentsOutput.Type;
@@ -1255,9 +1337,11 @@ export const HCRPReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HCRPReportsGetInput = typeof HCRPReportsGetInput.Type;
 
 // Output Schema
-export const HCRPReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const HCRPReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type HCRPReportsGetOutput = typeof HCRPReportsGetOutput.Type;
 
 // The operation
@@ -1293,7 +1377,15 @@ export type HCRPReportsListByConfigurationProfileAssignmentsInput =
 // Output Schema
 export const HCRPReportsListByConfigurationProfileAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type HCRPReportsListByConfigurationProfileAssignmentsOutput =
   typeof HCRPReportsListByConfigurationProfileAssignmentsOutput.Type;
@@ -1372,7 +1464,11 @@ export const ReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ReportsGetInput = typeof ReportsGetInput.Type;
 
 // Output Schema
-export const ReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const ReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ReportsGetOutput = typeof ReportsGetOutput.Type;
 
 // The operation
@@ -1408,7 +1504,15 @@ export type ReportsListByConfigurationProfileAssignmentsInput =
 // Output Schema
 export const ReportsListByConfigurationProfileAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type ReportsListByConfigurationProfileAssignmentsOutput =
   typeof ReportsListByConfigurationProfileAssignmentsOutput.Type;
@@ -1442,7 +1546,11 @@ export type ServicePrincipalsGetInput = typeof ServicePrincipalsGetInput.Type;
 
 // Output Schema
 export const ServicePrincipalsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ServicePrincipalsGetOutput = typeof ServicePrincipalsGetOutput.Type;
 
 // The operation
@@ -1475,7 +1583,15 @@ export type ServicePrincipalsListBySubscriptionInput =
 // Output Schema
 export const ServicePrincipalsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type ServicePrincipalsListBySubscriptionOutput =
   typeof ServicePrincipalsListBySubscriptionOutput.Type;

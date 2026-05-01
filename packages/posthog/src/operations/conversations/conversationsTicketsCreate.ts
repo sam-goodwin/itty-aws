@@ -9,10 +9,12 @@ export const ConversationsTicketsCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
     ticket_number: Schema.Number,
-    channel_source: Schema.Struct({}),
+    channel_source: Schema.Literals(["widget", "email", "slack", "teams"]),
     channel_detail: Schema.Unknown,
     distinct_id: Schema.String,
-    status: Schema.optional(Schema.Struct({})),
+    status: Schema.optional(
+      Schema.Literals(["new", "open", "pending", "on_hold", "resolved"]),
+    ),
     priority: Schema.optional(Schema.Unknown),
     assignee: Schema.Struct({
       id: Schema.NullOr(Schema.String),
@@ -41,14 +43,16 @@ export const ConversationsTicketsCreateInput =
     email_from: Schema.NullOr(Schema.String),
     email_to: Schema.NullOr(Schema.String),
     cc_participants: Schema.Unknown,
-    person: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      distinct_ids: Schema.Array(Schema.String),
-      properties: Schema.Record(Schema.String, Schema.Unknown),
-      created_at: Schema.String,
-      is_identified: Schema.Boolean,
-    }),
+    person: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+        distinct_ids: Schema.Array(Schema.String),
+        properties: Schema.Record(Schema.String, Schema.Unknown),
+        created_at: Schema.String,
+        is_identified: Schema.Boolean,
+      }),
+    ),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
   }).pipe(
     T.Http({
@@ -64,10 +68,12 @@ export const ConversationsTicketsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     ticket_number: Schema.Number,
-    channel_source: Schema.Struct({}),
+    channel_source: Schema.Literals(["widget", "email", "slack", "teams"]),
     channel_detail: Schema.Unknown,
     distinct_id: Schema.String,
-    status: Schema.optional(Schema.Struct({})),
+    status: Schema.optional(
+      Schema.Literals(["new", "open", "pending", "on_hold", "resolved"]),
+    ),
     priority: Schema.optional(Schema.Unknown),
     assignee: Schema.Struct({
       id: Schema.NullOr(Schema.String),
@@ -96,14 +102,16 @@ export const ConversationsTicketsCreateOutput =
     email_from: Schema.NullOr(Schema.String),
     email_to: Schema.NullOr(Schema.String),
     cc_participants: Schema.Unknown,
-    person: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      distinct_ids: Schema.Array(Schema.String),
-      properties: Schema.Record(Schema.String, Schema.Unknown),
-      created_at: Schema.String,
-      is_identified: Schema.Boolean,
-    }),
+    person: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+        distinct_ids: Schema.Array(Schema.String),
+        properties: Schema.Record(Schema.String, Schema.Unknown),
+        created_at: Schema.String,
+        is_identified: Schema.Boolean,
+      }),
+    ),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
   });
 export type ConversationsTicketsCreateOutput =

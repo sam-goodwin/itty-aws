@@ -8,7 +8,7 @@ export const LlmAnalyticsSentimentCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     ids: Schema.Array(Schema.String),
-    analysis_level: Schema.optional(Schema.Struct({})),
+    analysis_level: Schema.optional(Schema.Literals(["trace", "generation"])),
     force_refresh: Schema.optional(Schema.Boolean),
     date_from: Schema.optional(Schema.NullOr(Schema.String)),
     date_to: Schema.optional(Schema.NullOr(Schema.String)),

@@ -34,7 +34,7 @@ export const HogFlowsSchedulesListOutput =
         starts_at: Schema.String,
         timezone: Schema.optional(Schema.String),
         variables: Schema.optional(Schema.Unknown),
-        status: Schema.Struct({}),
+        status: Schema.Literals(["active", "paused", "completed"]),
         next_run_at: Schema.NullOr(Schema.String),
         created_at: Schema.String,
         updated_at: Schema.String,

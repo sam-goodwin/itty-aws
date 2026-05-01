@@ -9,7 +9,7 @@ export const ConversationsQueueClearCreateInput =
     conversation: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
-    status: Schema.Struct({}),
+    status: Schema.Literals(["idle", "in_progress", "canceling"]),
     title: Schema.NullOr(Schema.String),
     user: Schema.Struct({
       id: Schema.Number,
@@ -26,7 +26,7 @@ export const ConversationsQueueClearCreateInput =
     }),
     created_at: Schema.NullOr(Schema.String),
     updated_at: Schema.NullOr(Schema.String),
-    type: Schema.Struct({}),
+    type: Schema.Literals(["assistant", "tool_call", "deep_research", "slack"]),
     is_internal: Schema.NullOr(Schema.Boolean),
     slack_thread_key: Schema.NullOr(Schema.String),
     slack_workspace_domain: Schema.NullOr(Schema.String),
@@ -50,7 +50,7 @@ export type ConversationsQueueClearCreateInput =
 export const ConversationsQueueClearCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    status: Schema.Struct({}),
+    status: Schema.Literals(["idle", "in_progress", "canceling"]),
     title: Schema.NullOr(Schema.String),
     user: Schema.Struct({
       id: Schema.Number,
@@ -67,7 +67,7 @@ export const ConversationsQueueClearCreateOutput =
     }),
     created_at: Schema.NullOr(Schema.String),
     updated_at: Schema.NullOr(Schema.String),
-    type: Schema.Struct({}),
+    type: Schema.Literals(["assistant", "tool_call", "deep_research", "slack"]),
     is_internal: Schema.NullOr(Schema.Boolean),
     slack_thread_key: Schema.NullOr(Schema.String),
     slack_workspace_domain: Schema.NullOr(Schema.String),

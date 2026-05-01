@@ -24,8 +24,23 @@ export type AddressesCreateInput = typeof AddressesCreateInput.Type;
 
 // Output Schema
 export const AddressesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type AddressesCreateOutput = typeof AddressesCreateOutput.Type;
 
@@ -90,8 +105,23 @@ export type AddressesGetInput = typeof AddressesGetInput.Type;
 
 // Output Schema
 export const AddressesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type AddressesGetOutput = typeof AddressesGetOutput.Type;
 
@@ -131,8 +161,33 @@ export const AddressesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -178,8 +233,33 @@ export const AddressesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -219,8 +299,23 @@ export type AddressesUpdateInput = typeof AddressesUpdateInput.Type;
 
 // Output Schema
 export const AddressesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type AddressesUpdateOutput = typeof AddressesUpdateOutput.Type;
 
@@ -330,8 +425,23 @@ export type OrderItemsCreateInput = typeof OrderItemsCreateInput.Type;
 // Output Schema
 export const OrderItemsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   },
 );
 export type OrderItemsCreateOutput = typeof OrderItemsCreateOutput.Type;
@@ -398,8 +508,23 @@ export type OrderItemsGetInput = typeof OrderItemsGetInput.Type;
 
 // Output Schema
 export const OrderItemsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type OrderItemsGetOutput = typeof OrderItemsGetOutput.Type;
 
@@ -441,8 +566,33 @@ export const OrderItemsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -490,8 +640,33 @@ export const OrderItemsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -563,8 +738,23 @@ export type OrderItemsUpdateInput = typeof OrderItemsUpdateInput.Type;
 // Output Schema
 export const OrderItemsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   },
 );
 export type OrderItemsUpdateOutput = typeof OrderItemsUpdateOutput.Type;
@@ -599,7 +789,25 @@ export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type OrdersGetInput = typeof OrdersGetInput.Type;
 
 // Output Schema
-export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type OrdersGetOutput = typeof OrdersGetOutput.Type;
 
 // The operation
@@ -636,7 +844,37 @@ export type OrdersListByResourceGroupInput =
 // Output Schema
 export const OrdersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrdersListByResourceGroupOutput =
@@ -677,7 +915,37 @@ export type OrdersListBySubscriptionInput =
 // Output Schema
 export const OrdersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type OrdersListBySubscriptionOutput =
@@ -720,16 +988,118 @@ export const ProductsAndConfigurationsListConfigurationsOutput =
       Schema.Struct({
         properties: Schema.optional(
           Schema.Struct({
-            filterableProperties: Schema.optional(
+            displayName: Schema.optional(Schema.String),
+            description: Schema.optional(
+              Schema.Struct({
+                descriptionType: Schema.optional(Schema.Literals(["Base"])),
+                shortDescription: Schema.optional(Schema.String),
+                longDescription: Schema.optional(Schema.String),
+                keywords: Schema.optional(Schema.Array(Schema.String)),
+                attributes: Schema.optional(Schema.Array(Schema.String)),
+                links: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      linkType: Schema.optional(
+                        Schema.Literals([
+                          "Generic",
+                          "TermsAndConditions",
+                          "Specification",
+                          "Documentation",
+                          "KnowMore",
+                          "SignUp",
+                          "Discoverable",
+                        ]),
+                      ),
+                      linkUrl: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            imageInformation: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  type: Schema.Literals([
-                    "ShipToCountries",
-                    "DoubleEncryptionStatus",
-                  ]),
-                  supportedValues: Schema.Array(Schema.String),
+                  imageType: Schema.optional(
+                    Schema.Literals([
+                      "MainImage",
+                      "BulletImage",
+                      "GenericImage",
+                    ]),
+                  ),
+                  imageUrl: Schema.optional(Schema.String),
                 }),
               ),
+            ),
+            costInformation: Schema.optional(
+              Schema.Struct({
+                billingMeterDetails: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      meterDetails: Schema.optional(
+                        Schema.Struct({
+                          billingType: Schema.Literals(["Pav2", "Purchase"]),
+                          multiplier: Schema.optional(Schema.Number),
+                          chargingType: Schema.optional(
+                            Schema.Literals(["PerOrder", "PerDevice"]),
+                          ),
+                        }),
+                      ),
+                      meteringType: Schema.optional(
+                        Schema.Literals(["OneTime", "Recurring", "Adhoc"]),
+                      ),
+                      frequency: Schema.optional(Schema.String),
+                      termTypeDetails: Schema.optional(
+                        Schema.Struct({
+                          termType: Schema.Literals(["None", "Trial", "Timed"]),
+                          termTypeDuration: Schema.String,
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                billingInfoUrl: Schema.optional(Schema.String),
+              }),
+            ),
+            availabilityInformation: Schema.optional(
+              Schema.Struct({
+                availabilityStage: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Preview",
+                    "Signup",
+                    "Discoverable",
+                    "ComingSoon",
+                    "Unavailable",
+                    "Deprecated",
+                  ]),
+                ),
+                disabledReason: Schema.optional(
+                  Schema.Literals([
+                    "None",
+                    "Country",
+                    "Region",
+                    "Feature",
+                    "OfferType",
+                    "NoSubscriptionInfo",
+                    "NotAvailable",
+                    "OutOfStock",
+                  ]),
+                ),
+                disabledReasonMessage: Schema.optional(Schema.String),
+              }),
+            ),
+            hierarchyInformation: Schema.optional(
+              Schema.Struct({
+                productFamilyName: Schema.optional(Schema.String),
+                productLineName: Schema.optional(Schema.String),
+                productName: Schema.optional(Schema.String),
+                configurationName: Schema.optional(Schema.String),
+                configurationIdDisplayName: Schema.optional(Schema.String),
+              }),
+            ),
+            fulfilledBy: Schema.optional(
+              Schema.Literals(["Microsoft", "External"]),
             ),
           }),
         ),
@@ -776,16 +1146,118 @@ export const ProductsAndConfigurationsListProductFamiliesOutput =
       Schema.Struct({
         properties: Schema.optional(
           Schema.Struct({
-            filterableProperties: Schema.optional(
+            displayName: Schema.optional(Schema.String),
+            description: Schema.optional(
+              Schema.Struct({
+                descriptionType: Schema.optional(Schema.Literals(["Base"])),
+                shortDescription: Schema.optional(Schema.String),
+                longDescription: Schema.optional(Schema.String),
+                keywords: Schema.optional(Schema.Array(Schema.String)),
+                attributes: Schema.optional(Schema.Array(Schema.String)),
+                links: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      linkType: Schema.optional(
+                        Schema.Literals([
+                          "Generic",
+                          "TermsAndConditions",
+                          "Specification",
+                          "Documentation",
+                          "KnowMore",
+                          "SignUp",
+                          "Discoverable",
+                        ]),
+                      ),
+                      linkUrl: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            imageInformation: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  type: Schema.Literals([
-                    "ShipToCountries",
-                    "DoubleEncryptionStatus",
-                  ]),
-                  supportedValues: Schema.Array(Schema.String),
+                  imageType: Schema.optional(
+                    Schema.Literals([
+                      "MainImage",
+                      "BulletImage",
+                      "GenericImage",
+                    ]),
+                  ),
+                  imageUrl: Schema.optional(Schema.String),
                 }),
               ),
+            ),
+            costInformation: Schema.optional(
+              Schema.Struct({
+                billingMeterDetails: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      meterDetails: Schema.optional(
+                        Schema.Struct({
+                          billingType: Schema.Literals(["Pav2", "Purchase"]),
+                          multiplier: Schema.optional(Schema.Number),
+                          chargingType: Schema.optional(
+                            Schema.Literals(["PerOrder", "PerDevice"]),
+                          ),
+                        }),
+                      ),
+                      meteringType: Schema.optional(
+                        Schema.Literals(["OneTime", "Recurring", "Adhoc"]),
+                      ),
+                      frequency: Schema.optional(Schema.String),
+                      termTypeDetails: Schema.optional(
+                        Schema.Struct({
+                          termType: Schema.Literals(["None", "Trial", "Timed"]),
+                          termTypeDuration: Schema.String,
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                billingInfoUrl: Schema.optional(Schema.String),
+              }),
+            ),
+            availabilityInformation: Schema.optional(
+              Schema.Struct({
+                availabilityStage: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Preview",
+                    "Signup",
+                    "Discoverable",
+                    "ComingSoon",
+                    "Unavailable",
+                    "Deprecated",
+                  ]),
+                ),
+                disabledReason: Schema.optional(
+                  Schema.Literals([
+                    "None",
+                    "Country",
+                    "Region",
+                    "Feature",
+                    "OfferType",
+                    "NoSubscriptionInfo",
+                    "NotAvailable",
+                    "OutOfStock",
+                  ]),
+                ),
+                disabledReasonMessage: Schema.optional(Schema.String),
+              }),
+            ),
+            hierarchyInformation: Schema.optional(
+              Schema.Struct({
+                productFamilyName: Schema.optional(Schema.String),
+                productLineName: Schema.optional(Schema.String),
+                productName: Schema.optional(Schema.String),
+                configurationName: Schema.optional(Schema.String),
+                configurationIdDisplayName: Schema.optional(Schema.String),
+              }),
+            ),
+            fulfilledBy: Schema.optional(
+              Schema.Literals(["Microsoft", "External"]),
             ),
           }),
         ),
@@ -832,16 +1304,118 @@ export const ProductsAndConfigurationsListProductFamiliesMetadataOutput =
       Schema.Struct({
         properties: Schema.optional(
           Schema.Struct({
-            filterableProperties: Schema.optional(
+            displayName: Schema.optional(Schema.String),
+            description: Schema.optional(
+              Schema.Struct({
+                descriptionType: Schema.optional(Schema.Literals(["Base"])),
+                shortDescription: Schema.optional(Schema.String),
+                longDescription: Schema.optional(Schema.String),
+                keywords: Schema.optional(Schema.Array(Schema.String)),
+                attributes: Schema.optional(Schema.Array(Schema.String)),
+                links: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      linkType: Schema.optional(
+                        Schema.Literals([
+                          "Generic",
+                          "TermsAndConditions",
+                          "Specification",
+                          "Documentation",
+                          "KnowMore",
+                          "SignUp",
+                          "Discoverable",
+                        ]),
+                      ),
+                      linkUrl: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+              }),
+            ),
+            imageInformation: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  type: Schema.Literals([
-                    "ShipToCountries",
-                    "DoubleEncryptionStatus",
-                  ]),
-                  supportedValues: Schema.Array(Schema.String),
+                  imageType: Schema.optional(
+                    Schema.Literals([
+                      "MainImage",
+                      "BulletImage",
+                      "GenericImage",
+                    ]),
+                  ),
+                  imageUrl: Schema.optional(Schema.String),
                 }),
               ),
+            ),
+            costInformation: Schema.optional(
+              Schema.Struct({
+                billingMeterDetails: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                      meterDetails: Schema.optional(
+                        Schema.Struct({
+                          billingType: Schema.Literals(["Pav2", "Purchase"]),
+                          multiplier: Schema.optional(Schema.Number),
+                          chargingType: Schema.optional(
+                            Schema.Literals(["PerOrder", "PerDevice"]),
+                          ),
+                        }),
+                      ),
+                      meteringType: Schema.optional(
+                        Schema.Literals(["OneTime", "Recurring", "Adhoc"]),
+                      ),
+                      frequency: Schema.optional(Schema.String),
+                      termTypeDetails: Schema.optional(
+                        Schema.Struct({
+                          termType: Schema.Literals(["None", "Trial", "Timed"]),
+                          termTypeDuration: Schema.String,
+                        }),
+                      ),
+                    }),
+                  ),
+                ),
+                billingInfoUrl: Schema.optional(Schema.String),
+              }),
+            ),
+            availabilityInformation: Schema.optional(
+              Schema.Struct({
+                availabilityStage: Schema.optional(
+                  Schema.Literals([
+                    "Available",
+                    "Preview",
+                    "Signup",
+                    "Discoverable",
+                    "ComingSoon",
+                    "Unavailable",
+                    "Deprecated",
+                  ]),
+                ),
+                disabledReason: Schema.optional(
+                  Schema.Literals([
+                    "None",
+                    "Country",
+                    "Region",
+                    "Feature",
+                    "OfferType",
+                    "NoSubscriptionInfo",
+                    "NotAvailable",
+                    "OutOfStock",
+                  ]),
+                ),
+                disabledReasonMessage: Schema.optional(Schema.String),
+              }),
+            ),
+            hierarchyInformation: Schema.optional(
+              Schema.Struct({
+                productFamilyName: Schema.optional(Schema.String),
+                productLineName: Schema.optional(Schema.String),
+                productName: Schema.optional(Schema.String),
+                configurationName: Schema.optional(Schema.String),
+                configurationIdDisplayName: Schema.optional(Schema.String),
+              }),
+            ),
+            fulfilledBy: Schema.optional(
+              Schema.Literals(["Microsoft", "External"]),
             ),
           }),
         ),

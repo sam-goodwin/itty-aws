@@ -24,7 +24,7 @@ export const AnnotationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.Number,
       content: Schema.optional(Schema.NullOr(Schema.String)),
       date_marker: Schema.optional(Schema.NullOr(Schema.String)),
-      creation_type: Schema.optional(Schema.Struct({})),
+      creation_type: Schema.optional(Schema.Literals(["USR", "GIT"])),
       dashboard_item: Schema.optional(Schema.NullOr(Schema.Number)),
       dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
       dashboard_name: Schema.NullOr(Schema.String),
@@ -47,7 +47,15 @@ export const AnnotationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       created_at: Schema.NullOr(Schema.String),
       updated_at: Schema.String,
       deleted: Schema.optional(Schema.Boolean),
-      scope: Schema.optional(Schema.Struct({})),
+      scope: Schema.optional(
+        Schema.Literals([
+          "dashboard_item",
+          "dashboard",
+          "project",
+          "organization",
+          "recording",
+        ]),
+      ),
     }),
   ),
 });

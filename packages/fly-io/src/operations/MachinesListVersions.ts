@@ -63,7 +63,13 @@ export const MachinesListVersionsOutput =
                 depends_on: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
-                      condition: Schema.optional(Schema.Struct({})),
+                      condition: Schema.optional(
+                        Schema.Literals([
+                          "exited_successfully",
+                          "healthy",
+                          "started",
+                        ]),
+                      ),
                       name: Schema.optional(Schema.String),
                     }),
                   ),
@@ -126,13 +132,17 @@ export const MachinesListVersionsOutput =
                           method: Schema.optional(Schema.String),
                           path: Schema.optional(Schema.String),
                           port: Schema.optional(Schema.Number),
-                          scheme: Schema.optional(Schema.Struct({})),
+                          scheme: Schema.optional(
+                            Schema.Literals(["http", "https"]),
+                          ),
                           tls_server_name: Schema.optional(Schema.String),
                           tls_skip_verify: Schema.optional(Schema.Boolean),
                         }),
                       ),
                       interval: Schema.optional(Schema.Number),
-                      kind: Schema.optional(Schema.Struct({})),
+                      kind: Schema.optional(
+                        Schema.Literals(["readiness", "liveness"]),
+                      ),
                       name: Schema.optional(Schema.String),
                       success_threshold: Schema.optional(Schema.Number),
                       tcp: Schema.optional(
@@ -141,7 +151,7 @@ export const MachinesListVersionsOutput =
                         }),
                       ),
                       timeout: Schema.optional(Schema.Number),
-                      unhealthy: Schema.optional(Schema.Struct({})),
+                      unhealthy: Schema.optional(Schema.Literals(["stop"])),
                     }),
                   ),
                 ),

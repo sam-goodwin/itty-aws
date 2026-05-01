@@ -84,7 +84,9 @@ export const HogFunctionsPartialUpdateInput =
     ),
     filters: Schema.optional(
       Schema.Struct({
-        source: Schema.optional(Schema.Struct({})),
+        source: Schema.optional(
+          Schema.Literals(["events", "person-updates", "data-warehouse-table"]),
+        ),
         actions: Schema.optional(
           Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
         ),
@@ -104,12 +106,14 @@ export const HogFunctionsPartialUpdateInput =
       }),
     ),
     masking: Schema.optional(
-      Schema.Struct({
-        ttl: Schema.Number,
-        threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-        hash: Schema.String,
-        bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          ttl: Schema.Number,
+          threshold: Schema.optional(Schema.NullOr(Schema.Number)),
+          hash: Schema.String,
+          bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
     mappings: Schema.optional(
       Schema.NullOr(
@@ -169,7 +173,13 @@ export const HogFunctionsPartialUpdateInput =
             ),
             filters: Schema.optional(
               Schema.Struct({
-                source: Schema.optional(Schema.Struct({})),
+                source: Schema.optional(
+                  Schema.Literals([
+                    "events",
+                    "person-updates",
+                    "data-warehouse-table",
+                  ]),
+                ),
                 actions: Schema.optional(
                   Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
@@ -230,10 +240,12 @@ export const HogFunctionsPartialUpdateInput =
     ),
     template_id: Schema.optional(Schema.NullOr(Schema.String)),
     status: Schema.optional(
-      Schema.Struct({
-        state: Schema.Literals([0, 1, 2, 3, 11, 12]),
-        tokens: Schema.Number,
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          state: Schema.Literals([0, 1, 2, 3, 11, 12]),
+          tokens: Schema.Number,
+        }),
+      ),
     ),
     execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
     _create_in_folder: Schema.optional(Schema.String),
@@ -325,7 +337,9 @@ export const HogFunctionsPartialUpdateOutput =
     ),
     filters: Schema.optional(
       Schema.Struct({
-        source: Schema.optional(Schema.Struct({})),
+        source: Schema.optional(
+          Schema.Literals(["events", "person-updates", "data-warehouse-table"]),
+        ),
         actions: Schema.optional(
           Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
         ),
@@ -345,12 +359,14 @@ export const HogFunctionsPartialUpdateOutput =
       }),
     ),
     masking: Schema.optional(
-      Schema.Struct({
-        ttl: Schema.Number,
-        threshold: Schema.optional(Schema.NullOr(Schema.Number)),
-        hash: Schema.String,
-        bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          ttl: Schema.Number,
+          threshold: Schema.optional(Schema.NullOr(Schema.Number)),
+          hash: Schema.String,
+          bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
+        }),
+      ),
     ),
     mappings: Schema.optional(
       Schema.NullOr(
@@ -410,7 +426,13 @@ export const HogFunctionsPartialUpdateOutput =
             ),
             filters: Schema.optional(
               Schema.Struct({
-                source: Schema.optional(Schema.Struct({})),
+                source: Schema.optional(
+                  Schema.Literals([
+                    "events",
+                    "person-updates",
+                    "data-warehouse-table",
+                  ]),
+                ),
                 actions: Schema.optional(
                   Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
@@ -468,10 +490,12 @@ export const HogFunctionsPartialUpdateOutput =
       ),
     }),
     template_id: Schema.optional(Schema.NullOr(Schema.String)),
-    status: Schema.Struct({
-      state: Schema.Literals([0, 1, 2, 3, 11, 12]),
-      tokens: Schema.Number,
-    }),
+    status: Schema.NullOr(
+      Schema.Struct({
+        state: Schema.Literals([0, 1, 2, 3, 11, 12]),
+        tokens: Schema.Number,
+      }),
+    ),
     execution_order: Schema.optional(Schema.NullOr(Schema.Number)),
     _create_in_folder: Schema.optional(Schema.String),
     batch_export_id: Schema.NullOr(Schema.String),

@@ -30,11 +30,13 @@ export const VisualReviewReposQuarantineListOutput =
     results: Schema.Array(
       Schema.Struct({
         created_by: Schema.optional(
-          Schema.Struct({
-            id: Schema.Number,
-            first_name: Schema.String,
-            email: Schema.String,
-          }),
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.Number,
+              first_name: Schema.String,
+              email: Schema.String,
+            }),
+          ),
         ),
         id: Schema.String,
         identifier: Schema.String,

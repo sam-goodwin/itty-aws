@@ -27,7 +27,9 @@ export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   repository: Schema.optional(Schema.NullOr(Schema.String)),
   github_integration: Schema.optional(Schema.NullOr(Schema.Number)),
   signal_report: Schema.optional(Schema.NullOr(Schema.String)),
-  signal_report_task_relationship: Schema.optional(Schema.Struct({})),
+  signal_report_task_relationship: Schema.optional(
+    Schema.Literals(["implementation"]),
+  ),
   json_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
   internal: Schema.optional(Schema.Boolean),
   latest_run: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
@@ -75,7 +77,9 @@ export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   repository: Schema.optional(Schema.NullOr(Schema.String)),
   github_integration: Schema.optional(Schema.NullOr(Schema.Number)),
   signal_report: Schema.optional(Schema.NullOr(Schema.String)),
-  signal_report_task_relationship: Schema.optional(Schema.Struct({})),
+  signal_report_task_relationship: Schema.optional(
+    Schema.Literals(["implementation"]),
+  ),
   json_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
   internal: Schema.optional(Schema.Boolean),
   latest_run: Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),

@@ -9,7 +9,7 @@ export const LogsAlertsSimulateCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.Unknown,
     threshold_count: Schema.Number,
-    threshold_operator: Schema.Struct({}),
+    threshold_operator: Schema.Literals(["above", "below"]),
     window_minutes: Schema.Number,
     evaluation_periods: Schema.optional(Schema.Number),
     datapoints_to_alarm: Schema.optional(Schema.Number),

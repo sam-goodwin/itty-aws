@@ -748,14 +748,22 @@ export type ChannelsListWithKeysInput = typeof ChannelsListWithKeysInput.Type;
 // Output Schema
 export const ChannelsListWithKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sku: Schema.optional(
       Schema.Struct({
-        channelName: Schema.String,
-        etag: Schema.optional(Schema.NullOr(Schema.String)),
-        provisioningState: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
+        name: Schema.Literals(["F0", "S1"]),
+        tier: Schema.optional(Schema.Literals(["Free", "Standard"])),
       }),
     ),
+    kind: Schema.optional(
+      Schema.Literals(["sdk", "designer", "bot", "function", "azurebot"]),
+    ),
+    etag: Schema.optional(Schema.String),
+    zones: Schema.optional(Schema.Array(Schema.String)),
   });
 export type ChannelsListWithKeysOutput = typeof ChannelsListWithKeysOutput.Type;
 

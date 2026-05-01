@@ -26,19 +26,21 @@ export const ActionsReferencesListOutput =
       name: Schema.String,
       url: Schema.String,
       created_at: Schema.NullOr(Schema.String),
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-        role_at_organization: Schema.optional(Schema.Unknown),
-      }),
+      created_by: Schema.NullOr(
+        Schema.Struct({
+          id: Schema.Number,
+          uuid: Schema.String,
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.String,
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.NullOr(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
+      ),
     }),
   );
 export type ActionsReferencesListOutput =

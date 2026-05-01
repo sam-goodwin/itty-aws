@@ -7,7 +7,9 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const DesktopRecordingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    platform: Schema.optional(Schema.Struct({})),
+    platform: Schema.optional(
+      Schema.Literals(["zoom", "teams", "meet", "desktop_audio", "slack"]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",

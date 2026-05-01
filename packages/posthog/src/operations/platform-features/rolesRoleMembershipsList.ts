@@ -44,7 +44,7 @@ export const RolesRoleMembershipsListOutput =
             ),
             role_at_organization: Schema.optional(Schema.Unknown),
           }),
-          level: Schema.optional(Schema.Struct({})),
+          level: Schema.optional(Schema.Literals([1, 8, 15])),
           joined_at: Schema.String,
           updated_at: Schema.String,
           is_2fa_enabled: Schema.Boolean,

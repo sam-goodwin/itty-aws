@@ -8,7 +8,7 @@ export const ConversationsTicketsBulkUpdateTagsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     ids: Schema.Array(Schema.Number),
-    action: Schema.Struct({}),
+    action: Schema.Literals(["add", "remove", "set"]),
     tags: Schema.Array(Schema.String),
   }).pipe(
     T.Http({

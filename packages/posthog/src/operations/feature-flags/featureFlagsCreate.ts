@@ -24,15 +24,17 @@ export const FeatureFlagsCreateInput =
           ),
         ),
         multivariate: Schema.optional(
-          Schema.Struct({
-            variants: Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-                name: Schema.optional(Schema.String),
-                rollout_percentage: Schema.Number,
-              }),
-            ),
-          }),
+          Schema.NullOr(
+            Schema.Struct({
+              variants: Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  name: Schema.optional(Schema.String),
+                  rollout_percentage: Schema.Number,
+                }),
+              ),
+            }),
+          ),
         ),
         aggregation_group_type_index: Schema.optional(
           Schema.NullOr(Schema.Number),
@@ -111,7 +113,16 @@ export const FeatureFlagsCreateOutput =
     analytics_dashboards: Schema.optional(Schema.Array(Schema.Number)),
     has_enriched_analytics: Schema.optional(Schema.NullOr(Schema.Boolean)),
     user_access_level: Schema.NullOr(Schema.String),
-    creation_context: Schema.optional(Schema.Struct({})),
+    creation_context: Schema.optional(
+      Schema.Literals([
+        "feature_flags",
+        "experiments",
+        "surveys",
+        "early_access_features",
+        "web_experiments",
+        "product_tours",
+      ]),
+    ),
     is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
     has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
     status: Schema.String,

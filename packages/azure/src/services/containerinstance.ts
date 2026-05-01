@@ -485,7 +485,14 @@ export type ContainerGroupsCreateOrUpdateInput =
 
 // Output Schema
 export const ContainerGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  });
 export type ContainerGroupsCreateOrUpdateOutput =
   typeof ContainerGroupsCreateOrUpdateOutput.Type;
 
@@ -522,7 +529,14 @@ export type ContainerGroupsDeleteInput = typeof ContainerGroupsDeleteInput.Type;
 
 // Output Schema
 export const ContainerGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  });
 export type ContainerGroupsDeleteOutput =
   typeof ContainerGroupsDeleteOutput.Type;
 
@@ -560,7 +574,14 @@ export type ContainerGroupsGetInput = typeof ContainerGroupsGetInput.Type;
 
 // Output Schema
 export const ContainerGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  });
 export type ContainerGroupsGetOutput = typeof ContainerGroupsGetOutput.Type;
 
 // The operation
@@ -1809,7 +1830,14 @@ export type ContainerGroupsUpdateInput = typeof ContainerGroupsUpdateInput.Type;
 
 // Output Schema
 export const ContainerGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    zones: Schema.optional(Schema.Array(Schema.String)),
+  });
 export type ContainerGroupsUpdateOutput =
   typeof ContainerGroupsUpdateOutput.Type;
 

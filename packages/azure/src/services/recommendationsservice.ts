@@ -66,8 +66,9 @@ export type AccountsCreateOrUpdateInput =
 // Output Schema
 export const AccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type AccountsCreateOrUpdateOutput =
   typeof AccountsCreateOrUpdateOutput.Type;
@@ -130,8 +131,9 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 
@@ -218,8 +220,9 @@ export const AccountsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -262,8 +265,9 @@ export const AccountsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -299,8 +303,9 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 
@@ -334,8 +339,9 @@ export type ModelingCreateOrUpdateInput =
 // Output Schema
 export const ModelingCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ModelingCreateOrUpdateOutput =
   typeof ModelingCreateOrUpdateOutput.Type;
@@ -398,8 +404,9 @@ export type ModelingGetInput = typeof ModelingGetInput.Type;
 
 // Output Schema
 export const ModelingGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ModelingGetOutput = typeof ModelingGetOutput.Type;
 
@@ -437,8 +444,9 @@ export const ModelingListByAccountResourceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -474,8 +482,9 @@ export type ModelingUpdateInput = typeof ModelingUpdateInput.Type;
 
 // Output Schema
 export const ModelingUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type ModelingUpdateOutput = typeof ModelingUpdateOutput.Type;
 
@@ -643,8 +652,9 @@ export type ServiceEndpointsCreateOrUpdateInput =
 // Output Schema
 export const ServiceEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ServiceEndpointsCreateOrUpdateOutput =
   typeof ServiceEndpointsCreateOrUpdateOutput.Type;
@@ -714,8 +724,9 @@ export type ServiceEndpointsGetInput = typeof ServiceEndpointsGetInput.Type;
 // Output Schema
 export const ServiceEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ServiceEndpointsGetOutput = typeof ServiceEndpointsGetOutput.Type;
 
@@ -753,8 +764,9 @@ export const ServiceEndpointsListByAccountResourceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -793,8 +805,9 @@ export type ServiceEndpointsUpdateInput =
 // Output Schema
 export const ServiceEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ServiceEndpointsUpdateOutput =
   typeof ServiceEndpointsUpdateOutput.Type;

@@ -16,7 +16,9 @@ export const SavedPartialUpdateInput =
     type: Schema.optional(
       Schema.Literals(["screenshot", "iframe", "recording"]),
     ),
-    status: Schema.optional(Schema.Struct({})),
+    status: Schema.optional(
+      Schema.Literals(["processing", "completed", "failed"]),
+    ),
     has_content: Schema.optional(Schema.Boolean),
     snapshots: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -60,7 +62,7 @@ export const SavedPartialUpdateOutput =
     type: Schema.optional(
       Schema.Literals(["screenshot", "iframe", "recording"]),
     ),
-    status: Schema.Struct({}),
+    status: Schema.Literals(["processing", "completed", "failed"]),
     has_content: Schema.Boolean,
     snapshots: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     deleted: Schema.optional(Schema.Boolean),

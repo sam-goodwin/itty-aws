@@ -27,11 +27,13 @@ export const VisualReviewRunsListOutput =
     results: Schema.Array(
       Schema.Struct({
         approved_by: Schema.optional(
-          Schema.Struct({
-            id: Schema.Number,
-            first_name: Schema.String,
-            email: Schema.String,
-          }),
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.Number,
+              first_name: Schema.String,
+              email: Schema.String,
+            }),
+          ),
         ),
         id: Schema.String,
         repo_id: Schema.String,

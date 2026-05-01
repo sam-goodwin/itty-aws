@@ -36,7 +36,7 @@ export const DashboardsCollaboratorsListOutput =
         ),
         role_at_organization: Schema.optional(Schema.Unknown),
       }),
-      level: Schema.Struct({}),
+      level: Schema.Literals([21, 37]),
       added_at: Schema.String,
       updated_at: Schema.String,
       user_uuid: Schema.String,

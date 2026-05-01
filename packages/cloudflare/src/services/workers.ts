@@ -93,12 +93,6 @@ export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
 ) {}
 T.applyErrorMatchers(RouteNotFound, [{ code: 10009 }]);
 
-export class ScriptStartupError extends Schema.TaggedErrorClass<ScriptStartupError>()(
-  "ScriptStartupError",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(ScriptStartupError, [{ code: 10021 }]);
-
 export class ScriptModuleNotFound extends Schema.TaggedErrorClass<ScriptModuleNotFound>()(
   "ScriptModuleNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -106,6 +100,12 @@ export class ScriptModuleNotFound extends Schema.TaggedErrorClass<ScriptModuleNo
 T.applyErrorMatchers(ScriptModuleNotFound, [
   { code: 10021, message: { includes: "No such module" } },
 ]);
+
+export class ScriptStartupError extends Schema.TaggedErrorClass<ScriptStartupError>()(
+  "ScriptStartupError",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ScriptStartupError, [{ code: 10021 }]);
 
 export class SecretNotFound extends Schema.TaggedErrorClass<SecretNotFound>()(
   "SecretNotFound",

@@ -176,8 +176,9 @@ export type EnvironmentsCreateOrUpdateInput =
 // Output Schema
 export const EnvironmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type EnvironmentsCreateOrUpdateOutput =
   typeof EnvironmentsCreateOrUpdateOutput.Type;
@@ -229,8 +230,9 @@ export type EnvironmentsGetInput = typeof EnvironmentsGetInput.Type;
 
 // Output Schema
 export const EnvironmentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type EnvironmentsGetOutput = typeof EnvironmentsGetOutput.Type;
 
@@ -259,8 +261,9 @@ export const EnvironmentsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -294,8 +297,9 @@ export const EnvironmentsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -325,8 +329,9 @@ export type EnvironmentsUpdateInput = typeof EnvironmentsUpdateInput.Type;
 // Output Schema
 export const EnvironmentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type EnvironmentsUpdateOutput = typeof EnvironmentsUpdateOutput.Type;
 
@@ -354,8 +359,9 @@ export type EventSourcesCreateOrUpdateInput =
 // Output Schema
 export const EventSourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type EventSourcesCreateOrUpdateOutput =
   typeof EventSourcesCreateOrUpdateOutput.Type;
@@ -407,8 +413,9 @@ export type EventSourcesGetInput = typeof EventSourcesGetInput.Type;
 
 // Output Schema
 export const EventSourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type EventSourcesGetOutput = typeof EventSourcesGetOutput.Type;
 
@@ -437,8 +444,9 @@ export const EventSourcesListByEnvironmentOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -468,8 +476,9 @@ export type EventSourcesUpdateInput = typeof EventSourcesUpdateInput.Type;
 // Output Schema
 export const EventSourcesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type EventSourcesUpdateOutput = typeof EventSourcesUpdateOutput.Type;
 
@@ -585,8 +594,9 @@ export type ReferenceDataSetsCreateOrUpdateInput =
 // Output Schema
 export const ReferenceDataSetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ReferenceDataSetsCreateOrUpdateOutput =
   typeof ReferenceDataSetsCreateOrUpdateOutput.Type;
@@ -642,8 +652,9 @@ export type ReferenceDataSetsGetInput = typeof ReferenceDataSetsGetInput.Type;
 // Output Schema
 export const ReferenceDataSetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ReferenceDataSetsGetOutput = typeof ReferenceDataSetsGetOutput.Type;
 
@@ -674,8 +685,9 @@ export const ReferenceDataSetsListByEnvironmentOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -706,8 +718,9 @@ export type ReferenceDataSetsUpdateInput =
 // Output Schema
 export const ReferenceDataSetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type ReferenceDataSetsUpdateOutput =
   typeof ReferenceDataSetsUpdateOutput.Type;

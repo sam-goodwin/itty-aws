@@ -9,7 +9,7 @@ export const LlmAnalyticsEvaluationReportsPartialUpdateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     evaluation: Schema.optional(Schema.String),
-    frequency: Schema.optional(Schema.Struct({})),
+    frequency: Schema.optional(Schema.Literals(["scheduled", "every_n"])),
     rrule: Schema.optional(Schema.String),
     starts_at: Schema.optional(Schema.NullOr(Schema.String)),
     timezone_name: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export const LlmAnalyticsEvaluationReportsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     evaluation: Schema.String,
-    frequency: Schema.optional(Schema.Struct({})),
+    frequency: Schema.optional(Schema.Literals(["scheduled", "every_n"])),
     rrule: Schema.optional(Schema.String),
     starts_at: Schema.optional(Schema.NullOr(Schema.String)),
     timezone_name: Schema.optional(Schema.String),

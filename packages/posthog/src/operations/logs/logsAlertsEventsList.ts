@@ -28,7 +28,15 @@ export const LogsAlertsEventsListOutput =
       Schema.Struct({
         id: Schema.String,
         created_at: Schema.String,
-        kind: Schema.Struct({}),
+        kind: Schema.Literals([
+          "check",
+          "reset",
+          "enable",
+          "disable",
+          "snooze",
+          "unsnooze",
+          "threshold_change",
+        ]),
         state_before: Schema.String,
         state_after: Schema.String,
         threshold_breached: Schema.Boolean,

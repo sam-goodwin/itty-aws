@@ -26,7 +26,7 @@ export const PlatformPlacementsPostInput =
     region: Schema.optional(Schema.String),
     volume_name: Schema.optional(Schema.String),
     volume_size_bytes: Schema.optional(Schema.Number),
-    weights: Schema.optional(Schema.Struct({})),
+    weights: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
   }).pipe(T.Http({ method: "POST", path: "/platform/placements" }));
 export type PlatformPlacementsPostInput =
   typeof PlatformPlacementsPostInput.Type;

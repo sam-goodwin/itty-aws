@@ -21,11 +21,13 @@ export type VisualReviewRunsCompleteCreateInput =
 export const VisualReviewRunsCompleteCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approved_by: Schema.optional(
-      Schema.Struct({
-        id: Schema.Number,
-        first_name: Schema.String,
-        email: Schema.String,
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.Number,
+          first_name: Schema.String,
+          email: Schema.String,
+        }),
+      ),
     ),
     id: Schema.String,
     repo_id: Schema.String,

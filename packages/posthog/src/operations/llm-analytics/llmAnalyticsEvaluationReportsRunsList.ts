@@ -33,7 +33,12 @@ export const LlmAnalyticsEvaluationReportsRunsListOutput =
         metadata: Schema.Unknown,
         period_start: Schema.String,
         period_end: Schema.String,
-        delivery_status: Schema.Struct({}),
+        delivery_status: Schema.Literals([
+          "pending",
+          "delivered",
+          "partial_failure",
+          "failed",
+        ]),
         delivery_errors: Schema.Unknown,
         created_at: Schema.String,
       }),

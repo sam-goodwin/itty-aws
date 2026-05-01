@@ -12,7 +12,15 @@ export const TasksRunsArtifactsPrepareUploadCreateInput =
     artifacts: Schema.Array(
       Schema.Struct({
         name: Schema.String,
-        type: Schema.Struct({}),
+        type: Schema.Literals([
+          "plan",
+          "context",
+          "reference",
+          "output",
+          "artifact",
+          "tree_snapshot",
+          "user_attachment",
+        ]),
         source: Schema.optional(Schema.String),
         size: Schema.Number,
         content_type: Schema.optional(Schema.String),

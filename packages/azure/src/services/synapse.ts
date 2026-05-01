@@ -29,7 +29,11 @@ export type AzureADOnlyAuthenticationsCreateInput =
 
 // Output Schema
 export const AzureADOnlyAuthenticationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AzureADOnlyAuthenticationsCreateOutput =
   typeof AzureADOnlyAuthenticationsCreateOutput.Type;
 
@@ -71,7 +75,11 @@ export type AzureADOnlyAuthenticationsGetInput =
 
 // Output Schema
 export const AzureADOnlyAuthenticationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type AzureADOnlyAuthenticationsGetOutput =
   typeof AzureADOnlyAuthenticationsGetOutput.Type;
 
@@ -111,7 +119,15 @@ export type AzureADOnlyAuthenticationsListInput =
 // Output Schema
 export const AzureADOnlyAuthenticationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type AzureADOnlyAuthenticationsListOutput =
@@ -154,8 +170,9 @@ export type BigDataPoolsCreateOrUpdateInput =
 // Output Schema
 export const BigDataPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type BigDataPoolsCreateOrUpdateOutput =
   typeof BigDataPoolsCreateOrUpdateOutput.Type;
@@ -198,8 +215,9 @@ export type BigDataPoolsDeleteInput = typeof BigDataPoolsDeleteInput.Type;
 // Output Schema
 export const BigDataPoolsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type BigDataPoolsDeleteOutput = typeof BigDataPoolsDeleteOutput.Type;
 
@@ -236,8 +254,9 @@ export type BigDataPoolsGetInput = typeof BigDataPoolsGetInput.Type;
 
 // Output Schema
 export const BigDataPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type BigDataPoolsGetOutput = typeof BigDataPoolsGetOutput.Type;
 
@@ -280,8 +299,9 @@ export const BigDataPoolsListByWorkspaceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -325,8 +345,9 @@ export type BigDataPoolsUpdateInput = typeof BigDataPoolsUpdateInput.Type;
 // Output Schema
 export const BigDataPoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type BigDataPoolsUpdateOutput = typeof BigDataPoolsUpdateOutput.Type;
 
@@ -365,7 +386,11 @@ export type DataMaskingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const DataMaskingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DataMaskingPoliciesCreateOrUpdateOutput =
   typeof DataMaskingPoliciesCreateOrUpdateOutput.Type;
 
@@ -403,7 +428,11 @@ export type DataMaskingPoliciesGetInput =
 
 // Output Schema
 export const DataMaskingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DataMaskingPoliciesGetOutput =
   typeof DataMaskingPoliciesGetOutput.Type;
 
@@ -443,7 +472,11 @@ export type DataMaskingRulesCreateOrUpdateInput =
 
 // Output Schema
 export const DataMaskingRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DataMaskingRulesCreateOrUpdateOutput =
   typeof DataMaskingRulesCreateOrUpdateOutput.Type;
 
@@ -482,7 +515,11 @@ export type DataMaskingRulesGetInput = typeof DataMaskingRulesGetInput.Type;
 
 // Output Schema
 export const DataMaskingRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type DataMaskingRulesGetOutput = typeof DataMaskingRulesGetOutput.Type;
 
 // The operation
@@ -520,7 +557,15 @@ export type DataMaskingRulesListBySqlPoolInput =
 // Output Schema
 export const DataMaskingRulesListBySqlPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type DataMaskingRulesListBySqlPoolOutput =
   typeof DataMaskingRulesListBySqlPoolOutput.Type;
@@ -560,7 +605,11 @@ export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateOutput.Type;
 
@@ -600,7 +649,11 @@ export type ExtendedSqlPoolBlobAuditingPoliciesGetInput =
 
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type ExtendedSqlPoolBlobAuditingPoliciesGetOutput =
   typeof ExtendedSqlPoolBlobAuditingPoliciesGetOutput.Type;
 
@@ -640,7 +693,15 @@ export type ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolInput =
 // Output Schema
 export const ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ExtendedSqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
@@ -1221,7 +1282,11 @@ export type IntegrationRuntimesCreateInput =
 
 // Output Schema
 export const IntegrationRuntimesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IntegrationRuntimesCreateOutput =
   typeof IntegrationRuntimesCreateOutput.Type;
 
@@ -1372,7 +1437,11 @@ export type IntegrationRuntimesGetInput =
 
 // Output Schema
 export const IntegrationRuntimesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IntegrationRuntimesGetOutput =
   typeof IntegrationRuntimesGetOutput.Type;
 
@@ -1413,7 +1482,13 @@ export type IntegrationRuntimesListByWorkspaceInput =
 // Output Schema
 export const IntegrationRuntimesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type IntegrationRuntimesListByWorkspaceOutput =
@@ -1672,7 +1747,11 @@ export type IntegrationRuntimesUpdateInput =
 
 // Output Schema
 export const IntegrationRuntimesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IntegrationRuntimesUpdateOutput =
   typeof IntegrationRuntimesUpdateOutput.Type;
 
@@ -1750,7 +1829,11 @@ export type IpFirewallRulesCreateOrUpdateInput =
 
 // Output Schema
 export const IpFirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IpFirewallRulesCreateOrUpdateOutput =
   typeof IpFirewallRulesCreateOrUpdateOutput.Type;
 
@@ -1785,7 +1868,11 @@ export type IpFirewallRulesDeleteInput = typeof IpFirewallRulesDeleteInput.Type;
 
 // Output Schema
 export const IpFirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IpFirewallRulesDeleteOutput =
   typeof IpFirewallRulesDeleteOutput.Type;
 
@@ -1821,7 +1908,11 @@ export type IpFirewallRulesGetInput = typeof IpFirewallRulesGetInput.Type;
 
 // Output Schema
 export const IpFirewallRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type IpFirewallRulesGetOutput = typeof IpFirewallRulesGetOutput.Type;
 
 // The operation
@@ -1857,7 +1948,15 @@ export type IpFirewallRulesListByWorkspaceInput =
 export const IpFirewallRulesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type IpFirewallRulesListByWorkspaceOutput =
   typeof IpFirewallRulesListByWorkspaceOutput.Type;
@@ -1932,7 +2031,11 @@ export type KeysCreateOrUpdateInput = typeof KeysCreateOrUpdateInput.Type;
 
 // Output Schema
 export const KeysCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type KeysCreateOrUpdateOutput = typeof KeysCreateOrUpdateOutput.Type;
 
 // The operation
@@ -1963,7 +2066,11 @@ export const KeysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type KeysDeleteInput = typeof KeysDeleteInput.Type;
 
 // Output Schema
-export const KeysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const KeysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type KeysDeleteOutput = typeof KeysDeleteOutput.Type;
 
 // The operation
@@ -1994,7 +2101,11 @@ export const KeysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type KeysGetInput = typeof KeysGetInput.Type;
 
 // Output Schema
-export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const KeysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type KeysGetOutput = typeof KeysGetOutput.Type;
 
 // The operation
@@ -2029,7 +2140,15 @@ export type KeysListByWorkspaceInput = typeof KeysListByWorkspaceInput.Type;
 export const KeysListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type KeysListByWorkspaceOutput = typeof KeysListByWorkspaceOutput.Type;
 
@@ -2065,7 +2184,13 @@ export type LibrariesListByWorkspaceInput =
 // Output Schema
 export const LibrariesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type LibrariesListByWorkspaceOutput =
@@ -2103,7 +2228,11 @@ export const LibraryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type LibraryGetInput = typeof LibraryGetInput.Type;
 
 // Output Schema
-export const LibraryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const LibraryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type LibraryGetOutput = typeof LibraryGetOutput.Type;
 
 // The operation
@@ -2394,7 +2523,11 @@ export type PrivateEndpointConnectionsCreateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PrivateEndpointConnectionsCreateOutput =
   typeof PrivateEndpointConnectionsCreateOutput.Type;
 
@@ -2447,7 +2580,11 @@ export type PrivateEndpointConnectionsGetInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -2479,7 +2616,15 @@ export type PrivateEndpointConnectionsListInput =
 // Output Schema
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateEndpointConnectionsListOutput =
@@ -2617,7 +2762,11 @@ export type PrivateLinkHubPrivateLinkResourcesGetInput =
 
 // Output Schema
 export const PrivateLinkHubPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PrivateLinkHubPrivateLinkResourcesGetOutput =
   typeof PrivateLinkHubPrivateLinkResourcesGetOutput.Type;
 
@@ -2654,7 +2803,15 @@ export type PrivateLinkHubPrivateLinkResourcesListInput =
 // Output Schema
 export const PrivateLinkHubPrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkHubPrivateLinkResourcesListOutput =
@@ -2689,8 +2846,9 @@ export type PrivateLinkHubsCreateOrUpdateInput =
 // Output Schema
 export const PrivateLinkHubsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PrivateLinkHubsCreateOrUpdateOutput =
   typeof PrivateLinkHubsCreateOrUpdateOutput.Type;
@@ -2743,8 +2901,9 @@ export type PrivateLinkHubsGetInput = typeof PrivateLinkHubsGetInput.Type;
 // Output Schema
 export const PrivateLinkHubsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PrivateLinkHubsGetOutput = typeof PrivateLinkHubsGetOutput.Type;
 
@@ -2776,8 +2935,9 @@ export const PrivateLinkHubsListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -2813,8 +2973,9 @@ export const PrivateLinkHubsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -2844,8 +3005,9 @@ export type PrivateLinkHubsUpdateInput = typeof PrivateLinkHubsUpdateInput.Type;
 // Output Schema
 export const PrivateLinkHubsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PrivateLinkHubsUpdateOutput =
   typeof PrivateLinkHubsUpdateOutput.Type;
@@ -2878,7 +3040,11 @@ export type PrivateLinkResourcesGetInput =
 
 // Output Schema
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type PrivateLinkResourcesGetOutput =
   typeof PrivateLinkResourcesGetOutput.Type;
 
@@ -2918,7 +3084,15 @@ export type PrivateLinkResourcesListInput =
 // Output Schema
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type PrivateLinkResourcesListOutput =
@@ -2960,7 +3134,11 @@ export type RestorableDroppedSqlPoolsGetInput =
 
 // Output Schema
 export const RestorableDroppedSqlPoolsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type RestorableDroppedSqlPoolsGetOutput =
   typeof RestorableDroppedSqlPoolsGetOutput.Type;
 
@@ -2998,7 +3176,13 @@ export type RestorableDroppedSqlPoolsListByWorkspaceInput =
 // Output Schema
 export const RestorableDroppedSqlPoolsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type RestorableDroppedSqlPoolsListByWorkspaceOutput =
   typeof RestorableDroppedSqlPoolsListByWorkspaceOutput.Type;
@@ -3037,7 +3221,11 @@ export type SqlPoolBlobAuditingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof SqlPoolBlobAuditingPoliciesCreateOrUpdateOutput.Type;
 
@@ -3079,7 +3267,11 @@ export type SqlPoolBlobAuditingPoliciesGetInput =
 
 // Output Schema
 export const SqlPoolBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolBlobAuditingPoliciesGetOutput =
   typeof SqlPoolBlobAuditingPoliciesGetOutput.Type;
 
@@ -3121,7 +3313,15 @@ export type SqlPoolBlobAuditingPoliciesListBySqlPoolInput =
 // Output Schema
 export const SqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolBlobAuditingPoliciesListBySqlPoolOutput =
@@ -3164,7 +3364,11 @@ export type SqlPoolColumnsGetInput = typeof SqlPoolColumnsGetInput.Type;
 
 // Output Schema
 export const SqlPoolColumnsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolColumnsGetOutput = typeof SqlPoolColumnsGetOutput.Type;
 
 // The operation
@@ -3206,7 +3410,11 @@ export type SqlPoolDataWarehouseUserActivitiesGetInput =
 
 // Output Schema
 export const SqlPoolDataWarehouseUserActivitiesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolDataWarehouseUserActivitiesGetOutput =
   typeof SqlPoolDataWarehouseUserActivitiesGetOutput.Type;
 
@@ -3248,7 +3456,11 @@ export type SqlPoolGeoBackupPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolGeoBackupPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolGeoBackupPoliciesCreateOrUpdateOutput =
   typeof SqlPoolGeoBackupPoliciesCreateOrUpdateOutput.Type;
 
@@ -3288,7 +3500,11 @@ export type SqlPoolGeoBackupPoliciesGetInput =
 
 // Output Schema
 export const SqlPoolGeoBackupPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolGeoBackupPoliciesGetOutput =
   typeof SqlPoolGeoBackupPoliciesGetOutput.Type;
 
@@ -3331,7 +3547,15 @@ export type SqlPoolGeoBackupPoliciesListInput =
 // Output Schema
 export const SqlPoolGeoBackupPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
   });
 export type SqlPoolGeoBackupPoliciesListOutput =
   typeof SqlPoolGeoBackupPoliciesListOutput.Type;
@@ -3373,7 +3597,11 @@ export type SqlPoolMaintenanceWindowOptionsGetInput =
 
 // Output Schema
 export const SqlPoolMaintenanceWindowOptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolMaintenanceWindowOptionsGetOutput =
   typeof SqlPoolMaintenanceWindowOptionsGetOutput.Type;
 
@@ -3455,7 +3683,11 @@ export type SqlPoolMaintenanceWindowsGetInput =
 
 // Output Schema
 export const SqlPoolMaintenanceWindowsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolMaintenanceWindowsGetOutput =
   typeof SqlPoolMaintenanceWindowsGetOutput.Type;
 
@@ -3496,8 +3728,9 @@ export type SqlPoolOperationResultsGetLocationHeaderResultInput =
 // Output Schema
 export const SqlPoolOperationResultsGetLocationHeaderResultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type SqlPoolOperationResultsGetLocationHeaderResultOutput =
   typeof SqlPoolOperationResultsGetLocationHeaderResultOutput.Type;
@@ -3539,7 +3772,15 @@ export type SqlPoolOperationsListInput = typeof SqlPoolOperationsListInput.Type;
 // Output Schema
 export const SqlPoolOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolOperationsListOutput =
@@ -3621,7 +3862,11 @@ export type SqlPoolReplicationLinksGetByNameInput =
 
 // Output Schema
 export const SqlPoolReplicationLinksGetByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolReplicationLinksGetByNameOutput =
   typeof SqlPoolReplicationLinksGetByNameOutput.Type;
 
@@ -3663,7 +3908,15 @@ export type SqlPoolReplicationLinksListInput =
 // Output Schema
 export const SqlPoolReplicationLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolReplicationLinksListOutput =
@@ -3706,7 +3959,11 @@ export type SqlPoolRestorePointsCreateInput =
 
 // Output Schema
 export const SqlPoolRestorePointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolRestorePointsCreateOutput =
   typeof SqlPoolRestorePointsCreateOutput.Type;
 
@@ -3787,7 +4044,11 @@ export type SqlPoolRestorePointsGetInput =
 
 // Output Schema
 export const SqlPoolRestorePointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolRestorePointsGetOutput =
   typeof SqlPoolRestorePointsGetOutput.Type;
 
@@ -3828,7 +4089,15 @@ export type SqlPoolRestorePointsListInput =
 // Output Schema
 export const SqlPoolRestorePointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolRestorePointsListOutput =
@@ -3872,7 +4141,11 @@ export type SqlPoolSchemasGetInput = typeof SqlPoolSchemasGetInput.Type;
 
 // Output Schema
 export const SqlPoolSchemasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolSchemasGetOutput = typeof SqlPoolSchemasGetOutput.Type;
 
 // The operation
@@ -3910,7 +4183,15 @@ export type SqlPoolSchemasListInput = typeof SqlPoolSchemasListInput.Type;
 // Output Schema
 export const SqlPoolSchemasListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolSchemasListOutput = typeof SqlPoolSchemasListOutput.Type;
@@ -3949,8 +4230,9 @@ export type SqlPoolsCreateInput = typeof SqlPoolsCreateInput.Type;
 
 // Output Schema
 export const SqlPoolsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type SqlPoolsCreateOutput = typeof SqlPoolsCreateOutput.Type;
 
@@ -3987,8 +4269,9 @@ export type SqlPoolsDeleteInput = typeof SqlPoolsDeleteInput.Type;
 
 // Output Schema
 export const SqlPoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type SqlPoolsDeleteOutput = typeof SqlPoolsDeleteOutput.Type;
 
@@ -4028,7 +4311,11 @@ export type SqlPoolSecurityAlertPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolSecurityAlertPoliciesCreateOrUpdateOutput =
   typeof SqlPoolSecurityAlertPoliciesCreateOrUpdateOutput.Type;
 
@@ -4070,7 +4357,11 @@ export type SqlPoolSecurityAlertPoliciesGetInput =
 
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolSecurityAlertPoliciesGetOutput =
   typeof SqlPoolSecurityAlertPoliciesGetOutput.Type;
 
@@ -4112,7 +4403,15 @@ export type SqlPoolSecurityAlertPoliciesListInput =
 // Output Schema
 export const SqlPoolSecurityAlertPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolSecurityAlertPoliciesListOutput =
@@ -4158,7 +4457,11 @@ export type SqlPoolSensitivityLabelsCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolSensitivityLabelsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolSensitivityLabelsCreateOrUpdateOutput =
   typeof SqlPoolSensitivityLabelsCreateOrUpdateOutput.Type;
 
@@ -4348,7 +4651,11 @@ export type SqlPoolSensitivityLabelsGetInput =
 
 // Output Schema
 export const SqlPoolSensitivityLabelsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolSensitivityLabelsGetOutput =
   typeof SqlPoolSensitivityLabelsGetOutput.Type;
 
@@ -4393,7 +4700,15 @@ export type SqlPoolSensitivityLabelsListCurrentInput =
 // Output Schema
 export const SqlPoolSensitivityLabelsListCurrentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolSensitivityLabelsListCurrentOutput =
@@ -4440,7 +4755,15 @@ export type SqlPoolSensitivityLabelsListRecommendedInput =
 // Output Schema
 export const SqlPoolSensitivityLabelsListRecommendedOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolSensitivityLabelsListRecommendedOutput =
@@ -4521,8 +4844,9 @@ export type SqlPoolsGetInput = typeof SqlPoolsGetInput.Type;
 
 // Output Schema
 export const SqlPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type SqlPoolsGetOutput = typeof SqlPoolsGetOutput.Type;
 
@@ -4565,8 +4889,9 @@ export const SqlPoolsListByWorkspaceOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -4608,8 +4933,9 @@ export type SqlPoolsPauseInput = typeof SqlPoolsPauseInput.Type;
 
 // Output Schema
 export const SqlPoolsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type SqlPoolsPauseOutput = typeof SqlPoolsPauseOutput.Type;
 
@@ -4646,8 +4972,9 @@ export type SqlPoolsResumeInput = typeof SqlPoolsResumeInput.Type;
 
 // Output Schema
 export const SqlPoolsResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type SqlPoolsResumeOutput = typeof SqlPoolsResumeOutput.Type;
 
@@ -4684,8 +5011,9 @@ export type SqlPoolsUpdateInput = typeof SqlPoolsUpdateInput.Type;
 
 // Output Schema
 export const SqlPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type SqlPoolsUpdateOutput = typeof SqlPoolsUpdateOutput.Type;
 
@@ -4728,7 +5056,15 @@ export type SqlPoolTableColumnsListByTableNameInput =
 // Output Schema
 export const SqlPoolTableColumnsListByTableNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolTableColumnsListByTableNameOutput =
@@ -4773,7 +5109,11 @@ export type SqlPoolTablesGetInput = typeof SqlPoolTablesGetInput.Type;
 
 // Output Schema
 export const SqlPoolTablesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type SqlPoolTablesGetOutput = typeof SqlPoolTablesGetOutput.Type;
 
@@ -4815,7 +5155,15 @@ export type SqlPoolTablesListBySchemaInput =
 // Output Schema
 export const SqlPoolTablesListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolTablesListBySchemaOutput =
@@ -4863,7 +5211,11 @@ export type SqlPoolTransparentDataEncryptionsCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolTransparentDataEncryptionsCreateOrUpdateOutput =
   typeof SqlPoolTransparentDataEncryptionsCreateOrUpdateOutput.Type;
 
@@ -4907,7 +5259,11 @@ export type SqlPoolTransparentDataEncryptionsGetInput =
 
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolTransparentDataEncryptionsGetOutput =
   typeof SqlPoolTransparentDataEncryptionsGetOutput.Type;
 
@@ -4949,7 +5305,15 @@ export type SqlPoolTransparentDataEncryptionsListInput =
 // Output Schema
 export const SqlPoolTransparentDataEncryptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolTransparentDataEncryptionsListOutput =
@@ -5047,7 +5411,11 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput =
   typeof SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateOutput.Type;
 
@@ -5140,7 +5508,11 @@ export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentRuleBaselinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesGetOutput =
   typeof SqlPoolVulnerabilityAssessmentRuleBaselinesGetOutput.Type;
 
@@ -5185,7 +5557,11 @@ export type SqlPoolVulnerabilityAssessmentScansExportInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolVulnerabilityAssessmentScansExportOutput =
   typeof SqlPoolVulnerabilityAssessmentScansExportOutput.Type;
 
@@ -5229,7 +5605,11 @@ export type SqlPoolVulnerabilityAssessmentScansGetInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolVulnerabilityAssessmentScansGetOutput =
   typeof SqlPoolVulnerabilityAssessmentScansGetOutput.Type;
 
@@ -5317,7 +5697,15 @@ export type SqlPoolVulnerabilityAssessmentScansListInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentScansListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolVulnerabilityAssessmentScansListOutput =
@@ -5363,7 +5751,11 @@ export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateOutput =
   typeof SqlPoolVulnerabilityAssessmentsCreateOrUpdateOutput.Type;
 
@@ -5451,7 +5843,11 @@ export type SqlPoolVulnerabilityAssessmentsGetInput =
 
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolVulnerabilityAssessmentsGetOutput =
   typeof SqlPoolVulnerabilityAssessmentsGetOutput.Type;
 
@@ -5493,7 +5889,15 @@ export type SqlPoolVulnerabilityAssessmentsListInput =
 // Output Schema
 export const SqlPoolVulnerabilityAssessmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolVulnerabilityAssessmentsListOutput =
@@ -5537,7 +5941,11 @@ export type SqlPoolWorkloadClassifierCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolWorkloadClassifierCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolWorkloadClassifierCreateOrUpdateOutput =
   typeof SqlPoolWorkloadClassifierCreateOrUpdateOutput.Type;
 
@@ -5625,7 +6033,11 @@ export type SqlPoolWorkloadClassifierGetInput =
 
 // Output Schema
 export const SqlPoolWorkloadClassifierGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolWorkloadClassifierGetOutput =
   typeof SqlPoolWorkloadClassifierGetOutput.Type;
 
@@ -5669,7 +6081,15 @@ export type SqlPoolWorkloadClassifierListInput =
 // Output Schema
 export const SqlPoolWorkloadClassifierListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolWorkloadClassifierListOutput =
@@ -5713,7 +6133,11 @@ export type SqlPoolWorkloadGroupCreateOrUpdateInput =
 
 // Output Schema
 export const SqlPoolWorkloadGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolWorkloadGroupCreateOrUpdateOutput =
   typeof SqlPoolWorkloadGroupCreateOrUpdateOutput.Type;
 
@@ -5798,7 +6222,11 @@ export type SqlPoolWorkloadGroupGetInput =
 
 // Output Schema
 export const SqlPoolWorkloadGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SqlPoolWorkloadGroupGetOutput =
   typeof SqlPoolWorkloadGroupGetOutput.Type;
 
@@ -5841,7 +6269,15 @@ export type SqlPoolWorkloadGroupListInput =
 // Output Schema
 export const SqlPoolWorkloadGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SqlPoolWorkloadGroupListOutput =
@@ -5883,7 +6319,11 @@ export type WorkspaceAadAdminsCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceAadAdminsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceAadAdminsCreateOrUpdateOutput =
   typeof WorkspaceAadAdminsCreateOrUpdateOutput.Type;
 
@@ -5955,7 +6395,11 @@ export type WorkspaceAadAdminsGetInput = typeof WorkspaceAadAdminsGetInput.Type;
 
 // Output Schema
 export const WorkspaceAadAdminsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceAadAdminsGetOutput =
   typeof WorkspaceAadAdminsGetOutput.Type;
 
@@ -5992,7 +6436,11 @@ export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateOutput =
   typeof WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateOutput.Type;
 
@@ -6029,7 +6477,11 @@ export type WorkspaceManagedIdentitySqlControlSettingsGetInput =
 
 // Output Schema
 export const WorkspaceManagedIdentitySqlControlSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedIdentitySqlControlSettingsGetOutput =
   typeof WorkspaceManagedIdentitySqlControlSettingsGetOutput.Type;
 
@@ -6066,7 +6518,11 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateOutput.Type;
 
@@ -6108,7 +6564,11 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesGetOutput =
   typeof WorkspaceManagedSqlServerBlobAuditingPoliciesGetOutput.Type;
 
@@ -6148,7 +6608,15 @@ export type WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceInput =
 // Output Schema
 export const WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesListByWorkspaceOutput =
@@ -6191,7 +6659,11 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetOutput =
   typeof WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsGetOutput.Type;
 
@@ -6233,7 +6705,15 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListInput =
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsListOutput =
@@ -6278,7 +6758,11 @@ export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateOutput =
   typeof WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateOutput.Type;
 
@@ -6320,7 +6804,11 @@ export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateOutput =
   typeof WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateOutput.Type;
 
@@ -6362,7 +6850,11 @@ export type WorkspaceManagedSqlServerEncryptionProtectorGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerEncryptionProtectorGetOutput =
   typeof WorkspaceManagedSqlServerEncryptionProtectorGetOutput.Type;
 
@@ -6402,7 +6894,15 @@ export type WorkspaceManagedSqlServerEncryptionProtectorListInput =
 // Output Schema
 export const WorkspaceManagedSqlServerEncryptionProtectorListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerEncryptionProtectorListOutput =
@@ -6483,7 +6983,11 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateI
 
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateOutput =
   typeof WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateOutput.Type;
 
@@ -6525,7 +7029,11 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetOutput =
   typeof WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesGetOutput.Type;
 
@@ -6566,7 +7074,15 @@ export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspace
 // Output Schema
 export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesListByWorkspaceOutput =
@@ -6609,7 +7125,11 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerRecoverableSqlPoolsGetOutput =
   typeof WorkspaceManagedSqlServerRecoverableSqlPoolsGetOutput.Type;
 
@@ -6649,7 +7169,15 @@ export type WorkspaceManagedSqlServerRecoverableSqlPoolsListInput =
 // Output Schema
 export const WorkspaceManagedSqlServerRecoverableSqlPoolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerRecoverableSqlPoolsListOutput =
@@ -6690,7 +7218,11 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateOutput =
   typeof WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateOutput.Type;
 
@@ -6732,7 +7264,11 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerSecurityAlertPolicyGetOutput =
   typeof WorkspaceManagedSqlServerSecurityAlertPolicyGetOutput.Type;
 
@@ -6772,7 +7308,15 @@ export type WorkspaceManagedSqlServerSecurityAlertPolicyListInput =
 // Output Schema
 export const WorkspaceManagedSqlServerSecurityAlertPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerSecurityAlertPolicyListOutput =
@@ -6866,7 +7410,11 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateInput
 
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateOutput =
   typeof WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateOutput.Type;
 
@@ -6952,7 +7500,11 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsGetInput =
 
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsGetOutput =
   typeof WorkspaceManagedSqlServerVulnerabilityAssessmentsGetOutput.Type;
 
@@ -6992,7 +7544,15 @@ export type WorkspaceManagedSqlServerVulnerabilityAssessmentsListInput =
 // Output Schema
 export const WorkspaceManagedSqlServerVulnerabilityAssessmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsListOutput =
@@ -7033,8 +7593,9 @@ export type WorkspacesCreateOrUpdateInput =
 // Output Schema
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type WorkspacesCreateOrUpdateOutput =
   typeof WorkspacesCreateOrUpdateOutput.Type;
@@ -7071,8 +7632,9 @@ export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
 // Output Schema
 export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 );
 export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
@@ -7106,8 +7668,9 @@ export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
 
 // Output Schema
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
 
@@ -7142,8 +7705,9 @@ export const WorkspacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
   ),
@@ -7183,8 +7747,9 @@ export const WorkspacesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          location: Schema.String,
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -7223,7 +7788,11 @@ export type WorkspaceSqlAadAdminsCreateOrUpdateInput =
 
 // Output Schema
 export const WorkspaceSqlAadAdminsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceSqlAadAdminsCreateOrUpdateOutput =
   typeof WorkspaceSqlAadAdminsCreateOrUpdateOutput.Type;
 
@@ -7296,7 +7865,11 @@ export type WorkspaceSqlAadAdminsGetInput =
 
 // Output Schema
 export const WorkspaceSqlAadAdminsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type WorkspaceSqlAadAdminsGetOutput =
   typeof WorkspaceSqlAadAdminsGetOutput.Type;
 
@@ -7332,8 +7905,9 @@ export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
 // Output Schema
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 );
 export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;

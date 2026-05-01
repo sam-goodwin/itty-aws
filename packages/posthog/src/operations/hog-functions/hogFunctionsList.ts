@@ -84,10 +84,12 @@ export const HogFunctionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             ),
           ),
         }),
-        status: Schema.Struct({
-          state: Schema.Literals([0, 1, 2, 3, 11, 12]),
-          tokens: Schema.Number,
-        }),
+        status: Schema.NullOr(
+          Schema.Struct({
+            state: Schema.Literals([0, 1, 2, 3, 11, 12]),
+            tokens: Schema.Number,
+          }),
+        ),
         execution_order: Schema.NullOr(Schema.Number),
       }),
     ),

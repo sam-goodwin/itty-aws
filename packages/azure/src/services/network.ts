@@ -431,8 +431,7 @@ export type ApplicationGatewayPrivateEndpointConnectionsGetInput =
 // Output Schema
 export const ApplicationGatewayPrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ApplicationGatewayPrivateEndpointConnectionsGetOutput =
   typeof ApplicationGatewayPrivateEndpointConnectionsGetOutput.Type;
@@ -473,8 +472,7 @@ export const ApplicationGatewayPrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -516,8 +514,7 @@ export type ApplicationGatewayPrivateEndpointConnectionsUpdateInput =
 // Output Schema
 export const ApplicationGatewayPrivateEndpointConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ApplicationGatewayPrivateEndpointConnectionsUpdateOutput =
   typeof ApplicationGatewayPrivateEndpointConnectionsUpdateOutput.Type;
@@ -622,8 +619,7 @@ export const ApplicationGatewaysBackendHealthOutput =
                       address: Schema.optional(Schema.String),
                       ipConfiguration: Schema.optional(
                         Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                          type: Schema.optional(Schema.String),
+                          id: Schema.optional(Schema.String),
                         }),
                       ),
                       health: Schema.optional(
@@ -702,8 +698,7 @@ export const ApplicationGatewaysBackendHealthOnDemandOutput =
               address: Schema.optional(Schema.String),
               ipConfiguration: Schema.optional(
                 Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
+                  id: Schema.optional(Schema.String),
                 }),
               ),
               health: Schema.optional(
@@ -2735,8 +2730,7 @@ export type ConfigurationPolicyGroupsCreateOrUpdateInput =
 // Output Schema
 export const ConfigurationPolicyGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ConfigurationPolicyGroupsCreateOrUpdateOutput =
   typeof ConfigurationPolicyGroupsCreateOrUpdateOutput.Type;
@@ -2814,8 +2808,7 @@ export type ConfigurationPolicyGroupsGetInput =
 // Output Schema
 export const ConfigurationPolicyGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ConfigurationPolicyGroupsGetOutput =
   typeof ConfigurationPolicyGroupsGetOutput.Type;
@@ -2856,8 +2849,7 @@ export const ConfigurationPolicyGroupsListByVpnServerConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -4016,8 +4008,7 @@ export type DefaultSecurityRulesGetInput =
 // Output Schema
 export const DefaultSecurityRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type DefaultSecurityRulesGetOutput =
   typeof DefaultSecurityRulesGetOutput.Type;
@@ -4059,8 +4050,7 @@ export const DefaultSecurityRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -4431,8 +4421,7 @@ export type ExpressRouteCircuitAuthorizationsCreateOrUpdateInput =
 // Output Schema
 export const ExpressRouteCircuitAuthorizationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRouteCircuitAuthorizationsCreateOrUpdateOutput =
   typeof ExpressRouteCircuitAuthorizationsCreateOrUpdateOutput.Type;
@@ -4510,8 +4499,7 @@ export type ExpressRouteCircuitAuthorizationsGetInput =
 // Output Schema
 export const ExpressRouteCircuitAuthorizationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRouteCircuitAuthorizationsGetOutput =
   typeof ExpressRouteCircuitAuthorizationsGetOutput.Type;
@@ -4552,8 +4540,7 @@ export const ExpressRouteCircuitAuthorizationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -4596,8 +4583,7 @@ export type ExpressRouteCircuitConnectionsCreateOrUpdateInput =
 // Output Schema
 export const ExpressRouteCircuitConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRouteCircuitConnectionsCreateOrUpdateOutput =
   typeof ExpressRouteCircuitConnectionsCreateOrUpdateOutput.Type;
@@ -4679,8 +4665,7 @@ export type ExpressRouteCircuitConnectionsGetInput =
 // Output Schema
 export const ExpressRouteCircuitConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRouteCircuitConnectionsGetOutput =
   typeof ExpressRouteCircuitConnectionsGetOutput.Type;
@@ -4723,8 +4708,7 @@ export const ExpressRouteCircuitConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -4767,8 +4751,7 @@ export type ExpressRouteCircuitPeeringsCreateOrUpdateInput =
 // Output Schema
 export const ExpressRouteCircuitPeeringsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRouteCircuitPeeringsCreateOrUpdateOutput =
   typeof ExpressRouteCircuitPeeringsCreateOrUpdateOutput.Type;
@@ -4846,8 +4829,7 @@ export type ExpressRouteCircuitPeeringsGetInput =
 // Output Schema
 export const ExpressRouteCircuitPeeringsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRouteCircuitPeeringsGetOutput =
   typeof ExpressRouteCircuitPeeringsGetOutput.Type;
@@ -4888,8 +4870,7 @@ export const ExpressRouteCircuitPeeringsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -6455,8 +6436,7 @@ export type ExpressRoutePortAuthorizationsCreateOrUpdateInput =
 // Output Schema
 export const ExpressRoutePortAuthorizationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRoutePortAuthorizationsCreateOrUpdateOutput =
   typeof ExpressRoutePortAuthorizationsCreateOrUpdateOutput.Type;
@@ -6534,8 +6514,7 @@ export type ExpressRoutePortAuthorizationsGetInput =
 // Output Schema
 export const ExpressRoutePortAuthorizationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ExpressRoutePortAuthorizationsGetOutput =
   typeof ExpressRoutePortAuthorizationsGetOutput.Type;
@@ -6576,8 +6555,7 @@ export const ExpressRoutePortAuthorizationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -7792,8 +7770,7 @@ export type FirewallPolicyRuleCollectionGroupDraftsCreateOrUpdateInput =
 // Output Schema
 export const FirewallPolicyRuleCollectionGroupDraftsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type FirewallPolicyRuleCollectionGroupDraftsCreateOrUpdateOutput =
   typeof FirewallPolicyRuleCollectionGroupDraftsCreateOrUpdateOutput.Type;
@@ -7871,8 +7848,7 @@ export type FirewallPolicyRuleCollectionGroupDraftsGetInput =
 // Output Schema
 export const FirewallPolicyRuleCollectionGroupDraftsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type FirewallPolicyRuleCollectionGroupDraftsGetOutput =
   typeof FirewallPolicyRuleCollectionGroupDraftsGetOutput.Type;
@@ -7912,8 +7888,7 @@ export type FirewallPolicyRuleCollectionGroupsCreateOrUpdateInput =
 // Output Schema
 export const FirewallPolicyRuleCollectionGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type FirewallPolicyRuleCollectionGroupsCreateOrUpdateOutput =
   typeof FirewallPolicyRuleCollectionGroupsCreateOrUpdateOutput.Type;
@@ -7991,8 +7966,7 @@ export type FirewallPolicyRuleCollectionGroupsGetInput =
 // Output Schema
 export const FirewallPolicyRuleCollectionGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type FirewallPolicyRuleCollectionGroupsGetOutput =
   typeof FirewallPolicyRuleCollectionGroupsGetOutput.Type;
@@ -8033,8 +8007,7 @@ export const FirewallPolicyRuleCollectionGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -8420,8 +8393,7 @@ export type HubRouteTablesCreateOrUpdateInput =
 // Output Schema
 export const HubRouteTablesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type HubRouteTablesCreateOrUpdateOutput =
   typeof HubRouteTablesCreateOrUpdateOutput.Type;
@@ -8498,8 +8470,7 @@ export type HubRouteTablesGetInput = typeof HubRouteTablesGetInput.Type;
 // Output Schema
 export const HubRouteTablesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type HubRouteTablesGetOutput = typeof HubRouteTablesGetOutput.Type;
 
@@ -8537,8 +8508,7 @@ export const HubRouteTablesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -8736,8 +8706,7 @@ export type InboundNatRulesCreateOrUpdateInput =
 // Output Schema
 export const InboundNatRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type InboundNatRulesCreateOrUpdateOutput =
   typeof InboundNatRulesCreateOrUpdateOutput.Type;
@@ -8815,8 +8784,7 @@ export type InboundNatRulesGetInput = typeof InboundNatRulesGetInput.Type;
 // Output Schema
 export const InboundNatRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type InboundNatRulesGetOutput = typeof InboundNatRulesGetOutput.Type;
 
@@ -8855,8 +8823,7 @@ export const InboundNatRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -8896,8 +8863,7 @@ export type InboundSecurityRuleCreateOrUpdateInput =
 // Output Schema
 export const InboundSecurityRuleCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type InboundSecurityRuleCreateOrUpdateOutput =
   typeof InboundSecurityRuleCreateOrUpdateOutput.Type;
@@ -8937,8 +8903,7 @@ export type InboundSecurityRuleGetInput =
 // Output Schema
 export const InboundSecurityRuleGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type InboundSecurityRuleGetOutput =
   typeof InboundSecurityRuleGetOutput.Type;
@@ -9224,8 +9189,23 @@ export type IpamPoolsCreateInput = typeof IpamPoolsCreateInput.Type;
 
 // Output Schema
 export const IpamPoolsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type IpamPoolsCreateOutput = typeof IpamPoolsCreateOutput.Type;
 
@@ -9295,8 +9275,23 @@ export type IpamPoolsGetInput = typeof IpamPoolsGetInput.Type;
 
 // Output Schema
 export const IpamPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type IpamPoolsGetOutput = typeof IpamPoolsGetOutput.Type;
 
@@ -9392,8 +9387,23 @@ export type IpamPoolsListInput = typeof IpamPoolsListInput.Type;
 export const IpamPoolsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      location: Schema.String,
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
     }),
   ),
   nextLink: Schema.optional(Schema.String),
@@ -9488,8 +9498,23 @@ export type IpamPoolsUpdateInput = typeof IpamPoolsUpdateInput.Type;
 
 // Output Schema
 export const IpamPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  location: Schema.String,
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type IpamPoolsUpdateOutput = typeof IpamPoolsUpdateOutput.Type;
 
@@ -10198,8 +10223,7 @@ export type LoadBalancerBackendAddressPoolsCreateOrUpdateInput =
 // Output Schema
 export const LoadBalancerBackendAddressPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type LoadBalancerBackendAddressPoolsCreateOrUpdateOutput =
   typeof LoadBalancerBackendAddressPoolsCreateOrUpdateOutput.Type;
@@ -10277,8 +10301,7 @@ export type LoadBalancerBackendAddressPoolsGetInput =
 // Output Schema
 export const LoadBalancerBackendAddressPoolsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type LoadBalancerBackendAddressPoolsGetOutput =
   typeof LoadBalancerBackendAddressPoolsGetOutput.Type;
@@ -10319,8 +10342,7 @@ export const LoadBalancerBackendAddressPoolsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -10362,8 +10384,7 @@ export type LoadBalancerFrontendIPConfigurationsGetInput =
 // Output Schema
 export const LoadBalancerFrontendIPConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type LoadBalancerFrontendIPConfigurationsGetOutput =
   typeof LoadBalancerFrontendIPConfigurationsGetOutput.Type;
@@ -10404,8 +10425,7 @@ export const LoadBalancerFrontendIPConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -10447,8 +10467,7 @@ export type LoadBalancerLoadBalancingRulesGetInput =
 // Output Schema
 export const LoadBalancerLoadBalancingRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type LoadBalancerLoadBalancingRulesGetOutput =
   typeof LoadBalancerLoadBalancingRulesGetOutput.Type;
@@ -10539,8 +10558,7 @@ export const LoadBalancerLoadBalancingRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -10629,8 +10647,7 @@ export type LoadBalancerOutboundRulesGetInput =
 // Output Schema
 export const LoadBalancerOutboundRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type LoadBalancerOutboundRulesGetOutput =
   typeof LoadBalancerOutboundRulesGetOutput.Type;
@@ -10671,8 +10688,7 @@ export const LoadBalancerOutboundRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -10713,8 +10729,7 @@ export type LoadBalancerProbesGetInput = typeof LoadBalancerProbesGetInput.Type;
 // Output Schema
 export const LoadBalancerProbesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type LoadBalancerProbesGetOutput =
   typeof LoadBalancerProbesGetOutput.Type;
@@ -10756,8 +10771,7 @@ export const LoadBalancerProbesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -11777,8 +11791,7 @@ export type NatRulesCreateOrUpdateInput =
 // Output Schema
 export const NatRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type NatRulesCreateOrUpdateOutput =
   typeof NatRulesCreateOrUpdateOutput.Type;
@@ -11849,8 +11862,7 @@ export type NatRulesGetInput = typeof NatRulesGetInput.Type;
 
 // Output Schema
 export const NatRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
 });
 export type NatRulesGetOutput = typeof NatRulesGetOutput.Type;
 
@@ -11889,8 +11901,7 @@ export const NatRulesListByVpnGatewayOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -12103,8 +12114,7 @@ export type NetworkInterfaceIPConfigurationsGetInput =
 // Output Schema
 export const NetworkInterfaceIPConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type NetworkInterfaceIPConfigurationsGetOutput =
   typeof NetworkInterfaceIPConfigurationsGetOutput.Type;
@@ -12145,8 +12155,7 @@ export const NetworkInterfaceIPConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -12803,8 +12812,7 @@ export type NetworkInterfaceTapConfigurationsCreateOrUpdateInput =
 // Output Schema
 export const NetworkInterfaceTapConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type NetworkInterfaceTapConfigurationsCreateOrUpdateOutput =
   typeof NetworkInterfaceTapConfigurationsCreateOrUpdateOutput.Type;
@@ -12882,8 +12890,7 @@ export type NetworkInterfaceTapConfigurationsGetInput =
 // Output Schema
 export const NetworkInterfaceTapConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type NetworkInterfaceTapConfigurationsGetOutput =
   typeof NetworkInterfaceTapConfigurationsGetOutput.Type;
@@ -12924,8 +12931,7 @@ export const NetworkInterfaceTapConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -14011,7 +14017,25 @@ export type NetworkSecurityPerimeterAccessRulesCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterAccessRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterAccessRulesCreateOrUpdateOutput =
   typeof NetworkSecurityPerimeterAccessRulesCreateOrUpdateOutput.Type;
 
@@ -14091,7 +14115,25 @@ export type NetworkSecurityPerimeterAccessRulesGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterAccessRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterAccessRulesGetOutput =
   typeof NetworkSecurityPerimeterAccessRulesGetOutput.Type;
 
@@ -14133,7 +14175,37 @@ export type NetworkSecurityPerimeterAccessRulesListInput =
 // Output Schema
 export const NetworkSecurityPerimeterAccessRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterAccessRulesListOutput =
@@ -14265,7 +14337,25 @@ export type NetworkSecurityPerimeterAssociationsCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterAssociationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterAssociationsCreateOrUpdateOutput =
   typeof NetworkSecurityPerimeterAssociationsCreateOrUpdateOutput.Type;
 
@@ -14341,7 +14431,25 @@ export type NetworkSecurityPerimeterAssociationsGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterAssociationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterAssociationsGetOutput =
   typeof NetworkSecurityPerimeterAssociationsGetOutput.Type;
 
@@ -14381,7 +14489,37 @@ export type NetworkSecurityPerimeterAssociationsListInput =
 // Output Schema
 export const NetworkSecurityPerimeterAssociationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterAssociationsListOutput =
@@ -14498,7 +14636,25 @@ export type NetworkSecurityPerimeterLinkReferencesGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterLinkReferencesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterLinkReferencesGetOutput =
   typeof NetworkSecurityPerimeterLinkReferencesGetOutput.Type;
 
@@ -14538,7 +14694,37 @@ export type NetworkSecurityPerimeterLinkReferencesListInput =
 // Output Schema
 export const NetworkSecurityPerimeterLinkReferencesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterLinkReferencesListOutput =
@@ -14579,7 +14765,25 @@ export type NetworkSecurityPerimeterLinksCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterLinksCreateOrUpdateOutput =
   typeof NetworkSecurityPerimeterLinksCreateOrUpdateOutput.Type;
 
@@ -14655,7 +14859,25 @@ export type NetworkSecurityPerimeterLinksGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterLinksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterLinksGetOutput =
   typeof NetworkSecurityPerimeterLinksGetOutput.Type;
 
@@ -14695,7 +14917,37 @@ export type NetworkSecurityPerimeterLinksListInput =
 // Output Schema
 export const NetworkSecurityPerimeterLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterLinksListOutput =
@@ -14736,7 +14988,25 @@ export type NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateOutput =
   typeof NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateOutput.Type;
 
@@ -14814,7 +15084,25 @@ export type NetworkSecurityPerimeterLoggingConfigurationsGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterLoggingConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterLoggingConfigurationsGetOutput =
   typeof NetworkSecurityPerimeterLoggingConfigurationsGetOutput.Type;
 
@@ -14852,7 +15140,37 @@ export type NetworkSecurityPerimeterLoggingConfigurationsListInput =
 // Output Schema
 export const NetworkSecurityPerimeterLoggingConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterLoggingConfigurationsListOutput =
@@ -14981,7 +15299,25 @@ export type NetworkSecurityPerimeterProfilesCreateOrUpdateInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterProfilesCreateOrUpdateOutput =
   typeof NetworkSecurityPerimeterProfilesCreateOrUpdateOutput.Type;
 
@@ -15057,7 +15393,25 @@ export type NetworkSecurityPerimeterProfilesGetInput =
 
 // Output Schema
 export const NetworkSecurityPerimeterProfilesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type NetworkSecurityPerimeterProfilesGetOutput =
   typeof NetworkSecurityPerimeterProfilesGetOutput.Type;
 
@@ -15097,7 +15451,37 @@ export type NetworkSecurityPerimeterProfilesListInput =
 // Output Schema
 export const NetworkSecurityPerimeterProfilesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type NetworkSecurityPerimeterProfilesListOutput =
@@ -15138,8 +15522,23 @@ export type NetworkSecurityPerimetersCreateOrUpdateInput =
 // Output Schema
 export const NetworkSecurityPerimetersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NetworkSecurityPerimetersCreateOrUpdateOutput =
   typeof NetworkSecurityPerimetersCreateOrUpdateOutput.Type;
@@ -15256,8 +15655,23 @@ export type NetworkSecurityPerimetersGetInput =
 // Output Schema
 export const NetworkSecurityPerimetersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NetworkSecurityPerimetersGetOutput =
   typeof NetworkSecurityPerimetersGetOutput.Type;
@@ -15298,8 +15712,33 @@ export const NetworkSecurityPerimetersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -15343,8 +15782,33 @@ export const NetworkSecurityPerimetersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -15385,8 +15849,23 @@ export type NetworkSecurityPerimetersPatchInput =
 // Output Schema
 export const NetworkSecurityPerimetersPatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type NetworkSecurityPerimetersPatchOutput =
   typeof NetworkSecurityPerimetersPatchOutput.Type;
@@ -16730,8 +17209,7 @@ export const NetworkWatchersGetVMSecurityRulesOutput =
                   securityRules: Schema.optional(
                     Schema.Array(
                       Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        type: Schema.optional(Schema.String),
+                        id: Schema.optional(Schema.String),
                       }),
                     ),
                   ),
@@ -16743,8 +17221,7 @@ export const NetworkWatchersGetVMSecurityRulesOutput =
                   securityRules: Schema.optional(
                     Schema.Array(
                       Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        type: Schema.optional(Schema.String),
+                        id: Schema.optional(Schema.String),
                       }),
                     ),
                   ),
@@ -16753,8 +17230,7 @@ export const NetworkWatchersGetVMSecurityRulesOutput =
               defaultSecurityRules: Schema.optional(
                 Schema.Array(
                   Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    type: Schema.optional(Schema.String),
+                    id: Schema.optional(Schema.String),
                   }),
                 ),
               ),
@@ -18076,8 +18552,7 @@ export type PeerExpressRouteCircuitConnectionsGetInput =
 // Output Schema
 export const PeerExpressRouteCircuitConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type PeerExpressRouteCircuitConnectionsGetOutput =
   typeof PeerExpressRouteCircuitConnectionsGetOutput.Type;
@@ -18120,8 +18595,7 @@ export const PeerExpressRouteCircuitConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -18774,8 +19248,7 @@ export type PrivateLinkServicesGetPrivateEndpointConnectionInput =
 // Output Schema
 export const PrivateLinkServicesGetPrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type PrivateLinkServicesGetPrivateEndpointConnectionOutput =
   typeof PrivateLinkServicesGetPrivateEndpointConnectionOutput.Type;
@@ -18992,8 +19465,7 @@ export const PrivateLinkServicesListPrivateEndpointConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -19035,8 +19507,7 @@ export type PrivateLinkServicesUpdatePrivateEndpointConnectionInput =
 // Output Schema
 export const PrivateLinkServicesUpdatePrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type PrivateLinkServicesUpdatePrivateEndpointConnectionOutput =
   typeof PrivateLinkServicesUpdatePrivateEndpointConnectionOutput.Type;
@@ -19918,7 +20389,25 @@ export type ReachabilityAnalysisIntentsCreateInput =
 
 // Output Schema
 export const ReachabilityAnalysisIntentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type ReachabilityAnalysisIntentsCreateOutput =
   typeof ReachabilityAnalysisIntentsCreateOutput.Type;
 
@@ -19998,7 +20487,25 @@ export type ReachabilityAnalysisIntentsGetInput =
 
 // Output Schema
 export const ReachabilityAnalysisIntentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type ReachabilityAnalysisIntentsGetOutput =
   typeof ReachabilityAnalysisIntentsGetOutput.Type;
 
@@ -20043,7 +20550,37 @@ export type ReachabilityAnalysisIntentsListInput =
 // Output Schema
 export const ReachabilityAnalysisIntentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReachabilityAnalysisIntentsListOutput =
@@ -20089,7 +20626,25 @@ export type ReachabilityAnalysisRunsCreateInput =
 
 // Output Schema
 export const ReachabilityAnalysisRunsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type ReachabilityAnalysisRunsCreateOutput =
   typeof ReachabilityAnalysisRunsCreateOutput.Type;
 
@@ -20169,7 +20724,25 @@ export type ReachabilityAnalysisRunsGetInput =
 
 // Output Schema
 export const ReachabilityAnalysisRunsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type ReachabilityAnalysisRunsGetOutput =
   typeof ReachabilityAnalysisRunsGetOutput.Type;
 
@@ -20215,7 +20788,37 @@ export type ReachabilityAnalysisRunsListInput =
 // Output Schema
 export const ReachabilityAnalysisRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(Schema.Struct({})),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type ReachabilityAnalysisRunsListOutput =
@@ -20862,8 +21465,7 @@ export type RoutesCreateOrUpdateInput = typeof RoutesCreateOrUpdateInput.Type;
 // Output Schema
 export const RoutesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type RoutesCreateOrUpdateOutput = typeof RoutesCreateOrUpdateOutput.Type;
 
@@ -20933,8 +21535,7 @@ export type RoutesGetInput = typeof RoutesGetInput.Type;
 
 // Output Schema
 export const RoutesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
 });
 export type RoutesGetOutput = typeof RoutesGetOutput.Type;
 
@@ -20970,8 +21571,7 @@ export type RoutesListInput = typeof RoutesListInput.Type;
 export const RoutesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
     }),
   ),
   nextLink: Schema.optional(Schema.String),
@@ -21250,8 +21850,7 @@ export type RoutingIntentCreateOrUpdateInput =
 // Output Schema
 export const RoutingIntentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type RoutingIntentCreateOrUpdateOutput =
   typeof RoutingIntentCreateOrUpdateOutput.Type;
@@ -21325,8 +21924,7 @@ export type RoutingIntentGetInput = typeof RoutingIntentGetInput.Type;
 // Output Schema
 export const RoutingIntentGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   },
 );
 export type RoutingIntentGetOutput = typeof RoutingIntentGetOutput.Type;
@@ -21366,8 +21964,7 @@ export const RoutingIntentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -22374,8 +22971,7 @@ export type SecurityRulesCreateOrUpdateInput =
 // Output Schema
 export const SecurityRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type SecurityRulesCreateOrUpdateOutput =
   typeof SecurityRulesCreateOrUpdateOutput.Type;
@@ -22449,8 +23045,7 @@ export type SecurityRulesGetInput = typeof SecurityRulesGetInput.Type;
 // Output Schema
 export const SecurityRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   },
 );
 export type SecurityRulesGetOutput = typeof SecurityRulesGetOutput.Type;
@@ -22490,8 +23085,7 @@ export const SecurityRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -23385,8 +23979,7 @@ export type ServiceEndpointPolicyDefinitionsCreateOrUpdateInput =
 // Output Schema
 export const ServiceEndpointPolicyDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ServiceEndpointPolicyDefinitionsCreateOrUpdateOutput =
   typeof ServiceEndpointPolicyDefinitionsCreateOrUpdateOutput.Type;
@@ -23464,8 +24057,7 @@ export type ServiceEndpointPolicyDefinitionsGetInput =
 // Output Schema
 export const ServiceEndpointPolicyDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type ServiceEndpointPolicyDefinitionsGetOutput =
   typeof ServiceEndpointPolicyDefinitionsGetOutput.Type;
@@ -23506,8 +24098,7 @@ export const ServiceEndpointPolicyDefinitionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -23548,8 +24139,23 @@ export type ServiceGatewaysCreateOrUpdateInput =
 // Output Schema
 export const ServiceGatewaysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ServiceGatewaysCreateOrUpdateOutput =
   typeof ServiceGatewaysCreateOrUpdateOutput.Type;
@@ -23622,8 +24228,23 @@ export type ServiceGatewaysGetInput = typeof ServiceGatewaysGetInput.Type;
 // Output Schema
 export const ServiceGatewaysGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ServiceGatewaysGetOutput = typeof ServiceGatewaysGetOutput.Type;
 
@@ -23722,8 +24343,7 @@ export const ServiceGatewaysGetServicesOutput =
             loadBalancerBackendPools: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
+                  id: Schema.optional(Schema.String),
                 }),
               ),
             ),
@@ -23771,8 +24391,33 @@ export const ServiceGatewaysListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -23810,8 +24455,33 @@ export const ServiceGatewaysListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -23932,8 +24602,23 @@ export type ServiceGatewaysUpdateTagsInput =
 // Output Schema
 export const ServiceGatewaysUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type ServiceGatewaysUpdateTagsOutput =
   typeof ServiceGatewaysUpdateTagsOutput.Type;
@@ -24085,7 +24770,25 @@ export type StaticCidrsCreateInput = typeof StaticCidrsCreateInput.Type;
 
 // Output Schema
 export const StaticCidrsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type StaticCidrsCreateOutput = typeof StaticCidrsCreateOutput.Type;
 
 // The operation
@@ -24156,9 +24859,25 @@ export const StaticCidrsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StaticCidrsGetInput = typeof StaticCidrsGetInput.Type;
 
 // Output Schema
-export const StaticCidrsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const StaticCidrsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
 export type StaticCidrsGetOutput = typeof StaticCidrsGetOutput.Type;
 
 // The operation
@@ -24198,7 +24917,27 @@ export type StaticCidrsListInput = typeof StaticCidrsListInput.Type;
 
 // Output Schema
 export const StaticCidrsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(Schema.Struct({})),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
   nextLink: Schema.optional(Schema.String),
 });
 export type StaticCidrsListOutput = typeof StaticCidrsListOutput.Type;
@@ -24416,8 +25155,7 @@ export type SubnetsCreateOrUpdateInput = typeof SubnetsCreateOrUpdateInput.Type;
 // Output Schema
 export const SubnetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type SubnetsCreateOrUpdateOutput =
   typeof SubnetsCreateOrUpdateOutput.Type;
@@ -24489,8 +25227,7 @@ export type SubnetsGetInput = typeof SubnetsGetInput.Type;
 
 // Output Schema
 export const SubnetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
 });
 export type SubnetsGetOutput = typeof SubnetsGetOutput.Type;
 
@@ -24527,8 +25264,7 @@ export type SubnetsListInput = typeof SubnetsListInput.Type;
 export const SubnetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
+      id: Schema.optional(Schema.String),
     }),
   ),
   nextLink: Schema.optional(Schema.String),
@@ -24892,8 +25628,23 @@ export type VerifierWorkspacesCreateInput =
 // Output Schema
 export const VerifierWorkspacesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type VerifierWorkspacesCreateOutput =
   typeof VerifierWorkspacesCreateOutput.Type;
@@ -24974,8 +25725,23 @@ export type VerifierWorkspacesGetInput = typeof VerifierWorkspacesGetInput.Type;
 // Output Schema
 export const VerifierWorkspacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type VerifierWorkspacesGetOutput =
   typeof VerifierWorkspacesGetOutput.Type;
@@ -25022,8 +25788,33 @@ export const VerifierWorkspacesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -25071,8 +25862,23 @@ export type VerifierWorkspacesUpdateInput =
 // Output Schema
 export const VerifierWorkspacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type VerifierWorkspacesUpdateOutput =
   typeof VerifierWorkspacesUpdateOutput.Type;
@@ -25222,8 +26028,7 @@ export type VirtualApplianceSitesCreateOrUpdateInput =
 // Output Schema
 export const VirtualApplianceSitesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualApplianceSitesCreateOrUpdateOutput =
   typeof VirtualApplianceSitesCreateOrUpdateOutput.Type;
@@ -25302,8 +26107,7 @@ export type VirtualApplianceSitesGetInput =
 // Output Schema
 export const VirtualApplianceSitesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualApplianceSitesGetOutput =
   typeof VirtualApplianceSitesGetOutput.Type;
@@ -25345,8 +26149,7 @@ export const VirtualApplianceSitesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -25474,8 +26277,7 @@ export type VirtualHubBgpConnectionCreateOrUpdateInput =
 // Output Schema
 export const VirtualHubBgpConnectionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualHubBgpConnectionCreateOrUpdateOutput =
   typeof VirtualHubBgpConnectionCreateOrUpdateOutput.Type;
@@ -25553,8 +26355,7 @@ export type VirtualHubBgpConnectionGetInput =
 // Output Schema
 export const VirtualHubBgpConnectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualHubBgpConnectionGetOutput =
   typeof VirtualHubBgpConnectionGetOutput.Type;
@@ -25596,8 +26397,7 @@ export const VirtualHubBgpConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -25741,8 +26541,7 @@ export type VirtualHubIpConfigurationCreateOrUpdateInput =
 // Output Schema
 export const VirtualHubIpConfigurationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualHubIpConfigurationCreateOrUpdateOutput =
   typeof VirtualHubIpConfigurationCreateOrUpdateOutput.Type;
@@ -25820,8 +26619,7 @@ export type VirtualHubIpConfigurationGetInput =
 // Output Schema
 export const VirtualHubIpConfigurationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualHubIpConfigurationGetOutput =
   typeof VirtualHubIpConfigurationGetOutput.Type;
@@ -25862,8 +26660,7 @@ export const VirtualHubIpConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -27169,8 +27966,7 @@ export type VirtualNetworkGatewayNatRulesCreateOrUpdateInput =
 // Output Schema
 export const VirtualNetworkGatewayNatRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualNetworkGatewayNatRulesCreateOrUpdateOutput =
   typeof VirtualNetworkGatewayNatRulesCreateOrUpdateOutput.Type;
@@ -27248,8 +28044,7 @@ export type VirtualNetworkGatewayNatRulesGetInput =
 // Output Schema
 export const VirtualNetworkGatewayNatRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualNetworkGatewayNatRulesGetOutput =
   typeof VirtualNetworkGatewayNatRulesGetOutput.Type;
@@ -27290,8 +28085,7 @@ export const VirtualNetworkGatewayNatRulesListByVirtualNetworkGatewayOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -28943,8 +29737,7 @@ export type VirtualNetworkPeeringsCreateOrUpdateInput =
 // Output Schema
 export const VirtualNetworkPeeringsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualNetworkPeeringsCreateOrUpdateOutput =
   typeof VirtualNetworkPeeringsCreateOrUpdateOutput.Type;
@@ -29023,8 +29816,7 @@ export type VirtualNetworkPeeringsGetInput =
 // Output Schema
 export const VirtualNetworkPeeringsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualNetworkPeeringsGetOutput =
   typeof VirtualNetworkPeeringsGetOutput.Type;
@@ -29066,8 +29858,7 @@ export const VirtualNetworkPeeringsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -29761,8 +30552,7 @@ export type VirtualRouterPeeringsCreateOrUpdateInput =
 // Output Schema
 export const VirtualRouterPeeringsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualRouterPeeringsCreateOrUpdateOutput =
   typeof VirtualRouterPeeringsCreateOrUpdateOutput.Type;
@@ -29841,8 +30631,7 @@ export type VirtualRouterPeeringsGetInput =
 // Output Schema
 export const VirtualRouterPeeringsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VirtualRouterPeeringsGetOutput =
   typeof VirtualRouterPeeringsGetOutput.Type;
@@ -29884,8 +30673,7 @@ export const VirtualRouterPeeringsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -30962,8 +31750,7 @@ export const VpnLinkConnectionsGetAllSharedKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -31008,8 +31795,7 @@ export type VpnLinkConnectionsGetDefaultSharedKeyInput =
 // Output Schema
 export const VpnLinkConnectionsGetDefaultSharedKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VpnLinkConnectionsGetDefaultSharedKeyOutput =
   typeof VpnLinkConnectionsGetDefaultSharedKeyOutput.Type;
@@ -31093,8 +31879,7 @@ export const VpnLinkConnectionsListByVpnConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -31138,8 +31923,7 @@ export type VpnLinkConnectionsListDefaultSharedKeyInput =
 // Output Schema
 export const VpnLinkConnectionsListDefaultSharedKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VpnLinkConnectionsListDefaultSharedKeyOutput =
   typeof VpnLinkConnectionsListDefaultSharedKeyOutput.Type;
@@ -31221,8 +32005,7 @@ export type VpnLinkConnectionsSetOrInitDefaultSharedKeyInput =
 // Output Schema
 export const VpnLinkConnectionsSetOrInitDefaultSharedKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VpnLinkConnectionsSetOrInitDefaultSharedKeyOutput =
   typeof VpnLinkConnectionsSetOrInitDefaultSharedKeyOutput.Type;
@@ -31602,8 +32385,7 @@ export type VpnSiteLinkConnectionsGetInput =
 // Output Schema
 export const VpnSiteLinkConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
   });
 export type VpnSiteLinkConnectionsGetOutput =
   typeof VpnSiteLinkConnectionsGetOutput.Type;
@@ -31642,8 +32424,7 @@ export type VpnSiteLinksGetInput = typeof VpnSiteLinksGetInput.Type;
 
 // Output Schema
 export const VpnSiteLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
 });
 export type VpnSiteLinksGetOutput = typeof VpnSiteLinksGetOutput.Type;
 
@@ -31682,8 +32463,7 @@ export const VpnSiteLinksListByVpnSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),

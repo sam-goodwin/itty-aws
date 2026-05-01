@@ -10,7 +10,7 @@ export const AnnotationsPartialUpdateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     content: Schema.optional(Schema.NullOr(Schema.String)),
     date_marker: Schema.optional(Schema.NullOr(Schema.String)),
-    creation_type: Schema.optional(Schema.Struct({})),
+    creation_type: Schema.optional(Schema.Literals(["USR", "GIT"])),
     dashboard_item: Schema.optional(Schema.NullOr(Schema.Number)),
     dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
     dashboard_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -35,7 +35,15 @@ export const AnnotationsPartialUpdateInput =
     created_at: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.String),
     deleted: Schema.optional(Schema.Boolean),
-    scope: Schema.optional(Schema.Struct({})),
+    scope: Schema.optional(
+      Schema.Literals([
+        "dashboard_item",
+        "dashboard",
+        "project",
+        "organization",
+        "recording",
+      ]),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -51,7 +59,7 @@ export const AnnotationsPartialUpdateOutput =
     id: Schema.Number,
     content: Schema.optional(Schema.NullOr(Schema.String)),
     date_marker: Schema.optional(Schema.NullOr(Schema.String)),
-    creation_type: Schema.optional(Schema.Struct({})),
+    creation_type: Schema.optional(Schema.Literals(["USR", "GIT"])),
     dashboard_item: Schema.optional(Schema.NullOr(Schema.Number)),
     dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
     dashboard_name: Schema.NullOr(Schema.String),
@@ -74,7 +82,15 @@ export const AnnotationsPartialUpdateOutput =
     created_at: Schema.NullOr(Schema.String),
     updated_at: Schema.String,
     deleted: Schema.optional(Schema.Boolean),
-    scope: Schema.optional(Schema.Struct({})),
+    scope: Schema.optional(
+      Schema.Literals([
+        "dashboard_item",
+        "dashboard",
+        "project",
+        "organization",
+        "recording",
+      ]),
+    ),
   });
 export type AnnotationsPartialUpdateOutput =
   typeof AnnotationsPartialUpdateOutput.Type;

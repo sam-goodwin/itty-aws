@@ -10352,14 +10352,6 @@ export class TooManyDistributions extends S.TaggedErrorClass<TooManyDistribution
   "TooManyDistributions",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
-export class TooManyDistributionsAssociatedToCachePolicy extends S.TaggedErrorClass<TooManyDistributionsAssociatedToCachePolicy>()(
-  "TooManyDistributionsAssociatedToCachePolicy",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class TooManyDistributionsAssociatedToFieldLevelEncryptionConfig extends S.TaggedErrorClass<TooManyDistributionsAssociatedToFieldLevelEncryptionConfig>()(
-  "TooManyDistributionsAssociatedToFieldLevelEncryptionConfig",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class EntityAlreadyExists extends S.TaggedErrorClass<EntityAlreadyExists>()(
   "EntityAlreadyExists",
   { Message: S.optional(S.String) },
@@ -10708,6 +10700,14 @@ export class CannotUpdateEntityWhileInUse extends S.TaggedErrorClass<CannotUpdat
   "CannotUpdateEntityWhileInUse",
   { Message: S.optional(S.String) },
 ).pipe(C.withConflictError, C.withDependencyViolationError) {}
+export class TooManyDistributionsAssociatedToCachePolicy extends S.TaggedErrorClass<TooManyDistributionsAssociatedToCachePolicy>()(
+  "TooManyDistributionsAssociatedToCachePolicy",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class TooManyDistributionsAssociatedToFieldLevelEncryptionConfig extends S.TaggedErrorClass<TooManyDistributionsAssociatedToFieldLevelEncryptionConfig>()(
+  "TooManyDistributionsAssociatedToFieldLevelEncryptionConfig",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class TooManyDistributionsAssociatedToKeyGroup extends S.TaggedErrorClass<TooManyDistributionsAssociatedToKeyGroup>()(
   "TooManyDistributionsAssociatedToKeyGroup",
   { Message: S.optional(S.String) },

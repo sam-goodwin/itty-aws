@@ -8,7 +8,7 @@ export const LlmAnalyticsSummarizationBatchCheckCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     trace_ids: Schema.Array(Schema.String),
-    mode: Schema.optional(Schema.Struct({})),
+    mode: Schema.optional(Schema.Literals(["minimal", "detailed"])),
     model: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({

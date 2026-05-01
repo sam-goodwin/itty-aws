@@ -72,7 +72,7 @@ export const ProductToursPartialUpdateInput =
     ),
     updated_at: Schema.optional(Schema.String),
     archived: Schema.optional(Schema.Boolean),
-    creation_context: Schema.optional(Schema.Struct({})),
+    creation_context: Schema.optional(Schema.Literals(["app", "toolbar"])),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -144,7 +144,7 @@ export const ProductToursPartialUpdateOutput =
     }),
     updated_at: Schema.String,
     archived: Schema.optional(Schema.Boolean),
-    creation_context: Schema.optional(Schema.Struct({})),
+    creation_context: Schema.optional(Schema.Literals(["app", "toolbar"])),
   });
 export type ProductToursPartialUpdateOutput =
   typeof ProductToursPartialUpdateOutput.Type;

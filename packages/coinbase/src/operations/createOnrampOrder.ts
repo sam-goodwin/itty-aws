@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export const CreateOnrampOrderInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     agreementAcceptedAt: Schema.String,
-    destinationAddress: Schema.Struct({}),
+    destinationAddress: Schema.String,
     destinationNetwork: Schema.String,
     email: Schema.String,
     isQuote: Schema.optional(Schema.Boolean),
@@ -50,7 +50,7 @@ export const CreateOnrampOrderOutput =
         }),
       ),
       exchangeRate: Schema.String,
-      destinationAddress: Schema.Struct({}),
+      destinationAddress: Schema.String,
       destinationNetwork: Schema.String,
       status: Schema.Literals([
         "ONRAMP_ORDER_STATUS_PENDING_AUTH",
@@ -66,7 +66,7 @@ export const CreateOnrampOrderOutput =
     }),
     paymentLink: Schema.optional(
       Schema.Struct({
-        url: Schema.Struct({}),
+        url: Schema.String,
         paymentLinkType: Schema.Literals([
           "PAYMENT_LINK_TYPE_APPLE_PAY_BUTTON",
         ]),

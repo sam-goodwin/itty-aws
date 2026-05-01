@@ -369,8 +369,35 @@ function openApiTypeToEffectSchema(
     );
   }
 
-  // Handle allOf - merge all schemas
+  // Handle allOf - if it's a single entry referencing a non-object (enum,
+  // scalar), resolve and pass through directly so we don't lose the type.
+  // Otherwise merge object schemas.
   if (prop.allOf && prop.allOf.length > 0) {
+    if (prop.allOf.length === 1) {
+      let resolved = prop.allOf[0];
+      if (resolved.$ref) {
+        if (seenRefs.has(resolved.$ref)) return "Schema.Unknown";
+        resolved = resolveRef(spec, resolved.$ref);
+        // Recurse with the resolved schema. Carry over `description` and
+        // nullability from the parent if set.
+        const mergedProp: SchemaObject = {
+          ...resolved,
+          ...(prop.nullable !== undefined ? { nullable: prop.nullable } : {}),
+          ...(prop["x-nullable"] !== undefined ? { "x-nullable": prop["x-nullable"] } : {}),
+          ...(prop["x-sensitive"] !== undefined ? { "x-sensitive": prop["x-sensitive"] } : {}),
+        };
+        return openApiTypeToEffectSchema(
+          mergedProp,
+          spec,
+          indent,
+          new Set([...seenRefs, prop.allOf[0].$ref!]),
+          ctx,
+        );
+      }
+      // Inline schema — fall through to type/enum/object handling on `resolved`.
+      return openApiTypeToEffectSchema(resolved, spec, indent, seenRefs, ctx);
+    }
+
     const mergedProps: Record<string, SchemaObject> = {};
     const mergedRequired: string[] = [];
 

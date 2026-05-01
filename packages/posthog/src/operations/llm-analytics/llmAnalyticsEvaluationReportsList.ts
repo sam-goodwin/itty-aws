@@ -28,7 +28,7 @@ export const LlmAnalyticsEvaluationReportsListOutput =
       Schema.Struct({
         id: Schema.String,
         evaluation: Schema.String,
-        frequency: Schema.optional(Schema.Struct({})),
+        frequency: Schema.optional(Schema.Literals(["scheduled", "every_n"])),
         rrule: Schema.optional(Schema.String),
         starts_at: Schema.optional(Schema.NullOr(Schema.String)),
         timezone_name: Schema.optional(Schema.String),

@@ -16,7 +16,7 @@ export const SavedRegenerateCreateInput =
     type: Schema.optional(
       Schema.Literals(["screenshot", "iframe", "recording"]),
     ),
-    status: Schema.Struct({}),
+    status: Schema.Literals(["processing", "completed", "failed"]),
     has_content: Schema.Boolean,
     snapshots: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     deleted: Schema.optional(Schema.Boolean),

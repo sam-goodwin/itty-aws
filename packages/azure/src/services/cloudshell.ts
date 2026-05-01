@@ -126,7 +126,7 @@ export const GetConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetConsoleInput = typeof GetConsoleInput.Type;
 
 // Output Schema
-export const GetConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const GetConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type GetConsoleOutput = typeof GetConsoleOutput.Type;
 
 // The operation
@@ -152,7 +152,7 @@ export type GetConsoleWithLocationInput =
 
 // Output Schema
 export const GetConsoleWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type GetConsoleWithLocationOutput =
   typeof GetConsoleWithLocationOutput.Type;
 
@@ -180,9 +180,7 @@ export const GetUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetUserSettingsInput = typeof GetUserSettingsInput.Type;
 
 // Output Schema
-export const GetUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const GetUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type GetUserSettingsOutput = typeof GetUserSettingsOutput.Type;
 
 // The operation
@@ -208,7 +206,7 @@ export type GetUserSettingsWithLocationInput =
 
 // Output Schema
 export const GetUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type GetUserSettingsWithLocationOutput =
   typeof GetUserSettingsWithLocationOutput.Type;
 
@@ -290,7 +288,7 @@ export type PatchUserSettingsInput = typeof PatchUserSettingsInput.Type;
 
 // Output Schema
 export const PatchUserSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type PatchUserSettingsOutput = typeof PatchUserSettingsOutput.Type;
 
 // The operation
@@ -316,7 +314,7 @@ export type PatchUserSettingsWithLocationInput =
 
 // Output Schema
 export const PatchUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type PatchUserSettingsWithLocationOutput =
   typeof PatchUserSettingsWithLocationOutput.Type;
 
@@ -343,7 +341,7 @@ export const PutConsoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PutConsoleInput = typeof PutConsoleInput.Type;
 
 // Output Schema
-export const PutConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export const PutConsoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type PutConsoleOutput = typeof PutConsoleOutput.Type;
 
 // The operation
@@ -369,7 +367,7 @@ export type PutConsoleWithLocationInput =
 
 // Output Schema
 export const PutConsoleWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type PutConsoleWithLocationOutput =
   typeof PutConsoleWithLocationOutput.Type;
 
@@ -397,9 +395,7 @@ export const PutUserSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PutUserSettingsInput = typeof PutUserSettingsInput.Type;
 
 // Output Schema
-export const PutUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const PutUserSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type PutUserSettingsOutput = typeof PutUserSettingsOutput.Type;
 
 // The operation
@@ -425,7 +421,7 @@ export type PutUserSettingsWithLocationInput =
 
 // Output Schema
 export const PutUserSettingsWithLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type PutUserSettingsWithLocationOutput =
   typeof PutUserSettingsWithLocationOutput.Type;
 

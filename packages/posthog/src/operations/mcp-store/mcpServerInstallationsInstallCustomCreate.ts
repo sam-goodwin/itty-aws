@@ -15,7 +15,9 @@ export const McpServerInstallationsInstallCustomCreateInput =
     description: Schema.optional(Schema.String),
     client_id: Schema.optional(Schema.String),
     client_secret: Schema.optional(SensitiveString),
-    install_source: Schema.optional(Schema.Struct({})),
+    install_source: Schema.optional(
+      Schema.Literals(["posthog", "posthog-code"]),
+    ),
     posthog_code_callback_url: Schema.optional(Schema.String),
   }).pipe(
     T.Http({

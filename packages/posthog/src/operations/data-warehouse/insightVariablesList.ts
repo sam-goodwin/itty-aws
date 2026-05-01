@@ -26,7 +26,7 @@ export const InsightVariablesListOutput =
       Schema.Struct({
         id: Schema.String,
         name: Schema.String,
-        type: Schema.Struct({}),
+        type: Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
         default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
         created_by: Schema.NullOr(Schema.Number),
         created_at: Schema.String,

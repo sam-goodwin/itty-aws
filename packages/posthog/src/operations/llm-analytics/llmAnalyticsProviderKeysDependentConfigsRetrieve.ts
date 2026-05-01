@@ -31,7 +31,7 @@ export const LlmAnalyticsProviderKeysDependentConfigsRetrieveOutput =
       "azure_openai",
     ]),
     name: Schema.String,
-    state: Schema.Struct({}),
+    state: Schema.Literals(["unknown", "ok", "invalid", "error"]),
     error_message: Schema.NullOr(Schema.String),
     api_key: Schema.optional(SensitiveString),
     api_key_masked: Schema.String,

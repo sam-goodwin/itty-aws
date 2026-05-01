@@ -23,29 +23,31 @@ export type RoleExternalReferencesLookupRetrieveInput =
 // Output Schema
 export const RoleExternalReferencesLookupRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reference: Schema.Struct({
-      id: Schema.String,
-      provider: Schema.String,
-      provider_organization_id: Schema.String,
-      provider_role_id: Schema.String,
-      provider_role_slug: Schema.optional(Schema.NullOr(Schema.String)),
-      provider_role_name: Schema.String,
-      role: Schema.String,
-      created_at: Schema.String,
-      created_by: Schema.Struct({
-        id: Schema.Number,
-        uuid: Schema.String,
-        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        email: Schema.String,
-        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        hedgehog_config: Schema.NullOr(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+    reference: Schema.NullOr(
+      Schema.Struct({
+        id: Schema.String,
+        provider: Schema.String,
+        provider_organization_id: Schema.String,
+        provider_role_id: Schema.String,
+        provider_role_slug: Schema.optional(Schema.NullOr(Schema.String)),
+        provider_role_name: Schema.String,
+        role: Schema.String,
+        created_at: Schema.String,
+        created_by: Schema.Struct({
+          id: Schema.Number,
+          uuid: Schema.String,
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.String,
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.NullOr(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          role_at_organization: Schema.optional(Schema.Unknown),
+        }),
       }),
-    }),
+    ),
   });
 export type RoleExternalReferencesLookupRetrieveOutput =
   typeof RoleExternalReferencesLookupRetrieveOutput.Type;

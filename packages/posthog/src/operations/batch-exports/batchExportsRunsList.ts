@@ -26,7 +26,18 @@ export const BatchExportsRunsListOutput =
     results: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        status: Schema.Struct({}),
+        status: Schema.Literals([
+          "Cancelled",
+          "Completed",
+          "ContinuedAsNew",
+          "Failed",
+          "FailedRetryable",
+          "FailedBilling",
+          "Terminated",
+          "TimedOut",
+          "Running",
+          "Starting",
+        ]),
         records_completed: Schema.optional(Schema.NullOr(Schema.Number)),
         records_failed: Schema.optional(Schema.NullOr(Schema.Number)),
         latest_error: Schema.optional(Schema.NullOr(Schema.String)),

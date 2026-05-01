@@ -66,7 +66,7 @@ export const ProductToursPublishDraftCreateInput =
     }),
     updated_at: Schema.String,
     archived: Schema.optional(Schema.Boolean),
-    creation_context: Schema.optional(Schema.Struct({})),
+    creation_context: Schema.optional(Schema.Literals(["app", "toolbar"])),
   }).pipe(
     T.Http({
       method: "POST",

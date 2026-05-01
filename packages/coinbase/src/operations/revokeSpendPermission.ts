@@ -17,7 +17,7 @@ export const RevokeSpendPermissionInput =
       "polygon",
     ]),
     permissionHash: Schema.String,
-    paymasterUrl: Schema.optional(Schema.Struct({})),
+    paymasterUrl: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",

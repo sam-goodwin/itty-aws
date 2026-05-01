@@ -8,7 +8,7 @@ export const AlertsSimulateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     insight: Schema.Number,
-    detector_config: Schema.Struct({}),
+    detector_config: Schema.Unknown,
     series_index: Schema.optional(Schema.Number),
     date_from: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(

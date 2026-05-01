@@ -26,7 +26,11 @@ export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
 
 // Output Schema
 export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
 
@@ -99,9 +103,11 @@ export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
 
 // Output Schema
-export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-);
+export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+});
 export type ExtensionsGetOutput = typeof ExtensionsGetOutput.Type;
 
 // The operation
@@ -137,7 +143,15 @@ export type ExtensionsListInput = typeof ExtensionsListInput.Type;
 
 // Output Schema
 export const ExtensionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
   nextLink: Schema.optional(Schema.String),
 });
 export type ExtensionsListOutput = typeof ExtensionsListOutput.Type;
@@ -175,7 +189,11 @@ export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
 
 // Output Schema
 export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  },
 );
 export type ExtensionsUpdateOutput = typeof ExtensionsUpdateOutput.Type;
 
@@ -296,7 +314,11 @@ export type FluxConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const FluxConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type FluxConfigurationsCreateOrUpdateOutput =
   typeof FluxConfigurationsCreateOrUpdateOutput.Type;
 
@@ -378,7 +400,11 @@ export type FluxConfigurationsGetInput = typeof FluxConfigurationsGetInput.Type;
 
 // Output Schema
 export const FluxConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type FluxConfigurationsGetOutput =
   typeof FluxConfigurationsGetOutput.Type;
 
@@ -420,7 +446,15 @@ export type FluxConfigurationsListInput =
 // Output Schema
 export const FluxConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type FluxConfigurationsListOutput =
@@ -463,7 +497,11 @@ export type FluxConfigurationsUpdateInput =
 
 // Output Schema
 export const FluxConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type FluxConfigurationsUpdateOutput =
   typeof FluxConfigurationsUpdateOutput.Type;
 
@@ -711,7 +749,11 @@ export type SourceControlConfigurationsCreateOrUpdateInput =
 
 // Output Schema
 export const SourceControlConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SourceControlConfigurationsCreateOrUpdateOutput =
   typeof SourceControlConfigurationsCreateOrUpdateOutput.Type;
 
@@ -791,7 +833,11 @@ export type SourceControlConfigurationsGetInput =
 
 // Output Schema
 export const SourceControlConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type SourceControlConfigurationsGetOutput =
   typeof SourceControlConfigurationsGetOutput.Type;
 
@@ -832,7 +878,15 @@ export type SourceControlConfigurationsListInput =
 // Output Schema
 export const SourceControlConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type SourceControlConfigurationsListOutput =

@@ -2730,20 +2730,7 @@ export const WorkflowRunActionRepetitionsListExpressionTracesOutput =
         Schema.Struct({
           text: Schema.optional(Schema.String),
           value: Schema.optional(Schema.Unknown),
-          subexpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                text: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.Unknown),
-                subexpressions: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.String,
-                  }),
-                ),
-              }),
-            ),
-          ),
+          subexpressions: Schema.optional(Schema.Array(Schema.Unknown)),
           error: Schema.optional(
             Schema.Struct({
               code: Schema.String,
@@ -3164,20 +3151,7 @@ export const WorkflowRunActionsListExpressionTracesOutput =
         Schema.Struct({
           text: Schema.optional(Schema.String),
           value: Schema.optional(Schema.Unknown),
-          subexpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                text: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.Unknown),
-                subexpressions: Schema.optional(Schema.Array(Schema.Unknown)),
-                error: Schema.optional(
-                  Schema.Struct({
-                    code: Schema.String,
-                  }),
-                ),
-              }),
-            ),
-          ),
+          subexpressions: Schema.optional(Schema.Array(Schema.Unknown)),
           error: Schema.optional(
             Schema.Struct({
               code: Schema.String,

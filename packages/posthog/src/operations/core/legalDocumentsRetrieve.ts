@@ -25,10 +25,12 @@ export const LegalDocumentsRetrieveOutput =
     company_name: Schema.String,
     representative_email: Schema.String,
     status: Schema.String,
-    created_by: Schema.Struct({
-      first_name: Schema.String,
-      email: Schema.String,
-    }),
+    created_by: Schema.NullOr(
+      Schema.Struct({
+        first_name: Schema.String,
+        email: Schema.String,
+      }),
+    ),
     created_at: Schema.String,
   });
 export type LegalDocumentsRetrieveOutput =

@@ -760,8 +760,9 @@ export type NamespacesCreateOrUpdateInput =
 // Output Schema
 export const NamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type NamespacesCreateOrUpdateOutput =
   typeof NamespacesCreateOrUpdateOutput.Type;
@@ -950,8 +951,9 @@ export type NamespacesGetInput = typeof NamespacesGetInput.Type;
 
 // Output Schema
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
 
@@ -1070,8 +1072,9 @@ export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        location: Schema.String,
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
   ),
@@ -1159,8 +1162,9 @@ export const NamespacesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1337,8 +1341,9 @@ export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
 // Output Schema
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 );
 export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;

@@ -27,15 +27,23 @@ export type ApplicationDefinitionsCreateOrUpdateInput =
 // Output Schema
 export const ApplicationDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -107,15 +115,23 @@ export type ApplicationDefinitionsGetInput =
 // Output Schema
 export const ApplicationDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -157,15 +173,33 @@ export const ApplicationDefinitionsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          sku: Schema.optional(
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
             Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(Schema.String),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              model: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
         }),
@@ -209,15 +243,33 @@ export const ApplicationDefinitionsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          sku: Schema.optional(
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
             Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(Schema.String),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              model: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
         }),
@@ -258,15 +310,23 @@ export type ApplicationDefinitionsUpdateInput =
 // Output Schema
 export const ApplicationDefinitionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -304,15 +364,23 @@ export type ApplicationsCreateOrUpdateInput =
 // Output Schema
 export const ApplicationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -345,15 +413,23 @@ export type ApplicationsCreateOrUpdateByIdInput =
 // Output Schema
 export const ApplicationsCreateOrUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -445,15 +521,23 @@ export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
 
 // Output Schema
 export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  managedBy: Schema.optional(Schema.String),
-  sku: Schema.optional(
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  systemData: Schema.optional(
     Schema.Struct({
-      name: Schema.String,
-      tier: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
 });
@@ -482,15 +566,23 @@ export type ApplicationsGetByIdInput = typeof ApplicationsGetByIdInput.Type;
 // Output Schema
 export const ApplicationsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -574,15 +666,33 @@ export const ApplicationsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          sku: Schema.optional(
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
             Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(Schema.String),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              model: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
         }),
@@ -626,15 +736,33 @@ export const ApplicationsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          managedBy: Schema.optional(Schema.String),
-          sku: Schema.optional(
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          location: Schema.optional(Schema.String),
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          systemData: Schema.optional(
             Schema.Struct({
-              name: Schema.String,
-              tier: Schema.optional(Schema.String),
-              size: Schema.optional(Schema.String),
-              family: Schema.optional(Schema.String),
-              model: Schema.optional(Schema.String),
-              capacity: Schema.optional(Schema.Number),
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
             }),
           ),
         }),
@@ -759,15 +887,23 @@ export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
 // Output Schema
 export const ApplicationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });
@@ -834,15 +970,23 @@ export type ApplicationsUpdateByIdInput =
 // Output Schema
 export const ApplicationsUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedBy: Schema.optional(Schema.String),
-    sku: Schema.optional(
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    systemData: Schema.optional(
       Schema.Struct({
-        name: Schema.String,
-        tier: Schema.optional(Schema.String),
-        size: Schema.optional(Schema.String),
-        family: Schema.optional(Schema.String),
-        model: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.Number),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
   });

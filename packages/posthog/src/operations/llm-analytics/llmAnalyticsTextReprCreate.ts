@@ -7,7 +7,12 @@ import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 export const LlmAnalyticsTextReprCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    event_type: Schema.Struct({}),
+    event_type: Schema.Literals([
+      "$ai_generation",
+      "$ai_span",
+      "$ai_embedding",
+      "$ai_trace",
+    ]),
     data: Schema.Unknown,
     options: Schema.optional(
       Schema.Struct({

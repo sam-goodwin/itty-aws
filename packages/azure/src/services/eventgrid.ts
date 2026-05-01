@@ -991,8 +991,9 @@ export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;
 // Output Schema
 export const DomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type DomainsCreateOrUpdateOutput =
   typeof DomainsCreateOrUpdateOutput.Type;
@@ -1055,8 +1056,9 @@ export type DomainsGetInput = typeof DomainsGetInput.Type;
 
 // Output Schema
 export const DomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type DomainsGetOutput = typeof DomainsGetOutput.Type;
 
@@ -1092,8 +1094,9 @@ export const DomainsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -1133,8 +1136,9 @@ export const DomainsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -2437,8 +2441,9 @@ export type NamespacesCreateOrUpdateInput =
 // Output Schema
 export const NamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type NamespacesCreateOrUpdateOutput =
   typeof NamespacesCreateOrUpdateOutput.Type;
@@ -2501,8 +2506,9 @@ export type NamespacesGetInput = typeof NamespacesGetInput.Type;
 
 // Output Schema
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
 
@@ -2538,8 +2544,9 @@ export const NamespacesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -2578,8 +2585,9 @@ export const NamespacesListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -2689,8 +2697,9 @@ export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
 // Output Schema
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 );
 export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
@@ -3722,8 +3731,9 @@ export type PartnerNamespacesCreateOrUpdateInput =
 // Output Schema
 export const PartnerNamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PartnerNamespacesCreateOrUpdateOutput =
   typeof PartnerNamespacesCreateOrUpdateOutput.Type;
@@ -3793,8 +3803,9 @@ export type PartnerNamespacesGetInput = typeof PartnerNamespacesGetInput.Type;
 // Output Schema
 export const PartnerNamespacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PartnerNamespacesGetOutput = typeof PartnerNamespacesGetOutput.Type;
 
@@ -3832,8 +3843,9 @@ export const PartnerNamespacesListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -3872,8 +3884,9 @@ export const PartnerNamespacesListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -4019,8 +4032,9 @@ export type PartnerRegistrationsCreateOrUpdateInput =
 // Output Schema
 export const PartnerRegistrationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PartnerRegistrationsCreateOrUpdateOutput =
   typeof PartnerRegistrationsCreateOrUpdateOutput.Type;
@@ -4091,8 +4105,9 @@ export type PartnerRegistrationsGetInput =
 // Output Schema
 export const PartnerRegistrationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PartnerRegistrationsGetOutput =
   typeof PartnerRegistrationsGetOutput.Type;
@@ -4131,8 +4146,9 @@ export const PartnerRegistrationsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -4171,8 +4187,9 @@ export const PartnerRegistrationsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -4527,8 +4544,9 @@ export type PartnerTopicsActivateInput = typeof PartnerTopicsActivateInput.Type;
 // Output Schema
 export const PartnerTopicsActivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PartnerTopicsActivateOutput =
   typeof PartnerTopicsActivateOutput.Type;
@@ -4565,8 +4583,9 @@ export type PartnerTopicsCreateOrUpdateInput =
 // Output Schema
 export const PartnerTopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PartnerTopicsCreateOrUpdateOutput =
   typeof PartnerTopicsCreateOrUpdateOutput.Type;
@@ -4603,8 +4622,9 @@ export type PartnerTopicsDeactivateInput =
 // Output Schema
 export const PartnerTopicsDeactivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type PartnerTopicsDeactivateOutput =
   typeof PartnerTopicsDeactivateOutput.Type;
@@ -4670,8 +4690,9 @@ export type PartnerTopicsGetInput = typeof PartnerTopicsGetInput.Type;
 // Output Schema
 export const PartnerTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   },
 );
 export type PartnerTopicsGetOutput = typeof PartnerTopicsGetOutput.Type;
@@ -4708,8 +4729,9 @@ export const PartnerTopicsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -4748,8 +4770,9 @@ export const PartnerTopicsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -5558,8 +5581,9 @@ export type SystemTopicsCreateOrUpdateInput =
 // Output Schema
 export const SystemTopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type SystemTopicsCreateOrUpdateOutput =
   typeof SystemTopicsCreateOrUpdateOutput.Type;
@@ -5623,8 +5647,9 @@ export type SystemTopicsGetInput = typeof SystemTopicsGetInput.Type;
 
 // Output Schema
 export const SystemTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type SystemTopicsGetOutput = typeof SystemTopicsGetOutput.Type;
 
@@ -5660,8 +5685,9 @@ export const SystemTopicsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -5700,8 +5726,9 @@ export const SystemTopicsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -5737,8 +5764,9 @@ export type SystemTopicsUpdateInput = typeof SystemTopicsUpdateInput.Type;
 // Output Schema
 export const SystemTopicsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type SystemTopicsUpdateOutput = typeof SystemTopicsUpdateOutput.Type;
 
@@ -6057,8 +6085,9 @@ export type TopicsCreateOrUpdateInput = typeof TopicsCreateOrUpdateInput.Type;
 // Output Schema
 export const TopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.String,
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type TopicsCreateOrUpdateOutput = typeof TopicsCreateOrUpdateOutput.Type;
 
@@ -6120,8 +6149,9 @@ export type TopicsGetInput = typeof TopicsGetInput.Type;
 
 // Output Schema
 export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  location: Schema.String,
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
 });
 export type TopicsGetOutput = typeof TopicsGetOutput.Type;
 
@@ -6157,8 +6187,9 @@ export const TopicsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),
@@ -6198,8 +6229,9 @@ export const TopicsListBySubscriptionOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          location: Schema.String,
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
         }),
       ),
     ),

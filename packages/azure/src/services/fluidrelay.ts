@@ -54,7 +54,11 @@ export type FluidRelayContainersGetInput =
 
 // Output Schema
 export const FluidRelayContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
 export type FluidRelayContainersGetOutput =
   typeof FluidRelayContainersGetOutput.Type;
 
@@ -86,7 +90,15 @@ export type FluidRelayContainersListByFluidRelayServersInput =
 // Output Schema
 export const FluidRelayContainersListByFluidRelayServersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
     nextLink: Schema.optional(Schema.String),
   });
 export type FluidRelayContainersListByFluidRelayServersOutput =
@@ -168,8 +180,9 @@ export type FluidRelayServersCreateOrUpdateInput =
 // Output Schema
 export const FluidRelayServersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type FluidRelayServersCreateOrUpdateOutput =
   typeof FluidRelayServersCreateOrUpdateOutput.Type;
@@ -231,8 +244,9 @@ export type FluidRelayServersGetInput = typeof FluidRelayServersGetInput.Type;
 // Output Schema
 export const FluidRelayServersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type FluidRelayServersGetOutput = typeof FluidRelayServersGetOutput.Type;
 
@@ -266,8 +280,9 @@ export const FluidRelayServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -304,8 +319,9 @@ export const FluidRelayServersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
       }),
     ),
     nextLink: Schema.optional(Schema.String),
@@ -407,8 +423,9 @@ export type FluidRelayServersUpdateInput =
 // Output Schema
 export const FluidRelayServersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
   });
 export type FluidRelayServersUpdateOutput =
   typeof FluidRelayServersUpdateOutput.Type;

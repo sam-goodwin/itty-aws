@@ -21,8 +21,8 @@ export const HealthIssuesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     kind: Schema.String,
-    severity: Schema.Struct({}),
-    status: Schema.Struct({}),
+    severity: Schema.Literals(["critical", "warning", "info"]),
+    status: Schema.Literals(["active", "resolved"]),
     dismissed: Schema.optional(Schema.Boolean),
     payload: Schema.Unknown,
     created_at: Schema.String,

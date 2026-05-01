@@ -36,7 +36,7 @@ export const TasksRunsSetOutputPartialUpdateOutput =
         "cancelled",
       ]),
     ),
-    environment: Schema.optional(Schema.Struct({})),
+    environment: Schema.optional(Schema.Literals(["local", "cloud"])),
     runtime_adapter: Schema.Unknown,
     provider: Schema.Unknown,
     model: Schema.NullOr(Schema.String),

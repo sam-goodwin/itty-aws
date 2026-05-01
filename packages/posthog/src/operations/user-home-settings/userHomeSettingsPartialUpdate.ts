@@ -25,19 +25,21 @@ export const UserHomeSettingsPartialUpdateInput =
       ),
     ),
     homepage: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        pathname: Schema.optional(Schema.String),
-        search: Schema.optional(Schema.String),
-        hash: Schema.optional(Schema.String),
-        title: Schema.optional(Schema.String),
-        customTitle: Schema.optional(Schema.NullOr(Schema.String)),
-        iconType: Schema.optional(Schema.String),
-        sceneId: Schema.optional(Schema.NullOr(Schema.String)),
-        sceneKey: Schema.optional(Schema.NullOr(Schema.String)),
-        sceneParams: Schema.optional(Schema.Unknown),
-        pinned: Schema.optional(Schema.Boolean),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          pathname: Schema.optional(Schema.String),
+          search: Schema.optional(Schema.String),
+          hash: Schema.optional(Schema.String),
+          title: Schema.optional(Schema.String),
+          customTitle: Schema.optional(Schema.NullOr(Schema.String)),
+          iconType: Schema.optional(Schema.String),
+          sceneId: Schema.optional(Schema.NullOr(Schema.String)),
+          sceneKey: Schema.optional(Schema.NullOr(Schema.String)),
+          sceneParams: Schema.optional(Schema.Unknown),
+          pinned: Schema.optional(Schema.Boolean),
+        }),
+      ),
     ),
   }).pipe(T.Http({ method: "PATCH", path: "/api/user_home_settings/{uuid}/" }));
 export type UserHomeSettingsPartialUpdateInput =
@@ -64,19 +66,21 @@ export const UserHomeSettingsPartialUpdateOutput =
       ),
     ),
     homepage: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        pathname: Schema.optional(Schema.String),
-        search: Schema.optional(Schema.String),
-        hash: Schema.optional(Schema.String),
-        title: Schema.optional(Schema.String),
-        customTitle: Schema.optional(Schema.NullOr(Schema.String)),
-        iconType: Schema.optional(Schema.String),
-        sceneId: Schema.optional(Schema.NullOr(Schema.String)),
-        sceneKey: Schema.optional(Schema.NullOr(Schema.String)),
-        sceneParams: Schema.optional(Schema.Unknown),
-        pinned: Schema.optional(Schema.Boolean),
-      }),
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          pathname: Schema.optional(Schema.String),
+          search: Schema.optional(Schema.String),
+          hash: Schema.optional(Schema.String),
+          title: Schema.optional(Schema.String),
+          customTitle: Schema.optional(Schema.NullOr(Schema.String)),
+          iconType: Schema.optional(Schema.String),
+          sceneId: Schema.optional(Schema.NullOr(Schema.String)),
+          sceneKey: Schema.optional(Schema.NullOr(Schema.String)),
+          sceneParams: Schema.optional(Schema.Unknown),
+          pinned: Schema.optional(Schema.Boolean),
+        }),
+      ),
     ),
   });
 export type UserHomeSettingsPartialUpdateOutput =
