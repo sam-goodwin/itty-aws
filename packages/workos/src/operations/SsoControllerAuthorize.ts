@@ -34,7 +34,10 @@ export const SsoControllerAuthorizeInput =
     domain_hint: Schema.optional(Schema.String),
     login_hint: Schema.optional(Schema.String),
     nonce: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/sso/authorize" }));
+  }).pipe(
+    T.Http({ method: "GET", path: "/sso/authorize" }),
+    T.NoFollowRedirect(),
+  );
 export type SsoControllerAuthorizeInput =
   typeof SsoControllerAuthorizeInput.Type;
 

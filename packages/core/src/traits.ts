@@ -298,6 +298,59 @@ export const HttpFormDataFile = () =>
   makeAnnotation(httpFormDataFileSymbol, true);
 
 // =============================================================================
+// Redirect-as-Response Trait
+// =============================================================================
+
+/** Symbol for "do not follow redirects; treat 3xx Location header as success body" */
+export const httpNoFollowRedirectSymbol = Symbol.for(
+  "@distilled.cloud/http-no-follow-redirect",
+);
+
+/**
+ * Configuration for the `NoFollowRedirect` trait.
+ */
+export interface NoFollowRedirectTrait {
+  /**
+   * The field name on the success-side output schema that should receive the
+   * value of the response's `Location` header when the server returns a
+   * 3xx redirect. Defaults to `"url"`.
+   *
+   * Concretely: when an operation carrying this trait gets a 3xx response,
+   * the runtime client constructs `{ [locationField]: <Location header> }`
+   * and feeds that into the output schema decoder, instead of trying to
+   * decode the redirect body (which would normally be HTML or empty).
+   */
+  locationField?: string;
+}
+
+/**
+ * NoFollowRedirect trait - opts an operation out of the underlying HTTP
+ * client's automatic redirect-following.
+ *
+ * Some endpoints — notably OAuth/SSO authorize endpoints — return their
+ * useful result as a `Location` header on a 302 response. The default
+ * `fetch` follows that redirect to the IdP's HTML login page, so by the
+ * time the client sees a body it's no longer the SDK's expected JSON.
+ *
+ * Marking an operation with this trait makes the runtime client:
+ *   1. Issue the request with `redirect: "manual"` so the 3xx surfaces
+ *      to user code.
+ *   2. On a 3xx, build a synthetic body `{ [locationField]: <Location> }`
+ *      and decode that into the output schema (default field name `"url"`).
+ *
+ * @example
+ * ```ts
+ * const SsoAuthorizeInput = Schema.Struct({...}).pipe(
+ *   T.Http({ method: "GET", path: "/sso/authorize" }),
+ *   T.NoFollowRedirect(),
+ * );
+ * const SsoAuthorizeOutput = Schema.Struct({ url: Schema.String });
+ * ```
+ */
+export const NoFollowRedirect = (trait: NoFollowRedirectTrait = {}) =>
+  makeAnnotation(httpNoFollowRedirectSymbol, trait);
+
+// =============================================================================
 // API Error Code Trait
 // =============================================================================
 
@@ -383,6 +436,14 @@ export const getResponsePath = (ast: AST.AST): string | undefined =>
  */
 export const getGraphQLOp = (ast: AST.AST): GraphQLOpTrait | undefined =>
   getAnnotation<GraphQLOpTrait>(ast, graphqlOpSymbol);
+
+/**
+ * Get the `NoFollowRedirect` trait config from an input schema's AST, if any.
+ */
+export const getNoFollowRedirect = (
+  ast: AST.AST,
+): NoFollowRedirectTrait | undefined =>
+  getAnnotation<NoFollowRedirectTrait>(ast, httpNoFollowRedirectSymbol);
 
 /**
  * Check if a PropertySignature has the pathParam annotation.

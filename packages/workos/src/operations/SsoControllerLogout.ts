@@ -7,7 +7,7 @@ import { NotFound } from "../errors.ts";
 export const SsoControllerLogoutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String,
-  }).pipe(T.Http({ method: "GET", path: "/sso/logout" }));
+  }).pipe(T.Http({ method: "GET", path: "/sso/logout" }), T.NoFollowRedirect());
 export type SsoControllerLogoutInput = typeof SsoControllerLogoutInput.Type;
 
 // Output Schema

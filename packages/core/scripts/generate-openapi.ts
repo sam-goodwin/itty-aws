@@ -785,6 +785,7 @@ function generateInputSchema3(
   requestBodyParam: RequestBody3 | undefined,
   spec: OpenAPI3Spec,
   ctx?: SchemaGenerationContext,
+  noFollowRedirect: boolean = false,
 ): { inputSchemaCode: string; inputSchemaName: string } {
   // Resolve top-level $ref (e.g. #/components/requestBodies/Foo).
   const requestBody = requestBodyParam?.$ref
@@ -881,10 +882,19 @@ function generateInputSchema3(
     httpTraitParts.push(`contentType: "${bodyContentType}"`);
   }
 
+  // If the operation is marked as not following redirects (via the
+  // detected 3xx-with-Location response or an `x-distilled-no-follow-redirect`
+  // vendor extension), append the trait so the runtime client knows to
+  // surface the 3xx and read the Location header.
+  const traitChain = [`T.Http({ ${httpTraitParts.join(", ")} })`];
+  if (noFollowRedirect) {
+    traitChain.push(`T.NoFollowRedirect()`);
+  }
+
   const inputSchemaCode =
     annotatePureExportConst(`export const ${inputSchemaName} = Schema.Struct({
 ${fields.join("\n")}
-}).pipe(T.Http({ ${httpTraitParts.join(", ")} }));`) +
+}).pipe(${traitChain.join(", ")});`) +
     `
 export type ${inputSchemaName} = typeof ${inputSchemaName}.Type;`;
 
@@ -1255,6 +1265,28 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             usesSensitiveNullableString: false,
           };
 
+          // Detect operations that should opt out of automatic redirect-
+          // following. Two signals trigger the `T.NoFollowRedirect()` trait:
+          //   1. An explicit `x-distilled-no-follow-redirect: true` vendor
+          //      extension on the operation (lets a spec patch turn it on
+          //      without requiring this generator to recognize the shape).
+          //   2. A 3xx response that defines a Location header — the
+          //      canonical OAuth/SSO authorize pattern where the URL the
+          //      caller wants is in the Location, not the body.
+          const opAny = operation as unknown as Record<string, unknown>;
+          const has3xxLocation = Object.entries(operation.responses ?? {}).some(
+            ([status, resp]) => {
+              if (!status.startsWith("3")) return false;
+              const respHeaders = (resp as { headers?: Record<string, unknown> })
+                .headers;
+              return (
+                respHeaders !== undefined && "Location" in respHeaders
+              );
+            },
+          );
+          const noFollowRedirect =
+            opAny["x-distilled-no-follow-redirect"] === true || has3xxLocation;
+
           const { inputSchemaCode, inputSchemaName } = generateInputSchema3(
             operation.operationId,
             method,
@@ -1263,6 +1295,7 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             operation.requestBody,
             oas,
             sensitiveCtx,
+            noFollowRedirect,
           );
 
           const responseSchema = getResponseSchema(

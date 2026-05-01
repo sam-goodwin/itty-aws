@@ -32,6 +32,7 @@ import * as Schedule from "effect/Schedule";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
+import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import * as HttpBody from "effect/unstable/http/HttpBody";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as HttpClientError from "effect/unstable/http/HttpClientError";
@@ -381,6 +382,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       const outputSchema = (opConfig.outputSchema ?? opConfig.output)!;
       const responsePath = Traits.getResponsePath(outputSchema.ast);
       const graphqlOp = Traits.getGraphQLOp(inputSchema.ast);
+      const noFollowRedirect = Traits.getNoFollowRedirect(inputSchema.ast);
       type Input = Schema.Schema.Type<I>;
 
       // Read HTTP trait from input schema annotations
@@ -512,7 +514,46 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             }
           }
 
-          const response = yield* client.execute(request).pipe(Effect.scoped);
+          // For operations that opt out of following redirects, hand the
+          // underlying fetch a `redirect: "manual"` request init so the
+          // 3xx surfaces here instead of being chased to the IdP.
+          const executeRequest = noFollowRedirect
+            ? client.execute(request).pipe(
+                Effect.scoped,
+                Effect.provideService(FetchHttpClient.RequestInit, {
+                  redirect: "manual",
+                } as RequestInit),
+              )
+            : client.execute(request).pipe(Effect.scoped);
+
+          const response = yield* executeRequest;
+
+          // For ops that opted out of redirect-following, treat 3xx as
+          // success: synthesize a body containing the Location header
+          // value at `locationField` (default `"url"`) and feed that
+          // through the normal output schema decode below.
+          if (
+            noFollowRedirect &&
+            response.status >= 300 &&
+            response.status < 400
+          ) {
+            const location =
+              response.headers["location"] ?? response.headers["Location"];
+            if (location !== undefined) {
+              const synthBody = {
+                [noFollowRedirect.locationField ?? "url"]: location,
+              };
+              return yield* Schema.decodeUnknownEffect(outputSchema)(
+                synthBody,
+              ).pipe(
+                Effect.catchTag("SchemaError", (cause) =>
+                  Effect.fail(
+                    new config.ParseError({ body: synthBody, cause }),
+                  ),
+                ),
+              );
+            }
+          }
 
           if (response.status >= 400) {
             // Try to parse error body as JSON; fall back to text if not JSON
