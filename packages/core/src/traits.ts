@@ -19,6 +19,7 @@
  * );
  * ```
  */
+import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 
@@ -475,13 +476,49 @@ export interface RequestParts {
  * schema's encoding pipeline (e.g., `encodeKeys` for camelCase → snake_case mapping).
  * The encoded output is used for body construction, ensuring wire-format key names.
  */
+/**
+ * Recursively unwrap any `Redacted<T>` values in a structure into their
+ * underlying `T`.
+ *
+ * Sensitive response fields surface to callers as `Redacted<string>` (so
+ * they don't accidentally land in logs). Those same values often need to be
+ * passed straight back into a follow-up request — e.g. WorkOS's password
+ * reset flow returns a redacted `password_reset_token` whose shape is
+ * `Redacted<string>` and which is then sent into `ResetPassword({ token })`,
+ * where `token` is declared as plain `Schema.String`. Without this unwrap
+ * the input encoder sees a `Redacted` (whose toString is `"<redacted>"`)
+ * and rejects the value with `Expected string, got <redacted>`.
+ *
+ * Doing the unwrap right before `Schema.encodeSync` keeps the contract
+ * simple: callers can hand a `Redacted` to any field and the wire payload
+ * still contains the underlying value. Schemas that *want* a `Redacted` on
+ * the wire (i.e. `SensitiveString`) handle it through their own encode
+ * transform, so they're unaffected — by the time encodeSync sees the value
+ * it's already a plain string, which is what the wire format wants anyway.
+ */
+const unwrapRedactedDeep = (value: unknown): unknown => {
+  if (Redacted.isRedacted(value)) return Redacted.value(value);
+  if (Array.isArray(value)) return value.map(unwrapRedactedDeep);
+  if (value !== null && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      out[k] = unwrapRedactedDeep(v);
+    }
+    return out;
+  }
+  return value;
+};
+
 export const buildRequestParts = (
   ast: AST.AST,
   httpTrait: HttpTrait,
-  input: Record<string, unknown>,
+  rawInput: Record<string, unknown>,
   // biome-ignore lint: using any for generic schema parameter
   inputSchema?: any,
 ): RequestParts => {
+  // Unwrap any `Redacted<T>` values in the input up front so the schema
+  // encoder never sees them. See `unwrapRedactedDeep` for rationale.
+  const input = unwrapRedactedDeep(rawInput) as Record<string, unknown>;
   let path = httpTrait.path;
   const query: Record<string, string | string[]> = {};
   const headers: Record<string, string> = {};
