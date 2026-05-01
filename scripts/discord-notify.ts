@@ -72,9 +72,10 @@ const res = await fetch(webhook, {
   method: "POST",
   headers: { "content-type": "application/json" },
   body: JSON.stringify({
+    username: "Distilled Releases",
     embeds: [
       {
-        title: `${tag} (${channel}) released`,
+        title: `Distilled ${tag} (${channel}) released`,
         url: releaseUrl,
         description,
       },
