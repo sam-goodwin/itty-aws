@@ -360,7 +360,7 @@ export const BuildOutput = Schema.Struct({
       }),
     ),
   }),
-});
+}).pipe(T.ResponsePath("build"));
 export type BuildOutput = typeof BuildOutput.Type;
 
 /**

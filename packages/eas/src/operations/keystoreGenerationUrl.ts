@@ -22,7 +22,7 @@ export const KeystoreGenerationUrlOutput = Schema.Struct({
     id: Schema.String,
     url: Schema.String,
   }),
-});
+}).pipe(T.ResponsePath("keystoreGenerationUrl"));
 export type KeystoreGenerationUrlOutput =
   typeof KeystoreGenerationUrlOutput.Type;
 

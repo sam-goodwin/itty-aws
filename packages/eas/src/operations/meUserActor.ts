@@ -1047,7 +1047,7 @@ export const MeUserActorOutput = Schema.NullOr(
     twitterUsername: Schema.NullOr(Schema.String),
     username: Schema.String,
   }),
-);
+).pipe(T.ResponsePath("meUserActor"));
 export type MeUserActorOutput = typeof MeUserActorOutput.Type;
 
 /**

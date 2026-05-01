@@ -36,7 +36,7 @@ export const UserAuditLogsOutput = Schema.Struct({
       ]),
     }),
   ),
-});
+}).pipe(T.ResponsePath("userAuditLogs"));
 export type UserAuditLogsOutput = typeof UserAuditLogsOutput.Type;
 
 /**

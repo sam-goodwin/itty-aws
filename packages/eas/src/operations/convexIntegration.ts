@@ -19,7 +19,7 @@ export type ConvexIntegrationInput = typeof ConvexIntegrationInput.Type;
 // Output Schema (GraphQL selection set)
 export const ConvexIntegrationOutput = Schema.Struct({
   clientIdentifier: Schema.String,
-});
+}).pipe(T.ResponsePath("convexIntegration"));
 export type ConvexIntegrationOutput = typeof ConvexIntegrationOutput.Type;
 
 /**

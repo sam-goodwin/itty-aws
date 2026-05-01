@@ -19,7 +19,7 @@ export type WebsiteNotificationsInput = typeof WebsiteNotificationsInput.Type;
 // Output Schema (GraphQL selection set)
 export const WebsiteNotificationsOutput = Schema.Struct({
   updateAllWebsiteNotificationReadStateAsRead: Schema.Boolean,
-});
+}).pipe(T.ResponsePath("websiteNotifications"));
 export type WebsiteNotificationsOutput = typeof WebsiteNotificationsOutput.Type;
 
 /**

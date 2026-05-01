@@ -19,7 +19,7 @@ export type GithubUserInput = typeof GithubUserInput.Type;
 // Output Schema (GraphQL selection set)
 export const GithubUserOutput = Schema.Struct({
   generateGitHubUserAccessToken: Schema.NullOr(Schema.String),
-});
+}).pipe(T.ResponsePath("githubUser"));
 export type GithubUserOutput = typeof GithubUserOutput.Type;
 
 /**

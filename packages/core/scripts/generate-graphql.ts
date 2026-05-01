@@ -536,31 +536,232 @@ interface GeneratedOperation {
   code: string;
 }
 
-function generateOperation(
+/**
+ * A path through the GraphQL schema from a Query/Mutation root to a leaf
+ * operation. For top-level operations the path has one segment; for ones
+ * that go through a namespace object (e.g. `channels.byId`) it has multiple.
+ */
+interface OperationStep {
+  /** The GraphQL field name at this step. */
+  name: string;
+  /** Args declared on this step's field. */
+  args: IntrospectionInputValue[];
+  /** Return type of this step's field (the parent's selection). */
+  returnType: IntrospectionTypeRef;
+}
+
+/**
+ * Decide how to emit operations for a top-level Query/Mutation field.
+ *
+ * - If selection-set expansion produces real subfields (the field's return
+ *   type has scalar/non-arg-required fields), emit a single op for this path.
+ * - If the field's return type is an OBJECT/INTERFACE whose subfields all
+ *   require args (a "namespace" pattern, common in EAS / Shopify-style
+ *   schemas), recurse into each subfield and emit one op per leaf.
+ * - Otherwise emit one op for the field directly (scalar/enum return types).
+ *
+ * Returns `OperationStep[][]` — each inner array is one path. Recursion is
+ * bounded by `maxNamespaceDepth` so a misshapen schema can't blow the stack.
+ */
+function collectOperationPaths(
   field: IntrospectionField,
+  parentChain: OperationStep[],
+  ctx: SchemaCtx,
+  maxNamespaceDepth: number,
+  skipDeprecated: boolean,
+): OperationStep[][] {
+  const step: OperationStep = {
+    name: field.name,
+    args: field.args ?? [],
+    returnType: field.type,
+  };
+  const chain = [...parentChain, step];
+
+  // Try to expand the selection set on this field's return type. If we get a
+  // real selection (something other than namespace-of-arg-only-fields), emit
+  // a single op terminating here.
+  const selection = expandSelection(field.type, ctx, 1, 3, new Set());
+
+  if (selection && selection.length > 0) {
+    return [chain];
+  }
+
+  // No selection: this is either a namespace-style field or a scalar leaf.
+  // Determine which from the return type.
+  const { type: returnType } = unwrapNonNull(field.type);
+  let actualReturn = returnType;
+  if (actualReturn.kind === "LIST" && actualReturn.ofType) {
+    actualReturn = unwrapNonNull(actualReturn.ofType).type;
+  }
+
+  const isObject =
+    (actualReturn.kind === "OBJECT" || actualReturn.kind === "INTERFACE") &&
+    !!actualReturn.name;
+
+  // If we've recursed too deep, give up and emit the chain as-is. The
+  // generated query will still be syntactically valid (returning an empty
+  // object selection) and Schema.Unknown lets callers introspect raw.
+  if (!isObject || chain.length >= maxNamespaceDepth) {
+    return [chain];
+  }
+
+  const namespaceType = ctx.typeMap.get(actualReturn.name!);
+  if (!namespaceType?.fields || namespaceType.fields.length === 0) {
+    return [chain];
+  }
+
+  // Recurse into each subfield. We collect ALL leaves (not just the
+  // arg-taking ones) because some namespace types may mix arg-required and
+  // arg-free subfields — e.g. `account: { name: String, byId(id: ID!): X }`.
+  const paths: OperationStep[][] = [];
+  for (const subfield of namespaceType.fields) {
+    if (skipDeprecated && subfield.isDeprecated) continue;
+    paths.push(
+      ...collectOperationPaths(
+        subfield,
+        chain,
+        ctx,
+        maxNamespaceDepth,
+        skipDeprecated,
+      ),
+    );
+  }
+
+  // If recursion produced nothing (every subfield was deprecated, etc.),
+  // fall back to emitting the parent.
+  return paths.length > 0 ? paths : [chain];
+}
+
+/**
+ * Build the operation function name from a path. Single-step paths use the
+ * field name as-is (e.g. `appByAppId`). Multi-step paths concatenate with
+ * each step after the first capitalized (e.g. `channels.byId` →
+ * `channelsById`).
+ */
+function pathToFunctionName(path: OperationStep[]): string {
+  if (path.length === 0) throw new Error("empty path");
+  if (path.length === 1) return path[0].name;
+  return (
+    path[0].name + path.slice(1).map((s) => toPascalCase(s.name)).join("")
+  );
+}
+
+/**
+ * Build the GraphQL document string for an operation walking through `path`.
+ * Variables are scoped to the OUTER operation; each step that has args
+ * references those variables by name. Variable name collisions across path
+ * segments are resolved by prefixing later segments with their step name.
+ */
+function buildPathDocument(
+  type: "query" | "mutation",
+  operationName: string,
+  path: OperationStep[],
+  selection: SelectionField[] | undefined,
+  argRenames: Map<string, string>,
+): string {
+  // Build the variable definitions list — one entry per (step, arg) pair
+  // using the renamed variable names so they're unique across the path.
+  const varDefs: string[] = [];
+  for (const step of path) {
+    for (const arg of step.args) {
+      const varName = argRenames.get(`${step.name}.${arg.name}`) ?? arg.name;
+      varDefs.push(`$${varName}: ${renderTypeRef(arg.type)}`);
+    }
+  }
+
+  const header = varDefs.length
+    ? `${type} ${operationName}(${varDefs.join(", ")})`
+    : `${type} ${operationName}`;
+
+  // Build the nested field call chain from outermost to innermost.
+  // We render leaf-first inside-out so the body is straightforward.
+  const renderStep = (
+    step: OperationStep,
+    inner: string,
+    indent: string,
+  ): string => {
+    const argList = step.args
+      .map((arg) => {
+        const varName =
+          argRenames.get(`${step.name}.${arg.name}`) ?? arg.name;
+        return `${arg.name}: $${varName}`;
+      })
+      .join(", ");
+    const call = argList ? `${step.name}(${argList})` : step.name;
+    return `${indent}${call} {\n${inner}\n${indent}}`;
+  };
+
+  // Innermost selection set (or empty if none).
+  let body: string;
+  const innerIndent = "  ".repeat(path.length + 1);
+  if (selection && selection.length > 0) {
+    body = renderSelectionSet(selection, innerIndent);
+  } else {
+    // No selectable subfields — fall back to __typename so the document is
+    // always valid syntactically.
+    body = `${innerIndent}__typename`;
+  }
+
+  // Wrap inside-out through the path.
+  let nested = body;
+  for (let i = path.length - 1; i >= 0; i--) {
+    const indent = "  ".repeat(i + 1);
+    nested = renderStep(path[i], nested, indent);
+  }
+
+  return `${header} {\n${nested}\n}`;
+}
+
+function generateOperation(
+  path: OperationStep[],
   type: "query" | "mutation",
   ctx: SchemaCtx,
   config: GraphQLGeneratorConfig,
+  description?: string | null,
 ): GeneratedOperation {
-  const functionName = field.name; // GraphQL field names are already camelCase
-  const PascalName = toPascalCase(field.name);
+  const functionName = pathToFunctionName(path);
+  const PascalName = toPascalCase(functionName);
   const inputName = `${PascalName}Input`;
   const outputName = `${PascalName}Output`;
 
-  // ---- Input schema (variables) ----
-  const inputFieldLines: string[] = [];
-  for (const arg of field.args) {
-    const { nonNull } = unwrapNonNull(arg.type);
-    const argSchema = inputTypeToEffect(arg.type, ctx, "  ", new Set());
-    const wrapped = nonNull ? argSchema : `Schema.optional(${argSchema})`;
-    inputFieldLines.push(`  ${quotePropKey(arg.name)}: ${wrapped},`);
+  // ---- Resolve arg name collisions across path segments ----
+  // If two segments have args with the same name (e.g. `id`), rename later
+  // ones with their step-name as prefix so they remain unique GraphQL vars.
+  const argRenames = new Map<string, string>(); // "step.argName" → "renamedVar"
+  const usedVarNames = new Set<string>();
+  for (const step of path) {
+    for (const arg of step.args) {
+      let varName = arg.name;
+      if (usedVarNames.has(varName)) {
+        varName = `${step.name}${toPascalCase(arg.name)}`;
+        let i = 2;
+        while (usedVarNames.has(varName)) {
+          varName = `${step.name}${toPascalCase(arg.name)}${i++}`;
+        }
+      }
+      usedVarNames.add(varName);
+      argRenames.set(`${step.name}.${arg.name}`, varName);
+    }
   }
 
-  // ---- Output schema (selection set) ----
+  // ---- Input schema (variables) ----
+  const inputFieldLines: string[] = [];
+  for (const step of path) {
+    for (const arg of step.args) {
+      const varName = argRenames.get(`${step.name}.${arg.name}`)!;
+      const { nonNull } = unwrapNonNull(arg.type);
+      const argSchema = inputTypeToEffect(arg.type, ctx, "  ", new Set());
+      const wrapped = nonNull ? argSchema : `Schema.optional(${argSchema})`;
+      inputFieldLines.push(`  ${quotePropKey(varName)}: ${wrapped},`);
+    }
+  }
+
+  // ---- Output schema (selection set on the leaf step's return type) ----
+  const leaf = path[path.length - 1];
   const maxDepth = config.maxDepth ?? 3;
-  const selection = expandSelection(field.type, ctx, 1, maxDepth, new Set());
+  const selection = expandSelection(leaf.returnType, ctx, 1, maxDepth, new Set());
   const outputSchemaBody = outputTypeToEffect(
-    field.type,
+    leaf.returnType,
     selection,
     ctx,
     "",
@@ -568,11 +769,12 @@ function generateOperation(
   );
 
   // ---- GraphQL document ----
-  const document = buildOperationDocument(
+  const document = buildPathDocument(
     type,
-    field.name,
-    field.args,
+    functionName,
+    path,
     selection,
+    argRenames,
   );
 
   // ---- File contents ----
@@ -580,14 +782,18 @@ function generateOperation(
   const clientImport = config.clientImport ?? "../client";
   const traitsImport = config.traitsImport ?? "../traits";
 
-  const docDescription = field.description
-    ? `/**\n * ${field.description.split("\n").join("\n * ")}\n */\n`
+  const docDescription = description
+    ? `/**\n * ${description.split("\n").join("\n * ")}\n */\n`
     : "";
 
   const inputSchemaCode =
     inputFieldLines.length > 0
       ? `Schema.Struct({\n${inputFieldLines.join("\n")}\n})`
       : `Schema.Struct({})`;
+
+  // Walk path from `data` to extract the leaf result. Always set, since the
+  // runtime client now leaves all unwrapping to `T.ResponsePath`.
+  const responsePath = path.map((s) => s.name).join(".");
 
   const code = `import * as Schema from "effect/Schema";
 import { API } from "${clientImport}.ts";
@@ -600,14 +806,16 @@ export const ${inputName} = ${inputSchemaCode}.pipe(
   T.Http({ method: "POST", path: ${JSON.stringify(endpoint)} }),
   T.GraphQLOp({
     query: __document,
-    operationName: ${JSON.stringify(field.name)},
+    operationName: ${JSON.stringify(functionName)},
     type: ${JSON.stringify(type)},
   }),
 );
 export type ${inputName} = typeof ${inputName}.Type;
 
 // Output Schema (GraphQL selection set)
-export const ${outputName} = ${outputSchemaBody};
+export const ${outputName} = ${outputSchemaBody}.pipe(
+  T.ResponsePath(${JSON.stringify(responsePath)}),
+);
 export type ${outputName} = typeof ${outputName}.Type;
 
 ${docDescription}export const ${functionName} = API.make(() => ({
@@ -656,18 +864,46 @@ export function generateFromGraphQL(config: GraphQLGeneratorConfig): void {
 
   const operations: GeneratedOperation[] = [];
   const skipDeprecated = config.skipDeprecated ?? true;
+  const maxNamespaceDepth = 3; // top-level → namespace → leaf is the common case
+  const seenNames = new Set<string>();
+
+  const emitOps = (
+    rootField: IntrospectionField,
+    type: "query" | "mutation",
+    skip: ((name: string) => boolean) | undefined,
+  ) => {
+    if (skipDeprecated && rootField.isDeprecated) return;
+    if (skip?.(rootField.name)) return;
+    const paths = collectOperationPaths(
+      rootField,
+      [],
+      ctx,
+      maxNamespaceDepth,
+      skipDeprecated,
+    );
+    for (const path of paths) {
+      try {
+        const op = generateOperation(
+          path,
+          type,
+          ctx,
+          config,
+          path.length === 1 ? rootField.description : undefined,
+        );
+        if (seenNames.has(op.functionName)) continue;
+        seenNames.add(op.functionName);
+        operations.push(op);
+      } catch (err) {
+        console.error(`❌ ${type} ${pathToFunctionName(path)}:`, err);
+      }
+    }
+  };
 
   // Queries
   const queryType = typeMap.get(schema.queryType.name);
   if (queryType?.fields) {
     for (const field of queryType.fields) {
-      if (skipDeprecated && field.isDeprecated) continue;
-      if (config.skipQuery?.(field.name)) continue;
-      try {
-        operations.push(generateOperation(field, "query", ctx, config));
-      } catch (err) {
-        console.error(`❌ query ${field.name}:`, err);
-      }
+      emitOps(field, "query", config.skipQuery);
     }
   }
 
@@ -676,13 +912,7 @@ export function generateFromGraphQL(config: GraphQLGeneratorConfig): void {
     const mutationType = typeMap.get(schema.mutationType.name);
     if (mutationType?.fields) {
       for (const field of mutationType.fields) {
-        if (skipDeprecated && field.isDeprecated) continue;
-        if (config.skipMutation?.(field.name)) continue;
-        try {
-          operations.push(generateOperation(field, "mutation", ctx, config));
-        } catch (err) {
-          console.error(`❌ mutation ${field.name}:`, err);
-        }
+        emitOps(field, "mutation", config.skipMutation);
       }
     }
   }

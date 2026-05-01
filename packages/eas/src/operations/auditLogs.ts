@@ -58,7 +58,7 @@ export const AuditLogsOutput = Schema.Struct({
       ]),
     }),
   ),
-});
+}).pipe(T.ResponsePath("auditLogs"));
 export type AuditLogsOutput = typeof AuditLogsOutput.Type;
 
 /**

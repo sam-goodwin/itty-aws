@@ -425,7 +425,7 @@ export const MeActorOutput = Schema.NullOr(
     isExpoAdmin: Schema.Boolean,
     lastDeletionAttemptTime: Schema.NullOr(Schema.String),
   }),
-);
+).pipe(T.ResponsePath("meActor"));
 export type MeActorOutput = typeof MeActorOutput.Type;
 
 /**

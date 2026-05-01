@@ -1181,7 +1181,7 @@ export const ViewerOutput = Schema.NullOr(
     twitterUsername: Schema.NullOr(Schema.String),
     username: Schema.String,
   }),
-);
+).pipe(T.ResponsePath("viewer"));
 export type ViewerOutput = typeof ViewerOutput.Type;
 
 /**

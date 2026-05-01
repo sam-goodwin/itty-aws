@@ -22,7 +22,7 @@ export const ExperimentationOutput = Schema.Struct({
   deviceConfig: Schema.Unknown,
   deviceExperimentationUnit: Schema.String,
   userConfig: Schema.Unknown,
-});
+}).pipe(T.ResponsePath("experimentation"));
 export type ExperimentationOutput = typeof ExperimentationOutput.Type;
 
 /**

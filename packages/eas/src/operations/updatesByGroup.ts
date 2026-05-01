@@ -955,7 +955,7 @@ export const UpdatesByGroupOutput = Schema.Array(
       }),
     ),
   }),
-);
+).pipe(T.ResponsePath("updatesByGroup"));
 export type UpdatesByGroupOutput = typeof UpdatesByGroupOutput.Type;
 
 /**

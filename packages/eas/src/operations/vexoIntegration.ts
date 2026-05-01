@@ -19,7 +19,7 @@ export type VexoIntegrationInput = typeof VexoIntegrationInput.Type;
 // Output Schema (GraphQL selection set)
 export const VexoIntegrationOutput = Schema.Struct({
   clientIdentifier: Schema.String,
-});
+}).pipe(T.ResponsePath("vexoIntegration"));
 export type VexoIntegrationOutput = typeof VexoIntegrationOutput.Type;
 
 /**

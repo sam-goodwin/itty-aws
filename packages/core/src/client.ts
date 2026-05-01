@@ -554,7 +554,10 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             : rawBody;
 
           // GraphQL: surface errors[] (returned with HTTP 200) via matchError,
-          // then unwrap `data.<operationName>` for schema decoding.
+          // then leave unwrap to the output schema's `T.ResponsePath` trait,
+          // which the generator emits with the field path from `data`. This
+          // handles namespaced ops (e.g. `data.channels.byId`) uniformly with
+          // top-level ones (e.g. `data.me`).
           if (graphqlOp) {
             const envelope = responseBody as
               | { data?: Record<string, unknown> | null; errors?: unknown[] }
@@ -571,14 +574,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
                 opConfig.errors,
               );
             }
-            const data = envelope?.data;
-            if (data && typeof data === "object") {
-              responseBody = (data as Record<string, unknown>)[
-                graphqlOp.operationName
-              ];
-            } else {
-              responseBody = data;
-            }
+            responseBody = envelope?.data ?? null;
           }
 
           // Some APIs return a JSON *string* (double-encoded JSON). `response.json`
