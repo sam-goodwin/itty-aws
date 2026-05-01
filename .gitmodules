@@ -96,8 +96,8 @@
 	path = packages/workos/specs/openapi-spec
 	url = https://github.com/workos/openapi-spec
 [submodule "packages/eas/specs/eas-cli"]
-	path = packages/eas/specs/eas-cli
+	path = packages/expo-eas/specs/eas-cli
 	url = https://github.com/expo/eas-cli
 [submodule "packages/eas/specs/expo"]
-	path = packages/eas/specs/expo
+	path = packages/expo-eas/specs/expo
 	url = https://github.com/expo/expo
