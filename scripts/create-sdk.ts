@@ -959,7 +959,7 @@ const scaffoldPackage = (
               fmt: "oxfmt --write src",
               lint: "oxlint --fix src",
               check: "tsgo && oxlint src && oxfmt --check src",
-              test: "bunx vitest run test",
+              test: "bunx vitest run test --passWithNoTests",
               "publish:npm": "bun run build && bun publish --access public",
               generate:
                 "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",

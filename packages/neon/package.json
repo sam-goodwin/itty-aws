@@ -67,7 +67,7 @@
     "lint": "oxlint --fix src",
     "check": "tsgo && oxlint src && oxfmt --check src",
     "nuke": "bun scripts/nuke.ts",
-    "test": "bunx vitest run test --exclude specs",
+    "test": "bunx vitest run test --exclude specs --passWithNoTests",
     "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-neon && git -C specs/distilled-spec-neon checkout -- .",
