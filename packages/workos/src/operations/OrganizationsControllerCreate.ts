@@ -6,7 +6,7 @@ import { BadRequest, Conflict, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const OrganizationsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String,
+    name: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
     domains: Schema.optional(Schema.Array(Schema.String)),
     domain_data: Schema.optional(

@@ -13,7 +13,7 @@ export const PortalSessionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     return_url: Schema.optional(Schema.String),
     success_url: Schema.optional(Schema.String),
-    organization: Schema.String,
+    organization: Schema.optional(Schema.String),
     intent: Schema.optional(
       Schema.Literals([
         "sso",
