@@ -1413,6 +1413,146 @@ const updateTestYml = (
     yield* Console.log(`  ✅ Added ci-${name} job to test.yml`);
   });
 
+// ============================================================================
+// Post-agent: Wire test env vars
+// ============================================================================
+//
+// After the Claude agent finishes credentials.ts, we know which environment
+// variables the SDK reads. Append a `bun run test` step + matching `env:`
+// block to the ci-{name} job so CI runs the integration tests with the
+// secrets piped in.
+//
+// `process.env.DEBUG` is universal noise — skip it. Anything else gets wired.
+
+const ENV_VARS_TO_IGNORE = new Set(["DEBUG", "NODE_ENV", "CI"]);
+
+const wireTestEnvVars = (
+  root: string,
+  name: string,
+): Effect.Effect<
+  void,
+  PlatformError.PlatformError,
+  FileSystem.FileSystem | Path.Path
+> =>
+  Effect.gen(function* () {
+    const path = yield* Path.Path;
+    const fs = yield* FileSystem.FileSystem;
+
+    const credentialsPath = path.join(
+      root,
+      "packages",
+      name,
+      "src",
+      "credentials.ts",
+    );
+
+    const credentialsExists = yield* fs.exists(credentialsPath);
+    if (!credentialsExists) {
+      yield* Console.log(
+        `\n⚠️  credentials.ts not found for ${name}, skipping test env wiring`,
+      );
+      return;
+    }
+
+    const credentialsContent = yield* fs.readFileString(credentialsPath);
+
+    // Also pick up env vars referenced from the package's test setup file(s),
+    // since some SDKs (e.g. posthog) need POSTHOG_PROJECT_ID at runtime
+    // beyond the auth token.
+    const envSources = [credentialsContent];
+    for (const dir of ["test", "tests"]) {
+      for (const file of ["test.ts", "setup.ts"]) {
+        const p = path.join(root, "packages", name, dir, file);
+        if (yield* fs.exists(p)) {
+          envSources.push(yield* fs.readFileString(p));
+        }
+      }
+    }
+
+    const envVars = new Set<string>();
+    const re = /process\.env\.([A-Z][A-Z0-9_]*)/g;
+    for (const source of envSources) {
+      let match: RegExpExecArray | null;
+      while ((match = re.exec(source)) !== null) {
+        const varName = match[1];
+        if (!ENV_VARS_TO_IGNORE.has(varName)) {
+          envVars.add(varName);
+        }
+      }
+    }
+
+    if (envVars.size === 0) {
+      yield* Console.log(
+        `\n⚠️  No env vars found in ${name}/src/credentials.ts — skipping test env wiring`,
+      );
+      return;
+    }
+
+    const testYmlPath = path.join(root, ".github", "workflows", "test.yml");
+    let content = yield* fs.readFileString(testYmlPath);
+
+    // Find the `ci-{name}:` job block. It runs from `  ci-{name}:` (2-space
+    // indent at start of line) up to the next `  ci-` line or end of file.
+    const jobHeader = `  ci-${name}:`;
+    const headerIdx = content.indexOf(`\n${jobHeader}\n`);
+    if (headerIdx === -1) {
+      yield* Console.log(
+        `\n⚠️  ci-${name} block not found in test.yml — skipping test env wiring`,
+      );
+      return;
+    }
+
+    // Find the end of the ci-{name} block (next `  ci-` or EOF).
+    const blockStart = headerIdx + 1;
+    const nextJobMatch = content.slice(blockStart + jobHeader.length).match(
+      /\n  ci-[a-z0-9-]+:\n/,
+    );
+    const blockEnd = nextJobMatch
+      ? blockStart + jobHeader.length + nextJobMatch.index!
+      : content.length;
+    const block = content.slice(blockStart, blockEnd);
+
+    if (block.includes("bun run test")) {
+      yield* Console.log(
+        `\n⚠️  ci-${name} already has a test step, skipping test env wiring`,
+      );
+      return;
+    }
+
+    yield* Console.log(
+      `\n📝 Wiring test env vars into ci-${name}: ${Array.from(envVars).sort().join(", ")}`,
+    );
+
+    const sortedVars = Array.from(envVars).sort();
+    const envLines = sortedVars
+      .map((v) => `          ${v}: \${{ secrets.${v} }}`)
+      .join("\n");
+
+    const testStep = `      - run: bun run test
+        working-directory: packages/${name}
+        env:
+${envLines}`;
+
+    // Append the test step at the end of the block, preserving any trailing
+    // blank line that separates jobs.
+    const trimmedBlock = block.replace(/\n+$/, "");
+    const newBlock = `${trimmedBlock}\n${testStep}\n`;
+    const trailingBlanks = block.length - trimmedBlock.length;
+    const replacement =
+      newBlock + (trailingBlanks > 0 ? "\n".repeat(trailingBlanks - 1) : "");
+
+    content =
+      content.slice(0, blockStart) + replacement + content.slice(blockEnd);
+
+    yield* fs.writeFileString(testYmlPath, content);
+    yield* Console.log(
+      `  ✅ Added test step to ci-${name} with env: ${sortedVars.join(", ")}`,
+    );
+    yield* Console.log(
+      `  ⚠️  Make sure these secrets exist in GitHub Actions: ${sortedVars.join(", ")}`,
+    );
+  });
+
 const updatePkgPrYml = (
   root: string,
   name: string,
@@ -1935,6 +2075,9 @@ const createSdk = Command.make(
       // Step 6: Refine with Claude agent
       const stats = new AgentStatsAccumulator();
       yield* refineWithClaude(root, config.name, specInfo, stats, note);
+
+      // Step 7: Wire test env vars into test.yml now that credentials.ts is final
+      yield* wireTestEnvVars(root, config.name);
 
       yield* Console.log(`
 ✨ SDK package created successfully!

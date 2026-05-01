@@ -250,6 +250,10 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/prisma-postgres
+      - run: bun run test
+        working-directory: packages/prisma-postgres
+        env:
+          PRISMA_POSTGRES_API_TOKEN: ${{ secrets.PRISMA_POSTGRES_API_TOKEN }}
 
   ci-stripe:
     needs: detect-changes
@@ -280,6 +284,10 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/supabase
+      - run: bun run test
+        working-directory: packages/supabase
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
   ci-mongodb-atlas:
     needs: detect-changes
@@ -405,6 +413,11 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/posthog
+      - run: bun run test
+        working-directory: packages/posthog
+        env:
+          POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+          POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
 
   ci-typesense:
     needs: detect-changes
@@ -435,6 +448,10 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/workos
+      - run: bun run test
+        working-directory: packages/workos
+        env:
+          WORKOS_API_KEY: ${{ secrets.WORKOS_API_KEY }}
 
   ci-eas:
     needs: detect-changes
@@ -450,3 +467,7 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/eas
+      - run: bun run test
+        working-directory: packages/eas
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
