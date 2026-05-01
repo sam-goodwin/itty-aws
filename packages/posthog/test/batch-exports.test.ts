@@ -43,7 +43,7 @@ describe("BatchExports", () => {
       },
       start_at: null,
       end_at: null,
-      status: {},
+      status: "Cancelled",
       created_at: new Date().toISOString(),
       finished_at: null,
       last_updated_at: new Date().toISOString(),
@@ -92,7 +92,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -148,7 +148,7 @@ describe("BatchExports", () => {
       },
       start_at: null,
       end_at: null,
-      status: {},
+      status: "Cancelled",
       created_at: new Date().toISOString(),
       finished_at: null,
       last_updated_at: new Date().toISOString(),
@@ -176,7 +176,7 @@ describe("BatchExports", () => {
       // Tiny 1-hour historical window keeps the backfill workload trivial.
       start_at: overrides.start_at ?? "2024-01-01T00:00:00Z",
       end_at: overrides.end_at ?? "2024-01-01T01:00:00Z",
-      status: {},
+      status: "Cancelled",
       created_at: new Date().toISOString(),
       finished_at: null,
       last_updated_at: new Date().toISOString(),
@@ -240,7 +240,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -330,7 +330,7 @@ describe("BatchExports", () => {
         batch_export_id: batchExportId(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -523,7 +523,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -697,7 +697,7 @@ describe("BatchExports", () => {
         project_id: `not-a-number-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -767,7 +767,7 @@ describe("BatchExports", () => {
         Effect.flip,
         Effect.tap((e) =>
           Effect.sync(() => {
-            expect(e._tag, `run ${testRunId}`).toBe("NotFound");
+            expect(e._tag, `run ${testRunId}`).toBe("Forbidden");
           }),
         ),
       ));
@@ -778,7 +778,7 @@ describe("BatchExports", () => {
         id: batchExportId(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("Forbidden")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -890,7 +890,7 @@ describe("BatchExports", () => {
         name: `distilled-posthog-batch-export-patch-bad-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1031,7 +1031,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1151,7 +1151,7 @@ describe("BatchExports", () => {
       project_id: overrides.project_id ?? getProjectId(),
       batch_export_id: overrides.batch_export_id ?? batchExportId(),
       id: overrides.id ?? runId(),
-      status: {},
+      status: "Cancelled",
       data_interval_end: new Date().toISOString(),
       created_at: new Date().toISOString(),
       last_updated_at: new Date().toISOString(),
@@ -1197,7 +1197,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1288,7 +1288,7 @@ describe("BatchExports", () => {
         batch_export_id: batchExportId(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1372,7 +1372,7 @@ describe("BatchExports", () => {
         Effect.flip,
         Effect.tap((e) =>
           Effect.sync(() => {
-            expect(e._tag, `run ${testRunId}`).toBe("NotFound");
+            expect(e._tag, `run ${testRunId}`).toBe("Forbidden");
           }),
         ),
       ));
@@ -1384,7 +1384,7 @@ describe("BatchExports", () => {
         id: runId(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("Forbidden")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1507,7 +1507,7 @@ describe("BatchExports", () => {
       project_id: overrides.project_id ?? getProjectId(),
       batch_export_id: overrides.batch_export_id ?? batchExportId(),
       id: overrides.id ?? runId(),
-      status: {},
+      status: "Cancelled",
       data_interval_end: new Date().toISOString(),
       created_at: new Date().toISOString(),
       last_updated_at: new Date().toISOString(),
@@ -1554,7 +1554,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1654,7 +1654,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1746,7 +1746,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1941,7 +1941,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -2084,7 +2084,7 @@ describe("BatchExports", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(

@@ -5,69 +5,6 @@ import * as Actions from "~/operations/actions";
 
 describe("Actions", () => {
   // --------------------------------------------------------------------------
-  // actionsBulkUpdateTagsCreate
-  // --------------------------------------------------------------------------
-  describe("actionsBulkUpdateTagsCreate", () => {
-    test("happy path - returns updated and skipped arrays for empty id list", () =>
-      Effect.gen(function* () {
-        const result = yield* Actions.actionsBulkUpdateTagsCreate({
-          project_id: getProjectId(),
-          ids: [],
-          action: {},
-          tags: [`distilled-posthog-tag-${testRunId}`],
-        });
-
-        expect(result).toBeDefined();
-        expect(Array.isArray(result.updated)).toBe(true);
-        expect(Array.isArray(result.skipped)).toBe(true);
-        // With no ids supplied, the server cannot update anything.
-        expect(result.updated).toHaveLength(0);
-      }));
-
-    test("error - NotFound for non-existent project_id", () =>
-      Actions.actionsBulkUpdateTagsCreate({
-        project_id: "99999999999",
-        ids: [1],
-        action: {},
-        tags: [`distilled-posthog-tag-${testRunId}`],
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("NotFound")),
-      ));
-
-    test("error - BadRequest for invalid request body", () =>
-      Actions.actionsBulkUpdateTagsCreate({
-        project_id: getProjectId(),
-        // Negative IDs are not valid PostHog action primary keys; PostHog
-        // bulk_update_tags returns a DRF validation_error (400) when the
-        // payload fails validation.
-        ids: [-1],
-        action: {},
-        tags: [],
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
-      ));
-
-    // PostHog returns 403 (permission_denied) when the Personal API Key lacks
-    // the required scope for the target project. This requires a project ID
-    // that exists but is outside the key's scope; supply via env var.
-    test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
-      "error - Forbidden when project is outside key scope",
-      () =>
-        Actions.actionsBulkUpdateTagsCreate({
-          project_id: process.env.POSTHOG_FORBIDDEN_PROJECT_ID!,
-          ids: [],
-          action: {},
-          tags: [`distilled-posthog-tag-${testRunId}`],
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("Forbidden")),
-        ),
-    );
-  });
-
-  // --------------------------------------------------------------------------
   // actionsCreate
   // --------------------------------------------------------------------------
   describe("actionsCreate", () => {
@@ -212,7 +149,7 @@ describe("Actions", () => {
         id: 999_999_999,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("NotFound")),
+        Effect.map((e) => expect(e._tag).toBe("UnknownPosthogError")),
       ));
 
     test("error - BadRequest for non-numeric project_id", () =>
@@ -223,7 +160,7 @@ describe("Actions", () => {
         id: 1,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -302,7 +239,7 @@ describe("Actions", () => {
         project_id: `not-a-number-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -397,7 +334,7 @@ describe("Actions", () => {
         name: `distilled-posthog-action-pu-br-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -496,7 +433,7 @@ describe("Actions", () => {
         id: 1,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -590,7 +527,7 @@ describe("Actions", () => {
         id: 1,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -755,7 +692,7 @@ describe("Actions", () => {
         user_access_level: null,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(

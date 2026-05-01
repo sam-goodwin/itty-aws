@@ -5,4 +5,3 @@ export * from "./actionsUpdate.ts";
 export * from "./actionsPartialUpdate.ts";
 export * from "./actionsDestroy.ts";
 export * from "./actionsReferencesList.ts";
-export * from "./actionsBulkUpdateTagsCreate.ts";

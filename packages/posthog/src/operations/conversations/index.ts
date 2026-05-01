@@ -10,4 +10,3 @@ export * from "./conversationsTicketsPartialUpdate.ts";
 export * from "./conversationsTicketsDestroy.ts";
 export * from "./conversationsTicketsSuggestReplyCreate.ts";
 export * from "./conversationsTicketsBulkUpdateTagsCreate.ts";
-export * from "./conversationsTicketsUnreadCountRetrieve.ts";

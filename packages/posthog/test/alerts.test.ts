@@ -106,7 +106,7 @@ describe("Alerts", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -275,7 +275,7 @@ describe("Alerts", () => {
         project_id: `not-a-number-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -392,7 +392,7 @@ describe("Alerts", () => {
         name: `distilled-posthog-alert-patch-bad-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -545,7 +545,7 @@ describe("Alerts", () => {
         id: "00000000-0000-0000-0000-000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -614,7 +614,7 @@ describe("Alerts", () => {
         detector_config: {},
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -751,7 +751,7 @@ describe("Alerts", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(

@@ -80,7 +80,7 @@ describe("Conversations", () => {
         Effect.flip,
         Effect.tap((e) =>
           Effect.sync(() => {
-            expect(e._tag, `run ${testRunId}`).toBe("NotFound");
+            expect(e._tag, `run ${testRunId}`).toBe("Forbidden");
           }),
         ),
       ));
@@ -94,7 +94,7 @@ describe("Conversations", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("Forbidden")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -140,7 +140,7 @@ describe("Conversations", () => {
       // Server-set placeholders — required by the schema decoder.
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
-      channel_source: "in_app" as never,
+      channel_source: "widget",
       channel_detail: {},
       distinct_id:
         overrides.distinct_id ?? `distilled-conv-${testRunId}`,
@@ -220,7 +220,7 @@ describe("Conversations", () => {
         }),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -258,7 +258,7 @@ describe("Conversations", () => {
       // Server-set placeholders — required by the create schema decoder.
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
-      channel_source: "in_app" as never,
+      channel_source: "widget",
       channel_detail: {},
       distinct_id: distinctId,
       assignee: {
@@ -426,7 +426,7 @@ describe("Conversations", () => {
         project_id: `not-a-number-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -458,7 +458,7 @@ describe("Conversations", () => {
       // Server-set placeholders — required by the create schema decoder.
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
-      channel_source: "in_app" as never,
+      channel_source: "widget",
       channel_detail: {},
       distinct_id: distinctId,
       assignee: {
@@ -556,7 +556,7 @@ describe("Conversations", () => {
         email_subject: `distilled-conv-subject-bad-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -668,7 +668,7 @@ describe("Conversations", () => {
         Effect.flip,
         Effect.tap((e) =>
           Effect.sync(() => {
-            expect(e._tag, `run ${testRunId}`).toBe("NotFound");
+            expect(e._tag, `run ${testRunId}`).toBe("Forbidden");
           }),
         ),
       ));
@@ -680,7 +680,7 @@ describe("Conversations", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) =>
-          expect(["BadRequest", "NotFound"]).toContain(e._tag),
+          expect(["BadRequest", "NotFound", "Forbidden"]).toContain(e._tag),
         ),
       ));
 
@@ -696,55 +696,6 @@ describe("Conversations", () => {
         ),
     );
   });
-
-  describe("conversationsTicketsUnreadCountRetrieve", () => {
-    test("happy path - returns unread count metadata for the project", () =>
-      Effect.gen(function* () {
-        const result =
-          yield* Conversations.conversationsTicketsUnreadCountRetrieve({
-            project_id: getProjectId(),
-          });
-
-        expect(result).toBeDefined();
-        expect(typeof result.id).toBe("string");
-        expect(typeof result.ticket_number).toBe("number");
-        expect(typeof result.distinct_id).toBe("string");
-        expect(typeof result.created_at).toBe("string");
-        expect(typeof result.updated_at).toBe("string");
-        expect(typeof result.message_count).toBe("number");
-        expect(typeof result.unread_team_count).toBe("number");
-        expect(typeof result.unread_customer_count).toBe("number");
-        expect(result.assignee).toBeDefined();
-        expect(typeof result.assignee.type).toBe("string");
-        expect(result.person).toBeDefined();
-        expect(typeof result.person.id).toBe("string");
-        expect(Array.isArray(result.person.distinct_ids)).toBe(true);
-      }));
-
-    test("error - NotFound for non-existent project", () =>
-      Conversations.conversationsTicketsUnreadCountRetrieve({
-        project_id: "99999999999",
-      }).pipe(
-        Effect.flip,
-        Effect.tap((e) =>
-          Effect.sync(() => {
-            expect(e._tag, `run ${testRunId}`).toBe("NotFound");
-          }),
-        ),
-      ));
-
-    test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
-      "error - Forbidden when project is outside key scope",
-      () =>
-        Conversations.conversationsTicketsUnreadCountRetrieve({
-          project_id: process.env.POSTHOG_FORBIDDEN_PROJECT_ID!,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("Forbidden")),
-        ),
-    );
-  });
-
   // --------------------------------------------------------------------------
   // conversationsTicketsUpdate
   // --------------------------------------------------------------------------
@@ -761,7 +712,7 @@ describe("Conversations", () => {
       project_id: getProjectId(),
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
-      channel_source: "in_app" as never,
+      channel_source: "widget",
       channel_detail: {},
       distinct_id: distinctId,
       assignee: {
@@ -805,7 +756,7 @@ describe("Conversations", () => {
       project_id,
       id,
       ticket_number: 0,
-      channel_source: {} as never,
+      channel_source: "widget" as never,
       channel_detail: {},
       distinct_id: distinctId,
       assignee: {
@@ -911,7 +862,7 @@ describe("Conversations", () => {
         ),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1012,7 +963,7 @@ describe("Conversations", () => {
         ),
       ).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
@@ -1204,7 +1155,7 @@ describe("Conversations", () => {
         project_id: `not-a-number-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(

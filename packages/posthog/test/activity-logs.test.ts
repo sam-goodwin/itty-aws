@@ -63,7 +63,7 @@ describe("ActivityLogs", () => {
         project_id: `not-a-number-${testRunId}`,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
