@@ -115,6 +115,30 @@ describe("buildRequestParts — Redacted unwrap", () => {
     expect(parts.body).toEqual({ tokens: ["a", "b", "c"] });
   });
 
+  it("preserves File/Blob instances (don't recursively walk builtins)", () => {
+    // Regression for cloudflare workers.test.ts: walking File/Blob with
+    // Object.entries() returns {} (no own enumerable keys) and the schema
+    // encoder then rejects with "Expected File, got {}".
+    const Input = Schema.Struct({
+      // Schema.Any so encodeSync passes the object through unchanged.
+      file: Schema.Any,
+      blob: Schema.Any,
+    }).pipe(T.Http({ method: "POST", path: "/v1/upload" }));
+
+    const file = new File(["hello"], "hello.txt", { type: "text/plain" });
+    const blob = new Blob(["world"], { type: "text/plain" });
+    const parts = T.buildRequestParts(
+      Input.ast,
+      T.getHttpTrait(Input.ast)!,
+      { file, blob },
+      Input,
+    );
+
+    expect(parts.body).toBeDefined();
+    expect((parts.body as { file: unknown }).file).toBe(file);
+    expect((parts.body as { blob: unknown }).blob).toBe(blob);
+  });
+
   it("plain string still works (no regression)", () => {
     const Input = Schema.Struct({
       token: Schema.String,

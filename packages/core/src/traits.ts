@@ -606,6 +606,14 @@ const unwrapRedactedDeep = (value: unknown): unknown => {
   if (Redacted.isRedacted(value)) return Redacted.value(value);
   if (Array.isArray(value)) return value.map(unwrapRedactedDeep);
   if (value !== null && typeof value === "object") {
+    // Only walk into plain objects. Builtins like File, Blob, FormData,
+    // ArrayBuffer, TypedArrays, Map/Set, Date, Streams, etc. don't contain
+    // Redacted values and would be destroyed by Object.entries() — `new
+    // File([], "x")` has no own enumerable keys, so a recursive copy returns
+    // `{}` and the schema encoder later rejects the empty object with
+    // "Expected File, got {}". Preserve any non-plain object as-is.
+    const proto = Object.getPrototypeOf(value);
+    if (proto !== null && proto !== Object.prototype) return value;
     const out: Record<string, unknown> = {};
     for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
       out[k] = unwrapRedactedDeep(v);
