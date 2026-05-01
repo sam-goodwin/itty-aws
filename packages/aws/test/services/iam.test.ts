@@ -538,9 +538,22 @@ test(
       // Role should have the trust policy
       expect(role.Role?.AssumeRolePolicyDocument).toBeDefined();
 
-      // List roles and verify our role is in the list
-      const listResult = yield* listRoles({});
-      const foundRole = listResult.Roles?.find((r) => r.RoleName === roleName);
+      // List roles and verify our role is in the list. Real AWS accounts
+      // have hundreds of IAM roles so we have to paginate via Marker rather
+      // than relying on the first page including our newly-created role.
+      let foundRole: { RoleName?: string } | undefined;
+      let marker: string | undefined;
+      // Cap the search at a generous page count to keep the test bounded;
+      // the role was created seconds ago and listRoles defaults to 100 per
+      // page, so any account with <2000 roles surfaces it quickly.
+      for (let page = 0; page < 20 && !foundRole; page++) {
+        const listResult = yield* listRoles(
+          marker !== undefined ? { Marker: marker } : {},
+        );
+        foundRole = listResult.Roles?.find((r) => r.RoleName === roleName);
+        if (!listResult.IsTruncated) break;
+        marker = listResult.Marker;
+      }
       expect(foundRole).toBeDefined();
     }),
   ),

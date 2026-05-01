@@ -16,13 +16,17 @@ describe("ActivityLogs", () => {
         });
 
         expect(result).toBeDefined();
-        expect(typeof result.count).toBe("number");
-        expect(result.count).toBeGreaterThanOrEqual(0);
+        // `count` is optional in the schema — PostHog sometimes omits it for
+        // larger collections. Only assert on it when present.
+        if (result.count !== undefined) {
+          expect(typeof result.count).toBe("number");
+          expect(result.count).toBeGreaterThanOrEqual(0);
+        }
         expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(5);
+        expect(result.results!.length).toBeLessThanOrEqual(5);
 
         // Validate shape of each entry, if any are present.
-        for (const entry of result.results) {
+        for (const entry of result.results!) {
           expect(typeof entry.id).toBe("string");
           expect(typeof entry.activity).toBe("string");
           expect(typeof entry.scope).toBe("string");

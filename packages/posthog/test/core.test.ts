@@ -800,12 +800,13 @@ describe("Core", () => {
 
         // Act: call add_persons_to_static_cohort with an empty list. The
         // endpoint accepts this as a no-op and returns Void on success.
-        const result =
-          yield* Core.cohortsAddPersonsToStaticCohortPartialUpdate({
+        const result = yield* Core.cohortsAddPersonsToStaticCohortPartialUpdate(
+          {
             project_id: getProjectId(),
             id: created.id,
             person_ids: [],
-          });
+          },
+        );
 
         // Assert: schema-decoded Void is undefined.
         expect(result).toBeUndefined();
@@ -1461,10 +1462,7 @@ describe("Core", () => {
       let createdId: number | undefined;
       return Effect.gen(function* () {
         const created = yield* Core.cohortsCreate(
-          cohortStub(
-            getProjectId(),
-            `distilled-cohort-persons-${testRunId}`,
-          ),
+          cohortStub(getProjectId(), `distilled-cohort-persons-${testRunId}`),
         );
         createdId = created.id;
         const result = yield* Core.cohortsPersonsRetrieve({
@@ -1550,10 +1548,7 @@ describe("Core", () => {
       let createdId: number | undefined;
       return Effect.gen(function* () {
         const created = yield* Core.cohortsCreate(
-          cohortStub(
-            getProjectId(),
-            `distilled-cohort-rmperson-${testRunId}`,
-          ),
+          cohortStub(getProjectId(), `distilled-cohort-rmperson-${testRunId}`),
         );
         createdId = created.id;
         const result =
@@ -1640,10 +1635,7 @@ describe("Core", () => {
       let createdId: number | undefined;
       return Effect.gen(function* () {
         const created = yield* Core.cohortsCreate(
-          cohortStub(
-            getProjectId(),
-            `distilled-cohort-retrieve-${testRunId}`,
-          ),
+          cohortStub(getProjectId(), `distilled-cohort-retrieve-${testRunId}`),
         );
         createdId = created.id;
         const result = yield* Core.cohortsRetrieve({
@@ -1910,17 +1902,12 @@ describe("Core", () => {
       let createdId: string | undefined;
       return Effect.gen(function* () {
         const result = yield* Core.commentsCreate(
-          commentInput(
-            getProjectId(),
-            `distilled-comment-create-${testRunId}`,
-          ),
+          commentInput(getProjectId(), `distilled-comment-create-${testRunId}`),
         );
         createdId = result.id;
         expect(typeof result.id).toBe("string");
         expect(result.id.length).toBeGreaterThan(0);
-        expect(result.content).toBe(
-          `distilled-comment-create-${testRunId}`,
-        );
+        expect(result.content).toBe(`distilled-comment-create-${testRunId}`);
         expect(typeof result.scope).toBe("string");
         expect(typeof result.version).toBe("number");
         expect(typeof result.created_at).toBe("string");
@@ -2128,10 +2115,7 @@ describe("Core", () => {
       let createdId: string | undefined;
       return Effect.gen(function* () {
         const created = yield* Core.commentsCreate(
-          commentInput(
-            getProjectId(),
-            `distilled-comment-patch-${testRunId}`,
-          ),
+          commentInput(getProjectId(), `distilled-comment-patch-${testRunId}`),
         );
         createdId = created.id;
         const result = yield* Core.commentsPartialUpdate({
@@ -2140,9 +2124,7 @@ describe("Core", () => {
           content: `distilled-comment-patched-${testRunId}`,
         });
         expect(result.id).toBe(created.id);
-        expect(result.content).toBe(
-          `distilled-comment-patched-${testRunId}`,
-        );
+        expect(result.content).toBe(`distilled-comment-patched-${testRunId}`);
         expect(typeof result.scope).toBe("string");
         expect(typeof result.version).toBe("number");
         expect(result.created_by).toBeDefined();
@@ -2165,10 +2147,7 @@ describe("Core", () => {
       let createdId: string | undefined;
       return Effect.gen(function* () {
         const created = yield* Core.commentsCreate(
-          commentInput(
-            getProjectId(),
-            `distilled-comment-soft-${testRunId}`,
-          ),
+          commentInput(getProjectId(), `distilled-comment-soft-${testRunId}`),
         );
         createdId = created.id;
         const result = yield* Core.commentsPartialUpdate({
@@ -2261,9 +2240,7 @@ describe("Core", () => {
           id: created.id,
         });
         expect(result.id).toBe(created.id);
-        expect(result.content).toBe(
-          `distilled-comment-retrieve-${testRunId}`,
-        );
+        expect(result.content).toBe(`distilled-comment-retrieve-${testRunId}`);
         expect(typeof result.scope).toBe("string");
         expect(typeof result.version).toBe("number");
         expect(typeof result.created_at).toBe("string");
@@ -2329,10 +2306,7 @@ describe("Core", () => {
       let createdId: string | undefined;
       return Effect.gen(function* () {
         const created = yield* Core.commentsCreate(
-          commentInput(
-            getProjectId(),
-            `distilled-comment-thread-${testRunId}`,
-          ),
+          commentInput(getProjectId(), `distilled-comment-thread-${testRunId}`),
         );
         createdId = created.id;
         const result = yield* Core.commentsThreadRetrieve({
@@ -2396,11 +2370,7 @@ describe("Core", () => {
       scope: "Notebook",
     });
 
-    const updateBody = (
-      project_id: string,
-      id: string,
-      content: string,
-    ) => ({
+    const updateBody = (project_id: string, id: string, content: string) => ({
       project_id,
       id,
       created_by: {
@@ -2545,9 +2515,7 @@ describe("Core", () => {
         });
         const tileId =
           sourceFull.tiles && sourceFull.tiles.length > 0
-            ? Number(
-                (sourceFull.tiles[0] as Record<string, unknown>).id ?? 0,
-              )
+            ? Number((sourceFull.tiles[0] as Record<string, unknown>).id ?? 0)
             : 0;
         const result = yield* Core.dashboardsCopyTileCreate({
           project_id: getProjectId(),
@@ -2674,10 +2642,7 @@ describe("Core", () => {
 
     test("error - NotFound for non-existent project_id", () =>
       Core.dashboardsCreate(
-        dashboardCreateInput(
-          "99999999999",
-          `distilled-dash-nf-${testRunId}`,
-        ),
+        dashboardCreateInput("99999999999", `distilled-dash-nf-${testRunId}`),
       ).pipe(
         Effect.flip,
         Effect.tap((e) =>
@@ -3246,3 +3211,4 @@ describe("Core", () => {
         ),
     );
   });
+});
