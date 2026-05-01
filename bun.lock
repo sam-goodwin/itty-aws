@@ -140,8 +140,8 @@
         "effect": "catalog:",
       },
     },
-    "packages/eas": {
-      "name": "@distilled.cloud/eas",
+    "packages/expo-eas": {
+      "name": "@distilled.cloud/expo-eas",
       "version": "0.2.0-alpha",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
@@ -501,7 +501,7 @@
 
     "@distilled.cloud/core": ["@distilled.cloud/core@workspace:packages/core"],
 
-    "@distilled.cloud/eas": ["@distilled.cloud/eas@workspace:packages/eas"],
+    "@distilled.cloud/expo-eas": ["@distilled.cloud/expo-eas@workspace:packages/expo-eas"],
 
     "@distilled.cloud/fly-io": ["@distilled.cloud/fly-io@workspace:packages/fly-io"],
 

@@ -1,10 +1,10 @@
 {
-  "name": "@distilled.cloud/eas",
+  "name": "@distilled.cloud/expo-eas",
   "version": "0.2.0-alpha",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
-    "directory": "packages/eas"
+    "directory": "packages/expo-eas"
   },
   "type": "module",
   "sideEffects": false,

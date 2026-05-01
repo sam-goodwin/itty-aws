@@ -67,7 +67,7 @@ on:
         description: "WorkOS"
         type: boolean
         default: false
-      eas:
+      expo-eas:
         description: "Eas"
         type: boolean
         default: false

@@ -1,11 +1,11 @@
-# @distilled.cloud/eas
+# @distilled.cloud/expo-eas
 
 Effect-native SDK for [Expo Application Services](https://expo.dev/eas) (EAS), generated from the [eas-cli](https://github.com/expo/eas-cli) GraphQL introspection schema. Drives the same `https://api.expo.dev/graphql` endpoint that powers `eas-cli` — Build, Submit, Update, and Hosting — with exhaustive error typing.
 
 ## Installation
 
 ```bash
-npm install @distilled.cloud/eas effect
+npm install @distilled.cloud/expo-eas effect
 ```
 
 ## Quick Start
@@ -13,8 +13,8 @@ npm install @distilled.cloud/eas effect
 ```typescript
 import { Effect, Layer } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
-import { me } from "@distilled.cloud/eas/Operations";
-import { CredentialsFromEnv } from "@distilled.cloud/eas";
+import { me } from "@distilled.cloud/expo-eas/Operations";
+import { CredentialsFromEnv } from "@distilled.cloud/expo-eas";
 
 const program = Effect.gen(function* () {
   const result = yield* me({});
@@ -44,12 +44,12 @@ EAS returns errors in the GraphQL `errors[]` envelope, each carrying an `extensi
 
 ```typescript
 import { Effect } from "effect";
-import { build } from "@distilled.cloud/eas/Operations";
+import { build } from "@distilled.cloud/expo-eas/Operations";
 import {
   EasBuildFreeTierLimitExceeded,
   EasValidationError,
   UnknownEasError,
-} from "@distilled.cloud/eas";
+} from "@distilled.cloud/expo-eas";
 
 build({}).pipe(
   Effect.catchTags({
@@ -63,7 +63,7 @@ build({}).pipe(
 
 ## Services
 
-The EAS GraphQL schema exposes ~140 top-level fields, generated as one operation per Query/Mutation field in `@distilled.cloud/eas/Operations`. Operations group naturally into:
+The EAS GraphQL schema exposes ~140 top-level fields, generated as one operation per Query/Mutation field in `@distilled.cloud/expo-eas/Operations`. Operations group naturally into:
 
 - **Build** — `build`, `builds`, `buildAnnotation`, `buildAnnotations`, `buildPublicData`, `keystoreGenerationUrl`, `localBuild`
 - **Submit** — `submission`, `submissions`, `appStoreConnectApiKey`, `appStoreConnectApp`, `ascAppLink`, `googleServiceAccountKey`
