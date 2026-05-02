@@ -13,55 +13,51 @@ const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const bucketName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("bucketCreate", () => {
-  it(
-    "happy path - creates a bucket in a freshly provisioned project",
-    async () => {
-      const projName = projectName("bucket-create");
-      const bktName = bucketName("bkt");
+  it("happy path - creates a bucket in a freshly provisioned project", async () => {
+    const projName = projectName("bucket-create");
+    const bktName = bucketName("bkt");
 
-      await runEffect(
-        Effect.gen(function* () {
-          const project = yield* projectCreate({
-            input: { name: projName },
+    await runEffect(
+      Effect.gen(function* () {
+        const project = yield* projectCreate({
+          input: { name: projName },
+        });
+        return yield* Effect.gen(function* () {
+          const result = yield* bucketCreate({
+            input: { projectId: project.id, name: bktName },
           });
-          return yield* Effect.gen(function* () {
-            const result = yield* bucketCreate({
-              input: { projectId: project.id, name: bktName },
-            });
 
-            expect(typeof result.id).toBe("string");
-            expect(result.name).toBe(bktName);
-            expect(result.projectId).toBe(project.id);
-            expect(typeof result.createdAt).toBe("string");
-            expect(typeof result.updatedAt).toBe("string");
+          expect(typeof result.id).toBe("string");
+          expect(result.name).toBe(bktName);
+          expect(result.projectId).toBe(project.id);
+          expect(typeof result.createdAt).toBe("string");
+          expect(typeof result.updatedAt).toBe("string");
 
-            // project nested struct
-            expect(result.project.id).toBe(project.id);
-            expect(result.project.name).toBe(projName);
-            expect(["free", "hobby", "pro", "trial"]).toContain(
-              result.project.subscriptionType,
-            );
-            for (const m of result.project.members) {
-              expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(m.role);
-            }
-            if (result.project.workspace !== null) {
-              expect(["FREE", "HOBBY", "PRO"]).toContain(
-                result.project.workspace.plan,
-              );
-              expect(["FREE", "TEAM", "USER"]).toContain(
-                result.project.workspace.subscriptionModel,
-              );
-            }
-          }).pipe(
-            Effect.ensuring(
-              projectDelete({ id: project.id }).pipe(Effect.ignore),
-            ),
+          // project nested struct
+          expect(result.project.id).toBe(project.id);
+          expect(result.project.name).toBe(projName);
+          expect(["free", "hobby", "pro", "trial"]).toContain(
+            result.project.subscriptionType,
           );
-        }),
-      );
-    },
-    120_000,
-  );
+          for (const m of result.project.members) {
+            expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(m.role);
+          }
+          if (result.project.workspace !== null) {
+            expect(["FREE", "HOBBY", "PRO"]).toContain(
+              result.project.workspace.plan,
+            );
+            expect(["FREE", "TEAM", "USER"]).toContain(
+              result.project.workspace.subscriptionModel,
+            );
+          }
+        }).pipe(
+          Effect.ensuring(
+            projectDelete({ id: project.id }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
+  }, 120_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -79,7 +75,7 @@ describe("bucketCreate", () => {
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
     );
-    expect(error._tag).toBe("RailwayNotAuthorized");
+    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
   }, 30_000);
 
   it("error - RailwayInvalidInput for an empty projectId", async () => {

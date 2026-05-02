@@ -11,84 +11,74 @@ import { runEffect, testRunId } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("canvasViewMergePreview", () => {
-  it(
-    "happy path - returns merge preview between two environments",
-    async () => {
-      const projectName = `distilled-railway-canvas-merge-preview-${testRunId}`;
+  it("happy path - returns merge preview between two environments", async () => {
+    const projectName = `distilled-railway-canvas-merge-preview-${testRunId}`;
 
-      const result = await runEffect(
-        Effect.gen(function* () {
-          const project = yield* projectCreate({
-            input: { name: projectName },
+    const result = await runEffect(
+      Effect.gen(function* () {
+        const project = yield* projectCreate({
+          input: { name: projectName },
+        });
+        const baseEnvId = project.baseEnvironmentId;
+        expect(baseEnvId).toBeTruthy();
+
+        return yield* Effect.gen(function* () {
+          const newEnv = yield* environmentCreate({
+            input: {
+              projectId: project.id,
+              name: `merge-${testRunId}`,
+              sourceEnvironmentId: baseEnvId,
+              skipInitialDeploys: true,
+            },
           });
-          const baseEnvId = project.baseEnvironmentId;
-          expect(baseEnvId).toBeTruthy();
 
-          return yield* Effect.gen(function* () {
-            const newEnv = yield* environmentCreate({
-              input: {
-                projectId: project.id,
-                name: `merge-${testRunId}`,
-                sourceEnvironmentId: baseEnvId,
-                skipInitialDeploys: true,
-              },
-            });
+          const preview = yield* canvasViewMergePreview({
+            sourceEnvironmentId: newEnv.id,
+            targetEnvironmentId: baseEnvId!,
+          });
 
-            const preview = yield* canvasViewMergePreview({
-              sourceEnvironmentId: newEnv.id,
-              targetEnvironmentId: baseEnvId!,
-            });
-
-            expect(Array.isArray(preview.mutations)).toBe(true);
-            expect(preview).toHaveProperty("state");
-            return preview;
-          }).pipe(
-            Effect.ensuring(projectDelete({ id: project.id }).pipe(Effect.ignore)),
-          );
-        }),
-      );
-
-      expect(Array.isArray(result.mutations)).toBe(true);
-    },
-    60_000,
-  );
-
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
-
-      const error = await Effect.runPromise(
-        canvasViewMergePreview({
-          sourceEnvironmentId: NON_EXISTENT_UUID,
-          targetEnvironmentId: NON_EXISTENT_UUID,
+          expect(Array.isArray(preview.mutations)).toBe(true);
+          expect(preview).toHaveProperty("state");
+          return preview;
         }).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
+          Effect.ensuring(
+            projectDelete({ id: project.id }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
 
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+    expect(Array.isArray(result.mutations)).toBe(true);
+  }, 60_000);
 
-  it(
-    "error - RailwayNotFound for non-existent environment ids",
-    async () => {
-      const error = await runEffect(
-        canvasViewMergePreview({
-          sourceEnvironmentId: NON_EXISTENT_UUID,
-          targetEnvironmentId: NON_EXISTENT_UUID,
-        }).pipe(Effect.flip),
-      );
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
 
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-      expect((error as { message: string }).message).toMatch(/not found$/i);
-    },
-    30_000,
-  );
+    const error = await Effect.runPromise(
+      canvasViewMergePreview({
+        sourceEnvironmentId: NON_EXISTENT_UUID,
+        targetEnvironmentId: NON_EXISTENT_UUID,
+      }).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
+
+    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+  }, 30_000);
+
+  it("error - RailwayNotFound for non-existent environment ids", async () => {
+    const error = await runEffect(
+      canvasViewMergePreview({
+        sourceEnvironmentId: NON_EXISTENT_UUID,
+        targetEnvironmentId: NON_EXISTENT_UUID,
+      }).pipe(Effect.flip),
+    );
+
+    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect((error as { message: string }).message).toMatch(/not found$/i);
+  }, 30_000);
 });

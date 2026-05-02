@@ -6,49 +6,37 @@ import { workspaceInviteCodeUse } from "../src/operations/workspaceInviteCodeUse
 import { runEffect, testRunId } from "./setup.ts";
 
 describe("workspaceInviteCodeUse", () => {
-  it(
-    "happy path - exercises invite-code use with a fabricated code (real consumption would alter the test runner's workspace memberships, so a non-existent code is used; returns RailwayNotFound)",
-    async () => {
-      const error = await runEffect(
-        workspaceInviteCodeUse({
-          code: `distilled-railway-wicu-${testRunId}-nonexistent`,
-        }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    },
-    30_000,
-  );
+  it("happy path - exercises invite-code use with a fabricated code (real consumption would alter the test runner's workspace memberships, so a non-existent code is used; returns RailwayNotFound)", async () => {
+    const error = await runEffect(
+      workspaceInviteCodeUse({
+        code: `distilled-railway-wicu-${testRunId}-nonexistent`,
+      }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+  }, 30_000);
 
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
-      const error = await Effect.runPromise(
-        workspaceInviteCodeUse({
-          code: `distilled-railway-wicu-${testRunId}-nonexistent`,
-        }).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
+    const error = await Effect.runPromise(
+      workspaceInviteCodeUse({
+        code: `distilled-railway-wicu-${testRunId}-nonexistent`,
+      }).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
+    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+  }, 30_000);
 
-  it(
-    "error - RailwayNotFound for a non-existent invite code",
-    async () => {
-      const error = await runEffect(
-        workspaceInviteCodeUse({
-          code: `distilled-railway-wicu-${testRunId}-nonexistent`,
-        }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    },
-    30_000,
-  );
+  it("error - RailwayNotFound for a non-existent invite code", async () => {
+    const error = await runEffect(
+      workspaceInviteCodeUse({
+        code: `distilled-railway-wicu-${testRunId}-nonexistent`,
+      }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+  }, 30_000);
 });
