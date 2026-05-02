@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const EnvironmentDeleteInput = Schema.Struct({

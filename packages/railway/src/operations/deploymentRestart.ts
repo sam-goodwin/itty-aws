@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id) {\n    __typename\n  }\n}";
+  "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeploymentRestartInput = Schema.Struct({

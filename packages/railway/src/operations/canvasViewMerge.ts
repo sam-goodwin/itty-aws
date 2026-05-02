@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation canvasViewMerge($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMerge(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId) {\n    __typename\n  }\n}";
+  "mutation canvasViewMerge($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMerge(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId)\n}";
 
 // Input Schema (GraphQL variables)
 export const CanvasViewMergeInput = Schema.Struct({

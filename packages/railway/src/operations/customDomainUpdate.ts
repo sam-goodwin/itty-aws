@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort) {\n    __typename\n  }\n}";
+  "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort)\n}";
 
 // Input Schema (GraphQL variables)
 export const CustomDomainUpdateInput = Schema.Struct({

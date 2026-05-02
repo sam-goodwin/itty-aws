@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query changelogBlockImage($id: String!) {\n  changelogBlockImage(id: $id) {\n    __typename\n  }\n}";
+  "query changelogBlockImage($id: String!) {\n  changelogBlockImage(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const ChangelogBlockImageInput = Schema.Struct({

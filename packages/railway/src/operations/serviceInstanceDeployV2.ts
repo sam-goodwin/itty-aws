@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const ServiceInstanceDeployV2Input = Schema.Struct({

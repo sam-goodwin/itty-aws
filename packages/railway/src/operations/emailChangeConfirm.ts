@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation emailChangeConfirm($nonce: String!) {\n  emailChangeConfirm(nonce: $nonce) {\n    __typename\n  }\n}";
+  "mutation emailChangeConfirm($nonce: String!) {\n  emailChangeConfirm(nonce: $nonce)\n}";
 
 // Input Schema (GraphQL variables)
 export const EmailChangeConfirmInput = Schema.Struct({

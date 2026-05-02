@@ -673,12 +673,25 @@ function buildPathDocument(
     ? `${type} ${operationName}(${varDefs.join(", ")})`
     : `${type} ${operationName}`;
 
+  // Determine whether the leaf's return type is a scalar/enum, in which
+  // case GraphQL forbids a selection set on the call. Unwrap NON_NULL/LIST
+  // wrappers to find the underlying kind.
+  const leafInnerKind = (() => {
+    let t: IntrospectionTypeRef = path[path.length - 1].returnType;
+    while ((t.kind === "NON_NULL" || t.kind === "LIST") && t.ofType) {
+      t = t.ofType;
+    }
+    return t.kind;
+  })();
+  const leafIsScalar = leafInnerKind === "SCALAR" || leafInnerKind === "ENUM";
+
   // Build the nested field call chain from outermost to innermost.
   // We render leaf-first inside-out so the body is straightforward.
   const renderStep = (
     step: OperationStep,
     inner: string,
     indent: string,
+    isLeaf: boolean,
   ): string => {
     const argList = step.args
       .map((arg) => {
@@ -688,6 +701,9 @@ function buildPathDocument(
       })
       .join(", ");
     const call = argList ? `${step.name}(${argList})` : step.name;
+    if (isLeaf && leafIsScalar) {
+      return `${indent}${call}`;
+    }
     return `${indent}${call} {\n${inner}\n${indent}}`;
   };
 
@@ -696,9 +712,11 @@ function buildPathDocument(
   const innerIndent = "  ".repeat(path.length + 1);
   if (selection && selection.length > 0) {
     body = renderSelectionSet(selection, innerIndent);
+  } else if (leafIsScalar) {
+    body = "";
   } else {
-    // No selectable subfields — fall back to __typename so the document is
-    // always valid syntactically.
+    // No selectable subfields and not a scalar — fall back to __typename so
+    // the document is always valid syntactically.
     body = `${innerIndent}__typename`;
   }
 
@@ -706,7 +724,7 @@ function buildPathDocument(
   let nested = body;
   for (let i = path.length - 1; i >= 0; i--) {
     const indent = "  ".repeat(i + 1);
-    nested = renderStep(path[i], nested, indent);
+    nested = renderStep(path[i], nested, indent, i === path.length - 1);
   }
 
   return `${header} {\n${nested}\n}`;

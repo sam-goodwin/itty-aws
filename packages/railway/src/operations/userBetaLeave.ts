@@ -2,8 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
-const __document =
-  "mutation userBetaLeave {\n  userBetaLeave {\n    __typename\n  }\n}";
+const __document = "mutation userBetaLeave {\n  userBetaLeave\n}";
 
 // Input Schema (GraphQL variables)
 export const UserBetaLeaveInput = Schema.Struct({}).pipe(

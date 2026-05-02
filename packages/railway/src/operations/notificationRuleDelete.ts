@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation notificationRuleDelete($id: String!) {\n  notificationRuleDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation notificationRuleDelete($id: String!) {\n  notificationRuleDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const NotificationRuleDeleteInput = Schema.Struct({

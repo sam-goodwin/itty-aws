@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input) {\n    __typename\n  }\n}";
+  "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const VariableDeleteInput = Schema.Struct({

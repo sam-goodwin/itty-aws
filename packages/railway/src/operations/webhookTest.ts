@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation webhookTest($payload: String!, $url: String!) {\n  webhookTest(payload: $payload, url: $url) {\n    __typename\n  }\n}";
+  "mutation webhookTest($payload: String!, $url: String!) {\n  webhookTest(payload: $payload, url: $url)\n}";
 
 // Input Schema (GraphQL variables)
 export const WebhookTestInput = Schema.Struct({

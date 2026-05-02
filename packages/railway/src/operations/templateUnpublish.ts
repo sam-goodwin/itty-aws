@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation templateUnpublish($id: String!) {\n  templateUnpublish(id: $id) {\n    __typename\n  }\n}";
+  "mutation templateUnpublish($id: String!) {\n  templateUnpublish(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const TemplateUnpublishInput = Schema.Struct({

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation userDiscordDisconnect {\n  userDiscordDisconnect {\n    __typename\n  }\n}";
+  "mutation userDiscordDisconnect {\n  userDiscordDisconnect\n}";
 
 // Input Schema (GraphQL variables)
 export const UserDiscordDisconnectInput = Schema.Struct({}).pipe(

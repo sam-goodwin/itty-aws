@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation cliEventTrack($input: CliEventTrackInput!) {\n  cliEventTrack(input: $input) {\n    __typename\n  }\n}";
+  "mutation cliEventTrack($input: CliEventTrackInput!) {\n  cliEventTrack(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const CliEventTrackInput = Schema.Struct({

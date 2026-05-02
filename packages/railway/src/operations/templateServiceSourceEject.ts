@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation templateServiceSourceEject($input: TemplateServiceSourceEjectInput!) {\n  templateServiceSourceEject(input: $input) {\n    __typename\n  }\n}";
+  "mutation templateServiceSourceEject($input: TemplateServiceSourceEjectInput!) {\n  templateServiceSourceEject(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const TemplateServiceSourceEjectInput = Schema.Struct({

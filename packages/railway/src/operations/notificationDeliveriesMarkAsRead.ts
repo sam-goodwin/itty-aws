@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation notificationDeliveriesMarkAsRead($deliveryIds: [String!]!) {\n  notificationDeliveriesMarkAsRead(deliveryIds: $deliveryIds) {\n    __typename\n  }\n}";
+  "mutation notificationDeliveriesMarkAsRead($deliveryIds: [String!]!) {\n  notificationDeliveriesMarkAsRead(deliveryIds: $deliveryIds)\n}";
 
 // Input Schema (GraphQL variables)
 export const NotificationDeliveriesMarkAsReadInput = Schema.Struct({

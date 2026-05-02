@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id) {\n    __typename\n  }\n}";
+  "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeploymentStopInput = Schema.Struct({

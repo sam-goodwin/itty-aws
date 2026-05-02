@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId) {\n    __typename\n  }\n}";
+  "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId)\n}";
 
 // Input Schema (GraphQL variables)
 export const PrivateNetworksForEnvironmentDeleteInput = Schema.Struct({

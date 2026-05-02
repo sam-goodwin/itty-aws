@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query privateNetworkEndpointNameAvailable($environmentId: String!, $prefix: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointNameAvailable(environmentId: $environmentId, prefix: $prefix, privateNetworkId: $privateNetworkId) {\n    __typename\n  }\n}";
+  "query privateNetworkEndpointNameAvailable($environmentId: String!, $prefix: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointNameAvailable(environmentId: $environmentId, prefix: $prefix, privateNetworkId: $privateNetworkId)\n}";
 
 // Input Schema (GraphQL variables)
 export const PrivateNetworkEndpointNameAvailableInput = Schema.Struct({

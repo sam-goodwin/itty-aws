@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation loginSessionCancel($code: String!) {\n  loginSessionCancel(code: $code) {\n    __typename\n  }\n}";
+  "mutation loginSessionCancel($code: String!) {\n  loginSessionCancel(code: $code)\n}";
 
 // Input Schema (GraphQL variables)
 export const LoginSessionCancelInput = Schema.Struct({

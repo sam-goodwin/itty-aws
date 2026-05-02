@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query variablesForServiceDeployment($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  variablesForServiceDeployment(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "query variablesForServiceDeployment($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  variablesForServiceDeployment(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const VariablesForServiceDeploymentInput = Schema.Struct({

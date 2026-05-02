@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation projectTransferInitiate($input: ProjectTransferInitiateInput!) {\n  projectTransferInitiate(input: $input) {\n    __typename\n  }\n}";
+  "mutation projectTransferInitiate($input: ProjectTransferInitiateInput!) {\n  projectTransferInitiate(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const ProjectTransferInitiateInput = Schema.Struct({

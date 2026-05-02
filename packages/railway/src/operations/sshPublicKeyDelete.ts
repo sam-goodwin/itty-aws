@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation sshPublicKeyDelete($id: String!) {\n  sshPublicKeyDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation sshPublicKeyDelete($id: String!) {\n  sshPublicKeyDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const SshPublicKeyDeleteInput = Schema.Struct({

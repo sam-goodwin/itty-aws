@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const ServiceDomainDeleteInput = Schema.Struct({

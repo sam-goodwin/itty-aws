@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId) {\n    __typename\n  }\n}";
+  "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId)\n}";
 
 // Input Schema (GraphQL variables)
 export const VolumeDeleteInput = Schema.Struct({

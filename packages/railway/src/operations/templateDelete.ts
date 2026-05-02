@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation templateDelete($id: String!, $input: TemplateDeleteInput!) {\n  templateDelete(id: $id, input: $input) {\n    __typename\n  }\n}";
+  "mutation templateDelete($id: String!, $input: TemplateDeleteInput!) {\n  templateDelete(id: $id, input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const TemplateDeleteInput = Schema.Struct({

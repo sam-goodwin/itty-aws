@@ -35,7 +35,9 @@ export class Credentials extends Context.Service<Credentials, Config>()(
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
   Effect.gen(function* () {
-    const apiToken = process.env.RAILWAY_API_TOKEN ?? process.env.RAILWAY_TOKEN;
+    // Use `||` (not `??`) so empty-string env vars (common when a workflow
+    // forwards an unset secret) fall back rather than being treated as set.
+    const apiToken = process.env.RAILWAY_API_TOKEN || process.env.RAILWAY_TOKEN;
 
     if (!apiToken) {
       return yield* new ConfigError({
@@ -43,7 +45,7 @@ export const CredentialsFromEnv = Layer.effect(
       });
     }
 
-    const apiBaseUrl = process.env.RAILWAY_API_URL ?? DEFAULT_API_BASE_URL;
+    const apiBaseUrl = process.env.RAILWAY_API_URL || DEFAULT_API_BASE_URL;
 
     return { apiToken: Redacted.make(apiToken), apiBaseUrl };
   }),

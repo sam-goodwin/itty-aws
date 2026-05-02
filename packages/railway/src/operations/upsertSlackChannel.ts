@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation upsertSlackChannel($workspaceId: String!) {\n  upsertSlackChannel(workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation upsertSlackChannel($workspaceId: String!) {\n  upsertSlackChannel(workspaceId: $workspaceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const UpsertSlackChannelInput = Schema.Struct({

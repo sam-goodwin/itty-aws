@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation recoveryCodeValidate($input: RecoveryCodeValidateInput!) {\n  recoveryCodeValidate(input: $input) {\n    __typename\n  }\n}";
+  "mutation recoveryCodeValidate($input: RecoveryCodeValidateInput!) {\n  recoveryCodeValidate(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const RecoveryCodeValidateInput = Schema.Struct({

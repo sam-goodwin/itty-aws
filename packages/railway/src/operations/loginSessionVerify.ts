@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code) {\n    __typename\n  }\n}";
+  "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code)\n}";
 
 // Input Schema (GraphQL variables)
 export const LoginSessionVerifyInput = Schema.Struct({

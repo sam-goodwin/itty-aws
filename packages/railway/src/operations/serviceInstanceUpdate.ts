@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const ServiceInstanceUpdateInput = Schema.Struct({

@@ -2,8 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
-const __document =
-  "mutation loginSessionCreate {\n  loginSessionCreate {\n    __typename\n  }\n}";
+const __document = "mutation loginSessionCreate {\n  loginSessionCreate\n}";
 
 // Input Schema (GraphQL variables)
 export const LoginSessionCreateInput = Schema.Struct({}).pipe(

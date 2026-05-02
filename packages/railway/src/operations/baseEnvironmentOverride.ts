@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation baseEnvironmentOverride($id: String!, $input: BaseEnvironmentOverrideInput!) {\n  baseEnvironmentOverride(id: $id, input: $input) {\n    __typename\n  }\n}";
+  "mutation baseEnvironmentOverride($id: String!, $input: BaseEnvironmentOverrideInput!) {\n  baseEnvironmentOverride(id: $id, input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const BaseEnvironmentOverrideInput = Schema.Struct({

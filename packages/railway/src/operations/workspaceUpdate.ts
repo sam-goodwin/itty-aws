@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workspaceUpdate($id: String!, $input: WorkspaceUpdateInput!) {\n  workspaceUpdate(id: $id, input: $input) {\n    __typename\n  }\n}";
+  "mutation workspaceUpdate($id: String!, $input: WorkspaceUpdateInput!) {\n  workspaceUpdate(id: $id, input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const WorkspaceUpdateInput = Schema.Struct({

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation projectScheduleDeleteForce($id: String!) {\n  projectScheduleDeleteForce(id: $id) {\n    __typename\n  }\n}";
+  "mutation projectScheduleDeleteForce($id: String!) {\n  projectScheduleDeleteForce(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const ProjectScheduleDeleteForceInput = Schema.Struct({

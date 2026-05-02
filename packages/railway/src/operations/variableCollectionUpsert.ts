@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation variableCollectionUpsert($input: VariableCollectionUpsertInput!) {\n  variableCollectionUpsert(input: $input) {\n    __typename\n  }\n}";
+  "mutation variableCollectionUpsert($input: VariableCollectionUpsertInput!) {\n  variableCollectionUpsert(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const VariableCollectionUpsertInput = Schema.Struct({

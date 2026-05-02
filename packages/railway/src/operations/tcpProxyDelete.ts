@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const TcpProxyDeleteInput = Schema.Struct({

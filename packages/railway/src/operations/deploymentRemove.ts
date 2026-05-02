@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id) {\n    __typename\n  }\n}";
+  "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeploymentRemoveInput = Schema.Struct({

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workspacePolicyItemUpdate($enabled: Boolean, $input: WorkspacePolicyItemUpdateInput, $policy: WorkspacePolicyName, $workspaceId: String!) {\n  workspacePolicyItemUpdate(enabled: $enabled, input: $input, policy: $policy, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation workspacePolicyItemUpdate($enabled: Boolean, $input: WorkspacePolicyItemUpdateInput, $policy: WorkspacePolicyName, $workspaceId: String!) {\n  workspacePolicyItemUpdate(enabled: $enabled, input: $input, policy: $policy, workspaceId: $workspaceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const WorkspacePolicyItemUpdateInput = Schema.Struct({

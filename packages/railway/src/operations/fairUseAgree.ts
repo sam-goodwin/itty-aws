@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation fairUseAgree($agree: Boolean!) {\n  fairUseAgree(agree: $agree) {\n    __typename\n  }\n}";
+  "mutation fairUseAgree($agree: Boolean!) {\n  fairUseAgree(agree: $agree)\n}";
 
 // Input Schema (GraphQL variables)
 export const FairUseAgreeInput = Schema.Struct({

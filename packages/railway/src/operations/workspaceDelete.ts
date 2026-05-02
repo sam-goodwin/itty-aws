@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workspaceDelete($id: String!) {\n  workspaceDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation workspaceDelete($id: String!) {\n  workspaceDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const WorkspaceDeleteInput = Schema.Struct({
