@@ -339,8 +339,11 @@ describe("Projects", () => {
         ),
       );
       await runEffect(v1PauseAProject({ ref: created.ref }));
-      // Wait for project to fully pause before restoring
-      await runEffect(
+      // Supabase's pause is async — the project status flips to INACTIVE
+      // anywhere from a few seconds up to a couple of minutes after the
+      // pause call returns. Poll until INACTIVE, escalating the budget on
+      // each attempt so a slow tail doesn't fail the test outright.
+      const waitForInactive = (durationSec: number) =>
         v1GetProject({ ref: created.ref }).pipe(
           Effect.flatMap((p) =>
             p.status === "INACTIVE"
@@ -350,9 +353,14 @@ describe("Projects", () => {
           Effect.retry({
             while: (err) => err === "not paused yet",
             schedule: Schedule.spaced("3 seconds").pipe(
-              Schedule.both(Schedule.recurs(20)),
+              Schedule.both(Schedule.recurs(Math.ceil(durationSec / 3))),
             ),
           }),
+        );
+      await runEffect(
+        waitForInactive(60).pipe(
+          Effect.catch(() => waitForInactive(120)),
+          Effect.catch(() => waitForInactive(180)),
         ),
       );
       await runEffect(
@@ -362,7 +370,7 @@ describe("Projects", () => {
           ),
         ),
       );
-    }, 240_000);
+    }, 600_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
