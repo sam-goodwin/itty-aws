@@ -11,82 +11,89 @@ import { runEffect } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("deployment", () => {
-  it("happy path - returns deployment details by id", async () => {
-    const result = await runEffect(
-      Effect.gen(function* () {
-        const tokenInfo = yield* apiToken({});
-        const workspace = tokenInfo.workspaces[0];
-        expect(workspace).toBeDefined();
-        const workspaceId = workspace!.id;
+  it(
+    "happy path - returns deployment details by id",
+    async () => {
+      const result = await runEffect(
+        Effect.gen(function* () {
+          const tokenInfo = yield* apiToken({});
+          const workspace = tokenInfo.workspaces[0];
+          expect(workspace).toBeDefined();
+          const workspaceId = workspace!.id;
 
-        const projectsPage = yield* projects({
-          workspaceId,
-          first: 25,
-          orderBy: "UPDATED_AT_DESC",
-        });
-
-        let deploymentId: string | null = null;
-        for (const projectEdge of projectsPage.edges) {
-          const deploysPage = yield* deployments({
-            first: 1,
-            input: { projectId: projectEdge.node.id },
+          const projectsPage = yield* projects({
+            workspaceId,
+            first: 25,
+            orderBy: "UPDATED_AT_DESC",
           });
-          if (deploysPage.edges.length > 0) {
-            deploymentId = deploysPage.edges[0]!.node.id;
-            break;
+
+          let deploymentId: string | null = null;
+          for (const projectEdge of projectsPage.edges) {
+            const deploysPage = yield* deployments({
+              first: 1,
+              input: { projectId: projectEdge.node.id },
+            });
+            if (deploysPage.edges.length > 0) {
+              deploymentId = deploysPage.edges[0]!.node.id;
+              break;
+            }
           }
-        }
 
-        expect(deploymentId).not.toBeNull();
+          expect(deploymentId).not.toBeNull();
 
-        const fetched = yield* deployment({ id: deploymentId! });
-        expect(fetched.id).toBe(deploymentId);
-        expect(typeof fetched.projectId).toBe("string");
-        expect(typeof fetched.environmentId).toBe("string");
-        expect(typeof fetched.createdAt).toBe("string");
-        expect(typeof fetched.updatedAt).toBe("string");
-        expect(typeof fetched.canRedeploy).toBe("boolean");
-        expect(typeof fetched.canRollback).toBe("boolean");
-        expect(typeof fetched.deploymentStopped).toBe("boolean");
-        expect(typeof fetched.suggestAddServiceDomain).toBe("boolean");
-        expect(Array.isArray(fetched.instances)).toBe(true);
-        expect(Array.isArray(fetched.sockets)).toBe(true);
-        expect(typeof fetched.environment.id).toBe("string");
-        expect(typeof fetched.service.id).toBe("string");
-        return fetched;
-      }),
-    );
+          const fetched = yield* deployment({ id: deploymentId! });
+          expect(fetched.id).toBe(deploymentId);
+          expect(typeof fetched.projectId).toBe("string");
+          expect(typeof fetched.environmentId).toBe("string");
+          expect(typeof fetched.createdAt).toBe("string");
+          expect(typeof fetched.updatedAt).toBe("string");
+          expect(typeof fetched.canRedeploy).toBe("boolean");
+          expect(typeof fetched.canRollback).toBe("boolean");
+          expect(typeof fetched.deploymentStopped).toBe("boolean");
+          expect(typeof fetched.suggestAddServiceDomain).toBe("boolean");
+          expect(Array.isArray(fetched.instances)).toBe(true);
+          expect(Array.isArray(fetched.sockets)).toBe(true);
+          expect(typeof fetched.environment.id).toBe("string");
+          expect(typeof fetched.service.id).toBe("string");
+          return fetched;
+        }),
+      );
 
-    expect(result.id).toBeDefined();
-  }, 60_000);
+      expect(result.id).toBeDefined();
+    },
+    60_000,
+  );
 
-  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
-    const BadCreds = Layer.succeed(Credentials, {
-      apiToken: Redacted.make("not-a-real-token-deadbeef"),
-      apiBaseUrl: "https://backboard.railway.com",
-    });
+  it(
+    "error - RailwayNotAuthorized when bearer token is invalid",
+    async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
 
-    const error = await Effect.runPromise(
-      deployment({ id: NON_EXISTENT_UUID }).pipe(
-        Effect.flip,
-        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-      ) as Effect.Effect<{ _tag: string }, never, never>,
-    );
+      const error = await Effect.runPromise(
+        deployment({ id: NON_EXISTENT_UUID }).pipe(
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<{ _tag: string }, never, never>,
+      );
 
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
-  }, 30_000);
+      expect(error._tag).toBe("RailwayNotAuthorized");
+    },
+    30_000,
+  );
 
-  it("error - RailwayNotFound for a non-existent deployment id", async () => {
-    const error = await runEffect(
-      deployment({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
-    );
+  it(
+    "error - RailwayNotFound for a non-existent deployment id",
+    async () => {
+      const error = await runEffect(
+        deployment({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
+      );
 
-    expect([
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "RailwayInvalidInput",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
-    expect((error as { message: string }).message).toMatch(/not found$/i);
-  }, 30_000);
+      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+      expect((error as { message: string }).message).toMatch(/not found$/i);
+    },
+    30_000,
+  );
 });

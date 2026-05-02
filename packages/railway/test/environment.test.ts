@@ -10,67 +10,72 @@ import { runEffect, testRunId } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("environment", () => {
-  it("happy path - returns environment details by id", async () => {
-    const projectName = `distilled-railway-environment-${testRunId}`;
+  it(
+    "happy path - returns environment details by id",
+    async () => {
+      const projectName = `distilled-railway-environment-${testRunId}`;
 
-    const result = await runEffect(
-      Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
-        });
-
-        return yield* Effect.gen(function* () {
-          const env = yield* environment({
-            id: project.baseEnvironmentId!,
-            projectId: project.id,
+      const result = await runEffect(
+        Effect.gen(function* () {
+          const project = yield* projectCreate({
+            input: { name: projectName },
           });
 
-          expect(env.id).toBe(project.baseEnvironmentId);
-          expect(env.projectId).toBe(project.id);
-          expect(typeof env.name).toBe("string");
-          expect(typeof env.canAccess).toBe("boolean");
-          expect(typeof env.isEphemeral).toBe("boolean");
-          expect(typeof env.createdAt).toBe("string");
-          expect(typeof env.updatedAt).toBe("string");
-          return env;
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
-      }),
-    );
+          return yield* Effect.gen(function* () {
+            const env = yield* environment({
+              id: project.baseEnvironmentId!,
+              projectId: project.id,
+            });
 
-    expect(result.id).toBeDefined();
-  }, 60_000);
+            expect(env.id).toBe(project.baseEnvironmentId);
+            expect(env.projectId).toBe(project.id);
+            expect(typeof env.name).toBe("string");
+            expect(typeof env.canAccess).toBe("boolean");
+            expect(typeof env.isEphemeral).toBe("boolean");
+            expect(typeof env.createdAt).toBe("string");
+            expect(typeof env.updatedAt).toBe("string");
+            return env;
+          }).pipe(
+            Effect.ensuring(projectDelete({ id: project.id }).pipe(Effect.ignore)),
+          );
+        }),
+      );
 
-  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
-    const BadCreds = Layer.succeed(Credentials, {
-      apiToken: Redacted.make("not-a-real-token-deadbeef"),
-      apiBaseUrl: "https://backboard.railway.com",
-    });
+      expect(result.id).toBeDefined();
+    },
+    60_000,
+  );
 
-    const error = await Effect.runPromise(
-      environment({ id: NON_EXISTENT_UUID }).pipe(
-        Effect.flip,
-        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-      ) as Effect.Effect<{ _tag: string }, never, never>,
-    );
+  it(
+    "error - RailwayNotAuthorized when bearer token is invalid",
+    async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
 
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
-  }, 30_000);
+      const error = await Effect.runPromise(
+        environment({ id: NON_EXISTENT_UUID }).pipe(
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<{ _tag: string }, never, never>,
+      );
 
-  it("error - RailwayNotFound for a non-existent environment id", async () => {
-    const error = await runEffect(
-      environment({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
-    );
+      expect(error._tag).toBe("RailwayNotAuthorized");
+    },
+    30_000,
+  );
 
-    expect([
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "RailwayInvalidInput",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
-    expect((error as { message: string }).message).toMatch(/not found$/i);
-  }, 30_000);
+  it(
+    "error - RailwayNotFound for a non-existent environment id",
+    async () => {
+      const error = await runEffect(
+        environment({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
+      );
+
+      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+      expect((error as { message: string }).message).toMatch(/not found$/i);
+    },
+    30_000,
+  );
 });

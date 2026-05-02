@@ -9,61 +9,68 @@ import { runEffect } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("templateMetrics", () => {
-  it("happy path - returns metrics for a real template id", async () => {
-    await runEffect(
-      Effect.gen(function* () {
-        const page = yield* templates({ first: 1, verified: true });
-        const id = page.edges[0]?.node.id;
-        if (!id) {
-          // No templates available; nothing to query.
-          return;
-        }
+  it(
+    "happy path - returns metrics for a real template id",
+    async () => {
+      await runEffect(
+        Effect.gen(function* () {
+          const page = yield* templates({ first: 1, verified: true });
+          const id = page.edges[0]?.node.id;
+          if (!id) {
+            // No templates available; nothing to query.
+            return;
+          }
 
-        const result = yield* templateMetrics({ id });
+          const result = yield* templateMetrics({ id });
 
-        expect(result).toBeDefined();
-        expect(typeof result.activeDeployments).toBe("number");
-        expect(typeof result.deploymentsLast90Days).toBe("number");
-        expect(typeof result.earningsLast30Days).toBe("number");
-        expect(typeof result.earningsLast90Days).toBe("number");
-        expect(typeof result.eligibleForSupportBonus).toBe("boolean");
-        expect(typeof result.supportHealth).toBe("number");
-        expect(typeof result.templateHealth).toBe("number");
-        expect(typeof result.totalDeployments).toBe("number");
-        expect(typeof result.totalEarnings).toBe("number");
-        expect(result.activeDeployments).toBeGreaterThanOrEqual(0);
-        expect(result.totalDeployments).toBeGreaterThanOrEqual(0);
-      }),
-    );
-  }, 60_000);
+          expect(result).toBeDefined();
+          expect(typeof result.activeDeployments).toBe("number");
+          expect(typeof result.deploymentsLast90Days).toBe("number");
+          expect(typeof result.earningsLast30Days).toBe("number");
+          expect(typeof result.earningsLast90Days).toBe("number");
+          expect(typeof result.eligibleForSupportBonus).toBe("boolean");
+          expect(typeof result.supportHealth).toBe("number");
+          expect(typeof result.templateHealth).toBe("number");
+          expect(typeof result.totalDeployments).toBe("number");
+          expect(typeof result.totalEarnings).toBe("number");
+          expect(result.activeDeployments).toBeGreaterThanOrEqual(0);
+          expect(result.totalDeployments).toBeGreaterThanOrEqual(0);
+        }),
+      );
+    },
+    60_000,
+  );
 
-  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
-    const BadCreds = Layer.succeed(Credentials, {
-      apiToken: Redacted.make("not-a-real-token-deadbeef"),
-      apiBaseUrl: "https://backboard.railway.com",
-    });
+  it(
+    "error - RailwayNotAuthorized when bearer token is invalid",
+    async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
 
-    const error = await Effect.runPromise(
-      templateMetrics({ id: NON_EXISTENT_UUID }).pipe(
-        Effect.flip,
-        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-      ) as Effect.Effect<{ _tag: string }, never, never>,
-    );
+      const error = await Effect.runPromise(
+        templateMetrics({ id: NON_EXISTENT_UUID }).pipe(
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<{ _tag: string }, never, never>,
+      );
 
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
-  }, 30_000);
+      expect(error._tag).toBe("RailwayNotAuthorized");
+    },
+    30_000,
+  );
 
-  it("error - RailwayNotFound for a non-existent template id", async () => {
-    const error = await runEffect(
-      templateMetrics({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
-    );
+  it(
+    "error - RailwayNotFound for a non-existent template id",
+    async () => {
+      const error = await runEffect(
+        templateMetrics({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
+      );
 
-    expect([
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "RailwayInvalidInput",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
-    expect((error as { message: string }).message).toMatch(/not found$/i);
-  }, 30_000);
+      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+      expect((error as { message: string }).message).toMatch(/not found$/i);
+    },
+    30_000,
+  );
 });

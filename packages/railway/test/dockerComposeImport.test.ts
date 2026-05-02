@@ -17,41 +17,45 @@ const composeYaml = `services:
 `;
 
 describe("dockerComposeImport", () => {
-  it("happy path - imports a docker compose yaml into a freshly provisioned project", async () => {
-    const projName = projectName("dci");
+  it(
+    "happy path - imports a docker compose yaml into a freshly provisioned project",
+    async () => {
+      const projName = projectName("dci");
 
-    await runEffect(
-      Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
-        });
-        return yield* Effect.gen(function* () {
-          const baseEnvId = project.baseEnvironmentId;
-          if (!baseEnvId) {
-            throw new Error(
-              "test setup: created project has no baseEnvironmentId",
-            );
-          }
-
-          const result = yield* dockerComposeImport({
-            environmentId: baseEnvId,
-            projectId: project.id,
-            skipStagingPatch: true,
-            yaml: composeYaml,
+      await runEffect(
+        Effect.gen(function* () {
+          const project = yield* projectCreate({
+            input: { name: projName },
           });
+          return yield* Effect.gen(function* () {
+            const baseEnvId = project.baseEnvironmentId;
+            if (!baseEnvId) {
+              throw new Error(
+                "test setup: created project has no baseEnvironmentId",
+              );
+            }
 
-          expect(Array.isArray(result.errors)).toBe(true);
-          for (const e of result.errors) {
-            expect(typeof e).toBe("string");
-          }
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
-      }),
-    );
-  }, 180_000);
+            const result = yield* dockerComposeImport({
+              environmentId: baseEnvId,
+              projectId: project.id,
+              skipStagingPatch: true,
+              yaml: composeYaml,
+            });
+
+            expect(Array.isArray(result.errors)).toBe(true);
+            for (const e of result.errors) {
+              expect(typeof e).toBe("string");
+            }
+          }).pipe(
+            Effect.ensuring(
+              projectDelete({ id: project.id }).pipe(Effect.ignore),
+            ),
+          );
+        }),
+      );
+    },
+    180_000,
+  );
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -68,7 +72,7 @@ describe("dockerComposeImport", () => {
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
     );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+    expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayInvalidInput for an empty projectId", async () => {
@@ -79,11 +83,6 @@ describe("dockerComposeImport", () => {
         yaml: composeYaml,
       }).pipe(Effect.flip),
     );
-    expect([
-      "RailwayInvalidInput",
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
   }, 30_000);
 });

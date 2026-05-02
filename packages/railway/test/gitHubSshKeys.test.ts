@@ -6,30 +6,38 @@ import { gitHubSshKeys } from "../src/operations/gitHubSshKeys.ts";
 import { runEffect } from "./setup.ts";
 
 describe("gitHubSshKeys", () => {
-  it("happy path - returns SSH public keys for the authenticated user's GitHub", async () => {
-    const result = await runEffect(gitHubSshKeys({}));
+  it(
+    "happy path - returns SSH public keys for the authenticated user's GitHub",
+    async () => {
+      const result = await runEffect(gitHubSshKeys({}));
 
-    expect(Array.isArray(result)).toBe(true);
-    for (const k of result) {
-      expect(typeof k.id).toBe("number");
-      expect(typeof k.key).toBe("string");
-      expect(typeof k.title).toBe("string");
-    }
-  }, 30_000);
+      expect(Array.isArray(result)).toBe(true);
+      for (const k of result) {
+        expect(typeof k.id).toBe("number");
+        expect(typeof k.key).toBe("string");
+        expect(typeof k.title).toBe("string");
+      }
+    },
+    30_000,
+  );
 
-  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
-    const BadCreds = Layer.succeed(Credentials, {
-      apiToken: Redacted.make("not-a-real-token-deadbeef"),
-      apiBaseUrl: "https://backboard.railway.com",
-    });
+  it(
+    "error - RailwayNotAuthorized when bearer token is invalid",
+    async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
 
-    const error = await Effect.runPromise(
-      gitHubSshKeys({}).pipe(
-        Effect.flip,
-        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-      ) as Effect.Effect<{ _tag: string }, never, never>,
-    );
+      const error = await Effect.runPromise(
+        gitHubSshKeys({}).pipe(
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<{ _tag: string }, never, never>,
+      );
 
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
-  }, 30_000);
+      expect(error._tag).toBe("RailwayNotAuthorized");
+    },
+    30_000,
+  );
 });

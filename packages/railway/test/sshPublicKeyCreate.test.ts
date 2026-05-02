@@ -19,62 +19,69 @@ const generateEd25519PublicKey = (comment: string): string => {
 };
 
 describe("sshPublicKeyCreate", () => {
-  it("happy path - registers a freshly generated ed25519 public key", async () => {
-    const name = `distilled-railway-sshpkc-${testRunId}`;
-    const publicKey = generateEd25519PublicKey(name);
-    await runEffect(
-      Effect.gen(function* () {
-        const created = yield* sshPublicKeyCreate({
+  it(
+    "happy path - registers a freshly generated ed25519 public key",
+    async () => {
+      const name = `distilled-railway-sshpkc-${testRunId}`;
+      const publicKey = generateEd25519PublicKey(name);
+      await runEffect(
+        Effect.gen(function* () {
+          const created = yield* sshPublicKeyCreate({
+            input: { name, publicKey },
+          });
+          return yield* Effect.gen(function* () {
+            expect(typeof created.id).toBe("string");
+            expect(created.id).toBeTruthy();
+            expect(created.name).toBe(name);
+            expect(created.publicKey).toBe(publicKey);
+            expect(typeof created.fingerprint).toBe("string");
+            expect(created.fingerprint).toBeTruthy();
+          }).pipe(
+            Effect.ensuring(
+              sshPublicKeyDelete({ id: created.id }).pipe(Effect.ignore),
+            ),
+          );
+        }),
+      );
+    },
+    60_000,
+  );
+
+  it(
+    "error - RailwayNotAuthorized when bearer token is invalid",
+    async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
+      const name = `distilled-railway-sshpkc-unauth-${testRunId}`;
+      const publicKey = generateEd25519PublicKey(name);
+      const error = await Effect.runPromise(
+        sshPublicKeyCreate({
           input: { name, publicKey },
-        });
-        return yield* Effect.gen(function* () {
-          expect(typeof created.id).toBe("string");
-          expect(created.id).toBeTruthy();
-          expect(created.name).toBe(name);
-          expect(created.publicKey).toBe(publicKey);
-          expect(typeof created.fingerprint).toBe("string");
-          expect(created.fingerprint).toBeTruthy();
         }).pipe(
-          Effect.ensuring(
-            sshPublicKeyDelete({ id: created.id }).pipe(Effect.ignore),
-          ),
-        );
-      }),
-    );
-  }, 60_000);
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<{ _tag: string }, never, never>,
+      );
+      expect(error._tag).toBe("RailwayNotAuthorized");
+    },
+    30_000,
+  );
 
-  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
-    const BadCreds = Layer.succeed(Credentials, {
-      apiToken: Redacted.make("not-a-real-token-deadbeef"),
-      apiBaseUrl: "https://backboard.railway.com",
-    });
-    const name = `distilled-railway-sshpkc-unauth-${testRunId}`;
-    const publicKey = generateEd25519PublicKey(name);
-    const error = await Effect.runPromise(
-      sshPublicKeyCreate({
-        input: { name, publicKey },
-      }).pipe(
-        Effect.flip,
-        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-      ) as Effect.Effect<{ _tag: string }, never, never>,
-    );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
-  }, 30_000);
-
-  it("error - RailwayInvalidInput for a malformed publicKey", async () => {
-    const error = await runEffect(
-      sshPublicKeyCreate({
-        input: {
-          name: `distilled-railway-sshpkc-inv-${testRunId}`,
-          publicKey: "not-a-valid-ssh-public-key",
-        },
-      }).pipe(Effect.flip),
-    );
-    expect([
-      "RailwayInvalidInput",
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
-  }, 30_000);
+  it(
+    "error - RailwayInvalidInput for a malformed publicKey",
+    async () => {
+      const error = await runEffect(
+        sshPublicKeyCreate({
+          input: {
+            name: `distilled-railway-sshpkc-inv-${testRunId}`,
+            publicKey: "not-a-valid-ssh-public-key",
+          },
+        }).pipe(Effect.flip),
+      );
+      expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+    },
+    30_000,
+  );
 });

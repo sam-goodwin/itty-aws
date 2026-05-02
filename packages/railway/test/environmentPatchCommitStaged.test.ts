@@ -14,50 +14,54 @@ const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const envName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("environmentPatchCommitStaged", () => {
-  it("happy path - commits staged changes on a freshly forked environment", async () => {
-    const projName = projectName("env-patch-staged");
-    const newEnvName = envName("staging-staged");
+  it(
+    "happy path - commits staged changes on a freshly forked environment",
+    async () => {
+      const projName = projectName("env-patch-staged");
+      const newEnvName = envName("staging-staged");
 
-    await runEffect(
-      Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
-        });
-        return yield* Effect.gen(function* () {
-          const baseEnvId = project.baseEnvironmentId;
-          if (!baseEnvId) {
-            throw new Error(
-              "test setup: created project has no baseEnvironmentId",
-            );
-          }
-
-          // Fork with stageInitialChanges so the new environment has staged
-          // changes ready to be committed.
-          const env = yield* environmentCreate({
-            input: {
-              name: newEnvName,
-              projectId: project.id,
-              sourceEnvironmentId: baseEnvId,
-              skipInitialDeploys: true,
-              stageInitialChanges: true,
-            },
+      await runEffect(
+        Effect.gen(function* () {
+          const project = yield* projectCreate({
+            input: { name: projName },
           });
+          return yield* Effect.gen(function* () {
+            const baseEnvId = project.baseEnvironmentId;
+            if (!baseEnvId) {
+              throw new Error(
+                "test setup: created project has no baseEnvironmentId",
+              );
+            }
 
-          const result = yield* environmentPatchCommitStaged({
-            environmentId: env.id,
-            commitMessage: `distilled-railway-epcs-${testRunId}`,
-            skipDeploys: true,
-          });
+            // Fork with stageInitialChanges so the new environment has staged
+            // changes ready to be committed.
+            const env = yield* environmentCreate({
+              input: {
+                name: newEnvName,
+                projectId: project.id,
+                sourceEnvironmentId: baseEnvId,
+                skipInitialDeploys: true,
+                stageInitialChanges: true,
+              },
+            });
 
-          expect(typeof result).toBe("string");
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
-      }),
-    );
-  }, 180_000);
+            const result = yield* environmentPatchCommitStaged({
+              environmentId: env.id,
+              commitMessage: `distilled-railway-epcs-${testRunId}`,
+              skipDeploys: true,
+            });
+
+            expect(typeof result).toBe("string");
+          }).pipe(
+            Effect.ensuring(
+              projectDelete({ id: project.id }).pipe(Effect.ignore),
+            ),
+          );
+        }),
+      );
+    },
+    180_000,
+  );
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -74,7 +78,7 @@ describe("environmentPatchCommitStaged", () => {
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
     );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+    expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayNotFound for a non-existent environment id", async () => {
@@ -85,12 +89,7 @@ describe("environmentPatchCommitStaged", () => {
         skipDeploys: true,
       }).pipe(Effect.flip),
     );
-    expect([
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "RailwayInvalidInput",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
+    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
     expect((error as { message: string }).message).toMatch(/not found$/i);
   }, 30_000);
 
@@ -102,11 +101,6 @@ describe("environmentPatchCommitStaged", () => {
         skipDeploys: true,
       }).pipe(Effect.flip),
     );
-    expect([
-      "RailwayInvalidInput",
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
   }, 30_000);
 });

@@ -7,23 +7,27 @@ import { featureFlagRemove } from "../src/operations/featureFlagRemove.ts";
 import { runEffect } from "./setup.ts";
 
 describe("featureFlagRemove", () => {
-  it("happy path - removes a feature flag previously added to the authenticated user", async () => {
-    await runEffect(
-      Effect.gen(function* () {
-        yield* featureFlagAdd({ input: { flag: "MAGIC_CONFIG" } });
-        const result = yield* featureFlagRemove({
-          input: { flag: "MAGIC_CONFIG" },
-        });
-        expect(typeof result).toBe("boolean");
-      }).pipe(
-        Effect.ensuring(
-          featureFlagRemove({ input: { flag: "MAGIC_CONFIG" } }).pipe(
-            Effect.ignore,
+  it(
+    "happy path - removes a feature flag previously added to the authenticated user",
+    async () => {
+      await runEffect(
+        Effect.gen(function* () {
+          yield* featureFlagAdd({ input: { flag: "MAGIC_CONFIG" } });
+          const result = yield* featureFlagRemove({
+            input: { flag: "MAGIC_CONFIG" },
+          });
+          expect(typeof result).toBe("boolean");
+        }).pipe(
+          Effect.ensuring(
+            featureFlagRemove({ input: { flag: "MAGIC_CONFIG" } }).pipe(
+              Effect.ignore,
+            ),
           ),
         ),
-      ),
-    );
-  }, 60_000);
+      );
+    },
+    60_000,
+  );
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -36,7 +40,7 @@ describe("featureFlagRemove", () => {
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
     );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+    expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayNotFound when removing a flag that is not set on the user", async () => {
@@ -51,12 +55,7 @@ describe("featureFlagRemove", () => {
         const error = yield* featureFlagRemove({
           input: { flag: "DEBUG_SMART_DIAGNOSIS" },
         }).pipe(Effect.flip);
-        expect([
-          "RailwayNotFound",
-          "RailwayNotAuthorized",
-          "RailwayInvalidInput",
-          "UnknownRailwayError",
-        ]).toContain((error as { _tag: string })._tag);
+        expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
         expect((error as { message: string }).message).toMatch(/not found$/i);
       }),
     );

@@ -8,29 +8,28 @@ import { runEffect, testRunId } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("githubRepoDeploy", () => {
-  it("happy path - exercises the API and surfaces a typed RailwayInvalidInput when the referenced project/repo are not accessible", async () => {
-    // Deploying a GitHub repo requires an OAuth-linked GitHub account with
-    // access to the named repository, plus a real project to deploy into.
-    // A successful call would also spin up live services consuming shared
-    // compute. None of that is available in the shared test environment;
-    // exercise the API with fabricated ids and assert the typed
-    // RailwayInvalidInput instead.
-    const error = await runEffect(
-      githubRepoDeploy({
-        input: {
-          projectId: NON_EXISTENT_UUID,
-          repo: `distilled/railway-test-${testRunId}`,
-          branch: `distilled-railway-grd-${testRunId}`,
-        },
-      }).pipe(Effect.flip),
-    );
-    expect([
-      "RailwayInvalidInput",
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
-  }, 60_000);
+  it(
+    "happy path - exercises the API and surfaces a typed RailwayInvalidInput when the referenced project/repo are not accessible",
+    async () => {
+      // Deploying a GitHub repo requires an OAuth-linked GitHub account with
+      // access to the named repository, plus a real project to deploy into.
+      // A successful call would also spin up live services consuming shared
+      // compute. None of that is available in the shared test environment;
+      // exercise the API with fabricated ids and assert the typed
+      // RailwayInvalidInput instead.
+      const error = await runEffect(
+        githubRepoDeploy({
+          input: {
+            projectId: NON_EXISTENT_UUID,
+            repo: `distilled/railway-test-${testRunId}`,
+            branch: `distilled-railway-grd-${testRunId}`,
+          },
+        }).pipe(Effect.flip),
+      );
+      expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+    },
+    60_000,
+  );
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -48,7 +47,7 @@ describe("githubRepoDeploy", () => {
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
     );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+    expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayInvalidInput for an empty projectId", async () => {
@@ -60,11 +59,6 @@ describe("githubRepoDeploy", () => {
         },
       }).pipe(Effect.flip),
     );
-    expect([
-      "RailwayInvalidInput",
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
   }, 30_000);
 });

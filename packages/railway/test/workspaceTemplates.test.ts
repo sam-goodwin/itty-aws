@@ -9,64 +9,70 @@ import { runEffect } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("workspaceTemplates", () => {
-  it("happy path - lists templates for the authenticated token's workspace", async () => {
-    const result = await runEffect(
-      Effect.gen(function* () {
-        const me = yield* apiToken({});
-        const workspaceId = me.workspaces[0]?.id;
-        if (!workspaceId) {
-          throw new Error("test setup: authenticated token has no workspaces");
-        }
-        return yield* workspaceTemplates({ workspaceId, first: 10 });
-      }),
-    );
+  it(
+    "happy path - lists templates for the authenticated token's workspace",
+    async () => {
+      const result = await runEffect(
+        Effect.gen(function* () {
+          const me = yield* apiToken({});
+          const workspaceId = me.workspaces[0]?.id;
+          if (!workspaceId) {
+            throw new Error(
+              "test setup: authenticated token has no workspaces",
+            );
+          }
+          return yield* workspaceTemplates({ workspaceId, first: 10 });
+        }),
+      );
 
-    expect(Array.isArray(result.edges)).toBe(true);
-    expect(typeof result.pageInfo.hasNextPage).toBe("boolean");
-    expect(typeof result.pageInfo.hasPreviousPage).toBe("boolean");
-    if (result.pageInfo.endCursor !== null) {
-      expect(typeof result.pageInfo.endCursor).toBe("string");
-    }
-    if (result.pageInfo.startCursor !== null) {
-      expect(typeof result.pageInfo.startCursor).toBe("string");
-    }
+      expect(Array.isArray(result.edges)).toBe(true);
+      expect(typeof result.pageInfo.hasNextPage).toBe("boolean");
+      expect(typeof result.pageInfo.hasPreviousPage).toBe("boolean");
+      if (result.pageInfo.endCursor !== null) {
+        expect(typeof result.pageInfo.endCursor).toBe("string");
+      }
+      if (result.pageInfo.startCursor !== null) {
+        expect(typeof result.pageInfo.startCursor).toBe("string");
+      }
 
-    for (const edge of result.edges) {
-      expect(typeof edge.cursor).toBe("string");
-      const n = edge.node;
-      expect(typeof n.id).toBe("string");
-      expect(typeof n.code).toBe("string");
-      expect(typeof n.name).toBe("string");
-      expect(typeof n.createdAt).toBe("string");
-      expect(typeof n.activeProjects).toBe("number");
-      expect(typeof n.projects).toBe("number");
-      expect(typeof n.recentProjects).toBe("number");
-      expect(typeof n.totalPayout).toBe("number");
-      expect(typeof n.isApproved).toBe("boolean");
-      expect(typeof n.isV2Template).toBe("boolean");
-      expect(typeof n.isVerified).toBe("boolean");
-      expect(["HIDDEN", "PUBLISHED", "UNPUBLISHED"]).toContain(n.status);
+      for (const edge of result.edges) {
+        expect(typeof edge.cursor).toBe("string");
+        const n = edge.node;
+        expect(typeof n.id).toBe("string");
+        expect(typeof n.code).toBe("string");
+        expect(typeof n.name).toBe("string");
+        expect(typeof n.createdAt).toBe("string");
+        expect(typeof n.activeProjects).toBe("number");
+        expect(typeof n.projects).toBe("number");
+        expect(typeof n.recentProjects).toBe("number");
+        expect(typeof n.totalPayout).toBe("number");
+        expect(typeof n.isApproved).toBe("boolean");
+        expect(typeof n.isV2Template).toBe("boolean");
+        expect(typeof n.isVerified).toBe("boolean");
+        expect(["HIDDEN", "PUBLISHED", "UNPUBLISHED"]).toContain(n.status);
 
-      if (n.languages !== null) {
-        expect(Array.isArray(n.languages)).toBe(true);
-        for (const lang of n.languages) {
-          expect(typeof lang).toBe("string");
+        if (n.languages !== null) {
+          expect(Array.isArray(n.languages)).toBe(true);
+          for (const lang of n.languages) {
+            expect(typeof lang).toBe("string");
+          }
+        }
+        if (n.tags !== null) {
+          expect(Array.isArray(n.tags)).toBe(true);
+          for (const tag of n.tags) {
+            expect(typeof tag).toBe("string");
+          }
+        }
+        if (n.teamId !== null) {
+          expect(typeof n.teamId).toBe("string");
+        }
+        if (n.workspaceId !== null) {
+          expect(typeof n.workspaceId).toBe("string");
         }
       }
-      if (n.tags !== null) {
-        expect(Array.isArray(n.tags)).toBe(true);
-        for (const tag of n.tags) {
-          expect(typeof tag).toBe("string");
-        }
-      }
-      if (n.teamId !== null) {
-        expect(typeof n.teamId).toBe("string");
-      }
-      if (n.workspaceId !== null) {
-        expect(typeof n.workspaceId).toBe("string");
-      }
-    }
-  }, 60_000);
+    },
+    60_000,
+  );
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -82,7 +88,7 @@ describe("workspaceTemplates", () => {
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
     );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+    expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayNotFound for a non-existent workspace id", async () => {
@@ -92,12 +98,7 @@ describe("workspaceTemplates", () => {
         first: 1,
       }).pipe(Effect.flip),
     );
-    expect([
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "RailwayInvalidInput",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
+    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
     expect((error as { message: string }).message).toMatch(/not found$/i);
   }, 30_000);
 });

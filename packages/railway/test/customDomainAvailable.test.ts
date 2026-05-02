@@ -6,30 +6,38 @@ import { customDomainAvailable } from "../src/operations/customDomainAvailable.t
 import { runEffect, testRunId } from "./setup.ts";
 
 describe("customDomainAvailable", () => {
-  it("happy path - returns availability for a domain", async () => {
-    const domain = `test-${testRunId}.example.com`;
+  it(
+    "happy path - returns availability for a domain",
+    async () => {
+      const domain = `test-${testRunId}.example.com`;
 
-    const result = await runEffect(customDomainAvailable({ domain }));
+      const result = await runEffect(customDomainAvailable({ domain }));
 
-    expect(typeof result.available).toBe("boolean");
-    expect(typeof result.message).toBe("string");
-  }, 30_000);
+      expect(typeof result.available).toBe("boolean");
+      expect(typeof result.message).toBe("string");
+    },
+    30_000,
+  );
 
-  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
-    const BadCreds = Layer.succeed(Credentials, {
-      apiToken: Redacted.make("not-a-real-token-deadbeef"),
-      apiBaseUrl: "https://backboard.railway.com",
-    });
+  it(
+    "error - RailwayNotAuthorized when bearer token is invalid",
+    async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
 
-    const error = await Effect.runPromise(
-      customDomainAvailable({
-        domain: `test-${testRunId}.example.com`,
-      }).pipe(
-        Effect.flip,
-        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-      ) as Effect.Effect<{ _tag: string }, never, never>,
-    );
+      const error = await Effect.runPromise(
+        customDomainAvailable({
+          domain: `test-${testRunId}.example.com`,
+        }).pipe(
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<{ _tag: string }, never, never>,
+      );
 
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
-  }, 30_000);
+      expect(error._tag).toBe("RailwayNotAuthorized");
+    },
+    30_000,
+  );
 });

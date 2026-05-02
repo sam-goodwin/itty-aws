@@ -16,10 +16,16 @@ const validInput = (overrides?: { command?: string }) => ({
 });
 
 describe("cliEventTrack", () => {
-  it("happy path - tracks a CLI event and returns true", async () => {
-    const result = await runEffect(cliEventTrack({ input: validInput() }));
-    expect(result).toBe(true);
-  }, 60_000);
+  it(
+    "happy path - tracks a CLI event and returns true",
+    async () => {
+      const result = await runEffect(
+        cliEventTrack({ input: validInput() }),
+      );
+      expect(result).toBe(true);
+    },
+    60_000,
+  );
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -32,18 +38,13 @@ describe("cliEventTrack", () => {
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
     );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
+    expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayInvalidInput for an empty command", async () => {
     const error = await runEffect(
       cliEventTrack({ input: validInput({ command: "" }) }).pipe(Effect.flip),
     );
-    expect([
-      "RailwayInvalidInput",
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
   }, 30_000);
 });

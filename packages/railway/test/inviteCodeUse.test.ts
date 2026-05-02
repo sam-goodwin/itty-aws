@@ -8,46 +8,48 @@ import { testRunId, runEffect } from "./setup.ts";
 const NON_EXISTENT_CODE = `distilled-railway-invite-${testRunId}`;
 
 describe("inviteCodeUse", () => {
-  it("happy path - exercises the API and surfaces a typed RailwayNotFound for a non-existent invite code", async () => {
-    // Successfully consuming an invite code requires a real, unredeemed
-    // invite issued by another workspace, and would mutate the test
-    // account's project memberships. Exercise the API with a fabricated
-    // code and assert the typed RailwayNotFound instead.
-    const error = await runEffect(
-      inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(Effect.flip),
-    );
-    expect([
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "RailwayInvalidInput",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
-  }, 60_000);
+  it(
+    "happy path - exercises the API and surfaces a typed RailwayNotFound for a non-existent invite code",
+    async () => {
+      // Successfully consuming an invite code requires a real, unredeemed
+      // invite issued by another workspace, and would mutate the test
+      // account's project memberships. Exercise the API with a fabricated
+      // code and assert the typed RailwayNotFound instead.
+      const error = await runEffect(
+        inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(Effect.flip),
+      );
+      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    },
+    60_000,
+  );
 
-  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
-    const BadCreds = Layer.succeed(Credentials, {
-      apiToken: Redacted.make("not-a-real-token-deadbeef"),
-      apiBaseUrl: "https://backboard.railway.com",
-    });
-    const error = await Effect.runPromise(
-      inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(
-        Effect.flip,
-        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-      ) as Effect.Effect<{ _tag: string }, never, never>,
-    );
-    expect(["RailwayNotAuthorized", "RailwayNotFound"]).toContain(error._tag);
-  }, 30_000);
+  it(
+    "error - RailwayNotAuthorized when bearer token is invalid",
+    async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
+      const error = await Effect.runPromise(
+        inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<{ _tag: string }, never, never>,
+      );
+      expect(error._tag).toBe("RailwayNotAuthorized");
+    },
+    30_000,
+  );
 
-  it("error - RailwayNotFound for a non-existent invite code", async () => {
-    const error = await runEffect(
-      inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(Effect.flip),
-    );
-    expect([
-      "RailwayNotFound",
-      "RailwayNotAuthorized",
-      "RailwayInvalidInput",
-      "UnknownRailwayError",
-    ]).toContain((error as { _tag: string })._tag);
-    expect((error as { message: string }).message).toMatch(/not found$/i);
-  }, 30_000);
+  it(
+    "error - RailwayNotFound for a non-existent invite code",
+    async () => {
+      const error = await runEffect(
+        inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(Effect.flip),
+      );
+      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+      expect((error as { message: string }).message).toMatch(/not found$/i);
+    },
+    30_000,
+  );
 });
