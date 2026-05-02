@@ -37,6 +37,21 @@ export class UnknownSupabaseError extends Schema.TaggedErrorClass<UnknownSupabas
   },
 ).pipe(Category.withServerError) {}
 
+// Returned when v1CreateAProject is called against an org whose owner has
+// already hit the free-tier active-project ceiling (currently 2). Supabase
+// surfaces this as a generic 4xx with the literal message
+//   "The following organization members have reached their maximum limits
+//    for the number of active free projects within organizations where
+//    they are an administrator or owner: <email> (<n> project limit)..."
+// We tag it explicitly so tests can detect it, clean up stale projects,
+// and retry — and so callers can distinguish it from a real BadRequest.
+export class FreeProjectLimitReached extends Schema.TaggedErrorClass<FreeProjectLimitReached>()(
+  "FreeProjectLimitReached",
+  {
+    message: Schema.String,
+  },
+).pipe(Category.withQuotaError) {}
+
 // Schema parse error wrapper
 export class SupabaseParseError extends Schema.TaggedErrorClass<SupabaseParseError>()(
   "SupabaseParseError",

@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { Effect, Layer } from "effect";
+import { Effect, Layer, Schedule } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { CredentialsFromEnv } from "../src/credentials";
 import { v1ListAllProjects } from "../src/operations/v1ListAllProjects";
@@ -35,6 +35,63 @@ export const runEffect = <A, E>(effect: Effect.Effect<A, E, any>): Promise<A> =>
 export const FAKE_REF = "nonexistent00000000ref";
 export const FAKE_UUID = "00000000-0000-0000-0000-000000000000";
 
+/**
+ * Wrap a project-creating Effect so that hitting Supabase's free-tier
+ * "active free projects" ceiling auto-recovers: we sweep every existing
+ * `distilled-supabase-*` project from the account, wait for the deletes
+ * to propagate, and retry. Bounded so a real, unrelated quota issue
+ * still surfaces.
+ *
+ * Supabase's management API has no way to query "are there any deletions
+ * still propagating?" — `v1DeleteAProject` returns immediately and the
+ * project lingers as REMOVED for ~30s while still counting toward the
+ * limit — so the recovery path waits a bit before each retry.
+ */
+export const retryOnFreeProjectLimit = <A, E, R>(
+  effect: Effect.Effect<A, E, R>,
+): Effect.Effect<A, E, R> => {
+  const isLimit = (e: unknown): boolean =>
+    typeof e === "object" &&
+    e !== null &&
+    (e as { _tag?: string })._tag === "FreeProjectLimitReached";
+  // On limit: sweep first (so the next attempt has fewer active projects),
+  // wait for deletions to propagate, then re-fail so the outer retry tries
+  // again. Bounded to 3 retries spaced 20s apart.
+  const recover = effect.pipe(
+    Effect.catch((e) =>
+      isLimit(e)
+        ? sweepStaleTestProjects().pipe(
+            Effect.flatMap(() => Effect.sleep("20 seconds")),
+            Effect.flatMap(() => Effect.fail(e)),
+          )
+        : Effect.fail(e),
+    ),
+  ) as Effect.Effect<A, E, R>;
+  return recover.pipe(
+    Effect.retry({
+      while: isLimit,
+      schedule: Schedule.recurs(3),
+    }),
+  );
+};
+
+/**
+ * Best-effort: list every project in the account whose name starts with
+ * the test prefix and ask Supabase to delete it. Errors are swallowed
+ * because this only runs as a recovery hook.
+ */
+const sweepStaleTestProjects = (): Effect.Effect<void> =>
+  Effect.gen(function* () {
+    const projects = yield* v1ListAllProjects({}).pipe(
+      Effect.orElseSucceed(() => [] as Array<{ ref: string; name: string }>),
+    );
+    for (const p of projects) {
+      if (p.name.startsWith("distilled-supabase")) {
+        yield* v1DeleteAProject({ ref: p.ref }).pipe(Effect.ignore);
+      }
+    }
+  }).pipe(Effect.provide(TestLayer)) as Effect.Effect<void>;
+
 // --------------------------------------------------------------------------
 // Shared test project management
 // --------------------------------------------------------------------------
@@ -62,7 +119,8 @@ export async function getExistingProject(): Promise<TestProject | undefined> {
   _existingProjectResolved = true;
   const projects = await runEffect(v1ListAllProjects({}));
   // Prefer ACTIVE_HEALTHY, fall back to any project
-  const active = projects.find((p) => p.status === "ACTIVE_HEALTHY") ?? projects[0];
+  const active =
+    projects.find((p) => p.status === "ACTIVE_HEALTHY") ?? projects[0];
   if (active) {
     _cachedExistingProject = {
       id: active.id,
@@ -78,7 +136,9 @@ export async function getExistingProject(): Promise<TestProject | undefined> {
 /**
  * Get an existing project or skip the test if none available.
  */
-export async function requireExistingProject(ctx: { skip: (reason: string) => void }): Promise<TestProject> {
+export async function requireExistingProject(ctx: {
+  skip: (reason: string) => void;
+}): Promise<TestProject> {
   const proj = await getExistingProject();
   if (!proj) {
     ctx.skip("No projects available");
@@ -111,13 +171,15 @@ export async function setupTestProject(suffix: string): Promise<TestProject> {
   const dbPass = `TestPass${testRunId}!1`;
 
   const result = await runEffect(
-    v1CreateAProject({
-      name,
-      organization_slug: orgSlug,
-      db_pass: dbPass,
-      region: "us-east-1",
-      plan: "free",
-    }),
+    retryOnFreeProjectLimit(
+      v1CreateAProject({
+        name,
+        organization_slug: orgSlug,
+        db_pass: dbPass,
+        region: "us-east-1",
+        plan: "free",
+      }),
+    ),
   );
 
   const proj: TestProject = {

@@ -12,6 +12,7 @@ import {
   HTTP_STATUS_MAP,
   UnknownSupabaseError,
   SupabaseParseError,
+  FreeProjectLimitReached,
 } from "./errors.ts";
 
 // Re-export for backwards compatibility
@@ -32,6 +33,15 @@ const matchError = (
 ): Effect.Effect<never, unknown> => {
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
+    // Supabase has no error code on the wire; the only signal for the
+    // free-tier active-project limit is a literal substring of the message.
+    // Detect it before falling through to the generic status-code map so
+    // tests and callers can react to it as a typed error.
+    if (parsed.message?.includes("active free projects")) {
+      return Effect.fail(
+        new FreeProjectLimitReached({ message: parsed.message }),
+      );
+    }
     // Supabase returns 406 for some "not found" conditions (e.g. snippets)
     const effectiveStatus = status === 406 ? 404 : status;
     const ErrorClass = (HTTP_STATUS_MAP as any)[effectiveStatus];
