@@ -28,6 +28,7 @@
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import { pipeArguments } from "effect/Pipeable";
+import { MinimumLogLevel } from "effect/References";
 import * as Schedule from "effect/Schedule";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
@@ -47,6 +48,19 @@ import {
 import * as Category from "./category.ts";
 import * as Traits from "./traits.ts";
 import { getPath } from "./traits.ts";
+
+// `DISTILLED_DEBUG=1` forces the MinimumLogLevel to Debug for SDK operations,
+// independent of the caller's logger config. Users who set `MinimumLogLevel`
+// to Debug themselves get the same logs without needing the env var.
+const distilledDebugEnv: boolean = (() => {
+  try {
+    return (
+      typeof process !== "undefined" && process.env?.DISTILLED_DEBUG === "1"
+    );
+  } catch {
+    return false;
+  }
+})();
 
 // ============================================================================
 // Client Types
@@ -407,6 +421,8 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
         Schedule.recurs(8),
       );
 
+      const spanName = `${method} ${httpTrait.path}`;
+
       const innerFn = (input: Input): Effect.Effect<any, any, any> =>
         Effect.gen(function* () {
           const credentials = yield* config.credentials as any;
@@ -514,6 +530,9 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             }
           }
 
+          const requestUrl = baseUrl + parts.path;
+          yield* Effect.logDebug(`→ ${method} ${requestUrl}`);
+
           // For operations that opt out of following redirects, hand the
           // underlying fetch a `redirect: "manual"` request init so the
           // 3xx surfaces here instead of being chased to the IdP.
@@ -527,6 +546,9 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             : client.execute(request).pipe(Effect.scoped);
 
           const response = yield* executeRequest;
+          yield* Effect.logDebug(
+            `← ${response.status} ${method} ${requestUrl}`,
+          );
 
           // For ops that opted out of redirect-following, treat 3xx as
           // success: synthesize a body containing the Location header
@@ -681,13 +703,23 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       // / `withRetryable({ throttling: true })`). After retries are
       // exhausted the original typed error propagates to the caller as
       // usual.
-      const fn = (input: Input): Effect.Effect<any, any, any> =>
-        innerFn(input).pipe(
+      const fn = (input: Input): Effect.Effect<any, any, any> => {
+        const withRetry = innerFn(input).pipe(
           Effect.retry({
             schedule: throttlingRetrySchedule,
             while: (e) => Category.isThrottling(e),
           }),
+          Effect.withSpan(spanName, {
+            attributes: {
+              "http.method": method,
+              "http.route": httpTrait.path,
+            },
+          }),
         );
+        return distilledDebugEnv
+          ? Effect.provideService(withRetry, MinimumLogLevel, "Debug")
+          : withRetry;
+      };
 
       const Proto = {
         [Symbol.iterator]() {

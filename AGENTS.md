@@ -347,6 +347,12 @@ When you automatically open a PR, it MUST follow this structure:
 
 The summary goes at the very top of the description as plain prose — NO heading above it, no `### Summary`, nothing. The PR title already serves as the title; do not repeat or re-title it. Only add `###` subheadings further down if the description genuinely has multiple sections worth separating.
 
+**Markdown — write it plainly, do not escape:**
+- Inline code uses single backticks: `` `MyThing` ``. Block code uses triple backticks. That's it.
+- NEVER pad backticks with spaces (`` ` ` `MyThing` ` ` ``). NEVER escape them. The result looks like garbage and is never what the user wants.
+- When passing a PR body to `gh`, write it to a file and use `--body-file` (or `gh api -F body=@file`). Do NOT inline it in a heredoc you then try to escape — that is what causes the broken backticks.
+- If `gh pr edit` fails (it can fail on some repos due to a Projects-classic GraphQL deprecation), retry via `gh api -X PATCH repos/{owner}/{repo}/pulls/{n} -F body=@file.md`.
+
 Example PR description (good):
 
 ```
