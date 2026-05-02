@@ -104,16 +104,18 @@ export class RailwayGraphQLParseFailed extends Schema.TaggedErrorClass<RailwayGr
 ).pipe(Category.withBadRequestError) {}
 
 /**
- * Railway per-resource rate limit. Surfaced as
+ * Railway per-resource quota limit. Surfaced as
  * `extensions.code = INTERNAL_SERVER_ERROR` + a "Whoa there pal!" message
- * (e.g. "Only one project can be created per user every 30s. Try again in
- * a sec"). Tagged as a throttling error so the shared retry pipeline backs
- * off and retries automatically.
+ * (e.g. "Only one project can be created per user every 30s"). These are
+ * fixed-window quotas — retrying inside the same test is pointless because
+ * the window is longer than typical test timeouts. Tagged as a bad-request
+ * error (NOT throttling) so the shared retry pipeline does NOT spin on it.
+ * Callers who want to wait should retry at their own cadence.
  */
 export class RailwayRateLimited extends Schema.TaggedErrorClass<RailwayRateLimited>()(
   "RailwayRateLimited",
   { message: Schema.String },
-).pipe(Category.withThrottlingError) {}
+).pipe(Category.withBadRequestError) {}
 
 /**
  * Catch-all for opaque Railway server-side failures surfaced as
