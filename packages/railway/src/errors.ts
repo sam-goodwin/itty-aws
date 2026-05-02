@@ -154,9 +154,15 @@ export const RAILWAY_MESSAGE_MAP: ReadonlyArray<{
   // biome-ignore lint/suspicious/noExplicitAny: heterogeneous error class map
   errorClass: any;
 }> = [
-  // Throttling — must be first so retries kick in before any other match.
+  // Quota / rate-limit messages. Matched first so callers see a stable
+  // RailwayRateLimited regardless of which specific copy Railway uses.
   { pattern: /^Whoa there pal!/i, errorClass: RailwayRateLimited },
   { pattern: /try again in a /i, errorClass: RailwayRateLimited },
+  { pattern: /^You'?ve hit the .* limit/i, errorClass: RailwayRateLimited },
+  {
+    pattern: /creation limit for new accounts/i,
+    errorClass: RailwayRateLimited,
+  },
 
   // Authorization.
   { pattern: /^Not Authorized$/i, errorClass: RailwayNotAuthorized },
@@ -174,6 +180,8 @@ export const RAILWAY_MESSAGE_MAP: ReadonlyArray<{
   { pattern: /^Can(?:'|\\?')t /i, errorClass: RailwayInvalidInput },
   { pattern: /^Service is not deployed/i, errorClass: RailwayInvalidInput },
   { pattern: /has no connected repo/i, errorClass: RailwayInvalidInput },
+  { pattern: /^You can only /i, errorClass: RailwayInvalidInput },
+  { pattern: /on the Pro plan/i, errorClass: RailwayInvalidInput },
 
   // Generic Railway server failure — last so specific patterns win.
   { pattern: /^Problem processing request/i, errorClass: RailwayServerError },

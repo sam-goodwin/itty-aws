@@ -92,7 +92,12 @@ const matchError = (
     // Railway uses `INTERNAL_SERVER_ERROR` as a catch-all for application
     // errors (auth, not-found, validation) returned with HTTP 200. The only
     // way to discriminate them is by `message` text — see RAILWAY_MESSAGE_MAP.
-    if (code === "INTERNAL_SERVER_ERROR" && message) {
+    // Always try the message map. Most Railway application errors carry
+    // extensions.code = INTERNAL_SERVER_ERROR, but some (notably the
+    // "Problem processing request" gateway-level failure) are returned with
+    // no code at all — gating on INTERNAL_SERVER_ERROR caused those to fall
+    // through to UnknownRailwayError.
+    if (message) {
       for (const { pattern, errorClass } of RAILWAY_MESSAGE_MAP) {
         if (pattern.test(message)) {
           return Effect.fail(new errorClass({ message }));
