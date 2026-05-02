@@ -74,18 +74,29 @@ describe("getFieldForDataset", () => {
           description: "getFieldForDataset NotFound fixture",
         });
 
+        // Axiom occasionally returns 500 instead of 404 here — the dataset
+        // is freshly provisioned and the field-lookup path can race with
+        // internal indexing. Retry on InternalServerError so the test only
+        // fails when the response is genuinely wrong, not transiently 500.
         const error = yield* getFieldForDataset({
           dataset_id: datasetName,
           field_id: `does_not_exist_${testRunId}`,
-        }).pipe(Effect.flip);
-
-        // Axiom returns 500 InternalServerError (rather than 404) when the
-        // dataset exists but the field name doesn't. The "dataset itself
-        // does not exist" case below correctly returns 404 — accept either
-        // tag here so we don't rely on the server normalising the response.
-        expect(["NotFound", "InternalServerError"]).toContain(
-          (error as { _tag: string })._tag,
+        }).pipe(
+          Effect.flip,
+          Effect.flatMap((e) =>
+            (e as { _tag: string })._tag === "InternalServerError"
+              ? Effect.fail(e)
+              : Effect.succeed(e),
+          ),
+          Effect.retry({
+            schedule: Schedule.both(
+              Schedule.spaced("2 seconds"),
+              Schedule.recurs(5),
+            ),
+          }),
         );
+
+        expect((error as { _tag: string })._tag).toBe("NotFound");
       }).pipe(
         Effect.ensuring(
           deleteDataset({ dataset_id: datasetName }).pipe(Effect.ignore),
