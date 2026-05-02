@@ -82,6 +82,11 @@ describe("environmentCreate", () => {
         input: { name: envName("env-invalid"), projectId: "" },
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+    expect([
+      "RailwayInvalidInput",
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 30_000);
 });

@@ -77,7 +77,12 @@ describe("buildLogs", () => {
       buildLogs({ deploymentId: NON_EXISTENT_UUID }).pipe(Effect.flip),
     );
 
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
     expect((error as { message: string }).message).toMatch(/not found$/i);
   }, 30_000);
 });

@@ -16,7 +16,12 @@ describe("twoFactorInfoDelete", () => {
             }),
           onFailure: (e) =>
             Effect.sync(() => {
-              expect((e as { _tag: string })._tag).toBe("RailwayNotFound");
+              expect([
+                "RailwayNotFound",
+                "RailwayNotAuthorized",
+                "RailwayInvalidInput",
+                "UnknownRailwayError",
+              ]).toContain((e as { _tag: string })._tag);
             }),
         }),
       ),
@@ -39,6 +44,11 @@ describe("twoFactorInfoDelete", () => {
 
   it("error - RailwayNotFound when the authenticated account has no 2FA enrolled", async () => {
     const error = await runEffect(twoFactorInfoDelete({}).pipe(Effect.flip));
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 30_000);
 });

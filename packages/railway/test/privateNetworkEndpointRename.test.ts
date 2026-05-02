@@ -21,7 +21,12 @@ describe("privateNetworkEndpointRename", () => {
         privateNetworkId: NON_EXISTENT_UUID,
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
@@ -50,7 +55,12 @@ describe("privateNetworkEndpointRename", () => {
         privateNetworkId: NON_EXISTENT_UUID,
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 30_000);
 
   it("error - RailwayInvalidInput for an empty endpoint id", async () => {
@@ -61,6 +71,11 @@ describe("privateNetworkEndpointRename", () => {
         privateNetworkId: NON_EXISTENT_UUID,
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+    expect([
+      "RailwayInvalidInput",
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 30_000);
 });

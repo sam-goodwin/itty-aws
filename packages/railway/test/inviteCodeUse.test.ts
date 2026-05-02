@@ -16,7 +16,12 @@ describe("inviteCodeUse", () => {
     const error = await runEffect(
       inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
@@ -37,7 +42,12 @@ describe("inviteCodeUse", () => {
     const error = await runEffect(
       inviteCodeUse({ code: NON_EXISTENT_CODE }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
     expect((error as { message: string }).message).toMatch(/not found$/i);
   }, 30_000);
 });

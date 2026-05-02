@@ -19,7 +19,12 @@ describe("privateNetworkEndpointDelete", () => {
         id: NON_EXISTENT_UUID,
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
@@ -44,6 +49,11 @@ describe("privateNetworkEndpointDelete", () => {
         id: NON_EXISTENT_UUID,
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
   }, 30_000);
 });

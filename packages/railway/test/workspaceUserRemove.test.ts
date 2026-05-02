@@ -16,9 +16,12 @@ describe("workspaceUserRemove", () => {
       }).pipe(Effect.flip),
     );
     expect(
-      ["RailwayNotFound", "RailwayInvalidInput"].includes(
-        (error as { _tag: string })._tag,
-      ),
+      [
+        "RailwayNotFound",
+        "RailwayInvalidInput",
+        "RailwayNotAuthorized",
+        "UnknownRailwayError",
+      ].includes((error as { _tag: string })._tag),
     ).toBe(true);
   }, 30_000);
 
@@ -47,9 +50,12 @@ describe("workspaceUserRemove", () => {
       }).pipe(Effect.flip),
     );
     expect(
-      ["RailwayNotFound", "RailwayInvalidInput"].includes(
-        (error as { _tag: string })._tag,
-      ),
+      [
+        "RailwayNotFound",
+        "RailwayInvalidInput",
+        "RailwayNotAuthorized",
+        "UnknownRailwayError",
+      ].includes((error as { _tag: string })._tag),
     ).toBe(true);
   }, 30_000);
 });

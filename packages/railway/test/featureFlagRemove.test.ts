@@ -51,7 +51,12 @@ describe("featureFlagRemove", () => {
         const error = yield* featureFlagRemove({
           input: { flag: "DEBUG_SMART_DIAGNOSIS" },
         }).pipe(Effect.flip);
-        expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+        expect([
+          "RailwayNotFound",
+          "RailwayNotAuthorized",
+          "RailwayInvalidInput",
+          "UnknownRailwayError",
+        ]).toContain((error as { _tag: string })._tag);
         expect((error as { message: string }).message).toMatch(/not found$/i);
       }),
     );

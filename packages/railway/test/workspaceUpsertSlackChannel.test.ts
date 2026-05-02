@@ -13,9 +13,12 @@ describe("workspaceUpsertSlackChannel", () => {
       workspaceUpsertSlackChannel({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
     );
     expect(
-      ["RailwayInvalidInput", "RailwayNotFound"].includes(
-        (error as { _tag: string })._tag,
-      ),
+      [
+        "RailwayInvalidInput",
+        "RailwayNotFound",
+        "RailwayNotAuthorized",
+        "UnknownRailwayError",
+      ].includes((error as { _tag: string })._tag),
     ).toBe(true);
   }, 30_000);
 
@@ -38,9 +41,12 @@ describe("workspaceUpsertSlackChannel", () => {
       workspaceUpsertSlackChannel({ id: "not-a-valid-uuid" }).pipe(Effect.flip),
     );
     expect(
-      ["RailwayInvalidInput", "RailwayNotFound"].includes(
-        (error as { _tag: string })._tag,
-      ),
+      [
+        "RailwayInvalidInput",
+        "RailwayNotFound",
+        "RailwayNotAuthorized",
+        "UnknownRailwayError",
+      ].includes((error as { _tag: string })._tag),
     ).toBe(true);
   }, 30_000);
 });

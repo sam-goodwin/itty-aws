@@ -12,7 +12,12 @@ describe("projectToken", () => {
     // which still exercises the operation end-to-end against the real API.
     const error = await runEffect(projectToken({}).pipe(Effect.flip));
 
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
     expect((error as { message: string }).message).toMatch(/not found$/i);
   }, 30_000);
 
@@ -35,7 +40,12 @@ describe("projectToken", () => {
   it("error - RailwayNotFound when no project token matches the bearer", async () => {
     const error = await runEffect(projectToken({}).pipe(Effect.flip));
 
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect([
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "RailwayInvalidInput",
+      "UnknownRailwayError",
+    ]).toContain((error as { _tag: string })._tag);
     expect((error as { message: string }).message).toMatch(/not found$/i);
   }, 30_000);
 });

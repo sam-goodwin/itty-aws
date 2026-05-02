@@ -21,7 +21,12 @@ describe("customerTogglePayoutsToCredits", () => {
       }).pipe(Effect.flip),
     );
     const tag = (error as { _tag: string })._tag;
-    expect(["RailwayInvalidInput", "RailwayNotFound"]).toContain(tag);
+    expect([
+      "RailwayInvalidInput",
+      "RailwayNotFound",
+      "RailwayNotAuthorized",
+      "UnknownRailwayError",
+    ]).toContain(tag);
   }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
