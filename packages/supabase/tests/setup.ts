@@ -109,18 +109,25 @@ interface TestProject {
 const testProjects = new Map<string, TestProject>();
 
 /**
- * Get an existing ACTIVE_HEALTHY project for read-only tests.
- * Falls back to creating a fresh one if none exist.
+ * Get an existing ACTIVE_HEALTHY project for read-only tests, or undefined
+ * if none exist (read-only tests then skip via `requireExistingProject`).
+ *
+ * Strict on `status === "ACTIVE_HEALTHY"`: Supabase's deletion is async and
+ * `v1DeleteAProject` returns immediately, so a project lingers in REMOVED
+ * state and shows up in `v1ListAllProjects` for ~30s after deletion. The
+ * old fallback to `projects[0]` could pick a REMOVED project whose ref then
+ * fails every read with "Resource has been removed".
+ *
+ * Cache only positive results: if the first call finds no healthy project
+ * we re-check on the next call, so a project created later in the run
+ * (e.g. by v1CreateAProject's happy path before the suite's read tests)
+ * can still be picked up.
  */
 let _cachedExistingProject: TestProject | undefined;
-let _existingProjectResolved = false;
 export async function getExistingProject(): Promise<TestProject | undefined> {
-  if (_existingProjectResolved) return _cachedExistingProject;
-  _existingProjectResolved = true;
+  if (_cachedExistingProject) return _cachedExistingProject;
   const projects = await runEffect(v1ListAllProjects({}));
-  // Prefer ACTIVE_HEALTHY, fall back to any project
-  const active =
-    projects.find((p) => p.status === "ACTIVE_HEALTHY") ?? projects[0];
+  const active = projects.find((p) => p.status === "ACTIVE_HEALTHY");
   if (active) {
     _cachedExistingProject = {
       id: active.id,

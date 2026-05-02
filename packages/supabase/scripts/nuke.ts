@@ -20,7 +20,7 @@ config({ path: envPath });
 config();
 import { BunRuntime, BunServices } from "@effect/platform-bun";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
-import { Console, Effect } from "effect";
+import { Console, Effect, Schedule } from "effect";
 import { Command, Flag } from "effect/unstable/cli";
 import { CredentialsFromEnv } from "@distilled.cloud/supabase";
 import {
@@ -122,6 +122,38 @@ function safeList<A, E, R>(
         Effect.map(() => undefined as A | undefined),
       ),
     ),
+  );
+}
+
+/**
+ * Poll v1ListAllProjects until the given ref no longer appears, capped at
+ * ~3 minutes. Supabase's project deletion typically settles within 30-90s
+ * but we give it generous head-room because the API has no
+ * "wait-until-deleted" primitive. If the cap is reached we log and move on
+ * — better to surface a slow tail than to hang CI.
+ */
+function waitForProjectGone(
+  ref: string,
+): Effect.Effect<void, never, never> {
+  const isStillThere = v1ListAllProjects({}).pipe(
+    Effect.map((projects) => projects.some((p) => p.ref === ref)),
+    Effect.orElseSucceed(() => true),
+  );
+  return isStillThere.pipe(
+    Effect.flatMap((there) =>
+      there ? Effect.fail("still-there" as const) : Effect.void,
+    ),
+    Effect.retry({
+      while: (e) => e === "still-there",
+      schedule: Schedule.both(
+        Schedule.spaced("3 seconds"),
+        Schedule.recurs(60),
+      ),
+    }),
+    Effect.match({
+      onSuccess: () => undefined as void,
+      onFailure: () => undefined as void,
+    }),
   );
 }
 
@@ -681,12 +713,26 @@ const nuke = Command.make(
           yield* nukeProjectBackups(project.ref);
           yield* nukeProjectSnippets(project.ref);
 
-          // Finally delete the project itself
+          // Finally delete the project itself.
+          //
+          // Supabase's deletion is async: v1DeleteAProject returns 200
+          // immediately and the project lingers in REMOVED state for ~30s
+          // while still counting toward the free-tier active-project
+          // ceiling and still appearing in v1ListAllProjects. If we exit
+          // here, the next caller (CI test step) sees the leftover and
+          // either trips the limit or — worse — picks the REMOVED project
+          // up as a "real" one. Calling delete a second time on a REMOVED
+          // project surfaces as "Resource has been removed".
+          //
+          // Send the delete (idempotent: REMOVED → 4xx, swallowed) and
+          // then poll v1ListAllProjects until this ref is gone, so nuke
+          // exits with a genuinely empty account.
           if (!config.dryRun) {
             yield* safeDelete(
               v1DeleteAProject({ ref: project.ref }),
               `project ${project.ref}`,
             );
+            yield* waitForProjectGone(project.ref);
           }
         }
       }
