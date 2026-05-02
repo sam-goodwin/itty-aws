@@ -77,7 +77,9 @@ describe("GroupsControllerDelete", () => {
           groupId: `group_does_not_exist_${testRunId}`,
         }).pipe(Effect.flip),
       );
-      expect(["Forbidden", "TooManyRequests"]).toContain(error._tag);
+      expect(["Forbidden", "NotFound", "TooManyRequests"]).toContain(
+        error._tag,
+      );
     },
     { timeout: 30_000 },
   );

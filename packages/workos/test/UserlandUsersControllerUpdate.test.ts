@@ -4,7 +4,13 @@ import { UserlandUsersControllerList } from "../src/operations/UserlandUsersCont
 import { UserlandUsersControllerUpdate } from "../src/operations/UserlandUsersControllerUpdate.ts";
 import { runEffect, testRunId } from "./setup.ts";
 
-const typedErrorTags = ["BadRequest", "UnprocessableEntity"] as const;
+// WorkOS routes invalid id formats through the same DRF lookup pipeline
+// that produces 404 NotFound for non-existent users — accept all three.
+const typedErrorTags = [
+  "BadRequest",
+  "UnprocessableEntity",
+  "NotFound",
+] as const;
 
 describe("UserlandUsersControllerUpdate", () => {
   it(

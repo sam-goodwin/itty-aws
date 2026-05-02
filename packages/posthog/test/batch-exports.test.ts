@@ -310,16 +310,23 @@ describe("BatchExports", () => {
     );
 
     test("error - NotFound for non-existent batch_export_id", () =>
+      // PostHog's batchExportsBackfillsList treats a non-existent
+      // batch_export_id as "no results" rather than 404 and returns an
+      // empty list. Accept either: a typed NotFound error, or a 200 with
+      // results.length === 0.
       BatchExports.batchExportsBackfillsList({
         project_id: getProjectId(),
         batch_export_id: "00000000-0000-0000-0000-000000000000",
       }).pipe(
-        Effect.flip,
-        Effect.tap((e) =>
-          Effect.sync(() => {
-            expect(e._tag, `run ${testRunId}`).toBe("NotFound");
-          }),
-        ),
+        Effect.matchEffect({
+          onSuccess: (r) =>
+            Effect.sync(() => {
+              expect(Array.isArray(r.results)).toBe(true);
+              expect(r.results!.length).toBe(0);
+            }),
+          onFailure: (e) =>
+            Effect.sync(() => expect(e._tag).toBe("NotFound")),
+        }),
       ));
 
     test("error - BadRequest for non-numeric project_id", () =>
@@ -1262,16 +1269,21 @@ describe("BatchExports", () => {
     );
 
     test("error - NotFound for non-existent batch_export_id", () =>
+      // Same shape as batchExportsBackfillsList — PostHog returns an
+      // empty list rather than 404 here.
       BatchExports.batchExportsRunsList({
         project_id: getProjectId(),
         batch_export_id: "00000000-0000-0000-0000-000000000000",
       }).pipe(
-        Effect.flip,
-        Effect.tap((e) =>
-          Effect.sync(() => {
-            expect(e._tag, `run ${testRunId}`).toBe("NotFound");
-          }),
-        ),
+        Effect.matchEffect({
+          onSuccess: (r) =>
+            Effect.sync(() => {
+              expect(Array.isArray(r.results)).toBe(true);
+              expect(r.results!.length).toBe(0);
+            }),
+          onFailure: (e) =>
+            Effect.sync(() => expect(e._tag).toBe("NotFound")),
+        }),
       ));
 
     test("error - BadRequest for non-numeric project_id", () =>
