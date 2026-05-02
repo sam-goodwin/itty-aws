@@ -54,16 +54,15 @@ export const retryOnFreeProjectLimit = <A, E, R>(
     typeof e === "object" &&
     e !== null &&
     (e as { _tag?: string })._tag === "FreeProjectLimitReached";
-  // On limit: sweep first (so the next attempt has fewer active projects),
-  // wait for deletions to propagate, then re-fail so the outer retry tries
-  // again. Bounded to 3 retries spaced 20s apart.
+  // On limit: sweep + poll v1ListAllProjects until at least one
+  // `distilled-supabase-*` project has fully disappeared (slot freed up),
+  // then retry. Polling beats a fixed sleep because Supabase's tail varies
+  // from ~30s to a couple of minutes — too short and we retry into the
+  // same limit; too long and the test times out. Bounded to 3 attempts.
   const recover = effect.pipe(
     Effect.catch((e) =>
       isLimit(e)
-        ? sweepStaleTestProjects().pipe(
-            Effect.flatMap(() => Effect.sleep("20 seconds")),
-            Effect.flatMap(() => Effect.fail(e)),
-          )
+        ? waitForCapacity().pipe(Effect.flatMap(() => Effect.fail(e)))
         : Effect.fail(e),
     ),
   ) as Effect.Effect<A, E, R>;
@@ -76,21 +75,54 @@ export const retryOnFreeProjectLimit = <A, E, R>(
 };
 
 /**
- * Best-effort: list every project in the account whose name starts with
- * the test prefix and ask Supabase to delete it. Errors are swallowed
- * because this only runs as a recovery hook.
+ * Sweep every `distilled-supabase-*` project, then poll the account
+ * listing until the test-project count drops by at least one — i.e. a
+ * slot freed up. Capped at ~2 minutes; if nothing has cleared by then
+ * we return anyway and let the outer retry surface the same limit error
+ * to the caller, which is preferable to hanging.
  */
-const sweepStaleTestProjects = (): Effect.Effect<void> =>
+const waitForCapacity = (): Effect.Effect<void> =>
   Effect.gen(function* () {
-    const projects = yield* v1ListAllProjects({}).pipe(
-      Effect.orElseSucceed(() => [] as Array<{ ref: string; name: string }>),
-    );
-    for (const p of projects) {
-      if (p.name.startsWith("distilled-supabase")) {
-        yield* v1DeleteAProject({ ref: p.ref }).pipe(Effect.ignore);
-      }
+    const before = yield* listTestProjects();
+    for (const p of before) {
+      yield* v1DeleteAProject({ ref: p.ref }).pipe(Effect.ignore);
     }
+    yield* pollUntilFewer(before.length);
   }).pipe(Effect.provide(TestLayer)) as Effect.Effect<void>;
+
+const listTestProjects = (): Effect.Effect<
+  Array<{ ref: string; name: string }>,
+  never,
+  never
+> =>
+  v1ListAllProjects({}).pipe(
+    Effect.orElseSucceed(() => [] as Array<{ ref: string; name: string }>),
+    Effect.map((projects) =>
+      projects.filter((p) => p.name.startsWith("distilled-supabase")),
+    ),
+  ) as Effect.Effect<Array<{ ref: string; name: string }>, never, never>;
+
+const pollUntilFewer = (
+  startingCount: number,
+): Effect.Effect<void, never, never> =>
+  listTestProjects().pipe(
+    Effect.flatMap((current) =>
+      current.length < startingCount
+        ? Effect.void
+        : Effect.fail("still-full" as const),
+    ),
+    Effect.retry({
+      while: (e) => e === "still-full",
+      schedule: Schedule.both(
+        Schedule.spaced("5 seconds"),
+        Schedule.recurs(24),
+      ),
+    }),
+    Effect.match({
+      onSuccess: () => undefined as void,
+      onFailure: () => undefined as void,
+    }),
+  ) as Effect.Effect<void, never, never>;
 
 // --------------------------------------------------------------------------
 // Shared test project management

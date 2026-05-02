@@ -199,7 +199,7 @@ describe("Projects", () => {
       expect(result).toHaveProperty("organization_id");
       expect(result).toHaveProperty("region");
       expect(result).toHaveProperty("status");
-    }, 60_000);
+    }, 180_000);
 
     it("error - BadRequest for non-existent org slug", async () => {
       await runEffect(
@@ -294,7 +294,7 @@ describe("Projects", () => {
           ),
         ),
       );
-    }, 60_000);
+    }, 180_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
@@ -362,7 +362,7 @@ describe("Projects", () => {
           ),
         ),
       );
-    }, 120_000);
+    }, 240_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
@@ -434,7 +434,7 @@ describe("Projects", () => {
           ),
         ),
       );
-    }, 120_000);
+    }, 240_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
@@ -1328,7 +1328,7 @@ describe("Projects", () => {
       expect(result.ref).toBe(created.ref);
       expect(result.name).toBe(name);
       expect(result).toHaveProperty("id");
-    }, 60_000);
+    }, 180_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
