@@ -2,39 +2,32 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { serviceCreate } from "../src/operations/serviceCreate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { serviceDelete } from "../src/operations/serviceDelete.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 describe("serviceCreate", () => {
-  it("happy path - creates a service inside a freshly created project", async () => {
-    const projectName = `distilled-railway-sc-${testRunId}`;
+  it("happy path - creates and tears down a service inside the shared project", async () => {
+    const project = await getSharedProject();
     const serviceName = `distilled-railway-sc-svc-${testRunId}`;
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
+        const service = yield* serviceCreate({
           input: {
-            name: projectName,
-            description: "distilled service create test project",
+            projectId: project.id,
+            name: serviceName,
+            source: { image: "nginx:latest" },
           },
         });
+
         return yield* Effect.gen(function* () {
-          const service = yield* serviceCreate({
-            input: {
-              projectId: project.id,
-              name: serviceName,
-              source: {
-                image: "nginx:latest",
-              },
-            },
-          });
           expect(service.id).toBeTruthy();
           expect(service.name).toBe(serviceName);
           expect(service.projectId).toBe(project.id);
         }).pipe(
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            serviceDelete({ id: service.id }).pipe(Effect.ignore),
           ),
         );
       }),
@@ -51,9 +44,7 @@ describe("serviceCreate", () => {
         input: {
           projectId: "00000000-0000-0000-0000-000000000000",
           name: `distilled-railway-sc-unauth-${testRunId}`,
-          source: {
-            image: "nginx:latest",
-          },
+          source: { image: "nginx:latest" },
         },
       }).pipe(
         Effect.flip,
@@ -69,9 +60,7 @@ describe("serviceCreate", () => {
         input: {
           projectId: "",
           name: `distilled-railway-sc-inv-${testRunId}`,
-          source: {
-            image: "nginx:latest",
-          },
+          source: { image: "nginx:latest" },
         },
       }).pipe(Effect.flip),
     );

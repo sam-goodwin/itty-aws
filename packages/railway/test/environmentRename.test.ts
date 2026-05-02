@@ -3,44 +3,32 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { environmentCreate } from "../src/operations/environmentCreate.ts";
+import { environmentDelete } from "../src/operations/environmentDelete.ts";
 import { environmentRename } from "../src/operations/environmentRename.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
-const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const envName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("environmentRename", () => {
   it("happy path - renames a freshly forked environment", async () => {
-    const projName = projectName("env-rename");
-    const initialName = envName("staging-rn-initial");
-    const renamedName = envName("staging-rn-renamed");
+    const project = await getSharedProject();
+    const initialName = envName("env-rn-initial");
+    const renamedName = envName("env-rn-renamed");
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
+        const env = yield* environmentCreate({
+          input: {
+            name: initialName,
+            projectId: project.id,
+            sourceEnvironmentId: project.baseEnvironmentId,
+            skipInitialDeploys: true,
+          },
         });
+
         return yield* Effect.gen(function* () {
-          const baseEnvId = project.baseEnvironmentId;
-          if (!baseEnvId) {
-            throw new Error(
-              "test setup: created project has no baseEnvironmentId",
-            );
-          }
-
-          const env = yield* environmentCreate({
-            input: {
-              name: initialName,
-              projectId: project.id,
-              sourceEnvironmentId: baseEnvId,
-              skipInitialDeploys: true,
-            },
-          });
-
           const result = yield* environmentRename({
             id: env.id,
             input: { name: renamedName },
@@ -56,7 +44,7 @@ describe("environmentRename", () => {
           expect(result.deletedAt).toBeNull();
         }).pipe(
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            environmentDelete({ id: env.id }).pipe(Effect.ignore),
           ),
         );
       }),

@@ -2,48 +2,34 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { serviceCreate } from "../src/operations/serviceCreate.ts";
 import { serviceUpdate } from "../src/operations/serviceUpdate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedService, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("serviceUpdate", () => {
-  it("happy path - renames a freshly created service", async () => {
-    const projectName = `distilled-railway-su-${testRunId}`;
-    const serviceName = `distilled-railway-su-svc-${testRunId}`;
+  it("happy path - renames the shared service and restores the original name", async () => {
+    const service = await getSharedService();
     const renamed = `distilled-railway-su-svc-renamed-${testRunId}`;
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: {
-            name: projectName,
-            description: "distilled service update test",
-          },
+        const updated = yield* serviceUpdate({
+          id: service.id,
+          input: { name: renamed },
         });
-        return yield* Effect.gen(function* () {
-          const service = yield* serviceCreate({
-            input: {
-              projectId: project.id,
-              name: serviceName,
-              source: { image: "nginx:latest" },
-            },
-          });
-          const updated = yield* serviceUpdate({
+        expect(updated.id).toBe(service.id);
+        expect(updated.name).toBe(renamed);
+        expect(updated.projectId).toBe(service.projectId);
+      }).pipe(
+        // Always restore the original name so subsequent tests see it.
+        Effect.ensuring(
+          serviceUpdate({
             id: service.id,
-            input: { name: renamed },
-          });
-          expect(updated.id).toBe(service.id);
-          expect(updated.name).toBe(renamed);
-          expect(updated.projectId).toBe(project.id);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
-      }),
+            input: { name: service.name },
+          }).pipe(Effect.ignore),
+        ),
+      ),
     );
   }, 120_000);
 

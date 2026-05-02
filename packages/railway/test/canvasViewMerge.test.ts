@@ -4,52 +4,38 @@ import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { canvasViewMerge } from "../src/operations/canvasViewMerge.ts";
 import { environmentCreate } from "../src/operations/environmentCreate.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { environmentDelete } from "../src/operations/environmentDelete.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
-const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const envName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("canvasViewMerge", () => {
   it("happy path - merges canvas layout from a source environment into the base environment", async () => {
-    const projName = projectName("canvas-merge");
-    const newEnvName = envName("staging");
+    const project = await getSharedProject();
+    const newEnvName = envName("canvas-merge");
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
+        const newEnv = yield* environmentCreate({
+          input: {
+            name: newEnvName,
+            projectId: project.id,
+            sourceEnvironmentId: project.baseEnvironmentId,
+            skipInitialDeploys: true,
+          },
         });
+
         return yield* Effect.gen(function* () {
-          const baseEnvId = project.baseEnvironmentId;
-          if (!baseEnvId) {
-            throw new Error(
-              "test setup: created project has no baseEnvironmentId",
-            );
-          }
-
-          // Create a fork of the base environment
-          const newEnv = yield* environmentCreate({
-            input: {
-              name: newEnvName,
-              projectId: project.id,
-              sourceEnvironmentId: baseEnvId,
-              skipInitialDeploys: true,
-            },
-          });
-
-          // Merge canvas layout from the new env back into the base env
           const result = yield* canvasViewMerge({
             sourceEnvironmentId: newEnv.id,
-            targetEnvironmentId: baseEnvId,
+            targetEnvironmentId: project.baseEnvironmentId,
           });
           expect(result).toBe(true);
         }).pipe(
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            environmentDelete({ id: newEnv.id }).pipe(Effect.ignore),
           ),
         );
       }),

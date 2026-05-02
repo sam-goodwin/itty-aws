@@ -4,48 +4,33 @@ import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { bucketCreate } from "../src/operations/bucketCreate.ts";
 import { bucketInstanceDetails } from "../src/operations/bucketInstanceDetails.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("bucketInstanceDetails", () => {
   it("happy path - returns null or {objectCount, sizeBytes} for a created bucket", async () => {
-    const projectName = `distilled-railway-bucket-instance-details-${testRunId}`;
+    const project = await getSharedProject();
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
+        const bucket = yield* bucketCreate({
+          input: {
+            projectId: project.id,
+            environmentId: project.baseEnvironmentId,
+            name: `bkt-details-${testRunId}`,
+          },
         });
-        const environmentId = project.baseEnvironmentId;
-        expect(environmentId).toBeTruthy();
 
-        return yield* Effect.gen(function* () {
-          const bucket = yield* bucketCreate({
-            input: {
-              projectId: project.id,
-              environmentId,
-              name: `bucket-${testRunId}`,
-            },
-          });
+        const details = yield* bucketInstanceDetails({
+          bucketId: bucket.id,
+          environmentId: project.baseEnvironmentId,
+        });
 
-          const details = yield* bucketInstanceDetails({
-            bucketId: bucket.id,
-            environmentId: environmentId!,
-          });
-
-          if (details !== null) {
-            expect(typeof details.objectCount).toBe("string");
-            expect(typeof details.sizeBytes).toBe("string");
-          }
-          return details;
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        if (details !== null) {
+          expect(typeof details.objectCount).toBe("string");
+          expect(typeof details.sizeBytes).toBe("string");
+        }
       }),
     );
   }, 60_000);

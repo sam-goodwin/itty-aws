@@ -3,43 +3,31 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { environmentCreate } from "../src/operations/environmentCreate.ts";
+import { environmentDelete } from "../src/operations/environmentDelete.ts";
 import { environmentStageChanges } from "../src/operations/environmentStageChanges.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
-const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const envName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("environmentStageChanges", () => {
   it("happy path - stages an empty patch on a freshly forked environment", async () => {
-    const projName = projectName("env-stage");
-    const newEnvName = envName("staging-stage");
+    const project = await getSharedProject();
+    const newEnvName = envName("env-stage");
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
+        const env = yield* environmentCreate({
+          input: {
+            name: newEnvName,
+            projectId: project.id,
+            sourceEnvironmentId: project.baseEnvironmentId,
+            skipInitialDeploys: true,
+          },
         });
+
         return yield* Effect.gen(function* () {
-          const baseEnvId = project.baseEnvironmentId;
-          if (!baseEnvId) {
-            throw new Error(
-              "test setup: created project has no baseEnvironmentId",
-            );
-          }
-
-          const env = yield* environmentCreate({
-            input: {
-              name: newEnvName,
-              projectId: project.id,
-              sourceEnvironmentId: baseEnvId,
-              skipInitialDeploys: true,
-            },
-          });
-
           const result = yield* environmentStageChanges({
             environmentId: env.id,
             input: {},
@@ -56,7 +44,7 @@ describe("environmentStageChanges", () => {
           expect(typeof result.updatedAt).toBe("string");
         }).pipe(
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            environmentDelete({ id: env.id }).pipe(Effect.ignore),
           ),
         );
       }),

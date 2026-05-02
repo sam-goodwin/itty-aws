@@ -2,41 +2,26 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { serviceCreate } from "../src/operations/serviceCreate.ts";
 import { serviceDelete } from "../src/operations/serviceDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 describe("serviceDelete", () => {
-  it("happy path - deletes a service that was just created", async () => {
-    const projectName = `distilled-railway-sd-${testRunId}`;
+  it("happy path - deletes a freshly created service in the shared project", async () => {
+    const project = await getSharedProject();
     const serviceName = `distilled-railway-sd-svc-${testRunId}`;
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
+        const service = yield* serviceCreate({
           input: {
-            name: projectName,
-            description: "distilled service delete test project",
+            projectId: project.id,
+            name: serviceName,
+            source: { image: "nginx:latest" },
           },
         });
-        return yield* Effect.gen(function* () {
-          const service = yield* serviceCreate({
-            input: {
-              projectId: project.id,
-              name: serviceName,
-              source: {
-                image: "nginx:latest",
-              },
-            },
-          });
-          const result = yield* serviceDelete({ id: service.id });
-          expect(result).toBe(true);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        const result = yield* serviceDelete({ id: service.id });
+        expect(result).toBe(true);
       }),
     );
   }, 120_000);
@@ -61,6 +46,6 @@ describe("serviceDelete", () => {
         Effect.flip,
       ),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 });

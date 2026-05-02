@@ -4,62 +4,46 @@ import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { customDomain } from "../src/operations/customDomain.ts";
 import { customDomainCreate } from "../src/operations/customDomainCreate.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { serviceCreate } from "../src/operations/serviceCreate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { customDomainDelete } from "../src/operations/customDomainDelete.ts";
+import { getSharedService, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("customDomain", () => {
   it("happy path - returns custom domain details by id and projectId", async () => {
-    const projectName = `distilled-railway-custom-domain-${testRunId}`;
+    const service = await getSharedService();
     const domain = `test-${testRunId}.example.com`;
 
-    const result = await runEffect(
+    await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
+        const created = yield* customDomainCreate({
+          input: {
+            domain,
+            environmentId: service.environmentId,
+            projectId: service.projectId,
+            serviceId: service.id,
+          },
         });
 
         return yield* Effect.gen(function* () {
-          const service = yield* serviceCreate({
-            input: {
-              projectId: project.id,
-              name: `svc-${testRunId}`,
-            },
-          });
-
-          const created = yield* customDomainCreate({
-            input: {
-              domain,
-              environmentId: project.baseEnvironmentId!,
-              projectId: project.id,
-              serviceId: service.id,
-            },
-          });
-
           const fetched = yield* customDomain({
             id: created.id,
-            projectId: project.id,
+            projectId: service.projectId,
           });
 
           expect(fetched.id).toBe(created.id);
           expect(fetched.domain).toBe(domain);
           expect(fetched.serviceId).toBe(service.id);
-          expect(fetched.environmentId).toBe(project.baseEnvironmentId);
+          expect(fetched.environmentId).toBe(service.environmentId);
           expect(typeof fetched.status.verified).toBe("boolean");
           expect(Array.isArray(fetched.status.dnsRecords)).toBe(true);
-          return fetched;
         }).pipe(
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            customDomainDelete({ id: created.id }).pipe(Effect.ignore),
           ),
         );
       }),
     );
-
-    expect(result.domain).toBe(domain);
   }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {

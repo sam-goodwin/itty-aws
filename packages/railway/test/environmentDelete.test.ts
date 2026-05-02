@@ -4,55 +4,34 @@ import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { environmentCreate } from "../src/operations/environmentCreate.ts";
 import { environmentDelete } from "../src/operations/environmentDelete.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
-const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const envName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("environmentDelete", () => {
-  it("happy path - deletes a non-base environment from a freshly provisioned project", async () => {
-    const projName = projectName("env-delete");
-    const newEnvName = envName("staging-del");
+  it("happy path - deletes a non-base environment from the shared project", async () => {
+    const project = await getSharedProject();
+    const newEnvName = envName("env-del");
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
+        const env = yield* environmentCreate({
+          input: {
+            name: newEnvName,
+            projectId: project.id,
+            sourceEnvironmentId: project.baseEnvironmentId,
+            skipInitialDeploys: true,
+          },
         });
-        return yield* Effect.gen(function* () {
-          const baseEnvId = project.baseEnvironmentId;
-          if (!baseEnvId) {
-            throw new Error(
-              "test setup: created project has no baseEnvironmentId",
-            );
-          }
 
-          const env = yield* environmentCreate({
-            input: {
-              name: newEnvName,
-              projectId: project.id,
-              sourceEnvironmentId: baseEnvId,
-              skipInitialDeploys: true,
-            },
-          });
+        const result = yield* environmentDelete({ id: env.id });
+        expect(result).toBe(true);
 
-          const result = yield* environmentDelete({ id: env.id });
-          expect(result).toBe(true);
-
-          // Deleting again should now surface RailwayNotFound
-          const error = yield* environmentDelete({ id: env.id }).pipe(
-            Effect.flip,
-          );
-          expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        // Deleting again should surface a typed error.
+        const error = yield* environmentDelete({ id: env.id }).pipe(Effect.flip);
+        expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
       }),
     );
   }, 180_000);

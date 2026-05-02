@@ -4,59 +4,40 @@ import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { bucketCreate } from "../src/operations/bucketCreate.ts";
 import { bucketCredentialsReset } from "../src/operations/bucketCredentialsReset.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
-const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const bucketName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("bucketCredentialsReset", () => {
   it("happy path - resets credentials for a freshly created bucket", async () => {
-    const projName = projectName("bkt-creds-reset");
-    const bktName = bucketName("bkt");
+    const project = await getSharedProject();
+    const bktName = bucketName("bkt-creds");
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
+        const bucket = yield* bucketCreate({
+          input: { projectId: project.id, name: bktName },
         });
-        return yield* Effect.gen(function* () {
-          const environmentId = project.primaryEnvironmentId;
-          if (!environmentId) {
-            throw new Error(
-              "test setup: created project has no primaryEnvironmentId",
-            );
-          }
 
-          const bucket = yield* bucketCreate({
-            input: { projectId: project.id, name: bktName },
-          });
+        const creds = yield* bucketCredentialsReset({
+          bucketId: bucket.id,
+          environmentId: project.baseEnvironmentId,
+          projectId: project.id,
+        });
 
-          const creds = yield* bucketCredentialsReset({
-            bucketId: bucket.id,
-            environmentId,
-            projectId: project.id,
-          });
-
-          expect(typeof creds.accessKeyId).toBe("string");
-          expect(creds.accessKeyId.length).toBeGreaterThan(0);
-          expect(typeof creds.bucketName).toBe("string");
-          expect(creds.bucketName.length).toBeGreaterThan(0);
-          expect(typeof creds.createdAt).toBe("string");
-          expect(typeof creds.endpoint).toBe("string");
-          expect(creds.endpoint.length).toBeGreaterThan(0);
-          expect(typeof creds.region).toBe("string");
-          expect(typeof creds.secretAccessKey).toBe("string");
-          expect(creds.secretAccessKey.length).toBeGreaterThan(0);
-          expect(typeof creds.urlStyle).toBe("string");
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(typeof creds.accessKeyId).toBe("string");
+        expect(creds.accessKeyId.length).toBeGreaterThan(0);
+        expect(typeof creds.bucketName).toBe("string");
+        expect(creds.bucketName.length).toBeGreaterThan(0);
+        expect(typeof creds.createdAt).toBe("string");
+        expect(typeof creds.endpoint).toBe("string");
+        expect(creds.endpoint.length).toBeGreaterThan(0);
+        expect(typeof creds.region).toBe("string");
+        expect(typeof creds.secretAccessKey).toBe("string");
+        expect(creds.secretAccessKey.length).toBeGreaterThan(0);
+        expect(typeof creds.urlStyle).toBe("string");
       }),
     );
   }, 120_000);

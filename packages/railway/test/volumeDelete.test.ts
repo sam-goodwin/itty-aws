@@ -2,53 +2,33 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { serviceCreate } from "../src/operations/serviceCreate.ts";
 import { volumeCreate } from "../src/operations/volumeCreate.ts";
 import { volumeDelete } from "../src/operations/volumeDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedService, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("volumeDelete", () => {
-  it("happy path - deletes a freshly created persistent volume", async () => {
-    const projectName = `distilled-railway-vd-${testRunId}`;
-    const serviceName = `distilled-railway-vd-svc-${testRunId}`;
+  it("happy path - deletes a freshly created volume on the shared service", async () => {
+    const service = await getSharedService();
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
+        const volume = yield* volumeCreate({
           input: {
-            name: projectName,
-            description: "distilled volume delete test",
+            projectId: service.projectId,
+            serviceId: service.id,
+            mountPath: "/data-del",
           },
         });
+
         return yield* Effect.gen(function* () {
-          const service = yield* serviceCreate({
-            input: {
-              projectId: project.id,
-              name: serviceName,
-              source: { image: "nginx:latest" },
-            },
-          });
-          const volume = yield* volumeCreate({
-            input: {
-              projectId: project.id,
-              serviceId: service.id,
-              mountPath: "/data",
-            },
-          });
-          return yield* Effect.gen(function* () {
-            const result = yield* volumeDelete({ volumeId: volume.id });
-            expect(result).toBe(true);
-          }).pipe(
-            Effect.ensuring(
-              volumeDelete({ volumeId: volume.id }).pipe(Effect.ignore),
-            ),
-          );
+          const result = yield* volumeDelete({ volumeId: volume.id });
+          expect(result).toBe(true);
         }).pipe(
+          // Idempotent re-delete in case the body fails before deletion.
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            volumeDelete({ volumeId: volume.id }).pipe(Effect.ignore),
           ),
         );
       }),

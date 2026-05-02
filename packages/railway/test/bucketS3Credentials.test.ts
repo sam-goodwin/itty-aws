@@ -4,59 +4,42 @@ import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { bucketCreate } from "../src/operations/bucketCreate.ts";
 import { bucketS3Credentials } from "../src/operations/bucketS3Credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("bucketS3Credentials", () => {
   it("happy path - returns array of S3 credentials for a created bucket", async () => {
-    const projectName = `distilled-railway-bucket-s3-creds-${testRunId}`;
+    const project = await getSharedProject();
 
-    const result = await runEffect(
+    await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
-        });
-        const environmentId = project.baseEnvironmentId;
-        expect(environmentId).toBeTruthy();
-
-        return yield* Effect.gen(function* () {
-          const bucket = yield* bucketCreate({
-            input: {
-              projectId: project.id,
-              environmentId,
-              name: `bucket-${testRunId}`,
-            },
-          });
-
-          const creds = yield* bucketS3Credentials({
-            bucketId: bucket.id,
-            environmentId: environmentId!,
+        const bucket = yield* bucketCreate({
+          input: {
             projectId: project.id,
-          });
+            environmentId: project.baseEnvironmentId,
+            name: `bkt-s3-${testRunId}`,
+          },
+        });
 
-          expect(Array.isArray(creds)).toBe(true);
-          for (const c of creds) {
-            expect(typeof c.accessKeyId).toBe("string");
-            expect(typeof c.bucketName).toBe("string");
-            expect(typeof c.endpoint).toBe("string");
-            expect(typeof c.region).toBe("string");
-            expect(typeof c.secretAccessKey).toBe("string");
-            expect(typeof c.urlStyle).toBe("string");
-            expect(typeof c.createdAt).toBe("string");
-          }
-          return creds;
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        const creds = yield* bucketS3Credentials({
+          bucketId: bucket.id,
+          environmentId: project.baseEnvironmentId,
+          projectId: project.id,
+        });
+
+        expect(Array.isArray(creds)).toBe(true);
+        for (const c of creds) {
+          expect(typeof c.accessKeyId).toBe("string");
+          expect(typeof c.bucketName).toBe("string");
+          expect(typeof c.endpoint).toBe("string");
+          expect(typeof c.region).toBe("string");
+          expect(typeof c.secretAccessKey).toBe("string");
+          expect(typeof c.urlStyle).toBe("string");
+          expect(typeof c.createdAt).toBe("string");
+        }
       }),
     );
-
-    expect(Array.isArray(result)).toBe(true);
   }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {

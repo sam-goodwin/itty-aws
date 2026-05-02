@@ -4,64 +4,51 @@ import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { bucketCreate } from "../src/operations/bucketCreate.ts";
 import { bucketUpdate } from "../src/operations/bucketUpdate.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
-const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const bucketName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("bucketUpdate", () => {
   it("happy path - renames a freshly created bucket", async () => {
-    const projName = projectName("bkt-update");
-    const initialName = bucketName("bkt-orig");
-    const renamedName = bucketName("bkt-renamed");
+    const project = await getSharedProject();
+    const initialName = bucketName("bkt-up-orig");
+    const renamedName = bucketName("bkt-up-renamed");
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
+        const bucket = yield* bucketCreate({
+          input: { projectId: project.id, name: initialName },
         });
-        return yield* Effect.gen(function* () {
-          const bucket = yield* bucketCreate({
-            input: { projectId: project.id, name: initialName },
-          });
 
-          const updated = yield* bucketUpdate({
-            id: bucket.id,
-            input: { name: renamedName },
-          });
+        const updated = yield* bucketUpdate({
+          id: bucket.id,
+          input: { name: renamedName },
+        });
 
-          expect(updated.id).toBe(bucket.id);
-          expect(updated.name).toBe(renamedName);
-          expect(updated.projectId).toBe(project.id);
-          expect(typeof updated.createdAt).toBe("string");
-          expect(typeof updated.updatedAt).toBe("string");
+        expect(updated.id).toBe(bucket.id);
+        expect(updated.name).toBe(renamedName);
+        expect(updated.projectId).toBe(project.id);
+        expect(typeof updated.createdAt).toBe("string");
+        expect(typeof updated.updatedAt).toBe("string");
 
-          // project nested struct
-          expect(updated.project.id).toBe(project.id);
-          expect(updated.project.name).toBe(projName);
-          expect(["free", "hobby", "pro", "trial"]).toContain(
-            updated.project.subscriptionType,
-          );
-          for (const m of updated.project.members) {
-            expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(m.role);
-          }
-          if (updated.project.workspace !== null) {
-            expect(["FREE", "HOBBY", "PRO"]).toContain(
-              updated.project.workspace.plan,
-            );
-            expect(["FREE", "TEAM", "USER"]).toContain(
-              updated.project.workspace.subscriptionModel,
-            );
-          }
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
+        expect(updated.project.id).toBe(project.id);
+        expect(updated.project.name).toBe(project.name);
+        expect(["free", "hobby", "pro", "trial"]).toContain(
+          updated.project.subscriptionType,
         );
+        for (const m of updated.project.members) {
+          expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(m.role);
+        }
+        if (updated.project.workspace !== null) {
+          expect(["FREE", "HOBBY", "PRO"]).toContain(
+            updated.project.workspace.plan,
+          );
+          expect(["FREE", "TEAM", "USER"]).toContain(
+            updated.project.workspace.subscriptionModel,
+          );
+        }
       }),
     );
   }, 120_000);

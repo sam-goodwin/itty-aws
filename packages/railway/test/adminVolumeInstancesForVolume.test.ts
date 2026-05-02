@@ -3,56 +3,42 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { adminVolumeInstancesForVolume } from "../src/operations/adminVolumeInstancesForVolume.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { volumeCreate } from "../src/operations/volumeCreate.ts";
 import { volumeDelete } from "../src/operations/volumeDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedService, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("adminVolumeInstancesForVolume", () => {
   it("happy path - returns array of volume instances for a created volume", async () => {
-    const projectName = `distilled-railway-admin-volume-instances-${testRunId}`;
+    const service = await getSharedService();
 
-    const result = await runEffect(
+    await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
+        const volume = yield* volumeCreate({
+          input: {
+            projectId: service.projectId,
+            serviceId: service.id,
+            mountPath: "/data-admin",
+          },
         });
 
         return yield* Effect.gen(function* () {
-          const volume = yield* volumeCreate({
-            input: {
-              projectId: project.id,
-              mountPath: "/data",
-            },
+          const instances = yield* adminVolumeInstancesForVolume({
+            volumeId: volume.id,
           });
-
-          return yield* Effect.gen(function* () {
-            const instances = yield* adminVolumeInstancesForVolume({
-              volumeId: volume.id,
-            });
-            expect(Array.isArray(instances)).toBe(true);
-            for (const inst of instances) {
-              expect(typeof inst.id).toBe("string");
-              expect(inst.volumeId).toBe(volume.id);
-            }
-            return instances;
-          }).pipe(
-            Effect.ensuring(
-              volumeDelete({ volumeId: volume.id }).pipe(Effect.ignore),
-            ),
-          );
+          expect(Array.isArray(instances)).toBe(true);
+          for (const inst of instances) {
+            expect(typeof inst.id).toBe("string");
+            expect(inst.volumeId).toBe(volume.id);
+          }
         }).pipe(
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            volumeDelete({ volumeId: volume.id }).pipe(Effect.ignore),
           ),
         );
       }),
     );
-
-    expect(Array.isArray(result)).toBe(true);
   }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
