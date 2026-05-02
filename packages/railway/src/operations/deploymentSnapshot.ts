@@ -1,0 +1,38 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+
+const __document =
+  "query deploymentSnapshot($deploymentId: String!) {\n  deploymentSnapshot(deploymentId: $deploymentId) {\n    createdAt\n    id\n    updatedAt\n    variables\n  }\n}";
+
+// Input Schema (GraphQL variables)
+export const DeploymentSnapshotInput = Schema.Struct({
+  deploymentId: Schema.String,
+}).pipe(
+  T.Http({ method: "POST", path: "/graphql/v2" }),
+  T.GraphQLOp({
+    query: __document,
+    operationName: "deploymentSnapshot",
+    type: "query",
+  }),
+);
+export type DeploymentSnapshotInput = typeof DeploymentSnapshotInput.Type;
+
+// Output Schema (GraphQL selection set)
+export const DeploymentSnapshotOutput = Schema.NullOr(
+  Schema.Struct({
+    createdAt: Schema.String,
+    id: Schema.String,
+    updatedAt: Schema.String,
+    variables: Schema.Unknown,
+  }),
+).pipe(T.ResponsePath("deploymentSnapshot"));
+export type DeploymentSnapshotOutput = typeof DeploymentSnapshotOutput.Type;
+
+/**
+ * Find a single DeploymentSnapshot
+ */
+export const deploymentSnapshot = API.make(() => ({
+  inputSchema: DeploymentSnapshotInput,
+  outputSchema: DeploymentSnapshotOutput,
+}));

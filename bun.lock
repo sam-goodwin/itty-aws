@@ -295,6 +295,23 @@
         "effect": "catalog:",
       },
     },
+    "packages/railway": {
+      "name": "@distilled.cloud/railway",
+      "version": "0.2.0-alpha",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+        "effect": "catalog:",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/stripe": {
       "name": "@distilled.cloud/stripe",
       "version": "0.16.0",
@@ -518,6 +535,8 @@
     "@distilled.cloud/posthog": ["@distilled.cloud/posthog@workspace:packages/posthog"],
 
     "@distilled.cloud/prisma-postgres": ["@distilled.cloud/prisma-postgres@workspace:packages/prisma-postgres"],
+
+    "@distilled.cloud/railway": ["@distilled.cloud/railway@workspace:packages/railway"],
 
     "@distilled.cloud/stripe": ["@distilled.cloud/stripe@workspace:packages/stripe"],
 

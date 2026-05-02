@@ -70,6 +70,10 @@ on:
         description: "Eas"
         type: boolean
         default: false
+      railway:
+        description: "Railway"
+        type: boolean
+        default: false
 
 jobs:
   # ── Gate: decide whether to proceed ──

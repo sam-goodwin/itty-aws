@@ -9,6 +9,9 @@
  *   # OpenAPI spec URL → creates distilled-spec-* mirror repo
  *   bun scripts/create-sdk.ts stripe --specs https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json --register-package
  *
+ *   # GraphQL endpoint → creates distilled-spec-* mirror repo that introspects daily
+ *   bun scripts/create-sdk.ts railway --specs https://backboard.railway.com/graphql/v2
+ *
  *   # Git repo → adds as direct submodule
  *   bun scripts/create-sdk.ts stripe --specs https://github.com/stripe/openapi.git --register-package
  *
@@ -156,6 +159,42 @@ const capitalize = (s: string): string =>
 const isGitRepoUrl = (url: string): boolean =>
   url.endsWith(".git") ||
   url.match(/^https:\/\/github\.com\/[^/]+\/[^/]+\/?$/) !== null;
+
+/**
+ * Heuristic: a URL whose path segment ends with `graphql` (case-insensitive,
+ * optionally followed by a `/v\d+` version segment) is treated as a GraphQL
+ * endpoint to be introspected, rather than an OpenAPI document to be GET'd.
+ */
+const isGraphQLUrl = (url: string): boolean => {
+  try {
+    const { pathname } = new URL(url);
+    return /\/graphql(\/v\d+)?\/?$/i.test(pathname);
+  } catch {
+    return false;
+  }
+};
+
+interface SpecSource {
+  readonly url: string;
+  readonly type: "openapi" | "graphql";
+  /** Output basename under specs/ — graphql writes both .json and .graphql. */
+  readonly output: string;
+}
+
+const classifySpecUrls = (urls: string[]): SpecSource[] => {
+  let openApiIdx = 0;
+  let graphqlIdx = 0;
+  return urls.map((url) => {
+    if (isGraphQLUrl(url)) {
+      const output = graphqlIdx === 0 ? "schema" : `schema-${graphqlIdx}`;
+      graphqlIdx++;
+      return { url, type: "graphql", output };
+    }
+    const output = openApiIdx === 0 ? "openapi" : `spec-${openApiIdx}`;
+    openApiIdx++;
+    return { url, type: "openapi", output };
+  });
+};
 
 /**
  * Write a file only if it doesn't already exist.
@@ -437,6 +476,9 @@ const setupSpecMirrorRepo = (
     });
     yield* fs.makeDirectory(path.join(tmpDir, "specs"), { recursive: true });
 
+    const sources = classifySpecUrls(specUrls);
+    const hasGraphql = sources.some((s) => s.type === "graphql");
+
     // .gitignore
     yield* fs.writeFileString(
       path.join(tmpDir, ".gitignore"),
@@ -448,13 +490,23 @@ const setupSpecMirrorRepo = (
       path.join(tmpDir, "readme.md"),
       `# ${repoName}
 
-A git mirror of ${capitalize(name)}'s API spec. The spec is fetched and committed as a JSON file so the repo serves as a versioned snapshot.
+A git mirror of ${capitalize(name)}'s API spec. The spec is fetched (or, for GraphQL, introspected) and committed as a JSON file so the repo serves as a versioned snapshot. GraphQL sources also produce an SDL (\`.graphql\`) sibling file.
 
 The mirror is updated every 24 hours and is designed to be used as a stable git submodule.
 
 ## Spec source(s)
 
-${specUrls.map((u) => `- ${u}`).join("\n")}
+${sources
+  .map((s) => `- ${s.url} (${s.type})`)
+  .join("\n")}${
+        hasGraphql
+          ? `
+
+## Authentication
+
+If introspection requires a token, set the \`SPEC_API_TOKEN\` repo secret. The fetcher sends it as \`Authorization: Bearer <token>\`. If unset, requests go out unauthenticated.`
+          : ""
+      }
 
 ## Usage as a submodule
 
@@ -499,6 +551,7 @@ bun run fetch-specs
           dependencies: {
             "@typescript/native-preview": "catalog:",
             yaml: "^2.6.0",
+            ...(hasGraphql ? { graphql: "^16.9.0" } : {}),
           },
           devDependencies: {
             oxfmt: "catalog:",
@@ -547,33 +600,50 @@ bun run fetch-specs
       ),
     );
 
-    // .meta/fetch-specs.ts
-    if (specUrls.length === 1) {
-      yield* fs.writeFileString(
-        path.join(tmpDir, ".meta", "fetch-specs.ts"),
-        `#!/usr/bin/env bun
+    // .meta/fetch-specs.ts — handles both OpenAPI documents (GET + JSON/YAML)
+    // and GraphQL endpoints (POST introspection + emit JSON & SDL).
+    yield* fs.writeFileString(
+      path.join(tmpDir, ".meta", "fetch-specs.ts"),
+      `#!/usr/bin/env bun
 /**
- * Fetches the ${capitalize(name)} OpenAPI spec to ../specs/.
+ * Fetches the ${capitalize(name)} API spec(s) to ../specs/.
  *
  * Usage:
  *   bun run fetch-specs.ts
  *
- * The spec is saved to:
- *   ../specs/openapi.json
+ * Sources may be OpenAPI documents (fetched via GET) or GraphQL endpoints
+ * (introspected via POST). For GraphQL, both an introspection JSON and an
+ * SDL file are written.
+ *
+ * If a source requires authentication, set SPEC_API_TOKEN in the environment
+ * — it will be sent as \`Authorization: Bearer <token>\`.
  */
 
-const OPENAPI_SPEC_URL = "${specUrls[0]}";
-const SPECS_DIR = "../specs";
-const OUTPUT_PATH = \`\${SPECS_DIR}/openapi.json\`;
-
 import { existsSync, mkdirSync } from "fs";
+import YAML from "yaml";${
+        hasGraphql
+          ? `
+import {
+  buildClientSchema,
+  getIntrospectionQuery,
+  printSchema,
+  type IntrospectionQuery,
+} from "graphql";`
+          : ""
+      }
 
-// Ensure the specs directory exists
+interface SpecSource {
+  url: string;
+  type: "openapi" | "graphql";
+  output: string;
+}
+
+const SOURCES: SpecSource[] = ${JSON.stringify(sources, null, 2)};
+const SPECS_DIR = "../specs";
+
 if (!existsSync(SPECS_DIR)) {
   mkdirSync(SPECS_DIR, { recursive: true });
 }
-
-import YAML from "yaml";
 
 function parseSpec(body: string): unknown {
   try {
@@ -583,84 +653,76 @@ function parseSpec(body: string): unknown {
   }
 }
 
-async function main() {
-  console.log(\`Fetching OpenAPI spec from \${OPENAPI_SPEC_URL}...\`);
+function authHeaders(): Record<string, string> {
+  const token = process.env.SPEC_API_TOKEN;
+  return token ? { Authorization: \`Bearer \${token}\` } : {};
+}
 
-  const response = await fetch(OPENAPI_SPEC_URL);
-
+async function fetchOpenApi(src: SpecSource) {
+  console.log(\`Fetching OpenAPI spec from \${src.url}...\`);
+  const response = await fetch(src.url, { headers: authHeaders() });
   if (!response.ok) {
     throw new Error(
-      \`Failed to fetch OpenAPI spec: \${response.status} \${response.statusText}\`,
-    );
-  }
-
-  const spec = parseSpec(await response.text());
-
-  console.log(\`Writing spec to \${OUTPUT_PATH}...\`);
-  await Bun.write(OUTPUT_PATH, JSON.stringify(spec, null, 2));
-
-  console.log("Done!");
-}
-
-main().catch((err) => {
-  console.error("Fatal error:", err);
-  process.exit(1);
-});
-`,
-      );
-    } else {
-      yield* fs.writeFileString(
-        path.join(tmpDir, ".meta", "fetch-specs.ts"),
-        `#!/usr/bin/env bun
-/**
- * Fetches the ${capitalize(name)} API specs to ../specs/.
- *
- * Usage:
- *   bun run fetch-specs.ts
- *
- * Specs are saved to:
- *   ../specs/spec-{index}.json   (one per URL)
- *   ../specs/openapi.json        (first spec, for primary use)
- */
-
-const SPEC_URLS: string[] = ${JSON.stringify(specUrls, null, 2)};
-
-const SPECS_DIR = "../specs";
-
-import { existsSync, mkdirSync } from "fs";
-
-// Ensure the specs directory exists
-if (!existsSync(SPECS_DIR)) {
-  mkdirSync(SPECS_DIR, { recursive: true });
-}
-
-import YAML from "yaml";
-
-function parseSpec(body: string): unknown {
-  try {
-    return JSON.parse(body);
-  } catch {
-    return YAML.parse(body);
-  }
-}
-
-async function fetchSpec(url: string, outputPath: string) {
-  console.log(\`Fetching spec from \${url}...\`);
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(
-      \`Failed to fetch spec from \${url}: \${response.status} \${response.statusText}\`,
+      \`Failed to fetch \${src.url}: \${response.status} \${response.statusText}\`,
     );
   }
   const spec = parseSpec(await response.text());
-  console.log(\`Writing spec to \${outputPath}...\`);
+  const outputPath = \`\${SPECS_DIR}/\${src.output}.json\`;
+  console.log(\`Writing \${outputPath}...\`);
   await Bun.write(outputPath, JSON.stringify(spec, null, 2));
 }
+${
+  hasGraphql
+    ? `
+async function fetchGraphQL(src: SpecSource) {
+  console.log(\`Introspecting GraphQL endpoint \${src.url}...\`);
+  const response = await fetch(src.url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      ...authHeaders(),
+    },
+    body: JSON.stringify({ query: getIntrospectionQuery() }),
+  });
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(
+      \`Failed to introspect \${src.url}: \${response.status} \${response.statusText} - \${body}\`,
+    );
+  }
+  const payload = (await response.json()) as {
+    data?: IntrospectionQuery;
+    errors?: unknown;
+  };
+  if (payload.errors || !payload.data) {
+    throw new Error(\`GraphQL introspection errors: \${JSON.stringify(payload.errors)}\`);
+  }
+  const introspection = payload.data;
+  const jsonPath = \`\${SPECS_DIR}/\${src.output}.json\`;
+  console.log(\`Writing \${jsonPath}...\`);
+  await Bun.write(jsonPath, JSON.stringify(introspection, null, 2));
 
+  const schema = buildClientSchema(introspection);
+  const sdlPath = \`\${SPECS_DIR}/\${src.output}.graphql\`;
+  console.log(\`Writing \${sdlPath}...\`);
+  await Bun.write(sdlPath, printSchema(schema));
+}
+`
+    : ""
+}
 async function main() {
-  for (let i = 0; i < SPEC_URLS.length; i++) {
-    const filename = i === 0 ? "openapi.json" : \`spec-\${i}.json\`;
-    await fetchSpec(SPEC_URLS[i], \`\${SPECS_DIR}/\${filename}\`);
+  for (const src of SOURCES) {${
+    hasGraphql
+      ? `
+    if (src.type === "graphql") {
+      await fetchGraphQL(src);
+    } else {
+      await fetchOpenApi(src);
+    }`
+      : `
+    await fetchOpenApi(src);`
+  }
   }
   console.log("Done!");
 }
@@ -670,8 +732,7 @@ main().catch((err) => {
   process.exit(1);
 });
 `,
-      );
-    }
+    );
 
     // .github/workflows/update-specs.yml
     yield* fs.writeFileString(
@@ -700,6 +761,8 @@ jobs:
 
       - name: Fetch specs
         working-directory: .meta
+        env:
+          SPEC_API_TOKEN: \${{ secrets.SPEC_API_TOKEN }}
         run: bun run fetch-specs
 
       - name: Commit and push if changed
@@ -2104,6 +2167,12 @@ Next steps:
       command:
         "bun scripts/create-sdk.ts stripe --specs https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
       description: "OpenAPI spec URL → creates distilled-spec-* mirror repo",
+    },
+    {
+      command:
+        "bun scripts/create-sdk.ts railway --specs https://backboard.railway.com/graphql/v2",
+      description:
+        "GraphQL endpoint → mirror repo introspects daily and commits schema.json + schema.graphql",
     },
     {
       command:

@@ -39,6 +39,7 @@ jobs:
       typesense: ${{ steps.force.outputs.all || steps.changes.outputs.typesense }}
       workos: ${{ steps.force.outputs.all || steps.changes.outputs.workos }}
       expo-eas: ${{ steps.force.outputs.all || steps.changes.outputs.expo-eas }}
+      railway: ${{ steps.force.outputs.all || steps.changes.outputs.railway }}
     steps:
       - id: force
         if: contains(github.event.pull_request.labels.*.name, 'force-ci')
@@ -106,6 +107,9 @@ jobs:
               - 'packages/core/**'
             expo-eas:
               - 'packages/expo-eas/**'
+              - 'packages/core/**'
+            railway:
+              - 'packages/railway/**'
               - 'packages/core/**'
 
   ci-core:
@@ -488,3 +492,24 @@ jobs:
         working-directory: packages/expo-eas
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  ci-railway:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.railway == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+        working-directory: packages/core
+      - run: bun run check
+        working-directory: packages/railway
+      - run: bun run test
+        working-directory: packages/railway
+        env:
+          RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
+          RAILWAY_API_URL: ${{ secrets.RAILWAY_API_URL }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

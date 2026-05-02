@@ -45,6 +45,7 @@ env:
     packages/typesense/package.json
     packages/workos/package.json
     packages/expo-eas/package.json
+    packages/railway/package.json
     bun.lock
     CHANGELOG.md
 
@@ -260,6 +261,7 @@ jobs:
           - typesense
           - workos
           - expo-eas
+          - railway
     steps:
       - uses: actions/checkout@v6
         with:

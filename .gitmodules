@@ -101,3 +101,6 @@
 [submodule "packages/expo-eas/specs/expo"]
 	path = packages/expo-eas/specs/expo
 	url = https://github.com/expo/expo
+[submodule "packages/railway/specs/distilled-spec-railway"]
+	path = packages/railway/specs/distilled-spec-railway
+	url = https://github.com/alchemy-run/distilled-spec-railway.git

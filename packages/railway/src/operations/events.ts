@@ -1,0 +1,94 @@
+import * as Schema from "effect/Schema";
+import { API } from "../client.ts";
+import * as T from "../traits.ts";
+
+const __document =
+  "query events($after: String, $before: String, $environmentId: String, $filter: EventFilterInput, $first: Int, $last: Int, $projectId: String!) {\n  events(after: $after, before: $before, environmentId: $environmentId, filter: $filter, first: $first, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        action\n        createdAt\n        environmentId\n        id\n        object\n        payload\n        projectId\n        severity\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
+
+// Input Schema (GraphQL variables)
+export const EventsInput = Schema.Struct({
+  after: Schema.optional(Schema.NullOr(Schema.String)),
+  before: Schema.optional(Schema.NullOr(Schema.String)),
+  environmentId: Schema.optional(Schema.NullOr(Schema.String)),
+  filter: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        action: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              in: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+              notIn: Schema.optional(
+                Schema.NullOr(Schema.Array(Schema.String)),
+              ),
+            }),
+          ),
+        ),
+        object: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              in: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+              notIn: Schema.optional(
+                Schema.NullOr(Schema.Array(Schema.String)),
+              ),
+            }),
+          ),
+        ),
+        serviceId: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              in: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+              notIn: Schema.optional(
+                Schema.NullOr(Schema.Array(Schema.String)),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+  ),
+  first: Schema.optional(Schema.NullOr(Schema.Number)),
+  last: Schema.optional(Schema.NullOr(Schema.Number)),
+  projectId: Schema.String,
+}).pipe(
+  T.Http({ method: "POST", path: "/graphql/v2" }),
+  T.GraphQLOp({
+    query: __document,
+    operationName: "events",
+    type: "query",
+  }),
+);
+export type EventsInput = typeof EventsInput.Type;
+
+// Output Schema (GraphQL selection set)
+export const EventsOutput = Schema.Struct({
+  edges: Schema.Array(
+    Schema.Struct({
+      cursor: Schema.String,
+      node: Schema.Struct({
+        action: Schema.String,
+        createdAt: Schema.String,
+        environmentId: Schema.NullOr(Schema.String),
+        id: Schema.String,
+        object: Schema.String,
+        payload: Schema.NullOr(Schema.Unknown),
+        projectId: Schema.NullOr(Schema.String),
+        severity: Schema.Literals(["CRITICAL", "INFO", "NOTICE", "WARNING"]),
+      }),
+    }),
+  ),
+  pageInfo: Schema.Struct({
+    endCursor: Schema.NullOr(Schema.String),
+    hasNextPage: Schema.Boolean,
+    hasPreviousPage: Schema.Boolean,
+    startCursor: Schema.NullOr(Schema.String),
+  }),
+}).pipe(T.ResponsePath("events"));
+export type EventsOutput = typeof EventsOutput.Type;
+
+/**
+ * Gets the events for a project.
+ */
+export const events = API.make(() => ({
+  inputSchema: EventsInput,
+  outputSchema: EventsOutput,
+}));
