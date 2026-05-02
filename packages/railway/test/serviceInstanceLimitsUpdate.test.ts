@@ -2,57 +2,26 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { serviceCreate } from "../src/operations/serviceCreate.ts";
 import { serviceInstanceLimitsUpdate } from "../src/operations/serviceInstanceLimitsUpdate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedService, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("serviceInstanceLimitsUpdate", () => {
-  it("happy path - updates resource limits on a freshly created service", async () => {
-    const projectName = `distilled-railway-silu-${testRunId}`;
-    const serviceName = `distilled-railway-silu-svc-${testRunId}`;
-    await runEffect(
-      Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: {
-            name: projectName,
-            description: "distilled service instance limits update test",
-          },
-        });
-        return yield* Effect.gen(function* () {
-          const service = yield* serviceCreate({
-            input: {
-              projectId: project.id,
-              name: serviceName,
-              source: { image: "nginx:latest" },
-            },
-          });
-          const environmentId =
-            project.baseEnvironmentId ?? project.primaryEnvironmentId;
-          if (!environmentId) {
-            throw new Error(
-              "test setup: created project has no base/primary environment id",
-            );
-          }
-          const result = yield* serviceInstanceLimitsUpdate({
-            input: {
-              environmentId,
-              memoryGB: 1,
-              serviceId: service.id,
-              vCPUs: 1,
-            },
-          });
-          expect(result).toBe(true);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+  it("happy path - updates resource limits on the shared service", async () => {
+    const service = await getSharedService();
+
+    const result = await runEffect(
+      serviceInstanceLimitsUpdate({
+        input: {
+          environmentId: service.environmentId,
+          memoryGB: 1,
+          serviceId: service.id,
+          vCPUs: 1,
+        },
       }),
     );
+    expect(result).toBe(true);
   }, 120_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {

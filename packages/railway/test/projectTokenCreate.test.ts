@@ -2,47 +2,30 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { projectTokenCreate } from "../src/operations/projectTokenCreate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectTokenCreate", () => {
-  it("happy path - creates a project token for a freshly created project", async () => {
-    const projectName = `distilled-railway-ptc-${testRunId}`;
+  it("happy path - creates a project token in the shared project", async () => {
+    const project = await getSharedProject();
     const tokenName = `distilled-railway-ptc-token-${testRunId}`;
-    await runEffect(
-      Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: {
-            name: projectName,
-            description: "distilled token create test project",
-          },
-        });
-        return yield* Effect.gen(function* () {
-          const environmentId =
-            project.primaryEnvironmentId ?? project.baseEnvironmentId;
-          if (environmentId === null) {
-            throw new Error("project has no environment to attach token to");
-          }
-          const token = yield* projectTokenCreate({
-            input: {
-              projectId: project.id,
-              environmentId,
-              name: tokenName,
-            },
-          });
-          expect(typeof token).toBe("string");
-          expect(token.length).toBeGreaterThan(0);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+
+    const token = await runEffect(
+      projectTokenCreate({
+        input: {
+          projectId: project.id,
+          environmentId: project.baseEnvironmentId,
+          name: tokenName,
+        },
       }),
     );
+    expect(typeof token).toBe("string");
+    expect(token.length).toBeGreaterThan(0);
+    // Token leaks into the shared project — projectDelete at process exit
+    // tears it down. projectTokenCreate returns only the bearer string,
+    // not an id, so explicit cleanup would require listing tokens first.
   }, 120_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {

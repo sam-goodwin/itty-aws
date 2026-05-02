@@ -2,56 +2,33 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { serviceCreate } from "../src/operations/serviceCreate.ts";
 import { templateDelete } from "../src/operations/templateDelete.ts";
 import { templateGenerate } from "../src/operations/templateGenerate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedService, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("templateGenerate", () => {
-  it("happy path - generates a template from a freshly created project", async () => {
-    const projectName = `distilled-railway-tg-${testRunId}`;
-    const serviceName = `distilled-railway-tg-svc-${testRunId}`;
+  it("happy path - generates a template from the shared project (which already has a service)", async () => {
+    const service = await getSharedService();
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: {
-            name: projectName,
-            description: "distilled template generate test",
-          },
+        const template = yield* templateGenerate({
+          input: { projectId: service.projectId },
         });
+
         return yield* Effect.gen(function* () {
-          yield* serviceCreate({
-            input: {
-              projectId: project.id,
-              name: serviceName,
-              source: { image: "nginx:latest" },
-            },
-          });
-          const template = yield* templateGenerate({
-            input: { projectId: project.id },
-          });
-          return yield* Effect.gen(function* () {
-            expect(typeof template.id).toBe("string");
-            expect(template.id).toBeTruthy();
-            expect(typeof template.code).toBe("string");
-            expect(template.code).toBeTruthy();
-            expect(["HIDDEN", "PUBLISHED", "UNPUBLISHED"]).toContain(
-              template.status,
-            );
-          }).pipe(
-            Effect.ensuring(
-              templateDelete({ id: template.id, input: {} }).pipe(
-                Effect.ignore,
-              ),
-            ),
+          expect(typeof template.id).toBe("string");
+          expect(template.id).toBeTruthy();
+          expect(typeof template.code).toBe("string");
+          expect(template.code).toBeTruthy();
+          expect(["HIDDEN", "PUBLISHED", "UNPUBLISHED"]).toContain(
+            template.status,
           );
         }).pipe(
           Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
+            templateDelete({ id: template.id, input: {} }).pipe(Effect.ignore),
           ),
         );
       }),

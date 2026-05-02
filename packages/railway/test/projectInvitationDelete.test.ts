@@ -2,41 +2,25 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { projectInvitationCreate } from "../src/operations/projectInvitationCreate.ts";
 import { projectInvitationDelete } from "../src/operations/projectInvitationDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectInvitationDelete", () => {
   it("happy path - deletes a freshly created project invitation", async () => {
-    const projectName = `distilled-railway-pid-${testRunId}`;
+    const project = await getSharedProject();
     const inviteEmail = `distilled-railway-pid-${testRunId}@example.com`;
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: {
-            name: projectName,
-            description: "distilled invitation delete test project",
-          },
+        const invitation = yield* projectInvitationCreate({
+          id: project.id,
+          input: { email: inviteEmail, role: "MEMBER" },
         });
-        return yield* Effect.gen(function* () {
-          const invitation = yield* projectInvitationCreate({
-            id: project.id,
-            input: {
-              email: inviteEmail,
-              role: "MEMBER",
-            },
-          });
-          const result = yield* projectInvitationDelete({ id: invitation.id });
-          expect(result).toBe(true);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        const result = yield* projectInvitationDelete({ id: invitation.id });
+        expect(result).toBe(true);
       }),
     );
   }, 120_000);
@@ -47,9 +31,7 @@ describe("projectInvitationDelete", () => {
       apiBaseUrl: "https://backboard.railway.com",
     });
     const error = await Effect.runPromise(
-      projectInvitationDelete({
-        id: NON_EXISTENT_UUID,
-      }).pipe(
+      projectInvitationDelete({ id: NON_EXISTENT_UUID }).pipe(
         Effect.flip,
         Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
       ) as Effect.Effect<{ _tag: string }, never, never>,
@@ -59,9 +41,7 @@ describe("projectInvitationDelete", () => {
 
   it("error - non-existent invitation id surfaces RailwayNotAuthorized", async () => {
     const error = await runEffect(
-      projectInvitationDelete({
-        id: NON_EXISTENT_UUID,
-      }).pipe(Effect.flip),
+      projectInvitationDelete({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
     );
     expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
