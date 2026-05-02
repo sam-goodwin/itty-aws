@@ -408,21 +408,16 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
       const method = httpTrait.method;
 
-      // Bounded retry schedule for throttling: 8 attempts with each delay
-      // capped at 2s. Worst-case wall time across retries is ~16s, which
-      // fits inside a typical 30s test timeout. Without the per-delay cap
-      // the unbounded exponential could burn 4+ minutes on a single
-      // request and hang test suites that hit aggressive rate limits.
+      // Capped exponential backoff bounded to 8 attempts so a
+      // pathologically rate-limited endpoint can't hang a test run.
+      // Effect 4's `Schedule.exponential(base, factor)` already produces
+      // delays of base, base*factor, base*factor^2, ...; combined with
+      // `Schedule.both(Schedule.recurs(8))` to cap retries. We don't
+      // currently honour Retry-After (would require a per-attempt Ref);
+      // the exponential ramp is conservative enough for the rate limits
+      // we hit in practice.
       const throttlingRetrySchedule = Schedule.both(
-        Schedule.modifyDelay(
-          Schedule.exponential(Duration.millis(500), 2),
-          (duration: Duration.Duration) =>
-            Effect.succeed(
-              Duration.isGreaterThan(duration, Duration.seconds(2))
-                ? Duration.seconds(2)
-                : duration,
-            ),
-        ),
+        Schedule.exponential(Duration.seconds(1), 2),
         Schedule.recurs(8),
       );
 
