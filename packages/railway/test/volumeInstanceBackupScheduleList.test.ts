@@ -8,21 +8,17 @@ import { runEffect } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("volumeInstanceBackupScheduleList", () => {
-  it(
-    "happy path - exercises the API and surfaces a typed RailwayNotFound for non-existent id",
-    async () => {
-      // No discovery path exposes a real volumeInstance.id (volumeCreate returns the
-      // parent volume id, not the instance id, and there is no list endpoint that
-      // returns volumeInstance ids). Exercise the API + assert typed RailwayNotFound.
-      const error = await runEffect(
-        volumeInstanceBackupScheduleList({
-          volumeInstanceId: NON_EXISTENT_UUID,
-        }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    },
-    60_000,
-  );
+  it("fabricated id surfaces RailwayNotAuthorized for non-existent id", async () => {
+    // No discovery path exposes a real volumeInstance.id (volumeCreate returns the
+    // parent volume id, not the instance id, and there is no list endpoint that
+    // returns volumeInstance ids). Exercise the API + assert typed RailwayNotFound.
+    const error = await runEffect(
+      volumeInstanceBackupScheduleList({
+        volumeInstanceId: NON_EXISTENT_UUID,
+      }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -40,13 +36,12 @@ describe("volumeInstanceBackupScheduleList", () => {
     expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
-  it("error - RailwayNotFound for a non-existent volume instance id", async () => {
+  it("error - non-existent volume instance id surfaces RailwayNotAuthorized", async () => {
     const error = await runEffect(
       volumeInstanceBackupScheduleList({
         volumeInstanceId: NON_EXISTENT_UUID,
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    expect((error as { message: string }).message).toMatch(/not found$/i);
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 });

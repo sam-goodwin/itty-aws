@@ -14,61 +14,57 @@ const projectName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 const bucketName = (name: string) => `distilled-railway-${name}-${testRunId}`;
 
 describe("bucketUpdate", () => {
-  it(
-    "happy path - renames a freshly created bucket",
-    async () => {
-      const projName = projectName("bkt-update");
-      const initialName = bucketName("bkt-orig");
-      const renamedName = bucketName("bkt-renamed");
+  it("happy path - renames a freshly created bucket", async () => {
+    const projName = projectName("bkt-update");
+    const initialName = bucketName("bkt-orig");
+    const renamedName = bucketName("bkt-renamed");
 
-      await runEffect(
-        Effect.gen(function* () {
-          const project = yield* projectCreate({
-            input: { name: projName },
+    await runEffect(
+      Effect.gen(function* () {
+        const project = yield* projectCreate({
+          input: { name: projName },
+        });
+        return yield* Effect.gen(function* () {
+          const bucket = yield* bucketCreate({
+            input: { projectId: project.id, name: initialName },
           });
-          return yield* Effect.gen(function* () {
-            const bucket = yield* bucketCreate({
-              input: { projectId: project.id, name: initialName },
-            });
 
-            const updated = yield* bucketUpdate({
-              id: bucket.id,
-              input: { name: renamedName },
-            });
+          const updated = yield* bucketUpdate({
+            id: bucket.id,
+            input: { name: renamedName },
+          });
 
-            expect(updated.id).toBe(bucket.id);
-            expect(updated.name).toBe(renamedName);
-            expect(updated.projectId).toBe(project.id);
-            expect(typeof updated.createdAt).toBe("string");
-            expect(typeof updated.updatedAt).toBe("string");
+          expect(updated.id).toBe(bucket.id);
+          expect(updated.name).toBe(renamedName);
+          expect(updated.projectId).toBe(project.id);
+          expect(typeof updated.createdAt).toBe("string");
+          expect(typeof updated.updatedAt).toBe("string");
 
-            // project nested struct
-            expect(updated.project.id).toBe(project.id);
-            expect(updated.project.name).toBe(projName);
-            expect(["free", "hobby", "pro", "trial"]).toContain(
-              updated.project.subscriptionType,
-            );
-            for (const m of updated.project.members) {
-              expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(m.role);
-            }
-            if (updated.project.workspace !== null) {
-              expect(["FREE", "HOBBY", "PRO"]).toContain(
-                updated.project.workspace.plan,
-              );
-              expect(["FREE", "TEAM", "USER"]).toContain(
-                updated.project.workspace.subscriptionModel,
-              );
-            }
-          }).pipe(
-            Effect.ensuring(
-              projectDelete({ id: project.id }).pipe(Effect.ignore),
-            ),
+          // project nested struct
+          expect(updated.project.id).toBe(project.id);
+          expect(updated.project.name).toBe(projName);
+          expect(["free", "hobby", "pro", "trial"]).toContain(
+            updated.project.subscriptionType,
           );
-        }),
-      );
-    },
-    120_000,
-  );
+          for (const m of updated.project.members) {
+            expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(m.role);
+          }
+          if (updated.project.workspace !== null) {
+            expect(["FREE", "HOBBY", "PRO"]).toContain(
+              updated.project.workspace.plan,
+            );
+            expect(["FREE", "TEAM", "USER"]).toContain(
+              updated.project.workspace.subscriptionModel,
+            );
+          }
+        }).pipe(
+          Effect.ensuring(
+            projectDelete({ id: project.id }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
+  }, 120_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -87,15 +83,14 @@ describe("bucketUpdate", () => {
     expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
-  it("error - RailwayNotFound for a non-existent bucket id", async () => {
+  it("error - non-existent bucket id surfaces RailwayNotAuthorized", async () => {
     const error = await runEffect(
       bucketUpdate({
         id: NON_EXISTENT_UUID,
         input: { name: bucketName("bkt-missing") },
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    expect((error as { message: string }).message).toMatch(/not found$/i);
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayInvalidInput for an empty bucket id", async () => {

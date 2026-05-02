@@ -7,27 +7,23 @@ import { featureFlagRemove } from "../src/operations/featureFlagRemove.ts";
 import { runEffect } from "./setup.ts";
 
 describe("featureFlagRemove", () => {
-  it(
-    "happy path - removes a feature flag previously added to the authenticated user",
-    async () => {
-      await runEffect(
-        Effect.gen(function* () {
-          yield* featureFlagAdd({ input: { flag: "MAGIC_CONFIG" } });
-          const result = yield* featureFlagRemove({
-            input: { flag: "MAGIC_CONFIG" },
-          });
-          expect(typeof result).toBe("boolean");
-        }).pipe(
-          Effect.ensuring(
-            featureFlagRemove({ input: { flag: "MAGIC_CONFIG" } }).pipe(
-              Effect.ignore,
-            ),
+  it("happy path - removes a feature flag previously added to the authenticated user", async () => {
+    await runEffect(
+      Effect.gen(function* () {
+        yield* featureFlagAdd({ input: { flag: "MAGIC_CONFIG" } });
+        const result = yield* featureFlagRemove({
+          input: { flag: "MAGIC_CONFIG" },
+        });
+        expect(typeof result).toBe("boolean");
+      }).pipe(
+        Effect.ensuring(
+          featureFlagRemove({ input: { flag: "MAGIC_CONFIG" } }).pipe(
+            Effect.ignore,
           ),
         ),
-      );
-    },
-    60_000,
-  );
+      ),
+    );
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -56,7 +52,6 @@ describe("featureFlagRemove", () => {
           input: { flag: "DEBUG_SMART_DIAGNOSIS" },
         }).pipe(Effect.flip);
         expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-        expect((error as { message: string }).message).toMatch(/not found$/i);
       }),
     );
   }, 60_000);

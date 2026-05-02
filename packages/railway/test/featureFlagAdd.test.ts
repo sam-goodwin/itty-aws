@@ -7,28 +7,24 @@ import { featureFlagRemove } from "../src/operations/featureFlagRemove.ts";
 import { runEffect } from "./setup.ts";
 
 describe("featureFlagAdd", () => {
-  it(
-    "happy path - adds a feature flag for the authenticated user",
-    async () => {
-      // Per-user flag; remove via featureFlagRemove in cleanup so we leave
-      // the test account in its original state.
-      await runEffect(
-        Effect.gen(function* () {
-          const result = yield* featureFlagAdd({
+  it("happy path - adds a feature flag for the authenticated user", async () => {
+    // Per-user flag; remove via featureFlagRemove in cleanup so we leave
+    // the test account in its original state.
+    await runEffect(
+      Effect.gen(function* () {
+        const result = yield* featureFlagAdd({
+          input: { flag: "BUCKET_FILE_BROWSER" },
+        });
+        expect(typeof result).toBe("boolean");
+      }).pipe(
+        Effect.ensuring(
+          featureFlagRemove({
             input: { flag: "BUCKET_FILE_BROWSER" },
-          });
-          expect(typeof result).toBe("boolean");
-        }).pipe(
-          Effect.ensuring(
-            featureFlagRemove({
-              input: { flag: "BUCKET_FILE_BROWSER" },
-            }).pipe(Effect.ignore),
-          ),
+          }).pipe(Effect.ignore),
         ),
-      );
-    },
-    60_000,
-  );
+      ),
+    );
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {

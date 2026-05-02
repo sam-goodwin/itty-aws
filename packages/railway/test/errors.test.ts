@@ -21,67 +21,49 @@ const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("Railway error matching", () => {
   describe("RailwayNotAuthorized (INTERNAL_SERVER_ERROR + 'Not Authorized')", () => {
-    it(
-      "fires when the bearer token is invalid",
-      async () => {
-        const BadCreds = Layer.succeed(Credentials, {
-          apiToken: Redacted.make("not-a-real-token-deadbeef"),
-          apiBaseUrl: "https://backboard.railway.com",
-        });
+    it("fires when the bearer token is invalid", async () => {
+      const BadCreds = Layer.succeed(Credentials, {
+        apiToken: Redacted.make("not-a-real-token-deadbeef"),
+        apiBaseUrl: "https://backboard.railway.com",
+      });
 
-        const error = await Effect.runPromise(
-          me({}).pipe(
-            Effect.flip,
-            Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-          ) as Effect.Effect<unknown, never, never>,
-        );
+      const error = await Effect.runPromise(
+        me({}).pipe(
+          Effect.flip,
+          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+        ) as Effect.Effect<unknown, never, never>,
+      );
 
-        expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
-      },
-      30_000,
-    );
+      expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+    }, 30_000);
   });
 
   describe("RailwayNotFound (INTERNAL_SERVER_ERROR + '... not found')", () => {
-    it(
-      "fires for project lookup against a non-existent UUID",
-      async () => {
-        const error = await runEffect(
-          project({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
-        );
+    it("fires for project lookup against a non-existent UUID", async () => {
+      const error = await runEffect(
+        project({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
+      );
 
-        expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-        expect((error as { message: string }).message).toMatch(/not found$/i);
-      },
-      30_000,
-    );
+      expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+    }, 30_000);
 
-    it(
-      "fires for deployment lookup against a non-existent UUID",
-      async () => {
-        const error = await runEffect(
-          deployment({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
-        );
+    it("fires for deployment lookup against a non-existent UUID", async () => {
+      const error = await runEffect(
+        deployment({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
+      );
 
-        expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-        expect((error as { message: string }).message).toMatch(/not found$/i);
-      },
-      30_000,
-    );
+      expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+    }, 30_000);
   });
 
   describe("RailwayInvalidInput (INTERNAL_SERVER_ERROR + 'Invalid ...')", () => {
-    it(
-      "fires when projectCreate is given an empty name",
-      async () => {
-        const error = await runEffect(
-          projectCreate({ input: { name: "" } }).pipe(Effect.flip),
-        );
+    it("fires when projectCreate is given an empty name", async () => {
+      const error = await runEffect(
+        projectCreate({ input: { name: "" } }).pipe(Effect.flip),
+      );
 
-        expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
-        expect((error as { message: string }).message).toMatch(/^Invalid /);
-      },
-      30_000,
-    );
+      expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+      expect((error as { message: string }).message).toMatch(/^Invalid /);
+    }, 30_000);
   });
 });

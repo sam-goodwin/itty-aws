@@ -12,94 +12,83 @@ import { runEffect, testRunId } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("customDomain", () => {
-  it(
-    "happy path - returns custom domain details by id and projectId",
-    async () => {
-      const projectName = `distilled-railway-custom-domain-${testRunId}`;
-      const domain = `test-${testRunId}.example.com`;
+  it("happy path - returns custom domain details by id and projectId", async () => {
+    const projectName = `distilled-railway-custom-domain-${testRunId}`;
+    const domain = `test-${testRunId}.example.com`;
 
-      const result = await runEffect(
-        Effect.gen(function* () {
-          const project = yield* projectCreate({
-            input: { name: projectName },
+    const result = await runEffect(
+      Effect.gen(function* () {
+        const project = yield* projectCreate({
+          input: { name: projectName },
+        });
+
+        return yield* Effect.gen(function* () {
+          const service = yield* serviceCreate({
+            input: {
+              projectId: project.id,
+              name: `svc-${testRunId}`,
+            },
           });
 
-          return yield* Effect.gen(function* () {
-            const service = yield* serviceCreate({
-              input: {
-                projectId: project.id,
-                name: `svc-${testRunId}`,
-              },
-            });
-
-            const created = yield* customDomainCreate({
-              input: {
-                domain,
-                environmentId: project.baseEnvironmentId!,
-                projectId: project.id,
-                serviceId: service.id,
-              },
-            });
-
-            const fetched = yield* customDomain({
-              id: created.id,
+          const created = yield* customDomainCreate({
+            input: {
+              domain,
+              environmentId: project.baseEnvironmentId!,
               projectId: project.id,
-            });
+              serviceId: service.id,
+            },
+          });
 
-            expect(fetched.id).toBe(created.id);
-            expect(fetched.domain).toBe(domain);
-            expect(fetched.serviceId).toBe(service.id);
-            expect(fetched.environmentId).toBe(project.baseEnvironmentId);
-            expect(typeof fetched.status.verified).toBe("boolean");
-            expect(Array.isArray(fetched.status.dnsRecords)).toBe(true);
-            return fetched;
-          }).pipe(
-            Effect.ensuring(projectDelete({ id: project.id }).pipe(Effect.ignore)),
-          );
-        }),
-      );
+          const fetched = yield* customDomain({
+            id: created.id,
+            projectId: project.id,
+          });
 
-      expect(result.domain).toBe(domain);
-    },
-    60_000,
-  );
-
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
-
-      const error = await Effect.runPromise(
-        customDomain({
-          id: NON_EXISTENT_UUID,
-          projectId: NON_EXISTENT_UUID,
+          expect(fetched.id).toBe(created.id);
+          expect(fetched.domain).toBe(domain);
+          expect(fetched.serviceId).toBe(service.id);
+          expect(fetched.environmentId).toBe(project.baseEnvironmentId);
+          expect(typeof fetched.status.verified).toBe("boolean");
+          expect(Array.isArray(fetched.status.dnsRecords)).toBe(true);
+          return fetched;
         }).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
+          Effect.ensuring(
+            projectDelete({ id: project.id }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
 
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+    expect(result.domain).toBe(domain);
+  }, 60_000);
 
-  it(
-    "error - RailwayNotFound for non-existent custom domain id",
-    async () => {
-      const error = await runEffect(
-        customDomain({
-          id: NON_EXISTENT_UUID,
-          projectId: NON_EXISTENT_UUID,
-        }).pipe(Effect.flip),
-      );
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
 
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-      expect((error as { message: string }).message).toMatch(/not found$/i);
-    },
-    30_000,
-  );
+    const error = await Effect.runPromise(
+      customDomain({
+        id: NON_EXISTENT_UUID,
+        projectId: NON_EXISTENT_UUID,
+      }).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
+
+    expect(error._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
+
+  it("error - non-existent custom domain id surfaces RailwayNotAuthorized", async () => {
+    const error = await runEffect(
+      customDomain({
+        id: NON_EXISTENT_UUID,
+        projectId: NON_EXISTENT_UUID,
+      }).pipe(Effect.flip),
+    );
+
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
 });

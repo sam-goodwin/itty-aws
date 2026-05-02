@@ -16,16 +16,10 @@ const validInput = (overrides?: { command?: string }) => ({
 });
 
 describe("cliEventTrack", () => {
-  it(
-    "happy path - tracks a CLI event and returns true",
-    async () => {
-      const result = await runEffect(
-        cliEventTrack({ input: validInput() }),
-      );
-      expect(result).toBe(true);
-    },
-    60_000,
-  );
+  it("happy path - tracks a CLI event and returns true", async () => {
+    const result = await runEffect(cliEventTrack({ input: validInput() }));
+    expect(result).toBe(true);
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {

@@ -6,36 +6,28 @@ import { githubWritableScopes } from "../src/operations/githubWritableScopes.ts"
 import { runEffect } from "./setup.ts";
 
 describe("githubWritableScopes", () => {
-  it(
-    "happy path - returns the list of writable GitHub scopes for the user",
-    async () => {
-      const result = await runEffect(githubWritableScopes({}));
+  it("happy path - returns the list of writable GitHub scopes for the user", async () => {
+    const result = await runEffect(githubWritableScopes({}));
 
-      expect(Array.isArray(result)).toBe(true);
-      for (const s of result) {
-        expect(typeof s).toBe("string");
-      }
-    },
-    30_000,
-  );
+    expect(Array.isArray(result)).toBe(true);
+    for (const s of result) {
+      expect(typeof s).toBe("string");
+    }
+  }, 30_000);
 
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
 
-      const error = await Effect.runPromise(
-        githubWritableScopes({}).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
+    const error = await Effect.runPromise(
+      githubWritableScopes({}).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
 
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+    expect(error._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
 });

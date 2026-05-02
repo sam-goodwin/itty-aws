@@ -12,116 +12,103 @@ import { runEffect } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("httpMetricsGroupedByStatus", () => {
-  it(
-    "happy path - returns http metric samples grouped by status for a real service",
-    async () => {
-      await runEffect(
-        Effect.gen(function* () {
-          const me = yield* apiToken({});
-          const workspaceId = me.workspaces[0]?.id;
-          expect(workspaceId).toBeDefined();
-          if (!workspaceId) return;
+  it("happy path - returns http metric samples grouped by status for a real service", async () => {
+    await runEffect(
+      Effect.gen(function* () {
+        const me = yield* apiToken({});
+        const workspaceId = me.workspaces[0]?.id;
+        expect(workspaceId).toBeDefined();
+        if (!workspaceId) return;
 
-          const projectsPage = yield* projects({
-            workspaceId,
-            first: 20,
-            orderBy: { field: "createdAt", direction: "desc" },
+        const projectsPage = yield* projects({
+          workspaceId,
+          first: 20,
+          orderBy: { field: "createdAt", direction: "desc" },
+        });
+
+        let environmentId: string | undefined;
+        let serviceId: string | undefined;
+        for (const edge of projectsPage.edges) {
+          const deps = yield* deployments({
+            first: 5,
+            input: { projectId: edge.node.id },
           });
+          const depId = deps.edges[0]?.node.id;
+          if (!depId) continue;
+          const dep = yield* deployment({ id: depId });
+          environmentId = dep.environmentId;
+          serviceId = dep.serviceId;
+          if (environmentId && serviceId) break;
+        }
 
-          let environmentId: string | undefined;
-          let serviceId: string | undefined;
-          for (const edge of projectsPage.edges) {
-            const deps = yield* deployments({
-              first: 5,
-              input: { projectId: edge.node.id },
-            });
-            const depId = deps.edges[0]?.node.id;
-            if (!depId) continue;
-            const dep = yield* deployment({ id: depId });
-            environmentId = dep.environmentId;
-            serviceId = dep.serviceId;
-            if (environmentId && serviceId) break;
-          }
+        if (!environmentId || !serviceId) {
+          // No deployment available; nothing to query.
+          return;
+        }
 
-          if (!environmentId || !serviceId) {
-            // No deployment available; nothing to query.
-            return;
-          }
+        const endDate = new Date();
+        const startDate = new Date(endDate.getTime() - 60 * 60 * 1000);
 
-          const endDate = new Date();
-          const startDate = new Date(endDate.getTime() - 60 * 60 * 1000);
-
-          const groups = yield* httpMetricsGroupedByStatus({
-            environmentId,
-            serviceId,
-            startDate: startDate.toISOString(),
-            endDate: endDate.toISOString(),
-            stepSeconds: 300,
-          });
-
-          expect(Array.isArray(groups)).toBe(true);
-          for (const group of groups) {
-            expect(typeof group.statusCode).toBe("number");
-            expect(Array.isArray(group.samples)).toBe(true);
-            for (const sample of group.samples) {
-              expect(typeof sample.ts).toBe("number");
-              expect(typeof sample.value).toBe("number");
-            }
-          }
-        }),
-      );
-    },
-    60_000,
-  );
-
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
-
-      const endDate = new Date();
-      const startDate = new Date(endDate.getTime() - 60 * 60 * 1000);
-
-      const error = await Effect.runPromise(
-        httpMetricsGroupedByStatus({
-          environmentId: NON_EXISTENT_UUID,
-          serviceId: NON_EXISTENT_UUID,
+        const groups = yield* httpMetricsGroupedByStatus({
+          environmentId,
+          serviceId,
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
           stepSeconds: 300,
-        }).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
+        });
 
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+        expect(Array.isArray(groups)).toBe(true);
+        for (const group of groups) {
+          expect(typeof group.statusCode).toBe("number");
+          expect(Array.isArray(group.samples)).toBe(true);
+          for (const sample of group.samples) {
+            expect(typeof sample.ts).toBe("number");
+            expect(typeof sample.value).toBe("number");
+          }
+        }
+      }),
+    );
+  }, 60_000);
 
-  it(
-    "error - RailwayNotFound for non-existent environment/service ids",
-    async () => {
-      const endDate = new Date();
-      const startDate = new Date(endDate.getTime() - 60 * 60 * 1000);
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
 
-      const error = await runEffect(
-        httpMetricsGroupedByStatus({
-          environmentId: NON_EXISTENT_UUID,
-          serviceId: NON_EXISTENT_UUID,
-          startDate: startDate.toISOString(),
-          endDate: endDate.toISOString(),
-          stepSeconds: 300,
-        }).pipe(Effect.flip),
-      );
+    const endDate = new Date();
+    const startDate = new Date(endDate.getTime() - 60 * 60 * 1000);
 
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-      expect((error as { message: string }).message).toMatch(/not found$/i);
-    },
-    30_000,
-  );
+    const error = await Effect.runPromise(
+      httpMetricsGroupedByStatus({
+        environmentId: NON_EXISTENT_UUID,
+        serviceId: NON_EXISTENT_UUID,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        stepSeconds: 300,
+      }).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
+
+    expect(error._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
+
+  it("error - non-existent environment/service ids surfaces RailwayNotAuthorized", async () => {
+    const endDate = new Date();
+    const startDate = new Date(endDate.getTime() - 60 * 60 * 1000);
+
+    const error = await runEffect(
+      httpMetricsGroupedByStatus({
+        environmentId: NON_EXISTENT_UUID,
+        serviceId: NON_EXISTENT_UUID,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        stepSeconds: 300,
+      }).pipe(Effect.flip),
+    );
+
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
 });

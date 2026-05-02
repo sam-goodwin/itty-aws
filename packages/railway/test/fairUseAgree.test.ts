@@ -6,16 +6,12 @@ import { fairUseAgree } from "../src/operations/fairUseAgree.ts";
 import { runEffect } from "./setup.ts";
 
 describe("fairUseAgree", () => {
-  it(
-    "happy path - records fair-use agreement for the currently authenticated user",
-    async () => {
-      // Idempotent per-user consent flag — calling with agree: true on the
-      // test account is safe and does not affect other test data.
-      const result = await runEffect(fairUseAgree({ agree: true }));
-      expect(typeof result).toBe("boolean");
-    },
-    60_000,
-  );
+  it("happy path - records fair-use agreement for the currently authenticated user", async () => {
+    // Idempotent per-user consent flag — calling with agree: true on the
+    // test account is safe and does not affect other test data.
+    const result = await runEffect(fairUseAgree({ agree: true }));
+    expect(typeof result).toBe("boolean");
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {

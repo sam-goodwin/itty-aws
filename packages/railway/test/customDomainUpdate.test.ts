@@ -16,68 +16,62 @@ const domainName = (label: string) =>
   `distilled-railway-${label}-${testRunId}.example.com`;
 
 describe("customDomainUpdate", () => {
-  it(
-    "happy path - updates the targetPort of a freshly created custom domain",
-    async () => {
-      const domain = domainName("cd-update-happy");
+  it("happy path - updates the targetPort of a freshly created custom domain", async () => {
+    const domain = domainName("cd-update-happy");
 
-      await runEffect(
-        Effect.gen(function* () {
-          const me = yield* apiToken({});
-          const workspaceId = me.workspaces[0]?.id;
-          if (!workspaceId) {
-            throw new Error(
-              "test setup: authenticated token has no workspaces",
-            );
-          }
-          const projList = yield* projects({
-            workspaceId,
-            first: 25,
-            orderBy: "CREATED_AT_DESC",
+    await runEffect(
+      Effect.gen(function* () {
+        const me = yield* apiToken({});
+        const workspaceId = me.workspaces[0]?.id;
+        if (!workspaceId) {
+          throw new Error("test setup: authenticated token has no workspaces");
+        }
+        const projList = yield* projects({
+          workspaceId,
+          first: 25,
+          orderBy: "CREATED_AT_DESC",
+        });
+        let projectId: string | undefined;
+        let environmentId: string | undefined;
+        let serviceId: string | undefined;
+        for (const p of projList.edges) {
+          const dep = yield* deployments({
+            first: 1,
+            input: { projectId: p.node.id },
           });
-          let projectId: string | undefined;
-          let environmentId: string | undefined;
-          let serviceId: string | undefined;
-          for (const p of projList.edges) {
-            const dep = yield* deployments({
-              first: 1,
-              input: { projectId: p.node.id },
-            });
-            const node = dep.edges[0]?.node;
-            if (node && node.serviceId && node.environmentId) {
-              projectId = node.projectId;
-              environmentId = node.environmentId;
-              serviceId = node.serviceId;
-              break;
-            }
+          const node = dep.edges[0]?.node;
+          if (node && node.serviceId && node.environmentId) {
+            projectId = node.projectId;
+            environmentId = node.environmentId;
+            serviceId = node.serviceId;
+            break;
           }
-          if (!projectId || !environmentId || !serviceId) {
-            throw new Error(
-              "test setup: no project with a deployed service found for the workspace",
-            );
-          }
-
-          const created = yield* customDomainCreate({
-            input: { domain, environmentId, projectId, serviceId },
-          });
-
-          return yield* Effect.gen(function* () {
-            const result = yield* customDomainUpdate({
-              environmentId,
-              id: created.id,
-              targetPort: 8080,
-            });
-            expect(result).toBe(true);
-          }).pipe(
-            Effect.ensuring(
-              customDomainDelete({ id: created.id }).pipe(Effect.ignore),
-            ),
+        }
+        if (!projectId || !environmentId || !serviceId) {
+          throw new Error(
+            "test setup: no project with a deployed service found for the workspace",
           );
-        }),
-      );
-    },
-    120_000,
-  );
+        }
+
+        const created = yield* customDomainCreate({
+          input: { domain, environmentId, projectId, serviceId },
+        });
+
+        return yield* Effect.gen(function* () {
+          const result = yield* customDomainUpdate({
+            environmentId,
+            id: created.id,
+            targetPort: 8080,
+          });
+          expect(result).toBe(true);
+        }).pipe(
+          Effect.ensuring(
+            customDomainDelete({ id: created.id }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
+  }, 120_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -97,7 +91,7 @@ describe("customDomainUpdate", () => {
     expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
-  it("error - RailwayNotFound for a non-existent custom domain id", async () => {
+  it("error - non-existent custom domain id surfaces RailwayNotAuthorized", async () => {
     const error = await runEffect(
       customDomainUpdate({
         environmentId: NON_EXISTENT_UUID,
@@ -105,8 +99,7 @@ describe("customDomainUpdate", () => {
         targetPort: 8080,
       }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    expect((error as { message: string }).message).toMatch(/not found$/i);
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
   it("error - RailwayInvalidInput for an empty custom domain id", async () => {

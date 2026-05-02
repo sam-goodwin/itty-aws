@@ -21,56 +21,48 @@ const ALL_MEASUREMENTS = [
 ] as const;
 
 describe("usage", () => {
-  it(
-    "happy path - returns usage measurements for the authenticated user",
-    async () => {
-      const result = await runEffect(
-        usage({ measurements: ["CPU_USAGE", "MEMORY_USAGE_GB"] }),
-      );
+  it("happy path - returns usage measurements for the authenticated user", async () => {
+    const result = await runEffect(
+      usage({ measurements: ["CPU_USAGE", "MEMORY_USAGE_GB"] }),
+    );
 
-      expect(Array.isArray(result)).toBe(true);
-      for (const point of result) {
-        expect(typeof point.value).toBe("number");
-        expect(ALL_MEASUREMENTS).toContain(point.measurement);
-        expect(point.tags).toBeDefined();
-        // All tag fields are NullOr<string> — verify shape on populated values.
-        for (const value of [
-          point.tags.deploymentId,
-          point.tags.deploymentInstanceId,
-          point.tags.environmentId,
-          point.tags.pluginId,
-          point.tags.projectId,
-          point.tags.region,
-          point.tags.serviceId,
-          point.tags.volumeId,
-          point.tags.volumeInstanceId,
-        ]) {
-          if (value !== null) {
-            expect(typeof value).toBe("string");
-          }
+    expect(Array.isArray(result)).toBe(true);
+    for (const point of result) {
+      expect(typeof point.value).toBe("number");
+      expect(ALL_MEASUREMENTS).toContain(point.measurement);
+      expect(point.tags).toBeDefined();
+      // All tag fields are NullOr<string> — verify shape on populated values.
+      for (const value of [
+        point.tags.deploymentId,
+        point.tags.deploymentInstanceId,
+        point.tags.environmentId,
+        point.tags.pluginId,
+        point.tags.projectId,
+        point.tags.region,
+        point.tags.serviceId,
+        point.tags.volumeId,
+        point.tags.volumeInstanceId,
+      ]) {
+        if (value !== null) {
+          expect(typeof value).toBe("string");
         }
       }
-    },
-    60_000,
-  );
+    }
+  }, 60_000);
 
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
 
-      const error = await Effect.runPromise(
-        usage({ measurements: ["CPU_USAGE"] }).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
+    const error = await Effect.runPromise(
+      usage({ measurements: ["CPU_USAGE"] }).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
 
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+    expect(error._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
 });

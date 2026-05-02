@@ -10,76 +10,66 @@ import { runEffect, testRunId } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectInviteUser", () => {
-  it(
-    "happy path - invites a user to a freshly created project",
-    async () => {
-      const projectName = `distilled-railway-piu-${testRunId}`;
-      const inviteEmail = `distilled-railway-piu-${testRunId}@example.com`;
-      const inviteLink = `https://railway.com/invite/${testRunId}`;
-      await runEffect(
-        Effect.gen(function* () {
-          const project = yield* projectCreate({
+  it("happy path - invites a user to a freshly created project", async () => {
+    const projectName = `distilled-railway-piu-${testRunId}`;
+    const inviteEmail = `distilled-railway-piu-${testRunId}@example.com`;
+    const inviteLink = `https://railway.com/invite/${testRunId}`;
+    await runEffect(
+      Effect.gen(function* () {
+        const project = yield* projectCreate({
+          input: {
+            name: projectName,
+            description: "distilled invite user test project",
+          },
+        });
+        return yield* Effect.gen(function* () {
+          const result = yield* projectInviteUser({
+            id: project.id,
             input: {
-              name: projectName,
-              description: "distilled invite user test project",
+              email: inviteEmail,
+              link: inviteLink,
             },
           });
-          return yield* Effect.gen(function* () {
-            const result = yield* projectInviteUser({
-              id: project.id,
-              input: {
-                email: inviteEmail,
-                link: inviteLink,
-              },
-            });
-            expect(result).toBe(true);
-          }).pipe(
-            Effect.ensuring(projectDelete({ id: project.id }).pipe(Effect.ignore)),
-          );
-        }),
-      );
-    },
-    120_000,
-  );
-
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
-      const error = await Effect.runPromise(
-        projectInviteUser({
-          id: NON_EXISTENT_UUID,
-          input: {
-            email: `distilled-railway-piu-unauth-${testRunId}@example.com`,
-            link: `https://railway.com/invite/${testRunId}`,
-          },
+          expect(result).toBe(true);
         }).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+          Effect.ensuring(
+            projectDelete({ id: project.id }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
+  }, 120_000);
 
-  it(
-    "error - RailwayInvalidInput for an empty project id",
-    async () => {
-      const error = await runEffect(
-        projectInviteUser({
-          id: "",
-          input: {
-            email: `distilled-railway-piu-inv-${testRunId}@example.com`,
-            link: `https://railway.com/invite/${testRunId}`,
-          },
-        }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
-    },
-    30_000,
-  );
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
+    const error = await Effect.runPromise(
+      projectInviteUser({
+        id: NON_EXISTENT_UUID,
+        input: {
+          email: `distilled-railway-piu-unauth-${testRunId}@example.com`,
+          link: `https://railway.com/invite/${testRunId}`,
+        },
+      }).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
+    expect(error._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
+
+  it("error - RailwayInvalidInput for an empty project id", async () => {
+    const error = await runEffect(
+      projectInviteUser({
+        id: "",
+        input: {
+          email: `distilled-railway-piu-inv-${testRunId}@example.com`,
+          link: `https://railway.com/invite/${testRunId}`,
+        },
+      }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+  }, 30_000);
 });

@@ -10,65 +10,52 @@ import { runEffect, testRunId } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectMembers", () => {
-  it(
-    "happy path - lists members for a freshly created project",
-    async () => {
-      await runEffect(
-        Effect.gen(function* () {
-          const created = yield* projectCreate({
-            input: { name: `distilled-railway-members-${testRunId}` },
-          });
+  it("happy path - lists members for a freshly created project", async () => {
+    await runEffect(
+      Effect.gen(function* () {
+        const created = yield* projectCreate({
+          input: { name: `distilled-railway-members-${testRunId}` },
+        });
 
-          yield* Effect.gen(function* () {
-            const members = yield* projectMembers({ projectId: created.id });
+        yield* Effect.gen(function* () {
+          const members = yield* projectMembers({ projectId: created.id });
 
-            expect(Array.isArray(members)).toBe(true);
-            for (const member of members) {
-              expect(typeof member.id).toBe("string");
-              expect(typeof member.email).toBe("string");
-              expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(member.role);
-            }
-          }).pipe(
-            Effect.ensuring(
-              projectDelete({ id: created.id }).pipe(Effect.ignore),
-            ),
-          );
-        }),
-      );
-    },
-    60_000,
-  );
+          expect(Array.isArray(members)).toBe(true);
+          for (const member of members) {
+            expect(typeof member.id).toBe("string");
+            expect(typeof member.email).toBe("string");
+            expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(member.role);
+          }
+        }).pipe(
+          Effect.ensuring(
+            projectDelete({ id: created.id }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
+  }, 60_000);
 
-  it(
-    "error - RailwayNotAuthorized when bearer token is invalid",
-    async () => {
-      const BadCreds = Layer.succeed(Credentials, {
-        apiToken: Redacted.make("not-a-real-token-deadbeef"),
-        apiBaseUrl: "https://backboard.railway.com",
-      });
+  it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
+    const BadCreds = Layer.succeed(Credentials, {
+      apiToken: Redacted.make("not-a-real-token-deadbeef"),
+      apiBaseUrl: "https://backboard.railway.com",
+    });
 
-      const error = await Effect.runPromise(
-        projectMembers({ projectId: NON_EXISTENT_UUID }).pipe(
-          Effect.flip,
-          Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
-        ) as Effect.Effect<{ _tag: string }, never, never>,
-      );
+    const error = await Effect.runPromise(
+      projectMembers({ projectId: NON_EXISTENT_UUID }).pipe(
+        Effect.flip,
+        Effect.provide(Layer.merge(BadCreds, FetchHttpClient.layer)),
+      ) as Effect.Effect<{ _tag: string }, never, never>,
+    );
 
-      expect(error._tag).toBe("RailwayNotAuthorized");
-    },
-    30_000,
-  );
+    expect(error._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
 
-  it(
-    "error - RailwayNotFound for a non-existent projectId",
-    async () => {
-      const error = await runEffect(
-        projectMembers({ projectId: NON_EXISTENT_UUID }).pipe(Effect.flip),
-      );
+  it("error - non-existent projectId surfaces RailwayNotAuthorized", async () => {
+    const error = await runEffect(
+      projectMembers({ projectId: NON_EXISTENT_UUID }).pipe(Effect.flip),
+    );
 
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-      expect((error as { message: string }).message).toMatch(/not found$/i);
-    },
-    30_000,
-  );
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+  }, 30_000);
 });

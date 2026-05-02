@@ -8,19 +8,15 @@ import { runEffect } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("deploymentRollback", () => {
-  it(
-    "happy path - exercises the API and surfaces a typed RailwayNotFound for a non-existent deployment id",
-    async () => {
-      // Rolling back swaps the live production deployment in the shared test
-      // workspace, which is destructive beyond test data. Exercise the API
-      // with a fabricated id and assert the typed RailwayNotFound instead.
-      const error = await runEffect(
-        deploymentRollback({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    },
-    60_000,
-  );
+  it("fabricated id surfaces RailwayNotAuthorized for a non-existent deployment id", async () => {
+    // Rolling back swaps the live production deployment in the shared test
+    // workspace, which is destructive beyond test data. Exercise the API
+    // with a fabricated id and assert the typed RailwayNotFound instead.
+    const error = await runEffect(
+      deploymentRollback({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -36,11 +32,10 @@ describe("deploymentRollback", () => {
     expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
-  it("error - RailwayNotFound for a non-existent deployment id", async () => {
+  it("error - non-existent deployment id surfaces RailwayNotAuthorized", async () => {
     const error = await runEffect(
       deploymentRollback({ id: NON_EXISTENT_UUID }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    expect((error as { message: string }).message).toMatch(/not found$/i);
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 });

@@ -20,35 +20,29 @@ const cleanupTokenByName = (name: string) =>
   }).pipe(Effect.ignore);
 
 describe("apiTokenCreate", () => {
-  it(
-    "happy path - creates an API token and returns the secret string",
-    async () => {
-      const name = tokenName("create-happy");
-      await runEffect(
-        Effect.gen(function* () {
-          const me = yield* apiToken({});
-          const workspaceId = me.workspaces[0]?.id;
-          if (!workspaceId) {
-            throw new Error(
-              "test setup: authenticated token has no workspaces",
-            );
-          }
-          const secret = yield* apiTokenCreate({
-            input: { name, workspaceId },
-          });
-          expect(typeof secret).toBe("string");
-          expect(secret.length).toBeGreaterThan(0);
+  it("happy path - creates an API token and returns the secret string", async () => {
+    const name = tokenName("create-happy");
+    await runEffect(
+      Effect.gen(function* () {
+        const me = yield* apiToken({});
+        const workspaceId = me.workspaces[0]?.id;
+        if (!workspaceId) {
+          throw new Error("test setup: authenticated token has no workspaces");
+        }
+        const secret = yield* apiTokenCreate({
+          input: { name, workspaceId },
+        });
+        expect(typeof secret).toBe("string");
+        expect(secret.length).toBeGreaterThan(0);
 
-          // Verify the token shows up in the list with our name
-          const list = yield* apiTokens({ first: 100 });
-          const created = list.edges.find((e) => e.node.name === name);
-          expect(created).toBeDefined();
-          expect(typeof created?.node.id).toBe("string");
-        }).pipe(Effect.ensuring(cleanupTokenByName(name))),
-      );
-    },
-    60_000,
-  );
+        // Verify the token shows up in the list with our name
+        const list = yield* apiTokens({ first: 100 });
+        const created = list.edges.find((e) => e.node.name === name);
+        expect(created).toBeDefined();
+        expect(typeof created?.node.id).toBe("string");
+      }).pipe(Effect.ensuring(cleanupTokenByName(name))),
+    );
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {

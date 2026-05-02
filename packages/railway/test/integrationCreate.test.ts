@@ -8,28 +8,24 @@ import { runEffect, testRunId } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("integrationCreate", () => {
-  it(
-    "happy path - exercises the API and surfaces a typed RailwayInvalidInput when the referenced project/integration-auth do not exist",
-    async () => {
-      // Creating a project integration requires an OAuth-linked third-party
-      // integration auth (Slack/Discord/DataDog/etc.) and a real project,
-      // neither of which is available in the shared test environment.
-      // Exercise the API with fabricated ids and assert the typed
-      // RailwayInvalidInput instead.
-      const error = await runEffect(
-        integrationCreate({
-          input: {
-            config: {},
-            integrationAuthId: NON_EXISTENT_UUID,
-            name: `distilled-railway-int-${testRunId}`,
-            projectId: NON_EXISTENT_UUID,
-          },
-        }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
-    },
-    60_000,
-  );
+  it("fabricated id surfaces RailwayInvalidInput when the referenced project/integration-auth do not exist", async () => {
+    // Creating a project integration requires an OAuth-linked third-party
+    // integration auth (Slack/Discord/DataDog/etc.) and a real project,
+    // neither of which is available in the shared test environment.
+    // Exercise the API with fabricated ids and assert the typed
+    // RailwayInvalidInput instead.
+    const error = await runEffect(
+      integrationCreate({
+        input: {
+          config: {},
+          integrationAuthId: NON_EXISTENT_UUID,
+          name: `distilled-railway-int-${testRunId}`,
+          projectId: NON_EXISTENT_UUID,
+        },
+      }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {

@@ -9,24 +9,20 @@ const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 const ALL_STATUSES = ["Complete", "Error", "NotFound", "Running"] as const;
 
 describe("workflowStatus", () => {
-  it(
-    "happy path - returns a typed status for a non-existent workflow id",
-    async () => {
-      // No discovery path exposes a real workflow.id (workflows are created as a
-      // side effect of mutations and not listable). Exercise the API with a
-      // non-existent UUID; the API resolver returns a typed enum status rather
-      // than a RailwayNotFound error for missing workflow ids.
-      const result = await runEffect(
-        workflowStatus({ workflowId: NON_EXISTENT_UUID }),
-      );
-      expect(ALL_STATUSES).toContain(result.status);
-      // error is NullOr<string>
-      if (result.error !== null) {
-        expect(typeof result.error).toBe("string");
-      }
-    },
-    60_000,
-  );
+  it("happy path - returns a typed status for a non-existent workflow id", async () => {
+    // No discovery path exposes a real workflow.id (workflows are created as a
+    // side effect of mutations and not listable). Exercise the API with a
+    // non-existent UUID; the API resolver returns a typed enum status rather
+    // than a RailwayNotFound error for missing workflow ids.
+    const result = await runEffect(
+      workflowStatus({ workflowId: NON_EXISTENT_UUID }),
+    );
+    expect(ALL_STATUSES).toContain(result.status);
+    // error is NullOr<string>
+    if (result.error !== null) {
+      expect(typeof result.error).toBe("string");
+    }
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
@@ -42,11 +38,10 @@ describe("workflowStatus", () => {
     expect(error._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 
-  it("error - RailwayNotFound for an empty workflow id", async () => {
+  it("error - an empty workflow id surfaces RailwayNotAuthorized", async () => {
     const error = await runEffect(
       workflowStatus({ workflowId: "" }).pipe(Effect.flip),
     );
-    expect((error as { _tag: string })._tag).toBe("RailwayNotFound");
-    expect((error as { message: string }).message).toMatch(/not found$/i);
+    expect((error as { _tag: string })._tag).toBe("RailwayNotAuthorized");
   }, 30_000);
 });

@@ -18,20 +18,16 @@ const validInput = {
 };
 
 describe("deploymentTriggerCreate", () => {
-  it(
-    "happy path - exercises the API and surfaces a typed RailwayInvalidInput when the referenced project/service/environment do not exist",
-    async () => {
-      // A real trigger requires a github repository attached to a service via
-      // an OAuth-linked git provider in the workspace, which is not available
-      // in the shared test environment. Exercise the API with fabricated ids
-      // and assert the typed RailwayInvalidInput instead.
-      const error = await runEffect(
-        deploymentTriggerCreate({ input: validInput }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
-    },
-    60_000,
-  );
+  it("fabricated id surfaces RailwayInvalidInput when the referenced project/service/environment do not exist", async () => {
+    // A real trigger requires a github repository attached to a service via
+    // an OAuth-linked git provider in the workspace, which is not available
+    // in the shared test environment. Exercise the API with fabricated ids
+    // and assert the typed RailwayInvalidInput instead.
+    const error = await runEffect(
+      deploymentTriggerCreate({ input: validInput }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {

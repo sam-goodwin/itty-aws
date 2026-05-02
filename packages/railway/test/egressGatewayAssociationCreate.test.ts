@@ -8,25 +8,21 @@ import { runEffect } from "./setup.ts";
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("egressGatewayAssociationCreate", () => {
-  it(
-    "happy path - exercises the API and surfaces a typed RailwayInvalidInput when the referenced service/environment do not exist",
-    async () => {
-      // Egress gateway associations are a Pro-plan networking feature that
-      // require a deployed service in a real environment to attach to, which
-      // is not available in the shared test environment. Exercise the API
-      // with fabricated ids and assert the typed RailwayInvalidInput instead.
-      const error = await runEffect(
-        egressGatewayAssociationCreate({
-          input: {
-            environmentId: NON_EXISTENT_UUID,
-            serviceId: NON_EXISTENT_UUID,
-          },
-        }).pipe(Effect.flip),
-      );
-      expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
-    },
-    60_000,
-  );
+  it("fabricated id surfaces RailwayInvalidInput when the referenced service/environment do not exist", async () => {
+    // Egress gateway associations are a Pro-plan networking feature that
+    // require a deployed service in a real environment to attach to, which
+    // is not available in the shared test environment. Exercise the API
+    // with fabricated ids and assert the typed RailwayInvalidInput instead.
+    const error = await runEffect(
+      egressGatewayAssociationCreate({
+        input: {
+          environmentId: NON_EXISTENT_UUID,
+          serviceId: NON_EXISTENT_UUID,
+        },
+      }).pipe(Effect.flip),
+    );
+    expect((error as { _tag: string })._tag).toBe("RailwayInvalidInput");
+  }, 60_000);
 
   it("error - RailwayNotAuthorized when bearer token is invalid", async () => {
     const BadCreds = Layer.succeed(Credentials, {
