@@ -25,10 +25,14 @@
  * const result = yield* fn({ organization: "my-org" });
  * ```
  */
+import * as Context from "effect/Context";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
+import { pipe } from "effect/Function";
+import * as Option from "effect/Option";
 import { pipeArguments } from "effect/Pipeable";
 import { MinimumLogLevel } from "effect/References";
+import * as Ref from "effect/Ref";
 import * as Schedule from "effect/Schedule";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
@@ -46,6 +50,7 @@ import {
   type PaginationStrategy,
 } from "./pagination.ts";
 import * as Category from "./category.ts";
+import { makeDefault, type Policy as RetryPolicy } from "./retry.ts";
 import * as Traits from "./traits.ts";
 import { getPath } from "./traits.ts";
 
@@ -169,6 +174,17 @@ export interface ClientConfig<Creds> {
     pathTemplate: string;
     parts: Traits.RequestParts;
   }) => Traits.RequestParts;
+
+  /**
+   * Optional `Retry` Context.Service tag for this SDK. When provided, every
+   * operation reads the policy via `Effect.serviceOption(retry)` and falls
+   * back to `Retry.makeDefault` if no policy is provided. This lets callers
+   * apply a blanket retry policy (e.g. `Effect.provide(Layer.succeed(Retry,
+   * customPolicy))`) instead of wrapping every call site with
+   * `Effect.retry(...)`. When omitted, only the legacy hard-coded
+   * throttling-only retry runs.
+   */
+  retry?: Context.Key<any, RetryPolicy>;
 }
 
 /**
@@ -697,18 +713,45 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           );
         });
 
-      // Auto-retry whenever the SDK's matchError returns a typed error
-      // tagged with the throttling category (e.g. `TooManyRequests`,
-      // or any SDK-specific subclass marked with `withThrottlingError`
-      // / `withRetryable({ throttling: true })`). After retries are
-      // exhausted the original typed error propagates to the caller as
-      // usual.
+      // Auto-retry on every operation. When the SDK passes a `retry`
+      // Context.Service tag, we read the policy from context (with
+      // `Retry.makeDefault` as a fallback) so callers can install a
+      // blanket retry policy at the layer level — same pattern as
+      // `packages/aws`. When no `retry` tag is configured, fall back to
+      // the legacy hard-coded throttling-only schedule for backward
+      // compatibility with SDKs that haven't opted in yet.
       const fn = (input: Input): Effect.Effect<any, any, any> => {
-        const withRetry = innerFn(input).pipe(
-          Effect.retry({
-            schedule: throttlingRetrySchedule,
-            while: (e) => Category.isThrottling(e),
-          }),
+        const withRetry = config.retry
+          ? Effect.gen(function* () {
+              const lastError = yield* Ref.make<unknown>(undefined);
+              const retryTag = config.retry!;
+              const policy = (yield* Effect.serviceOption(retryTag)).pipe(
+                Option.map((value) =>
+                  typeof value === "function" ? value(lastError) : value,
+                ),
+                Option.getOrElse(() => makeDefault(lastError)),
+              );
+
+              return yield* pipe(
+                innerFn(input),
+                Effect.tapError((error) => Ref.set(lastError, error)),
+                policy.while
+                  ? (eff) =>
+                      Effect.retry(eff, {
+                        while: policy.while,
+                        schedule: policy.schedule,
+                      })
+                  : (eff) => eff,
+              );
+            })
+          : innerFn(input).pipe(
+              Effect.retry({
+                schedule: throttlingRetrySchedule,
+                while: (e) => Category.isThrottling(e),
+              }),
+            );
+
+        const withSpan = withRetry.pipe(
           Effect.withSpan(spanName, {
             attributes: {
               "http.method": method,
@@ -717,8 +760,8 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           }),
         );
         return distilledDebugEnv
-          ? Effect.provideService(withRetry, MinimumLogLevel, "Debug")
-          : withRetry;
+          ? Effect.provideService(withSpan, MinimumLogLevel, "Debug")
+          : withSpan;
       };
 
       const Proto = {
