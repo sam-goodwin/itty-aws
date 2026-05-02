@@ -104,6 +104,29 @@ export class RailwayGraphQLParseFailed extends Schema.TaggedErrorClass<RailwayGr
 ).pipe(Category.withBadRequestError) {}
 
 /**
+ * Railway per-resource rate limit. Surfaced as
+ * `extensions.code = INTERNAL_SERVER_ERROR` + a "Whoa there pal!" message
+ * (e.g. "Only one project can be created per user every 30s. Try again in
+ * a sec"). Tagged as a throttling error so the shared retry pipeline backs
+ * off and retries automatically.
+ */
+export class RailwayRateLimited extends Schema.TaggedErrorClass<RailwayRateLimited>()(
+  "RailwayRateLimited",
+  { message: Schema.String },
+).pipe(Category.withThrottlingError) {}
+
+/**
+ * Catch-all for opaque Railway server-side failures surfaced as
+ * `extensions.code = INTERNAL_SERVER_ERROR` with a non-discriminating
+ * message (e.g. "Problem processing request"). Mapped via the message
+ * pattern so the error pipeline never falls through to UnknownRailwayError.
+ */
+export class RailwayServerError extends Schema.TaggedErrorClass<RailwayServerError>()(
+  "RailwayServerError",
+  { message: Schema.String },
+).pipe(Category.withServerError) {}
+
+/**
  * Map from Railway GraphQL `extensions.code` → typed error class.
  *
  * Note: Railway uses `INTERNAL_SERVER_ERROR` as a catch-all for application
@@ -129,7 +152,27 @@ export const RAILWAY_MESSAGE_MAP: ReadonlyArray<{
   // biome-ignore lint/suspicious/noExplicitAny: heterogeneous error class map
   errorClass: any;
 }> = [
+  // Throttling — must be first so retries kick in before any other match.
+  { pattern: /^Whoa there pal!/i, errorClass: RailwayRateLimited },
+  { pattern: /try again in a /i, errorClass: RailwayRateLimited },
+
+  // Authorization.
   { pattern: /^Not Authorized$/i, errorClass: RailwayNotAuthorized },
+
+  // Not-found variants.
   { pattern: / not found$/i, errorClass: RailwayNotFound },
+  { pattern: /^Could not find /i, errorClass: RailwayNotFound },
+
+  // Domain validation. Railway surfaces a wide variety of "this operation
+  // doesn't make sense given current state" messages — they are all
+  // semantically `RailwayInvalidInput` (the input is wrong for the
+  // current resource state).
   { pattern: /^Invalid /, errorClass: RailwayInvalidInput },
+  { pattern: /^Expected /, errorClass: RailwayInvalidInput },
+  { pattern: /^Can(?:'|\\?')t /i, errorClass: RailwayInvalidInput },
+  { pattern: /^Service is not deployed/i, errorClass: RailwayInvalidInput },
+  { pattern: /has no connected repo/i, errorClass: RailwayInvalidInput },
+
+  // Generic Railway server failure — last so specific patterns win.
+  { pattern: /^Problem processing request/i, errorClass: RailwayServerError },
 ];
