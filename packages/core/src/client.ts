@@ -416,6 +416,18 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       // currently honour Retry-After (would require a per-attempt Ref);
       // the exponential ramp is conservative enough for the rate limits
       // we hit in practice.
+      //
+      // TODO(pear): Railway's edge (Cloudflare) returns 429s under any
+      // meaningful concurrency, and the unbounded exponential schedule can
+      // burn 1+2+4+...+128 = 255s on the worst attempt — far past a 30s
+      // test timeout. Railway also has a mix of soft throttles
+      // ("Whoa there pal, try again in a sec") and hard quotas
+      // ("Only one project per 30s", "25 services per day"); the latter
+      // shouldn't be retried at all. When more than one SDK has this
+      // shape we should expose a per-SDK retry override on `makeAPI`
+      // (or via a Context service) instead of a single hardcoded schedule
+      // here. For now Railway pins `singleFork: true` in vitest to keep
+      // request concurrency low enough that this schedule still works.
       const throttlingRetrySchedule = Schedule.both(
         Schedule.exponential(Duration.seconds(1), 2),
         Schedule.recurs(8),
