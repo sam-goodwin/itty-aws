@@ -29,6 +29,7 @@ import {
   UnknownRailwayError,
   RailwayParseError,
   RAILWAY_ERROR_CODE_MAP,
+  RAILWAY_MESSAGE_MAP,
 } from "./errors.ts";
 
 // Re-export for backwards compatibility with consumers importing from ./client
@@ -85,6 +86,17 @@ const matchError = (
       const TypedClass = RAILWAY_ERROR_CODE_MAP[code];
       if (TypedClass) {
         return Effect.fail(new TypedClass({ message }));
+      }
+    }
+
+    // Railway uses `INTERNAL_SERVER_ERROR` as a catch-all for application
+    // errors (auth, not-found, validation) returned with HTTP 200. The only
+    // way to discriminate them is by `message` text — see RAILWAY_MESSAGE_MAP.
+    if (code === "INTERNAL_SERVER_ERROR" && message) {
+      for (const { pattern, errorClass } of RAILWAY_MESSAGE_MAP) {
+        if (pattern.test(message)) {
+          return Effect.fail(new errorClass({ message }));
+        }
       }
     }
 
