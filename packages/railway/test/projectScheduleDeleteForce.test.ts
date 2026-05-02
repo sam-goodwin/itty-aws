@@ -2,34 +2,21 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { projectScheduleDelete } from "../src/operations/projectScheduleDelete.ts";
 import { projectScheduleDeleteForce } from "../src/operations/projectScheduleDeleteForce.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectScheduleDeleteForce", () => {
   it("happy path - force-deletes a freshly scheduled-for-deletion project", async () => {
-    const projectName = `distilled-railway-psdf-${testRunId}`;
+    const project = await getSharedProject();
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: {
-            name: projectName,
-            description: "distilled schedule delete force test project",
-          },
-        });
-        return yield* Effect.gen(function* () {
-          yield* projectScheduleDelete({ id: project.id });
-          const result = yield* projectScheduleDeleteForce({ id: project.id });
-          expect(result).toBe(true);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        yield* projectScheduleDelete({ id: project.id });
+        const result = yield* projectScheduleDeleteForce({ id: project.id });
+        expect(result).toBe(true);
       }),
     );
   }, 120_000);

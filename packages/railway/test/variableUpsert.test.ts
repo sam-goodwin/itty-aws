@@ -2,48 +2,36 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { variableUpsert } from "../src/operations/variableUpsert.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("variableUpsert", () => {
   it("happy path - upserts a single project variable on a freshly created project", async () => {
-    const projectName = `distilled-railway-vu-${testRunId}`;
+    const project = await getSharedProject();
+
     const variableName = `DISTILLED_VU_${testRunId}`;
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
+        const environmentId =
+          project.baseEnvironmentId ?? project.primaryEnvironmentId;
+        if (!environmentId) {
+          throw new Error(
+            "test setup: created project has no base/primary environment id",
+          );
+        }
+        const result = yield* variableUpsert({
           input: {
-            name: projectName,
-            description: "distilled variable upsert test",
+            projectId: project.id,
+            environmentId,
+            name: variableName,
+            value: "value",
+            skipDeploys: true,
           },
         });
-        return yield* Effect.gen(function* () {
-          const environmentId =
-            project.baseEnvironmentId ?? project.primaryEnvironmentId;
-          if (!environmentId) {
-            throw new Error(
-              "test setup: created project has no base/primary environment id",
-            );
-          }
-          const result = yield* variableUpsert({
-            input: {
-              projectId: project.id,
-              environmentId,
-              name: variableName,
-              value: "value",
-              skipDeploys: true,
-            },
-          });
-          expect(result).toBe(true);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(result).toBe(true);
       }),
     );
   }, 120_000);

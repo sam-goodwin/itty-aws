@@ -3,9 +3,7 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { dockerComposeImport } from "../src/operations/dockerComposeImport.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
@@ -18,37 +16,30 @@ const composeYaml = `services:
 
 describe("dockerComposeImport", () => {
   it("happy path - imports a docker compose yaml into a freshly provisioned project", async () => {
+    const project = await getSharedProject();
+
     const projName = projectName("dci");
 
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projName },
+        const baseEnvId = project.baseEnvironmentId;
+        if (!baseEnvId) {
+          throw new Error(
+            "test setup: created project has no baseEnvironmentId",
+          );
+        }
+
+        const result = yield* dockerComposeImport({
+          environmentId: baseEnvId,
+          projectId: project.id,
+          skipStagingPatch: true,
+          yaml: composeYaml,
         });
-        return yield* Effect.gen(function* () {
-          const baseEnvId = project.baseEnvironmentId;
-          if (!baseEnvId) {
-            throw new Error(
-              "test setup: created project has no baseEnvironmentId",
-            );
-          }
 
-          const result = yield* dockerComposeImport({
-            environmentId: baseEnvId,
-            projectId: project.id,
-            skipStagingPatch: true,
-            yaml: composeYaml,
-          });
-
-          expect(Array.isArray(result.errors)).toBe(true);
-          for (const e of result.errors) {
-            expect(typeof e).toBe("string");
-          }
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(Array.isArray(result.errors)).toBe(true);
+        for (const e of result.errors) {
+          expect(typeof e).toBe("string");
+        }
       }),
     );
   }, 180_000);

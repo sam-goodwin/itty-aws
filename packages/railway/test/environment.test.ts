@@ -3,41 +3,28 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { environment } from "../src/operations/environment.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("environment", () => {
   it("happy path - returns environment details by id", async () => {
-    const projectName = `distilled-railway-environment-${testRunId}`;
+    const project = await getSharedProject();
 
     const result = await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
+        const env = yield* environment({
+          id: project.baseEnvironmentId!,
+          projectId: project.id,
         });
 
-        return yield* Effect.gen(function* () {
-          const env = yield* environment({
-            id: project.baseEnvironmentId!,
-            projectId: project.id,
-          });
-
-          expect(env.id).toBe(project.baseEnvironmentId);
-          expect(env.projectId).toBe(project.id);
-          expect(typeof env.name).toBe("string");
-          expect(typeof env.canAccess).toBe("boolean");
-          expect(typeof env.isEphemeral).toBe("boolean");
-          expect(typeof env.createdAt).toBe("string");
-          expect(typeof env.updatedAt).toBe("string");
-          return env;
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(env.id).toBe(project.baseEnvironmentId);
+        expect(env.projectId).toBe(project.id);
+        expect(typeof env.name).toBe("string");
+        expect(typeof env.canAccess).toBe("boolean");
+        expect(typeof env.isEphemeral).toBe("boolean");
+        expect(typeof env.createdAt).toBe("string");
+        expect(typeof env.updatedAt).toBe("string");
       }),
     );
 

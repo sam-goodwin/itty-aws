@@ -3,47 +3,34 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { environmentPatches } from "../src/operations/environmentPatches.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("environmentPatches", () => {
   it("happy path - returns paginated patches for an existing environment", async () => {
-    const projectName = `distilled-railway-env-patches-${testRunId}`;
+    const project = await getSharedProject();
 
     const result = await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
+        const patches = yield* environmentPatches({
+          environmentId: project.baseEnvironmentId!,
+          first: 10,
         });
 
-        return yield* Effect.gen(function* () {
-          const patches = yield* environmentPatches({
-            environmentId: project.baseEnvironmentId!,
-            first: 10,
-          });
-
-          expect(Array.isArray(patches.edges)).toBe(true);
-          expect(typeof patches.pageInfo.hasNextPage).toBe("boolean");
-          expect(typeof patches.pageInfo.hasPreviousPage).toBe("boolean");
-          for (const edge of patches.edges) {
-            expect(typeof edge.cursor).toBe("string");
-            expect(typeof edge.node.id).toBe("string");
-            expect(typeof edge.node.environmentId).toBe("string");
-            expect(typeof edge.node.createdAt).toBe("string");
-            expect(typeof edge.node.updatedAt).toBe("string");
-            expect(["APPLYING", "COMMITTED", "STAGED"]).toContain(
-              edge.node.status,
-            );
-          }
-          return patches;
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(Array.isArray(patches.edges)).toBe(true);
+        expect(typeof patches.pageInfo.hasNextPage).toBe("boolean");
+        expect(typeof patches.pageInfo.hasPreviousPage).toBe("boolean");
+        for (const edge of patches.edges) {
+          expect(typeof edge.cursor).toBe("string");
+          expect(typeof edge.node.id).toBe("string");
+          expect(typeof edge.node.environmentId).toBe("string");
+          expect(typeof edge.node.createdAt).toBe("string");
+          expect(typeof edge.node.updatedAt).toBe("string");
+          expect(["APPLYING", "COMMITTED", "STAGED"]).toContain(
+            edge.node.status,
+          );
+        }
       }),
     );
 

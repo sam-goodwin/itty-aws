@@ -2,55 +2,43 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { variableCollectionUpsert } from "../src/operations/variableCollectionUpsert.ts";
 import { variableDelete } from "../src/operations/variableDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("variableDelete", () => {
   it("happy path - deletes a freshly upserted project variable", async () => {
-    const projectName = `distilled-railway-vd-${testRunId}`;
+    const project = await getSharedProject();
+
     const variableName = `DISTILLED_VD_${testRunId}`;
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
+        const environmentId =
+          project.baseEnvironmentId ?? project.primaryEnvironmentId;
+        if (!environmentId) {
+          throw new Error(
+            "test setup: created project has no base/primary environment id",
+          );
+        }
+        yield* variableCollectionUpsert({
           input: {
-            name: projectName,
-            description: "distilled variable delete test",
+            projectId: project.id,
+            environmentId,
+            variables: { [variableName]: "value" },
+            skipDeploys: true,
           },
         });
-        return yield* Effect.gen(function* () {
-          const environmentId =
-            project.baseEnvironmentId ?? project.primaryEnvironmentId;
-          if (!environmentId) {
-            throw new Error(
-              "test setup: created project has no base/primary environment id",
-            );
-          }
-          yield* variableCollectionUpsert({
-            input: {
-              projectId: project.id,
-              environmentId,
-              variables: { [variableName]: "value" },
-              skipDeploys: true,
-            },
-          });
-          const result = yield* variableDelete({
-            input: {
-              projectId: project.id,
-              environmentId,
-              name: variableName,
-            },
-          });
-          expect(result).toBe(true);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        const result = yield* variableDelete({
+          input: {
+            projectId: project.id,
+            environmentId,
+            name: variableName,
+          },
+        });
+        expect(result).toBe(true);
       }),
     );
   }, 120_000);

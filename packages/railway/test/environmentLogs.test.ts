@@ -3,44 +3,31 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { environmentLogs } from "../src/operations/environmentLogs.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("environmentLogs", () => {
   it("happy path - returns log entries for an existing environment", async () => {
-    const projectName = `distilled-railway-env-logs-${testRunId}`;
+    const project = await getSharedProject();
 
     const result = await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: { name: projectName },
+        const logs = yield* environmentLogs({
+          environmentId: project.baseEnvironmentId!,
+          beforeLimit: 50,
         });
 
-        return yield* Effect.gen(function* () {
-          const logs = yield* environmentLogs({
-            environmentId: project.baseEnvironmentId!,
-            beforeLimit: 50,
-          });
-
-          expect(Array.isArray(logs)).toBe(true);
-          for (const entry of logs) {
-            expect(typeof entry.message).toBe("string");
-            expect(typeof entry.timestamp).toBe("string");
-            expect(Array.isArray(entry.attributes)).toBe(true);
-            for (const attr of entry.attributes) {
-              expect(typeof attr.key).toBe("string");
-              expect(typeof attr.value).toBe("string");
-            }
+        expect(Array.isArray(logs)).toBe(true);
+        for (const entry of logs) {
+          expect(typeof entry.message).toBe("string");
+          expect(typeof entry.timestamp).toBe("string");
+          expect(Array.isArray(entry.attributes)).toBe(true);
+          for (const attr of entry.attributes) {
+            expect(typeof attr.key).toBe("string");
+            expect(typeof attr.value).toBe("string");
           }
-          return logs;
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        }
       }),
     );
 

@@ -2,39 +2,29 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { projectInviteCode } from "../src/operations/projectInviteCode.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectInviteCode", () => {
   it("happy path - returns an invite code for a freshly created project", async () => {
+    const project = await getSharedProject();
+
     await runEffect(
       Effect.gen(function* () {
-        const created = yield* projectCreate({
-          input: { name: `distilled-railway-invitecode-${testRunId}` },
+        const result = yield* projectInviteCode({
+          projectId: project.id,
+          role: "MEMBER",
         });
 
-        yield* Effect.gen(function* () {
-          const result = yield* projectInviteCode({
-            projectId: created.id,
-            role: "MEMBER",
-          });
-
-          expect(typeof result.id).toBe("string");
-          expect(typeof result.code).toBe("string");
-          expect(typeof result.createdAt).toBe("string");
-          expect(result.projectId).toBe(created.id);
-          expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(result.role);
-          expect(result.project.id).toBe(created.id);
-          expect(typeof result.project.name).toBe("string");
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: created.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(typeof result.id).toBe("string");
+        expect(typeof result.code).toBe("string");
+        expect(typeof result.createdAt).toBe("string");
+        expect(result.projectId).toBe(project.id);
+        expect(["ADMIN", "MEMBER", "VIEWER"]).toContain(result.role);
+        expect(result.project.id).toBe(project.id);
+        expect(typeof result.project.name).toBe("string");
       }),
     );
   }, 60_000);

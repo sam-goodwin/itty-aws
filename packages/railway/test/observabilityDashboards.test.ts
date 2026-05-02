@@ -3,41 +3,29 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
 import { observabilityDashboards } from "../src/operations/observabilityDashboards.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("observabilityDashboards", () => {
   it("happy path - lists observability dashboards for a freshly created project's base environment", async () => {
+    const project = await getSharedProject();
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
-          input: {
-            name: `distilled-railway-obs-dashboards-${testRunId}`,
-          },
+        const result = yield* observabilityDashboards({
+          environmentId: project.baseEnvironmentId,
+          first: 10,
         });
 
-        yield* Effect.gen(function* () {
-          const result = yield* observabilityDashboards({
-            environmentId: project.baseEnvironmentId,
-            first: 10,
-          });
+        expect(Array.isArray(result.edges)).toBe(true);
+        for (const edge of result.edges) {
+          expect(typeof edge.cursor).toBe("string");
+          expect(typeof edge.node.id).toBe("string");
+        }
 
-          expect(Array.isArray(result.edges)).toBe(true);
-          for (const edge of result.edges) {
-            expect(typeof edge.cursor).toBe("string");
-            expect(typeof edge.node.id).toBe("string");
-          }
-
-          expect(typeof result.pageInfo.hasNextPage).toBe("boolean");
-          expect(typeof result.pageInfo.hasPreviousPage).toBe("boolean");
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(typeof result.pageInfo.hasNextPage).toBe("boolean");
+        expect(typeof result.pageInfo.hasPreviousPage).toBe("boolean");
       }),
     );
   }, 60_000);

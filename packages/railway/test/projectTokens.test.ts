@@ -2,44 +2,34 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { projectTokens } from "../src/operations/projectTokens.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectTokens", () => {
   it("happy path - lists project tokens for a freshly created project", async () => {
+    const project = await getSharedProject();
+
     await runEffect(
       Effect.gen(function* () {
-        const created = yield* projectCreate({
-          input: { name: `distilled-railway-tokens-${testRunId}` },
+        const result = yield* projectTokens({
+          projectId: project.id,
+          first: 10,
         });
 
-        yield* Effect.gen(function* () {
-          const result = yield* projectTokens({
-            projectId: created.id,
-            first: 10,
-          });
-
-          expect(Array.isArray(result.edges)).toBe(true);
-          for (const edge of result.edges) {
-            expect(typeof edge.cursor).toBe("string");
-            expect(typeof edge.node.id).toBe("string");
-            expect(typeof edge.node.createdAt).toBe("string");
-            expect(typeof edge.node.displayToken).toBe("string");
-            expect(typeof edge.node.environmentId).toBe("string");
-            expect(typeof edge.node.name).toBe("string");
-            expect(edge.node.projectId).toBe(created.id);
-          }
-          expect(typeof result.pageInfo.hasNextPage).toBe("boolean");
-          expect(typeof result.pageInfo.hasPreviousPage).toBe("boolean");
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: created.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(Array.isArray(result.edges)).toBe(true);
+        for (const edge of result.edges) {
+          expect(typeof edge.cursor).toBe("string");
+          expect(typeof edge.node.id).toBe("string");
+          expect(typeof edge.node.createdAt).toBe("string");
+          expect(typeof edge.node.displayToken).toBe("string");
+          expect(typeof edge.node.environmentId).toBe("string");
+          expect(typeof edge.node.name).toBe("string");
+          expect(edge.node.projectId).toBe(project.id);
+        }
+        expect(typeof result.pageInfo.hasNextPage).toBe("boolean");
+        expect(typeof result.pageInfo.hasPreviousPage).toBe("boolean");
       }),
     );
   }, 60_000);

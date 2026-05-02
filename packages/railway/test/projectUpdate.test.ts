@@ -2,39 +2,27 @@ import { Effect, Layer, Redacted } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
 import { Credentials } from "../src/credentials.ts";
-import { projectCreate } from "../src/operations/projectCreate.ts";
-import { projectDelete } from "../src/operations/projectDelete.ts";
 import { projectUpdate } from "../src/operations/projectUpdate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { getSharedProject, runEffect, testRunId } from "./setup.ts";
 
 const NON_EXISTENT_UUID = "00000000-0000-0000-0000-000000000000";
 
 describe("projectUpdate", () => {
   it("happy path - updates a freshly created project's description", async () => {
-    const projectName = `distilled-railway-pu-${testRunId}`;
+    const project = await getSharedProject();
+
     const updatedDescription = `distilled updated description ${testRunId}`;
+
     await runEffect(
       Effect.gen(function* () {
-        const project = yield* projectCreate({
+        const updated = yield* projectUpdate({
+          id: project.id,
           input: {
-            name: projectName,
-            description: "distilled update test project",
+            description: updatedDescription,
           },
         });
-        return yield* Effect.gen(function* () {
-          const updated = yield* projectUpdate({
-            id: project.id,
-            input: {
-              description: updatedDescription,
-            },
-          });
-          expect(updated.id).toBe(project.id);
-          expect(updated.description).toBe(updatedDescription);
-        }).pipe(
-          Effect.ensuring(
-            projectDelete({ id: project.id }).pipe(Effect.ignore),
-          ),
-        );
+        expect(updated.id).toBe(project.id);
+        expect(updated.description).toBe(updatedDescription);
       }),
     );
   }, 120_000);
