@@ -2,13 +2,14 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesControllerList } from "../src/operations/AuthorizationResourcesControllerList.ts";
 import { AuthorizationResourcesControllerListOrganizationMembershipsForResource } from "../src/operations/AuthorizationResourcesControllerListOrganizationMembershipsForResource.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource", () => {
   it(
     "lists organization memberships for a resource",
-    async () => {
-      const list = await runEffect(
+    async (ctx) => {
+      const list = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerList({ limit: 1 }),
       );
 
@@ -29,7 +30,8 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
       }
 
       const seed = list.data[0] as { id: string };
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerListOrganizationMembershipsForResource({
           resource_id: seed.id,
           permission_slug: "users:read",

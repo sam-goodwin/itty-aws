@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationControllerListEffectivePermissions } from "../src/operations/AuthorizationControllerListEffectivePermissions.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationControllerListEffectivePermissions", () => {
   it(
     "lists effective permissions for an organization membership on a resource",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationControllerListEffectivePermissions({
           organization_membership_id: `om_${testRunId}`,
           resource_id: `resource_${testRunId}`,

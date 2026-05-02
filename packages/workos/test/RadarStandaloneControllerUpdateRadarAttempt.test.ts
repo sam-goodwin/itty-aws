@@ -2,13 +2,14 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { RadarStandaloneControllerAssess } from "../src/operations/RadarStandaloneControllerAssess.ts";
 import { RadarStandaloneControllerUpdateRadarAttempt } from "../src/operations/RadarStandaloneControllerUpdateRadarAttempt.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("RadarStandaloneControllerUpdateRadarAttempt", () => {
   it(
     "updates a Radar attempt's status",
-    async () => {
-      await runEffect(
+    async (ctx) => {
+      await runOrSkipOnEnvLimitation(
+        ctx,
         Effect.gen(function* () {
           const attempt = yield* RadarStandaloneControllerAssess({
             ip_address: "203.0.113.42",

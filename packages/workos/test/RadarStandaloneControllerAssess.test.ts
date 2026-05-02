@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { RadarStandaloneControllerAssess } from "../src/operations/RadarStandaloneControllerAssess.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("RadarStandaloneControllerAssess", () => {
   it(
     "assesses a sign-in attempt and returns a verdict",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         RadarStandaloneControllerAssess({
           ip_address: "203.0.113.42",
           user_agent:

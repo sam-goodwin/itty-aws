@@ -2,13 +2,14 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesControllerList } from "../src/operations/AuthorizationResourcesControllerList.ts";
 import { AuthorizationResourcesControllerUpdate } from "../src/operations/AuthorizationResourcesControllerUpdate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationResourcesControllerUpdate", () => {
   it(
     "updates an authorization resource",
-    async () => {
-      const list = await runEffect(
+    async (ctx) => {
+      const list = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerList({ limit: 1 }),
       );
 
@@ -25,7 +26,8 @@ describe("AuthorizationResourcesControllerUpdate", () => {
       }
 
       const seed = list.data[0] as { id: string };
-      const updated = await runEffect(
+      const updated = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerUpdate({ resource_id: seed.id }),
       );
 

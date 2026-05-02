@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationRoleAssignmentsControllerRemoveRoleById } from "../src/operations/AuthorizationRoleAssignmentsControllerRemoveRoleById.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationRoleAssignmentsControllerRemoveRoleById", () => {
   it(
     "removes a role assignment by id for an organization membership",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationRoleAssignmentsControllerRemoveRoleById({
           organization_membership_id: `om_${testRunId}`,
           role_assignment_id: `ra_${testRunId}`,

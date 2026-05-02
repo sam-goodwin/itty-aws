@@ -2,18 +2,19 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { SsoControllerLogoutAuthorize } from "../src/operations/SsoControllerLogoutAuthorize.ts";
 import { UserlandUsersControllerList } from "../src/operations/UserlandUsersControllerList.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("SsoControllerLogoutAuthorize", () => {
   it(
     "generates a logout token for a profile",
-    async () => {
+    async (ctx) => {
       const users = await runEffect(UserlandUsersControllerList({ limit: 1 }));
 
       if (users.data.length === 0) {
         // No seed user available — exercise the operation against a missing
         // profile so the call still hits the live API.
-        const error = await runEffect(
+        const error = await runOrSkipOnEnvLimitation(
+          ctx,
           SsoControllerLogoutAuthorize({
             profile_id: `prof_does_not_exist_${testRunId}`,
           }).pipe(Effect.flip),

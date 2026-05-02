@@ -63,22 +63,32 @@ const isTestEnvLimitation = (e: unknown): boolean => {
 };
 
 /**
- * Wrap a happy-path Effect so that a known test-environment limitation is
- * caught and the test is skipped with the API's message as the reason. Any
- * other error still propagates and fails the test.
+ * Run an Effect; if the resulting error matches a known test-environment
+ * limitation, skip the test (with the API's message as the reason) instead
+ * of failing it. Any other error still propagates and fails the test.
+ *
+ * Usage:
+ *   it("happy path", async (ctx) => {
+ *     const result = await runOrSkipOnEnvLimitation(ctx, Operation({...}));
+ *     // ctx.skip() aborts the test; control only reaches here on success.
+ *     expect(result).toBeDefined();
+ *   });
  */
-export const skipOnTestEnvLimitation =
-  (ctx: { skip: (reason?: string) => void }) =>
-  <A, E, R>(effect: Effect.Effect<A, E, R>): Effect.Effect<A | void, E, R> =>
-    effect.pipe(
-      Effect.catch((e) =>
-        isTestEnvLimitation(e)
-          ? Effect.sync(() => {
-              ctx.skip(
-                `test env: ${(e as { message?: string }).message ?? "fixture unavailable"}`,
-              );
-              return undefined as A | void;
-            })
-          : Effect.fail(e),
-      ),
-    );
+export const runOrSkipOnEnvLimitation = async <A, E>(
+  ctx: { skip: (reason?: string) => void },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  effect: Effect.Effect<A, E, any>,
+): Promise<A> => {
+  try {
+    return await runEffect(effect);
+  } catch (e) {
+    if (isTestEnvLimitation(e)) {
+      ctx.skip(
+        `test env: ${(e as { message?: string }).message ?? "fixture unavailable"}`,
+      );
+      // ctx.skip throws to abort — TS needs a return path.
+      throw e;
+    }
+    throw e;
+  }
+};

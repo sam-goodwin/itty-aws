@@ -2,13 +2,14 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesControllerDelete } from "../src/operations/AuthorizationResourcesControllerDelete.ts";
 import { AuthorizationResourcesControllerList } from "../src/operations/AuthorizationResourcesControllerList.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationResourcesControllerDelete", () => {
   it(
     "deletes an authorization resource",
-    async () => {
-      const list = await runEffect(
+    async (ctx) => {
+      const list = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerList({ limit: 1 }),
       );
 
@@ -25,7 +26,8 @@ describe("AuthorizationResourcesControllerDelete", () => {
       }
 
       const seed = list.data[0] as { id: string };
-      await runEffect(
+      await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerDelete({
           resource_id: seed.id,
           cascade_delete: true,

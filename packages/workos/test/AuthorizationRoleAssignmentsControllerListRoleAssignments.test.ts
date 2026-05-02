@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationRoleAssignmentsControllerListRoleAssignments } from "../src/operations/AuthorizationRoleAssignmentsControllerListRoleAssignments.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationRoleAssignmentsControllerListRoleAssignments", () => {
   it(
     "lists role assignments for an organization membership",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationRoleAssignmentsControllerListRoleAssignments({
           organization_membership_id: `om_${testRunId}`,
           limit: 10,

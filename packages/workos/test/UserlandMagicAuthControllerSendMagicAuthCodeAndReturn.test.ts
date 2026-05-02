@@ -1,14 +1,15 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { UserlandMagicAuthControllerSendMagicAuthCodeAndReturn } from "../src/operations/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("UserlandMagicAuthControllerSendMagicAuthCodeAndReturn", () => {
   it(
     "creates a magic auth code for a valid email",
-    async () => {
+    async (ctx) => {
       const email = `distilled-magic-${testRunId}@example.com`;
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         UserlandMagicAuthControllerSendMagicAuthCodeAndReturn({ email }),
       );
       expect(result).toBeDefined();

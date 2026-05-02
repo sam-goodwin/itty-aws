@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { ExternalAuthControllerCompleteLogin } from "../src/operations/ExternalAuthControllerCompleteLogin.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("ExternalAuthControllerCompleteLogin", () => {
   it(
     "completes an external authentication flow and returns a redirect_uri",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         ExternalAuthControllerCompleteLogin({
           external_auth_id: `external_auth_${testRunId}`,
           user: {

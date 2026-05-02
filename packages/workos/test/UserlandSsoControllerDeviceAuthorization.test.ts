@@ -1,15 +1,16 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { UserlandSsoControllerDeviceAuthorization } from "../src/operations/UserlandSsoControllerDeviceAuthorization.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 const clientId = process.env.WORKOS_CLIENT_ID ?? `client_test_${testRunId}`;
 
 describe("UserlandSsoControllerDeviceAuthorization", () => {
   it(
     "issues a device code and verification URL",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         UserlandSsoControllerDeviceAuthorization({
           client_id: clientId,
         }),

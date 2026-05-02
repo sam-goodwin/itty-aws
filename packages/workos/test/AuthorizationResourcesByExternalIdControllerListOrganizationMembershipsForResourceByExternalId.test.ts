@@ -3,13 +3,14 @@ import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId } from "../src/operations/AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId.ts";
 import { OrganizationsControllerCreate } from "../src/operations/OrganizationsControllerCreate.ts";
 import { OrganizationsControllerDeleteOrganization } from "../src/operations/OrganizationsControllerDeleteOrganization.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId", () => {
   it(
     "lists organization memberships for a resource by external id",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId(
           {
             organization_id: `org_${testRunId}`,

@@ -3,13 +3,14 @@ import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesByExternalIdControllerUpdateByExternalId } from "../src/operations/AuthorizationResourcesByExternalIdControllerUpdateByExternalId.ts";
 import { OrganizationsControllerCreate } from "../src/operations/OrganizationsControllerCreate.ts";
 import { OrganizationsControllerDeleteOrganization } from "../src/operations/OrganizationsControllerDeleteOrganization.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () => {
   it(
     "updates an authorization resource by external id",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesByExternalIdControllerUpdateByExternalId({
           organization_id: `org_${testRunId}`,
           resource_type_slug: "workspace",

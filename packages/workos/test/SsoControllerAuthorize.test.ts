@@ -1,15 +1,16 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { SsoControllerAuthorize } from "../src/operations/SsoControllerAuthorize.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 const clientId = process.env.WORKOS_CLIENT_ID ?? `client_test_${testRunId}`;
 
 describe("SsoControllerAuthorize", () => {
   it(
     "initiates the SSO flow and returns an authorization url",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         SsoControllerAuthorize({
           client_id: clientId,
           redirect_uri: "https://example.com/callback",

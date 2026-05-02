@@ -1,17 +1,18 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { UserlandSsoControllerAuthorize } from "../src/operations/UserlandSsoControllerAuthorize.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 const clientId = process.env.WORKOS_CLIENT_ID ?? `client_test_${testRunId}`;
 
 describe("UserlandSsoControllerAuthorize", () => {
   it(
     "initiates the user management authorization flow",
-    async () => {
+    async (ctx) => {
       // The endpoint normally responds with a redirect; the SDK's output
       // schema is Void, so a successful call simply resolves without error.
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         UserlandSsoControllerAuthorize({
           client_id: clientId,
           redirect_uri: "https://example.com/callback",

@@ -2,14 +2,15 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { RadarStandaloneControllerDeleteRadarListEntry } from "../src/operations/RadarStandaloneControllerDeleteRadarListEntry.ts";
 import { RadarStandaloneControllerUpdateRadarList } from "../src/operations/RadarStandaloneControllerUpdateRadarList.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("RadarStandaloneControllerUpdateRadarList", () => {
   it(
     "adds an email entry to a Radar block list",
-    async () => {
+    async (ctx) => {
       const entry = `distilled-radar-list-${testRunId}@example.com`;
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         RadarStandaloneControllerUpdateRadarList({
           type: "email",
           action: "block",

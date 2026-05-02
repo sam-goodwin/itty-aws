@@ -2,14 +2,15 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { UserlandMagicAuthControllerGet } from "../src/operations/UserlandMagicAuthControllerGet.ts";
 import { UserlandMagicAuthControllerSendMagicAuthCodeAndReturn } from "../src/operations/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("UserlandMagicAuthControllerGet", () => {
   it(
     "fetches a magic auth code by id",
-    async () => {
+    async (ctx) => {
       const email = `distilled-magic-get-${testRunId}@example.com`;
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         Effect.gen(function* () {
           const created =
             yield* UserlandMagicAuthControllerSendMagicAuthCodeAndReturn({

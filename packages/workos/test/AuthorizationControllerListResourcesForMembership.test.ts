@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationControllerListResourcesForMembership } from "../src/operations/AuthorizationControllerListResourcesForMembership.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationControllerListResourcesForMembership", () => {
   it(
     "lists resources for an organization membership",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationControllerListResourcesForMembership({
           organization_membership_id: `om_${testRunId}`,
           permission_slug: "read",

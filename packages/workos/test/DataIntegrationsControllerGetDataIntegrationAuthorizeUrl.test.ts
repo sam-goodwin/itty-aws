@@ -2,18 +2,19 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { DataIntegrationsControllerGetDataIntegrationAuthorizeUrl } from "../src/operations/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl.ts";
 import { UserlandUsersControllerList } from "../src/operations/UserlandUsersControllerList.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("DataIntegrationsControllerGetDataIntegrationAuthorizeUrl", () => {
   it(
     "returns an authorization URL for a provider",
-    async () => {
+    async (ctx) => {
       const users = await runEffect(UserlandUsersControllerList({ limit: 1 }));
 
       if (users.data.length === 0) {
         // No seed user available — exercise the operation against a missing
         // user so the call still hits the live API.
-        const error = await runEffect(
+        const error = await runOrSkipOnEnvLimitation(
+          ctx,
           DataIntegrationsControllerGetDataIntegrationAuthorizeUrl({
             slug: "github",
             user_id: `user_does_not_exist_${testRunId}`,

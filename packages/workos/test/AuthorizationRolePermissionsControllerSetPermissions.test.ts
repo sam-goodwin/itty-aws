@@ -2,23 +2,25 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationRolePermissionsControllerSetPermissions } from "../src/operations/AuthorizationRolePermissionsControllerSetPermissions.ts";
 import { AuthorizationRolesControllerCreate } from "../src/operations/AuthorizationRolesControllerCreate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, testRunId, runOrSkipOnEnvLimitation } from "./setup.ts";
 
 describe("AuthorizationRolePermissionsControllerSetPermissions", () => {
   it(
     "replaces the permissions on an environment role",
-    async () => {
+    async (ctx) => {
       const slug = `role_setperms_${testRunId}`;
 
       // Seed: create the role.
-      await runEffect(
+      await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationRolesControllerCreate({
           slug,
           name: `Set Permissions Seed ${testRunId}`,
         }),
       );
 
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationRolePermissionsControllerSetPermissions({
           slug,
           permissions: ["users:read"],
