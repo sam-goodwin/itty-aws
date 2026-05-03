@@ -1,23 +1,22 @@
-import * as Effect from "effect/Effect";
-import * as Layer from "effect/Layer";
-import * as Context from "effect/Context";
+/**
+ * gcp retry configuration.
+ *
+ * Re-exports the shared `Retry` Context.Service from `@distilled.cloud/core`
+ * so a blanket retry policy installed at the layer level covers every
+ * gcp API call below it.
+ */
 export {
   type Options,
   type Factory,
   type Policy,
+  Retry,
   makeDefault,
   jittered,
   capped,
   throttlingOptions,
   transientOptions,
+  policy,
+  none,
+  throttling,
+  transient,
 } from "@distilled.cloud/core/retry";
-import type { Policy } from "@distilled.cloud/core/retry";
-
-export class Retry extends Context.Service<Retry, Policy>()("GCPRetry") {}
-
-export const policy = (optionsOrFactory: Policy) =>
-  Effect.provide(Layer.succeed(Retry, optionsOrFactory));
-
-export const none = Effect.provide(
-  Layer.succeed(Retry, { while: () => false }),
-);

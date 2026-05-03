@@ -55,40 +55,54 @@ export type Factory = (lastError: Ref.Ref<unknown>) => Options;
 export type Policy = Options | Factory;
 
 // ============================================================================
-// Retry Service Factory
+// Shared Retry Service
 // ============================================================================
 
 /**
- * Create a typed Retry service class for an SDK.
- * Each SDK should create its own Retry service using this factory.
+ * Shared `Retry` Context.Service consumed by `@distilled.cloud/core/client`'s
+ * `makeAPI`. Every SDK that goes through the shared client (cloudflare,
+ * turso, planetscale, neon, stripe, kubernetes, axiom, posthog, gcp, ...)
+ * reads its retry policy from this single tag, so an `Effect.provide`
+ * (or `Layer.succeed`) at any layer covers every API call below it.
  *
  * @example
  * ```ts
- * // In planetscale-sdk/src/retry.ts
- * export class Retry extends makeRetryService("PlanetScaleRetry") {}
+ * import * as Retry from "@distilled.cloud/core/retry";
+ *
+ * myEffect.pipe(Retry.transient);
+ * Effect.provide(myEffect, Layer.succeed(Retry.Retry, customPolicy));
  * ```
  */
-export const makeRetryService = (name: string) =>
-  Context.Service<any, Policy>()(name);
+export class Retry extends Context.Service<Retry, Policy>()(
+  "@distilled.cloud/core/Retry",
+) {}
 
 /**
- * Provides a custom retry policy for API calls.
+ * Provides a custom retry policy to every API call below it.
  */
-export const policy =
-  (Service: any, optionsOrFactory: Policy) =>
-  <A, E, R>(effect: Effect.Effect<A, E, R>) =>
-    Effect.provide(effect, Layer.succeed(Service, optionsOrFactory) as any);
+export const policy = (optionsOrFactory: Policy) =>
+  Effect.provide(Layer.succeed(Retry, optionsOrFactory));
 
 /**
  * Disables all automatic retries.
  */
-export const none =
-  (Service: any) =>
-  <A, E, R>(effect: Effect.Effect<A, E, R>) =>
-    Effect.provide(
-      effect,
-      Layer.succeed(Service, { while: () => false }) as any,
-    );
+export const none = Effect.provide(
+  Layer.succeed(Retry, { while: () => false }),
+);
+
+// ============================================================================
+// Legacy Retry Service Factory (deprecated)
+// ============================================================================
+
+/**
+ * @deprecated Use the shared `Retry` Context.Service exported from this
+ * module. Per-SDK Retry tags are no longer wired into core's `makeAPI`;
+ * keeping a separate tag per SDK means the policy isn't actually consumed.
+ * SDK retry modules should re-export `{ Retry, policy, none, throttling,
+ * transient }` from `@distilled.cloud/core/retry` directly.
+ */
+export const makeRetryService = (name: string) =>
+  Context.Service<any, Policy>()(name);
 
 // ============================================================================
 // Retry Schedule Utilities
@@ -175,3 +189,9 @@ export const transientOptions: Options = {
     jittered,
   ),
 };
+
+/** Apply the throttling retry policy (retries throttling errors indefinitely). */
+export const throttling = policy(throttlingOptions);
+
+/** Apply the transient retry policy (retries all transient errors indefinitely). */
+export const transient = policy(transientOptions);

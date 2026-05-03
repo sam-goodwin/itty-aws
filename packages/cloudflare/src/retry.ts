@@ -1,35 +1,30 @@
-import * as Effect from "effect/Effect";
-import * as Layer from "effect/Layer";
-import * as Context from "effect/Context";
+/**
+ * Cloudflare retry configuration.
+ *
+ * Re-exports the shared `Retry` Context.Service from `@distilled.cloud/core`
+ * so callers can install a blanket retry policy that covers every Cloudflare
+ * API call below the layer:
+ *
+ * @example
+ * ```ts
+ * import * as Cloudflare from "@distilled.cloud/cloudflare";
+ *
+ * myEffect.pipe(Cloudflare.Retry.transient);
+ * Effect.provide(myEffect, Layer.succeed(Cloudflare.Retry.Retry, customPolicy));
+ * ```
+ */
 export {
   type Options,
   type Factory,
   type Policy,
+  Retry,
   makeDefault,
   jittered,
   capped,
   throttlingOptions,
   transientOptions,
+  policy,
+  none,
+  throttling,
+  transient,
 } from "@distilled.cloud/core/retry";
-import {
-  type Policy,
-  throttlingOptions,
-  transientOptions,
-} from "@distilled.cloud/core/retry";
-
-export class Retry extends Context.Service<Retry, Policy>()(
-  "CloudflareRetry",
-) {}
-
-export const policy = (optionsOrFactory: Policy) =>
-  Effect.provide(Layer.succeed(Retry, optionsOrFactory));
-
-export const none = Effect.provide(
-  Layer.succeed(Retry, { while: () => false }),
-);
-
-/** Apply throttling retry policy (retries throttling errors indefinitely) */
-export const throttling = policy(throttlingOptions);
-
-/** Apply transient retry policy (retries all transient errors indefinitely) */
-export const transient = policy(transientOptions);

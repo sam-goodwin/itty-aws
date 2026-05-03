@@ -25,15 +25,12 @@
  * const result = yield* fn({ organization: "my-org" });
  * ```
  */
-import * as Context from "effect/Context";
-import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import { pipe } from "effect/Function";
 import * as Option from "effect/Option";
 import { pipeArguments } from "effect/Pipeable";
 import { MinimumLogLevel } from "effect/References";
 import * as Ref from "effect/Ref";
-import * as Schedule from "effect/Schedule";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
@@ -49,8 +46,7 @@ import {
   type PaginatedTrait,
   type PaginationStrategy,
 } from "./pagination.ts";
-import * as Category from "./category.ts";
-import { makeDefault, type Policy as RetryPolicy } from "./retry.ts";
+import { makeDefault, Retry } from "./retry.ts";
 import * as Traits from "./traits.ts";
 import { getPath } from "./traits.ts";
 
@@ -174,17 +170,6 @@ export interface ClientConfig<Creds> {
     pathTemplate: string;
     parts: Traits.RequestParts;
   }) => Traits.RequestParts;
-
-  /**
-   * Optional `Retry` Context.Service tag for this SDK. When provided, every
-   * operation reads the policy via `Effect.serviceOption(retry)` and falls
-   * back to `Retry.makeDefault` if no policy is provided. This lets callers
-   * apply a blanket retry policy (e.g. `Effect.provide(Layer.succeed(Retry,
-   * customPolicy))`) instead of wrapping every call site with
-   * `Effect.retry(...)`. When omitted, only the legacy hard-coded
-   * throttling-only retry runs.
-   */
-  retry?: Context.Key<any, RetryPolicy>;
 }
 
 /**
@@ -423,19 +408,6 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       }
 
       const method = httpTrait.method;
-
-      // Capped exponential backoff bounded to 8 attempts so a
-      // pathologically rate-limited endpoint can't hang a test run.
-      // Effect 4's `Schedule.exponential(base, factor)` already produces
-      // delays of base, base*factor, base*factor^2, ...; combined with
-      // `Schedule.both(Schedule.recurs(8))` to cap retries. We don't
-      // currently honour Retry-After (would require a per-attempt Ref);
-      // the exponential ramp is conservative enough for the rate limits
-      // we hit in practice.
-      const throttlingRetrySchedule = Schedule.both(
-        Schedule.exponential(Duration.seconds(1), 2),
-        Schedule.recurs(8),
-      );
 
       const spanName = `${method} ${httpTrait.path}`;
 
@@ -713,43 +685,36 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           );
         });
 
-      // Auto-retry on every operation. When the SDK passes a `retry`
-      // Context.Service tag, we read the policy from context (with
-      // `Retry.makeDefault` as a fallback) so callers can install a
-      // blanket retry policy at the layer level — same pattern as
-      // `packages/aws`. When no `retry` tag is configured, fall back to
-      // the legacy hard-coded throttling-only schedule for backward
-      // compatibility with SDKs that haven't opted in yet.
+      // Auto-retry every operation using the shared `Retry` Context.Service.
+      // The policy is read with `Effect.serviceOption(Retry)` and falls back
+      // to `Retry.makeDefault` (transient/throttling/server errors with
+      // capped exponential backoff + jitter, 5 attempts) when no policy has
+      // been provided. This mirrors the AWS pattern in
+      // `packages/aws/src/client/api.ts` and lets callers install a blanket
+      // policy at the layer level instead of wrapping every call site with
+      // `Effect.retry(...)`.
       const fn = (input: Input): Effect.Effect<any, any, any> => {
-        const withRetry = config.retry
-          ? Effect.gen(function* () {
-              const lastError = yield* Ref.make<unknown>(undefined);
-              const retryTag = config.retry!;
-              const policy = (yield* Effect.serviceOption(retryTag)).pipe(
-                Option.map((value) =>
-                  typeof value === "function" ? value(lastError) : value,
-                ),
-                Option.getOrElse(() => makeDefault(lastError)),
-              );
+        const withRetry = Effect.gen(function* () {
+          const lastError = yield* Ref.make<unknown>(undefined);
+          const policy = (yield* Effect.serviceOption(Retry)).pipe(
+            Option.map((value) =>
+              typeof value === "function" ? value(lastError) : value,
+            ),
+            Option.getOrElse(() => makeDefault(lastError)),
+          );
 
-              return yield* pipe(
-                innerFn(input),
-                Effect.tapError((error) => Ref.set(lastError, error)),
-                policy.while
-                  ? (eff) =>
-                      Effect.retry(eff, {
-                        while: policy.while,
-                        schedule: policy.schedule,
-                      })
-                  : (eff) => eff,
-              );
-            })
-          : innerFn(input).pipe(
-              Effect.retry({
-                schedule: throttlingRetrySchedule,
-                while: (e) => Category.isThrottling(e),
-              }),
-            );
+          return yield* pipe(
+            innerFn(input),
+            Effect.tapError((error) => Ref.set(lastError, error)),
+            policy.while
+              ? (eff) =>
+                  Effect.retry(eff, {
+                    while: policy.while,
+                    schedule: policy.schedule,
+                  })
+              : (eff) => eff,
+          );
+        });
 
         const withSpan = withRetry.pipe(
           Effect.withSpan(spanName, {

@@ -1,35 +1,22 @@
 /**
- * Supabase retry configuration.
+ * supabase retry configuration.
+ *
+ * Re-exports the shared `Retry` Context.Service from `@distilled.cloud/core`
+ * so a blanket retry policy installed at the layer level covers every
+ * supabase API call below it.
  */
-import * as Effect from "effect/Effect";
-import * as Layer from "effect/Layer";
-import * as Context from "effect/Context";
 export {
   type Options,
   type Factory,
   type Policy,
+  Retry,
   makeDefault,
   jittered,
   capped,
   throttlingOptions,
   transientOptions,
+  policy,
+  none,
+  throttling,
+  transient,
 } from "@distilled.cloud/core/retry";
-import type { Policy } from "@distilled.cloud/core/retry";
-
-/**
- * Context tag for configuring retry behavior of Supabase API calls.
- */
-export class Retry extends Context.Service<Retry, Policy>()("SupabaseRetry") {}
-
-/**
- * Provides a custom retry policy to all Supabase API calls.
- */
-export const policy = (optionsOrFactory: Policy) =>
-  Effect.provide(Layer.succeed(Retry, optionsOrFactory));
-
-/**
- * Disables all automatic retries.
- */
-export const none = Effect.provide(
-  Layer.succeed(Retry, { while: () => false }),
-);
