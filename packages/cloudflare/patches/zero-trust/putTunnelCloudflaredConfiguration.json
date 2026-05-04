@@ -1,5 +1,15 @@
 {
   "errors": {
     "TunnelNotFound": [{ "code": 1002 }]
+  },
+  "request": {
+    "properties": {
+      "config.ingress[].hostname": { "optional": true }
+    }
+  },
+  "response": {
+    "properties": {
+      "config.ingress[].hostname": { "optional": true }
+    }
   }
 }
