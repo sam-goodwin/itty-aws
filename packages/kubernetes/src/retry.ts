@@ -35,7 +35,9 @@ export {
 } from "@distilled.cloud/core/retry";
 
 /** Context tag for configuring retry behavior of Kubernetes API calls. */
-export class Retry extends Context.Service<Retry, Policy>()("KubernetesRetry") {}
+export class Retry extends Context.Service<Retry, Policy>()(
+  "KubernetesRetry",
+) {}
 
 /** Provides a custom retry policy to every Kubernetes API call below it. */
 export const policy = (optionsOrFactory: Policy) =>

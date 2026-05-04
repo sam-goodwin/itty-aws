@@ -35,7 +35,9 @@ export {
 } from "@distilled.cloud/core/retry";
 
 /** Context tag for configuring retry behavior of PlanetScale API calls. */
-export class Retry extends Context.Service<Retry, Policy>()("PlanetScaleRetry") {}
+export class Retry extends Context.Service<Retry, Policy>()(
+  "PlanetScaleRetry",
+) {}
 
 /** Provides a custom retry policy to every PlanetScale API call below it. */
 export const policy = (optionsOrFactory: Policy) =>

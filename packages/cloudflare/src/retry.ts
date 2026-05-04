@@ -35,7 +35,9 @@ export {
 } from "@distilled.cloud/core/retry";
 
 /** Context tag for configuring retry behavior of Cloudflare API calls. */
-export class Retry extends Context.Service<Retry, Policy>()("CloudflareRetry") {}
+export class Retry extends Context.Service<Retry, Policy>()(
+  "CloudflareRetry",
+) {}
 
 /** Provides a custom retry policy to every Cloudflare API call below it. */
 export const policy = (optionsOrFactory: Policy) =>

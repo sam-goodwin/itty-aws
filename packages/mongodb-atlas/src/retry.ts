@@ -35,7 +35,9 @@ export {
 } from "@distilled.cloud/core/retry";
 
 /** Context tag for configuring retry behavior of MongoDBAtlas API calls. */
-export class Retry extends Context.Service<Retry, Policy>()("MongoDBAtlasRetry") {}
+export class Retry extends Context.Service<Retry, Policy>()(
+  "MongoDBAtlasRetry",
+) {}
 
 /** Provides a custom retry policy to every MongoDBAtlas API call below it. */
 export const policy = (optionsOrFactory: Policy) =>

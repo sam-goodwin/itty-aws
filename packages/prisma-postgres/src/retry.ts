@@ -35,7 +35,9 @@ export {
 } from "@distilled.cloud/core/retry";
 
 /** Context tag for configuring retry behavior of PrismaPostgres API calls. */
-export class Retry extends Context.Service<Retry, Policy>()("PrismaPostgresRetry") {}
+export class Retry extends Context.Service<Retry, Policy>()(
+  "PrismaPostgresRetry",
+) {}
 
 /** Provides a custom retry policy to every PrismaPostgres API call below it. */
 export const policy = (optionsOrFactory: Policy) =>
