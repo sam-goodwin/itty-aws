@@ -43,6 +43,11 @@
       "bun": "./src/retry.ts",
       "default": "./lib/retry.js"
     },
+    "./retry-after": {
+      "types": "./lib/retry-after.d.ts",
+      "bun": "./src/retry-after.ts",
+      "default": "./lib/retry-after.js"
+    },
     "./sensitive": {
       "types": "./lib/sensitive.d.ts",
       "bun": "./src/sensitive.ts",

@@ -5,8 +5,26 @@
  * using the category system. This module provides base error types and utilities
  * that are used across all SDKs.
  */
+import * as Duration from "effect/Duration";
 import * as Schema from "effect/Schema";
 import * as Category from "./category.ts";
+
+// ============================================================================
+// Shared Schema Helpers
+// ============================================================================
+
+/**
+ * Opaque schema for an Effect `Duration.Duration` value.
+ *
+ * Used on retryable errors to carry a server-provided wait hint (e.g. parsed
+ * from `Retry-After` or the IETF `Ratelimit` header). Core does not encode/decode
+ * this field over the wire — it is constructed at runtime by `matchError` from
+ * whatever the service actually returns (delay-seconds, HTTP-date, epoch, etc.)
+ * and consumed at runtime by the retry policy.
+ */
+export const DurationSchema = Schema.declare<Duration.Duration>(
+  Duration.isDuration,
+);
 
 // ============================================================================
 // Common HTTP Status Error Classes
@@ -63,7 +81,10 @@ export class UnprocessableEntity extends Schema.TaggedErrorClass<UnprocessableEn
  */
 export class TooManyRequests extends Schema.TaggedErrorClass<TooManyRequests>()(
   "TooManyRequests",
-  { message: Schema.String },
+  {
+    message: Schema.String,
+    retryAfter: Schema.optional(DurationSchema),
+  },
 ).pipe(
   Category.withThrottlingError,
   Category.withRetryable({ throttling: true }),
@@ -74,6 +95,7 @@ export class TooManyRequests extends Schema.TaggedErrorClass<TooManyRequests>()(
  */
 export class Locked extends Schema.TaggedErrorClass<Locked>()("Locked", {
   message: Schema.String,
+  retryAfter: Schema.optional(DurationSchema),
 }).pipe(Category.withLockedError, Category.withRetryable()) {}
 
 /**
@@ -81,7 +103,10 @@ export class Locked extends Schema.TaggedErrorClass<Locked>()("Locked", {
  */
 export class InternalServerError extends Schema.TaggedErrorClass<InternalServerError>()(
   "InternalServerError",
-  { message: Schema.String },
+  {
+    message: Schema.String,
+    retryAfter: Schema.optional(DurationSchema),
+  },
 ).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**
@@ -89,7 +114,10 @@ export class InternalServerError extends Schema.TaggedErrorClass<InternalServerE
  */
 export class BadGateway extends Schema.TaggedErrorClass<BadGateway>()(
   "BadGateway",
-  { message: Schema.String },
+  {
+    message: Schema.String,
+    retryAfter: Schema.optional(DurationSchema),
+  },
 ).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**
@@ -97,7 +125,10 @@ export class BadGateway extends Schema.TaggedErrorClass<BadGateway>()(
  */
 export class ServiceUnavailable extends Schema.TaggedErrorClass<ServiceUnavailable>()(
   "ServiceUnavailable",
-  { message: Schema.String },
+  {
+    message: Schema.String,
+    retryAfter: Schema.optional(DurationSchema),
+  },
 ).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**
@@ -105,7 +136,10 @@ export class ServiceUnavailable extends Schema.TaggedErrorClass<ServiceUnavailab
  */
 export class GatewayTimeout extends Schema.TaggedErrorClass<GatewayTimeout>()(
   "GatewayTimeout",
-  { message: Schema.String },
+  {
+    message: Schema.String,
+    retryAfter: Schema.optional(DurationSchema),
+  },
 ).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**

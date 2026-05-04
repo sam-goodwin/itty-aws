@@ -13,6 +13,7 @@ import {
   type OperationMethod,
   type PaginatedOperationMethod,
 } from "@distilled.cloud/core/client";
+import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
 import {
   HTTP_STATUS_MAP,
   UnknownKubernetesError,
@@ -62,12 +63,19 @@ const ApiErrorResponse = Schema.Struct({
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
     const ErrorClass = (HTTP_STATUS_MAP as any)[status];
     if (ErrorClass) {
-      return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
+      return Effect.fail(
+        new ErrorClass({
+          message: parsed.message ?? "",
+          retryAfter: parseServerRetryHint(headers),
+        }),
+      );
     }
     return Effect.fail(
       new UnknownKubernetesError({

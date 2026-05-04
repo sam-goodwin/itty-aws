@@ -322,6 +322,7 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   lines.push('import * as API from "../client/api.ts";');
   lines.push('import * as T from "../traits.ts";');
   lines.push("__CATEGORY_IMPORT__");
+  lines.push("__DURATION_SCHEMA_IMPORT__");
   lines.push('import type { Credentials } from "../credentials.ts";');
   lines.push('import type { DefaultErrors } from "../errors.ts";');
   lines.push('import type * as HttpClient from "effect/unstable/http/HttpClient";');
@@ -459,6 +460,16 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
     code = code.replace("__CATEGORY_IMPORT__", 'import * as C from "../category.ts";');
   } else {
     code = code.replace("__CATEGORY_IMPORT__\n", "");
+  }
+  // Only include the DurationSchema import if any retryable error class
+  // declares a `retryAfter` field.
+  if (code.includes("DurationSchema")) {
+    code = code.replace(
+      "__DURATION_SCHEMA_IMPORT__",
+      'import { DurationSchema } from "@distilled.cloud/core/errors";',
+    );
+  } else {
+    code = code.replace("__DURATION_SCHEMA_IMPORT__\n", "");
   }
   return code;
 }
@@ -698,6 +709,19 @@ function schemaTypeToSchemaExpr(schema: SchemaObject): string {
 // Error Generation
 // =============================================================================
 
+/**
+ * Categories that imply the error carries a server-provided retry hint
+ * (parsed from `Retry-After` / `RateLimit` headers). Errors in any of these
+ * categories get an extra `retryAfter: Schema.optional(DurationSchema)` field
+ * in their generated schema so SDK code can populate it from headers or body.
+ */
+const RETRYABLE_CATEGORIES = new Set([
+  "Retryable",
+  "ThrottlingError",
+  "ServerError",
+  "LockedError",
+]);
+
 function generateErrorClass(
   tag: string,
   matchers: ErrorMatcher[],
@@ -705,6 +729,7 @@ function generateErrorClass(
 ): string[] {
   const lines: string[] = [];
   const safeTag = safeIdentifier(tag);
+  const isRetryable = !!categories?.some((c) => RETRYABLE_CATEGORIES.has(c));
 
   lines.push(
     `export class ${safeTag} extends Schema.TaggedErrorClass<${safeTag}>()(`,
@@ -716,6 +741,9 @@ function generateErrorClass(
   lines.push(`    status: Schema.optional(Schema.String),`);
   lines.push(`    reason: Schema.optional(Schema.String),`);
   lines.push(`    domain: Schema.optional(Schema.String),`);
+  if (isRetryable) {
+    lines.push(`    retryAfter: Schema.optional(DurationSchema),`);
+  }
   lines.push(`  },`);
   lines.push(`) {}`);
 

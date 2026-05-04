@@ -409,6 +409,12 @@ This is a BUG in the SDK, not expected behavior. Your job is to FIX it.
      if (status === 401) return new Unauthorized({ ... });
      if (status === 403) return new Forbidden({ ... });
      \`\`\`
+   - **Preserve the \`headers\` parameter** on \`matchError\` and pass
+     \`retryAfter: parseServerRetryHint(headers)\` into any retryable error
+     constructor (TooManyRequests/429, Locked/423, InternalServerError/500,
+     BadGateway/502, ServiceUnavailable/503, GatewayTimeout/504, or any class
+     categorized retryable). Import: \`import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";\`
+     This lets the retry policy honor server-provided wait hints.
 
 4. **OR create a patch** if the error is operation-specific:
    - For OpenAPI SDKs: add a JSON Patch entry to \`patches/*.patch.json\`

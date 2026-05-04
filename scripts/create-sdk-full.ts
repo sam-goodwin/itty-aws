@@ -11,6 +11,15 @@
  * Each stage runs as its own subprocess so the Claude Agent SDK session is
  * isolated. Output streams to the terminal live.
  *
+ * Notes on built-in behaviors that the scaffold wires automatically:
+ *   - Per-SDK `Retry` Context.Service tag installed into `makeAPI`, so callers
+ *     can install a blanket retry policy at the layer level.
+ *   - The scaffolded `matchError` parses standard `Retry-After` / `RateLimit`
+ *     headers via `parseServerRetryHint` and attaches the resulting `Duration`
+ *     to retryable errors. The retry policy honors that hint with precedence
+ *     over the default exponential backoff. To override per-service (bespoke
+ *     headers, body fields), edit `matchError` in the SDK's `client.ts`.
+ *
  * Usage:
  *   bun scripts/create-sdk-full.ts <name> --specs <url-or-repo>... [flags]
  *

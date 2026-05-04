@@ -19,8 +19,8 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import {
   type Policy,
-  throttlingOptions,
-  transientOptions,
+  throttlingFactory,
+  transientFactory,
 } from "@distilled.cloud/core/retry";
 
 export {
@@ -32,6 +32,8 @@ export {
   capped,
   throttlingOptions,
   transientOptions,
+  throttlingFactory,
+  transientFactory,
 } from "@distilled.cloud/core/retry";
 
 /** Context tag for configuring retry behavior of Cloudflare API calls. */
@@ -49,7 +51,7 @@ export const none = Effect.provide(
 );
 
 /** Apply the throttling retry policy (retries throttling errors indefinitely). */
-export const throttling = policy(throttlingOptions);
+export const throttling = policy(throttlingFactory);
 
 /** Apply the transient retry policy (retries all transient errors indefinitely). */
-export const transient = policy(transientOptions);
+export const transient = policy(transientFactory);

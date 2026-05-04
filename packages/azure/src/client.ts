@@ -23,6 +23,7 @@ import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
 import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
@@ -70,6 +71,8 @@ const FlatErrorResponse = Schema.Struct({
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   // Try the ARM envelope format first: { error: { code, message } }
   try {
@@ -91,7 +94,12 @@ const matchError = (
     // Fall back to standard HTTP status errors
     const CoreErrorClass = (HTTP_STATUS_MAP as any)[status];
     if (CoreErrorClass) {
-      return Effect.fail(new CoreErrorClass({ message: err.message ?? "" }));
+      return Effect.fail(
+        new CoreErrorClass({
+          message: err.message ?? "",
+          retryAfter: parseServerRetryHint(headers),
+        }),
+      );
     }
 
     return Effect.fail(
@@ -108,7 +116,12 @@ const matchError = (
       const parsed = Schema.decodeUnknownSync(FlatErrorResponse)(errorBody);
       const ErrorClass = (HTTP_STATUS_MAP as any)[status];
       if (ErrorClass) {
-        return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
+        return Effect.fail(
+          new ErrorClass({
+            message: parsed.message ?? "",
+            retryAfter: parseServerRetryHint(headers),
+          }),
+        );
       }
       return Effect.fail(
         new UnknownAzureError({

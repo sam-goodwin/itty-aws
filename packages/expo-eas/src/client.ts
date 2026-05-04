@@ -23,6 +23,7 @@ import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
 import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
@@ -73,6 +74,8 @@ const decodeRest = Schema.decodeUnknownOption(RestErrorResponse);
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   // Try GraphQL envelope first — works for both HTTP 200 with errors[] and
   // HTTP 400 responses returned by the GraphQL gateway.
@@ -90,10 +93,18 @@ const matchError = (
     }
 
     const StatusClass = (HTTP_STATUS_MAP as Record<number, unknown>)[status] as
-      | (new (args: { message: string }) => unknown)
+      | (new (args: {
+          message: string;
+          retryAfter?: ReturnType<typeof parseServerRetryHint>;
+        }) => unknown)
       | undefined;
     if (StatusClass && status >= 400) {
-      return Effect.fail(new StatusClass({ message }) as never);
+      return Effect.fail(
+        new StatusClass({
+          message,
+          retryAfter: parseServerRetryHint(headers),
+        }) as never,
+      );
     }
 
     return Effect.fail(
@@ -109,11 +120,17 @@ const matchError = (
   const rest = decodeRest(errorBody);
   if (rest._tag === "Some") {
     const StatusClass = (HTTP_STATUS_MAP as Record<number, unknown>)[status] as
-      | (new (args: { message: string }) => unknown)
+      | (new (args: {
+          message: string;
+          retryAfter?: ReturnType<typeof parseServerRetryHint>;
+        }) => unknown)
       | undefined;
     if (StatusClass) {
       return Effect.fail(
-        new StatusClass({ message: rest.value.message ?? "" }) as never,
+        new StatusClass({
+          message: rest.value.message ?? "",
+          retryAfter: parseServerRetryHint(headers),
+        }) as never,
       );
     }
     return Effect.fail(

@@ -145,11 +145,16 @@ export interface ClientConfig<Creds> {
    *  Should return Effect.fail(error) for known errors,
    *  or Effect.fail(fallbackError) for unknown errors.
    *  The optional `errors` parameter provides per-operation typed error classes.
+   *  The optional `headers` parameter is the response header bag (lowercase
+   *  keys) — implementations should use `parseServerRetryHint(headers)` from
+   *  `@distilled.cloud/core/retry-after` to populate `retryAfter` on
+   *  retryable errors so the retry policy can honor server hints.
    */
   matchError: (
     status: number,
     body: unknown,
     errors?: readonly ApiErrorClass[],
+    headers?: Record<string, string | undefined>,
   ) => Effect.Effect<never, unknown>;
 
   /** Parse error class for schema decode failures */
@@ -606,6 +611,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               response.status,
               errorBody,
               opConfig.errors,
+              response.headers,
             );
           }
 
@@ -654,6 +660,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
                 response.status,
                 envelope,
                 opConfig.errors,
+                response.headers,
               );
             }
             responseBody = envelope?.data ?? null;

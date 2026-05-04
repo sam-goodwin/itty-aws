@@ -21,6 +21,7 @@ import {
   paginateWithDefaults,
   type PaginationStrategy,
 } from "@distilled.cloud/core/pagination";
+import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
 import { getPath, type RequestParts } from "@distilled.cloud/core/traits";
 import {
   CloudflareHttpError,
@@ -43,9 +44,13 @@ import { type ErrorMatcher, getErrorMatchers } from "../traits.ts";
  * Cloudflare error codes that map to global/default errors regardless of operation.
  * These are infrastructure-level errors that can occur on any endpoint.
  */
-const GLOBAL_ERROR_CODE_MAP: Record<number, (message: string) => unknown> = {
+const GLOBAL_ERROR_CODE_MAP: Record<
+  number,
+  (message: string, headers?: Record<string, string | undefined>) => unknown
+> = {
   // "Please wait and consider throttling your request speed"
-  971: (message) => new TooManyRequests({ message }),
+  971: (message, headers) =>
+    new TooManyRequests({ message, retryAfter: parseServerRetryHint(headers) }),
   // Authentication-related error codes — surfaced regardless of HTTP status
   // (Cloudflare frequently returns these inside a 400 envelope rather than 401).
   // 6003: Invalid request headers (e.g. missing/invalid auth headers)
@@ -69,17 +74,30 @@ const GLOBAL_ERROR_CODE_MAP: Record<number, (message: string) => unknown> = {
  * returns the properly categorized error (with retry categories for 5xx).
  * For unmapped 5xx codes (e.g., Cloudflare-specific 520-530), returns a
  * CloudflareHttpError so the status is preserved.
+ *
+ * Retryable errors carry an optional `retryAfter` parsed from the standard
+ * `Retry-After` / `RateLimit` response headers; the retry policy honors it.
  */
-function httpStatusError(status: number, body?: string): unknown {
+function httpStatusError(
+  status: number,
+  body?: string,
+  headers?: Record<string, string | undefined>,
+): unknown {
   const ErrorClass = HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
   const message = body ?? String(status);
   if (ErrorClass) {
-    return new ErrorClass({ message });
+    return new ErrorClass({
+      message,
+      retryAfter: parseServerRetryHint(headers),
+    });
   }
   // For unmapped 5xx codes (e.g., Cloudflare-specific 520-530), use
   // InternalServerError so they get ServerError + Retryable categories
   if (status >= 500) {
-    return new InternalServerError({ message });
+    return new InternalServerError({
+      message,
+      retryAfter: parseServerRetryHint(headers),
+    });
   }
   return new CloudflareHttpError({
     status,
@@ -193,6 +211,7 @@ const matchError = (
   status: number,
   errorBody: unknown,
   errors?: readonly ApiErrorClass[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   // Handle non-JSON error responses (e.g., HTML from malformed URLs, 520 pages)
   const isNonJsonError =
@@ -203,7 +222,7 @@ const matchError = (
     const message = String((errorBody as any).body);
     // For 5xx errors, return a properly categorized error so retries work
     if (status >= 500) {
-      return Effect.fail(httpStatusError(status, message));
+      return Effect.fail(httpStatusError(status, message, headers));
     }
     return Effect.fail(
       new CloudflareHttpError({
@@ -246,7 +265,7 @@ const matchError = (
     const bodyStr =
       typeof errorBody === "string" ? errorBody : JSON.stringify(errorBody);
     if (status >= 500) {
-      return Effect.fail(httpStatusError(status, bodyStr));
+      return Effect.fail(httpStatusError(status, bodyStr, headers));
     }
     return Effect.fail(
       new CloudflareHttpError({
@@ -306,7 +325,7 @@ const matchError = (
 
   // Check global error codes before falling through to unknown
   if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {
-    return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage));
+    return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage, headers));
   }
 
   // Heuristic fallback:

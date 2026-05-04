@@ -112,6 +112,25 @@ Different SDKs use different patch formats:
 5. Read a few test files in ${pkgDir}/tests/ to see how errors are tested
 6. Identify the patch format this SDK uses (OpenAPI JSON Patch, Cloudflare-style, or AWS-style)
 
+### \`matchError\` contract (do not regress)
+The \`matchError\` function in client.ts has this signature:
+\`\`\`ts
+const matchError = (
+  status: number,
+  errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
+): Effect.Effect<never, unknown> => { ... }
+\`\`\`
+When you construct a retryable error (TooManyRequests/429, InternalServerError/500,
+BadGateway/502, ServiceUnavailable/503, GatewayTimeout/504, Locked/423, or any
+class categorized retryable), you MUST pass \`retryAfter: parseServerRetryHint(headers)\`
+so the retry policy honors server-provided wait hints (Retry-After / RateLimit headers).
+Import: \`import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";\`
+If this service uses bespoke headers or body fields for cooldown, parse them in
+\`matchError\` and pass the resulting \`Duration\` as \`retryAfter\` instead of (or
+in addition to, with \`??\` fallback) \`parseServerRetryHint(headers)\`.
+
 ### Step 2: Identify operations with weak error typing
 Look for operations that only have generic errors (DefaultErrors) and no
 operation-specific error types. These are candidates for error discovery.
