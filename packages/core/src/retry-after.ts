@@ -15,6 +15,7 @@
  * helpers for the standard cases.
  */
 import * as Duration from "effect/Duration";
+import { RETRYABLE_HTTP_STATUSES } from "./errors.ts";
 
 /**
  * Header bag — case-insensitive lookup is the caller's responsibility.
@@ -111,3 +112,20 @@ export const parseServerRetryHint = (
   headers: Headers,
 ): Duration.Duration | undefined =>
   parseRetryAfter(headers) ?? parseRatelimit(headers);
+
+/**
+ * Status-gated variant of {@link parseServerRetryHint}. Returns `undefined`
+ * unless `status` is one whose error class actually declares a `retryAfter`
+ * field (see `RETRYABLE_HTTP_STATUSES`). Use this in `matchError` when you
+ * dispatch off a generic `HTTP_STATUS_MAP` lookup that includes both
+ * retryable (429/5xx/423) and non-retryable (4xx) classes — it prevents
+ * stale `retryAfter` properties from being attached to errors like
+ * `BadRequest` or `NotFound` (which would otherwise leak into JSON output).
+ */
+export const parseRetryAfterForStatus = (
+  status: number,
+  headers: Headers,
+): Duration.Duration | undefined => {
+  if (!RETRYABLE_HTTP_STATUSES.has(status)) return undefined;
+  return parseServerRetryHint(headers);
+};

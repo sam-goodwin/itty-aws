@@ -43,7 +43,9 @@ const afterHeading = changelog.indexOf("\n", start);
 const after = changelog.slice(afterHeading + 1);
 // Stop at the next `## ` heading (the previous version's entry).
 const nextHeadingIdx = after.indexOf("\n## ");
-const rawBody = (nextHeadingIdx === -1 ? after : after.slice(0, nextHeadingIdx)).trim();
+const rawBody = (
+  nextHeadingIdx === -1 ? after : after.slice(0, nextHeadingIdx)
+).trim();
 
 // CHANGELOG.md is formatted for GitHub Releases. Discord renders neither HTML
 // entities nor the `<samp>` tag, so swap them for plain-text/markdown

@@ -15,7 +15,7 @@
  *   - Per-SDK `Retry` Context.Service tag installed into `makeAPI`, so callers
  *     can install a blanket retry policy at the layer level.
  *   - The scaffolded `matchError` parses standard `Retry-After` / `RateLimit`
- *     headers via `parseServerRetryHint` and attaches the resulting `Duration`
+ *     headers via `parseRetryAfterForStatus` and attaches the resulting `Duration`
  *     to retryable errors. The retry policy honors that hint with precedence
  *     over the default exponential backoff. To override per-service (bespoke
  *     headers, body fields), edit `matchError` in the SDK's `client.ts`.
@@ -172,12 +172,7 @@ const createSdkFull = Command.make(
       // If the create-sdk stage is skipped but a note was supplied, write it
       // into the existing metadata file so downstream stages still see it.
       if (config.skipCreate && note) {
-        yield* initMetadata(
-          root,
-          config.name,
-          `packages/${config.name}`,
-          note,
-        );
+        yield* initMetadata(root, config.name, `packages/${config.name}`, note);
         yield* Console.log(
           `${DIM}ℹ Wrote userNote to .ai-workspace/${config.name}-metadata.json${RESET}`,
         );

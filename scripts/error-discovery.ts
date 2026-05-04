@@ -23,7 +23,14 @@ import { Console, Effect } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
-import { AgentError, AgentStatsAccumulator, BOLD, GREEN, RESET, runAgent } from "./lib/agent.ts";
+import {
+  AgentError,
+  AgentStatsAccumulator,
+  BOLD,
+  GREEN,
+  RESET,
+  runAgent,
+} from "./lib/agent.ts";
 import { metadataPromptSection } from "./lib/metadata.ts";
 
 // ============================================================================
@@ -37,8 +44,9 @@ function buildPrompt(
 ): string {
   const pkgDir = `packages/${name}`;
 
-  const serviceScope = services.length > 0
-    ? `
+  const serviceScope =
+    services.length > 0
+      ? `
 
 ## SCOPE RESTRICTION
 
@@ -53,7 +61,7 @@ Concretely:
   (e.g. for cloudflare: ${pkgDir}/patches/{${services.join(",")}}/...).
 - Ignore all other services even if you notice gaps in them — they are out of scope.
 `
-    : "";
+      : "";
 
   return `
 You are an error discovery agent for the ${name} SDK in the Distilled monorepo.
@@ -124,12 +132,12 @@ const matchError = (
 \`\`\`
 When you construct a retryable error (TooManyRequests/429, InternalServerError/500,
 BadGateway/502, ServiceUnavailable/503, GatewayTimeout/504, Locked/423, or any
-class categorized retryable), you MUST pass \`retryAfter: parseServerRetryHint(headers)\`
+class categorized retryable), you MUST pass \`retryAfter: parseRetryAfterForStatus(status, headers)\`
 so the retry policy honors server-provided wait hints (Retry-After / RateLimit headers).
-Import: \`import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";\`
+Import: \`import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";\`
 If this service uses bespoke headers or body fields for cooldown, parse them in
 \`matchError\` and pass the resulting \`Duration\` as \`retryAfter\` instead of (or
-in addition to, with \`??\` fallback) \`parseServerRetryHint(headers)\`.
+in addition to, with \`??\` fallback) \`parseRetryAfterForStatus(status, headers)\`.
 
 ### Step 2: Identify operations with weak error typing
 Look for operations that only have generic errors (DefaultErrors) and no
@@ -275,15 +283,18 @@ const errorDiscovery = Command.make(
 
       const stats = new AgentStatsAccumulator();
 
-      yield* runAgent({
-        prompt: buildPrompt(config.name, root, services),
-        cwd: root,
-        systemPromptAppend:
-          "You are an error discovery agent. Your job is to find undocumented API errors " +
-          "and add typed error classes to the SDK. Be methodical and thorough. " +
-          "When looking for files, prefer direct file reads over broad searches. " +
-          "Always start by reading files at the repo root or package root directly.",
-      }, stats);
+      yield* runAgent(
+        {
+          prompt: buildPrompt(config.name, root, services),
+          cwd: root,
+          systemPromptAppend:
+            "You are an error discovery agent. Your job is to find undocumented API errors " +
+            "and add typed error classes to the SDK. Be methodical and thorough. " +
+            "When looking for files, prefer direct file reads over broad searches. " +
+            "Always start by reading files at the repo root or package root directly.",
+        },
+        stats,
+      );
 
       yield* Console.log(
         `\n${GREEN}${BOLD}Error discovery complete for ${config.name}.${RESET}`,
@@ -306,7 +317,8 @@ const errorDiscovery = Command.make(
     {
       command:
         "bun scripts/error-discovery.ts cloudflare --service r2 --service workers",
-      description: "Discover errors only in Cloudflare's R2 and Workers services",
+      description:
+        "Discover errors only in Cloudflare's R2 and Workers services",
     },
     {
       command: "bun scripts/error-discovery.ts stripe",

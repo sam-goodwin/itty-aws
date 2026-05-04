@@ -146,9 +146,11 @@ export interface ClientConfig<Creds> {
    *  or Effect.fail(fallbackError) for unknown errors.
    *  The optional `errors` parameter provides per-operation typed error classes.
    *  The optional `headers` parameter is the response header bag (lowercase
-   *  keys) — implementations should use `parseServerRetryHint(headers)` from
-   *  `@distilled.cloud/core/retry-after` to populate `retryAfter` on
-   *  retryable errors so the retry policy can honor server hints.
+   *  keys) — implementations should use `parseRetryAfterForStatus(status, headers)`
+   *  from `@distilled.cloud/core/retry-after` to populate `retryAfter` on
+   *  retryable errors so the retry policy can honor server hints. The
+   *  status-gated helper avoids attaching stale `retryAfter` to non-retryable
+   *  classes (BadRequest/Unauthorized/etc.) whose schemas don't declare it.
    */
   matchError: (
     status: number,

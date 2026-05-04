@@ -12,7 +12,7 @@ import {
   type OperationMethod,
   type PaginatedOperationMethod,
 } from "@distilled.cloud/core/client";
-import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { HTTP_STATUS_MAP, UnknownGCPError, GCPParseError } from "../errors.ts";
 import { Credentials } from "../credentials.ts";
 import { Retry } from "../retry.ts";
@@ -36,7 +36,10 @@ const matchError = (
 
   if (ErrorClass) {
     return Effect.fail(
-      new ErrorClass({ message, retryAfter: parseServerRetryHint(headers) }),
+      new ErrorClass({
+        message,
+        retryAfter: parseRetryAfterForStatus(status, headers),
+      }),
     );
   }
   return Effect.fail(

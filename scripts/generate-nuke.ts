@@ -29,7 +29,16 @@ import { Console, Effect } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
-import { AgentError, AgentStatsAccumulator, BOLD, DIM, GREEN, RESET, YELLOW, runAgent } from "./lib/agent.ts";
+import {
+  AgentError,
+  AgentStatsAccumulator,
+  BOLD,
+  DIM,
+  GREEN,
+  RESET,
+  YELLOW,
+  runAgent,
+} from "./lib/agent.ts";
 import { metadataPromptSection } from "./lib/metadata.ts";
 
 // ============================================================================
@@ -333,9 +342,7 @@ const generateNuke = Command.make(
     ),
     reset: Flag.boolean("reset").pipe(
       Flag.withDefault(false),
-      Flag.withDescription(
-        "Delete existing nuke script and regenerate it",
-      ),
+      Flag.withDescription("Delete existing nuke script and regenerate it"),
     ),
   },
   (config) =>
@@ -343,11 +350,15 @@ const generateNuke = Command.make(
       const path = yield* Path.Path;
       const fs = yield* FileSystem.FileSystem;
       const root = path.resolve(import.meta.dir, "..");
-      const nukeScript = path.join(root, "packages", config.provider, "scripts", "nuke.ts");
-
-      yield* Console.log(
-        `\n${BOLD}Generate Nuke: ${config.provider}${RESET}`,
+      const nukeScript = path.join(
+        root,
+        "packages",
+        config.provider,
+        "scripts",
+        "nuke.ts",
       );
+
+      yield* Console.log(`\n${BOLD}Generate Nuke: ${config.provider}${RESET}`);
 
       // Handle existing script
       const exists = yield* fs.exists(nukeScript);
@@ -363,9 +374,7 @@ const generateNuke = Command.make(
         yield* Console.log(
           `${DIM}Run it with: bun packages/${config.provider}/scripts/nuke.ts --dry-run${RESET}`,
         );
-        yield* Console.log(
-          `${DIM}Use --reset to regenerate${RESET}`,
-        );
+        yield* Console.log(`${DIM}Use --reset to regenerate${RESET}`);
         return;
       }
 
@@ -373,16 +382,19 @@ const generateNuke = Command.make(
 
       const stats = new AgentStatsAccumulator();
 
-      yield* runAgent({
-        prompt: buildPrompt(config.provider, root),
-        cwd: root,
-        systemPromptAppend:
-          "You are generating a nuke script for a cloud provider SDK. " +
-          "Study the SDK's operations, credentials, and test files thoroughly " +
-          "before writing the script. The script must be complete and runnable. " +
-          "When looking for files, prefer direct file reads over broad searches. " +
-          "Always start by reading files at the package root directly.",
-      }, stats);
+      yield* runAgent(
+        {
+          prompt: buildPrompt(config.provider, root),
+          cwd: root,
+          systemPromptAppend:
+            "You are generating a nuke script for a cloud provider SDK. " +
+            "Study the SDK's operations, credentials, and test files thoroughly " +
+            "before writing the script. The script must be complete and runnable. " +
+            "When looking for files, prefer direct file reads over broad searches. " +
+            "Always start by reading files at the package root directly.",
+        },
+        stats,
+      );
 
       // Verify it was created
       const created = yield* fs.exists(nukeScript);
@@ -390,9 +402,7 @@ const generateNuke = Command.make(
         yield* Console.log(
           `\n${GREEN}${BOLD}Nuke script generated at packages/${config.provider}/scripts/nuke.ts${RESET}`,
         );
-        yield* Console.log(
-          `\n${DIM}Usage:${RESET}`,
-        );
+        yield* Console.log(`\n${DIM}Usage:${RESET}`);
         yield* Console.log(
           `  bun packages/${config.provider}/scripts/nuke.ts --dry-run  ${DIM}# List all resources${RESET}`,
         );

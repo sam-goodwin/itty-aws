@@ -13,7 +13,7 @@ import {
   type OperationMethod,
   type PaginatedOperationMethod,
 } from "@distilled.cloud/core/client";
-import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import {
   HTTP_STATUS_MAP,
   UnknownKubernetesError,
@@ -73,7 +73,7 @@ const matchError = (
       return Effect.fail(
         new ErrorClass({
           message: parsed.message ?? "",
-          retryAfter: parseServerRetryHint(headers),
+          retryAfter: parseRetryAfterForStatus(status, headers),
         }),
       );
     }

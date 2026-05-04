@@ -185,10 +185,9 @@ function generateChangelogEntry(version: string): string {
   const range = prevTag ? `${prevTag}...HEAD` : "HEAD";
   let logOutput = "";
   try {
-    logOutput = execSync(
-      `git log ${range} --no-merges --format="%H %s" -- .`,
-      { encoding: "utf-8" },
-    ).trim();
+    logOutput = execSync(`git log ${range} --no-merges --format="%H %s" -- .`, {
+      encoding: "utf-8",
+    }).trim();
   } catch {
     // git log failed — empty changelog
   }
@@ -220,9 +219,7 @@ function generateChangelogEntry(version: string): string {
       continue;
 
     // Parse conventional commit: type(scope): description (#PR)
-    const match = subject.match(
-      /^(feat|fix|perf)(?:\(([^)]*)\))?\s*:\s*(.+)$/,
-    );
+    const match = subject.match(/^(feat|fix|perf)(?:\(([^)]*)\))?\s*:\s*(.+)$/);
     if (!match) continue;
 
     const [, type, scope, description] = match;
@@ -315,25 +312,16 @@ try {
     if (headerEnd !== -1) {
       const header = existing.slice(0, headerEnd);
       const rest = existing.slice(headerEnd + 2);
-      await writeFile(
-        changelogPath,
-        `${header}\n\n${changelogEntry}\n${rest}`,
-      );
+      await writeFile(changelogPath, `${header}\n\n${changelogEntry}\n${rest}`);
     } else {
       // No double newline found — just prepend after first line
       const firstNewline = existing.indexOf("\n");
       const header = existing.slice(0, firstNewline);
       const rest = existing.slice(firstNewline + 1);
-      await writeFile(
-        changelogPath,
-        `${header}\n\n${changelogEntry}\n${rest}`,
-      );
+      await writeFile(changelogPath, `${header}\n\n${changelogEntry}\n${rest}`);
     }
   } else {
-    await writeFile(
-      changelogPath,
-      `# Changelog\n\n${changelogEntry}`,
-    );
+    await writeFile(changelogPath, `# Changelog\n\n${changelogEntry}`);
   }
   console.log(`  Updated CHANGELOG.md`);
 } catch (err) {

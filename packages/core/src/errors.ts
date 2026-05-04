@@ -179,6 +179,18 @@ export const HTTP_STATUS_MAP = {
 export const DEFAULT_ERROR_STATUSES = new Set([401, 429, 500, 502, 503, 504]);
 
 /**
+ * HTTP status codes whose corresponding error class in {@link HTTP_STATUS_MAP}
+ * declares a `retryAfter` field. The retry policy honors `error.retryAfter`
+ * with precedence over the default backoff for these.
+ *
+ * `matchError` implementations should only pass `retryAfter` into the
+ * constructor when the status is in this set; passing it on non-retryable
+ * classes (BadRequest/Unauthorized/etc.) would silently retain it as a
+ * stale field on the instance and pollute serialized output.
+ */
+export const RETRYABLE_HTTP_STATUSES = new Set([423, 429, 500, 502, 503, 504]);
+
+/**
  * All common API error classes.
  */
 export const API_ERRORS = [

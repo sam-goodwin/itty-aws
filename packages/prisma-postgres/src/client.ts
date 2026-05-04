@@ -8,7 +8,7 @@ import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
-import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
@@ -45,7 +45,7 @@ const matchError = (
       return Effect.fail(
         new ErrorClass({
           message: parsed.error.message ?? "",
-          retryAfter: parseServerRetryHint(headers),
+          retryAfter: parseRetryAfterForStatus(status, headers),
         }),
       );
     }
@@ -66,7 +66,7 @@ const matchError = (
       return Effect.fail(
         new ErrorClass({
           message,
-          retryAfter: parseServerRetryHint(headers),
+          retryAfter: parseRetryAfterForStatus(status, headers),
         }),
       );
     }

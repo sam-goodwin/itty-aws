@@ -21,7 +21,10 @@ import {
   paginateWithDefaults,
   type PaginationStrategy,
 } from "@distilled.cloud/core/pagination";
-import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
+import {
+  parseRetryAfterForStatus,
+  parseServerRetryHint,
+} from "@distilled.cloud/core/retry-after";
 import { getPath, type RequestParts } from "@distilled.cloud/core/traits";
 import {
   CloudflareHttpError,
@@ -49,8 +52,14 @@ const GLOBAL_ERROR_CODE_MAP: Record<
   (message: string, headers?: Record<string, string | undefined>) => unknown
 > = {
   // "Please wait and consider throttling your request speed"
+  // Cloudflare returns this code inside an envelope with arbitrary HTTP status
+  // (often 200), so we don't gate on status — TooManyRequests always declares
+  // `retryAfter`.
   971: (message, headers) =>
-    new TooManyRequests({ message, retryAfter: parseServerRetryHint(headers) }),
+    new TooManyRequests({
+      message,
+      retryAfter: parseServerRetryHint(headers),
+    }),
   // Authentication-related error codes — surfaced regardless of HTTP status
   // (Cloudflare frequently returns these inside a 400 envelope rather than 401).
   // 6003: Invalid request headers (e.g. missing/invalid auth headers)
@@ -88,7 +97,7 @@ function httpStatusError(
   if (ErrorClass) {
     return new ErrorClass({
       message,
-      retryAfter: parseServerRetryHint(headers),
+      retryAfter: parseRetryAfterForStatus(status, headers),
     });
   }
   // For unmapped 5xx codes (e.g., Cloudflare-specific 520-530), use
@@ -96,7 +105,7 @@ function httpStatusError(
   if (status >= 500) {
     return new InternalServerError({
       message,
-      retryAfter: parseServerRetryHint(headers),
+      retryAfter: parseRetryAfterForStatus(status, headers),
     });
   }
   return new CloudflareHttpError({
