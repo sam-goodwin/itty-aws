@@ -5,9 +5,27 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CustomerPortalsubscriptionsupdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      product_id: Schema.String,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      seats: Schema.Number,
+      proration_behavior: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      cancel_at_period_end: Schema.optional(Schema.Unknown),
+      cancellation_reason: Schema.optional(Schema.Unknown),
+      cancellation_comment: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      pending_update: Schema.Unknown,
+    }),
+  ]).pipe(
     T.Http({ method: "PATCH", path: "/v1/customer-portal/subscriptions/{id}" }),
   );
 export type CustomerPortalsubscriptionsupdateInput =

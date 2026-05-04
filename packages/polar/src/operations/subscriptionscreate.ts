@@ -5,9 +5,18 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const SubscriptionscreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "POST", path: "/v1/subscriptions/" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      product_id: Schema.String,
+      customer_id: Schema.String,
+    }),
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      product_id: Schema.String,
+      external_customer_id: Schema.String,
+    }),
+  ]).pipe(T.Http({ method: "POST", path: "/v1/subscriptions/" }));
 export type SubscriptionscreateInput = typeof SubscriptionscreateInput.Type;
 
 // Output Schema

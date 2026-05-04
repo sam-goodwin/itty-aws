@@ -5,9 +5,20 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CustomerSessionscreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "POST", path: "/v1/customer-sessions/" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    Schema.Struct({
+      member_id: Schema.optional(Schema.Unknown),
+      external_member_id: Schema.optional(Schema.Unknown),
+      return_url: Schema.optional(Schema.Unknown),
+      customer_id: Schema.String,
+    }),
+    Schema.Struct({
+      member_id: Schema.optional(Schema.Unknown),
+      external_member_id: Schema.optional(Schema.Unknown),
+      return_url: Schema.optional(Schema.Unknown),
+      external_customer_id: Schema.String,
+    }),
+  ]).pipe(T.Http({ method: "POST", path: "/v1/customer-sessions/" }));
 export type CustomerSessionscreateInput =
   typeof CustomerSessionscreateInput.Type;
 

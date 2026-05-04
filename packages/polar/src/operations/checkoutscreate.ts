@@ -5,9 +5,42 @@ import { UnprocessableEntity } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
-export const CheckoutscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "POST", path: "/v1/checkouts/" }));
+export const CheckoutscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trial_interval: Schema.optional(Schema.Unknown),
+  trial_interval_count: Schema.optional(Schema.Unknown),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  custom_field_data: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  discount_id: Schema.optional(Schema.Unknown),
+  allow_discount_codes: Schema.optional(Schema.Boolean),
+  require_billing_address: Schema.optional(Schema.Boolean),
+  amount: Schema.optional(Schema.Unknown),
+  seats: Schema.optional(Schema.Unknown),
+  min_seats: Schema.optional(Schema.Unknown),
+  max_seats: Schema.optional(Schema.Unknown),
+  allow_trial: Schema.optional(Schema.Boolean),
+  customer_id: Schema.optional(Schema.Unknown),
+  is_business_customer: Schema.optional(Schema.Boolean),
+  external_customer_id: Schema.optional(Schema.Unknown),
+  customer_name: Schema.optional(Schema.Unknown),
+  customer_email: Schema.optional(Schema.Unknown),
+  customer_ip_address: Schema.optional(Schema.Unknown),
+  customer_billing_name: Schema.optional(Schema.Unknown),
+  customer_billing_address: Schema.optional(Schema.Unknown),
+  customer_tax_id: Schema.optional(Schema.Unknown),
+  customer_metadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  subscription_id: Schema.optional(Schema.Unknown),
+  success_url: Schema.optional(Schema.Unknown),
+  return_url: Schema.optional(Schema.Unknown),
+  embed_origin: Schema.optional(Schema.Unknown),
+  locale: Schema.optional(Schema.Unknown),
+  currency: Schema.optional(Schema.Unknown),
+  products: Schema.Array(Schema.String),
+  prices: Schema.optional(Schema.Unknown),
+}).pipe(T.Http({ method: "POST", path: "/v1/checkouts/" }));
 export type CheckoutscreateInput = typeof CheckoutscreateInput.Type;
 
 // Output Schema

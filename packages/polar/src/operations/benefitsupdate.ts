@@ -4,9 +4,57 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const BenefitsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "PATCH", path: "/v1/benefits/{id}" }));
+export const BenefitsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.Unknown),
+    type: Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.Unknown),
+    type: Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.Unknown),
+    type: Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.Unknown),
+    type: Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.Unknown),
+    type: Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.Unknown),
+    type: Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    id: Schema.String.pipe(T.PathParam()),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.Unknown),
+    type: Schema.String,
+    properties: Schema.optional(Schema.Unknown),
+  }),
+]).pipe(T.Http({ method: "PATCH", path: "/v1/benefits/{id}" }));
 export type BenefitsupdateInput = typeof BenefitsupdateInput.Type;
 
 // Output Schema

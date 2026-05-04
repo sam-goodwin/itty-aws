@@ -4,9 +4,65 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const FilescreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "POST", path: "/v1/files/" }));
+export const FilescreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Struct({
+    organization_id: Schema.optional(Schema.Unknown),
+    name: Schema.String,
+    mime_type: Schema.String,
+    size: Schema.Number,
+    checksum_sha256_base64: Schema.optional(Schema.Unknown),
+    upload: Schema.Struct({
+      parts: Schema.Array(
+        Schema.Struct({
+          number: Schema.Number,
+          chunk_start: Schema.Number,
+          chunk_end: Schema.Number,
+          checksum_sha256_base64: Schema.optional(Schema.Unknown),
+        }),
+      ),
+    }),
+    service: Schema.String,
+    version: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    organization_id: Schema.optional(Schema.Unknown),
+    name: Schema.String,
+    mime_type: Schema.String,
+    size: Schema.Number,
+    checksum_sha256_base64: Schema.optional(Schema.Unknown),
+    upload: Schema.Struct({
+      parts: Schema.Array(
+        Schema.Struct({
+          number: Schema.Number,
+          chunk_start: Schema.Number,
+          chunk_end: Schema.Number,
+          checksum_sha256_base64: Schema.optional(Schema.Unknown),
+        }),
+      ),
+    }),
+    service: Schema.String,
+    version: Schema.optional(Schema.Unknown),
+  }),
+  Schema.Struct({
+    organization_id: Schema.optional(Schema.Unknown),
+    name: Schema.String,
+    mime_type: Schema.String,
+    size: Schema.Number,
+    checksum_sha256_base64: Schema.optional(Schema.Unknown),
+    upload: Schema.Struct({
+      parts: Schema.Array(
+        Schema.Struct({
+          number: Schema.Number,
+          chunk_start: Schema.Number,
+          chunk_end: Schema.Number,
+          checksum_sha256_base64: Schema.optional(Schema.Unknown),
+        }),
+      ),
+    }),
+    service: Schema.String,
+    version: Schema.optional(Schema.Unknown),
+  }),
+]).pipe(T.Http({ method: "POST", path: "/v1/files/" }));
 export type FilescreateInput = typeof FilescreateInput.Type;
 
 // Output Schema

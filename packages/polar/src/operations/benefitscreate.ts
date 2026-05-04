@@ -4,9 +4,85 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "POST", path: "/v1/benefits/" }));
+export const BenefitscreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    type: Schema.String,
+    description: Schema.String,
+    organization_id: Schema.optional(Schema.Unknown),
+    properties: Schema.Struct({
+      note: Schema.optional(Schema.Unknown),
+    }),
+  }),
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    type: Schema.String,
+    description: Schema.String,
+    organization_id: Schema.optional(Schema.Unknown),
+    properties: Schema.Struct({
+      guild_token: Schema.String,
+      role_id: Schema.String,
+      kick_member: Schema.Boolean,
+    }),
+  }),
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    type: Schema.String,
+    description: Schema.String,
+    organization_id: Schema.optional(Schema.Unknown),
+    properties: Schema.Struct({
+      repository_owner: Schema.String,
+      repository_name: Schema.String,
+      permission: Schema.Literals([
+        "pull",
+        "triage",
+        "push",
+        "maintain",
+        "admin",
+      ]),
+    }),
+  }),
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    type: Schema.String,
+    description: Schema.String,
+    organization_id: Schema.optional(Schema.Unknown),
+    properties: Schema.Struct({
+      archived: Schema.optional(Schema.Record(Schema.String, Schema.Boolean)),
+      files: Schema.Array(Schema.String),
+    }),
+  }),
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    type: Schema.String,
+    description: Schema.String,
+    organization_id: Schema.optional(Schema.Unknown),
+    properties: Schema.Struct({
+      prefix: Schema.optional(Schema.Unknown),
+      expires: Schema.optional(Schema.Unknown),
+      activations: Schema.optional(Schema.Unknown),
+      limit_usage: Schema.optional(Schema.Unknown),
+    }),
+  }),
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    type: Schema.String,
+    description: Schema.String,
+    organization_id: Schema.optional(Schema.Unknown),
+    properties: Schema.Struct({
+      units: Schema.Number,
+      rollover: Schema.Boolean,
+      meter_id: Schema.String,
+    }),
+  }),
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    type: Schema.String,
+    description: Schema.String,
+    organization_id: Schema.optional(Schema.Unknown),
+    properties: Schema.Struct({}),
+  }),
+]).pipe(T.Http({ method: "POST", path: "/v1/benefits/" }));
 export type BenefitscreateInput = typeof BenefitscreateInput.Type;
 
 // Output Schema

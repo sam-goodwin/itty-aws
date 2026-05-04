@@ -4,10 +4,50 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
-export const CustomFieldsupdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "PATCH", path: "/v1/custom-fields/{id}" }));
+export const CustomFieldsupdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
+  [
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      name: Schema.optional(Schema.Unknown),
+      slug: Schema.optional(Schema.Unknown),
+      type: Schema.String,
+      properties: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      name: Schema.optional(Schema.Unknown),
+      slug: Schema.optional(Schema.Unknown),
+      type: Schema.String,
+      properties: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      name: Schema.optional(Schema.Unknown),
+      slug: Schema.optional(Schema.Unknown),
+      type: Schema.String,
+      properties: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      name: Schema.optional(Schema.Unknown),
+      slug: Schema.optional(Schema.Unknown),
+      type: Schema.String,
+      properties: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      name: Schema.optional(Schema.Unknown),
+      slug: Schema.optional(Schema.Unknown),
+      type: Schema.String,
+      properties: Schema.optional(Schema.Unknown),
+    }),
+  ],
+).pipe(T.Http({ method: "PATCH", path: "/v1/custom-fields/{id}" }));
 export type CustomFieldsupdateInput = typeof CustomFieldsupdateInput.Type;
 
 // Output Schema

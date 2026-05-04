@@ -10,9 +10,46 @@ import {
 
 // Input Schema
 export const SubscriptionsupdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "PATCH", path: "/v1/subscriptions/{id}" }));
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      product_id: Schema.String,
+      proration_behavior: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      discount_id: Schema.Unknown,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      trial_end: Schema.Unknown,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      seats: Schema.Number,
+      proration_behavior: Schema.optional(Schema.Unknown),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      current_billing_period_end: Schema.String,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      customer_cancellation_reason: Schema.optional(Schema.Unknown),
+      customer_cancellation_comment: Schema.optional(Schema.Unknown),
+      cancel_at_period_end: Schema.Boolean,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      customer_cancellation_reason: Schema.optional(Schema.Unknown),
+      customer_cancellation_comment: Schema.optional(Schema.Unknown),
+      revoke: Schema.Boolean,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      pending_update: Schema.Unknown,
+    }),
+  ]).pipe(T.Http({ method: "PATCH", path: "/v1/subscriptions/{id}" }));
 export type SubscriptionsupdateInput = typeof SubscriptionsupdateInput.Type;
 
 // Output Schema

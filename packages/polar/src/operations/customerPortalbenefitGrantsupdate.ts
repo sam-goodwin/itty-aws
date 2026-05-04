@@ -5,9 +5,42 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CustomerPortalbenefitGrantsupdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.PathParam()),
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      benefit_type: Schema.String,
+      properties: Schema.Struct({
+        account_id: Schema.Unknown,
+      }),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      benefit_type: Schema.String,
+      properties: Schema.Struct({
+        account_id: Schema.Unknown,
+      }),
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      benefit_type: Schema.String,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      benefit_type: Schema.String,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      benefit_type: Schema.String,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      benefit_type: Schema.String,
+    }),
+    Schema.Struct({
+      id: Schema.String.pipe(T.PathParam()),
+      benefit_type: Schema.String,
+    }),
+  ]).pipe(
     T.Http({
       method: "PATCH",
       path: "/v1/customer-portal/benefit-grants/{id}",

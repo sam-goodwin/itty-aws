@@ -4,14 +4,38 @@ import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
-export const Oauth2requestTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      path: "/v1/oauth2/token",
-      contentType: "form-urlencoded",
+export const Oauth2requestTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
+  [
+    Schema.Struct({
+      grant_type: Schema.String,
+      client_id: Schema.String,
+      client_secret: SensitiveString,
+      code: Schema.String,
+      redirect_uri: Schema.String,
     }),
-  );
+    Schema.Struct({
+      grant_type: Schema.String,
+      client_id: Schema.String,
+      client_secret: SensitiveString,
+      refresh_token: SensitiveString,
+    }),
+    Schema.Struct({
+      grant_type: Schema.String,
+      client_id: Schema.String,
+      client_secret: SensitiveString,
+      session_token: SensitiveString,
+      sub_type: Schema.optional(Schema.Literals(["user", "organization"])),
+      sub: Schema.optional(Schema.Unknown),
+      scope: Schema.optional(Schema.Unknown),
+    }),
+  ],
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/oauth2/token",
+    contentType: "form-urlencoded",
+  }),
+);
 export type Oauth2requestTokenInput = typeof Oauth2requestTokenInput.Type;
 
 // Output Schema

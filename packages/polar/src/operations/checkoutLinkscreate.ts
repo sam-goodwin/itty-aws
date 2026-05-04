@@ -6,9 +6,47 @@ import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CheckoutLinkscreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "POST", path: "/v1/checkout-links/" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      trial_interval: Schema.optional(Schema.Unknown),
+      trial_interval_count: Schema.optional(Schema.Unknown),
+      payment_processor: Schema.String,
+      label: Schema.optional(Schema.Unknown),
+      allow_discount_codes: Schema.optional(Schema.Boolean),
+      require_billing_address: Schema.optional(Schema.Boolean),
+      discount_id: Schema.optional(Schema.Unknown),
+      success_url: Schema.optional(Schema.Unknown),
+      return_url: Schema.optional(Schema.Unknown),
+      product_price_id: Schema.String,
+    }),
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      trial_interval: Schema.optional(Schema.Unknown),
+      trial_interval_count: Schema.optional(Schema.Unknown),
+      payment_processor: Schema.String,
+      label: Schema.optional(Schema.Unknown),
+      allow_discount_codes: Schema.optional(Schema.Boolean),
+      require_billing_address: Schema.optional(Schema.Boolean),
+      discount_id: Schema.optional(Schema.Unknown),
+      success_url: Schema.optional(Schema.Unknown),
+      return_url: Schema.optional(Schema.Unknown),
+      product_id: Schema.String,
+    }),
+    Schema.Struct({
+      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      trial_interval: Schema.optional(Schema.Unknown),
+      trial_interval_count: Schema.optional(Schema.Unknown),
+      payment_processor: Schema.String,
+      label: Schema.optional(Schema.Unknown),
+      allow_discount_codes: Schema.optional(Schema.Boolean),
+      require_billing_address: Schema.optional(Schema.Boolean),
+      discount_id: Schema.optional(Schema.Unknown),
+      success_url: Schema.optional(Schema.Unknown),
+      return_url: Schema.optional(Schema.Unknown),
+      products: Schema.Array(Schema.String),
+    }),
+  ]).pipe(T.Http({ method: "POST", path: "/v1/checkout-links/" }));
 export type CheckoutLinkscreateInput = typeof CheckoutLinkscreateInput.Type;
 
 // Output Schema
