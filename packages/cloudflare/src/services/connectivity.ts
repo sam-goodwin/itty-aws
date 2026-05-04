@@ -158,6 +158,8 @@ export const getDirectoryService: API.OperationMethod<
 export interface ListDirectoryServicesRequest {
   /** Path param: Account identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   type?: "http" | null;
 }
@@ -165,6 +167,8 @@ export interface ListDirectoryServicesRequest {
 export const ListDirectoryServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     type: Schema.optional(
       Schema.Union([Schema.Literal("http"), Schema.Null]),
     ).pipe(T.HttpQuery("type")),

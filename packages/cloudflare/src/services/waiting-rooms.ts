@@ -158,11 +158,15 @@ export interface ListEventsRequest {
   waitingRoomId: string;
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   waitingRoomId: Schema.String.pipe(T.HttpPath("waitingRoomId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({
     method: "GET",

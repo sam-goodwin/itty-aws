@@ -662,6 +662,8 @@ export const getApp: API.OperationMethod<
 export interface ListAppsRequest {
   /** Path param: Zone identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Sets the direction by which results are ordered. */
   direction?: "asc" | "desc";
   /** Query param: Application field by which results are ordered. */
@@ -670,6 +672,8 @@ export interface ListAppsRequest {
 
 export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),

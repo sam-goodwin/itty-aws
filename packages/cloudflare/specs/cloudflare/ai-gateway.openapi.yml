@@ -772,6 +772,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: search
           in: query
           required: false
@@ -1588,6 +1598,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: enable
           in: query
           required: false
@@ -2182,6 +2202,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: name
           in: query
           required: false
@@ -2544,6 +2574,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: order_by
           in: query
           required: false
@@ -2760,6 +2800,46 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: cached
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: boolean
+        - name: direction
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: end_date
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
+        - name: feedback
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+            enum:
+              - 0
+              - 1
         - name: filters
           in: query
           required: false
@@ -2817,12 +2897,84 @@ paths:
                 - key
                 - operator
                 - value
+        - name: max_cost
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: max_duration
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: max_tokens_in
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: max_tokens_out
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: max_total_tokens
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
         - name: meta_info
           in: query
           required: false
           description: "Query param:"
           schema:
             type: boolean
+        - name: min_cost
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: min_duration
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: min_tokens_in
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: min_tokens_out
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: min_total_tokens
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: number
+        - name: model
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
+        - name: model_type
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
         - name: order_by
           in: query
           required: false
@@ -2845,88 +2997,42 @@ paths:
             enum:
               - asc
               - desc
+        - name: provider
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
+        - name: request_content_type
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
+        - name: response_content_type
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
         - name: search
           in: query
           required: false
           description: "Query param:"
           schema:
             type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                cached:
-                  type: boolean
-                  description: "@deprecated Query param:"
-                direction:
-                  type: string
-                  enum:
-                    - asc
-                    - desc
-                  description: "@deprecated Query param:"
-                end_date:
-                  type: string
-                  description: "@deprecated Query param:"
-                feedback:
-                  type: number
-                  enum:
-                    - 0
-                    - 1
-                  description: "@deprecated Query param:"
-                max_cost:
-                  type: number
-                  description: "@deprecated Query param:"
-                max_duration:
-                  type: number
-                  description: "@deprecated Query param:"
-                max_tokens_in:
-                  type: number
-                  description: "@deprecated Query param:"
-                max_tokens_out:
-                  type: number
-                  description: "@deprecated Query param:"
-                max_total_tokens:
-                  type: number
-                  description: "@deprecated Query param:"
-                min_cost:
-                  type: number
-                  description: "@deprecated Query param:"
-                min_duration:
-                  type: number
-                  description: "@deprecated Query param:"
-                min_tokens_in:
-                  type: number
-                  description: "@deprecated Query param:"
-                min_tokens_out:
-                  type: number
-                  description: "@deprecated Query param:"
-                min_total_tokens:
-                  type: number
-                  description: "@deprecated Query param:"
-                model:
-                  type: string
-                  description: "@deprecated Query param:"
-                model_type:
-                  type: string
-                  description: "@deprecated Query param:"
-                provider:
-                  type: string
-                  description: "@deprecated Query param:"
-                request_content_type:
-                  type: string
-                  description: "@deprecated Query param:"
-                response_content_type:
-                  type: string
-                  description: "@deprecated Query param:"
-                start_date:
-                  type: string
-                  description: "@deprecated Query param:"
-                success:
-                  type: boolean
-                  description: "@deprecated Query param:"
+        - name: start_date
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: string
+        - name: success
+          in: query
+          required: false
+          description: "@deprecated Query param:"
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success

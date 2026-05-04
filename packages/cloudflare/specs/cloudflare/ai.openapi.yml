@@ -451,6 +451,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: author
           in: query
           required: false

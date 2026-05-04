@@ -185,6 +185,8 @@ export const getAbuseReport: API.OperationMethod<
 export interface ListAbuseReportsRequest {
   /** Path param: Cloudflare Account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Returns reports created after the specified date */
   createdAfter?: string;
   /** Query param: Returns reports created before the specified date */
@@ -218,6 +220,8 @@ export interface ListAbuseReportsRequest {
 export const ListAbuseReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     createdAfter: Schema.optional(Schema.String).pipe(
       T.HttpQuery("created_after"),
     ),
@@ -558,6 +562,8 @@ export interface ListMitigationsRequest {
   reportId: string;
   /** Path param: Cloudflare Account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Returns mitigation that were dispatched after the given date */
   effectiveAfter?: string;
   /** Query param: Returns mitigations that were dispatched before the given date */
@@ -590,6 +596,8 @@ export const ListMitigationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     reportId: Schema.String.pipe(T.HttpPath("reportId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     effectiveAfter: Schema.optional(Schema.String).pipe(
       T.HttpQuery("effective_after"),
     ),

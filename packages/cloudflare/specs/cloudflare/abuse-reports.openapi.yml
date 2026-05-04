@@ -284,6 +284,16 @@ paths:
           description: "Path param: Cloudflare Account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: created_after
           in: query
           required: false
@@ -466,6 +476,16 @@ paths:
           description: "Path param: Cloudflare Account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: effective_after
           in: query
           required: false

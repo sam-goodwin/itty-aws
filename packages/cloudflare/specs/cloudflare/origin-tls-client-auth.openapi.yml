@@ -151,25 +151,71 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: Identifier.
                   cert_id:
                     type: string
                     description: Identifier.
+                  cert_status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  cert_updated_at:
+                    type: string
+                    description: The time when the certificate was updated.
+                  cert_uploaded_on:
+                    type: string
+                    description: The time when the certificate was uploaded.
                   certificate:
                     type: string
                     description: The hostname certificate.
+                  created_at:
+                    type: string
+                    description: The time when the certificate was created.
                   enabled:
                     oneOf:
                       - type: boolean
                     nullable: true
                     description: Indicates whether hostname-level authenticated origin pulls is
                       enabled. A null value voids the association.
+                  expires_on:
+                    type: string
+                    description: The date when the certificate expires.
                   hostname:
                     type: string
                     description: The hostname on the origin for which the client certificate
                       uploaded will be used.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  serial_number:
+                    type: string
+                    description: The serial number on the uploaded certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  updated_at:
+                    type: string
+                    description: The time when the certificate was updated.
+                  id:
+                    type: string
+                    description: Identifier.
                   private_key:
                     type: string
                     description: The hostname certificate's private key.
@@ -317,25 +363,71 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: Identifier.
                   cert_id:
                     type: string
                     description: Identifier.
+                  cert_status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  cert_updated_at:
+                    type: string
+                    description: The time when the certificate was updated.
+                  cert_uploaded_on:
+                    type: string
+                    description: The time when the certificate was uploaded.
                   certificate:
                     type: string
                     description: The hostname certificate.
+                  created_at:
+                    type: string
+                    description: The time when the certificate was created.
                   enabled:
                     oneOf:
                       - type: boolean
                     nullable: true
                     description: Indicates whether hostname-level authenticated origin pulls is
                       enabled. A null value voids the association.
+                  expires_on:
+                    type: string
+                    description: The date when the certificate expires.
                   hostname:
                     type: string
                     description: The hostname on the origin for which the client certificate
                       uploaded will be used.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  serial_number:
+                    type: string
+                    description: The serial number on the uploaded certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  updated_at:
+                    type: string
+                    description: The time when the certificate was updated.
+                  id:
+                    type: string
+                    description: Identifier.
                   private_key:
                     type: string
                     description: The hostname certificate's private key.
@@ -489,6 +581,29 @@ paths:
                   certificate:
                     type: string
                     description: The zone's leaf certificate.
+                  expires_on:
+                    type: string
+                    description: When the certificate from the authority expires.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate activation.
+                  uploaded_on:
+                    type: string
+                    description: This is the time the certificate was uploaded.
                   enabled:
                     type: boolean
                     description: Indicates whether zone-level authenticated origin pulls is enabled.
@@ -528,6 +643,29 @@ paths:
                   certificate:
                     type: string
                     description: The zone's leaf certificate.
+                  expires_on:
+                    type: string
+                    description: When the certificate from the authority expires.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate activation.
+                  uploaded_on:
+                    type: string
+                    description: This is the time the certificate was uploaded.
                   enabled:
                     type: boolean
                     description: Indicates whether zone-level authenticated origin pulls is enabled.
@@ -563,6 +701,29 @@ paths:
                   certificate:
                     type: string
                     description: The zone's leaf certificate.
+                  expires_on:
+                    type: string
+                    description: When the certificate from the authority expires.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate activation.
+                  uploaded_on:
+                    type: string
+                    description: This is the time the certificate was uploaded.
                   enabled:
                     type: boolean
                     description: Indicates whether zone-level authenticated origin pulls is enabled.
@@ -662,6 +823,29 @@ paths:
                   certificate:
                     type: string
                     description: The zone's leaf certificate.
+                  expires_on:
+                    type: string
+                    description: When the certificate from the authority expires.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate activation.
+                  uploaded_on:
+                    type: string
+                    description: This is the time the certificate was uploaded.
                   enabled:
                     type: boolean
                     description: Indicates whether zone-level authenticated origin pulls is enabled.

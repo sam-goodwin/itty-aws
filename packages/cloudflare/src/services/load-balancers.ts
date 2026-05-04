@@ -8562,6 +8562,8 @@ export const listRegions: API.OperationMethod<
 export interface ListSearchesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Search query term. */
   query?: string;
   /** Query param: The type of references to include. "\ " to include both referral and referrer references. "" to not include any reference information. */
@@ -8570,6 +8572,8 @@ export interface ListSearchesRequest {
 
 export const ListSearchesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
   references: Schema.optional(
     Schema.Literals(["", "*", "referral", "referrer"]),

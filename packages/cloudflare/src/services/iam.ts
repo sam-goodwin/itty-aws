@@ -85,6 +85,8 @@ export const getPermissionGroup: API.OperationMethod<
 export interface ListPermissionGroupsRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: ID of the permission group to be fetched. */
   id?: string;
   /** Query param: Label of the permission group to be fetched. */
@@ -96,6 +98,8 @@ export interface ListPermissionGroupsRequest {
 export const ListPermissionGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
     label: Schema.optional(Schema.String).pipe(T.HttpQuery("label")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
@@ -1058,6 +1062,8 @@ export const getUserGroup: API.OperationMethod<
 export interface ListUserGroupsRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: ID of the user group to be fetched. */
   id?: string;
   /** Query param: The sort order of returned user groups by name. Default sort order is ascending. To switch to descending, set this parameter to "desc" */
@@ -1070,6 +1076,8 @@ export interface ListUserGroupsRequest {
 
 export const ListUserGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
   fuzzyName: Schema.optional(Schema.String).pipe(T.HttpQuery("fuzzyName")),
@@ -1678,12 +1686,16 @@ export interface ListUserGroupMembersRequest {
   userGroupId: string;
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListUserGroupMembersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({
       method: "GET",

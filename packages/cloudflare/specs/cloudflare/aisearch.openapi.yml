@@ -20,6 +20,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: search
           in: query
           required: false
@@ -2298,6 +2308,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: search
           in: query
           required: false
@@ -2422,6 +2442,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -2587,6 +2617,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success

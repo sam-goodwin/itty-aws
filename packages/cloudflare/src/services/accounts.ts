@@ -653,6 +653,7 @@ export const deleteAccount: API.OperationMethod<
 export interface ListLogAuditsRequest {
   /** Path param: The unique id that identifies the account. */
   accountId: string;
+  cursor?: string;
   /** Query param: Limits the returned results to logs older than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
   before: string;
   /** Query param: Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
@@ -711,6 +712,7 @@ export interface ListLogAuditsRequest {
 
 export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
   before: Schema.String.pipe(T.HttpQuery("before")),
   since: Schema.String.pipe(T.HttpQuery("since")),
   id: Schema.optional(
@@ -1406,6 +1408,8 @@ export const getMember: API.OperationMethod<
 export interface ListMembersRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to order results. */
   direction?: "asc" | "desc";
   /** Query param: Field to order results by. */
@@ -1416,6 +1420,8 @@ export interface ListMembersRequest {
 
 export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
@@ -2720,10 +2726,14 @@ export const getRole: API.OperationMethod<
 export interface ListRolesRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/roles" }),
 ) as unknown as Schema.Schema<ListRolesRequest>;
@@ -3822,12 +3832,16 @@ export const getToken: API.OperationMethod<
 export interface ListTokensRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to order results. */
   direction?: "asc" | "desc";
 }
 
 export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),

@@ -116,6 +116,8 @@ export const getAsnSubnet: API.OperationMethod<
 export interface ListAttackSurfaceReportIssuesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   dismissed?: boolean;
   /** Query param: */
@@ -157,6 +159,8 @@ export interface ListAttackSurfaceReportIssuesRequest {
 export const ListAttackSurfaceReportIssuesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     dismissed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("dismissed")),
     issueClass: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("issue_class"),
@@ -947,6 +951,8 @@ export const getAttackSurfaceReportIssueType: API.PaginatedOperationMethod<
 export interface ListDnsRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   ipv4?: string;
   /** Query param: */
@@ -955,6 +961,8 @@ export interface ListDnsRequest {
 
 export const ListDnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   ipv4: Schema.optional(Schema.String).pipe(T.HttpQuery("ipv4")),
   startEndParams: Schema.optional(
     Schema.Struct({

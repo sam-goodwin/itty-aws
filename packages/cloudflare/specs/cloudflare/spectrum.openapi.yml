@@ -1246,6 +1246,16 @@ paths:
           description: "Path param: Zone identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: direction
           in: query
           required: false

@@ -138,6 +138,8 @@ export const getQuota: API.OperationMethod<
 export interface ListStoresRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to sort objects */
   direction?: "asc" | "desc";
   /** Query param: Order secrets by values in the given field */
@@ -146,6 +148,8 @@ export interface ListStoresRequest {
 
 export const ListStoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
@@ -407,6 +411,8 @@ export interface ListStoreSecretsRequest {
   storeId: string;
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to sort objects */
   direction?: "asc" | "desc";
   /** Query param: Order secrets by values in the given field */
@@ -421,6 +427,8 @@ export const ListStoreSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storeId: Schema.String.pipe(T.HttpPath("storeId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),

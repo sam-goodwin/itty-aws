@@ -384,6 +384,8 @@ export const getInvestigate: API.OperationMethod<
 export interface ListInvestigatesRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Determines if the message action log is included in the response. */
   actionLog?: boolean;
   /** Query param: */
@@ -425,6 +427,8 @@ export interface ListInvestigatesRequest {
 export const ListInvestigatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     actionLog: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("action_log")),
     alertId: Schema.optional(Schema.String).pipe(T.HttpQuery("alert_id")),
     cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
@@ -1726,6 +1730,8 @@ export const getSettingAllowPolicy: API.OperationMethod<
 export interface ListSettingAllowPoliciesRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The sorting direction. */
   direction?: "asc" | "desc";
   /** Query param: */
@@ -1755,6 +1761,8 @@ export interface ListSettingAllowPoliciesRequest {
 export const ListSettingAllowPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),
@@ -2286,6 +2294,8 @@ export const getSettingBlockSender: API.OperationMethod<
 export interface ListSettingBlockSendersRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The sorting direction. */
   direction?: "asc" | "desc";
   /** Query param: The field to sort by. */
@@ -2301,6 +2311,8 @@ export interface ListSettingBlockSendersRequest {
 export const ListSettingBlockSendersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),
@@ -2823,6 +2835,8 @@ export const getSettingDomain: API.OperationMethod<
 export interface ListSettingDomainsRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Filters response to domains with the currently active delivery mode. */
   activeDeliveryMode?: "DIRECT" | "BCC" | "JOURNAL" | "API" | "RETRO_SCAN";
   /** Query param: Filters response to domains with the provided delivery mode. */
@@ -2842,6 +2856,8 @@ export interface ListSettingDomainsRequest {
 export const ListSettingDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     activeDeliveryMode: Schema.optional(
       Schema.Literals(["DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN"]),
     ).pipe(T.HttpQuery("active_delivery_mode")),
@@ -3558,6 +3574,8 @@ export const getSettingImpersonationRegistry: API.OperationMethod<
 export interface ListSettingImpersonationRegistriesRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The sorting direction. */
   direction?: "asc" | "desc";
   /** Query param: The field to sort by. */
@@ -3575,6 +3593,8 @@ export interface ListSettingImpersonationRegistriesRequest {
 export const ListSettingImpersonationRegistriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),
@@ -4002,6 +4022,8 @@ export const getSettingTrustedDomain: API.OperationMethod<
 export interface ListSettingTrustedDomainsRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The sorting direction. */
   direction?: "asc" | "desc";
   /** Query param: */
@@ -4019,6 +4041,8 @@ export interface ListSettingTrustedDomainsRequest {
 export const ListSettingTrustedDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),
@@ -4383,6 +4407,8 @@ export const deleteSettingTrustedDomain: API.OperationMethod<
 export interface ListSubmissionsRequest {
   /** Path param: Account Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The end of the search date range. Defaults to `now`. */
   end?: string;
   /** Query param: */
@@ -4424,6 +4450,8 @@ export interface ListSubmissionsRequest {
 export const ListSubmissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     end: Schema.optional(Schema.String).pipe(T.HttpQuery("end")),
     originalDisposition: Schema.optional(
       Schema.Literals([

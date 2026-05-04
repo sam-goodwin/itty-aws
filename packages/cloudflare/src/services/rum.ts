@@ -622,12 +622,16 @@ export const getSiteInfo: API.OperationMethod<
 export interface ListSiteInfosRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The property used to sort the list of results. */
   orderBy?: "host" | "created";
 }
 
 export const ListSiteInfosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   orderBy: Schema.optional(Schema.Literals(["host", "created"])).pipe(
     T.HttpQuery("order_by"),
   ),

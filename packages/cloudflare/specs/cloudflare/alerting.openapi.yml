@@ -528,6 +528,16 @@ paths:
           description: "Path param: The account id"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: before
           in: query
           required: false

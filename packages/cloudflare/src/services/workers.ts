@@ -363,11 +363,15 @@ export const getBetaWorker: API.OperationMethod<
 export interface ListBetaWorkersRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListBetaWorkersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   },
 ).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/workers/workers" }),
@@ -1630,12 +1634,16 @@ export interface ListBetaWorkerVersionsRequest {
   workerId: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListBetaWorkerVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workerId: Schema.String.pipe(T.HttpPath("workerId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -12937,6 +12945,8 @@ export interface ListScriptVersionsRequest {
   scriptName: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Only return versions that can be used in a deployment. Ignores pagination. */
   deployable?: boolean;
 }
@@ -12945,6 +12955,8 @@ export const ListScriptVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     deployable: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deployable")),
   }).pipe(
     T.Http({

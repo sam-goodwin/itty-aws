@@ -593,6 +593,7 @@ export interface ListListItemsRequest {
   listId: string;
   /** Path param: The Account ID for this resource. */
   accountId: string;
+  cursor?: string;
   /** Query param: Amount of results to include in each paginated response. A non-negative 32 bit integer. */
   perPage?: number;
   /** Query param: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and  */
@@ -602,6 +603,7 @@ export interface ListListItemsRequest {
 export const ListListItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   listId: Schema.String.pipe(T.HttpPath("listId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
   perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
 }).pipe(

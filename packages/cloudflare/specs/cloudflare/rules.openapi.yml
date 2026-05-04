@@ -590,6 +590,11 @@ paths:
           description: "Path param: The Account ID for this resource."
           schema:
             type: string
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
         - name: per_page
           in: query
           required: false

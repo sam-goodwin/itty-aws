@@ -163,6 +163,16 @@ paths:
           description: "Path param: Defines an identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: id
           in: query
           required: false

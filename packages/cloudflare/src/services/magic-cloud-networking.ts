@@ -8975,6 +8975,8 @@ export const getResource: API.OperationMethod<
 export interface ListResourcesRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   cloudflare?: boolean;
   /** Query param: */
@@ -9059,6 +9061,8 @@ export interface ListResourcesRequest {
 
 export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   cloudflare: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("cloudflare")),
   desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
   managed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("managed")),

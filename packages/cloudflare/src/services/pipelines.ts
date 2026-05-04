@@ -1509,12 +1509,16 @@ export const getSink: API.OperationMethod<
 export interface ListSinksRequest {
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   pipelineId?: string;
 }
 
 export const ListSinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   pipelineId: Schema.optional(Schema.String).pipe(T.HttpQuery("pipeline_id")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/pipelines/v1/sinks" }),
@@ -4081,12 +4085,16 @@ export const getStream: API.OperationMethod<
 export interface ListStreamsRequest {
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Specifies the public ID of the pipeline. */
   pipelineId?: string;
 }
 
 export const ListStreamsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   pipelineId: Schema.optional(Schema.String).pipe(T.HttpQuery("pipeline_id")),
 }).pipe(
   T.Http({
@@ -5920,10 +5928,14 @@ export const getV1Pipeline: API.OperationMethod<
 export interface ListV1PipelineRequest {
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListV1PipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({
     method: "GET",

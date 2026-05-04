@@ -127,6 +127,8 @@ export interface ListRecipientsRequest {
   shareId: string;
   /** Path param: Account identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Include resources in the response. */
   includeResources?: boolean;
 }
@@ -134,6 +136,8 @@ export interface ListRecipientsRequest {
 export const ListRecipientsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   shareId: Schema.String.pipe(T.HttpPath("shareId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   includeResources: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("include_resources"),
   ),
@@ -574,6 +578,8 @@ export interface ListResourcesRequest {
   shareId: string;
   /** Path param: Account identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Filter share resources by resource_type. */
   resourceType?:
     | "custom-ruleset"
@@ -589,6 +595,8 @@ export interface ListResourcesRequest {
 export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   shareId: Schema.String.pipe(T.HttpPath("shareId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   resourceType: Schema.optional(
     Schema.Literals([
       "custom-ruleset",
@@ -1201,6 +1209,8 @@ export const getResourceSharing: API.OperationMethod<
 export interface ListResourceSharingsRequest {
   /** Path param: Account identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to sort objects. */
   direction?: "asc" | "desc";
   /** Query param: Include recipient counts in the response. */
@@ -1229,6 +1239,8 @@ export interface ListResourceSharingsRequest {
 export const ListResourceSharingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),

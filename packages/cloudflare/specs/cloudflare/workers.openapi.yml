@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare WORKERS API
+  title: Cloudflare Workers API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -491,6 +491,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -1559,6 +1569,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -4225,6 +4245,8 @@ paths:
           - code: 10007
         InvalidRoute:
           - code: 7003
+        HostnameAlreadyInUse:
+          - code: 100116
   /accounts/{account_id}/workers/observability/telemetry/keys:
     post:
       operationId: keysObservabilityTelemetry
@@ -7260,6 +7282,12 @@ paths:
           - code: 10074
             message:
               includes: cannot be the target of more than one migration
+        ScriptStartupError:
+          - code: 10021
+        ScriptModuleNotFound:
+          - code: 10021
+            message:
+              includes: No such module
     delete:
       operationId: deleteScript
       description: "Delete your worker. This call has no response body on a successful
@@ -8098,6 +8126,12 @@ paths:
           - code: 10007
         InvalidWorkerScript:
           - code: 10068
+        ScriptStartupError:
+          - code: 10021
+        ScriptModuleNotFound:
+          - code: 10021
+            message:
+              includes: No such module
   /accounts/{account_id}/workers/scripts/{scriptName}/deployments/{deploymentId}:
     get:
       operationId: getScriptDeployment
@@ -13374,6 +13408,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: deployable
           in: query
           required: false

@@ -317,10 +317,14 @@ export const getSnippet: API.OperationMethod<
 export interface ListSnippetsRequest {
   /** Path param: The unique ID of the zone. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListSnippetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/snippets" }),
 ) as unknown as Schema.Schema<ListSnippetsRequest>;

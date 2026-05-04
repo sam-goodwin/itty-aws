@@ -880,6 +880,8 @@ export const getLockdown: API.OperationMethod<
 export interface ListLockdownsRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The timestamp of when the rule was created. */
   createdOn?: string;
   /** Query param: A string to search for in the description of existing rules. */
@@ -902,6 +904,8 @@ export interface ListLockdownsRequest {
 
 export const ListLockdownsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   createdOn: Schema.optional(Schema.String).pipe(T.HttpQuery("created_on")),
   description: Schema.optional(Schema.String).pipe(T.HttpQuery("description")),
   descriptionSearch: Schema.optional(Schema.String).pipe(
@@ -1558,6 +1562,8 @@ export const getRule: API.OperationMethod<
 export interface ListRulesRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The unique identifier of the firewall rule. */
   id?: string;
   /** Query param: The action to search for. Must be an exact match. */
@@ -1570,6 +1576,8 @@ export interface ListRulesRequest {
 
 export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
   description: Schema.optional(Schema.String).pipe(T.HttpQuery("description")),
@@ -2707,6 +2715,8 @@ export const getUaRule: API.OperationMethod<
 export interface ListUaRulesRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: A string to search for in the description of existing rules. */
   description?: string;
   /** Query param: When true, indicates that the rule is currently paused. */
@@ -2717,6 +2727,8 @@ export interface ListUaRulesRequest {
 
 export const ListUaRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   description: Schema.optional(Schema.String).pipe(T.HttpQuery("description")),
   paused: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("paused")),
   userAgent: Schema.optional(Schema.String).pipe(T.HttpQuery("user_agent")),
@@ -3258,11 +3270,15 @@ export const getWafOverride: API.OperationMethod<
 export interface ListWafOverridesRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListWafOverridesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/firewall/waf/overrides" }),
   ) as unknown as Schema.Schema<ListWafOverridesRequest>;
@@ -4017,6 +4033,8 @@ export const getWafPackage: API.OperationMethod<
 export interface ListWafPackagesRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The direction used to sort returned packages. */
   direction?: "asc" | "desc";
   /** Query param: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
@@ -4030,6 +4048,8 @@ export interface ListWafPackagesRequest {
 export const ListWafPackagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),
@@ -4140,6 +4160,8 @@ export interface ListWafPackageGroupsRequest {
   packageId: string;
   /** Path param: Defines an identifier of a schema. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Defines the direction used to sort returned rule groups. */
   direction?: "asc" | "desc";
   /** Query param: Defines the condition for search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
@@ -4158,6 +4180,8 @@ export const ListWafPackageGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageId: Schema.String.pipe(T.HttpPath("packageId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),
@@ -4356,6 +4380,8 @@ export interface ListWafPackageRulesRequest {
   packageId: string;
   /** Path param: Defines an identifier of a schema. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Defines the public description of the WAF rule. */
   description?: string;
   /** Query param: Defines the direction used to sort returned rules. */
@@ -4376,6 +4402,8 @@ export const ListWafPackageRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageId: Schema.String.pipe(T.HttpPath("packageId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     description: Schema.optional(Schema.String).pipe(
       T.HttpQuery("description"),
     ),

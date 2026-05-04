@@ -708,6 +708,8 @@ export const deleteDestinationWebhook: API.OperationMethod<
 export interface ListHistoriesRequest {
   /** Path param: The account id */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339. */
   before?: string;
   /** Query param: Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339. */
@@ -716,6 +718,8 @@ export interface ListHistoriesRequest {
 
 export const ListHistoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   before: Schema.optional(Schema.String).pipe(T.HttpQuery("before")),
   since: Schema.optional(Schema.String).pipe(T.HttpQuery("since")),
 }).pipe(

@@ -433,11 +433,15 @@ export const getDnsFirewall: API.OperationMethod<
 export interface ListDnsFirewallsRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListDnsFirewallsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/dns_firewall" }),
   ) as unknown as Schema.Schema<ListDnsFirewallsRequest>;

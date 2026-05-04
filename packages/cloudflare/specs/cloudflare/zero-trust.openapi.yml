@@ -20,6 +20,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: search
           in: query
           required: false
@@ -445,6 +455,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: search
           in: query
           required: false
@@ -62322,6 +62342,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: status
           in: query
           required: false
@@ -63190,6 +63220,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -71024,6 +71064,16 @@ paths:
           description: "Path param: Account identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: created_after
           in: query
           required: false
@@ -71718,6 +71768,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: idp_id
           in: query
           required: true
@@ -75129,6 +75189,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -78828,6 +78898,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -78892,6 +78972,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: email
           in: query
           required: false
@@ -79702,6 +79792,16 @@ paths:
           in: path
           required: true
           description: "Path param:"
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: cursor
+          in: query
+          required: false
           schema:
             type: string
         - name: id
@@ -87965,6 +88065,16 @@ paths:
           description: "Path param:"
           schema:
             type: string
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
         - name: id
           in: query
           required: false
@@ -88782,6 +88892,16 @@ paths:
             request path"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: command_type
           in: query
           required: false
@@ -88988,6 +89108,16 @@ paths:
             request path"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: search
           in: query
           required: false
@@ -89214,6 +89344,16 @@ paths:
           description: "Path param: Unique identifier for account"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: from
           in: query
           required: true
@@ -90277,6 +90417,16 @@ paths:
             request path."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: colo
           in: query
           required: false
@@ -114784,6 +114934,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: cf_resource_id
           in: query
           required: false
@@ -114859,6 +115019,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: cf_resource_id
           in: query
           required: false
@@ -115121,6 +115291,16 @@ paths:
           description: "Path param: Cloudflare account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: id
           in: query
           required: false
@@ -115439,6 +115619,16 @@ paths:
           description: "Path param: Cloudflare account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: comment
           in: query
           required: false
@@ -115923,6 +116113,16 @@ paths:
           description: "Path param: Cloudflare account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: address_family
           in: query
           required: false
@@ -118565,6 +118765,16 @@ paths:
           description: "Path param: Cloudflare account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: exclude_prefix
           in: query
           required: false
@@ -119271,6 +119481,16 @@ paths:
           description: "Path param: Cloudflare account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: exclude_prefix
           in: query
           required: false
@@ -121007,6 +121227,16 @@ paths:
           description: "Path param: Cloudflare account ID"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: exclude_prefix
           in: query
           required: false

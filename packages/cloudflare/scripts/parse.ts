@@ -1142,6 +1142,29 @@ function parseInterface(
   const name = node.name.getText();
   const properties: ParsedProperty[] = [];
 
+  // Inherit properties from `extends` clauses. Cloudflare's TS SDK uses
+  // `extends V4PagePaginationArrayParams` (and similar) to declare common
+  // pagination query params; those are otherwise dropped on the floor.
+  if (node.heritageClauses) {
+    for (const heritage of node.heritageClauses) {
+      if (heritage.token !== ts.SyntaxKind.ExtendsKeyword) continue;
+      for (const typeRef of heritage.types) {
+        const parentType = checker.getTypeAtLocation(typeRef.expression);
+        const decls =
+          parentType.getSymbol()?.declarations ??
+          parentType.aliasSymbol?.declarations ??
+          [];
+        for (const decl of decls) {
+          if (!ts.isInterfaceDeclaration(decl)) continue;
+          const parsed = parseInterface(decl, checker, registry, seenTypeRefs);
+          for (const p of parsed.properties) {
+            properties.push(p);
+          }
+        }
+      }
+    }
+  }
+
   for (const member of node.members) {
     if (ts.isPropertySignature(member) && member.name) {
       // getText() includes surrounding quotes for string literal property names
@@ -1152,19 +1175,26 @@ function parseInterface(
       const required = !member.questionToken;
       const comment = getJsDocComment(member);
       const location = parseParamLocation(comment);
-
-      properties.push({
+      const own: ParsedProperty = {
         name: propName,
         type,
         location,
         required,
         description: comment,
-      });
+      };
+      // Own member overrides any inherited property of the same name.
+      const inheritedIdx = properties.findIndex((p) => p.name === propName);
+      if (inheritedIdx >= 0) {
+        properties[inheritedIdx] = own;
+      } else {
+        properties.push(own);
+      }
     }
   }
 
   return { name, properties };
 }
+
 
 /**
  * Find and parse a params interface by name in a source file
@@ -1370,11 +1400,18 @@ function parseMethod(
     );
 
     if (paramsInterface) {
+      // Paginated operations call `getAPIList(url, PageClass, { query, ...opts })`
+      // where `query` is the entire params bag minus path params. So any field
+      // without an explicit JSDoc `@param` location belongs in the query string,
+      // not the body.
+      const defaultLocation: ParamInfo["location"] = paginationClassName
+        ? "query"
+        : "body";
       for (const prop of paramsInterface.properties) {
         const paramInfo: ParamInfo = {
           name: prop.name,
           type: prop.type,
-          location: prop.location || "body", // Default to body if not specified
+          location: prop.location || defaultLocation,
           required: prop.required,
           description: prop.description,
         };

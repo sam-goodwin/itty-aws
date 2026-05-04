@@ -275,6 +275,8 @@ export interface ListInstancesRequest {
   workflowName: string;
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: `page` and `cursor` are mutually exclusive, use one or the other. */
   cursor?: string;
   /** Query param: Accepts ISO 8601 with no timezone offsets and in UTC. */
@@ -298,6 +300,8 @@ export interface ListInstancesRequest {
 export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
   dateEnd: Schema.optional(Schema.String).pipe(T.HttpQuery("date_end")),
   dateStart: Schema.optional(Schema.String).pipe(T.HttpQuery("date_start")),
@@ -857,11 +861,15 @@ export interface ListVersionsRequest {
   workflowName: string;
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -1032,12 +1040,16 @@ export const getWorkflow: API.OperationMethod<
 export interface ListWorkflowsRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Allows filtering workflows` name. */
   search?: string;
 }
 
 export const ListWorkflowsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/workflows" }),

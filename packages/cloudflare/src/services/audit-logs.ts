@@ -19,6 +19,8 @@ import { type DefaultErrors } from "../errors.ts";
 export interface ListAuditLogsRequest {
   /** Path param: Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Finds a specific log by its ID. */
   id?: string;
   /** Query param: */
@@ -41,6 +43,8 @@ export interface ListAuditLogsRequest {
 
 export const ListAuditLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   action: Schema.optional(
     Schema.Struct({

@@ -246,11 +246,15 @@ export const getHealthcheck: API.OperationMethod<
 export interface ListHealthchecksRequest {
   /** Path param: Identifier */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListHealthchecksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/healthchecks" }),
   ) as unknown as Schema.Schema<ListHealthchecksRequest>;

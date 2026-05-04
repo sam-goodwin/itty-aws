@@ -3243,6 +3243,8 @@ export const getSubscription: API.OperationMethod<
 export interface ListSubscriptionsRequest {
   /** Path param: A Resource identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Sort direction */
   direction?: "asc" | "desc";
   /** Query param: Field to sort by */
@@ -3252,6 +3254,8 @@ export interface ListSubscriptionsRequest {
 export const ListSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
     ),

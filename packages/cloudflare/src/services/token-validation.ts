@@ -149,11 +149,15 @@ export const getConfiguration: API.OperationMethod<
 export interface ListConfigurationsRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({ method: "GET", path: "/zones/{zone_id}/token_validation/config" }),
   ) as unknown as Schema.Schema<ListConfigurationsRequest>;
@@ -958,6 +962,8 @@ export const getRule: API.OperationMethod<
 export interface ListRulesRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Select rules with these IDs. */
   id?: string;
   /** Query param: Action to take on requests that match operations included in `selector` and fail `expression`. */
@@ -976,6 +982,8 @@ export interface ListRulesRequest {
 
 export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   action: Schema.optional(Schema.Literals(["log", "block"])).pipe(
     T.HttpQuery("action"),

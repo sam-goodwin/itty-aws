@@ -95,6 +95,8 @@ export const getOriginCACertificate: API.OperationMethod<
 }));
 
 export interface ListOriginCACertificatesRequest {
+  page?: number;
+  perPage?: number;
   /** Identifier. */
   zoneId: string;
   /** Limit to the number of records returned. */
@@ -105,11 +107,12 @@ export interface ListOriginCACertificatesRequest {
 
 export const ListOriginCACertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String,
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    zoneId: Schema.String.pipe(T.HttpQuery("zone_id")),
+    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
   }).pipe(
-    Schema.encodeKeys({ zoneId: "zone_id", limit: "limit", offset: "offset" }),
     T.Http({ method: "GET", path: "/certificates" }),
   ) as unknown as Schema.Schema<ListOriginCACertificatesRequest>;
 

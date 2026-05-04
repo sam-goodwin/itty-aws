@@ -136,12 +136,16 @@ export const getBookmarkDatabaseTimeTravel: API.OperationMethod<
 export interface ListDatabasesRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: a database name to search for. */
   name?: string;
 }
 
 export const ListDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/d1/database" }),

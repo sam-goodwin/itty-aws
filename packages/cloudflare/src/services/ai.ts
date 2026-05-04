@@ -543,6 +543,8 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
 export interface ListModelsRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Filter by Author */
   author?: string;
   /** Query param: Filter to hide experimental models */
@@ -557,6 +559,8 @@ export interface ListModelsRequest {
 
 export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   author: Schema.optional(Schema.String).pipe(T.HttpQuery("author")),
   hideExperimental: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("hide_experimental"),

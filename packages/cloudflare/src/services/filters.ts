@@ -68,6 +68,8 @@ export const getFilter: API.OperationMethod<
 export interface ListFiltersRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The unique identifier of the filter. */
   id?: string;
   /** Query param: A case-insensitive string to find in the description. */
@@ -82,6 +84,8 @@ export interface ListFiltersRequest {
 
 export const ListFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
   description: Schema.optional(Schema.String).pipe(T.HttpQuery("description")),
   expression: Schema.optional(Schema.String).pipe(T.HttpQuery("expression")),

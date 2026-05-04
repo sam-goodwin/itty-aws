@@ -48,6 +48,8 @@ T.applyErrorMatchers(TunnelTokenNotFound, [{ code: 1054 }]);
 export interface ListAccessAiControlMcpPortalsRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Search by id, name, hostname */
   search?: string;
 }
@@ -55,6 +57,8 @@ export interface ListAccessAiControlMcpPortalsRequest {
 export const ListAccessAiControlMcpPortalsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
   }).pipe(
     T.Http({
@@ -612,6 +616,8 @@ export const readAccessAiControlMcpPortal: API.OperationMethod<
 export interface ListAccessAiControlMcpServersRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Search by id, name */
   search?: string;
 }
@@ -619,6 +625,8 @@ export interface ListAccessAiControlMcpServersRequest {
 export const ListAccessAiControlMcpServersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
   }).pipe(
     T.Http({
@@ -37970,6 +37978,8 @@ export interface ListAccessApplicationPolicyTestUsersRequest {
   policyTestId: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Filter users by their policy evaluation status. */
   status?: "success" | "fail" | "error";
 }
@@ -37978,6 +37988,8 @@ export const ListAccessApplicationPolicyTestUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyTestId: Schema.String.pipe(T.HttpPath("policyTestId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     status: Schema.optional(Schema.Literals(["success", "fail", "error"])).pipe(
       T.HttpQuery("status"),
     ),
@@ -39184,11 +39196,15 @@ export const getAccessCustomPage: API.OperationMethod<
 export interface ListAccessCustomPagesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListAccessCustomPagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -45246,6 +45262,8 @@ export const getAccessInfrastructureTarget: API.OperationMethod<
 export interface ListAccessInfrastructureTargetsRequest {
   /** Path param: Account identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Date and time at which the target was created after (inclusive) */
   createdAfter?: string | null;
   /** Query param: Date and time at which the target was created before (inclusive) */
@@ -45287,6 +45305,8 @@ export interface ListAccessInfrastructureTargetsRequest {
 export const ListAccessInfrastructureTargetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     createdAfter: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ).pipe(T.HttpQuery("created_after")),
@@ -46081,6 +46101,8 @@ export const listAccessLogAccessRequests: API.OperationMethod<
 export interface ListAccessLogScimUpdatesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The unique Id of the IdP that has SCIM enabled. */
   idpId: string[];
   /** Query param: The unique Cloudflare-generated Id of the SCIM resource. */
@@ -46110,6 +46132,8 @@ export interface ListAccessLogScimUpdatesRequest {
 export const ListAccessLogScimUpdatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     idpId: Schema.Array(Schema.String).pipe(T.HttpQuery("idp_id")),
     cfResourceId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("cf_resource_id"),
@@ -47125,11 +47149,15 @@ export const getAccessPolicy: API.OperationMethod<
 export interface ListAccessPoliciesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListAccessPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/access/policies" }),
   ) as unknown as Schema.Schema<ListAccessPoliciesRequest>;
@@ -51826,10 +51854,14 @@ export const getAccessTag: API.OperationMethod<
 export interface ListAccessTagsRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListAccessTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/access/tags" }),
 ) as unknown as Schema.Schema<ListAccessTagsRequest>;
@@ -52026,6 +52058,8 @@ export const deleteAccessTag: API.OperationMethod<
 export interface ListAccessUsersRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The email of the user. */
   email?: string;
   /** Query param: The name of the user. */
@@ -52037,6 +52071,8 @@ export interface ListAccessUsersRequest {
 export const ListAccessUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     email: Schema.optional(Schema.String).pipe(T.HttpQuery("email")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
@@ -53181,6 +53217,8 @@ export const getDeviceDevices: API.OperationMethod<
 export interface ListDeviceDevicesRequest {
   /** Path param: */
   accountId: string;
+  perPage?: number;
+  cursor?: string;
   /** Query param: Filter by a one or more device IDs. */
   id?: string[];
   /** Query param: Include or exclude devices with active registrations. The default is "only" - return only devices with active registrations. */
@@ -53211,6 +53249,8 @@ export interface ListDeviceDevicesRequest {
 export const ListDeviceDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
     id: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("id")),
     activeRegistrations: Schema.optional(
       Schema.Literals(["include", "only", "exclude"]),
@@ -62195,6 +62235,8 @@ export const getDeviceRegistration: API.OperationMethod<
 export interface ListDeviceRegistrationsRequest {
   /** Path param: */
   accountId: string;
+  perPage?: number;
+  cursor?: string;
   /** Query param: Filter by registration ID. */
   id?: string[];
   /** Query param: */
@@ -62220,6 +62262,8 @@ export interface ListDeviceRegistrationsRequest {
 export const ListDeviceRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
     id: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("id")),
     device: Schema.optional(
       Schema.Struct({
@@ -63240,6 +63284,8 @@ export const listDexColos: API.PaginatedOperationMethod<
 export interface ListDexCommandsRequest {
   /** Path param: unique identifier linked to an account in the API request path */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Optionally filter executed commands by command type */
   commandType?: string;
   /** Query param: Unique identifier for a device */
@@ -63257,6 +63303,8 @@ export interface ListDexCommandsRequest {
 export const ListDexCommandsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     commandType: Schema.optional(Schema.String).pipe(
       T.HttpQuery("command_type"),
     ),
@@ -63534,6 +63582,8 @@ export const createDexCommand: API.OperationMethod<
 export interface ListDexCommandDevicesRequest {
   /** Path param: unique identifier linked to an account in the API request path */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Filter devices by name or email */
   search?: string;
 }
@@ -63541,6 +63591,8 @@ export interface ListDexCommandDevicesRequest {
 export const ListDexCommandDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
   }).pipe(
     T.Http({
@@ -63916,6 +63968,8 @@ export const liveDexFleetStatus: API.OperationMethod<
 export interface ListDexFleetStatusDevicesRequest {
   /** Path param: Unique identifier for account */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Time range beginning in ISO format */
   from: string;
   /** Query param: Time range end in ISO format */
@@ -63948,6 +64002,8 @@ export interface ListDexFleetStatusDevicesRequest {
 export const ListDexFleetStatusDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     from: Schema.String.pipe(T.HttpQuery("from")),
     to: Schema.String.pipe(T.HttpQuery("to")),
     colo: Schema.optional(Schema.String).pipe(T.HttpQuery("colo")),
@@ -64924,6 +64980,8 @@ export const getDexHttpTestPercentile: API.OperationMethod<
 export interface ListDexTestsRequest {
   /** Path param: unique identifier linked to an account in the API request path. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param. */
   colo?: string;
   /** Query param: Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param. */
@@ -64934,6 +64992,8 @@ export interface ListDexTestsRequest {
 
 export const ListDexTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   colo: Schema.optional(Schema.String).pipe(T.HttpQuery("colo")),
   deviceId: Schema.optional(Schema.Array(Schema.String)).pipe(
     T.HttpQuery("deviceId"),
@@ -93483,6 +93543,8 @@ export interface ListIdentityProviderScimGroupsRequest {
   identityProviderId: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The unique Cloudflare-generated Id of the SCIM Group resource; also known as the "Id". */
   cfResourceId?: string;
   /** Query param: The IdP-generated Id of the SCIM Group resource; also known as the "external Id". */
@@ -93495,6 +93557,8 @@ export const ListIdentityProviderScimGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     cfResourceId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("cf_resource_id"),
     ),
@@ -93597,6 +93661,8 @@ export interface ListIdentityProviderScimUsersRequest {
   identityProviderId: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The unique Cloudflare-generated Id of the SCIM User resource; also known as the "Id". */
   cfResourceId?: string;
   /** Query param: The email address of the SCIM User resource. */
@@ -93613,6 +93679,8 @@ export const ListIdentityProviderScimUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     cfResourceId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("cf_resource_id"),
     ),
@@ -93815,6 +93883,8 @@ export const getNetworkHostnameRoute: API.OperationMethod<
 export interface ListNetworkHostnameRoutesRequest {
   /** Path param: Cloudflare account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: The hostname route ID. */
   id?: string;
   /** Query param: If set, only list hostname routes with the given comment. */
@@ -93832,6 +93902,8 @@ export interface ListNetworkHostnameRoutesRequest {
 export const ListNetworkHostnameRoutesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
     comment: Schema.optional(Schema.String).pipe(T.HttpQuery("comment")),
     existedAt: Schema.optional(Schema.String).pipe(T.HttpQuery("existed_at")),
@@ -94247,6 +94319,8 @@ export const getNetworkRoute: API.OperationMethod<
 export interface ListNetworkRoutesRequest {
   /** Path param: Cloudflare account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Optional remark describing the route. */
   comment?: string;
   /** Query param: If provided, include only resources that were created (and not deleted) before this time. URL encoded. */
@@ -94278,6 +94352,8 @@ export interface ListNetworkRoutesRequest {
 export const ListNetworkRoutesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     comment: Schema.optional(Schema.String).pipe(T.HttpQuery("comment")),
     existedAt: Schema.optional(Schema.String).pipe(T.HttpQuery("existed_at")),
     isDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("is_deleted")),
@@ -95072,6 +95148,8 @@ export const deleteNetworkRouteNetwork: API.OperationMethod<
 export interface ListNetworkSubnetsRequest {
   /** Path param: Cloudflare account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: If set, only include subnets in the given address family - `v4` or `v6` */
   addressFamily?: "v4" | "v6";
   /** Query param: If set, only list subnets with the given comment. */
@@ -95095,6 +95173,8 @@ export interface ListNetworkSubnetsRequest {
 export const ListNetworkSubnetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     addressFamily: Schema.optional(Schema.Literals(["v4", "v6"])).pipe(
       T.HttpQuery("address_family"),
     ),
@@ -98344,6 +98424,8 @@ export const revokeTokensAccessApplication: API.OperationMethod<
 export interface ListTunnelsRequest {
   /** Path param: Cloudflare account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   excludePrefix?: string;
   /** Query param: If provided, include only resources that were created (and not deleted) before this time. URL encoded. */
@@ -98376,6 +98458,8 @@ export interface ListTunnelsRequest {
 
 export const ListTunnelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   excludePrefix: Schema.optional(Schema.String).pipe(
     T.HttpQuery("exclude_prefix"),
   ),
@@ -98902,6 +98986,8 @@ export const getTunnelCloudflared: API.OperationMethod<
 export interface ListTunnelCloudflaredsRequest {
   /** Path param: Cloudflare account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   excludePrefix?: string;
   /** Query param: If provided, include only resources that were created (and not deleted) before this time. URL encoded. */
@@ -98925,6 +99011,8 @@ export interface ListTunnelCloudflaredsRequest {
 export const ListTunnelCloudflaredsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     excludePrefix: Schema.optional(Schema.String).pipe(
       T.HttpQuery("exclude_prefix"),
     ),
@@ -100873,6 +100961,8 @@ export const getTunnelWarpConnector: API.OperationMethod<
 export interface ListTunnelWarpConnectorsRequest {
   /** Path param: Cloudflare account ID */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   excludePrefix?: string;
   /** Query param: If provided, include only resources that were created (and not deleted) before this time. URL encoded. */
@@ -100896,6 +100986,8 @@ export interface ListTunnelWarpConnectorsRequest {
 export const ListTunnelWarpConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     excludePrefix: Schema.optional(Schema.String).pipe(
       T.HttpQuery("exclude_prefix"),
     ),

@@ -123,12 +123,16 @@ export const getV1: API.OperationMethod<
 export interface ListV1sRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string | null;
 }
 
 export const ListV1sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])).pipe(
     T.HttpQuery("creator"),
   ),
