@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const ResetRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26,18 +26,18 @@ export const ResetRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   private_access_host_url: Schema.String,
   private_connection_service_name: Schema.String,
   username: Schema.String,
-  password: SensitiveString,
+  password: SensitiveNullableString,
   database_name: Schema.String,
   created_at: Schema.String,
   updated_at: Schema.String,
-  deleted_at: Schema.String,
-  expires_at: Schema.String,
-  dropped_at: Schema.String,
-  disabled_at: Schema.String,
-  drop_failed: Schema.String,
+  deleted_at: Schema.NullOr(Schema.String),
+  expires_at: Schema.NullOr(Schema.String),
+  dropped_at: Schema.NullOr(Schema.String),
+  disabled_at: Schema.NullOr(Schema.String),
+  drop_failed: Schema.NullOr(Schema.String),
   expired: Schema.Boolean,
   default: Schema.Boolean,
-  ttl: Schema.Number,
+  ttl: Schema.NullOr(Schema.Number),
   inherited_roles: Schema.Array(
     Schema.Literals([
       "pscale_managed",
@@ -60,7 +60,7 @@ export const ResetRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-    deleted_at: Schema.String,
+    deleted_at: Schema.NullOr(Schema.String),
   }),
   actor: Schema.Struct({
     id: Schema.String,
