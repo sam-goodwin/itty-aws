@@ -284,6 +284,23 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/supabase
+      # Supabase's management API is missing primitives we'd normally use
+      # to avoid leaking test resources between CI runs:
+      #   - no DELETE /v1/organizations/{slug}, so any org a test creates
+      #     is permanent (gated separately by
+      #     SUPABASE_RUN_ORGANIZATION_CREATION_TESTS).
+      #   - v1DeleteAProject returns immediately but the project lingers
+      #     for ~30s in REMOVED state while still counting toward the
+      #     free-tier 2-active-project ceiling, so a previous CI run that
+      #     was killed mid-test or finished within the propagation window
+      #     leaves the next run unable to create new projects.
+      # Nuke before each run so we start from a clean slate. Failures are
+      # tolerated — the in-test FreeProjectLimitReached recovery path
+      # sweeps again if needed.
+      - run: bun run nuke || true
+        working-directory: packages/supabase
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       - run: bun run test
         working-directory: packages/supabase
         env:

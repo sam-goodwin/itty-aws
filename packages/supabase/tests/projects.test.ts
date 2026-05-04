@@ -2,7 +2,14 @@ import { Effect, Layer, Schedule } from "effect";
 import * as Redacted from "effect/Redacted";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
-import { runEffect, FAKE_REF, getExistingProject, getExistingOrgSlug, testRunId } from "./setup";
+import {
+  runEffect,
+  FAKE_REF,
+  getExistingProject,
+  getExistingOrgSlug,
+  testRunId,
+  retryOnFreeProjectLimit,
+} from "./setup";
 import { v1ListAllProjects } from "../src/operations/v1ListAllProjects";
 import { v1GetProject } from "../src/operations/v1GetProject";
 import { v1UpdateAProject } from "../src/operations/v1UpdateAProject";
@@ -75,7 +82,10 @@ describe("Projects", () => {
   describe("v1GetProject", () => {
     it("happy path - gets project by ref", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(v1GetProject({ ref: proj.ref }));
       expect(result.ref).toBe(proj.ref);
       expect(result.name).toBe(proj.name);
@@ -115,12 +125,17 @@ describe("Projects", () => {
   describe("v1UpdateAProject", () => {
     it("happy path - updates project name", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const originalName = proj.name;
       const result = await runEffect(
         v1UpdateAProject({ ref: proj.ref, name: originalName }).pipe(
           Effect.ensuring(
-            v1UpdateAProject({ ref: proj.ref, name: originalName }).pipe(Effect.ignore),
+            v1UpdateAProject({ ref: proj.ref, name: originalName }).pipe(
+              Effect.ignore,
+            ),
           ),
         ),
       );
@@ -161,13 +176,15 @@ describe("Projects", () => {
       const orgSlug = await getExistingOrgSlug();
       const name = `distilled-supabase-create-${testRunId}`;
       const result = await runEffect(
-        v1CreateAProject({
-          name,
-          organization_slug: orgSlug,
-          db_pass: `TestPass${testRunId}!1`,
-          region: "us-east-1",
-          plan: "free",
-        }).pipe(
+        retryOnFreeProjectLimit(
+          v1CreateAProject({
+            name,
+            organization_slug: orgSlug,
+            db_pass: `TestPass${testRunId}!1`,
+            region: "us-east-1",
+            plan: "free",
+          }),
+        ).pipe(
           Effect.tap((created) =>
             Effect.addFinalizer(() =>
               v1DeleteAProject({ ref: created.ref }).pipe(Effect.ignore),
@@ -182,7 +199,7 @@ describe("Projects", () => {
       expect(result).toHaveProperty("organization_id");
       expect(result).toHaveProperty("region");
       expect(result).toHaveProperty("status");
-    }, 60_000);
+    }, 180_000);
 
     it("error - BadRequest for non-existent org slug", async () => {
       await runEffect(
@@ -195,7 +212,9 @@ describe("Projects", () => {
         }).pipe(
           Effect.flip,
           Effect.map((e) => {
-            expect(["BadRequest", "NotFound", "Forbidden"]).toContain((e as any)._tag);
+            expect(["BadRequest", "NotFound", "Forbidden"]).toContain(
+              (e as any)._tag,
+            );
           }),
         ),
       );
@@ -226,7 +245,9 @@ describe("Projects", () => {
   describe("v1GetAvailableRegions", () => {
     it("happy path - lists available regions", async () => {
       const orgSlug = await getExistingOrgSlug();
-      const result = await runEffect(v1GetAvailableRegions({ organization_slug: orgSlug }));
+      const result = await runEffect(
+        v1GetAvailableRegions({ organization_slug: orgSlug }),
+      );
       expect(result).toHaveProperty("recommendations");
       expect(result).toHaveProperty("all");
       expect(result.recommendations).toHaveProperty("smartGroup");
@@ -256,13 +277,15 @@ describe("Projects", () => {
       const orgSlug = await getExistingOrgSlug();
       const name = `distilled-supabase-pause-${testRunId}`;
       const created = await runEffect(
-        v1CreateAProject({
-          name,
-          organization_slug: orgSlug,
-          db_pass: `TestPass${testRunId}!1`,
-          region: "us-east-1",
-          plan: "free",
-        }),
+        retryOnFreeProjectLimit(
+          v1CreateAProject({
+            name,
+            organization_slug: orgSlug,
+            db_pass: `TestPass${testRunId}!1`,
+            region: "us-east-1",
+            plan: "free",
+          }),
+        ),
       );
       await runEffect(
         v1PauseAProject({ ref: created.ref }).pipe(
@@ -271,7 +294,7 @@ describe("Projects", () => {
           ),
         ),
       );
-    }, 60_000);
+    }, 180_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
@@ -305,17 +328,22 @@ describe("Projects", () => {
       const orgSlug = await getExistingOrgSlug();
       const name = `distilled-supabase-restore-${testRunId}`;
       const created = await runEffect(
-        v1CreateAProject({
-          name,
-          organization_slug: orgSlug,
-          db_pass: `TestPass${testRunId}!1`,
-          region: "us-east-1",
-          plan: "free",
-        }),
+        retryOnFreeProjectLimit(
+          v1CreateAProject({
+            name,
+            organization_slug: orgSlug,
+            db_pass: `TestPass${testRunId}!1`,
+            region: "us-east-1",
+            plan: "free",
+          }),
+        ),
       );
       await runEffect(v1PauseAProject({ ref: created.ref }));
-      // Wait for project to fully pause before restoring
-      await runEffect(
+      // Supabase's pause is async — the project status flips to INACTIVE
+      // anywhere from a few seconds up to a couple of minutes after the
+      // pause call returns. Poll until INACTIVE, escalating the budget on
+      // each attempt so a slow tail doesn't fail the test outright.
+      const waitForInactive = (durationSec: number) =>
         v1GetProject({ ref: created.ref }).pipe(
           Effect.flatMap((p) =>
             p.status === "INACTIVE"
@@ -325,9 +353,14 @@ describe("Projects", () => {
           Effect.retry({
             while: (err) => err === "not paused yet",
             schedule: Schedule.spaced("3 seconds").pipe(
-              Schedule.both(Schedule.recurs(20)),
+              Schedule.both(Schedule.recurs(Math.ceil(durationSec / 3))),
             ),
           }),
+        );
+      await runEffect(
+        waitForInactive(60).pipe(
+          Effect.catch(() => waitForInactive(120)),
+          Effect.catch(() => waitForInactive(180)),
         ),
       );
       await runEffect(
@@ -337,7 +370,7 @@ describe("Projects", () => {
           ),
         ),
       );
-    }, 120_000);
+    }, 600_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
@@ -371,13 +404,15 @@ describe("Projects", () => {
       const orgSlug = await getExistingOrgSlug();
       const name = `distilled-supabase-cancel-${testRunId}`;
       const created = await runEffect(
-        v1CreateAProject({
-          name,
-          organization_slug: orgSlug,
-          db_pass: `TestPass${testRunId}!1`,
-          region: "us-east-1",
-          plan: "free",
-        }),
+        retryOnFreeProjectLimit(
+          v1CreateAProject({
+            name,
+            organization_slug: orgSlug,
+            db_pass: `TestPass${testRunId}!1`,
+            region: "us-east-1",
+            plan: "free",
+          }),
+        ),
       );
       await runEffect(v1PauseAProject({ ref: created.ref }));
       // Wait for project to fully pause
@@ -407,7 +442,7 @@ describe("Projects", () => {
           ),
         ),
       );
-    }, 120_000);
+    }, 240_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(
@@ -439,10 +474,16 @@ describe("Projects", () => {
   describe("v1GetServicesHealth", () => {
     it("happy path - gets services health", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       // Verify the project is active before checking health
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetServicesHealth({ ref: proj.ref, services: "auth,db" }),
       );
@@ -484,10 +525,18 @@ describe("Projects", () => {
   describe("v1GetReadonlyModeStatus", () => {
     it("happy path - gets readonly mode status", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
-      const result = await runEffect(v1GetReadonlyModeStatus({ ref: proj.ref }));
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
+      const result = await runEffect(
+        v1GetReadonlyModeStatus({ ref: proj.ref }),
+      );
       expect(result).toHaveProperty("enabled");
       expect(result).toHaveProperty("override_enabled");
       expect(result).toHaveProperty("override_active_until");
@@ -525,9 +574,15 @@ describe("Projects", () => {
   describe("v1DisableReadonlyModeTemporarily", () => {
     it("happy path - disables readonly mode temporarily", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       // This is safe — it's a no-op if the project is not in readonly mode
       await runEffect(v1DisableReadonlyModeTemporarily({ ref: proj.ref }));
     }, 30_000);
@@ -562,9 +617,15 @@ describe("Projects", () => {
   describe("v1GetProjectLogs", () => {
     it("happy path - gets project logs", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(v1GetProjectLogs({ ref: proj.ref }));
       expect(result).toHaveProperty("result");
     }, 30_000);
@@ -599,9 +660,15 @@ describe("Projects", () => {
   describe("v1GetProjectUsageApiCount", () => {
     it("happy path - gets project usage api counts", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetProjectUsageApiCount({ ref: proj.ref }),
       );
@@ -638,14 +705,21 @@ describe("Projects", () => {
   describe("v1GetProjectUsageRequestCount", () => {
     it("happy path - gets project usage request counts", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetProjectUsageRequestCount({ ref: proj.ref }).pipe(
           // API may return null for count when no usage data exists, causing a SupabaseParseError
           Effect.catch((e) => {
-            if ((e as any)._tag === "SupabaseParseError") return Effect.succeed({ result: undefined });
+            if ((e as any)._tag === "SupabaseParseError")
+              return Effect.succeed({ result: undefined });
             return Effect.fail(e);
           }),
         ),
@@ -684,9 +758,15 @@ describe("Projects", () => {
   describe("v1GetProjectFunctionCombinedStats", () => {
     it("happy path - gets project function combined stats", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetProjectFunctionCombinedStats({
           ref: proj.ref,
@@ -735,19 +815,29 @@ describe("Projects", () => {
   describe("v1GetDiskUtilization", () => {
     it("happy path - gets disk utilization", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetDiskUtilization({ ref: proj.ref }).pipe(
           // Free-tier projects may return InternalServerError for disk util
           Effect.catch((e) => {
-            if ((e as any)._tag === "InternalServerError") return Effect.succeed(null);
+            if ((e as any)._tag === "InternalServerError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (result === null) { ctx.skip(); return; }
+      if (result === null) {
+        ctx.skip();
+        return;
+      }
       expect(result).toHaveProperty("timestamp");
       expect(result).toHaveProperty("metrics");
       expect(result.metrics).toHaveProperty("fs_size_bytes");
@@ -786,19 +876,29 @@ describe("Projects", () => {
   describe("v1GetDatabaseDisk", () => {
     it("happy path - gets database disk attributes", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetDatabaseDisk({ ref: proj.ref }).pipe(
           // Free-tier projects may return InternalServerError for disk config
           Effect.catch((e) => {
-            if ((e as any)._tag === "InternalServerError") return Effect.succeed(null);
+            if ((e as any)._tag === "InternalServerError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (result === null) { ctx.skip(); return; }
+      if (result === null) {
+        ctx.skip();
+        return;
+      }
       expect(result).toHaveProperty("attributes");
     }, 30_000);
 
@@ -832,25 +932,43 @@ describe("Projects", () => {
   describe("v1ModifyDatabaseDisk", () => {
     it("happy path - modifies database disk (no-op write-back)", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       // Read current disk config and write it back unchanged (idempotent)
       const current = await runEffect(
         v1GetDatabaseDisk({ ref: proj.ref }).pipe(
           Effect.catch((e) => {
-            if ((e as any)._tag === "InternalServerError") return Effect.succeed(null);
+            if ((e as any)._tag === "InternalServerError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (current === null) { ctx.skip(); return; }
+      if (current === null) {
+        ctx.skip();
+        return;
+      }
       await runEffect(
-        v1ModifyDatabaseDisk({ ref: proj.ref, attributes: current.attributes }).pipe(
+        v1ModifyDatabaseDisk({
+          ref: proj.ref,
+          attributes: current.attributes,
+        }).pipe(
           Effect.catch((e) => {
             // Free-tier projects may not support disk modification
             const tag = (e as any)._tag;
-            if (tag === "InternalServerError" || tag === "BadRequest" || tag === "UnknownSupabaseError") return Effect.succeed(undefined);
+            if (
+              tag === "InternalServerError" ||
+              tag === "BadRequest" ||
+              tag === "UnknownSupabaseError"
+            )
+              return Effect.succeed(undefined);
             return Effect.fail(e);
           }),
         ),
@@ -887,19 +1005,29 @@ describe("Projects", () => {
   describe("v1GetProjectDiskAutoscaleConfig", () => {
     it("happy path - gets disk autoscale config", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetProjectDiskAutoscaleConfig({ ref: proj.ref }).pipe(
           Effect.catch((e) => {
             const tag = (e as any)._tag;
-            if (tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            if (tag === "InternalServerError" || tag === "UnknownSupabaseError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (result === null) { ctx.skip(); return; }
+      if (result === null) {
+        ctx.skip();
+        return;
+      }
       expect(result).toHaveProperty("growth_percent");
       expect(result).toHaveProperty("min_increment_gb");
       expect(result).toHaveProperty("max_size_gb");
@@ -935,19 +1063,29 @@ describe("Projects", () => {
   describe("v1GetPostgresUpgradeEligibility", () => {
     it("happy path - gets postgres upgrade eligibility", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetPostgresUpgradeEligibility({ ref: proj.ref }).pipe(
           Effect.catch((e) => {
             const tag = (e as any)._tag;
-            if (tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            if (tag === "InternalServerError" || tag === "UnknownSupabaseError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (result === null) { ctx.skip(); return; }
+      if (result === null) {
+        ctx.skip();
+        return;
+      }
       expect(result).toHaveProperty("eligible");
       expect(typeof result.eligible).toBe("boolean");
       expect(result).toHaveProperty("current_app_version");
@@ -988,19 +1126,29 @@ describe("Projects", () => {
   describe("v1GetPostgresUpgradeStatus", () => {
     it("happy path - gets postgres upgrade status", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetPostgresUpgradeStatus({ ref: proj.ref }).pipe(
           Effect.catch((e) => {
             const tag = (e as any)._tag;
-            if (tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            if (tag === "InternalServerError" || tag === "UnknownSupabaseError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (result === null) { ctx.skip(); return; }
+      if (result === null) {
+        ctx.skip();
+        return;
+      }
       expect(result).toHaveProperty("databaseUpgradeStatus");
     }, 30_000);
 
@@ -1034,20 +1182,31 @@ describe("Projects", () => {
   describe("v1UpgradePostgresVersion", () => {
     it("happy path - attempts upgrade (skips if not eligible)", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       // Check eligibility first — only proceed if eligible and has target versions
       const eligibility = await runEffect(
         v1GetPostgresUpgradeEligibility({ ref: proj.ref }).pipe(
           Effect.catch((e) => {
             const tag = (e as any)._tag;
-            if (tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            if (tag === "InternalServerError" || tag === "UnknownSupabaseError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (!eligibility || !eligibility.eligible || eligibility.target_upgrade_versions.length === 0) {
+      if (
+        !eligibility ||
+        !eligibility.eligible ||
+        eligibility.target_upgrade_versions.length === 0
+      ) {
         ctx.skip();
         return;
       }
@@ -1094,22 +1253,34 @@ describe("Projects", () => {
   describe("v1GetProjectPgbouncerConfig", () => {
     it("happy path - gets pgbouncer config", async (ctx) => {
       const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
+      if (!proj) {
+        ctx.skip();
+        return;
+      }
       const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
-      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      if (projDetails.status !== "ACTIVE_HEALTHY") {
+        ctx.skip();
+        return;
+      }
       const result = await runEffect(
         v1GetProjectPgbouncerConfig({ ref: proj.ref }).pipe(
           Effect.catch((e) => {
             const tag = (e as any)._tag;
-            if (tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            if (tag === "InternalServerError" || tag === "UnknownSupabaseError")
+              return Effect.succeed(null);
             return Effect.fail(e);
           }),
         ),
       );
-      if (result === null) { ctx.skip(); return; }
+      if (result === null) {
+        ctx.skip();
+        return;
+      }
       expect(typeof result).toBe("object");
       if (result.pool_mode !== undefined) {
-        expect(["transaction", "session", "statement"]).toContain(result.pool_mode);
+        expect(["transaction", "session", "statement"]).toContain(
+          result.pool_mode,
+        );
       }
       if (result.default_pool_size !== undefined) {
         expect(typeof result.default_pool_size).toBe("number");
@@ -1151,19 +1322,21 @@ describe("Projects", () => {
       const orgSlug = await getExistingOrgSlug();
       const name = `distilled-supabase-del-${testRunId}`;
       const created = await runEffect(
-        v1CreateAProject({
-          name,
-          organization_slug: orgSlug,
-          db_pass: `TestPass${testRunId}!1`,
-          region: "us-east-1",
-          plan: "free",
-        }),
+        retryOnFreeProjectLimit(
+          v1CreateAProject({
+            name,
+            organization_slug: orgSlug,
+            db_pass: `TestPass${testRunId}!1`,
+            region: "us-east-1",
+            plan: "free",
+          }),
+        ),
       );
       const result = await runEffect(v1DeleteAProject({ ref: created.ref }));
       expect(result.ref).toBe(created.ref);
       expect(result.name).toBe(name);
       expect(result).toHaveProperty("id");
-    }, 60_000);
+    }, 180_000);
 
     it("error - BadRequest for invalid ref", async () => {
       await runEffect(

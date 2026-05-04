@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { Effect, Layer } from "effect";
+import { Effect, Layer, Schedule } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { CredentialsFromEnv } from "../src/credentials";
 import { v1ListAllProjects } from "../src/operations/v1ListAllProjects";
@@ -35,6 +35,95 @@ export const runEffect = <A, E>(effect: Effect.Effect<A, E, any>): Promise<A> =>
 export const FAKE_REF = "nonexistent00000000ref";
 export const FAKE_UUID = "00000000-0000-0000-0000-000000000000";
 
+/**
+ * Wrap a project-creating Effect so that hitting Supabase's free-tier
+ * "active free projects" ceiling auto-recovers: we sweep every existing
+ * `distilled-supabase-*` project from the account, wait for the deletes
+ * to propagate, and retry. Bounded so a real, unrelated quota issue
+ * still surfaces.
+ *
+ * Supabase's management API has no way to query "are there any deletions
+ * still propagating?" — `v1DeleteAProject` returns immediately and the
+ * project lingers as REMOVED for ~30s while still counting toward the
+ * limit — so the recovery path waits a bit before each retry.
+ */
+export const retryOnFreeProjectLimit = <A, E, R>(
+  effect: Effect.Effect<A, E, R>,
+): Effect.Effect<A, E, R> => {
+  const isLimit = (e: unknown): boolean =>
+    typeof e === "object" &&
+    e !== null &&
+    (e as { _tag?: string })._tag === "FreeProjectLimitReached";
+  // On limit: sweep + poll v1ListAllProjects until at least one
+  // `distilled-supabase-*` project has fully disappeared (slot freed up),
+  // then retry. Polling beats a fixed sleep because Supabase's tail varies
+  // from ~30s to a couple of minutes — too short and we retry into the
+  // same limit; too long and the test times out. Bounded to 3 attempts.
+  const recover = effect.pipe(
+    Effect.catch((e) =>
+      isLimit(e)
+        ? waitForCapacity().pipe(Effect.flatMap(() => Effect.fail(e)))
+        : Effect.fail(e),
+    ),
+  ) as Effect.Effect<A, E, R>;
+  return recover.pipe(
+    Effect.retry({
+      while: isLimit,
+      schedule: Schedule.recurs(3),
+    }),
+  );
+};
+
+/**
+ * Sweep every `distilled-supabase-*` project, then poll the account
+ * listing until the test-project count drops by at least one — i.e. a
+ * slot freed up. Capped at ~2 minutes; if nothing has cleared by then
+ * we return anyway and let the outer retry surface the same limit error
+ * to the caller, which is preferable to hanging.
+ */
+const waitForCapacity = (): Effect.Effect<void> =>
+  Effect.gen(function* () {
+    const before = yield* listTestProjects();
+    for (const p of before) {
+      yield* v1DeleteAProject({ ref: p.ref }).pipe(Effect.ignore);
+    }
+    yield* pollUntilFewer(before.length);
+  }).pipe(Effect.provide(TestLayer)) as Effect.Effect<void>;
+
+const listTestProjects = (): Effect.Effect<
+  Array<{ ref: string; name: string }>,
+  never,
+  never
+> =>
+  v1ListAllProjects({}).pipe(
+    Effect.orElseSucceed(() => [] as Array<{ ref: string; name: string }>),
+    Effect.map((projects) =>
+      projects.filter((p) => p.name.startsWith("distilled-supabase")),
+    ),
+  ) as Effect.Effect<Array<{ ref: string; name: string }>, never, never>;
+
+const pollUntilFewer = (
+  startingCount: number,
+): Effect.Effect<void, never, never> =>
+  listTestProjects().pipe(
+    Effect.flatMap((current) =>
+      current.length < startingCount
+        ? Effect.void
+        : Effect.fail("still-full" as const),
+    ),
+    Effect.retry({
+      while: (e) => e === "still-full",
+      schedule: Schedule.both(
+        Schedule.spaced("5 seconds"),
+        Schedule.recurs(24),
+      ),
+    }),
+    Effect.match({
+      onSuccess: () => undefined as void,
+      onFailure: () => undefined as void,
+    }),
+  ) as Effect.Effect<void, never, never>;
+
 // --------------------------------------------------------------------------
 // Shared test project management
 // --------------------------------------------------------------------------
@@ -52,17 +141,25 @@ interface TestProject {
 const testProjects = new Map<string, TestProject>();
 
 /**
- * Get an existing ACTIVE_HEALTHY project for read-only tests.
- * Falls back to creating a fresh one if none exist.
+ * Get an existing ACTIVE_HEALTHY project for read-only tests, or undefined
+ * if none exist (read-only tests then skip via `requireExistingProject`).
+ *
+ * Strict on `status === "ACTIVE_HEALTHY"`: Supabase's deletion is async and
+ * `v1DeleteAProject` returns immediately, so a project lingers in REMOVED
+ * state and shows up in `v1ListAllProjects` for ~30s after deletion. The
+ * old fallback to `projects[0]` could pick a REMOVED project whose ref then
+ * fails every read with "Resource has been removed".
+ *
+ * Cache only positive results: if the first call finds no healthy project
+ * we re-check on the next call, so a project created later in the run
+ * (e.g. by v1CreateAProject's happy path before the suite's read tests)
+ * can still be picked up.
  */
 let _cachedExistingProject: TestProject | undefined;
-let _existingProjectResolved = false;
 export async function getExistingProject(): Promise<TestProject | undefined> {
-  if (_existingProjectResolved) return _cachedExistingProject;
-  _existingProjectResolved = true;
+  if (_cachedExistingProject) return _cachedExistingProject;
   const projects = await runEffect(v1ListAllProjects({}));
-  // Prefer ACTIVE_HEALTHY, fall back to any project
-  const active = projects.find((p) => p.status === "ACTIVE_HEALTHY") ?? projects[0];
+  const active = projects.find((p) => p.status === "ACTIVE_HEALTHY");
   if (active) {
     _cachedExistingProject = {
       id: active.id,
@@ -78,7 +175,9 @@ export async function getExistingProject(): Promise<TestProject | undefined> {
 /**
  * Get an existing project or skip the test if none available.
  */
-export async function requireExistingProject(ctx: { skip: (reason: string) => void }): Promise<TestProject> {
+export async function requireExistingProject(ctx: {
+  skip: (reason: string) => void;
+}): Promise<TestProject> {
   const proj = await getExistingProject();
   if (!proj) {
     ctx.skip("No projects available");
@@ -111,13 +210,15 @@ export async function setupTestProject(suffix: string): Promise<TestProject> {
   const dbPass = `TestPass${testRunId}!1`;
 
   const result = await runEffect(
-    v1CreateAProject({
-      name,
-      organization_slug: orgSlug,
-      db_pass: dbPass,
-      region: "us-east-1",
-      plan: "free",
-    }),
+    retryOnFreeProjectLimit(
+      v1CreateAProject({
+        name,
+        organization_slug: orgSlug,
+        db_pass: dbPass,
+        region: "us-east-1",
+        plan: "free",
+      }),
+    ),
   );
 
   const proj: TestProject = {

@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.16.1](https://github.com/alchemy-run/distilled/releases/tag/v0.16.1) (2026-05-04)
+
+### Bug Fixes
+
+- **cloudflare**: make ingress hostname optional for cfd tunnel configuration - by sam in [#227](https://github.com/alchemy-run/distilled/pull/227) [(3e67ad4)](https://github.com/alchemy-run/distilled/commit/3e67ad486914ab514eb9fc91cb9f484f335dfc8f)
+- **supabase**: tag FreeProjectLimitReached and recover in tests + CI nuke - by Michael K in [#221](https://github.com/alchemy-run/distilled/pull/221) [(4edd245)](https://github.com/alchemy-run/distilled/commit/4edd245c05005c0345bfb8243a3729dcd03846da)
+- **ci**: trigger nuke on merge_group destroyed - by Michael K in [#224](https://github.com/alchemy-run/distilled/pull/224) [(c0ce99b)](https://github.com/alchemy-run/distilled/commit/c0ce99b2b9b63b25172b64542e81380a239364b5)
+
 ## [v0.16.0](https://github.com/alchemy-run/distilled/releases/tag/v0.16.0) (2026-05-02)
 
 ### Features

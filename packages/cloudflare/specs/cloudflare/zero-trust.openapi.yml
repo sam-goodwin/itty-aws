@@ -119745,7 +119745,6 @@ paths:
                               type: string
                               description: Requests with this path route to this public hostname.
                           required:
-                            - hostname
                             - service
                         description: List of public hostname definitions. At least one ingress rule
                           needs to be defined for the tunnel.
@@ -120001,7 +120000,6 @@ paths:
                             type: string
                             description: Requests with this path route to this public hostname.
                         required:
-                          - hostname
                           - service
                       description: List of public hostname definitions. At least one ingress rule
                         needs to be defined for the tunnel.
@@ -120223,7 +120221,6 @@ paths:
                               type: string
                               description: Requests with this path route to this public hostname.
                           required:
-                            - hostname
                             - service
                         description: List of public hostname definitions. At least one ingress rule
                           needs to be defined for the tunnel.

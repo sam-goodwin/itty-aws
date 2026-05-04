@@ -99705,7 +99705,7 @@ export interface GetTunnelCloudflaredConfigurationResponse {
   config?: {
     ingress?:
       | {
-          hostname: string;
+          hostname?: string | null;
           service: string;
           originRequest?: {
             access?: {
@@ -99772,7 +99772,9 @@ export const GetTunnelCloudflaredConfigurationResponse =
             Schema.Union([
               Schema.Array(
                 Schema.Struct({
-                  hostname: Schema.String,
+                  hostname: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   service: Schema.String,
                   originRequest: Schema.optional(
                     Schema.Union([
@@ -99951,7 +99953,7 @@ export interface PutTunnelCloudflaredConfigurationRequest {
   /** Body param: The tunnel configuration and ingress rules. */
   config?: {
     ingress?: {
-      hostname: string;
+      hostname?: string;
       service: string;
       originRequest?: {
         access?: { audTag: string[]; teamName: string; required?: boolean };
@@ -100001,7 +100003,7 @@ export const PutTunnelCloudflaredConfigurationRequest =
         ingress: Schema.optional(
           Schema.Array(
             Schema.Struct({
-              hostname: Schema.String,
+              hostname: Schema.optional(Schema.String),
               service: Schema.String,
               originRequest: Schema.optional(
                 Schema.Struct({
@@ -100073,7 +100075,7 @@ export interface PutTunnelCloudflaredConfigurationResponse {
   config?: {
     ingress?:
       | {
-          hostname: string;
+          hostname?: string | null;
           service: string;
           originRequest?: {
             access?: {
@@ -100140,7 +100142,9 @@ export const PutTunnelCloudflaredConfigurationResponse =
             Schema.Union([
               Schema.Array(
                 Schema.Struct({
-                  hostname: Schema.String,
+                  hostname: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   service: Schema.String,
                   originRequest: Schema.optional(
                     Schema.Union([

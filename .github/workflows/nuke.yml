@@ -1,9 +1,8 @@
 name: Nuke Test Resources
 
 on:
-  # Run after CI completes on merge_group events (merge queue)
   merge_group:
-    types: [checks_requested]
+    types: [destroyed]
   # Manual trigger
   workflow_dispatch:
     inputs:
@@ -79,22 +78,6 @@ jobs:
     outputs:
       run: ${{ steps.decide.outputs.run }}
     steps:
-      - name: Check if merge queue is empty
-        if: github.event_name == 'merge_group'
-        id: queue-check
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { data: entries } = await github.rest.repos.getMergeQueueForBranch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              branch: 'main',
-            });
-
-            const count = entries.total_count ?? 0;
-            console.log(`Merge queue entries remaining: ${count}`);
-            core.setOutput('is_last', count <= 1 ? 'true' : 'false');
-
       - name: Validate inputs
         if: github.event_name == 'workflow_dispatch'
         run: |
@@ -119,12 +102,7 @@ jobs:
 
       - name: Decide whether to run
         id: decide
-        run: |
-          if [[ "${{ github.event_name }}" == "merge_group" ]]; then
-            echo "run=${{ steps.queue-check.outputs.is_last }}" >> $GITHUB_OUTPUT
-          else
-            echo "run=true" >> $GITHUB_OUTPUT
-          fi
+        run: echo "run=true" >> $GITHUB_OUTPUT
 
   # ── AWS ──
   nuke-aws:
