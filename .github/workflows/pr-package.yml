@@ -20,6 +20,7 @@ permissions:
 env:
   PR_PACKAGE_HOST: pkg.ing
   NODE_VERSION: "24"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   # ── Detect which packages changed (same filters as test.yml). ─────────────
