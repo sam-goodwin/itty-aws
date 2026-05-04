@@ -19,6 +19,7 @@ import {
   KubernetesParseError,
 } from "../errors.ts";
 import { Credentials } from "../credentials.ts";
+import { Retry } from "../retry.ts";
 
 export type { OperationMethod, PaginatedOperationMethod };
 
@@ -93,6 +94,7 @@ const _API = makeAPI<Credentials>({
   }),
   matchError,
   ParseError: KubernetesParseError as any,
+  retry: Retry as any,
 });
 
 export const make = _API.make;

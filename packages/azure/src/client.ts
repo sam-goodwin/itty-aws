@@ -23,6 +23,7 @@ import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
   AZURE_ERROR_CODE_MAP,
@@ -158,6 +159,7 @@ export const API = makeAPI<Credentials>({
   },
   matchError,
   ParseError: AzureParseError as any,
+  retry: Retry as any,
 
   /**
    * Inject `subscriptionId` from credentials into the path when the generated

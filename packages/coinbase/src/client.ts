@@ -35,6 +35,7 @@ import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import * as crypto from "node:crypto";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
   COINBASE_HTTP_STATUS_MAP,
@@ -288,4 +289,5 @@ export const API = makeAPI<Credentials>({
   },
   matchError,
   ParseError: CoinbaseParseError as any,
+  retry: Retry as any,
 });

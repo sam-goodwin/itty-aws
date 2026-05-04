@@ -14,6 +14,7 @@ import {
 } from "@distilled.cloud/core/client";
 import { HTTP_STATUS_MAP, UnknownGCPError, GCPParseError } from "../errors.ts";
 import { Credentials } from "../credentials.ts";
+import { Retry } from "../retry.ts";
 
 export type { OperationMethod, PaginatedOperationMethod };
 
@@ -51,6 +52,7 @@ const _API = makeAPI<Credentials>({
   }),
   matchError,
   ParseError: GCPParseError as any,
+  retry: Retry as any,
 });
 
 export const make = _API.make;

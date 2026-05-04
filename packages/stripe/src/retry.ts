@@ -1,22 +1,53 @@
 /**
- * stripe retry configuration.
+ * Stripe retry configuration.
  *
- * Re-exports the shared `Retry` Context.Service from `@distilled.cloud/core`
- * so a blanket retry policy installed at the layer level covers every
- * stripe API call below it.
+ * Defines the per-SDK `Retry` Context.Service tag that
+ * `packages/stripe/src/client.ts` wires into `makeAPI`. Callers can
+ * install a blanket retry policy at the layer level and have every
+ * Stripe API call below it pick it up:
+ *
+ * @example
+ * ```ts
+ * import * as Stripe from "@distilled.cloud/stripe";
+ *
+ * myEffect.pipe(Stripe.Retry.transient);
+ * Effect.provide(myEffect, Layer.succeed(Stripe.Retry.Retry, customPolicy));
+ * ```
  */
+import * as Context from "effect/Context";
+import * as Effect from "effect/Effect";
+import * as Layer from "effect/Layer";
+import {
+  type Policy,
+  throttlingOptions,
+  transientOptions,
+} from "@distilled.cloud/core/retry";
+
 export {
   type Options,
   type Factory,
   type Policy,
-  Retry,
   makeDefault,
   jittered,
   capped,
   throttlingOptions,
   transientOptions,
-  policy,
-  none,
-  throttling,
-  transient,
 } from "@distilled.cloud/core/retry";
+
+/** Context tag for configuring retry behavior of Stripe API calls. */
+export class Retry extends Context.Service<Retry, Policy>()("StripeRetry") {}
+
+/** Provides a custom retry policy to every Stripe API call below it. */
+export const policy = (optionsOrFactory: Policy) =>
+  Effect.provide(Layer.succeed(Retry, optionsOrFactory));
+
+/** Disables all automatic retries. */
+export const none = Effect.provide(
+  Layer.succeed(Retry, { while: () => false }),
+);
+
+/** Apply the throttling retry policy (retries throttling errors indefinitely). */
+export const throttling = policy(throttlingOptions);
+
+/** Apply the transient retry policy (retries all transient errors indefinitely). */
+export const transient = policy(transientOptions);

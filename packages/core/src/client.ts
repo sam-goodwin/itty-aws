@@ -25,6 +25,7 @@
  * const result = yield* fn({ organization: "my-org" });
  * ```
  */
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import { pipe } from "effect/Function";
 import * as Option from "effect/Option";
@@ -46,7 +47,7 @@ import {
   type PaginatedTrait,
   type PaginationStrategy,
 } from "./pagination.ts";
-import { makeDefault, Retry } from "./retry.ts";
+import { makeDefault, type Policy as RetryPolicy } from "./retry.ts";
 import * as Traits from "./traits.ts";
 import { getPath } from "./traits.ts";
 
@@ -170,6 +171,20 @@ export interface ClientConfig<Creds> {
     pathTemplate: string;
     parts: Traits.RequestParts;
   }) => Traits.RequestParts;
+
+  /**
+   * The SDK's `Retry` Context.Service tag. Each per-SDK client wires its
+   * own tag here so callers can install a blanket policy at the layer
+   * level (e.g. `myEffect.pipe(Cloudflare.Retry.transient)`) and have
+   * every API call below it pick it up — same pattern as
+   * `packages/aws/src/client/api.ts`.
+   *
+   * `makeAPI` reads the policy via `Effect.serviceOption(retry)` on every
+   * call and falls back to `Retry.makeDefault` (transient/throttling/server
+   * with capped exponential backoff + jitter, 5 attempts) when no policy
+   * is provided.
+   */
+  retry: Context.Key<any, RetryPolicy>;
 }
 
 /**
@@ -685,18 +700,19 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           );
         });
 
-      // Auto-retry every operation using the shared `Retry` Context.Service.
-      // The policy is read with `Effect.serviceOption(Retry)` and falls back
-      // to `Retry.makeDefault` (transient/throttling/server errors with
-      // capped exponential backoff + jitter, 5 attempts) when no policy has
-      // been provided. This mirrors the AWS pattern in
-      // `packages/aws/src/client/api.ts` and lets callers install a blanket
-      // policy at the layer level instead of wrapping every call site with
-      // `Effect.retry(...)`.
+      // Auto-retry every operation using the SDK's per-client `Retry`
+      // Context.Service. The policy is read with `Effect.serviceOption`
+      // and falls back to `Retry.makeDefault` (transient/throttling/server
+      // errors with capped exponential backoff + jitter, 5 attempts) when
+      // no policy has been provided in context. This mirrors the AWS
+      // pattern in `packages/aws/src/client/api.ts` and lets callers
+      // install a blanket policy at the layer level instead of wrapping
+      // every call site with `Effect.retry(...)`.
+      const retryTag = config.retry;
       const fn = (input: Input): Effect.Effect<any, any, any> => {
         const withRetry = Effect.gen(function* () {
           const lastError = yield* Ref.make<unknown>(undefined);
-          const policy = (yield* Effect.serviceOption(Retry)).pipe(
+          const policy = (yield* Effect.serviceOption(retryTag)).pipe(
             Option.map((value) =>
               typeof value === "function" ? value(lastError) : value,
             ),

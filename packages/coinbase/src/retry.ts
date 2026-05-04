@@ -1,22 +1,53 @@
 /**
- * coinbase retry configuration.
+ * Coinbase retry configuration.
  *
- * Re-exports the shared `Retry` Context.Service from `@distilled.cloud/core`
- * so a blanket retry policy installed at the layer level covers every
- * coinbase API call below it.
+ * Defines the per-SDK `Retry` Context.Service tag that
+ * `packages/coinbase/src/client.ts` wires into `makeAPI`. Callers can
+ * install a blanket retry policy at the layer level and have every
+ * Coinbase API call below it pick it up:
+ *
+ * @example
+ * ```ts
+ * import * as Coinbase from "@distilled.cloud/coinbase";
+ *
+ * myEffect.pipe(Coinbase.Retry.transient);
+ * Effect.provide(myEffect, Layer.succeed(Coinbase.Retry.Retry, customPolicy));
+ * ```
  */
+import * as Context from "effect/Context";
+import * as Effect from "effect/Effect";
+import * as Layer from "effect/Layer";
+import {
+  type Policy,
+  throttlingOptions,
+  transientOptions,
+} from "@distilled.cloud/core/retry";
+
 export {
   type Options,
   type Factory,
   type Policy,
-  Retry,
   makeDefault,
   jittered,
   capped,
   throttlingOptions,
   transientOptions,
-  policy,
-  none,
-  throttling,
-  transient,
 } from "@distilled.cloud/core/retry";
+
+/** Context tag for configuring retry behavior of Coinbase API calls. */
+export class Retry extends Context.Service<Retry, Policy>()("CoinbaseRetry") {}
+
+/** Provides a custom retry policy to every Coinbase API call below it. */
+export const policy = (optionsOrFactory: Policy) =>
+  Effect.provide(Layer.succeed(Retry, optionsOrFactory));
+
+/** Disables all automatic retries. */
+export const none = Effect.provide(
+  Layer.succeed(Retry, { while: () => false }),
+);
+
+/** Apply the throttling retry policy (retries throttling errors indefinitely). */
+export const throttling = policy(throttlingOptions);
+
+/** Apply the transient retry policy (retries all transient errors indefinitely). */
+export const transient = policy(transientOptions);

@@ -32,6 +32,7 @@ import {
   UnknownCloudflareError,
 } from "../errors.ts";
 import { Credentials, formatHeaders } from "../credentials.ts";
+import { Retry } from "../retry.ts";
 import { type ErrorMatcher, getErrorMatchers } from "../traits.ts";
 
 // ============================================================================
@@ -378,6 +379,7 @@ const _API = makeAPI<Credentials>({
   ParseError: CloudflareDecodeError as any,
   transformRequestParts: ({ pathTemplate, parts }) =>
     transformCloudflareRequestParts({ pathTemplate, parts }),
+  retry: Retry as any,
 });
 
 const paginatePageByItems: PaginationStrategy = (
